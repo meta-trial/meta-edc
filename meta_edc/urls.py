@@ -22,7 +22,7 @@ from edc_locator.admin_site import edc_locator_admin
 from edc_metadata.admin_site import edc_metadata_admin
 from edc_notification.admin_site import edc_notification_admin
 from edc_pdutils.admin_site import edc_pdutils_admin
-from edc_pharmacy.admin_site import edc_pharmacy_admin
+# from edc_pharmacy.admin_site import edc_pharmacy_admin
 from edc_reference.admin_site import edc_reference_admin
 from edc_registration.admin_site import edc_registration_admin
 from edc_visit_schedule.admin_site import edc_visit_schedule_admin
@@ -65,7 +65,7 @@ urlpatterns = [
     path("admin/", edc_registration_admin.urls),
     path("admin/", edc_reference_admin.urls),
     path("admin/", django_collect_offline_admin.urls),
-    path("admin/", edc_pharmacy_admin.urls),
+    # path("admin/", edc_pharmacy_admin.urls),
     path("admin/", edc_action_item_admin.urls),
     path("admin/", edc_pdutils_admin.urls),
     path("admin/edc_visit_schedule/", edc_visit_schedule_admin.urls),
@@ -97,8 +97,8 @@ urlpatterns = [
     path("edc_lab/", include("edc_lab.urls")),
     path("edc_lab_dashboard/", include("edc_lab_dashboard.urls")),
     path("edc_locator/", include("edc_locator.urls")),
-    path("edc_pharmacy/", include("edc_pharmacy.urls")),
-    path("edc_pharmacy_dashboard/", include("edc_pharmacy_dashboard.urls")),
+    #     path("edc_pharmacy/", include("edc_pharmacy.urls")),
+    #     path("edc_pharmacy_dashboard/", include("edc_pharmacy_dashboard.urls")),
     path("edc_label/", include("edc_label.urls")),
     path("edc_metadata/", include("edc_metadata.urls")),
     path("edc_notification/", include("edc_notification.urls")),

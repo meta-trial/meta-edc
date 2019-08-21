@@ -1,5 +1,6 @@
 -e /Users/erikvw/source/edc-base  #develop#egg=edc-base
 -e /Users/erikvw/source/edc-navbar  #develop#egg=edc-navbar
+-e /Users/erikvw/source/edc-data-manager
 -e /Users/erikvw/source/edc-device  #develop#egg=edc-device
 -e /Users/erikvw/source/edc-protocol  #develop#egg=edc-protocol
 -e /Users/erikvw/source/edc-export  #develop#egg=edc-export
@@ -32,6 +33,7 @@
 -e /Users/erikvw/source/edc-reports  #develop#egg=edc-reports
 -e /Users/erikvw/source/edc-reportable  #develop#egg=edc-reportable
 -e /Users/erikvw/source/edc-search  #develop#egg=edc-search
+-e /Users/erikvw/source/edc-screening
 -e /Users/erikvw/source/edc-selenium  #develop#egg=edc-selenium
 -e /Users/erikvw/source/edc-subject-dashboard  #develop#egg=edc-subject-dashboard
 # -e /Users/erikvw/source/django-collect-offline-files  #develop#egg=django-collect-offline-files
@@ -53,9 +55,10 @@
 -e /Users/erikvw/source/meta-rando  #develop#egg=meta-rando
 -e /Users/erikvw/source/meta-reference  #develop#egg=meta-reference
 -e /Users/erikvw/source/meta-screening  #develop#egg=meta-screening
--e /Users/erikvw/source/meta-lists
 -e /Users/erikvw/source/meta-sites
 -e /Users/erikvw/source/meta-subject  #develop#egg=meta-subject
 -e /Users/erikvw/source/meta-form-validators  #develop#egg=meta-form-validators
 -e /Users/erikvw/source/meta-visit-schedule  #develop#egg=meta-visit-schedule
+-e /Users/erikvw/source/meta-lists
 -e .
+git+https://github.com/erikvw/django-simple-history@admin_revert_permissions
