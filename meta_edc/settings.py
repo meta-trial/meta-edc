@@ -15,8 +15,7 @@ except AssertionError:
         "Incorrect python version. Expected 3.6 or 3.7. Check your environment."
     )
 
-BASE_DIR = str(Path(os.path.dirname(
-    os.path.dirname(os.path.abspath(__file__)))))
+BASE_DIR = str(Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 env = environ.Env(
     AWS_ENABLED=(bool, False),
@@ -93,22 +92,20 @@ INSTALLED_APPS = [
     "logentry_admin",
     "simple_history",
     "storages",
-    "corsheaders",
-    "rest_framework",
-    "rest_framework.authtoken",
-    "django_collect_offline.apps.AppConfig",
-    "django_collect_offline_files.apps.AppConfig",
     "edc_action_item.apps.AppConfig",
+    "edc_adverse_event.apps.AppConfig",
     "edc_auth.apps.AppConfig",
     "edc_consent.apps.AppConfig",
+    "edc_lab.apps.AppConfig",
+    "edc_visit_schedule.apps.AppConfig",
     "edc_dashboard.apps.AppConfig",
     "edc_data_manager.apps.AppConfig",
     "edc_export.apps.AppConfig",
     "edc_fieldsets.apps.AppConfig",
     "edc_form_validators.apps.AppConfig",
-    "edc_lab.apps.AppConfig",
     "edc_lab_dashboard.apps.AppConfig",
     "edc_label.apps.AppConfig",
+    "edc_list_data.apps.AppConfig",
     "edc_locator.apps.AppConfig",
     "edc_metadata_rules.apps.AppConfig",
     "edc_model_admin.apps.AppConfig",
@@ -116,22 +113,18 @@ INSTALLED_APPS = [
     "edc_notification.apps.AppConfig",
     "edc_offstudy.apps.AppConfig",
     "edc_pdutils.apps.AppConfig",
-    "edc_reference.apps.AppConfig",
-    "edc_reports.apps.AppConfig",
-    "edc_visit_schedule.apps.AppConfig",
-    #     "edc_pharmacy.apps.AppConfig",
-    #     "edc_pharmacy_dashboard.apps.AppConfig",
     "edc_prn.apps.AppConfig",
+    "edc_randomization.apps.AppConfig",
+    "edc_reference.apps.AppConfig",
     "edc_registration.apps.AppConfig",
+    "edc_reports.apps.AppConfig",
+    "edc_review_dashboard.apps.AppConfig",
     "edc_subject_dashboard.apps.AppConfig",
     "edc_timepoint.apps.AppConfig",
-    "edc_list_data.apps.AppConfig",
-    "edc_review_dashboard.apps.AppConfig",
     "meta_lists.apps.AppConfig",
     "meta_dashboard.apps.AppConfig",
     "meta_labs.apps.AppConfig",
     "meta_metadata_rules.apps.AppConfig",
-    "meta_rando.apps.AppConfig",
     "meta_reference.apps.AppConfig",
     "meta_subject.apps.AppConfig",
     "meta_form_validators.apps.AppConfig",
@@ -141,6 +134,7 @@ INSTALLED_APPS = [
     "meta_prn.apps.AppConfig",
     "meta_export.apps.AppConfig",
     "meta_screening.apps.AppConfig",
+    "meta_sites.apps.AppConfig",
     "meta_edc.apps.EdcAppointmentAppConfig",
     "meta_edc.apps.EdcDeviceAppConfig",
     "meta_edc.apps.EdcIdentifierAppConfig",
@@ -279,8 +273,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = env.str("DJANGO_LANGUAGE_CODE")
 
-LANGUAGES = [x.split(":") for x in env.list(
-    "DJANGO_LANGUAGES")] or (("en", "English"),)
+LANGUAGES = [x.split(":") for x in env.list("DJANGO_LANGUAGES")] or (("en", "English"),)
 
 TIME_ZONE = env.str("DJANGO_TIME_ZONE")
 
@@ -331,17 +324,6 @@ LABEL_TEMPLATE_FOLDER = env.str("DJANGO_LABEL_TEMPLATE_FOLDER") or os.path.join(
     BASE_DIR, "label_templates"
 )
 CUPS_SERVERS = env.dict("DJANGO_CUPS_SERVERS")
-
-# django_collect_offline / django_collect_offline files
-DJANGO_COLLECT_OFFLINE_SERVER_IP = env.str("DJANGO_COLLECT_OFFLINE_SERVER_IP")
-DJANGO_COLLECT_OFFLINE_FILES_REMOTE_HOST = env.str(
-    "DJANGO_COLLECT_OFFLINE_FILES_REMOTE_HOST"
-)
-DJANGO_COLLECT_OFFLINE_FILES_USER = env.str(
-    "DJANGO_COLLECT_OFFLINE_FILES_USER")
-DJANGO_COLLECT_OFFLINE_FILES_USB_VOLUME = env.str(
-    "DJANGO_COLLECT_OFFLINE_FILES_USB_VOLUME"
-)
 
 SUBJECT_CONSENT_MODEL = env.str("DJANGO_SUBJECT_CONSENT_MODEL")
 SUBJECT_REQUISITION_MODEL = env.str("DJANGO_SUBJECT_REQUISITION_MODEL")
@@ -397,8 +379,7 @@ if not DEBUG:
 EXPORT_FOLDER = env.str("DJANGO_EXPORT_FOLDER") or os.path.expanduser("~/")
 
 # django_simple_history
-SIMPLE_HISTORY_PERMISSIONS_ENABLED = env.str(
-    "SIMPLE_HISTORY_PERMISSIONS_ENABLED")
+SIMPLE_HISTORY_PERMISSIONS_ENABLED = env.str("SIMPLE_HISTORY_PERMISSIONS_ENABLED")
 SIMPLE_HISTORY_REVERT_DISABLED = env.str("SIMPLE_HISTORY_REVERT_DISABLED")
 
 FQDN = env.str("DJANGO_FQDN")
