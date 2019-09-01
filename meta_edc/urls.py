@@ -26,6 +26,7 @@ from meta_ae.admin_site import meta_ae_admin
 from meta_export.admin_site import meta_export_admin
 from meta_lists.admin_site import meta_lists_admin
 from meta_prn.admin_site import meta_prn_admin
+from meta_consent.admin_site import meta_consent_admin
 from meta_screening.admin_site import meta_screening_admin
 from meta_subject.admin_site import meta_subject_admin
 
@@ -52,6 +53,7 @@ urlpatterns = [
     path("admin/", edc_appointment_admin.urls),
     path("admin/", edc_adverse_event_admin.urls),
     path("admin/", edc_randomization_admin.urls),
+    path("admin/", meta_consent_admin.urls),
     path("admin/", meta_subject_admin.urls),
     path("admin/", meta_ae_admin.urls),
     path("admin/", meta_lists_admin.urls),
@@ -71,12 +73,14 @@ urlpatterns = [
     path("admin/", edc_action_item_admin.urls),
     path("admin/", edc_pdutils_admin.urls),
     path("admin/edc_visit_schedule/", edc_visit_schedule_admin.urls),
-    path("administration/", AdministrationView.as_view(), name="administration_url"),
+    path("administration/", AdministrationView.as_view(),
+         name="administration_url"),
     path(
         "admin/meta_subject/",
         RedirectView.as_view(url="admin/meta_subject/"),
         name="subject_models_url",
     ),
+    path("meta_consent/", include("meta_consent.urls")),
     path("meta_subject/", include("meta_subject.urls")),
     path("meta_ae/", include("meta_ae.urls")),
     path("meta_export/", include("meta_export.urls")),
