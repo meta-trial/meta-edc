@@ -47,9 +47,9 @@ class EdcProtocolAppConfig(BaseEdcProtocolAppConfig):
     institution = "Liverpool School of Tropical Medicine (LSTM)"
     project_name = "META"
     project_repo = "https://github.com/meta-trail"
-    protocol = "LSTM10"
+    protocol = "LSTM101"
     protocol_name = "META"
-    protocol_number = "10"
+    protocol_number = "101"
     protocol_title = "META Trial"
     study_open_datetime = datetime(2019, 7, 31, 0, 0, 0, tzinfo=gettz("UTC"))
     study_close_datetime = datetime(2022, 12, 31, 23, 59, 59, tzinfo=gettz("UTC"))
@@ -64,8 +64,10 @@ class EdcVisitTrackingAppConfig(BaseEdcVisitTrackingAppConfig):
     visit_models = {"meta_subject": ("subject_visit", "meta_subject.subjectvisit")}
 
 
+# TODO: this is ignored for identifiers
 class EdcIdentifierAppConfig(BaseEdcIdentifierAppConfig):
     identifier_prefix = "101"
+    subject_identifier_pattern = "101\-[0-9\-]+"
 
 
 class EdcMetadataAppConfig(BaseEdcMetadataAppConfig):

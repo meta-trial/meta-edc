@@ -35,6 +35,7 @@ edc-pharmacy  #0.1.2a4
 edc-pharmacy-dashboard  #0.1.1a6
 edc-prn  #0.1.7
 edc-protocol  #0.1.10
+edc-randomization
 edc-reference  #0.1.20
 edc-registration  #0.2.19
 edc-reportable  #0.1.7
