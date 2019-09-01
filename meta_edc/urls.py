@@ -73,8 +73,7 @@ urlpatterns = [
     path("admin/", edc_action_item_admin.urls),
     path("admin/", edc_pdutils_admin.urls),
     path("admin/edc_visit_schedule/", edc_visit_schedule_admin.urls),
-    path("administration/", AdministrationView.as_view(),
-         name="administration_url"),
+    path("administration/", AdministrationView.as_view(), name="administration_url"),
     path(
         "admin/meta_subject/",
         RedirectView.as_view(url="admin/meta_subject/"),
