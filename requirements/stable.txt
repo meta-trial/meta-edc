@@ -1,4 +1,22 @@
+meta-ae
+meta-consent
+meta-dashboard
+meta-export
+meta-form-validators
+meta-labs
+meta-lists
+meta-metadata-rules
+meta-permissions
+meta-prn
+meta-rando
+meta-reference
+meta-reports
+meta-screening
+meta-sites
+meta-subject
+meta-visit-schedule
 edc-action-item  #0.1.24
+edc-adverse-event
 edc-appointment  #0.2.21
 edc-auth  #0.1.15
 edc-base  #0.2.43
