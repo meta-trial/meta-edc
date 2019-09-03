@@ -12,9 +12,6 @@ with open(os.path.join(os.path.dirname(__file__), 'VERSION')) as f:
 
 tests_require = ['django-storages', 'model-mommy',
                  'faker', 'django_environ', "django_webtest"]
-# with open(os.path.join(os.path.dirname(__file__), 'requirements', f'trunk.txt')) as f:
-#     for line in f:
-#         tests_require.append(line.strip())
 
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
@@ -28,7 +25,7 @@ setup(
     include_package_data=True,
     url='https://github.com/meta-trial/meta-edc',
     license='GPL license, see LICENSE',
-    description='Ambition Trial EDC (https://doi.org/10.1186/ISRCTN72509687)',
+    description='META Trial EDC (http://www.isrctn.com/ISRCTN76157257)',
     long_description=README,
     zip_safe=False,
     keywords='django meta EDC',
@@ -39,7 +36,7 @@ setup(
         'django-storages',
         'gunicorn',
         'python-memcached',
-        'sentry_sdk==0.9.0',
+        'sentry_sdk',
     ],
     classifiers=[
         'Environment :: Web Environment',
