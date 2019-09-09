@@ -94,7 +94,3 @@ class EdcFacilityAppConfig(BaseEdcFacilityAppConfig):
             days=[MO, TU, WE, TH, FR], slots=[100, 100, 100, 100, 100]
         ),
     }
-
-
-# class DjangoCollectOfflineAppConfig(BaseDjangoCollectOfflineAppConfig):
-#     base_template_name = "edc_dashboard/bootstrap3/base.html"

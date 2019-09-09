@@ -29,7 +29,7 @@
   <div class="col-sm-4">&nbsp;</div>
   <div class="col-sm-4">
     <div class="panel panel-default">
-      <div class="panel-heading">{{ protocol_name |default:project_name }} {{ request.site.name|title }}</div>
+      <div class="panel-heading">{{ protocol_name |default:project_name }} {{ site_title|default:request.site.name|title }}</div>
 
       <div class="list-group">
       {% if perms.edc_dashboard.view_screening_listboard %}

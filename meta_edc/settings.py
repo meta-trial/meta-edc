@@ -120,6 +120,7 @@ INSTALLED_APPS = [
     "edc_reportable.apps.AppConfig",
     "edc_reports.apps.AppConfig",
     "edc_review_dashboard.apps.AppConfig",
+    "edc_sites.apps.AppConfig",
     "edc_subject_dashboard.apps.AppConfig",
     "edc_timepoint.apps.AppConfig",
     "meta_consent.apps.AppConfig",
