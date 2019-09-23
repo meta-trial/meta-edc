@@ -15,7 +15,8 @@ except AssertionError:
         "Incorrect python version. Expected 3.6 or 3.7. Check your environment."
     )
 
-BASE_DIR = str(Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+BASE_DIR = str(Path(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__)))))
 
 env = environ.Env(
     AWS_ENABLED=(bool, False),
@@ -276,7 +277,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = env.str("DJANGO_LANGUAGE_CODE")
 
-LANGUAGES = [x.split(":") for x in env.list("DJANGO_LANGUAGES")] or (("en", "English"),)
+LANGUAGES = [x.split(":") for x in env.list(
+    "DJANGO_LANGUAGES")] or (("en", "English"),)
 
 TIME_ZONE = env.str("DJANGO_TIME_ZONE")
 
@@ -324,7 +326,7 @@ if not DEBUG:
 
 # edc_lab and label
 LABEL_TEMPLATE_FOLDER = env.str("DJANGO_LABEL_TEMPLATE_FOLDER") or os.path.join(
-    BASE_DIR, "label_templates"
+    BASE_DIR, "label_templates", "2.25x1.25in",
 )
 CUPS_SERVERS = env.dict("DJANGO_CUPS_SERVERS")
 
@@ -382,7 +384,8 @@ if not DEBUG:
 EXPORT_FOLDER = env.str("DJANGO_EXPORT_FOLDER") or os.path.expanduser("~/")
 
 # django_simple_history
-SIMPLE_HISTORY_PERMISSIONS_ENABLED = env.str("SIMPLE_HISTORY_PERMISSIONS_ENABLED")
+SIMPLE_HISTORY_PERMISSIONS_ENABLED = env.str(
+    "SIMPLE_HISTORY_PERMISSIONS_ENABLED")
 SIMPLE_HISTORY_REVERT_DISABLED = env.str("SIMPLE_HISTORY_REVERT_DISABLED")
 
 FQDN = env.str("DJANGO_FQDN")
@@ -390,6 +393,10 @@ INDEX_PAGE = env.str("DJANGO_INDEX_PAGE")
 INDEX_PAGE_LABEL = env.str("DJANGO_INDEX_PAGE_LABEL")
 DJANGO_LOG_FOLDER = env.str("DJANGO_LOG_FOLDER")
 
+
+# edc_adverse_event
+ADVERSE_EVENT_ADMIN_SITE = env.str("EDC_ADVERSE_EVENT_ADMIN_SITE")
+ADVERSE_EVENT_APP_LABEL = env.str("EDC_ADVERSE_EVENT_APP_LABEL")
 
 # edc_data_manager
 DATA_DICTIONARY_APP_LABELS = [

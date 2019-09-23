@@ -47,12 +47,13 @@ class EdcProtocolAppConfig(BaseEdcProtocolAppConfig):
     institution = "Liverpool School of Tropical Medicine (LSTM)"
     project_name = "META"
     project_repo = "https://github.com/meta-trail"
-    protocol = "LSTM101"
+    protocol = "META"
     protocol_name = "META"
     protocol_number = "101"
     protocol_title = "META Trial"
     study_open_datetime = datetime(2019, 7, 31, 0, 0, 0, tzinfo=gettz("UTC"))
-    study_close_datetime = datetime(2022, 12, 31, 23, 59, 59, tzinfo=gettz("UTC"))
+    study_close_datetime = datetime(
+        2022, 12, 31, 23, 59, 59, tzinfo=gettz("UTC"))
 
 
 class EdcDeviceAppConfig(BaseEdcDeviceAppConfig):
@@ -61,7 +62,8 @@ class EdcDeviceAppConfig(BaseEdcDeviceAppConfig):
 
 
 class EdcVisitTrackingAppConfig(BaseEdcVisitTrackingAppConfig):
-    visit_models = {"meta_subject": ("subject_visit", "meta_subject.subjectvisit")}
+    visit_models = {"meta_subject": (
+        "subject_visit", "meta_subject.subjectvisit")}
 
 
 # TODO: this is ignored for identifiers
@@ -88,7 +90,8 @@ class EdcFacilityAppConfig(BaseEdcFacilityAppConfig):
     country = settings.COUNTRY
     definitions = {
         "7-day clinic": dict(
-            days=[MO, TU, WE, TH, FR, SA, SU], slots=[100, 100, 100, 100, 100, 100, 100]
+            days=[MO, TU, WE, TH, FR, SA, SU], slots=[
+                100, 100, 100, 100, 100, 100, 100]
         ),
         "5-day clinic": dict(
             days=[MO, TU, WE, TH, FR], slots=[100, 100, 100, 100, 100]

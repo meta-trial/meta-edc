@@ -1,0 +1,11 @@
+^XA^PR4
+~SD30
+^FO220,20^ADN,18,10^FD${protocol} ${site_title} (${site})^FS
+^FO595,45^BY1^BCR,35,Y,N,N,A^FD${subject_identifier}^FS
+^FO220,45^ADN,18,10^FD${panel_name} ${alpha_code} ${item}/${item_count} ${primary}^FS
+^FO220,70^ADN,18,20^BY2^BCN,55,Y,N,N,A^FD${requisition_identifier}^FS
+^FO220,155^ADN,18,10^FDPAT ${subject_identifier} (${initials})^FS
+^FO220,180^ADN,18,10^FDBORN ${dob} ${gender}^FS
+^FO220,205^ADN,18,10^FD${drawn_datetime} BY ${clinician_initials}^FS
+^FO220,230^ADN,18,10^FDHOSP-ID: ${identity}^FS
+^XZ
