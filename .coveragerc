@@ -1,0 +1,4 @@
+[run]
+include = meta_edc/*
+omit = meta_edc/tests/*
+branch = 1

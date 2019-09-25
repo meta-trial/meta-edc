@@ -1,0 +1,10 @@
+^XA^PR4
+~SD30
+^FO220,20^ADN,18,10^FD${protocol} Site ${site}^FS
+^FO220,75^BY2^BCN,75,N,N,N,A
+^FD${barcode_value}^FS
+^FO220,205^ADN,18,10^FDID: ${identity}^FS
+^FO220,180^ADN,18,10^FDDOB: ${dob} ${gender}^FS
+^FO220,205^ADN,18,10^FDREG: ${consent_datetime}^FS
+^FO220,230^ADN,18,10^FD${site_name}^FS
+^XZ

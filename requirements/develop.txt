@@ -3,12 +3,13 @@
 -e /Users/erikvw/source/django-crypto-fields  #develop#egg=django-crypto-fields
 -e /Users/erikvw/source/django-revision  #develop#egg=django-revision
 -e /Users/erikvw/source/edc-action-item  #develop#egg=edc-action-item
--e /Users/erikvw/source/edc-adverse-event  #develop#egg=edc-base
+-e /Users/erikvw/source/edc-adverse-event
 -e /Users/erikvw/source/edc-appointment  #develop#egg=edc-appointment
 -e /Users/erikvw/source/edc-auth  #develop#egg=edc-auth
 -e /Users/erikvw/source/edc-consent  #develop#egg=edc-consent
 -e /Users/erikvw/source/edc-constants  #develop#egg=edc-constants
 -e /Users/erikvw/source/edc-dashboard  #develop#egg=edc-dashboard
+-e /Users/erikvw/source/edc-data-manager
 -e /Users/erikvw/source/edc-device  #develop#egg=edc-device
 -e /Users/erikvw/source/edc-export  #develop#egg=edc-export
 -e /Users/erikvw/source/edc-facility  #develop#egg=edc-facility

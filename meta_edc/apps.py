@@ -47,7 +47,7 @@ class EdcProtocolAppConfig(BaseEdcProtocolAppConfig):
     institution = "Liverpool School of Tropical Medicine (LSTM)"
     project_name = "META"
     project_repo = "https://github.com/meta-trail"
-    protocol = "LSTM101"
+    protocol = "META"
     protocol_name = "META"
     protocol_number = "101"
     protocol_title = "META Trial"
@@ -87,10 +87,10 @@ class EdcAppointmentAppConfig(BaseEdcAppointmentAppConfig):
 class EdcFacilityAppConfig(BaseEdcFacilityAppConfig):
     country = settings.COUNTRY
     definitions = {
-        "7-day clinic": dict(
+        "7-day-clinic": dict(
             days=[MO, TU, WE, TH, FR, SA, SU], slots=[100, 100, 100, 100, 100, 100, 100]
         ),
-        "5-day clinic": dict(
+        "5-day-clinic": dict(
             days=[MO, TU, WE, TH, FR], slots=[100, 100, 100, 100, 100]
         ),
     }

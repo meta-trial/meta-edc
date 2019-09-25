@@ -324,7 +324,7 @@ if not DEBUG:
 
 # edc_lab and label
 LABEL_TEMPLATE_FOLDER = env.str("DJANGO_LABEL_TEMPLATE_FOLDER") or os.path.join(
-    BASE_DIR, "label_templates"
+    BASE_DIR, "label_templates", "2.25x1.25in"
 )
 CUPS_SERVERS = env.dict("DJANGO_CUPS_SERVERS")
 
@@ -390,6 +390,10 @@ INDEX_PAGE = env.str("DJANGO_INDEX_PAGE")
 INDEX_PAGE_LABEL = env.str("DJANGO_INDEX_PAGE_LABEL")
 DJANGO_LOG_FOLDER = env.str("DJANGO_LOG_FOLDER")
 
+
+# edc_adverse_event
+ADVERSE_EVENT_ADMIN_SITE = env.str("EDC_ADVERSE_EVENT_ADMIN_SITE")
+ADVERSE_EVENT_APP_LABEL = env.str("EDC_ADVERSE_EVENT_APP_LABEL")
 
 # edc_data_manager
 DATA_DICTIONARY_APP_LABELS = [

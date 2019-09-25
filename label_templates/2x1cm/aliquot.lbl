@@ -1,4 +1,5 @@
 ^XA^PR4
+~SD30
 ^FO315,15^A0N,20,15^FD${protocol} Site ${site} ${clinician_initials} ${alpha_code} ${aliquot_count}/${children_count} ${primary}^FS
 ^FO315,34^BY1^BCN,50,N,N,N,A
 ^FD${barcode_value}^FS

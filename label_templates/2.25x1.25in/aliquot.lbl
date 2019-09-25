@@ -1,0 +1,15 @@
+^XA^PR4
+~SD30
+^LS0
+^LH
+^FO560,40^BY1^BCR,75,Y,N,N,N^FD${subject_identifier}^FS
+^FO220,20^ADN,18,10^FD${protocol} ${site_title} (${site})^FS
+^FO220,45^ADN,18,10^FDALIQUOT: ${alpha_code} ${aliquot_count}/${children_count} ${primary} ${panel}^FS
+^FO220,70^ADN,18,20^BY1^BCN,75,N,N,N,A^FD${barcode_value}^FS
+^FO460,90^ADN,38,30^FD${alpha_code}^FS
+^FO220,155^ADN,18,10^FD${aliquot_identifier}^FS
+^FO220,180^ADN,18,10^FDPAT ${subject_identifier} (${initials})^FS
+^FO220,205^ADN,18,10^FDBORN ${dob} ${gender}^FS
+^FO220,230^ADN,18,10^FDDRAWN ${drawn_datetime} BY ${clinician_initials}^FS
+^LS0
+^XZ

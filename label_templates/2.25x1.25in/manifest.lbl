@@ -1,0 +1,10 @@
+^XA^PR4
+~SD30
+^FO220,20^ADN,18,10^FD${protocol} Site ${site}^FS
+^FO220,45^ADN,18,10^FDMANIFEST: ${shipper}^FS
+^FO220,70^BY2^BCN,75,N,N,N,N^FD${barcode_value}^FS
+^FO220,155^ADN,18,10^FD${manifest_identifier}^FS
+^FO220,180^ADN,18,10^FD${category}^FS
+^FO220,230^ADN,18,10^FD${manifest_datetime}^FS
+^FO220,205^ADN,18,10^FD${site_name}^FS
+^XZ
