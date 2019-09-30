@@ -73,7 +73,7 @@ Create a user and start up `runserver`:
   python manage.py createsuperuser
   python manage.py runserver
   
-Login
+Login::
 
   localhost:8000
   
@@ -86,7 +86,7 @@ Once logged in, go to you user account and update your group memberships. As a p
   
 .. code-block:: python
 
-['ACCOUNT_MANAGER',
+  ['ACCOUNT_MANAGER',
    'ADMINISTRATION',
    'AE',
    'AE_REVIEW',
