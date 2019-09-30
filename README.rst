@@ -29,12 +29,15 @@ Create a virtualenv, clone the main repo and checkout master:
 
   conda create -n edc python=3.7
   conda activate edc
-  mkdir ~/projects
-  cd projects
+
+Clone the main repo and checkout master:
+
+.. code-block:: bash  mkdir ~/projects
+
+cd projects
   https://github.com/meta-trial/meta-edc.git
   cd ~/projects/meta-edc
   git checkout master
-  cp .env.tests .env
 
 Copy the test environment file:
 
