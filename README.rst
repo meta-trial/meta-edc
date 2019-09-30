@@ -79,31 +79,6 @@ Login::
   
 Once logged in, go to you user account and update your group memberships. As a power user add yourself to the following:
 
-.. code-block:: python
 
-  from django.contrib.auth.models import User
-  [g.name for g in User.objects.get(username="erikvw").groups.all()]
-  
-.. code-block:: python
-
-  ['ACCOUNT_MANAGER',
-   'ADMINISTRATION',
-   'AE',
-   'AE_REVIEW',
-   'CLINIC',
-   'DATA_MANAGER',
-   'DATA_QUERY',
-   'EVERYONE',
-   'EXPORT',
-   'LAB',
-   'LAB_VIEW',
-   'PHARMACY',
-   'PII',
-   'RANDO',
-   'REVIEW',
-   'SCREENING',
-   'TMG',
-   'UNBLINDING_REQUESTORS',
-   'UNBLINDING_REVIEWERS']
-
+![User groups](https://github.com/meta-trial/meta-edc/edit/develop/docs/images/user_groups.png)
 
