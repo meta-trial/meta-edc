@@ -47,15 +47,14 @@ Copy the test environment file:
   git checkout master
   cp .env.tests .env
 
-Edit the environment file to include your mysql password in the ``DATABASE_URL``
+Edit the environment file (.env) to include your mysql password in the ``DATABASE_URL``.
 
 .. code-block:: bash
 
-  cd ~/projects/meta-edc
-  git checkout master
-  mysql://user:password@127.0.0.1:3306/meta
+  # look for and update this line
+  DATABASE_URL=mysql://user:password@127.0.0.1:3306/meta
     
-Continue with the installation
+Continue with the installation:
 
 .. code-block:: bash
 
