@@ -26,6 +26,7 @@ To setup and run a test server locally
   https://github.com/meta-trial/meta-edc.git
   cd ~/projects/meta-edc
   git checkout master
+  cp .env.tests .env
   pip install .
   pip install -U -r requirements/stable-v0.1.10.txt
   python manage.py import_randomization_list
