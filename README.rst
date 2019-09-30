@@ -17,11 +17,13 @@ Installation
 
 To setup and run a test server locally
 
-You'll need mysql.
+You'll need mysql. Create the database:
 
 .. code-block:: bash
 
   mysql -Bse 'create database meta character set utf8;'
+
+Create a virtualenv, clone the main repo and checkout master:
 
 .. code-block:: bash
 
@@ -33,7 +35,15 @@ You'll need mysql.
   cd ~/projects/meta-edc
   git checkout master
   cp .env.tests .env
-  
+
+Copy the test environment file:
+
+.. code-block:: bash
+
+cd ~/projects/meta-edc
+  git checkout master
+  cp .env.tests .env
+
 Edit the environment file to include your mysql password in the ``DATABASE_URL``
 
 .. code-block:: bash
@@ -45,6 +55,7 @@ Edit the environment file to include your mysql password in the ``DATABASE_URL``
 Continue with the installation
 
 .. code-block:: bash
+
   cd ~/projects/meta-edc
   git checkout master
   pip install .
@@ -52,5 +63,12 @@ Continue with the installation
   python manage.py migrate
   python manage.py import_randomization_list
   python manage.py import_holidays
+
+Create a user and start up `runserver`:
+
+.. code-block:: bash
+
+  cd ~/projects/meta-edc
+  git checkout master
   python manage.py createsuperuser
   python manage.py runserver
