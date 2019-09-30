@@ -34,7 +34,7 @@ Clone the main repo and checkout master:
 
 .. code-block:: bash  mkdir ~/projects
 
-cd projects
+  cd projects
   https://github.com/meta-trial/meta-edc.git
   cd ~/projects/meta-edc
   git checkout master
