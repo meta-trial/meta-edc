@@ -40,7 +40,7 @@ Copy the test environment file:
 
 .. code-block:: bash
 
-cd ~/projects/meta-edc
+  cd ~/projects/meta-edc
   git checkout master
   cp .env.tests .env
 
