@@ -42,7 +42,7 @@
         <a id="home_list_group_subject_review_listboard" href="{% url subject_review_listboard_url|default:'subject_review_listboard_url_cannot_be_none' %}" class="list-group-item"><i class="fas fa-calendar fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Subject Review</a>
       {% endif %}
       {% if perms.edc_navbar.nav_ae_section %}
-        <a href="{% url 'meta_dashboard:ae_home_url' %}" class="list-group-item"><i class="fas fa-heartbeat fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Adverse events</a>
+        <a href="{% url 'edc_adverse_event:ae_home_url' %}" class="list-group-item"><i class="fas fa-heartbeat fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Adverse events</a>
       {% endif %}
       {% if perms.edc_navbar.nav_lab_section %}
         <a id="home_list_group_requisition_listboard" href="{% url requisition_listboard_url|default:'requisition_listboard_url_cannot_be_none' %}" class="list-group-item"><i class="fas fa-flask fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Specimens</a>
