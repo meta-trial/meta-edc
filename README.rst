@@ -34,8 +34,9 @@ Create a virtualenv, clone the main repo and checkout master
 
 Clone the main repo and checkout master
 
-.. code-block:: bash  mkdir ~/projects
+.. code-block:: bash
 
+  mkdir ~/projects
   cd projects
   https://github.com/meta-trial/meta-edc.git
   cd ~/projects/meta-edc
