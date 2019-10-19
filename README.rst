@@ -29,12 +29,15 @@ Create a virtualenv, clone the main repo and checkout master:
 
   conda create -n edc python=3.7
   conda activate edc
-  mkdir ~/projects
+
+Clone the main repo and checkout master:
+
+.. code-block:: bash  mkdir ~/projects
+
   cd projects
   https://github.com/meta-trial/meta-edc.git
   cd ~/projects/meta-edc
   git checkout master
-  cp .env.tests .env
 
 Copy the test environment file:
 
@@ -44,15 +47,14 @@ Copy the test environment file:
   git checkout master
   cp .env.tests .env
 
-Edit the environment file to include your mysql password in the ``DATABASE_URL``
+Edit the environment file (.env) to include your mysql password in the ``DATABASE_URL``.
 
 .. code-block:: bash
 
-  cd ~/projects/meta-edc
-  git checkout master
-  mysql://user:password@127.0.0.1:3306/meta
+  # look for and update this line
+  DATABASE_URL=mysql://user:password@127.0.0.1:3306/meta
     
-Continue with the installation
+Continue with the installation:
 
 .. code-block:: bash
 
@@ -79,31 +81,22 @@ Login::
   
 Once logged in, go to you user account and update your group memberships. As a power user add yourself to the following:
 
-.. code-block:: python
-
-  from django.contrib.auth.models import User
-  [g.name for g in User.objects.get(username="erikvw").groups.all()]
-  
-.. code-block:: python
-
-  ['ACCOUNT_MANAGER',
-   'ADMINISTRATION',
-   'AE',
-   'AE_REVIEW',
-   'CLINIC',
-   'DATA_MANAGER',
-   'DATA_QUERY',
-   'EVERYONE',
-   'EXPORT',
-   'LAB',
-   'LAB_VIEW',
-   'PHARMACY',
-   'PII',
-   'RANDO',
-   'REVIEW',
-   'SCREENING',
-   'TMG',
-   'UNBLINDING_REQUESTORS',
-   'UNBLINDING_REVIEWERS']
-
-
+* ACCOUNT_MANAGER
+* ADMINISTRATION
+* AE 
+* AE_REVIEW
+* CLINIC
+* DATA_MANAGER
+* DATA_QUERY
+* EVERYONE
+* EXPORT
+* LAB
+* LAB_VIEW
+* PHARMACY
+* PII
+* RANDO
+* REVIEW
+* SCREENING
+* TMG
+* UNBLINDING_REQUESTORS
+* UNBLINDING_REVIEWERS
