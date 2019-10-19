@@ -17,20 +17,22 @@ Installation
 
 To setup and run a test server locally
 
-You'll need mysql. Create the database:
+You'll need mysql. Create the database
 
 .. code-block:: bash
 
   mysql -Bse 'create database meta character set utf8;'
 
-Create a virtualenv, clone the main repo and checkout master:
+
+Create a virtualenv, clone the main repo and checkout master
 
 .. code-block:: bash
 
   conda create -n edc python=3.7
   conda activate edc
 
-Clone the main repo and checkout master:
+
+Clone the main repo and checkout master
 
 .. code-block:: bash  mkdir ~/projects
 
@@ -39,7 +41,8 @@ Clone the main repo and checkout master:
   cd ~/projects/meta-edc
   git checkout master
 
-Copy the test environment file:
+
+Copy the test environment file
 
 .. code-block:: bash
 
@@ -47,14 +50,16 @@ Copy the test environment file:
   git checkout master
   cp .env.tests .env
 
+
 Edit the environment file (.env) to include your mysql password in the ``DATABASE_URL``.
 
 .. code-block:: bash
 
   # look for and update this line
   DATABASE_URL=mysql://user:password@127.0.0.1:3306/meta
-    
-Continue with the installation:
+
+
+Continue with the installation
 
 .. code-block:: bash
 
@@ -66,7 +71,8 @@ Continue with the installation:
   python manage.py import_randomization_list
   python manage.py import_holidays
 
-Create a user and start up `runserver`:
+
+Create a user and start up `runserver`
 
 .. code-block:: bash
 
@@ -74,12 +80,14 @@ Create a user and start up `runserver`:
   git checkout master
   python manage.py createsuperuser
   python manage.py runserver
-  
+
+
 Login::
 
   localhost:8000
-  
-Once logged in, go to you user account and update your group memberships. As a power user add yourself to the following:
+
+
+Once logged in, go to you user account and update your group memberships. As a power user add yourself to the following
 
 * ACCOUNT_MANAGER
 * ADMINISTRATION
@@ -100,3 +108,4 @@ Once logged in, go to you user account and update your group memberships. As a p
 * TMG
 * UNBLINDING_REQUESTORS
 * UNBLINDING_REVIEWERS
+
