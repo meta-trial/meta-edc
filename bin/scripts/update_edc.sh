@@ -67,7 +67,7 @@ cd ~/app \
 cd ~/app \
   && git checkout master \
   && git pull \
-  && . ~/.venvs/edc/bin/activate \
+  && conda activate edc \
   && pip install -U pip \
   && pip install --no-cache-dir --upgrade-strategy eager --upgrade -r requirements/stable-v${version}.txt \
   && pip install -e . --no-cache-dir --upgrade-strategy eager --upgrade
