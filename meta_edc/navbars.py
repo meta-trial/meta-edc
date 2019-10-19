@@ -26,8 +26,13 @@ for item in review_navbar.items:
     navbar.append_item(item)
 
 navbar.append_item(
+    [item for item in meta_dashboard_navbar.items if item.name == "tmg_home"][0]
+)
+
+navbar.append_item(
     [item for item in meta_dashboard_navbar.items if item.name == "ae_home"][0]
 )
+
 
 navbar.append_item(
     [item for item in meta_dashboard_navbar.items if item.name == "data_manager_home"][

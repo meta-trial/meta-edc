@@ -175,6 +175,7 @@ MIDDLEWARE.extend(
         "edc_dashboard.middleware.DashboardMiddleware",
         "edc_subject_dashboard.middleware.DashboardMiddleware",
         "edc_lab_dashboard.middleware.DashboardMiddleware",
+        "edc_adverse_event.middleware.DashboardMiddleware",
         # 'simple_history.middleware.HistoryRequestMiddleware'
     ]
 )
@@ -331,6 +332,8 @@ CUPS_SERVERS = env.dict("DJANGO_CUPS_SERVERS")
 SUBJECT_CONSENT_MODEL = env.str("DJANGO_SUBJECT_CONSENT_MODEL")
 SUBJECT_REQUISITION_MODEL = env.str("DJANGO_SUBJECT_REQUISITION_MODEL")
 SUBJECT_VISIT_MODEL = env.str("DJANGO_SUBJECT_VISIT_MODEL")
+
+EDC_NAVBAR_DEFAULT = env("EDC_NAVBAR_DEFAULT")
 
 # dashboards
 EDC_BOOTSTRAP = env("DJANGO_EDC_BOOTSTRAP")
