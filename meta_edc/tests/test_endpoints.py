@@ -78,7 +78,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             reverse("edc_adverse_event:tmg_home_url"), user=self.user, status=200
         )
         response = self.app.get(
-            reverse("meta_dashboard:dm_home_url"), user=self.user, status=200
+            reverse("edc_data_manager:home_url"), user=self.user, status=200
         )
 
     @tag("1")

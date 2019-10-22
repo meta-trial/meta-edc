@@ -51,10 +51,10 @@
         <a href="{% url 'edc_action_item:home_url' %}" class="list-group-item"><i class="fas fa-bolt fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Action items</a>
       {% endif %}
       {% if perms.edc_navbar.nav_data_manager_section %}
-        <a href="{% url 'meta_dashboard:dm_home_url' %}" class="list-group-item"><i class="fas fa-database fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Data Management</a>
+        <a href="{% url 'edc_data_manager:home_url' %}" class="list-group-item"><i class="fas fa-database fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Data Management</a>
       {% endif %}
       {% if perms.edc_navbar.nav_pharmacy_section %}
-        <a href="#" class="list-group-item"><i class="fas fa-medkit fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Pharmacy</a>
+        <a href="{% url 'edc_randomization_admin:edc_randomization_randomizationlist_changelist' %}" class="list-group-item"><i class="fas fa-medkit fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Pharmacy</a>
       {% endif %}
       {% if perms.edc_export %}
         <a href="{% url 'edc_export:home_url' %}" class="list-group-item"><i class="fas fa-file-export fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Export data</a>
