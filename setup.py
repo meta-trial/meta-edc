@@ -37,6 +37,9 @@ setup(
         'gunicorn',
         'python-memcached',
         'sentry_sdk',
+        'celery',
+        'django-celery-beat',
+        'django-celery-results',
     ],
     classifiers=[
         'Environment :: Web Environment',

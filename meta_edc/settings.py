@@ -2,9 +2,9 @@ import environ
 import os
 import sys
 
-from meta_sites import meta_sites
 from django.core.exceptions import ImproperlyConfigured
 from edc_sites import get_site_id
+from meta_sites import meta_sites
 from pathlib import Path
 
 # simple version check
@@ -89,6 +89,8 @@ INSTALLED_APPS = [
     "django_crypto_fields.apps.AppConfig",
     "django_revision.apps.AppConfig",
     "django_extensions",
+    "django_celery_results",
+    "django_celery_beat",
     "logentry_admin",
     "simple_history",
     "storages",
@@ -112,6 +114,7 @@ INSTALLED_APPS = [
     "edc_navbar.apps.AppConfig",
     "edc_notification.apps.AppConfig",
     "edc_offstudy.apps.AppConfig",
+    "edc_pharmacy.apps.AppConfig",
     "edc_pdutils.apps.AppConfig",
     "edc_prn.apps.AppConfig",
     "edc_randomization.apps.AppConfig",
