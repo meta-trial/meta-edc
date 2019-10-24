@@ -23,12 +23,10 @@ style = color_style()
 
 
 def post_migrate_update_edc_permissions(sender=None, **kwargs):
-    from meta_permissions.updaters import update_permissions
+    from edc_permissions.update import update_group_permissions
+    from meta_permissions.codenames_by_group import codenames_by_group
 
-    sys.stdout.write(style.MIGRATE_HEADING("Updating permissions:\n"))
-    update_permissions()
-    sys.stdout.write("Done.\n")
-    sys.stdout.flush()
+    update_group_permissions(codenames_by_group=codenames_by_group, verbose=True)
 
 
 class AppConfig(DjangoAppConfig):

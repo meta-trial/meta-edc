@@ -17,14 +17,7 @@ from edc_dashboard.url_names import url_names
 from edc_facility.import_holidays import import_holidays
 from edc_list_data.site_list_data import site_list_data
 from edc_permissions import TMG
-from edc_permissions.constants.group_names import (
-    EVERYONE,
-    AUDITOR,
-    CLINIC,
-    PII,
-    EXPORT,
-    LAB,
-)
+from edc_permissions import EVERYONE, AUDITOR, CLINIC, PII, EXPORT, LAB
 from edc_randomization.randomization_list_importer import RandomizationListImporter
 from edc_sites import add_or_update_django_sites
 from edc_utils import get_utcnow
