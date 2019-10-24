@@ -114,6 +114,7 @@ INSTALLED_APPS = [
     "edc_navbar.apps.AppConfig",
     "edc_notification.apps.AppConfig",
     "edc_offstudy.apps.AppConfig",
+    "edc_pharmacy.apps.AppConfig",
     "edc_pdutils.apps.AppConfig",
     "edc_prn.apps.AppConfig",
     "edc_randomization.apps.AppConfig",
