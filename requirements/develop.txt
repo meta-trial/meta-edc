@@ -29,7 +29,6 @@
 -e /Users/erikvw/source/edc-model-wrapper  #develop#egg=edc-model-wrapper
 -e /Users/erikvw/source/edc-navbar  #develop#egg=edc-navbar
 -e /Users/erikvw/source/edc-offstudy  #develop#egg=edc-offstudy
--e /Users/erikvw/source/edc-permissions  #develop#egg=edc-pharmacy
 -e /Users/erikvw/source/edc-pharmacy  #develop#egg=edc-pharmacy
 -e /Users/erikvw/source/edc-pharmacy-dashboard  #develop#egg=edc-pharmacy-dashboard
 -e /Users/erikvw/source/edc-prn  #develop#egg=edc-prn
@@ -52,7 +51,7 @@
 -e /Users/erikvw/source/meta-export
 -e /Users/erikvw/source/meta-labs  #develop#egg=meta-labs
 -e /Users/erikvw/source/meta-metadata-rules  #develop#egg=meta-metadata-rules
--e /Users/erikvw/source/meta-permissions
+-e /Users/erikvw/source/meta-auth
 -e /Users/erikvw/source/meta-prn  #develop#egg=meta-prn
 -e /Users/erikvw/source/meta-rando  #develop#egg=meta-rando
 -e /Users/erikvw/source/meta-reference  #develop#egg=meta-reference

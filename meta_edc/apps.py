@@ -22,9 +22,9 @@ from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
 style = color_style()
 
 
-def post_migrate_update_edc_permissions(sender=None, **kwargs):
-    from edc_permissions.update import update_group_permissions
-    from meta_permissions.codenames_by_group import codenames_by_group
+def post_migrate_update_edc_auth(sender=None, **kwargs):
+    from edc_auth.update import update_group_permissions
+    from meta_auth.codenames_by_group import codenames_by_group
 
     update_group_permissions(codenames_by_group=codenames_by_group, verbose=True)
 
@@ -33,7 +33,7 @@ class AppConfig(DjangoAppConfig):
     name = "meta_edc"
 
     def ready(self):
-        post_migrate.connect(post_migrate_update_edc_permissions, sender=self)
+        post_migrate.connect(post_migrate_update_edc_auth, sender=self)
 
         from edc_randomization.system_checks import randomization_list_check
 

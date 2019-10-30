@@ -136,7 +136,7 @@ INSTALLED_APPS = [
     "meta_form_validators.apps.AppConfig",
     "meta_visit_schedule.apps.AppConfig",
     "meta_ae.apps.AppConfig",
-    "meta_permissions.apps.AppConfig",
+    "meta_auth.apps.AppConfig",
     "meta_prn.apps.AppConfig",
     "meta_export.apps.AppConfig",
     "meta_screening.apps.AppConfig",
@@ -367,15 +367,6 @@ if TWILIO_ENABLED:
     TWILIO_AUTH_TOKEN = env.str("TWILIO_AUTH_TOKEN")
     TWILIO_SENDER = env.str("TWILIO_SENDER")
 
-if DEBUG:
-    RANDOMIZATION_LIST_PATH = os.path.join(
-        TEST_DIR, env.str("DJANGO_RANDOMIZATION_LIST_FILE")
-    )
-else:
-    RANDOMIZATION_LIST_PATH = os.path.join(
-        ETC_DIR, env.str("DJANGO_RANDOMIZATION_LIST_FILE")
-    )
-
 
 # django_revision
 GIT_DIR = BASE_DIR
@@ -410,6 +401,19 @@ DATA_DICTIONARY_APP_LABELS = [
     "meta_ae",
     "edc_appointment",
 ]
+
+# edc_randomization
+
+if DEBUG:
+    RANDOMIZATION_LIST_PATH = os.path.join(
+        TEST_DIR, env.str("DJANGO_RANDOMIZATION_LIST_FILE")
+    )
+else:
+    RANDOMIZATION_LIST_PATH = os.path.join(
+        ETC_DIR, env.str("DJANGO_RANDOMIZATION_LIST_FILE")
+    )
+EDC_RANDOMIZATION_BLINDED_TRIAL = env.str("EDC_RANDOMIZATION_BLINDED_TRIAL")
+EDC_RANDOMIZATION_UNBLINDED_USERS = env.list("EDC_RANDOMIZATION_UNBLINDED_USERS")
 
 
 # static
