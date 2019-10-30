@@ -6,7 +6,7 @@ meta-form-validators
 meta-labs
 meta-lists
 meta-metadata-rules
-meta-permissions
+meta-auth
 meta-prn
 meta-reference
 meta-screening
@@ -45,7 +45,6 @@ edc-navbar  #0.1.9
 edc-notification  #0.1.13
 edc-offstudy  #0.2.8
 edc-pdutils  #0.1.10
-edc-permissions  #0.1.17
 edc-pharmacy  #0.1.2a4
 edc-pharmacy-dashboard  #0.1.1a6
 edc-prn  #0.1.7
