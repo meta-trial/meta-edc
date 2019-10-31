@@ -15,6 +15,8 @@
 
 	conda config --set auto_activate_base false
 
+	conda init bash
+
 Restart the shell
 
 .. code-block:: bash
