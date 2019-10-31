@@ -4,6 +4,8 @@ update_ubuntu=""
 green=`tput setaf 2`
 reset=`tput sgr0`
 
+eval "$(conda shell.bash hook)"
+
 while true; do
     read -p "Update this script? [y/n]" yn
     case $yn in

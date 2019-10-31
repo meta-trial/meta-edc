@@ -1,4 +1,3 @@
-# from edc_pharmacy.admin_site import edc_pharmacy_admin
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.views import LogoutView
@@ -18,15 +17,16 @@ from edc_metadata.admin_site import edc_metadata_admin
 from edc_notification.admin_site import edc_notification_admin
 from edc_offstudy.admin_site import edc_offstudy_admin
 from edc_pdutils.admin_site import edc_pdutils_admin
+from edc_pharmacy.admin_site import edc_pharmacy_admin
 from edc_randomization.admin_site import edc_randomization_admin
 from edc_reference.admin_site import edc_reference_admin
 from edc_registration.admin_site import edc_registration_admin
 from edc_visit_schedule.admin_site import edc_visit_schedule_admin
 from meta_ae.admin_site import meta_ae_admin
+from meta_consent.admin_site import meta_consent_admin
 from meta_export.admin_site import meta_export_admin
 from meta_lists.admin_site import meta_lists_admin
 from meta_prn.admin_site import meta_prn_admin
-from meta_consent.admin_site import meta_consent_admin
 from meta_screening.admin_site import meta_screening_admin
 from meta_subject.admin_site import meta_subject_admin
 
@@ -72,6 +72,7 @@ urlpatterns = [
     path("admin/", edc_reference_admin.urls),
     path("admin/", edc_action_item_admin.urls),
     path("admin/", edc_pdutils_admin.urls),
+    path("admin/", edc_pharmacy_admin.urls),
     path("admin/edc_visit_schedule/", edc_visit_schedule_admin.urls),
     path("administration/", AdministrationView.as_view(), name="administration_url"),
     path(
@@ -105,6 +106,7 @@ urlpatterns = [
     path("edc_metadata/", include("edc_metadata.urls")),
     path("edc_notification/", include("edc_notification.urls")),
     path("edc_protocol/", include("edc_protocol.urls")),
+    path("edc_pharmacy/", include("edc_pharmacy.urls")),
     path("edc_identifier/", include("edc_identifier.urls")),
     path("edc_reference/", include("edc_reference.urls")),
     path("edc_registration/", include("edc_registration.urls")),

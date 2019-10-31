@@ -1,3 +1,4 @@
+etc/
 .env
 django_crypto_fields
 .pydevproject
