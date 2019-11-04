@@ -5,7 +5,7 @@ meta-dashboard==0.1.12
 meta-export==0.1.3
 meta-form-validators==0.1.6
 meta-labs==0.1.5
-meta-lists==0.1.9
+meta-lists==0.1.10
 meta-metadata-rules==0.1.1
 meta-prn==0.1.11
 meta-reference==0.1.2
@@ -16,7 +16,7 @@ meta-visit-schedule==0.1.8
 edc-action-item==0.1.64
 edc-adverse-event==0.1.17
 edc-appointment==0.2.59
-edc-auth==0.1.34
+edc-auth==0.1.35
 edc-consent==0.2.35
 edc-constants==0.2.21
 edc-dashboard==0.2.60
