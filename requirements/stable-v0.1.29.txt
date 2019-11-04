@@ -11,7 +11,7 @@ meta-prn==0.1.11
 meta-reference==0.1.2
 meta-screening==0.1.25
 meta-sites==0.1.2
-meta-subject==0.1.14
+meta-subject==0.1.15
 meta-visit-schedule==0.1.8
 edc-action-item==0.1.64
 edc-adverse-event==0.1.17
