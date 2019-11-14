@@ -1,7 +1,3 @@
-# -e /Users/erikvw/source/django-collect-offline  #develop#egg=django-collect-offline
-# -e /Users/erikvw/source/django-collect-offline-files  #develop#egg=django-collect-offline-files
--e /Users/erikvw/source/django-crypto-fields  #develop#egg=django-crypto-fields
--e /Users/erikvw/source/django-revision  #develop#egg=django-revision
 -e /Users/erikvw/source/edc-action-item  #develop#egg=edc-action-item
 -e /Users/erikvw/source/edc-adverse-event
 -e /Users/erikvw/source/edc-appointment  #develop#egg=edc-appointment
@@ -46,6 +42,10 @@
 -e /Users/erikvw/source/edc-timepoint  #develop#egg=edc-timepoint
 -e /Users/erikvw/source/edc-visit-schedule  #develop#egg=edc-visit-schedule
 -e /Users/erikvw/source/edc-visit-tracking  #develop#egg=edc-visit-tracking
+# -e /Users/erikvw/source/django-collect-offline  #develop#egg=django-collect-offline
+# -e /Users/erikvw/source/django-collect-offline-files  #develop#egg=django-collect-offline-files
+-e /Users/erikvw/source/django-crypto-fields  #develop#egg=django-crypto-fields
+-e /Users/erikvw/source/django-revision  #develop#egg=django-revision
 -e /Users/erikvw/source/meta-ae  #develop#egg=meta-ae
 -e /Users/erikvw/source/meta-dashboard  #develop#egg=meta-dashboard
 -e /Users/erikvw/source/meta-export

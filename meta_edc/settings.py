@@ -367,7 +367,6 @@ if TWILIO_ENABLED:
     TWILIO_AUTH_TOKEN = env.str("TWILIO_AUTH_TOKEN")
     TWILIO_SENDER = env.str("TWILIO_SENDER")
 
-
 # django_revision
 GIT_DIR = BASE_DIR
 
@@ -387,7 +386,6 @@ INDEX_PAGE = env.str("DJANGO_INDEX_PAGE")
 INDEX_PAGE_LABEL = env.str("DJANGO_INDEX_PAGE_LABEL")
 DJANGO_LOG_FOLDER = env.str("DJANGO_LOG_FOLDER")
 
-
 # edc_adverse_event
 ADVERSE_EVENT_ADMIN_SITE = env.str("EDC_ADVERSE_EVENT_ADMIN_SITE")
 ADVERSE_EVENT_APP_LABEL = env.str("EDC_ADVERSE_EVENT_APP_LABEL")
@@ -403,18 +401,9 @@ DATA_DICTIONARY_APP_LABELS = [
 ]
 
 # edc_randomization
-
-if DEBUG:
-    RANDOMIZATION_LIST_PATH = os.path.join(
-        TEST_DIR, env.str("DJANGO_RANDOMIZATION_LIST_FILE")
-    )
-else:
-    RANDOMIZATION_LIST_PATH = os.path.join(
-        ETC_DIR, env.str("DJANGO_RANDOMIZATION_LIST_FILE")
-    )
+EDC_RANDOMIZATION_LIST_FILE = env.str("EDC_RANDOMIZATION_LIST_FILE")
 EDC_RANDOMIZATION_BLINDED_TRIAL = env.str("EDC_RANDOMIZATION_BLINDED_TRIAL")
 EDC_RANDOMIZATION_UNBLINDED_USERS = env.list("EDC_RANDOMIZATION_UNBLINDED_USERS")
-
 
 # static
 if env("AWS_ENABLED"):
@@ -452,7 +441,6 @@ else:
     if env("DJANGO_LOGGING_ENABLED"):
         from .logging.standard import LOGGING  # noqa
 
-
 # if SENTRY_ENABLED:
 #     import raven  # noqa
 #     from .logging.raven import LOGGING  # noqa
@@ -467,6 +455,7 @@ else:
 if "test" in sys.argv:
 
     class DisableMigrations:
+
         def __contains__(self, item):
             return True
 
