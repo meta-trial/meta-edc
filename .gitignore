@@ -1,12 +1,13 @@
-etc/
 .env
 .etc/
-django_crypto_fields
 .pydevproject
 .project
 .settings/
-db.sqlite3
 .DS_Store
+db.sqlite3
+django_crypto_fields
+crypto_fields/
+etc/
 
 
 # Swap
