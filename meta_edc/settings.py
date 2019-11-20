@@ -404,6 +404,7 @@ DATA_DICTIONARY_APP_LABELS = [
 EDC_RANDOMIZATION_LIST_FILE = env.str("EDC_RANDOMIZATION_LIST_FILE")
 EDC_RANDOMIZATION_BLINDED_TRIAL = env.str("EDC_RANDOMIZATION_BLINDED_TRIAL")
 EDC_RANDOMIZATION_UNBLINDED_USERS = env.list("EDC_RANDOMIZATION_UNBLINDED_USERS")
+EDC_RANDOMIZATION_LIST_MODEL = env.str("EDC_RANDOMIZATION_LIST_MODEL")
 
 # static
 if env("AWS_ENABLED"):
@@ -455,7 +456,6 @@ else:
 if "test" in sys.argv:
 
     class DisableMigrations:
-
         def __contains__(self, item):
             return True
 

@@ -14,14 +14,9 @@ from django_webtest import WebTest
 from edc_appointment.constants import IN_PROGRESS_APPT, SCHEDULED_APPT
 from edc_appointment.models import Appointment
 from edc_auth import TMG, EVERYONE, AUDITOR, CLINIC, PII, EXPORT, LAB
-from edc_auth.update.update_group_permissions import update_group_permissions
 from edc_dashboard.url_names import url_names
-from edc_facility.import_holidays import import_holidays
-from edc_list_data.site_list_data import site_list_data
-from edc_randomization.randomization_list_importer import RandomizationListImporter
 from edc_sites import add_or_update_django_sites
 from edc_utils import get_utcnow
-from meta_auth.codenames_by_group import codenames_by_group
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_sites.sites import meta_sites, fqdn
 from model_mommy import mommy
