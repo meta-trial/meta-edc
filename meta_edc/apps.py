@@ -1,10 +1,9 @@
-import sys
-
 from django.conf import settings
 from datetime import datetime
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 from dateutil.tz import gettz
 from django.apps import AppConfig as DjangoAppConfig
+from django.apps import apps as django_apps
 from django.core.checks import register
 from django.core.management.color import color_style
 from django.db.models.signals import post_migrate
@@ -17,16 +16,18 @@ from edc_identifier.apps import AppConfig as BaseEdcIdentifierAppConfig
 from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
 from edc_protocol.apps import AppConfig as BaseEdcProtocolAppConfig
 from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
+from edc_auth.group_permissions_updater import GroupPermissionsUpdater
 
 # from .system_checks import meta_check
 style = color_style()
 
 
 def post_migrate_update_edc_auth(sender=None, **kwargs):
-    from edc_auth.update import update_group_permissions
     from meta_auth.codenames_by_group import codenames_by_group
 
-    update_group_permissions(codenames_by_group=codenames_by_group, verbose=True)
+    GroupPermissionsUpdater(
+        codenames_by_group=codenames_by_group, verbose=True, apps=django_apps
+    )
 
 
 class AppConfig(DjangoAppConfig):
