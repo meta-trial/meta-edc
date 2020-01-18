@@ -18,15 +18,14 @@ from edc_protocol.apps import AppConfig as BaseEdcProtocolAppConfig
 from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
 from edc_auth.group_permissions_updater import GroupPermissionsUpdater
 
-# from .system_checks import meta_check
 style = color_style()
 
 
 def post_migrate_update_edc_auth(sender=None, **kwargs):
-    from meta_auth.codenames_by_group import codenames_by_group
+    from meta_auth.codenames_by_group import get_codenames_by_group
 
     GroupPermissionsUpdater(
-        codenames_by_group=codenames_by_group, verbose=True, apps=django_apps
+        codenames_by_group=get_codenames_by_group(), verbose=True, apps=django_apps
     )
 
 
