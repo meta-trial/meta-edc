@@ -4,14 +4,14 @@ meta-consent==0.1.16
 meta-dashboard==0.1.16
 meta-export==0.1.3
 meta-form-validators==0.1.10
-meta-labs==0.1.10
+meta-labs==0.1.11
 meta-lists==0.1.12
 meta-metadata-rules==0.1.1
 meta-prn==0.1.14
 meta-reference==0.1.2
 meta-screening==0.1.36
 meta-sites==0.1.2
-meta-subject==0.1.23
+meta-subject==0.1.24
 meta-visit-schedule==0.1.13
 edc-action-item==0.1.66
 edc-adverse-event==0.1.20
