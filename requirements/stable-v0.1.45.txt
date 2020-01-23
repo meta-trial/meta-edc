@@ -1,5 +1,5 @@
 meta-ae==0.1.15
-meta-auth==0.1.16
+meta-auth==0.1.17
 meta-consent==0.1.16
 meta-dashboard==0.1.16
 meta-export==0.1.3
