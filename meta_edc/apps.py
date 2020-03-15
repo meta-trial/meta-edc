@@ -7,7 +7,6 @@ from django.apps import apps as django_apps
 from django.core.checks import register
 from django.core.management.color import color_style
 from django.db.models.signals import post_migrate
-from edc_appointment.appointment_config import AppointmentConfig
 from edc_appointment.apps import AppConfig as BaseEdcAppointmentAppConfig
 from edc_device.apps import AppConfig as BaseEdcDeviceAppConfig
 from edc_device.constants import CENTRAL_SERVER
@@ -41,16 +40,16 @@ class AppConfig(DjangoAppConfig):
         # register(meta_check)
 
 
-class EdcProtocolAppConfig(BaseEdcProtocolAppConfig):
-    institution = "Liverpool School of Tropical Medicine (LSTM)"
-    project_name = "META"
-    project_repo = "https://github.com/meta-trail"
-    protocol = "META"
-    protocol_name = "META"
-    protocol_number = "101"
-    protocol_title = "META Trial"
-    study_open_datetime = datetime(2019, 7, 31, 0, 0, 0, tzinfo=gettz("UTC"))
-    study_close_datetime = datetime(2022, 12, 31, 23, 59, 59, tzinfo=gettz("UTC"))
+# class EdcProtocolAppConfig(BaseEdcProtocolAppConfig):
+#     institution = "Liverpool School of Tropical Medicine (LSTM)"
+#     project_name = "META"
+#     project_repo = "https://github.com/meta-trail"
+#     protocol = "META"
+#     protocol_name = "META"
+#     protocol_number = "101"
+#     protocol_title = "META Trial"
+#     study_open_datetime = datetime(2019, 7, 31, 0, 0, 0, tzinfo=gettz("UTC"))
+#     study_close_datetime = datetime(2022, 12, 31, 23, 59, 59, tzinfo=gettz("UTC"))
 
 
 class EdcDeviceAppConfig(BaseEdcDeviceAppConfig):
@@ -70,16 +69,6 @@ class EdcIdentifierAppConfig(BaseEdcIdentifierAppConfig):
 
 class EdcMetadataAppConfig(BaseEdcMetadataAppConfig):
     reason_field = {"meta_subject.subjectvisit": "reason"}
-
-
-class EdcAppointmentAppConfig(BaseEdcAppointmentAppConfig):
-    configurations = [
-        AppointmentConfig(
-            model="edc_appointment.appointment",
-            related_visit_model="meta_subject.subjectvisit",
-            appt_type="hospital",
-        )
-    ]
 
 
 class EdcFacilityAppConfig(BaseEdcFacilityAppConfig):

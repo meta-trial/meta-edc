@@ -1,0 +1,12 @@
+{% comment %}Button to add a subject refusal{% endcomment %}
+
+<a id="subjectrefusal_change_{{ screening_identifier }}" 
+ 	title="{{ title }}"
+    class="btn btn-default btn-sm" data-toggle="tooltip"  data-placement="right"
+        {% if perms.meta_screening.view_subjectrefusal or perms.meta_screening.change_subjectrefusal %}
+        	href="{{ href }}"
+        {% else %}
+        	disabled
+        {% endif %}>
+     Refusal
+</a>

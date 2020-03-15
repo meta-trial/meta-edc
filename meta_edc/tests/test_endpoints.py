@@ -19,7 +19,7 @@ from edc_sites import add_or_update_django_sites
 from edc_utils import get_utcnow
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_sites.sites import meta_sites, fqdn
-from model_mommy import mommy
+from model_bakery import baker
 from webtest.app import AppError
 from meta_screening.models.subject_screening import SubjectScreening
 
@@ -181,7 +181,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
     @tag("webtest")
     def test_screening_form(self):
-        subject_screening = mommy.prepare_recipe(
+        subject_screening = baker.prepare_recipe(
             f"{app_prefix}_screening.subjectscreening"
         )
         self.login(superuser=False, groups=[EVERYONE, CLINIC, PII])
@@ -229,7 +229,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         #         site_list_data.autodiscover()
         self.login(superuser=False, groups=[EVERYONE, CLINIC, PII])
 
-        subject_screening = mommy.make_recipe("meta_screening.subjectscreening")
+        subject_screening = baker.make_recipe("meta_screening.subjectscreening")
 
         home_page = self.app.get(reverse("home_url"), user=self.user, status=200)
         screening_listboard_page = home_page.click(description="Screening", index=1)
@@ -241,7 +241,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         response = add_subjectconsent_page.form.submit()
         self.assertIn("Please correct the errors below", response)
 
-        subject_consent = mommy.make_recipe(
+        subject_consent = baker.make_recipe(
             "ambition_subject.subjectconsent",
             screening_identifier=subject_screening.screening_identifier,
             dob=(

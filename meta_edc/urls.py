@@ -4,6 +4,7 @@ from django.contrib.auth.views import LogoutView
 from django.urls.conf import path, include
 from django.views.defaults import page_not_found, server_error  # noqa
 from django.views.generic.base import RedirectView
+from django_collect_offline_files.admin_site import django_collect_offline_files_admin
 from edc_action_item.admin_site import edc_action_item_admin
 from edc_adverse_event.admin_site import edc_adverse_event_admin
 from edc_appointment.admin_site import edc_appointment_admin
@@ -74,6 +75,9 @@ urlpatterns = [
     path("admin/", edc_pdutils_admin.urls),
     path("admin/", edc_pharmacy_admin.urls),
     path("admin/edc_visit_schedule/", edc_visit_schedule_admin.urls),
+    path(
+        "admin/django_collect_offline_files/", django_collect_offline_files_admin.urls
+    ),
     path("administration/", AdministrationView.as_view(), name="administration_url"),
     path(
         "admin/meta_subject/",
@@ -112,6 +116,8 @@ urlpatterns = [
     path("edc_registration/", include("edc_registration.urls")),
     path("edc_subject_dashboard/", include("edc_subject_dashboard.urls")),
     path("edc_visit_schedule/", include("edc_visit_schedule.urls")),
+    path("django_collect_offline/", include("django_collect_offline.urls")),
+    path("django_collect_offline_files/", include("django_collect_offline_files.urls")),
     path(
         "switch_sites/",
         LogoutView.as_view(next_page=settings.INDEX_PAGE),

@@ -1,4 +1,4 @@
 [run]
-include = meta_edc/*
-omit = meta_edc/tests/*
+include = meta_*/*
+omit = meta_*/tests/*
 branch = 1
