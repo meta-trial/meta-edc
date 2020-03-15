@@ -58,16 +58,14 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
     @tag("webtest")
     def test_ae(self):
         self.login(superuser=False, groups=[EVERYONE, AUDITOR])
-        response = self.app.get(reverse("meta_ae:home_url"), user=self.user, status=200)
-        response = self.app.get(
+        self.app.get(reverse("meta_ae:home_url"), user=self.user, status=200)
+        self.app.get(
             reverse("edc_adverse_event:ae_home_url"), user=self.user, status=200
         )
-        response = self.app.get(
+        self.app.get(
             reverse("edc_adverse_event:tmg_home_url"), user=self.user, status=200
         )
-        response = self.app.get(
-            reverse("edc_data_manager:home_url"), user=self.user, status=200
-        )
+        self.app.get(reverse("edc_data_manager:home_url"), user=self.user, status=200)
 
     @tag("1")
     @tag("webtest")

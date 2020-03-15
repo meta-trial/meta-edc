@@ -1,7 +1,7 @@
 import inflect
 
 from django.contrib.auth import get_user_model
-from edc_constants.constants import OTHER
+from edc_constants.constants import OTHER, TUBERCULOSIS
 from meta_ae.models import DeathReport as DeathReportModel
 from reportlab.lib import colors
 from reportlab.lib.units import cm
@@ -55,8 +55,7 @@ class DeathReport(MetaCrfPdfReport):
         t = Table([["Section 1: Death Report"]], (18 * cm))
         self.set_table_style(t, bg_cmd=self.bg_cmd)
         story.append(t)
-        t = Table(
-            [[f"Prepared by {self.get_user(self.death_report)}."]], (18 * cm))
+        t = Table([[f"Prepared by {self.get_user(self.death_report)}."]], (18 * cm))
         self.set_table_style(t)
         story.append(t)
 
@@ -114,8 +113,7 @@ class DeathReport(MetaCrfPdfReport):
         t.hAlign = "LEFT"
         story.append(t)
 
-        self.draw_narrative(story, title="Narrative:",
-                            text=self.death_report.narrative)
+        self.draw_narrative(story, title="Narrative:", text=self.death_report.narrative)
 
     def _draw_audit_trail(self, story):
         s = self.styles["line_data_small"]
@@ -148,8 +146,7 @@ class DeathReport(MetaCrfPdfReport):
                         Paragraph(DeathReportModel._meta.verbose_name, s),
                         Paragraph(username, s),
                         Paragraph(obj.modified.strftime("%Y-%m-%d %H:%M"), s),
-                        Paragraph(
-                            fill(self.history_change_message(obj), width=60), s),
+                        Paragraph(fill(self.history_change_message(obj), width=60), s),
                     ]
                 ],
                 (3 * cm, 3 * cm, 3 * cm, 9 * cm),

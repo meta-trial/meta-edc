@@ -84,8 +84,8 @@ class ScreeningPartThreeFormValidator(FormValidator):
         if self.cleaned_data.get("unsuitable_agreed") == NO:
             raise forms.ValidationError(
                 {
-                    "unsuitable_agreed": "The study coordinator MUST agree with your assessment. "
-                    "Please discuss before continuing."
+                    "unsuitable_agreed": "The study coordinator MUST agree "
+                    "with your assessment. Please discuss before continuing."
                 }
             )
 

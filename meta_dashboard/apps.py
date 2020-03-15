@@ -18,7 +18,6 @@ if settings.APP_NAME == "meta_dashboard":
     from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
     from edc_protocol.apps import AppConfig as BaseEdcProtocolAppConfig
 
-
     class EdcProtocolAppConfig(BaseEdcProtocolAppConfig):
         protocol = "EDC092"
         protocol_name = "META"
@@ -26,7 +25,6 @@ if settings.APP_NAME == "meta_dashboard":
         protocol_title = ""
         study_open_datetime = datetime(2019, 7, 31, 0, 0, 0, tzinfo=gettz("UTC"))
         study_close_datetime = datetime(2022, 12, 31, 23, 59, 59, tzinfo=gettz("UTC"))
-
 
     class EdcFacilityAppConfig(BaseEdcFacilityAppConfig):
         country = "tanzania"
@@ -40,14 +38,11 @@ if settings.APP_NAME == "meta_dashboard":
             ),
         }
 
-
     class EdcVisitTrackingAppConfig(BaseEdcVisitTrackingAppConfig):
         visit_models = {"meta_subject": ("subject_visit", "meta_subject.subjectvisit")}
 
-
     class EdcIdentifierAppConfig(BaseEdcIdentifierAppConfig):
         identifier_prefix = "092"
-
 
     class EdcMetadataAppConfig(BaseEdcMetadataAppConfig):
         reason_field = {"meta_subject.subjectvisit": "reason"}
