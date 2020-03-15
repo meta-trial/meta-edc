@@ -1,0 +1,5 @@
+django-storages
+model-bakery
+faker
+django-environ
+django-webtest

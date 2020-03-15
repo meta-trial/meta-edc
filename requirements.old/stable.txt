@@ -1,0 +1,69 @@
+meta-ae
+meta-consent
+meta-dashboard
+meta-export
+meta-form-validators
+meta-labs
+meta-lists
+meta-metadata-rules
+meta-auth
+meta-prn
+meta-reference
+meta-screening
+meta-sites
+meta-subject
+meta-visit-schedule
+edc-action-item  #0.1.24
+edc-adverse-event
+edc-appointment  #0.2.21
+edc-auth  #0.1.15
+edc-consent  #0.2.17
+edc-constants  #0.2.10
+edc-dashboard  #0.2.23
+edc-data-manager
+edc-device  #0.2.11
+edc-export  #0.2.12
+edc-fabric  #0.1.5a1
+edc-facility  #0.1.8
+edc-fieldsets  #0.1.5
+edc-form-describer  #0.1.2
+edc-form-label  #0.1.2
+edc-form-validators  #0.1.11
+edc-identifier  #0.2.17
+edc-lab  #0.2.30
+edc-lab-dashboard  #0.1.20
+edc-label  #0.1.13
+edc-list-data  #0.1.4
+edc-locator  #0.2.15
+edc-metadata  #0.2.23
+edc-metadata-rules  #0.1.12
+edc-model
+edc-model-admin  #0.1.10
+edc-model-fields  #0.1.4
+edc-model-wrapper  #0.1.12
+edc-navbar  #0.1.9
+edc-notification  #0.1.13
+edc-offstudy  #0.2.8
+edc-pdutils  #0.1.10
+edc-pharmacy  #0.1.2a4
+edc-pharmacy-dashboard  #0.1.1a6
+edc-prn  #0.1.7
+edc-protocol  #0.1.10
+edc-randomization
+edc-reference  #0.1.20
+edc-registration  #0.2.19
+edc-reportable  #0.1.7
+edc-reports  #0.1.6
+edc-rest  #0.1.3
+edc-review-dashboard
+edc-screening
+edc-search  #0.1.7
+edc-selenium  #0.1.2
+edc-sites
+edc-subject-dashboard  #0.1.19
+edc-timepoint  #0.1.6
+edc-utils
+edc-visit-schedule  #0.2.18
+edc-visit-tracking  #0.2.18
+git+https://github.com/erikvw/django-simple-history@admin_revert_permissions
+Django[argon2]>=3.0.3

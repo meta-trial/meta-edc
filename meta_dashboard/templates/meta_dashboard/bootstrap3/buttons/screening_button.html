@@ -1,0 +1,15 @@
+<a id="subjectscreening_change_{{ screening_identifier }}" title="{{ title }}" role="button" 
+   class="btn btn-sm btn-{% if p1 == YES or p1 == NO %}success{% elif p1 == TBD %}warning{% else %}default{% endif %}"
+       {% if p1_enabled %}href="{{ href_p1 }}"{% else %} disabled {% endif %}>
+    <i class="fas fa-pencil-alt fa-sm"></i> P1
+</a>
+<a id="subjectscreening_change_{{ screening_identifier }}" title="{{ title }}" role="button" 
+   class="btn btn-sm btn-{% if continue_p2 == NO %}default{% elif p2 == YES or p2 == NO %}success{% elif p2 == TBD %}warning{% else %}default{% endif %}"
+       {% if p2_enabled %}href="{{ href_p2 }}"{% else %} disabled {% endif %}>
+    <i class="fas fa-pencil-alt fa-sm"></i> P2
+</a>
+<a id="subjectscreening_change_{{ screening_identifier }}" title="{{ title }}" role="button" 
+   class="btn btn-sm btn-{% if p3 == YES %}success{% elif p1 == YES and p2 == YES and p3 == TBD %}warning{% else %}default{% endif %}"
+       {% if p3_enabled %}href="{{ href_p3 }}"{% else %} disabled {% endif %}>
+    <i class="fas fa-pencil-alt fa-sm"></i> P3
+</a>

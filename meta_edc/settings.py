@@ -95,6 +95,7 @@ INSTALLED_APPS = [
     "simple_history",
     "storages",
     "edc_action_item.apps.AppConfig",
+    "edc_appointment.apps.AppConfig",
     "edc_adverse_event.apps.AppConfig",
     "edc_auth.apps.AppConfig",
     "edc_consent.apps.AppConfig",
@@ -116,6 +117,7 @@ INSTALLED_APPS = [
     "edc_offstudy.apps.AppConfig",
     "edc_pharmacy.apps.AppConfig",
     "edc_pdutils.apps.AppConfig",
+    "edc_protocol.apps.AppConfig",
     "edc_prn.apps.AppConfig",
     "edc_randomization.apps.AppConfig",
     "edc_reference.apps.AppConfig",
@@ -141,11 +143,9 @@ INSTALLED_APPS = [
     "meta_export.apps.AppConfig",
     "meta_screening.apps.AppConfig",
     "meta_sites.apps.AppConfig",
-    "meta_edc.apps.EdcAppointmentAppConfig",
     "meta_edc.apps.EdcDeviceAppConfig",
     "meta_edc.apps.EdcIdentifierAppConfig",
     "meta_edc.apps.EdcMetadataAppConfig",
-    "meta_edc.apps.EdcProtocolAppConfig",
     "meta_edc.apps.EdcVisitTrackingAppConfig",
     "meta_edc.apps.EdcFacilityAppConfig",
     "meta_edc.apps.AppConfig",
@@ -332,6 +332,7 @@ LABEL_TEMPLATE_FOLDER = env.str("DJANGO_LABEL_TEMPLATE_FOLDER") or os.path.join(
 )
 CUPS_SERVERS = env.dict("DJANGO_CUPS_SERVERS")
 
+SUBJECT_SCREENING_MODEL = env.str("DJANGO_SUBJECT_SCREENING_MODEL")
 SUBJECT_CONSENT_MODEL = env.str("DJANGO_SUBJECT_CONSENT_MODEL")
 SUBJECT_REQUISITION_MODEL = env.str("DJANGO_SUBJECT_REQUISITION_MODEL")
 SUBJECT_VISIT_MODEL = env.str("DJANGO_SUBJECT_VISIT_MODEL")
@@ -400,10 +401,9 @@ DATA_DICTIONARY_APP_LABELS = [
 ]
 
 # edc_randomization
-EDC_RANDOMIZATION_LIST_FILE = env.str("EDC_RANDOMIZATION_LIST_FILE")
+EDC_RANDOMIZATION_LIST_PATH = env.str("EDC_RANDOMIZATION_LIST_PATH")
 EDC_RANDOMIZATION_BLINDED_TRIAL = env.str("EDC_RANDOMIZATION_BLINDED_TRIAL")
 EDC_RANDOMIZATION_UNBLINDED_USERS = env.list("EDC_RANDOMIZATION_UNBLINDED_USERS")
-EDC_RANDOMIZATION_LIST_MODEL = env.str("EDC_RANDOMIZATION_LIST_MODEL")
 
 # static
 if env("AWS_ENABLED"):

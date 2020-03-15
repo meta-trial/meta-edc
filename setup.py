@@ -4,55 +4,41 @@ import os
 from setuptools import setup
 from setuptools import find_packages
 
-with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
+with open(os.path.join(os.path.dirname(__file__), "README.rst")) as readme:
     README = readme.read()
 
-with open(os.path.join(os.path.dirname(__file__), 'VERSION')) as f:
+with open(os.path.join(os.path.dirname(__file__), "VERSION")) as f:
     VERSION = f.read().strip()
 
-tests_require = ['django-storages', 'model-mommy',
-                 'faker', 'django_environ', "django_webtest"]
 
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='meta-edc',
+    name="meta-edc",
     version=VERSION,
-    author=u'Erik van Widenfelt',
-    author_email='ew2789@gmail.com',
+    author=u"Erik van Widenfelt",
+    author_email="ew2789@gmail.com",
     packages=find_packages(),
     include_package_data=True,
-    url='https://github.com/meta-trial/meta-edc',
-    license='GPL license, see LICENSE',
-    description='META Trial EDC (http://www.isrctn.com/ISRCTN76157257)',
+    url="https://github.com/meta-trial/meta-edc",
+    license="GPL license, see LICENSE",
+    description="META Trial EDC (http://www.isrctn.com/ISRCTN76157257)",
     long_description=README,
     zip_safe=False,
-    keywords='django meta EDC',
-    install_requires=[
-        'boto3',
-        'django-environ',
-        'django-redis',
-        'django-storages',
-        'gunicorn',
-        'python-memcached',
-        'sentry_sdk',
-        'celery',
-        'django-celery-beat',
-        'django-celery-results',
-    ],
+    keywords="django meta EDC",
+    install_requires=[],
     classifiers=[
-        'Environment :: Web Environment',
-        'Framework :: Django',
-        'Intended Audience :: Developers',
-        'Intended Audience :: Science/Research',
-        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
-        'Operating System :: OS Independent',
-        'Programming Language :: Python :: 3.7',
-        'Topic :: Internet :: WWW/HTTP',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+        "Environment :: Web Environment",
+        "Framework :: Django",
+        "Intended Audience :: Developers",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3.7",
+        "Topic :: Internet :: WWW/HTTP",
+        "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
     ],
     python_requires=">=3.7",
-    tests_require=tests_require,
-    test_suite='runtests.main',
+    test_suite="runtests.main",
 )
