@@ -1,4 +1,7 @@
-meta-edc
+|pypi| |travis| |codecov| |downloads|
+
+
+META Edc
 --------
 
 
@@ -110,3 +113,15 @@ Once logged in, go to you user account and update your group memberships. As a p
 * UNBLINDING_REQUESTORS
 * UNBLINDING_REVIEWERS
 
+
+.. |pypi| image:: https://img.shields.io/pypi/v/ambition-edc.svg
+    :target: https://pypi.python.org/pypi/ambition-edc
+
+.. |travis| image:: https://travis-ci.com/ambition-trial/ambition-edc.svg?branch=develop
+    :target: https://travis-ci.com/ambition-trial/ambition-edc
+
+.. |codecov| image:: https://codecov.io/gh/ambition-trial/ambition-edc/branch/develop/graph/badge.svg
+  :target: https://codecov.io/gh/ambition-trial/ambition-edc
+
+.. |downloads| image:: https://pepy.tech/badge/ambition-edc
+   :target: https://pepy.tech/project/ambition-edc
