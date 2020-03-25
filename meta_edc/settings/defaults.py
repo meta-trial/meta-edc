@@ -5,13 +5,15 @@ import sys
 from edc_utils import get_datetime_from_env
 from pathlib import Path
 
-BASE_DIR = str(Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
+ENV_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 
 env = environ.Env(
     AWS_ENABLED=(bool, False),
     CDN_ENABLED=(bool, False),
     DATABASE_SQLITE_ENABLED=(bool, False),
     DJANGO_AUTO_CREATE_KEYS=(bool, False),
+    DJANGO_CRYPTO_FIELDS_TEMP_PATH=(bool, False),
     DJANGO_CSRF_COOKIE_SECURE=(bool, True),
     DJANGO_DEBUG=(bool, False),
     DJANGO_EDC_BOOTSTRAP=(int, 3),
@@ -23,19 +25,20 @@ env = environ.Env(
     DJANGO_USE_I18N=(bool, True),
     DJANGO_USE_L10N=(bool, False),
     DJANGO_USE_TZ=(bool, True),
+    EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=(bool, True),
     SAUCE_ENABLED=(bool, False),
     SENTRY_ENABLED=(bool, False),
-    TWILIO_ENABLED=(bool, False),
     SIMPLE_HISTORY_PERMISSIONS_ENABLED=(bool, False),
     SIMPLE_HISTORY_REVERT_DISABLED=(bool, False),
+    TWILIO_ENABLED=(bool, False),
 )
 
 # copy your .env file from .envs/ to BASE_DIR
 if "test" in sys.argv:
-    env.read_env(os.path.join(BASE_DIR, ".env-tests"))
+    env.read_env(os.path.join(ENV_DIR, ".env-tests"))
     print(f"Reading env from {os.path.join(BASE_DIR, '.env-tests')}")
 else:
-    env.read_env(os.path.join(BASE_DIR, ".env"))
+    env.read_env(os.path.join(ENV_DIR, ".env"))
 
 DEBUG = env("DJANGO_DEBUG")
 
@@ -55,8 +58,6 @@ ENFORCE_RELATED_ACTION_ITEM_EXISTS = False
 
 DEFAULT_APPOINTMENT_TYPE = "hospital"
 
-REVIEWER_SITE_ID = env.int("DJANGO_REVIEWER_SITE_ID")
-
 LOGIN_REDIRECT_URL = env.str("DJANGO_LOGIN_REDIRECT_URL")
 
 SENTRY_ENABLED = env("SENTRY_ENABLED")
@@ -69,6 +70,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+    "multisite",
     "django_crypto_fields.apps.AppConfig",
     "django_revision.apps.AppConfig",
     "django_extensions",
@@ -97,7 +99,6 @@ INSTALLED_APPS = [
     "edc_list_data.apps.AppConfig",
     "edc_identifier.apps.AppConfig",
     "edc_locator.apps.AppConfig",
-    "edc_facility.apps.AppConfig",
     "edc_metadata.apps.AppConfig",
     "edc_metadata_rules.apps.AppConfig",
     "edc_model_admin.apps.AppConfig",
@@ -142,20 +143,13 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "multisite.middleware.DynamicSiteMiddleware",
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
-# if env("SENTRY_ENABLED"):
-#     MIDDLEWARE.extend(
-#         [
-#             "raven.contrib.django.raven_compat.middleware.Sentry404CatchMiddleware",
-#             "raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware",
-#         ]
-#     )
 
 MIDDLEWARE.extend(
     [
@@ -316,19 +310,6 @@ LABEL_TEMPLATE_FOLDER = env.str("DJANGO_LABEL_TEMPLATE_FOLDER") or os.path.join(
 )
 CUPS_SERVERS = env.dict("DJANGO_CUPS_SERVERS")
 
-# edc_protocol
-EDC_PROTOCOL = env.str("EDC_PROTOCOL")
-EDC_PROTOCOL_INSTITUTION_NAME = env.str("EDC_PROTOCOL_INSTITUTION_NAME")
-EDC_PROTOCOL_NUMBER = env.str("EDC_PROTOCOL_NUMBER")
-EDC_PROTOCOL_PROJECT_NAME = env.str("EDC_PROTOCOL_PROJECT_NAME")
-EDC_PROTOCOL_STUDY_OPEN_DATETIME = get_datetime_from_env(
-    *env.list("EDC_PROTOCOL_STUDY_OPEN_DATETIME")
-)
-EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
-    *env.list("EDC_PROTOCOL_STUDY_CLOSE_DATETIME")
-)
-EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
-
 SUBJECT_SCREENING_MODEL = env.str("DJANGO_SUBJECT_SCREENING_MODEL")
 SUBJECT_CONSENT_MODEL = env.str("DJANGO_SUBJECT_CONSENT_MODEL")
 SUBJECT_REQUISITION_MODEL = env.str("DJANGO_SUBJECT_REQUISITION_MODEL")
@@ -342,8 +323,9 @@ DASHBOARD_URL_NAMES = env.dict("DJANGO_DASHBOARD_URL_NAMES")
 DASHBOARD_BASE_TEMPLATES = env.dict("DJANGO_DASHBOARD_BASE_TEMPLATES")
 LAB_DASHBOARD_BASE_TEMPLATES = env.dict("DJANGO_LAB_DASHBOARD_BASE_TEMPLATES")
 LAB_DASHBOARD_URL_NAMES = env.dict("DJANGO_LAB_DASHBOARD_URL_NAMES")
-# is this needed?
-SUBJECT_REQUISITION_MODEL = env.str("DJANGO_SUBJECT_REQUISITION_MODEL")
+
+# edc_facility
+HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
 
 # edc_randomization
 EDC_RANDOMIZATION_LIST_PATH = env.str("EDC_RANDOMIZATION_LIST_PATH")
@@ -353,8 +335,8 @@ EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER = env(
 )
 EDC_RANDOMIZATION_SKIP_VERIFY_CHECKS = True
 
-# edc_facility
-HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
+# edc-sites
+EDC_SITES_MODULE_NAME = env.str("EDC_SITES_MODULE_NAME")
 
 # django-simple-history
 SIMPLE_HISTORY_REVERT_ENABLED = False
@@ -409,6 +391,19 @@ DATA_DICTIONARY_APP_LABELS = [
     "meta_ae",
     "edc_appointment",
 ]
+
+# edc_protocol
+EDC_PROTOCOL = env.str("EDC_PROTOCOL")
+EDC_PROTOCOL_INSTITUTION_NAME = env.str("EDC_PROTOCOL_INSTITUTION_NAME")
+EDC_PROTOCOL_NUMBER = env.str("EDC_PROTOCOL_NUMBER")
+EDC_PROTOCOL_PROJECT_NAME = env.str("EDC_PROTOCOL_PROJECT_NAME")
+EDC_PROTOCOL_STUDY_OPEN_DATETIME = get_datetime_from_env(
+    *env.list("EDC_PROTOCOL_STUDY_OPEN_DATETIME")
+)
+EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
+    *env.list("EDC_PROTOCOL_STUDY_CLOSE_DATETIME")
+)
+EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
 
 
 # static
