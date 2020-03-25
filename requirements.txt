@@ -1,4 +1,4 @@
-edc==0.1.14
+edc==0.1.15
 git+https://github.com/erikvw/django-simple-history@admin_revert_permissions2
 git+https://github.com/erikvw/django-multisite@master
 beautifulsoup4
