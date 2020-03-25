@@ -10,7 +10,7 @@ all_sites = {
             title="Hindu Mandal Hospital",
             country="tanzania",
             country_code="tz",
-            fqdn=fqdn,
+            domain=f"hindu-mandal.tz.{fqdn}",
         ),
         SingleSite(
             20,
@@ -18,7 +18,7 @@ all_sites = {
             title="Amana Hospital",
             country="tanzania",
             country_code="tz",
-            fqdn=fqdn,
+            domain=f"amana.tz.{fqdn}",
         ),
         SingleSite(
             30,
@@ -26,7 +26,7 @@ all_sites = {
             title="Temeke Hospital",
             country="tanzania",
             country_code="tz",
-            fqdn=fqdn,
+            domain=f"temeke.tz.{fqdn}",
         ),
     ),
 }
