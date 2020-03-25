@@ -12,4 +12,3 @@ ALLOWED_HOSTS = [
     "temeke.uat.tz.meta.clinicedc.org",
     "localhost",
 ]
-]
