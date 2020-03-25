@@ -1,14 +1,14 @@
 # confirm the working directory
 
 [Unit]
-Description=gunicorn daemon (UAT)
+Description=gunicorn UAT daemon
 Requires=gunicorn-uat.socket
 After=network.target
 
 [Service]
 User=uat
 Group=www-data
-WorkingDirectory=/home/uat/app
+WorkingDirectory=/home/edc/app
 ExecStart=/home/uat/miniconda3/envs/edc/bin/gunicorn \
     --access-logfile - \
     --workers 2 \
