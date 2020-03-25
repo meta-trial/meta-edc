@@ -1,5 +1,3 @@
-import pdb
-
 from django.test import TestCase, tag
 from edc_constants.constants import YES, NO, NOT_APPLICABLE, OTHER, NONE
 from edc_list_data import site_list_data, PreloadData
@@ -11,9 +9,9 @@ from meta_lists.models import (
     DiabetesSymptoms,
 )
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
+from pprint import pprint
 
 from ..forms import PatientHistoryForm
-from pprint import pprint
 
 
 class TestPatientHistory(MetaTestCaseMixin, TestCase):

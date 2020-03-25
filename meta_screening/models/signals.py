@@ -3,7 +3,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from edc_constants.constants import YES
 
-from .models import IcpReferral, ScreeningPartThree
+from .icp_referral import IcpReferral
+from .proxy_models import ScreeningPartThree
 
 
 def refer_to_icp(obj):

@@ -12,6 +12,8 @@ from django.test.runner import DiscoverRunner
 from edc_test_utils import DefaultTestSettings
 from os.path import abspath, dirname, join
 
+from multisite import SiteID
+
 app_name = "meta_edc"
 base_dir = dirname(abspath(__file__))
 
@@ -19,11 +21,10 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     calling_file=__file__,
     BASE_DIR=base_dir,
     APP_NAME=app_name,
-    SITE_ID=40,
+    SITE_ID=SiteID(default=10),
     SENTRY_ENABLED=False,
     INDEX_PAGE="localhost:8000",
     EXPORT_FOLDER=join(base_dir, "tests", "export"),
-    COUNTRY="tanzania",
     SUBJECT_SCREENING_MODEL="meta_screening.subjectscreening",
     SUBJECT_VISIT_MODEL="meta_subject.subjectvisit",
     SUBJECT_CONSENT_MODEL="meta_consent.subjectconsent",
@@ -61,6 +62,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     LIVE_SYSTEM=False,
     EDC_RANDOMIZATION_LIST_PATH=join(base_dir, "tests", "etc"),
     EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=True,
+    EDC_SITES_MODULE_NAME="meta_sites",
     INSTALLED_APPS=[
         "django.contrib.admin",
         "django.contrib.auth",
@@ -90,6 +92,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_model_wrapper.apps.AppConfig",
         "edc_data_manager.apps.AppConfig",
         "edc_consent.apps.AppConfig",
+        "edc_device.apps.AppConfig",
         "edc_dashboard.apps.AppConfig",
         "edc_export.apps.AppConfig",
         "edc_facility.apps.AppConfig",
@@ -101,11 +104,14 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_locator.apps.AppConfig",
         "edc_reference.apps.AppConfig",
         "edc_reports.apps.AppConfig",
+        "edc_identifier.apps.AppConfig",
+        "edc_metadata.apps.AppConfig",
         "edc_metadata_rules.apps.AppConfig",
         "edc_model_admin.apps.AppConfig",
         "edc_navbar.apps.AppConfig",
         "edc_notification.apps.AppConfig",
         "edc_offstudy.apps.AppConfig",
+        "edc_visit_tracking.apps.AppConfig",
         "edc_visit_schedule.apps.AppConfig",
         "edc_pdutils.apps.AppConfig",
         "edc_pharmacy.apps.AppConfig",
@@ -132,10 +138,6 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "meta_prn.apps.AppConfig",
         "meta_export.apps.AppConfig",
         "meta_screening.apps.AppConfig",
-        "meta_edc.apps.EdcDeviceAppConfig",
-        "meta_edc.apps.EdcIdentifierAppConfig",
-        "meta_edc.apps.EdcMetadataAppConfig",
-        "meta_edc.apps.EdcVisitTrackingAppConfig",
         "meta_edc.apps.AppConfig",
     ],
     add_dashboard_middleware=True,

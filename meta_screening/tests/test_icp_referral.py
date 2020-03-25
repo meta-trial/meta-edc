@@ -5,8 +5,13 @@ from edc_constants.constants import YES, BLACK, FEMALE, NOT_APPLICABLE, NO
 from edc_reportable.units import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
 from edc_utils.date import get_utcnow
 
-from ..models import IcpReferral, ScreeningPartOne, ScreeningPartTwo, ScreeningPartThree
-from ..signals import refer_to_icp
+from meta_screening.models import (
+    IcpReferral,
+    ScreeningPartOne,
+    ScreeningPartTwo,
+    ScreeningPartThree,
+)
+from meta_screening.models import refer_to_icp
 
 
 class TestScreeningPartThree(TestCase):

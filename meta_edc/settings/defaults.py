@@ -2,18 +2,8 @@ import environ
 import os
 import sys
 
-from django.core.exceptions import ImproperlyConfigured
-from edc_sites import get_site_id
-from meta_sites import meta_sites
+from edc_utils import get_datetime_from_env
 from pathlib import Path
-
-# simple version check
-try:
-    assert (3, 6) <= (sys.version_info.major, sys.version_info.minor) <= (3, 7)
-except AssertionError:
-    raise ImproperlyConfigured(
-        "Incorrect python version. Expected 3.6 or 3.7. Check your environment."
-    )
 
 BASE_DIR = str(Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
@@ -63,13 +53,6 @@ ALLOWED_HOSTS = ["*"]  # env.list('DJANGO_ALLOWED_HOSTS')
 
 ENFORCE_RELATED_ACTION_ITEM_EXISTS = False
 
-# get site ID from more familiar town name
-TOWN = env.str("DJANGO_TOWN")
-if TOWN:
-    SITE_ID = get_site_id(TOWN, sites=meta_sites)
-else:
-    SITE_ID = env.int("DJANGO_SITE_ID")
-
 DEFAULT_APPOINTMENT_TYPE = "hospital"
 
 REVIEWER_SITE_ID = env.int("DJANGO_REVIEWER_SITE_ID")
@@ -101,15 +84,21 @@ INSTALLED_APPS = [
     "edc_consent.apps.AppConfig",
     "edc_lab.apps.AppConfig",
     "edc_visit_schedule.apps.AppConfig",
+    "edc_visit_tracking.apps.AppConfig",
+    "edc_device.apps.AppConfig",
     "edc_dashboard.apps.AppConfig",
     "edc_data_manager.apps.AppConfig",
     "edc_export.apps.AppConfig",
+    "edc_facility.apps.AppConfig",
     "edc_fieldsets.apps.AppConfig",
     "edc_form_validators.apps.AppConfig",
     "edc_lab_dashboard.apps.AppConfig",
     "edc_label.apps.AppConfig",
     "edc_list_data.apps.AppConfig",
+    "edc_identifier.apps.AppConfig",
     "edc_locator.apps.AppConfig",
+    "edc_facility.apps.AppConfig",
+    "edc_metadata.apps.AppConfig",
     "edc_metadata_rules.apps.AppConfig",
     "edc_model_admin.apps.AppConfig",
     "edc_navbar.apps.AppConfig",
@@ -143,11 +132,6 @@ INSTALLED_APPS = [
     "meta_export.apps.AppConfig",
     "meta_screening.apps.AppConfig",
     "meta_sites.apps.AppConfig",
-    "meta_edc.apps.EdcDeviceAppConfig",
-    "meta_edc.apps.EdcIdentifierAppConfig",
-    "meta_edc.apps.EdcMetadataAppConfig",
-    "meta_edc.apps.EdcVisitTrackingAppConfig",
-    "meta_edc.apps.EdcFacilityAppConfig",
     "meta_edc.apps.AppConfig",
 ]
 
@@ -332,6 +316,19 @@ LABEL_TEMPLATE_FOLDER = env.str("DJANGO_LABEL_TEMPLATE_FOLDER") or os.path.join(
 )
 CUPS_SERVERS = env.dict("DJANGO_CUPS_SERVERS")
 
+# edc_protocol
+EDC_PROTOCOL = env.str("EDC_PROTOCOL")
+EDC_PROTOCOL_INSTITUTION_NAME = env.str("EDC_PROTOCOL_INSTITUTION_NAME")
+EDC_PROTOCOL_NUMBER = env.str("EDC_PROTOCOL_NUMBER")
+EDC_PROTOCOL_PROJECT_NAME = env.str("EDC_PROTOCOL_PROJECT_NAME")
+EDC_PROTOCOL_STUDY_OPEN_DATETIME = get_datetime_from_env(
+    *env.list("EDC_PROTOCOL_STUDY_OPEN_DATETIME")
+)
+EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
+    *env.list("EDC_PROTOCOL_STUDY_CLOSE_DATETIME")
+)
+EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
+
 SUBJECT_SCREENING_MODEL = env.str("DJANGO_SUBJECT_SCREENING_MODEL")
 SUBJECT_CONSENT_MODEL = env.str("DJANGO_SUBJECT_CONSENT_MODEL")
 SUBJECT_REQUISITION_MODEL = env.str("DJANGO_SUBJECT_REQUISITION_MODEL")
@@ -348,9 +345,22 @@ LAB_DASHBOARD_URL_NAMES = env.dict("DJANGO_LAB_DASHBOARD_URL_NAMES")
 # is this needed?
 SUBJECT_REQUISITION_MODEL = env.str("DJANGO_SUBJECT_REQUISITION_MODEL")
 
+# edc_randomization
+EDC_RANDOMIZATION_LIST_PATH = env.str("EDC_RANDOMIZATION_LIST_PATH")
+EDC_RANDOMIZATION_UNBLINDED_USERS = env.list("EDC_RANDOMIZATION_UNBLINDED_USERS")
+EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER = env(
+    "EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER"
+)
+EDC_RANDOMIZATION_SKIP_VERIFY_CHECKS = True
+
 # edc_facility
 HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
-COUNTRY = env.str("DJANGO_COUNTRY")
+
+# django-simple-history
+SIMPLE_HISTORY_REVERT_ENABLED = False
+
+# django-multisite
+CACHE_MULTISITE_KEY_PREFIX = APP_NAME
 
 EMAIL_ENABLED = env("DJANGO_EMAIL_ENABLED")
 EMAIL_CONTACTS = env.dict("DJANGO_EMAIL_CONTACTS")
@@ -400,10 +410,6 @@ DATA_DICTIONARY_APP_LABELS = [
     "edc_appointment",
 ]
 
-# edc_randomization
-EDC_RANDOMIZATION_LIST_PATH = env.str("EDC_RANDOMIZATION_LIST_PATH")
-EDC_RANDOMIZATION_BLINDED_TRIAL = env.str("EDC_RANDOMIZATION_BLINDED_TRIAL")
-EDC_RANDOMIZATION_UNBLINDED_USERS = env.list("EDC_RANDOMIZATION_UNBLINDED_USERS")
 
 # static
 if env("AWS_ENABLED"):

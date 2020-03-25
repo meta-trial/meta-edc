@@ -18,7 +18,7 @@ from edc_dashboard.url_names import url_names
 from edc_sites import add_or_update_django_sites
 from edc_utils import get_utcnow
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
-from meta_sites.sites import meta_sites, fqdn
+from meta_sites.sites import all_sites, fqdn
 from model_bakery import baker
 from webtest.app import AppError
 from meta_screening.models.subject_screening import SubjectScreening
@@ -220,7 +220,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
     @tag("webtest")
     def test_to_subject_dashboard(self):
-        add_or_update_django_sites(apps=django_apps, sites=meta_sites, fqdn=fqdn)
+        add_or_update_django_sites(apps=django_apps, sites=all_sites, fqdn=fqdn)
         #         RandomizationListImporter()
         #         update_permissions()
         #         import_holidays()
