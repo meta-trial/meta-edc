@@ -8,7 +8,7 @@ SITE_ID = SiteID(default=1)
 EDC_SITES_UAT_DOMAIN = False
 ALLOWED_HOSTS = [
     "amana.tz.meta.clinicedc.org",
-    "hindu_mandal.tz.meta.clinicedc.org",
-    "temeke.tz.inte.clinicedc.org",
+    "hindu-mandal.tz.meta.clinicedc.org",
+    "temeke.tz.meta.clinicedc.org",
     "localhost",
 ]
