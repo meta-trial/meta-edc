@@ -27,7 +27,7 @@ style = color_style()
 
 User = get_user_model()
 
-app_prefix = "ambition"
+app_prefix = "meta"
 
 
 def login(testcase, user=None, superuser=None, groups=None):
@@ -240,7 +240,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Please correct the errors below", response)
 
         subject_consent = baker.make_recipe(
-            "ambition_subject.subjectconsent",
+            "meta_subject.subjectconsent",
             screening_identifier=subject_screening.screening_identifier,
             dob=(
                 get_utcnow() - relativedelta(years=subject_screening.age_in_years)
@@ -266,7 +266,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn(subject_consent.subject_identifier, subject_listboard_page)
 
         href = reverse(
-            "ambition_dashboard:subject_dashboard_url",
+            "meta_dashboard:subject_dashboard_url",
             kwargs={"subject_identifier": subject_consent.subject_identifier},
         )
         subject_dashboard_page = subject_listboard_page.click(href=href)
@@ -317,7 +317,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
         subject_dashboard_page = self.app.get(
             reverse(
-                "ambition_dashboard:subject_dashboard_url",
+                "meta_dashboard:subject_dashboard_url",
                 kwargs=dict(
                     subject_identifier=subject_identifier,
                     appointment=str(appointments[0].id),
