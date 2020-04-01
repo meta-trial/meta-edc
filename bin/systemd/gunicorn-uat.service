@@ -14,7 +14,7 @@ ExecStart=/home/uat/miniconda3/envs/edc/bin/gunicorn \
     --workers 2 \
     --timeout=300 \
     --bind unix:/run/gunicorn-uat.sock \
-    meta_edc.wsgi:application
+    meta_edc.wsgi_uat:application
 
 [Install]
 WantedBy=multi-user.target
