@@ -38,6 +38,10 @@ if "test" in sys.argv:
     env.read_env(os.path.join(ENV_DIR, ".env-tests"))
     print(f"Reading env from {os.path.join(BASE_DIR, '.env-tests')}")
 else:
+    if not os.path.exists(os.path.join(ENV_DIR, ".env")):
+        raise FileExistsError(
+            f"Environment file does not exist. Got `{os.path.join(ENV_DIR, '.env')}`"
+        )
     env.read_env(os.path.join(ENV_DIR, ".env"))
 
 DEBUG = env("DJANGO_DEBUG")
