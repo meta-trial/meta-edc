@@ -1,5 +1,11 @@
 from edc_constants.constants import (
-    OTHER, NOT_APPLICABLE, NEVER, FASTING, NON_FASTING, RAPID_TEST, MICROSCOPY,
+    OTHER,
+    NOT_APPLICABLE,
+    NEVER,
+    FASTING,
+    NON_FASTING,
+    RAPID_TEST,
+    MICROSCOPY,
 )
 from edc_reportable.constants import GRADE3, GRADE4
 from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, MISSED_VISIT

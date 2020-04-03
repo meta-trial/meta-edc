@@ -18,7 +18,7 @@ from edc_dashboard.url_names import url_names
 from edc_sites import add_or_update_django_sites
 from edc_utils import get_utcnow
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
-from meta_sites.sites import meta_sites, fqdn
+from meta_sites.sites import all_sites, fqdn
 from model_bakery import baker
 from webtest.app import AppError
 from meta_screening.models.subject_screening import SubjectScreening
@@ -27,7 +27,7 @@ style = color_style()
 
 User = get_user_model()
 
-app_prefix = "ambition"
+app_prefix = "meta"
 
 
 def login(testcase, user=None, superuser=None, groups=None):
@@ -220,7 +220,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
     @tag("webtest")
     def test_to_subject_dashboard(self):
-        add_or_update_django_sites(apps=django_apps, sites=meta_sites, fqdn=fqdn)
+        add_or_update_django_sites(apps=django_apps, sites=all_sites, fqdn=fqdn)
         #         RandomizationListImporter()
         #         update_permissions()
         #         import_holidays()
@@ -240,7 +240,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Please correct the errors below", response)
 
         subject_consent = baker.make_recipe(
-            "ambition_subject.subjectconsent",
+            "meta_subject.subjectconsent",
             screening_identifier=subject_screening.screening_identifier,
             dob=(
                 get_utcnow() - relativedelta(years=subject_screening.age_in_years)
@@ -266,7 +266,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn(subject_consent.subject_identifier, subject_listboard_page)
 
         href = reverse(
-            "ambition_dashboard:subject_dashboard_url",
+            "meta_dashboard:subject_dashboard_url",
             kwargs={"subject_identifier": subject_consent.subject_identifier},
         )
         subject_dashboard_page = subject_listboard_page.click(href=href)
@@ -317,7 +317,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
         subject_dashboard_page = self.app.get(
             reverse(
-                "ambition_dashboard:subject_dashboard_url",
+                "meta_dashboard:subject_dashboard_url",
                 kwargs=dict(
                     subject_identifier=subject_identifier,
                     appointment=str(appointments[0].id),

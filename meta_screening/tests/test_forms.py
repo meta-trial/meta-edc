@@ -3,8 +3,16 @@ from edc_constants.constants import FEMALE, MALE, YES, NOT_APPLICABLE, NO, POS, 
 from edc_utils.date import get_utcnow
 from random import choices
 
-from ..forms import ScreeningPartOneForm, ScreeningPartThreeForm, ScreeningPartTwoForm
-from ..models.proxy_models import ScreeningPartOne, ScreeningPartTwo, ScreeningPartThree
+from ..forms import (
+    ScreeningPartOneForm,
+    ScreeningPartThreeForm,
+    ScreeningPartTwoForm,
+)
+from ..models.proxy_models import (
+    ScreeningPartOne,
+    ScreeningPartTwo,
+    ScreeningPartThree,
+)
 from .options import (
     part_one_eligible_options,
     part_two_eligible_options,

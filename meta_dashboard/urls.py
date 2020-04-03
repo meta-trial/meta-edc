@@ -1,4 +1,5 @@
 from django.apps import apps as django_apps
+from edc_protocol import Protocol
 from edc_review_dashboard.views import SubjectReviewListboardView
 
 from .patterns import screening_identifier
@@ -12,15 +13,10 @@ from .views import (
 
 app_name = "meta_dashboard"
 
-subject_identifier_pattern = django_apps.get_app_config(
-    "edc_identifier"
-).subject_identifier_pattern  # "092\-[0-9\-]+"
-
-
 urlpatterns = SubjectListboardView.urls(
     namespace=app_name,
     label="subject_listboard",
-    identifier_pattern=subject_identifier_pattern,
+    identifier_pattern=Protocol().subject_identifier_pattern,
 )
 urlpatterns += ScreeningListboardView.urls(
     namespace=app_name,
@@ -31,21 +27,21 @@ urlpatterns += ScreeningListboardView.urls(
 urlpatterns += SubjectDashboardView.urls(
     namespace=app_name,
     label="subject_dashboard",
-    identifier_pattern=subject_identifier_pattern,
+    identifier_pattern=Protocol().subject_identifier_pattern,
 )
 
 urlpatterns += SubjectReviewListboardView.urls(
     namespace=app_name,
     label="subject_review_listboard",
-    identifier_pattern=subject_identifier_pattern,
+    identifier_pattern=Protocol().subject_identifier_pattern,
 )
 urlpatterns += AeListboardView.urls(
     namespace=app_name,
     label="ae_listboard",
-    identifier_pattern=subject_identifier_pattern,
+    identifier_pattern=Protocol().subject_identifier_pattern,
 )
 urlpatterns += DeathReportListboardView.urls(
     namespace=app_name,
     label="death_report_listboard",
-    identifier_pattern=subject_identifier_pattern,
+    identifier_pattern=Protocol().subject_identifier_pattern,
 )

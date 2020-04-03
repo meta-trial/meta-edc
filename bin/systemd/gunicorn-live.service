@@ -1,8 +1,8 @@
 # confirm the working directory
 
 [Unit]
-Description=gunicorn UAT daemon
-Requires=gunicorn-uat.socket
+Description=gunicorn live daemon
+Requires=gunicorn-live.socket
 After=network.target
 
 [Service]
@@ -11,10 +11,10 @@ Group=www-data
 WorkingDirectory=/home/edc/app
 ExecStart=/home/edc/miniconda3/envs/edc/bin/gunicorn \
     --access-logfile - \
-    --workers 2 \
+    --workers 3 \
     --timeout=300 \
-    --bind unix:/run/gunicorn-uat.sock \
-    meta_edc.wsgi_uat:application
+    --bind unix:/run/gunicorn-live.sock \
+    meta_edc.wsgi_live:application
 
 [Install]
 WantedBy=multi-user.target

@@ -9,11 +9,12 @@ from edc_facility.models import Holiday
 from edc_list_data.site_list_data import site_list_data
 from edc_randomization.models.randomization_list import RandomizationList
 from edc_randomization.randomization_list_importer import RandomizationListImporter
+from edc_sites import get_sites_by_country, add_or_update_django_sites
 from edc_sites.tests.site_test_case_mixin import SiteTestCaseMixin
 from edc_utils.date import get_utcnow
 from edc_visit_tracking.constants import SCHEDULED
 from meta_auth.codenames_by_group import get_codenames_by_group
-from meta_sites.sites import fqdn, meta_sites
+from meta_sites import fqdn
 from meta_subject.models import SubjectVisit
 from meta_visit_schedule.constants import DAY1
 from model_bakery import baker
@@ -35,15 +36,16 @@ class MetaTestCaseMixin(SiteTestCaseMixin):
 
     fqdn = fqdn
 
-    default_sites = meta_sites
+    default_sites = get_sites_by_country("tanzania")
 
-    site_names = [s[1] for s in default_sites]
+    site_names = [s.name for s in default_sites]
 
     import_randomization_list = True
 
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        add_or_update_django_sites(sites=get_sites_by_country("tanzania"))
         if cls.import_randomization_list:
             RandomizationListImporter(name="default", verbose=False)
         import_holidays(test=True)

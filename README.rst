@@ -114,14 +114,14 @@ Once logged in, go to you user account and update your group memberships. As a p
 * UNBLINDING_REVIEWERS
 
 
-.. |pypi| image:: https://img.shields.io/pypi/v/ambition-edc.svg
-    :target: https://pypi.python.org/pypi/ambition-edc
+.. |pypi| image:: https://img.shields.io/pypi/v/meta-edc.svg
+    :target: https://pypi.python.org/pypi/meta-edc
 
-.. |travis| image:: https://travis-ci.com/ambition-trial/ambition-edc.svg?branch=develop
-    :target: https://travis-ci.com/ambition-trial/ambition-edc
+.. |travis| image:: https://travis-ci.com/meta-trial/meta-edc.svg?branch=develop
+    :target: https://travis-ci.com/meta-trial/meta-edc
 
-.. |codecov| image:: https://codecov.io/gh/ambition-trial/ambition-edc/branch/develop/graph/badge.svg
-  :target: https://codecov.io/gh/ambition-trial/ambition-edc
+.. |codecov| image:: https://codecov.io/gh/meta-trial/meta-edc/branch/develop/graph/badge.svg
+  :target: https://codecov.io/gh/meta-trial/meta-edc
 
-.. |downloads| image:: https://pepy.tech/badge/ambition-edc
-   :target: https://pepy.tech/project/ambition-edc
+.. |downloads| image:: https://pepy.tech/badge/meta-edc
+   :target: https://pepy.tech/project/meta-edc

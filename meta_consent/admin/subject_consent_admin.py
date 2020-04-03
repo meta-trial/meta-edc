@@ -84,8 +84,7 @@ class SubjectConsentAdmin(
         obj = SubjectConsent.objects.get(id=object_id)
         try:
             protected = [
-                SubjectVisit.objects.get(
-                    subject_identifier=obj.subject_identifier)
+                SubjectVisit.objects.get(subject_identifier=obj.subject_identifier)
             ]
         except ObjectDoesNotExist:
             protected = None

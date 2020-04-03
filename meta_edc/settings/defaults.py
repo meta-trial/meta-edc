@@ -2,26 +2,18 @@ import environ
 import os
 import sys
 
-from django.core.exceptions import ImproperlyConfigured
-from edc_sites import get_site_id
-from meta_sites import meta_sites
+from edc_utils import get_datetime_from_env
 from pathlib import Path
 
-# simple version check
-try:
-    assert (3, 6) <= (sys.version_info.major, sys.version_info.minor) <= (3, 7)
-except AssertionError:
-    raise ImproperlyConfigured(
-        "Incorrect python version. Expected 3.6 or 3.7. Check your environment."
-    )
-
-BASE_DIR = str(Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
+ENV_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 
 env = environ.Env(
     AWS_ENABLED=(bool, False),
     CDN_ENABLED=(bool, False),
     DATABASE_SQLITE_ENABLED=(bool, False),
     DJANGO_AUTO_CREATE_KEYS=(bool, False),
+    DJANGO_CRYPTO_FIELDS_TEMP_PATH=(bool, False),
     DJANGO_CSRF_COOKIE_SECURE=(bool, True),
     DJANGO_DEBUG=(bool, False),
     DJANGO_EDC_BOOTSTRAP=(int, 3),
@@ -33,19 +25,24 @@ env = environ.Env(
     DJANGO_USE_I18N=(bool, True),
     DJANGO_USE_L10N=(bool, False),
     DJANGO_USE_TZ=(bool, True),
+    EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=(bool, True),
     SAUCE_ENABLED=(bool, False),
     SENTRY_ENABLED=(bool, False),
-    TWILIO_ENABLED=(bool, False),
     SIMPLE_HISTORY_PERMISSIONS_ENABLED=(bool, False),
     SIMPLE_HISTORY_REVERT_DISABLED=(bool, False),
+    TWILIO_ENABLED=(bool, False),
 )
 
 # copy your .env file from .envs/ to BASE_DIR
 if "test" in sys.argv:
-    env.read_env(os.path.join(BASE_DIR, ".env-tests"))
+    env.read_env(os.path.join(ENV_DIR, ".env-tests"))
     print(f"Reading env from {os.path.join(BASE_DIR, '.env-tests')}")
 else:
-    env.read_env(os.path.join(BASE_DIR, ".env"))
+    if not os.path.exists(os.path.join(ENV_DIR, ".env")):
+        raise FileExistsError(
+            f"Environment file does not exist. Got `{os.path.join(ENV_DIR, '.env')}`"
+        )
+    env.read_env(os.path.join(ENV_DIR, ".env"))
 
 DEBUG = env("DJANGO_DEBUG")
 
@@ -63,16 +60,7 @@ ALLOWED_HOSTS = ["*"]  # env.list('DJANGO_ALLOWED_HOSTS')
 
 ENFORCE_RELATED_ACTION_ITEM_EXISTS = False
 
-# get site ID from more familiar town name
-TOWN = env.str("DJANGO_TOWN")
-if TOWN:
-    SITE_ID = get_site_id(TOWN, sites=meta_sites)
-else:
-    SITE_ID = env.int("DJANGO_SITE_ID")
-
 DEFAULT_APPOINTMENT_TYPE = "hospital"
-
-REVIEWER_SITE_ID = env.int("DJANGO_REVIEWER_SITE_ID")
 
 LOGIN_REDIRECT_URL = env.str("DJANGO_LOGIN_REDIRECT_URL")
 
@@ -86,6 +74,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+    "multisite",
     "django_crypto_fields.apps.AppConfig",
     "django_revision.apps.AppConfig",
     "django_extensions",
@@ -101,15 +90,20 @@ INSTALLED_APPS = [
     "edc_consent.apps.AppConfig",
     "edc_lab.apps.AppConfig",
     "edc_visit_schedule.apps.AppConfig",
+    "edc_visit_tracking.apps.AppConfig",
+    "edc_device.apps.AppConfig",
     "edc_dashboard.apps.AppConfig",
     "edc_data_manager.apps.AppConfig",
     "edc_export.apps.AppConfig",
+    "edc_facility.apps.AppConfig",
     "edc_fieldsets.apps.AppConfig",
     "edc_form_validators.apps.AppConfig",
     "edc_lab_dashboard.apps.AppConfig",
     "edc_label.apps.AppConfig",
     "edc_list_data.apps.AppConfig",
+    "edc_identifier.apps.AppConfig",
     "edc_locator.apps.AppConfig",
+    "edc_metadata.apps.AppConfig",
     "edc_metadata_rules.apps.AppConfig",
     "edc_model_admin.apps.AppConfig",
     "edc_navbar.apps.AppConfig",
@@ -143,11 +137,6 @@ INSTALLED_APPS = [
     "meta_export.apps.AppConfig",
     "meta_screening.apps.AppConfig",
     "meta_sites.apps.AppConfig",
-    "meta_edc.apps.EdcDeviceAppConfig",
-    "meta_edc.apps.EdcIdentifierAppConfig",
-    "meta_edc.apps.EdcMetadataAppConfig",
-    "meta_edc.apps.EdcVisitTrackingAppConfig",
-    "meta_edc.apps.EdcFacilityAppConfig",
     "meta_edc.apps.AppConfig",
 ]
 
@@ -158,20 +147,13 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "multisite.middleware.DynamicSiteMiddleware",
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
-# if env("SENTRY_ENABLED"):
-#     MIDDLEWARE.extend(
-#         [
-#             "raven.contrib.django.raven_compat.middleware.Sentry404CatchMiddleware",
-#             "raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware",
-#         ]
-#     )
 
 MIDDLEWARE.extend(
     [
@@ -345,12 +327,26 @@ DASHBOARD_URL_NAMES = env.dict("DJANGO_DASHBOARD_URL_NAMES")
 DASHBOARD_BASE_TEMPLATES = env.dict("DJANGO_DASHBOARD_BASE_TEMPLATES")
 LAB_DASHBOARD_BASE_TEMPLATES = env.dict("DJANGO_LAB_DASHBOARD_BASE_TEMPLATES")
 LAB_DASHBOARD_URL_NAMES = env.dict("DJANGO_LAB_DASHBOARD_URL_NAMES")
-# is this needed?
-SUBJECT_REQUISITION_MODEL = env.str("DJANGO_SUBJECT_REQUISITION_MODEL")
 
 # edc_facility
 HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
-COUNTRY = env.str("DJANGO_COUNTRY")
+
+# edc_randomization
+EDC_RANDOMIZATION_LIST_PATH = env.str("EDC_RANDOMIZATION_LIST_PATH")
+EDC_RANDOMIZATION_UNBLINDED_USERS = env.list("EDC_RANDOMIZATION_UNBLINDED_USERS")
+EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER = env(
+    "EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER"
+)
+EDC_RANDOMIZATION_SKIP_VERIFY_CHECKS = True
+
+# edc-sites
+EDC_SITES_MODULE_NAME = env.str("EDC_SITES_MODULE_NAME")
+
+# django-simple-history
+SIMPLE_HISTORY_REVERT_ENABLED = False
+
+# django-multisite
+CACHE_MULTISITE_KEY_PREFIX = APP_NAME
 
 EMAIL_ENABLED = env("DJANGO_EMAIL_ENABLED")
 EMAIL_CONTACTS = env.dict("DJANGO_EMAIL_CONTACTS")
@@ -400,10 +396,19 @@ DATA_DICTIONARY_APP_LABELS = [
     "edc_appointment",
 ]
 
-# edc_randomization
-EDC_RANDOMIZATION_LIST_PATH = env.str("EDC_RANDOMIZATION_LIST_PATH")
-EDC_RANDOMIZATION_BLINDED_TRIAL = env.str("EDC_RANDOMIZATION_BLINDED_TRIAL")
-EDC_RANDOMIZATION_UNBLINDED_USERS = env.list("EDC_RANDOMIZATION_UNBLINDED_USERS")
+# edc_protocol
+EDC_PROTOCOL = env.str("EDC_PROTOCOL")
+EDC_PROTOCOL_INSTITUTION_NAME = env.str("EDC_PROTOCOL_INSTITUTION_NAME")
+EDC_PROTOCOL_NUMBER = env.str("EDC_PROTOCOL_NUMBER")
+EDC_PROTOCOL_PROJECT_NAME = env.str("EDC_PROTOCOL_PROJECT_NAME")
+EDC_PROTOCOL_STUDY_OPEN_DATETIME = get_datetime_from_env(
+    *env.list("EDC_PROTOCOL_STUDY_OPEN_DATETIME")
+)
+EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
+    *env.list("EDC_PROTOCOL_STUDY_CLOSE_DATETIME")
+)
+EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
+
 
 # static
 if env("AWS_ENABLED"):
