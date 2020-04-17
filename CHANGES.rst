@@ -1,6 +1,10 @@
 Changes
 =======
 
+0.1.51
+------
+- add Corona virus KAP form to DAY1 and as a PRN for those past DAY1
+
 0.1.50
 ------
 - add Uganda hosts to ``nginx.conf`` and ``ALLOWED_HOSTS``
