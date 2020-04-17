@@ -30,6 +30,7 @@ from meta_lists.admin_site import meta_lists_admin
 from meta_prn.admin_site import meta_prn_admin
 from meta_screening.admin_site import meta_screening_admin
 from meta_subject.admin_site import meta_subject_admin
+from sarscov2.admin_site import sarscov2_admin
 
 from .views import HomeView
 
@@ -74,6 +75,7 @@ urlpatterns = [
     path("admin/", edc_action_item_admin.urls),
     path("admin/", edc_pdutils_admin.urls),
     path("admin/", edc_pharmacy_admin.urls),
+    path("admin/", sarscov2_admin.urls),
     path("admin/edc_visit_schedule/", edc_visit_schedule_admin.urls),
     path("administration/", AdministrationView.as_view(), name="administration_url"),
     path(
@@ -113,6 +115,7 @@ urlpatterns = [
     path("edc_registration/", include("edc_registration.urls")),
     path("edc_subject_dashboard/", include("edc_subject_dashboard.urls")),
     path("edc_visit_schedule/", include("edc_visit_schedule.urls")),
+    path("sarscov2/", include("sarscov2.urls")),
     path(
         "switch_sites/",
         LogoutView.as_view(next_page=settings.INDEX_PAGE),

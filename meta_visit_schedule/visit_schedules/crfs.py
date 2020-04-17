@@ -9,6 +9,7 @@ crfs_prn = FormsCollection(
     Crf(show_order=50, model="meta_subject.bloodresultsrft"),
     Crf(show_order=55, model="meta_subject.malariatest"),
     Crf(show_order=60, model="meta_subject.urinedipsticktest"),
+    Crf(show_order=70, model="meta_subject.coronakap"),
     name="prn",
 )
 
@@ -33,6 +34,7 @@ crfs_d1 = FormsCollection(
     Crf(show_order=80, model="meta_subject.bloodresultsrft"),
     Crf(show_order=85, model="meta_subject.malariatest"),
     Crf(show_order=90, model="meta_subject.urinedipsticktest"),
+    Crf(show_order=100, model="meta_subject.coronakap"),
     name="day1",
 )
 

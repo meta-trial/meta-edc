@@ -1,4 +1,3 @@
-# from meta_form_validators import FollowupFormValidator
 from django import forms
 from edc_crf.modelform_mixins import CrfModelFormMixin
 
