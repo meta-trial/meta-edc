@@ -14,13 +14,15 @@ crfs_prn = FormsCollection(
 )
 
 crfs_unscheduled = FormsCollection(
-    Crf(show_order=10, model="meta_subject.bloodresultsglu"),
-    Crf(show_order=20, model="meta_subject.bloodresultsfbc"),
-    Crf(show_order=25, model="meta_subject.bloodresultslipid"),
-    Crf(show_order=30, model="meta_subject.bloodresultslft"),
-    Crf(show_order=40, model="meta_subject.bloodresultsrft"),
-    Crf(show_order=50, model="meta_subject.malariatest"),
-    Crf(show_order=60, model="meta_subject.urinedipsticktest"),
+    Crf(show_order=10, model="meta_subject.followupvitals"),
+    Crf(show_order=20, model="meta_subject.followup"),
+    Crf(show_order=30, model="meta_subject.bloodresultsglu"),
+    Crf(show_order=40, model="meta_subject.bloodresultsfbc"),
+    Crf(show_order=50, model="meta_subject.bloodresultslipid"),
+    Crf(show_order=60, model="meta_subject.bloodresultslft"),
+    Crf(show_order=70, model="meta_subject.bloodresultsrft"),
+    Crf(show_order=80, model="meta_subject.malariatest"),
+    Crf(show_order=90, model="meta_subject.urinedipsticktest"),
     name="unscheduled",
 )
 
