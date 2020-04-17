@@ -122,6 +122,7 @@ INSTALLED_APPS = [
     "edc_sites.apps.AppConfig",
     "edc_subject_dashboard.apps.AppConfig",
     "edc_timepoint.apps.AppConfig",
+    "sarscov2.apps.AppConfig",
     "meta_consent.apps.AppConfig",
     "meta_lists.apps.AppConfig",
     "meta_dashboard.apps.AppConfig",

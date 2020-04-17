@@ -63,6 +63,7 @@ class TestVisitSchedule(TestCase):
             "meta_subject.bloodresultslft",
             "meta_subject.bloodresultslipid",
             "meta_subject.bloodresultsrft",
+            "meta_subject.coronakap",
             "meta_subject.malariatest",
             "meta_subject.urinedipsticktest",
         ]
@@ -74,6 +75,7 @@ class TestVisitSchedule(TestCase):
                 "meta_subject.bloodresultslft",
                 "meta_subject.bloodresultslipid",
                 "meta_subject.bloodresultsrft",
+                "meta_subject.coronakap",
                 "meta_subject.malariatest",
                 "meta_subject.urinedipsticktest",
             ],

@@ -6,6 +6,7 @@ from .blood_results import (
     BloodResultsFbcForm,
     BloodResultsHba1cForm,
 )
+from .corona_kap_form import CoronaKapForm
 from .followup_form import FollowupForm
 from .followup_vitals_form import FollowupVitalsForm
 from .malaria_test_form import MalariaTestForm

@@ -52,6 +52,7 @@ auditor += [
     "meta_subject.view_bloodresultslft",
     "meta_subject.view_bloodresultsrft",
     "meta_subject.view_complications",
+    "meta_subject.view_coronakap",
     "meta_subject.view_followup",
     "meta_subject.view_followupvitals",
     "meta_subject.view_healtheconomics",
@@ -62,6 +63,7 @@ auditor += [
     "meta_subject.view_historicalbloodresultslft",
     "meta_subject.view_historicalbloodresultsrft",
     "meta_subject.view_historicalcomplications",
+    "meta_subject.view_historicalcoronakap",
     "meta_subject.view_historicalfollowup",
     "meta_subject.view_historicalfollowupvitals",
     "meta_subject.view_historicalhealtheconomics",
@@ -79,5 +81,6 @@ auditor += [
     "meta_subject.view_subjectrequisition",
     "meta_subject.view_subjectvisit",
     "meta_subject.view_urinedipsticktest",
+    "sarscov2.view_coronakapinformationsources",
 ]
 auditor.sort()

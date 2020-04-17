@@ -124,6 +124,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_list_data.apps.AppConfig",
         "edc_review_dashboard.apps.AppConfig",
         "edc_sites.apps.AppConfig",
+        "sarscov2.apps.AppConfig",
         "meta_auth.apps.AppConfig",
         "meta_consent.apps.AppConfig",
         "meta_lists.apps.AppConfig",

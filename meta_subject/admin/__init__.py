@@ -5,6 +5,7 @@ from .blood_results import (
     BloodResultsLftAdmin,
 )
 from .complications_admin import ComplicationsAdmin
+from .corona_kap_admin import CoronaKapAdmin
 from .followup_admin import FollowupAdmin
 from .followup_vitals_admin import FollowupVitalsAdmin
 from .health_economics_admin import HealthEconomicsAdmin

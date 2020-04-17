@@ -22,9 +22,9 @@ class AppConfig(DjangoAppConfig):
     def ready(self):
         post_migrate.connect(post_migrate_update_edc_auth, sender=self)
 
-        from edc_randomization.system_checks import randomization_list_check
-
-        register(randomization_list_check)(["meta_edc"])
+        # from edc_randomization.system_checks import randomization_list_check
+        #
+        # register(randomization_list_check)(["meta_edc"])
         # register(meta_check)
 
 
