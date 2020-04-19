@@ -1,7 +1,7 @@
 from django.contrib import admin
 from edc_form_label import FormLabelModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin
-from sarscov2.admin import CoronaKapModelAdminMixin, fieldsets
+from sarscov2.admin import CoronaKapModelAdminMixin
 
 from ..admin_site import meta_subject_admin
 from ..forms import CoronaKapForm
