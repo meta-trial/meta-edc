@@ -10,6 +10,6 @@ class CoronaKap(
     CoronaKapModelMixin,
     edc_models.BaseUuidModel,
 ):
-    class Meta:
-        verbose_name = "Corona Knowledge, Attitudes, and Practices"
-        verbose_name_plural = "Corona Knowledge, Attitudes, and Practices"
+    class Meta(CrfModelMixin.Meta):
+        verbose_name = "Coronavirus Knowledge, Attitudes, and Practices"
+        verbose_name_plural = "Coronavirus Knowledge, Attitudes, and Practices"

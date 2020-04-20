@@ -7,7 +7,7 @@ from .blood_results import (
     BloodResultsGlu,
 )
 from .complications import Complications
-from .corona_kap import CoronaKap
+from .coronavirus_kap import CoronaKap
 from .followup import Followup
 from .followup_vitals import FollowupVitals
 from .health_economics import HealthEconomics
