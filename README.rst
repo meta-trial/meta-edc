@@ -14,6 +14,7 @@ TASO, MRC/UVRI/LSHTM, NIMR – TZ and Liverpool School of Tropical Medicine (ISR
 http://www.isrctn.com/ISRCTN76157257
 
 
+See also https://github.com/clinicedc/edc
 
 Installation
 ------------
