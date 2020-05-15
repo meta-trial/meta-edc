@@ -7,6 +7,7 @@ from edc_auth import (
     get_default_codenames_by_group,
 )
 
+from sarscov2.auth import sarscov2_codenames, SARSCOV2
 from .codenames import (
     auditor,
     clinic,
@@ -23,4 +24,5 @@ def get_codenames_by_group():
     codenames_by_group[SCREENING] = screening
     codenames_by_group[UNBLINDING_REQUESTORS] = unblinding_requestors
     codenames_by_group[UNBLINDING_REVIEWERS] = unblinding_reviewers
+    codenames_by_group[SARSCOV2] = sarscov2_codenames
     return codenames_by_group

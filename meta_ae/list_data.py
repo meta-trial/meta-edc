@@ -1,12 +1,14 @@
 from edc_constants.constants import OTHER, NOT_APPLICABLE, DEAD, UNKNOWN
 from edc_list_data import PreloadData
 
-
 list_data = {
     "edc_adverse_event.aeclassification": [
-        ("anaemia", "Anaemia"),
-        ("diarrhoea", "Diarrhoea"),
-        ("renal_impairment", "Renal impairment"),
+        ("lactic_acidosis", "Lactic acidosis"),
+        ("hepatomegaly_steatosis", "Hepatomegaly with steatosis"),
+        ("gastrointestinal_metformin", "Gastrointestinal effects of metformin"),
+        # ("anaemia", "Anaemia"),
+        # ("diarrhoea", "Diarrhoea"),
+        # ("renal_impairment", "Renal impairment"),
         (OTHER, "Other"),
     ],
     "edc_adverse_event.saereason": [

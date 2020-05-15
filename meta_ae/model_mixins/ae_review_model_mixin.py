@@ -84,7 +84,7 @@ class AeReviewModelMixin(models.Model):
         blank=True,
         null=True,
         validators=[datetime_not_future],
-        verbose_name="Date and time regulatory authorities notified (SUSARs)",
+        verbose_name="Date and time regulatory authorities notified",
     )
 
     class Meta:

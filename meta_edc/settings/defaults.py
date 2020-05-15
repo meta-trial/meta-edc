@@ -2,6 +2,7 @@ import environ
 import os
 import sys
 
+from edc_constants.constants import COMPLETE
 from edc_utils import get_datetime_from_env
 from pathlib import Path
 
@@ -74,6 +75,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+    "import_export",
     "multisite",
     "django_crypto_fields.apps.AppConfig",
     "django_revision.apps.AppConfig",
@@ -88,6 +90,7 @@ INSTALLED_APPS = [
     "edc_adverse_event.apps.AppConfig",
     "edc_auth.apps.AppConfig",
     "edc_consent.apps.AppConfig",
+    "edc_crf.apps.AppConfig",
     "edc_lab.apps.AppConfig",
     "edc_visit_schedule.apps.AppConfig",
     "edc_visit_tracking.apps.AppConfig",
@@ -349,6 +352,9 @@ SIMPLE_HISTORY_REVERT_ENABLED = False
 # django-multisite
 CACHE_MULTISITE_KEY_PREFIX = APP_NAME
 
+# edc_crf
+CRF_STATUS_DEFAULT = COMPLETE
+
 EMAIL_ENABLED = env("DJANGO_EMAIL_ENABLED")
 EMAIL_CONTACTS = env.dict("DJANGO_EMAIL_CONTACTS")
 if EMAIL_ENABLED:
@@ -410,6 +416,7 @@ EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
 )
 EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
 
+SARSCOV2_REDIRECT_URL_NAME = "screening_listboard_url"
 
 # static
 if env("AWS_ENABLED"):

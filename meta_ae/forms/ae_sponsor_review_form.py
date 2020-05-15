@@ -1,10 +1,10 @@
 from django import forms
 
-from ..models import AeLocalReview
+from ..models import AeSponsorReview
 from .modelform_mixins import AeReviewModelFormMixin
 
 
-class AeLocalReviewForm(AeReviewModelFormMixin, forms.ModelForm):
+class AeSponsorReviewForm(AeReviewModelFormMixin, forms.ModelForm):
     class Meta:
-        model = AeLocalReview
+        model = AeSponsorReview
         fields = "__all__"
