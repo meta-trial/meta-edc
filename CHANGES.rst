@@ -1,7 +1,7 @@
 Changes
 =======
 
-0.1.55
+0.1.56
 ------
 - add KAP links from subject listboard
 - use ``?next=`` querystring attr on KAP link
