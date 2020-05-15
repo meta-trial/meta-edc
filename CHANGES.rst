@@ -1,6 +1,10 @@
 Changes
 =======
 
+0.1.53
+------
+- add hba1c, glu, fbc, lipids, etc to 6m
+
 0.1.52
 ------
 - upgrade to edc==0.1.27
