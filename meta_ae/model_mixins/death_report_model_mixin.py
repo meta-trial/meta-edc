@@ -1,13 +1,13 @@
 from django.db import models
+from django_crypto_fields.fields import EncryptedTextField
+from edc_adverse_event.models import CauseOfDeath
 from edc_constants.choices import YES_NO
-from django_crypto_fields.fields.encrypted_text_field import EncryptedTextField
 from edc_model_fields.fields import OtherCharField
-from edc_adverse_event.models.cause_of_death import CauseOfDeath
 
 from ..choices import DEATH_LOCATIONS, INFORMANT_RELATIONSHIP
 
 
-class MetaDeathReportModelMixin(models.Model):
+class DeathReportModelMixin(models.Model):
 
     death_location_type = models.CharField(
         verbose_name="Where did the participant die?",
@@ -44,7 +44,7 @@ class MetaDeathReportModelMixin(models.Model):
         CauseOfDeath,
         on_delete=models.PROTECT,
         related_name="secondary_cause_of_death",
-        verbose_name=("Secondary cause of death"),
+        verbose_name="Secondary cause of death",
         help_text=(
             "Secondary cause of death in the opinion of the "
             "local study doctor and local PI"

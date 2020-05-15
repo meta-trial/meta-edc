@@ -1,6 +1,13 @@
 Changes
 =======
 
+0.1.52
+------
+- upgrade to edc==0.1.27
+- remove KAP model, add back with sarscov2 reuseable app
+- add links from screening listboard
+- meta_ae app is in progress
+
 0.1.51
 ------
 - add Corona virus KAP form to DAY1 and as a PRN for those past DAY1

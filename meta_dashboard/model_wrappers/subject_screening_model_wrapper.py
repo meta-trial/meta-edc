@@ -3,6 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from edc_consent import ConsentModelWrapperMixin
 from edc_model_wrapper import ModelWrapper
 from edc_subject_model_wrappers import SubjectConsentModelWrapper as BaseModelWrapper
+from sarscov2.models import CoronavirusKap
 
 
 class SubjectConsentModelWrapper(BaseModelWrapper):
@@ -58,6 +59,15 @@ class SubjectScreeningModelWrapper(ConsentModelWrapperMixin, ModelWrapper):
     @property
     def href_p3(self):
         return self.href.replace("subjectscreening", "screeningpartthree")
+
+    @property
+    def coronavirus_kap(self):
+        try:
+            return CoronavirusKap.objects.get(
+                screening_identifier=self.screening_identifier
+            )
+        except ObjectDoesNotExist:
+            return None
 
 
 class ScreeningPartOneModelWrapper(SubjectScreeningModelWrapper):

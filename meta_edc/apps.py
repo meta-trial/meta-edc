@@ -1,6 +1,5 @@
 from django.apps import AppConfig as DjangoAppConfig
 from django.apps import apps as django_apps
-from django.core.checks import register
 from django.core.management.color import color_style
 from django.db.models.signals import post_migrate
 from edc_auth.group_permissions_updater import GroupPermissionsUpdater

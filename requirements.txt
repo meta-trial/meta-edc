@@ -1,5 +1,6 @@
-edc==0.1.19
+edc==0.1.27
 git+https://github.com/erikvw/django-simple-history@admin_revert_permissions2
 git+https://github.com/erikvw/django-multisite@master
+git+https://github.com/erikvw/django-import-export@get_export_admin_action
 beautifulsoup4
-sarscov2
+sarscov2==0.1.8
