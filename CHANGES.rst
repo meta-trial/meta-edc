@@ -1,6 +1,10 @@
 Changes
 =======
 
+0.1.56
+------
+- sarscov2==0.1.9
+
 0.1.55
 ------
 - add KAP links from subject listboard
