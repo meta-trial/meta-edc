@@ -20,11 +20,11 @@
     <!-- begin results header -->
     <th>#</th>
     <th></th>
+    <th>Corona</th>
     <th>Screening ID</th>
     <th>Initials</th>
     <th>Age/Gender</th>
     <th>Study ID</th>
-    <th>CoronaKAP</th>
     <th>User</th>
     <th>Modified</th>
     <!-- end results header -->
@@ -50,21 +50,21 @@
 
 {% block listboard_table_columns %}
 
-    <td>{{ result.human_screening_identifier }} </td>
-    <td nowrap>{{ result.initials }}</td>
-    <td nowrap>{{ result.age_in_years }} yrs {{ result.gender }}</td>
-    <td nowrap>{% if result.consent %}{{ result.consent.subject_identifier }}{% else %} -- {% endif %}</td>
     <td nowrap>
         {% if perms.sarscov2 %}
             {% if result.coronavirus_kap %}
             <a class="btn btn-sm btn-success" title="Edit Coronavirus KAP"
-               href="{% url 'sarscov2_admin:sarscov2_coronaviruskap_change' result.coronavirus_kap.id %}">Edit</a>
+               href="{% url 'sarscov2_admin:sarscov2_coronaviruskap_change' result.coronavirus_kap.id %}?next=meta_dashboard:screening_listboard_url">Edit</a>
             {% else %}
             <a class="btn btn-sm btn-warning" title="Add Coronavirus KAP"
-               href="{% url 'sarscov2_admin:sarscov2_coronaviruskap_add' %}?screening_identifier={{result.screening_identifier}}">Add</a>
+               href="{% url 'sarscov2_admin:sarscov2_coronaviruskap_add' %}?screening_identifier={{result.screening_identifier}}?next=meta_dashboard:screening_listboard_url">Add</a>
             {% endif %}
         {% endif %}
     </td>
+    <td>{{ result.human_screening_identifier }} </td>
+    <td nowrap>{{ result.initials }}</td>
+    <td nowrap>{{ result.age_in_years }} yrs {{ result.gender }}</td>
+    <td nowrap>{% if result.consent %}{{ result.consent.subject_identifier }}{% else %} -- {% endif %}</td>
     <td nowrap>{{ result.user_created }}</td>
     <td nowrap>{{ result.object.modified|date:"SHORT_DATETIME_FORMAT" }}</td>
 
