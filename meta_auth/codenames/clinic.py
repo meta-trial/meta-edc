@@ -1,4 +1,5 @@
 from edc_auth.codenames import clinic
+from sarscov2.auth import sarscov2_codenames
 
 clinic += [
     "meta_lists.view_arvregimens",
@@ -120,6 +121,6 @@ clinic += [
     "meta_subject.view_subjectrequisition",
     "meta_subject.view_subjectvisit",
     "meta_subject.view_urinedipsticktest",
-    "sarscov2.view_coronakapinformationsources",
 ]
+clinic.extend(sarscov2_codenames)
 clinic.sort()

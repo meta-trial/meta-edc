@@ -3,6 +3,10 @@ Changes
 
 0.1.56
 ------
+- add sarscov2 permissions to CLINIC
+
+0.1.56
+------
 - sarscov2==0.1.9
 
 0.1.55
