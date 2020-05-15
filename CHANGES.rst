@@ -1,6 +1,11 @@
 Changes
 =======
 
+0.1.55
+------
+- add KAP links from subject listboard
+- use ``?next=`` querystring attr on KAP link
+
 0.1.54
 ------
 - add hba1c, glu, fbc, lipids, etc to 6m
