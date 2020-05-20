@@ -2,6 +2,7 @@ from dateutil.relativedelta import relativedelta
 from django.contrib.sites.models import Site
 from edc_appointment.constants import IN_PROGRESS_APPT
 from edc_appointment.models import Appointment
+from edc_auth.fix_export_permissions import fix_export_permissions
 from edc_auth.group_permissions_updater import GroupPermissionsUpdater
 from edc_constants.constants import YES
 from edc_facility.import_holidays import import_holidays
@@ -59,6 +60,10 @@ class MetaTestCaseMixin(SiteTestCaseMixin):
         super().tearDownClass()
         RandomizationList.objects.all().delete()
         Holiday.objects.all().delete()
+
+    # def setUp(self):
+    #     super().setUp()
+    #     fix_export_permissions(verbose=False)
 
     def get_subject_screening(self, report_datetime=None, eligibility_datetime=None):
         if report_datetime:

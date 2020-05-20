@@ -47,3 +47,9 @@ class NonAdherenceReasons(ListModelMixin):
     class Meta(ListModelMixin.Meta):
         verbose_name = "Non-Adherence Reasons"
         verbose_name_plural = "Non-Adherence Reasons"
+
+
+class MissedVisitReasons(ListModelMixin):
+    class Meta(ListModelMixin.Meta):
+        verbose_name = "Missed Visit Reasons"
+        verbose_name_plural = "Missed Visit Reasons"

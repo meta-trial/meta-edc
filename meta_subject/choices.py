@@ -36,10 +36,11 @@ CHILDCARE_CHOICES = (
 
 FASTING_CHOICES = ((FASTING, "Fasting"), (NON_FASTING, "Non-fasting"))
 
-
 FOLLOWUP_REASONS = (
     (APPT, "Study appointment"),
     (APPT_OTHER, "Other routine appointment"),
+    (UNSCHEDULED, "Unschedule visit"),
+    (OTHER, "Other reason, specify below ..."),
 )
 
 GRADE34_CHOICES = (

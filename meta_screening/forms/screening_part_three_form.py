@@ -8,6 +8,29 @@ from ..models import ScreeningPartThree
 from .field_lists import part_three_fields
 
 
+def validate_glucose_as_millimoles_per_liter(
+    cleaned_data=None, min_val=None, max_val=None
+):
+    min_val = min_val or 1.0
+    max_val = max_val or 19.0
+    for fld in ["fasting_glucose", "ogtt_two_hr"]:
+        value = cleaned_data.get(fld)
+        units = cleaned_data.get(f"{fld}_units")
+        if value and units:
+            converted_value = convert_units(
+                value, units_from=units, units_to=MILLIMOLES_PER_LITER
+            )
+            if not (min_val <= converted_value <= max_val):
+                raise forms.ValidationError(
+                    {
+                        fld: (
+                            f"This value is out-of-range. "
+                            f"Got {converted_value} mmol/L"
+                        )
+                    }
+                )
+
+
 class ScreeningPartThreeForm(
     AlreadyConsentedFormMixin, FormValidatorMixin, forms.ModelForm
 ):
@@ -23,24 +46,13 @@ class ScreeningPartThreeForm(
             if float(cleaned_data.get("creatinine")) > 9999.0:
                 raise forms.ValidationError({"creatinine": "Value is absurd."})
 
-        for fld in ["fasting_glucose", "ogtt_two_hr"]:
-            value = cleaned_data.get(fld)
-            units = cleaned_data.get(f"{fld}_units")
-            if value and units:
-                converted_value = convert_units(
-                    value, units_from=units, units_to=MILLIMOLES_PER_LITER
-                )
-                if not (1.0 <= converted_value <= 19.0):
-                    raise forms.ValidationError(
-                        {
-                            fld: (
-                                f"This value is out-of-range. "
-                                f"Got {converted_value} mmol/L"
-                            )
-                        }
-                    )
+        self.validate_glucose_as_millimoles_per_liter(cleaned_data)
 
         return cleaned_data
+
+    @staticmethod
+    def validate_glucose_as_millimoles_per_liter(cleaned_data=None):
+        return validate_glucose_as_millimoles_per_liter(cleaned_data)
 
     class Meta:
         model = ScreeningPartThree

@@ -19,6 +19,7 @@ base_dir = dirname(abspath(__file__))
 
 DEFAULT_SETTINGS = DefaultTestSettings(
     calling_file=__file__,
+    EDC_AUTH_CODENAMES_WARN_ONLY=True,
     BASE_DIR=base_dir,
     APP_NAME=app_name,
     SITE_ID=SiteID(default=10),
@@ -90,6 +91,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_appointment.apps.AppConfig",
         "edc_auth.apps.AppConfig",
         "edc_model_wrapper.apps.AppConfig",
+        "edc_crf.apps.AppConfig",
         "edc_data_manager.apps.AppConfig",
         "edc_consent.apps.AppConfig",
         "edc_device.apps.AppConfig",

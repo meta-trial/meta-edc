@@ -26,7 +26,7 @@
                href="{% url 'sarscov2_admin:sarscov2_coronaviruskap_change' result.coronavirus_kap.id %}?next=meta_dashboard:subject_listboard_url">Edit</a>
             {% else %}
             <a class="btn btn-sm btn-warning" title="Add Coronavirus KAP"
-               href="{% url 'sarscov2_admin:sarscov2_coronaviruskap_add' %}?screening_identifier={{result.screening_identifier}}?next=meta_dashboard:subject_listboard_url">Add</a>
+               href="{% url 'sarscov2_admin:sarscov2_coronaviruskap_add' %}?screening_identifier={{result.screening_identifier}}&next=meta_dashboard:subject_listboard_url">Add</a>
             {% endif %}
         {% endif %}
     </td>

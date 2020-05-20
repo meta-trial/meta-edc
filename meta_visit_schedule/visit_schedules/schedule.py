@@ -4,6 +4,7 @@ from edc_visit_schedule import Schedule, Visit as BaseVisit
 from ..constants import DAY1, MONTH3, MONTH6, MONTH9, MONTH12, WEEK2, MONTH1
 from .crfs import (
     crfs_d1,
+    crfs_missed,
     crfs_w2,
     crfs_1m,
     crfs_3m,
@@ -45,7 +46,8 @@ class Visit(BaseVisit):
             requisitions_unscheduled=requisitions_unscheduled or default_requisitions,
             crfs_prn=crfs_prn or default_crfs_prn,
             requisitions_prn=requisitions_prn or default_requisitions_prn,
-            **kwargs
+            crfs_missed=crfs_missed,
+            **kwargs,
         )
 
 

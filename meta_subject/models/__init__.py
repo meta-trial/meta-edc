@@ -9,9 +9,11 @@ from .blood_results import (
 from .complications import Complications
 from .followup import Followup
 from .followup_vitals import FollowupVitals
+from .glucose import Glucose
 from .health_economics import HealthEconomics
 from .malaria_test import MalariaTest
 from .medication_adherence import MedicationAdherence
+from .missed_visit import MissedVisit
 from .patient_history import PatientHistory
 from .physical_exam import PhysicalExam
 from .subject_requisition import SubjectRequisition

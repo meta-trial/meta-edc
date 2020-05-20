@@ -1,6 +1,16 @@
 Changes
 =======
 
+0.1.57
+------
+- add Glucose (IFG, OGTT) CRF to 6m, 12m
+- add missed visit CRF
+- upgrade to edc==0.1.29
+
+0.1.56
+------
+- add sarscov2 permissions to CLINIC
+
 0.1.56
 ------
 - sarscov2==0.1.9

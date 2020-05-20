@@ -28,5 +28,13 @@ all_sites = {
             country_code="tz",
             domain=f"temeke.tz.{fqdn}",
         ),
+        SingleSite(
+            40,
+            "mwananyamala",
+            title="Mwananyamala Hospital",
+            country="tanzania",
+            country_code="tz",
+            domain=f"mwananyamala.tz.{fqdn}",
+        ),
     ),
 }
