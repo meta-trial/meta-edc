@@ -128,7 +128,16 @@ list_data = {
             "Other condition that justifies the discontinuation of "
             "treatment in the clinician’s opinion (specify below)",
         ),
-        (OTHER, ("Other reason (specify below)"),),
+        (OTHER, "Other reason (specify below)",),
+    ],
+    "meta_lists.missedvisitreasons": [
+        ("forgot", "Forgot / Can’t remember being told about appointment"),
+        ("familt_emergency", "Family emergency (e.g. funeral) and was away"),
+        ("travelling", "Away travelling/visiting"),
+        ("working_schooling", "Away working/schooling"),
+        ("too_sick", "Too sick or weak to come to the centre"),
+        ("lack_of_transport", "Transportation difficulty"),
+        (OTHER, "Other reason (specify below)",),
     ],
 }
 

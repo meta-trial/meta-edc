@@ -55,6 +55,7 @@ class TestVisitSchedule(TestCase):
                 prn, actual, msg=f"see PRN requisitions for visit {visit_code}"
             )
 
+    @tag("1")
     def test_crfs(self):
         prn = [
             "meta_subject.bloodresultsfbc",
@@ -63,7 +64,7 @@ class TestVisitSchedule(TestCase):
             "meta_subject.bloodresultslft",
             "meta_subject.bloodresultslipid",
             "meta_subject.bloodresultsrft",
-            "meta_subject.coronakap",
+            "meta_subject.healtheconomics",
             "meta_subject.malariatest",
             "meta_subject.urinedipsticktest",
         ]
@@ -75,7 +76,6 @@ class TestVisitSchedule(TestCase):
                 "meta_subject.bloodresultslft",
                 "meta_subject.bloodresultslipid",
                 "meta_subject.bloodresultsrft",
-                "meta_subject.coronakap",
                 "meta_subject.malariatest",
                 "meta_subject.urinedipsticktest",
             ],
@@ -98,12 +98,14 @@ class TestVisitSchedule(TestCase):
                 "meta_subject.medicationadherence",
             ],
             "1060": [
-                "meta_subject.bloodresultshba1c",
-                "meta_subject.bloodresultslft",
-                "meta_subject.bloodresultsrft",
                 "meta_subject.followupvitals",
                 "meta_subject.followup",
                 "meta_subject.medicationadherence",
+                "meta_subject.glucose",
+                "meta_subject.bloodresultshba1c",
+                "meta_subject.bloodresultsfbc",
+                "meta_subject.bloodresultslft",
+                "meta_subject.bloodresultsrft",
             ],
             "1090": [
                 "meta_subject.bloodresultslft",
@@ -113,15 +115,15 @@ class TestVisitSchedule(TestCase):
                 "meta_subject.medicationadherence",
             ],
             "1120": [
-                "meta_subject.bloodresultsfbc",
-                "meta_subject.bloodresultsglu",
-                "meta_subject.bloodresultshba1c",
-                "meta_subject.bloodresultslft",
-                "meta_subject.bloodresultsrft",
                 "meta_subject.followupvitals",
                 "meta_subject.followup",
                 "meta_subject.medicationadherence",
-                "meta_subject.urinedipsticktest",
+                "meta_subject.glucose",
+                "meta_subject.bloodresultshba1c",
+                "meta_subject.bloodresultsfbc",
+                "meta_subject.bloodresultslipid",
+                "meta_subject.bloodresultslft",
+                "meta_subject.bloodresultsrft",
             ],
         }
         for visit_code, visit in schedule.visits.items():

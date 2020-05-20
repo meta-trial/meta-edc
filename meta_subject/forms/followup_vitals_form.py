@@ -5,13 +5,13 @@ from edc_form_validators import FormValidator
 from ..models import FollowupVitals
 
 
-class FollowupFormValidator(FormValidator):
+class FollowupVitalsFormValidator(FormValidator):
     pass
 
 
 class FollowupVitalsForm(CrfModelFormMixin, forms.ModelForm):
 
-    # form_validator_cls = FollowupFormValidator
+    form_validator_cls = FollowupVitalsFormValidator
 
     class Meta:
         model = FollowupVitals

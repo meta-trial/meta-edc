@@ -5,6 +5,7 @@ from edc_crf.model_mixins import CrfModelMixin
 from edc_model.models import BaseUuidModel
 from edc_model_fields.fields import OtherCharField
 from meta_lists.models import Symptoms, ArvRegimens
+from meta_subject.constants import APPT
 
 from ..choices import FOLLOWUP_REASONS, GRADE34_CHOICES
 
@@ -12,11 +13,16 @@ from ..choices import FOLLOWUP_REASONS, GRADE34_CHOICES
 class Followup(CrfModelMixin, BaseUuidModel):
 
     # 3
-    followup_reason = models.CharField(
-        verbose_name="Why have you come to the clinic today",
-        max_length=25,
-        choices=FOLLOWUP_REASONS,
-    )
+    # followup_reason = models.CharField(
+    #     verbose_name="Why has the patient come to the clinic today",
+    #     max_length=25,
+    #     choices=FOLLOWUP_REASONS,
+    #     default=APPT,
+    # )
+    #
+    # followup_reason_other = models.TextField(
+    #     verbose_name="If 'other', please specify", null=True, blank=True,
+    # )
 
     # 4a
     symptoms = models.ManyToManyField(

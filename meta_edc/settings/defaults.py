@@ -204,7 +204,7 @@ if env.str("DJANGO_CACHE") == "redis":
     CACHES = {
         "default": {
             "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": f"redis://127.0.0.1:6379/1",
+            "LOCATION": "redis://127.0.0.1:6379/1",
             # "LOCATION": "unix://[:{DJANGO_REDIS_PASSWORD}]@/path/to/socket.sock?db=0",
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
