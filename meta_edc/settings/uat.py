@@ -9,6 +9,7 @@ EDC_SITES_UAT_DOMAIN = True
 ALLOWED_HOSTS = [
     "amana.uat.tz.meta.clinicedc.org",
     "hindu-mandal.uat.tz.meta.clinicedc.org",
+    "mwananyamala.uat.tz.meta.clinicedc.org",
     "temeke.uat.tz.meta.clinicedc.org",
     "localhost",
 ]
