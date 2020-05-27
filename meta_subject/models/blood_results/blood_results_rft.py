@@ -4,7 +4,11 @@ from edc_constants.choices import YES_NO
 from edc_crf.model_mixins import CrfNoManagerModelMixin
 from edc_model.models import BaseUuidModel
 from edc_model.validators import datetime_not_future
-from edc_reportable import MILLIGRAMS_PER_DECILITER, MILLIMOLES_PER_LITER
+from edc_reportable import (
+    MILLIGRAMS_PER_DECILITER,
+    MILLIMOLES_PER_LITER,
+    MILLIMOLES_PER_LITER_DISPLAY,
+)
 from edc_reportable.choices import REPORTABLE
 from edc_reportable.model_mixin import BloodResultsModelMixin
 from meta_screening.models import CreatinineModelFieldsMixin
@@ -92,7 +96,7 @@ class BloodResultsRft(
         verbose_name="units",
         max_length=15,
         choices=(
-            (MILLIMOLES_PER_LITER, MILLIMOLES_PER_LITER),
+            (MILLIMOLES_PER_LITER, MILLIMOLES_PER_LITER_DISPLAY),
             (MILLIGRAMS_PER_DECILITER, MILLIGRAMS_PER_DECILITER),
         ),
         null=True,

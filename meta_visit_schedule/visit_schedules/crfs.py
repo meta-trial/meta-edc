@@ -66,7 +66,6 @@ crfs_6m = FormsCollection(
     Crf(show_order=20, model="meta_subject.medicationadherence"),
     Crf(show_order=25, model="meta_subject.glucose"),
     Crf(show_order=40, model="meta_subject.bloodresultshba1c"),
-    Crf(show_order=50, model="meta_subject.bloodresultsfbc"),
     Crf(show_order=70, model="meta_subject.bloodresultslft"),
     Crf(show_order=80, model="meta_subject.bloodresultsrft"),
     name="6m",
@@ -91,5 +90,6 @@ crfs_12m = FormsCollection(
     Crf(show_order=55, model="meta_subject.bloodresultslipid"),
     Crf(show_order=60, model="meta_subject.bloodresultslft"),
     Crf(show_order=70, model="meta_subject.bloodresultsrft"),
+    Crf(show_order=85, model="meta_subject.malariatest"),
     name="12m",
 )

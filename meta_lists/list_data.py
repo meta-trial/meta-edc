@@ -1,4 +1,4 @@
-from edc_constants.constants import OTHER, UNKNOWN, DEAD, NONE
+from edc_constants.constants import LOST_TO_FOLLOWUP, OTHER, UNKNOWN, DEAD, NONE
 from edc_list_data import PreloadData
 from meta_prn.constants import (
     WITHDRAWAL,
@@ -118,7 +118,7 @@ list_data = {
             "intercurrent_illness",
             "Intercurrent illness which prevents further treatment",
         ),
-        ("lost_to_followup", "Patient lost to follow-up"),
+        (LOST_TO_FOLLOWUP, "Patient lost to follow-up"),
         (DEAD, "Patient reported/known to have died"),
         (WITHDRAWAL, "Patient withdrew consent to participate further"),
         (LATE_EXCLUSION, "Patient fulfilled late exclusion criteria*"),

@@ -7,7 +7,11 @@ from edc_lab.choices import RESULT_QUANTIFIER
 from edc_lab.constants import EQ
 from edc_model.models import BaseUuidModel
 from edc_model.validators import datetime_not_future
-from edc_reportable import MILLIGRAMS_PER_DECILITER, MILLIMOLES_PER_LITER
+from edc_reportable import (
+    MILLIGRAMS_PER_DECILITER,
+    MILLIMOLES_PER_LITER,
+    MILLIMOLES_PER_LITER_DISPLAY,
+)
 from edc_reportable.choices import REPORTABLE
 from edc_reportable.model_mixin import BloodResultsModelMixin
 
@@ -74,7 +78,7 @@ class BloodResultsGlu(CrfNoManagerModelMixin, BloodResultsModelMixin, BaseUuidMo
         max_length=15,
         choices=(
             (MILLIGRAMS_PER_DECILITER, MILLIGRAMS_PER_DECILITER),
-            (MILLIMOLES_PER_LITER, MILLIMOLES_PER_LITER),
+            (MILLIMOLES_PER_LITER, MILLIMOLES_PER_LITER_DISPLAY),
         ),
         null=True,
         blank=True,

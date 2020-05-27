@@ -37,6 +37,7 @@ class SubjectVisit(
         verbose_name="What is the reason for this visit report?",
         max_length=25,
         choices=VISIT_REASON,
+        help_text="If 'missed', fill in the separate missed visit report",
     )
 
     # override default
