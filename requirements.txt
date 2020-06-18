@@ -1,4 +1,4 @@
-edc==0.1.33
+edc==0.1.34
 git+https://github.com/erikvw/django-simple-history@admin_revert_permissions2
 git+https://github.com/erikvw/django-multisite@master
 git+https://github.com/erikvw/django-import-export@get_export_admin_action
