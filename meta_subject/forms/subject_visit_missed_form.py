@@ -3,10 +3,10 @@ from edc_constants.constants import NO, NOT_APPLICABLE, OTHER, YES
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import FormValidator
 
-from ..models import MissedVisit
+from ..models import SubjectVisitMissed
 
 
-class MissedVisitFormValidator(FormValidator):
+class SubjectVisitMissedFormValidator(FormValidator):
     def clean(self):
         self.required_if(
             YES, field="contact_attempted", field_required="contact_attempts_count"
@@ -51,10 +51,10 @@ class MissedVisitFormValidator(FormValidator):
         )
 
 
-class MissedVisitForm(CrfModelFormMixin, forms.ModelForm):
+class SubjectVisitMissedForm(CrfModelFormMixin, forms.ModelForm):
 
-    form_validator_cls = MissedVisitFormValidator
+    form_validator_cls = SubjectVisitMissedFormValidator
 
     class Meta:
-        model = MissedVisit
+        model = SubjectVisitMissed
         fields = "__all__"

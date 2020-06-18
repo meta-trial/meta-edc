@@ -1,7 +1,7 @@
 from django.db import models
 from edc_constants.choices import YES_NO
 from edc_crf.model_mixins import CrfModelMixin
-from edc_model.models import BaseUuidModel
+from edc_model import models as edc_models
 
 from meta_screening.models import (
     FastingModelMixin,
@@ -15,7 +15,7 @@ class Glucose(
     FastingModelMixin,
     FastingGlucoseModelMixin,
     OgttModelMixin,
-    BaseUuidModel,
+    edc_models.BaseUuidModel,
 ):
 
     ifg_performed = models.CharField(
@@ -34,6 +34,6 @@ class Glucose(
         verbose_name="If NO, provide reason", max_length=150, null=True, blank=True
     )
 
-    class Meta(CrfModelMixin.Meta):
+    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         verbose_name = "Glucose (IFG, OGTT)"
         verbose_name_plural = "Glucose (IFG, OGTT)"

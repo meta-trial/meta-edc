@@ -1,11 +1,13 @@
 from edc_lab.model_mixins import RequisitionModelMixin
-from edc_model.models import BaseUuidModel
+from edc_model import models as edc_models
 from edc_reference.model_mixins import ReferenceModelMixin
 
 # for reference by old migrations
 from edc_lab.managers import RequisitionManager as Manager  # noqa
 
 
-class SubjectRequisition(RequisitionModelMixin, ReferenceModelMixin, BaseUuidModel):
-    class Meta(RequisitionModelMixin.Meta):
+class SubjectRequisition(
+    RequisitionModelMixin, ReferenceModelMixin, edc_models.BaseUuidModel
+):
+    class Meta(RequisitionModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         pass

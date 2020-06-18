@@ -79,7 +79,7 @@ class UnblindingReviewAction(ActionWithNotification):
     color_style = "info"
     create_by_user = False
     instructions = mark_safe(
-        f"This report is to be completed by the UNBLINDING REVIEWERS only."
+        "This report is to be completed by the UNBLINDING REVIEWERS only."
     )
 
     def get_next_actions(self):

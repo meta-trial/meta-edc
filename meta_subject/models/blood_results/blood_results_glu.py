@@ -5,7 +5,7 @@ from edc_constants.constants import FASTING
 from edc_crf.model_mixins import CrfNoManagerModelMixin
 from edc_lab.choices import RESULT_QUANTIFIER
 from edc_lab.constants import EQ
-from edc_model.models import BaseUuidModel
+from edc_model import models as edc_models
 from edc_model.validators import datetime_not_future
 from edc_reportable import (
     MILLIGRAMS_PER_DECILITER,
@@ -20,7 +20,9 @@ from ...constants import BLOOD_RESULTS_GLU_ACTION
 from ..subject_requisition import SubjectRequisition
 
 
-class BloodResultsGlu(CrfNoManagerModelMixin, BloodResultsModelMixin, BaseUuidModel):
+class BloodResultsGlu(
+    CrfNoManagerModelMixin, BloodResultsModelMixin, edc_models.BaseUuidModel
+):
 
     action_name = BLOOD_RESULTS_GLU_ACTION
 
@@ -102,6 +104,6 @@ class BloodResultsGlu(CrfNoManagerModelMixin, BloodResultsModelMixin, BaseUuidMo
         opts.update(fasting=fasting)
         return opts
 
-    class Meta(CrfNoManagerModelMixin.Meta):
+    class Meta(CrfNoManagerModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         verbose_name = "Blood Result: Glucose"
         verbose_name_plural = "Blood Results: Glucose"

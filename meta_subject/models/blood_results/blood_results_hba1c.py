@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models.deletion import PROTECT
 from edc_constants.choices import YES_NO
 from edc_crf.model_mixins import CrfNoManagerModelMixin
-from edc_model.models import BaseUuidModel
+from edc_model import models as edc_models
 from edc_model.validators import datetime_not_future
 from edc_reportable import PERCENT
 from edc_reportable.choices import REPORTABLE
@@ -14,7 +14,9 @@ from ...constants import BLOOD_RESULTS_HBA1C_ACTION
 from ..subject_requisition import SubjectRequisition
 
 
-class BloodResultsHba1c(CrfNoManagerModelMixin, BloodResultsModelMixin, BaseUuidModel):
+class BloodResultsHba1c(
+    CrfNoManagerModelMixin, BloodResultsModelMixin, edc_models.BaseUuidModel
+):
 
     action_name = BLOOD_RESULTS_HBA1C_ACTION
 
@@ -76,6 +78,6 @@ class BloodResultsHba1c(CrfNoManagerModelMixin, BloodResultsModelMixin, BaseUuid
         blank=True,
     )
 
-    class Meta(CrfNoManagerModelMixin.Meta):
+    class Meta(CrfNoManagerModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         verbose_name = "Blood Result: HbA1c"
         verbose_name_plural = "Blood Results: HbA1c"

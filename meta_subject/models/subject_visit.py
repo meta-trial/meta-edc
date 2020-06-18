@@ -3,8 +3,7 @@ from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_constants.choices import YES_NO
 from edc_constants.constants import NO, NOT_APPLICABLE
 from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
-from edc_model.models import BaseUuidModel
-from edc_model.models import HistoricalRecords
+from edc_model import models as edc_models
 from edc_reference.model_mixins import ReferenceModelMixin
 from edc_sites.models import CurrentSiteManager as BaseCurrentSiteManager
 from edc_sites.models import SiteModelMixin
@@ -24,7 +23,7 @@ class SubjectVisit(
     CreatesMetadataModelMixin,
     SiteModelMixin,
     RequiresConsentFieldsModelMixin,
-    BaseUuidModel,
+    edc_models.BaseUuidModel,
 ):
 
     """A model completed by the user that captures the covering
@@ -72,7 +71,7 @@ class SubjectVisit(
 
     objects = VisitModelManager()
 
-    history = HistoricalRecords()
+    history = edc_models.HistoricalRecords()
 
-    class Meta(VisitModelMixin.Meta):
+    class Meta(VisitModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         pass

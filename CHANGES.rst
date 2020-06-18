@@ -1,6 +1,17 @@
 Changes
 =======
 
+0.1.60
+------
+- rename model ``Follow`` to ``FollowupExamination``
+- add HIV regimen to ``FollowupExamination`` in HIV section
+- improve validation for ``FollowupExamination``: ensure lists of G3/G4 symptoms do not overlap and are from the original list of symptoms; other minor validation checks.
+- add action to Followup Examination to notify of AE
+- update missed visit; rename to Subject Visit Missed and keep related list model in ``meta_lists``
+- change to LOST_TO_FOLLOWUP in lists, update existing instances
+- fix HbA1c form validation / grading
+- upgrade to edc==0.1.32
+
 0.1.57
 ------
 - add Glucose (IFG, OGTT) CRF to 6m, 12m

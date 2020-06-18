@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models.deletion import PROTECT
 from edc_constants.choices import YES_NO
 from edc_crf.model_mixins import CrfNoManagerModelMixin
-from edc_model.models import BaseUuidModel
+from edc_model import models as edc_models
 from edc_model.validators import datetime_not_future
 from edc_reportable import (
     IU_LITER,
@@ -18,7 +18,9 @@ from ...constants import BLOOD_RESULTS_LFT_ACTION
 from ..subject_requisition import SubjectRequisition
 
 
-class BloodResultsLft(CrfNoManagerModelMixin, BloodResultsModelMixin, BaseUuidModel):
+class BloodResultsLft(
+    CrfNoManagerModelMixin, BloodResultsModelMixin, edc_models.BaseUuidModel
+):
     action_name = BLOOD_RESULTS_LFT_ACTION
 
     tracking_identifier_prefix = "LF"
@@ -213,6 +215,6 @@ class BloodResultsLft(CrfNoManagerModelMixin, BloodResultsModelMixin, BaseUuidMo
         blank=True,
     )
 
-    class Meta(CrfNoManagerModelMixin.Meta):
+    class Meta(CrfNoManagerModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         verbose_name = "Blood Result: LFT"
         verbose_name_plural = "Blood Results: LFT"
