@@ -76,7 +76,7 @@ class GlucoseFormValidatorMixin:
                 raise forms.ValidationError(
                     {
                         "ogtt_two_hr_datetime": (
-                            f"Invalid date. Expected same day as OGTT initial date."
+                            "Invalid date. Expected same day as OGTT initial date."
                         )
                     }
                 )

@@ -44,6 +44,13 @@ class EndOfStudy(
         null=True,
     )
 
+    ltfu_date = models.DateField(
+        verbose_name="Date lost to followup, if applicable",
+        validators=[date_not_future],
+        blank=True,
+        null=True,
+    )
+
     transferred_consent = models.CharField(
         verbose_name=(
             "If transferred, has the patient provided consent to be followed-up?"

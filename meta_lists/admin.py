@@ -6,7 +6,7 @@ from .models import (
     ArvRegimens,
     BaselineSymptoms,
     DiabetesSymptoms,
-    MissedVisitReasons,
+    SubjectVisitMissedReasons,
     NonAdherenceReasons,
     OffstudyReasons,
     OiProphylaxis,
@@ -14,8 +14,8 @@ from .models import (
 )
 
 
-@admin.register(MissedVisitReasons, site=meta_lists_admin)
-class MissedVisitReasonsAdmin(ListModelAdminMixin, admin.ModelAdmin):
+@admin.register(SubjectVisitMissedReasons, site=meta_lists_admin)
+class SubjectVisitMissedReasonsAdmin(ListModelAdminMixin, admin.ModelAdmin):
     pass
 
 

@@ -1,57 +1,42 @@
-from dateutil.relativedelta import relativedelta
-from django.contrib.sites.models import Site
-from edc_constants.constants import YES, NO
-from edc_utils import get_utcnow
 from edc_visit_tracking.constants import SCHEDULED
 from faker import Faker
 from model_bakery.recipe import Recipe, seq
 
-from .models import BloodResult, SubjectReconsent
-from .models import SubjectConsent
 from .models import SubjectRequisition
-from .models import SubjectVisit
+from .models import SubjectVisit, FollowupExamination
 
 
 fake = Faker()
-
-bloodresult = Recipe(BloodResult, action_identifier=None, tracking_identifier=None)
-
 
 subjectvisit = Recipe(SubjectVisit, reason=SCHEDULED)
 
 subjectrequisition = Recipe(SubjectRequisition)
 
-subjectconsent = Recipe(
-    SubjectConsent,
-    assessment_score=YES,
-    confirm_identity=seq("12315678"),
-    consent_copy=YES,
-    consent_datetime=get_utcnow(),
-    consent_reviewed=YES,
-    consent_signature=YES,
-    dob=get_utcnow() - relativedelta(years=25),
-    first_name=fake.first_name,
-    gender="M",
-    identity=seq("12315678"),
-    identity_type="country_id",
-    initials="XX",
-    is_dob_estimated="-",
-    is_incarcerated=NO,
-    is_literate=YES,
-    last_name=fake.last_name,
-    screening_identifier=None,
-    study_questions=YES,
-    site=Site.objects.get_current(),
-    subject_identifier=None,
-)
-
-subjectreconsent = Recipe(
-    SubjectReconsent,
-    site=Site.objects.get_current(),
-    consent_reviewed=YES,
-    assessment_score=YES,
-    study_questions=YES,
-    consent_copy=YES,
-    action_identifier=None,
-    tracking_identifier=None,
+followupexamination = Recipe(
+    FollowupExamination,
+    # site=None,
+    # report_datetime=None,
+    # subject_visit=None,
+    # symptoms_detail=None,
+    # attended_clinic=None,
+    # admitted_hospital=None,
+    # attended_clinic_detail=None,
+    # prescribed_medication=None,
+    # prescribed_medication_detail=None,
+    # attended_clinic_sae=None,
+    # any_other_problems=None,
+    # any_other_problems_detail=None,
+    # any_other_problems_sae=None,
+    # any_other_problems_sae_grade=None,
+    # art_change=None,
+    # art_change_reason=None,
+    # art_new_regimen_other=None,
+    # abdominal_tenderness=None,
+    # enlarged_liver=None,
+    # jaundice=None,
+    # comment=None,
+    # lactic_acidosis=None,
+    # hepatomegaly=None,
+    # referral=None,
+    # referral_reason=None,
 )

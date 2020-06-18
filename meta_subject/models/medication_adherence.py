@@ -2,14 +2,13 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils.safestring import mark_safe
 from edc_crf.model_mixins import CrfModelMixin
-from edc_model.models import BaseUuidModel
-from edc_model_fields.fields.other_charfield import OtherCharField
+from edc_model import models as edc_models
 from meta_lists.models import NonAdherenceReasons
 
 from ..choices import MISSED_PILLS
 
 
-class MedicationAdherence(CrfModelMixin, BaseUuidModel):
+class MedicationAdherence(CrfModelMixin, edc_models.BaseUuidModel):
 
     visual_score_slider = models.CharField(
         verbose_name="Visual score", max_length=3, help_text="%"
@@ -36,8 +35,8 @@ class MedicationAdherence(CrfModelMixin, BaseUuidModel):
         NonAdherenceReasons, verbose_name="Reasons for missing study pills", blank=True
     )
 
-    other_missed_pill_reason = OtherCharField()
+    other_missed_pill_reason = edc_models.OtherCharField()
 
-    class Meta(CrfModelMixin.Meta):
+    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         verbose_name = "Medication Adherence"
         verbose_name_plural = "Medication Adherence"

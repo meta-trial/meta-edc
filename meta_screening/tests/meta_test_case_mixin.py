@@ -1,8 +1,7 @@
 from dateutil.relativedelta import relativedelta
 from django.contrib.sites.models import Site
-from edc_appointment.constants import IN_PROGRESS_APPT
+from edc_appointment.constants import IN_PROGRESS_APPT, INCOMPLETE_APPT
 from edc_appointment.models import Appointment
-from edc_auth.fix_export_permissions import fix_export_permissions
 from edc_auth.group_permissions_updater import GroupPermissionsUpdater
 from edc_constants.constants import YES
 from edc_facility.import_holidays import import_holidays
@@ -60,10 +59,6 @@ class MetaTestCaseMixin(SiteTestCaseMixin):
         super().tearDownClass()
         RandomizationList.objects.all().delete()
         Holiday.objects.all().delete()
-
-    # def setUp(self):
-    #     super().setUp()
-    #     fix_export_permissions(verbose=False)
 
     def get_subject_screening(self, report_datetime=None, eligibility_datetime=None):
         if report_datetime:
@@ -131,3 +126,16 @@ class MetaTestCaseMixin(SiteTestCaseMixin):
         appointment.appt_status = IN_PROGRESS_APPT
         appointment.save()
         return SubjectVisit.objects.create(appointment=appointment, reason=SCHEDULED)
+
+    @staticmethod
+    def get_next_subject_visit(subject_visit):
+        appointment = subject_visit.appointment
+        appointment.appt_status = INCOMPLETE_APPT
+        appointment.save()
+        appointment.refresh_from_db()
+        next_appointment = appointment.next_by_timepoint
+        next_appointment.appt_status = IN_PROGRESS_APPT
+        next_appointment.save()
+        return SubjectVisit.objects.create(
+            appointment=next_appointment, reason=SCHEDULED
+        )

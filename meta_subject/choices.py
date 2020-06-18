@@ -54,6 +54,7 @@ INFO_SOURCE = (
     ("outpatient_cards", "Outpatient cards"),
     ("patient", "Patient"),
     ("collateral_history", "Collateral History from relative/guardian"),
+    (NOT_APPLICABLE, "Not applicable (if missed)"),
     (OTHER, "Other"),
 )
 

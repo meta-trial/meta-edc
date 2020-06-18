@@ -19,7 +19,11 @@ class EndOfStudyAction(ActionWithNotification):
     name = END_OF_STUDY_ACTION
     display_name = "Submit End of Study Report"
     notification_display_name = "End of Study Report"
-    parent_action_names = [UNBLINDING_REVIEW_ACTION, DEATH_REPORT_ACTION]
+    parent_action_names = [
+        UNBLINDING_REVIEW_ACTION,
+        DEATH_REPORT_ACTION,
+        LOSS_TO_FOLLOWUP_ACTION,
+    ]
     reference_model = "meta_prn.endofstudy"
     show_link_to_changelist = True
     admin_site_name = "meta_prn_admin"
@@ -33,8 +37,13 @@ class LossToFollowupAction(ActionWithNotification):
     parent_action_names = []
     reference_model = "meta_prn.losstofollowup"
     show_link_to_changelist = True
+    show_link_to_add = True
     admin_site_name = "meta_prn_admin"
     priority = HIGH_PRIORITY
+
+    def get_next_actions(self):
+        next_actions = [END_OF_STUDY_ACTION]
+        return next_actions
 
 
 class UnblindingRequestAction(ActionWithNotification):
@@ -70,7 +79,7 @@ class UnblindingReviewAction(ActionWithNotification):
     color_style = "info"
     create_by_user = False
     instructions = mark_safe(
-        f"This report is to be completed by the UNBLINDING REVIEWERS only."
+        "This report is to be completed by the UNBLINDING REVIEWERS only."
     )
 
     def get_next_actions(self):

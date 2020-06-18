@@ -67,7 +67,6 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         )
         self.app.get(reverse("edc_data_manager:home_url"), user=self.user, status=200)
 
-    @tag("1")
     @tag("webtest")
     def test_home_everyone(self):
         self.login(superuser=False, groups=[EVERYONE])
@@ -84,7 +83,6 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Switch sites", response)
         self.assertIn("Log out", response)
 
-    @tag("1")
     @tag("webtest")
     def test_home_auditor(self):
         self.login(superuser=False, groups=[EVERYONE, AUDITOR])
@@ -101,7 +99,6 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Switch sites", response)
         self.assertIn("Log out", response)
 
-    @tag("1")
     @tag("webtest")
     def test_home_clinic(self):
         self.login(superuser=False, groups=[EVERYONE, CLINIC, PII])
@@ -118,7 +115,6 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Switch sites", response)
         self.assertIn("Log out", response)
 
-    @tag("1")
     @tag("webtest")
     def test_home_export(self):
         self.login(superuser=False, groups=[EVERYONE, EXPORT])
@@ -135,7 +131,6 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Switch sites", response)
         self.assertIn("Log out", response)
 
-    @tag("1")
     @tag("webtest")
     def test_home_tmg(self):
         self.login(superuser=False, groups=[EVERYONE, TMG])
@@ -152,7 +147,6 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Switch sites", response)
         self.assertIn("Log out", response)
 
-    @tag("1")
     @tag("webtest")
     def test_home_lab(self):
         self.login(superuser=False, groups=[EVERYONE, LAB])
@@ -169,7 +163,6 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Switch sites", response)
         self.assertIn("Log out", response)
 
-    @tag("1")
     @tag("webtest")
     def test_screening_no_pii(self):
         self.login(superuser=False, groups=[EVERYONE, CLINIC])

@@ -2,12 +2,12 @@ from django.db import models
 from edc_constants.choices import YES_NO, PRESENT_ABSENT_NA
 from edc_constants.constants import NOT_APPLICABLE
 from edc_crf.model_mixins import CrfModelMixin
-from edc_model.models import BaseUuidModel
+from edc_model import models as edc_models
 
 from ..choices import MALARIA_TEST_CHOICES
 
 
-class MalariaTest(CrfModelMixin, BaseUuidModel):
+class MalariaTest(CrfModelMixin, edc_models.BaseUuidModel):
 
     performed = models.CharField(
         verbose_name="Was the malaria test performed?", max_length=15, choices=YES_NO,
@@ -31,5 +31,5 @@ class MalariaTest(CrfModelMixin, BaseUuidModel):
         default=NOT_APPLICABLE,
     )
 
-    class Meta(CrfModelMixin.Meta):
+    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         verbose_name = "Malaria Test"

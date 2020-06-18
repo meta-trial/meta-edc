@@ -19,6 +19,8 @@ class GlucoseAdmin(CrfModelAdmin):
             "IFG",
             {
                 "fields": (
+                    "ifg_performed",
+                    "ifg_not_performed_reason",
                     "fasting_glucose_datetime",
                     "fasting_glucose",
                     "fasting_glucose_units",
@@ -29,6 +31,8 @@ class GlucoseAdmin(CrfModelAdmin):
             "OGTT",
             {
                 "fields": (
+                    "ogtt_performed",
+                    "ogtt_not_performed_reason",
                     "ogtt_base_datetime",
                     "ogtt_two_hr_datetime",
                     "ogtt_two_hr",
@@ -42,5 +46,7 @@ class GlucoseAdmin(CrfModelAdmin):
     radio_fields = {
         "fasted": admin.VERTICAL,
         "fasting_glucose_units": admin.VERTICAL,
+        "ifg_performed": admin.VERTICAL,
+        "ogtt_performed": admin.VERTICAL,
         "ogtt_two_hr_units": admin.VERTICAL,
     }

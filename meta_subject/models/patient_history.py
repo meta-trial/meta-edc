@@ -15,11 +15,11 @@ from edc_reportable.units import (
 )
 from edc_constants.choices import YES_NO, YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE
-from edc_model.models import BaseUuidModel
+from edc_model import models as edc_models
 from edc_model_fields.fields import OtherCharField
 
 
-class PatientHistory(CrfModelMixin, BaseUuidModel):
+class PatientHistory(CrfModelMixin, edc_models.BaseUuidModel):
 
     symptoms = models.ManyToManyField(
         Symptoms, verbose_name="Do you have any of the following symptoms?"
@@ -184,6 +184,6 @@ class PatientHistory(CrfModelMixin, BaseUuidModel):
         help_text="Immediate family is parents, siblings, and children",
     )
 
-    class Meta(CrfModelMixin.Meta):
+    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         verbose_name = "Patient History"
         verbose_name_plural = "Patient History"

@@ -2,9 +2,13 @@ from django.db import models
 from django.db.models.deletion import PROTECT
 from edc_constants.choices import YES_NO
 from edc_crf.model_mixins import CrfNoManagerModelMixin
-from edc_model.models import BaseUuidModel
+from edc_model import models as edc_models
 from edc_model.validators import datetime_not_future
-from edc_reportable import MILLIGRAMS_PER_DECILITER, MILLIMOLES_PER_LITER
+from edc_reportable import (
+    MILLIGRAMS_PER_DECILITER,
+    MILLIMOLES_PER_LITER,
+    MILLIMOLES_PER_LITER_DISPLAY,
+)
 from edc_reportable.choices import REPORTABLE
 from edc_reportable.model_mixin import BloodResultsModelMixin
 from meta_screening.models import CreatinineModelFieldsMixin
@@ -17,7 +21,7 @@ class BloodResultsRft(
     CrfNoManagerModelMixin,
     BloodResultsModelMixin,
     CreatinineModelFieldsMixin,
-    BaseUuidModel,
+    edc_models.BaseUuidModel,
 ):
 
     action_name = BLOOD_RESULTS_RFT_ACTION
@@ -92,7 +96,7 @@ class BloodResultsRft(
         verbose_name="units",
         max_length=15,
         choices=(
-            (MILLIMOLES_PER_LITER, MILLIMOLES_PER_LITER),
+            (MILLIMOLES_PER_LITER, MILLIMOLES_PER_LITER_DISPLAY),
             (MILLIGRAMS_PER_DECILITER, MILLIGRAMS_PER_DECILITER),
         ),
         null=True,
@@ -121,6 +125,6 @@ class BloodResultsRft(
         help_text="mL/min/1.73 m2 (system calculated)",
     )
 
-    class Meta(CrfNoManagerModelMixin.Meta):
+    class Meta(CrfNoManagerModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         verbose_name = "Blood Result: RFT"
         verbose_name_plural = "Blood Results: RFT"

@@ -3,7 +3,7 @@ from django.db import models
 from edc_constants.choices import YES_NO, YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE
 from edc_crf.model_mixins import CrfModelMixin
-from edc_model.models import BaseUuidModel
+from edc_model import models as edc_models
 
 from ..choices import (
     ACTIVITY_CHOICES,
@@ -13,7 +13,7 @@ from ..choices import (
 )
 
 
-class HealthEconomics(CrfModelMixin, BaseUuidModel):
+class HealthEconomics(CrfModelMixin, edc_models.BaseUuidModel):
 
     occupation = models.CharField(
         verbose_name="What is your occupation/profession?", max_length=50
@@ -294,20 +294,20 @@ class HealthEconomics(CrfModelMixin, BaseUuidModel):
     )
 
     transport_barter = models.CharField(
-        verbose_name=("Did you sell anything to pay for your visit today?"),
+        verbose_name="Did you sell anything to pay for your visit today?",
         max_length=15,
         choices=YES_NO,
     )
 
     transport_borrow = models.CharField(
-        verbose_name=("Did you take any loans to pay for your visit?"),
+        verbose_name="Did you take any loans to pay for your visit?",
         max_length=15,
         choices=YES_NO,
     )
 
     # 39
     health_insurance = models.CharField(
-        verbose_name=("Do you have private healthcare insurance?"),
+        verbose_name="Do you have private healthcare insurance?",
         max_length=15,
         choices=YES_NO,
     )
@@ -322,6 +322,6 @@ class HealthEconomics(CrfModelMixin, BaseUuidModel):
         help_text="in Shilling",
     )
 
-    class Meta(CrfModelMixin.Meta):
+    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         verbose_name = "Health Economics"
         verbose_name_plural = "Health Economics"

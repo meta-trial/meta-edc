@@ -25,6 +25,7 @@ from meta_subject.constants import (
     BLOOD_RESULTS_LFT_ACTION,
     BLOOD_RESULTS_RFT_ACTION,
     BLOOD_RESULTS_FBC_ACTION,
+    FOLLOWUP_EXAMINATION_ACTION,
 )
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from meta_prn.constants import END_OF_STUDY_ACTION
@@ -42,7 +43,7 @@ class AeFollowupAction(ActionWithNotification):
     show_link_to_changelist = True
     admin_site_name = "meta_ae_admin"
     instructions = mark_safe(
-        f"Upon submission the TMG group will be notified "
+        "Upon submission the TMG group will be notified "
         f'by email at <a href="mailto:{settings.EMAIL_CONTACTS.get("tmg") or "#"}">'
         f'{settings.EMAIL_CONTACTS.get("tmg") or "unknown"}</a>'
     )
@@ -92,6 +93,7 @@ class AeInitialAction(ActionWithNotification):
         BLOOD_RESULTS_LFT_ACTION,
         BLOOD_RESULTS_RFT_ACTION,
         BLOOD_RESULTS_FBC_ACTION,
+        FOLLOWUP_EXAMINATION_ACTION,
     ]
     reference_model = "meta_ae.aeinitial"
     show_link_to_changelist = True
@@ -183,7 +185,7 @@ class AeTmgAction(ActionWithNotification):
     color_style = "info"
     show_link_to_changelist = True
     admin_site_name = "meta_ae_admin"
-    instructions = mark_safe(f"This report is to be completed by the TMG only.")
+    instructions = mark_safe("This report is to be completed by the TMG only.")
     priority = HIGH_PRIORITY
 
     def close_action_item_on_save(self):
@@ -240,7 +242,7 @@ class DeathReportTmgAction(ActionWithNotification):
     color_style = "info"
     show_link_to_changelist = True
     admin_site_name = "meta_ae_admin"
-    instructions = mark_safe(f"This report is to be completed by the TMG only.")
+    instructions = mark_safe("This report is to be completed by the TMG only.")
 
     def reopen_action_item_on_change(self):
         """Do not reopen if status is CLOSED.

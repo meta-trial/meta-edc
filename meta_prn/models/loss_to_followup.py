@@ -1,12 +1,13 @@
+from django.core.validators import MinValueValidator
 from django.db import models
 from edc_action_item.models.action_model_mixin import ActionModelMixin
-from edc_constants.choices import YES_NO
+from edc_constants.choices import YES_NO, YES_NO_NA
 from edc_constants.constants import OTHER
 from edc_identifier.model_mixins import (
     TrackingModelMixin,
     NonUniqueSubjectIdentifierFieldMixin,
 )
-from edc_model.models.base_uuid_model import BaseUuidModel
+from edc_model import models as edc_models
 from edc_sites.models import SiteModelMixin
 from edc_utils.date import get_utcnow
 
@@ -17,7 +18,7 @@ LOSS_CHOICES = (
     ("unknown_address", "Changed to an unknown address"),
     ("never_returned", "Did not return despite reminders"),
     ("bad_contact_details", "Inaccurate contact details"),
-    (OTHER, "Other"),
+    (OTHER, "Other, please specify ..."),
 )
 
 
@@ -26,7 +27,7 @@ class LossToFollowup(
     SiteModelMixin,
     ActionModelMixin,
     TrackingModelMixin,
-    BaseUuidModel,
+    edc_models.BaseUuidModel,
 ):
 
     action_name = LOSS_TO_FOLLOWUP_ACTION
@@ -39,10 +40,14 @@ class LossToFollowup(
 
     last_seen_datetime = models.DateField(verbose_name="Date participant last seen")
 
-    phone_attempts = models.IntegerField(
-        verbose_name=(
-            "How many attempts have been made to contact the participant by phone"
-        )
+    number_consecutive_missed_visits = models.DateField(
+        verbose_name="Number of consecutive visits missed", null=True, blank=False
+    )
+
+    last_missed_visit_datetime = models.DateField(
+        verbose_name="Date of last missed visit report submitted",
+        null=True,
+        blank=False,
     )
 
     home_visited = models.CharField(
@@ -56,8 +61,12 @@ class LossToFollowup(
     )
 
     loss_category = models.CharField(
-        verbose_name="Category of loss to follow up", max_length=25, choices=""
+        verbose_name="Category of loss to follow up",
+        max_length=25,
+        choices=LOSS_CHOICES,
     )
+
+    loss_category_other = edc_models.OtherCharField()
 
     comment = models.TextField(
         verbose_name=(
