@@ -4,7 +4,6 @@ from django.db.models.deletion import PROTECT
 from edc_constants.choices import YES_NO
 from edc_crf.model_mixins import CrfNoManagerModelMixin
 from edc_model import models as edc_models
-from edc_model.validators import datetime_not_future
 from edc_reportable import PERCENT
 from edc_reportable.choices import REPORTABLE
 from edc_reportable.model_mixin import BloodResultsModelMixin
@@ -44,7 +43,7 @@ class BloodResultsHba1c(
 
     hba1c_assay_datetime = models.DateTimeField(
         verbose_name="Result Report Date and Time",
-        validators=[datetime_not_future],
+        validators=[edc_models.datetime_not_future],
         null=True,
         blank=True,
     )

@@ -4,7 +4,7 @@ from django.db.models.deletion import PROTECT
 from edc_constants.choices import YES_NO
 from edc_crf.model_mixins import CrfNoManagerModelMixin
 from edc_model import models as edc_models
-from edc_model.validators import datetime_not_future
+from edc_model.models import datetime_not_future
 from edc_reportable import (
     IU_LITER,
     GRAMS_PER_LITER,

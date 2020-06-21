@@ -1,13 +1,12 @@
 from django.db import models
-from edc_constants.choices import YES_NO
-from edc_crf.model_mixins import CrfModelMixin
-from edc_model import models as edc_models
-
-from meta_screening.models import (
+from edc_clinic.models import (
     FastingModelMixin,
     OgttModelMixin,
     FastingGlucoseModelMixin,
 )
+from edc_constants.choices import YES_NO
+from edc_crf.model_mixins import CrfModelMixin
+from edc_model import models as edc_models
 
 
 class Glucose(

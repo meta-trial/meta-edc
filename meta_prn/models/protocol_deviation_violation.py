@@ -11,7 +11,7 @@ from edc_identifier.model_mixins import (
 )
 from edc_model import REPORT_STATUS
 from edc_model.models import BaseUuidModel
-from edc_model.validators import datetime_not_future
+from edc_model.models import datetime_not_future
 from edc_sites.models import SiteModelMixin
 from edc_utils import get_utcnow
 

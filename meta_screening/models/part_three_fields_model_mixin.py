@@ -1,10 +1,13 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from edc_clinic.models import (
+    CreatinineModelFieldsMixin,
+    FastingModelMixin,
+    OgttModelMixin,
+    FastingGlucoseModelMixin,
+)
 from edc_constants.choices import YES_NO, NO
 from edc_model import models as edc_models
-
-from .creatinine_fields_model_mixin import CreatinineModelFieldsMixin
-from .model_mixins import FastingModelMixin, OgttModelMixin, FastingGlucoseModelMixin
 
 
 class PartThreeFieldsModelMixin(

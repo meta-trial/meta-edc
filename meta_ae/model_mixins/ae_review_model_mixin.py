@@ -4,7 +4,7 @@ from edc_adverse_event.choices import STUDY_DRUG_RELATIONSHIP
 from edc_adverse_event.models import AeClassification
 from edc_constants.choices import YES_NO
 from edc_model import models as edc_models
-from edc_model.validators import datetime_not_future
+from edc_model.models import datetime_not_future
 from edc_utils import get_utcnow
 
 from ..choices import AE_TYPE

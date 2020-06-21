@@ -1,9 +1,9 @@
 from django.db import models
 from django.db.models.deletion import PROTECT
+from edc_clinic.models import CreatinineModelFieldsMixin
 from edc_constants.choices import YES_NO
 from edc_crf.model_mixins import CrfNoManagerModelMixin
 from edc_model import models as edc_models
-from edc_model.validators import datetime_not_future
 from edc_reportable import (
     MILLIGRAMS_PER_DECILITER,
     MILLIMOLES_PER_LITER,
@@ -11,7 +11,6 @@ from edc_reportable import (
 )
 from edc_reportable.choices import REPORTABLE
 from edc_reportable.model_mixin import BloodResultsModelMixin
-from meta_screening.models import CreatinineModelFieldsMixin
 
 from ...constants import BLOOD_RESULTS_RFT_ACTION
 from ..subject_requisition import SubjectRequisition
@@ -42,7 +41,7 @@ class BloodResultsRft(
 
     rft_assay_datetime = models.DateTimeField(
         verbose_name="Result Report Date and Time",
-        validators=[datetime_not_future],
+        validators=[edc_models.datetime_not_future],
         null=True,
         blank=True,
     )

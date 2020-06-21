@@ -6,7 +6,7 @@ from edc_crf.model_mixins import CrfNoManagerModelMixin
 from edc_lab.choices import RESULT_QUANTIFIER
 from edc_lab.constants import EQ
 from edc_model import models as edc_models
-from edc_model.validators import datetime_not_future
+from edc_model.models import datetime_not_future
 from edc_reportable import (
     MILLIGRAMS_PER_DECILITER,
     MILLIMOLES_PER_LITER,
