@@ -3,8 +3,7 @@ from edc_action_item.models import ActionModelMixin
 from edc_constants.choices import YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE
 from edc_identifier.model_mixins import TrackingModelMixin
-from edc_model.models import BaseUuidModel
-from edc_model.validators.date import datetime_not_future, date_not_future
+from edc_model.models import BaseUuidModel, datetime_not_future, date_not_future
 from edc_visit_schedule.model_mixins import OffScheduleModelMixin
 from meta_lists.models import OffstudyReasons
 

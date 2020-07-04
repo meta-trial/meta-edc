@@ -3,11 +3,11 @@ from edc_model.models import BaseUuidModel
 from django.core.exceptions import ObjectDoesNotExist
 from edc_constants.choices import YES_NO, YES_NO_NA, GENDER
 from edc_utils.date import get_utcnow
+from edc_model.models import HistoricalRecords
+from edc_sites.models import SiteModelMixin, CurrentSiteManager
 
 from ..choices import ETHNICITY
 from .subject_screening import SubjectScreening
-from edc_model.models.historical_records import HistoricalRecords
-from edc_sites.models import SiteModelMixin, CurrentSiteManager
 
 
 class IcpReferralError(Exception):

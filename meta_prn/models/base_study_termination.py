@@ -4,7 +4,7 @@ from edc_action_item.managers import (
     ActionIdentifierManager,
 )
 from edc_action_item.models import ActionModelMixin
-from edc_model.validators.date import date_not_future
+from edc_model.models import date_not_future
 
 
 class BaseStudyTerminationConclusion(ActionModelMixin, models.Model):

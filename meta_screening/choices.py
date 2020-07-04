@@ -1,10 +1,3 @@
-from edc_reportable import (
-    MILLIGRAMS_PER_DECILITER,
-    MILLIMOLES_PER_LITER,
-    MICROMOLES_PER_LITER,
-    MICROMOLES_PER_LITER_DISPLAY,
-    MILLIMOLES_PER_LITER_DISPLAY,
-)
 from edc_constants.constants import (
     BLACK,
     OTHER,
@@ -12,14 +5,14 @@ from edc_constants.constants import (
     YES,
     NO,
 )
+from edc_reportable import (
+    MILLIGRAMS_PER_DECILITER,
+    MICROMOLES_PER_LITER,
+    MICROMOLES_PER_LITER_DISPLAY,
+)
 
 
 ETHNICITY = ((BLACK, "Black"), (OTHER, "Other"))
-
-GLUCOSE_UNITS = (
-    (MILLIGRAMS_PER_DECILITER, MILLIGRAMS_PER_DECILITER),
-    (MILLIMOLES_PER_LITER, MILLIMOLES_PER_LITER_DISPLAY),
-)
 
 REFUSAL_REASONS = (
     ("dont_have_time", "I don't have time"),
@@ -28,11 +21,6 @@ REFUSAL_REASONS = (
     ("dont_want_to_join", "I don't want to take part"),
     ("need_to_think_about_it", "I haven't had a chance to think about it"),
     (OTHER, "Other, please specify"),
-)
-
-SERUM_CREATININE_UNITS = (
-    (MILLIGRAMS_PER_DECILITER, MILLIGRAMS_PER_DECILITER),
-    (MICROMOLES_PER_LITER, MICROMOLES_PER_LITER_DISPLAY),
 )
 
 
