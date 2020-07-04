@@ -402,6 +402,7 @@ DATA_DICTIONARY_APP_LABELS = [
     "meta_prn",
     "meta_screening",
     "meta_ae",
+    "sarscov2",
     "edc_appointment",
 ]
 
@@ -443,9 +444,9 @@ else:
     STATIC_URL = env.str("DJANGO_STATIC_URL")
     STATIC_ROOT = env.str("DJANGO_STATIC_ROOT")
 
-SENTRY_DSN = None
+SENTRY_DSN = env("SENTRY_DSN")
 
-if SENTRY_ENABLED:
+if SENTRY_ENABLED and SENTRY_DSN:
     import sentry_sdk
     from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -455,17 +456,6 @@ if SENTRY_ENABLED:
 else:
     if env("DJANGO_LOGGING_ENABLED"):
         from .logging.standard import LOGGING  # noqa
-
-# if SENTRY_ENABLED:
-#     import raven  # noqa
-#     from .logging.raven import LOGGING  # noqa
-#
-#     SENTRY_DSN = env.str("SENTRY_DSN")
-#     RAVEN_CONFIG = {"dsn": SENTRY_DSN,
-#                     "release": raven.fetch_git_sha(BASE_DIR)}
-# else:
-#     if env("DJANGO_LOGGING_ENABLED"):
-#         from .logging.standard import LOGGING  # noqa
 
 if "test" in sys.argv:
 

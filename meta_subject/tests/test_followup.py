@@ -1,5 +1,3 @@
-import pdb
-
 from django.test import TestCase, tag
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from model_bakery.baker import make_recipe
