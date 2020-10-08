@@ -53,6 +53,6 @@ class EndOfStudyAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin):
     def get_readonly_fields(self, request, obj=None):
         fields = super().get_readonly_fields(request, obj)
         action_flds = copy(list(action_fields))
-        action_flds.remove("action_identifier")
+        # action_flds.remove("action_identifier")
         fields = list(action_flds) + list(fields)
         return fields
