@@ -1,12 +1,5 @@
-from django.contrib.admin import AdminSite as DjangoAdminSite
+from edc_model_admin.admin_site import EdcAdminSite
 
+from .apps import AppConfig
 
-class AdminSite(DjangoAdminSite):
-
-    site_title = "Meta Export"
-    site_header = "Meta Export"
-    index_title = "Meta Export"
-    site_url = "/administration/"
-
-
-meta_export_admin = AdminSite(name="meta_export_admin")
+meta_export_admin = EdcAdminSite(name="meta_export_admin", app_label=AppConfig.name)
