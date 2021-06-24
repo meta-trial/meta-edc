@@ -14,8 +14,8 @@ from edc_reportable import (
 )
 from edc_reportable.choices import REPORTABLE
 from edc_reportable.model_mixin import BloodResultsModelMixin
+from respond_models.choices import FASTING_CHOICES
 
-from ...choices import FASTING_CHOICES
 from ...constants import BLOOD_RESULTS_GLU_ACTION
 from ..subject_requisition import SubjectRequisition
 
@@ -72,7 +72,9 @@ class BloodResultsGlu(
     )
 
     glucose_quantifier = models.CharField(
-        max_length=10, choices=RESULT_QUANTIFIER, default=EQ,
+        max_length=10,
+        choices=RESULT_QUANTIFIER,
+        default=EQ,
     )
 
     glucose_units = models.CharField(

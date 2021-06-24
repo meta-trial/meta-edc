@@ -1,21 +1,16 @@
 from edc_constants.constants import (
-    OTHER,
-    NOT_APPLICABLE,
-    NEVER,
     FASTING,
-    NON_FASTING,
-    RAPID_TEST,
     MICROSCOPY,
+    NEVER,
+    NON_FASTING,
+    NOT_APPLICABLE,
+    OTHER,
+    RAPID_TEST,
 )
 from edc_reportable.constants import GRADE3, GRADE4
-from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, MISSED_VISIT
+from edc_visit_tracking.constants import MISSED_VISIT, SCHEDULED, UNSCHEDULED
 
-
-from .constants import (
-    APPT,
-    APPT_OTHER,
-)
-
+from .constants import APPT, APPT_OTHER
 
 ACTIVITY_CHOICES = (
     ("working", "Working"),
@@ -34,7 +29,6 @@ CHILDCARE_CHOICES = (
     (OTHER, "Other, specify"),
 )
 
-FASTING_CHOICES = ((FASTING, "Fasting"), (NON_FASTING, "Non-fasting"))
 
 FOLLOWUP_REASONS = (
     (APPT, "Study appointment"),
@@ -70,16 +64,6 @@ MALARIA_TEST_CHOICES = (
     (RAPID_TEST, "Rapid test"),
     (MICROSCOPY, "Microscopy"),
     (NOT_APPLICABLE, "Not applicable"),
-)
-
-MISSED_PILLS = (
-    ("today", "today"),
-    ("yesterday", "yesterday"),
-    ("earlier_this_week", "earlier this week"),
-    ("last_week", "last week"),
-    ("lt_month_ago", "less than a month ago"),
-    ("gt_month_ago", "more than a month ago"),
-    (NEVER, "have never missed taking my study pills"),
 )
 
 PAYEE_CHOICES = (

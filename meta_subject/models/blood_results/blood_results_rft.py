@@ -1,6 +1,5 @@
 from django.db import models
 from django.db.models.deletion import PROTECT
-from edc_clinic.models import CreatinineModelFieldsMixin
 from edc_constants.choices import YES_NO
 from edc_crf.model_mixins import CrfNoManagerModelMixin
 from edc_model import models as edc_models
@@ -11,6 +10,7 @@ from edc_reportable import (
 )
 from edc_reportable.choices import REPORTABLE
 from edc_reportable.model_mixin import BloodResultsModelMixin
+from respond_models.mixins import CreatinineModelFieldsMixin
 
 from ...constants import BLOOD_RESULTS_RFT_ACTION
 from ..subject_requisition import SubjectRequisition

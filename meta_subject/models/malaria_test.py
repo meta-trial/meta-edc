@@ -1,16 +1,18 @@
 from django.db import models
-from edc_constants.choices import YES_NO, PRESENT_ABSENT_NA
+from edc_constants.choices import PRESENT_ABSENT_NA, YES_NO
 from edc_constants.constants import NOT_APPLICABLE
-from edc_crf.model_mixins import CrfModelMixin
 from edc_model import models as edc_models
 
 from ..choices import MALARIA_TEST_CHOICES
+from .model_mixins import CrfModelMixin
 
 
 class MalariaTest(CrfModelMixin, edc_models.BaseUuidModel):
 
     performed = models.CharField(
-        verbose_name="Was the malaria test performed?", max_length=15, choices=YES_NO,
+        verbose_name="Was the malaria test performed?",
+        max_length=15,
+        choices=YES_NO,
     )
 
     not_performed_reason = models.CharField(

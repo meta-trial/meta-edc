@@ -9,6 +9,7 @@ class AdminSite(DjangoAdminSite):
     site_header = "META Subject CRFs"
     index_title = "META Subject CRFs"
     site_url = "/administration/"
+    enable_nav_sidebar = False  # DJ 3.1
 
     def each_context(self, request):
         context = super().each_context(request)

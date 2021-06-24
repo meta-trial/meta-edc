@@ -1,9 +1,8 @@
 from django.db import models
-from edc_crf.model_mixins import CrfModelMixin
 from edc_model import models as edc_models
 
 from ..choices import WEIGHT_DETERMINATION
-from .model_mixins import VitalsFieldMixin
+from .model_mixins import CrfModelMixin, VitalsFieldMixin
 
 
 class FollowupVitals(VitalsFieldMixin, CrfModelMixin, edc_models.BaseUuidModel):

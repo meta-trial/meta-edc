@@ -1,12 +1,13 @@
 from django.db import models
-from edc_clinic.models import (
+from edc_constants.choices import YES_NO
+from edc_model import models as edc_models
+from respond_models.mixins import (
+    FastingGlucoseModelMixin,
     FastingModelMixin,
     OgttModelMixin,
-    FastingGlucoseModelMixin,
 )
-from edc_constants.choices import YES_NO
-from edc_crf.model_mixins import CrfModelMixin
-from edc_model import models as edc_models
+
+from .model_mixins import CrfModelMixin
 
 
 class Glucose(
@@ -18,7 +19,9 @@ class Glucose(
 ):
 
     ifg_performed = models.CharField(
-        verbose_name="Was the IFG test performed?", max_length=15, choices=YES_NO,
+        verbose_name="Was the IFG test performed?",
+        max_length=15,
+        choices=YES_NO,
     )
 
     ifg_not_performed_reason = models.CharField(
@@ -26,7 +29,9 @@ class Glucose(
     )
 
     ogtt_performed = models.CharField(
-        verbose_name="Was the OGTT test performed?", max_length=15, choices=YES_NO,
+        verbose_name="Was the OGTT test performed?",
+        max_length=15,
+        choices=YES_NO,
     )
 
     ogtt_not_performed_reason = models.CharField(

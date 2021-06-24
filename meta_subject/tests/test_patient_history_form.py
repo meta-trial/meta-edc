@@ -35,7 +35,7 @@ class TestPatientHistory(MetaTestCaseMixin, TestCase):
             "has_enlarged_liver": NO,
             "has_previous_arv_regimen": NO,
             "heart_rate": 65,
-            "hypertension_diagnosis": NO,
+            "htn_diagnosis": NO,
             "hypertension_treatment": None,
             "is_heartbeat_regular": YES,
             "jaundice": YES,

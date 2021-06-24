@@ -1,9 +1,9 @@
 from django.db import models
-from edc_constants.choices import YES_NO, NORMAL_ABNORMAL, PRESENT_ABSENT
+from edc_constants.choices import NORMAL_ABNORMAL, PRESENT_ABSENT, YES_NO
 from edc_model import models as edc_models
-from edc_crf.model_mixins import CrfModelMixin
 
 from ..choices import FUNDOSCOPY_CHOICES
+from .model_mixins import CrfModelMixin
 
 
 class Complications(CrfModelMixin, edc_models.BaseUuidModel):

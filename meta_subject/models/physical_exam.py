@@ -1,11 +1,10 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.safestring import mark_safe
 from edc_constants.choices import YES_NO
-from edc_crf.model_mixins import CrfModelMixin
 from edc_model import models as edc_models
 
-from .model_mixins import VitalsFieldMixin
+from .model_mixins import CrfModelMixin, VitalsFieldMixin
 
 
 class PhysicalExam(VitalsFieldMixin, CrfModelMixin, edc_models.BaseUuidModel):

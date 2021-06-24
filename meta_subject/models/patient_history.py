@@ -1,22 +1,23 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.safestring import mark_safe
-from edc_crf.model_mixins import CrfModelMixin
-from meta_lists.models import (
-    Symptoms,
-    ArvRegimens,
-    OiProphylaxis,
-    DiabetesSymptoms,
-    HypertensionMedications,
-)
-from edc_reportable.units import (
-    CELLS_PER_MILLIMETER_CUBED_DISPLAY,
-    COPIES_PER_MILLILITER,
-)
 from edc_constants.choices import YES_NO, YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE
 from edc_model import models as edc_models
 from edc_model_fields.fields import OtherCharField
+from edc_reportable.units import (
+    CELLS_PER_MILLIMETER_CUBED_DISPLAY,
+    COPIES_PER_MILLILITER,
+)
+from meta_lists.models import (
+    ArvRegimens,
+    DiabetesSymptoms,
+    HypertensionMedications,
+    OiProphylaxis,
+    Symptoms,
+)
+
+from .model_mixins import CrfModelMixin
 
 
 class PatientHistory(CrfModelMixin, edc_models.BaseUuidModel):
@@ -115,7 +116,7 @@ class PatientHistory(CrfModelMixin, edc_models.BaseUuidModel):
 
     other_oi_prophylaxis = OtherCharField(null=True, blank=True)
 
-    hypertension_diagnosis = models.CharField(
+    htn_diagnosis = models.CharField(
         verbose_name="Has the patient been diagnosed with hypertension?",
         max_length=15,
         choices=YES_NO,
