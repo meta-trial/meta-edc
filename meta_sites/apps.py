@@ -16,7 +16,9 @@ def post_migrate_update_sites(sender=None, **kwargs):
     sys.stdout.write(style.MIGRATE_HEADING("Updating sites:\n"))
     for country, sites in all_sites.items():
         add_or_update_django_sites(
-            apps=django_apps, sites=sites, verbose=True,
+            apps=django_apps,
+            sites=sites,
+            verbose=True,
         )
     sys.stdout.write("Done.\n")
     sys.stdout.flush()
@@ -24,6 +26,8 @@ def post_migrate_update_sites(sender=None, **kwargs):
 
 class AppConfig(DjangoAppConfig):
     name = "meta_sites"
+    default_auto_field = "django.db.models.BigAutoField"
+    verbose_name = "META: Sites"
 
     def ready(self):
         post_migrate.connect(post_migrate_update_sites, sender=self)

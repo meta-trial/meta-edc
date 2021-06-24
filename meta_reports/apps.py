@@ -5,11 +5,12 @@ from edc_facility.apps import AppConfig as BaseEdcFacilityAppConfig
 
 class AppConfig(DjangoAppConfig):
     name = "meta_reports"
+    verbose_name = "META: Reports"
 
 
 if settings.APP_NAME == "meta_reports":
 
-    from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
+    from dateutil.relativedelta import FR, MO, SA, SU, TH, TU, WE
 
     class EdcFacilityAppConfig(BaseEdcFacilityAppConfig):
         country = "tanzania"
