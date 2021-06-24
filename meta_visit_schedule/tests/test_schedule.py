@@ -55,7 +55,6 @@ class TestVisitSchedule(TestCase):
                 prn, actual, msg=f"see PRN requisitions for visit {visit_code}"
             )
 
-    @tag("1")
     def test_crfs(self):
         prn = [
             "meta_subject.bloodresultsfbc",
@@ -76,6 +75,7 @@ class TestVisitSchedule(TestCase):
                 "meta_subject.bloodresultslft",
                 "meta_subject.bloodresultslipid",
                 "meta_subject.bloodresultsrft",
+                "meta_subject.glucose",
                 "meta_subject.malariatest",
                 "meta_subject.urinedipsticktest",
             ],
