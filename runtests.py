@@ -1,17 +1,15 @@
 #!/usr/bin/env python
-from datetime import datetime
-
-import django
 import logging
 import os
 import sys
+from datetime import datetime
+from os.path import abspath, dirname, join
 
+import django
 from dateutil.tz import gettz
 from django.conf import settings
 from django.test.runner import DiscoverRunner
 from edc_test_utils import DefaultTestSettings
-from os.path import abspath, dirname, join
-
 from multisite import SiteID
 
 app_name = "meta_edc"
@@ -40,7 +38,11 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     EDC_PROTOCOL_STUDY_CLOSE_DATETIME=datetime(
         2023, 12, 31, 23, 59, 59, tzinfo=gettz("UTC")
     ),
-    DJANGO_LANGUAGES=dict(en="English", lg="Luganda", rny="Runyankore",),
+    DJANGO_LANGUAGES=dict(
+        en="English",
+        lg="Luganda",
+        rny="Runyankore",
+    ),
     DASHBOARD_BASE_TEMPLATES=dict(
         edc_base_template="edc_dashboard/base.html",
         listboard_base_template="meta_edc/base.html",
@@ -81,7 +83,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "logentry_admin",
         "simple_history",
         "storages",
-        "corsheaders",
+        # "corsheaders",
         "rest_framework",
         "rest_framework.authtoken",
         # "django_collect_offline.apps.AppConfig",
@@ -108,7 +110,6 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_reports.apps.AppConfig",
         "edc_identifier.apps.AppConfig",
         "edc_metadata.apps.AppConfig",
-        "edc_metadata_rules.apps.AppConfig",
         "edc_model_admin.apps.AppConfig",
         "edc_navbar.apps.AppConfig",
         "edc_notification.apps.AppConfig",

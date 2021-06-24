@@ -1,4 +1,4 @@
-import os
+import os  # noqa
 
 from multisite import SiteID
 
@@ -13,12 +13,14 @@ ALLOWED_HOSTS = [
     # "hindu-mandal.tz.meta.clinicedc.org",
     "amana.tz.meta.clinicedc.org",
     "localhost",
-]  # env.list('DJANGO_ALLOWED_HOSTS')
+]
+# env.list('DJANGO_ALLOWED_HOSTS')
 # ETC_DIR = os.path.join(BASE_DIR, "tests", "etc")  # noqa
 # KEY_PATH = os.path.join(ETC_DIR, "crypto_fields")
 # # KEY_PATH = os.path.join(BASE_DIR, ".etc", "meta", "crypto_fields")
-#
-# if os.path.exists(BASE_DIR) and not os.path.exists(KEY_PATH):  # noqa
-#     os.makedirs(KEY_PATH)
-#     AUTO_CREATE_KEYS = True
+
 SECURE_SSL_REDIRECT = False
+
+if os.path.exists(BASE_DIR) and not os.path.exists(KEY_PATH):  # noqa
+    os.makedirs(KEY_PATH)  # noqa
+    AUTO_CREATE_KEYS = True
