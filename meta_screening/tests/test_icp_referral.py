@@ -1,17 +1,16 @@
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, tag
-from edc_constants.constants import YES, BLACK, FEMALE, NOT_APPLICABLE, NO
+from edc_constants.constants import BLACK, FEMALE, NO, NOT_APPLICABLE, YES
 from edc_reportable.units import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
 from edc_utils.date import get_utcnow
-
 from meta_screening.models import (
     IcpReferral,
     ScreeningPartOne,
-    ScreeningPartTwo,
     ScreeningPartThree,
+    ScreeningPartTwo,
+    refer_to_icp,
 )
-from meta_screening.models import refer_to_icp
 
 
 class TestScreeningPartThree(TestCase):
@@ -65,18 +64,18 @@ class TestScreeningPartThree(TestCase):
         obj.weight = 65
         obj.height = 110
         obj.hba1c_performed = YES
-        obj.hba1c = 7.0
+        obj.hba1c_value = 7.0
         obj.creatinine_performed = YES
-        obj.creatinine = 100
+        obj.creatinine_value = 100
         obj.creatinine_units = MICROMOLES_PER_LITER
         obj.fasted = YES
         obj.fasted_duration_str = "8h"
-        obj.fasting_glucose = 7.5
-        obj.fasting_glucose_datetime = get_utcnow()
+        obj.ifg_value = 7.5
+        obj.ifg_datetime = get_utcnow()
         obj.ogtt_base_datetime = get_utcnow()
-        obj.ogtt_two_hr = 12.0
-        obj.ogtt_two_hr_units = MILLIMOLES_PER_LITER
-        obj.ogtt_two_hr_datetime = get_utcnow()
+        obj.ogtt_value = 12.0
+        obj.ogtt_units = MILLIMOLES_PER_LITER
+        obj.ogtt_datetime = get_utcnow()
         obj.save()
 
         self.assertTrue(obj.reasons_ineligible_part_three)

@@ -1,10 +1,9 @@
-from django.db import models
-from edc_model.models import BaseUuidModel
 from django.core.exceptions import ObjectDoesNotExist
-from edc_constants.choices import YES_NO, YES_NO_NA, GENDER
+from django.db import models
+from edc_constants.choices import GENDER, YES_NO, YES_NO_NA
+from edc_model.models import BaseUuidModel, HistoricalRecords
+from edc_sites.models import CurrentSiteManager, SiteModelMixin
 from edc_utils.date import get_utcnow
-from edc_model.models import HistoricalRecords
-from edc_sites.models import SiteModelMixin, CurrentSiteManager
 
 from ..choices import ETHNICITY
 from .subject_screening import SubjectScreening
@@ -52,12 +51,12 @@ class IcpReferral(SiteModelMixin, BaseUuidModel):
     )
 
     art_six_months = models.CharField(
-        verbose_name=("On anti-retroviral therapy for at least 6 months"),
+        verbose_name="On anti-retroviral therapy for at least 6 months",
         max_length=15,
         choices=YES_NO_NA,
     )
 
-    fasting_glucose = models.DecimalField(
+    ifg_value = models.DecimalField(
         verbose_name="Fasting glucose levels",
         max_digits=8,
         decimal_places=4,
@@ -65,7 +64,7 @@ class IcpReferral(SiteModelMixin, BaseUuidModel):
         help_text="mmol/L",
     )
 
-    hba1c = models.DecimalField(
+    hba1c_value = models.DecimalField(
         verbose_name="HbA1c",
         max_digits=8,
         decimal_places=4,
@@ -73,7 +72,7 @@ class IcpReferral(SiteModelMixin, BaseUuidModel):
         help_text="in %",
     )
 
-    ogtt_two_hr = models.DecimalField(
+    ogtt_value = models.DecimalField(
         verbose_name="Blood glucose levels 2-hours after glucose solution given",
         max_digits=8,
         decimal_places=4,
@@ -112,7 +111,9 @@ class IcpReferral(SiteModelMixin, BaseUuidModel):
         return f"{self.screening_identifier} {self.gender} {self.age_in_years}"
 
     def natural_key(self):
-        return (self.screening_identifier,)
+        return tuple(
+            self.screening_identifier,
+        )
 
     class Meta:
         pass

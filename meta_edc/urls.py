@@ -10,6 +10,7 @@ from edc_crf.admin_site import edc_crf_admin
 from edc_dashboard.views import AdministrationView
 from edc_data_manager.admin_site import edc_data_manager_admin
 from edc_export.admin_site import edc_export_admin
+from edc_facility.admin_site import edc_facility_admin
 from edc_identifier.admin_site import edc_identifier_admin
 from edc_lab.admin_site import edc_lab_admin
 from edc_locator.admin_site import edc_locator_admin
@@ -62,6 +63,7 @@ urlpatterns = [
     path("edc_device/", include("edc_device.urls")),
     path("edc_export/", include("edc_export.urls")),
     path("edc_identifier/", include("edc_identifier.urls")),
+    path("edc_facility/", include("edc_facility.urls")),
     path("edc_lab/", include("edc_lab.urls")),
     path("edc_lab_dashboard/", include("edc_lab_dashboard.urls")),
     path("edc_label/", include("edc_label.urls")),
@@ -93,6 +95,7 @@ urlpatterns = [
     path("edc_data_manager_admin/", edc_data_manager_admin.urls),
     path("edc_export_admin/", edc_export_admin.urls),
     path("edc_identifier_admin/", edc_identifier_admin.urls),
+    path("edc_facility_admin/", edc_facility_admin.urls),
     path("edc_lab_admin/", edc_lab_admin.urls),
     path("edc_locator_admin/", edc_locator_admin.urls),
     path("edc_metadata_admin/", edc_metadata_admin.urls),

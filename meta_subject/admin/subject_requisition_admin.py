@@ -1,18 +1,19 @@
+from urllib.parse import parse_qs, urlsplit
+
 from django.contrib import admin
 from edc_constants.constants import YES
-from edc_model_admin import audit_fieldset_tuple
 from edc_lab.admin import (
     RequisitionAdminMixin,
     requisition_fieldset,
-    requisition_status_fieldset,
     requisition_identifier_fieldset,
+    requisition_status_fieldset,
     requisition_verify_fieldset,
 )
-from urllib.parse import parse_qs, urlsplit
+from edc_model_admin import audit_fieldset_tuple
 
 from ..admin_site import meta_subject_admin
-from ..models import SubjectRequisition
 from ..forms import SubjectRequisitionForm
+from ..models import SubjectRequisition
 from .modeladmin import CrfModelAdmin
 
 

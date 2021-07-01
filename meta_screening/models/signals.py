@@ -14,16 +14,16 @@ def refer_to_icp(obj):
     3.    HbA1c ≥ 6.5% (48 mmol/mol).13
 
     """
-    fasting_glucose = False
-    ogtt_two_hr = False
-    hba1c = False
-    if obj.converted_fasting_glucose and obj.converted_fasting_glucose >= 7.0:
-        fasting_glucose = True
-    if obj.converted_ogtt_two_hr and obj.converted_ogtt_two_hr >= 11.1:
-        ogtt_two_hr = True
-    if obj.hba1c and obj.hba1c >= 6.5:
-        hba1c = True
-    meets_lab_criteria = fasting_glucose or ogtt_two_hr or hba1c
+    ifg_value = False
+    ogtt_value = False
+    hba1c_value = False
+    if obj.converted_ifg_value and obj.converted_ifg_value >= 7.0:
+        ifg_value = True
+    if obj.converted_ogtt_value and obj.converted_ogtt_value >= 11.1:
+        ogtt_value = True
+    if obj.hba1c_value and obj.hba1c_value >= 6.5:
+        hba1c_value = True
+    meets_lab_criteria = ifg_value or ogtt_value or hba1c_value
     meets_hiv_criteria = obj.hiv_pos == YES and obj.art_six_months == YES
     if obj.age_in_years >= 18 and meets_lab_criteria and meets_hiv_criteria:
         return True
@@ -32,11 +32,11 @@ def refer_to_icp(obj):
 
 def update_or_create_icp_referral(obj):
     referral_reasons = []
-    if obj.converted_fasting_glucose and obj.converted_fasting_glucose >= 7.0:
-        referral_reasons.append("fasting glucose >= 7.0")
-    if obj.converted_ogtt_two_hr and obj.converted_ogtt_two_hr >= 11.1:
-        referral_reasons.append("ogtt 2hr >= 11.1")
-    if obj.hba1c and obj.hba1c >= 6.5:
+    if obj.converted_ifg_value and obj.converted_ifg_value >= 7.0:
+        referral_reasons.append("IFG >= 7.0")
+    if obj.converted_ogtt_value and obj.converted_ogtt_value >= 11.1:
+        referral_reasons.append("OGTT >= 11.1")
+    if obj.hba1c_value and obj.hba1c_value >= 6.5:
         referral_reasons.append("HbA1c >= 6.5")
 
     opts = dict(
@@ -44,15 +44,15 @@ def update_or_create_icp_referral(obj):
         age_in_years=obj.age_in_years,
         art_six_months=obj.art_six_months,
         ethnicity=obj.ethnicity,
-        fasting_glucose=obj.converted_fasting_glucose,
+        ifg_value=obj.converted_ifg_value,
         gender=obj.gender,
-        hba1c=obj.hba1c,
+        hba1c_value=obj.hba1c_value,
         hiv_pos=obj.hiv_pos,
         hospital_identifier=obj.hospital_identifier,
         initials=obj.initials,
         meta_eligible=obj.eligible,
         meta_eligibility_datetime=obj.eligibility_datetime,
-        ogtt_two_hr=obj.converted_ogtt_two_hr,
+        ogtt_value=obj.converted_ogtt_value,
         screening_identifier=obj.screening_identifier,
         referral_reasons="|".join(referral_reasons),
     )
@@ -74,8 +74,7 @@ def update_or_create_icp_referral(obj):
     dispatch_uid="refer_to_icp_on_post_save",
 )
 def refer_to_icp_on_post_save(sender, instance, raw, created, **kwargs):
-    """Refer to ICP if subject meets criteria.
-    """
+    """Refer to ICP if subject meets criteria."""
     if not raw:
         if not instance.eligible and instance.eligibility_datetime:
             if refer_to_icp(instance):

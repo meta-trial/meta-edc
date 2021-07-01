@@ -1,14 +1,14 @@
-from django.utils.safestring import mark_safe
-from edc_constants.constants import FEMALE, MALE, YES, TBD, NO
-from edc_reportable import convert_units, MILLIMOLES_PER_LITER, MICROMOLES_PER_LITER
+from django.utils.html import format_html
+from edc_constants.constants import FEMALE, MALE, NO, TBD, YES
+from edc_reportable import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER, convert_units
 from edc_utils.date import get_utcnow
 
 from .calculators import calculate_bmi, calculate_egfr, calculate_inclusion_field_values
 from .constants import (
-    EGFR_NOT_CALCULATED,
-    BMI_IFT_OGTT_INCOMPLETE,
     BMI_IFT_OGTT,
+    BMI_IFT_OGTT_INCOMPLETE,
     EGFR_LT_45,
+    EGFR_NOT_CALCULATED,
 )
 
 
@@ -41,8 +41,7 @@ part2_fields = [
 
 
 def check_eligible_final(obj):
-    """Updates model instance fields `eligible` and `reasons_ineligible`.
-    """
+    """Updates model instance fields `eligible` and `reasons_ineligible`."""
     reasons_ineligible = []
 
     if obj.unsuitable_for_study == YES:
@@ -68,8 +67,7 @@ def check_eligible_final(obj):
 
 
 def calculate_eligible_final(obj):
-    """Returns YES, NO or TBD.
-    """
+    """Returns YES, NO or TBD."""
     eligible_final = NO
     valid_opts = [YES, NO, TBD]
     if any(
@@ -180,18 +178,20 @@ def calculate_eligible_part_three(obj):
     obj.eligible_part_three = TBD
     obj.reasons_ineligible_part_three = None
 
-    obj.converted_creatinine = convert_units(
-        obj.creatinine, units_from=obj.creatinine_units, units_to=MICROMOLES_PER_LITER
+    obj.converted_creatinine_value = convert_units(
+        obj.creatinine_value,
+        units_from=obj.creatinine_units,
+        units_to=MICROMOLES_PER_LITER,
     )
 
-    obj.converted_fasting_glucose = convert_units(
-        obj.fasting_glucose,
-        units_from=obj.fasting_glucose_units,
+    obj.converted_ifg_value = convert_units(
+        obj.ifg_value,
+        units_from=obj.ifg_units,
         units_to=MILLIMOLES_PER_LITER,
     )
 
-    obj.converted_ogtt_two_hr = convert_units(
-        obj.ogtt_two_hr, units_from=obj.ogtt_two_hr_units, units_to=MILLIMOLES_PER_LITER
+    obj.converted_ogtt_value = convert_units(
+        obj.ogtt_value, units_from=obj.ogtt_units, units_to=MILLIMOLES_PER_LITER
     )
 
     obj.calculated_bmi = calculate_bmi(obj)
@@ -227,11 +227,11 @@ def calculate_eligible_part_three(obj):
         obj.eligible_part_three = NO
 
     if not reasons_ineligible:
-        obj.calculated_egfr = calculate_egfr(obj)
-        if not obj.calculated_egfr:
+        obj.calculated_egfr_value = calculate_egfr(obj)
+        if not obj.calculated_egfr_value:
             reasons_ineligible.append(EGFR_NOT_CALCULATED)
             obj.eligible_part_three = TBD
-        elif obj.calculated_egfr < 45.0:
+        elif obj.calculated_egfr_value < 45.0:
             reasons_ineligible.append(EGFR_LT_45)
             obj.eligible_part_three = NO
 
@@ -252,7 +252,7 @@ def format_reasons_ineligible(*str_values):
     str_values = [x for x in str_values if x is not None]
     if str_values:
         str_values = "".join(str_values)
-        reasons = mark_safe(str_values.replace("|", "<BR>"))
+        reasons = format_html(str_values.replace("|", "<BR>"))
     return reasons
 
 

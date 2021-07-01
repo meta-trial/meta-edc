@@ -24,6 +24,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     SENTRY_ENABLED=False,
     INDEX_PAGE="localhost:8000",
     EXPORT_FOLDER=join(base_dir, "tests", "export"),
+    SUBJECT_APP_LABEL="meta_subject",
     SUBJECT_SCREENING_MODEL="meta_screening.subjectscreening",
     SUBJECT_VISIT_MODEL="meta_subject.subjectvisit",
     SUBJECT_CONSENT_MODEL="meta_consent.subjectconsent",

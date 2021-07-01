@@ -1,6 +1,6 @@
 from django.db import models
-from edc_constants.choices import YES_NO, POS_NEG_NA, YES_NO_NA
-from edc_constants.constants import NOT_APPLICABLE, NO
+from edc_constants.choices import POS_NEG_NA, YES_NO, YES_NO_NA
+from edc_constants.constants import NO, NOT_APPLICABLE
 
 from ..choices import YES_NO_NOT_ELIGIBLE
 from ..constants import PREG_YES_NO_NA
@@ -23,7 +23,7 @@ class PartTwoFieldsModelMixin(models.Model):
         help_text="(Pregnancy test)",
     )
 
-    urine_bhcg = models.CharField(
+    urine_bhcg_value = models.CharField(
         verbose_name="Urine or serum βhCG result",
         max_length=15,
         choices=POS_NEG_NA,
@@ -46,7 +46,7 @@ class PartTwoFieldsModelMixin(models.Model):
     )
 
     liver_disease = models.CharField(
-        verbose_name=("Is there clinical evidence of liver disease"),
+        verbose_name="Is there clinical evidence of liver disease",
         max_length=15,
         choices=YES_NO,
         null=True,

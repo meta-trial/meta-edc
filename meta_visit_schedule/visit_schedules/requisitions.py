@@ -1,12 +1,16 @@
-from edc_visit_schedule import FormsCollection, Requisition
-from meta_labs import (
-    fbc_panel,
-    chemistry_panel,
+from edc_lab.utils import get_requisition_model_name
+from edc_lab_panel.panels import (
     blood_glucose_panel,
     blood_glucose_poc_panel,
+    fbc_panel,
     hba1c_panel,
     hba1c_poc_panel,
+    lft_panel,
+    lipids_panel,
+    rft_panel,
 )
+from edc_visit_schedule import FormsCollection, Requisition
+from meta_labs.lab_profiles import chemistry_panel
 
 requisitions_prn = FormsCollection(
     Requisition(

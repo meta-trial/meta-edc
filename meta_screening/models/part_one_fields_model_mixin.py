@@ -6,12 +6,7 @@ from django.core.validators import (
 from django.db import models
 from django.utils.safestring import mark_safe
 from django_crypto_fields.fields import EncryptedCharField
-from edc_constants.choices import (
-    YES_NO,
-    YES_NO_NA,
-    YESDEFAULT_NO,
-    SELECTION_METHOD,
-)
+from edc_constants.choices import SELECTION_METHOD, YES_NO, YES_NO_NA, YESDEFAULT_NO
 from edc_constants.constants import YES
 
 from ..choices import ETHNICITY
@@ -64,7 +59,7 @@ class PartOneFieldsModelMixin(models.Model):
     )
 
     on_rx_stable = models.CharField(
-        verbose_name=("Is the patient considered to be stable on treatment "),
+        verbose_name="Is the patient considered to be stable on treatment ",
         max_length=15,
         choices=YES_NO_NA,
         help_text="in regular attendance for care",

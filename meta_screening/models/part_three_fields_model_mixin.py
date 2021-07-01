@@ -4,15 +4,15 @@ from edc_constants.choices import NO, YES_NO
 from edc_model import models as edc_models
 from respond_models.mixins import (
     CreatinineModelFieldsMixin,
-    FastingGlucoseModelMixin,
     FastingModelMixin,
+    IfgModelMixin,
     OgttModelMixin,
 )
 
 
 class PartThreeFieldsModelMixin(
     FastingModelMixin,
-    FastingGlucoseModelMixin,
+    IfgModelMixin,
     OgttModelMixin,
     CreatinineModelFieldsMixin,
     models.Model,
@@ -57,7 +57,7 @@ class PartThreeFieldsModelMixin(
         help_text="",
     )
 
-    hba1c = models.DecimalField(
+    hba1c_value = models.DecimalField(
         verbose_name="HbA1c",
         max_digits=8,
         decimal_places=2,

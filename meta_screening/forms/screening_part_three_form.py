@@ -19,17 +19,13 @@ class ScreeningPartThreeForm(
     def clean(self):
         cleaned_data = super().clean()
 
-        if cleaned_data.get("creatinine"):
-            if float(cleaned_data.get("creatinine")) > 9999.0:
-                raise forms.ValidationError({"creatinine": "Value is absurd."})
+        if cleaned_data.get("creatinine_value"):
+            if float(cleaned_data.get("creatinine_value")) > 9999.0:
+                raise forms.ValidationError({"creatinine_value": "Value is absurd."})
 
-        self.validate_glucose_as_millimoles_per_liter(cleaned_data)
+        validate_glucose_as_millimoles_per_liter(cleaned_data)
 
         return cleaned_data
-
-    @staticmethod
-    def validate_glucose_as_millimoles_per_liter(cleaned_data=None):
-        return validate_glucose_as_millimoles_per_liter(cleaned_data)
 
     class Meta:
         model = ScreeningPartThree

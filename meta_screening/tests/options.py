@@ -1,11 +1,17 @@
-import arrow
-
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
-from edc_constants.constants import RANDOM_SAMPLING
-from edc_constants.constants import YES, BLACK, FEMALE, NOT_APPLICABLE, TBD, NO
-from edc_reportable.units import MILLIMOLES_PER_LITER, MICROMOLES_PER_LITER
 
+import arrow
+from dateutil.relativedelta import relativedelta
+from edc_constants.constants import (
+    BLACK,
+    FEMALE,
+    NO,
+    NOT_APPLICABLE,
+    RANDOM_SAMPLING,
+    TBD,
+    YES,
+)
+from edc_reportable.units import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
 
 now = arrow.get(datetime(2019, 5, 5), "UTC").datetime
 tomorrow = now + relativedelta(days=1)
@@ -57,15 +63,15 @@ part_three_eligible_options = dict(
     creatinine_units=MICROMOLES_PER_LITER,
     fasted=YES,
     fasted_duration_str="8h",
-    fasting_glucose=7.0,
-    fasting_glucose_units=MILLIMOLES_PER_LITER,
+    ifg_value=7.0,
+    ifg_units=MILLIMOLES_PER_LITER,
     fasting_glucose_datetime=tomorrow,
     ogtt_base_datetime=tomorrow + relativedelta(minutes=5),
-    ogtt_two_hr=7.5,
-    ogtt_two_hr_units=MILLIMOLES_PER_LITER,
-    ogtt_two_hr_datetime=tomorrow + relativedelta(hours=2),
+    ogtt_value=7.5,
+    ogtt_units=MILLIMOLES_PER_LITER,
+    ogtt_datetime=tomorrow + relativedelta(hours=2),
     urine_bhcg_performed=NOT_APPLICABLE,
-    urine_bhcg=NOT_APPLICABLE,
+    urine_bhcg_value=NOT_APPLICABLE,
     unsuitable_for_study=NO,
     unsuitable_agreed=NOT_APPLICABLE,
 )

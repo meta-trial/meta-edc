@@ -1,5 +1,5 @@
 from django.test import TestCase, tag
-from edc_constants.constants import YES, BLACK, FEMALE, NOT_APPLICABLE, TBD, NO
+from edc_constants.constants import BLACK, FEMALE, NO, NOT_APPLICABLE, TBD, YES
 from edc_reportable import (
     MICROMOLES_PER_LITER,
     MILLIMOLES_PER_LITER,
@@ -8,13 +8,13 @@ from edc_reportable import (
 from edc_utils.date import get_utcnow
 
 from ..constants import (
-    EGFR_NOT_CALCULATED,
     BMI_IFT_OGTT,
     BMI_IFT_OGTT_INCOMPLETE,
     EGFR_LT_45,
+    EGFR_NOT_CALCULATED,
 )
-from ..models import ScreeningPartOne, ScreeningPartTwo, ScreeningPartThree
-from .options import part_two_eligible_options, part_three_eligible_options
+from ..models import ScreeningPartOne, ScreeningPartThree, ScreeningPartTwo
+from .options import part_three_eligible_options, part_two_eligible_options
 
 
 class TestScreeningPartThree(TestCase):
@@ -113,7 +113,7 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.consented)
 
         obj.hba1c_performed = YES
-        obj.hba1c = 7.0
+        obj.hba1c_value = 7.0
         obj.creatinine_performed = NO
         obj.save()
 
@@ -123,7 +123,7 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.consented)
 
         obj.creatinine_performed = YES
-        obj.creatinine = 50
+        obj.creatinine_value = 50
         obj.creatinine_units = MICROMOLES_PER_LITER
         obj.save()
 
@@ -142,8 +142,8 @@ class TestScreeningPartThree(TestCase):
 
         obj.fasted = YES
         obj.fasted_duration_str = "8h"
-        obj.fasting_glucose = 7.0
-        obj.fasting_glucose_datetime = get_utcnow()
+        obj.ifg_value = 7.0
+        obj.ifg_datetime = get_utcnow()
         obj.save()
 
         self.assertEqual(obj.eligible_part_three, TBD)
@@ -152,9 +152,9 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.consented)
 
         obj.ogtt_base_datetime = get_utcnow()
-        obj.ogtt_two_hr = 3.0
-        obj.ogtt_two_hr_units = MICROMOLES_PER_LITER
-        obj.ogtt_two_hr_datetime = get_utcnow()
+        obj.ogtt_value = 3.0
+        obj.ogtt_units = MICROMOLES_PER_LITER
+        obj.ogtt_datetime = get_utcnow()
         try:
             obj.save()
         except ConversionNotHandled:
@@ -162,7 +162,7 @@ class TestScreeningPartThree(TestCase):
         else:
             self.fail("ConversionNotHandled unexpectedly not raised.")
 
-        obj.ogtt_two_hr_units = MILLIMOLES_PER_LITER
+        obj.ogtt_units = MILLIMOLES_PER_LITER
         obj.save()
 
         self.assertEqual(obj.eligible_part_three, NO)
@@ -171,9 +171,9 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.consented)
 
         obj.ogtt_base_datetime = get_utcnow()
-        obj.ogtt_two_hr = 7.5
-        obj.ogtt_two_hr_units = MILLIMOLES_PER_LITER
-        obj.ogtt_two_hr_datetime = get_utcnow()
+        obj.ogtt_value = 7.5
+        obj.ogtt_units = MILLIMOLES_PER_LITER
+        obj.ogtt_datetime = get_utcnow()
         obj.save()
 
         self.assertEqual(obj.eligible_part_three, YES)
@@ -196,19 +196,19 @@ class TestScreeningPartThree(TestCase):
         obj.weight = 65
         obj.height = 110
         obj.hba1c_performed = YES
-        obj.hba1c = 7.0
+        obj.hba1c_value = 7.0
         obj.creatinine_performed = NO
         #         obj.creatinine = 50
         #         obj.creatinine_units = MICROMOLES_PER_LITER
         obj.fasted = YES
         obj.fasted_duration_str = "8h"
-        obj.fasting_glucose = 7.0
-        obj.fasting_glucose_units = MILLIMOLES_PER_LITER
-        obj.fasting_glucose_datetime = get_utcnow()
+        obj.ifg_value = 7.0
+        obj.ifg_units = MILLIMOLES_PER_LITER
+        obj.ifg_datetime = get_utcnow()
         obj.ogtt_base_datetime = get_utcnow()
-        obj.ogtt_two_hr = 7.5
-        obj.ogtt_two_hr_units = MILLIMOLES_PER_LITER
-        obj.ogtt_two_hr_datetime = get_utcnow()
+        obj.ogtt_value = 7.5
+        obj.ogtt_units = MILLIMOLES_PER_LITER
+        obj.ogtt_datetime = get_utcnow()
         obj.save()
 
         self.assertEqual(obj.eligible_part_three, TBD)
@@ -231,18 +231,18 @@ class TestScreeningPartThree(TestCase):
         obj.weight = 65
         obj.height = 110
         obj.hba1c_performed = YES
-        obj.hba1c = 7.0
+        obj.hba1c_value = 7.0
         obj.creatinine_performed = NO
-        obj.creatinine = 200
+        obj.creatinine_value = 200
         obj.creatinine_units = MICROMOLES_PER_LITER
         obj.fasted = YES
         obj.fasted_duration_str = "8h"
-        obj.fasting_glucose = 7.0
-        obj.fasting_glucose_datetime = get_utcnow()
+        obj.ifg_value = 7.0
+        obj.ifg_datetime = get_utcnow()
         obj.ogtt_base_datetime = get_utcnow()
-        obj.ogtt_two_hr = 7.5
-        obj.ogtt_two_hr_units = MILLIMOLES_PER_LITER
-        obj.ogtt_two_hr_datetime = get_utcnow()
+        obj.ogtt_value = 7.5
+        obj.ogtt_units = MILLIMOLES_PER_LITER
+        obj.ogtt_datetime = get_utcnow()
         obj.save()
 
         self.assertEqual(obj.eligible_part_three, NO)

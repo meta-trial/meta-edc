@@ -7,7 +7,7 @@ from edc_reportable.units import MICROMOLES_PER_LITER_DISPLAY, MILLIMOLES_PER_LI
 class CalculatedModelMixin(models.Model):
 
     # calculated
-    calculated_bmi = models.DecimalField(
+    calculated_bmi_value = models.DecimalField(
         verbose_name="BMI",
         max_digits=8,
         decimal_places=4,
@@ -17,7 +17,7 @@ class CalculatedModelMixin(models.Model):
     )
 
     # calculated
-    calculated_egfr = models.DecimalField(
+    calculated_egfr_value = models.DecimalField(
         verbose_name="eGFR",
         max_digits=8,
         decimal_places=4,
@@ -26,7 +26,7 @@ class CalculatedModelMixin(models.Model):
     )
 
     # converted if necessary
-    converted_creatinine = models.DecimalField(
+    converted_creatinine_value = models.DecimalField(
         verbose_name="Serum creatinine",
         max_digits=8,
         decimal_places=4,
@@ -35,7 +35,7 @@ class CalculatedModelMixin(models.Model):
     )
 
     # converted if necessary
-    converted_fasting_glucose = models.DecimalField(
+    converted_ifg_value = models.DecimalField(
         verbose_name="Fasting glucose",
         max_digits=8,
         decimal_places=4,
@@ -44,7 +44,7 @@ class CalculatedModelMixin(models.Model):
     )
 
     # converted if necessary
-    converted_ogtt_two_hr = models.DecimalField(
+    converted_ogtt_value = models.DecimalField(
         verbose_name="Blood glucose level 2-hours",
         max_digits=8,
         decimal_places=4,

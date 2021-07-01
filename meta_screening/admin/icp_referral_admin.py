@@ -1,11 +1,11 @@
 from django.contrib import admin
-from django.utils.safestring import mark_safe
-from django_audit_fields.admin import audit_fieldset_tuple, ModelAdminAuditFieldsMixin
+from django.utils.html import format_html
+from django_audit_fields.admin import ModelAdminAuditFieldsMixin, audit_fieldset_tuple
 from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
 from edc_action_item.modeladmin_mixins import ModelAdminActionItemMixin
 from edc_model_admin import (
-    ModelAdminFormInstructionsMixin,
     ModelAdminFormAutoNumberMixin,
+    ModelAdminFormInstructionsMixin,
     ModelAdminInstitutionMixin,
     TemplatesModelAdminMixin,
 )
@@ -28,8 +28,6 @@ class IcpReferralAdmin(
     ModelAdminActionItemMixin,
     SimpleHistoryAdmin,
 ):
-
-    # form =
 
     additional_instructions = (
         "Subject was referred after not meeting META trial eligibility criteria."
@@ -58,9 +56,9 @@ class IcpReferralAdmin(
                     "ethnicity",
                     "hiv_pos",
                     "art_six_months",
-                    "fasting_glucose",
-                    "hba1c",
-                    "ogtt_two_hr",
+                    "ifg_value",
+                    "hba1c_value",
+                    "ogtt_value",
                 )
             },
         ],
@@ -91,22 +89,24 @@ class IcpReferralAdmin(
         "ethnicity",
         "hiv_pos",
         "art_six_months",
-        "fasting_glucose",
-        "hba1c",
-        "ogtt_two_hr",
+        "ifg_value",
+        "hba1c_value",
+        "ogtt_value",
         "meta_eligible",
         "meta_eligibility_datetime",
         "referral_reasons",
     )
 
-    def demographics(self, obj=None):
-        return mark_safe(
+    @staticmethod
+    def demographics(obj=None):
+        return format_html(
             f"{obj.get_gender_display()} {obj.age_in_years}yrs<BR>"
             f"Initials: {obj.initials.upper()}<BR><BR>"
             f"Hospital ID: {obj.hospital_identifier}"
         )
 
-    def criteria(self, obj):
+    @staticmethod
+    def criteria(obj):
         if obj.referral_reasons:
-            return mark_safe("<BR>".join(obj.referral_reasons.split("|")))
+            return format_html("<BR>".join(obj.referral_reasons.split("|")))
         return None

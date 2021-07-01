@@ -20,15 +20,15 @@ from edc_constants.constants import (
 )
 from edc_reportable import GRADE5, GRADE4, GRADE3
 from edc_visit_schedule.utils import get_offschedule_models
-from meta_subject.constants import (
+from edc_blood_results.constants import (
     BLOOD_RESULTS_GLU_ACTION,
     BLOOD_RESULTS_LFT_ACTION,
     BLOOD_RESULTS_RFT_ACTION,
     BLOOD_RESULTS_FBC_ACTION,
-    FOLLOWUP_EXAMINATION_ACTION,
 )
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from meta_prn.constants import END_OF_STUDY_ACTION
+from meta_subject.constants import FOLLOWUP_EXAMINATION_ACTION
 
 
 class AeFollowupAction(ActionWithNotification):
@@ -245,8 +245,7 @@ class DeathReportTmgAction(ActionWithNotification):
     instructions = mark_safe("This report is to be completed by the TMG only.")
 
     def reopen_action_item_on_change(self):
-        """Do not reopen if status is CLOSED.
-        """
+        """Do not reopen if status is CLOSED."""
         return self.reference_obj.report_status != CLOSED
 
     @property
