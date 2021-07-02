@@ -1,7 +1,7 @@
 from django import forms
 from edc_form_validators import FormValidatorMixin
+from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
 from edc_screening.modelform_mixins import AlreadyConsentedFormMixin
-from respond_forms.utils import validate_glucose_as_millimoles_per_liter
 
 from ..form_validators import ScreeningPartThreeFormValidator
 from ..models import ScreeningPartThree
@@ -22,8 +22,6 @@ class ScreeningPartThreeForm(
         if cleaned_data.get("creatinine_value"):
             if float(cleaned_data.get("creatinine_value")) > 9999.0:
                 raise forms.ValidationError({"creatinine_value": "Value is absurd."})
-
-        validate_glucose_as_millimoles_per_liter(cleaned_data)
 
         return cleaned_data
 

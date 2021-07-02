@@ -68,8 +68,8 @@ class TestScreeningPartThree(TestCase):
         obj.creatinine_performed = YES
         obj.creatinine_value = 100
         obj.creatinine_units = MICROMOLES_PER_LITER
-        obj.fasted = YES
-        obj.fasted_duration_str = "8h"
+        obj.fasting = YES
+        obj.fasting_duration_str = "8h"
         obj.ifg_value = 7.5
         obj.ifg_datetime = get_utcnow()
         obj.ogtt_base_datetime = get_utcnow()

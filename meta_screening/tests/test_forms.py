@@ -1,22 +1,15 @@
-from django.test import TestCase, tag
-from edc_constants.constants import FEMALE, MALE, YES, NOT_APPLICABLE, NO, POS, NEG
-from edc_utils.date import get_utcnow
 from random import choices
 
-from ..forms import (
-    ScreeningPartOneForm,
-    ScreeningPartThreeForm,
-    ScreeningPartTwoForm,
-)
-from ..models.proxy_models import (
-    ScreeningPartOne,
-    ScreeningPartTwo,
-    ScreeningPartThree,
-)
+from django.test import TestCase, tag
+from edc_constants.constants import FEMALE, MALE, NEG, NO, NOT_APPLICABLE, POS, YES
+from edc_utils.date import get_utcnow
+
+from ..forms import ScreeningPartOneForm, ScreeningPartThreeForm, ScreeningPartTwoForm
+from ..models.proxy_models import ScreeningPartOne, ScreeningPartThree, ScreeningPartTwo
 from .options import (
     part_one_eligible_options,
-    part_two_eligible_options,
     part_three_eligible_options,
+    part_two_eligible_options,
 )
 
 
@@ -263,10 +256,10 @@ class TestForms(ScreeningTestMixin, TestCase):
             urine_bhcg_value=POS,
             urine_bhcg_performed=NO,
         )
-        self.assertIn("urine_bhcg", self.part_three_form._errors)
+        self.assertIn("urine_bhcg_value", self.part_three_form._errors)
         self.assertIn(
             "This field is not applicable",
-            self.part_three_form._errors.get("urine_bhcg")[0],
+            self.part_three_form._errors.get("urine_bhcg_value")[0],
         )
 
         # if pregnant == NO, urine_bhcg_performed=YES, urine_bhcg_value is
@@ -305,7 +298,7 @@ class TestForms(ScreeningTestMixin, TestCase):
             urine_bhcg_date=get_utcnow().date(),
             urine_bhcg_performed=YES,
         )
-        self.assertIn("urine_bhcg", self.part_three_form._errors)
+        self.assertIn("urine_bhcg_value", self.part_three_form._errors)
         self.assertIn(
             "Invalid, part one says subject is not pregnant",
             self.part_three_form._errors.get("urine_bhcg_value")[0],

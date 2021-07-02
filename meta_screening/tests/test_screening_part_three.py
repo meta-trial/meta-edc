@@ -44,11 +44,15 @@ class TestScreeningPartThree(TestCase):
             setattr(obj, k, v)
         obj.save()
 
-    def test_defaults(self):
-
-        obj = ScreeningPartThree.objects.get(
+    def get_screening_part_three(self):
+        return ScreeningPartThree.objects.get(
             screening_identifier=self.screening_identifier
         )
+
+    @tag("1")
+    def test_defaults(self):
+
+        obj = self.get_screening_part_three()
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertFalse(obj.reasons_ineligible_part_one)
 
@@ -61,19 +65,17 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
+    @tag("1")
     def test_eligible(self):
-        obj = ScreeningPartThree.objects.get(
-            screening_identifier=self.screening_identifier
-        )
+        obj = self.get_screening_part_three()
         for k, v in part_three_eligible_options.items():
             setattr(obj, k, v)
         obj.save()
         self.assertEqual(obj.eligible_part_three, YES)
 
+    @tag("1")
     def test_eligible_datetime_on_resave(self):
-        obj = ScreeningPartThree.objects.get(
-            screening_identifier=self.screening_identifier
-        )
+        obj = self.get_screening_part_three()
         for k, v in part_three_eligible_options.items():
             setattr(obj, k, v)
         obj.save()
@@ -82,11 +84,9 @@ class TestScreeningPartThree(TestCase):
         obj.save()
         self.assertNotEqual(eligibility_datetime, obj.eligibility_datetime)
 
+    @tag("1")
     def test_eligible2(self):
-
-        obj = ScreeningPartThree.objects.get(
-            screening_identifier=self.screening_identifier
-        )
+        obj = self.get_screening_part_three()
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertFalse(obj.reasons_ineligible_part_one)
         self.assertEqual(obj.eligible_part_two, YES)
@@ -132,7 +132,7 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
-        obj.fasted = NO
+        obj.fasting = NO
         obj.save()
 
         self.assertEqual(obj.eligible_part_three, TBD)
@@ -140,8 +140,8 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
-        obj.fasted = YES
-        obj.fasted_duration_str = "8h"
+        obj.fasting = YES
+        obj.fasting_duration_str = "8h"
         obj.ifg_value = 7.0
         obj.ifg_datetime = get_utcnow()
         obj.save()
@@ -181,11 +181,10 @@ class TestScreeningPartThree(TestCase):
         self.assertTrue(obj.eligible)
         self.assertFalse(obj.consented)
 
+    @tag("1")
     def test_tbd_eligible_egfr_not_calculated(self):
 
-        obj = ScreeningPartThree.objects.get(
-            screening_identifier=self.screening_identifier
-        )
+        obj = self.get_screening_part_three()
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertFalse(obj.reasons_ineligible_part_one)
         self.assertEqual(obj.eligible_part_two, YES)
@@ -200,8 +199,8 @@ class TestScreeningPartThree(TestCase):
         obj.creatinine_performed = NO
         #         obj.creatinine = 50
         #         obj.creatinine_units = MICROMOLES_PER_LITER
-        obj.fasted = YES
-        obj.fasted_duration_str = "8h"
+        obj.fasting = YES
+        obj.fasting_duration_str = "8h"
         obj.ifg_value = 7.0
         obj.ifg_units = MILLIMOLES_PER_LITER
         obj.ifg_datetime = get_utcnow()
@@ -218,9 +217,7 @@ class TestScreeningPartThree(TestCase):
 
     def test_not_eligible_egfr_less_than_45(self):
 
-        obj = ScreeningPartThree.objects.get(
-            screening_identifier=self.screening_identifier
-        )
+        obj = self.get_screening_part_three()
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertFalse(obj.reasons_ineligible_part_one)
         self.assertEqual(obj.eligible_part_two, YES)
@@ -235,8 +232,8 @@ class TestScreeningPartThree(TestCase):
         obj.creatinine_performed = NO
         obj.creatinine_value = 200
         obj.creatinine_units = MICROMOLES_PER_LITER
-        obj.fasted = YES
-        obj.fasted_duration_str = "8h"
+        obj.fasting = YES
+        obj.fasting_duration_str = "8h"
         obj.ifg_value = 7.0
         obj.ifg_datetime = get_utcnow()
         obj.ogtt_base_datetime = get_utcnow()

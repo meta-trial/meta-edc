@@ -1,14 +1,9 @@
 from django import forms
 from edc_constants.constants import NEG, NO, POS, YES
 from edc_form_validators import FormValidator
-from edc_reportable import (
-    BmiFormValidatorMixin,
-    CalculatorError,
-    ConversionNotHandled,
-    EgfrFormValidatorMixin,
-    eGFR,
-)
-from respond_forms.form_validator_mixins import GlucoseFormValidatorMixin
+from edc_glucose.form_validators import GlucoseFormValidatorMixin
+from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
+from edc_reportable import BmiFormValidatorMixin, EgfrFormValidatorMixin
 
 
 class ScreeningPartThreeFormValidator(
@@ -21,7 +16,11 @@ class ScreeningPartThreeFormValidator(
 
         self.validate_ifg_required_fields()
 
+        validate_glucose_as_millimoles_per_liter("ifg", self.cleaned_data)
+
         self.validate_ogtt_required_fields()
+
+        validate_glucose_as_millimoles_per_liter("ogtt", self.cleaned_data)
 
         self.validate_creatinine_required_fields()
 

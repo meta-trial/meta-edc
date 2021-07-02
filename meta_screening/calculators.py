@@ -21,7 +21,7 @@ def calculate_egfr(obj):
             gender=obj.gender,
             age=obj.age_in_years,
             ethnicity=obj.ethnicity,
-            creatinine_value=obj.converted_creatinine,  # umols/L
+            creatinine_value=obj.converted_creatinine_value,  # umols/L
             creatinine_units=MICROMOLES_PER_LITER,
         )
         calculated_egfr_value = eGFR(**opts).value

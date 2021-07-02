@@ -1,6 +1,6 @@
 from django.contrib import admin
 from edc_blood_results.admin import BloodResultsModelAdminMixin
-from edc_blood_results.fieldsets import BloodResultPanel
+from edc_blood_results.fieldsets import BloodResultFieldset
 from edc_lab_panel.panels import fbc_panel
 
 from ...admin_site import meta_subject_admin
@@ -12,4 +12,4 @@ from ..modeladmin import CrfModelAdmin
 @admin.register(BloodResultsFbc, site=meta_subject_admin)
 class BloodResultsFbcAdmin(BloodResultsModelAdminMixin, CrfModelAdmin):
     form = BloodResultsFbcForm
-    fieldsets = BloodResultPanel(fbc_panel, model_cls=BloodResultsFbc).fieldsets
+    fieldsets = BloodResultFieldset(fbc_panel, model_cls=BloodResultsFbc).fieldsets

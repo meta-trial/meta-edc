@@ -19,7 +19,15 @@ class TestVisitSchedule(TestCase):
 
     def test_visit_codes(self):
         self.assertEqual(
-            ["1000", "1005", "1010", "1030", "1060", "1090", "1120"],
+            [
+                "1000",
+                "1005",
+                "1010",
+                "1030",
+                "1060",
+                "1090",
+                "1120",
+            ],
             [visit for visit in schedule.visits],
         )
 
@@ -63,6 +71,7 @@ class TestVisitSchedule(TestCase):
             "meta_subject.bloodresultslft",
             "meta_subject.bloodresultslipid",
             "meta_subject.bloodresultsrft",
+            "meta_subject.glucose",
             "meta_subject.healtheconomics",
             "meta_subject.malariatest",
             "meta_subject.urinedipsticktest",
@@ -75,7 +84,6 @@ class TestVisitSchedule(TestCase):
                 "meta_subject.bloodresultslft",
                 "meta_subject.bloodresultslipid",
                 "meta_subject.bloodresultsrft",
-                "meta_subject.glucose",
                 "meta_subject.malariatest",
                 "meta_subject.urinedipsticktest",
             ],

@@ -41,8 +41,8 @@ part_three_vitals_fields = (
 )
 
 part_three_ifg_fields = (
-    "fasted",
-    "fasted_duration_str",
+    "fasting",
+    "fasting_duration_str",
     "ifg_datetime",
     "ifg_value",
     "ifg_units",

@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django import forms
 from edc_constants.constants import NO, YES
 
@@ -14,15 +16,19 @@ class GlucoseFormValidatorMixin:
                 self.validate_glucose_dates()
     """
 
+    min_val = Decimal("0.00")
+    max_val = Decimal("30.00")
+    high_value = Decimal("9999.99")
+
     def validate_ifg(self):
-        """Uses fields `fasted`,`fasted_duration_str`, `ifg_value`,
+        """Uses fields `fasting`,`fasting_duration_str`, `ifg_value`,
         `ifg_datetime`, `ifg_units`
         """
-        self.required_if(YES, field="fasted", field_required="fasted_duration_str")
+        self.required_if(YES, field="fasting", field_required="fasting_duration_str")
 
-        self.required_if(YES, field="fasted", field_required="ifg_datetime")
+        self.required_if(YES, field="fasting", field_required="ifg_datetime")
 
-        self.required_if(YES, field="fasted", field_required="ifg_value")
+        self.required_if(YES, field="fasting", field_required="ifg_value")
 
         self.required_if_true(
             self.cleaned_data.get("ifg_datetime"),
@@ -40,7 +46,7 @@ class GlucoseFormValidatorMixin:
         )
 
     def validate_ogtt(self):
-        """Uses fields `fasted`, `ogtt_base_datetime`, `ogtt_datetime`,
+        """Uses fields `fasting`, `ogtt_base_datetime`, `ogtt_datetime`,
         `ogtt_value`, `ogtt_units`
         """
         self.required_if_true(
@@ -60,16 +66,16 @@ class GlucoseFormValidatorMixin:
         )
 
         self.not_required_if(
-            NO, field="fasted", field_not_required="ogtt_base_datetime", inverse=False
+            NO, field="fasting", field_not_required="ogtt_base_datetime", inverse=False
         )
         self.not_required_if(
-            NO, field="fasted", field_not_required="ogtt_datetime", inverse=False
+            NO, field="fasting", field_not_required="ogtt_datetime", inverse=False
         )
         self.not_required_if(
-            NO, field="fasted", field_not_required="ogtt_value", inverse=False
+            NO, field="fasting", field_not_required="ogtt_value", inverse=False
         )
         self.not_required_if(
-            NO, field="fasted", field_not_required="ogtt_units", inverse=False
+            NO, field="fasting", field_not_required="ogtt_units", inverse=False
         )
 
     def validate_ogtt_dates(self):

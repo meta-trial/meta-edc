@@ -1,7 +1,7 @@
 from django.db import models
 from edc_constants.choices import YES_NO
+from edc_glucose.model_mixins import FastingModelMixin, IfgModelMixin, OgttModelMixin
 from edc_model import models as edc_models
-from respond_models.mixins import FastingModelMixin, IfgModelMixin, OgttModelMixin
 
 from .model_mixins import CrfModelMixin
 
@@ -13,6 +13,8 @@ class Glucose(
     OgttModelMixin,
     edc_models.BaseUuidModel,
 ):
+
+    """A user model to capture IFG and OGTT"""
 
     ifg_performed = models.CharField(
         verbose_name="Was the IFG test performed?",

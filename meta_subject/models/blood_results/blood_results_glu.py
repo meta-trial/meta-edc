@@ -5,6 +5,7 @@ from edc_blood_results.model_mixins import (
     RequisitionModelMixin,
 )
 from edc_crf.model_mixins import CrfWithActionModelMixin
+from edc_glucose.model_mixins import FastingModelMixin
 from edc_model import models as edc_models
 
 

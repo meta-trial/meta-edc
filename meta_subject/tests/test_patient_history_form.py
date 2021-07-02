@@ -1,15 +1,16 @@
+from pprint import pprint
+
 from django.test import TestCase, tag
-from edc_constants.constants import YES, NO, NOT_APPLICABLE, OTHER, NONE
-from edc_list_data import site_list_data, PreloadData
+from edc_constants.constants import COMPLETE, NO, NONE, NOT_APPLICABLE, YES
+from edc_list_data import PreloadData
 from edc_utils.date import get_utcnow
 from meta_lists.models import (
-    BaselineSymptoms,
     ArvRegimens,
-    OiProphylaxis,
+    BaselineSymptoms,
     DiabetesSymptoms,
+    OiProphylaxis,
 )
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
-from pprint import pprint
 
 from ..forms import PatientHistoryForm
 
@@ -55,6 +56,7 @@ class TestPatientHistory(MetaTestCaseMixin, TestCase):
             "temperature": 37,
             "waist_circumference": 61,
             "weight": 65,
+            "crf_status": COMPLETE,
         }
 
     def test_ok(self):

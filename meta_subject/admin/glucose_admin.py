@@ -18,8 +18,8 @@ class GlucoseAdmin(CrfModelAdmin):
             "Fasting",
             {
                 "fields": (
-                    "fasted",
-                    "fasted_duration_str",
+                    "fasting",
+                    "fasting_duration_str",
                 )
             },
         ),
@@ -52,7 +52,7 @@ class GlucoseAdmin(CrfModelAdmin):
     )
 
     radio_fields = {
-        "fasted": admin.VERTICAL,
+        "fasting": admin.VERTICAL,
         "ifg_units": admin.VERTICAL,
         "ifg_performed": admin.VERTICAL,
         "ogtt_performed": admin.VERTICAL,

@@ -1,6 +1,13 @@
 Changes
 =======
 
+0.1.63
+------
+- evaluate glucose field values consistently in form validators
+- change fasted to fasting for consistency
+- update lab / utestid field to have "_value" suffix
+- update imports for classes moved out of respond africa
+
 0.1.60
 ------
 - rename model ``Follow`` to ``FollowupExamination``

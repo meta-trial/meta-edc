@@ -194,7 +194,7 @@ def calculate_eligible_part_three(obj):
         obj.ogtt_value, units_from=obj.ogtt_units, units_to=MILLIMOLES_PER_LITER
     )
 
-    obj.calculated_bmi = calculate_bmi(obj)
+    obj.calculated_bmi_value = calculate_bmi(obj)
 
     a, b, c, d = calculate_inclusion_field_values(obj)
     obj.inclusion_a = a

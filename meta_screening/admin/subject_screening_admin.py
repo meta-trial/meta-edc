@@ -97,7 +97,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "creatinine_performed": admin.VERTICAL,
         "creatinine_units": admin.VERTICAL,
         "ethnicity": admin.VERTICAL,
-        "fasted": admin.VERTICAL,
+        "fasting": admin.VERTICAL,
         "ifg_units": admin.VERTICAL,
         "gender": admin.VERTICAL,
         "hba1c_performed": admin.VERTICAL,
