@@ -1,11 +1,8 @@
 from django.urls.conf import path
-from edc_adverse_event.views import AeHomeView
-
-from .admin_site import meta_ae_admin
+from django.views.generic import RedirectView
 
 app_name = "meta_ae"
 
 urlpatterns = [
-    path("admin/", meta_ae_admin.urls),
-    path("", AeHomeView.as_view(), name="home_url"),
+    path("", RedirectView.as_view(url="/meta_ae_admin/"), name="home_url"),
 ]
