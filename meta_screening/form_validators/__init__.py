@@ -1,4 +1,4 @@
-from .glucose_form_validator_mixin import GlucoseFormValidatorMixin
+# from .glucose_form_validator_mixin import GlucoseFormValidatorMixin
 from .screening_part_one import ScreeningPartOneFormValidator
 from .screening_part_three import ScreeningPartThreeFormValidator
 from .screening_part_two import ScreeningPartTwoFormValidator

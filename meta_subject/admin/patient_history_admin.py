@@ -41,7 +41,7 @@ class PatientHistoryAdmin(CrfModelAdmin):
             "Part 3: Hypertension",
             {
                 "fields": (
-                    "hypertension_diagnosis",
+                    "htn_diagnosis",
                     "on_hypertension_treatment",
                     "hypertension_treatment",
                     "other_hypertension_treatment",
@@ -70,7 +70,7 @@ class PatientHistoryAdmin(CrfModelAdmin):
         "diabetes_in_family": admin.VERTICAL,
         "former_smoker": admin.VERTICAL,
         "has_previous_arv_regimen": admin.VERTICAL,
-        "hypertension_diagnosis": admin.VERTICAL,
+        "htn_diagnosis": admin.VERTICAL,
         "on_hypertension_treatment": admin.VERTICAL,
         "on_oi_prophylaxis": admin.VERTICAL,
         "previous_arv_regimen": admin.VERTICAL,

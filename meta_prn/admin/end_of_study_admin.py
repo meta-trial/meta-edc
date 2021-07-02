@@ -1,12 +1,14 @@
 from copy import copy
+
 from django.contrib import admin
 from edc_action_item import action_fieldset_tuple, action_fields
 from edc_model_admin import audit_fieldset_tuple, SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
+from meta_ae.models import DeathReport
 
 from ..admin_site import meta_prn_admin
 from ..forms import EndOfStudyForm
-from ..models import EndOfStudy
+from ..models import EndOfStudy, LossToFollowup
 
 
 @admin.register(EndOfStudy, site=meta_prn_admin)
@@ -15,8 +17,10 @@ class EndOfStudyAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin):
     form = EndOfStudyForm
 
     additional_instructions = (
-        "Note: if the patient is deceased, complete the Death Report "
-        "before completing this form. "
+        "Note: if the patient is <i>deceased</i>, complete form "
+        f"`{DeathReport._meta.verbose_name}` before completing this form. "
+        "<BR>If the patient is </i>lost to follow up</i>, complete form "
+        f"`{LossToFollowup._meta.verbose_name}` before completing this form."
     )
 
     fieldsets = (
@@ -28,6 +32,7 @@ class EndOfStudyAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin):
                     "offschedule_datetime",
                     "offschedule_reason",
                     "other_offschedule_reason",
+                    "ltfu_date",
                     "death_date",
                 )
             },
@@ -53,6 +58,5 @@ class EndOfStudyAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin):
     def get_readonly_fields(self, request, obj=None):
         fields = super().get_readonly_fields(request, obj)
         action_flds = copy(list(action_fields))
-        # action_flds.remove("action_identifier")
         fields = list(action_flds) + list(fields)
         return fields

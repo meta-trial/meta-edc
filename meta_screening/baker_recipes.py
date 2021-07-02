@@ -1,6 +1,6 @@
 from dateutil.relativedelta import relativedelta
 from django.contrib.sites.models import Site
-from edc_constants.constants import YES, NO, FEMALE, BLACK, NOT_APPLICABLE
+from edc_constants.constants import BLACK, FEMALE, NO, NOT_APPLICABLE, YES
 from edc_reportable.units import MILLIGRAMS_PER_DECILITER, MILLIMOLES_PER_LITER
 from edc_utils import get_utcnow
 from faker import Faker
@@ -41,15 +41,15 @@ screeningpartone = Recipe(
     part_three_report_datetime=get_utcnow(),
     weight=65,
     height=120,
-    fasted=YES,
-    fasted_duration_str="24:00",
-    urine_bhcg=NO,
-    hba1c=5.7,
-    creatinine=0.6,
+    fasting=YES,
+    fasting_duration_str="24:00",
+    urine_bhcg_value=NO,
+    hba1c_value=5.7,
+    creatinine_vale=0.6,
     creatinine_units=MILLIGRAMS_PER_DECILITER,
-    fasting_glucose=6.9,
-    fasting_glucose_units=MILLIMOLES_PER_LITER,
-    fasting_glucose_datetime=get_utcnow(),
+    ifg_value=6.9,
+    ifg_units=MILLIMOLES_PER_LITER,
+    ifg_datetime=get_utcnow(),
     ogtt_base_datetime=get_utcnow(),
     unsuitable_for_study=NO,
     unsuitable_agreed=NOT_APPLICABLE,

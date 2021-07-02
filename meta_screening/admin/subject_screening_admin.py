@@ -1,24 +1,24 @@
 from django.contrib import admin
+from django.template.loader import render_to_string
+from django.urls.base import reverse
+from django.urls.exceptions import NoReverseMatch
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext as _
 from django_audit_fields.admin import audit_fieldset_tuple
+from edc_dashboard.url_names import url_names
 from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
 from ..admin_site import meta_screening_admin
-from ..eligibility import format_reasons_ineligible, eligibility_status
+from ..eligibility import eligibility_status, format_reasons_ineligible
 from ..forms import SubjectScreeningForm
 from ..models import SubjectScreening
 from .fieldsets import (
     calculated_values_fieldset,
     get_part_one_fieldset,
-    get_part_two_fieldset,
     get_part_three_fieldset,
+    get_part_two_fieldset,
 )
-from django.urls.exceptions import NoReverseMatch
-from django.template.loader import render_to_string
-from django.urls.base import reverse
-from edc_dashboard.url_names import url_names
 
 
 @admin.register(SubjectScreening, site=meta_screening_admin)
@@ -74,11 +74,11 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
 
     readonly_fields = (
         # calculated values
-        "calculated_bmi",
-        "calculated_egfr",
-        "converted_fasting_glucose",
-        "converted_creatinine",
-        "converted_ogtt_two_hr",
+        "calculated_bmi_value",
+        "calculated_egfr_value",
+        "converted_ifg_value",
+        "converted_creatinine_value",
+        "converted_ogtt_value",
         "inclusion_a",
         "inclusion_b",
         "inclusion_c",
@@ -97,15 +97,15 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "creatinine_performed": admin.VERTICAL,
         "creatinine_units": admin.VERTICAL,
         "ethnicity": admin.VERTICAL,
-        "fasted": admin.VERTICAL,
-        "fasting_glucose_units": admin.VERTICAL,
+        "fasting": admin.VERTICAL,
+        "ifg_units": admin.VERTICAL,
         "gender": admin.VERTICAL,
         "hba1c_performed": admin.VERTICAL,
         "hiv_pos": admin.VERTICAL,
         "liver_disease": admin.VERTICAL,
         "lives_nearby": admin.VERTICAL,
         "metformin_sensitivity": admin.VERTICAL,
-        "ogtt_two_hr_units": admin.VERTICAL,
+        "ogtt_units": admin.VERTICAL,
         "on_rx_stable": admin.VERTICAL,
         "pregnant": admin.VERTICAL,
         "renal_function_condition": admin.VERTICAL,
@@ -115,7 +115,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "tissue_hypoxia_condition": admin.VERTICAL,
         "unsuitable_agreed": admin.VERTICAL,
         "unsuitable_for_study": admin.VERTICAL,
-        "urine_bhcg": admin.VERTICAL,
+        "urine_bhcg_value": admin.VERTICAL,
         "urine_bhcg_performed": admin.VERTICAL,
     }
 

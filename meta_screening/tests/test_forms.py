@@ -1,22 +1,15 @@
-from django.test import TestCase, tag
-from edc_constants.constants import FEMALE, MALE, YES, NOT_APPLICABLE, NO, POS, NEG
-from edc_utils.date import get_utcnow
 from random import choices
 
-from ..forms import (
-    ScreeningPartOneForm,
-    ScreeningPartThreeForm,
-    ScreeningPartTwoForm,
-)
-from ..models.proxy_models import (
-    ScreeningPartOne,
-    ScreeningPartTwo,
-    ScreeningPartThree,
-)
+from django.test import TestCase, tag
+from edc_constants.constants import FEMALE, MALE, NEG, NO, NOT_APPLICABLE, POS, YES
+from edc_utils.date import get_utcnow
+
+from ..forms import ScreeningPartOneForm, ScreeningPartThreeForm, ScreeningPartTwoForm
+from ..models.proxy_models import ScreeningPartOne, ScreeningPartThree, ScreeningPartTwo
 from .options import (
     part_one_eligible_options,
-    part_two_eligible_options,
     part_three_eligible_options,
+    part_two_eligible_options,
 )
 
 
@@ -135,7 +128,7 @@ class TestForms(ScreeningTestMixin, TestCase):
             AssertionError,
             self.complete_part_three,
             instance=instance,
-            urine_bhcg=NOT_APPLICABLE,
+            urine_bhcg_value=NOT_APPLICABLE,
             urine_bhcg_performed=NOT_APPLICABLE,
         )
         self.assertIn("urine_bhcg_performed", self.part_three_form._errors)
@@ -149,20 +142,22 @@ class TestForms(ScreeningTestMixin, TestCase):
             AssertionError,
             self.complete_part_three,
             instance=instance,
-            urine_bhcg=POS,  # WRONG
+            urine_bhcg_value=POS,  # WRONG
             urine_bhcg_performed=NO,
         )
-        self.assertIn("urine_bhcg", self.part_three_form._errors)
+        self.assertIn("urine_bhcg_value", self.part_three_form._errors)
         self.assertIn(
             "This field is not applicable",
-            self.part_three_form._errors.get("urine_bhcg")[0],
+            self.part_three_form._errors.get("urine_bhcg_value")[0],
         )
 
         # if pregnant == YES and urine_bhcg_performed=NO, urine_bhcg is NA OK
 
         try:
             self.complete_part_three(
-                instance=instance, urine_bhcg=NOT_APPLICABLE, urine_bhcg_performed=NO
+                instance=instance,
+                urine_bhcg_value=NOT_APPLICABLE,
+                urine_bhcg_performed=NO,
             )
         except AssertionError:
             self.fail("AssertionError unexpectedly raised.")
@@ -173,7 +168,7 @@ class TestForms(ScreeningTestMixin, TestCase):
             AssertionError,
             self.complete_part_three,
             instance=instance,
-            urine_bhcg=POS,
+            urine_bhcg_value=POS,
             urine_bhcg_performed=YES,
         )
         self.assertIn(
@@ -186,7 +181,7 @@ class TestForms(ScreeningTestMixin, TestCase):
         try:
             self.complete_part_three(
                 instance=instance,
-                urine_bhcg=POS,
+                urine_bhcg_value=POS,
                 urine_bhcg_performed=YES,
                 urine_bhcg_date=get_utcnow().date(),
             )
@@ -201,7 +196,7 @@ class TestForms(ScreeningTestMixin, TestCase):
         try:
             ScreeningPartThreeForm(
                 data=dict(
-                    urine_bhcg=NOT_APPLICABLE, urine_bhcg_performed=NOT_APPLICABLE
+                    urine_bhcg_value=NOT_APPLICABLE, urine_bhcg_performed=NOT_APPLICABLE
                 ),
                 instance=instance,
             )
@@ -212,7 +207,7 @@ class TestForms(ScreeningTestMixin, TestCase):
             AssertionError,
             self.complete_part_three,
             instance=instance,
-            urine_bhcg=NOT_APPLICABLE,
+            urine_bhcg_value=NOT_APPLICABLE,
             urine_bhcg_performed=YES,
         )
         self.assertIn("urine_bhcg_performed", self.part_three_form._errors)
@@ -243,7 +238,7 @@ class TestForms(ScreeningTestMixin, TestCase):
             AssertionError,
             self.complete_part_three,
             instance=instance,
-            urine_bhcg=NOT_APPLICABLE,
+            urine_bhcg_value=NOT_APPLICABLE,
             urine_bhcg_performed=NOT_APPLICABLE,
         )
         self.assertIn("urine_bhcg_performed", self.part_three_form._errors)
@@ -258,28 +253,28 @@ class TestForms(ScreeningTestMixin, TestCase):
             AssertionError,
             self.complete_part_three,
             instance=instance,
-            urine_bhcg=POS,
+            urine_bhcg_value=POS,
             urine_bhcg_performed=NO,
         )
-        self.assertIn("urine_bhcg", self.part_three_form._errors)
+        self.assertIn("urine_bhcg_value", self.part_three_form._errors)
         self.assertIn(
             "This field is not applicable",
-            self.part_three_form._errors.get("urine_bhcg")[0],
+            self.part_three_form._errors.get("urine_bhcg_value")[0],
         )
 
-        # if pregnant == NO, urine_bhcg_performed=YES, urine_bhcg is
+        # if pregnant == NO, urine_bhcg_performed=YES, urine_bhcg_value is
         # applicable
         self.assertRaises(
             AssertionError,
             self.complete_part_three,
             instance=instance,
-            urine_bhcg=NOT_APPLICABLE,
+            urine_bhcg_value=NOT_APPLICABLE,
             urine_bhcg_performed=YES,
         )
-        self.assertIn("urine_bhcg", self.part_three_form._errors)
+        self.assertIn("urine_bhcg_value", self.part_three_form._errors)
         self.assertIn(
             "This field is applicable",
-            self.part_three_form._errors.get("urine_bhcg")[0],
+            self.part_three_form._errors.get("urine_bhcg_value")[0],
         )
 
         self.assertRaises(
@@ -299,20 +294,20 @@ class TestForms(ScreeningTestMixin, TestCase):
             AssertionError,
             self.complete_part_three,
             instance=instance,
-            urine_bhcg=POS,
+            urine_bhcg_value=POS,
             urine_bhcg_date=get_utcnow().date(),
             urine_bhcg_performed=YES,
         )
-        self.assertIn("urine_bhcg", self.part_three_form._errors)
+        self.assertIn("urine_bhcg_value", self.part_three_form._errors)
         self.assertIn(
             "Invalid, part one says subject is not pregnant",
-            self.part_three_form._errors.get("urine_bhcg")[0],
+            self.part_three_form._errors.get("urine_bhcg_value")[0],
         )
 
         try:
             self.complete_part_three(
                 instance=instance,
-                urine_bhcg=NEG,
+                urine_bhcg_value=NEG,
                 urine_bhcg_performed=YES,
                 urine_bhcg_date=get_utcnow().date(),
             )
@@ -350,7 +345,7 @@ class TestForms(ScreeningTestMixin, TestCase):
         try:
             self.complete_part_three(
                 instance=instance,
-                urine_bhcg=NOT_APPLICABLE,
+                urine_bhcg_value=NOT_APPLICABLE,
                 urine_bhcg_performed=NOT_APPLICABLE,
             )
         except AssertionError:

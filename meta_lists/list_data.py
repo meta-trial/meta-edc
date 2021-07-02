@@ -1,8 +1,8 @@
 from edc_constants.constants import LOST_TO_FOLLOWUP, OTHER, UNKNOWN, DEAD, NONE
 from edc_list_data import PreloadData
+from edc_transfer.constants import TRANSFERRED
 from meta_prn.constants import (
     WITHDRAWAL,
-    TRANSFERRED,
     LATE_EXCLUSION,
     OTHER_RX_DISCONTINUATION,
 )

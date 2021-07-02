@@ -1,18 +1,14 @@
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from edc_clinic.models import (
-    CreatinineModelFieldsMixin,
-    FastingModelMixin,
-    OgttModelMixin,
-    FastingGlucoseModelMixin,
-)
-from edc_constants.choices import YES_NO, NO
+from edc_constants.choices import NO, YES_NO
+from edc_glucose.model_mixins import FastingModelMixin, IfgModelMixin, OgttModelMixin
 from edc_model import models as edc_models
+from respond_models.mixins import CreatinineModelFieldsMixin
 
 
 class PartThreeFieldsModelMixin(
     FastingModelMixin,
-    FastingGlucoseModelMixin,
+    IfgModelMixin,
     OgttModelMixin,
     CreatinineModelFieldsMixin,
     models.Model,
@@ -25,9 +21,15 @@ class PartThreeFieldsModelMixin(
         help_text="Date and time of report.",
     )
 
-    sys_blood_pressure = edc_models.SystolicPressureField(null=True, blank=True,)
+    sys_blood_pressure = edc_models.SystolicPressureField(
+        null=True,
+        blank=True,
+    )
 
-    dia_blood_pressure = edc_models.DiastolicPressureField(null=True, blank=True,)
+    dia_blood_pressure = edc_models.DiastolicPressureField(
+        null=True,
+        blank=True,
+    )
 
     weight = edc_models.WeightField(null=True, blank=True)
 
@@ -51,7 +53,7 @@ class PartThreeFieldsModelMixin(
         help_text="",
     )
 
-    hba1c = models.DecimalField(
+    hba1c_value = models.DecimalField(
         verbose_name="HbA1c",
         max_digits=8,
         decimal_places=2,

@@ -1,29 +1,22 @@
 from dateutil.relativedelta import relativedelta
-from edc_visit_schedule import Schedule, Visit as BaseVisit
+from edc_visit_schedule import Schedule
+from edc_visit_schedule import Visit as BaseVisit
 
-from ..constants import DAY1, MONTH3, MONTH6, MONTH9, MONTH12, WEEK2, MONTH1
-from .crfs import (
-    crfs_d1,
-    crfs_missed,
-    crfs_w2,
-    crfs_1m,
-    crfs_3m,
-    crfs_6m,
-    crfs_9m,
-    crfs_12m,
-    crfs_prn as default_crfs_prn,
-    crfs_unscheduled as default_crfs_unscheduled,
-)
+from ..constants import DAY1, MONTH1, MONTH3, MONTH6, MONTH9, MONTH12, WEEK2
+from .crfs import crfs_1m, crfs_3m, crfs_6m, crfs_9m, crfs_12m, crfs_d1, crfs_missed
+from .crfs import crfs_prn as default_crfs_prn
+from .crfs import crfs_unscheduled as default_crfs_unscheduled
+from .crfs import crfs_w2
 from .requisitions import (
-    requisitions_d1,
-    requisitions_w2,
     requisitions_1m,
     requisitions_3m,
     requisitions_6m,
     requisitions_9m,
     requisitions_12m,
-    requisitions_prn as default_requisitions_prn,
+    requisitions_d1,
 )
+from .requisitions import requisitions_prn as default_requisitions_prn
+from .requisitions import requisitions_w2
 
 default_requisitions = None
 
@@ -91,8 +84,8 @@ visit2 = Visit(
     title="Month 1",
     timepoint=2,
     rbase=relativedelta(months=1),
-    rlower=relativedelta(days=0),
-    rupper=relativedelta(days=6),
+    rlower=relativedelta(days=15),
+    rupper=relativedelta(days=30),
     requisitions=requisitions_1m,
     crfs=crfs_1m,
     facility_name="7-day-clinic",
@@ -104,8 +97,8 @@ visit3 = Visit(
     title="Month 3",
     timepoint=3,
     rbase=relativedelta(months=3),
-    rlower=relativedelta(days=0),
-    rupper=relativedelta(days=6),
+    rlower=relativedelta(days=15),
+    rupper=relativedelta(days=30),
     requisitions=requisitions_3m,
     crfs=crfs_3m,
     facility_name="7-day-clinic",
@@ -116,8 +109,8 @@ visit4 = Visit(
     title="Month 6",
     timepoint=4,
     rbase=relativedelta(months=6),
-    rlower=relativedelta(days=0),
-    rupper=relativedelta(days=6),
+    rlower=relativedelta(days=15),
+    rupper=relativedelta(days=30),
     requisitions=requisitions_6m,
     crfs=crfs_6m,
     facility_name="7-day-clinic",
@@ -128,8 +121,8 @@ visit5 = Visit(
     title="Month 9",
     timepoint=5,
     rbase=relativedelta(months=9),
-    rlower=relativedelta(days=0),
-    rupper=relativedelta(days=6),
+    rlower=relativedelta(days=15),
+    rupper=relativedelta(days=30),
     requisitions=requisitions_9m,
     crfs=crfs_9m,
     facility_name="7-day-clinic",
@@ -139,17 +132,21 @@ visit6 = Visit(
     title="Month 12",
     timepoint=6,
     rbase=relativedelta(months=12),
-    rlower=relativedelta(days=0),
-    rupper=relativedelta(days=6),
+    rlower=relativedelta(days=15),
+    rupper=relativedelta(days=30),
     requisitions=requisitions_12m,
     crfs=crfs_12m,
     facility_name="7-day-clinic",
 )
 
-schedule.add_visit(visit=visit0)
-schedule.add_visit(visit=visit1)
-schedule.add_visit(visit=visit2)
-schedule.add_visit(visit=visit3)
-schedule.add_visit(visit=visit4)
-schedule.add_visit(visit=visit5)
-schedule.add_visit(visit=visit6)
+
+for visit in [
+    visit0,
+    visit1,
+    visit2,
+    visit3,
+    visit4,
+    visit5,
+    visit6,
+]:
+    schedule.add_visit(visit=visit)

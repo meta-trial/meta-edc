@@ -29,10 +29,10 @@ class LossToFollowupFormValidatorMixin:
                 subject_identifier=subject_identifier
             )
         except ObjectDoesNotExist:
-            if self.cleaned_data.get("termination_reason") == LOST_TO_FOLLOWUP:
+            if self.cleaned_data.get("offschedule_reason") == LOST_TO_FOLLOWUP:
                 raise forms.ValidationError(
                     {
-                        "termination_reason": "Patient was lost to followup, please complete "
+                        "offschedule_reason": "Patient was lost to followup, please complete "
                         f"'{self.loss_to_followup_model_cls._meta.verbose_name}' form first."
                     }
                 )

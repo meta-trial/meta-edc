@@ -1,23 +1,32 @@
 from django import forms
-from edc_constants.constants import YES, NO, POS, NEG
+from edc_constants.constants import NEG, NO, POS, YES
 from edc_form_validators import FormValidator
-from edc_reportable import ConversionNotHandled, CalculatorError, BMI, eGFR
+from edc_glucose.form_validators import GlucoseFormValidatorMixin
+from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
+from edc_reportable import BmiFormValidatorMixin, EgfrFormValidatorMixin
 
-from .glucose_form_validator_mixin import GlucoseFormValidatorMixin
 
-
-class ScreeningPartThreeFormValidator(GlucoseFormValidatorMixin, FormValidator):
+class ScreeningPartThreeFormValidator(
+    GlucoseFormValidatorMixin,
+    BmiFormValidatorMixin,
+    EgfrFormValidatorMixin,
+    FormValidator,
+):
     def clean(self):
 
-        self.validate_ifg()
+        self.validate_ifg_required_fields()
 
-        self.validate_ogtt()
+        validate_glucose_as_millimoles_per_liter("ifg", self.cleaned_data)
 
-        self.validate_creatinine()
+        self.validate_ogtt_required_fields()
 
-        self.required_if(YES, field="hba1c_performed", field_required="hba1c")
+        validate_glucose_as_millimoles_per_liter("ogtt", self.cleaned_data)
 
-        self.validate_vitals()
+        self.validate_creatinine_required_fields()
+
+        self.required_if(YES, field="hba1c_performed", field_required="hba1c_value")
+
+        self.validate_vitals_fields_required()
 
         self.validate_pregnancy()
 
@@ -27,7 +36,9 @@ class ScreeningPartThreeFormValidator(GlucoseFormValidatorMixin, FormValidator):
 
         self.validate_egfr()
 
-        self.validate_glucose_dates()
+        self.validate_ifg_before_ogtt()
+
+        self.validate_ogtt_time_interval()
 
         self.required_if(
             YES, field="unsuitable_for_study", field_required="reasons_unsuitable"
@@ -45,40 +56,12 @@ class ScreeningPartThreeFormValidator(GlucoseFormValidatorMixin, FormValidator):
                 }
             )
 
-    def validate_bmi(self):
-        if self.cleaned_data.get("height") and self.cleaned_data.get("weight"):
-            try:
-                BMI(
-                    height_cm=self.cleaned_data.get("height"),
-                    weight_kg=self.cleaned_data.get("weight"),
-                ).value
-            except CalculatorError as e:
-                raise forms.ValidationError(e)
-
-    def validate_egfr(self):
-        if (
-            self.cleaned_data.get("gender")
-            and self.cleaned_data.get("age_in_years")
-            and self.cleaned_data.get("ethnicity")
-            and self.cleaned_data.get("creatinine")
-            and self.cleaned_data.get("creatinine_units")
-        ):
-            opts = dict(
-                gender=self.cleaned_data.get("gender"),
-                age=self.cleaned_data.get("age_in_years"),
-                ethnicity=self.cleaned_data.get("ethnicity"),
-                creatinine=self.cleaned_data.get("creatinine"),
-                creatinine_units=self.cleaned_data.get("creatinine_units"),
-            )
-            try:
-                eGFR(**opts).value
-            except (CalculatorError, ConversionNotHandled) as e:
-                raise forms.ValidationError(e)
-
-    def validate_creatinine(self):
-        self.required_if(YES, field="creatinine_performed", field_required="creatinine")
+    def validate_creatinine_required_fields(self):
+        self.required_if(
+            YES, field="creatinine_performed", field_required="creatinine_value"
+        )
         self.required_if_true(
-            self.cleaned_data.get("creatinine"), field_required="creatinine_units"
+            self.cleaned_data.get("creatinine_value"), field_required="creatinine_units"
         )
 
     def validate_pregnancy(self):
@@ -91,24 +74,28 @@ class ScreeningPartThreeFormValidator(GlucoseFormValidatorMixin, FormValidator):
             msg="See response in part one.",
         )
         self.applicable_if(
-            YES, field="urine_bhcg_performed", field_applicable="urine_bhcg"
+            YES, field="urine_bhcg_performed", field_applicable="urine_bhcg_value"
         )
         self.required_if(
             YES, field="urine_bhcg_performed", field_required="urine_bhcg_date"
         )
 
-        if self.instance.pregnant == YES and self.cleaned_data.get("urine_bhcg") == NEG:
-            raise forms.ValidationError(
-                {"urine_bhcg": "Invalid, part one says subject is pregnant"}
-            )
-        elif (
-            self.instance.pregnant == NO and self.cleaned_data.get("urine_bhcg") == POS
+        if (
+            self.instance.pregnant == YES
+            and self.cleaned_data.get("urine_bhcg_value") == NEG
         ):
             raise forms.ValidationError(
-                {"urine_bhcg": "Invalid, part one says subject is not pregnant"}
+                {"urine_bhcg_value": "Invalid, part one says subject is pregnant"}
+            )
+        elif (
+            self.instance.pregnant == NO
+            and self.cleaned_data.get("urine_bhcg_value") == POS
+        ):
+            raise forms.ValidationError(
+                {"urine_bhcg_value": "Invalid, part one says subject is not pregnant"}
             )
 
-    def validate_vitals(self):
+    def validate_vitals_fields_required(self):
         fields = [
             "height",
             "weight",

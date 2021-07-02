@@ -36,10 +36,10 @@ class ValidateDeathReportMixin:
                 subject_identifier=subject_identifier
             )
         except ObjectDoesNotExist:
-            if self.cleaned_data.get("termination_reason") == DEAD:
+            if self.cleaned_data.get("offschedule_reason") == DEAD:
                 raise forms.ValidationError(
                     {
-                        "termination_reason": "Patient is deceased, please complete "
+                        "offschedule_reason": "Patient is deceased, please complete "
                         "death report form first."
                     }
                 )

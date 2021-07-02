@@ -40,26 +40,35 @@ part_three_vitals_fields = (
     "dia_blood_pressure",
 )
 
-part_three_glucose_fields = (
-    "fasted",
-    "fasted_duration_str",
-    "fasting_glucose_datetime",
-    "fasting_glucose",
-    "fasting_glucose_units",
-    "ogtt_base_datetime",
-    "ogtt_two_hr_datetime",
-    "ogtt_two_hr",
-    "ogtt_two_hr_units",
+part_three_ifg_fields = (
+    "fasting",
+    "fasting_duration_str",
+    "ifg_datetime",
+    "ifg_value",
+    "ifg_units",
 )
 
-part_three_pregnancy_fields = ("urine_bhcg_performed", "urine_bhcg", "urine_bhcg_date")
+part_three_ogtt_fields = (
+    "ogtt_base_datetime",
+    "ogtt_datetime",
+    "ogtt_value",
+    "ogtt_units",
+)
+
+part_three_glucose_fields = part_three_ifg_fields + part_three_ogtt_fields
+
+part_three_pregnancy_fields = (
+    "urine_bhcg_performed",
+    "urine_bhcg_value",
+    "urine_bhcg_date",
+)
 
 part_three_other_fields = (
     "creatinine_performed",
-    "creatinine",
+    "creatinine_value",
     "creatinine_units",
     "hba1c_performed",
-    "hba1c",
+    "hba1c_value",
 )
 
 part_three_comment_fields = (
@@ -69,7 +78,8 @@ part_three_comment_fields = (
 )
 
 part_three_fields = (
-    *part_three_glucose_fields,
+    *part_three_ifg_fields,
+    *part_three_ogtt_fields,
     *part_three_other_fields,
     *part_three_vitals_fields,
     *part_three_pregnancy_fields,
@@ -78,11 +88,11 @@ part_three_fields = (
 
 
 calculated_fields = (
-    "calculated_bmi",
-    "converted_fasting_glucose",
-    "converted_ogtt_two_hr",
-    "converted_creatinine",
-    "calculated_egfr",
+    "calculated_bmi_value",
+    "converted_ifg_value",
+    "converted_ogtt_value",
+    "converted_creatinine_value",
+    "calculated_egfr_value",
     "inclusion_a",
     "inclusion_b",
     "inclusion_c",

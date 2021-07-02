@@ -43,7 +43,6 @@ class TestFollowup(MetaTestCaseMixin, TestCase):
             report_datetime=self.subject_visit.report_datetime,
         )
 
-    @tag("1")
     def test_ok(self):
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         obj = make_recipe(

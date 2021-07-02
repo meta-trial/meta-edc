@@ -1,10 +1,10 @@
-import environ
 import os
 import sys
+from pathlib import Path
 
+import environ
 from edc_constants.constants import COMPLETE
 from edc_utils import get_datetime_from_env
-from pathlib import Path
 
 BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 ENV_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
@@ -107,7 +107,6 @@ INSTALLED_APPS = [
     "edc_identifier.apps.AppConfig",
     "edc_locator.apps.AppConfig",
     "edc_metadata.apps.AppConfig",
-    "edc_metadata_rules.apps.AppConfig",
     "edc_model_admin.apps.AppConfig",
     "edc_navbar.apps.AppConfig",
     "edc_notification.apps.AppConfig",
@@ -125,6 +124,7 @@ INSTALLED_APPS = [
     "edc_sites.apps.AppConfig",
     "edc_subject_dashboard.apps.AppConfig",
     "edc_timepoint.apps.AppConfig",
+    "edc_form_describer.apps.AppConfig",
     "sarscov2.apps.AppConfig",
     "meta_consent.apps.AppConfig",
     "meta_lists.apps.AppConfig",
@@ -221,7 +221,7 @@ if env.str("DJANGO_CACHE") == "redis":
 elif env.str("DJANGO_CACHE") == "memcached":
     CACHES = {
         "default": {
-            "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+            "BACKEND": "django.core.cache.backends.memcached.PyLibMCCache",
             "LOCATION": "unix:/tmp/memcached.sock",
         }
     }
@@ -293,6 +293,9 @@ DATETIME_FORMAT = "j N Y H:i"
 SHORT_DATE_FORMAT = "d/m/Y"
 SHORT_DATETIME_FORMAT = "d/m/Y H:i"
 
+# See also any inte_* or edc_* apps.py
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 # edc-pdutils
 EXPORT_FILENAME_TIMESTAMP_FORMAT = "%Y%m%d"
 
@@ -318,13 +321,15 @@ LABEL_TEMPLATE_FOLDER = env.str("DJANGO_LABEL_TEMPLATE_FOLDER") or os.path.join(
 )
 CUPS_SERVERS = env.dict("DJANGO_CUPS_SERVERS")
 
-SUBJECT_CONSENT_MODEL = env.str("DJANGO_SUBJECT_CONSENT_MODEL")
-SUBJECT_REQUISITION_MODEL = env.str("DJANGO_SUBJECT_REQUISITION_MODEL")
-SUBJECT_SCREENING_MODEL = env.str("DJANGO_SUBJECT_SCREENING_MODEL")
-SUBJECT_VISIT_MODEL = env.str("DJANGO_SUBJECT_VISIT_MODEL")
-SUBJECT_VISIT_MISSED_REASONS_MODEL = env.str(
-    "DJANGO_SUBJECT_VISIT_MISSED_REASONS_MODEL"
-)
+LIST_MODEL_APP_LABEL = env.str("EDC_LIST_MODEL_APP_LABEL")
+SUBJECT_APP_LABEL = env.str("EDC_SUBJECT_APP_LABEL")
+SUBJECT_SCREENING_MODEL = env.str("EDC_SUBJECT_SCREENING_MODEL")
+SUBJECT_CONSENT_MODEL = env.str("EDC_SUBJECT_CONSENT_MODEL")
+SUBJECT_REQUISITION_MODEL = env.str("EDC_SUBJECT_REQUISITION_MODEL")
+SUBJECT_VISIT_MODEL = env.str("EDC_SUBJECT_VISIT_MODEL")
+SUBJECT_VISIT_MISSED_MODEL = env.str("EDC_SUBJECT_VISIT_MISSED_MODEL")
+SUBJECT_VISIT_MISSED_REASONS_MODEL = env.str("EDC_SUBJECT_VISIT_MISSED_REASONS_MODEL")
+
 EDC_NAVBAR_DEFAULT = env("EDC_NAVBAR_DEFAULT")
 
 # dashboards
@@ -353,6 +358,7 @@ SIMPLE_HISTORY_REVERT_ENABLED = False
 
 # django-multisite
 CACHE_MULTISITE_KEY_PREFIX = APP_NAME
+SILENCED_SYSTEM_CHECKS = ["sites.E101"]
 
 # edc_crf
 CRF_STATUS_DEFAULT = COMPLETE
@@ -418,6 +424,7 @@ EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
     *env.list("EDC_PROTOCOL_STUDY_CLOSE_DATETIME")
 )
 EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
+
 
 SARSCOV2_REDIRECT_URL_NAME = "screening_listboard_url"
 

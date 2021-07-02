@@ -1,6 +1,13 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
+from edc_crf.crf_status_model_mixin import CrfStatusModelMixin
+from edc_crf.model_mixins import CrfModelMixin as BaseCrfModelMixin
 from edc_model import models as edc_models
+
+
+class CrfModelMixin(CrfStatusModelMixin, BaseCrfModelMixin):
+    class Meta(BaseCrfModelMixin.Meta):
+        abstract = True
 
 
 class VitalsFieldMixin(models.Model):
@@ -8,10 +15,16 @@ class VitalsFieldMixin(models.Model):
     weight = edc_models.WeightField()
 
     # 9
-    sys_blood_pressure = edc_models.SystolicPressureField(null=True, blank=False,)
+    sys_blood_pressure = edc_models.SystolicPressureField(
+        null=True,
+        blank=False,
+    )
 
     # 9
-    dia_blood_pressure = edc_models.DiastolicPressureField(null=True, blank=False,)
+    dia_blood_pressure = edc_models.DiastolicPressureField(
+        null=True,
+        blank=False,
+    )
 
     # 10
     heart_rate = models.IntegerField(

@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name="historicalscreeningpartone",
-            name="ogtt_two_hr",
+            name="ogtt_value",
             field=models.DecimalField(
                 blank=True,
                 decimal_places=2,
@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name="historicalscreeningpartone",
-            name="ogtt_two_hr_units",
+            name="ogtt_units",
             field=models.CharField(
                 blank=True,
                 choices=[("mg/dL", "mg/dL"), ("mmol/L", "mmol/L")],

@@ -1,8 +1,9 @@
 from copy import deepcopy
+
 from django.test import TestCase, tag
 from edc_appointment.constants import IN_PROGRESS_APPT
 from edc_appointment.models import Appointment
-from edc_constants.constants import YES, NO
+from edc_constants.constants import COMPLETE, NO, YES
 from edc_visit_tracking.constants import SCHEDULED
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_subject.models import SubjectVisit
@@ -32,6 +33,7 @@ class TestPhysicalExam(MetaTestCaseMixin, TestCase):
             "temperature": 37,
             "waist_circumference": 100,
             "weight": 65,
+            "crf_status": COMPLETE,
         }
 
         self.subject_visit = self.get_subject_visit()
