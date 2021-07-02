@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "import_export",
+    "defender",
     "multisite",
     "django_crypto_fields.apps.AppConfig",
     "django_revision.apps.AppConfig",
@@ -155,6 +156,7 @@ MIDDLEWARE = [
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "defender.middleware.FailedLoginMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -359,6 +361,14 @@ SIMPLE_HISTORY_REVERT_ENABLED = False
 # django-multisite
 CACHE_MULTISITE_KEY_PREFIX = APP_NAME
 SILENCED_SYSTEM_CHECKS = ["sites.E101"]
+
+# django-defender
+# see if env.str("DJANGO_CACHE") == "redis" above
+# and that redis server is running
+DEFENDER_REDIS_NAME = "default"
+DEFENDER_LOCK_OUT_BY_IP_AND_USERNAME = True
+DEFENDER_LOCKOUT_TEMPLATE = "edc_auth/bootstrap3/login.html"
+DEFENDER_LOGIN_FAILURE_LIMIT = 5
 
 # edc_crf
 CRF_STATUS_DEFAULT = COMPLETE
