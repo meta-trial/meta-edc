@@ -48,11 +48,22 @@ if settings.SENTRY_ENABLED:
 else:
     handler500 = "edc_dashboard.views.edc_handler500"
 
+admin.site.final_catch_all_view = False
+
 urlpatterns = [
     path("sentry-debug/", trigger_error),
     path("accounts/", include("edc_auth.urls")),
     path("edc_auth/", include("edc_auth.urls")),
     path("administration/", AdministrationView.as_view(), name="administration_url"),
+    path("meta_ae/", include("meta_ae.urls")),
+    path("meta_consent/", include("meta_consent.urls")),
+    path("meta_export/", include("meta_export.urls")),
+    path("meta_lists/", include("meta_lists.urls")),
+    path("meta_prn/", include("meta_prn.urls")),
+    path("meta_screening/", include("meta_screening.urls")),
+    path("meta_subject/", include("meta_subject.urls")),
+    path("sarscov2/", include("sarscov2.urls")),
+    path("subject/", include("meta_dashboard.urls")),
     path("edc_action_item/", include("edc_action_item.urls")),
     path("edc_adverse_event/", include("edc_adverse_event.urls")),
     path("edc_appointment/", include("edc_appointment.urls")),
@@ -79,15 +90,6 @@ urlpatterns = [
     path("edc_registration/", include("edc_registration.urls")),
     path("edc_subject_dashboard/", include("edc_subject_dashboard.urls")),
     path("edc_visit_schedule/", include("edc_visit_schedule.urls")),
-    path("meta_ae/", include("meta_ae.urls")),
-    path("meta_consent/", include("meta_consent.urls")),
-    path("meta_export/", include("meta_export.urls")),
-    path("meta_lists/", include("meta_lists.urls")),
-    path("meta_prn/", include("meta_prn.urls")),
-    path("meta_screening/", include("meta_screening.urls")),
-    path("meta_subject/", include("meta_subject.urls")),
-    path("sarscov2/", include("sarscov2.urls")),
-    path("subject/", include("meta_dashboard.urls")),
     path("edc_action_item_admin/", edc_action_item_admin.urls),
     path("edc_adverse_event_admin/", edc_adverse_event_admin.urls),
     path("edc_appointment_admin/", edc_appointment_admin.urls),
@@ -115,6 +117,7 @@ urlpatterns = [
     path("meta_screening_admin/", meta_screening_admin.urls),
     path("meta_subject_admin/", meta_subject_admin.urls),
     path("sarscov2_admin/", sarscov2_admin.urls),
+    path("defender/", include("defender.urls")),  # defender admin
     path("admin/", admin.site.urls),
     path(
         "switch_sites/",
