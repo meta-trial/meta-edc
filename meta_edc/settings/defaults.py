@@ -26,6 +26,7 @@ env = environ.Env(
     DJANGO_USE_I18N=(bool, True),
     DJANGO_USE_L10N=(bool, False),
     DJANGO_USE_TZ=(bool, True),
+    DEFENDER_ENABLED=(bool, False),
     EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=(bool, True),
     SAUCE_ENABLED=(bool, False),
     SENTRY_ENABLED=(bool, False),
@@ -66,6 +67,7 @@ DEFAULT_APPOINTMENT_TYPE = "hospital"
 LOGIN_REDIRECT_URL = env.str("DJANGO_LOGIN_REDIRECT_URL")
 
 SENTRY_ENABLED = env("SENTRY_ENABLED")
+DEFENDER_ENABLED = env("DEFENDER_ENABLED")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -145,6 +147,8 @@ INSTALLED_APPS = [
     "meta_edc.apps.AppConfig",
 ]
 
+if not DEFENDER_ENABLED:
+    INSTALLED_APPS.pop(INSTALLED_APPS.index("defender"))
 # if env("SENTRY_ENABLED"):
 #     INSTALLED_APPS.append("raven.contrib.django.raven_compat")
 
@@ -160,6 +164,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+if not DEFENDER_ENABLED:
+    MIDDLEWARE.pop(MIDDLEWARE.index("defender.middleware.FailedLoginMiddleware"))
 
 MIDDLEWARE.extend(
     [

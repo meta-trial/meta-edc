@@ -117,7 +117,14 @@ urlpatterns = [
     path("meta_screening_admin/", meta_screening_admin.urls),
     path("meta_subject_admin/", meta_subject_admin.urls),
     path("sarscov2_admin/", sarscov2_admin.urls),
-    path("defender/", include("defender.urls")),  # defender admin
+]
+
+if settings.DEFENDER_ENABLED:
+    urlpatterns.append(
+        path("defender/", include("defender.urls")),  # defender admin
+    )
+
+urlpatterns += [
     path("admin/", admin.site.urls),
     path(
         "switch_sites/",
