@@ -1,12 +1,12 @@
 from edc_constants.constants import (
-    OTHER,
-    UNKNOWN,
-    TUBERCULOSIS,
     MALIGNANCY,
     NOT_APPLICABLE,
+    OTHER,
+    TUBERCULOSIS,
+    UNKNOWN,
 )
 
-from .constants import VIOLATION, DEVIATION
+from .constants import DEVIATION, VIOLATION
 
 LOSS_CHOICES = (
     ("unknown_address", "Changed to an unknown address"),

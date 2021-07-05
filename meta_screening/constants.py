@@ -1,4 +1,4 @@
-from edc_constants.constants import NOT_APPLICABLE, YES, NO
+from edc_constants.constants import NO, NOT_APPLICABLE, YES
 
 BMI_IFT_OGTT_INCOMPLETE = "BMI/IFT/OGTT incomplete"
 BMI_IFT_OGTT = "BMI/IFT/OGTT"

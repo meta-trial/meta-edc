@@ -1,12 +1,11 @@
 from edc_identifier.managers import SubjectIdentifierManager
 from edc_model.models import BaseUuidModel, HistoricalRecords
-from edc_visit_schedule.model_mixins import OnScheduleModelMixin, CurrentSiteManager
+from edc_visit_schedule.model_mixins import CurrentSiteManager, OnScheduleModelMixin
 
 
 class OnSchedule(OnScheduleModelMixin, BaseUuidModel):
 
-    """A model used by the system. Auto-completed by subject_consent.
-    """
+    """A model used by the system. Auto-completed by subject_consent."""
 
     on_site = CurrentSiteManager()
 

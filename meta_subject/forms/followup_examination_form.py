@@ -86,7 +86,9 @@ class FollowupExaminationFormValidator(FormValidator):
             YES, field="any_other_problems", field_required="any_other_problems_detail"
         )
         self.applicable_if(
-            YES, field="any_other_problems", field_applicable="any_other_problems_sae",
+            YES,
+            field="any_other_problems",
+            field_applicable="any_other_problems_sae",
         )
         self.applicable_if(
             YES,

@@ -1,4 +1,4 @@
-from edc_constants.constants import UNKNOWN, OTHER
+from edc_constants.constants import OTHER, UNKNOWN
 
 AE_TYPE = (
     ("sae", "Serious Adverse Event / Reaction"),

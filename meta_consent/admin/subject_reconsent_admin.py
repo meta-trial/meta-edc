@@ -1,10 +1,11 @@
 from django.contrib import admin
-from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
+from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
 from edc_dashboard.url_names import url_names
-from edc_model_admin import audit_fieldset_tuple, audit_fields, SimpleHistoryAdmin
+from edc_model_admin import SimpleHistoryAdmin, audit_fields, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
+
 from meta_subject.models import SubjectVisit
 
 from ..admin_site import meta_consent_admin
@@ -59,8 +60,7 @@ class SubjectReconsentAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
             return super().view_on_site(obj)
 
     def delete_view(self, request, object_id, extra_context=None):
-        """Prevent deletion if SubjectVisit objects exist.
-        """
+        """Prevent deletion if SubjectVisit objects exist."""
         extra_context = extra_context or {}
         obj = SubjectReconsent.objects.get(id=object_id)
         try:

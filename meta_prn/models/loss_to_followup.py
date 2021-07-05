@@ -4,15 +4,14 @@ from edc_action_item.models.action_model_mixin import ActionModelMixin
 from edc_constants.choices import YES_NO, YES_NO_NA
 from edc_constants.constants import OTHER
 from edc_identifier.model_mixins import (
-    TrackingModelMixin,
     NonUniqueSubjectIdentifierFieldMixin,
+    TrackingModelMixin,
 )
 from edc_model import models as edc_models
 from edc_sites.models import SiteModelMixin
 from edc_utils.date import get_utcnow
 
 from ..constants import LOSS_TO_FOLLOWUP_ACTION
-
 
 LOSS_CHOICES = (
     ("unknown_address", "Changed to an unknown address"),

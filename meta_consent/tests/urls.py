@@ -1,4 +1,4 @@
-from django.urls.conf import path, include
+from django.urls.conf import include, path
 from django.views.generic.base import RedirectView
 
 urlpatterns = [

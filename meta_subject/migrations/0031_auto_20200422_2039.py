@@ -10,13 +10,21 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="coronakap", name="shared_housing_one",),
-        migrations.RemoveField(model_name="coronakap", name="shared_housing_two",),
         migrations.RemoveField(
-            model_name="historicalcoronakap", name="shared_housing_one",
+            model_name="coronakap",
+            name="shared_housing_one",
         ),
         migrations.RemoveField(
-            model_name="historicalcoronakap", name="shared_housing_two",
+            model_name="coronakap",
+            name="shared_housing_two",
+        ),
+        migrations.RemoveField(
+            model_name="historicalcoronakap",
+            name="shared_housing_one",
+        ),
+        migrations.RemoveField(
+            model_name="historicalcoronakap",
+            name="shared_housing_two",
         ),
         migrations.AddField(
             model_name="coronakap",

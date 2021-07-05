@@ -1,10 +1,10 @@
 from .blood_results import (
     BloodResultsFbc,
-    BloodResultsHba1c,
-    BloodResultsLipid,
-    BloodResultsLft,
-    BloodResultsRft,
     BloodResultsGlu,
+    BloodResultsHba1c,
+    BloodResultsLft,
+    BloodResultsLipid,
+    BloodResultsRft,
 )
 from .complications import Complications
 from .followup_examination import FollowupExamination
@@ -15,7 +15,7 @@ from .malaria_test import MalariaTest
 from .medication_adherence import MedicationAdherence
 from .patient_history import PatientHistory
 from .physical_exam import PhysicalExam
-from .subject_visit_missed import SubjectVisitMissed
 from .subject_requisition import SubjectRequisition
 from .subject_visit import SubjectVisit
+from .subject_visit_missed import SubjectVisitMissed
 from .urine_dipstick_test import UrineDipstickTest

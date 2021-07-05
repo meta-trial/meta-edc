@@ -1,12 +1,11 @@
 from django.contrib import admin
-from django_audit_fields.admin import audit_fieldset_tuple
 from django.utils.safestring import mark_safe
+from django_audit_fields.admin import audit_fieldset_tuple
 
 from ..admin_site import meta_subject_admin
 from ..forms import MedicationAdherenceForm
 from ..models import MedicationAdherence
 from .modeladmin import CrfModelAdmin
-
 
 description = """
 <H5><B><font color="orange">Interviewer to read</font></B></H5>

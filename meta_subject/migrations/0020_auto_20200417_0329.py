@@ -11,10 +11,22 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="coronakap", name="dm_aware",),
-        migrations.RemoveField(model_name="coronakap", name="months_on_art",),
-        migrations.RemoveField(model_name="historicalcoronakap", name="dm_aware",),
-        migrations.RemoveField(model_name="historicalcoronakap", name="months_on_art",),
+        migrations.RemoveField(
+            model_name="coronakap",
+            name="dm_aware",
+        ),
+        migrations.RemoveField(
+            model_name="coronakap",
+            name="months_on_art",
+        ),
+        migrations.RemoveField(
+            model_name="historicalcoronakap",
+            name="dm_aware",
+        ),
+        migrations.RemoveField(
+            model_name="historicalcoronakap",
+            name="months_on_art",
+        ),
         migrations.AlterField(
             model_name="coronakap",
             name="employment",

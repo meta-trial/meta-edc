@@ -2,9 +2,7 @@ from edc_visit_tracking.constants import SCHEDULED
 from faker import Faker
 from model_bakery.recipe import Recipe, seq
 
-from .models import SubjectRequisition
-from .models import SubjectVisit, FollowupExamination
-
+from .models import FollowupExamination, SubjectRequisition, SubjectVisit
 
 fake = Faker()
 

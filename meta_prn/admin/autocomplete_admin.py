@@ -1,7 +1,7 @@
 from django.contrib.admin.decorators import register
 from django.contrib.sites.shortcuts import get_current_site
-from edc_auth.admin import UserAdmin as BaseUserAdmin
 from edc_auth import UNBLINDING_REQUESTORS, UNBLINDING_REVIEWERS
+from edc_auth.admin import UserAdmin as BaseUserAdmin
 
 from ..admin_site import meta_prn_admin
 from ..models import UnblindingRequestorUser, UnblindingReviewerUser

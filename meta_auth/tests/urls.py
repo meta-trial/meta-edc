@@ -1,5 +1,5 @@
+from django.urls.conf import include, path
 from edc_dashboard.views import AdministrationView
-from django.urls.conf import path, include
 
 urlpatterns = [
     path("accounts/", include("edc_auth.urls")),

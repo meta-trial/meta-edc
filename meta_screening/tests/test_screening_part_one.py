@@ -1,6 +1,6 @@
 from django.db.utils import IntegrityError
 from django.test import TestCase, tag
-from edc_constants.constants import YES, BLACK, FEMALE, NOT_APPLICABLE, TBD, NO
+from edc_constants.constants import BLACK, FEMALE, NO, NOT_APPLICABLE, TBD, YES
 from edc_utils.date import get_utcnow
 
 from ..models import ScreeningPartOne

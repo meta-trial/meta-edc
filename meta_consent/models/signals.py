@@ -1,10 +1,11 @@
 from django.core.exceptions import ValidationError
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
-from edc_action_item import delete_action_item, ActionItemDeleteError
+from edc_action_item import ActionItemDeleteError, delete_action_item
 from edc_constants.constants import YES
 from edc_randomization.site_randomizers import site_randomizers
 from edc_visit_schedule.site_visit_schedules import site_visit_schedules
+
 from meta_screening.models import SubjectScreening
 from meta_subject.models import SubjectVisit
 
@@ -76,8 +77,7 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
     dispatch_uid="subject_consent_on_post_delete",
 )
 def subject_consent_on_post_delete(sender, instance, using, **kwargs):
-    """Updates/Resets subject screening.
-    """
+    """Updates/Resets subject screening."""
     # don't allow if subject visits exist. This should be caught
     # in the ModelAdmin delete view
     if SubjectVisit.objects.filter(

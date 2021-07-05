@@ -1,7 +1,7 @@
 from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import (
-    ModelAdminSubjectDashboardMixin,
     ModelAdminCrfDashboardMixin,
+    ModelAdminSubjectDashboardMixin,
 )
 
 

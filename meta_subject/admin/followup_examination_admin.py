@@ -1,15 +1,14 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_action_item import (
+    ModelAdminActionItemMixin,
     action_fields,
     action_fieldset_tuple,
-    ModelAdminActionItemMixin,
 )
 from edc_constants.constants import NONE, YES
 from edc_form_label.form_label_modeladmin_mixin import FormLabelModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin
-from django.utils.translation import gettext_lazy as _
-
 
 from ..admin_site import meta_subject_admin
 from ..forms import FollowupExaminationForm

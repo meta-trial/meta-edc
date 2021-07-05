@@ -1,4 +1,4 @@
-from edc_visit_schedule import FormsCollection, Crf
+from edc_visit_schedule import Crf, FormsCollection
 
 crfs_prn = FormsCollection(
     Crf(show_order=10, model="meta_subject.bloodresultsfbc"),
@@ -22,7 +22,8 @@ crfs_unscheduled = FormsCollection(
 )
 
 crfs_missed = FormsCollection(
-    Crf(show_order=10, model="meta_subject.subjectvisitmissed"), name="missed",
+    Crf(show_order=10, model="meta_subject.subjectvisitmissed"),
+    name="missed",
 )
 
 crfs_d1 = FormsCollection(

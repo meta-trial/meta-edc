@@ -16,6 +16,8 @@ http://www.isrctn.com/ISRCTN76157257
 
 See also https://github.com/clinicedc/edc
 
+|django|
+
 Installation
 ------------
 
@@ -126,3 +128,7 @@ Once logged in, go to you user account and update your group memberships. As a p
 
 .. |downloads| image:: https://pepy.tech/badge/meta-edc
    :target: https://pepy.tech/project/meta-edc
+
+.. |django| image:: https://www.djangoproject.com/m/img/badges/djangomade124x25.gif
+   :target: http://www.djangoproject.com/
+   :alt: Made with Django

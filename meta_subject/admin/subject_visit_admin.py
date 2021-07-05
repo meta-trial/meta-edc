@@ -1,5 +1,5 @@
 from django.contrib import admin
-from edc_model_admin import audit_fieldset_tuple, SimpleHistoryAdmin
+from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_visit_schedule.fieldsets import visit_schedule_fieldset_tuple
 from edc_visit_tracking.modeladmin_mixins import VisitModelAdminMixin
 

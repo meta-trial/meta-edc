@@ -1,7 +1,6 @@
+from edc_adverse_event.pdf_reports import AeReport
 from edc_adverse_event.view_mixins import AeListboardViewMixin
 from reportlab.lib.units import cm
-
-from edc_adverse_event.pdf_reports import AeReport
 
 
 class CustomAeReport(AeReport):

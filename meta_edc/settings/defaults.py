@@ -26,6 +26,7 @@ env = environ.Env(
     DJANGO_USE_I18N=(bool, True),
     DJANGO_USE_L10N=(bool, False),
     DJANGO_USE_TZ=(bool, True),
+    DEFENDER_ENABLED=(bool, False),
     EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=(bool, True),
     SAUCE_ENABLED=(bool, False),
     SENTRY_ENABLED=(bool, False),
@@ -66,6 +67,7 @@ DEFAULT_APPOINTMENT_TYPE = "hospital"
 LOGIN_REDIRECT_URL = env.str("DJANGO_LOGIN_REDIRECT_URL")
 
 SENTRY_ENABLED = env("SENTRY_ENABLED")
+DEFENDER_ENABLED = env("DEFENDER_ENABLED")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -76,6 +78,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "import_export",
+    "defender",
     "multisite",
     "django_crypto_fields.apps.AppConfig",
     "django_revision.apps.AppConfig",
@@ -144,6 +147,8 @@ INSTALLED_APPS = [
     "meta_edc.apps.AppConfig",
 ]
 
+if not DEFENDER_ENABLED:
+    INSTALLED_APPS.pop(INSTALLED_APPS.index("defender"))
 # if env("SENTRY_ENABLED"):
 #     INSTALLED_APPS.append("raven.contrib.django.raven_compat")
 
@@ -155,9 +160,13 @@ MIDDLEWARE = [
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "defender.middleware.FailedLoginMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+if not DEFENDER_ENABLED:
+    MIDDLEWARE.pop(MIDDLEWARE.index("defender.middleware.FailedLoginMiddleware"))
 
 MIDDLEWARE.extend(
     [
@@ -360,6 +369,14 @@ SIMPLE_HISTORY_REVERT_ENABLED = False
 CACHE_MULTISITE_KEY_PREFIX = APP_NAME
 SILENCED_SYSTEM_CHECKS = ["sites.E101"]
 
+# django-defender
+# see if env.str("DJANGO_CACHE") == "redis" above
+# and that redis server is running
+DEFENDER_REDIS_NAME = "default"
+DEFENDER_LOCK_OUT_BY_IP_AND_USERNAME = True
+DEFENDER_LOCKOUT_TEMPLATE = "edc_auth/bootstrap3/login.html"
+DEFENDER_LOGIN_FAILURE_LIMIT = 5
+
 # edc_crf
 CRF_STATUS_DEFAULT = COMPLETE
 
@@ -458,11 +475,14 @@ if SENTRY_ENABLED and SENTRY_DSN:
     from sentry_sdk.integrations.django import DjangoIntegration
 
     sentry_sdk.init(
-        dsn=SENTRY_DSN, integrations=[DjangoIntegration()], send_default_pii=True
+        dsn=SENTRY_DSN,
+        integrations=[DjangoIntegration()],
+        traces_sample_rate=1.0,
+        send_default_pii=True,
     )
-else:
-    if env("DJANGO_LOGGING_ENABLED"):
-        from .logging.standard import LOGGING  # noqa
+
+if env("DJANGO_LOGGING_ENABLED"):
+    from .logging import LOGGING  # noqa
 
 if "test" in sys.argv:
 

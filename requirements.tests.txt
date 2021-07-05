@@ -1,5 +1,3 @@
-django-storages
-model-bakery
-faker
-django-environ
-django-webtest
+beautifulsoup4
+sarscov2==0.1.10
+

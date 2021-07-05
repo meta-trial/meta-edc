@@ -1,4 +1,4 @@
-from edc_constants.constants import OTHER, NOT_APPLICABLE, DEAD, UNKNOWN
+from edc_constants.constants import DEAD, NOT_APPLICABLE, OTHER, UNKNOWN
 from edc_list_data import PreloadData
 
 list_data = {

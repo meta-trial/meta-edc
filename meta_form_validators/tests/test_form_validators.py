@@ -4,9 +4,10 @@ from django.test import TestCase, tag
 from edc_consent.constants import HOSPITAL_NUMBER
 from edc_constants.constants import FEMALE
 from edc_utils.date import get_utcnow
+from pytz import timezone
+
 from meta_form_validators.form_validators import SubjectConsentFormValidator
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
-from pytz import timezone
 
 
 class TestFormValidators(MetaTestCaseMixin, TestCase):
@@ -32,7 +33,9 @@ class TestFormValidators(MetaTestCaseMixin, TestCase):
             identity=self.subject_screening.hospital_identifier,
             confirm_identity=self.subject_screening.hospital_identifier,
         )
-        validator = SubjectConsentFormValidator(cleaned_data=cleaned_data,)
+        validator = SubjectConsentFormValidator(
+            cleaned_data=cleaned_data,
+        )
         validator.clean()
 
     def test_consent_before_eligibility_datetime(self):
@@ -49,7 +52,9 @@ class TestFormValidators(MetaTestCaseMixin, TestCase):
             identity=self.subject_screening.hospital_identifier,
             confirm_identity=self.subject_screening.hospital_identifier,
         )
-        validator = SubjectConsentFormValidator(cleaned_data=cleaned_data,)
+        validator = SubjectConsentFormValidator(
+            cleaned_data=cleaned_data,
+        )
         self.assertRaises(forms.ValidationError, validator.clean)
         with self.assertRaises(forms.ValidationError) as cm:
             validator.clean()
@@ -69,7 +74,9 @@ class TestFormValidators(MetaTestCaseMixin, TestCase):
             identity=self.subject_screening.hospital_identifier,
             confirm_identity=self.subject_screening.hospital_identifier,
         )
-        validator = SubjectConsentFormValidator(cleaned_data=cleaned_data,)
+        validator = SubjectConsentFormValidator(
+            cleaned_data=cleaned_data,
+        )
         try:
             validator.clean()
         except forms.ValidationError:

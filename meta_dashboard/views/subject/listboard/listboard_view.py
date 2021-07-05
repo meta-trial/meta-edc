@@ -2,8 +2,11 @@ import re
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
-from edc_dashboard.view_mixins import EdcViewMixin
-from edc_dashboard.view_mixins import ListboardFilterViewMixin, SearchFormViewMixin
+from edc_dashboard.view_mixins import (
+    EdcViewMixin,
+    ListboardFilterViewMixin,
+    SearchFormViewMixin,
+)
 from edc_dashboard.views import ListboardView
 from edc_navbar import NavbarViewMixin
 from edc_subject_model_wrappers import SubjectConsentModelWrapper as BaseWrapper

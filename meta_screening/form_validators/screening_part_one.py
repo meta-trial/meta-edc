@@ -1,7 +1,6 @@
-from edc_constants.constants import MALE
-from edc_constants.constants import YES
-from edc_form_validators import FormValidator
 from django import forms
+from edc_constants.constants import MALE, YES
+from edc_form_validators import FormValidator
 
 
 class ScreeningPartOneFormValidator(FormValidator):

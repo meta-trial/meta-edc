@@ -1,8 +1,8 @@
-from meta_ae.admin_site import meta_ae_admin
-from django.urls.conf import path, include
+from django.contrib.auth import admin
+from django.urls.conf import include, path
 from django.views.generic.base import RedirectView
 
-from django.contrib.auth import admin
+from meta_ae.admin_site import meta_ae_admin
 
 urlpatterns = [
     path("admin/", meta_ae_admin.urls),

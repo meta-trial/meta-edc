@@ -1,6 +1,6 @@
 from edc_identifier.simple_identifier import (
-    SimpleUniqueIdentifier,
     SimpleTimestampIdentifier,
+    SimpleUniqueIdentifier,
 )
 
 

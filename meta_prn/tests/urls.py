@@ -1,6 +1,7 @@
-from meta_prn.admin_site import meta_prn_admin
 from django.contrib import admin
-from django.urls.conf import path, include
+from django.urls.conf import include, path
+
+from meta_prn.admin_site import meta_prn_admin
 
 urlpatterns = [
     path("meta_prn/", include("meta_prn.urls")),

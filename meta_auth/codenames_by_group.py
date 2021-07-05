@@ -6,8 +6,8 @@ from edc_auth import (
     UNBLINDING_REVIEWERS,
     get_default_codenames_by_group,
 )
+from sarscov2.auth import SARSCOV2, sarscov2_codenames
 
-from sarscov2.auth import sarscov2_codenames, SARSCOV2
 from .codenames import (
     auditor,
     clinic,

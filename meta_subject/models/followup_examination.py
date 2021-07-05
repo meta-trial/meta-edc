@@ -7,6 +7,7 @@ from edc_crf.crf_status_model_mixin import CrfStatusModelMixin
 from edc_crf.model_mixins import CrfWithActionModelMixin
 from edc_model import models as edc_models
 from edc_model_fields.fields import OtherCharField
+
 from meta_lists.models import ArvRegimens, Symptoms
 
 from ..choices import GRADE34_CHOICES

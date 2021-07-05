@@ -27,7 +27,8 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.RemoveIndex(
-            model_name="subjectvisitmissedreasons", name="meta_lists__id_50745c_idx",
+            model_name="subjectvisitmissedreasons",
+            name="meta_lists__id_50745c_idx",
         ),
         migrations.AddIndex(
             model_name="subjectvisitmissedreasons",

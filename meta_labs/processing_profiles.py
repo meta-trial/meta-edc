@@ -1,4 +1,4 @@
-from edc_lab import ProcessingProfile, wb, disposable
+from edc_lab import ProcessingProfile, disposable, wb
 
 fbc_processing = ProcessingProfile(name="FBC", aliquot_type=wb)
 

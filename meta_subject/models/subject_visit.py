@@ -10,7 +10,7 @@ from edc_sites.models import SiteModelMixin
 from edc_visit_tracking.managers import VisitModelManager
 from edc_visit_tracking.model_mixins import VisitModelMixin
 
-from ..choices import INFO_SOURCE, VISIT_UNSCHEDULED_REASON, VISIT_REASON
+from ..choices import INFO_SOURCE, VISIT_REASON, VISIT_UNSCHEDULED_REASON
 
 
 class CurrentSiteManager(VisitModelManager, BaseCurrentSiteManager):

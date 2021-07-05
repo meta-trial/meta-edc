@@ -1,7 +1,5 @@
-edc==0.3.27
-respond-africa==0.1.12
+edc==0.3.30
+respond-africa==0.1.13
 beautifulsoup4
 git+https://github.com/erikvw/django-import-export.git@get_export_admin_action
-git+https://github.com/yprez/django-logentry-admin.git@master
-git+https://github.com/jazzband/django-defender.git@master
 sarscov2==0.1.10

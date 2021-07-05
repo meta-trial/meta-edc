@@ -9,26 +9,27 @@ from edc_facility.models import Holiday
 from edc_list_data.site_list_data import site_list_data
 from edc_randomization.models.randomization_list import RandomizationList
 from edc_randomization.randomization_list_importer import RandomizationListImporter
-from edc_sites import get_sites_by_country, add_or_update_django_sites
+from edc_sites import add_or_update_django_sites, get_sites_by_country
 from edc_sites.tests.site_test_case_mixin import SiteTestCaseMixin
 from edc_utils.date import get_utcnow
 from edc_visit_tracking.constants import SCHEDULED
+from model_bakery import baker
+
 from meta_auth.codenames_by_group import get_codenames_by_group
 from meta_sites import fqdn
 from meta_subject.models import SubjectVisit
 from meta_visit_schedule.constants import DAY1
-from model_bakery import baker
 
 from ..models import (
     ScreeningPartOne,
-    ScreeningPartTwo,
     ScreeningPartThree,
+    ScreeningPartTwo,
     SubjectScreening,
 )
 from .options import (
     part_one_eligible_options,
-    part_two_eligible_options,
     part_three_eligible_options,
+    part_two_eligible_options,
 )
 
 

@@ -6,62 +6,62 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_subject', '0057_auto_20210702_0458'),
+        ("meta_subject", "0057_auto_20210702_0458"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='glucose',
-            old_name='fasted',
-            new_name='fasting',
+            model_name="glucose",
+            old_name="fasted",
+            new_name="fasting",
         ),
         migrations.RenameField(
-            model_name='glucose',
-            old_name='fasted_duration_minutes',
-            new_name='fasting_duration_minutes',
+            model_name="glucose",
+            old_name="fasted_duration_minutes",
+            new_name="fasting_duration_minutes",
         ),
         migrations.RenameField(
-            model_name='glucose',
-            old_name='fasted_duration_str',
-            new_name='fasting_duration_str',
+            model_name="glucose",
+            old_name="fasted_duration_str",
+            new_name="fasting_duration_str",
         ),
         migrations.RenameField(
-            model_name='historicalglucose',
-            old_name='fasted',
-            new_name='fasting',
+            model_name="historicalglucose",
+            old_name="fasted",
+            new_name="fasting",
         ),
         migrations.RenameField(
-            model_name='historicalglucose',
-            old_name='fasted_duration_minutes',
-            new_name='fasting_duration_minutes',
+            model_name="historicalglucose",
+            old_name="fasted_duration_minutes",
+            new_name="fasting_duration_minutes",
         ),
         migrations.RenameField(
-            model_name='historicalglucose',
-            old_name='fasted_duration_str',
-            new_name='fasting_duration_str',
+            model_name="historicalglucose",
+            old_name="fasted_duration_str",
+            new_name="fasting_duration_str",
         ),
         migrations.RemoveField(
-            model_name='bloodresultsglu',
-            name='fasted',
+            model_name="bloodresultsglu",
+            name="fasted",
         ),
         migrations.RemoveField(
-            model_name='bloodresultsglu',
-            name='fasted_duration_minutes',
+            model_name="bloodresultsglu",
+            name="fasted_duration_minutes",
         ),
         migrations.RemoveField(
-            model_name='bloodresultsglu',
-            name='fasted_duration_str',
+            model_name="bloodresultsglu",
+            name="fasted_duration_str",
         ),
         migrations.RemoveField(
-            model_name='historicalbloodresultsglu',
-            name='fasted',
+            model_name="historicalbloodresultsglu",
+            name="fasted",
         ),
         migrations.RemoveField(
-            model_name='historicalbloodresultsglu',
-            name='fasted_duration_minutes',
+            model_name="historicalbloodresultsglu",
+            name="fasted_duration_minutes",
         ),
         migrations.RemoveField(
-            model_name='historicalbloodresultsglu',
-            name='fasted_duration_str',
+            model_name="historicalbloodresultsglu",
+            name="fasted_duration_str",
         ),
     ]

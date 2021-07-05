@@ -1,6 +1,5 @@
 from edc_list_data import PreloadData
 
-
 model_data = {
     "edc_lab.consignee": [
         {
