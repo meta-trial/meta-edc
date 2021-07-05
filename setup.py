@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 
-from setuptools import setup
-from setuptools import find_packages
+from setuptools import find_packages, setup
 
 with open(os.path.join(os.path.dirname(__file__), "README.rst")) as readme:
     README = readme.read()

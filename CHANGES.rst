@@ -1,6 +1,10 @@
 Changes
 =======
 
+0.1.66
+------
+- see docs for details of field name changes: docs/updates/1.65/renamed_fields.txt
+
 0.1.63
 ------
 - evaluate glucose field values consistently in form validators
