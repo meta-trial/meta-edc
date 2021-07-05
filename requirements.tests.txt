@@ -1,0 +1,5 @@
+beautifulsoup4
+sarscov2==0.1.10
+git+https://github.com/respond-africa/respond-africa.git@develop
+git+https://github.com/erikvw/django-import-export.git@get_export_admin_action
+
