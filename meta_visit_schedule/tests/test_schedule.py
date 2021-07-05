@@ -1,7 +1,7 @@
 from django.test import TestCase, tag
+from meta_visit_schedule.visit_schedules.visit_schedule import visit_schedule
 
 from ..visit_schedules.schedule import schedule
-from ..visit_schedules.visit_schedule import visit_schedule
 
 
 class TestVisitSchedule(TestCase):
@@ -36,6 +36,9 @@ class TestVisitSchedule(TestCase):
             "blood_glucose",
             "blood_glucose_poc",
             "chemistry",
+            "chemistry_lft",
+            "chemistry_lipids",
+            "chemistry_rft",
             "fbc",
             "hba1c",
             "hba1c_poc",

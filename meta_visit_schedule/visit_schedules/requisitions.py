@@ -1,4 +1,3 @@
-from edc_lab.utils import get_requisition_model_name
 from edc_lab_panel.panels import (
     blood_glucose_panel,
     blood_glucose_poc_panel,
@@ -23,6 +22,9 @@ requisitions_prn = FormsCollection(
     Requisition(show_order=40, panel=hba1c_panel, required=True, additional=False),
     Requisition(show_order=50, panel=fbc_panel, required=True, additional=False),
     Requisition(show_order=60, panel=chemistry_panel, required=True, additional=False),
+    Requisition(show_order=70, panel=lft_panel, required=True, additional=False),
+    Requisition(show_order=80, panel=rft_panel, required=True, additional=False),
+    Requisition(show_order=90, panel=lipids_panel, required=True, additional=False),
     name="requisitions_prn",
 )
 

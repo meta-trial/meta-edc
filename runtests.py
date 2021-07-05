@@ -29,6 +29,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     SUBJECT_VISIT_MODEL="meta_subject.subjectvisit",
     SUBJECT_CONSENT_MODEL="meta_consent.subjectconsent",
     SUBJECT_REQUISITION_MODEL=f"meta_subject.subjectrequisition",
+    DEFENDER_ENABLED=False,
     DJANGO_LAB_DASHBOARD_REQUISITION_MODEL="meta_subject.subjectrequisition",
     ADVERSE_EVENT_ADMIN_SITE="meta_ae_admin",
     ADVERSE_EVENT_APP_LABEL="meta_ae",
