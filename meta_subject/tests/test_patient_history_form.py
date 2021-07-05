@@ -4,6 +4,7 @@ from django.test import TestCase, tag
 from edc_constants.constants import COMPLETE, NO, NONE, NOT_APPLICABLE, YES
 from edc_list_data import PreloadData
 from edc_utils.date import get_utcnow
+
 from meta_lists.models import (
     ArvRegimens,
     BaselineSymptoms,

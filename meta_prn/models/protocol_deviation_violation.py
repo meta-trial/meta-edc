@@ -1,22 +1,21 @@
 from django.db import models
 from edc_action_item.managers import (
-    ActionIdentifierSiteManager,
     ActionIdentifierManager,
+    ActionIdentifierSiteManager,
 )
 from edc_action_item.models import ActionModelMixin
-from edc_constants.choices import YES_NO, NOT_APPLICABLE
+from edc_constants.choices import NOT_APPLICABLE, YES_NO
 from edc_identifier.model_mixins import (
-    TrackingModelMixin,
     NonUniqueSubjectIdentifierFieldMixin,
+    TrackingModelMixin,
 )
 from edc_model import REPORT_STATUS
-from edc_model.models import BaseUuidModel
-from edc_model.models import datetime_not_future
+from edc_model.models import BaseUuidModel, datetime_not_future
 from edc_sites.models import SiteModelMixin
 from edc_utils import get_utcnow
 
+from ..choices import ACTION_REQUIRED, DEVIATION_VIOLATION, PROTOCOL_VIOLATION
 from ..constants import PROTOCOL_DEVIATION_VIOLATION_ACTION
-from ..choices import PROTOCOL_VIOLATION, ACTION_REQUIRED, DEVIATION_VIOLATION
 
 
 class ProtocolDeviationViolation(

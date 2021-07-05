@@ -1,11 +1,11 @@
 """
 A settings file with the bare minimum attributes.
 """
-import environ
 import os
-
-from multisite import SiteID
 from pathlib import Path
+
+import environ
+from multisite import SiteID
 
 APP_NAME = "meta_edc"
 BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)

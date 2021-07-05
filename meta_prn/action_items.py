@@ -1,7 +1,8 @@
-from edc_adverse_event.constants import DEATH_REPORT_ACTION
-from edc_constants.constants import HIGH_PRIORITY, TBD, YES
+from django.utils.safestring import mark_safe
 from edc_action_item.action_with_notification import ActionWithNotification
 from edc_action_item.site_action_items import site_action_items
+from edc_adverse_event.constants import DEATH_REPORT_ACTION
+from edc_constants.constants import HIGH_PRIORITY, TBD, YES
 from edc_prn.action_items import (
     ProtocolDeviationViolationAction as BaseProtocolDeviationViolationAction,
 )
@@ -12,7 +13,6 @@ from .constants import (
     UNBLINDING_REQUEST_ACTION,
     UNBLINDING_REVIEW_ACTION,
 )
-from django.utils.safestring import mark_safe
 
 
 class EndOfStudyAction(ActionWithNotification):

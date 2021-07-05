@@ -1,12 +1,8 @@
-from edc_constants.constants import LOST_TO_FOLLOWUP, OTHER, UNKNOWN, DEAD, NONE
+from edc_constants.constants import DEAD, LOST_TO_FOLLOWUP, NONE, OTHER, UNKNOWN
 from edc_list_data import PreloadData
 from edc_transfer.constants import TRANSFERRED
-from meta_prn.constants import (
-    WITHDRAWAL,
-    LATE_EXCLUSION,
-    OTHER_RX_DISCONTINUATION,
-)
 
+from meta_prn.constants import LATE_EXCLUSION, OTHER_RX_DISCONTINUATION, WITHDRAWAL
 
 list_data = {
     "meta_lists.nonadherencereasons": [
@@ -137,7 +133,10 @@ list_data = {
             "Other condition that justifies the discontinuation of "
             "treatment in the clinician’s opinion (specify below)",
         ),
-        (OTHER, "Other reason (specify below)",),
+        (
+            OTHER,
+            "Other reason (specify below)",
+        ),
     ],
     "meta_lists.subjectvisitmissedreasons": [
         ("forgot", "Forgot / Can’t remember being told about appointment"),
@@ -146,7 +145,10 @@ list_data = {
         ("working_schooling", "Away working/schooling"),
         ("too_sick", "Too sick or weak to come to the centre"),
         ("lack_of_transport", "Transportation difficulty"),
-        (OTHER, "Other reason (specify below)",),
+        (
+            OTHER,
+            "Other reason (specify below)",
+        ),
     ],
 }
 

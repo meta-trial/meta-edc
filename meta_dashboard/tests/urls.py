@@ -1,18 +1,18 @@
-from django.urls.conf import path, include
+from django.contrib import admin
+from django.urls.conf import include, path
+from django.views.generic.base import RedirectView
+from edc_action_item.admin_site import edc_action_item_admin
 from edc_appointment.admin_site import edc_appointment_admin
+from edc_consent.admin_site import edc_consent_admin
+from edc_dashboard.views import AdministrationView
+from edc_locator.admin_site import edc_locator_admin
+from edc_reference.admin_site import edc_reference_admin
 
 from meta_ae.admin_site import meta_ae_admin
 from meta_consent.admin_site import meta_consent_admin
 from meta_prn.admin_site import meta_prn_admin
 from meta_screening.admin_site import meta_screening_admin
 from meta_subject.admin_site import meta_subject_admin
-from django.contrib import admin
-from django.views.generic.base import RedirectView
-from edc_action_item.admin_site import edc_action_item_admin
-from edc_consent.admin_site import edc_consent_admin
-from edc_dashboard.views import AdministrationView
-from edc_locator.admin_site import edc_locator_admin
-from edc_reference.admin_site import edc_reference_admin
 
 from .admin import meta_test_admin
 

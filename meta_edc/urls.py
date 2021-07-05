@@ -23,6 +23,8 @@ from edc_randomization.admin_site import edc_randomization_admin
 from edc_reference.admin_site import edc_reference_admin
 from edc_registration.admin_site import edc_registration_admin
 from edc_visit_schedule.admin_site import edc_visit_schedule_admin
+from sarscov2.admin_site import sarscov2_admin
+
 from meta_ae.admin_site import meta_ae_admin
 from meta_consent.admin_site import meta_consent_admin
 from meta_export.admin_site import meta_export_admin
@@ -30,8 +32,6 @@ from meta_lists.admin_site import meta_lists_admin
 from meta_prn.admin_site import meta_prn_admin
 from meta_screening.admin_site import meta_screening_admin
 from meta_subject.admin_site import meta_subject_admin
-
-from sarscov2.admin_site import sarscov2_admin
 
 from .views import HomeView
 

@@ -10,9 +10,18 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="historicalcoronakap", name="history_user",),
-        migrations.RemoveField(model_name="historicalcoronakap", name="site",),
-        migrations.RemoveField(model_name="historicalcoronakap", name="subject_visit",),
+        migrations.RemoveField(
+            model_name="historicalcoronakap",
+            name="history_user",
+        ),
+        migrations.RemoveField(
+            model_name="historicalcoronakap",
+            name="site",
+        ),
+        migrations.RemoveField(
+            model_name="historicalcoronakap",
+            name="subject_visit",
+        ),
         migrations.AlterModelOptions(
             name="bloodresultsfbc",
             options={
@@ -236,6 +245,10 @@ class Migration(migrations.Migration):
                 "verbose_name": "Urine Dipstick Test",
             },
         ),
-        migrations.DeleteModel(name="CoronaKap",),
-        migrations.DeleteModel(name="HistoricalCoronaKap",),
+        migrations.DeleteModel(
+            name="CoronaKap",
+        ),
+        migrations.DeleteModel(
+            name="HistoricalCoronaKap",
+        ),
     ]

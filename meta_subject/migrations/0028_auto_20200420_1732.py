@@ -11,14 +11,30 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="coronakap", name="diabetic_year",),
-        migrations.RemoveField(model_name="coronakap", name="hypertensive_year",),
-        migrations.RemoveField(model_name="coronakap", name="months_on_art",),
-        migrations.RemoveField(model_name="historicalcoronakap", name="diabetic_year",),
         migrations.RemoveField(
-            model_name="historicalcoronakap", name="hypertensive_year",
+            model_name="coronakap",
+            name="diabetic_year",
         ),
-        migrations.RemoveField(model_name="historicalcoronakap", name="months_on_art",),
+        migrations.RemoveField(
+            model_name="coronakap",
+            name="hypertensive_year",
+        ),
+        migrations.RemoveField(
+            model_name="coronakap",
+            name="months_on_art",
+        ),
+        migrations.RemoveField(
+            model_name="historicalcoronakap",
+            name="diabetic_year",
+        ),
+        migrations.RemoveField(
+            model_name="historicalcoronakap",
+            name="hypertensive_year",
+        ),
+        migrations.RemoveField(
+            model_name="historicalcoronakap",
+            name="months_on_art",
+        ),
         migrations.AddField(
             model_name="coronakap",
             name="diabetic_dx_year",

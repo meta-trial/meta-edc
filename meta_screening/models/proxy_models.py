@@ -1,10 +1,10 @@
 from ..eligibility import (
-    calculate_eligible_part_one,
-    calculate_eligible_part_two,
-    calculate_eligible_part_three,
-    check_eligible_final,
     EligibilityPartOneError,
     EligibilityPartTwoError,
+    calculate_eligible_part_one,
+    calculate_eligible_part_three,
+    calculate_eligible_part_two,
+    check_eligible_final,
 )
 from .subject_screening import SubjectScreening
 

@@ -1,6 +1,4 @@
 from django.test import TestCase, tag
-from edc_auth.utils import compare_codenames_for_group
-from edc_auth.group_permissions_updater import GroupPermissionsUpdater
 from edc_auth import (
     ACCOUNT_MANAGER,
     AE,
@@ -10,26 +8,28 @@ from edc_auth import (
     EVERYONE,
     LAB,
     LAB_VIEW,
-    SCREENING,
     PII,
     PII_VIEW,
     RANDO,
+    SCREENING,
     TMG,
-    UNBLINDING_REVIEWERS,
     UNBLINDING_REQUESTORS,
+    UNBLINDING_REVIEWERS,
 )
 from edc_auth.codenames import (
+    account_manager,
     ae,
     ae_review,
-    account_manager,
     everyone,
+    get_rando,
     lab,
     lab_view,
     pii,
     pii_view,
-    get_rando,
     tmg,
 )
+from edc_auth.group_permissions_updater import GroupPermissionsUpdater
+from edc_auth.utils import compare_codenames_for_group
 
 from ..codenames import (
     auditor,

@@ -1,14 +1,15 @@
-import inflect
+from textwrap import fill
 
+import inflect
 from django.contrib.auth import get_user_model
 from edc_constants.constants import OTHER, TUBERCULOSIS
-from meta_ae.models import DeathReport as DeathReportModel
 from reportlab.lib import colors
 from reportlab.lib.units import cm
 from reportlab.platypus.flowables import Spacer
 from reportlab.platypus.para import Paragraph
 from reportlab.platypus.tables import Table
-from textwrap import fill
+
+from meta_ae.models import DeathReport as DeathReportModel
 
 from .pdf_report import MetaCrfPdfReport
 

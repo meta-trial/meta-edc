@@ -4,8 +4,9 @@ from django.test.client import RequestFactory
 from edc_adverse_event.models import AeClassification
 from edc_list_data.site_list_data import site_list_data
 from model_bakery import baker
-from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
+
 from meta_reports.ae_report import AeReport
+from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 
 
 class TestReports(MetaTestCaseMixin, TestCase):

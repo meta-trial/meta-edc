@@ -1,5 +1,5 @@
 from django.test import TestCase
-from edc_sites import get_site_id, InvalidSiteError
+from edc_sites import InvalidSiteError, get_site_id
 
 from ..sites import all_sites
 

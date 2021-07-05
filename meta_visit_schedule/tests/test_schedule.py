@@ -1,4 +1,5 @@
 from django.test import TestCase, tag
+
 from meta_visit_schedule.visit_schedules.visit_schedule import visit_schedule
 
 from ..visit_schedules.schedule import schedule

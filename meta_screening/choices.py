@@ -1,16 +1,9 @@
-from edc_constants.constants import (
-    BLACK,
-    OTHER,
-    NOT_APPLICABLE,
-    YES,
-    NO,
-)
+from edc_constants.constants import BLACK, NO, NOT_APPLICABLE, OTHER, YES
 from edc_reportable import (
-    MILLIGRAMS_PER_DECILITER,
     MICROMOLES_PER_LITER,
     MICROMOLES_PER_LITER_DISPLAY,
+    MILLIGRAMS_PER_DECILITER,
 )
-
 
 ETHNICITY = ((BLACK, "Black"), (OTHER, "Other"))
 

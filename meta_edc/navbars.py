@@ -1,11 +1,13 @@
 from copy import copy
+
 from django.conf import settings
-from edc_lab_dashboard.navbars import navbar as lab_navbar
-from edc_navbar import site_navbars, Navbar
-from edc_review_dashboard.navbars import navbar as review_navbar
-from meta_dashboard.navbars import navbar as meta_dashboard_navbar
-from edc_adverse_event.navbars import tmg_navbar_item, ae_navbar_item
+from edc_adverse_event.navbars import ae_navbar_item, tmg_navbar_item
 from edc_data_manager.navbar_item import dm_navbar_item
+from edc_lab_dashboard.navbars import navbar as lab_navbar
+from edc_navbar import Navbar, site_navbars
+from edc_review_dashboard.navbars import navbar as review_navbar
+
+from meta_dashboard.navbars import navbar as meta_dashboard_navbar
 
 navbar = Navbar(name=settings.APP_NAME)
 

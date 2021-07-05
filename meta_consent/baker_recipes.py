@@ -1,13 +1,11 @@
 from dateutil.relativedelta import relativedelta
 from django.contrib.sites.models import Site
-from edc_constants.constants import YES, NO
+from edc_constants.constants import NO, YES
 from edc_utils import get_utcnow
 from faker import Faker
 from model_bakery.recipe import Recipe, seq
 
-from .models import SubjectReconsent
-from .models import SubjectConsent
-
+from .models import SubjectConsent, SubjectReconsent
 
 fake = Faker()
 

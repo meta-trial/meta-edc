@@ -3,6 +3,7 @@
 from django.db import migrations
 from django.db.migrations import RunPython
 from edc_action_item.utils import update_action_identifier
+
 from meta_subject.action_items import FollowupExaminationAction
 
 

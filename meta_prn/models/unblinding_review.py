@@ -4,11 +4,11 @@ from edc_constants.choices import YES_NO_TBD
 from edc_constants.constants import TBD
 from edc_identifier.managers import SubjectIdentifierManager
 from edc_identifier.model_mixins import (
-    TrackingModelMixin,
     NonUniqueSubjectIdentifierFieldMixin,
+    TrackingModelMixin,
 )
 from edc_model.models.base_uuid_model import BaseUuidModel
-from edc_sites.models import SiteModelMixin, CurrentSiteManager
+from edc_sites.models import CurrentSiteManager, SiteModelMixin
 from edc_utils.date import get_utcnow
 
 from ..constants import UNBLINDING_REVIEW_ACTION

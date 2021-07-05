@@ -13,15 +13,16 @@ from django.urls.exceptions import NoReverseMatch
 from django_webtest import WebTest
 from edc_appointment.constants import IN_PROGRESS_APPT, SCHEDULED_APPT
 from edc_appointment.models import Appointment
-from edc_auth import TMG, EVERYONE, AUDITOR, CLINIC, PII, EXPORT, LAB
+from edc_auth import AUDITOR, CLINIC, EVERYONE, EXPORT, LAB, PII, TMG
 from edc_dashboard.url_names import url_names
 from edc_sites import add_or_update_django_sites
 from edc_utils import get_utcnow
-from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
-from meta_sites.sites import all_sites, fqdn
 from model_bakery import baker
 from webtest.app import AppError
+
 from meta_screening.models.subject_screening import SubjectScreening
+from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
+from meta_sites.sites import all_sites, fqdn
 
 style = color_style()
 
@@ -324,8 +325,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Requisitions", subject_dashboard_page)
 
     def test_follow_urls(self):
-        """Follows any url that can be reversed without kwargs.
-        """
+        """Follows any url that can be reversed without kwargs."""
         self.login(superuser=False, groups=[EVERYONE, CLINIC, PII])
         for url_name in url_names.registry.values():
             sys.stdout.write(style.MIGRATE_HEADING(f" - '{url_name}' ...\r"))

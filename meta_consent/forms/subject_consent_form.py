@@ -1,8 +1,9 @@
-from meta_form_validators import SubjectConsentFormValidator
 from django import forms
 from edc_consent.modelform_mixins import ConsentModelFormMixin
 from edc_form_validators import FormValidatorMixin
 from edc_sites.forms import SiteModelFormMixin
+
+from meta_form_validators import SubjectConsentFormValidator
 
 from ..models import SubjectConsent
 

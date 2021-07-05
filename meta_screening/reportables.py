@@ -2,7 +2,6 @@ from edc_constants.constants import FEMALE, MALE
 from edc_reportable import NormalReference
 from edc_reportable.units import MICROMOLES_PER_LITER
 
-
 gluc_fasting_ref = NormalReference(
     name="gluc",
     lower=6.1,

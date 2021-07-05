@@ -1,6 +1,6 @@
 from django.test import TestCase
-from edc_lab.site_labs import site_labs
 from edc_lab.models import Panel
+from edc_lab.site_labs import site_labs
 
 from ..lab_profiles import subject_lab_profile
 

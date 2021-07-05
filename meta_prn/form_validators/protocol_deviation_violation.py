@@ -1,4 +1,4 @@
-from edc_constants.constants import YES, OTHER, CLOSED
+from edc_constants.constants import CLOSED, OTHER, YES
 from edc_form_validators import FormValidator
 
 from ..constants import VIOLATION

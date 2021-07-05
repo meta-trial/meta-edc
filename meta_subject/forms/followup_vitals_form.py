@@ -1,5 +1,5 @@
-from edc_crf.modelform_mixins import CrfModelFormMixin
 from django import forms
+from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import FormValidator
 
 from ..models import FollowupVitals

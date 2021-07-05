@@ -1,8 +1,9 @@
 from bs4 import BeautifulSoup
 from django import template
 from django.conf import settings
+from edc_constants.constants import NO, TBD, YES
 from edc_dashboard.url_names import url_names
-from edc_constants.constants import TBD, YES, NO
+
 from meta_screening.eligibility import (
     calculate_eligible_final,
     eligibility_display_label,

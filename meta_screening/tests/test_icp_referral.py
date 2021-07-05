@@ -4,6 +4,7 @@ from django.test import TestCase, tag
 from edc_constants.constants import BLACK, FEMALE, NO, NOT_APPLICABLE, YES
 from edc_reportable.units import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
 from edc_utils.date import get_utcnow
+
 from meta_screening.models import (
     IcpReferral,
     ScreeningPartOne,

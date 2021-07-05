@@ -11,7 +11,8 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RemoveIndex(
-            model_name="followupexamination", name="meta_subjec_subject_8cd273_idx",
+            model_name="followupexamination",
+            name="meta_subjec_subject_8cd273_idx",
         ),
         migrations.AlterField(
             model_name="followupexamination",

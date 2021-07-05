@@ -67,7 +67,9 @@ class EndOfStudyFormValidator(
         self.required_if(DEAD, field="offschedule_reason", field_required="death_date")
 
         self.required_if(
-            LOST_TO_FOLLOWUP, field="offschedule_reason", field_required="ltfu_date",
+            LOST_TO_FOLLOWUP,
+            field="offschedule_reason",
+            field_required="ltfu_date",
         )
 
         self.required_if(

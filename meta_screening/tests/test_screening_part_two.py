@@ -1,6 +1,6 @@
 from dateutil.relativedelta import relativedelta
 from django.test import TestCase, tag
-from edc_constants.constants import YES, TBD, NO
+from edc_constants.constants import NO, TBD, YES
 from edc_utils.date import get_utcnow
 
 from ..models import ScreeningPartOne, ScreeningPartTwo

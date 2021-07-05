@@ -1,9 +1,9 @@
 from .autocomplete_admin import ArvRegimensAdmin
 from .blood_results import (
-    BloodResultsGluAdmin,
     BloodResultsFbcAdmin,
-    BloodResultsRftAdmin,
+    BloodResultsGluAdmin,
     BloodResultsLftAdmin,
+    BloodResultsRftAdmin,
 )
 from .complications_admin import ComplicationsAdmin
 from .followup_examination_admin import FollowupExaminationAdmin

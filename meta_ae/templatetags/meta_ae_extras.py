@@ -1,10 +1,10 @@
-import arrow
+from textwrap import wrap
 
+import arrow
 from django import template
 from django.conf import settings
 from django.utils.safestring import mark_safe
 from edc_constants.constants import OTHER, YES
-from textwrap import wrap
 
 register = template.Library()
 

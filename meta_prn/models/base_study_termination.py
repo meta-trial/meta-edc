@@ -1,7 +1,7 @@
 from django.db import models
 from edc_action_item.managers import (
-    ActionIdentifierSiteManager,
     ActionIdentifierManager,
+    ActionIdentifierSiteManager,
 )
 from edc_action_item.models import ActionModelMixin
 from edc_model.models import date_not_future

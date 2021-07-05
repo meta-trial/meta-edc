@@ -10,16 +10,36 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="coronakap", name="dia_blood_pressure_r1",),
-        migrations.RemoveField(model_name="coronakap", name="height",),
-        migrations.RemoveField(model_name="coronakap", name="sys_blood_pressure_r1",),
-        migrations.RemoveField(model_name="coronakap", name="weight",),
         migrations.RemoveField(
-            model_name="historicalcoronakap", name="dia_blood_pressure_r1",
+            model_name="coronakap",
+            name="dia_blood_pressure_r1",
         ),
-        migrations.RemoveField(model_name="historicalcoronakap", name="height",),
         migrations.RemoveField(
-            model_name="historicalcoronakap", name="sys_blood_pressure_r1",
+            model_name="coronakap",
+            name="height",
         ),
-        migrations.RemoveField(model_name="historicalcoronakap", name="weight",),
+        migrations.RemoveField(
+            model_name="coronakap",
+            name="sys_blood_pressure_r1",
+        ),
+        migrations.RemoveField(
+            model_name="coronakap",
+            name="weight",
+        ),
+        migrations.RemoveField(
+            model_name="historicalcoronakap",
+            name="dia_blood_pressure_r1",
+        ),
+        migrations.RemoveField(
+            model_name="historicalcoronakap",
+            name="height",
+        ),
+        migrations.RemoveField(
+            model_name="historicalcoronakap",
+            name="sys_blood_pressure_r1",
+        ),
+        migrations.RemoveField(
+            model_name="historicalcoronakap",
+            name="weight",
+        ),
     ]

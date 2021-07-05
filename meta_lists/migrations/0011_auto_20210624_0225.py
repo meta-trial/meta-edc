@@ -6,53 +6,53 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_lists', '0010_auto_20200617_1738'),
+        ("meta_lists", "0010_auto_20200617_1738"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='arvregimens',
-            name='id',
+            model_name="arvregimens",
+            name="id",
             field=models.AutoField(primary_key=True, serialize=False),
         ),
         migrations.AlterField(
-            model_name='baselinesymptoms',
-            name='id',
+            model_name="baselinesymptoms",
+            name="id",
             field=models.AutoField(primary_key=True, serialize=False),
         ),
         migrations.AlterField(
-            model_name='diabetessymptoms',
-            name='id',
+            model_name="diabetessymptoms",
+            name="id",
             field=models.AutoField(primary_key=True, serialize=False),
         ),
         migrations.AlterField(
-            model_name='hypertensionmedications',
-            name='id',
+            model_name="hypertensionmedications",
+            name="id",
             field=models.AutoField(primary_key=True, serialize=False),
         ),
         migrations.AlterField(
-            model_name='nonadherencereasons',
-            name='id',
+            model_name="nonadherencereasons",
+            name="id",
             field=models.AutoField(primary_key=True, serialize=False),
         ),
         migrations.AlterField(
-            model_name='offstudyreasons',
-            name='id',
+            model_name="offstudyreasons",
+            name="id",
             field=models.AutoField(primary_key=True, serialize=False),
         ),
         migrations.AlterField(
-            model_name='oiprophylaxis',
-            name='id',
+            model_name="oiprophylaxis",
+            name="id",
             field=models.AutoField(primary_key=True, serialize=False),
         ),
         migrations.AlterField(
-            model_name='subjectvisitmissedreasons',
-            name='id',
+            model_name="subjectvisitmissedreasons",
+            name="id",
             field=models.AutoField(primary_key=True, serialize=False),
         ),
         migrations.AlterField(
-            model_name='symptoms',
-            name='id',
+            model_name="symptoms",
+            name="id",
             field=models.AutoField(primary_key=True, serialize=False),
         ),
     ]

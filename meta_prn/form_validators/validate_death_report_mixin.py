@@ -1,5 +1,4 @@
 import arrow
-
 from dateutil import tz
 from django import forms
 from django.apps import apps as django_apps
