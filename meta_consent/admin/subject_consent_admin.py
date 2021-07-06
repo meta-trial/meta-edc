@@ -4,7 +4,6 @@ from edc_consent.modeladmin_mixins import ModelAdminConsentMixin
 from edc_identifier import SubjectIdentifierError, is_subject_identifier_or_raise
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
-
 from meta_screening.models.subject_screening import SubjectScreening
 from meta_subject.models import SubjectVisit
 
@@ -69,7 +68,6 @@ class SubjectConsentAdmin(
         "consent_copy": admin.VERTICAL,
         "consent_reviewed": admin.VERTICAL,
         "consent_signature": admin.VERTICAL,
-        "gender": admin.VERTICAL,
         "is_dob_estimated": admin.VERTICAL,
         "identity_type": admin.VERTICAL,
         "is_incarcerated": admin.VERTICAL,
