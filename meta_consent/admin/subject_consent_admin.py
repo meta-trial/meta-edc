@@ -4,6 +4,7 @@ from edc_consent.modeladmin_mixins import ModelAdminConsentMixin
 from edc_identifier import SubjectIdentifierError, is_subject_identifier_or_raise
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
+
 from meta_screening.models.subject_screening import SubjectScreening
 from meta_subject.models import SubjectVisit
 
