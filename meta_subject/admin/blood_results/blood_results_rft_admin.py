@@ -15,6 +15,9 @@ class BloodResultsRftAdmin(BloodResultsModelAdminMixin, CrfModelAdmin):
     fieldsets = BloodResultFieldset(rft_panel, model_cls=BloodResultsRft).fieldsets
 
 
+# TODO: ("eGFR (Calculated)", {"fields": ["egfr_value"]}),
+
+
 # from django.contrib import admin
 # from edc_model_admin import audit_fieldset_tuple
 #

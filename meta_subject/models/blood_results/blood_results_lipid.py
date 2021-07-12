@@ -1,6 +1,7 @@
 from edc_blood_results import BLOOD_RESULTS_LIPID_ACTION
 from edc_blood_results.model_mixins import (
     BloodResultsModelMixin,
+    CholModelMixin,
     HdlModelMixin,
     LdlModelMixin,
     RequisitionModelMixin,
@@ -15,6 +16,7 @@ class BloodResultsLipid(
     HdlModelMixin,
     LdlModelMixin,
     TrigModelMixin,
+    CholModelMixin,
     RequisitionModelMixin,
     BloodResultsModelMixin,
     edc_models.BaseUuidModel,

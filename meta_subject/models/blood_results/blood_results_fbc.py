@@ -8,6 +8,11 @@ from edc_blood_results.model_mixins import (
     RequisitionModelMixin,
     WbcModelMixin,
 )
+from edc_blood_results.model_mixins.fbc import (
+    MchcModelMixin,
+    MchModelMixin,
+    McvModelMixin,
+)
 from edc_crf.model_mixins import CrfWithActionModelMixin
 from edc_model import models as edc_models
 
@@ -20,6 +25,9 @@ class BloodResultsFbc(
     RbcModelMixin,
     WbcModelMixin,
     PlateletsModelMixin,
+    McvModelMixin,
+    MchModelMixin,
+    MchcModelMixin,
     BloodResultsModelMixin,
     edc_models.BaseUuidModel,
 ):
