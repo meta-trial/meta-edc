@@ -1,6 +1,6 @@
 from django import forms
 from edc_action_item.forms import ActionItemFormMixin
-from edc_adverse_event.modelform_mixins import validate_ae_initial_outcome_date
+from edc_adverse_event.forms import validate_ae_initial_outcome_date
 from edc_form_validators import FormValidator, FormValidatorMixin
 from edc_registration.modelform_mixins import ModelFormSubjectIdentifierMixin
 
@@ -11,7 +11,9 @@ class AeReviewFormValidator(FormValidator):
 
 
 class AeReviewModelFormMixin(
-    FormValidatorMixin, ModelFormSubjectIdentifierMixin, ActionItemFormMixin
+    ModelFormSubjectIdentifierMixin,
+    ActionItemFormMixin,
+    FormValidatorMixin,
 ):
     form_validator_cls = AeReviewFormValidator
 
