@@ -1,3 +1,8 @@
-from django.conf import settings
+PHASE_TWO = 2
+PHASE_THREE = 3
 
-meta_version = settings.META_PHASE
+
+def get_meta_version():
+    from django.conf import settings
+
+    return settings.META_PHASE

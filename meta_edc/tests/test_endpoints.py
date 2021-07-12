@@ -1,10 +1,10 @@
+import pdb
 import sys
+from copy import deepcopy
 
 from dateutil.relativedelta import relativedelta
 from django.apps import apps as django_apps
-from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
 from django.core.management.color import color_style
 from django.test import tag
 from django.test.utils import override_settings
@@ -13,38 +13,29 @@ from django.urls.exceptions import NoReverseMatch
 from django_webtest import WebTest
 from edc_appointment.constants import IN_PROGRESS_APPT, SCHEDULED_APPT
 from edc_appointment.models import Appointment
-from edc_auth import AUDITOR, CLINIC, EVERYONE, EXPORT, LAB, PII, TMG
+from edc_auth import AUDITOR, CLINIC, EVERYONE, EXPORT, LAB, PII, SCREENING, TMG
+from edc_constants.constants import YES
 from edc_dashboard.url_names import url_names
 from edc_sites import add_or_update_django_sites
+from edc_test_utils.webtest import login
 from edc_utils import get_utcnow
-from model_bakery import baker
-from webtest.app import AppError
-
 from meta_screening.models.subject_screening import SubjectScreening
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
-from meta_sites.sites import all_sites, fqdn
+from meta_screening.tests.options import (
+    get_part_one_eligible_options,
+    get_part_three_eligible_options,
+    get_part_two_eligible_options,
+)
+from meta_sites.sites import all_sites
+from model_bakery import baker
+from webtest.app import AppError
 
 style = color_style()
 
 User = get_user_model()
 
 app_prefix = "meta"
-
-
-def login(testcase, user=None, superuser=None, groups=None):
-    user = testcase.user if user is None else user
-    superuser = True if superuser is None else superuser
-    if not superuser:
-        user.is_superuser = False
-        user.is_active = True
-        user.save()
-        for group_name in groups:
-            group = Group.objects.get(name=group_name)
-            user.groups.add(group)
-    form = testcase.app.get(reverse(settings.LOGIN_REDIRECT_URL)).maybe_follow().form
-    form["username"] = user.username
-    form["password"] = "pass"
-    return form.submit()
+screening_listboard_url = f"{app_prefix}_dashboard:screening_listboard_url"
 
 
 @override_settings(SIMPLE_HISTORY_PERMISSIONS_ENABLED=True)
@@ -53,9 +44,8 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.user = User.objects.create_superuser("user_login", "u@example.com", "pass")
 
     def login(self, **kwargs):
-        return login(self, **kwargs)
+        return login(self, redirect_url="home_url", **kwargs)
 
-    @tag("2")
     @tag("webtest")
     def test_ae(self):
         self.login(superuser=False, groups=[EVERYONE, AUDITOR])
@@ -92,7 +82,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Subjects", response)
         self.assertIn("Specimens", response)
         self.assertIn("Adverse events", response)
-        self.assertIn("TMG reports", response)
+        self.assertIn("TMG", response)
         self.assertNotIn("Pharmacy", response)
         self.assertIn("Action items", response)
         self.assertNotIn("Export data", response)
@@ -172,49 +162,215 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertNotIn("Add SubjectScreening", screening_page)
 
     @tag("webtest")
-    def test_screening_form(self):
-        subject_screening = baker.prepare_recipe(
-            f"{app_prefix}_screening.subjectscreening"
+    @override_settings(META_PHASE=2)
+    def test_screening_form_phase2(self):
+        part_one_data = deepcopy(get_part_one_eligible_options())
+        report_datetime = part_one_data.get("report_datetime")
+        part_one_data.update(
+            dict(
+                report_datetime_0=report_datetime.strftime("%Y-%m-%d"),
+                report_datetime_1=report_datetime.strftime("%H:%M"),
+                continue_part_two=YES,
+            )
         )
-        self.login(superuser=False, groups=[EVERYONE, CLINIC, PII])
+        (
+            home_page,
+            add_screening_part_two,
+            screening_identifier,
+        ) = self.webtest_for_screening_form_part_one(part_one_data)
 
+        part_two_data = deepcopy(get_part_two_eligible_options())
+        report_datetime = part_two_data.get("part_two_report_datetime")
+        appt_datetime = part_two_data.get("appt_datetime")
+        part_two_data.update(
+            dict(
+                part_two_report_datetime_0=report_datetime.strftime("%Y-%m-%d"),
+                part_two_report_datetime_1=report_datetime.strftime("%H:%M"),
+                appt_datetime_0=appt_datetime.strftime("%Y-%m-%d"),
+                appt_datetime_1=appt_datetime.strftime("%H:%M"),
+            )
+        )
+        (
+            home_page,
+            add_screening_part_three,
+            screening_identifier,
+        ) = self.webtest_for_screening_form_part_two(
+            home_page, add_screening_part_two, screening_identifier, part_two_data
+        )
+
+        part_three_data = deepcopy(get_part_three_eligible_options())
+        report_datetime = part_three_data.get("part_three_report_datetime")
+        ifg_datetime = part_three_data.get("ifg_datetime")
+        ogtt_datetime = part_three_data.get("ogtt_datetime")
+        part_three_data = deepcopy(part_three_data)
+        part_three_data.update(
+            dict(
+                part_three_report_datetime_0=report_datetime.strftime("%Y-%m-%d"),
+                part_three_report_datetime_1=report_datetime.strftime("%H:%M"),
+                ifg_datetime_0=ifg_datetime.strftime("%Y-%m-%d"),
+                ifg_datetime_1=ifg_datetime.strftime("%H:%M"),
+                ogtt_datetime_0=ogtt_datetime.strftime("%Y-%m-%d"),
+                ogtt_datetime_1=ogtt_datetime.strftime("%H:%M"),
+            )
+        )
+        (
+            screening_listboard_page,
+            screening_identifier,
+        ) = self.webtest_for_screening_form_part_three(
+            home_page, add_screening_part_three, screening_identifier, part_three_data
+        )
+        self.assertIn(screening_identifier, screening_listboard_page)
+        self.assertIn("Consent", screening_listboard_page)
+
+    @tag("webtest")
+    @override_settings(META_PHASE=3)
+    def test_screening_form_phase3(self):
+        part_one_data = deepcopy(get_part_one_eligible_options())
+        report_datetime = part_one_data.get("report_datetime")
+        part_one_data.update(
+            dict(
+                report_datetime_0=report_datetime.strftime("%Y-%m-%d"),
+                report_datetime_1=report_datetime.strftime("%H:%M"),
+                continue_part_two=YES,
+            )
+        )
+        (
+            home_page,
+            add_screening_part_two,
+            screening_identifier,
+        ) = self.webtest_for_screening_form_part_one(part_one_data)
+        part_two_data = deepcopy(get_part_two_eligible_options())
+        report_datetime = part_two_data.get("part_two_report_datetime")
+        appt_datetime = part_two_data.get("appt_datetime")
+        part_two_data.update(
+            dict(
+                part_two_report_datetime_0=report_datetime.strftime("%Y-%m-%d"),
+                part_two_report_datetime_1=report_datetime.strftime("%H:%M"),
+                appt_datetime_0=appt_datetime.strftime("%Y-%m-%d"),
+                appt_datetime_1=appt_datetime.strftime("%H:%M"),
+            )
+        )
+        (
+            home_page,
+            add_screening_part_three,
+            screening_identifier,
+        ) = self.webtest_for_screening_form_part_two(
+            home_page, add_screening_part_two, screening_identifier, part_two_data
+        )
+
+        part_three_data = deepcopy(get_part_three_eligible_options())
+        report_datetime = part_three_data.get("part_three_report_datetime")
+        ifg_datetime = part_three_data.get("ifg_datetime")
+        ogtt_datetime = part_three_data.get("ogtt_datetime")
+        part_three_data.update(
+            dict(
+                part_three_report_datetime_0=report_datetime.strftime("%Y-%m-%d"),
+                part_three_report_datetime_1=report_datetime.strftime("%H:%M"),
+                ifg_datetime_0=ifg_datetime.strftime("%Y-%m-%d"),
+                ifg_datetime_1=ifg_datetime.strftime("%H:%M"),
+                ogtt_datetime_0=ogtt_datetime.strftime("%Y-%m-%d"),
+                ogtt_datetime_1=ogtt_datetime.strftime("%H:%M"),
+            )
+        )
+        (
+            screening_listboard_page,
+            screening_identifier,
+        ) = self.webtest_for_screening_form_part_three(
+            home_page, add_screening_part_three, screening_identifier, part_three_data
+        )
+        self.assertIn(screening_identifier, screening_listboard_page)
+        self.assertIn("Consent", screening_listboard_page)
+
+    def webtest_for_screening_form_part_one(self, part_one_data):
+        self.login(superuser=False, groups=[EVERYONE, SCREENING, CLINIC, PII])
         home_page = self.app.get(reverse("home_url"), user=self.user, status=200)
         screening_listboard_page = home_page.click(description="Screening", index=1)
         add_screening_page = screening_listboard_page.click(
             description="Add Subject Screening"
         )
-
         # submit blank form
         response = add_screening_page.form.submit()
         self.assertIn("Please correct the errors below", response)
-
         # submit completed form
         for field, _ in add_screening_page.form.fields.items():
             try:
-                add_screening_page.form[field] = getattr(subject_screening, field)
-            except AttributeError:
-                pass
+                add_screening_page.form[field] = part_one_data[field]
+            except KeyError:
+                print(field)
         page = add_screening_page.form.submit()
 
+        if "error" in page:
+            pdb.set_trace()
+        self.assertNotIn("error", page)
+
         # redirects back to listboard
-        self.assertRedirects(
-            page, reverse(f"{app_prefix}_dashboard:screening_listboard_url")
-        )
+        url = reverse(screening_listboard_url)
+        self.assertRedirects(page, url)
 
         # new screened subject is available
         obj = SubjectScreening.objects.all().last()
         screening_listboard_page = home_page.click(description="Screening", index=1)
         self.assertIn(obj.screening_identifier, screening_listboard_page)
 
-        add_subjectconsent_page = screening_listboard_page.click(
-            description="Consent", index=1
+        # shows P1 | P2 | P3 | PENDING
+        self.assertIn("PENDING", screening_listboard_page)
+        add_screening_part_two = screening_listboard_page.click(
+            description="P2", index=0
         )
+        self.assertEqual(add_screening_part_two.status_code, 200)
+        return home_page, add_screening_part_two, obj.screening_identifier
 
-        self.assertEqual(add_subjectconsent_page.status_code, 200)
+    def webtest_for_screening_form_part_two(
+        self, home_page, add_screening_part_two, screening_identifier, part_two_data
+    ):
+        # submit completed form
+        for field, _ in add_screening_part_two.form.fields.items():
+            try:
+                add_screening_part_two.form[field] = part_two_data[field]
+            except KeyError:
+                print(field)
+        page = add_screening_part_two.form.submit()
+        if "error" in page:
+            pdb.set_trace()
+        self.assertNotIn("error", page)
+        # redirects back to listboard
+        obj = SubjectScreening.objects.all().last()
+        url = reverse(screening_listboard_url, args=(obj.screening_identifier,))
+        self.assertRedirects(page, url)
+        # shows P1 | P2 | P3 | PENDING
+        screening_listboard_page = home_page.click(description="Screening", index=1)
+        self.assertIn("PENDING", screening_listboard_page)
+        add_screening_part_three = screening_listboard_page.click(
+            description="P3", index=0
+        )
+        self.assertEqual(add_screening_part_three.status_code, 200)
+        return home_page, add_screening_part_three, screening_identifier
+
+    def webtest_for_screening_form_part_three(
+        self, home_page, add_screening_part_three, screening_identifier, part_three_data
+    ):
+        # submit completed form
+        for field, _ in add_screening_part_three.form.fields.items():
+            try:
+                add_screening_part_three.form[field] = part_three_data[field]
+            except KeyError:
+                print(field)
+        page = add_screening_part_three.form.submit()
+        if "error" in page:
+            pdb.set_trace()
+        self.assertNotIn("error", page)
+        # redirects back to listboard
+        obj = SubjectScreening.objects.all().last()
+        url = reverse(screening_listboard_url, args=(obj.screening_identifier,))
+        self.assertRedirects(page, url)
+        # shows P1 | P2 | P3 | Consent
+        screening_listboard_page = home_page.click(description="Screening", index=1)
+        self.assertIn("Consent", screening_listboard_page)
+        return screening_listboard_page, screening_identifier
 
     @tag("webtest")
     def test_to_subject_dashboard(self):
-        add_or_update_django_sites(apps=django_apps, sites=all_sites, fqdn=fqdn)
+        add_or_update_django_sites(apps=django_apps, sites=all_sites)
         #         RandomizationListImporter()
         #         update_permissions()
         #         import_holidays()
@@ -324,6 +480,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("CRFs", subject_dashboard_page)
         self.assertIn("Requisitions", subject_dashboard_page)
 
+    @tag("webtest")
     def test_follow_urls(self):
         """Follows any url that can be reversed without kwargs."""
         self.login(superuser=False, groups=[EVERYONE, CLINIC, PII])

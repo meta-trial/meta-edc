@@ -20,20 +20,3 @@ class AppConfig(DjangoAppConfig):
 
     def ready(self):
         post_migrate.connect(post_migrate_update_edc_auth, sender=self)
-
-        # from edc_randomization.system_checks import randomization_list_check
-        #
-        # register(randomization_list_check)(["meta_edc"])
-        # register(meta_check)
-
-
-# class EdcProtocolAppConfig(BaseEdcProtocolAppConfig):
-#     institution = "Liverpool School of Tropical Medicine (LSTM)"
-#     project_name = "META"
-#     project_repo = "https://github.com/meta-trail"
-#     protocol = "META"
-#     protocol_name = "META"
-#     protocol_number = "101"
-#     protocol_title = "META Trial"
-#     study_open_datetime = datetime(2019, 7, 31, 0, 0, 0, tzinfo=gettz("UTC"))
-#     study_close_datetime = datetime(2022, 12, 31, 23, 59, 59, tzinfo=gettz("UTC"))

@@ -5,10 +5,10 @@ from pathlib import Path
 import environ
 from edc_constants.constants import COMPLETE
 from edc_utils import get_datetime_from_env
+from meta_edc.utils import confirm_meta_version
 
 BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 ENV_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
-
 env = environ.Env(
     AWS_ENABLED=(bool, False),
     CDN_ENABLED=(bool, False),
@@ -45,6 +45,10 @@ else:
             f"Environment file does not exist. Got `{os.path.join(ENV_DIR, '.env')}`"
         )
     env.read_env(os.path.join(ENV_DIR, ".env"))
+
+META_PHASE = env.int("META_PHASE")
+
+META_PHASE = confirm_meta_version(META_PHASE)
 
 DEBUG = env("DJANGO_DEBUG")
 
@@ -128,24 +132,49 @@ INSTALLED_APPS = [
     "edc_subject_dashboard.apps.AppConfig",
     "edc_timepoint.apps.AppConfig",
     "edc_form_describer.apps.AppConfig",
-    "sarscov2.apps.AppConfig",
-    "meta_consent.apps.AppConfig",
-    "meta_lists.apps.AppConfig",
-    "meta_dashboard.apps.AppConfig",
-    "meta_labs.apps.AppConfig",
-    "meta_metadata_rules.apps.AppConfig",
-    "meta_reference.apps.AppConfig",
-    "meta_subject.apps.AppConfig",
-    "meta_form_validators.apps.AppConfig",
-    "meta_visit_schedule.apps.AppConfig",
-    "meta_ae.apps.AppConfig",
-    "meta_auth.apps.AppConfig",
-    "meta_prn.apps.AppConfig",
-    "meta_export.apps.AppConfig",
-    "meta_screening.apps.AppConfig",
-    "meta_sites.apps.AppConfig",
-    "meta_edc.apps.AppConfig",
 ]
+if META_PHASE == 2:
+    META_APPS = [
+        "sarscov2.apps.AppConfig",
+        "meta_consent.apps.AppConfig",
+        "meta_lists.apps.AppConfig",
+        "meta_dashboard.apps.AppConfig",
+        "meta_labs.apps.AppConfig",
+        "meta_metadata_rules.apps.AppConfig",
+        "meta_reference.apps.AppConfig",
+        "meta_subject.apps.AppConfig",
+        "meta_form_validators.apps.AppConfig",
+        "meta_visit_schedule.apps.AppConfig",
+        "meta_ae.apps.AppConfig",
+        "meta_auth.apps.AppConfig",
+        "meta_prn.apps.AppConfig",
+        "meta_export.apps.AppConfig",
+        "meta_screening.apps.AppConfig",
+        "meta_sites.apps.AppConfig",
+        "meta_edc.apps.AppConfig",
+    ]
+if META_PHASE == 3:
+    META_APPS = [
+        "sarscov2.apps.AppConfig",
+        "edc_dx.apps.AppConfig",
+        "meta_consent.apps.AppConfig",
+        "meta_lists.apps.AppConfig",
+        "meta_dashboard.apps.AppConfig",
+        "meta_labs.apps.AppConfig",
+        "meta_metadata_rules.apps.AppConfig",
+        "meta_reference.apps.AppConfig",
+        "meta_subject.apps.AppConfig",
+        "meta_form_validators.apps.AppConfig",
+        "meta_visit_schedule.apps.AppConfig",
+        "meta_ae.apps.AppConfig",
+        "meta_auth.apps.AppConfig",
+        "meta_prn.apps.AppConfig",
+        "meta_export.apps.AppConfig",
+        "meta_screening.apps.AppConfig",
+        "meta_sites.apps.AppConfig",
+        "meta_edc.apps.AppConfig",
+    ]
+INSTALLED_APPS.extend(META_APPS)
 
 if not DEFENDER_ENABLED:
     INSTALLED_APPS.pop(INSTALLED_APPS.index("defender"))
@@ -348,6 +377,11 @@ DASHBOARD_BASE_TEMPLATES = env.dict("DJANGO_DASHBOARD_BASE_TEMPLATES")
 LAB_DASHBOARD_BASE_TEMPLATES = env.dict("DJANGO_LAB_DASHBOARD_BASE_TEMPLATES")
 LAB_DASHBOARD_URL_NAMES = env.dict("DJANGO_LAB_DASHBOARD_URL_NAMES")
 
+# edc-diagnosis
+EDC_DIAGNOSIS_LABELS = dict(
+    hiv="HIV", dm="Diabetes", htn="Hypertension", chol="High Cholesterol"
+)
+
 # edc_facility
 HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
 
@@ -434,6 +468,7 @@ EDC_PROTOCOL = env.str("EDC_PROTOCOL")
 EDC_PROTOCOL_INSTITUTION_NAME = env.str("EDC_PROTOCOL_INSTITUTION_NAME")
 EDC_PROTOCOL_NUMBER = env.str("EDC_PROTOCOL_NUMBER")
 EDC_PROTOCOL_PROJECT_NAME = env.str("EDC_PROTOCOL_PROJECT_NAME")
+EDC_PROTOCOL_PROJECT_NAME = "META3" if META_PHASE == 3 else "META"
 EDC_PROTOCOL_STUDY_OPEN_DATETIME = get_datetime_from_env(
     *env.list("EDC_PROTOCOL_STUDY_OPEN_DATETIME")
 )
