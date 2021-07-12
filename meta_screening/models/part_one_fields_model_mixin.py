@@ -73,13 +73,28 @@ class PartOneFieldsModelMixin(models.Model):
         choices=YES_NO,
     )
 
-    staying_nearby = models.CharField(
+    # META PHASE_TWO ONLY
+    staying_nearby_6 = models.CharField(
         verbose_name=(
             "Is the patient planning to remain in the catchment area "
             "for at least 6 months"
         ),
         max_length=15,
         choices=YES_NO,
+        null=True,
+        blank=False,
+    )
+
+    # META PHASE_THREE ONLY
+    staying_nearby_12 = models.CharField(
+        verbose_name=(
+            "Is the patient planning to remain in the catchment area "
+            "for at least 12 months"
+        ),
+        max_length=15,
+        choices=YES_NO,
+        null=True,
+        blank=False,
     )
 
     pregnant = models.CharField(

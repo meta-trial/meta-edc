@@ -1,39 +1,36 @@
-from django.test import TestCase, tag
-from edc_constants.constants import BLACK, FEMALE, NO, NOT_APPLICABLE, TBD, YES
+from copy import deepcopy
+
+from django.test import TestCase, override_settings
+from edc_constants.constants import NO, TBD, YES
 from edc_reportable import (
     MICROMOLES_PER_LITER,
     MILLIMOLES_PER_LITER,
     ConversionNotHandled,
 )
 from edc_utils.date import get_utcnow
+from meta_edc.meta_version import PHASE_THREE, PHASE_TWO
 
 from ..constants import (
     BMI_IFT_OGTT,
     BMI_IFT_OGTT_INCOMPLETE,
     EGFR_LT_45,
     EGFR_NOT_CALCULATED,
+    IFT_OGTT,
+    IFT_OGTT_INCOMPLETE,
 )
 from ..models import ScreeningPartOne, ScreeningPartThree, ScreeningPartTwo
-from .options import part_three_eligible_options, part_two_eligible_options
+from .options import (
+    get_part_one_eligible_options,
+    get_part_three_eligible_options,
+    get_part_two_eligible_options,
+)
 
 
 class TestScreeningPartThree(TestCase):
     def setUp(self):
-        obj = ScreeningPartOne(
-            screening_consent=YES,
-            report_datetime=get_utcnow(),
-            hospital_identifier="111",
-            initials="ZZ",
-            gender=FEMALE,
-            age_in_years=25,
-            ethnicity=BLACK,
-            hiv_pos=YES,
-            art_six_months=YES,
-            on_rx_stable=YES,
-            lives_nearby=YES,
-            staying_nearby=YES,
-            pregnant=NOT_APPLICABLE,
-        )
+        part_one_eligible_options = deepcopy(get_part_one_eligible_options())
+        part_two_eligible_options = deepcopy(get_part_two_eligible_options())
+        obj = ScreeningPartOne(**part_one_eligible_options)
         obj.save()
         self.screening_identifier = obj.screening_identifier
 
@@ -44,15 +41,13 @@ class TestScreeningPartThree(TestCase):
             setattr(obj, k, v)
         obj.save()
 
-    def get_screening_part_three(self):
+    def get_screening_part_three_obj(self):
         return ScreeningPartThree.objects.get(
             screening_identifier=self.screening_identifier
         )
 
-    @tag("1")
     def test_defaults(self):
-
-        obj = self.get_screening_part_three()
+        obj = self.get_screening_part_three_obj()
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertFalse(obj.reasons_ineligible_part_one)
 
@@ -65,17 +60,29 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
-    @tag("1")
-    def test_eligible(self):
-        obj = self.get_screening_part_three()
+    @override_settings(META_PHASE=PHASE_TWO)
+    def test_eligible_phase_two(self):
+        part_three_eligible_options = deepcopy(get_part_three_eligible_options())
+        self._test_eligible(part_three_eligible_options)
+
+    @override_settings(META_PHASE=PHASE_THREE)
+    def test_eligible_phase_three(self):
+        part_three_eligible_options = deepcopy(get_part_three_eligible_options())
+        part_three_eligible_options["ifg_value"] = 6.9
+        part_three_eligible_options["ogtt_value"] = 7.8
+        self._test_eligible(part_three_eligible_options)
+
+    def _test_eligible(self, part_three_eligible_options):
+        obj = self.get_screening_part_three_obj()
         for k, v in part_three_eligible_options.items():
             setattr(obj, k, v)
         obj.save()
+        self.assertEqual("", obj.reasons_ineligible_part_three)
         self.assertEqual(obj.eligible_part_three, YES)
 
-    @tag("1")
     def test_eligible_datetime_on_resave(self):
-        obj = self.get_screening_part_three()
+        obj = self.get_screening_part_three_obj()
+        part_three_eligible_options = deepcopy(get_part_three_eligible_options())
         for k, v in part_three_eligible_options.items():
             setattr(obj, k, v)
         obj.save()
@@ -84,9 +91,16 @@ class TestScreeningPartThree(TestCase):
         obj.save()
         self.assertNotEqual(eligibility_datetime, obj.eligibility_datetime)
 
-    @tag("1")
-    def test_eligible2(self):
-        obj = self.get_screening_part_three()
+    @override_settings(META_PHASE=PHASE_TWO)
+    def test_eligible2_phase_two(self):
+        self._test_eligible2(BMI_IFT_OGTT_INCOMPLETE, BMI_IFT_OGTT)
+
+    @override_settings(META_PHASE=PHASE_THREE)
+    def test_eligible2_phase_three(self):
+        self._test_eligible2(IFT_OGTT_INCOMPLETE, IFT_OGTT)
+
+    def _test_eligible2(self, incomplete_reason, ineligible_reason):
+        obj = self.get_screening_part_three_obj()
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertFalse(obj.reasons_ineligible_part_one)
         self.assertEqual(obj.eligible_part_two, YES)
@@ -96,7 +110,7 @@ class TestScreeningPartThree(TestCase):
         obj.save()
 
         self.assertEqual(obj.eligible_part_three, TBD)
-        self.assertEqual(obj.reasons_ineligible_part_three, BMI_IFT_OGTT_INCOMPLETE)
+        self.assertEqual(obj.reasons_ineligible_part_three, incomplete_reason)
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
@@ -107,7 +121,7 @@ class TestScreeningPartThree(TestCase):
         obj.save()
 
         self.assertEqual(obj.eligible_part_three, TBD)
-        self.assertEqual(obj.reasons_ineligible_part_three, BMI_IFT_OGTT_INCOMPLETE)
+        self.assertEqual(obj.reasons_ineligible_part_three, incomplete_reason)
 
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
@@ -118,7 +132,7 @@ class TestScreeningPartThree(TestCase):
         obj.save()
 
         self.assertEqual(obj.eligible_part_three, TBD)
-        self.assertEqual(obj.reasons_ineligible_part_three, BMI_IFT_OGTT_INCOMPLETE)
+        self.assertEqual(obj.reasons_ineligible_part_three, incomplete_reason)
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
@@ -128,7 +142,7 @@ class TestScreeningPartThree(TestCase):
         obj.save()
 
         self.assertEqual(obj.eligible_part_three, TBD)
-        self.assertEqual(obj.reasons_ineligible_part_three, BMI_IFT_OGTT_INCOMPLETE)
+        self.assertEqual(obj.reasons_ineligible_part_three, incomplete_reason)
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
@@ -136,7 +150,7 @@ class TestScreeningPartThree(TestCase):
         obj.save()
 
         self.assertEqual(obj.eligible_part_three, TBD)
-        self.assertEqual(obj.reasons_ineligible_part_three, BMI_IFT_OGTT_INCOMPLETE)
+        self.assertEqual(obj.reasons_ineligible_part_three, incomplete_reason)
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
@@ -147,7 +161,7 @@ class TestScreeningPartThree(TestCase):
         obj.save()
 
         self.assertEqual(obj.eligible_part_three, TBD)
-        self.assertEqual(obj.reasons_ineligible_part_three, BMI_IFT_OGTT_INCOMPLETE)
+        self.assertEqual(obj.reasons_ineligible_part_three, incomplete_reason)
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
@@ -166,25 +180,36 @@ class TestScreeningPartThree(TestCase):
         obj.save()
 
         self.assertEqual(obj.eligible_part_three, NO)
-        self.assertIn(BMI_IFT_OGTT, obj.reasons_ineligible_part_three)
+        self.assertIn(ineligible_reason, obj.reasons_ineligible_part_three)
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
         obj.ogtt_base_datetime = get_utcnow()
-        obj.ogtt_value = 7.5
+        obj.ogtt_value = 7.8
         obj.ogtt_units = MILLIMOLES_PER_LITER
         obj.ogtt_datetime = get_utcnow()
         obj.save()
 
-        self.assertEqual(obj.eligible_part_three, YES)
         self.assertFalse(obj.reasons_ineligible_part_three)
+        self.assertEqual(obj.eligible_part_three, YES)
         self.assertTrue(obj.eligible)
         self.assertFalse(obj.consented)
 
-    @tag("1")
-    def test_tbd_eligible_egfr_not_calculated(self):
+    @override_settings(META_PHASE=PHASE_TWO)
+    def test_tbd_eligible_egfr_not_calculated_phase_two(self):
+        ifg_value = 7.0
+        ogtt_value = 7.5
+        self._test_tbd_eligible_egfr_not_calculated(ifg_value, ogtt_value)
 
-        obj = self.get_screening_part_three()
+    @override_settings(META_PHASE=PHASE_THREE)
+    def test_tbd_eligible_egfr_not_calculated_phase_three(self):
+        ifg_value = 6.9
+        ogtt_value = 7.8
+        self._test_tbd_eligible_egfr_not_calculated(ifg_value, ogtt_value)
+
+    def _test_tbd_eligible_egfr_not_calculated(self, ifg_value, ogtt_value):
+
+        obj = self.get_screening_part_three_obj()
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertFalse(obj.reasons_ineligible_part_one)
         self.assertEqual(obj.eligible_part_two, YES)
@@ -197,15 +222,13 @@ class TestScreeningPartThree(TestCase):
         obj.hba1c_performed = YES
         obj.hba1c_value = 7.0
         obj.creatinine_performed = NO
-        #         obj.creatinine = 50
-        #         obj.creatinine_units = MICROMOLES_PER_LITER
         obj.fasting = YES
         obj.fasting_duration_str = "8h"
-        obj.ifg_value = 7.0
+        obj.ifg_value = ifg_value
         obj.ifg_units = MILLIMOLES_PER_LITER
         obj.ifg_datetime = get_utcnow()
         obj.ogtt_base_datetime = get_utcnow()
-        obj.ogtt_value = 7.5
+        obj.ogtt_value = ogtt_value
         obj.ogtt_units = MILLIMOLES_PER_LITER
         obj.ogtt_datetime = get_utcnow()
         obj.save()
@@ -215,9 +238,21 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
-    def test_not_eligible_egfr_less_than_45(self):
+    @override_settings(META_PHASE=PHASE_TWO)
+    def test_not_eligible_egfr_less_than_45_phase_two(self):
+        ifg_value = 7.0
+        ogtt_value = 7.5
+        self._test_not_eligible_egfr_less_than_45(ifg_value, ogtt_value)
 
-        obj = self.get_screening_part_three()
+    @override_settings(META_PHASE=PHASE_THREE)
+    def test_not_eligible_egfr_less_than_45_phase_three(self):
+        ifg_value = 6.9
+        ogtt_value = 7.8
+        self._test_not_eligible_egfr_less_than_45(ifg_value, ogtt_value)
+
+    def _test_not_eligible_egfr_less_than_45(self, ifg_value, ogtt_value):
+
+        obj = self.get_screening_part_three_obj()
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertFalse(obj.reasons_ineligible_part_one)
         self.assertEqual(obj.eligible_part_two, YES)
@@ -234,10 +269,10 @@ class TestScreeningPartThree(TestCase):
         obj.creatinine_units = MICROMOLES_PER_LITER
         obj.fasting = YES
         obj.fasting_duration_str = "8h"
-        obj.ifg_value = 7.0
+        obj.ifg_value = ifg_value
         obj.ifg_datetime = get_utcnow()
         obj.ogtt_base_datetime = get_utcnow()
-        obj.ogtt_value = 7.5
+        obj.ogtt_value = ogtt_value
         obj.ogtt_units = MILLIMOLES_PER_LITER
         obj.ogtt_datetime = get_utcnow()
         obj.save()

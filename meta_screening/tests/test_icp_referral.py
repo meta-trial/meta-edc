@@ -4,7 +4,6 @@ from django.test import TestCase, tag
 from edc_constants.constants import BLACK, FEMALE, NO, NOT_APPLICABLE, YES
 from edc_reportable.units import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
 from edc_utils.date import get_utcnow
-
 from meta_screening.models import (
     IcpReferral,
     ScreeningPartOne,
@@ -28,7 +27,7 @@ class TestScreeningPartThree(TestCase):
             art_six_months=YES,
             on_rx_stable=YES,
             lives_nearby=YES,
-            staying_nearby=YES,
+            staying_nearby_6=YES,
             pregnant=NOT_APPLICABLE,
         )
         obj.save()

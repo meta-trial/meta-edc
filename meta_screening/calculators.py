@@ -28,7 +28,7 @@ def calculate_egfr(obj):
     return calculated_egfr_value
 
 
-def calculate_inclusion_field_values(obj):
+def calculate_inclusion_field_values_phase_two(obj):
 
     # BMI > 30 combined with IFG (6.1 to 6.9 mmol/L)
     if obj.calculated_bmi_value is None or not obj.converted_ifg_value:
@@ -63,3 +63,24 @@ def calculate_inclusion_field_values(obj):
         inclusion_d = NO
 
     return inclusion_a, inclusion_b, inclusion_c, inclusion_d
+
+
+def calculate_inclusion_field_values_phase_three(obj):
+
+    # IFG (6.1 to 6.9 mmol/L)
+    if not obj.converted_ifg_value:
+        inclusion_a = TBD
+    elif 6.1 <= obj.converted_ifg_value <= 6.9:
+        inclusion_a = YES
+    else:
+        inclusion_a = NO
+
+    # OGTT (7.8 to 11.10 mmol/L)
+    if not obj.converted_ogtt_value:
+        inclusion_b = TBD
+    elif 7.8 <= obj.converted_ogtt_value <= 11.10:
+        inclusion_b = YES
+    else:
+        inclusion_b = NO
+
+    return inclusion_a, inclusion_b

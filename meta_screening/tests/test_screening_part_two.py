@@ -1,19 +1,39 @@
+from copy import deepcopy
+
 from dateutil.relativedelta import relativedelta
-from django.test import TestCase, tag
+from django.test import TestCase, override_settings, tag
 from edc_constants.constants import NO, TBD, YES
 from edc_utils.date import get_utcnow
+from meta_edc.meta_version import PHASE_THREE, PHASE_TWO
 
 from ..models import ScreeningPartOne, ScreeningPartTwo
-from .options import part_one_eligible_options, part_two_eligible_options
+from .options import get_part_one_eligible_options, get_part_two_eligible_options
 
 
 class TestScreeningPartTwo(TestCase):
     def setUp(self):
+        part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         self.screening = ScreeningPartOne(**part_one_eligible_options)
         self.screening.save()
         self.screening_identifier = self.screening.screening_identifier
 
-    def test_defaults(self):
+    @override_settings(META_PHASE=PHASE_TWO)
+    def test_defaults_phase_two(self):
+        self._test_defaults()
+
+    @override_settings(META_PHASE=PHASE_THREE)
+    def test_defaults_phase_three(self):
+        self._test_defaults()
+
+    @override_settings(META_PHASE=PHASE_TWO)
+    def test_eligible_phase_two(self):
+        self._test_eligible()
+
+    @override_settings(META_PHASE=PHASE_THREE)
+    def test_eligible_phase_three(self):
+        self._test_eligible()
+
+    def _test_defaults(self):
 
         obj = ScreeningPartTwo.objects.get(
             screening_identifier=self.screening_identifier
@@ -27,11 +47,13 @@ class TestScreeningPartTwo(TestCase):
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
-    def test_eligible(self):
+    def _test_eligible(self):
 
         obj = ScreeningPartTwo.objects.get(
             screening_identifier=self.screening_identifier
         )
+        part_two_eligible_options = deepcopy(get_part_two_eligible_options())
+
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertTrue(obj.reasons_ineligible_part_one == "")
 
@@ -65,5 +87,34 @@ class TestScreeningPartTwo(TestCase):
 
         self.assertEqual(obj.eligible_part_two, YES)
         self.assertFalse(obj.reasons_ineligible_part_two)
+        self.assertFalse(obj.eligible)
+        self.assertFalse(obj.consented)
+
+    @override_settings(META_PHASE=PHASE_THREE)
+    def test_eligible_phase_three(self):
+
+        obj = ScreeningPartTwo.objects.get(
+            screening_identifier=self.screening_identifier
+        )
+        part_two_eligible_options = deepcopy(get_part_two_eligible_options())
+
+        self.assertEqual(obj.eligible_part_one, YES)
+        self.assertTrue(obj.reasons_ineligible_part_one == "")
+
+        for k, v in part_two_eligible_options.items():
+            setattr(obj, k, v)
+        obj.save()
+
+        self.assertEqual(obj.eligible_part_two, YES)
+        self.assertFalse(obj.reasons_ineligible_part_two)
+        self.assertFalse(obj.eligible)
+        self.assertFalse(obj.consented)
+
+        obj.has_dm = YES
+        obj.on_dm_medication = YES
+        obj.save()
+
+        self.assertEqual(obj.eligible_part_two, NO)
+        self.assertIn("Has Dm|On Dm Medication", obj.reasons_ineligible_part_two)
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)

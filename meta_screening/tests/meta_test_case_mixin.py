@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 from dateutil.relativedelta import relativedelta
 from django.contrib.sites.models import Site
 from edc_appointment.constants import IN_PROGRESS_APPT, INCOMPLETE_APPT
@@ -13,12 +15,11 @@ from edc_sites import add_or_update_django_sites, get_sites_by_country
 from edc_sites.tests.site_test_case_mixin import SiteTestCaseMixin
 from edc_utils.date import get_utcnow
 from edc_visit_tracking.constants import SCHEDULED
-from model_bakery import baker
-
 from meta_auth.codenames_by_group import get_codenames_by_group
 from meta_sites import fqdn
 from meta_subject.models import SubjectVisit
 from meta_visit_schedule.constants import DAY1
+from model_bakery import baker
 
 from ..models import (
     ScreeningPartOne,
@@ -27,9 +28,9 @@ from ..models import (
     SubjectScreening,
 )
 from .options import (
-    part_one_eligible_options,
-    part_three_eligible_options,
-    part_two_eligible_options,
+    get_part_one_eligible_options,
+    get_part_three_eligible_options,
+    get_part_two_eligible_options,
 )
 
 
@@ -62,6 +63,9 @@ class MetaTestCaseMixin(SiteTestCaseMixin):
         Holiday.objects.all().delete()
 
     def get_subject_screening(self, report_datetime=None, eligibility_datetime=None):
+        part_one_eligible_options = deepcopy(get_part_one_eligible_options())
+        part_two_eligible_options = deepcopy(get_part_two_eligible_options())
+        part_three_eligible_options = deepcopy(get_part_three_eligible_options())
         if report_datetime:
             part_one_eligible_options.update(report_datetime=report_datetime)
 
@@ -102,7 +106,8 @@ class MetaTestCaseMixin(SiteTestCaseMixin):
             )
         return subject_screening
 
-    def get_subject_consent(self, subject_screening):
+    @staticmethod
+    def get_subject_consent(subject_screening):
         return baker.make_recipe(
             "meta_consent.subjectconsent",
             user_created="erikvw",

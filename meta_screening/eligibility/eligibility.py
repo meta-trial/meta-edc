@@ -2,13 +2,22 @@ from django.utils.html import format_html
 from edc_constants.constants import FEMALE, MALE, NO, TBD, YES
 from edc_reportable import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER, convert_units
 from edc_utils.date import get_utcnow
+from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
 
-from .calculators import calculate_bmi, calculate_egfr, calculate_inclusion_field_values
-from .constants import (
+from ..calculators import (
+    calculate_bmi,
+    calculate_egfr,
+    calculate_inclusion_field_values_phase_three,
+    calculate_inclusion_field_values_phase_two,
+)
+from ..constants import (
     BMI_IFT_OGTT,
     BMI_IFT_OGTT_INCOMPLETE,
     EGFR_LT_45,
     EGFR_NOT_CALCULATED,
+    IFT_OGTT,
+    IFT_OGTT_INCOMPLETE,
+    SEVERE_HTN,
 )
 
 
@@ -28,16 +37,20 @@ class EligibilityPartThreeError(Exception):
     pass
 
 
-part2_fields = [
-    "congestive_heart_failure",
-    "liver_disease",
-    "alcoholism",
-    "acute_metabolic_acidosis",
-    "renal_function_condition",
-    "tissue_hypoxia_condition",
-    "acute_condition",
-    "metformin_sensitivity",
-]
+def get_part2_required_fields():
+    fields = [
+        "congestive_heart_failure",
+        "liver_disease",
+        "alcoholism",
+        "acute_metabolic_acidosis",
+        "renal_function_condition",
+        "tissue_hypoxia_condition",
+        "acute_condition",
+        "metformin_sensitivity",
+    ]
+    if get_meta_version() == PHASE_THREE:
+        fields.extend(["has_dm", "on_dm_medication"])
+    return fields
 
 
 def check_eligible_final(obj):
@@ -115,9 +128,14 @@ def calculate_eligible_part_one(obj):
         "art_six_months",
         "on_rx_stable",
         "lives_nearby",
-        "staying_nearby",
+        "staying_nearby_6",
         "pregnant",
     ]
+    if get_meta_version() == PHASE_THREE:
+        required_fields = [
+            "staying_nearby_12" if x == "staying_nearby_6" else x
+            for x in required_fields
+        ]
 
     check_for_required_field_values(obj, required_fields, EligibilityPartOneError)
 
@@ -134,7 +152,9 @@ def calculate_eligible_part_one(obj):
         reasons_ineligible.append("ART not stable")
     if obj.lives_nearby == NO:
         reasons_ineligible.append("Not living nearby")
-    if obj.staying_nearby == NO:
+    if get_meta_version() == PHASE_THREE and obj.staying_nearby_12 == NO:
+        reasons_ineligible.append("Unable/Unwilling to stay nearby")
+    elif obj.staying_nearby_6 == NO:
         reasons_ineligible.append("Unable/Unwilling to stay nearby")
     if obj.pregnant == YES:
         reasons_ineligible.append("Pregnant (unconfirmed)")
@@ -152,12 +172,14 @@ def calculate_eligible_part_two(obj):
     obj.eligible_part_two = TBD
     obj.reasons_ineligible_part_two = None
 
-    check_for_required_field_values(obj, part2_fields, EligibilityPartTwoError)
+    check_for_required_field_values(
+        obj, get_part2_required_fields(), EligibilityPartTwoError
+    )
 
     reasons_ineligible = []
 
     responses = {}
-    for field in part2_fields:
+    for field in get_part2_required_fields():
         responses.update({field: getattr(obj, field)})
     for k, v in responses.items():
         if v == YES:
@@ -196,55 +218,79 @@ def calculate_eligible_part_three(obj):
 
     obj.calculated_bmi_value = calculate_bmi(obj)
 
-    a, b, c, d = calculate_inclusion_field_values(obj)
-    obj.inclusion_a = a
-    obj.inclusion_b = b
-    obj.inclusion_c = c
-    obj.inclusion_d = d
-
-    reasons_ineligible = []
-
-    if any(
-        [
-            obj.inclusion_a == TBD,
-            obj.inclusion_b == TBD,
-            obj.inclusion_c == TBD,
-            obj.inclusion_d == TBD,
-        ]
-    ):
-        reasons_ineligible.append(BMI_IFT_OGTT_INCOMPLETE)
-        obj.eligible_part_three = TBD
-
-    if all(
-        [
-            obj.inclusion_a == NO,
-            obj.inclusion_b == NO,
-            obj.inclusion_c == NO,
-            obj.inclusion_d == NO,
-        ]
-    ):
-        reasons_ineligible.append(BMI_IFT_OGTT)
-        obj.eligible_part_three = NO
-
-    if not reasons_ineligible:
-        obj.calculated_egfr_value = calculate_egfr(obj)
-        if not obj.calculated_egfr_value:
-            reasons_ineligible.append(EGFR_NOT_CALCULATED)
+    if get_meta_version() == PHASE_TWO:
+        a, b, c, d = calculate_inclusion_field_values_phase_two(obj)
+        obj.inclusion_a = a
+        obj.inclusion_b = b
+        obj.inclusion_c = c
+        obj.inclusion_d = d
+        reasons_ineligible = []
+        if any(
+            [
+                obj.inclusion_a == TBD,
+                obj.inclusion_b == TBD,
+                obj.inclusion_c == TBD,
+                obj.inclusion_d == TBD,
+            ]
+        ):
+            reasons_ineligible.append(BMI_IFT_OGTT_INCOMPLETE)
             obj.eligible_part_three = TBD
-        elif obj.calculated_egfr_value < 45.0:
-            reasons_ineligible.append(EGFR_LT_45)
+        if all(
+            [
+                obj.inclusion_a == NO,
+                obj.inclusion_b == NO,
+                obj.inclusion_c == NO,
+                obj.inclusion_d == NO,
+            ]
+        ):
+            reasons_ineligible.append(BMI_IFT_OGTT)
             obj.eligible_part_three = NO
+        if not reasons_ineligible:
+            obj.calculated_egfr_value = calculate_egfr(obj)
+            if not obj.calculated_egfr_value:
+                reasons_ineligible.append(EGFR_NOT_CALCULATED)
+                obj.eligible_part_three = TBD
+            elif obj.calculated_egfr_value < 45.0:
+                reasons_ineligible.append(EGFR_LT_45)
+                obj.eligible_part_three = NO
 
-    if not reasons_ineligible:
-        obj.eligible_part_three = YES
-    elif (
-        BMI_IFT_OGTT_INCOMPLETE not in reasons_ineligible
-        and EGFR_NOT_CALCULATED not in reasons_ineligible
-    ):
-        obj.eligible_part_three = NO
-    # eligible = NO if reasons_ineligible else YES
-    # obj.eligible_part_three = eligible
-    obj.reasons_ineligible_part_three = "|".join(reasons_ineligible)
+        if not reasons_ineligible:
+            obj.eligible_part_three = YES
+        elif (
+            BMI_IFT_OGTT_INCOMPLETE not in reasons_ineligible
+            and EGFR_NOT_CALCULATED not in reasons_ineligible
+        ):
+            obj.eligible_part_three = NO
+        obj.reasons_ineligible_part_three = "|".join(reasons_ineligible)
+    elif get_meta_version() == PHASE_THREE:
+        a, b = calculate_inclusion_field_values_phase_three(obj)
+        obj.inclusion_a = a
+        obj.inclusion_b = b
+        reasons_ineligible = []
+        if any([obj.inclusion_a == TBD, obj.inclusion_b == TBD]):
+            reasons_ineligible.append(IFT_OGTT_INCOMPLETE)
+            obj.eligible_part_three = TBD
+        if all([obj.inclusion_a == NO, obj.inclusion_b == NO]):
+            reasons_ineligible.append(IFT_OGTT)
+            obj.eligible_part_three = NO
+        if obj.severe_htn == YES:
+            reasons_ineligible.append(SEVERE_HTN)
+        if not reasons_ineligible:
+            obj.calculated_egfr_value = calculate_egfr(obj)
+            if not obj.calculated_egfr_value:
+                reasons_ineligible.append(EGFR_NOT_CALCULATED)
+                obj.eligible_part_three = TBD
+            elif obj.calculated_egfr_value < 45.0:
+                reasons_ineligible.append(EGFR_LT_45)
+                obj.eligible_part_three = NO
+        if not reasons_ineligible:
+            obj.eligible_part_three = YES
+        elif (
+            IFT_OGTT_INCOMPLETE not in reasons_ineligible
+            and EGFR_NOT_CALCULATED not in reasons_ineligible
+        ):
+            obj.eligible_part_three = NO
+        obj.reasons_ineligible_part_three = "|".join(reasons_ineligible)
 
 
 def format_reasons_ineligible(*str_values):

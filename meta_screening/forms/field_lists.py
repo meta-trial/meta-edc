@@ -1,44 +1,64 @@
-part_one_fields = (
-    "screening_consent",
-    "selection_method",
-    "report_datetime",
-    "hospital_identifier",
-    "initials",
-    "gender",
-    "age_in_years",
-    "ethnicity",
-    "hiv_pos",
-    "art_six_months",
-    "on_rx_stable",
-    "lives_nearby",
-    "staying_nearby",
-    "pregnant",
-    "continue_part_two",
-)
-
-part_two_fields = (
-    "part_two_report_datetime",
-    "congestive_heart_failure",
-    "liver_disease",
-    "alcoholism",
-    "acute_metabolic_acidosis",
-    "renal_function_condition",
-    "tissue_hypoxia_condition",
-    "acute_condition",
-    "metformin_sensitivity",
-    "already_fasted",
-    "advised_to_fast",
-    "appt_datetime",
-)
+from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
 
 
-part_three_vitals_fields = (
-    "height",
-    "weight",
-    "waist_circumference",
-    "sys_blood_pressure",
-    "dia_blood_pressure",
-)
+def get_part_one_fields():
+    fields = (
+        "screening_consent",
+        "selection_method",
+        "report_datetime",
+        "hospital_identifier",
+        "initials",
+        "gender",
+        "age_in_years",
+        "ethnicity",
+        "hiv_pos",
+        "art_six_months",
+        "on_rx_stable",
+        "lives_nearby",
+        "staying_nearby_6",
+        "pregnant",
+        "continue_part_two",
+    )
+    if get_meta_version() == PHASE_THREE:
+        fields = ["staying_nearby_12" if x == "staying_nearby_6" else x for x in fields]
+    return fields
+
+
+def get_part_two_fields():
+    fields = (
+        "part_two_report_datetime",
+        "congestive_heart_failure",
+        "liver_disease",
+        "alcoholism",
+        "acute_metabolic_acidosis",
+        "renal_function_condition",
+        "tissue_hypoxia_condition",
+        "acute_condition",
+        "metformin_sensitivity",
+        "has_dm",
+        "on_dm_medication",
+        "already_fasted",
+        "advised_to_fast",
+        "appt_datetime",
+    )
+    if get_meta_version() == PHASE_TWO:
+        fields = [x for x in fields if x not in ["has_dm", "on_dm_medication"]]
+    return fields
+
+
+def get_part_three_vitals_fields():
+    fields = (
+        "height",
+        "weight",
+        "waist_circumference",
+        "sys_blood_pressure",
+        "dia_blood_pressure",
+    )
+    if get_meta_version() == PHASE_THREE:
+        fields = [x for x in fields if x not in ["waist_circumference"]]
+        fields.append("severe_htn")
+    return fields
+
 
 part_three_ifg_fields = (
     "fasting",
@@ -77,16 +97,6 @@ part_three_comment_fields = (
     "unsuitable_agreed",
 )
 
-part_three_fields = (
-    *part_three_ifg_fields,
-    *part_three_ogtt_fields,
-    *part_three_other_fields,
-    *part_three_vitals_fields,
-    *part_three_pregnancy_fields,
-    *part_three_comment_fields,
-)
-
-
 calculated_fields = (
     "calculated_bmi_value",
     "converted_ifg_value",
@@ -98,3 +108,45 @@ calculated_fields = (
     "inclusion_c",
     "inclusion_d",
 )
+
+part_three_vitals_fields = get_part_three_vitals_fields()
+
+# META PHASE_THREE ONLY
+part_three_labs = (
+    "haemoglobin_value",
+    "wbc_value",
+    "ast_value",
+    "alt_value",
+    "alp_value",
+    "ggt_value",
+    "albumin_value",
+)
+
+
+def get_part_three_fields():
+    fields = None
+    if get_meta_version() == PHASE_TWO:
+        fields = (
+            *part_three_ifg_fields,
+            *part_three_ogtt_fields,
+            *part_three_other_fields,
+            *part_three_vitals_fields,
+            *part_three_pregnancy_fields,
+            *part_three_comment_fields,
+        )
+    elif get_meta_version() == PHASE_THREE:
+        fields = (
+            *part_three_vitals_fields,
+            *part_three_pregnancy_fields,
+            *part_three_ifg_fields,
+            *part_three_ogtt_fields,
+            *part_three_other_fields,
+            # *part_three_labs,
+            *part_three_comment_fields,
+        )
+    return fields
+
+
+part_one_fields = get_part_one_fields()
+part_two_fields = get_part_two_fields()
+part_three_fields = get_part_three_fields()

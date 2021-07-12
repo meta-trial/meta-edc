@@ -1,6 +1,5 @@
 from edc_visit_schedule import VisitSchedule, site_visit_schedules
-
-from .schedule import schedule
+from meta_visit_schedule.visit_schedules.phase_two.schedule import schedule
 
 VISIT_SCHEDULE = "visit_schedule"
 
@@ -16,4 +15,7 @@ visit_schedule = VisitSchedule(
 
 visit_schedule.add_schedule(schedule)
 
-site_visit_schedules.register(visit_schedule)
+if get_meta_phase == 2:
+    site_visit_schedules.register(visit_schedule)
+elif get_meta_phase == 3:
+    site_visit_schedules.register(visit_schedule)

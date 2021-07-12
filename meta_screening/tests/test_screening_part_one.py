@@ -1,13 +1,17 @@
+from copy import deepcopy
+from unittest import skipIf
+
 from django.db.utils import IntegrityError
-from django.test import TestCase, tag
+from django.test import TestCase
 from edc_constants.constants import BLACK, FEMALE, NO, NOT_APPLICABLE, TBD, YES
 from edc_utils.date import get_utcnow
+from meta_edc.meta_version import PHASE_THREE, get_meta_version
 
 from ..models import ScreeningPartOne
-from .options import part_one_eligible_options
+from .options import get_part_one_eligible_options
 
 
-class TestSubjectScreening(TestCase):
+class TestSubjectScreeningPartOneModel(TestCase):
     def test_defaults(self):
         obj = ScreeningPartOne(
             hospital_identifier="111",
@@ -38,13 +42,18 @@ class TestSubjectScreening(TestCase):
             self.fail("IntegrityError unexpectedly not raised.")
 
     def test_eligible(self):
+        part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         obj = ScreeningPartOne(**part_one_eligible_options)
         obj.save()
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertTrue(obj.reasons_ineligible_part_one == "")
 
     def test_ineligible(self):
-        obj = ScreeningPartOne(
+        if get_meta_version() == PHASE_THREE:
+            staying_nearby = "staying_nearby_12"
+        else:
+            staying_nearby = "staying_nearby_6"
+        opts = dict(
             report_datetime=get_utcnow(),
             hospital_identifier="111",
             initials="ZZ",
@@ -55,15 +64,16 @@ class TestSubjectScreening(TestCase):
             art_six_months=YES,
             on_rx_stable=YES,
             lives_nearby=YES,
-            staying_nearby=NO,
             pregnant=NOT_APPLICABLE,
         )
+        opts.update({staying_nearby: NO})
+        obj = ScreeningPartOne(**opts)
         obj.save()
         self.assertEqual(obj.eligible_part_one, NO)
         self.assertIn(
             "Unable/Unwilling to stay nearby", obj.reasons_ineligible_part_one
         )
-        obj.staying_nearby = YES
+        setattr(obj, staying_nearby, YES)
         obj.save()
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertTrue(obj.reasons_ineligible_part_one == "")

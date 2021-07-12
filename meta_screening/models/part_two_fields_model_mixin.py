@@ -135,6 +135,24 @@ class PartTwoFieldsModelMixin(models.Model):
         ),
     )
 
+    # META PHASE_THREE ONLY
+    has_dm = models.CharField(
+        verbose_name="Is the patient known to have diabetes?",
+        max_length=15,
+        choices=YES_NO,
+        null=True,
+        blank=False,
+    )
+
+    # META PHASE_THREE ONLY
+    on_dm_medication = models.CharField(
+        verbose_name="Is the patient known to be taking anti-diabetic medications?",
+        max_length=15,
+        choices=YES_NO,
+        null=True,
+        blank=False,
+    )
+
     already_fasted = models.CharField(
         verbose_name="Has the patient come to the clinic today already fasted?",
         max_length=15,
