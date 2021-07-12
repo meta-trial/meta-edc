@@ -28,28 +28,28 @@ crfs_missed = FormsCollection(
 
 crfs_d1 = FormsCollection(
     Crf(show_order=10, model="meta_subject.physicalexam"),
-    Crf(show_order=15, model="meta_subject.patienthistory"),
-    Crf(show_order=40, model="meta_subject.bloodresultsfbc"),
-    Crf(show_order=50, model="meta_subject.bloodresultslipid"),
-    Crf(show_order=70, model="meta_subject.bloodresultslft"),
-    Crf(show_order=80, model="meta_subject.bloodresultsrft"),
-    Crf(show_order=85, model="meta_subject.malariatest"),
-    Crf(show_order=90, model="meta_subject.urinedipsticktest"),
+    Crf(show_order=20, model="meta_subject.patienthistory"),
+    Crf(show_order=300, model="meta_subject.bloodresultsfbc"),
+    Crf(show_order=310, model="meta_subject.bloodresultslipid"),
+    Crf(show_order=320, model="meta_subject.bloodresultslft"),
+    Crf(show_order=330, model="meta_subject.bloodresultsrft"),
+    Crf(show_order=340, model="meta_subject.malariatest"),
+    Crf(show_order=350, model="meta_subject.urinedipsticktest"),
     name="day1",
 )
 
 crfs_w2 = FormsCollection(
     Crf(show_order=10, model="meta_subject.followupvitals"),
     Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=20, model="meta_subject.healtheconomics"),
-    Crf(show_order=30, model="meta_subject.medicationadherence"),
+    Crf(show_order=320, model="meta_subject.healtheconomics"),
+    Crf(show_order=330, model="meta_subject.medicationadherence"),
     name="week2",
 )
 
 crfs_1m = FormsCollection(
     Crf(show_order=10, model="meta_subject.followupvitals"),
     Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=20, model="meta_subject.medicationadherence"),
+    Crf(show_order=320, model="meta_subject.medicationadherence"),
     name="1m",
 )
 

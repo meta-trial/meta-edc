@@ -9,7 +9,6 @@ from edc_lab_panel.panels import (
     rft_panel,
 )
 from edc_visit_schedule import FormsCollection, Requisition
-
 from meta_labs.lab_profiles import chemistry_panel
 
 requisitions_prn = FormsCollection(
