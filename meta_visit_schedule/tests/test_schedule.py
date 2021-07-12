@@ -1,8 +1,12 @@
 from django.test import TestCase, tag
+from meta_edc.meta_version import get_meta_version
 
-from meta_visit_schedule.visit_schedules.visit_schedule import visit_schedule
+if get_meta_version() == 2:
+    from meta_visit_schedule.visit_schedules.phase_two import visit_schedule
+elif get_meta_version() == 3:
+    from meta_visit_schedule.visit_schedules.phase_three import visit_schedule
 
-from ..visit_schedules.schedule import schedule
+from ..visit_schedules import schedule
 
 
 class TestVisitSchedule(TestCase):

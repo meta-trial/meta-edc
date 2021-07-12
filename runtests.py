@@ -10,6 +10,7 @@ from dateutil.tz import gettz
 from django.conf import settings
 from django.test.runner import DiscoverRunner
 from edc_test_utils import DefaultTestSettings
+from meta_edc.utils import confirm_meta_version
 from multisite import SiteID
 
 app_name = "meta_edc"
@@ -17,7 +18,10 @@ base_dir = dirname(abspath(__file__))
 
 DEFAULT_SETTINGS = DefaultTestSettings(
     calling_file=__file__,
+    META_PHASE=2,
+    ROOT_URLCONF="meta_edc.urls",
     EDC_AUTH_CODENAMES_WARN_ONLY=True,
+    EDC_DX_REVIEW_LIST_MODEL_APP_LABEL="edc_dx_review",
     BASE_DIR=base_dir,
     APP_NAME=app_name,
     SITE_ID=SiteID(default=10),
@@ -28,14 +32,17 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     SUBJECT_SCREENING_MODEL="meta_screening.subjectscreening",
     SUBJECT_VISIT_MODEL="meta_subject.subjectvisit",
     SUBJECT_CONSENT_MODEL="meta_consent.subjectconsent",
-    SUBJECT_REQUISITION_MODEL=f"meta_subject.subjectrequisition",
+    SUBJECT_REQUISITION_MODEL="meta_subject.subjectrequisition",
     DEFENDER_ENABLED=False,
     DJANGO_LAB_DASHBOARD_REQUISITION_MODEL="meta_subject.subjectrequisition",
     ADVERSE_EVENT_ADMIN_SITE="meta_ae_admin",
+    EDC_DIAGNOSIS_LABELS=dict(
+        hiv="HIV", dm="Diabetes", htn="Hypertension", chol="High Cholesterol"
+    ),
     ADVERSE_EVENT_APP_LABEL="meta_ae",
     EDC_NAVBAR_DEFAULT="meta_dashboard",
     EDC_PROTOCOL_STUDY_OPEN_DATETIME=datetime(
-        2019, 6, 30, 0, 0, 0, tzinfo=gettz("UTC")
+        2019, 4, 30, 0, 0, 0, tzinfo=gettz("UTC")
     ),
     EDC_PROTOCOL_STUDY_CLOSE_DATETIME=datetime(
         2023, 12, 31, 23, 59, 59, tzinfo=gettz("UTC")
@@ -130,6 +137,8 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_review_dashboard.apps.AppConfig",
         "edc_sites.apps.AppConfig",
         "sarscov2.apps.AppConfig",
+        "edc_dx_review.apps.AppConfig",
+        "edc_dx.apps.AppConfig",
         "meta_auth.apps.AppConfig",
         "meta_consent.apps.AppConfig",
         "meta_lists.apps.AppConfig",
@@ -155,6 +164,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
 def main():
     if not settings.configured:
         settings.configure(**DEFAULT_SETTINGS)
+    settings.META_PHASE = confirm_meta_version(settings.META_PHASE)
     django.setup()
     tags = [t.split("=")[1] for t in sys.argv if t.startswith("--tag")]
     failfast = True if [t for t in sys.argv if t == "--failfast"] else False
@@ -163,6 +173,7 @@ def main():
             "tests",
             "meta_ae.tests",
             "meta_auth.tests",
+            "meta_edc.tests",
             "meta_lists.tests",
             "meta_dashboard.tests",
             "meta_labs.tests",
