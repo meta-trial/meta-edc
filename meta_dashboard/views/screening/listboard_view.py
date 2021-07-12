@@ -9,6 +9,7 @@ from edc_dashboard.view_mixins import (
 )
 from edc_dashboard.views import ListboardView
 from edc_navbar import NavbarViewMixin
+from meta_edc.meta_version import get_meta_version
 
 from ...model_wrappers import ScreeningPartOneModelWrapper
 from .filters import ListboardViewFilters
@@ -43,6 +44,7 @@ class ListboardView(
         context.update(
             subject_screening_add_url=self.get_subject_screening_add_url(),
             ABNORMAL=ABNORMAL,
+            meta_version=get_meta_version(),
         )
         return context
 
