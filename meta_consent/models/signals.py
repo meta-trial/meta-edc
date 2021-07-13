@@ -6,6 +6,7 @@ from edc_constants.constants import YES
 from edc_randomization.site_randomizers import site_randomizers
 from edc_visit_schedule.site_visit_schedules import site_visit_schedules
 
+from meta_edc.meta_version import get_meta_version
 from meta_screening.models import SubjectScreening
 from meta_subject.models import SubjectVisit
 
@@ -41,11 +42,12 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
 
             # randomize
             site_randomizers.randomize(
-                "default",
+                get_meta_version(),
                 subject_identifier=instance.subject_identifier,
                 report_datetime=instance.consent_datetime,
                 site=instance.site,
                 user=instance.user_created,
+                gender=instance.gender,
             )
 
             # put subject on schedule

@@ -5,6 +5,7 @@ from pathlib import Path
 import environ
 from edc_constants.constants import COMPLETE
 from edc_utils import get_datetime_from_env
+
 from meta_edc.utils import confirm_meta_version
 
 BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
@@ -12,6 +13,7 @@ ENV_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 env = environ.Env(
     AWS_ENABLED=(bool, False),
     CDN_ENABLED=(bool, False),
+    CELERY_ENABLED=(bool, False),
     DATABASE_SQLITE_ENABLED=(bool, False),
     DJANGO_AUTO_CREATE_KEYS=(bool, False),
     DJANGO_CRYPTO_FIELDS_TEMP_PATH=(bool, False),
@@ -147,6 +149,7 @@ if META_PHASE == 2:
         "meta_visit_schedule.apps.AppConfig",
         "meta_ae.apps.AppConfig",
         "meta_auth.apps.AppConfig",
+        "meta_rando.apps.AppConfig",
         "meta_prn.apps.AppConfig",
         "meta_export.apps.AppConfig",
         "meta_screening.apps.AppConfig",
@@ -168,6 +171,7 @@ if META_PHASE == 3:
         "meta_visit_schedule.apps.AppConfig",
         "meta_ae.apps.AppConfig",
         "meta_auth.apps.AppConfig",
+        "meta_rando.apps.AppConfig",
         "meta_prn.apps.AppConfig",
         "meta_export.apps.AppConfig",
         "meta_screening.apps.AppConfig",
@@ -424,7 +428,8 @@ if EMAIL_ENABLED:
     EMAIL_USE_TLS = env("DJANGO_EMAIL_USE_TLS")
     MAILGUN_API_KEY = env("MAILGUN_API_KEY")
     MAILGUN_API_URL = env("MAILGUN_API_URL")
-TWILIO_ENABLED = env("TWILIO_ENABLED")
+
+TWILIO_ENABLED = False  # env("TWILIO_ENABLED")
 if TWILIO_ENABLED:
     TWILIO_ACCOUNT_SID = env.str("TWILIO_ACCOUNT_SID")
     TWILIO_AUTH_TOKEN = env.str("TWILIO_AUTH_TOKEN")
@@ -518,6 +523,39 @@ if SENTRY_ENABLED and SENTRY_DSN:
 
 if env("DJANGO_LOGGING_ENABLED"):
     from .logging import LOGGING  # noqa
+
+# CELERY
+# see docs on setting up the broker
+CELERY_ENABLED = env("CELERY_ENABLED")
+if CELERY_ENABLED:
+    CELERY_BROKER_USER = env.str("CELERY_BROKER_USER")
+    CELERY_BROKER_PASSWORD = env.str("CELERY_BROKER_PASSWORD")
+    CELERY_BROKER_HOST = env.str("CELERY_BROKER_HOST")
+    CELERY_BROKER_PORT = env.str("CELERY_BROKER_PORT")
+    if DEBUG:
+        CELERY_BROKER_VHOST = f"{APP_NAME}_debug"
+    elif LIVE_SYSTEM:
+        CELERY_BROKER_VHOST = f"{APP_NAME}_production"
+    else:
+        CELERY_BROKER_VHOST = f"{APP_NAME}_uat"
+        CELERY_BROKER_URL = (
+            f"amqp://{CELERY_BROKER_USER}:{CELERY_BROKER_PASSWORD}@"
+            f"{CELERY_BROKER_HOST}:{CELERY_BROKER_PORT}/{CELERY_BROKER_VHOST}"
+        )
+        DJANGO_CELERY_RESULTS_TASK_ID_MAX_LENGTH = 191
+        CELERY_RESULT_BACKEND = "django-db"
+        #     CELERY_QUEUES = (
+        #         Queue('high', Exchange('high'), routing_key='high'),
+        #         Queue('normal', Exchange('normal'), routing_key='normal'),
+        #         Queue('low', Exchange('low'), routing_key='low'),
+        #     )
+        #     CELERY_DEFAULT_QUEUE = 'normal'
+        #     CELERY_DEFAULT_EXCHANGE = 'normal'
+        #     CELERY_DEFAULT_ROUTING_KEY = 'normal'
+        #     CELERY_ROUTES = {
+        #         'edc_data_manager.tasks.*': {'queue': 'normal'},
+        #     }
+
 
 if "test" in sys.argv:
 

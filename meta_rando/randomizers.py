@@ -12,6 +12,7 @@ class RandomizerPhaseTwo(Randomizer):
 class RandomizerPhaseThree(Randomizer):
 
     name = PHASE_THREE
+    model = "meta_rando.randomizationlist"
 
     def __init__(self, gender=None, **kwargs):
         self.gender = gender
@@ -23,7 +24,7 @@ class RandomizerPhaseThree(Randomizer):
 
 
 if get_meta_version() == PHASE_TWO:
-    site_randomizers.register(Randomizer)
+    site_randomizers.register(RandomizerPhaseTwo)
 
 if get_meta_version() == PHASE_THREE:
     site_randomizers.register(RandomizerPhaseThree)
