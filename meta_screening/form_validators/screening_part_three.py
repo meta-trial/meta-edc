@@ -6,8 +6,13 @@ from edc_form_validators import FormValidator
 from edc_glucose.form_validators import GlucoseFormValidatorMixin
 from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
 from edc_reportable import BmiFormValidatorMixin, EgfrFormValidatorMixin
-from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
-from meta_screening.constants import PART_THREE
+
+from meta_edc.meta_version import (
+    PHASE_THREE,
+    PHASE_TWO,
+    InvalidMetaVersion,
+    get_meta_version,
+)
 
 
 class ScreeningPartThreeFormValidator(
@@ -40,6 +45,7 @@ class ScreeningPartThreeFormValidator(
 
     def clean_phase_three(self):
         self.validate_vitals_fields_required()
+        self.validate_blood_pressure()
         self.validate_pregnancy()
         self.validate_ifg_required_fields()
         validate_glucose_as_millimoles_per_liter("ifg", self.cleaned_data)
@@ -135,13 +141,19 @@ class ScreeningPartThreeFormValidator(
                 if not self.cleaned_data.get(field):
                     raise forms.ValidationError({field: "This field is required"})
 
-        # PHASE_THREE only
+    def validate_blood_pressure(self):
+        """Raise if BP is >= 180/120"""
+        if get_meta_version() != PHASE_THREE:
+            raise InvalidMetaVersion(
+                f"Invalid META version. Expected {PHASE_THREE}. Got {get_meta_version()}."
+            )
         if (
-            get_meta_version() == PHASE_THREE
-            and self.cleaned_data.get("sys_blood_pressure")
+            self.cleaned_data.get("sys_blood_pressure")
             and self.cleaned_data.get("dia_blood_pressure")
-            and self.cleaned_data.get("sys_blood_pressure") >= 180
-            and self.cleaned_data.get("dia_blood_pressure") >= 120
+            and (
+                self.cleaned_data.get("sys_blood_pressure") >= 180
+                or self.cleaned_data.get("dia_blood_pressure") >= 120
+            )
         ):
             if self.cleaned_data.get("severe_htn") != YES:
                 raise forms.ValidationError(
