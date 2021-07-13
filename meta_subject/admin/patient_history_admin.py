@@ -12,6 +12,7 @@ class PatientHistoryAdmin(CrfModelAdmin):
 
     form = PatientHistoryForm
 
+    autocomplete_fields = ["current_arv_regimen", "previous_arv_regimen"]
     fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime")}),
         ("Part 1: Symptoms", {"fields": ("symptoms", "other_symptoms")}),
