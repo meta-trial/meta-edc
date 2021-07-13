@@ -10,8 +10,9 @@ from dateutil.tz import gettz
 from django.conf import settings
 from django.test.runner import DiscoverRunner
 from edc_test_utils import DefaultTestSettings
-from meta_edc.utils import confirm_meta_version
 from multisite import SiteID
+
+from meta_edc.utils import confirm_meta_version
 
 app_name = "meta_edc"
 base_dir = dirname(abspath(__file__))
@@ -19,6 +20,7 @@ base_dir = dirname(abspath(__file__))
 DEFAULT_SETTINGS = DefaultTestSettings(
     calling_file=__file__,
     META_PHASE=2,
+    EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=False,
     ROOT_URLCONF="meta_edc.urls",
     EDC_AUTH_CODENAMES_WARN_ONLY=True,
     EDC_DX_REVIEW_LIST_MODEL_APP_LABEL="edc_dx_review",
@@ -73,7 +75,6 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     HOLIDAY_FILE=join(base_dir, "tests", "holidays.csv"),
     LIVE_SYSTEM=False,
     EDC_RANDOMIZATION_LIST_PATH=join(base_dir, "tests", "etc"),
-    EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=True,
     EDC_SITES_MODULE_NAME="meta_sites",
     INSTALLED_APPS=[
         "django.contrib.admin",
@@ -145,6 +146,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "meta_dashboard.apps.AppConfig",
         "meta_labs.apps.AppConfig",
         "meta_metadata_rules.apps.AppConfig",
+        "meta_rando.apps.AppConfig",
         "meta_reference.apps.AppConfig",
         "meta_subject.apps.AppConfig",
         "meta_form_validators.apps.AppConfig",
