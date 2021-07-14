@@ -1,4 +1,7 @@
+import pdb
 from datetime import datetime
+from random import sample
+from secrets import choice
 
 import arrow
 from dateutil.relativedelta import relativedelta
@@ -12,13 +15,17 @@ from edc_constants.constants import (
     YES,
 )
 from edc_reportable.units import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
-from meta_edc.meta_version import PHASE_THREE, get_meta_version
+from faker import Faker
+from pyparsing import alphas
+
+from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
 from meta_screening.forms import (
     get_part_one_fields,
     get_part_three_fields,
     get_part_two_fields,
 )
 
+fake = Faker()
 now = arrow.get(datetime(2019, 5, 5), "UTC").datetime
 tomorrow = now + relativedelta(days=1)
 
@@ -28,8 +35,8 @@ def get_part_one_eligible_options():
         screening_consent=YES,
         report_datetime=now,
         selection_method=RANDOM_SAMPLING,
-        hospital_identifier="111",
-        initials="ZZ",
+        hospital_identifier="".join(map(str, sample(range(0, 10), 10))),
+        initials=f"{choice(alphas)}{choice(alphas)}",
         gender=FEMALE,
         age_in_years=25,
         ethnicity=BLACK,
@@ -42,14 +49,12 @@ def get_part_one_eligible_options():
         continue_part_two=YES,
     )
     if get_meta_version() == PHASE_THREE:
-        print("fetching part one PHASE_THREE fields")
         options["staying_nearby_12"] = options.pop("staying_nearby_6")
         if fld := [f for f in get_part_one_fields() if f not in options]:
             raise TypeError(
                 f"Missing part one fields for meta phase {get_meta_version()}. Got {fld}."
             )
     else:
-        print("fetching part one PHASE_TWO fields")
         if fld := [f for f in get_part_one_fields() if f not in options]:
             raise TypeError(
                 f"Missing part one fields for meta phase {get_meta_version()}. Got {fld}."
@@ -75,13 +80,11 @@ def get_part_two_eligible_options():
         already_fasted=NO,
     )
     if get_meta_version() == PHASE_THREE:
-        print("fetching part one PHASE_THREE fields")
         if fld := [f for f in get_part_two_fields() if f not in options]:
             raise TypeError(
                 f"Missing part two fields for meta phase {get_meta_version()}. Got {fld}."
             )
     else:
-        print("fetching part one PHASE_TWO fields")
         if fld := [f for f in get_part_two_fields() if f not in options]:
             raise TypeError(
                 f"Missing part two fields for meta phase {get_meta_version()}. Got {fld}."
@@ -120,18 +123,18 @@ def get_part_three_eligible_options():
         unsuitable_agreed=NOT_APPLICABLE,
     )
     if get_meta_version() == PHASE_THREE:
-        print("fetching part one PHASE_THREE fields")
+        options["ifg_value"] = 6.9
+        options["ogtt_value"] = 7.8
         if fld := [f for f in get_part_three_fields() if f not in options]:
             raise TypeError(
                 f"Missing part three fields for meta phase {get_meta_version()}. Got {fld}."
             )
-    else:
-        print("fetching part one PHASE_TWO fields")
+    elif get_meta_version() == PHASE_TWO:
+        if fld := [f for f in get_part_three_fields() if f not in options]:
+            raise TypeError(
+                f"Missing part three fields for meta phase {get_meta_version()}. Got {fld}."
+            )
         options.pop("severe_htn")
-        if fld := [f for f in get_part_three_fields() if f not in options]:
-            raise TypeError(
-                f"Missing part three fields for meta phase {get_meta_version()}. Got {fld}."
-            )
     return options
 
 

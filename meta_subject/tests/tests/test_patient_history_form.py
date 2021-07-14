@@ -12,10 +12,10 @@ from meta_lists.models import (
     OiProphylaxis,
 )
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
+from meta_subject.forms import PatientHistoryForm
 
-from ..forms import PatientHistoryForm
 
-
+@tag("222")
 class TestPatientHistory(MetaTestCaseMixin, TestCase):
     def get_options(self):
         self.subject_visit = self.get_subject_visit()

@@ -2,7 +2,7 @@ from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
 
 
 def get_part_one_fields():
-    fields = (
+    fields = [
         "screening_consent",
         "selection_method",
         "report_datetime",
@@ -18,14 +18,14 @@ def get_part_one_fields():
         "staying_nearby_6",
         "pregnant",
         "continue_part_two",
-    )
+    ]
     if get_meta_version() == PHASE_THREE:
         fields = ["staying_nearby_12" if x == "staying_nearby_6" else x for x in fields]
-    return fields
+    return tuple(fields)
 
 
 def get_part_two_fields():
-    fields = (
+    fields = [
         "part_two_report_datetime",
         "congestive_heart_failure",
         "liver_disease",
@@ -40,24 +40,25 @@ def get_part_two_fields():
         "already_fasted",
         "advised_to_fast",
         "appt_datetime",
-    )
+    ]
     if get_meta_version() == PHASE_TWO:
-        fields = [x for x in fields if x not in ["has_dm", "on_dm_medication"]]
-    return fields
+        fields.remove("has_dm")
+        fields.remove("on_dm_medication")
+    return tuple(fields)
 
 
 def get_part_three_vitals_fields():
-    fields = (
+    fields = [
         "height",
         "weight",
         "waist_circumference",
         "sys_blood_pressure",
         "dia_blood_pressure",
-    )
+    ]
     if get_meta_version() == PHASE_THREE:
-        fields = [x for x in fields if x not in ["waist_circumference"]]
+        fields.remove("waist_circumference")
         fields.append("severe_htn")
-    return fields
+    return tuple(fields)
 
 
 part_three_ifg_fields = (

@@ -2,8 +2,7 @@ from django.test import TestCase, tag
 from model_bakery.baker import make_recipe
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
-
-from ..forms import FollowupExaminationForm
+from meta_subject.forms import FollowupExaminationForm
 
 
 class TestFollowup(MetaTestCaseMixin, TestCase):
