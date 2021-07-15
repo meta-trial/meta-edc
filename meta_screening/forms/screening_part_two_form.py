@@ -4,7 +4,7 @@ from edc_screening.modelform_mixins import AlreadyConsentedFormMixin
 
 from ..form_validators import ScreeningPartTwoFormValidator
 from ..models import ScreeningPartTwo
-from .field_lists import part_two_fields
+from .field_lists import get_part_two_fields
 
 
 class ScreeningPartTwoForm(
@@ -21,4 +21,4 @@ class ScreeningPartTwoForm(
 
     class Meta:
         model = ScreeningPartTwo
-        fields = part_two_fields
+        fields = get_part_two_fields()

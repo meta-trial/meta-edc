@@ -5,8 +5,8 @@ from ..admin_site import meta_screening_admin
 from ..forms import (
     ScreeningPartTwoForm,
     calculated_fields,
-    part_one_fields,
-    part_three_fields,
+    get_part_one_fields,
+    get_part_three_fields,
 )
 from ..models import ScreeningPartTwo
 from .fieldsets import (
@@ -32,4 +32,8 @@ class ScreeningPartTwoAdmin(SubjectScreeningAdmin):
         audit_fieldset_tuple,
     )
 
-    readonly_fields = (*part_one_fields, *part_three_fields, *calculated_fields)
+    readonly_fields = (
+        *get_part_one_fields(),
+        *get_part_three_fields(),
+        *calculated_fields,
+    )

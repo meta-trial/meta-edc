@@ -8,6 +8,7 @@ from edc_blood_results.model_mixins import (
     TrigModelMixin,
 )
 from edc_crf.model_mixins import CrfWithActionModelMixin
+from edc_lab_panel.panels import lipids_panel
 from edc_model import models as edc_models
 
 
@@ -23,6 +24,7 @@ class BloodResultsLipid(
 ):
     action_name = BLOOD_RESULTS_LIPID_ACTION
     tracking_identifier_prefix = "LP"
+    lab_panel = lipids_panel
 
     class Meta(CrfWithActionModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         verbose_name = "Blood Result: Lipids"

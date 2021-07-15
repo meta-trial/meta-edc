@@ -160,6 +160,7 @@ if META_PHASE == 3:
     META_APPS = [
         "sarscov2.apps.AppConfig",
         "edc_dx.apps.AppConfig",
+        "edc_refusal.apps.AppConfig",
         "meta_consent.apps.AppConfig",
         "meta_lists.apps.AppConfig",
         "meta_dashboard.apps.AppConfig",

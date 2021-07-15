@@ -1,6 +1,7 @@
 import pdb
 import sys
 from copy import deepcopy
+from pprint import pprint
 
 from dateutil.relativedelta import relativedelta
 from django.apps import apps as django_apps
@@ -19,6 +20,10 @@ from edc_dashboard.url_names import url_names
 from edc_sites import add_or_update_django_sites
 from edc_test_utils.webtest import login
 from edc_utils import get_utcnow
+from model_bakery import baker
+from webtest.app import AppError
+
+from meta_edc.meta_version import get_meta_version
 from meta_screening.models.subject_screening import SubjectScreening
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_screening.tests.options import (
@@ -27,8 +32,6 @@ from meta_screening.tests.options import (
     get_part_two_eligible_options,
 )
 from meta_sites.sites import all_sites
-from model_bakery import baker
-from webtest.app import AppError
 
 style = color_style()
 
@@ -161,7 +164,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         screening_page = home_page.click(description="Screening", index=1)
         self.assertNotIn("Add SubjectScreening", screening_page)
 
-    @tag("webtest")
+    @tag("webtest3")
     @override_settings(META_PHASE=2)
     def test_screening_form_phase2(self):
         part_one_data = deepcopy(get_part_one_eligible_options())
@@ -173,6 +176,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
                 continue_part_two=YES,
             )
         )
+        pprint(part_one_data)
         (
             home_page,
             add_screening_part_two,
@@ -301,6 +305,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
         if "error" in page:
             pdb.set_trace()
+        print(get_meta_version())
         self.assertNotIn("error", page)
 
         # redirects back to listboard

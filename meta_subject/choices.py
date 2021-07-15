@@ -3,6 +3,7 @@ from edc_constants.constants import (
     MICROSCOPY,
     NEVER,
     NON_FASTING,
+    NONE,
     NOT_APPLICABLE,
     OTHER,
     RAPID_TEST,
@@ -29,6 +30,12 @@ CHILDCARE_CHOICES = (
     (OTHER, "Other, specify"),
 )
 
+DYSLIPIDAEMIA_RX_CHOICES = (
+    ("atorvastatin", "Atorvastatin"),
+    ("rosuvastatin", "Rosuvastatin"),
+    (NONE, "Not taking any medication"),
+    (NOT_APPLICABLE, "Not applicable"),
+)
 
 FOLLOWUP_REASONS = (
     (APPT, "Study appointment"),

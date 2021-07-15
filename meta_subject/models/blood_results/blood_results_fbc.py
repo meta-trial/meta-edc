@@ -14,6 +14,7 @@ from edc_blood_results.model_mixins.fbc import (
     McvModelMixin,
 )
 from edc_crf.model_mixins import CrfWithActionModelMixin
+from edc_lab_panel.panels import fbc_panel
 from edc_model import models as edc_models
 
 
@@ -33,6 +34,8 @@ class BloodResultsFbc(
 ):
     action_name = BLOOD_RESULTS_FBC_ACTION
     tracking_identifier_prefix = "FB"
+
+    lab_panel = fbc_panel
 
     class Meta(CrfWithActionModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         verbose_name = "Blood Result: FBC"

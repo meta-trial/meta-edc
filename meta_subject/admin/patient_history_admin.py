@@ -1,10 +1,29 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
 
+from meta_edc.meta_version import PHASE_THREE, get_meta_version
+
 from ..admin_site import meta_subject_admin
 from ..forms import PatientHistoryForm
 from ..models import PatientHistory
 from .modeladmin import CrfModelAdmin
+
+
+def get_htn_fieldset():
+    fields = [
+        "htn_diagnosis",
+        "on_hypertension_treatment",
+        "hypertension_treatment",
+        "other_hypertension_treatment",
+        "taking_statins",
+    ]
+    if get_meta_version() == PHASE_THREE:
+        fields.append("dyslipidaemia_rx")
+
+    return (
+        "Part 3: Hypertension",
+        {"fields": tuple(fields)},
+    )
 
 
 @admin.register(PatientHistory, site=meta_subject_admin)
@@ -38,18 +57,7 @@ class PatientHistoryAdmin(CrfModelAdmin):
                 )
             },
         ),
-        (
-            "Part 3: Hypertension",
-            {
-                "fields": (
-                    "htn_diagnosis",
-                    "on_hypertension_treatment",
-                    "hypertension_treatment",
-                    "other_hypertension_treatment",
-                    "taking_statins",
-                )
-            },
-        ),
+        get_htn_fieldset(),
         (
             "Part 4: Other history",
             {

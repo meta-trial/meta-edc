@@ -11,6 +11,7 @@ from .followup_examination import FollowupExamination
 from .followup_vitals import FollowupVitals
 from .glucose import Glucose
 from .health_economics import HealthEconomics
+from .hepatitis_test import HepatitisTest
 from .malaria_test import MalariaTest
 from .medication_adherence import MedicationAdherence
 from .patient_history import PatientHistory

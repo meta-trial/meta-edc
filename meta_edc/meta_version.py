@@ -1,5 +1,6 @@
 PHASE_TWO = 2
 PHASE_THREE = 3
+PHASE_THREE_ONLY = "PHASE_THREE_ONLY"
 
 
 class InvalidMetaVersion(Exception):

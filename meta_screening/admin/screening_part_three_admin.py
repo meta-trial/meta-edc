@@ -1,13 +1,14 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
+
 from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
 
 from ..admin_site import meta_screening_admin
 from ..forms import (
     ScreeningPartThreeForm,
     calculated_fields,
-    part_one_fields,
-    part_two_fields,
+    get_part_one_fields,
+    get_part_two_fields,
 )
 from ..models import ScreeningPartThree
 from .fieldsets import (
@@ -58,4 +59,8 @@ class ScreeningPartThreeAdmin(SubjectScreeningAdmin):
 
     fieldsets = get_fieldsets()
 
-    readonly_fields = (*part_one_fields, *part_two_fields, *calculated_fields)
+    readonly_fields = (
+        *get_part_one_fields(),
+        *get_part_two_fields(),
+        *calculated_fields,
+    )

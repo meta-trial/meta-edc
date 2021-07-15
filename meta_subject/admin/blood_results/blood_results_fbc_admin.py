@@ -12,4 +12,6 @@ from ..modeladmin import CrfModelAdmin
 @admin.register(BloodResultsFbc, site=meta_subject_admin)
 class BloodResultsFbcAdmin(BloodResultsModelAdminMixin, CrfModelAdmin):
     form = BloodResultsFbcForm
-    fieldsets = BloodResultFieldset(fbc_panel, model_cls=BloodResultsFbc).fieldsets
+    fieldsets = BloodResultFieldset(
+        BloodResultsFbc.lab_panel, model_cls=BloodResultsFbc
+    ).fieldsets

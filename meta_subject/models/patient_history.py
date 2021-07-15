@@ -10,6 +10,7 @@ from edc_reportable.units import (
     COPIES_PER_MILLILITER,
 )
 
+from meta_edc.meta_version import PHASE_THREE_ONLY
 from meta_lists.models import (
     ArvRegimens,
     DiabetesSymptoms,
@@ -17,6 +18,7 @@ from meta_lists.models import (
     OiProphylaxis,
     Symptoms,
 )
+from meta_subject.choices import DYSLIPIDAEMIA_RX_CHOICES
 
 from .model_mixins import CrfModelMixin
 
@@ -147,6 +149,14 @@ class PatientHistory(CrfModelMixin, edc_models.BaseUuidModel):
         verbose_name="Is the patient currently taking any statins?",
         max_length=15,
         choices=YES_NO,
+    )
+
+    # PHASE_THREE_ONLY
+    dyslipidaemia_rx = models.CharField(
+        verbose_name="What medication is the patient currently taking for dyslipidaemia?",
+        max_length=25,
+        choices=DYSLIPIDAEMIA_RX_CHOICES,
+        default=PHASE_THREE_ONLY,
     )
 
     current_smoker = models.CharField(

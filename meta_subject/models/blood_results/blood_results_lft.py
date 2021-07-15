@@ -10,6 +10,7 @@ from edc_blood_results.model_mixins import (
     RequisitionModelMixin,
 )
 from edc_crf.model_mixins import CrfWithActionModelMixin
+from edc_lab_panel.panels import lft_panel
 from edc_model import models as edc_models
 
 
@@ -27,6 +28,7 @@ class BloodResultsLft(
 ):
     action_name = BLOOD_RESULTS_LFT_ACTION
     tracking_identifier_prefix = "LF"
+    lab_panel = lft_panel
 
     class Meta(CrfWithActionModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         verbose_name = "Blood Result: LFT"

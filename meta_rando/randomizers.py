@@ -47,14 +47,21 @@ class RandomizerPhaseThree(Randomizer):
     @property
     def extra_required_instance_attrs(self):
         """Returns a dict of extra attributes that must have
-        value on self."""
+        value on self.
+        """
         return dict(gender=self.gender)
 
     @property
     def extra_model_obj_options(self):
         """Returns a dict of extra key/value pair for filtering the
-        "rando" model."""
+        "rando" model.
+        """
         return dict(gender=self.gender)
+
+    @classmethod
+    def get_extra_list_display(cls):
+        """Returns a list of tuples of (pos, field name) for ModelAdmin"""
+        return [(4, "gender")]
 
 
 if get_meta_version() == PHASE_TWO:

@@ -1,7 +1,6 @@
 from django.contrib import admin
 from edc_blood_results.admin import BloodResultsModelAdminMixin
 from edc_blood_results.fieldsets import BloodResultFieldset
-from edc_lab_panel.panels import rft_panel
 
 from ...admin_site import meta_subject_admin
 from ...forms import BloodResultsRftForm
@@ -12,7 +11,9 @@ from ..modeladmin import CrfModelAdmin
 @admin.register(BloodResultsRft, site=meta_subject_admin)
 class BloodResultsRftAdmin(BloodResultsModelAdminMixin, CrfModelAdmin):
     form = BloodResultsRftForm
-    fieldsets = BloodResultFieldset(rft_panel, model_cls=BloodResultsRft).fieldsets
+    fieldsets = BloodResultFieldset(
+        BloodResultsRft.lab_panel, model_cls=BloodResultsRft
+    ).fieldsets
 
 
 # TODO: ("eGFR (Calculated)", {"fields": ["egfr_value"]}),

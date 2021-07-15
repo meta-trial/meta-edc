@@ -110,7 +110,6 @@ calculated_fields = (
     "inclusion_d",
 )
 
-part_three_vitals_fields = get_part_three_vitals_fields()
 
 # META PHASE_THREE ONLY
 part_three_labs = (
@@ -131,23 +130,17 @@ def get_part_three_fields():
             *part_three_ifg_fields,
             *part_three_ogtt_fields,
             *part_three_other_fields,
-            *part_three_vitals_fields,
+            *get_part_three_vitals_fields(),
             *part_three_pregnancy_fields,
             *part_three_comment_fields,
         )
     elif get_meta_version() == PHASE_THREE:
         fields = (
-            *part_three_vitals_fields,
+            *get_part_three_vitals_fields(),
             *part_three_pregnancy_fields,
             *part_three_ifg_fields,
             *part_three_ogtt_fields,
             *part_three_other_fields,
-            # *part_three_labs,
             *part_three_comment_fields,
         )
     return fields
-
-
-part_one_fields = get_part_one_fields()
-part_two_fields = get_part_two_fields()
-part_three_fields = get_part_three_fields()
