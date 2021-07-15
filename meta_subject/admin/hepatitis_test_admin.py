@@ -19,10 +19,6 @@ class HepatitisTestAdmin(CrfModelAdmin):
                 "fields": (
                     "subject_visit",
                     "report_datetime",
-                    "hbsag",
-                    "hbsag_date",
-                    "hcv",
-                    "hcv_date",
                 )
             },
         ),

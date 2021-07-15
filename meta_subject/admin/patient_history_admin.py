@@ -77,6 +77,7 @@ class PatientHistoryAdmin(CrfModelAdmin):
         "current_arv_regimen": admin.VERTICAL,
         "current_smoker": admin.VERTICAL,
         "diabetes_in_family": admin.VERTICAL,
+        "dyslipidaemia_rx": admin.VERTICAL,
         "former_smoker": admin.VERTICAL,
         "has_previous_arv_regimen": admin.VERTICAL,
         "htn_diagnosis": admin.VERTICAL,
