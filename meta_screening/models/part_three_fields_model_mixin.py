@@ -3,7 +3,8 @@ from django.db import models
 from edc_constants.choices import NO, YES_NO
 from edc_glucose.model_mixins import FastingModelMixin, IfgModelMixin, OgttModelMixin
 from edc_model import models as edc_models
-from respond_models.mixins import CreatinineModelFieldsMixin
+
+from .creatinine_fields_model_mixin import CreatinineModelFieldsMixin
 
 
 class PartThreeFieldsModelMixin(

@@ -50,7 +50,7 @@ else:
 
 META_PHASE = env.int("META_PHASE")
 
-META_PHASE = confirm_meta_version(META_PHASE)
+# META_PHASE = confirm_meta_version(META_PHASE)
 
 DEBUG = env("DJANGO_DEBUG")
 
