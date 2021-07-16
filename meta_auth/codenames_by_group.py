@@ -6,9 +6,9 @@ from edc_auth import (
     UNBLINDING_REVIEWERS,
     get_default_codenames_by_group,
 )
-from meta_edc.meta_version import get_meta_version
-
 from sarscov2.auth import SARSCOV2, sarscov2_codenames
+
+from meta_edc.meta_version import get_meta_version
 
 from .codenames import (
     auditor,

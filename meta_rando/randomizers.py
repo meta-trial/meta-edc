@@ -1,6 +1,3 @@
-import os
-
-from django.conf import settings
 from edc_constants.constants import FEMALE, MALE
 from edc_randomization import Randomizer
 from edc_randomization.randomization_list_importer import (

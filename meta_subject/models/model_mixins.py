@@ -12,7 +12,7 @@ class CrfModelMixin(CrfStatusModelMixin, BaseCrfModelMixin):
 
 class VitalsFieldMixin(models.Model):
 
-    weight = edc_models.WeightField()
+    weight = edc_models.WeightField(null=True)
 
     # 9
     sys_blood_pressure = edc_models.SystolicPressureField(

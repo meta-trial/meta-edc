@@ -1,10 +1,22 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
 
+from meta_edc.meta_version import get_meta_version
+
 from ..admin_site import meta_subject_admin
 from ..forms import PhysicalExamForm
 from ..models import PhysicalExam
 from .modeladmin import CrfModelAdmin
+
+
+def get_other_vitals_fieldset():
+    fields = ["temperature"]
+    if get_meta_version() == 2:
+        fields.extend("weight", "waist_circumference")
+    return (
+        "Part 2: Other vitals",
+        {"fields": tuple(fields)},
+    )
 
 
 @admin.register(PhysicalExam, site=meta_subject_admin)
@@ -27,10 +39,7 @@ class PhysicalExamAdmin(CrfModelAdmin):
                 )
             },
         ),
-        (
-            "Part 2: Other vitals",
-            {"fields": ("temperature", "weight", "waist_circumference")},
-        ),
+        get_other_vitals_fieldset(),
         (
             "Part 3: Signs",
             {

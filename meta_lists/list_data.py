@@ -1,9 +1,7 @@
 from edc_constants.constants import DEAD, NONE, OTHER, UNKNOWN
-from edc_list_data import PreloadData
 from edc_ltfu.constants import LOST_TO_FOLLOWUP
 from edc_transfer.constants import TRANSFERRED
 
-from meta_edc.meta_version import get_meta_version
 from meta_prn.constants import LATE_EXCLUSION, OTHER_RX_DISCONTINUATION, WITHDRAWAL
 
 list_data = {
@@ -153,18 +151,3 @@ list_data = {
         ),
     ],
 }
-
-# if get_meta_version() == 3:
-#     list_data.update(
-#         {
-#             "edc_dx_review.reasonsfortesting": [
-#                 ("patient_request", "Patient was well and made a request"),
-#                 ("patient_complication", "Patient had a clinical complication"),
-#                 ("signs_symptoms", "Patient had suggestive signs and symptoms"),
-#                 (OTHER, "Other reason (specify below)"),
-#             ]
-#         }
-#     )
-
-
-preload_data = PreloadData(list_data=list_data)

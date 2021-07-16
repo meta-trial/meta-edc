@@ -18,7 +18,13 @@ def get_htn_fieldset():
         "taking_statins",
     ]
     if get_meta_version() == PHASE_THREE:
-        fields.append("dyslipidaemia_rx")
+        fields.extend(
+            [
+                "dyslipidaemia_diagnosis",
+                "on_dyslipidaemia_treatment",
+                "dyslipidaemia_rx",
+            ]
+        )
 
     return (
         "Part 3: Hypertension",

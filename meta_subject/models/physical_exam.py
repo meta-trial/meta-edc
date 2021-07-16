@@ -25,6 +25,7 @@ class PhysicalExam(VitalsFieldMixin, CrfModelMixin, edc_models.BaseUuidModel):
         decimal_places=1,
         validators=[MinValueValidator(50.0), MaxValueValidator(175.0)],
         help_text="in centimeters",
+        null=True,
     )
 
     jaundice = models.CharField(verbose_name="Jaundice?", max_length=15, choices=YES_NO)

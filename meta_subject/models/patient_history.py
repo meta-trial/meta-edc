@@ -152,11 +152,28 @@ class PatientHistory(CrfModelMixin, edc_models.BaseUuidModel):
     )
 
     # PHASE_THREE_ONLY
+    dyslipidaemia_diagnosis = models.CharField(
+        verbose_name="Has the patient been diagnosed with dyslipidaemia?",
+        max_length=15,
+        choices=YES_NO,
+        null=True,
+        blank=False,
+    )
+
+    # PHASE_THREE_ONLY
+    on_dyslipidaemia_treatment = models.CharField(
+        verbose_name="Is the patient on treatment for dyslipidaemia?",
+        max_length=15,
+        choices=YES_NO_NA,
+        default=NOT_APPLICABLE,
+    )
+
+    # PHASE_THREE_ONLY
     dyslipidaemia_rx = models.CharField(
         verbose_name="What medication is the patient currently taking for dyslipidaemia?",
         max_length=25,
         choices=DYSLIPIDAEMIA_RX_CHOICES,
-        default=PHASE_THREE_ONLY,
+        default=NOT_APPLICABLE,
     )
 
     current_smoker = models.CharField(

@@ -4,15 +4,17 @@ from django.db import migrations
 from django.db.migrations import RunPython
 from edc_action_item.utils import update_action_identifier
 
+from meta_edc.meta_version import PHASE_TWO, get_meta_version
 from meta_subject.action_items import FollowupExaminationAction
 
 
 def update_followup_examination_action_identifier(apps, schema_editor):
-    update_action_identifier(
-        model="meta_subject.followupexamination",
-        action_cls=FollowupExaminationAction,
-        apps=apps,
-    )
+    if get_meta_version() == PHASE_TWO:
+        update_action_identifier(
+            model="meta_subject.followupexamination",
+            action_cls=FollowupExaminationAction,
+            apps=apps,
+        )
 
 
 class Migration(migrations.Migration):

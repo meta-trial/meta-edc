@@ -1,7 +1,6 @@
 from copy import copy
 
 from edc_auth.codenames import screening as default
-from sarscov2.auth import sarscov2_codenames
 
 screening = copy(default)
 screening += [
@@ -31,5 +30,4 @@ screening += [
     "meta_screening.view_subjectscreening",
     "meta_screening.view_subjectrefusal",
 ]
-screening.extend(sarscov2_codenames)
 screening.sort()

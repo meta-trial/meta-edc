@@ -1,4 +1,5 @@
 import os
+import pdb
 import sys
 from pathlib import Path
 
@@ -159,6 +160,7 @@ if META_PHASE == 2:
 if META_PHASE == 3:
     META_APPS = [
         "sarscov2.apps.AppConfig",
+        "edc_adherence.apps.AppConfig",
         "edc_dx.apps.AppConfig",
         "edc_refusal.apps.AppConfig",
         "meta_consent.apps.AppConfig",
