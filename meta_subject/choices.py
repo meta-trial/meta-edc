@@ -1,11 +1,10 @@
 from edc_constants.constants import (
-    FASTING,
+    ABSENT,
     MICROSCOPY,
-    NEVER,
-    NON_FASTING,
-    NONE,
+    NORMAL,
     NOT_APPLICABLE,
     OTHER,
+    PRESENT,
     RAPID_TEST,
 )
 from edc_reportable.constants import GRADE3, GRADE4
@@ -18,6 +17,12 @@ ACTIVITY_CHOICES = (
     ("studying", "Studying"),
     ("caring_for_children", "Caring for children"),
     (OTHER, "Other, please specify"),
+)
+
+ANKLE_REFLEX_CHOICES = (
+    (PRESENT, "Present"),
+    ("present_reinforcement", "Present/Reinforcement"),
+    (ABSENT, "Absent"),
 )
 
 CHILDCARE_CHOICES = (
@@ -72,6 +77,12 @@ MALARIA_TEST_CHOICES = (
     (NOT_APPLICABLE, "Not applicable"),
 )
 
+MONOFILAMENT_CHOICES = (
+    (NORMAL, "Normal"),
+    ("reduced", "Reduced"),
+    (ABSENT, "Absent"),
+)
+
 PAYEE_CHOICES = (
     ("own_cash", "Own cash"),
     ("insurance", "Insurance"),
@@ -92,6 +103,14 @@ TRANSPORT_CHOICES = (
     ("hired_bicycle", "Hired bicycle"),
     ("foot", "Foot"),
     (OTHER, "Other, specify"),
+)
+
+ULCERATION_CHOICES = ((ABSENT, "Absent"), (PRESENT, "Present"))
+
+VIBRATION_PERCEPTION_CHOICES = (
+    (PRESENT, "Present"),
+    ("decreased", "Decreased"),
+    (ABSENT, "Absent"),
 )
 
 VISIT_UNSCHEDULED_REASON = (

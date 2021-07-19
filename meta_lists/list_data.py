@@ -5,6 +5,13 @@ from edc_transfer.constants import TRANSFERRED
 from meta_prn.constants import LATE_EXCLUSION, OTHER_RX_DISCONTINUATION, WITHDRAWAL
 
 list_data = {
+    "meta_lists.abnnormalfootappearanceobservations": [
+        ("deformities", "Deformities"),
+        ("dry_skin_callus", "Dry skin, callus"),
+        ("infection", "Infection"),
+        ("fissure", "Fissure"),
+        (OTHER, "Other abnormality, please specify"),
+    ],
     "meta_lists.nonadherencereasons": [
         ("forget_to_take", "I sometimes forget to take my pills"),
         ("dont_like_taking", "I don't like taking my pills"),

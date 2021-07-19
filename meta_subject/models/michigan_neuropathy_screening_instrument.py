@@ -2,6 +2,14 @@ from django.db import models
 from edc_constants.choices import YES_NO
 from edc_model import models as edc_models
 
+from meta_lists.models import AbnormalFootAppearanceObservations
+from meta_subject.choices import (
+    ANKLE_REFLEX_CHOICES,
+    MONOFILAMENT_CHOICES,
+    ULCERATION_CHOICES,
+    VIBRATION_PERCEPTION_CHOICES,
+)
+
 from .model_mixins import CrfModelMixin
 
 
@@ -12,7 +20,10 @@ class MichiganNeuropathyScreeningInstrument(
 
     """Neuropathy screening tool.
 
-    Uses Michigan Neuropathy Screening Instrument (MNSI).
+    Uses Michigan Neuropathy Screening Instrument (MNSI), see:
+        https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3641573/ (omits monofilament testing)
+        https://medicine.umich.edu/sites/default/files/downloads/MNSI_howto.pdf
+
     """
 
     numb_legs_feet = models.CharField(
@@ -103,6 +114,86 @@ class MichiganNeuropathyScreeningInstrument(
         verbose_name="Have you ever had an amputation?",
         max_length=15,
         choices=YES_NO,
+    )
+
+    normal_appearance_right_foot = models.CharField(
+        verbose_name="Does RIGHT foot appear normal?",
+        max_length=15,
+        choices=YES_NO,
+    )
+
+    abnormal_appearance_observations_right_foot = models.ManyToManyField(
+        AbnormalFootAppearanceObservations,
+        verbose_name="If NO, check all that apply to RIGHT foot?",
+        blank=True,
+    )
+
+    abnormal_appearance_observations_right_foot_other = edc_models.OtherCharField(
+        verbose_name="If other abnormality observed on RIGHT foot, please specify ..."
+    )
+
+    ulceration_right_foot = models.CharField(
+        verbose_name="Ulceration, RIGHT foot?",
+        max_length=15,
+        choices=ULCERATION_CHOICES,
+    )
+
+    ankle_reflexes_right_foot = models.CharField(
+        verbose_name="Ankle reflexes, RIGHT foot?",
+        max_length=15,
+        choices=ANKLE_REFLEX_CHOICES,
+    )
+
+    vibration_perception_right_toe = models.CharField(
+        verbose_name="Vibration perception at great toe, RIGHT foot?",
+        max_length=15,
+        choices=VIBRATION_PERCEPTION_CHOICES,
+    )
+
+    monofilament_right_foot = models.CharField(
+        verbose_name="Monofilament, RIGHT foot?",
+        max_length=15,
+        choices=MONOFILAMENT_CHOICES,
+    )
+
+    normal_appearance_left_foot = models.CharField(
+        verbose_name="Does LEFT foot appear normal?",
+        max_length=15,
+        choices=YES_NO,
+    )
+
+    abnormal_appearance_observations_left_foot = models.ManyToManyField(
+        AbnormalFootAppearanceObservations,
+        verbose_name="If NO, check all that apply to LEFT foot?",
+        blank=True,
+    )
+
+    abnormal_appearance_observations_left_foot_other = edc_models.OtherCharField(
+        verbose_name="If other abnormality observed on LEFT foot, please specify ..."
+    )
+
+    ulceration_left_foot = models.CharField(
+        verbose_name="Ulceration, LEFT foot?",
+        max_length=15,
+        choices=ULCERATION_CHOICES,
+    )
+
+    ankle_reflexes_left_foot = models.CharField(
+        verbose_name="Ankle reflexes, LEFT foot?",
+        max_length=15,
+        choices=ANKLE_REFLEX_CHOICES,
+    )
+
+    vibration_perception_left_toe = models.CharField(
+        verbose_name="Vibration perception at great toe, LEFT foot?",
+        max_length=15,
+        choices=VIBRATION_PERCEPTION_CHOICES,
+    )
+
+    monofilament_left_foot = models.CharField(
+        verbose_name="Monofilament, LEFT foot?",
+        max_length=15,
+        choices=MONOFILAMENT_CHOICES,
     )
 
     class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
