@@ -3,13 +3,13 @@ from edc_constants.choices import YES_NO
 from edc_model import models as edc_models
 
 from meta_lists.models import AbnormalFootAppearanceObservations
-from meta_subject.choices import (
+
+from ..choices import (
     ANKLE_REFLEX_CHOICES,
     MONOFILAMENT_CHOICES,
     ULCERATION_CHOICES,
     VIBRATION_PERCEPTION_CHOICES,
 )
-
 from .model_mixins import CrfModelMixin
 
 
