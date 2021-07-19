@@ -1,13 +1,10 @@
 import os
-import pdb
 import sys
 from pathlib import Path
 
 import environ
 from edc_constants.constants import COMPLETE
 from edc_utils import get_datetime_from_env
-
-from meta_edc.utils import confirm_meta_version
 
 BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 ENV_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
@@ -71,13 +68,16 @@ ENFORCE_RELATED_ACTION_ITEM_EXISTS = False
 
 DEFAULT_APPOINTMENT_TYPE = "hospital"
 
-LOGIN_REDIRECT_URL = env.str("DJANGO_LOGIN_REDIRECT_URL")
+# LOGIN_REDIRECT_URL = env.str("DJANGO_LOGIN_REDIRECT_URL")
+LOGIN_URL = "/accounts/login/"
+LOGOUT_REDIRECT_URL = "/accounts/login/"
 
 SENTRY_ENABLED = env("SENTRY_ENABLED")
 DEFENDER_ENABLED = env("DEFENDER_ENABLED")
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
+    # "django.contrib.admin",
+    "meta_edc.apps.AdminConfig",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -451,7 +451,7 @@ EXPORT_FOLDER = env.str("DJANGO_EXPORT_FOLDER") or os.path.expanduser("~/")
 SIMPLE_HISTORY_PERMISSIONS_ENABLED = env.str("SIMPLE_HISTORY_PERMISSIONS_ENABLED")
 SIMPLE_HISTORY_REVERT_DISABLED = env.str("SIMPLE_HISTORY_REVERT_DISABLED")
 
-FQDN = env.str("DJANGO_FQDN")
+FQDN = env.str("DJANGO_FQDN")  # ???
 INDEX_PAGE = env.str("DJANGO_INDEX_PAGE")
 INDEX_PAGE_LABEL = env.str("DJANGO_INDEX_PAGE_LABEL")
 DJANGO_LOG_FOLDER = env.str("DJANGO_LOG_FOLDER")
@@ -476,7 +476,7 @@ EDC_PROTOCOL = env.str("EDC_PROTOCOL")
 EDC_PROTOCOL_INSTITUTION_NAME = env.str("EDC_PROTOCOL_INSTITUTION_NAME")
 EDC_PROTOCOL_NUMBER = env.str("EDC_PROTOCOL_NUMBER")
 EDC_PROTOCOL_PROJECT_NAME = env.str("EDC_PROTOCOL_PROJECT_NAME")
-EDC_PROTOCOL_PROJECT_NAME = "META3" if META_PHASE == 3 else "META"
+EDC_PROTOCOL_PROJECT_NAME = "META3" if META_PHASE == 3 else "META2"
 EDC_PROTOCOL_STUDY_OPEN_DATETIME = get_datetime_from_env(
     *env.list("EDC_PROTOCOL_STUDY_OPEN_DATETIME")
 )

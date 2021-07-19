@@ -85,7 +85,7 @@ class SubjectConsent(
         super().save(*args, **kwargs)
 
     def natural_key(self):
-        return (self.subject_identifier, self.version)
+        return self.subject_identifier, self.version
 
     def get_subject_screening(self):
         """Returns the subject screening model instance.
@@ -101,7 +101,7 @@ class SubjectConsent(
         """Required for UpdatesOrCreatesRegistrationModelMixin."""
         return "subject_identifier"
 
-    class Meta(ConsentModelMixin.Meta):
+    class Meta(ConsentModelMixin.Meta, BaseUuidModel.Meta):
         unique_together = (
             ("subject_identifier", "version"),
             ("subject_identifier", "screening_identifier"),

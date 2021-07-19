@@ -8,9 +8,9 @@ from edc_reportable import (
     ConversionNotHandled,
 )
 from edc_utils.date import get_utcnow
-from meta_edc.meta_version import PHASE_THREE, PHASE_TWO
 
-from ..constants import (
+from meta_edc.meta_version import PHASE_THREE, PHASE_TWO
+from meta_screening.constants import (
     BMI_IFT_OGTT,
     BMI_IFT_OGTT_INCOMPLETE,
     EGFR_LT_45,
@@ -18,8 +18,9 @@ from ..constants import (
     IFT_OGTT,
     IFT_OGTT_INCOMPLETE,
 )
-from ..models import ScreeningPartOne, ScreeningPartThree, ScreeningPartTwo
-from .options import (
+from meta_screening.models import ScreeningPartOne, ScreeningPartThree, ScreeningPartTwo
+
+from ..options import (
     get_part_one_eligible_options,
     get_part_three_eligible_options,
     get_part_two_eligible_options,

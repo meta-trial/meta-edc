@@ -12,7 +12,7 @@ from .modeladmin import CrfModelAdmin
 def get_other_vitals_fieldset():
     fields = ["temperature"]
     if get_meta_version() == 2:
-        fields.extend("weight", "waist_circumference")
+        fields.extend(["weight", "waist_circumference"])
     return (
         "Part 2: Other vitals",
         {"fields": tuple(fields)},

@@ -1,3 +1,4 @@
+log/
 *.ipynb
 .env
 .etc/

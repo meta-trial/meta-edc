@@ -5,9 +5,17 @@ from django.test import TestCase, tag
 from edc_constants.constants import FEMALE, MALE, NEG, NO, NOT_APPLICABLE, POS, YES
 from edc_utils.date import get_utcnow
 
-from ..forms import ScreeningPartOneForm, ScreeningPartThreeForm, ScreeningPartTwoForm
-from ..models.proxy_models import ScreeningPartOne, ScreeningPartThree, ScreeningPartTwo
-from .options import (
+from meta_screening.forms import (
+    ScreeningPartOneForm,
+    ScreeningPartThreeForm,
+    ScreeningPartTwoForm,
+)
+from meta_screening.models.proxy_models import (
+    ScreeningPartOne,
+    ScreeningPartThree,
+    ScreeningPartTwo,
+)
+from ..options import (
     get_part_one_eligible_options,
     get_part_three_eligible_options,
     get_part_two_eligible_options,

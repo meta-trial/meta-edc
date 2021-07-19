@@ -14,7 +14,7 @@ from django.urls.exceptions import NoReverseMatch
 from django_webtest import WebTest
 from edc_appointment.constants import IN_PROGRESS_APPT, SCHEDULED_APPT
 from edc_appointment.models import Appointment
-from edc_auth import AUDITOR, CLINIC, EVERYONE, EXPORT, LAB, PII, SCREENING, TMG
+from edc_auth import AE, AUDITOR, CLINIC, EVERYONE, EXPORT, LAB, PII, SCREENING, TMG
 from edc_constants.constants import YES
 from edc_dashboard.url_names import url_names
 from edc_sites import add_or_update_django_sites
@@ -50,9 +50,15 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         return login(self, redirect_url="home_url", **kwargs)
 
     @tag("webtest")
+    def test_login(self):
+        self.login(superuser=False, groups=[EVERYONE, AUDITOR])
+
+    @tag("webtest")
     def test_ae(self):
         self.login(superuser=False, groups=[EVERYONE, AUDITOR])
-        self.app.get(reverse("meta_ae:home_url"), user=self.user, status=200)
+        response = self.app.get(reverse("meta_ae:home_url"), user=self.user, status=302)
+        response = response.follow()
+        self.assertIn(f"META{get_meta_version()}: Adverse Events", response)
         self.app.get(
             reverse("edc_adverse_event:ae_home_url"), user=self.user, status=200
         )
@@ -69,7 +75,6 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertNotIn("Subjects", response)
         self.assertNotIn("Specimens", response)
         self.assertNotIn("Adverse events", response)
-        self.assertNotIn("TMG reports", response)
         self.assertNotIn("Pharmacy", response)
         self.assertNotIn("Action items", response)
         self.assertNotIn("Export data", response)
@@ -85,7 +90,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Subjects", response)
         self.assertIn("Specimens", response)
         self.assertIn("Adverse events", response)
-        self.assertIn("TMG", response)
+        self.assertIn("TMG Reports", response)
         self.assertNotIn("Pharmacy", response)
         self.assertIn("Action items", response)
         self.assertNotIn("Export data", response)
@@ -93,19 +98,21 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Switch sites", response)
         self.assertIn("Log out", response)
 
+        response = response.click(linkid="home_list_group_aetmg")
+        self.assertIn("TMG Reports", response)
+
     @tag("webtest")
     def test_home_clinic(self):
-        self.login(superuser=False, groups=[EVERYONE, CLINIC, PII])
+        self.login(superuser=False, groups=[EVERYONE, CLINIC, AE, PII, LAB])
         response = self.app.get(reverse("home_url"), user=self.user, status=200)
         self.assertIn("Screening", response)
         self.assertIn("Subjects", response)
         self.assertIn("Specimens", response)
         self.assertIn("Adverse events", response)
-        self.assertIn("TMG reports", response)
+        self.assertNotIn("TMG Reports", response)
         self.assertNotIn("Pharmacy", response)
         self.assertIn("Action items", response)
         self.assertNotIn("Export data", response)
-        self.assertNotIn("Synchronization", response)
         self.assertIn("Switch sites", response)
         self.assertIn("Log out", response)
 
@@ -117,7 +124,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertNotIn("Subjects", response)
         self.assertNotIn("Specimens", response)
         self.assertNotIn("Adverse events", response)
-        self.assertNotIn("TMG reports", response)
+        self.assertNotIn("TMG Reports", response)
         self.assertNotIn("Pharmacy", response)
         self.assertNotIn("Action items", response)
         self.assertIn("Export data", response)
@@ -133,13 +140,15 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Subjects", response)
         self.assertNotIn("Specimens", response)
         self.assertIn("Adverse events", response)
-        self.assertIn("TMG reports", response)
+        self.assertIn("TMG Reports", response)
         self.assertNotIn("Pharmacy", response)
         self.assertIn("Action items", response)
         self.assertNotIn("Export data", response)
         self.assertNotIn("Synchronization", response)
         self.assertIn("Switch sites", response)
         self.assertIn("Log out", response)
+        response = response.click(linkid="home_list_group_aetmg")
+        self.assertIn("TMG Reports", response)
 
     @tag("webtest")
     def test_home_lab(self):
@@ -149,7 +158,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Subjects", response)
         self.assertIn("Specimens", response)
         self.assertNotIn("Adverse events", response)
-        self.assertNotIn("TMG reports", response)
+        self.assertNotIn("TMG Reports", response)
         self.assertNotIn("Pharmacy", response)
         self.assertNotIn("Action items", response)
         self.assertNotIn("Export data", response)
@@ -164,7 +173,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         screening_page = home_page.click(description="Screening", index=1)
         self.assertNotIn("Add SubjectScreening", screening_page)
 
-    @tag("webtest3")
+    @tag("webtest")
     @override_settings(META_PHASE=2)
     def test_screening_form_phase2(self):
         part_one_data = deepcopy(get_part_one_eligible_options())

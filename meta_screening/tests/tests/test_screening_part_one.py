@@ -1,14 +1,14 @@
 from copy import deepcopy
-from unittest import skipIf
 
 from django.db.utils import IntegrityError
 from django.test import TestCase
 from edc_constants.constants import BLACK, FEMALE, NO, NOT_APPLICABLE, TBD, YES
 from edc_utils.date import get_utcnow
-from meta_edc.meta_version import PHASE_THREE, get_meta_version
 
-from ..models import ScreeningPartOne
-from .options import get_part_one_eligible_options
+from meta_edc.meta_version import PHASE_THREE, get_meta_version
+from meta_screening.models import ScreeningPartOne
+
+from ..options import get_part_one_eligible_options
 
 
 class TestSubjectScreeningPartOneModel(TestCase):

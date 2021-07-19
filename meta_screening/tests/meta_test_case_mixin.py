@@ -10,8 +10,6 @@ from edc_constants.constants import YES
 from edc_facility.import_holidays import import_holidays
 from edc_facility.models import Holiday
 from edc_list_data.site_list_data import site_list_data
-from edc_randomization.models.randomization_list import RandomizationList
-from edc_randomization.randomization_list_importer import RandomizationListImporter
 from edc_sites import add_or_update_django_sites, get_sites_by_country
 from edc_sites.tests.site_test_case_mixin import SiteTestCaseMixin
 from edc_utils.date import get_utcnow
@@ -58,6 +56,7 @@ class MetaTestCaseMixin(SiteTestCaseMixin):
             elif get_meta_version() == PHASE_THREE:
                 RandomizerPhaseThree.import_list(verbose=False)
         import_holidays(test=True)
+        site_list_data.initialize()
         site_list_data.autodiscover()
         GroupPermissionsUpdater(
             codenames_by_group=get_codenames_by_group(), verbose=True

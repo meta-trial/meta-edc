@@ -36,7 +36,7 @@ def get_part_one_eligible_options():
         report_datetime=now,
         selection_method=RANDOM_SAMPLING,
         hospital_identifier="".join(map(str, sample(range(0, 10), 10))),
-        initials=f"{choice(alphas)}{choice(alphas)}",
+        initials=f"{choice(alphas)}{choice(alphas)}".upper(),
         gender=FEMALE,
         age_in_years=25,
         ethnicity=BLACK,

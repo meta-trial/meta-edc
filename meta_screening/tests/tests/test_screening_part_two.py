@@ -4,10 +4,11 @@ from dateutil.relativedelta import relativedelta
 from django.test import TestCase, override_settings, tag
 from edc_constants.constants import NO, TBD, YES
 from edc_utils.date import get_utcnow
-from meta_edc.meta_version import PHASE_THREE, PHASE_TWO
 
-from ..models import ScreeningPartOne, ScreeningPartTwo
-from .options import get_part_one_eligible_options, get_part_two_eligible_options
+from meta_edc.meta_version import PHASE_THREE, PHASE_TWO
+from meta_screening.models import ScreeningPartOne, ScreeningPartTwo
+
+from ..options import get_part_one_eligible_options, get_part_two_eligible_options
 
 
 class TestScreeningPartTwo(TestCase):

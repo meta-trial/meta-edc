@@ -10,14 +10,14 @@ SITE_ID = SiteID(default=20)
 EDC_SITES_UAT_DOMAIN = False
 DEBUG = True
 ALLOWED_HOSTS = [
-    # "hindu-mandal.tz.meta.clinicedc.org",
-    "amana.tz.meta.clinicedc.org",
     "localhost",
+    "mnazi-moja.tz.meta3.clinicedc.org",
+    "mbagala.tz.meta3.clinicedc.org",
+    "mwananyamala.tz.meta3.clinicedc.org",
+    "hindu-mandal.tz.meta3.clinicedc.org",
+    "temeke.tz.meta3.clinicedc.org",
+    "amana.tz.meta3.clinicedc.org",
 ]
-# env.list('DJANGO_ALLOWED_HOSTS')
-# ETC_DIR = os.path.join(BASE_DIR, "tests", "etc")  # noqa
-# KEY_PATH = os.path.join(ETC_DIR, "crypto_fields")
-# # KEY_PATH = os.path.join(BASE_DIR, ".etc", "meta", "crypto_fields")
 
 SECURE_SSL_REDIRECT = False
 

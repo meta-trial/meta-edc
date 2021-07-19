@@ -5,6 +5,8 @@ from django.apps import apps as django_apps
 from django.core.management.color import color_style
 from django.db.models.signals import post_migrate
 
+from meta_edc.meta_version import get_meta_version
+
 from .sites import all_sites, fqdn
 
 style = color_style()
@@ -27,7 +29,7 @@ def post_migrate_update_sites(sender=None, **kwargs):
 class AppConfig(DjangoAppConfig):
     name = "meta_sites"
     default_auto_field = "django.db.models.BigAutoField"
-    verbose_name = "META: Sites"
+    verbose_name = f"META{get_meta_version()}:  Sites"
 
     def ready(self):
         post_migrate.connect(post_migrate_update_sites, sender=self)
