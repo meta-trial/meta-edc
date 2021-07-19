@@ -14,6 +14,9 @@ from .health_economics import HealthEconomics
 from .hepatitis_test import HepatitisTest
 from .malaria_test import MalariaTest
 from .medication_adherence import MedicationAdherence
+from .michigan_neuropathy_screening_instrument import (
+    MichiganNeuropathyScreeningInstrument,
+)
 from .patient_history import PatientHistory
 from .physical_exam import PhysicalExam
 from .subject_requisition import SubjectRequisition
