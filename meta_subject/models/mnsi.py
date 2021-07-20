@@ -13,7 +13,7 @@ from ..choices import (
 from .model_mixins import CrfModelMixin
 
 
-class MichiganNeuropathyScreeningInstrument(
+class Mnsi(
     CrfModelMixin,
     edc_models.BaseUuidModel,
 ):
