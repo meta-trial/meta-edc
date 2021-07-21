@@ -1,13 +1,17 @@
 from django.test import TestCase, tag
 from edc_constants.constants import ABSENT, COMPLETE, NO, NORMAL, OTHER, PRESENT, YES
+from edc_form_validators import FormValidatorTestCaseMixin
 
 from meta_lists.models import AbnormalFootAppearanceObservations
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
-from meta_subject.forms.mnsi_form import MnsiForm
+from meta_subject.forms.mnsi_form import MnsiForm, MnsiFormValidator
 
 
 @tag("mnsi")
-class TestMnsiFormValidator(MetaTestCaseMixin, TestCase):
+class TestMnsiFormValidator(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
+
+    form_validator_default_form_cls = MnsiFormValidator
+
     def setUp(self):
         super().setUp()
         self.subject_visit = self.get_subject_visit()
@@ -67,8 +71,7 @@ class TestMnsiFormValidator(MetaTestCaseMixin, TestCase):
                 m2m_field=m2m_field,
             ):
                 cleaned_data.update({field: NO})
-                form_validator = MnsiForm(data=cleaned_data)
-                form_validator.is_valid()
+                form_validator = self.validate_form_validator(cleaned_data)
                 self.assertIn(m2m_field, form_validator._errors)
                 self.assertIn(
                     "This field is required",
@@ -95,8 +98,7 @@ class TestMnsiFormValidator(MetaTestCaseMixin, TestCase):
                 m2m_field=m2m_field,
             ):
                 cleaned_data.update({field: NO, m2m_field: m2m_field_selection})
-                form_validator = MnsiForm(data=cleaned_data)
-                form_validator.is_valid()
+                form_validator = self.validate_form_validator(cleaned_data)
                 self.assertEqual(form_validator._errors, {})
 
     def test_abnormal_observations_not_applicable_if_foot_appearance_is_normal(self):
@@ -115,8 +117,7 @@ class TestMnsiFormValidator(MetaTestCaseMixin, TestCase):
                 m2m_field=m2m_field,
             ):
                 cleaned_data.update({field: YES, m2m_field: m2m_field_selection})
-                form_validator = MnsiForm(data=cleaned_data)
-                form_validator.is_valid()
+                form_validator = self.validate_form_validator(cleaned_data)
                 self.assertIn(m2m_field, form_validator._errors)
                 self.assertIn(
                     "This field is not required",
@@ -146,8 +147,7 @@ class TestMnsiFormValidator(MetaTestCaseMixin, TestCase):
             ):
                 # Select 'other', then test it's required
                 cleaned_data.update({field: NO, m2m_field: other_observation})
-                form_validator = MnsiForm(data=cleaned_data)
-                form_validator.is_valid()
+                form_validator = self.validate_form_validator(cleaned_data)
                 self.assertIn(m2m_field_other, form_validator._errors)
                 self.assertIn(
                     "This field is required",
@@ -177,8 +177,7 @@ class TestMnsiFormValidator(MetaTestCaseMixin, TestCase):
             ):
                 # Try with normal foot appearance
                 cleaned_data.update({field: YES, m2m_field_other: "Some other value"})
-                form_validator = MnsiForm(data=cleaned_data)
-                form_validator.is_valid()
+                form_validator = self.validate_form_validator(cleaned_data)
                 self.assertIn(m2m_field_other, form_validator._errors)
                 self.assertIn(
                     "This field is not required",
@@ -194,8 +193,7 @@ class TestMnsiFormValidator(MetaTestCaseMixin, TestCase):
                         m2m_field_other: "Some other value",
                     }
                 )
-                form_validator = MnsiForm(data=cleaned_data)
-                form_validator.is_valid()
+                form_validator = self.validate_form_validator(cleaned_data)
                 self.assertIn(m2m_field_other, form_validator._errors)
                 self.assertIn(
                     "This field is not required",
