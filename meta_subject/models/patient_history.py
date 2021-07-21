@@ -10,7 +10,6 @@ from edc_reportable.units import (
     COPIES_PER_MILLILITER,
 )
 
-from meta_edc.meta_version import PHASE_THREE_ONLY
 from meta_lists.models import (
     ArvRegimens,
     DiabetesSymptoms,

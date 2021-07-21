@@ -1,3 +1,4 @@
+from .additional_screening_admin import AdditionalScreeningAdmin
 from .autocomplete_admin import ArvRegimensAdmin
 from .blood_results import (
     BloodResultsFbcAdmin,
@@ -15,6 +16,7 @@ from .malaria_test_admin import MalariaTestAdmin
 from .medication_adherence_admin import MedicationAdherenceAdmin
 from .patient_history_admin import PatientHistoryAdmin
 from .physical_exam_admin import PhysicalExamAdmin
+from .study_drug_refill_admin import StudyDrugRefillAdmin
 from .subject_requisition_admin import SubjectRequisitionAdmin
 from .subject_visit_admin import SubjectVisitAdmin
 from .subject_visit_missed_admin import SubjectVisitMissedAdmin
