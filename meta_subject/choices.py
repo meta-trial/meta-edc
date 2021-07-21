@@ -10,7 +10,7 @@ from edc_constants.constants import (
 from edc_reportable.constants import GRADE3, GRADE4
 from edc_visit_tracking.constants import MISSED_VISIT, SCHEDULED, UNSCHEDULED
 
-from .constants import APPT, APPT_OTHER
+from .constants import APPT, APPT_OTHER, DECREASED, PRESENT_REINFORCEMENT, REDUCED
 
 ACTIVITY_CHOICES = (
     ("working", "Working"),
@@ -21,7 +21,7 @@ ACTIVITY_CHOICES = (
 
 ANKLE_REFLEX_CHOICES = (
     (PRESENT, "Present"),
-    ("present_reinforcement", "Present/Reinforcement"),
+    (PRESENT_REINFORCEMENT, "Present/Reinforcement"),
     (ABSENT, "Absent"),
 )
 
@@ -79,7 +79,7 @@ MALARIA_TEST_CHOICES = (
 
 MONOFILAMENT_CHOICES = (
     (NORMAL, "Normal"),
-    ("reduced", "Reduced"),
+    (REDUCED, "Reduced"),
     (ABSENT, "Absent"),
 )
 
@@ -109,7 +109,7 @@ ULCERATION_CHOICES = ((ABSENT, "Absent"), (PRESENT, "Present"))
 
 VIBRATION_PERCEPTION_CHOICES = (
     (PRESENT, "Present"),
-    ("decreased", "Decreased"),
+    (DECREASED, "Decreased"),
     (ABSENT, "Absent"),
 )
 
