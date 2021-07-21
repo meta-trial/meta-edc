@@ -124,6 +124,7 @@ class Mnsi(
 
     abnormal_appearance_observations_right_foot = models.ManyToManyField(
         AbnormalFootAppearanceObservations,
+        related_name="abnormal_appearance_observations_right_foot",
         verbose_name="If NO, check all that apply to RIGHT foot?",
         blank=True,
     )
@@ -140,7 +141,7 @@ class Mnsi(
 
     ankle_reflexes_right_foot = models.CharField(
         verbose_name="Ankle reflexes, RIGHT foot?",
-        max_length=15,
+        max_length=25,
         choices=ANKLE_REFLEX_CHOICES,
     )
 
@@ -164,6 +165,7 @@ class Mnsi(
 
     abnormal_appearance_observations_left_foot = models.ManyToManyField(
         AbnormalFootAppearanceObservations,
+        related_name="abnormal_appearance_observations_left_foot",
         verbose_name="If NO, check all that apply to LEFT foot?",
         blank=True,
     )
@@ -180,7 +182,7 @@ class Mnsi(
 
     ankle_reflexes_left_foot = models.CharField(
         verbose_name="Ankle reflexes, LEFT foot?",
-        max_length=15,
+        max_length=25,
         choices=ANKLE_REFLEX_CHOICES,
     )
 
