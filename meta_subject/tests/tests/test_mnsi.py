@@ -119,15 +119,56 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
         model = Mnsi(**model_data)
         self.assertEqual(model.patient_history_score(), 13)
 
-    def test_best_case_physical_assessment_returns_min_score_0(self):
+    def test_best_case_physical_assessment_returns_min_score_is_zero(self):
         model = Mnsi(**self.get_best_case_form_data())
         self.assertEqual(model.physical_assessment_score(), 0)
 
-    def test_worst_case_physical_assessment_returns_max_score_10(self):
+    def test_worst_case_physical_assessment_returns_max_score_is_ten(self):
         model_data = self.get_best_case_form_data()
         model_data.update(self.get_worst_case_physical_assessment_data())
         model = Mnsi(**model_data)
         self.assertEqual(model.physical_assessment_score(), 10)
+
+    def test_patient_history_scores_where_YES_awards_one_point(self):
+        one_point_if_yes_response_questions = [
+            "numb_legs_feet",  # Q1
+            "burning_pain_legs_feet",  # Q2
+            "feet_sensitive_touch",  # Q3
+            "prickling_feelings_legs_feet",  # Q5
+            "covers_touch_skin_painful",  # Q6
+            "open_sore_foot_history",  # Q8
+            "diabetic_neuropathy",  # Q9
+            "symptoms_worse_night",  # Q11
+            "legs_hurt_when_walk",  # Q12
+            "skin_cracks_open_feet",  # Q14
+            "amputation",  # Q15
+        ]
+
+        for question in one_point_if_yes_response_questions:
+            with self.subTest(
+                f"Testing '{question}' with 'YES' response is worth 1 point",
+                question=question,
+            ):
+                model_data = self.get_best_case_form_data()
+                model_data[question] = YES
+                model = Mnsi(**model_data)
+                self.assertEqual(model.patient_history_score(), 1)
+
+    def test_patient_history_scores_where_NO_awards_one_point(self):
+        one_point_if_no_response_questions = [
+            "differentiate_hot_cold_water",  # Q7
+            "sense_feet_when_walk",  # Q13
+        ]
+
+        for question in one_point_if_no_response_questions:
+            with self.subTest(
+                f"Testing '{question}' with 'NO' response is worth 1 point",
+                question=question,
+            ):
+                model_data = self.get_best_case_form_data()
+                model_data[question] = NO
+                model = Mnsi(**model_data)
+                self.assertEqual(model.patient_history_score(), 1)
 
 
 @tag("mnsi")
