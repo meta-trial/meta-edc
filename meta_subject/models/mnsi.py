@@ -125,14 +125,14 @@ class Mnsi(
         choices=YES_NO,
     )
 
-    abnormal_appearance_observations_right_foot = models.ManyToManyField(
+    abnormal_obs_right_foot = models.ManyToManyField(
         AbnormalFootAppearanceObservations,
-        related_name="abnormal_appearance_observations_right_foot",
+        related_name="abnormal_obs_right_foot",
         verbose_name="If NO, check all that apply to RIGHT foot?",
         blank=True,
     )
 
-    abnormal_appearance_observations_right_foot_other = edc_models.OtherCharField(
+    abnormal_obs_right_foot_other = edc_models.OtherCharField(
         verbose_name="If other abnormality observed on RIGHT foot, please specify ..."
     )
 
@@ -166,14 +166,14 @@ class Mnsi(
         choices=YES_NO,
     )
 
-    abnormal_appearance_observations_left_foot = models.ManyToManyField(
+    abnormal_obs_left_foot = models.ManyToManyField(
         AbnormalFootAppearanceObservations,
-        related_name="abnormal_appearance_observations_left_foot",
+        related_name="abnormal_obs_left_foot",
         verbose_name="If NO, check all that apply to LEFT foot?",
         blank=True,
     )
 
-    abnormal_appearance_observations_left_foot_other = edc_models.OtherCharField(
+    abnormal_obs_left_foot_other = edc_models.OtherCharField(
         verbose_name="If other abnormality observed on LEFT foot, please specify ..."
     )
 
