@@ -4,6 +4,7 @@ from edc_form_validators import FormValidatorTestCaseMixin
 
 from meta_lists.models import AbnormalFootAppearanceObservations
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
+from meta_subject.constants import DECREASED, PRESENT_REINFORCEMENT, REDUCED
 from meta_subject.forms.mnsi_form import MnsiForm, MnsiFormValidator
 from meta_subject.models import Mnsi
 
@@ -169,6 +170,146 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
                 model_data[question] = NO
                 model = Mnsi(**model_data)
                 self.assertEqual(model.patient_history_score(), 1)
+
+    def test_physical_assessment_abnormal_foot_appearance_awards_one_point(self):
+        normal_foot_appearance_questions = [
+            "normal_appearance_right_foot",
+            "normal_appearance_left_foot",
+        ]
+
+        for question in normal_foot_appearance_questions:
+            with self.subTest(
+                f"Testing '{question}' with 'NO' response is worth 1 point",
+                question=question,
+            ):
+                model_data = self.get_best_case_form_data()
+                model_data[question] = NO
+                model = Mnsi(**model_data)
+                self.assertEqual(model.physical_assessment_score(), 1.0)
+
+    def test_physical_assessment_foot_ulceration_present_awards_one_point(self):
+        ulceration_questions = [
+            "ulceration_right_foot",
+            "ulceration_left_foot",
+        ]
+
+        for question in ulceration_questions:
+            with self.subTest(
+                f"Testing '{question}' with 'PRESENT' response is worth 1 point",
+                question=question,
+            ):
+                model_data = self.get_best_case_form_data()
+                model_data[question] = PRESENT
+                model = Mnsi(**model_data)
+                self.assertEqual(model.physical_assessment_score(), 1.0)
+
+    def test_physical_assessment_ankle_reflexes_present_reinforcement_awards_half_point(
+        self,
+    ):
+        ankle_reflex_questions = [
+            "ankle_reflexes_right_foot",
+            "ankle_reflexes_left_foot",
+        ]
+
+        for question in ankle_reflex_questions:
+            with self.subTest(
+                f"Testing '{question}' with 'PRESENT_REINFORCEMENT' response is worth 0.5 point",
+                question=question,
+            ):
+                model_data = self.get_best_case_form_data()
+                model_data[question] = PRESENT_REINFORCEMENT
+                model = Mnsi(**model_data)
+                self.assertEqual(model.physical_assessment_score(), 0.5)
+
+    def test_physical_assessment_ankle_reflexes_absent_awards_one_point(
+        self,
+    ):
+        ankle_reflex_questions = [
+            "ankle_reflexes_right_foot",
+            "ankle_reflexes_left_foot",
+        ]
+
+        for question in ankle_reflex_questions:
+            with self.subTest(
+                f"Testing '{question}' with 'ABSENT' response is worth 1 point",
+                question=question,
+            ):
+                model_data = self.get_best_case_form_data()
+                model_data[question] = ABSENT
+                model = Mnsi(**model_data)
+                self.assertEqual(model.physical_assessment_score(), 1)
+
+    def test_physical_assessment_vibration_perception_decreased_awards_half_point(
+        self,
+    ):
+        vibration_perception_questions = [
+            "vibration_perception_right_toe",
+            "vibration_perception_left_toe",
+        ]
+
+        for question in vibration_perception_questions:
+            with self.subTest(
+                f"Testing '{question}' with 'DECREASED' response is worth 0.5 point",
+                question=question,
+            ):
+                model_data = self.get_best_case_form_data()
+                model_data[question] = DECREASED
+                model = Mnsi(**model_data)
+                self.assertEqual(model.physical_assessment_score(), 0.5)
+
+    def test_physical_assessment_vibration_perception_absent_awards_one_point(
+        self,
+    ):
+        vibration_perception_questions = [
+            "vibration_perception_right_toe",
+            "vibration_perception_left_toe",
+        ]
+
+        for question in vibration_perception_questions:
+            with self.subTest(
+                f"Testing '{question}' with 'ABSENT' response is worth 1 point",
+                question=question,
+            ):
+                model_data = self.get_best_case_form_data()
+                model_data[question] = ABSENT
+                model = Mnsi(**model_data)
+                self.assertEqual(model.physical_assessment_score(), 1)
+
+    def test_physical_assessment_monofilament_reduced_awards_half_point(
+        self,
+    ):
+        monofilament_questions = [
+            "monofilament_right_foot",
+            "monofilament_left_foot",
+        ]
+
+        for question in monofilament_questions:
+            with self.subTest(
+                f"Testing '{question}' with 'REDUCED' response is worth 0.5 point",
+                question=question,
+            ):
+                model_data = self.get_best_case_form_data()
+                model_data[question] = REDUCED
+                model = Mnsi(**model_data)
+                self.assertEqual(model.physical_assessment_score(), 0.5)
+
+    def test_physical_assessment_monofilament_absent_awards_one_point(
+        self,
+    ):
+        monofilament_questions = [
+            "monofilament_right_foot",
+            "monofilament_left_foot",
+        ]
+
+        for question in monofilament_questions:
+            with self.subTest(
+                f"Testing '{question}' with 'ABSENT' response is worth 0.5 point",
+                question=question,
+            ):
+                model_data = self.get_best_case_form_data()
+                model_data[question] = ABSENT
+                model = Mnsi(**model_data)
+                self.assertEqual(model.physical_assessment_score(), 1)
 
 
 @tag("mnsi")
