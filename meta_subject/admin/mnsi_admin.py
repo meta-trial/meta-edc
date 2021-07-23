@@ -49,6 +49,7 @@ class MnsiAdmin(
             {
                 "description": "Right Foot Physical Assessment (To be completed by health professional)",
                 "fields": (
+                    "examined_right_foot",
                     "normal_appearance_right_foot",
                     "abnormal_appearance_observations_right_foot",
                     "abnormal_appearance_observations_right_foot_other",
@@ -64,6 +65,7 @@ class MnsiAdmin(
             {
                 "description": "Left Foot Physical Assessment (To be completed by health professional)",
                 "fields": (
+                    "examined_left_foot",
                     "normal_appearance_left_foot",
                     "abnormal_appearance_observations_left_foot",
                     "abnormal_appearance_observations_left_foot_other",
@@ -91,6 +93,8 @@ class MnsiAdmin(
         "covers_touch_skin_painful": admin.VERTICAL,
         "diabetic_neuropathy": admin.VERTICAL,
         "differentiate_hot_cold_water": admin.VERTICAL,
+        "examined_left_foot": admin.VERTICAL,
+        "examined_right_foot": admin.VERTICAL,
         "feel_weak": admin.VERTICAL,
         "feet_sensitive_touch": admin.VERTICAL,
         "legs_hurt_when_walk": admin.VERTICAL,

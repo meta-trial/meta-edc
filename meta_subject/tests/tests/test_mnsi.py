@@ -1,5 +1,16 @@
+from typing import Dict
+
 from django.test import TestCase, tag
-from edc_constants.constants import ABSENT, COMPLETE, NO, NORMAL, OTHER, PRESENT, YES
+from edc_constants.constants import (
+    ABSENT,
+    COMPLETE,
+    NO,
+    NORMAL,
+    NOT_APPLICABLE,
+    OTHER,
+    PRESENT,
+    YES,
+)
 from edc_form_validators import FormValidatorTestCaseMixin
 
 from meta_lists.models import AbnormalFootAppearanceObservations
@@ -321,7 +332,7 @@ class TestMnsiFormValidator(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestC
         super().setUp()
         self.subject_visit = self.get_subject_visit()
 
-    def get_valid_form_data(self):
+    def get_valid_form_data(self) -> Dict:
         return {
             # Part 1: Patient History
             "numb_legs_feet": NO,
@@ -340,12 +351,14 @@ class TestMnsiFormValidator(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestC
             "skin_cracks_open_feet": NO,
             "amputation": NO,
             # Part 2a: Physical Assessment - Right Foot
+            "examined_right_foot": YES,
             "normal_appearance_right_foot": YES,
             "ulceration_right_foot": ABSENT,
             "ankle_reflexes_right_foot": PRESENT,
             "vibration_perception_right_toe": PRESENT,
             "monofilament_right_foot": NORMAL,
             # Part 2b: Physical Assessment - Left Foot
+            "examined_left_foot": YES,
             "normal_appearance_left_foot": YES,
             "ulceration_left_foot": ABSENT,
             "ankle_reflexes_left_foot": PRESENT,
@@ -357,11 +370,79 @@ class TestMnsiFormValidator(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestC
             "report_datetime": self.subject_visit.report_datetime,
         }
 
+    @staticmethod
+    def get_foot_questions_with_na_answers(foot_choice: str) -> Dict[str, str]:
+        return {
+            f"normal_appearance_{foot_choice}_foot": NOT_APPLICABLE,
+            f"ulceration_{foot_choice}_foot": NOT_APPLICABLE,
+            f"ankle_reflexes_{foot_choice}_foot": NOT_APPLICABLE,
+            f"vibration_perception_{foot_choice}_toe": NOT_APPLICABLE,
+            f"monofilament_{foot_choice}_foot": NOT_APPLICABLE,
+        }
+
     def test_valid_form_ok(self):
         cleaned_data = self.get_valid_form_data()
         form_validator = MnsiForm(data=cleaned_data)
         form_validator.is_valid()
         self.assertEqual(form_validator._errors, {})
+
+    def test_physical_assessment_questions_applicable_if_foot_examined(self):
+        for foot_choice in ["right", "left"]:
+            for question_field in [
+                f"normal_appearance_{foot_choice}_foot",
+                f"ulceration_{foot_choice}_foot",
+                f"ankle_reflexes_{foot_choice}_foot",
+                f"vibration_perception_{foot_choice}_toe",
+                f"monofilament_{foot_choice}_foot",
+            ]:
+                # Setup test case
+                cleaned_data = self.get_valid_form_data()
+                cleaned_data.update({question_field: NOT_APPLICABLE})
+
+                # Test
+                with self.subTest(foot_choice=foot_choice, question=question_field):
+                    form_validator = self.validate_form_validator(cleaned_data)
+                    self.assertIn(question_field, form_validator._errors)
+                    self.assertIn(
+                        "This field is applicable.",
+                        str(form_validator._errors.get(question_field)),
+                    )
+                    self.assertEqual(
+                        len(form_validator._errors), 1, form_validator._errors
+                    )
+
+    def test_physical_assessment_questions_not_applicable_if_foot_not_examined(self):
+        for foot_choice in ["right", "left"]:
+            for question_field in [
+                f"normal_appearance_{foot_choice}_foot",
+                f"ulceration_{foot_choice}_foot",
+                f"ankle_reflexes_{foot_choice}_foot",
+                f"vibration_perception_{foot_choice}_toe",
+                f"monofilament_{foot_choice}_foot",
+            ]:
+                # Setup test case
+                cleaned_data = self.get_valid_form_data()
+                cleaned_data.update(
+                    self.get_foot_questions_with_na_answers(foot_choice)
+                )
+                cleaned_data.update(
+                    {
+                        f"examined_{foot_choice}_foot": NO,
+                        question_field: self.get_valid_form_data()[question_field],
+                    }
+                )
+
+                # Test
+                with self.subTest(foot_choice=foot_choice, question=question_field):
+                    form_validator = self.validate_form_validator(cleaned_data)
+                    self.assertIn(question_field, form_validator._errors)
+                    self.assertIn(
+                        "This field is not applicable.",
+                        str(form_validator._errors.get(question_field)),
+                    )
+                    self.assertEqual(
+                        len(form_validator._errors), 1, form_validator._errors
+                    )
 
     def test_abnormal_observations_required_if_foot_appearance_not_normal(self):
         cleaned_data = self.get_valid_form_data()

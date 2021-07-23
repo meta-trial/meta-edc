@@ -1,6 +1,6 @@
 from django.db import models
-from edc_constants.choices import YES_NO
-from edc_constants.constants import ABSENT, NO, PRESENT, YES
+from edc_constants.choices import YES_NO, YES_NO_NA
+from edc_constants.constants import ABSENT, NO, NOT_APPLICABLE, PRESENT, YES
 from edc_model import models as edc_models
 
 from meta_lists.models import AbnormalFootAppearanceObservations
@@ -119,10 +119,15 @@ class Mnsi(
         choices=YES_NO,
     )
 
+    examined_right_foot = models.CharField(
+        verbose_name="Was RIGHT foot examined?", max_length=15, choices=YES_NO
+    )
+
     normal_appearance_right_foot = models.CharField(
         verbose_name="Does RIGHT foot appear normal?",
         max_length=15,
-        choices=YES_NO,
+        choices=YES_NO_NA,
+        default=NOT_APPLICABLE,
     )
 
     abnormal_obs_right_foot = models.ManyToManyField(
@@ -140,30 +145,39 @@ class Mnsi(
         verbose_name="Ulceration, RIGHT foot?",
         max_length=15,
         choices=ULCERATION_CHOICES,
+        default=NOT_APPLICABLE,
     )
 
     ankle_reflexes_right_foot = models.CharField(
         verbose_name="Ankle reflexes, RIGHT foot?",
         max_length=25,
         choices=ANKLE_REFLEX_CHOICES,
+        default=NOT_APPLICABLE,
     )
 
     vibration_perception_right_toe = models.CharField(
         verbose_name="Vibration perception at great toe, RIGHT foot?",
         max_length=15,
         choices=VIBRATION_PERCEPTION_CHOICES,
+        default=NOT_APPLICABLE,
     )
 
     monofilament_right_foot = models.CharField(
         verbose_name="Monofilament, RIGHT foot?",
         max_length=15,
         choices=MONOFILAMENT_CHOICES,
+        default=NOT_APPLICABLE,
+    )
+
+    examined_left_foot = models.CharField(
+        verbose_name="Was LEFT foot examined?", max_length=15, choices=YES_NO
     )
 
     normal_appearance_left_foot = models.CharField(
         verbose_name="Does LEFT foot appear normal?",
         max_length=15,
-        choices=YES_NO,
+        choices=YES_NO_NA,
+        default=NOT_APPLICABLE,
     )
 
     abnormal_obs_left_foot = models.ManyToManyField(
@@ -181,24 +195,28 @@ class Mnsi(
         verbose_name="Ulceration, LEFT foot?",
         max_length=15,
         choices=ULCERATION_CHOICES,
+        default=NOT_APPLICABLE,
     )
 
     ankle_reflexes_left_foot = models.CharField(
         verbose_name="Ankle reflexes, LEFT foot?",
         max_length=25,
         choices=ANKLE_REFLEX_CHOICES,
+        default=NOT_APPLICABLE,
     )
 
     vibration_perception_left_toe = models.CharField(
         verbose_name="Vibration perception at great toe, LEFT foot?",
         max_length=15,
         choices=VIBRATION_PERCEPTION_CHOICES,
+        default=NOT_APPLICABLE,
     )
 
     monofilament_left_foot = models.CharField(
         verbose_name="Monofilament, LEFT foot?",
         max_length=15,
         choices=MONOFILAMENT_CHOICES,
+        default=NOT_APPLICABLE,
     )
 
     def patient_history_score(self) -> int:

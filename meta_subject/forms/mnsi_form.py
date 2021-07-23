@@ -1,5 +1,5 @@
 from django import forms
-from edc_constants.constants import NO, OTHER
+from edc_constants.constants import NO, OTHER, YES
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import FormValidator
 
@@ -8,28 +8,49 @@ from ..models import Mnsi
 
 class MnsiFormValidator(FormValidator):
     def clean(self):
-        self.m2m_required_if(
-            response=NO,
-            field="normal_appearance_right_foot",
-            m2m_field="abnormal_appearance_observations_right_foot",
-        )
+        self.clean_physical_assessments()
 
-        self.m2m_other_specify(
-            OTHER,
-            m2m_field="abnormal_appearance_observations_right_foot",
-            field_other="abnormal_appearance_observations_right_foot_other",
-        )
+    def clean_physical_assessments(self):
+        for foot_choice in ["right", "left"]:
+            self.applicable_if(
+                YES,
+                field=f"examined_{foot_choice}_foot",
+                field_applicable=f"normal_appearance_{foot_choice}_foot",
+            )
 
-        self.m2m_required_if(
-            response=NO,
-            field="normal_appearance_left_foot",
-            m2m_field="abnormal_appearance_observations_left_foot",
-        )
-        self.m2m_other_specify(
-            OTHER,
-            m2m_field="abnormal_appearance_observations_left_foot",
-            field_other="abnormal_appearance_observations_left_foot_other",
-        )
+            self.applicable_if(
+                YES,
+                field=f"examined_{foot_choice}_foot",
+                field_applicable=f"ulceration_{foot_choice}_foot",
+            )
+
+            self.applicable_if(
+                YES,
+                field=f"examined_{foot_choice}_foot",
+                field_applicable=f"ankle_reflexes_{foot_choice}_foot",
+            )
+            self.applicable_if(
+                YES,
+                field=f"examined_{foot_choice}_foot",
+                field_applicable=f"vibration_perception_{foot_choice}_toe",
+            )
+            self.applicable_if(
+                YES,
+                field=f"examined_{foot_choice}_foot",
+                field_applicable=f"monofilament_{foot_choice}_foot",
+            )
+
+            self.m2m_required_if(
+                response=NO,
+                field=f"normal_appearance_{foot_choice}_foot",
+                m2m_field=f"abnormal_appearance_observations_{foot_choice}_foot",
+            )
+
+            self.m2m_other_specify(
+                OTHER,
+                m2m_field=f"abnormal_appearance_observations_{foot_choice}_foot",
+                field_other=f"abnormal_appearance_observations_{foot_choice}_foot_other",
+            )
 
 
 class MnsiForm(CrfModelFormMixin, forms.ModelForm):
