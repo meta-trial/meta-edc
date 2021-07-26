@@ -1,4 +1,3 @@
-import pdb
 import sys
 from copy import deepcopy
 from pprint import pprint
@@ -312,8 +311,8 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
                 print(field)
         page = add_screening_page.form.submit()
 
-        if "error" in page:
-            pdb.set_trace()
+        # if "error" in page:
+        #     pdb.set_trace()
         print(get_meta_version())
         self.assertNotIn("error", page)
 
@@ -344,8 +343,8 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             except KeyError:
                 print(field)
         page = add_screening_part_two.form.submit()
-        if "error" in page:
-            pdb.set_trace()
+        # if "error" in page:
+        #     pdb.set_trace()
         self.assertNotIn("error", page)
         # redirects back to listboard
         obj = SubjectScreening.objects.all().last()
@@ -370,8 +369,8 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             except KeyError:
                 print(field)
         page = add_screening_part_three.form.submit()
-        if "error" in page:
-            pdb.set_trace()
+        # if "error" in page:
+        #     pdb.set_trace()
         self.assertNotIn("error", page)
         # redirects back to listboard
         obj = SubjectScreening.objects.all().last()

@@ -60,6 +60,13 @@ class EndOfStudy(
         default=NOT_APPLICABLE,
     )
 
+    comment = models.TextField(
+        verbose_name="Please provide further details if possible",
+        max_length=500,
+        blank=True,
+        null=True,
+    )
+
     class Meta(OffScheduleModelMixin.Meta):
         verbose_name = "End of Study"
         verbose_name_plural = "End of Study"

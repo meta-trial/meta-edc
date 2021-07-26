@@ -35,6 +35,7 @@ class EndOfStudyAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin):
                     "other_offschedule_reason",
                     "ltfu_date",
                     "death_date",
+                    "comment",
                 )
             },
         ],
