@@ -17,16 +17,13 @@ from meta_lists.models import AbnormalFootAppearanceObservations
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_subject.constants import DECREASED, PRESENT_REINFORCEMENT, REDUCED
 from meta_subject.forms.mnsi_form import MnsiForm, MnsiFormValidator
+from meta_subject.mnsi_calculator import patient_history_score
 from meta_subject.models import Mnsi
 
 
-@tag("mnsi")
-class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
-    def setUp(self):
-        super().setUp()
-        self.subject_visit = self.get_subject_visit()
-
-    def get_best_case_form_data(self):
+@tag("mnsi2")
+class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
+    def get_best_case_answers(self):
         return {
             # Part 1: Patient History
             "numb_legs_feet": NO,
@@ -56,10 +53,6 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
             "ankle_reflexes_left_foot": PRESENT,
             "vibration_perception_left_toe": PRESENT,
             "monofilament_left_foot": NORMAL,
-            # # Other
-            # "crf_status": COMPLETE,
-            "subject_visit": self.subject_visit,
-            # "report_datetime": self.subject_visit.report_datetime,
         }
 
     @staticmethod
@@ -98,6 +91,7 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
             "monofilament_left_foot": ABSENT,
         }
 
+    @tag("mnsi3")
     def test_best_case_patient_history_returns_min_score_0(self):
         model = Mnsi(**self.get_best_case_form_data())
         self.assertEqual(model.patient_history_score(), 0)
@@ -105,14 +99,14 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
         # model.save()
 
     def test_worst_case_patient_history_returns_max_score_13(self):
-        model_data = self.get_best_case_form_data()
+        model_data = self.get_best_case_answers()
         model_data.update(self.get_worst_case_patient_history_data())
         model = Mnsi(**model_data)
         self.assertEqual(model.patient_history_score(), 13)
 
     def test_q4_and_q10_do_not_affect_patient_history_score(self):
         # Best case score should be 0
-        model_data = self.get_best_case_form_data()
+        model_data = self.get_best_case_answers()
         model = Mnsi(**model_data)
         self.assertEqual(model.patient_history_score(), 0)
 
@@ -132,11 +126,11 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
         self.assertEqual(model.patient_history_score(), 13)
 
     def test_best_case_physical_assessment_returns_min_score_is_zero(self):
-        model = Mnsi(**self.get_best_case_form_data())
+        model = Mnsi(**self.get_best_case_answers())
         self.assertEqual(model.physical_assessment_score(), 0)
 
     def test_worst_case_physical_assessment_returns_max_score_is_ten(self):
-        model_data = self.get_best_case_form_data()
+        model_data = self.get_best_case_answers()
         model_data.update(self.get_worst_case_physical_assessment_data())
         model = Mnsi(**model_data)
         self.assertEqual(model.physical_assessment_score(), 10)
@@ -161,7 +155,7 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'YES' response is worth 1 point",
                 question=question,
             ):
-                model_data = self.get_best_case_form_data()
+                model_data = self.get_best_case_answers()
                 model_data[question] = YES
                 model = Mnsi(**model_data)
                 self.assertEqual(model.patient_history_score(), 1)
@@ -177,7 +171,7 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'NO' response is worth 1 point",
                 question=question,
             ):
-                model_data = self.get_best_case_form_data()
+                model_data = self.get_best_case_answers()
                 model_data[question] = NO
                 model = Mnsi(**model_data)
                 self.assertEqual(model.patient_history_score(), 1)
@@ -193,7 +187,7 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'NO' response is worth 1 point",
                 question=question,
             ):
-                model_data = self.get_best_case_form_data()
+                model_data = self.get_best_case_answers()
                 model_data[question] = NO
                 model = Mnsi(**model_data)
                 self.assertEqual(model.physical_assessment_score(), 1.0)
@@ -209,7 +203,7 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'PRESENT' response is worth 1 point",
                 question=question,
             ):
-                model_data = self.get_best_case_form_data()
+                model_data = self.get_best_case_answers()
                 model_data[question] = PRESENT
                 model = Mnsi(**model_data)
                 self.assertEqual(model.physical_assessment_score(), 1.0)
@@ -227,7 +221,7 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'PRESENT_REINFORCEMENT' response is worth 0.5 point",
                 question=question,
             ):
-                model_data = self.get_best_case_form_data()
+                model_data = self.get_best_case_answers()
                 model_data[question] = PRESENT_REINFORCEMENT
                 model = Mnsi(**model_data)
                 self.assertEqual(model.physical_assessment_score(), 0.5)
@@ -245,7 +239,7 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'ABSENT' response is worth 1 point",
                 question=question,
             ):
-                model_data = self.get_best_case_form_data()
+                model_data = self.get_best_case_answers()
                 model_data[question] = ABSENT
                 model = Mnsi(**model_data)
                 self.assertEqual(model.physical_assessment_score(), 1)
@@ -263,7 +257,7 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'DECREASED' response is worth 0.5 point",
                 question=question,
             ):
-                model_data = self.get_best_case_form_data()
+                model_data = self.get_best_case_answers()
                 model_data[question] = DECREASED
                 model = Mnsi(**model_data)
                 self.assertEqual(model.physical_assessment_score(), 0.5)
@@ -281,7 +275,7 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'ABSENT' response is worth 1 point",
                 question=question,
             ):
-                model_data = self.get_best_case_form_data()
+                model_data = self.get_best_case_answers()
                 model_data[question] = ABSENT
                 model = Mnsi(**model_data)
                 self.assertEqual(model.physical_assessment_score(), 1)
@@ -299,7 +293,7 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'REDUCED' response is worth 0.5 point",
                 question=question,
             ):
-                model_data = self.get_best_case_form_data()
+                model_data = self.get_best_case_answers()
                 model_data[question] = REDUCED
                 model = Mnsi(**model_data)
                 self.assertEqual(model.physical_assessment_score(), 0.5)
@@ -317,7 +311,7 @@ class TestMnsiModel(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'ABSENT' response is worth 0.5 point",
                 question=question,
             ):
-                model_data = self.get_best_case_form_data()
+                model_data = self.get_best_case_answers()
                 model_data[question] = ABSENT
                 model = Mnsi(**model_data)
                 self.assertEqual(model.physical_assessment_score(), 1)
