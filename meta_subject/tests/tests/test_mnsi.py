@@ -21,7 +21,7 @@ from meta_subject.mnsi_calculator import patient_history_score
 from meta_subject.models import Mnsi
 
 
-@tag("mnsi2")
+@tag("mnsi")
 class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
     def get_best_case_answers(self):
         return {
@@ -91,9 +91,8 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
             "monofilament_left_foot": ABSENT,
         }
 
-    @tag("mnsi3")
     def test_best_case_patient_history_returns_min_score_0(self):
-        model = Mnsi(**self.get_best_case_form_data())
+        model = Mnsi(**self.get_best_case_answers())
         self.assertEqual(model.patient_history_score(), 0)
         # TODO: ???Do we need to save model too?
         # model.save()
@@ -218,7 +217,8 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
 
         for question in ankle_reflex_questions:
             with self.subTest(
-                f"Testing '{question}' with 'PRESENT_REINFORCEMENT' response is worth 0.5 point",
+                f"Testing '{question}' with 'PRESENT_REINFORCEMENT' response "
+                "is worth 0.5 point",
                 question=question,
             ):
                 model_data = self.get_best_case_answers()

@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from edc_constants.choices import YES_NO, YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE
@@ -66,7 +67,10 @@ class Mnsi(
     )
 
     differentiate_hot_cold_water = models.CharField(
-        verbose_name="When you get into the tub or shower, are you able to tell the hot water from the cold water?",
+        verbose_name=(
+            "When you get into the tub or shower, are you able to tell the hot water from the "
+            "cold water?"
+        ),
         max_length=15,
         choices=YES_NO,
     )
@@ -217,6 +221,18 @@ class Mnsi(
         max_length=15,
         choices=MONOFILAMENT_CHOICES,
         default=NOT_APPLICABLE,
+    )
+
+    calculated_patient_history_score = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(13)],
+        editable=False,
+    )
+
+    calculated_physical_assessment_score = models.DecimalField(
+        max_digits=3,
+        decimal_places=1,
+        validators=[MinValueValidator(0), MaxValueValidator(10.0)],
+        editable=False,
     )
 
     def patient_history_score(self) -> int:

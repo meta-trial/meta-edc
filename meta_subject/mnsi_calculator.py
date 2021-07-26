@@ -12,7 +12,7 @@ def patient_history_score(obj: object) -> int:
     """
     # 1 point added for each 'YES' response for following Qs
     score = [
-        obj.xnumb_legs_feet,  # Q1
+        obj.numb_legs_feet,  # Q1
         obj.burning_pain_legs_feet,  # Q2
         obj.feet_sensitive_touch,  # Q3
         obj.prickling_feelings_legs_feet,  # Q5
@@ -57,7 +57,7 @@ def physical_assessment_score(obj: object) -> float:
         if assessment == PRESENT_REINFORCEMENT:
             score += 0.5
         elif assessment == ABSENT:
-            score += 1
+            score += 1.0
 
     for assessment in [
         obj.vibration_perception_right_toe,
@@ -66,12 +66,12 @@ def physical_assessment_score(obj: object) -> float:
         if assessment == DECREASED:
             score += 0.5
         elif assessment == ABSENT:
-            score += 1
+            score += 1.0
 
     for assessment in [obj.monofilament_right_foot, obj.monofilament_left_foot]:
         if assessment == REDUCED:
             score += 0.5
         elif assessment == ABSENT:
-            score += 1
+            score += 1.0
 
     return float(score)
