@@ -41,7 +41,6 @@ class MnsiAdmin(
                     "sense_feet_when_walk",
                     "skin_cracks_open_feet",
                     "amputation",
-                    "calculated_patient_history_score",
                 ),
             },
         ),
@@ -74,6 +73,15 @@ class MnsiAdmin(
                     "ankle_reflexes_left_foot",
                     "vibration_perception_left_toe",
                     "monofilament_left_foot",
+                ),
+            },
+        ),
+        (
+            "Calculated values",
+            {
+                "classes": ("collapse",),
+                "fields": (
+                    "calculated_patient_history_score",
                     "calculated_physical_assessment_score",
                 ),
             },
@@ -85,6 +93,11 @@ class MnsiAdmin(
     filter_horizontal = (
         "abnormal_appearance_observations_left_foot",
         "abnormal_appearance_observations_right_foot",
+    )
+
+    readonly_fields = (
+        "calculated_patient_history_score",
+        "calculated_physical_assessment_score",
     )
 
     radio_fields = {

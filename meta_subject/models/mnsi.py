@@ -225,14 +225,14 @@ class Mnsi(
 
     calculated_patient_history_score = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(13)],
-        editable=False,
+        null=True,
     )
 
     calculated_physical_assessment_score = models.DecimalField(
         max_digits=3,
         decimal_places=1,
         validators=[MinValueValidator(0), MaxValueValidator(10.0)],
-        editable=False,
+        null=True,
     )
 
     def patient_history_score(self) -> int:
