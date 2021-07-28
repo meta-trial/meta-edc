@@ -1,4 +1,5 @@
 from edc_action_item import Action, site_action_items
+from edc_action_item.site_action_items import AlreadyRegistered
 from edc_adverse_event.constants import AE_INITIAL_ACTION
 from edc_blood_results.action_items import (
     BloodResultsEgfrAction,
@@ -35,11 +36,21 @@ class FollowupExaminationAction(Action):
         return next_actions
 
 
-site_action_items.register(BloodResultsFbcAction)
-site_action_items.register(BloodResultsEgfrAction)
-site_action_items.register(BloodResultsLipidAction)
-site_action_items.register(BloodResultsLftAction)
-site_action_items.register(BloodResultsRftAction)
-site_action_items.register(BloodResultsGluAction)
-site_action_items.register(BloodResultsHba1cAction)
-site_action_items.register(FollowupExaminationAction)
+def register_actions():
+    for action_item_cls in [
+        BloodResultsFbcAction,
+        BloodResultsEgfrAction,
+        BloodResultsLipidAction,
+        BloodResultsLftAction,
+        BloodResultsRftAction,
+        BloodResultsGluAction,
+        BloodResultsHba1cAction,
+        FollowupExaminationAction,
+    ]:
+        try:
+            site_action_items.register(action_item_cls)
+        except AlreadyRegistered:
+            pass
+
+
+register_actions()
