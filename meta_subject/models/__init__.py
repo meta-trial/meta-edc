@@ -15,6 +15,7 @@ from .health_economics import HealthEconomics
 from .hepatitis_test import HepatitisTest
 from .malaria_test import MalariaTest
 from .medication_adherence import MedicationAdherence
+from .mnsi import Mnsi
 from .patient_history import PatientHistory
 from .physical_exam import PhysicalExam
 from .study_drug_refill import StudyDrugRefill
