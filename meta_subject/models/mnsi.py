@@ -154,7 +154,7 @@ class Mnsi(
 
     ankle_reflexes_right_foot = models.CharField(
         verbose_name="Ankle reflexes, RIGHT foot?",
-        max_length=25,
+        max_length=35,
         choices=ANKLE_REFLEX_CHOICES,
         default=NOT_APPLICABLE,
     )
@@ -204,7 +204,7 @@ class Mnsi(
 
     ankle_reflexes_left_foot = models.CharField(
         verbose_name="Ankle reflexes, LEFT foot?",
-        max_length=25,
+        max_length=35,
         choices=ANKLE_REFLEX_CHOICES,
         default=NOT_APPLICABLE,
     )
