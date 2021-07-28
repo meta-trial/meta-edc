@@ -11,6 +11,7 @@ from meta_screening.models import ScreeningPartOne, ScreeningPartTwo
 from ..options import get_part_one_eligible_options, get_part_two_eligible_options
 
 
+@tag("el")
 class TestScreeningPartTwo(TestCase):
     def setUp(self):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
@@ -88,34 +89,5 @@ class TestScreeningPartTwo(TestCase):
 
         self.assertEqual(obj.eligible_part_two, YES)
         self.assertFalse(obj.reasons_ineligible_part_two)
-        self.assertFalse(obj.eligible)
-        self.assertFalse(obj.consented)
-
-    @override_settings(META_PHASE=PHASE_THREE)
-    def test_eligible_phase_three(self):
-
-        obj = ScreeningPartTwo.objects.get(
-            screening_identifier=self.screening_identifier
-        )
-        part_two_eligible_options = deepcopy(get_part_two_eligible_options())
-
-        self.assertEqual(obj.eligible_part_one, YES)
-        self.assertTrue(obj.reasons_ineligible_part_one == "")
-
-        for k, v in part_two_eligible_options.items():
-            setattr(obj, k, v)
-        obj.save()
-
-        self.assertEqual(obj.eligible_part_two, YES)
-        self.assertFalse(obj.reasons_ineligible_part_two)
-        self.assertFalse(obj.eligible)
-        self.assertFalse(obj.consented)
-
-        obj.has_dm = YES
-        obj.on_dm_medication = YES
-        obj.save()
-
-        self.assertEqual(obj.eligible_part_two, NO)
-        self.assertIn("Has Dm|On Dm Medication", obj.reasons_ineligible_part_two)
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)

@@ -1,4 +1,3 @@
-from .additional_screening import AdditionalScreening
 from .blood_results import (
     BloodResultsFbc,
     BloodResultsGlu,
@@ -8,6 +7,7 @@ from .blood_results import (
     BloodResultsRft,
 )
 from .complications import Complications
+from .complications_glycemia import ComplicationsGlycemia
 from .followup_examination import FollowupExamination
 from .followup_vitals import FollowupVitals
 from .glucose import Glucose

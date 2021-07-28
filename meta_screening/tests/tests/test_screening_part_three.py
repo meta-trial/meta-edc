@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-from django.test import TestCase, override_settings
+from django.test import TestCase, override_settings, tag
 from edc_constants.constants import NO, TBD, YES
 from edc_reportable import (
     MICROMOLES_PER_LITER,
@@ -27,6 +27,7 @@ from ..options import (
 )
 
 
+@tag("el")
 class TestScreeningPartThree(TestCase):
     def setUp(self):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())

@@ -1,16 +1,19 @@
 from edc_constants.constants import (
     ABSENT,
     MICROSCOPY,
+    NO,
+    NO_EXAM,
     NORMAL,
     NOT_APPLICABLE,
     OTHER,
     PRESENT,
     RAPID_TEST,
+    YES,
 )
 from edc_reportable.constants import GRADE3, GRADE4
 from edc_visit_tracking.constants import MISSED_VISIT, SCHEDULED, UNSCHEDULED
 
-from .constants import APPT, APPT_OTHER, DECREASED, PRESENT_REINFORCEMENT, REDUCED
+from .constants import APPT, APPT_OTHER, DECREASED, PRESENT_WITH_REINFORCEMENT, REDUCED
 
 ACTIVITY_CHOICES = (
     ("working", "Working"),
@@ -21,7 +24,7 @@ ACTIVITY_CHOICES = (
 
 ANKLE_REFLEX_CHOICES = (
     (PRESENT, "Present"),
-    (PRESENT_REINFORCEMENT, "Present/Reinforcement"),
+    (PRESENT_WITH_REINFORCEMENT, "Present/Reinforcement"),
     (ABSENT, "Absent"),
     (NOT_APPLICABLE, "Not applicable"),
 )
@@ -70,6 +73,7 @@ FUNDOSCOPY_CHOICES = (
     ("pre_proliferative_retinopathy", "Pre-proliferative retinopathy"),
     ("proliferative_retinopathy", "Proliferative retinopathy"),
     ("maculopathy", "Maculopathy"),
+    (NO_EXAM, "Exam not performed"),
 )
 
 MALARIA_TEST_CHOICES = (
@@ -92,6 +96,20 @@ PAYEE_CHOICES = (
     ("free", "Free drugs from the pharmacy"),
     (NOT_APPLICABLE, "Not applicable"),
 )
+
+PRESENT_ABSENT_NOEXAM = (
+    (PRESENT, "Present"),
+    (ABSENT, "Absent"),
+    (NO_EXAM, "Exam not performed"),
+)
+
+PRESENT_ABSENT_NOEXAM_NDS = (
+    (PRESENT, "Present"),
+    (PRESENT_WITH_REINFORCEMENT, "Present with reinforcement"),
+    (ABSENT, "Absent"),
+    (NO_EXAM, "Exam not performed"),
+)
+# 0 = Present   1 = Present with reinforcement   2 = Absent
 
 TRANSPORT_CHOICES = (
     ("bus", "Bus"),
@@ -136,3 +154,9 @@ VISIT_REASON = (
 )
 
 WEIGHT_DETERMINATION = (("estimated", "Estimated"), ("measured", "Measured"))
+
+YES_NO_NO_EXAM = (
+    (YES, YES),
+    (NO, NO),
+    (NO_EXAM, "Exam not performed"),
+)

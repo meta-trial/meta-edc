@@ -4,10 +4,7 @@ from django.conf import settings
 from edc_constants.constants import NO, TBD, YES
 from edc_dashboard.url_names import url_names
 
-from meta_screening.eligibility import (
-    calculate_eligible_final,
-    eligibility_display_label,
-)
+from meta_screening.eligibility import Eligibility
 
 register = template.Library()
 
@@ -79,10 +76,11 @@ def eligibility_button(subject_screening_model_wrapper):
         comment = obj.reasons_ineligible.split("|")
         comment = list(set(comment))
         comment.sort()
-    soup = BeautifulSoup(eligibility_display_label(obj), features="html.parser")
+    eligibility = Eligibility(obj)
+    soup = BeautifulSoup(eligibility.eligibility_display_label, features="html.parser")
     return dict(
         eligible=obj.eligible,
-        eligible_final=calculate_eligible_final(obj),
+        eligible_final=eligibility.calculate_eligible_final(),
         display_label=soup.get_text(),
         comment=comment,
         tooltip=tooltip,

@@ -8,6 +8,7 @@ crfs_prn = FormsCollection(
     Crf(show_order=50, model="meta_subject.bloodresultslipid"),
     Crf(show_order=60, model="meta_subject.bloodresultsrft"),
     Crf(show_order=65, model="meta_subject.glucose"),
+    Crf(show_order=68, model="meta_subject.complicationsglycemia"),
     Crf(show_order=70, model="meta_subject.healtheconomics"),
     Crf(show_order=80, model="meta_subject.malariatest"),
     Crf(show_order=90, model="meta_subject.urinedipsticktest"),
@@ -29,6 +30,7 @@ crfs_missed = FormsCollection(
 crfs_d1 = FormsCollection(
     Crf(show_order=10, model="meta_subject.physicalexam"),
     Crf(show_order=20, model="meta_subject.patienthistory"),
+    Crf(show_order=30, model="meta_subject.complicationsglycemia"),
     Crf(show_order=300, model="meta_subject.bloodresultsfbc"),
     Crf(show_order=310, model="meta_subject.bloodresultslipid"),
     Crf(show_order=320, model="meta_subject.bloodresultslft"),

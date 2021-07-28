@@ -1,4 +1,3 @@
-from .additional_screening_form import AdditionalScreeningForm
 from .blood_results import (
     BloodResultsFbcForm,
     BloodResultsGluForm,
@@ -7,6 +6,7 @@ from .blood_results import (
     BloodResultsLipidForm,
     BloodResultsRftForm,
 )
+from .complications_glycemia_form import ComplicationsGlycemiaForm
 from .followup_examination_form import FollowupExaminationForm
 from .followup_vitals_form import FollowupVitalsForm
 from .glucose_form import GlucoseForm

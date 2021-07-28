@@ -1,7 +1,7 @@
 from copy import deepcopy
 
 from django.db.utils import IntegrityError
-from django.test import TestCase
+from django.test import TestCase, tag
 from edc_constants.constants import BLACK, FEMALE, NO, NOT_APPLICABLE, TBD, YES
 from edc_utils.date import get_utcnow
 
@@ -11,6 +11,7 @@ from meta_screening.models import ScreeningPartOne
 from ..options import get_part_one_eligible_options
 
 
+@tag("el")
 class TestSubjectScreeningPartOneModel(TestCase):
     def test_defaults(self):
         obj = ScreeningPartOne(

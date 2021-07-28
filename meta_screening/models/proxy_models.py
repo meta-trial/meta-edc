@@ -1,21 +1,15 @@
-from ..eligibility import (
-    EligibilityPartOneError,
-    EligibilityPartTwoError,
-    calculate_eligible_part_one,
-    calculate_eligible_part_three,
-    calculate_eligible_part_two,
-    check_eligible_final,
-)
+from ..eligibility import Eligibility, EligibilityPartOneError, EligibilityPartTwoError
 from .subject_screening import SubjectScreening
 
 
 class ScreeningPartOne(SubjectScreening):
     def save(self, *args, **kwargs):
+        eligibility = Eligibility(self)
         try:
-            calculate_eligible_part_one(self)
+            eligibility.calculate_eligible_part_one()
         except EligibilityPartOneError:
             pass
-        check_eligible_final(self)
+        eligibility.check_eligible_final()
         super().save(*args, **kwargs)
 
     class Meta:
@@ -26,11 +20,12 @@ class ScreeningPartOne(SubjectScreening):
 
 class ScreeningPartTwo(SubjectScreening):
     def save(self, *args, **kwargs):
+        eligibility = Eligibility(self)
         try:
-            calculate_eligible_part_two(self)
+            eligibility.calculate_eligible_part_two()
         except EligibilityPartTwoError:
             pass
-        check_eligible_final(self)
+        eligibility.check_eligible_final()
         super().save(*args, **kwargs)
 
     class Meta:
@@ -41,8 +36,9 @@ class ScreeningPartTwo(SubjectScreening):
 
 class ScreeningPartThree(SubjectScreening):
     def save(self, *args, **kwargs):
-        calculate_eligible_part_three(self)
-        check_eligible_final(self)
+        eligibility = Eligibility(self)
+        eligibility.calculate_eligible_part_three()
+        eligibility.check_eligible_final()
         super().save(*args, **kwargs)
 
     class Meta:

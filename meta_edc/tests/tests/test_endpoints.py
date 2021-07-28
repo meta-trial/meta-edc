@@ -16,6 +16,8 @@ from edc_appointment.models import Appointment
 from edc_auth import AE, AUDITOR, CLINIC, EVERYONE, EXPORT, LAB, PII, SCREENING, TMG
 from edc_constants.constants import YES
 from edc_dashboard.url_names import url_names
+from edc_randomization.admin import register_admin
+from edc_randomization.site_randomizers import site_randomizers
 from edc_sites import add_or_update_django_sites
 from edc_test_utils.webtest import login
 from edc_utils import get_utcnow
@@ -23,6 +25,7 @@ from model_bakery import baker
 from webtest.app import AppError
 
 from meta_edc.meta_version import get_meta_version
+from meta_rando.randomizers import RandomizerPhaseThree, RandomizerPhaseTwo
 from meta_screening.models.subject_screening import SubjectScreening
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_screening.tests.options import (
@@ -175,6 +178,11 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
     @tag("webtest")
     @override_settings(META_PHASE=2)
     def test_screening_form_phase2(self):
+        site_randomizers._registry = {}
+        site_randomizers.loaded = False
+        site_randomizers.register(RandomizerPhaseTwo)
+        register_admin()
+
         part_one_data = deepcopy(get_part_one_eligible_options())
         report_datetime = part_one_data.get("report_datetime")
         part_one_data.update(
@@ -237,6 +245,11 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
     @tag("webtest")
     @override_settings(META_PHASE=3)
     def test_screening_form_phase3(self):
+        site_randomizers._registry = {}
+        site_randomizers.loaded = False
+        site_randomizers.register(RandomizerPhaseThree)
+        register_admin()
+
         part_one_data = deepcopy(get_part_one_eligible_options())
         report_datetime = part_one_data.get("report_datetime")
         part_one_data.update(

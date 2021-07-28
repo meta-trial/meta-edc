@@ -6,13 +6,13 @@ from edc_utils import get_utcnow
 from faker import Faker
 from model_bakery.recipe import Recipe
 
-from .models import ScreeningPartOne
+from .models import SubjectScreening
 
 fake = Faker()
 
 
-screeningpartone = Recipe(
-    ScreeningPartOne,
+subjectscreening = Recipe(
+    SubjectScreening,
     report_datetime=get_utcnow() - relativedelta(days=1),
     screening_consent=YES,
     hospital_identifier="111",

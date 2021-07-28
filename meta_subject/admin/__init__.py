@@ -1,4 +1,3 @@
-from .additional_screening_admin import AdditionalScreeningAdmin
 from .autocomplete_admin import ArvRegimensAdmin
 from .blood_results import (
     BloodResultsFbcAdmin,
@@ -7,6 +6,7 @@ from .blood_results import (
     BloodResultsRftAdmin,
 )
 from .complications_admin import ComplicationsAdmin
+from .complications_glycemia_admin import ComplicationsGlycemiaAdmin
 from .followup_examination_admin import FollowupExaminationAdmin
 from .followup_vitals_admin import FollowupVitalsAdmin
 from .glucose_admin import GlucoseAdmin

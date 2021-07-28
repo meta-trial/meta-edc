@@ -1,5 +1,5 @@
 from django.db import models
-from edc_crf.model_mixins import CrfModelMixin
+from edc_crf.crf_model_mixin import CrfModelMixin
 from edc_model import models as edc_models
 from edc_visit_tracking.model_mixins import SubjectVisitMissedModelMixin
 
@@ -13,7 +13,7 @@ class SubjectVisitMissed(
 ):
 
     missed_reasons = models.ManyToManyField(
-        SubjectVisitMissedReasons, blank=True, related_name="+"
+        SubjectVisitMissedReasons, blank=True, related_name="meta_missed_reasons"
     )
 
     class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):

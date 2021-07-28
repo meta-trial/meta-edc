@@ -101,6 +101,7 @@ INSTALLED_APPS = [
     "edc_auth.apps.AppConfig",
     "edc_consent.apps.AppConfig",
     "edc_crf.apps.AppConfig",
+    "edc_reportable.apps.AppConfig",
     "edc_lab.apps.AppConfig",
     "edc_visit_schedule.apps.AppConfig",
     "edc_visit_tracking.apps.AppConfig",
@@ -128,7 +129,6 @@ INSTALLED_APPS = [
     "edc_randomization.apps.AppConfig",
     "edc_reference.apps.AppConfig",
     "edc_registration.apps.AppConfig",
-    "edc_reportable.apps.AppConfig",
     "edc_reports.apps.AppConfig",
     "edc_review_dashboard.apps.AppConfig",
     "edc_sites.apps.AppConfig",
@@ -374,6 +374,8 @@ SUBJECT_REQUISITION_MODEL = env.str("EDC_SUBJECT_REQUISITION_MODEL")
 SUBJECT_VISIT_MODEL = env.str("EDC_SUBJECT_VISIT_MODEL")
 SUBJECT_VISIT_MISSED_MODEL = env.str("EDC_SUBJECT_VISIT_MISSED_MODEL")
 SUBJECT_VISIT_MISSED_REASONS_MODEL = env.str("EDC_SUBJECT_VISIT_MISSED_REASONS_MODEL")
+
+EDC_BLOOD_RESULTS_MODEL_APP_LABEL = "meta_subject"
 
 EDC_NAVBAR_DEFAULT = env("EDC_NAVBAR_DEFAULT")
 

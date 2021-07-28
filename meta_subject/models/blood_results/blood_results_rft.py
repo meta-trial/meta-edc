@@ -7,7 +7,7 @@ from edc_blood_results.model_mixins import (
     UreaModelMixin,
     UricModelMixin,
 )
-from edc_crf.model_mixins import CrfWithActionModelMixin
+from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
 from edc_lab_panel.panels import rft_panel
 from edc_model import models as edc_models
 
