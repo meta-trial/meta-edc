@@ -17,7 +17,11 @@ from meta_lists.models import AbnormalFootAppearanceObservations
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_subject.constants import DECREASED, PRESENT_REINFORCEMENT, REDUCED
 from meta_subject.forms.mnsi_form import MnsiForm, MnsiFormValidator
-from meta_subject.mnsi_calculator import patient_history_score
+from meta_subject.mnsi_calculator import (
+    MnsiCalculator,
+    MnsiPatientHistoryCalculatorError,
+    MnsiPhysicalAssessmentCalculatorError,
+)
 from meta_subject.models import Mnsi
 
 
@@ -42,12 +46,14 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
             "skin_cracks_open_feet": NO,
             "amputation": NO,
             # Part 2a: Physical Assessment - Right Foot
+            "examined_right_foot": YES,
             "normal_appearance_right_foot": YES,
             "ulceration_right_foot": ABSENT,
             "ankle_reflexes_right_foot": PRESENT,
             "vibration_perception_right_toe": PRESENT,
             "monofilament_right_foot": NORMAL,
             # Part 2b: Physical Assessment - Left Foot
+            "examined_left_foot": YES,
             "normal_appearance_left_foot": YES,
             "ulceration_left_foot": ABSENT,
             "ankle_reflexes_left_foot": PRESENT,
@@ -91,48 +97,115 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
             "monofilament_left_foot": ABSENT,
         }
 
-    def test_best_case_patient_history_returns_min_score_0(self):
-        model = Mnsi(**self.get_best_case_answers())
-        self.assertEqual(model.patient_history_score(), 0)
-        # TODO: ???Do we need to save model too?
-        # model.save()
+    def test_calculator_returns_same_scores_for_mnsi_model_and_dict(self):
+        # Test min scores for model and dict match
+        responses = self.get_best_case_answers()
+        model = Mnsi(**responses)
+        model_mnsi_calculator = MnsiCalculator(model)
+        dict_mnsi_calculator = MnsiCalculator(**responses)
 
-    def test_worst_case_patient_history_returns_max_score_13(self):
-        model_data = self.get_best_case_answers()
-        model_data.update(self.get_worst_case_patient_history_data())
-        model = Mnsi(**model_data)
-        self.assertEqual(model.patient_history_score(), 13)
+        self.assertEqual(
+            model_mnsi_calculator.patient_history_score(),
+            dict_mnsi_calculator.patient_history_score(),
+        )
+        self.assertEqual(model_mnsi_calculator.patient_history_score(), 0)
+        self.assertEqual(
+            model_mnsi_calculator.physical_assessment_score(),
+            dict_mnsi_calculator.physical_assessment_score(),
+        )
+        self.assertEqual(model_mnsi_calculator.physical_assessment_score(), 0)
+
+        # Test max scores for model and dict match
+        responses.update(self.get_worst_case_patient_history_data())
+        responses.update(self.get_worst_case_physical_assessment_data())
+        model = Mnsi(**responses)
+        model_mnsi_calculator = MnsiCalculator(model)
+        dict_mnsi_calculator = MnsiCalculator(**responses)
+
+        self.assertEqual(
+            model_mnsi_calculator.patient_history_score(),
+            dict_mnsi_calculator.patient_history_score(),
+        )
+        self.assertEqual(model_mnsi_calculator.patient_history_score(), 13)
+        self.assertEqual(
+            model_mnsi_calculator.physical_assessment_score(),
+            dict_mnsi_calculator.physical_assessment_score(),
+        )
+        self.assertEqual(model_mnsi_calculator.physical_assessment_score(), 10)
+
+    def test_missing_required_field_raises_mnsi_patient_history_calculator_error(
+        self,
+    ):
+        responses = self.get_best_case_answers()
+        responses.pop("amputation")
+        mnsi_calculator = MnsiCalculator(**responses)
+        with self.assertRaises(MnsiPatientHistoryCalculatorError):
+            mnsi_calculator.patient_history_score()
+
+    def test_missing_non_required_fields_does_not_raise_mnsi_patient_history_calculator_error(
+        self,
+    ):
+        responses = self.get_best_case_answers()
+        responses.pop("muscle_cramps_legs_feet")
+        responses.pop("feel_weak")
+        mnsi_calculator = MnsiCalculator(**responses)
+        try:
+            mnsi_calculator.patient_history_score()
+        except MnsiPatientHistoryCalculatorError as exc:
+            self.fail(
+                f"mnsi_calculator.patient_history_score() raised "
+                f"MnsiPatientHistoryCalculatorError unexpectedly.\nDetails: {exc}"
+            )
+
+    def test_missing_required_field_raises_mnsi_physical_assessment_calculator_error(
+        self,
+    ):
+        responses = self.get_best_case_answers()
+        responses.pop("ulceration_left_foot")
+        mnsi_calculator = MnsiCalculator(**responses)
+        with self.assertRaises(MnsiPhysicalAssessmentCalculatorError):
+            mnsi_calculator.physical_assessment_score()
+
+    def test_best_case_patient_history_returns_min_score_of_zero(self):
+        mnsi_calculator = MnsiCalculator(**self.get_best_case_answers())
+        self.assertEqual(mnsi_calculator.patient_history_score(), 0)
+
+    def test_worst_case_patient_history_returns_max_score_of_thirteen(self):
+        responses = self.get_best_case_answers()
+        responses.update(self.get_worst_case_patient_history_data())
+        mnsi_calculator = MnsiCalculator(**responses)
+        self.assertEqual(mnsi_calculator.patient_history_score(), 13)
 
     def test_q4_and_q10_do_not_affect_patient_history_score(self):
         # Best case score should be 0
-        model_data = self.get_best_case_answers()
-        model = Mnsi(**model_data)
-        self.assertEqual(model.patient_history_score(), 0)
+        responses = self.get_best_case_answers()
+        mnsi_calculator = MnsiCalculator(**responses)
+        self.assertEqual(mnsi_calculator.patient_history_score(), 0)
 
         # Best case score should remain 0 after modifying q4 and 10
-        model_data.update({"muscle_cramps_legs_feet": YES, "feel_weak": YES})
-        model = Mnsi(**model_data)
-        self.assertEqual(model.patient_history_score(), 0)
+        responses.update({"muscle_cramps_legs_feet": YES, "feel_weak": YES})
+        mnsi_calculator = MnsiCalculator(**responses)
+        self.assertEqual(mnsi_calculator.patient_history_score(), 0)
 
         # Worst case score should be 13
-        model_data.update(self.get_worst_case_patient_history_data())
-        model = Mnsi(**model_data)
-        self.assertEqual(model.patient_history_score(), 13)
+        responses.update(self.get_worst_case_patient_history_data())
+        mnsi_calculator = MnsiCalculator(**responses)
+        self.assertEqual(mnsi_calculator.patient_history_score(), 13)
 
         # Best case score should remain 13 after modifying q4 and 10
-        model_data.update({"muscle_cramps_legs_feet": NO, "feel_weak": NO})
-        model = Mnsi(**model_data)
-        self.assertEqual(model.patient_history_score(), 13)
+        responses.update({"muscle_cramps_legs_feet": NO, "feel_weak": NO})
+        mnsi_calculator = MnsiCalculator(**responses)
+        self.assertEqual(mnsi_calculator.patient_history_score(), 13)
 
-    def test_best_case_physical_assessment_returns_min_score_is_zero(self):
-        model = Mnsi(**self.get_best_case_answers())
-        self.assertEqual(model.physical_assessment_score(), 0)
+    def test_best_case_physical_assessment_returns_min_score_of_zero(self):
+        mnsi_calculator = MnsiCalculator(**self.get_best_case_answers())
+        self.assertEqual(mnsi_calculator.physical_assessment_score(), 0)
 
-    def test_worst_case_physical_assessment_returns_max_score_is_ten(self):
-        model_data = self.get_best_case_answers()
-        model_data.update(self.get_worst_case_physical_assessment_data())
-        model = Mnsi(**model_data)
-        self.assertEqual(model.physical_assessment_score(), 10)
+    def test_worst_case_physical_assessment_returns_max_score_of_ten(self):
+        responses = self.get_best_case_answers()
+        responses.update(self.get_worst_case_physical_assessment_data())
+        mnsi_calculator = MnsiCalculator(**responses)
+        self.assertEqual(mnsi_calculator.physical_assessment_score(), 10)
 
     def test_patient_history_scores_where_YES_awards_one_point(self):
         one_point_if_yes_response_questions = [
@@ -154,10 +227,10 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'YES' response is worth 1 point",
                 question=question,
             ):
-                model_data = self.get_best_case_answers()
-                model_data[question] = YES
-                model = Mnsi(**model_data)
-                self.assertEqual(model.patient_history_score(), 1)
+                responses = self.get_best_case_answers()
+                responses[question] = YES
+                mnsi_calculator = MnsiCalculator(**responses)
+                self.assertEqual(mnsi_calculator.patient_history_score(), 1)
 
     def test_patient_history_scores_where_NO_awards_one_point(self):
         one_point_if_no_response_questions = [
@@ -170,10 +243,10 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'NO' response is worth 1 point",
                 question=question,
             ):
-                model_data = self.get_best_case_answers()
-                model_data[question] = NO
-                model = Mnsi(**model_data)
-                self.assertEqual(model.patient_history_score(), 1)
+                responses = self.get_best_case_answers()
+                responses[question] = NO
+                mnsi_calculator = MnsiCalculator(**responses)
+                self.assertEqual(mnsi_calculator.patient_history_score(), 1)
 
     def test_physical_assessment_abnormal_foot_appearance_awards_one_point(self):
         normal_foot_appearance_questions = [
@@ -186,10 +259,10 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'NO' response is worth 1 point",
                 question=question,
             ):
-                model_data = self.get_best_case_answers()
-                model_data[question] = NO
-                model = Mnsi(**model_data)
-                self.assertEqual(model.physical_assessment_score(), 1.0)
+                responses = self.get_best_case_answers()
+                responses[question] = NO
+                mnsi_calculator = MnsiCalculator(**responses)
+                self.assertEqual(mnsi_calculator.physical_assessment_score(), 1.0)
 
     def test_physical_assessment_foot_ulceration_present_awards_one_point(self):
         ulceration_questions = [
@@ -202,10 +275,10 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'PRESENT' response is worth 1 point",
                 question=question,
             ):
-                model_data = self.get_best_case_answers()
-                model_data[question] = PRESENT
-                model = Mnsi(**model_data)
-                self.assertEqual(model.physical_assessment_score(), 1.0)
+                responses = self.get_best_case_answers()
+                responses[question] = PRESENT
+                mnsi_calculator = MnsiCalculator(**responses)
+                self.assertEqual(mnsi_calculator.physical_assessment_score(), 1.0)
 
     def test_physical_assessment_ankle_reflexes_present_reinforcement_awards_half_point(
         self,
@@ -221,10 +294,10 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
                 "is worth 0.5 point",
                 question=question,
             ):
-                model_data = self.get_best_case_answers()
-                model_data[question] = PRESENT_REINFORCEMENT
-                model = Mnsi(**model_data)
-                self.assertEqual(model.physical_assessment_score(), 0.5)
+                responses = self.get_best_case_answers()
+                responses[question] = PRESENT_REINFORCEMENT
+                mnsi_calculator = MnsiCalculator(**responses)
+                self.assertEqual(mnsi_calculator.physical_assessment_score(), 0.5)
 
     def test_physical_assessment_ankle_reflexes_absent_awards_one_point(
         self,
@@ -239,10 +312,10 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'ABSENT' response is worth 1 point",
                 question=question,
             ):
-                model_data = self.get_best_case_answers()
-                model_data[question] = ABSENT
-                model = Mnsi(**model_data)
-                self.assertEqual(model.physical_assessment_score(), 1)
+                responses = self.get_best_case_answers()
+                responses[question] = ABSENT
+                mnsi_calculator = MnsiCalculator(**responses)
+                self.assertEqual(mnsi_calculator.physical_assessment_score(), 1)
 
     def test_physical_assessment_vibration_perception_decreased_awards_half_point(
         self,
@@ -257,10 +330,10 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'DECREASED' response is worth 0.5 point",
                 question=question,
             ):
-                model_data = self.get_best_case_answers()
-                model_data[question] = DECREASED
-                model = Mnsi(**model_data)
-                self.assertEqual(model.physical_assessment_score(), 0.5)
+                responses = self.get_best_case_answers()
+                responses[question] = DECREASED
+                mnsi_calculator = MnsiCalculator(**responses)
+                self.assertEqual(mnsi_calculator.physical_assessment_score(), 0.5)
 
     def test_physical_assessment_vibration_perception_absent_awards_one_point(
         self,
@@ -275,10 +348,10 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'ABSENT' response is worth 1 point",
                 question=question,
             ):
-                model_data = self.get_best_case_answers()
-                model_data[question] = ABSENT
-                model = Mnsi(**model_data)
-                self.assertEqual(model.physical_assessment_score(), 1)
+                responses = self.get_best_case_answers()
+                responses[question] = ABSENT
+                mnsi_calculator = MnsiCalculator(**responses)
+                self.assertEqual(mnsi_calculator.physical_assessment_score(), 1)
 
     def test_physical_assessment_monofilament_reduced_awards_half_point(
         self,
@@ -293,10 +366,10 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'REDUCED' response is worth 0.5 point",
                 question=question,
             ):
-                model_data = self.get_best_case_answers()
-                model_data[question] = REDUCED
-                model = Mnsi(**model_data)
-                self.assertEqual(model.physical_assessment_score(), 0.5)
+                responses = self.get_best_case_answers()
+                responses[question] = REDUCED
+                mnsi_calculator = MnsiCalculator(**responses)
+                self.assertEqual(mnsi_calculator.physical_assessment_score(), 0.5)
 
     def test_physical_assessment_monofilament_absent_awards_one_point(
         self,
@@ -311,10 +384,68 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
                 f"Testing '{question}' with 'ABSENT' response is worth 0.5 point",
                 question=question,
             ):
-                model_data = self.get_best_case_answers()
-                model_data[question] = ABSENT
-                model = Mnsi(**model_data)
-                self.assertEqual(model.physical_assessment_score(), 1)
+                responses = self.get_best_case_answers()
+                responses[question] = ABSENT
+                mnsi_calculator = MnsiCalculator(**responses)
+                self.assertEqual(mnsi_calculator.physical_assessment_score(), 1)
+
+    def test_physical_assessment_one_foot_not_examined(
+        self,
+    ):
+        for excluded_foot in ["right", "left"]:
+            with self.subTest(excluded_foot=excluded_foot):
+                # Set worse case responses
+                responses = self.get_best_case_answers()
+                responses.update(self.get_worst_case_physical_assessment_data())
+
+                # Set excluded foot, remove further answers
+                responses[f"examined_{excluded_foot}_foot"] = NO
+                responses.pop(f"normal_appearance_{excluded_foot}_foot")
+                responses.pop(f"ulceration_{excluded_foot}_foot")
+                responses.pop(f"ankle_reflexes_{excluded_foot}_foot")
+                responses.pop(f"vibration_perception_{excluded_foot}_toe")
+                responses.pop(f"monofilament_{excluded_foot}_foot")
+
+                mnsi_calculator = MnsiCalculator(**responses)
+                self.assertEqual(mnsi_calculator.physical_assessment_score(), 5)
+
+    def test_physical_assessment_no_feet_examined_awards_zero_points(
+        self,
+    ):
+        responses = self.get_best_case_answers()
+
+        for excluded_foot in ["right", "left"]:
+            # Set excluded foot, remove further answers
+            responses[f"examined_{excluded_foot}_foot"] = NO
+            responses.pop(f"normal_appearance_{excluded_foot}_foot")
+            responses.pop(f"ulceration_{excluded_foot}_foot")
+            responses.pop(f"ankle_reflexes_{excluded_foot}_foot")
+            responses.pop(f"vibration_perception_{excluded_foot}_toe")
+            responses.pop(f"monofilament_{excluded_foot}_foot")
+
+        mnsi_calculator = MnsiCalculator(**responses)
+        self.assertEqual(mnsi_calculator.physical_assessment_score(), 0)
+
+    def test_physical_assessment_other_responses_ignored_if_foot_not_examined(
+        self,
+    ):
+        for excluded_foot in ["right", "left"]:
+            with self.subTest(excluded_foot=excluded_foot):
+                # Set worse case responses
+                responses = self.get_best_case_answers()
+                responses.update(self.get_worst_case_physical_assessment_data())
+
+                # Set excluded foot, don't remove further answers
+                responses[f"examined_{excluded_foot}_foot"] = NO
+
+                mnsi_calculator = MnsiCalculator(**responses)
+                self.assertEqual(mnsi_calculator.physical_assessment_score(), 5)
+
+        # Test for both feet excluded
+        responses["examined_right_foot"] = NO
+        responses["examined_left_foot"] = NO
+        mnsi_calculator = MnsiCalculator(**responses)
+        self.assertEqual(mnsi_calculator.physical_assessment_score(), 0)
 
 
 @tag("mnsi")
