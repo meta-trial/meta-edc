@@ -46,12 +46,14 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
             "skin_cracks_open_feet": NO,
             "amputation": NO,
             # Part 2a: Physical Assessment - Right Foot
+            "examined_right_foot": YES,
             "normal_appearance_right_foot": YES,
             "ulceration_right_foot": ABSENT,
             "ankle_reflexes_right_foot": PRESENT,
             "vibration_perception_right_toe": PRESENT,
             "monofilament_right_foot": NORMAL,
             # Part 2b: Physical Assessment - Left Foot
+            "examined_left_foot": YES,
             "normal_appearance_left_foot": YES,
             "ulceration_left_foot": ABSENT,
             "ankle_reflexes_left_foot": PRESENT,
@@ -386,6 +388,64 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
                 responses[question] = ABSENT
                 mnsi_calculator = MnsiCalculator(**responses)
                 self.assertEqual(mnsi_calculator.physical_assessment_score(), 1)
+
+    def test_physical_assessment_one_foot_not_examined(
+        self,
+    ):
+        for excluded_foot in ["right", "left"]:
+            with self.subTest(excluded_foot=excluded_foot):
+                # Set worse case responses
+                responses = self.get_best_case_answers()
+                responses.update(self.get_worst_case_physical_assessment_data())
+
+                # Set excluded foot, remove further answers
+                responses[f"examined_{excluded_foot}_foot"] = NO
+                responses.pop(f"normal_appearance_{excluded_foot}_foot")
+                responses.pop(f"ulceration_{excluded_foot}_foot")
+                responses.pop(f"ankle_reflexes_{excluded_foot}_foot")
+                responses.pop(f"vibration_perception_{excluded_foot}_toe")
+                responses.pop(f"monofilament_{excluded_foot}_foot")
+
+                mnsi_calculator = MnsiCalculator(**responses)
+                self.assertEqual(mnsi_calculator.physical_assessment_score(), 5)
+
+    def test_physical_assessment_no_feet_examined_awards_zero_points(
+        self,
+    ):
+        responses = self.get_best_case_answers()
+
+        for excluded_foot in ["right", "left"]:
+            # Set excluded foot, remove further answers
+            responses[f"examined_{excluded_foot}_foot"] = NO
+            responses.pop(f"normal_appearance_{excluded_foot}_foot")
+            responses.pop(f"ulceration_{excluded_foot}_foot")
+            responses.pop(f"ankle_reflexes_{excluded_foot}_foot")
+            responses.pop(f"vibration_perception_{excluded_foot}_toe")
+            responses.pop(f"monofilament_{excluded_foot}_foot")
+
+        mnsi_calculator = MnsiCalculator(**responses)
+        self.assertEqual(mnsi_calculator.physical_assessment_score(), 0)
+
+    def test_physical_assessment_other_responses_ignored_if_foot_not_examined(
+        self,
+    ):
+        for excluded_foot in ["right", "left"]:
+            with self.subTest(excluded_foot=excluded_foot):
+                # Set worse case responses
+                responses = self.get_best_case_answers()
+                responses.update(self.get_worst_case_physical_assessment_data())
+
+                # Set excluded foot, don't remove further answers
+                responses[f"examined_{excluded_foot}_foot"] = NO
+
+                mnsi_calculator = MnsiCalculator(**responses)
+                self.assertEqual(mnsi_calculator.physical_assessment_score(), 5)
+
+        # Test for both feet excluded
+        responses["examined_right_foot"] = NO
+        responses["examined_left_foot"] = NO
+        mnsi_calculator = MnsiCalculator(**responses)
+        self.assertEqual(mnsi_calculator.physical_assessment_score(), 0)
 
 
 @tag("mnsi")

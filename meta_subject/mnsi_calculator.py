@@ -72,12 +72,30 @@ class MnsiCalculator:
             https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3641573/#S6title
             (plus up to 2 extra points awarded for monofilament assessments)
         """
+        score = 0.0
+        feet_to_score = []
         try:
-            score = float(self._get_appearance_points())
-            score += self._get_ulceration_points()
-            score += self._get_ankle_reflex_points()
-            score += self._get_vibration_perception_points()
-            score += self._get_monofilament_points()
+            if self.responses["examined_left_foot"] == YES:
+                feet_to_score.append("left")
+            if self.responses["examined_right_foot"] == YES:
+                feet_to_score.append("right")
+
+            for foot in feet_to_score:
+                score += self._get_appearance_points(
+                    self.responses[f"normal_appearance_{foot}_foot"]
+                )
+                score += self._get_ulceration_points(
+                    self.responses[f"ulceration_{foot}_foot"]
+                )
+                score += self._get_ankle_reflex_points(
+                    self.responses[f"ankle_reflexes_{foot}_foot"]
+                )
+                score += self._get_vibration_perception_points(
+                    self.responses[f"vibration_perception_{foot}_toe"]
+                )
+                score += self._get_monofilament_points(
+                    self.responses[f"monofilament_{foot}_foot"]
+                )
 
         except KeyError as exc:
             raise MnsiPhysicalAssessmentCalculatorError(
@@ -89,50 +107,34 @@ class MnsiCalculator:
 
         return score
 
-    def _get_appearance_points(self) -> int:
-        return [
-            self.responses["normal_appearance_right_foot"],
-            self.responses["normal_appearance_left_foot"],
-        ].count(NO)
+    @staticmethod
+    def _get_appearance_points(response: str) -> int:
+        return 1 if response == NO else 0
 
-    def _get_ulceration_points(self) -> int:
-        return [
-            self.responses["ulceration_right_foot"],
-            self.responses["ulceration_left_foot"],
-        ].count(PRESENT)
+    @staticmethod
+    def _get_ulceration_points(response: str) -> int:
+        return 1 if response == PRESENT else 0
 
-    def _get_ankle_reflex_points(self) -> float:
-        score = 0.0
-        for assessment in [
-            self.responses["ankle_reflexes_right_foot"],
-            self.responses["ankle_reflexes_left_foot"],
-        ]:
-            if assessment == PRESENT_REINFORCEMENT:
-                score += 0.5
-            elif assessment == ABSENT:
-                score += 1.0
-        return score
+    @staticmethod
+    def _get_ankle_reflex_points(response: str) -> float:
+        if response == PRESENT_REINFORCEMENT:
+            return 0.5
+        elif response == ABSENT:
+            return 1.0
+        return 0.0
 
-    def _get_vibration_perception_points(self) -> float:
-        score = 0.0
-        for assessment in [
-            self.responses["vibration_perception_right_toe"],
-            self.responses["vibration_perception_left_toe"],
-        ]:
-            if assessment == DECREASED:
-                score += 0.5
-            elif assessment == ABSENT:
-                score += 1.0
-        return score
+    @staticmethod
+    def _get_vibration_perception_points(response: str) -> float:
+        if response == DECREASED:
+            return 0.5
+        elif response == ABSENT:
+            return 1.0
+        return 0.0
 
-    def _get_monofilament_points(self) -> float:
-        score = 0.0
-        for assessment in [
-            self.responses["monofilament_right_foot"],
-            self.responses["monofilament_left_foot"],
-        ]:
-            if assessment == REDUCED:
-                score += 0.5
-            elif assessment == ABSENT:
-                score += 1.0
-        return score
+    @staticmethod
+    def _get_monofilament_points(response: str) -> float:
+        if response == REDUCED:
+            return 0.5
+        elif response == ABSENT:
+            return 1.0
+        return 0.0
