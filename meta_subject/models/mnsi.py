@@ -12,7 +12,7 @@ from ..choices import (
     ULCERATION_CHOICES,
     VIBRATION_PERCEPTION_CHOICES,
 )
-from ..mnsi_calculator import patient_history_score, physical_assessment_score
+from ..mnsi_calculator import MnsiCalculator
 from .model_mixins import CrfModelMixin
 
 
@@ -226,6 +226,7 @@ class Mnsi(
     calculated_patient_history_score = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(13)],
         null=True,
+        blank=True,
     )
 
     calculated_physical_assessment_score = models.DecimalField(
@@ -233,17 +234,15 @@ class Mnsi(
         decimal_places=1,
         validators=[MinValueValidator(0), MaxValueValidator(10.0)],
         null=True,
+        blank=True,
     )
 
-    def patient_history_score(self) -> int:
-        return patient_history_score(self)
-
-    def physical_assessment_score(self) -> float:
-        return physical_assessment_score(self)
-
     def save(self, *args, **kwargs):
-        # TODO: Save calculated patient history and physical assessment scores with model
-
+        mnsi_calculator = MnsiCalculator(model_obj=self)
+        self.calculated_patient_history_score = mnsi_calculator.patient_history_score()
+        self.calculated_physical_assessment_score = (
+            mnsi_calculator.physical_assessment_score()
+        )
         super().save(*args, **kwargs)
 
     class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
