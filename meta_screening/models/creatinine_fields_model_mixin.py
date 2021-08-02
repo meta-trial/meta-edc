@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.safestring import mark_safe
-from edc_lab.choices import SERUM_CREATININE_UNITS
+from edc_constants.constants import NOT_APPLICABLE
+from edc_lab.choices import SERUM_CREATININE_UNITS_NA
 
 
 class CreatinineModelFieldsMixin(models.Model):
@@ -16,9 +17,8 @@ class CreatinineModelFieldsMixin(models.Model):
     creatinine_units = models.CharField(
         verbose_name="Units (creatinine)",
         max_length=15,
-        choices=SERUM_CREATININE_UNITS,
-        null=True,
-        blank=True,
+        choices=SERUM_CREATININE_UNITS_NA,
+        default=NOT_APPLICABLE,
     )
 
     class Meta:
