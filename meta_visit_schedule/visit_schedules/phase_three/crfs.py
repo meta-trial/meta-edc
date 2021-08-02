@@ -1,5 +1,6 @@
 from edc_visit_schedule import Crf, FormsCollection
 
+
 crfs_prn = FormsCollection(
     Crf(show_order=10, model="meta_subject.bloodresultsfbc"),
     Crf(show_order=20, model="meta_subject.bloodresultsglu"),
@@ -8,7 +9,7 @@ crfs_prn = FormsCollection(
     Crf(show_order=50, model="meta_subject.bloodresultslipid"),
     Crf(show_order=60, model="meta_subject.bloodresultsrft"),
     Crf(show_order=65, model="meta_subject.glucose"),
-    Crf(show_order=68, model="meta_subject.complicationsglycemia"),
+    # Crf(show_order=68, model="meta_subject.complicationsglycemia"),
     Crf(show_order=70, model="meta_subject.healtheconomics"),
     Crf(show_order=80, model="meta_subject.malariatest"),
     Crf(show_order=90, model="meta_subject.urinedipsticktest"),
@@ -19,6 +20,15 @@ crfs_unscheduled = FormsCollection(
     Crf(show_order=10, model="meta_subject.followupvitals"),
     Crf(show_order=20, model="meta_subject.followupexamination"),
     Crf(show_order=30, model="meta_subject.medicationadherence"),
+    Crf(show_order=100, model="meta_subject.bloodresultsfbc", required=False),
+    Crf(show_order=200, model="meta_subject.bloodresultsglu", required=False),
+    Crf(show_order=300, model="meta_subject.bloodresultshba1c", required=False),
+    Crf(show_order=400, model="meta_subject.bloodresultslft", required=False),
+    Crf(show_order=500, model="meta_subject.bloodresultslipid", required=False),
+    Crf(show_order=600, model="meta_subject.bloodresultsrft", required=False),
+    Crf(show_order=650, model="meta_subject.glucose", required=False),
+    Crf(show_order=800, model="meta_subject.malariatest", required=False),
+    Crf(show_order=900, model="meta_subject.urinedipsticktest", required=False),
     name="unscheduled",
 )
 
@@ -30,7 +40,6 @@ crfs_missed = FormsCollection(
 crfs_d1 = FormsCollection(
     Crf(show_order=10, model="meta_subject.physicalexam"),
     Crf(show_order=20, model="meta_subject.patienthistory"),
-    Crf(show_order=30, model="meta_subject.complicationsglycemia"),
     Crf(show_order=300, model="meta_subject.bloodresultsfbc"),
     Crf(show_order=310, model="meta_subject.bloodresultslipid"),
     Crf(show_order=320, model="meta_subject.bloodresultslft"),
@@ -46,6 +55,7 @@ crfs_d1 = FormsCollection(
 crfs_w2 = FormsCollection(
     Crf(show_order=10, model="meta_subject.followupvitals"),
     Crf(show_order=15, model="meta_subject.followupexamination"),
+    Crf(show_order=30, model="meta_subject.mnsi"),
     Crf(show_order=320, model="meta_subject.healtheconomics"),
     Crf(show_order=400, model="meta_subject.studydrugrefill"),
     Crf(show_order=410, model="meta_subject.medicationadherence"),
@@ -55,6 +65,8 @@ crfs_w2 = FormsCollection(
 crfs_1m = FormsCollection(
     Crf(show_order=10, model="meta_subject.followupvitals"),
     Crf(show_order=15, model="meta_subject.followupexamination"),
+    Crf(show_order=30, model="meta_subject.mnsi", required=False),
+    Crf(show_order=320, model="meta_subject.healtheconomics", required=False),
     Crf(show_order=400, model="meta_subject.studydrugrefill"),
     Crf(show_order=410, model="meta_subject.medicationadherence"),
     name="1m",

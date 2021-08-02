@@ -13,6 +13,8 @@ from .model_mixins import CrfModelMixin
 
 class ComplicationsGlycemia(CrfModelMixin, edc_models.BaseUuidModel):
 
+    """Not used"""
+
     # eye examination
     cataracts = models.CharField(
         verbose_name="Presence of cataracts", max_length=15, choices=YES_NO_NO_EXAM
