@@ -32,16 +32,6 @@ class PartOneFieldsModelMixin(models.Model):
 
     hospital_identifier = EncryptedCharField(unique=True, blank=False)
 
-    initials = EncryptedCharField(
-        validators=[
-            RegexValidator("[A-Z]{1,3}", "Invalid format"),
-            MinLengthValidator(2),
-            MaxLengthValidator(3),
-        ],
-        help_text="Use UPPERCASE letters only. May be 2 or 3 letters.",
-        blank=False,
-    )
-
     ethnicity = models.CharField(
         max_length=15, choices=ETHNICITY, help_text="Used for eGFR calculation"
     )
