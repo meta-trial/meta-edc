@@ -1,5 +1,3 @@
-from importlib import import_module
-
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.views import LogoutView
@@ -7,34 +5,13 @@ from django.urls.conf import include, path, re_path
 from django.views.defaults import page_not_found, server_error  # noqa
 from django.views.generic import RedirectView
 from edc_dashboard.views import AdministrationView
+from edc_utils.paths_for_urlpatterns import paths_for_urlpatterns
 
 from .views import HomeView
 
 
 def trigger_error(request):
     division_by_zero = 1 / 0  # noqa
-
-
-def paths_for_urlpatterns(app_name):
-    paths = []
-    try:
-        admin_site = import_module(f"{app_name}.admin_site")
-    except ModuleNotFoundError:
-        pass
-    else:
-        # for name in ["login", "logout", "password_change", "password_change_done"]:
-        #     paths.append(
-        #         path(
-        #             f"{app_name}/admin/{name}/",
-        #             RedirectView.as_view(url=settings.LOGIN_URL),
-        #             name=name,
-        #         )
-        #     )
-        paths.append(
-            path(f"{app_name}/admin/", getattr(admin_site, f"{app_name}_admin").urls)
-        )
-    paths.append(path(f"{app_name}/", include(f"{app_name}.urls")))
-    return paths
 
 
 handler403 = "edc_dashboard.views.edc_handler403"
