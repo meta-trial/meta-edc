@@ -31,14 +31,14 @@ from edc_auth.codenames import (
 from edc_auth.group_permissions_updater import GroupPermissionsUpdater
 from edc_auth.utils import compare_codenames_for_group
 
-from ..codenames import (
+from meta_auth.codenames import (
     auditor,
     clinic,
     screening,
     unblinding_requestors,
     unblinding_reviewers,
 )
-from ..codenames_by_group import get_codenames_by_group
+from meta_auth.codenames_by_group import get_codenames_by_group
 
 
 class TestPermissions(TestCase):

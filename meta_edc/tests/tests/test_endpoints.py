@@ -1,6 +1,7 @@
+import pdb
 import sys
 from copy import deepcopy
-from pprint import pprint
+from unittest import skipIf
 
 from dateutil.relativedelta import relativedelta
 from django.apps import apps as django_apps
@@ -67,7 +68,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.app.get(
             reverse("edc_adverse_event:tmg_home_url"), user=self.user, status=200
         )
-        self.app.get(reverse("edc_data_manager:home_url"), user=self.user, status=200)
+        self.app.get(reverse("edc_data_manager:home_url"), user=self.user, status=302)
 
     @tag("webtest")
     def test_home_everyone(self):
@@ -168,15 +169,9 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Switch sites", response)
         self.assertIn("Log out", response)
 
+    @skipIf(get_meta_version() != 2, "not version 2")
     @tag("webtest")
-    def test_screening_no_pii(self):
-        self.login(superuser=False, groups=[EVERYONE, CLINIC])
-        home_page = self.app.get(reverse("home_url"), user=self.user, status=200)
-        screening_page = home_page.click(description="Screening", index=1)
-        self.assertNotIn("Add SubjectScreening", screening_page)
-
-    @tag("webtest")
-    @override_settings(META_PHASE=2)
+    # @override_settings(META_PHASE=2)
     def test_screening_form_phase2(self):
         site_randomizers._registry = {}
         site_randomizers.loaded = False
@@ -192,7 +187,6 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
                 continue_part_two=YES,
             )
         )
-        pprint(part_one_data)
         (
             home_page,
             add_screening_part_two,
@@ -242,8 +236,9 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn(screening_identifier, screening_listboard_page)
         self.assertIn("Consent", screening_listboard_page)
 
+    @skipIf(get_meta_version() != 3, "not version 3")
     @tag("webtest")
-    @override_settings(META_PHASE=3)
+    # @override_settings(META_PHASE=3)
     def test_screening_form_phase3(self):
         site_randomizers._registry = {}
         site_randomizers.loaded = False
@@ -327,6 +322,12 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         # if "error" in page:
         #     pdb.set_trace()
         print(get_meta_version())
+        from bs4 import BeautifulSoup
+
+        soup = BeautifulSoup(page.content, "html.parser")
+        print(soup.prettify())
+        pdb.set_trace()
+
         self.assertNotIn("error", page)
 
         # redirects back to listboard
