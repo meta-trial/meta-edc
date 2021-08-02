@@ -8,8 +8,8 @@ After=network.target
 [Service]
 User=edc
 Group=www-data
-WorkingDirectory=/home/edc/app
-ExecStart=/home/edc/miniconda3/envs/edc/bin/gunicorn \
+WorkingDirectory=/home/live/app
+ExecStart=/home/live/miniconda3/envs/edc/bin/gunicorn \
     --access-logfile - \
     --workers 3 \
     --timeout=300 \
