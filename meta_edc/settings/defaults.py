@@ -118,6 +118,7 @@ INSTALLED_APPS = [
     "edc_identifier.apps.AppConfig",
     "edc_locator.apps.AppConfig",
     "edc_metadata.apps.AppConfig",
+    "edc_fields_admin.apps.AppConfig",
     "edc_model_admin.apps.AppConfig",
     "edc_navbar.apps.AppConfig",
     "edc_notification.apps.AppConfig",
