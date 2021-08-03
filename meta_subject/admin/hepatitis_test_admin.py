@@ -44,3 +44,10 @@ class HepatitisTestAdmin(CrfModelAdmin):
         ),
         audit_fieldset_tuple,
     )
+
+    radio_fields = {
+        "hbsag_performed": admin.VERTICAL,
+        "hbsag": admin.VERTICAL,
+        "hcv_performed": admin.VERTICAL,
+        "hcv": admin.VERTICAL,
+    }
