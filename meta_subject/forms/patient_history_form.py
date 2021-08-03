@@ -88,10 +88,10 @@ class PatientHistoryFormValidator(FormValidator):
             OTHER, m2m_field="oi_prophylaxis", field_other="other_oi_prophylaxis"
         )
 
-        self.applicable_if(
+        self.required_if(
             YES,
             field="on_hypertension_treatment",
-            field_applicable="hypertension_treatment",
+            field_required="hypertension_treatment",
         )
 
         self.m2m_other_specify(
