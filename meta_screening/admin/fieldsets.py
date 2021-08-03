@@ -1,5 +1,7 @@
 from django.utils.safestring import mark_safe
 
+from meta_edc.meta_version import get_meta_version
+
 from ..forms import (
     get_part_one_fields,
     get_part_three_fields,
@@ -84,20 +86,35 @@ comments_fieldset = (
     },
 )
 
-calculated_values_fieldset = (
-    "Calculated values",
-    {
-        "classes": ("collapse",),
-        "fields": (
-            "calculated_bmi_value",
-            "converted_ifg_value",
-            "converted_ogtt_value",
-            "converted_creatinine_value",
-            "calculated_egfr_value",
-            "inclusion_a",
-            "inclusion_b",
-            "inclusion_c",
-            "inclusion_d",
-        ),
-    },
-)
+if get_meta_version() == 2:
+    calculated_values_fieldset = (
+        "Calculated values",
+        {
+            "classes": ("collapse",),
+            "fields": (
+                "calculated_bmi_value",
+                "converted_ifg_value",
+                "converted_ogtt_value",
+                "converted_creatinine_value",
+                "calculated_egfr_value",
+                "inclusion_a",
+                "inclusion_b",
+                "inclusion_c",
+                "inclusion_d",
+            ),
+        },
+    )
+
+if get_meta_version() == 3:
+    calculated_values_fieldset = (
+        "Calculated values",
+        {
+            "classes": ("collapse",),
+            "fields": (
+                "converted_ifg_value",
+                "converted_ogtt_value",
+                "converted_creatinine_value",
+                "calculated_egfr_value",
+            ),
+        },
+    )
