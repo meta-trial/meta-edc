@@ -88,16 +88,28 @@ class PatientHistoryFormValidator(FormValidator):
             OTHER, m2m_field="oi_prophylaxis", field_other="other_oi_prophylaxis"
         )
 
-        self.required_if(
+        self.applicable_if(
             YES,
             field="on_hypertension_treatment",
-            field_required="hypertension_treatment",
+            field_applicable="hypertension_treatment",
         )
 
         self.m2m_other_specify(
             OTHER,
             m2m_field="hypertension_treatment",
             field_other="other_hypertension_treatment",
+        )
+
+        self.applicable_if(
+            YES,
+            field="dyslipidaemia_diagnosis",
+            field_applicable="on_dyslipidaemia_treatment",
+        )
+
+        self.applicable_if(
+            YES,
+            field="on_dyslipidaemia_treatment",
+            field_applicable="dyslipidaemia_rx",
         )
 
         self.applicable_if(NO, field="current_smoker", field_applicable="former_smoker")

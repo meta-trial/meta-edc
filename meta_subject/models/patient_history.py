@@ -127,7 +127,7 @@ class PatientHistory(CrfModelMixin, edc_models.BaseUuidModel):
     on_hypertension_treatment = models.CharField(
         verbose_name="Is the patient on treatment for hypertension?",
         max_length=15,
-        choices=YES_NO,
+        choices=YES_NO_NA,
     )
 
     hypertension_treatment = models.ManyToManyField(
