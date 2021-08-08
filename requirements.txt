@@ -1,4 +1,4 @@
-edc==0.3.35
+edc==0.3.36
 beautifulsoup4
 git+https://github.com/erikvw/django-import-export.git@get_export_admin_action
-sarscov2==0.1.11
+sarscov2==0.1.12
