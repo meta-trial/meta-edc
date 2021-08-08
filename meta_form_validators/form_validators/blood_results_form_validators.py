@@ -9,10 +9,12 @@ from edc_lab_panel.panels import (
     fbc_panel,
     hba1c_panel,
     hba1c_poc_panel,
+    insulin_panel,
     lft_panel,
     lipids_panel,
     rft_panel,
 )
+from edc_reportable import BmiFormValidatorMixin
 
 from meta_labs.lab_profiles import chemistry_panel
 
@@ -69,5 +71,15 @@ class BloodResultsLftFormValidator(BloodResultsFormValidatorMixin, FormValidator
     panels = [lft_panel, chemistry_panel]
 
 
-class BloodResultsRftFormValidator(BloodResultsFormValidatorMixin, FormValidator):
+class BloodResultsRftFormValidator(
+    BloodResultsFormValidatorMixin, BmiFormValidatorMixin, FormValidator
+):
     panels = [rft_panel, chemistry_panel]
+
+    def clean(self):
+        super().clean()
+        self.validate_bmi()
+
+
+class BloodResultsInsFormValidator(BloodResultsFormValidatorMixin, FormValidator):
+    panels = [insulin_panel]
