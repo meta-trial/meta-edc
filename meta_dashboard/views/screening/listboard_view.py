@@ -7,8 +7,9 @@ from edc_dashboard.view_mixins import (
     ListboardFilterViewMixin,
     SearchFormViewMixin,
 )
-from edc_dashboard.views import ListboardView
+from edc_dashboard.views import ListboardView as BaseListboardView
 from edc_navbar import NavbarViewMixin
+
 from meta_edc.meta_version import get_meta_version
 
 from ...model_wrappers import ScreeningPartOneModelWrapper
@@ -20,7 +21,7 @@ class ListboardView(
     NavbarViewMixin,
     ListboardFilterViewMixin,
     SearchFormViewMixin,
-    ListboardView,
+    BaseListboardView,
 ):
 
     listboard_template = "screening_listboard_template"
@@ -59,11 +60,11 @@ class ListboardView(
 
     def extra_search_options(self, search_term):
         q_objects = []
-        if re.match("^[A-Z\-]+$", search_term):
+        if re.match(r"^[A-Z\-]+$", search_term):
             q_objects.append(Q(initials__exact=search_term.upper()))
             q_objects.append(
                 Q(screening_identifier__icontains=search_term.replace("-", "").upper())
             )
-        if re.match("^[0-9]+$", search_term):
+        if re.match(r"^[0-9]+$", search_term):
             q_objects.append(Q(hospital_identifier__exact=search_term))
         return q_objects

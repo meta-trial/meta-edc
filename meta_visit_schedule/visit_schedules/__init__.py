@@ -2,6 +2,7 @@ import sys
 
 from django.core.management import color_style
 from edc_visit_schedule import site_visit_schedules
+
 from meta_edc.meta_version import get_meta_version
 
 style = color_style()

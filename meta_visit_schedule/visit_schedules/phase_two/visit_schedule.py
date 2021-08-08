@@ -1,5 +1,6 @@
 from edc_visit_schedule import VisitSchedule
-from meta_visit_schedule.visit_schedules.phase_two.schedule import schedule
+
+from .schedule import schedule
 
 VISIT_SCHEDULE = "visit_schedule"
 

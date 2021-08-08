@@ -7,10 +7,9 @@ from edc_dashboard.view_mixins import (
     ListboardFilterViewMixin,
     SearchFormViewMixin,
 )
-from edc_dashboard.views import ListboardView
+from edc_dashboard.views import ListboardView as BaseListboardView
 from edc_navbar import NavbarViewMixin
 from edc_subject_model_wrappers import SubjectConsentModelWrapper as BaseWrapper
-
 from sarscov2.models import CoronavirusKap
 
 
@@ -30,7 +29,7 @@ class ListboardView(
     NavbarViewMixin,
     ListboardFilterViewMixin,
     SearchFormViewMixin,
-    ListboardView,
+    BaseListboardView,
 ):
 
     listboard_template = "subject_listboard_template"
