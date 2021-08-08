@@ -2,6 +2,7 @@ from .blood_results import (
     BloodResultsFbc,
     BloodResultsGlu,
     BloodResultsHba1c,
+    BloodResultsIns,
     BloodResultsLft,
     BloodResultsLipid,
     BloodResultsRft,
@@ -16,6 +17,7 @@ from .hepatitis_test import HepatitisTest
 from .malaria_test import MalariaTest
 from .medication_adherence import MedicationAdherence
 from .mnsi import Mnsi
+from .other_arv_regimens import OtherArvRegimens, OtherArvRegimensDetail
 from .patient_history import PatientHistory
 from .physical_exam import PhysicalExam
 from .study_drug_refill import StudyDrugRefill

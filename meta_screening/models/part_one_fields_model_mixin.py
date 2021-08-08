@@ -1,8 +1,3 @@
-from django.core.validators import (
-    MaxLengthValidator,
-    MinLengthValidator,
-    RegexValidator,
-)
 from django.db import models
 from django.utils.safestring import mark_safe
 from django_crypto_fields.fields import EncryptedCharField

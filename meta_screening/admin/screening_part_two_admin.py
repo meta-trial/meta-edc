@@ -17,6 +17,15 @@ from .fieldsets import (
 from .subject_screening_admin import SubjectScreeningAdmin
 
 
+def get_fieldsets():
+    return (
+        get_part_one_fieldset(collapse=True),
+        get_part_two_fieldset(),
+        get_part_three_fieldset(collapse=True),
+        audit_fieldset_tuple,
+    )
+
+
 @admin.register(ScreeningPartTwo, site=meta_screening_admin)
 class ScreeningPartTwoAdmin(SubjectScreeningAdmin):
 
@@ -25,12 +34,7 @@ class ScreeningPartTwoAdmin(SubjectScreeningAdmin):
 
     form = ScreeningPartTwoForm
 
-    fieldsets = (
-        get_part_one_fieldset(collapse=True),
-        get_part_two_fieldset(),
-        get_part_three_fieldset(collapse=True),
-        audit_fieldset_tuple,
-    )
+    fieldsets = get_fieldsets()
 
     readonly_fields = (
         *get_part_one_fields(),

@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
             model_name="historicalpatienthistory", name="family_diabetics"
         ),
         migrations.RemoveField(
-            model_name="historicalpatienthistory", name="hypertension_treatment"
+            model_name="historicalpatienthistory", name="htn_treatment"
         ),
         migrations.RemoveField(
             model_name="historicalpatienthistory", name="other_past_year_symptoms"
@@ -100,7 +100,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name="historicalpatienthistory",
-            name="diabetes_in_family",
+            name="dm_in_family",
             field=models.CharField(
                 choices=[("Yes", "Yes"), ("No", "No")],
                 default="?",
@@ -112,7 +112,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name="historicalpatienthistory",
-            name="other_diabetes_symptoms",
+            name="other_dm_symptoms",
             field=edc_model_fields.fields.other_charfield.OtherCharField(
                 blank=True,
                 max_length=35,
@@ -122,7 +122,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name="historicalpatienthistory",
-            name="other_hypertension_treatment",
+            name="other_htn_treatment",
             field=edc_model_fields.fields.other_charfield.OtherCharField(
                 blank=True,
                 max_length=35,
@@ -193,7 +193,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name="patienthistory",
-            name="diabetes_in_family",
+            name="dm_in_family",
             field=models.CharField(
                 choices=[("Yes", "Yes"), ("No", "No")],
                 default="?",
@@ -205,7 +205,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name="patienthistory",
-            name="other_diabetes_symptoms",
+            name="other_dm_symptoms",
             field=edc_model_fields.fields.other_charfield.OtherCharField(
                 blank=True,
                 max_length=35,
@@ -215,7 +215,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name="patienthistory",
-            name="other_hypertension_treatment",
+            name="other_htn_treatment",
             field=edc_model_fields.fields.other_charfield.OtherCharField(
                 blank=True,
                 max_length=35,
@@ -404,7 +404,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name="patienthistory",
-            name="diabetes_symptoms",
+            name="dm_symptoms",
             field=models.ManyToManyField(
                 to="meta_lists.DiabetesSymptoms",
                 verbose_name="In the <u>past year</u>, have you had any of the following symptoms?",
@@ -420,12 +420,10 @@ class Migration(migrations.Migration):
                 verbose_name="Is the patient a <u>previous</u> smoker?",
             ),
         ),
-        migrations.RemoveField(
-            model_name="patienthistory", name="hypertension_treatment"
-        ),
+        migrations.RemoveField(model_name="patienthistory", name="htn_treatment"),
         migrations.AddField(
             model_name="patienthistory",
-            name="hypertension_treatment",
+            name="htn_treatment",
             field=models.ManyToManyField(
                 blank=True,
                 to="meta_lists.HypertensionMedications",

@@ -2,15 +2,15 @@ from django import forms
 from edc_action_item.forms import ActionItemFormMixin
 from edc_crf.modelform_mixins import CrfModelFormMixin
 
-from meta_form_validators.form_validators import BloodResultsRftFormValidator
+from meta_form_validators.form_validators import BloodResultsInsFormValidator
 
-from ...models import BloodResultsRft
+from ...models import BloodResultsIns
 
 
-class BloodResultsRftForm(ActionItemFormMixin, CrfModelFormMixin, forms.ModelForm):
+class BloodResultsInsForm(ActionItemFormMixin, CrfModelFormMixin, forms.ModelForm):
 
-    form_validator_cls = BloodResultsRftFormValidator
+    form_validator_cls = BloodResultsInsFormValidator
 
     class Meta:
-        model = BloodResultsRft
+        model = BloodResultsIns
         fields = "__all__"

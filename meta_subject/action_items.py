@@ -1,16 +1,20 @@
+import pdb
+
 from edc_action_item import Action, site_action_items
 from edc_action_item.site_action_items import AlreadyRegistered
 from edc_adverse_event.constants import AE_INITIAL_ACTION
 from edc_blood_results.action_items import (
-    BloodResultsEgfrAction,
     BloodResultsFbcAction,
     BloodResultsGluAction,
     BloodResultsHba1cAction,
     BloodResultsLftAction,
     BloodResultsLipidAction,
-    BloodResultsRftAction,
+)
+from edc_blood_results.action_items import (
+    BloodResultsRftAction as BaseBloodResultsRftAction,
 )
 from edc_constants.constants import HIGH_PRIORITY, NONE
+from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_reportable import GRADE3, GRADE4
 from edc_visit_schedule.utils import is_baseline
 
@@ -36,10 +40,20 @@ class FollowupExaminationAction(Action):
         return next_actions
 
 
+class BloodResultsRftAction(BaseBloodResultsRftAction):
+    def get_next_actions(self):
+        next_actions = super().get_next_actions()
+        if (
+            self.reference_obj.egfr_value is not None
+            and self.reference_obj.egfr_value < 45.0
+        ):
+            next_actions = [END_OF_STUDY_ACTION]
+        return next_actions
+
+
 def register_actions():
     for action_item_cls in [
         BloodResultsFbcAction,
-        BloodResultsEgfrAction,
         BloodResultsLipidAction,
         BloodResultsLftAction,
         BloodResultsRftAction,

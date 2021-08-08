@@ -31,6 +31,8 @@ subjectconsent = Recipe(
     study_questions=YES,
     site=Site.objects.get_current(),
     subject_identifier=None,
+    user_created="erikvw",
+    user_modified="erikvw",
 )
 
 subjectreconsent = Recipe(
@@ -42,4 +44,6 @@ subjectreconsent = Recipe(
     consent_copy=YES,
     action_identifier=None,
     tracking_identifier=None,
+    user_created="erikvw",
+    user_modified="erikvw",
 )

@@ -4,7 +4,7 @@ from edc_constants.constants import NOT_APPLICABLE
 from edc_model import models as edc_models
 
 from ..choices import MALARIA_TEST_CHOICES
-from .model_mixins import CrfModelMixin
+from ..model_mixins import CrfModelMixin
 
 
 class MalariaTest(CrfModelMixin, edc_models.BaseUuidModel):

@@ -128,17 +128,20 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
     def post_url_on_delete_kwargs(self, request, obj):
         return {}
 
-    def demographics(self, obj=None):
+    @staticmethod
+    def demographics(obj=None):
         return mark_safe(
             f"{obj.get_gender_display()} {obj.age_in_years}yrs<BR>"
             f"Initials: {obj.initials.upper()}<BR><BR>"
             f"Hospital ID: {obj.hospital_identifier}"
         )
 
-    def reasons(self, obj=None):
+    @staticmethod
+    def reasons(obj=None):
         return format_reasons_ineligible(obj.reasons_ineligible)
 
-    def eligiblity_status(self, obj=None):
+    @staticmethod
+    def eligiblity_status(obj=None):
         eligibility = Eligibility(obj)
         return mark_safe(eligibility.eligibility_status)
 

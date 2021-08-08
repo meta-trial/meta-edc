@@ -20,7 +20,17 @@ class MnsiAdmin(
     form = MnsiForm
 
     fieldsets = (
-        (None, {"fields": ("subject_visit", "report_datetime")}),
+        (
+            None,
+            {
+                "fields": (
+                    "subject_visit",
+                    "report_datetime",
+                    "mnsi_performed",
+                    "mnsi_not_performed_reason",
+                )
+            },
+        ),
         (
             "Part 1: Patient History",
             {
@@ -47,12 +57,14 @@ class MnsiAdmin(
         (
             "Part 2a: Physical Assessment - Right Foot",
             {
-                "description": "Right Foot Physical Assessment (To be completed by health professional)",
+                "description": (
+                    "Right Foot Physical Assessment (To be completed by health professional)"
+                ),
                 "fields": (
                     "examined_right_foot",
                     "normal_appearance_right_foot",
-                    "abnormal_appearance_observations_right_foot",
-                    "abnormal_appearance_observations_right_foot_other",
+                    "abnormal_obs_right_foot",
+                    "abnormal_obs_right_foot_other",
                     "ulceration_right_foot",
                     "ankle_reflexes_right_foot",
                     "vibration_perception_right_toe",
@@ -63,12 +75,14 @@ class MnsiAdmin(
         (
             "Part 2b: Physical Assessment - Left Foot",
             {
-                "description": "Left Foot Physical Assessment (To be completed by health professional)",
+                "description": (
+                    "Left Foot Physical Assessment (To be completed by health professional)"
+                ),
                 "fields": (
                     "examined_left_foot",
                     "normal_appearance_left_foot",
-                    "abnormal_appearance_observations_left_foot",
-                    "abnormal_appearance_observations_left_foot_other",
+                    "abnormal_obs_left_foot",
+                    "abnormal_obs_left_foot_other",
                     "ulceration_left_foot",
                     "ankle_reflexes_left_foot",
                     "vibration_perception_left_toe",
@@ -91,8 +105,8 @@ class MnsiAdmin(
     )
 
     filter_horizontal = (
-        "abnormal_appearance_observations_left_foot",
-        "abnormal_appearance_observations_right_foot",
+        "abnormal_obs_left_foot",
+        "abnormal_obs_right_foot",
     )
 
     readonly_fields = (

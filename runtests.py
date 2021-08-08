@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import logging
-import os
 import sys
 from datetime import datetime
 from os.path import abspath, dirname, join
@@ -12,14 +11,14 @@ from django.test.runner import DiscoverRunner
 from edc_test_utils import DefaultTestSettings
 from multisite import SiteID
 
-from meta_edc.utils import confirm_meta_version
+from meta_edc.meta_version import PHASE_THREE
 
 app_name = "meta_edc"
 base_dir = dirname(abspath(__file__))
 
 DEFAULT_SETTINGS = DefaultTestSettings(
     calling_file=__file__,
-    META_PHASE=2,
+    META_PHASE=PHASE_THREE,
     EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=False,
     ROOT_URLCONF="meta_edc.urls",
     EDC_AUTH_CODENAMES_WARN_ONLY=True,
@@ -33,6 +32,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     SUBJECT_APP_LABEL="meta_subject",
     SUBJECT_SCREENING_MODEL="meta_screening.subjectscreening",
     SUBJECT_VISIT_MODEL="meta_subject.subjectvisit",
+    SUBJECT_VISIT_MISSED_MODEL="meta_subject.subjectvisitmissed",
     SUBJECT_CONSENT_MODEL="meta_consent.subjectconsent",
     SUBJECT_REQUISITION_MODEL="meta_subject.subjectrequisition",
     EDC_BLOOD_RESULTS_MODEL_APP_LABEL="meta_subject",
@@ -168,7 +168,6 @@ DEFAULT_SETTINGS = DefaultTestSettings(
 def main():
     if not settings.configured:
         settings.configure(**DEFAULT_SETTINGS)
-    settings.META_PHASE = confirm_meta_version(settings.META_PHASE)
     django.setup()
     tags = [t.split("=")[1] for t in sys.argv if t.startswith("--tag")]
     failfast = True if [t for t in sys.argv if t == "--failfast"] else False

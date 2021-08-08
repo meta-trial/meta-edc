@@ -8,7 +8,13 @@ from ..models import Mnsi
 
 class MnsiFormValidator(FormValidator):
     def clean(self):
-        self.clean_physical_assessments()
+        self.required_if(
+            NO,
+            field="mnsi_performed",
+            field_required="mnsi_not_performed_reason",
+        )
+        if self.cleaned_data.get("mnsi_performed") == YES:
+            self.clean_physical_assessments()
 
     def clean_physical_assessments(self):
         for foot_choice in ["right", "left"]:
@@ -43,13 +49,13 @@ class MnsiFormValidator(FormValidator):
             self.m2m_required_if(
                 response=NO,
                 field=f"normal_appearance_{foot_choice}_foot",
-                m2m_field=f"abnormal_appearance_observations_{foot_choice}_foot",
+                m2m_field=f"abnormal_obs_{foot_choice}_foot",
             )
 
             self.m2m_other_specify(
                 OTHER,
-                m2m_field=f"abnormal_appearance_observations_{foot_choice}_foot",
-                field_other=f"abnormal_appearance_observations_{foot_choice}_foot_other",
+                m2m_field=f"abnormal_obs_{foot_choice}_foot",
+                field_other=f"abnormal_obs_{foot_choice}_foot_other",
             )
 
 

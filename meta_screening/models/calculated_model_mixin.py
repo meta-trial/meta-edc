@@ -7,16 +7,6 @@ from edc_reportable.units import MICROMOLES_PER_LITER_DISPLAY, MILLIMOLES_PER_LI
 class CalculatedModelMixin(models.Model):
 
     # calculated
-    calculated_bmi_value = models.DecimalField(
-        verbose_name="BMI",
-        max_digits=8,
-        decimal_places=4,
-        null=True,
-        blank=False,
-        help_text="system calculated",
-    )
-
-    # calculated
     calculated_egfr_value = models.DecimalField(
         verbose_name="eGFR",
         max_digits=8,

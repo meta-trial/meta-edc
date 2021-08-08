@@ -1,54 +1,53 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
+from edc_model_admin import TabularInlineMixin
+
+from meta_subject.models import OtherArvRegimensDetail, PatientHistory
 
 from ..admin_site import meta_subject_admin
-from ..forms import ArvHistoryForm
-from ..models import ArvHistory
+from ..forms import OtherArvRegimensForm
+from ..models import OtherArvRegimens
 from .modeladmin import CrfModelAdmin
 
 
-@admin.register(ArvHistory, site=meta_subject_admin)
-class ArvHistoryAdmin(CrfModelAdmin):
+class OtherArvRegimensInlineAdmin(TabularInlineMixin, admin.TabularInline):
+    model = OtherArvRegimensDetail
+    # form = OtherArvRegimensDetailForm
+    extra = 1
+    view_on_site = False
+    autocomplete_fields = ["arv_regimen"]
 
-    form = ArvHistoryForm
-
-    autocomplete_fields = ["current_arv_regimen", "previous_arv_regimen"]
     fieldsets = (
-        (None, {"fields": ("subject_visit", "report_datetime")}),
-        (
-            "HIV, ARVs and other prophylaxis",
+        [
+            "ARV Regimen History",
             {
+                "description": (
+                    "Do not include most recent two regimens reported on the "
+                    f"`{PatientHistory._meta.verbose_name}` CRF"
+                ),
                 "fields": (
-                    "hiv_diagnosis_date",
-                    "arv_initiation_date",
-                    "viral_load",
-                    "viral_load_date",
-                    "cd4",
-                    "cd4_date",
-                    "current_arv_regimen",
-                    "other_current_arv_regimen",
-                    "current_arv_regimen_start_date",
-                    "has_previous_arv_regimen",
-                    "previous_arv_regimen",
-                    "other_previous_arv_regimen",
-                    "on_oi_prophylaxis",
-                    "oi_prophylaxis",
-                    "other_oi_prophylaxis",
-                )
+                    "arv_regimen",
+                    "other_arv_regimen",
+                    "arv_regimen_start_date",
+                    "notes",
+                ),
             },
-        ),
+        ],
+    )
+
+
+@admin.register(OtherArvRegimens, site=meta_subject_admin)
+class OtherArvRegimensAdmin(CrfModelAdmin):
+
+    form = OtherArvRegimensForm
+
+    inlines = [OtherArvRegimensInlineAdmin]
+
+    fieldsets = (
+        (None, {"fields": ("subject_visit", "report_datetime", "has_other_regimens")}),
         audit_fieldset_tuple,
     )
 
     radio_fields = {
-        "current_arv_regimen": admin.VERTICAL,
-        "has_previous_arv_regimen": admin.VERTICAL,
-        "on_oi_prophylaxis": admin.VERTICAL,
-        "previous_arv_regimen": admin.VERTICAL,
+        "has_other_regimens": admin.VERTICAL,
     }
-
-    filter_horizontal = (
-        "oi_prophylaxis",
-        "hiv_diagnosis_date",
-        "arv_initiation_date",
-    )

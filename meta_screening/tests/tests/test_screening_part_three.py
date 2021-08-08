@@ -62,6 +62,7 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
+    @tag("99")
     @override_settings(META_PHASE=PHASE_TWO)
     def test_eligible_phase_two(self):
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
@@ -82,16 +83,17 @@ class TestScreeningPartThree(TestCase):
         self.assertEqual("", obj.reasons_ineligible_part_three)
         self.assertEqual(obj.eligible_part_three, YES)
 
-    def test_eligible_datetime_on_resave(self):
+    def test_eligible_datetime_does_not_change_on_resave(self):
         obj = self.get_screening_part_three_obj()
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
         for k, v in part_three_eligible_options.items():
             setattr(obj, k, v)
         obj.save()
-
+        obj.refresh_from_db()
         eligibility_datetime = obj.eligibility_datetime
         obj.save()
-        self.assertNotEqual(eligibility_datetime, obj.eligibility_datetime)
+        obj.refresh_from_db()
+        self.assertEqual(eligibility_datetime, obj.eligibility_datetime)
 
     @override_settings(META_PHASE=PHASE_TWO)
     def test_eligible2_phase_two(self):
@@ -159,6 +161,7 @@ class TestScreeningPartThree(TestCase):
         obj.fasting = YES
         obj.fasting_duration_str = "8h"
         obj.ifg_value = 7.0
+        obj.ifg_units = MILLIMOLES_PER_LITER
         obj.ifg_datetime = get_utcnow()
         obj.save()
 
@@ -201,22 +204,31 @@ class TestScreeningPartThree(TestCase):
     def test_tbd_eligible_egfr_not_calculated_phase_two(self):
         ifg_value = 7.0
         ogtt_value = 7.5
-        self._test_tbd_eligible_egfr_not_calculated(ifg_value, ogtt_value)
+        obj = self._test_egfr_not_calculated(ifg_value, ogtt_value)
+        self.assertEqual(obj.eligible_part_three, TBD)
+        self.assertIn(EGFR_NOT_CALCULATED, obj.reasons_ineligible_part_three)
+        self.assertFalse(obj.eligible)
+        self.assertFalse(obj.consented)
 
     @override_settings(META_PHASE=PHASE_THREE)
-    def test_tbd_eligible_egfr_not_calculated_phase_three(self):
+    def test_yes_eligible_egfr_not_calculated_phase_three(self):
+        """Is eligible, since phase three will allow for EGFR to be considered
+        late exclusion.
+        """
         ifg_value = 6.9
         ogtt_value = 7.8
-        self._test_tbd_eligible_egfr_not_calculated(ifg_value, ogtt_value)
+        obj = self._test_egfr_not_calculated(ifg_value, ogtt_value)
+        self.assertEqual(obj.eligible_part_three, YES)
+        self.assertNotIn(EGFR_NOT_CALCULATED, obj.reasons_ineligible_part_three)
+        self.assertTrue(obj.eligible)
+        self.assertFalse(obj.consented)
 
-    def _test_tbd_eligible_egfr_not_calculated(self, ifg_value, ogtt_value):
-
+    def _test_egfr_not_calculated(self, ifg_value, ogtt_value):
         obj = self.get_screening_part_three_obj()
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertFalse(obj.reasons_ineligible_part_one)
         self.assertEqual(obj.eligible_part_two, YES)
         self.assertFalse(obj.reasons_ineligible_part_two)
-
         obj.part_three_report_datetime = get_utcnow()
         obj.part_three_report_datetime = get_utcnow()
         obj.weight = 65
@@ -234,11 +246,7 @@ class TestScreeningPartThree(TestCase):
         obj.ogtt_units = MILLIMOLES_PER_LITER
         obj.ogtt_datetime = get_utcnow()
         obj.save()
-
-        self.assertEqual(obj.eligible_part_three, TBD)
-        self.assertIn(EGFR_NOT_CALCULATED, obj.reasons_ineligible_part_three)
-        self.assertFalse(obj.eligible)
-        self.assertFalse(obj.consented)
+        return obj
 
     @override_settings(META_PHASE=PHASE_TWO)
     def test_not_eligible_egfr_less_than_45_phase_two(self):
@@ -272,6 +280,7 @@ class TestScreeningPartThree(TestCase):
         obj.fasting = YES
         obj.fasting_duration_str = "8h"
         obj.ifg_value = ifg_value
+        obj.ifg_units = MILLIMOLES_PER_LITER
         obj.ifg_datetime = get_utcnow()
         obj.ogtt_base_datetime = get_utcnow()
         obj.ogtt_value = ogtt_value

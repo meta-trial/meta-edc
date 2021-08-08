@@ -1,7 +1,7 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from edc_constants.choices import YES_NO, YES_NO_NA
-from edc_constants.constants import NOT_APPLICABLE
+from edc_constants.constants import NOT_APPLICABLE, YES
 from edc_model import models as edc_models
 
 from meta_lists.models import AbnormalFootAppearanceObservations
@@ -13,7 +13,7 @@ from ..choices import (
     VIBRATION_PERCEPTION_CHOICES,
 )
 from ..mnsi_calculator import MnsiCalculator
-from .model_mixins import CrfModelMixin
+from ..model_mixins import CrfModelMixin
 
 
 class Mnsi(
@@ -29,6 +29,21 @@ class Mnsi(
         https://medicine.umich.edu/sites/default/files/downloads/MNSI_howto.pdf
 
     """
+
+    mnsi_performed = models.CharField(
+        verbose_name="Is the MNSI assessment being performed today?",
+        max_length=15,
+        choices=YES_NO,
+        default=YES,
+        help_text="(`today` is relative to the report date/time above)",
+    )
+
+    mnsi_not_performed_reason = models.TextField(
+        verbose_name="If NO, please provide a reason",
+        max_length=200,
+        null=True,
+        blank=True,
+    )
 
     numb_legs_feet = models.CharField(
         verbose_name="Are your legs and/or feet numb?",

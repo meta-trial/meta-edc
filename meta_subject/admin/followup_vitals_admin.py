@@ -6,6 +6,7 @@ from edc_model_admin import SimpleHistoryAdmin
 from ..admin_site import meta_subject_admin
 from ..forms import FollowupVitalsForm
 from ..models import FollowupVitals
+from .fields import get_blood_pressure_fields
 from .modeladmin import CrfModelAdminMixin
 
 
@@ -24,8 +25,7 @@ class FollowupVitalsAdmin(
                 "description": "To be completed by the research nurse",
                 "fields": (
                     "weight",
-                    "sys_blood_pressure",
-                    "dia_blood_pressure",
+                    *get_blood_pressure_fields(),
                     "heart_rate",
                     "temperature",
                 ),
@@ -36,4 +36,6 @@ class FollowupVitalsAdmin(
 
     filter_horizontal = ()
 
-    radio_fields = {}
+    radio_fields = {
+        "severe_htn": admin.VERTICAL,
+    }

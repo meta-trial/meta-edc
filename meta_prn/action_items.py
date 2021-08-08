@@ -3,16 +3,13 @@ from edc_action_item.action_with_notification import ActionWithNotification
 from edc_action_item.site_action_items import site_action_items
 from edc_adverse_event.constants import DEATH_REPORT_ACTION
 from edc_constants.constants import HIGH_PRIORITY, TBD, YES
+from edc_ltfu.constants import LTFU_ACTION
+from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_prn.action_items import (
     ProtocolDeviationViolationAction as BaseProtocolDeviationViolationAction,
 )
 
-from .constants import (
-    END_OF_STUDY_ACTION,
-    LOSS_TO_FOLLOWUP_ACTION,
-    UNBLINDING_REQUEST_ACTION,
-    UNBLINDING_REVIEW_ACTION,
-)
+from .constants import UNBLINDING_REQUEST_ACTION, UNBLINDING_REVIEW_ACTION
 
 
 class EndOfStudyAction(ActionWithNotification):
@@ -22,7 +19,7 @@ class EndOfStudyAction(ActionWithNotification):
     parent_action_names = [
         UNBLINDING_REVIEW_ACTION,
         DEATH_REPORT_ACTION,
-        LOSS_TO_FOLLOWUP_ACTION,
+        LTFU_ACTION,
     ]
     reference_model = "meta_prn.endofstudy"
     show_link_to_changelist = True
@@ -31,7 +28,7 @@ class EndOfStudyAction(ActionWithNotification):
 
 
 class LossToFollowupAction(ActionWithNotification):
-    name = LOSS_TO_FOLLOWUP_ACTION
+    name = LTFU_ACTION
     display_name = "Submit Loss to Follow Up Report"
     notification_display_name = " Loss to Follow Up Report"
     parent_action_names = []

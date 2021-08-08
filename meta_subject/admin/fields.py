@@ -1,3 +1,6 @@
+from meta_edc.meta_version import PHASE_THREE, get_meta_version
+
+
 def get_blood_pressure_fields():
     if get_meta_version() == PHASE_THREE:
         return [

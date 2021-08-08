@@ -8,7 +8,7 @@ from ..choices import (
     PRESENT_ABSENT_NOEXAM_NDS,
     YES_NO_NO_EXAM,
 )
-from .model_mixins import CrfModelMixin
+from ..model_mixins import CrfModelMixin
 
 
 class ComplicationsGlycemia(CrfModelMixin, edc_models.BaseUuidModel):
@@ -74,14 +74,20 @@ class ComplicationsGlycemia(CrfModelMixin, edc_models.BaseUuidModel):
         verbose_name="Vibration perception threshold (left)",
         max_length=15,
         choices=NORMAL_ABNORMAL_NOEXAM,
-        help_text="128-Hz tuning fork; apex of big toe. Normal: can distinguish vibrating/Not vibrating",
+        help_text=(
+            "128-Hz tuning fork; apex of big toe. "
+            "Normal: can distinguish vibrating/Not vibrating"
+        ),
     )
 
     nds_vpt_right = models.CharField(
         verbose_name="Vibration perception threshold (right)",
         max_length=15,
         choices=NORMAL_ABNORMAL_NOEXAM,
-        help_text="128-Hz tuning fork; apex of big toe. Normal: can distinguish vibrating/Not vibrating",
+        help_text=(
+            "128-Hz tuning fork; apex of big toe. "
+            "Normal: can distinguish vibrating/Not vibrating"
+        ),
     )
 
     nds_tp_left = models.CharField(
@@ -194,7 +200,9 @@ class ComplicationsGlycemia(CrfModelMixin, edc_models.BaseUuidModel):
     )
 
     dns_numbness = models.CharField(
-        verbose_name="Are you experiencing any numbness or loss of feeling in your legs or feet?",
+        verbose_name=(
+            "Are you experiencing any numbness or loss of feeling in your legs or feet?"
+        ),
         max_length=15,
         choices=YES_NO_NO_EXAM,
     )

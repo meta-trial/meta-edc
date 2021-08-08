@@ -10,7 +10,7 @@ from ..choices import (
     PAYEE_CHOICES,
     TRANSPORT_CHOICES,
 )
-from .model_mixins import CrfModelMixin
+from ..model_mixins import CrfModelMixin
 
 
 class HealthEconomics(CrfModelMixin, edc_models.BaseUuidModel):

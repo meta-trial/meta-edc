@@ -42,6 +42,7 @@ CHILDCARE_CHOICES = (
 DYSLIPIDAEMIA_RX_CHOICES = (
     ("atorvastatin", "Atorvastatin"),
     ("rosuvastatin", "Rosuvastatin"),
+    (OTHER, "Other, specify below ..."),
     (NOT_APPLICABLE, "Not applicable"),
 )
 

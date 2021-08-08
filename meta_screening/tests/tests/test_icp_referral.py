@@ -4,6 +4,8 @@ from django.test import TestCase, tag
 from edc_constants.constants import BLACK, FEMALE, NO, NOT_APPLICABLE, YES
 from edc_reportable.units import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
 from edc_utils.date import get_utcnow
+
+from meta_edc.meta_version import PHASE_THREE, get_meta_version
 from meta_screening.models import (
     IcpReferral,
     ScreeningPartOne,
@@ -28,6 +30,7 @@ class TestScreeningPartThree(TestCase):
             on_rx_stable=YES,
             lives_nearby=YES,
             staying_nearby_6=YES,
+            staying_nearby_12=YES,
             pregnant=NOT_APPLICABLE,
         )
         obj.save()
@@ -46,6 +49,8 @@ class TestScreeningPartThree(TestCase):
         obj.tissue_hypoxia_condition = NO
         obj.acute_condition = NO
         obj.metformin_sensitivity = NO
+        obj.has_dm = NO
+        obj.on_dm_medication = NO
         obj.advised_to_fast = YES
         obj.appt_datetime = get_utcnow() + relativedelta(days=1)
         obj.save()
@@ -71,17 +76,13 @@ class TestScreeningPartThree(TestCase):
         obj.fasting = YES
         obj.fasting_duration_str = "8h"
         obj.ifg_value = 7.5
+        obj.ifg_units = MILLIMOLES_PER_LITER
         obj.ifg_datetime = get_utcnow()
         obj.ogtt_base_datetime = get_utcnow()
         obj.ogtt_value = 12.0
         obj.ogtt_units = MILLIMOLES_PER_LITER
         obj.ogtt_datetime = get_utcnow()
         obj.save()
-
-        self.assertTrue(obj.reasons_ineligible_part_three)
-        self.assertEqual(obj.eligible_part_three, NO)
-        self.assertFalse(obj.eligible)
-        self.assertFalse(obj.consented)
 
         self.assertTrue(refer_to_icp(obj))
 

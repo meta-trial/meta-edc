@@ -9,7 +9,7 @@ from edc_lab_panel.panels import insulin_panel
 from edc_model import models as edc_models
 
 
-class BloodResultsInsulin(
+class BloodResultsIns(
     CrfWithActionModelMixin,
     InsulinModelMixin,
     RequisitionModelMixin,
@@ -21,5 +21,5 @@ class BloodResultsInsulin(
     lab_panel = insulin_panel
 
     class Meta(CrfWithActionModelMixin.Meta, edc_models.BaseUuidModel.Meta):
-        verbose_name = "Blood Result: RFT"
-        verbose_name_plural = "Blood Results: RFT"
+        verbose_name = "Blood Result: Insulin"
+        verbose_name_plural = "Blood Results: Insulin"

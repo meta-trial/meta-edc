@@ -80,7 +80,7 @@ def eligibility_button(subject_screening_model_wrapper):
     soup = BeautifulSoup(eligibility.eligibility_display_label, features="html.parser")
     return dict(
         eligible=obj.eligible,
-        eligible_final=eligibility.calculate_eligible_final(),
+        eligible_final=eligibility.eligible,
         display_label=soup.get_text(),
         comment=comment,
         tooltip=tooltip,

@@ -1,6 +1,7 @@
+from copy import deepcopy
 from typing import Dict
 
-from django.test import TestCase, tag
+from django.test import TestCase, override_settings
 from edc_constants.constants import (
     ABSENT,
     COMPLETE,
@@ -13,6 +14,7 @@ from edc_constants.constants import (
 )
 from edc_form_validators import FormValidatorTestCaseMixin
 
+from meta_edc.meta_version import PHASE_THREE
 from meta_lists.models import AbnormalFootAppearanceObservations
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_subject.constants import DECREASED, PRESENT_REINFORCEMENT, REDUCED
@@ -25,10 +27,12 @@ from meta_subject.mnsi_calculator import (
 from meta_subject.models import Mnsi
 
 
-@tag("mnsi")
+@override_settings(META_PHASE=PHASE_THREE)
 class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
-    def get_best_case_answers(self):
+    @staticmethod
+    def get_best_case_answers():
         return {
+            "mnsi_performed": YES,
             # Part 1: Patient History
             "numb_legs_feet": NO,
             "burning_pain_legs_feet": NO,
@@ -448,7 +452,7 @@ class TestMnsiCalculators(MetaTestCaseMixin, TestCase):
         self.assertEqual(mnsi_calculator.physical_assessment_score(), 0)
 
 
-@tag("mnsi")
+@override_settings(META_PHASE=PHASE_THREE)
 class TestMnsiFormValidator(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestCase):
 
     form_validator_default_form_cls = MnsiFormValidator
@@ -459,6 +463,8 @@ class TestMnsiFormValidator(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestC
 
     def get_valid_form_data(self) -> Dict:
         return {
+            "mnsi_performed": YES,
+            "mnsi_not_performed_reason": None,
             # Part 1: Patient History
             "numb_legs_feet": NO,
             "burning_pain_legs_feet": NO,
@@ -506,10 +512,10 @@ class TestMnsiFormValidator(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestC
         }
 
     def test_valid_form_ok(self):
-        cleaned_data = self.get_valid_form_data()
-        form_validator = MnsiForm(data=cleaned_data)
-        form_validator.is_valid()
-        self.assertEqual(form_validator._errors, {})
+        cleaned_data = deepcopy(self.get_valid_form_data())
+        form = MnsiForm(data=cleaned_data)
+        form.is_valid()
+        self.assertEqual(form._errors, {})
 
     def test_physical_assessment_questions_applicable_if_foot_examined(self):
         for foot_choice in ["right", "left"]:
@@ -521,7 +527,7 @@ class TestMnsiFormValidator(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestC
                 f"monofilament_{foot_choice}_foot",
             ]:
                 # Setup test case
-                cleaned_data = self.get_valid_form_data()
+                cleaned_data = deepcopy(self.get_valid_form_data())
                 cleaned_data.update({question_field: NOT_APPLICABLE})
 
                 # Test
@@ -546,7 +552,7 @@ class TestMnsiFormValidator(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestC
                 f"monofilament_{foot_choice}_foot",
             ]:
                 # Setup test case
-                cleaned_data = self.get_valid_form_data()
+                cleaned_data = deepcopy(self.get_valid_form_data())
                 cleaned_data.update(
                     self.get_foot_questions_with_na_answers(foot_choice)
                 )
@@ -570,11 +576,11 @@ class TestMnsiFormValidator(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestC
                     )
 
     def test_abnormal_observations_required_if_foot_appearance_not_normal(self):
-        cleaned_data = self.get_valid_form_data()
+        cleaned_data = deepcopy(self.get_valid_form_data())
 
         for foot in ["right_foot", "left_foot"]:
             field = f"normal_appearance_{foot}"
-            m2m_field = f"abnormal_appearance_observations_{foot}"
+            m2m_field = f"abnormal_obs_{foot}"
 
             with self.subTest(
                 f"Testing '{m2m_field}' is required if {field}='No'",
@@ -594,14 +600,14 @@ class TestMnsiFormValidator(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestC
                 cleaned_data.update({field: YES})
 
     def test_abnormal_observations_accepted_if_foot_appearance_not_normal(self):
-        cleaned_data = self.get_valid_form_data()
+        cleaned_data = deepcopy(self.get_valid_form_data())
         m2m_field_selection = AbnormalFootAppearanceObservations.objects.filter(
             name="infection"
         )
 
         for foot in ["right_foot", "left_foot"]:
             field = f"normal_appearance_{foot}"
-            m2m_field = f"abnormal_appearance_observations_{foot}"
+            m2m_field = f"abnormal_obs_{foot}"
 
             with self.subTest(
                 f"Testing '{m2m_field}' accepted if {field}='No'",
@@ -613,14 +619,14 @@ class TestMnsiFormValidator(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestC
                 self.assertEqual(form_validator._errors, {})
 
     def test_abnormal_observations_not_applicable_if_foot_appearance_is_normal(self):
-        cleaned_data = self.get_valid_form_data()
+        cleaned_data = deepcopy(self.get_valid_form_data())
         m2m_field_selection = AbnormalFootAppearanceObservations.objects.filter(
             name="infection"
         )
 
         for foot in ["right_foot", "left_foot"]:
             field = f"normal_appearance_{foot}"
-            m2m_field = f"abnormal_appearance_observations_{foot}"
+            m2m_field = f"abnormal_obs_{foot}"
 
             with self.subTest(
                 f"Testing '{m2m_field}' accepted if {field}='No'",
@@ -640,14 +646,14 @@ class TestMnsiFormValidator(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestC
                 cleaned_data.update({field: NO})
 
     def test_other_field_required_if_other_specified(self):
-        cleaned_data = self.get_valid_form_data()
+        cleaned_data = deepcopy(self.get_valid_form_data())
         other_observation = AbnormalFootAppearanceObservations.objects.filter(
             name=OTHER
         )
 
         for foot in ["right_foot", "left_foot"]:
             field = f"normal_appearance_{foot}"
-            m2m_field = f"abnormal_appearance_observations_{foot}"
+            m2m_field = f"abnormal_obs_{foot}"
             m2m_field_other = f"{m2m_field}_other"
 
             with self.subTest(
@@ -677,7 +683,7 @@ class TestMnsiFormValidator(MetaTestCaseMixin, FormValidatorTestCaseMixin, TestC
 
         for foot in ["right_foot", "left_foot"]:
             field = f"normal_appearance_{foot}"
-            m2m_field = f"abnormal_appearance_observations_{foot}"
+            m2m_field = f"abnormal_obs_{foot}"
             m2m_field_other = f"{m2m_field}_other"
 
             with self.subTest(

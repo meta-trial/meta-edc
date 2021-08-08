@@ -1082,7 +1082,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
-                    "on_hypertension_treatment",
+                    "on_htn_treatment",
                     models.CharField(
                         choices=[("Yes", "Yes"), ("No", "No")],
                         max_length=15,
@@ -1090,7 +1090,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
-                    "hypertension_treatment",
+                    "htn_treatment",
                     models.TextField(
                         blank=True,
                         null=True,
@@ -1219,7 +1219,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
-                    "diabetes_symptoms",
+                    "dm_symptoms",
                     models.ManyToManyField(
                         to="meta_lists.DiabetesSymptoms",
                         verbose_name="In the past year, have you had any of the following symptoms?",
@@ -2727,7 +2727,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
-                    "on_hypertension_treatment",
+                    "on_htn_treatment",
                     models.CharField(
                         choices=[("Yes", "Yes"), ("No", "No")],
                         max_length=15,
@@ -2735,7 +2735,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
-                    "hypertension_treatment",
+                    "htn_treatment",
                     models.TextField(
                         blank=True,
                         null=True,

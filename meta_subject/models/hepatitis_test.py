@@ -3,7 +3,7 @@ from django.utils.safestring import mark_safe
 from edc_constants.choices import POS_NEG, POS_NEG_NOT_DONE, YES_NO
 from edc_model import models as edc_models
 
-from .model_mixins import CrfModelMixin
+from ..model_mixins import CrfModelMixin
 
 
 class HepatitisTest(CrfModelMixin, edc_models.BaseUuidModel):

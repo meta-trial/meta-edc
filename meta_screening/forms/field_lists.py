@@ -48,17 +48,24 @@ def get_part_two_fields():
 
 
 def get_part_three_vitals_fields():
-    fields = [
-        "height",
-        "weight",
-        "waist_circumference",
-        "sys_blood_pressure",
-        "dia_blood_pressure",
-    ]
     if get_meta_version() == PHASE_THREE:
-        fields.remove("waist_circumference")
-        fields.append("severe_htn")
-    return tuple(fields)
+        return [
+            "height",
+            "weight",
+            "sys_blood_pressure_one",
+            "dia_blood_pressure_one",
+            "sys_blood_pressure_two",
+            "dia_blood_pressure_two",
+            "severe_htn",
+        ]
+    else:
+        return [
+            "height",
+            "weight",
+            "waist_circumference",
+            "sys_blood_pressure",
+            "dia_blood_pressure",
+        ]
 
 
 part_three_ifg_fields = (
@@ -99,6 +106,8 @@ part_three_comment_fields = (
 )
 
 calculated_fields = (
+    "sys_blood_pressure_avg",
+    "dia_blood_pressure_avg",
     "calculated_bmi_value",
     "converted_ifg_value",
     "converted_ogtt_value",
@@ -136,6 +145,7 @@ def get_part_three_fields():
         )
     elif get_meta_version() == PHASE_THREE:
         fields = (
+            "part_three_report_datetime",
             *get_part_three_vitals_fields(),
             *part_three_pregnancy_fields,
             *part_three_ifg_fields,

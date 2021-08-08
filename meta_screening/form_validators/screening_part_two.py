@@ -2,7 +2,7 @@ from django import forms
 from edc_constants.constants import NO, YES
 from edc_form_validators import FormValidator
 
-from ..eligibility import get_part2_required_fields
+from ..eligibility import EligibilityPartTwo
 
 
 class ScreeningPartTwoFormValidator(FormValidator):
@@ -28,7 +28,7 @@ class ScreeningPartTwoFormValidator(FormValidator):
     @property
     def eligible_part_two(self):
         """Returns False if any of the required fields is YES."""
-        for fld in get_part2_required_fields():
+        for fld in EligibilityPartTwo.get_required_fields():
             if not self.cleaned_data.get(fld) or self.cleaned_data.get(fld) == YES:
                 return False
         return True

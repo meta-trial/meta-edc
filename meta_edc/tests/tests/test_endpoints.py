@@ -3,14 +3,15 @@ import sys
 from copy import deepcopy
 from unittest import skipIf
 
+from bs4 import BeautifulSoup
 from dateutil.relativedelta import relativedelta
 from django.apps import apps as django_apps
 from django.contrib.auth import get_user_model
-from django.core.management.color import color_style
 from django.test import tag
 from django.test.utils import override_settings
 from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
+from django_extensions.management.color import color_style
 from django_webtest import WebTest
 from edc_appointment.constants import IN_PROGRESS_APPT, SCHEDULED_APPT
 from edc_appointment.models import Appointment
@@ -27,6 +28,7 @@ from webtest.app import AppError
 
 from meta_edc.meta_version import get_meta_version
 from meta_rando.randomizers import RandomizerPhaseThree, RandomizerPhaseTwo
+from meta_screening.models import ScreeningPartOne, ScreeningPartThree, ScreeningPartTwo
 from meta_screening.models.subject_screening import SubjectScreening
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_screening.tests.options import (
@@ -37,7 +39,6 @@ from meta_screening.tests.options import (
 from meta_sites.sites import all_sites
 
 style = color_style()
-
 User = get_user_model()
 
 app_prefix = "meta"
@@ -238,7 +239,6 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
     @skipIf(get_meta_version() != 3, "not version 3")
     @tag("webtest")
-    # @override_settings(META_PHASE=3)
     def test_screening_form_phase3(self):
         site_randomizers._registry = {}
         site_randomizers.loaded = False
@@ -318,17 +318,9 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             except KeyError:
                 print(field)
         page = add_screening_page.form.submit()
-
-        # if "error" in page:
-        #     pdb.set_trace()
-        print(get_meta_version())
-        from bs4 import BeautifulSoup
-
         soup = BeautifulSoup(page.content, "html.parser")
-        print(soup.prettify())
-        pdb.set_trace()
-
-        self.assertNotIn("error", page)
+        errorlist = soup.find_all("ul", "errorlist")
+        self.assertEqual([], errorlist)
 
         # redirects back to listboard
         url = reverse(screening_listboard_url)
@@ -357,9 +349,9 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             except KeyError:
                 print(field)
         page = add_screening_part_two.form.submit()
-        # if "error" in page:
-        #     pdb.set_trace()
-        self.assertNotIn("error", page)
+        soup = BeautifulSoup(page.content, "html.parser")
+        errorlist = soup.find_all("ul", "errorlist")
+        self.assertEqual([], errorlist)
         # redirects back to listboard
         obj = SubjectScreening.objects.all().last()
         url = reverse(screening_listboard_url, args=(obj.screening_identifier,))
@@ -383,9 +375,9 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             except KeyError:
                 print(field)
         page = add_screening_part_three.form.submit()
-        # if "error" in page:
-        #     pdb.set_trace()
-        self.assertNotIn("error", page)
+        soup = BeautifulSoup(page.content, "html.parser")
+        errorlist = soup.find_all("ul", "errorlist")
+        self.assertEqual([], errorlist)
         # redirects back to listboard
         obj = SubjectScreening.objects.all().last()
         url = reverse(screening_listboard_url, args=(obj.screening_identifier,))
@@ -395,16 +387,33 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Consent", screening_listboard_page)
         return screening_listboard_page, screening_identifier
 
+    def get_subject_screening(self):
+        part_one_eligible_options = deepcopy(get_part_one_eligible_options())
+        part_two_eligible_options = deepcopy(get_part_two_eligible_options())
+        part_three_eligible_options = deepcopy(get_part_three_eligible_options())
+        obj = ScreeningPartOne(**part_one_eligible_options)
+        obj.save()
+        self.screening_identifier = obj.screening_identifier
+        obj = ScreeningPartTwo.objects.get(
+            screening_identifier=self.screening_identifier
+        )
+        for k, v in part_two_eligible_options.items():
+            setattr(obj, k, v)
+        obj.save()
+        obj = ScreeningPartThree.objects.get(
+            screening_identifier=self.screening_identifier
+        )
+        for k, v in part_three_eligible_options.items():
+            setattr(obj, k, v)
+        obj.save()
+        return obj
+
     @tag("webtest")
     def test_to_subject_dashboard(self):
         add_or_update_django_sites(apps=django_apps, sites=all_sites)
-        #         RandomizationListImporter()
-        #         update_permissions()
-        #         import_holidays()
-        #         site_list_data.autodiscover()
-        self.login(superuser=False, groups=[EVERYONE, CLINIC, PII])
+        self.login(superuser=False, groups=[EVERYONE, SCREENING, CLINIC, PII])
 
-        subject_screening = baker.make_recipe("meta_screening.subjectscreening")
+        subject_screening = self.get_subject_screening()
 
         home_page = self.app.get(reverse("home_url"), user=self.user, status=200)
         screening_listboard_page = home_page.click(description="Screening", index=1)
@@ -417,7 +426,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Please correct the errors below", response)
 
         subject_consent = baker.make_recipe(
-            "meta_subject.subjectconsent",
+            "meta_consent.subjectconsent",
             screening_identifier=subject_screening.screening_identifier,
             dob=(
                 get_utcnow() - relativedelta(years=subject_screening.age_in_years)

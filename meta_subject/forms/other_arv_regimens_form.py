@@ -2,20 +2,18 @@ from django import forms
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import FormValidator
 
-from ..models import ArvHistory
-from .mixins import ArvHistoryFormValidatorMixin
+from ..models import OtherArvRegimens
 
 
-class ArvHistoryFormValidator(ArvHistoryFormValidatorMixin, FormValidator):
+class OtherArvRegimensFormValidator(FormValidator):
     def clean(self):
+        pass
 
-        self.validate_arv_history_fields()
 
+class OtherArvRegimensForm(CrfModelFormMixin, forms.ModelForm):
 
-class ArvHistoryForm(CrfModelFormMixin, forms.ModelForm):
-
-    form_validator_cls = ArvHistoryFormValidator
+    form_validator_cls = OtherArvRegimensFormValidator
 
     class Meta:
-        model = ArvHistory
+        model = OtherArvRegimens
         fields = "__all__"

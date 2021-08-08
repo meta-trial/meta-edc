@@ -1,15 +1,23 @@
-from ..eligibility import Eligibility, EligibilityPartOneError, EligibilityPartTwoError
+from meta_edc.meta_version import PHASE_THREE, get_meta_version
+
+from ..eligibility import (
+    EligibilityPartOne,
+    EligibilityPartThreePhaseThree,
+    EligibilityPartThreePhaseTwo,
+    EligibilityPartTwo,
+    RequiredFieldValueMissing,
+)
 from .subject_screening import SubjectScreening
 
 
 class ScreeningPartOne(SubjectScreening):
     def save(self, *args, **kwargs):
-        eligibility = Eligibility(self)
+        eligibility = EligibilityPartOne(self)
         try:
-            eligibility.calculate_eligible_part_one()
-        except EligibilityPartOneError:
+            eligibility.assess_eligibility()
+        except RequiredFieldValueMissing:
             pass
-        eligibility.check_eligible_final()
+        eligibility.update_eligibility_fields()
         super().save(*args, **kwargs)
 
     class Meta:
@@ -20,12 +28,12 @@ class ScreeningPartOne(SubjectScreening):
 
 class ScreeningPartTwo(SubjectScreening):
     def save(self, *args, **kwargs):
-        eligibility = Eligibility(self)
+        eligibility = EligibilityPartTwo(self)
         try:
-            eligibility.calculate_eligible_part_two()
-        except EligibilityPartTwoError:
+            eligibility.assess_eligibility()
+        except RequiredFieldValueMissing:
             pass
-        eligibility.check_eligible_final()
+        eligibility.update_eligibility_fields()
         super().save(*args, **kwargs)
 
     class Meta:
@@ -36,9 +44,12 @@ class ScreeningPartTwo(SubjectScreening):
 
 class ScreeningPartThree(SubjectScreening):
     def save(self, *args, **kwargs):
-        eligibility = Eligibility(self)
-        eligibility.calculate_eligible_part_three()
-        eligibility.check_eligible_final()
+        if get_meta_version() == PHASE_THREE:
+            eligibility = EligibilityPartThreePhaseThree(self)
+        else:
+            eligibility = EligibilityPartThreePhaseTwo(self)
+        eligibility.assess_eligibility()
+        eligibility.update_eligibility_fields()
         super().save(*args, **kwargs)
 
     class Meta:

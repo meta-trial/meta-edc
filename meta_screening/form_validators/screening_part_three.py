@@ -1,24 +1,28 @@
-import pdb
-
 from django import forms
 from edc_constants.constants import NEG, NO, POS, YES
 from edc_form_validators import FormValidator
 from edc_glucose.form_validators import GlucoseFormValidatorMixin
 from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
 from edc_reportable import BmiFormValidatorMixin, EgfrFormValidatorMixin
-
-from meta_edc.meta_version import (
-    PHASE_THREE,
-    PHASE_TWO,
-    InvalidMetaVersion,
-    get_meta_version,
+from edc_vitals.form_validators import (
+    BloodPressureFormValidatorMixin,
+    WeightHeightBmiFormValidatorMixin,
 )
+
+from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
+from meta_screening.forms import get_part_three_vitals_fields
+
+
+class ScreeningPartThreeFormValidatorError(Exception):
+    pass
 
 
 class ScreeningPartThreeFormValidator(
     GlucoseFormValidatorMixin,
     BmiFormValidatorMixin,
     EgfrFormValidatorMixin,
+    BloodPressureFormValidatorMixin,
+    WeightHeightBmiFormValidatorMixin,
     FormValidator,
 ):
     def clean(self):
@@ -28,13 +32,14 @@ class ScreeningPartThreeFormValidator(
             self.clean_phase_three()
 
     def clean_phase_two(self):
+        self.validate_report_datetimes()
         self.validate_ifg_required_fields()
         validate_glucose_as_millimoles_per_liter("ifg", self.cleaned_data)
         self.validate_ogtt_required_fields()
         validate_glucose_as_millimoles_per_liter("ogtt", self.cleaned_data)
         self.validate_creatinine_required_fields()
         self.required_if(YES, field="hba1c_performed", field_required="hba1c_value")
-        self.validate_vitals_fields_required()
+        self.require_all_vitals_fields()
         self.validate_pregnancy()
         self.validate_ogtt_dates()
         self.validate_bmi()
@@ -44,8 +49,13 @@ class ScreeningPartThreeFormValidator(
         self.validate_suitability_for_study()
 
     def clean_phase_three(self):
-        self.validate_vitals_fields_required()
-        self.validate_blood_pressure()
+        self.validate_report_datetimes()
+        self.require_all_vitals_fields()
+        self.validate_weight_height_with_bmi(
+            weight_kg=self.cleaned_data.get("weight"),
+            height_cm=self.cleaned_data.get("height"),
+        )
+        self.raise_on_avg_blood_pressure_suggests_severe_htn(**self.cleaned_data)
         self.validate_pregnancy()
         self.validate_ifg_required_fields()
         validate_glucose_as_millimoles_per_liter("ifg", self.cleaned_data)
@@ -58,6 +68,18 @@ class ScreeningPartThreeFormValidator(
         self.required_if(YES, field="hba1c_performed", field_required="hba1c_value")
         self.validate_egfr()
         self.validate_suitability_for_study()
+
+    def validate_report_datetimes(self):
+        pass
+        # report_datetime = self.self.cleaned_data.get("report_datetime")
+        # part_two_report_datetime = self.self.cleaned_data.get(
+        #     "part_two_report_datetime"
+        # )
+        # part_three_report_datetime = self.self.cleaned_data.get(
+        #     "part_three_report_datetime"
+        # )
+        # if part_two_report_datetime < report_datetime:
+        #     raise forms.ValidationError()
 
     def validate_suitability_for_study(self):
         self.required_if(
@@ -115,47 +137,14 @@ class ScreeningPartThreeFormValidator(
                 {"urine_bhcg_value": "Invalid, part one says subject is not pregnant"}
             )
 
-    def validate_vitals_fields_required(self):
-        fields = [
-            "height",
-            "weight",
-            "waist_circumference",
-            "sys_blood_pressure",
-            "dia_blood_pressure",
-            "severe_htn",
-        ]
-        if get_meta_version() == PHASE_TWO:
-            fields.remove("severe_htn")
-        elif get_meta_version() == PHASE_THREE:
-            fields.remove("waist_circumference")
-        if (
-            self.cleaned_data.get("height")
-            or self.cleaned_data.get("weight")
-            or self.cleaned_data.get("waist_circumference")
-            or self.cleaned_data.get("sys_blood_pressure")
-            or self.cleaned_data.get("dia_blood_pressure")
-            or self.cleaned_data.get("severe_htn")
-        ):
-
+    def require_all_vitals_fields(self):
+        require_all = False
+        fields = get_part_three_vitals_fields()
+        for field in fields:
+            if self.cleaned_data.get(field):
+                require_all = True
+                break
+        if require_all:
             for field in fields:
                 if not self.cleaned_data.get(field):
                     raise forms.ValidationError({field: "This field is required"})
-
-    def validate_blood_pressure(self):
-        """Raise if BP is >= 180/120"""
-        if get_meta_version() != PHASE_THREE:
-            raise InvalidMetaVersion(
-                f"Invalid META version. Expected {PHASE_THREE}. Got {get_meta_version()}."
-            )
-        if (
-            self.cleaned_data.get("sys_blood_pressure")
-            and self.cleaned_data.get("dia_blood_pressure")
-            and (
-                self.cleaned_data.get("sys_blood_pressure") >= 180
-                or self.cleaned_data.get("dia_blood_pressure") >= 120
-            )
-        ):
-            if self.cleaned_data.get("severe_htn") != YES:
-                raise forms.ValidationError(
-                    {"severe_htn": "Patient has severe hypertension"}
-                )

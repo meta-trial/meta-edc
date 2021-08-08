@@ -1,6 +1,6 @@
 from django.utils.safestring import mark_safe
 
-from meta_edc.meta_version import get_meta_version
+from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
 
 from ..forms import (
     get_part_one_fields,
@@ -86,7 +86,22 @@ comments_fieldset = (
     },
 )
 
-if get_meta_version() == 2:
+if get_meta_version() == PHASE_THREE:
+    calculated_values_fieldset = (
+        "Calculated values",
+        {
+            "classes": ("collapse",),
+            "fields": (
+                "sys_blood_pressure_avg",
+                "dia_blood_pressure_avg",
+                "converted_ifg_value",
+                "converted_ogtt_value",
+                "converted_creatinine_value",
+                "calculated_egfr_value",
+            ),
+        },
+    )
+else:
     calculated_values_fieldset = (
         "Calculated values",
         {
@@ -101,20 +116,6 @@ if get_meta_version() == 2:
                 "inclusion_b",
                 "inclusion_c",
                 "inclusion_d",
-            ),
-        },
-    )
-
-if get_meta_version() == 3:
-    calculated_values_fieldset = (
-        "Calculated values",
-        {
-            "classes": ("collapse",),
-            "fields": (
-                "converted_ifg_value",
-                "converted_ogtt_value",
-                "converted_creatinine_value",
-                "calculated_egfr_value",
             ),
         },
     )

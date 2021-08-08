@@ -19,9 +19,10 @@ from edc_blood_results.constants import (
 )
 from edc_constants.constants import CLOSED, DEAD, HIGH_PRIORITY, NO, YES
 from edc_ltfu.constants import LOST_TO_FOLLOWUP
+from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_reportable import GRADE3, GRADE4, GRADE5
 from edc_visit_schedule.utils import get_offschedule_models
-from meta_prn.constants import END_OF_STUDY_ACTION
+
 from meta_subject.constants import FOLLOWUP_EXAMINATION_ACTION
 
 

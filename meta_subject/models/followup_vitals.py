@@ -1,11 +1,21 @@
 from django.db import models
 from edc_model import models as edc_models
+from edc_vitals.model_mixins import (
+    BloodPressureModelMixin,
+    SimpleBloodPressureModelMixin,
+)
 
 from ..choices import WEIGHT_DETERMINATION
-from .model_mixins import CrfModelMixin, VitalsFieldMixin
+from ..model_mixins import CrfModelMixin, VitalsFieldsModelMixin
 
 
-class FollowupVitals(VitalsFieldMixin, CrfModelMixin, edc_models.BaseUuidModel):
+class FollowupVitals(
+    VitalsFieldsModelMixin,
+    BloodPressureModelMixin,
+    SimpleBloodPressureModelMixin,
+    CrfModelMixin,
+    edc_models.BaseUuidModel,
+):
 
     weight_determination = models.CharField(
         verbose_name="Is weight estimated or measured?",

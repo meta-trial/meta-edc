@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import logging
-import os
 import sys
 from datetime import datetime
 from os.path import abspath, dirname, join
@@ -12,15 +11,14 @@ from django.test.runner import DiscoverRunner
 from edc_test_utils import DefaultTestSettings
 from multisite import SiteID
 
-from meta_edc.meta_version import PHASE_THREE, PHASE_TWO
-from meta_edc.utils import confirm_meta_version
+from meta_edc.meta_version import PHASE_TWO
 
 app_name = "meta_edc"
 base_dir = dirname(abspath(__file__))
 
 DEFAULT_SETTINGS = DefaultTestSettings(
     calling_file=__file__,
-    META_PHASE=2,
+    META_PHASE=PHASE_TWO,
     EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=False,
     ROOT_URLCONF="meta_edc.urls",
     EDC_AUTH_CODENAMES_WARN_ONLY=True,
@@ -169,37 +167,6 @@ DEFAULT_SETTINGS = DefaultTestSettings(
 
 def main():
     if not settings.configured:
-        DEFAULT_SETTINGS.update(META_PHASE=PHASE_TWO)
-        settings.configure(**DEFAULT_SETTINGS)
-    django.setup()
-    tags = [t.split("=")[1] for t in sys.argv if t.startswith("--tag")]
-    failfast = True if [t for t in sys.argv if t == "--failfast"] else False
-    failures = DiscoverRunner(failfast=failfast, tags=tags).run_tests(
-        [
-            "tests",
-            "meta_ae.tests",
-            "meta_auth.tests",
-            "meta_dashboard.tests",
-            "meta_edc.tests",
-            "meta_export.tests",
-            "meta_form_validators.tests",
-            "meta_labs.tests",
-            "meta_lists.tests",
-            "meta_metadata_rules.tests",
-            "meta_prn.tests",
-            "meta_rando.tests",
-            "meta_reference.tests",
-            "meta_screening.tests",
-            "meta_subject.tests",
-            "meta_visit_schedule.tests",
-        ]
-    )
-    sys.exit(bool(failures))
-
-
-def main_phase_three():
-    if not settings.configured:
-        DEFAULT_SETTINGS.update(META_PHASE=PHASE_THREE)
         settings.configure(**DEFAULT_SETTINGS)
     django.setup()
     tags = [t.split("=")[1] for t in sys.argv if t.startswith("--tag")]
@@ -230,4 +197,3 @@ def main_phase_three():
 if __name__ == "__main__":
     logging.basicConfig()
     main()
-    main_phase_three()

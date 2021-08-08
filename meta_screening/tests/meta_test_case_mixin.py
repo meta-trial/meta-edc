@@ -10,6 +10,7 @@ from edc_constants.constants import YES
 from edc_facility.import_holidays import import_holidays
 from edc_facility.models import Holiday
 from edc_list_data.site_list_data import site_list_data
+from edc_randomization.site_randomizers import site_randomizers
 from edc_sites import add_or_update_django_sites, get_sites_by_country
 from edc_sites.tests.site_test_case_mixin import SiteTestCaseMixin
 from edc_utils.date import get_utcnow
@@ -50,11 +51,14 @@ class MetaTestCaseMixin(SiteTestCaseMixin):
     def setUpClass(cls):
         super().setUpClass()
         add_or_update_django_sites(sites=get_sites_by_country("tanzania"))
+        site_randomizers._registry = {}
         if cls.import_randomization_list:
             if get_meta_version() == PHASE_TWO:
-                RandomizerPhaseTwo.import_list(verbose=False)
+                site_randomizers.register(RandomizerPhaseTwo)
+                RandomizerPhaseTwo.import_list(verbose=False, sid_count_for_tests=10)
             elif get_meta_version() == PHASE_THREE:
-                RandomizerPhaseThree.import_list(verbose=False)
+                site_randomizers.register(RandomizerPhaseThree)
+                RandomizerPhaseThree.import_list(verbose=False, sid_count_for_tests=10)
         import_holidays(test=True)
         site_list_data.initialize()
         site_list_data.autodiscover()
