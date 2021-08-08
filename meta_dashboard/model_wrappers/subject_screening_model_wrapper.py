@@ -3,6 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from edc_consent import ConsentModelWrapperMixin
 from edc_model_wrapper import ModelWrapper
 from edc_subject_model_wrappers import SubjectConsentModelWrapper as BaseModelWrapper
+from sarscov2.models import CoronavirusKap
 
 
 class SubjectConsentModelWrapper(BaseModelWrapper):
