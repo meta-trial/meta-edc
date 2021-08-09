@@ -4,7 +4,7 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-    """Added as a fake. Needed it to repair the UAT server DB"""
+    """Added as a fake. Needed it to repair a test DB"""
 
     dependencies = [
         ("meta_subject", "0073_auto_20210809_0055"),
