@@ -19,7 +19,10 @@ LOGGING = {
     },
     "formatters": {
         "verbose": {
-            "format": "[%(asctime)s] %(process)-5d %(thread)d %(name)-50s %(levelname)-8s %(message)s",
+            "format": (
+                "[%(asctime)s] %(process)-5d %(thread)d "
+                "%(name)-50s %(levelname)-8s %(message)s"
+            ),
             "datefmt": "%d/%b/%Y %H:%M:%S",
         },
         "simple": {
