@@ -1,8 +1,3 @@
-from django.core.validators import (
-    MaxLengthValidator,
-    MinLengthValidator,
-    RegexValidator,
-)
 from django.db import models
 from django.utils.safestring import mark_safe
 from django_crypto_fields.fields import EncryptedCharField
@@ -31,16 +26,6 @@ class PartOneFieldsModelMixin(models.Model):
     )
 
     hospital_identifier = EncryptedCharField(unique=True, blank=False)
-
-    initials = EncryptedCharField(
-        validators=[
-            RegexValidator("[A-Z]{1,3}", "Invalid format"),
-            MinLengthValidator(2),
-            MaxLengthValidator(3),
-        ],
-        help_text="Use UPPERCASE letters only. May be 2 or 3 letters.",
-        blank=False,
-    )
 
     ethnicity = models.CharField(
         max_length=15, choices=ETHNICITY, help_text="Used for eGFR calculation"
@@ -73,13 +58,28 @@ class PartOneFieldsModelMixin(models.Model):
         choices=YES_NO,
     )
 
-    staying_nearby = models.CharField(
+    # META PHASE_TWO ONLY
+    staying_nearby_6 = models.CharField(
         verbose_name=(
             "Is the patient planning to remain in the catchment area "
             "for at least 6 months"
         ),
         max_length=15,
         choices=YES_NO,
+        null=True,
+        blank=False,
+    )
+
+    # META PHASE_THREE ONLY
+    staying_nearby_12 = models.CharField(
+        verbose_name=(
+            "Is the patient planning to remain in the catchment area "
+            "for at least 12 months"
+        ),
+        max_length=15,
+        choices=YES_NO,
+        null=True,
+        blank=False,
     )
 
     pregnant = models.CharField(

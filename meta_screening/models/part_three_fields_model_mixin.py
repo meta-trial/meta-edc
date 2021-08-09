@@ -2,8 +2,13 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from edc_constants.choices import NO, YES_NO
 from edc_glucose.model_mixins import FastingModelMixin, IfgModelMixin, OgttModelMixin
-from edc_model import models as edc_models
-from respond_models.mixins import CreatinineModelFieldsMixin
+from edc_vitals.model_mixins import (
+    BloodPressureModelMixin,
+    SimpleBloodPressureModelMixin,
+    WeightHeightBmiModelMixin,
+)
+
+from .creatinine_fields_model_mixin import CreatinineModelFieldsMixin
 
 
 class PartThreeFieldsModelMixin(
@@ -11,29 +16,18 @@ class PartThreeFieldsModelMixin(
     IfgModelMixin,
     OgttModelMixin,
     CreatinineModelFieldsMixin,
+    BloodPressureModelMixin,
+    SimpleBloodPressureModelMixin,
+    WeightHeightBmiModelMixin,
     models.Model,
 ):
 
     part_three_report_datetime = models.DateTimeField(
-        verbose_name="Second stage report date and time",
+        verbose_name="Part 3 report date and time",
         null=True,
         blank=False,
         help_text="Date and time of report.",
     )
-
-    sys_blood_pressure = edc_models.SystolicPressureField(
-        null=True,
-        blank=True,
-    )
-
-    dia_blood_pressure = edc_models.DiastolicPressureField(
-        null=True,
-        blank=True,
-    )
-
-    weight = edc_models.WeightField(null=True, blank=True)
-
-    height = edc_models.HeightField(null=True, blank=True)
 
     waist_circumference = models.DecimalField(
         verbose_name="Waist circumference",

@@ -42,26 +42,28 @@
         <a id="home_list_group_subject_review_listboard" href="{% url subject_review_listboard_url|default:'subject_review_listboard_url_cannot_be_none' %}" class="list-group-item"><i class="fas fa-calendar fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Subject Review</a>
       {% endif %}
       {% if perms.edc_navbar.nav_ae_section %}
-        <a href="{% url 'edc_adverse_event:ae_home_url' %}" class="list-group-item"><i class="fas fa-heartbeat fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Adverse events</a>
+        <a id="home_list_group_ae" href="{% url 'edc_adverse_event:ae_home_url' %}" class="list-group-item"><i class="fas fa-heartbeat fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Adverse events</a>
+      {% endif %}
+      {% if perms.edc_navbar.nav_tmg_section %}
+        <a id="home_list_group_aetmg" href="{% url 'edc_adverse_event:tmg_home_url' %}" class="list-group-item"><i class="fas fa-heartbeat fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;TMG Reports</a>
       {% endif %}
       {% if perms.edc_navbar.nav_lab_section %}
         <a id="home_list_group_requisition_listboard" href="{% url requisition_listboard_url|default:'requisition_listboard_url_cannot_be_none' %}" class="list-group-item"><i class="fas fa-flask fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Specimens</a>
       {% endif %}
-      {% if perms.edc_action_item %}
+      {% if perms.edc_navbar.nav_action_item_section %}
         <a href="{% url 'edc_action_item:home_url' %}" class="list-group-item"><i class="fas fa-bolt fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Action items</a>
       {% endif %}
       {% if perms.edc_navbar.nav_data_manager_section %}
         <a href="{% url 'edc_data_manager:home_url' %}" class="list-group-item"><i class="fas fa-database fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Data Management</a>
       {% endif %}
       {% if perms.edc_navbar.nav_pharmacy_section %}
-        <a href="{% url 'edc_randomization_admin:edc_randomization_randomizationlist_changelist' %}" class="list-group-item"><i class="fas fa-medkit fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Pharmacy</a>
+        <a href="{% url edc_randomization_url_name %}" class="list-group-item"><i class="fas fa-medkit fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Pharmacy</a>
       {% endif %}
       {% if perms.edc_export %}
         <a href="{% url 'edc_export:home_url' %}" class="list-group-item"><i class="fas fa-file-export fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Export data</a>
       {% endif %}
         <a href="/switch_sites/" class="list-group-item"><i class="fas fa-arrows-alt fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Switch sites</a>
         <a href="{% url 'logout' %}" class="list-group-item"><i class="fas fa-sign-out-alt fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Log out</a>
-
       </div>
     </div>
   </div>

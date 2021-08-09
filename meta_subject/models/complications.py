@@ -3,7 +3,7 @@ from edc_constants.choices import NORMAL_ABNORMAL, PRESENT_ABSENT, YES_NO
 from edc_model import models as edc_models
 
 from ..choices import FUNDOSCOPY_CHOICES
-from .model_mixins import CrfModelMixin
+from ..model_mixins import CrfModelMixin
 
 
 class Complications(CrfModelMixin, edc_models.BaseUuidModel):

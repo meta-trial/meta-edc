@@ -1,10 +1,23 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
 
+from meta_edc.meta_version import get_meta_version
+
 from ..admin_site import meta_subject_admin
 from ..forms import PhysicalExamForm
 from ..models import PhysicalExam
+from .fields import get_blood_pressure_fields
 from .modeladmin import CrfModelAdmin
+
+
+def get_other_vitals_fieldset():
+    fields = ["temperature"]
+    if get_meta_version() == 2:
+        fields.extend(["weight", "waist_circumference"])
+    return (
+        "Part 2: Other vitals",
+        {"fields": tuple(fields)},
+    )
 
 
 @admin.register(PhysicalExam, site=meta_subject_admin)
@@ -18,8 +31,7 @@ class PhysicalExamAdmin(CrfModelAdmin):
             "Part 1: BP and Heart",
             {
                 "fields": (
-                    "sys_blood_pressure",
-                    "dia_blood_pressure",
+                    *get_blood_pressure_fields(),
                     "heart_rate",
                     "irregular_heartbeat",
                     "irregular_heartbeat_description",
@@ -27,10 +39,7 @@ class PhysicalExamAdmin(CrfModelAdmin):
                 )
             },
         ),
-        (
-            "Part 2: Other vitals",
-            {"fields": ("temperature", "weight", "waist_circumference")},
-        ),
+        get_other_vitals_fieldset(),
         (
             "Part 3: Signs",
             {
@@ -52,4 +61,5 @@ class PhysicalExamAdmin(CrfModelAdmin):
         "irregular_heartbeat": admin.VERTICAL,
         "jaundice": admin.VERTICAL,
         "peripheral_oedema": admin.VERTICAL,
+        "severe_htn": admin.VERTICAL,
     }

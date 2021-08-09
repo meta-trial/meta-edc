@@ -4,15 +4,31 @@
 META Edc
 --------
 
+This codebase is used for two randomized clinical trials:
+
+____
+
+META PHASE II:
 
 Metformin Treatment for Diabetes Prevention in Africa: META Trial
-
-
 TASO, MRC/UVRI/LSHTM, NIMR – TZ and Liverpool School of Tropical Medicine (ISRCTN76157257)
-
-
 http://www.isrctn.com/ISRCTN76157257
 
+____
+
+META PHASE III:
+
+A randomised placebo-controlled double-blind phase III trial to determine the effects of metformin versus placebo on the incidence of diabetes in HIV-infected persons with pre-diabetes in Tanzania.
+
+Liverpool School of Tropical Medicine
+
+EDCTP grant number: RIA2018CO-2513
+
+Trial registration: ISCRTN 77382043
+
+https://ico.org.uk/ESDWebPages/Entry/Z4763134
+
+____
 
 See also https://github.com/clinicedc/edc
 

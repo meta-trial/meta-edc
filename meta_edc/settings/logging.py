@@ -19,7 +19,11 @@ LOGGING = {
     },
     "formatters": {
         "verbose": {
-            "format": "%(process)-5d %(thread)d %(name)-50s %(levelname)-8s %(message)s"
+            "format": (
+                "[%(asctime)s] %(process)-5d %(thread)d "
+                "%(name)-50s %(levelname)-8s %(message)s"
+            ),
+            "datefmt": "%d/%b/%Y %H:%M:%S",
         },
         "simple": {
             "format": "[%(asctime)s] %(name)s %(levelname)s %(message)s",
@@ -31,6 +35,7 @@ LOGGING = {
             "level": LOGGING_FILE_LEVEL,
             "class": "logging.FileHandler",
             "filename": os.path.join(LOG_FOLDER, "edc.log"),
+            "formatter": "verbose",
         },
         "syslog": {
             "level": LOGGING_SYSLOG_LEVEL,

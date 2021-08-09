@@ -1,7 +1,7 @@
+from edc_adherence.model_mixins import MedicationAdherenceModelMixin
 from edc_model import models as edc_models
-from respond_models.mixins import MedicationAdherenceModelMixin
 
-from .model_mixins import CrfModelMixin
+from ..model_mixins import CrfModelMixin
 
 
 class MedicationAdherence(

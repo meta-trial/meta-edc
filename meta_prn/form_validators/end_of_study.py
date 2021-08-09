@@ -1,46 +1,23 @@
-from django.apps import apps as django_apps
-from django.core.exceptions import ObjectDoesNotExist
-from django.forms import forms
+from edc_adverse_event.form_validator_mixins import (
+    RequiresDeathReportFormValidatorMixin,
+)
 from edc_consent.constants import CONSENT_WITHDRAWAL
-from edc_constants.constants import DEAD, LOST_TO_FOLLOWUP, OTHER
+from edc_constants.constants import DEAD, OTHER
 from edc_form_validators import FormValidator
+from edc_ltfu.constants import LOST_TO_FOLLOWUP
+from edc_ltfu.modelform_mixins import RequiresLtfuFormValidatorMixin
 
 from ..constants import OTHER_RX_DISCONTINUATION
-from .validate_death_report_mixin import ValidateDeathReportMixin
-
-
-class LossToFollowupFormValidatorMixin:
-
-    loss_to_followup_model = "meta_prn.losstofollowup"
-
-    @property
-    def loss_to_followup_model_cls(self):
-        return django_apps.get_model(self.loss_to_followup_model)
-
-    def validate_ltfu(self):
-
-        subject_identifier = (
-            self.cleaned_data.get("subject_identifier")
-            or self.instance.subject_identifier
-        )
-
-        try:
-            self.loss_to_followup_model_cls.objects.get(
-                subject_identifier=subject_identifier
-            )
-        except ObjectDoesNotExist:
-            if self.cleaned_data.get("offschedule_reason") == LOST_TO_FOLLOWUP:
-                raise forms.ValidationError(
-                    {
-                        "offschedule_reason": "Patient was lost to followup, please complete "
-                        f"'{self.loss_to_followup_model_cls._meta.verbose_name}' form first."
-                    }
-                )
 
 
 class EndOfStudyFormValidator(
-    ValidateDeathReportMixin, LossToFollowupFormValidatorMixin, FormValidator
+    RequiresDeathReportFormValidatorMixin,
+    RequiresLtfuFormValidatorMixin,
+    FormValidator,
 ):
+    death_report_model = "meta_ae.deathreport"
+    ltfu_model = None
+
     def clean(self):
 
         self.validate_death_report_if_deceased()

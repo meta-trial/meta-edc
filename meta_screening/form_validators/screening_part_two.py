@@ -2,21 +2,21 @@ from django import forms
 from edc_constants.constants import NO, YES
 from edc_form_validators import FormValidator
 
-from ..eligibility import part2_fields
+from ..eligibility import EligibilityPartTwo
 
 
 class ScreeningPartTwoFormValidator(FormValidator):
     def clean(self):
 
         self.applicable_if_true(
-            self.eligible_part_one, field_applicable="already_fasted"
+            self.eligible_part_two, field_applicable="already_fasted"
         )
 
         self.applicable_if(
             NO, field="already_fasted", field_applicable="advised_to_fast"
         )
 
-        self.required_if_true(self.eligible_part_one, field_required="appt_datetime")
+        self.required_if_true(self.eligible_part_two, field_required="appt_datetime")
 
         if self.cleaned_data.get("already_fasted") == NO:
             self.raise_if_not_future_appt_datetime()
@@ -26,10 +26,10 @@ class ScreeningPartTwoFormValidator(FormValidator):
         )
 
     @property
-    def eligible_part_one(self):
+    def eligible_part_two(self):
         """Returns False if any of the required fields is YES."""
-        for fld in part2_fields:
-            if self.cleaned_data.get(fld) == YES:
+        for fld in EligibilityPartTwo.get_required_fields():
+            if not self.cleaned_data.get(fld) or self.cleaned_data.get(fld) == YES:
                 return False
         return True
 

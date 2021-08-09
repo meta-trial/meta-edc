@@ -6,14 +6,15 @@ from edc_utils import get_utcnow
 from faker import Faker
 from model_bakery.recipe import Recipe
 
-from .models import ScreeningPartOne
+from .models import SubjectScreening
 
 fake = Faker()
 
 
-screeningpartone = Recipe(
-    ScreeningPartOne,
+subjectscreening = Recipe(
+    SubjectScreening,
     report_datetime=get_utcnow() - relativedelta(days=1),
+    screening_consent=YES,
     hospital_identifier="111",
     initials="ZZ",
     subject_identifier=None,
@@ -24,7 +25,8 @@ screeningpartone = Recipe(
     art_six_months=YES,
     on_rx_stable=YES,
     lives_nearby=YES,
-    staying_nearby=YES,
+    staying_nearby_6=YES,
+    staying_nearby_12=YES,
     pregnant=NO,
     site=Site.objects.get_current(),
     part_two_report_datetime=get_utcnow() - relativedelta(days=1),
@@ -45,7 +47,7 @@ screeningpartone = Recipe(
     fasting_duration_str="24:00",
     urine_bhcg_value=NO,
     hba1c_value=5.7,
-    creatinine_vale=0.6,
+    creatinine_value=0.6,
     creatinine_units=MILLIGRAMS_PER_DECILITER,
     ifg_value=6.9,
     ifg_units=MILLIMOLES_PER_LITER,

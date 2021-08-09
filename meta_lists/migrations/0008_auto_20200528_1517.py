@@ -2,7 +2,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import migrations
 from django.db.migrations import RunPython
-from edc_constants.constants import LOST_TO_FOLLOWUP
+from edc_ltfu.constants import LOST_TO_FOLLOWUP
 
 
 def update_ltfu(apps, schema_editor):

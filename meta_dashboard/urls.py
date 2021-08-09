@@ -1,4 +1,3 @@
-from django.apps import apps as django_apps
 from edc_protocol import Protocol
 from edc_review_dashboard.views import SubjectReviewListboardView
 

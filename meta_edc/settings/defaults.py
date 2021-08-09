@@ -8,10 +8,10 @@ from edc_utils import get_datetime_from_env
 
 BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 ENV_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
-
 env = environ.Env(
     AWS_ENABLED=(bool, False),
     CDN_ENABLED=(bool, False),
+    CELERY_ENABLED=(bool, False),
     DATABASE_SQLITE_ENABLED=(bool, False),
     DJANGO_AUTO_CREATE_KEYS=(bool, False),
     DJANGO_CRYPTO_FIELDS_TEMP_PATH=(bool, False),
@@ -46,6 +46,10 @@ else:
         )
     env.read_env(os.path.join(ENV_DIR, ".env"))
 
+META_PHASE = env.int("META_PHASE")
+
+# META_PHASE = confirm_meta_version(META_PHASE)
+
 DEBUG = env("DJANGO_DEBUG")
 
 SECRET_KEY = env.str("DJANGO_SECRET_KEY")
@@ -64,13 +68,16 @@ ENFORCE_RELATED_ACTION_ITEM_EXISTS = False
 
 DEFAULT_APPOINTMENT_TYPE = "hospital"
 
-LOGIN_REDIRECT_URL = env.str("DJANGO_LOGIN_REDIRECT_URL")
+# LOGIN_REDIRECT_URL = env.str("DJANGO_LOGIN_REDIRECT_URL")
+LOGIN_URL = "/accounts/login/"
+LOGOUT_REDIRECT_URL = "/accounts/login/"
 
 SENTRY_ENABLED = env("SENTRY_ENABLED")
 DEFENDER_ENABLED = env("DEFENDER_ENABLED")
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
+    # "django.contrib.admin",
+    "meta_edc.apps.AdminConfig",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -94,6 +101,7 @@ INSTALLED_APPS = [
     "edc_auth.apps.AppConfig",
     "edc_consent.apps.AppConfig",
     "edc_crf.apps.AppConfig",
+    "edc_reportable.apps.AppConfig",
     "edc_lab.apps.AppConfig",
     "edc_visit_schedule.apps.AppConfig",
     "edc_visit_tracking.apps.AppConfig",
@@ -110,6 +118,7 @@ INSTALLED_APPS = [
     "edc_identifier.apps.AppConfig",
     "edc_locator.apps.AppConfig",
     "edc_metadata.apps.AppConfig",
+    "edc_model_fields.apps.AppConfig",
     "edc_model_admin.apps.AppConfig",
     "edc_navbar.apps.AppConfig",
     "edc_notification.apps.AppConfig",
@@ -121,31 +130,59 @@ INSTALLED_APPS = [
     "edc_randomization.apps.AppConfig",
     "edc_reference.apps.AppConfig",
     "edc_registration.apps.AppConfig",
-    "edc_reportable.apps.AppConfig",
     "edc_reports.apps.AppConfig",
     "edc_review_dashboard.apps.AppConfig",
     "edc_sites.apps.AppConfig",
     "edc_subject_dashboard.apps.AppConfig",
     "edc_timepoint.apps.AppConfig",
     "edc_form_describer.apps.AppConfig",
-    "sarscov2.apps.AppConfig",
-    "meta_consent.apps.AppConfig",
-    "meta_lists.apps.AppConfig",
-    "meta_dashboard.apps.AppConfig",
-    "meta_labs.apps.AppConfig",
-    "meta_metadata_rules.apps.AppConfig",
-    "meta_reference.apps.AppConfig",
-    "meta_subject.apps.AppConfig",
-    "meta_form_validators.apps.AppConfig",
-    "meta_visit_schedule.apps.AppConfig",
-    "meta_ae.apps.AppConfig",
-    "meta_auth.apps.AppConfig",
-    "meta_prn.apps.AppConfig",
-    "meta_export.apps.AppConfig",
-    "meta_screening.apps.AppConfig",
-    "meta_sites.apps.AppConfig",
-    "meta_edc.apps.AppConfig",
 ]
+if META_PHASE == 2:
+    META_APPS = [
+        "sarscov2.apps.AppConfig",
+        "meta_consent.apps.AppConfig",
+        "meta_lists.apps.AppConfig",
+        "meta_dashboard.apps.AppConfig",
+        "meta_labs.apps.AppConfig",
+        "meta_metadata_rules.apps.AppConfig",
+        "meta_reference.apps.AppConfig",
+        "meta_subject.apps.AppConfig",
+        "meta_form_validators.apps.AppConfig",
+        "meta_visit_schedule.apps.AppConfig",
+        "meta_ae.apps.AppConfig",
+        "meta_auth.apps.AppConfig",
+        "meta_rando.apps.AppConfig",
+        "meta_prn.apps.AppConfig",
+        "meta_export.apps.AppConfig",
+        "meta_screening.apps.AppConfig",
+        "meta_sites.apps.AppConfig",
+        "meta_edc.apps.AppConfig",
+    ]
+if META_PHASE == 3:
+    META_APPS = [
+        "sarscov2.apps.AppConfig",
+        "edc_adherence.apps.AppConfig",
+        "edc_dx.apps.AppConfig",
+        "edc_refusal.apps.AppConfig",
+        "meta_consent.apps.AppConfig",
+        "meta_lists.apps.AppConfig",
+        "meta_dashboard.apps.AppConfig",
+        "meta_labs.apps.AppConfig",
+        "meta_metadata_rules.apps.AppConfig",
+        "meta_reference.apps.AppConfig",
+        "meta_subject.apps.AppConfig",
+        "meta_form_validators.apps.AppConfig",
+        "meta_visit_schedule.apps.AppConfig",
+        "meta_ae.apps.AppConfig",
+        "meta_auth.apps.AppConfig",
+        "meta_rando.apps.AppConfig",
+        "meta_prn.apps.AppConfig",
+        "meta_export.apps.AppConfig",
+        "meta_screening.apps.AppConfig",
+        "meta_sites.apps.AppConfig",
+        "meta_edc.apps.AppConfig",
+    ]
+INSTALLED_APPS.extend(META_APPS)
 
 if not DEFENDER_ENABLED:
     INSTALLED_APPS.pop(INSTALLED_APPS.index("defender"))
@@ -339,6 +376,8 @@ SUBJECT_VISIT_MODEL = env.str("EDC_SUBJECT_VISIT_MODEL")
 SUBJECT_VISIT_MISSED_MODEL = env.str("EDC_SUBJECT_VISIT_MISSED_MODEL")
 SUBJECT_VISIT_MISSED_REASONS_MODEL = env.str("EDC_SUBJECT_VISIT_MISSED_REASONS_MODEL")
 
+EDC_BLOOD_RESULTS_MODEL_APP_LABEL = "meta_subject"
+
 EDC_NAVBAR_DEFAULT = env("EDC_NAVBAR_DEFAULT")
 
 # dashboards
@@ -347,6 +386,11 @@ DASHBOARD_URL_NAMES = env.dict("DJANGO_DASHBOARD_URL_NAMES")
 DASHBOARD_BASE_TEMPLATES = env.dict("DJANGO_DASHBOARD_BASE_TEMPLATES")
 LAB_DASHBOARD_BASE_TEMPLATES = env.dict("DJANGO_LAB_DASHBOARD_BASE_TEMPLATES")
 LAB_DASHBOARD_URL_NAMES = env.dict("DJANGO_LAB_DASHBOARD_URL_NAMES")
+
+# edc-diagnosis
+EDC_DIAGNOSIS_LABELS = dict(
+    hiv="HIV", dm="Diabetes", htn="Hypertension", chol="High Cholesterol"
+)
 
 # edc_facility
 HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
@@ -390,7 +434,8 @@ if EMAIL_ENABLED:
     EMAIL_USE_TLS = env("DJANGO_EMAIL_USE_TLS")
     MAILGUN_API_KEY = env("MAILGUN_API_KEY")
     MAILGUN_API_URL = env("MAILGUN_API_URL")
-TWILIO_ENABLED = env("TWILIO_ENABLED")
+
+TWILIO_ENABLED = False  # env("TWILIO_ENABLED")
 if TWILIO_ENABLED:
     TWILIO_ACCOUNT_SID = env.str("TWILIO_ACCOUNT_SID")
     TWILIO_AUTH_TOKEN = env.str("TWILIO_AUTH_TOKEN")
@@ -409,7 +454,7 @@ EXPORT_FOLDER = env.str("DJANGO_EXPORT_FOLDER") or os.path.expanduser("~/")
 SIMPLE_HISTORY_PERMISSIONS_ENABLED = env.str("SIMPLE_HISTORY_PERMISSIONS_ENABLED")
 SIMPLE_HISTORY_REVERT_DISABLED = env.str("SIMPLE_HISTORY_REVERT_DISABLED")
 
-FQDN = env.str("DJANGO_FQDN")
+FQDN = env.str("DJANGO_FQDN")  # ???
 INDEX_PAGE = env.str("DJANGO_INDEX_PAGE")
 INDEX_PAGE_LABEL = env.str("DJANGO_INDEX_PAGE_LABEL")
 DJANGO_LOG_FOLDER = env.str("DJANGO_LOG_FOLDER")
@@ -434,6 +479,7 @@ EDC_PROTOCOL = env.str("EDC_PROTOCOL")
 EDC_PROTOCOL_INSTITUTION_NAME = env.str("EDC_PROTOCOL_INSTITUTION_NAME")
 EDC_PROTOCOL_NUMBER = env.str("EDC_PROTOCOL_NUMBER")
 EDC_PROTOCOL_PROJECT_NAME = env.str("EDC_PROTOCOL_PROJECT_NAME")
+EDC_PROTOCOL_PROJECT_NAME = "META3" if META_PHASE == 3 else "META2"
 EDC_PROTOCOL_STUDY_OPEN_DATETIME = get_datetime_from_env(
     *env.list("EDC_PROTOCOL_STUDY_OPEN_DATETIME")
 )
@@ -483,6 +529,39 @@ if SENTRY_ENABLED and SENTRY_DSN:
 
 if env("DJANGO_LOGGING_ENABLED"):
     from .logging import LOGGING  # noqa
+
+# CELERY
+# see docs on setting up the broker
+CELERY_ENABLED = env("CELERY_ENABLED")
+if CELERY_ENABLED:
+    CELERY_BROKER_USER = env.str("CELERY_BROKER_USER")
+    CELERY_BROKER_PASSWORD = env.str("CELERY_BROKER_PASSWORD")
+    CELERY_BROKER_HOST = env.str("CELERY_BROKER_HOST")
+    CELERY_BROKER_PORT = env.str("CELERY_BROKER_PORT")
+    if DEBUG:
+        CELERY_BROKER_VHOST = f"{APP_NAME}_debug"
+    elif LIVE_SYSTEM:
+        CELERY_BROKER_VHOST = f"{APP_NAME}_production"
+    else:
+        CELERY_BROKER_VHOST = f"{APP_NAME}_uat"
+        CELERY_BROKER_URL = (
+            f"amqp://{CELERY_BROKER_USER}:{CELERY_BROKER_PASSWORD}@"
+            f"{CELERY_BROKER_HOST}:{CELERY_BROKER_PORT}/{CELERY_BROKER_VHOST}"
+        )
+        DJANGO_CELERY_RESULTS_TASK_ID_MAX_LENGTH = 191
+        CELERY_RESULT_BACKEND = "django-db"
+        #     CELERY_QUEUES = (
+        #         Queue('high', Exchange('high'), routing_key='high'),
+        #         Queue('normal', Exchange('normal'), routing_key='normal'),
+        #         Queue('low', Exchange('low'), routing_key='low'),
+        #     )
+        #     CELERY_DEFAULT_QUEUE = 'normal'
+        #     CELERY_DEFAULT_EXCHANGE = 'normal'
+        #     CELERY_DEFAULT_ROUTING_KEY = 'normal'
+        #     CELERY_ROUTES = {
+        #         'edc_data_manager.tasks.*': {'queue': 'normal'},
+        #     }
+
 
 if "test" in sys.argv:
 

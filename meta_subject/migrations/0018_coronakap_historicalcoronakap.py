@@ -11,14 +11,14 @@ import django_audit_fields.fields.userfield
 import django_audit_fields.fields.uuid_auto_field
 import django_audit_fields.models.audit_model_mixin
 import django_revision.revision_field
-import edc_model.models.fields.blood_pressure
-import edc_model.models.fields.height
 import edc_model.models.fields.other_charfield
-import edc_model.models.fields.weight
 import edc_model.validators.date
 import edc_protocol.validators
 import edc_utils.date
 import edc_visit_tracking.managers
+import edc_vitals.models.fields.blood_pressure
+import edc_vitals.models.fields.height
+import edc_vitals.models.fields.weight
 import simple_history.models
 from django.conf import settings
 from django.db import migrations, models
@@ -151,17 +151,17 @@ class Migration(migrations.Migration):
                         verbose_name="Does the patient know if he/she has diabetes?",
                     ),
                 ),
-                ("weight", edc_model.models.fields.weight.WeightField()),
-                ("height", edc_model.models.fields.height.HeightField()),
+                ("weight", edc_vitals.models.fields.weight.WeightField()),
+                ("height", edc_vitals.models.fields.height.HeightField()),
                 (
                     "sys_blood_pressure_r1",
-                    edc_model.models.fields.blood_pressure.SystolicPressureField(
+                    edc_vitals.models.fields.blood_pressure.SystolicPressureField(
                         null=True
                     ),
                 ),
                 (
                     "dia_blood_pressure_r1",
-                    edc_model.models.fields.blood_pressure.DiastolicPressureField(
+                    edc_vitals.models.fields.blood_pressure.DiastolicPressureField(
                         null=True
                     ),
                 ),
@@ -874,17 +874,17 @@ class Migration(migrations.Migration):
                         verbose_name="Does the patient know if he/she has diabetes?",
                     ),
                 ),
-                ("weight", edc_model.models.fields.weight.WeightField()),
-                ("height", edc_model.models.fields.height.HeightField()),
+                ("weight", edc_vitals.models.fields.weight.WeightField()),
+                ("height", edc_vitals.models.fields.height.HeightField()),
                 (
                     "sys_blood_pressure_r1",
-                    edc_model.models.fields.blood_pressure.SystolicPressureField(
+                    edc_vitals.models.fields.blood_pressure.SystolicPressureField(
                         null=True
                     ),
                 ),
                 (
                     "dia_blood_pressure_r1",
-                    edc_model.models.fields.blood_pressure.DiastolicPressureField(
+                    edc_vitals.models.fields.blood_pressure.DiastolicPressureField(
                         null=True
                     ),
                 ),

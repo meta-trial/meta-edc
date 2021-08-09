@@ -4,11 +4,10 @@ from edc_constants.choices import YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE
 from edc_identifier.model_mixins import TrackingModelMixin
 from edc_model.models import BaseUuidModel, date_not_future, datetime_not_future
+from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_visit_schedule.model_mixins import OffScheduleModelMixin
 
 from meta_lists.models import OffstudyReasons
-
-from ..constants import END_OF_STUDY_ACTION
 
 
 class EndOfStudy(
@@ -58,6 +57,13 @@ class EndOfStudy(
         choices=YES_NO_NA,
         max_length=15,
         default=NOT_APPLICABLE,
+    )
+
+    comment = models.TextField(
+        verbose_name="Please provide further details if possible",
+        max_length=500,
+        blank=True,
+        null=True,
     )
 
     class Meta(OffScheduleModelMixin.Meta):

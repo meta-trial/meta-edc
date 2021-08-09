@@ -7,7 +7,7 @@ from edc_dashboard.view_mixins import (
     ListboardFilterViewMixin,
     SearchFormViewMixin,
 )
-from edc_dashboard.views import ListboardView
+from edc_dashboard.views import ListboardView as BaseListboardView
 from edc_navbar import NavbarViewMixin
 from edc_subject_model_wrappers import SubjectConsentModelWrapper as BaseWrapper
 from sarscov2.models import CoronavirusKap
@@ -29,7 +29,7 @@ class ListboardView(
     NavbarViewMixin,
     ListboardFilterViewMixin,
     SearchFormViewMixin,
-    ListboardView,
+    BaseListboardView,
 ):
 
     listboard_template = "subject_listboard_template"
@@ -51,13 +51,13 @@ class ListboardView(
 
     def extra_search_options(self, search_term):
         q_objects = []
-        if re.match("^[A-Za-z\-]+$", search_term):
+        if re.match(r"^[A-Za-z\-]+$", search_term):
             q_objects.append(Q(initials__exact=search_term.upper()))
             q_objects.append(Q(first_name__exact=search_term.upper()))
             q_objects.append(
                 Q(screening_identifier__icontains=search_term.replace("-", "").upper())
             )
             q_objects.append(Q(subject_identifier__icontains=search_term))
-        if re.match("^[0-9]+$", search_term):
+        if re.match(r"^[0-9]+$", search_term):
             q_objects.append(Q(identity__exact=search_term))
         return q_objects

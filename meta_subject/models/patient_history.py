@@ -1,27 +1,17 @@
-from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.safestring import mark_safe
 from edc_constants.choices import YES_NO, YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE
 from edc_model import models as edc_models
 from edc_model_fields.fields import OtherCharField
-from edc_reportable.units import (
-    CELLS_PER_MILLIMETER_CUBED_DISPLAY,
-    COPIES_PER_MILLILITER,
-)
 
-from meta_lists.models import (
-    ArvRegimens,
-    DiabetesSymptoms,
-    HypertensionMedications,
-    OiProphylaxis,
-    Symptoms,
-)
+from meta_lists.models import DiabetesSymptoms, HypertensionMedications, Symptoms
+from meta_subject.choices import DYSLIPIDAEMIA_RX_CHOICES
 
-from .model_mixins import CrfModelMixin
+from ..model_mixins import ArvHistoryModelMixin, CrfModelMixin
 
 
-class PatientHistory(CrfModelMixin, edc_models.BaseUuidModel):
+class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, edc_models.BaseUuidModel):
 
     symptoms = models.ManyToManyField(
         Symptoms, verbose_name="Do you have any of the following symptoms?"
@@ -29,107 +19,19 @@ class PatientHistory(CrfModelMixin, edc_models.BaseUuidModel):
 
     other_symptoms = OtherCharField(null=True, blank=True)
 
-    hiv_diagnosis_date = models.DateField(
-        verbose_name="When was the diagnosis of HIV made?", null=True, blank=True
-    )
-
-    arv_initiation_date = models.DateField(
-        verbose_name="Date of start of antiretroviral therapy (ART)",
-        null=True,
-        blank=True,
-    )
-
-    viral_load = models.IntegerField(
-        verbose_name="Last viral load",
-        validators=[MinValueValidator(0), MaxValueValidator(999999)],
-        null=True,
-        blank=True,
-        help_text=COPIES_PER_MILLILITER,
-    )
-
-    viral_load_date = models.DateField(
-        verbose_name="Date of last viral load", null=True, blank=True
-    )
-
-    cd4 = models.IntegerField(
-        verbose_name="Last CD4",
-        validators=[MinValueValidator(0), MaxValueValidator(3000)],
-        null=True,
-        blank=True,
-        help_text=CELLS_PER_MILLIMETER_CUBED_DISPLAY,
-    )
-
-    cd4_date = models.DateField(verbose_name="Date of last CD4", null=True, blank=True)
-
-    current_arv_regimen = models.ForeignKey(
-        ArvRegimens,
-        on_delete=models.PROTECT,
-        related_name="current_arv_regimen",
-        verbose_name=(
-            "Which antiretroviral therapy regimen is the patient currently on?"
-        ),
-        null=True,
-        blank=False,
-    )
-
-    other_current_arv_regimen = OtherCharField(null=True, blank=True)
-
-    current_arv_regimen_start_date = models.DateField(
-        verbose_name=(
-            "When did the patient start this current antiretroviral therapy regimen?"
-        ),
-        null=True,
-        blank=True,
-    )
-
-    has_previous_arv_regimen = models.CharField(
-        verbose_name="Has the patient been on any previous regimen?",
-        max_length=15,
-        choices=YES_NO,
-    )
-
-    previous_arv_regimen = models.ForeignKey(
-        ArvRegimens,
-        on_delete=models.PROTECT,
-        related_name="previous_arv_regimen",
-        verbose_name=(
-            "Which antiretroviral therapy regimen was the patient previously on?"
-        ),
-        null=True,
-        blank=True,
-    )
-
-    other_previous_arv_regimen = OtherCharField(null=True, blank=True)
-
-    on_oi_prophylaxis = models.CharField(
-        verbose_name=(
-            "Is the patient on any prophylaxis against opportunistic infections?"
-        ),
-        max_length=15,
-        choices=YES_NO,
-    )
-
-    oi_prophylaxis = models.ManyToManyField(
-        OiProphylaxis,
-        verbose_name="If YES, which prophylaxis is the patient on?",
-        blank=True,
-    )
-
-    other_oi_prophylaxis = OtherCharField(null=True, blank=True)
-
     htn_diagnosis = models.CharField(
         verbose_name="Has the patient been diagnosed with hypertension?",
         max_length=15,
         choices=YES_NO,
     )
 
-    on_hypertension_treatment = models.CharField(
+    on_htn_treatment = models.CharField(
         verbose_name="Is the patient on treatment for hypertension?",
         max_length=15,
-        choices=YES_NO,
+        choices=YES_NO_NA,
     )
 
-    hypertension_treatment = models.ManyToManyField(
+    htn_treatment = models.ManyToManyField(
         HypertensionMedications,
         verbose_name=(
             "What medications is the patient currently taking for hypertension?"
@@ -137,7 +39,7 @@ class PatientHistory(CrfModelMixin, edc_models.BaseUuidModel):
         blank=True,
     )
 
-    other_hypertension_treatment = OtherCharField(
+    other_htn_treatment = OtherCharField(
         verbose_name=mark_safe("If other medication(s), please specify ..."),
         null=True,
         blank=True,
@@ -147,6 +49,54 @@ class PatientHistory(CrfModelMixin, edc_models.BaseUuidModel):
         verbose_name="Is the patient currently taking any statins?",
         max_length=15,
         choices=YES_NO,
+    )
+
+    # PHASE_THREE_ONLY
+    dyslipidaemia_diagnosis = models.CharField(
+        verbose_name="Has the patient been diagnosed with dyslipidaemia?",
+        max_length=15,
+        choices=YES_NO,
+        null=True,
+        blank=False,
+    )
+
+    # PHASE_THREE_ONLY
+    on_dyslipidaemia_treatment = models.CharField(
+        verbose_name="Is the patient on treatment for dyslipidaemia?",
+        max_length=15,
+        choices=YES_NO_NA,
+        default=NOT_APPLICABLE,
+    )
+
+    # PHASE_THREE_ONLY
+    dyslipidaemia_rx = models.CharField(
+        verbose_name="What medication is the patient currently taking for dyslipidaemia?",
+        max_length=25,
+        choices=DYSLIPIDAEMIA_RX_CHOICES,
+        default=NOT_APPLICABLE,
+    )
+
+    # PHASE_THREE_ONLY
+    other_dyslipidaemia_rx = models.CharField(
+        verbose_name="What medication is the patient currently taking for dyslipidaemia?",
+        max_length=50,
+        null=True,
+        blank=True,
+    )
+
+    # PHASE_THREE_ONLY
+    concomitant_conditions = models.TextField(
+        verbose_name="Does the patient have any other conditions not mentioned above?",
+        max_length=250,
+        null=True,
+        blank=True,
+    )
+    # PHASE_THREE_ONLY
+    concomitant_medications = models.TextField(
+        verbose_name="Is the patient taking any concomitant medications?",
+        max_length=250,
+        null=True,
+        blank=True,
     )
 
     current_smoker = models.CharField(
@@ -162,14 +112,14 @@ class PatientHistory(CrfModelMixin, edc_models.BaseUuidModel):
         default=NOT_APPLICABLE,
     )
 
-    diabetes_symptoms = models.ManyToManyField(
+    dm_symptoms = models.ManyToManyField(
         DiabetesSymptoms,
         verbose_name=mark_safe(
             "In the <u>past year</u>, have you had any of the following symptoms?"
         ),
     )
 
-    other_diabetes_symptoms = OtherCharField(
+    other_dm_symptoms = OtherCharField(
         verbose_name=mark_safe(
             "If other symptom in the <u>past year</u>, please specify ..."
         ),
@@ -177,7 +127,7 @@ class PatientHistory(CrfModelMixin, edc_models.BaseUuidModel):
         blank=True,
     )
 
-    diabetes_in_family = models.CharField(
+    dm_in_family = models.CharField(
         verbose_name=(
             "Has anyone in your immediate family " "ever been diagnosed with diabetes?"
         ),

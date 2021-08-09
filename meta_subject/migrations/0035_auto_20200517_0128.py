@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
             model_name="missedvisit",
             name="missed_reasons",
             field=models.ManyToManyField(
-                blank=True, to="meta_lists.MissedVisitReasons"
+                blank=True, to="meta_lists.SubjectVisitMissedReasons"
             ),
         ),
     ]

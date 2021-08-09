@@ -1,0 +1,20 @@
+# confirm the working directory
+
+[Unit]
+Description=gunicorn live daemon
+Requires=gunicorn-live.socket
+After=network.target
+
+[Service]
+User=edc
+Group=www-data
+WorkingDirectory=/home/live/app
+ExecStart=/home/live/miniconda3/envs/edc/bin/gunicorn \
+    --access-logfile - \
+    --workers 3 \
+    --timeout=300 \
+    --bind unix:/run/gunicorn-live.sock \
+    meta_edc.wsgi_live:application
+
+[Install]
+WantedBy=multi-user.target

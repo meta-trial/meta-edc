@@ -10,7 +10,7 @@
         class="btn btn-sm btn-default" role="button" 
         {% if not perms.meta_screening.add_screeningpartone %}disabled{% endif %}
         href="{% if perms.meta_screening.add_screeningpartone %}{{ subject_screening_add_url }}?next={{ screening_listboard_url }}{% endif %}">
-            <i class="fas fa-plus fa-sm"></i> Add Subject Screening
+            <i class="fas fa-plus fa-sm"></i> Add Subject Screening {% if meta_version == 3 %}(META3){% endif %}
     </a>
     
 {% endblock listboard_panel %}
@@ -20,7 +20,7 @@
     <!-- begin results header -->
     <th>#</th>
     <th></th>
-    <th>Corona</th>
+    {% if meta_version == 2 %}<th>Corona</th>{% endif %}
     <th>Screening ID</th>
     <th>Initials</th>
     <th>Age/Gender</th>
@@ -50,7 +50,7 @@
 
 {% block listboard_table_columns %}
 
-    <td nowrap>
+    {% if meta_version == 2 %}<td nowrap>
         {% if perms.sarscov2 %}
             {% if result.coronavirus_kap %}
             <a class="btn btn-sm btn-success" title="Edit Coronavirus KAP"
@@ -60,7 +60,7 @@
                href="{% url 'sarscov2_admin:sarscov2_coronaviruskap_add' %}?screening_identifier={{result.screening_identifier}}&next=meta_dashboard:screening_listboard_url">Add</a>
             {% endif %}
         {% endif %}
-    </td>
+    </td>{% endif %}
     <td>{{ result.human_screening_identifier }} </td>
     <td nowrap>{{ result.initials }}</td>
     <td nowrap>{{ result.age_in_years }} yrs {{ result.gender }}</td>

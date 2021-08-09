@@ -9,7 +9,7 @@ from ..constants import PREG_YES_NO_NA
 class PartTwoFieldsModelMixin(models.Model):
 
     part_two_report_datetime = models.DateTimeField(
-        verbose_name="Report Date and Time",
+        verbose_name="Part 2 report date and time",
         null=True,
         blank=False,
         help_text="Date and time of report.",
@@ -133,6 +133,24 @@ class PartTwoFieldsModelMixin(models.Model):
             "For example: Magnesium stearate, sodium "
             "carboxymethylcellulose, hypromellose"
         ),
+    )
+
+    # META PHASE_THREE ONLY
+    has_dm = models.CharField(
+        verbose_name="Is the patient known to have diabetes?",
+        max_length=15,
+        choices=YES_NO,
+        null=True,
+        blank=False,
+    )
+
+    # META PHASE_THREE ONLY
+    on_dm_medication = models.CharField(
+        verbose_name="Is the patient known to be taking anti-diabetic medications?",
+        max_length=15,
+        choices=YES_NO,
+        null=True,
+        blank=False,
     )
 
     already_fasted = models.CharField(

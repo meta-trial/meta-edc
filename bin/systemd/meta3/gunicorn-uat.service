@@ -1,0 +1,20 @@
+# confirm the working directory
+
+[Unit]
+Description=gunicorn UAT daemon
+Requires=gunicorn-uat.socket
+After=network.target
+
+[Service]
+User=edc
+Group=www-data
+WorkingDirectory=/home/uat/app
+ExecStart=/home/uat/miniconda3/envs/edc/bin/gunicorn \
+    --access-logfile - \
+    --workers 2 \
+    --timeout=300 \
+    --bind unix:/run/gunicorn-uat.sock \
+    meta_edc.wsgi_uat:application
+
+[Install]
+WantedBy=multi-user.target

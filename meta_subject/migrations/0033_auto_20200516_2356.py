@@ -227,7 +227,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "missed_reasons",
-                    models.ManyToManyField(to="meta_lists.MissedVisitReasons"),
+                    models.ManyToManyField(to="meta_lists.SubjectVisitMissedReasons"),
                 ),
                 (
                     "site",

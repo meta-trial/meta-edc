@@ -7,11 +7,10 @@ from edc_identifier.model_mixins import (
     NonUniqueSubjectIdentifierFieldMixin,
     TrackingModelMixin,
 )
+from edc_ltfu.constants import LTFU_ACTION
 from edc_model import models as edc_models
 from edc_sites.models import SiteModelMixin
 from edc_utils.date import get_utcnow
-
-from ..constants import LOSS_TO_FOLLOWUP_ACTION
 
 LOSS_CHOICES = (
     ("unknown_address", "Changed to an unknown address"),
@@ -29,7 +28,7 @@ class LossToFollowup(
     edc_models.BaseUuidModel,
 ):
 
-    action_name = LOSS_TO_FOLLOWUP_ACTION
+    action_name = LTFU_ACTION
 
     tracking_identifier_prefix = "LF"
 

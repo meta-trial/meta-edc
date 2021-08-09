@@ -1,11 +1,12 @@
 from django import forms
 from edc_form_validators import FormValidatorMixin
-from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
 from edc_screening.modelform_mixins import AlreadyConsentedFormMixin
+
+from meta_edc.meta_version import PHASE_TWO, get_meta_version
 
 from ..form_validators import ScreeningPartThreeFormValidator
 from ..models import ScreeningPartThree
-from .field_lists import part_three_fields
+from .field_lists import get_part_three_fields
 
 
 class ScreeningPartThreeForm(
@@ -14,7 +15,7 @@ class ScreeningPartThreeForm(
 
     form_validator_cls = ScreeningPartThreeFormValidator
 
-    AUTO_NUMBER_START = 31
+    AUTO_NUMBER_START = 29 if get_meta_version() == PHASE_TWO else 31
 
     def clean(self):
         cleaned_data = super().clean()
@@ -27,4 +28,4 @@ class ScreeningPartThreeForm(
 
     class Meta:
         model = ScreeningPartThree
-        fields = part_three_fields
+        fields = get_part_three_fields()

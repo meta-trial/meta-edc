@@ -3,12 +3,23 @@ from django.db import models
 from django.utils.safestring import mark_safe
 from edc_constants.choices import YES_NO
 from edc_model import models as edc_models
+from edc_vitals.model_mixins import (
+    BloodPressureModelMixin,
+    SimpleBloodPressureModelMixin,
+)
 
-from .model_mixins import CrfModelMixin, VitalsFieldMixin
+from ..model_mixins import CrfModelMixin, VitalsFieldsModelMixin
 
 
-class PhysicalExam(VitalsFieldMixin, CrfModelMixin, edc_models.BaseUuidModel):
+class PhysicalExam(
+    SimpleBloodPressureModelMixin,
+    BloodPressureModelMixin,
+    VitalsFieldsModelMixin,
+    CrfModelMixin,
+    edc_models.BaseUuidModel,
+):
 
+    # TODO: add second blood pressure reading
     irregular_heartbeat = models.CharField(
         verbose_name=mark_safe("Is the heart beat <u>irregular</u>?"),
         max_length=15,
@@ -25,6 +36,7 @@ class PhysicalExam(VitalsFieldMixin, CrfModelMixin, edc_models.BaseUuidModel):
         decimal_places=1,
         validators=[MinValueValidator(50.0), MaxValueValidator(175.0)],
         help_text="in centimeters",
+        null=True,
     )
 
     jaundice = models.CharField(verbose_name="Jaundice?", max_length=15, choices=YES_NO)

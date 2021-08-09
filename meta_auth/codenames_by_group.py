@@ -8,6 +8,8 @@ from edc_auth import (
 )
 from sarscov2.auth import SARSCOV2, sarscov2_codenames
 
+from meta_edc.meta_version import get_meta_version
+
 from .codenames import (
     auditor,
     clinic,
@@ -24,5 +26,6 @@ def get_codenames_by_group():
     codenames_by_group[SCREENING] = screening
     codenames_by_group[UNBLINDING_REQUESTORS] = unblinding_requestors
     codenames_by_group[UNBLINDING_REVIEWERS] = unblinding_reviewers
-    codenames_by_group[SARSCOV2] = sarscov2_codenames
+    if get_meta_version() == 2:
+        codenames_by_group[SARSCOV2] = sarscov2_codenames
     return codenames_by_group

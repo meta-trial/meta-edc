@@ -1,10 +1,17 @@
-from edc_constants.constants import DEAD, LOST_TO_FOLLOWUP, NONE, OTHER, UNKNOWN
-from edc_list_data import PreloadData
+from edc_constants.constants import DEAD, NONE, OTHER, UNKNOWN
+from edc_ltfu.constants import LOST_TO_FOLLOWUP
 from edc_transfer.constants import TRANSFERRED
 
 from meta_prn.constants import LATE_EXCLUSION, OTHER_RX_DISCONTINUATION, WITHDRAWAL
 
 list_data = {
+    "meta_lists.abnormalfootappearanceobservations": [
+        ("deformities", "Deformities"),
+        ("dry_skin_callus", "Dry skin, callus"),
+        ("infection", "Infection"),
+        ("fissure", "Fissure"),
+        (OTHER, "Other abnormality, please specify"),
+    ],
     "meta_lists.nonadherencereasons": [
         ("forget_to_take", "I sometimes forget to take my pills"),
         ("dont_like_taking", "I don't like taking my pills"),
@@ -56,18 +63,26 @@ list_data = {
         (NONE, "--No symptoms to report"),
         ("abdominal_pain_general", "Abdominal pain (General)"),
         ("abdominal_pain_right_upper_quad", "Abdominal pain (Right upper quadrant)"),
+        ("blurred_vision", "Blurred vision"),
+        ("diarrhoea", "Diarrhoea"),
         ("dizziness", "Dizziness"),
         ("fatigue", "Fatigue"),
         ("flatulence", "Flatulence (gas)"),
         ("headaches", "Headaches"),
+        ("increased_appetite", "Increased appetite"),
+        ("joint_pain", "Joint pain"),
         ("loss_of_appetite", "Loss of appetite"),
         ("muscle_cramping", "Muscle cramping"),
         ("muscle_pain", "Muscle pain"),
         ("nausea", "Nausea"),
+        ("pain_feet_or_lower_limbs", "Pain in feet/lower limbs"),
         ("pounding_heartbeat", "Fast or pounding heartbeat"),
+        ("rash", "Rash"),
         ("shakiness", "Shakiness"),
         ("shallow_breathing", "Fast or shallow breathing"),
+        ("skin_itching", "Skin itching"),
         ("sweating", "Sweating"),
+        ("swelling_feet_or_lower_limbs", "Swelling of feet/lower limbs"),
         ("unusual_sleepiness", "Unusual sleepiness"),
         ("vomiting", "Vomiting"),
         ("weakness", "Weakness"),
@@ -151,5 +166,3 @@ list_data = {
         ),
     ],
 }
-
-preload_data = PreloadData(list_data=list_data)

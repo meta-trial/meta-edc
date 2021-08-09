@@ -9,8 +9,10 @@ from edc_dashboard.url_names import url_names
 from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
+from meta_screening.eligibility import Eligibility
+
 from ..admin_site import meta_screening_admin
-from ..eligibility import eligibility_status, format_reasons_ineligible
+from ..eligibility import format_reasons_ineligible
 from ..forms import SubjectScreeningForm
 from ..models import SubjectScreening
 from .fieldsets import (
@@ -97,6 +99,8 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "creatinine_performed": admin.VERTICAL,
         "creatinine_units": admin.VERTICAL,
         "ethnicity": admin.VERTICAL,
+        "has_dm": admin.VERTICAL,
+        "on_dm_medication": admin.VERTICAL,
         "fasting": admin.VERTICAL,
         "ifg_units": admin.VERTICAL,
         "gender": admin.VERTICAL,
@@ -111,7 +115,9 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "renal_function_condition": admin.VERTICAL,
         "screening_consent": admin.VERTICAL,
         "selection_method": admin.VERTICAL,
-        "staying_nearby": admin.VERTICAL,
+        "severe_htn": admin.VERTICAL,
+        "staying_nearby_6": admin.VERTICAL,
+        "staying_nearby_12": admin.VERTICAL,
         "tissue_hypoxia_condition": admin.VERTICAL,
         "unsuitable_agreed": admin.VERTICAL,
         "unsuitable_for_study": admin.VERTICAL,
@@ -122,18 +128,22 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
     def post_url_on_delete_kwargs(self, request, obj):
         return {}
 
-    def demographics(self, obj=None):
+    @staticmethod
+    def demographics(obj=None):
         return mark_safe(
             f"{obj.get_gender_display()} {obj.age_in_years}yrs<BR>"
             f"Initials: {obj.initials.upper()}<BR><BR>"
             f"Hospital ID: {obj.hospital_identifier}"
         )
 
-    def reasons(self, obj=None):
+    @staticmethod
+    def reasons(obj=None):
         return format_reasons_ineligible(obj.reasons_ineligible)
 
-    def eligiblity_status(self, obj=None):
-        return mark_safe(eligibility_status(obj))
+    @staticmethod
+    def eligiblity_status(obj=None):
+        eligibility = Eligibility(obj)
+        return mark_safe(eligibility.eligibility_status)
 
     def dashboard(self, obj=None, label=None):
         try:
