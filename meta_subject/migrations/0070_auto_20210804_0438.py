@@ -68,7 +68,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name="historicalpatienthistory",
-            name="on_htn_treatment",
+            name="on_hypertension_treatment",
             field=models.CharField(
                 choices=[("Yes", "Yes"), ("No", "No"), ("N/A", "Not applicable")],
                 max_length=15,
@@ -77,7 +77,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name="patienthistory",
-            name="on_htn_treatment",
+            name="on_hypertension_treatment",
             field=models.CharField(
                 choices=[("Yes", "Yes"), ("No", "No"), ("N/A", "Not applicable")],
                 max_length=15,
