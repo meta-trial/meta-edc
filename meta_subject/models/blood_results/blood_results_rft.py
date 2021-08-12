@@ -5,7 +5,7 @@ from edc_blood_results.model_mixins import (
     EgfrModelMixin,
     RequisitionModelMixin,
     UreaModelMixin,
-    UricModelMixin,
+    UricAcidModelMixin,
 )
 from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
 from edc_lab_panel.panels import rft_panel
@@ -14,15 +14,13 @@ from edc_reportable import calculate_egfr
 from edc_reportable.units import EGFR_UNITS
 from edc_screening.utils import get_subject_screening_model_cls
 
-from meta_edc.meta_version import PHASE_THREE, get_meta_version
-
 
 class BloodResultsRft(
     CrfWithActionModelMixin,
     CreatinineModelMixin,
     EgfrModelMixin,
     UreaModelMixin,
-    UricModelMixin,
+    UricAcidModelMixin,
     RequisitionModelMixin,
     BloodResultsModelMixin,
     edc_models.BaseUuidModel,

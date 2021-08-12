@@ -22,6 +22,8 @@ class PartThreeFieldsModelMixin(
     models.Model,
 ):
 
+    lower_bmi_value = 15.0
+
     part_three_report_datetime = models.DateTimeField(
         verbose_name="Part 3 report date and time",
         null=True,

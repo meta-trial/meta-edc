@@ -11,6 +11,7 @@ from edc_vitals.form_validators import (
 
 from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
 from meta_screening.forms import get_part_three_vitals_fields
+from meta_screening.models import SubjectScreening
 
 
 class ScreeningPartThreeFormValidatorError(Exception):
@@ -54,6 +55,8 @@ class ScreeningPartThreeFormValidator(
         self.validate_weight_height_with_bmi(
             weight_kg=self.cleaned_data.get("weight"),
             height_cm=self.cleaned_data.get("height"),
+            lower_bmi_value=SubjectScreening.lower_bmi_value,
+            upper_bmi_value=SubjectScreening.upper_bmi_value,
         )
         self.raise_on_avg_blood_pressure_suggests_severe_htn(**self.cleaned_data)
         self.validate_pregnancy()
