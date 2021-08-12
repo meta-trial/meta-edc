@@ -14,8 +14,12 @@ class OtherArvRegimensFormValidator(FormValidator):
             field="has_other_regimens",
             field_required="arv_regimen",
             field_required_inline_set="otherarvregimensdetail_set",
-            required_msg="Based on your response, additional ARV Regimen(s) are required.",
-            not_required_msg="Based on your response, additional ARV Regimen(s) are NOT required.",
+            required_msg=(
+                "Based on your response, additional ARV Regimen(s) are required."
+            ),
+            not_required_msg=(
+                "Based on your response, additional ARV Regimen(s) are NOT required."
+            ),
         )
 
 
