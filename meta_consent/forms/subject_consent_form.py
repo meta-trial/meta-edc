@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 from edc_consent.modelform_mixins import ConsentModelFormMixin
 from edc_form_validators import FormValidatorMixin
 from edc_sites.forms import SiteModelFormMixin
@@ -18,6 +19,11 @@ class SubjectConsentForm(
         label="Screening identifier",
         widget=forms.TextInput(attrs={"readonly": "readonly"}),
     )
+
+    def validate_consent_datetime(self):
+        if getattr(settings, "EDC_CONSENT_BYPASS_CONSENT_DATETIME_VALIDATION", False):
+            return None
+        return self.validate_consent_datetime()
 
     def clean_gender_of_consent(self):
         return None
