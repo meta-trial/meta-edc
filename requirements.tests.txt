@@ -1,3 +1,4 @@
 beautifulsoup4
-sarscov2==0.1.10
-
+sarscov2>=0.1.14
+edc-mnsi>=0.1.1
+edc-he>=0.1.0
