@@ -7,18 +7,38 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_subject', '0059_auto_20210709_2056'),
+        ("meta_subject", "0059_auto_20210709_2056"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='bloodresultslft',
-            name='amylase_value',
-            field=models.DecimalField(blank=True, decimal_places=1, max_digits=6, null=True, validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(999)], verbose_name='Serum Amylase'),
+            model_name="bloodresultslft",
+            name="amylase_value",
+            field=models.DecimalField(
+                blank=True,
+                decimal_places=1,
+                max_digits=6,
+                null=True,
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(999),
+                ],
+                verbose_name="Serum Amylase",
+            ),
         ),
         migrations.AlterField(
-            model_name='historicalbloodresultslft',
-            name='amylase_value',
-            field=models.DecimalField(blank=True, decimal_places=1, max_digits=6, null=True, validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(999)], verbose_name='Serum Amylase'),
+            model_name="historicalbloodresultslft",
+            name="amylase_value",
+            field=models.DecimalField(
+                blank=True,
+                decimal_places=1,
+                max_digits=6,
+                null=True,
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(999),
+                ],
+                verbose_name="Serum Amylase",
+            ),
         ),
     ]

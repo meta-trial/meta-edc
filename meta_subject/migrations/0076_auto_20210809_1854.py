@@ -6,18 +6,26 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_subject', '0075_auto_20210809_1744'),
+        ("meta_subject", "0075_auto_20210809_1744"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='historicalpatienthistory',
-            name='on_htn_treatment',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No'), ('N/A', 'Not applicable')], max_length=15, verbose_name='Is the patient on treatment for hypertension?'),
+            model_name="historicalpatienthistory",
+            name="on_htn_treatment",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No"), ("N/A", "Not applicable")],
+                max_length=15,
+                verbose_name="Is the patient on treatment for hypertension?",
+            ),
         ),
         migrations.AlterField(
-            model_name='patienthistory',
-            name='on_htn_treatment',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No'), ('N/A', 'Not applicable')], max_length=15, verbose_name='Is the patient on treatment for hypertension?'),
+            model_name="patienthistory",
+            name="on_htn_treatment",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No"), ("N/A", "Not applicable")],
+                max_length=15,
+                verbose_name="Is the patient on treatment for hypertension?",
+            ),
         ),
     ]

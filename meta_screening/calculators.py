@@ -1,5 +1,3 @@
-import pdb
-
 from edc_constants.constants import NO, TBD, YES
 
 

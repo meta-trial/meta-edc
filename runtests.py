@@ -20,6 +20,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     calling_file=__file__,
     META_PHASE=PHASE_THREE,
     EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=False,
+    EDC_MNSI_ABNORMAL_FOOT_APPEARANCE_OBSERVATIONS_MODEL="meta_lists.abnormalfootappearanceobservations",
     ROOT_URLCONF="meta_edc.urls",
     EDC_AUTH_CODENAMES_WARN_ONLY=True,
     EDC_DX_REVIEW_LIST_MODEL_APP_LABEL="edc_dx_review",

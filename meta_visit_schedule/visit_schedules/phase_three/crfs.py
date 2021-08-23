@@ -12,7 +12,7 @@ crfs_prn = FormsCollection(
     Crf(show_order=280, model="meta_subject.malariatest"),
     Crf(show_order=290, model="meta_subject.urinedipsticktest"),
     Crf(show_order=360, model="meta_subject.mnsi"),
-    Crf(show_order=370, model="meta_subject.healtheconomics"),
+    Crf(show_order=370, model="meta_subject.healtheconomicssimple"),
     name="prn",
 )
 
@@ -28,7 +28,6 @@ crfs_missed = FormsCollection(
     Crf(show_order=10, model="meta_subject.subjectvisitmissed"),
     name="missed",
 )
-# TODO: add metadata rule for hepatitis either now or at w2 or 1m
 crfs_d1 = FormsCollection(
     Crf(show_order=10, model="meta_subject.physicalexam"),
     Crf(show_order=20, model="meta_subject.patienthistory"),
@@ -42,16 +41,18 @@ crfs_d1 = FormsCollection(
     Crf(show_order=360, model="meta_subject.malariatest"),
     Crf(show_order=370, model="meta_subject.urinedipsticktest"),
     Crf(show_order=400, model="meta_subject.studydrugrefill"),
+    Crf(show_order=500, model="meta_subject.hepatitistest"),
     name="day1",
 )
 
-# TODO: add metadata rule for healtheconomics either now or at 1m
 crfs_w2 = FormsCollection(
     Crf(show_order=10, model="meta_subject.followupvitals"),
     Crf(show_order=15, model="meta_subject.followupexamination"),
     Crf(show_order=200, model="meta_subject.bloodresultsglu"),
     Crf(show_order=300, model="meta_subject.studydrugrefill"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=450, model="meta_subject.healtheconomicssimple"),
+    Crf(show_order=500, model="meta_subject.hepatitistest", required=False),
     name="week2",
 )
 
@@ -61,9 +62,9 @@ crfs_1m = FormsCollection(
     Crf(show_order=200, model="meta_subject.bloodresultsglu"),
     Crf(show_order=300, model="meta_subject.studydrugrefill"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
-    Crf(show_order=450, model="meta_subject.healtheconomics"),
+    Crf(show_order=450, model="meta_subject.healtheconomicssimple", required=False),
     Crf(show_order=470, model="meta_subject.mnsi"),
-    Crf(show_order=500, model="meta_subject.hepatitistest"),
+    Crf(show_order=500, model="meta_subject.hepatitistest", required=False),
     name="1m",
 )
 

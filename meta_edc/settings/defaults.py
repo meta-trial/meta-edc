@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 
 import environ
+from edc_appointment.constants import SCHEDULED_APPT, UNSCHEDULED_APPT
 from edc_constants.constants import COMPLETE
 from edc_utils import get_datetime_from_env
 
@@ -118,6 +119,7 @@ INSTALLED_APPS = [
     "edc_identifier.apps.AppConfig",
     "edc_locator.apps.AppConfig",
     "edc_metadata.apps.AppConfig",
+    "edc_mnsi.apps.AppConfig",
     "edc_model_fields.apps.AppConfig",
     "edc_model_admin.apps.AppConfig",
     "edc_navbar.apps.AppConfig",
@@ -395,6 +397,11 @@ EDC_DIAGNOSIS_LABELS = dict(
 # edc_facility
 HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
 
+# edc-mnsi
+EDC_MNSI_ABNORMAL_FOOT_APPEARANCE_OBSERVATIONS_MODEL = (
+    "meta_lists.abnormalfootappearanceobservations"
+)
+
 # edc_randomization
 EDC_RANDOMIZATION_LIST_PATH = env.str("EDC_RANDOMIZATION_LIST_PATH")
 EDC_RANDOMIZATION_UNBLINDED_USERS = env.list("EDC_RANDOMIZATION_UNBLINDED_USERS")
@@ -561,6 +568,11 @@ if CELERY_ENABLED:
         #     CELERY_ROUTES = {
         #         'edc_data_manager.tasks.*': {'queue': 'normal'},
         #     }
+
+EDC_APPOINTMENT_APPT_REASON_CHOICES = (
+    (SCHEDULED_APPT, "Scheduled visit (study)"),
+    (UNSCHEDULED_APPT, "Routine / Unscheduled (non-study)"),
+)
 
 
 if "test" in sys.argv:
