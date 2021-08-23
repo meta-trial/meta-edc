@@ -19,7 +19,9 @@ base_dir = dirname(abspath(__file__))
 DEFAULT_SETTINGS = DefaultTestSettings(
     calling_file=__file__,
     META_PHASE=PHASE_TWO,
-    EDC_MNSI_ABNORMAL_FOOT_APPEARANCE_OBSERVATIONS_MODEL="meta_lists.abnormalfootappearanceobservations",
+    EDC_MNSI_ABNORMAL_FOOT_APPEARANCE_OBSERVATIONS_MODEL=(
+        "meta_lists.abnormalfootappearanceobservations"
+    ),
     EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=False,
     ROOT_URLCONF="meta_edc.urls",
     EDC_AUTH_CODENAMES_WARN_ONLY=True,
