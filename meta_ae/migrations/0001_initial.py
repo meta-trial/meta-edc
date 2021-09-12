@@ -12,7 +12,7 @@ import django_audit_fields.models.audit_model_mixin
 import django_crypto_fields.fields.encrypted_text_field
 import django_revision.revision_field
 import edc_action_item.managers
-import edc_adverse_event.model_mixins.death_report_tmg_model_mixin
+import edc_adverse_event.model_mixins.death_report.death_report_tmg_model_mixin
 import edc_model.validators.date
 import edc_model_fields.fields.other_charfield
 import edc_protocol.validators
@@ -2733,11 +2733,11 @@ class Migration(migrations.Migration):
             managers=[
                 (
                     "on_site",
-                    edc_adverse_event.model_mixins.death_report_tmg_model_mixin.DeathReportTmgSiteManager(),
+                    edc_adverse_event.model_mixins.death_report.death_report_tmg_model_mixin.DeathReportTmgSiteManager(),
                 ),
                 (
                     "objects",
-                    edc_adverse_event.model_mixins.death_report_tmg_model_mixin.DeathReportTmgManager(),
+                    edc_adverse_event.model_mixins.death_report.death_report_tmg_model_mixin.DeathReportTmgManager(),
                 ),
             ],
         ),
@@ -3391,11 +3391,11 @@ class Migration(migrations.Migration):
             managers=[
                 (
                     "on_site",
-                    edc_adverse_event.model_mixins.death_report_tmg_model_mixin.DeathReportTmgSecondSiteManager(),
+                    edc_adverse_event.model_mixins.death_report.death_report_tmg_model_mixin.DeathReportTmgSecondSiteManager(),
                 ),
                 (
                     "objects",
-                    edc_adverse_event.model_mixins.death_report_tmg_model_mixin.DeathReportTmgSecondManager(),
+                    edc_adverse_event.model_mixins.death_report.death_report_tmg_model_mixin.DeathReportTmgSecondManager(),
                 ),
             ],
         ),

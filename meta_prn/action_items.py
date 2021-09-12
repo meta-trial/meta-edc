@@ -5,7 +5,7 @@ from edc_adverse_event.constants import DEATH_REPORT_ACTION
 from edc_constants.constants import HIGH_PRIORITY, TBD, YES
 from edc_ltfu.constants import LTFU_ACTION
 from edc_offstudy.constants import END_OF_STUDY_ACTION
-from edc_prn.action_items import (
+from edc_protocol_violation.action_items import (
     ProtocolDeviationViolationAction as BaseProtocolDeviationViolationAction,
 )
 
@@ -48,10 +48,10 @@ class UnblindingRequestAction(ActionWithNotification):
     display_name = "Unblinding request"
     notification_display_name = " Unblinding request"
     parent_action_names = []
-    reference_model = "meta_prn.unblindingrequest"
+    reference_model = "edc_unblinding.unblindingrequest"
     show_link_to_changelist = True
     show_link_to_add = True
-    admin_site_name = "meta_prn_admin"
+    admin_site_name = "edc_unblinding_admin"
     priority = HIGH_PRIORITY
 
     def get_next_actions(self):
@@ -69,9 +69,9 @@ class UnblindingReviewAction(ActionWithNotification):
     display_name = "Unblinding review pending"
     notification_display_name = " Unblinding review needed"
     parent_action_names = [UNBLINDING_REQUEST_ACTION]
-    reference_model = "meta_prn.unblindingreview"
+    reference_model = "edc_unblinding.unblindingreview"
     show_link_to_changelist = True
-    admin_site_name = "meta_prn_admin"
+    admin_site_name = "edc_unblinding_admin"
     priority = HIGH_PRIORITY
     color_style = "info"
     create_by_user = False

@@ -11,6 +11,7 @@ from .complications_glycemia_form import ComplicationsGlycemiaForm
 from .followup_examination_form import FollowupExaminationForm
 from .followup_vitals_form import FollowupVitalsForm
 from .glucose_form import GlucoseForm
+from .health_economics_form import HealthEconomicsForm
 from .health_economics_simple_form import HealthEconomicsSimpleForm
 from .hepatitis_test_form import HepatitisTestForm
 from .malaria_test_form import MalariaTestForm

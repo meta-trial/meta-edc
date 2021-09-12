@@ -45,6 +45,7 @@ crfs_d1 = FormsCollection(
     name="day1",
 )
 
+# TODO: add eq5d to the 2 week visit
 crfs_w2 = FormsCollection(
     Crf(show_order=10, model="meta_subject.followupvitals"),
     Crf(show_order=15, model="meta_subject.followupexamination"),

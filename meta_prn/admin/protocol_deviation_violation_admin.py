@@ -1,7 +1,9 @@
 from copy import copy
 
 from django.contrib import admin
+from django.utils.html import format_html
 from edc_action_item import action_fields, action_fieldset_tuple
+from edc_constants.constants import CLOSED, OPEN
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
@@ -52,13 +54,14 @@ class ProtocolDeviationViolationAdmin(
         (
             "Actions taken",
             {
+                "description": "The following questions are required before the report is closed.",
                 "fields": (
                     "corrective_action_datetime",
                     "corrective_action",
                     "preventative_action_datetime",
                     "preventative_action",
                     "action_required",
-                )
+                ),
             },
         ),
         ("Report status", {"fields": ("report_status", "report_closed_datetime")}),
@@ -78,7 +81,7 @@ class ProtocolDeviationViolationAdmin(
     list_display = (
         "subject_identifier",
         "dashboard",
-        "short_description",
+        "description",
         "report_datetime",
         "status",
         "action_required",
@@ -105,4 +108,13 @@ class ProtocolDeviationViolationAdmin(
         return fields
 
     def status(self, obj=None):
+        if obj.report_status == CLOSED:
+            return format_html(
+                f'<font color="green">{obj.report_status.title()}</font>'
+            )
+        elif obj.report_status == OPEN:
+            return format_html(f'<font color="red">{obj.report_status.title()}</font>')
         return obj.report_status.title()
+
+    def description(self, obj=None):
+        return obj.short_description.title()
