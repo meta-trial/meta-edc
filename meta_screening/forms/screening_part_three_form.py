@@ -8,6 +8,8 @@ from ..form_validators import ScreeningPartThreeFormValidator
 from ..models import ScreeningPartThree
 from .field_lists import get_part_three_fields
 
+ifg_units_fld = ScreeningPartThree._meta.get_field("ifg_units")
+
 
 class ScreeningPartThreeForm(
     AlreadyConsentedFormMixin, FormValidatorMixin, forms.ModelForm
@@ -23,7 +25,6 @@ class ScreeningPartThreeForm(
         if cleaned_data.get("creatinine_value"):
             if float(cleaned_data.get("creatinine_value")) > 9999.0:
                 raise forms.ValidationError({"creatinine_value": "Value is absurd."})
-
         return cleaned_data
 
     class Meta:

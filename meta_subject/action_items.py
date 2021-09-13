@@ -1,5 +1,3 @@
-import pdb
-
 from edc_action_item import Action, site_action_items
 from edc_action_item.site_action_items import AlreadyRegistered
 from edc_adverse_event.constants import AE_INITIAL_ACTION

@@ -1,6 +1,65 @@
 Changes
 =======
 
+unreleased
+----------
+- separate Phase 2 and Phase 3 screening: inclusion
+  criteria, randomizer, table, etc (meta_screening)
+- add table randomizationlist (accessible in Phase 3) (meta_rando)
+- rename fields in model SubjectScreening` -- `stay_nearby`
+  to `stay_nearby_6` (meta_screening)
+- add fields to model SubjectScreening -- `has_dm`, `on_dm_medication`, `severe_htn`
+  (accessible in Phase 3) (meta_screening)
+- add fields to model SubjectScreening for BP 2X readings/avg
+  (accessible in Phase 3) (meta_screening)
+- add separate Phase 3 visit schedule / data collection schedule
+  (meta_visit_schedule)
+- add bloodresult utest_ids for MCH, MCHC, MCV. Migrate fields
+  into existing BloodResultsFbc (meta_subject)
+- add bloodresult utestids for CHOL. Migrate fields
+  into existing BloodResultsLipids (meta_subject)
+- add HepatitisTest model, add dyslipidaemia_rx to PatientHistory
+  model (accessible in Phase 3) (meta_subject)
+- require `edc_vitals` for field classes used in models PhysicalExam
+  and FollowupVitals (meta_subject)
+- add model StudyDrugRefill, AdditionalScreening
+  (accessible in Phase 3) (meta_subject)
+- add ComplicationsGlycemia (accessible for Phase 3 / pending)
+  (meta_subject)
+- require `edc-mnsi`. MNSI /  (accessible in Phase 3) (meta_subject)
+- add OtherArvRegimens model (accessible in Phase 3) (meta_subject)
+- add nullable fields to PatientHistory:
+  concomitant_medications, other_dyslipidaemia_rx
+  (accessible in Phase 3) (meta_subject)
+- add inline model OtherArvRegimensDetail to capture history of ARVs
+  (accessible in Phase 3) (meta_subject)
+- add fields to model FollowupVitals for BP 2X readings/avg
+  (accessible in Phase 3) (meta_subject)
+- leave 1X BP reading fields in FollowupVitals for Phase 2, make
+  nullable but required if in Admin (meta_subject)
+- create model BloodResultsIns (accessible in Phase 3) (meta_subject)
+- rename fields in model PatientHistory (0075):
+  diabetes_in_family->dm_in_family
+  diabetes_symptoms->dm_symptoms
+  hypertension_treatment->htn_treatment
+  on_hypertension_treatment->on_htn_treatment
+  other_diabetes_symptoms->other_dm_symptoms
+  other_hypertension_treatment->other_htn_treatment
+  (meta_subject)
+- add model HealthEconomicsSimple. Require on or after W2
+  (accessible in Phase 3) (meta_subject)
+- move Unblinding models from meta_prn to edc_unblinding (meta_prn)
+- rename field in model ProtocolDeviationViolation `violation_type` to `violation`.
+  Also change datatype from CharField to ForeignKey. Update data to match existing.
+  (meta_prn)
+- rename field in model ProtocolDeviationViolation `violation_type_other`
+  to `violation_other` (meta_prn)
+- Change datatype of field in model ProtocolDeviationViolation `actions_required`
+  from CharField to ForeignKey. Update data to match existing (meta_prn)
+
+
+
+
 0.1.66
 ------
 - see docs for details of field name changes: docs/updates/1.65/renamed_fields.txt

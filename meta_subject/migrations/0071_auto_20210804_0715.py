@@ -6,18 +6,32 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_subject', '0070_auto_20210804_0438'),
+        ("meta_subject", "0070_auto_20210804_0438"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='bloodresultsrft',
-            name='egfr_value',
-            field=models.DecimalField(blank=True, decimal_places=4, help_text='(system calculated)', max_digits=8, null=True, verbose_name='eGFR'),
+            model_name="bloodresultsrft",
+            name="egfr_value",
+            field=models.DecimalField(
+                blank=True,
+                decimal_places=4,
+                help_text="(system calculated)",
+                max_digits=8,
+                null=True,
+                verbose_name="eGFR",
+            ),
         ),
         migrations.AlterField(
-            model_name='historicalbloodresultsrft',
-            name='egfr_value',
-            field=models.DecimalField(blank=True, decimal_places=4, help_text='(system calculated)', max_digits=8, null=True, verbose_name='eGFR'),
+            model_name="historicalbloodresultsrft",
+            name="egfr_value",
+            field=models.DecimalField(
+                blank=True,
+                decimal_places=4,
+                help_text="(system calculated)",
+                max_digits=8,
+                null=True,
+                verbose_name="eGFR",
+            ),
         ),
     ]

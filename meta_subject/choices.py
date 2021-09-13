@@ -3,17 +3,17 @@ from edc_constants.constants import (
     MICROSCOPY,
     NO,
     NO_EXAM,
-    NORMAL,
     NOT_APPLICABLE,
     OTHER,
     PRESENT,
+    PRESENT_WITH_REINFORCEMENT,
     RAPID_TEST,
     YES,
 )
 from edc_reportable.constants import GRADE3, GRADE4
 from edc_visit_tracking.constants import MISSED_VISIT, SCHEDULED, UNSCHEDULED
 
-from .constants import APPT, APPT_OTHER, DECREASED, PRESENT_WITH_REINFORCEMENT, REDUCED
+from .constants import APPT, APPT_OTHER
 
 ACTIVITY_CHOICES = (
     ("working", "Working"),
@@ -22,12 +22,6 @@ ACTIVITY_CHOICES = (
     (OTHER, "Other, please specify"),
 )
 
-ANKLE_REFLEX_CHOICES = (
-    (PRESENT, "Present"),
-    (PRESENT_WITH_REINFORCEMENT, "Present/Reinforcement"),
-    (ABSENT, "Absent"),
-    (NOT_APPLICABLE, "Not applicable"),
-)
 
 CHILDCARE_CHOICES = (
     (NOT_APPLICABLE, "Not applicable"),
@@ -83,13 +77,6 @@ MALARIA_TEST_CHOICES = (
     (NOT_APPLICABLE, "Not applicable"),
 )
 
-MONOFILAMENT_CHOICES = (
-    (NORMAL, "Normal"),
-    (REDUCED, "Reduced"),
-    (ABSENT, "Absent"),
-    (NOT_APPLICABLE, "Not applicable"),
-)
-
 PAYEE_CHOICES = (
     ("own_cash", "Own cash"),
     ("insurance", "Insurance"),
@@ -126,18 +113,6 @@ TRANSPORT_CHOICES = (
     (OTHER, "Other, specify"),
 )
 
-ULCERATION_CHOICES = (
-    (ABSENT, "Absent"),
-    (PRESENT, "Present"),
-    (NOT_APPLICABLE, "Not applicable"),
-)
-
-VIBRATION_PERCEPTION_CHOICES = (
-    (PRESENT, "Present"),
-    (DECREASED, "Decreased"),
-    (ABSENT, "Absent"),
-    (NOT_APPLICABLE, "Not applicable"),
-)
 
 VISIT_UNSCHEDULED_REASON = (
     ("patient_unwell_outpatient", "Patient unwell (outpatient)"),

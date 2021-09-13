@@ -5,8 +5,7 @@ from edc_constants.constants import (
     TUBERCULOSIS,
     UNKNOWN,
 )
-
-from .constants import DEVIATION, VIOLATION
+from edc_protocol_violation.choices import DEVIATION_VIOLATION
 
 LOSS_CHOICES = (
     ("unknown_address", "Changed to an unknown address"),
@@ -52,11 +51,6 @@ ACTION_REQUIRED = (
         "remain_on_study_modified",
         "Patient remains on study but data analysis will be modified",
     ),
-)
-
-DEVIATION_VIOLATION = (
-    (VIOLATION, "Protocol violation"),
-    (DEVIATION, "Protocol deviation"),
 )
 
 

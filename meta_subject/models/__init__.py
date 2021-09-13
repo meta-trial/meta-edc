@@ -13,11 +13,13 @@ from .followup_examination import FollowupExamination
 from .followup_vitals import FollowupVitals
 from .glucose import Glucose
 from .health_economics import HealthEconomics
+from .health_economics_simple import HealthEconomicsSimple
 from .hepatitis_test import HepatitisTest
 from .malaria_test import MalariaTest
 from .medication_adherence import MedicationAdherence
 from .mnsi import Mnsi
-from .other_arv_regimens import OtherArvRegimens, OtherArvRegimensDetail
+from .other_arv_regimens import OtherArvRegimens
+from .other_arv_regimens_detail import OtherArvRegimensDetail
 from .patient_history import PatientHistory
 from .physical_exam import PhysicalExam
 from .study_drug_refill import StudyDrugRefill

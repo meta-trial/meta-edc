@@ -219,7 +219,7 @@ visit24 = Visit(
     code=MONTH24,
     title="Month 24",
     timepoint=10,
-    rbase=relativedelta(months=244),
+    rbase=relativedelta(months=24),
     rlower=relativedelta(days=15),
     rupper=relativedelta(days=30),
     requisitions=requisitions_24m,

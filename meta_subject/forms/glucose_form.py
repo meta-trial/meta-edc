@@ -1,12 +1,12 @@
 from django import forms
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators.form_validator import FormValidator
-from edc_glucose.form_validators import GlucoseFormValidatorMixin
+from edc_glucose.form_validators import IfgOgttFormValidatorMixin
 
 from ..models import Glucose
 
 
-class GlucoseFormValidator(GlucoseFormValidatorMixin, FormValidator):
+class GlucoseFormValidator(IfgOgttFormValidatorMixin, FormValidator):
     def clean(self):
         self.validate_glucose_testing_matrix()
 

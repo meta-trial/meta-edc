@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 
 import environ
+from edc_appointment.constants import SCHEDULED_APPT, UNSCHEDULED_APPT
 from edc_constants.constants import COMPLETE
 from edc_utils import get_datetime_from_env
 
@@ -98,7 +99,6 @@ INSTALLED_APPS = [
     "edc_action_item.apps.AppConfig",
     "edc_appointment.apps.AppConfig",
     "edc_adverse_event.apps.AppConfig",
-    "edc_auth.apps.AppConfig",
     "edc_consent.apps.AppConfig",
     "edc_crf.apps.AppConfig",
     "edc_reportable.apps.AppConfig",
@@ -118,6 +118,7 @@ INSTALLED_APPS = [
     "edc_identifier.apps.AppConfig",
     "edc_locator.apps.AppConfig",
     "edc_metadata.apps.AppConfig",
+    "edc_mnsi.apps.AppConfig",
     "edc_model_fields.apps.AppConfig",
     "edc_model_admin.apps.AppConfig",
     "edc_navbar.apps.AppConfig",
@@ -126,6 +127,7 @@ INSTALLED_APPS = [
     "edc_pharmacy.apps.AppConfig",
     "edc_pdutils.apps.AppConfig",
     "edc_protocol.apps.AppConfig",
+    "edc_protocol_violation.apps.AppConfig",
     "edc_prn.apps.AppConfig",
     "edc_randomization.apps.AppConfig",
     "edc_reference.apps.AppConfig",
@@ -135,6 +137,7 @@ INSTALLED_APPS = [
     "edc_sites.apps.AppConfig",
     "edc_subject_dashboard.apps.AppConfig",
     "edc_timepoint.apps.AppConfig",
+    "edc_unblinding.apps.AppConfig",
     "edc_form_describer.apps.AppConfig",
 ]
 if META_PHASE == 2:
@@ -183,6 +186,7 @@ if META_PHASE == 3:
         "meta_edc.apps.AppConfig",
     ]
 INSTALLED_APPS.extend(META_APPS)
+INSTALLED_APPS.append("edc_auth.apps.AppConfig")
 
 if not DEFENDER_ENABLED:
     INSTALLED_APPS.pop(INSTALLED_APPS.index("defender"))
@@ -345,6 +349,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # edc-pdutils
 EXPORT_FILENAME_TIMESTAMP_FORMAT = "%Y%m%d"
 
+# EDC_AUTH_SKIP_AUTH_UPDATER = True
+
 # enforce https if DEBUG=False!
 # Note: will cause "CSRF verification failed. Request aborted"
 #       if DEBUG=False and https not configured.
@@ -388,12 +394,17 @@ LAB_DASHBOARD_BASE_TEMPLATES = env.dict("DJANGO_LAB_DASHBOARD_BASE_TEMPLATES")
 LAB_DASHBOARD_URL_NAMES = env.dict("DJANGO_LAB_DASHBOARD_URL_NAMES")
 
 # edc-diagnosis
-EDC_DIAGNOSIS_LABELS = dict(
+EDC_DX_LABELS = dict(
     hiv="HIV", dm="Diabetes", htn="Hypertension", chol="High Cholesterol"
 )
 
 # edc_facility
 HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
+
+# edc-mnsi
+EDC_MNSI_ABNORMAL_FOOT_APPEARANCE_OBSERVATIONS_MODEL = (
+    "meta_lists.abnormalfootappearanceobservations"
+)
 
 # edc_randomization
 EDC_RANDOMIZATION_LIST_PATH = env.str("EDC_RANDOMIZATION_LIST_PATH")
@@ -561,6 +572,11 @@ if CELERY_ENABLED:
         #     CELERY_ROUTES = {
         #         'edc_data_manager.tasks.*': {'queue': 'normal'},
         #     }
+
+EDC_APPOINTMENT_APPT_REASON_CHOICES = (
+    (SCHEDULED_APPT, "Scheduled visit (study)"),
+    (UNSCHEDULED_APPT, "Routine / Unscheduled (non-study)"),
+)
 
 
 if "test" in sys.argv:

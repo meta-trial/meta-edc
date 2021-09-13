@@ -2,20 +2,24 @@ from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_model_admin import TabularInlineMixin
 
-from meta_subject.models import OtherArvRegimensDetail, PatientHistory
-
 from ..admin_site import meta_subject_admin
-from ..forms import OtherArvRegimensForm
-from ..models import OtherArvRegimens
+from ..forms import OtherArvRegimensDetailForm, OtherArvRegimensForm
+from ..models import OtherArvRegimens, OtherArvRegimensDetail, PatientHistory
 from .modeladmin import CrfModelAdmin
 
 
 class OtherArvRegimensInlineAdmin(TabularInlineMixin, admin.TabularInline):
     model = OtherArvRegimensDetail
-    # form = OtherArvRegimensDetailForm
+    form = OtherArvRegimensDetailForm
     extra = 1
     view_on_site = False
     autocomplete_fields = ["arv_regimen"]
+    insert_after = "has_other_regimens"
+
+    def get_formset(self, request, obj=None, **kwargs):
+        formset = super().get_formset(request, obj=None, **kwargs)
+        # formset.validate_min = True
+        return formset
 
     fieldsets = (
         [

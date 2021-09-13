@@ -1,5 +1,3 @@
-import pdb
-
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, override_settings, tag
 from edc_constants.constants import FEMALE, MALE

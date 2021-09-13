@@ -19,7 +19,6 @@ class PhysicalExam(
     edc_models.BaseUuidModel,
 ):
 
-    # TODO: add second blood pressure reading
     irregular_heartbeat = models.CharField(
         verbose_name=mark_safe("Is the heart beat <u>irregular</u>?"),
         max_length=15,

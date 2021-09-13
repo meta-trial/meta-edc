@@ -11,6 +11,7 @@ from .followup_examination_admin import FollowupExaminationAdmin
 from .followup_vitals_admin import FollowupVitalsAdmin
 from .glucose_admin import GlucoseAdmin
 from .health_economics_admin import HealthEconomicsAdmin
+from .health_economics_simple_admin import HealthEconomicsSimpleAdmin
 from .hepatitis_test_admin import HepatitisTestAdmin
 from .malaria_test_admin import MalariaTestAdmin
 from .medication_adherence_admin import MedicationAdherenceAdmin

@@ -19,6 +19,9 @@ base_dir = dirname(abspath(__file__))
 DEFAULT_SETTINGS = DefaultTestSettings(
     calling_file=__file__,
     META_PHASE=PHASE_TWO,
+    EDC_MNSI_ABNORMAL_FOOT_APPEARANCE_OBSERVATIONS_MODEL=(
+        "meta_lists.abnormalfootappearanceobservations"
+    ),
     EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=False,
     ROOT_URLCONF="meta_edc.urls",
     EDC_AUTH_CODENAMES_WARN_ONLY=True,
@@ -39,7 +42,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     DEFENDER_ENABLED=False,
     DJANGO_LAB_DASHBOARD_REQUISITION_MODEL="meta_subject.subjectrequisition",
     ADVERSE_EVENT_ADMIN_SITE="meta_ae_admin",
-    EDC_DIAGNOSIS_LABELS=dict(
+    EDC_DX_LABELS=dict(
         hiv="HIV", dm="Diabetes", htn="Hypertension", chol="High Cholesterol"
     ),
     ADVERSE_EVENT_APP_LABEL="meta_ae",
@@ -132,6 +135,8 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_pharmacy.apps.AppConfig",
         # "edc_pharmacy_dashboard.apps.AppConfig",
         "edc_prn.apps.AppConfig",
+        "edc_protocol.apps.AppConfig",
+        "edc_protocol_violation.apps.AppConfig",
         "edc_randomization.apps.AppConfig",
         "edc_registration.apps.AppConfig",
         "edc_subject_dashboard.apps.AppConfig",
@@ -139,6 +144,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_list_data.apps.AppConfig",
         "edc_review_dashboard.apps.AppConfig",
         "edc_sites.apps.AppConfig",
+        "edc_unblinding.apps.AppConfig",
         "sarscov2.apps.AppConfig",
         "edc_dx_review.apps.AppConfig",
         "edc_dx.apps.AppConfig",
@@ -175,7 +181,6 @@ def main():
         [
             "tests",
             "meta_ae.tests",
-            "meta_auth.tests",
             "meta_dashboard.tests",
             "meta_edc.tests",
             "meta_export.tests",

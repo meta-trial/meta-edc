@@ -10,23 +10,4 @@ class Migration(migrations.Migration):
         ("meta_subject", "0073_auto_20210809_0055"),
     ]
 
-    operations = [
-        # migrations.AddField(
-        #     model_name="patienthistory",
-        #     name="on_hypertension_treatment",
-        #     field=models.CharField(
-        #         choices=[("Yes", "Yes"), ("No", "No")],
-        #         max_length=15,
-        #         verbose_name="Is the patient on treatment for hypertension?",
-        #     ),
-        # ),
-        # migrations.AddField(
-        #     model_name="historicalpatienthistory",
-        #     name="on_hypertension_treatment",
-        #     field=models.CharField(
-        #         choices=[("Yes", "Yes"), ("No", "No")],
-        #         max_length=15,
-        #         verbose_name="Is the patient on treatment for hypertension?",
-        #     ),
-        # ),
-    ]
+    operations = []
