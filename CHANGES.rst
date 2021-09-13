@@ -1,8 +1,8 @@
 Changes
 =======
 
-unreleased
-----------
+0.1.70
+------
 - separate Phase 2 and Phase 3 screening: inclusion
   criteria, randomizer, table, etc (meta_screening)
 - add table randomizationlist (accessible in Phase 3) (meta_rando)
