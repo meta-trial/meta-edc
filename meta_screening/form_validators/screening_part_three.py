@@ -1,7 +1,10 @@
 from django import forms
 from edc_constants.constants import NEG, NO, POS, YES
 from edc_form_validators import FormValidator
-from edc_glucose.form_validators import GlucoseFormValidatorMixin
+from edc_glucose.form_validators import (
+    GlucoseFormValidatorMixin,
+    IfgOgttFormValidatorMixin,
+)
 from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
 from edc_reportable import BmiFormValidatorMixin, EgfrFormValidatorMixin
 from edc_vitals.form_validators import (
@@ -20,6 +23,7 @@ class ScreeningPartThreeFormValidatorError(Exception):
 
 class ScreeningPartThreeFormValidator(
     GlucoseFormValidatorMixin,
+    IfgOgttFormValidatorMixin,
     BmiFormValidatorMixin,
     EgfrFormValidatorMixin,
     BloodPressureFormValidatorMixin,

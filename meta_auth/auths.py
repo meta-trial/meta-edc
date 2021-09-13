@@ -4,7 +4,7 @@ from sarscov2.auth import SARSCOV2, sarscov2_codenames
 
 from meta_edc.meta_version import get_meta_version
 
-from .codenames import auditor, clinic, screening
+from .auth_objects import auditor, clinic, screening
 
 site_auths.update_group(*auditor, name=AUDITOR)
 site_auths.update_group(*clinic, name=CLINIC)

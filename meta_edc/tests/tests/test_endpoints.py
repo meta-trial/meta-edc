@@ -12,11 +12,13 @@ from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
 from django_extensions.management.color import color_style
 from django_webtest import WebTest
+from edc_adverse_event.auth_objects import AE, TMG
 from edc_appointment.constants import IN_PROGRESS_APPT, SCHEDULED_APPT
 from edc_appointment.models import Appointment
-from edc_auth import AE, AUDITOR, CLINIC, EVERYONE, EXPORT, LAB, PII, SCREENING, TMG
+from edc_auth import AUDITOR, CLINIC, EVERYONE, EXPORT, PII, SCREENING
 from edc_constants.constants import YES
 from edc_dashboard.url_names import url_names
+from edc_lab.auth_objects import LAB
 from edc_randomization.admin import register_admin
 from edc_randomization.site_randomizers import site_randomizers
 from edc_sites import add_or_update_django_sites

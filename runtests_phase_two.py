@@ -181,7 +181,6 @@ def main():
         [
             "tests",
             "meta_ae.tests",
-            "meta_auth.tests",
             "meta_dashboard.tests",
             "meta_edc.tests",
             "meta_export.tests",

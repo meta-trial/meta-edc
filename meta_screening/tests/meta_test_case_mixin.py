@@ -4,7 +4,6 @@ from dateutil.relativedelta import relativedelta
 from django.contrib.sites.models import Site
 from edc_appointment.constants import IN_PROGRESS_APPT, INCOMPLETE_APPT
 from edc_appointment.models import Appointment
-from edc_auth.group_permissions_updater import GroupPermissionsUpdater
 from edc_constants.constants import YES
 from edc_facility.import_holidays import import_holidays
 from edc_facility.models import Holiday
@@ -16,7 +15,6 @@ from edc_utils.date import get_utcnow
 from edc_visit_tracking.constants import SCHEDULED
 from model_bakery import baker
 
-from meta_auth.codenames_by_group import get_codenames_by_group
 from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
 from meta_rando.randomizers import RandomizerPhaseThree, RandomizerPhaseTwo
 from meta_sites import fqdn
@@ -61,9 +59,9 @@ class MetaTestCaseMixin(SiteTestCaseMixin):
         import_holidays(test=True)
         site_list_data.initialize()
         site_list_data.autodiscover()
-        GroupPermissionsUpdater(
-            codenames_by_group=get_codenames_by_group(), verbose=True
-        )
+        # GroupPermissionsUpdater(
+        #     codenames_by_group=get_codenames_by_group(), verbose=True
+        # )
 
     @classmethod
     def tearDownClass(cls):

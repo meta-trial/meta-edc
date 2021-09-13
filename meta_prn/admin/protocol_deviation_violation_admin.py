@@ -54,7 +54,9 @@ class ProtocolDeviationViolationAdmin(
         (
             "Actions taken",
             {
-                "description": "The following questions are required before the report is closed.",
+                "description": (
+                    "The following questions are required before the report is closed."
+                ),
                 "fields": (
                     "corrective_action_datetime",
                     "corrective_action",
