@@ -1,3 +1,4 @@
+import pdb
 import sys
 from copy import deepcopy
 from unittest import skipIf
@@ -15,12 +16,22 @@ from django_webtest import WebTest
 from edc_adverse_event.auth_objects import AE, TMG
 from edc_appointment.constants import IN_PROGRESS_APPT, SCHEDULED_APPT
 from edc_appointment.models import Appointment
-from edc_auth import AUDITOR, CLINIC, EVERYONE, EXPORT, PII, SCREENING
+from edc_auth.auth_objects import (
+    ADMINISTRATION,
+    AUDITOR,
+    CLINIC,
+    EVERYONE,
+    PII,
+    PII_VIEW,
+)
+from edc_auth.models import Role
 from edc_constants.constants import YES
 from edc_dashboard.url_names import url_names
-from edc_lab.auth_objects import LAB
+from edc_export.auth_objects import EXPORT
+from edc_lab.auth_objects import LAB, LAB_TECHNICIAN_ROLE
 from edc_randomization.admin import register_admin
 from edc_randomization.site_randomizers import site_randomizers
+from edc_screening.auth_objects import SCREENING
 from edc_sites import add_or_update_django_sites
 from edc_test_utils.webtest import login
 from edc_utils import get_utcnow
@@ -48,6 +59,21 @@ screening_listboard_url = f"{app_prefix}_dashboard:screening_listboard_url"
 
 @override_settings(SIMPLE_HISTORY_PERMISSIONS_ENABLED=True)
 class AdminSiteTest(MetaTestCaseMixin, WebTest):
+
+    menu_labels = [
+        "Screening",
+        "Subjects",
+        "Specimens",
+        "Adverse events",
+        "TMG Reports",
+        "Pharmacy",
+        "Action items",
+        "Export data",
+        "Synchronization",
+        "Switch sites",
+        "Log out",
+    ]
+
     def setUp(self):
         self.user = User.objects.create_superuser("user_login", "u@example.com", "pass")
 
@@ -91,6 +117,9 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
     def test_home_auditor(self):
         self.login(superuser=False, groups=[EVERYONE, AUDITOR])
         response = self.app.get(reverse("home_url"), user=self.user, status=200)
+        pdb.set_trace()
+        from django.contrib.auth.models import Permission
+
         self.assertIn("Screening", response)
         self.assertIn("Subjects", response)
         self.assertIn("Specimens", response)
@@ -155,21 +184,20 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         response = response.click(linkid="home_list_group_aetmg")
         self.assertIn("TMG Reports", response)
 
-    @tag("webtest")
+    @tag("webtest1")
     def test_home_lab(self):
-        self.login(superuser=False, groups=[EVERYONE, LAB])
+        role = Role.objects.get(name=LAB_TECHNICIAN_ROLE)
+        groups = [obj.name for obj in role.groups.all()]
+        groups.sort()
+        self.assertEqual(groups, [ADMINISTRATION, EVERYONE, LAB, PII_VIEW])
+        self.login(superuser=False, groups=groups)
         response = self.app.get(reverse("home_url"), user=self.user, status=200)
-        self.assertIn("Screening", response)
-        self.assertIn("Subjects", response)
-        self.assertIn("Specimens", response)
-        self.assertNotIn("Adverse events", response)
-        self.assertNotIn("TMG Reports", response)
-        self.assertNotIn("Pharmacy", response)
-        self.assertNotIn("Action items", response)
-        self.assertNotIn("Export data", response)
-        self.assertNotIn("Synchronization", response)
-        self.assertIn("Switch sites", response)
-        self.assertIn("Log out", response)
+        expected_labels = ["Specimens", "Switch sites", "Log out"]
+        for label in self.menu_labels:
+            if label in expected_labels:
+                self.assertIn(label, response)
+            else:
+                self.assertNotIn(label, response)
 
     @skipIf(get_meta_version() != 2, "not version 2")
     @tag("webtest")

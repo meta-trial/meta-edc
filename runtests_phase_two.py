@@ -139,6 +139,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_protocol_violation.apps.AppConfig",
         "edc_randomization.apps.AppConfig",
         "edc_registration.apps.AppConfig",
+        "edc_screening.apps.AppConfig",
         "edc_subject_dashboard.apps.AppConfig",
         "edc_timepoint.apps.AppConfig",
         "edc_list_data.apps.AppConfig",
