@@ -44,6 +44,8 @@ class MetaTestCaseMixin(SiteTestCaseMixin):
 
     import_randomization_list = True
 
+    sid_count = 10
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -52,16 +54,17 @@ class MetaTestCaseMixin(SiteTestCaseMixin):
         if cls.import_randomization_list:
             if get_meta_version() == PHASE_TWO:
                 site_randomizers.register(RandomizerPhaseTwo)
-                RandomizerPhaseTwo.import_list(verbose=False, sid_count_for_tests=10)
+                RandomizerPhaseTwo.import_list(
+                    verbose=False, sid_count_for_tests=cls.sid_count
+                )
             elif get_meta_version() == PHASE_THREE:
                 site_randomizers.register(RandomizerPhaseThree)
-                RandomizerPhaseThree.import_list(verbose=False, sid_count_for_tests=10)
+                RandomizerPhaseThree.import_list(
+                    verbose=False, sid_count_for_tests=cls.sid_count
+                )
         import_holidays(test=True)
         site_list_data.initialize()
         site_list_data.autodiscover()
-        # GroupPermissionsUpdater(
-        #     codenames_by_group=get_codenames_by_group(), verbose=True
-        # )
 
     @classmethod
     def tearDownClass(cls):

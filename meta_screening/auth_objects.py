@@ -1,9 +1,4 @@
-from copy import copy
-
-from edc_auth.codenames import screening as default
-
-screening = copy(default)
-screening += [
+screening_codenames = [
     "meta_screening.add_screeningpartone",
     "meta_screening.add_screeningpartthree",
     "meta_screening.add_screeningparttwo",
@@ -30,4 +25,4 @@ screening += [
     "meta_screening.view_subjectscreening",
     "meta_screening.view_subjectrefusal",
 ]
-screening.sort()
+screening_codenames.sort()

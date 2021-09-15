@@ -80,6 +80,8 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     LIVE_SYSTEM=False,
     EDC_RANDOMIZATION_LIST_PATH=join(base_dir, "meta_edc", "tests", "etc"),
     EDC_SITES_MODULE_NAME="meta_sites",
+    EDC_AUTH_SKIP_SITE_AUTHS=True,
+    EDC_AUTH_SKIP_AUTH_UPDATER=True,
     INSTALLED_APPS=[
         "django.contrib.admin",
         "django.contrib.auth",
@@ -140,6 +142,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_randomization.apps.AppConfig",
         "edc_registration.apps.AppConfig",
         "edc_subject_dashboard.apps.AppConfig",
+        "edc_screening.apps.AppConfig",
         "edc_timepoint.apps.AppConfig",
         "edc_list_data.apps.AppConfig",
         "edc_review_dashboard.apps.AppConfig",
