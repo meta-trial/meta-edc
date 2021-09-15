@@ -1,5 +1,8 @@
 Changes
 =======
+0.1.71
+------
+- update auths for changes in edc-auth 
 
 0.1.70
 ------
