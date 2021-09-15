@@ -1,6 +1,6 @@
-import pdb
 import sys
 from copy import deepcopy
+from importlib import import_module
 from unittest import skipIf
 
 from bs4 import BeautifulSoup
@@ -13,25 +13,18 @@ from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
 from django_extensions.management.color import color_style
 from django_webtest import WebTest
-from edc_adverse_event.auth_objects import AE, TMG
+from edc_adverse_event.auth_objects import TMG_ROLE
 from edc_appointment.constants import IN_PROGRESS_APPT, SCHEDULED_APPT
 from edc_appointment.models import Appointment
-from edc_auth.auth_objects import (
-    ADMINISTRATION,
-    AUDITOR,
-    CLINIC,
-    EVERYONE,
-    PII,
-    PII_VIEW,
-)
-from edc_auth.models import Role
+from edc_auth.auth_objects import AUDITOR_ROLE, CLINICIAN_ROLE, STAFF_ROLE
+from edc_auth.auth_updater import AuthUpdater
+from edc_auth.site_auths import site_auths
 from edc_constants.constants import YES
 from edc_dashboard.url_names import url_names
-from edc_export.auth_objects import EXPORT
-from edc_lab.auth_objects import LAB, LAB_TECHNICIAN_ROLE
+from edc_export.auth_objects import DATA_EXPORTER_ROLE
+from edc_lab.auth_objects import LAB_TECHNICIAN_ROLE
 from edc_randomization.admin import register_admin
 from edc_randomization.site_randomizers import site_randomizers
-from edc_screening.auth_objects import SCREENING
 from edc_sites import add_or_update_django_sites
 from edc_test_utils.webtest import login
 from edc_utils import get_utcnow
@@ -57,8 +50,14 @@ app_prefix = "meta"
 screening_listboard_url = f"{app_prefix}_dashboard:screening_listboard_url"
 
 
-@override_settings(SIMPLE_HISTORY_PERMISSIONS_ENABLED=True)
+@override_settings(
+    SIMPLE_HISTORY_PERMISSIONS_ENABLED=True,
+    EDC_AUTH_SKIP_SITE_AUTHS=True,
+    EDC_AUTH_SKIP_AUTH_UPDATER=False,
+)
 class AdminSiteTest(MetaTestCaseMixin, WebTest):
+
+    sid_count = 2
 
     menu_labels = [
         "Screening",
@@ -74,6 +73,17 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         "Log out",
     ]
 
+    @classmethod
+    def setUpTestData(cls):
+        site_auths.initialize()
+        import_module("edc_dashboard.auths")
+        import_module("edc_data_manager.auths")
+        import_module("edc_export.auths")
+        import_module("edc_lab.auths")
+        import_module("edc_lab_dashboard.auths")
+        import_module("edc_navbar.auths")
+        AuthUpdater(verbose=False)
+
     def setUp(self):
         self.user = User.objects.create_superuser("user_login", "u@example.com", "pass")
 
@@ -82,11 +92,11 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
     @tag("webtest")
     def test_login(self):
-        self.login(superuser=False, groups=[EVERYONE, AUDITOR])
+        self.login(superuser=False, roles=[STAFF_ROLE])
 
     @tag("webtest")
     def test_ae(self):
-        self.login(superuser=False, groups=[EVERYONE, AUDITOR])
+        self.login(superuser=False, roles=[STAFF_ROLE, AUDITOR_ROLE])
         response = self.app.get(reverse("meta_ae:home_url"), user=self.user, status=302)
         response = response.follow()
         self.assertIn(f"META{get_meta_version()}: Adverse Events", response)
@@ -100,7 +110,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
     @tag("webtest")
     def test_home_everyone(self):
-        self.login(superuser=False, groups=[EVERYONE])
+        self.login(superuser=False, roles=[STAFF_ROLE])
         response = self.app.get(reverse("home_url"), user=self.user, status=200)
         self.assertNotIn("Screening", response)
         self.assertNotIn("Subjects", response)
@@ -115,11 +125,8 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
     @tag("webtest")
     def test_home_auditor(self):
-        self.login(superuser=False, groups=[EVERYONE, AUDITOR])
+        self.login(superuser=False, roles=[STAFF_ROLE, AUDITOR_ROLE])
         response = self.app.get(reverse("home_url"), user=self.user, status=200)
-        pdb.set_trace()
-        from django.contrib.auth.models import Permission
-
         self.assertIn("Screening", response)
         self.assertIn("Subjects", response)
         self.assertIn("Specimens", response)
@@ -137,7 +144,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
     @tag("webtest")
     def test_home_clinic(self):
-        self.login(superuser=False, groups=[EVERYONE, CLINIC, AE, PII, LAB])
+        self.login(superuser=False, roles=[STAFF_ROLE, CLINICIAN_ROLE])
         response = self.app.get(reverse("home_url"), user=self.user, status=200)
         self.assertIn("Screening", response)
         self.assertIn("Subjects", response)
@@ -152,7 +159,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
     @tag("webtest")
     def test_home_export(self):
-        self.login(superuser=False, groups=[EVERYONE, EXPORT])
+        self.login(superuser=False, roles=[STAFF_ROLE, DATA_EXPORTER_ROLE])
         response = self.app.get(reverse("home_url"), user=self.user, status=200)
         self.assertNotIn("Screening", response)
         self.assertNotIn("Subjects", response)
@@ -168,7 +175,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
     @tag("webtest")
     def test_home_tmg(self):
-        self.login(superuser=False, groups=[EVERYONE, TMG])
+        self.login(superuser=False, roles=[STAFF_ROLE, TMG_ROLE])
         response = self.app.get(reverse("home_url"), user=self.user, status=200)
         self.assertIn("Screening", response)
         self.assertIn("Subjects", response)
@@ -184,13 +191,9 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         response = response.click(linkid="home_list_group_aetmg")
         self.assertIn("TMG Reports", response)
 
-    @tag("webtest1")
+    @tag("webtest")
     def test_home_lab(self):
-        role = Role.objects.get(name=LAB_TECHNICIAN_ROLE)
-        groups = [obj.name for obj in role.groups.all()]
-        groups.sort()
-        self.assertEqual(groups, [ADMINISTRATION, EVERYONE, LAB, PII_VIEW])
-        self.login(superuser=False, groups=groups)
+        self.login(superuser=False, roles=[STAFF_ROLE, LAB_TECHNICIAN_ROLE])
         response = self.app.get(reverse("home_url"), user=self.user, status=200)
         expected_labels = ["Specimens", "Switch sites", "Log out"]
         for label in self.menu_labels:
@@ -331,7 +334,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Consent", screening_listboard_page)
 
     def webtest_for_screening_form_part_one(self, part_one_data):
-        self.login(superuser=False, groups=[EVERYONE, SCREENING, CLINIC, PII])
+        self.login(superuser=False, roles=[CLINICIAN_ROLE])
         home_page = self.app.get(reverse("home_url"), user=self.user, status=200)
         screening_listboard_page = home_page.click(description="Screening", index=1)
         add_screening_page = screening_listboard_page.click(
@@ -440,7 +443,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
     @tag("webtest")
     def test_to_subject_dashboard(self):
         add_or_update_django_sites(apps=django_apps, sites=all_sites)
-        self.login(superuser=False, groups=[EVERYONE, SCREENING, CLINIC, PII])
+        self.login(superuser=False, roles=[CLINICIAN_ROLE])
 
         subject_screening = self.get_subject_screening()
 
@@ -548,7 +551,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
     @tag("webtest")
     def test_follow_urls(self):
         """Follows any url that can be reversed without kwargs."""
-        self.login(superuser=False, groups=[EVERYONE, CLINIC, PII])
+        self.login(superuser=False, roles=[CLINICIAN_ROLE])
         for url_name in url_names.registry.values():
             sys.stdout.write(style.MIGRATE_HEADING(f" - '{url_name}' ...\r"))
             try:

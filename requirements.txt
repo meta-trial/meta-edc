@@ -1,4 +1,4 @@
-edc==0.3.43
+edc==0.3.44
 edc-mnsi>=0.1.1
 edc-he>=0.1.1
 beautifulsoup4
