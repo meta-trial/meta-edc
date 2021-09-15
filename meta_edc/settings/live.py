@@ -13,5 +13,9 @@ ALLOWED_HOSTS = [
     "hindu-mandal.tz.meta3.clinicedc.org",
     "temeke.tz.meta3.clinicedc.org",
     "amana.tz.meta3.clinicedc.org",
+    "mwananyamala.tz.meta.clinicedc.org",
+    "hindu-mandal.tz.meta.clinicedc.org",
+    "temeke.tz.meta.clinicedc.org",
+    "amana.tz.meta.clinicedc.org",
     "localhost",
 ]
