@@ -47,13 +47,12 @@ from .auth_objects import (
     META_CLINIC,
     META_CLINIC_SUPER,
     clinic_codenames,
-    clinic_super_codenames,
 )
 
 # meta groups
 site_auths.add_group(*clinic_codenames, name=META_AUDITOR, view_only=True)
 site_auths.add_group(*clinic_codenames, name=META_CLINIC, no_delete=True)
-site_auths.add_group(*clinic_super_codenames, name=META_CLINIC_SUPER)
+site_auths.add_group(*clinic_codenames, name=META_CLINIC_SUPER)
 # site_auths.add_group(*clinic_codenames, name=META_EXPORT, convert_to_export=True)
 
 
