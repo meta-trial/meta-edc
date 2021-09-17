@@ -1,5 +1,10 @@
 Changes
 =======
+
+0.1.73
+------
+- bump up edc to 0.3.46
+
 0.1.71
 ------
 - update auths for changes in edc-auth 

@@ -9,32 +9,26 @@ clinic_codenames = []
 for app_config in django_apps.get_app_configs():
     if app_config.name in [
         "meta_lists",
+    ]:
+        for model_cls in app_config.get_models():
+            for prefix in ["view"]:
+                clinic_codenames.append(
+                    f"{app_config.name}.{prefix}_{model_cls._meta.model_name}"
+                )
+
+for app_config in django_apps.get_app_configs():
+    if app_config.name in [
         "meta_prn",
         "meta_subject",
         "meta_consent",
     ]:
         for model_cls in app_config.get_models():
-            for prefix in ["add", "change", "view"]:
+            for prefix in ["add", "change", "view", "delete"]:
                 clinic_codenames.append(
                     f"{app_config.name}.{prefix}_{model_cls._meta.model_name}"
                 )
 clinic_codenames.sort()
 
-
-clinic_super_codenames = []
-for app_config in django_apps.get_app_configs():
-    if app_config.name in [
-        "meta_lists",
-        "meta_prn",
-        "meta_subject",
-        "meta_consent",
-    ]:
-        for model_cls in app_config.get_models():
-            for prefix in ["delete"]:
-                clinic_codenames.append(
-                    f"{app_config.name}.{prefix}_{model_cls._meta.model_name}"
-                )
-clinic_super_codenames.sort()
 
 ae_local_reviewer = [
     "meta_subject.add_aelocalreview",
