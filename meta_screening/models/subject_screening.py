@@ -1,7 +1,9 @@
 from edc_constants.constants import QUESTION_RETIRED
 from edc_model.models import BaseUuidModel
 from edc_screening.model_mixins import ScreeningModelMixin
-from edc_screening.screening_identifier import ScreeningIdentifier
+from edc_screening.screening_identifier import (
+    ScreeningIdentifier as BaseScreeningIdentifier,
+)
 
 from .calculated_model_mixin import CalculatedModelMixin
 from .eligibility_model_mixin import EligibilityModelMixin
@@ -14,7 +16,7 @@ class SubjectScreeningModelError(Exception):
     pass
 
 
-class ScreeningIdentifier(ScreeningIdentifier):
+class ScreeningIdentifier(BaseScreeningIdentifier):
 
     template = "S{random_string}"
 

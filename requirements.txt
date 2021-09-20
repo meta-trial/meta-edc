@@ -1,5 +1,5 @@
-edc==0.3.46
-edc-mnsi>=0.1.1
+edc==0.3.48
+edc-mnsi>=0.1.4
 edc-he>=0.1.1
 beautifulsoup4
 git+https://github.com/erikvw/django-import-export.git@get_export_admin_action

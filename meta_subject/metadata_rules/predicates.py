@@ -10,6 +10,27 @@ class Predicates(PredicateCollection):
     app_label = "meta_subject"
     visit_model = "meta_subject.subjectvisit"
 
+    @staticmethod
+    def hba1c_required_at_baseline(visit, **kwargs) -> bool:
+        """Require at baseline visit if not recorded on the
+        screening form.
+        """
+
+        required = False
+        screening_model_cls = django_apps.get_model("meta_screening.subjectscreening")
+        try:
+            screening_model_cls.objects.get(
+                subject_identifier=visit.subject_identifier,
+                hba1c_value__isnull=False,
+            )
+        except ObjectDoesNotExist:
+            if (
+                visit.appointment.visit_code == DAY1
+                and visit.appointment.visit_code_sequence == 0
+            ):
+                required = True
+        return required
+
     def health_economics_required(self, visit, **kwargs) -> bool:
         """Returns true if HE was not completed at week 2"""
 

@@ -145,6 +145,7 @@ if META_PHASE == 2:
     META_APPS = [
         "sarscov2.apps.AppConfig",
         "meta_consent.apps.AppConfig",
+        "meta_data_manager.apps.AppConfig",
         "meta_lists.apps.AppConfig",
         "meta_dashboard.apps.AppConfig",
         "meta_labs.apps.AppConfig",
@@ -169,6 +170,7 @@ if META_PHASE == 3:
         "edc_dx.apps.AppConfig",
         "edc_refusal.apps.AppConfig",
         "meta_consent.apps.AppConfig",
+        "meta_data_manager.apps.AppConfig",
         "meta_lists.apps.AppConfig",
         "meta_dashboard.apps.AppConfig",
         "meta_labs.apps.AppConfig",
@@ -403,9 +405,7 @@ EDC_DX_LABELS = dict(
 HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
 
 # edc-mnsi
-EDC_MNSI_ABNORMAL_FOOT_APPEARANCE_OBSERVATIONS_MODEL = (
-    "meta_lists.abnormalfootappearanceobservations"
-)
+EDC_MNSI_MODEL = "meta_subject.mnsi"
 
 # edc_randomization
 EDC_RANDOMIZATION_LIST_PATH = env.str("EDC_RANDOMIZATION_LIST_PATH")

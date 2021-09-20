@@ -35,6 +35,7 @@ from edc_data_manager.auth_objects import (
     SITE_DATA_MANAGER_ROLE,
 )
 from edc_export.auth_objects import DATA_EXPORTER_ROLE
+from edc_mnsi.auth_objects import MNSI, MNSI_SUPER, MNSI_VIEW
 from edc_randomization.auth_objects import RANDO
 from edc_screening.auth_objects import SCREENING, SCREENING_SUPER, SCREENING_VIEW
 from edc_unblinding.auth_objects import UNBLINDING_REQUESTORS
@@ -42,12 +43,7 @@ from sarscov2.auth import SARSCOV2, sarscov2_codenames
 
 from meta_edc.meta_version import get_meta_version
 
-from .auth_objects import (
-    META_AUDITOR,
-    META_CLINIC,
-    META_CLINIC_SUPER,
-    clinic_codenames,
-)
+from .auth_objects import META_AUDITOR, META_CLINIC, META_CLINIC_SUPER, clinic_codenames
 
 # meta groups
 site_auths.add_group(*clinic_codenames, name=META_AUDITOR, view_only=True)
@@ -67,6 +63,7 @@ site_auths.update_role(
     META_CLINIC,
     SCREENING,
     UNBLINDING_REQUESTORS,
+    MNSI,
     name=CLINICIAN_ROLE,
 )
 
@@ -76,6 +73,7 @@ site_auths.update_role(
     APPOINTMENT,
     DATA_QUERY,
     META_CLINIC_SUPER,
+    MNSI_SUPER,
     SCREENING_SUPER,
     UNBLINDING_REQUESTORS,
     name=CLINICIAN_SUPER_ROLE,
@@ -87,6 +85,7 @@ site_auths.update_role(
     APPOINTMENT,
     DATA_QUERY,
     META_CLINIC,
+    MNSI,
     SCREENING,
     name=NURSE_ROLE,
 )
@@ -97,6 +96,7 @@ site_auths.update_role(
     APPOINTMENT,
     CLINIC,
     META_CLINIC,
+    MNSI,
     TMG,
     name=DATA_MANAGER_ROLE,
 )
@@ -108,6 +108,7 @@ site_auths.update_role(
     AE_REVIEW,
     APPOINTMENT_VIEW,
     META_AUDITOR,
+    MNSI_VIEW,
     SCREENING_VIEW,
     TMG_REVIEW,
     name=AUDITOR_ROLE,
@@ -119,6 +120,7 @@ site_auths.update_role(
     AE_REVIEW,
     DATA_QUERY,
     META_AUDITOR,
+    MNSI_VIEW,
     SCREENING_VIEW,
     TMG_REVIEW,
     name=SITE_DATA_MANAGER_ROLE,
