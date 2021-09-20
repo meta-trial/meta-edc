@@ -148,6 +148,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_list_data.apps.AppConfig",
         "edc_review_dashboard.apps.AppConfig",
         "edc_sites.apps.AppConfig",
+        "edc_mnsi.apps.AppConfig",
         "edc_unblinding.apps.AppConfig",
         "sarscov2.apps.AppConfig",
         "edc_dx_review.apps.AppConfig",
