@@ -1,6 +1,10 @@
 Changes
 =======
 
+0.1.74
+------
+- bump up edc to 0.3.49
+
 0.1.73
 ------
 - bump up edc to 0.3.46

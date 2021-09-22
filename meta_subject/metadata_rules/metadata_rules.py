@@ -34,3 +34,18 @@ class HepatitisTestRuleGroup(CrfRuleGroup):
     class Meta:
         app_label = "meta_subject"
         source_model = "meta_subject.subjectvisit"
+
+
+@register()
+class HbA1cTestRuleGroup(CrfRuleGroup):
+
+    hba1c = CrfRule(
+        predicate=pc.hba1c_required_at_baseline,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["bloodresultshba1c"],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"

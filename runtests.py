@@ -82,6 +82,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     EDC_SITES_MODULE_NAME="meta_sites",
     EDC_AUTH_SKIP_SITE_AUTHS=True,
     EDC_AUTH_SKIP_AUTH_UPDATER=True,
+    EDC_MNSI_MODEL="meta_subject.mnsi",
     INSTALLED_APPS=[
         "django.contrib.admin",
         "django.contrib.auth",
@@ -147,6 +148,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_list_data.apps.AppConfig",
         "edc_review_dashboard.apps.AppConfig",
         "edc_sites.apps.AppConfig",
+        "edc_mnsi.apps.AppConfig",
         "edc_unblinding.apps.AppConfig",
         "sarscov2.apps.AppConfig",
         "edc_dx_review.apps.AppConfig",

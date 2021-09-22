@@ -22,8 +22,6 @@ if settings.SENTRY_ENABLED:
 else:
     handler500 = "edc_dashboard.views.edc_handler500"
 
-# admin.site.final_catch_all_view = False
-
 urlpatterns = [
     path("sentry-debug/", trigger_error),
     path("accounts/", include("edc_auth.urls")),
@@ -45,6 +43,7 @@ urlpatterns = [
     *paths_for_urlpatterns("edc_label"),
     *paths_for_urlpatterns("edc_locator"),
     *paths_for_urlpatterns("edc_metadata"),
+    *paths_for_urlpatterns("edc_mnsi"),
     *paths_for_urlpatterns("edc_notification"),
     *paths_for_urlpatterns("edc_offstudy"),
     *paths_for_urlpatterns("edc_pdutils"),

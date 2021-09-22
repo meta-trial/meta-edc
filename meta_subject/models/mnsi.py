@@ -10,5 +10,4 @@ class Mnsi(
     edc_models.BaseUuidModel,
 ):
     class Meta(MnsiModelMixin.Meta, CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
-        verbose_name = "Michigan Neuropathy Screening Instrument (MNSI)"
-        verbose_name_plural = "Michigan Neuropathy Screening Instrument (MNSI)"
+        pass

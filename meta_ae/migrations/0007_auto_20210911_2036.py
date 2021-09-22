@@ -6,73 +6,73 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_ae', '0006_aelocalreview_aesponsorreview'),
+        ("meta_ae", "0006_aelocalreview_aesponsorreview"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='aefollowup',
-            name='tracking_identifier',
+            model_name="aefollowup",
+            name="tracking_identifier",
             field=models.CharField(max_length=32, unique=True),
         ),
         migrations.AlterField(
-            model_name='aeinitial',
-            name='tracking_identifier',
+            model_name="aeinitial",
+            name="tracking_identifier",
             field=models.CharField(max_length=32, unique=True),
         ),
         migrations.AlterField(
-            model_name='aesusar',
-            name='tracking_identifier',
+            model_name="aesusar",
+            name="tracking_identifier",
             field=models.CharField(max_length=32, unique=True),
         ),
         migrations.AlterField(
-            model_name='aetmg',
-            name='tracking_identifier',
+            model_name="aetmg",
+            name="tracking_identifier",
             field=models.CharField(max_length=32, unique=True),
         ),
         migrations.AlterField(
-            model_name='deathreport',
-            name='tracking_identifier',
+            model_name="deathreport",
+            name="tracking_identifier",
             field=models.CharField(max_length=32, unique=True),
         ),
         migrations.AlterField(
-            model_name='deathreporttmg',
-            name='tracking_identifier',
+            model_name="deathreporttmg",
+            name="tracking_identifier",
             field=models.CharField(max_length=32, unique=True),
         ),
         migrations.AlterField(
-            model_name='historicalaefollowup',
-            name='tracking_identifier',
+            model_name="historicalaefollowup",
+            name="tracking_identifier",
             field=models.CharField(db_index=True, max_length=32),
         ),
         migrations.AlterField(
-            model_name='historicalaeinitial',
-            name='tracking_identifier',
+            model_name="historicalaeinitial",
+            name="tracking_identifier",
             field=models.CharField(db_index=True, max_length=32),
         ),
         migrations.AlterField(
-            model_name='historicalaesusar',
-            name='tracking_identifier',
+            model_name="historicalaesusar",
+            name="tracking_identifier",
             field=models.CharField(db_index=True, max_length=32),
         ),
         migrations.AlterField(
-            model_name='historicalaetmg',
-            name='tracking_identifier',
+            model_name="historicalaetmg",
+            name="tracking_identifier",
             field=models.CharField(db_index=True, max_length=32),
         ),
         migrations.AlterField(
-            model_name='historicaldeathreport',
-            name='tracking_identifier',
+            model_name="historicaldeathreport",
+            name="tracking_identifier",
             field=models.CharField(db_index=True, max_length=32),
         ),
         migrations.AlterField(
-            model_name='historicaldeathreporttmg',
-            name='tracking_identifier',
+            model_name="historicaldeathreporttmg",
+            name="tracking_identifier",
             field=models.CharField(db_index=True, max_length=32),
         ),
         migrations.AlterField(
-            model_name='historicaldeathreporttmgsecond',
-            name='tracking_identifier',
+            model_name="historicaldeathreporttmgsecond",
+            name="tracking_identifier",
             field=models.CharField(db_index=True, max_length=32),
         ),
     ]

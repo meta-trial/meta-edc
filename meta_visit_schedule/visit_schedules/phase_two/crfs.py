@@ -33,6 +33,7 @@ crfs_d1 = FormsCollection(
     Crf(show_order=50, model="meta_subject.bloodresultslipid"),
     Crf(show_order=70, model="meta_subject.bloodresultslft"),
     Crf(show_order=80, model="meta_subject.bloodresultsrft"),
+    Crf(show_order=82, model="meta_subject.bloodresultshba1c", required=False),
     Crf(show_order=85, model="meta_subject.malariatest"),
     Crf(show_order=90, model="meta_subject.urinedipsticktest"),
     name="day1",
