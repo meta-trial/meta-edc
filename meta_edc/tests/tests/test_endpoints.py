@@ -13,7 +13,7 @@ from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
 from django_extensions.management.color import color_style
 from django_webtest import WebTest
-from edc_adverse_event.auth_objects import TMG_ROLE
+from edc_adverse_event.auth_objects import AE_ROLE, TMG_ROLE
 from edc_appointment.constants import IN_PROGRESS_APPT, SCHEDULED_APPT
 from edc_appointment.models import Appointment
 from edc_auth.auth_objects import AUDITOR_ROLE, CLINICIAN_ROLE, STAFF_ROLE
@@ -76,12 +76,19 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
     @classmethod
     def setUpTestData(cls):
         site_auths.initialize()
+        import_module("edc_action_item.auths")
+        import_module("edc_adverse_event.auths")
+        import_module("edc_appointment.auths")
+        import_module("edc_consent.auths")
         import_module("edc_dashboard.auths")
         import_module("edc_data_manager.auths")
         import_module("edc_export.auths")
         import_module("edc_lab.auths")
         import_module("edc_lab_dashboard.auths")
         import_module("edc_navbar.auths")
+        import_module("edc_screening.auths")
+        import_module("meta_auth.auths")
+        import_module("meta_screening.auths")
         AuthUpdater(verbose=False)
 
     def setUp(self):
@@ -96,7 +103,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
     @tag("webtest")
     def test_ae(self):
-        self.login(superuser=False, roles=[STAFF_ROLE, AUDITOR_ROLE])
+        self.login(superuser=False, roles={STAFF_ROLE, AE_ROLE, TMG_ROLE})
         response = self.app.get(reverse("meta_ae:home_url"), user=self.user, status=302)
         response = response.follow()
         self.assertIn(f"META{get_meta_version()}: Adverse Events", response)
@@ -106,7 +113,6 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.app.get(
             reverse("edc_adverse_event:tmg_home_url"), user=self.user, status=200
         )
-        self.app.get(reverse("edc_data_manager:home_url"), user=self.user, status=302)
 
     @tag("webtest")
     def test_home_everyone(self):
@@ -206,6 +212,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
     @tag("webtest")
     # @override_settings(META_PHASE=2)
     def test_screening_form_phase2(self):
+        self.login(superuser=False, roles=[STAFF_ROLE, CLINICIAN_ROLE])
         site_randomizers._registry = {}
         site_randomizers.loaded = False
         site_randomizers.register(RandomizerPhaseTwo)
@@ -272,6 +279,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
     @skipIf(get_meta_version() != 3, "not version 3")
     @tag("webtest")
     def test_screening_form_phase3(self):
+        self.login(superuser=False, roles=[STAFF_ROLE, CLINICIAN_ROLE])
         site_randomizers._registry = {}
         site_randomizers.loaded = False
         site_randomizers.register(RandomizerPhaseThree)
@@ -334,7 +342,6 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Consent", screening_listboard_page)
 
     def webtest_for_screening_form_part_one(self, part_one_data):
-        self.login(superuser=False, roles=[CLINICIAN_ROLE])
         home_page = self.app.get(reverse("home_url"), user=self.user, status=200)
         screening_listboard_page = home_page.click(description="Screening", index=1)
         add_screening_page = screening_listboard_page.click(
@@ -443,7 +450,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
     @tag("webtest")
     def test_to_subject_dashboard(self):
         add_or_update_django_sites(apps=django_apps, sites=all_sites)
-        self.login(superuser=False, roles=[CLINICIAN_ROLE])
+        self.login(superuser=False, roles=[STAFF_ROLE, CLINICIAN_ROLE])
 
         subject_screening = self.get_subject_screening()
 
