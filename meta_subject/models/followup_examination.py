@@ -230,9 +230,9 @@ class FollowupExamination(
         max_length=25,
         choices=YES_NO,
         help_text=(
-            "Classical signs of lactic acidosis include: abdominal or stomach "
-            "discomfort, decreased appetite, diarrhoea, fast or shallow breathing, "
-            "a general feeling of discomfort, muscle pain or cramping; and "
+            "Submit SAE form. Classical signs of lactic acidosis include: abdominal "
+            "or stomach discomfort, decreased appetite, diarrhoea, fast or shallow "
+            "breathing, a general feeling of discomfort, muscle pain or cramping; and "
             "unusual sleepiness, fatigue, or weakness."
         ),
     )
@@ -242,10 +242,10 @@ class FollowupExamination(
         max_length=25,
         choices=YES_NO,
         help_text=(
-            "This condition often does not have any clinical signs and symptoms, "
-            "it may present with an enlarge liver on examination, and symptoms "
-            "of fatigue and right upper abdominal pain. The risk of developing "
-            "this condition is higher in patients who are obese and who have "
+            "Submit SAE form. This condition often does not have any clinical "
+            "signs and symptoms, it may present with an enlarge liver on examination, "
+            "and symptoms of fatigue and right upper abdominal pain. The risk of "
+            "developing this condition is higher in patients who are obese and who have "
             "type 2 diabetes or metabolic syndrome"
         ),
     )

@@ -6,7 +6,7 @@ from edc_model_admin import SimpleHistoryAdmin
 from ..admin_site import meta_subject_admin
 from ..forms import FollowupVitalsForm
 from ..models import FollowupVitals
-from .fields import get_blood_pressure_fields
+from .fields import get_blood_pressure_fields, get_respiratory_o2_fields
 from .modeladmin import CrfModelAdminMixin
 
 
@@ -27,6 +27,7 @@ class FollowupVitalsAdmin(
                     "weight",
                     *get_blood_pressure_fields(),
                     "heart_rate",
+                    *get_respiratory_o2_fields(),
                     "temperature",
                 ),
             },
