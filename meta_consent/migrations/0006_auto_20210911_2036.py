@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_consent', '0005_alter_subjectconsent_options'),
+        ("meta_consent", "0005_alter_subjectconsent_options"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='historicalsubjectreconsent',
-            name='tracking_identifier',
+            model_name="historicalsubjectreconsent",
+            name="tracking_identifier",
             field=models.CharField(db_index=True, max_length=32),
         ),
         migrations.AlterField(
-            model_name='subjectreconsent',
-            name='tracking_identifier',
+            model_name="subjectreconsent",
+            name="tracking_identifier",
             field=models.CharField(max_length=32, unique=True),
         ),
     ]

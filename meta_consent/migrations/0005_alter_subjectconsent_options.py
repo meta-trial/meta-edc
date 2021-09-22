@@ -6,12 +6,25 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_consent', '0004_auto_20210624_0225'),
+        ("meta_consent", "0004_auto_20210624_0225"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='subjectconsent',
-            options={'default_permissions': ('add', 'change', 'delete', 'view', 'export', 'import'), 'get_latest_by': 'consent_datetime', 'ordering': ('created',), 'verbose_name': 'Subject Consent', 'verbose_name_plural': 'Subject Consents'},
+            name="subjectconsent",
+            options={
+                "default_permissions": (
+                    "add",
+                    "change",
+                    "delete",
+                    "view",
+                    "export",
+                    "import",
+                ),
+                "get_latest_by": "consent_datetime",
+                "ordering": ("created",),
+                "verbose_name": "Subject Consent",
+                "verbose_name_plural": "Subject Consents",
+            },
         ),
     ]

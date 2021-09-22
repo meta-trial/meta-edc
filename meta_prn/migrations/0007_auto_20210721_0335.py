@@ -6,18 +6,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_prn', '0006_auto_20210624_0225'),
+        ("meta_prn", "0006_auto_20210624_0225"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='endofstudy',
-            name='comment',
-            field=models.TextField(blank=True, max_length=500, null=True, verbose_name='Please provide further details if possible'),
+            model_name="endofstudy",
+            name="comment",
+            field=models.TextField(
+                blank=True,
+                max_length=500,
+                null=True,
+                verbose_name="Please provide further details if possible",
+            ),
         ),
         migrations.AddField(
-            model_name='historicalendofstudy',
-            name='comment',
-            field=models.TextField(blank=True, max_length=500, null=True, verbose_name='Please provide further details if possible'),
+            model_name="historicalendofstudy",
+            name="comment",
+            field=models.TextField(
+                blank=True,
+                max_length=500,
+                null=True,
+                verbose_name="Please provide further details if possible",
+            ),
         ),
     ]
