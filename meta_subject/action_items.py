@@ -11,7 +11,7 @@ from edc_blood_results.action_items import (
 from edc_blood_results.action_items import (
     BloodResultsRftAction as BaseBloodResultsRftAction,
 )
-from edc_constants.constants import HIGH_PRIORITY, NONE
+from edc_constants.constants import HIGH_PRIORITY, NONE, YES
 from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_reportable import GRADE3, GRADE4
 from edc_visit_schedule.utils import is_baseline
@@ -33,6 +33,8 @@ class FollowupExaminationAction(Action):
             self.reference_obj.symptoms_g3.exclude(name=NONE).count() > 0
             or self.reference_obj.symptoms_g4.exclude(name=NONE).count() > 0
             or self.reference_obj.any_other_problems_sae_grade in [GRADE3, GRADE4]
+            or self.reference_obj.lactic_acidosis == YES
+            or self.reference_obj.hepatomegaly == YES
         ) and not is_baseline(self.reference_obj.subject_visit):
             next_actions.append(AE_INITIAL_ACTION)
         return next_actions

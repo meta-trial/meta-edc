@@ -16,7 +16,6 @@ class FollowupVitals(
     CrfModelMixin,
     edc_models.BaseUuidModel,
 ):
-
     weight_determination = models.CharField(
         verbose_name="Is weight estimated or measured?",
         max_length=15,

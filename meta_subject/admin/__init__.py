@@ -7,6 +7,8 @@ from .blood_results import (
 )
 from .complications_admin import ComplicationsAdmin
 from .complications_glycemia_admin import ComplicationsGlycemiaAdmin
+from .concomitant_medication_admin import ConcomitantMedicationAdmin
+from .eq5d3l_admin import Eq53dlAdmin
 from .followup_examination_admin import FollowupExaminationAdmin
 from .followup_vitals_admin import FollowupVitalsAdmin
 from .glucose_admin import GlucoseAdmin
@@ -19,7 +21,7 @@ from .mnsi_admin import MnsiAdmin
 from .other_arv_regimens_admin import OtherArvRegimensAdmin
 from .patient_history_admin import PatientHistoryAdmin
 from .physical_exam_admin import PhysicalExamAdmin
-from .study_drug_refill_admin import StudyDrugRefillAdmin
+from .study_medication_admin import StudyMedicationAdmin
 from .subject_requisition_admin import SubjectRequisitionAdmin
 from .subject_visit_admin import SubjectVisitAdmin
 from .subject_visit_missed_admin import SubjectVisitMissedAdmin

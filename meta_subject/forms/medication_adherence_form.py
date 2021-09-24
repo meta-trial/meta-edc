@@ -3,6 +3,7 @@ from edc_adherence.form_validator_mixin import MedicationAdherenceFormValidatorM
 from edc_adherence.model_form_mixin import MedicationAdherenceFormMixin
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators.form_validator import FormValidator
+from edc_model.widgets import SliderWidget
 
 from ..models import MedicationAdherence
 
@@ -18,6 +19,10 @@ class MedicationAdherenceForm(
 ):
 
     form_validator_cls = MedicationAdherenceFormValidator
+
+    visual_score_slider = forms.CharField(
+        label="Visual Score", widget=SliderWidget(attrs={"min": 0, "max": 100})
+    )
 
     class Meta:
         model = MedicationAdherence

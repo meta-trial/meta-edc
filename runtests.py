@@ -23,6 +23,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     EDC_MNSI_ABNORMAL_FOOT_APPEARANCE_OBSERVATIONS_MODEL=(
         "meta_lists.abnormalfootappearanceobservations"
     ),
+    EDC_QOL_EQ5D3L_MODEL="meta_subject.eq5d3l",
     ROOT_URLCONF="meta_edc.urls",
     EDC_AUTH_CODENAMES_WARN_ONLY=True,
     EDC_DX_REVIEW_LIST_MODEL_APP_LABEL="edc_dx_review",
@@ -150,6 +151,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_sites.apps.AppConfig",
         "edc_mnsi.apps.AppConfig",
         "edc_unblinding.apps.AppConfig",
+        "edc_qol.apps.AppConfig",
         "sarscov2.apps.AppConfig",
         "edc_dx_review.apps.AppConfig",
         "edc_dx.apps.AppConfig",

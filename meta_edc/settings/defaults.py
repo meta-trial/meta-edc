@@ -1,4 +1,5 @@
 import os
+import pdb
 import sys
 from pathlib import Path
 
@@ -119,6 +120,7 @@ INSTALLED_APPS = [
     "edc_locator.apps.AppConfig",
     "edc_metadata.apps.AppConfig",
     "edc_mnsi.apps.AppConfig",
+    "edc_model.apps.AppConfig",
     "edc_model_fields.apps.AppConfig",
     "edc_model_admin.apps.AppConfig",
     "edc_navbar.apps.AppConfig",
@@ -129,6 +131,7 @@ INSTALLED_APPS = [
     "edc_protocol.apps.AppConfig",
     "edc_protocol_violation.apps.AppConfig",
     "edc_prn.apps.AppConfig",
+    "edc_qol.apps.AppConfig",
     "edc_randomization.apps.AppConfig",
     "edc_reference.apps.AppConfig",
     "edc_registration.apps.AppConfig",
@@ -352,6 +355,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # edc-pdutils
 EXPORT_FILENAME_TIMESTAMP_FORMAT = "%Y%m%d"
 
+# django_revision
+with open(
+    os.path.join(os.path.dirname(os.path.join(BASE_DIR, APP_NAME)), "VERSION")
+) as f:
+    REVISION = f.read().strip()
+
 # EDC_AUTH_SKIP_AUTH_UPDATER = True
 
 # enforce https if DEBUG=False!
@@ -406,6 +415,9 @@ HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
 
 # edc-mnsi
 EDC_MNSI_MODEL = "meta_subject.mnsi"
+
+# edc-qol
+EDC_QOL_EQ5D3L_MODEL = "meta_subject.eq5d3l"
 
 # edc_randomization
 EDC_RANDOMIZATION_LIST_PATH = env.str("EDC_RANDOMIZATION_LIST_PATH")
