@@ -5,7 +5,6 @@ from edc_action_item.auth_objects import (
 )
 from edc_adverse_event.auth_objects import (
     AE,
-    AE_EXPORT,
     AE_REVIEW,
     AE_SUPER,
     TMG,
@@ -36,6 +35,7 @@ from edc_data_manager.auth_objects import (
 from edc_export.auth_objects import DATA_EXPORTER_ROLE
 from edc_mnsi.auth_objects import MNSI, MNSI_SUPER, MNSI_VIEW
 from edc_offstudy.auth_objects import OFFSTUDY
+from edc_qol.auth_objects import EURO_QOL, EURO_QOL_SUPER, EURO_QOL_VIEW
 from edc_randomization.auth_objects import RANDO
 from edc_screening.auth_objects import SCREENING, SCREENING_VIEW
 from edc_unblinding.auth_objects import UNBLINDING_REQUESTORS
@@ -58,6 +58,7 @@ site_auths.update_role(
     META_CLINIC,
     UNBLINDING_REQUESTORS,
     MNSI,
+    EURO_QOL,
     name=CLINICIAN_ROLE,
 )
 
@@ -67,6 +68,7 @@ site_auths.update_role(
     APPOINTMENT,
     META_CLINIC_SUPER,
     MNSI_SUPER,
+    EURO_QOL_SUPER,
     UNBLINDING_REQUESTORS,
     name=CLINICIAN_SUPER_ROLE,
 )
@@ -77,6 +79,7 @@ site_auths.update_role(
     APPOINTMENT,
     META_CLINIC,
     MNSI,
+    EURO_QOL,
     name=NURSE_ROLE,
 )
 
@@ -87,6 +90,7 @@ site_auths.update_role(
     CLINIC,
     META_CLINIC,
     MNSI,
+    EURO_QOL,
     OFFSTUDY,
     SCREENING,
     TMG,
@@ -101,6 +105,7 @@ site_auths.update_role(
     APPOINTMENT_VIEW,
     META_AUDITOR,
     MNSI_VIEW,
+    EURO_QOL_VIEW,
     TMG_REVIEW,
     name=AUDITOR_ROLE,
 )
@@ -111,6 +116,7 @@ site_auths.update_role(
     AE_REVIEW,
     META_AUDITOR,
     MNSI_VIEW,
+    EURO_QOL_VIEW,
     SCREENING_VIEW,
     TMG_REVIEW,
     name=SITE_DATA_MANAGER_ROLE,
@@ -123,7 +129,6 @@ site_auths.update_role(RANDO, name=SITE_PHARMACIST_ROLE)
 # data export
 site_auths.update_role(
     ACTION_ITEM_EXPORT,
-    AE_EXPORT,
     APPOINTMENT_EXPORT,
     DATA_MANAGER_EXPORT,
     name=DATA_EXPORTER_ROLE,

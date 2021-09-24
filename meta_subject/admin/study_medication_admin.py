@@ -1,17 +1,16 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
 
-from meta_subject.models import StudyDrugRefill
-
 from ..admin_site import meta_subject_admin
-from ..forms import StudyDrugRefillForm
+from ..forms import StudyMedicationForm
+from ..models import StudyMedication
 from .modeladmin import CrfModelAdmin
 
 
-@admin.register(StudyDrugRefill, site=meta_subject_admin)
-class StudyDrugRefillAdmin(CrfModelAdmin):
+@admin.register(StudyMedication, site=meta_subject_admin)
+class StudyMedicationAdmin(CrfModelAdmin):
 
-    form = StudyDrugRefillForm
+    form = StudyMedicationForm
 
     fieldsets = (
         (

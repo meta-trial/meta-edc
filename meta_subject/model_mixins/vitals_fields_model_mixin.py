@@ -20,6 +20,7 @@ class VitalsFieldsModelMixin(models.Model):
         validators=[MinValueValidator(6), MaxValueValidator(50)],
         help_text="breaths/min",
         null=True,
+        blank=True,
     )
 
     # 12
@@ -28,6 +29,7 @@ class VitalsFieldsModelMixin(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(999)],
         help_text="%",
         null=True,
+        blank=True,
     )
 
     temperature = models.DecimalField(

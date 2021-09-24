@@ -8,6 +8,8 @@ from .blood_results import (
     BloodResultsRftForm,
 )
 from .complications_glycemia_form import ComplicationsGlycemiaForm
+from .concomitant_medication_form import ConcomitantMedicationForm
+from .eq53d3l_form import Eq5d3lForm
 from .followup_examination_form import FollowupExaminationForm
 from .followup_vitals_form import FollowupVitalsForm
 from .glucose_form import GlucoseForm
@@ -21,7 +23,7 @@ from .other_arv_regimens_detail_form import OtherArvRegimensDetailForm
 from .other_arv_regimens_form import OtherArvRegimensForm
 from .patient_history_form import PatientHistoryForm
 from .physical_exam_form import PhysicalExamForm
-from .study_drug_refill_form import StudyDrugRefillForm
+from .study_medication_form import StudyMedicationForm
 from .subject_requisition_form import SubjectRequisitionForm
 from .subject_visit_form import SubjectVisitForm
 from .subject_visit_missed_form import SubjectVisitMissedForm
