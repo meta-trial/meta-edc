@@ -1,6 +1,12 @@
 Changes
 =======
 
+0.1.75
+------
+- bump edc to 0.3.50
+- add euro-qol eq5d3l at 2 week visit
+- empty models for study medication and concomitant medication
+
 0.1.74
 ------
 - bump up edc to 0.3.49
