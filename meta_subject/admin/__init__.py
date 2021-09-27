@@ -8,7 +8,7 @@ from .blood_results import (
 from .complications_admin import ComplicationsAdmin
 from .complications_glycemia_admin import ComplicationsGlycemiaAdmin
 from .concomitant_medication_admin import ConcomitantMedicationAdmin
-from .eq5d3l_admin import Eq53dlAdmin
+from .eq5d3l_admin import Eq5d3lAdmin
 from .followup_examination_admin import FollowupExaminationAdmin
 from .followup_vitals_admin import FollowupVitalsAdmin
 from .glucose_admin import GlucoseAdmin
