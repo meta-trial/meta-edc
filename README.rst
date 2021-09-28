@@ -1,4 +1,4 @@
-|pypi| |travis| |codecov| |downloads|
+|pypi| |actions| |codecov| |downloads|
 
 
 META Edc
@@ -136,8 +136,8 @@ Once logged in, go to you user account and update your group memberships. As a p
 .. |pypi| image:: https://img.shields.io/pypi/v/meta-edc.svg
     :target: https://pypi.python.org/pypi/meta-edc
 
-.. |travis| image:: https://travis-ci.com/meta-trial/meta-edc.svg?branch=develop
-    :target: https://travis-ci.com/meta-trial/meta-edc
+.. |actions| image:: https://github.com/meta-trial/meta-edc/workflows/build/badge.svg?branch=develop
+  :target: https://github.com/meta-trial/meta-edc/actions?query=workflow:build
 
 .. |codecov| image:: https://codecov.io/gh/meta-trial/meta-edc/branch/develop/graph/badge.svg
   :target: https://codecov.io/gh/meta-trial/meta-edc
