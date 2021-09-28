@@ -1,4 +1,4 @@
-from django.test import TestCase, override_settings
+from django.test import TestCase
 
 from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
 
@@ -71,11 +71,10 @@ class TestVisitSchedule(TestCase):
                 "chemistry_lipids",
                 "chemistry_rft",
                 "fbc",
-                "hba1c",
                 "hba1c_poc",
             ]
             expected = {
-                "1000": ["chemistry", "fbc"],
+                "1000": ["chemistry", "fbc", "hba1c_poc"],
                 "1005": [],
                 "1010": [],
                 "1030": ["chemistry"],
@@ -84,18 +83,21 @@ class TestVisitSchedule(TestCase):
                 "1120": ["blood_glucose_poc", "chemistry", "fbc", "hba1c_poc"],
             }
             for visit_code, visit in schedule.visits.items():
-                actual = [requisition.name for requisition in visit.requisitions]
-                actual.sort()
-                self.assertEqual(
-                    expected.get(visit_code),
-                    actual,
-                    msg=f"see requisitions for visit {visit_code}",
-                )
-                actual = [requisition.name for requisition in visit.requisitions_prn]
-                actual.sort()
-                self.assertEqual(
-                    prn, actual, msg=f"see PRN requisitions for visit {visit_code}"
-                )
+                with self.subTest(visit_code=visit_code, visit=visit):
+                    actual = [requisition.name for requisition in visit.requisitions]
+                    actual.sort()
+                    self.assertEqual(
+                        expected.get(visit_code),
+                        actual,
+                        msg=f"see requisitions for visit {visit_code}",
+                    )
+                    actual = [
+                        requisition.name for requisition in visit.requisitions_prn
+                    ]
+                    actual.sort()
+                    self.assertEqual(
+                        prn, actual, msg=f"see PRN requisitions for visit {visit_code}"
+                    )
 
     def test_crfs_phase_two(self):
         if get_meta_version() == PHASE_TWO:
@@ -116,6 +118,7 @@ class TestVisitSchedule(TestCase):
                     "meta_subject.physicalexam",
                     "meta_subject.patienthistory",
                     "meta_subject.bloodresultsfbc",
+                    "meta_subject.bloodresultshba1c",
                     "meta_subject.bloodresultslft",
                     "meta_subject.bloodresultslipid",
                     "meta_subject.bloodresultsrft",
@@ -170,17 +173,18 @@ class TestVisitSchedule(TestCase):
                 ],
             }
             for visit_code, visit in schedule.visits.items():
-                actual = [crf.model for crf in visit.crfs]
-                actual.sort()
-                expected.get(visit_code).sort()
-                self.assertEqual(
-                    expected.get(visit_code),
-                    actual,
-                    msg=f"see CRFs for visit {visit_code}",
-                )
+                with self.subTest(visit_code=visit_code, visit=visit):
+                    actual = [crf.model for crf in visit.crfs]
+                    actual.sort()
+                    expected.get(visit_code).sort()
+                    self.assertEqual(
+                        expected.get(visit_code),
+                        actual,
+                        msg=f"see CRFs for visit {visit_code}",
+                    )
 
-                actual = [crf.model for crf in visit.crfs_prn]
-                actual.sort()
-                self.assertEqual(
-                    prn, actual, msg=f"see PRN CRFs for visit {visit_code}"
-                )
+                    actual = [crf.model for crf in visit.crfs_prn]
+                    actual.sort()
+                    self.assertEqual(
+                        prn, actual, msg=f"see PRN CRFs for visit {visit_code}"
+                    )
