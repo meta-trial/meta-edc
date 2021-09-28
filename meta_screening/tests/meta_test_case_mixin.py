@@ -3,11 +3,13 @@ from copy import deepcopy
 from dateutil.relativedelta import relativedelta
 from django.contrib.sites.models import Site
 from edc_appointment.constants import IN_PROGRESS_APPT, INCOMPLETE_APPT
-from edc_appointment.models import Appointment
+from edc_appointment.tests.appointment_test_case_mixin import AppointmentTestCaseMixin
 from edc_constants.constants import YES
 from edc_facility.import_holidays import import_holidays
 from edc_facility.models import Holiday
 from edc_list_data.site_list_data import site_list_data
+from edc_metadata import REQUIRED
+from edc_metadata.models import CrfMetadata
 from edc_randomization.site_randomizers import site_randomizers
 from edc_sites import add_or_update_django_sites, get_sites_by_country
 from edc_sites.tests.site_test_case_mixin import SiteTestCaseMixin
@@ -34,7 +36,7 @@ from .options import (
 )
 
 
-class MetaTestCaseMixin(SiteTestCaseMixin):
+class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
 
     fqdn = fqdn
 
@@ -129,7 +131,7 @@ class MetaTestCaseMixin(SiteTestCaseMixin):
         return subject_screening
 
     @staticmethod
-    def get_subject_consent(subject_screening):
+    def get_subject_consent(subject_screening, consent_datetime=None):
         return baker.make_recipe(
             "meta_consent.subjectconsent",
             user_created="erikvw",
@@ -142,18 +144,35 @@ class MetaTestCaseMixin(SiteTestCaseMixin):
                 - relativedelta(years=subject_screening.age_in_years)
             ),
             site=Site.objects.get(name="hindu_mandal"),
+            consent_datetime=consent_datetime or subject_screening.report_datetime,
         )
 
-    def get_subject_visit(self, gender=None):
-        subject_screening = self.get_subject_screening(gender=gender)
-        subject_consent = self.get_subject_consent(subject_screening)
-        subject_identifier = subject_consent.subject_identifier
-
-        appointment = Appointment.objects.get(
-            subject_identifier=subject_identifier, visit_code=DAY1
+    def get_subject_visit(
+        self,
+        visit_code=None,
+        visit_code_sequence=None,
+        subject_screening=None,
+        subject_consent=None,
+        reason=None,
+        appt_datetime=None,
+        gender=None,
+    ):
+        reason = reason or SCHEDULED
+        subject_screening = subject_screening or self.get_subject_screening(
+            gender=gender
         )
-        appointment.appt_status = IN_PROGRESS_APPT
-        appointment.save()
+        subject_consent = subject_consent or self.get_subject_consent(subject_screening)
+        options = dict(
+            subject_identifier=subject_consent.subject_identifier,
+            visit_code=visit_code or DAY1,
+            visit_code_sequence=(
+                visit_code_sequence if visit_code_sequence is not None else 0
+            ),
+            reason=reason,
+        )
+        if appt_datetime:
+            options.update(appt_datetime=appt_datetime)
+        appointment = self.get_appointment(**options)
         return SubjectVisit.objects.create(appointment=appointment, reason=SCHEDULED)
 
     @staticmethod
@@ -167,4 +186,13 @@ class MetaTestCaseMixin(SiteTestCaseMixin):
         next_appointment.save()
         return SubjectVisit.objects.create(
             appointment=next_appointment, reason=SCHEDULED
+        )
+
+    @staticmethod
+    def get_crf_metadata(subject_visit):
+        return CrfMetadata.objects.filter(
+            subject_identifier=subject_visit.subject_identifier,
+            visit_code=subject_visit.visit_code,
+            visit_code_sequence=subject_visit.visit_code_sequence,
+            entry_status=REQUIRED,
         )

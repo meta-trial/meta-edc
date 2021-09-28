@@ -77,6 +77,7 @@ crfs_3m = FormsCollection(
     Crf(show_order=220, model="meta_subject.bloodresultslft"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=470, model="meta_subject.mnsi", required=False),
     name="3m",
 )
 
@@ -89,6 +90,7 @@ crfs_6m = FormsCollection(
     Crf(show_order=230, model="meta_subject.bloodresultsfbc"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=470, model="meta_subject.mnsi", required=False),
     name="6m",
 )
 
