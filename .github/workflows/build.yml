@@ -4,18 +4,18 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: build (${{ matrix.codebase }}, META ${{ matrix.meta-phase }}, Django ${{ matrix.django-version }}, Py ${{ matrix.python-version }})
+    name: build (${{ matrix.codebase }}, META ${{ matrix.meta-phase }}, Dj ${{ matrix.django-version }}, Py ${{ matrix.python-version }})
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
-        codebase: ['Supported', 'Develop']
+        codebase: ['Prod', 'Dev']
         meta-phase: ['2', '3']
         django-version: ['3.2', 'dev']
         python-version: ['3.9']
         exclude:
-          - codebase: 'Supported'
+          - codebase: 'Prod'
             django-version: 'dev'
 
     services:
