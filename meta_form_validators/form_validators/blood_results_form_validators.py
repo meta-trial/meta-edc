@@ -56,11 +56,7 @@ class BloodResultsFbcFormValidator(BloodResultsFormValidatorMixin, FormValidator
 
 
 class BloodResultsHba1cFormValidator(BloodResultsFormValidatorMixin, FormValidator):
-    panel = hba1c_panel
-
-
-class BloodResultsHba1cPocFormValidator(BloodResultsFormValidatorMixin, FormValidator):
-    panel = hba1c_poc_panel
+    panels = [hba1c_poc_panel, hba1c_panel]
 
 
 class BloodResultsLipidFormValidator(BloodResultsFormValidatorMixin, FormValidator):
