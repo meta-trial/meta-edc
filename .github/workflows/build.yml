@@ -4,13 +4,14 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: build (${{ matrix.codebase }}, Django ${{ matrix.django-version }}, Python ${{ matrix.python-version }})
+    name: build (${{ matrix.codebase }}, META ${{ matrix.meta-phase }}, Django ${{ matrix.django-version }}, Py ${{ matrix.python-version }})
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
         codebase: ['Supported', 'Develop']
+        meta-phase: ['2', '3']
         django-version: ['3.2', 'dev']
         python-version: ['3.9']
         exclude:
@@ -64,6 +65,7 @@ jobs:
       env:
         DJANGO: ${{ matrix.django-version }}
         EDC_CODEBASE: ${{ matrix.codebase }}
+        META_PHASE: ${{ matrix.meta-phase }}
 
     - name: Upload coverage
       uses: codecov/codecov-action@v1
