@@ -13,9 +13,6 @@ from meta_labs.lab_profiles import chemistry_panel
 
 requisitions_prn = FormsCollection(
     Requisition(
-        show_order=10, panel=blood_glucose_panel, required=True, additional=False
-    ),
-    Requisition(
         show_order=20, panel=blood_glucose_poc_panel, required=True, additional=False
     ),
     Requisition(show_order=40, panel=hba1c_poc_panel, required=True, additional=False),
