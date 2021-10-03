@@ -1,4 +1,5 @@
 from django.contrib import admin
+from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
@@ -7,7 +8,9 @@ from ..models import OnSchedule
 
 
 @admin.register(OnSchedule, site=meta_prn_admin)
-class OnScheduleAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin):
+class OnScheduleAdmin(
+    DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
+):
 
     instructions = None
     fields = ("subject_identifier", "onschedule_datetime")
