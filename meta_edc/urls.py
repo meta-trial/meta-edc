@@ -55,6 +55,7 @@ urlpatterns = [
     *paths_for_urlpatterns("edc_reference"),
     *paths_for_urlpatterns("edc_refusal"),
     *paths_for_urlpatterns("edc_registration"),
+    *paths_for_urlpatterns("edc_review_dashboard"),
     *paths_for_urlpatterns("edc_subject_dashboard"),
     *paths_for_urlpatterns("edc_unblinding"),
     *paths_for_urlpatterns("edc_visit_schedule"),

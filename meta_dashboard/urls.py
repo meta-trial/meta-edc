@@ -1,5 +1,4 @@
 from edc_protocol import Protocol
-from edc_review_dashboard.views import SubjectReviewListboardView
 
 from .patterns import screening_identifier
 from .views import (
@@ -29,11 +28,6 @@ urlpatterns += SubjectDashboardView.urls(
     identifier_pattern=Protocol().subject_identifier_pattern,
 )
 
-urlpatterns += SubjectReviewListboardView.urls(
-    namespace=app_name,
-    label="subject_review_listboard",
-    identifier_pattern=Protocol().subject_identifier_pattern,
-)
 urlpatterns += AeListboardView.urls(
     namespace=app_name,
     label="ae_listboard",
