@@ -161,7 +161,6 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "meta_rando.apps.AppConfig",
         "meta_reference.apps.AppConfig",
         "meta_subject.apps.AppConfig",
-        "meta_form_validators.apps.AppConfig",
         "meta_visit_schedule.apps.AppConfig",
         "meta_ae.apps.AppConfig",
         "meta_prn.apps.AppConfig",
