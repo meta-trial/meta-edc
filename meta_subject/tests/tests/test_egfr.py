@@ -4,8 +4,10 @@ from edc_lab.models import Panel
 from edc_reportable import MILLIGRAMS_PER_DECILITER
 
 from meta_edc.meta_version import PHASE_TWO
-from meta_form_validators.form_validators import BloodResultsRftFormValidator
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
+from meta_subject.forms.blood_results.blood_results_rft_form import (
+    BloodResultsRftFormValidator,
+)
 from meta_subject.models import BloodResultsRft, SubjectRequisition
 
 

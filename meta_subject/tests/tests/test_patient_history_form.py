@@ -1,5 +1,3 @@
-from pprint import pprint
-
 from django.test import TestCase, override_settings
 from edc_constants.constants import COMPLETE, NO, NONE, NOT_APPLICABLE, YES
 from edc_list_data import PreloadData
@@ -73,7 +71,6 @@ class TestPatientHistoryPhaseTwo(BaseTestPatientHistory):
         data = {k: v for k, v in self.get_options().items()}
         form = PatientHistoryForm(data=data)
         form.is_valid()
-        pprint(form._errors)
         self.assertEqual(form._errors, {})
 
 
@@ -86,5 +83,4 @@ class TestPatientHistoryPhaseThree(BaseTestPatientHistory):
         data = {k: v for k, v in self.get_options().items()}
         form = PatientHistoryForm(data=data)
         form.is_valid()
-        pprint(form._errors)
         self.assertEqual(form._errors, {})

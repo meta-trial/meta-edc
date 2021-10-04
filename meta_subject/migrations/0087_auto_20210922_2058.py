@@ -6,28 +6,48 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_subject', '0086_auto_20210920_0229'),
+        ("meta_subject", "0086_auto_20210920_0229"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='followupexamination',
-            name='hepatomegaly',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No')], help_text='Submit SAE form. This condition often does not have any clinical signs and symptoms, it may present with an enlarge liver on examination, and symptoms of fatigue and right upper abdominal pain. The risk of developing this condition is higher in patients who are obese and who have type 2 diabetes or metabolic syndrome', max_length=25, verbose_name='Do you think the participant has hepatomegaly with steatosis?'),
+            model_name="followupexamination",
+            name="hepatomegaly",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No")],
+                help_text="Submit SAE form. This condition often does not have any clinical signs and symptoms, it may present with an enlarge liver on examination, and symptoms of fatigue and right upper abdominal pain. The risk of developing this condition is higher in patients who are obese and who have type 2 diabetes or metabolic syndrome",
+                max_length=25,
+                verbose_name="Do you think the participant has hepatomegaly with steatosis?",
+            ),
         ),
         migrations.AlterField(
-            model_name='followupexamination',
-            name='lactic_acidosis',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No')], help_text='Submit SAE form. Classical signs of lactic acidosis include: abdominal or stomach discomfort, decreased appetite, diarrhoea, fast or shallow breathing, a general feeling of discomfort, muscle pain or cramping; and unusual sleepiness, fatigue, or weakness.', max_length=25, verbose_name='Do you think the participant has lactic acidosis?'),
+            model_name="followupexamination",
+            name="lactic_acidosis",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No")],
+                help_text="Submit SAE form. Classical signs of lactic acidosis include: abdominal or stomach discomfort, decreased appetite, diarrhoea, fast or shallow breathing, a general feeling of discomfort, muscle pain or cramping; and unusual sleepiness, fatigue, or weakness.",
+                max_length=25,
+                verbose_name="Do you think the participant has lactic acidosis?",
+            ),
         ),
         migrations.AlterField(
-            model_name='historicalfollowupexamination',
-            name='hepatomegaly',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No')], help_text='Submit SAE form. This condition often does not have any clinical signs and symptoms, it may present with an enlarge liver on examination, and symptoms of fatigue and right upper abdominal pain. The risk of developing this condition is higher in patients who are obese and who have type 2 diabetes or metabolic syndrome', max_length=25, verbose_name='Do you think the participant has hepatomegaly with steatosis?'),
+            model_name="historicalfollowupexamination",
+            name="hepatomegaly",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No")],
+                help_text="Submit SAE form. This condition often does not have any clinical signs and symptoms, it may present with an enlarge liver on examination, and symptoms of fatigue and right upper abdominal pain. The risk of developing this condition is higher in patients who are obese and who have type 2 diabetes or metabolic syndrome",
+                max_length=25,
+                verbose_name="Do you think the participant has hepatomegaly with steatosis?",
+            ),
         ),
         migrations.AlterField(
-            model_name='historicalfollowupexamination',
-            name='lactic_acidosis',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No')], help_text='Submit SAE form. Classical signs of lactic acidosis include: abdominal or stomach discomfort, decreased appetite, diarrhoea, fast or shallow breathing, a general feeling of discomfort, muscle pain or cramping; and unusual sleepiness, fatigue, or weakness.', max_length=25, verbose_name='Do you think the participant has lactic acidosis?'),
+            model_name="historicalfollowupexamination",
+            name="lactic_acidosis",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No")],
+                help_text="Submit SAE form. Classical signs of lactic acidosis include: abdominal or stomach discomfort, decreased appetite, diarrhoea, fast or shallow breathing, a general feeling of discomfort, muscle pain or cramping; and unusual sleepiness, fatigue, or weakness.",
+                max_length=25,
+                verbose_name="Do you think the participant has lactic acidosis?",
+            ),
         ),
     ]
