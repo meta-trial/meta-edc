@@ -1,5 +1,3 @@
-import pdb
-
 from django.conf import settings
 from edc_lab import LabProfile, RequisitionPanelGroup
 from edc_lab_panel.panels import (
