@@ -64,12 +64,8 @@ class TestVisitSchedule(TestCase):
     def test_requisitions(self):
         if get_meta_version() == PHASE_TWO:
             prn = [
-                "blood_glucose",
                 "blood_glucose_poc",
                 "chemistry",
-                "chemistry_lft",
-                "chemistry_lipids",
-                "chemistry_rft",
                 "fbc",
                 "hba1c_poc",
             ]

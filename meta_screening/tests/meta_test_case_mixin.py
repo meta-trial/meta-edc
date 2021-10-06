@@ -1,6 +1,7 @@
 from copy import deepcopy
 
 from dateutil.relativedelta import relativedelta
+from django.conf import settings
 from django.contrib.sites.models import Site
 from edc_appointment.constants import IN_PROGRESS_APPT, INCOMPLETE_APPT
 from edc_appointment.tests.appointment_test_case_mixin import AppointmentTestCaseMixin
@@ -131,7 +132,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
         return subject_screening
 
     @staticmethod
-    def get_subject_consent(subject_screening, consent_datetime=None):
+    def get_subject_consent(subject_screening, consent_datetime=None, site_id=None):
         return baker.make_recipe(
             "meta_consent.subjectconsent",
             user_created="erikvw",
@@ -143,7 +144,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
                 get_utcnow().date()
                 - relativedelta(years=subject_screening.age_in_years)
             ),
-            site=Site.objects.get(name="hindu_mandal"),
+            site=Site.objects.get(id=site_id or settings.SITE_ID),
             consent_datetime=consent_datetime or subject_screening.report_datetime,
         )
 

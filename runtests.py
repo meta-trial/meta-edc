@@ -190,7 +190,6 @@ def main():
             "meta_dashboard.tests",
             "meta_edc.tests",
             "meta_export.tests",
-            "meta_form_validators.tests",
             "meta_labs.tests",
             "meta_lists.tests",
             "meta_metadata_rules.tests",

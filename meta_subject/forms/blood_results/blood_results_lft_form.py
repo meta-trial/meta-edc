@@ -12,9 +12,7 @@ from ...models import BloodResultsLft
 
 
 class BloodResultsLftFormValidator(BloodResultsFormValidatorMixin, FormValidator):
-    panels = (
-        [lft_panel, chemistry_panel] if get_meta_version() == PHASE_TWO else [lft_panel]
-    )
+    panel = chemistry_panel if get_meta_version() == PHASE_TWO else lft_panel
 
 
 class BloodResultsLftForm(ActionItemFormMixin, CrfModelFormMixin, forms.ModelForm):

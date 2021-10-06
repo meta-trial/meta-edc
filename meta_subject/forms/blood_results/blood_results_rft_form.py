@@ -15,9 +15,7 @@ from ...models import BloodResultsRft
 class BloodResultsRftFormValidator(
     BloodResultsFormValidatorMixin, BmiFormValidatorMixin, FormValidator
 ):
-    panels = (
-        [rft_panel, chemistry_panel] if get_meta_version() == PHASE_TWO else [rft_panel]
-    )
+    panel = chemistry_panel if get_meta_version() == PHASE_TWO else rft_panel
 
     def clean(self):
         super().clean()
