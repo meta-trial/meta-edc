@@ -1,5 +1,7 @@
 from edc_constants.constants import OTHER, UNKNOWN
 
+from .constants import HOSPITAL_CLINIC
+
 AE_TYPE = (
     ("sae", "Serious Adverse Event / Reaction"),
     ("aesi", "Adverse Event of Special Interest"),
@@ -18,7 +20,7 @@ AE_ACTION_REQUIRED = (
 
 DEATH_LOCATIONS = (
     ("home", "At home"),
-    ("hospital_clinic", "Hospital/clinic"),
+    (HOSPITAL_CLINIC, "Hospital/clinic"),
     ("home", "Elsewhere"),
 )
 

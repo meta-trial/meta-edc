@@ -22,14 +22,53 @@ class DeathReportAdmin(DeathReportModelAdminMixin, SimpleHistoryAdmin):
                     "subject_identifier",
                     "report_datetime",
                     "death_datetime",
-                    "death_as_inpatient",
                 )
             },
         ),
         (
-            "Opinion of Local Study Doctor",
-            {"fields": ("cause_of_death", "cause_of_death_other", "narrative")},
+            "Location",
+            {
+                "fields": (
+                    "death_as_inpatient",
+                    "death_location",
+                    "hospital_name",
+                )
+            },
+        ),
+        (
+            "Informant Information",
+            {
+                "fields": (
+                    "informant_contact",
+                    "informant_relationship",
+                    "other_informant_relationship",
+                )
+            },
+        ),
+        (
+            "Cause of death",
+            {
+                "description": (
+                    "If death occurred in hospital or a death certificate is available, "
+                    "please indicate the recorded causes of death"
+                ),
+                "fields": (
+                    "cause_of_death",
+                    "cause_of_death_other",
+                    "secondary_cause_of_death",
+                    "secondary_cause_of_death_other",
+                    "narrative",
+                ),
+            },
         ),
         action_fieldset_tuple,
         audit_fieldset_tuple,
     )
+
+    radio_fields = {
+        "cause_of_death": admin.VERTICAL,
+        "death_as_inpatient": admin.VERTICAL,
+        "death_location": admin.VERTICAL,
+        "informant_relationship": admin.VERTICAL,
+        "secondary_cause_of_death": admin.VERTICAL,
+    }
