@@ -23,8 +23,6 @@ from edc_auth.auth_objects import (
     CLINICIAN_ROLE,
     CLINICIAN_SUPER_ROLE,
     NURSE_ROLE,
-    PHARMACIST_ROLE,
-    SITE_PHARMACIST_ROLE,
 )
 from edc_auth.site_auths import site_auths
 from edc_data_manager.auth_objects import (
@@ -33,10 +31,12 @@ from edc_data_manager.auth_objects import (
     SITE_DATA_MANAGER_ROLE,
 )
 from edc_export.auth_objects import DATA_EXPORTER_ROLE
+from edc_label.auth_objects import LABELING
 from edc_mnsi.auth_objects import MNSI, MNSI_SUPER, MNSI_VIEW
 from edc_offstudy.auth_objects import OFFSTUDY
+from edc_pharmacy.auth_objects import PHARMACIST_ROLE, SITE_PHARMACIST_ROLE
 from edc_qol.auth_objects import EURO_QOL, EURO_QOL_SUPER, EURO_QOL_VIEW
-from edc_randomization.auth_objects import RANDO
+from edc_randomization.auth_objects import RANDO_UNBLINDED, RANDO_VIEW
 from edc_screening.auth_objects import SCREENING, SCREENING_VIEW
 from edc_unblinding.auth_objects import UNBLINDING_REQUESTORS
 from sarscov2.auth import SARSCOV2, sarscov2_codenames
@@ -88,6 +88,7 @@ site_auths.update_role(
     AE,
     APPOINTMENT,
     CLINIC,
+    LABELING,
     META_CLINIC,
     MNSI,
     EURO_QOL,
@@ -122,9 +123,6 @@ site_auths.update_role(
     name=SITE_DATA_MANAGER_ROLE,
 )
 
-site_auths.update_role(RANDO, name=PHARMACIST_ROLE)
-
-site_auths.update_role(RANDO, name=SITE_PHARMACIST_ROLE)
 
 # data export
 site_auths.update_role(
@@ -133,6 +131,9 @@ site_auths.update_role(
     DATA_MANAGER_EXPORT,
     name=DATA_EXPORTER_ROLE,
 )
+
+site_auths.update_role(RANDO_UNBLINDED, name=PHARMACIST_ROLE)
+site_auths.update_role(RANDO_VIEW, name=SITE_PHARMACIST_ROLE)
 
 
 if get_meta_version() == 2:

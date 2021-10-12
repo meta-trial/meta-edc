@@ -2,6 +2,7 @@ from copy import copy
 
 from django.contrib import admin
 from edc_action_item import action_fields, action_fieldset_tuple
+from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
@@ -13,7 +14,9 @@ from ..models import EndOfStudy, LossToFollowup
 
 
 @admin.register(EndOfStudy, site=meta_prn_admin)
-class EndOfStudyAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin):
+class EndOfStudyAdmin(
+    DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
+):
 
     form = EndOfStudyForm
 

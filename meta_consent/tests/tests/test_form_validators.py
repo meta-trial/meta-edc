@@ -6,7 +6,7 @@ from edc_constants.constants import FEMALE
 from edc_utils.date import get_utcnow
 from pytz import timezone
 
-from meta_form_validators.form_validators import SubjectConsentFormValidator
+from meta_consent.forms import SubjectConsentFormValidator
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 
 

@@ -9,13 +9,14 @@ from ..choices import DEATH_LOCATIONS, INFORMANT_RELATIONSHIP
 
 class DeathReportModelMixin(models.Model):
 
-    death_location_type = models.CharField(
+    death_location = models.CharField(
         verbose_name="Where did the participant die?",
         max_length=50,
         choices=DEATH_LOCATIONS,
     )
 
-    death_location_name = models.CharField(
+    # TODO: if hospital of clinic, require, else NA
+    hospital_name = models.CharField(
         verbose_name=(
             "If death occurred at hospital / clinic, please give name of the facility"
         ),
@@ -24,7 +25,7 @@ class DeathReportModelMixin(models.Model):
         blank=True,
     )
 
-    informant_contacts = EncryptedTextField(null=True, blank=True)
+    informant_contact = EncryptedTextField(null=True, blank=True)
 
     informant_relationship = models.CharField(
         max_length=50,

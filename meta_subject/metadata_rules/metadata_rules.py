@@ -3,7 +3,6 @@ from edc_metadata import NOT_REQUIRED, REQUIRED
 from edc_metadata.metadata_rules import (
     CrfRule,
     CrfRuleGroup,
-    P,
     RequisitionRule,
     RequisitionRuleGroup,
     register,
@@ -73,3 +72,18 @@ class HbA1cRequisitionRuleGroup(RequisitionRuleGroup):
         app_label = "meta_subject"
         source_model = "meta_subject.subjectvisit"
         requisition_model = "meta_subject.subjectrequisition"
+
+
+@register()
+class MnsiTestRuleGroup(CrfRuleGroup):
+
+    mnsi = CrfRule(
+        predicate=pc.mnsi_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["mnsi"],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"

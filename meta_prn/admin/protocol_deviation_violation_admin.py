@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from edc_action_item import action_fields, action_fieldset_tuple
 from edc_constants.constants import CLOSED, OPEN
+from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
@@ -14,7 +15,7 @@ from ..models import ProtocolDeviationViolation
 
 @admin.register(ProtocolDeviationViolation, site=meta_prn_admin)
 class ProtocolDeviationViolationAdmin(
-    ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
+    DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
 ):
 
     form = ProtocolDeviationViolationForm

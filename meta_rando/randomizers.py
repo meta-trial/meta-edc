@@ -10,8 +10,7 @@ from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
 
 
 class RandomizerPhaseTwo(Randomizer):
-
-    name = str(PHASE_TWO)
+    name = PHASE_TWO
 
 
 class RandomizationListImporterPhaseThree(RandomizationListImporter):
@@ -32,7 +31,7 @@ class RandomizationListImporterPhaseThree(RandomizationListImporter):
 
 class RandomizerPhaseThree(Randomizer):
 
-    name = str(PHASE_THREE)
+    name = PHASE_THREE
     model = "meta_rando.randomizationlist"
     filename = "randomization_list_phase_three.csv"
     importer_cls = RandomizationListImporterPhaseThree

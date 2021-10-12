@@ -54,6 +54,7 @@ screening_listboard_url = f"{app_prefix}_dashboard:screening_listboard_url"
     SIMPLE_HISTORY_PERMISSIONS_ENABLED=True,
     EDC_AUTH_SKIP_SITE_AUTHS=True,
     EDC_AUTH_SKIP_AUTH_UPDATER=False,
+    SITE_ID=10,
 )
 class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
@@ -426,7 +427,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Consent", screening_listboard_page)
         return screening_listboard_page, screening_identifier
 
-    def get_subject_screening(self):
+    def get_subject_screening(self, **kwargs):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         part_two_eligible_options = deepcopy(get_part_two_eligible_options())
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
@@ -447,10 +448,12 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         obj.save()
         return obj
 
-    @tag("webtest")
+    @tag("webtest1")
     def test_to_subject_dashboard(self):
         add_or_update_django_sites(apps=django_apps, sites=all_sites)
-        self.login(superuser=False, roles=[STAFF_ROLE, CLINICIAN_ROLE])
+        self.login(
+            superuser=False, roles=[STAFF_ROLE, CLINICIAN_ROLE], sites=[10, 20, 30]
+        )
 
         subject_screening = self.get_subject_screening()
 
@@ -508,7 +511,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             self.assertIn(appointment.visit_code, subject_dashboard_page)
 
         # start appointment 1000
-        page = subject_dashboard_page.click(linkid="start_btn_1000")
+        page = subject_dashboard_page.click(linkid="start_btn_1000_0")
         page.form["appt_status"] = IN_PROGRESS_APPT
         page.form["appt_reason"] = SCHEDULED_APPT
         subject_dashboard_page = page.form.submit()

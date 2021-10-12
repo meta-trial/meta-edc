@@ -3,7 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from edc_constants.constants import YES
 from edc_lab_panel.panels import hba1c_panel
 from edc_metadata.metadata_rules import PredicateCollection
-from edc_visit_schedule.constants import DAY1, MONTH1, WEEK2
+from edc_visit_schedule.constants import DAY1, MONTH1, MONTH3, MONTH6, WEEK2
 from edc_visit_schedule.utils import is_baseline
 
 
@@ -133,6 +133,26 @@ class Predicates(PredicateCollection):
                 if not hcv_performed:
                     hcv_performed = obj.hcv_performed == YES
                 if hbsag_performed and hcv_performed:
+                    required = False
+                    break
+        return required
+
+    def mnsi_required(self, visit, **kwargs) -> bool:
+        """Returns True if MNSI assessment was not performed at the
+        1M, 3M or 6M visits.
+        """
+        required = True
+        if (
+            visit.appointment.visit_code in [MONTH1, MONTH3, MONTH6]
+        ) and visit.appointment.visit_code_sequence == 0:
+            model_cls = django_apps.get_model(f"{self.app_label}.mnsi")
+            objs = model_cls.objects.filter(
+                subject_visit__subject_identifier=visit.subject_identifier,
+                subject_visit__visit_code__in=[MONTH1, MONTH3, MONTH6],
+                subject_visit__visit_code_sequence=0,
+            )
+            for obj in objs:
+                if obj.mnsi_performed == YES:
                     required = False
                     break
         return required

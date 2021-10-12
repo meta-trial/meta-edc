@@ -20,6 +20,7 @@ chemistry_panel = RequisitionPanelGroup(
     lipids_panel,
     name="chemistry",
     verbose_name="Chemistry: LFT, RFT, Lipids",
+    abbreviation="CHEM",
     reference_range_collection_name="meta",
 )
 
@@ -46,4 +47,4 @@ else:
     # subject_lab_profile.add_panel(lipids_panel)
     # subject_lab_profile.add_panel(lft_panel)
     # subject_lab_profile.add_panel(rft_panel)
-    subject_lab_profile.add_panel_group(chemistry_panel)
+    subject_lab_profile.add_panel(chemistry_panel)
