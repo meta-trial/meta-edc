@@ -1,5 +1,6 @@
 from django import forms
 from edc_form_validators import FormValidatorMixin
+from edc_glucose.constants import GLUCOSE_HIGH_READING
 from edc_screening.modelform_mixins import AlreadyConsentedFormMixin
 
 from meta_edc.meta_version import PHASE_TWO, get_meta_version
@@ -23,7 +24,7 @@ class ScreeningPartThreeForm(
         cleaned_data = super().clean()
 
         if cleaned_data.get("creatinine_value"):
-            if float(cleaned_data.get("creatinine_value")) > 9999.0:
+            if float(cleaned_data.get("creatinine_value")) > GLUCOSE_HIGH_READING:
                 raise forms.ValidationError({"creatinine_value": "Value is absurd."})
         return cleaned_data
 
