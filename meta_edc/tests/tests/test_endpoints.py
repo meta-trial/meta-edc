@@ -87,6 +87,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         import_module("edc_lab.auths")
         import_module("edc_lab_dashboard.auths")
         import_module("edc_navbar.auths")
+        import_module("edc_pharmacy.auths")
         import_module("edc_screening.auths")
         import_module("meta_auth.auths")
         import_module("meta_screening.auths")
@@ -448,7 +449,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         obj.save()
         return obj
 
-    @tag("webtest1")
+    @tag("webtest")
     def test_to_subject_dashboard(self):
         add_or_update_django_sites(apps=django_apps, sites=all_sites)
         self.login(
