@@ -29,6 +29,7 @@ env = environ.Env(
     DJANGO_USE_TZ=(bool, True),
     DEFENDER_ENABLED=(bool, False),
     EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=(bool, True),
+    EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK=(bool, True),
     SAUCE_ENABLED=(bool, False),
     SENTRY_ENABLED=(bool, False),
     SIMPLE_HISTORY_PERMISSIONS_ENABLED=(bool, False),
@@ -406,6 +407,8 @@ LAB_DASHBOARD_URL_NAMES = env.dict("DJANGO_LAB_DASHBOARD_URL_NAMES")
 EDC_DX_LABELS = dict(
     hiv="HIV", dm="Diabetes", htn="Hypertension", chol="High Cholesterol"
 )
+# edc-label
+EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK = env("EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK")
 
 # edc_facility
 HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
