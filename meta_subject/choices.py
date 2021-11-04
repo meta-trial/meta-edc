@@ -13,7 +13,16 @@ from edc_constants.constants import (
 from edc_reportable.constants import GRADE3, GRADE4
 from edc_visit_tracking.constants import MISSED_VISIT, SCHEDULED, UNSCHEDULED
 
-from .constants import APPT, APPT_OTHER
+from .constants import (
+    ALL_OF_THE_TIME,
+    APPT,
+    APPT_OTHER,
+    GOOD_BIT_OF_THE_TIME,
+    LITTLE_OF_THE_TIME,
+    MOST_OF_THE_TIME,
+    NONE_OF_THE_TIME,
+    SOME_OF_THE_TIME,
+)
 
 ACTIVITY_CHOICES = (
     ("working", "Working"),
@@ -33,11 +42,28 @@ CHILDCARE_CHOICES = (
     (OTHER, "Other, specify"),
 )
 
+DESCRIBE_HEALTH_CHOICES = (
+    ("excellent", "Excellent"),
+    ("very_good", "Very good"),
+    ("good", "Good"),
+    ("fair", "Fair"),
+    ("poor", "Poor"),
+)
+
 DYSLIPIDAEMIA_RX_CHOICES = (
     ("atorvastatin", "Atorvastatin"),
     ("rosuvastatin", "Rosuvastatin"),
     (OTHER, "Other, specify below ..."),
     (NOT_APPLICABLE, "Not applicable"),
+)
+
+FEELING_DURATION_CHOICES = (
+    (ALL_OF_THE_TIME, "All of the time"),
+    (MOST_OF_THE_TIME, "Most of the time"),
+    (GOOD_BIT_OF_THE_TIME, " A good bit of the time"),
+    (SOME_OF_THE_TIME, "Some of the time"),
+    (LITTLE_OF_THE_TIME, "A little of the time"),
+    (NONE_OF_THE_TIME, "None of the time"),
 )
 
 FOLLOWUP_REASONS = (
@@ -53,6 +79,12 @@ GRADE34_CHOICES = (
     (NOT_APPLICABLE, "Not applicable"),
 )
 
+HEALTH_LIMITED_CHOICES = (
+    ("limited_a_lot", "YES, limited a lot"),
+    ("limited_a_little", "YES, limited a little"),
+    ("not_limited_at_all", "NO, not at all limited"),
+)
+
 INFO_SOURCE = (
     ("hospital_notes", "Hospital notes"),
     ("outpatient_cards", "Outpatient cards"),
@@ -60,6 +92,14 @@ INFO_SOURCE = (
     ("collateral_history", "Collateral History from relative/guardian"),
     (NOT_APPLICABLE, "Not applicable (if missed)"),
     (OTHER, "Other"),
+)
+
+INTERFERENCE_DURATION_CHOICES = (
+    (ALL_OF_THE_TIME, "All of the time"),
+    (MOST_OF_THE_TIME, "Most of the time"),
+    (SOME_OF_THE_TIME, "Some of the time"),
+    (LITTLE_OF_THE_TIME, "A little of the time"),
+    (NONE_OF_THE_TIME, "None of the time"),
 )
 
 FUNDOSCOPY_CHOICES = (
@@ -130,6 +170,14 @@ VISIT_REASON = (
 )
 
 WEIGHT_DETERMINATION = (("estimated", "Estimated"), ("measured", "Measured"))
+
+WORK_PAIN_INTERFERENCE_CHOICES = (
+    ("not_at_all", "Not at all"),
+    ("a_little_bit", "A little bit"),
+    ("moderately", "Moderately"),
+    ("quite_a-bit", "Quite a bit"),
+    ("extremely", "Extremely"),
+)
 
 YES_NO_NO_EXAM = (
     (YES, YES),
