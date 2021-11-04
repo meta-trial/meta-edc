@@ -3,56 +3,14 @@ from django.utils.safestring import mark_safe
 from edc_constants.choices import YES_NO
 from edc_model import models as edc_models
 
+from ..choices import (
+    DESCRIBE_HEALTH_CHOICES,
+    FEELING_DURATION_CHOICES,
+    HEALTH_LIMITED_CHOICES,
+    INTERFERENCE_DURATION_CHOICES,
+    WORK_PAIN_INTERFERENCE_CHOICES,
+)
 from ..model_mixins import CrfModelMixin
-
-# TODO: Move to constants
-ALL_OF_THE_TIME = "all_of_the_time"
-MOST_OF_THE_TIME = "most_of_the_time"
-GOOD_BIT_OF_THE_TIME = "good_bit_of_the_time"
-SOME_OF_THE_TIME = "some_of_the_time"
-LITTLE_OF_THE_TIME = "little_of_the_time"
-NONE_OF_THE_TIME = "none_of_the_time"
-
-
-# TODO: Move to choices
-DESCRIBE_HEALTH_CHOICES = (
-    ("excellent", "Excellent"),
-    ("very_good", "Very good"),
-    ("good", "Good"),
-    ("fair", "Fair"),
-    ("poor", "Poor"),
-)
-
-HEALTH_LIMITED_CHOICES = (
-    ("limited_a_lot", "YES, limited a lot"),
-    ("limited_a_little", "YES, limited a little"),
-    ("not_limited_at_all", "NO, not at all limited"),
-)
-
-WORK_PAIN_INTERFERENCE_CHOICES = (
-    ("not_at_all", "Not at all"),
-    ("a_little_bit", "A little bit"),
-    ("moderately", "Moderately"),
-    ("quite_a-bit", "Quite a bit"),
-    ("extremely", "Extremely"),
-)
-
-FEELING_DURATION_CHOICES = (
-    (ALL_OF_THE_TIME, "All of the time"),
-    (MOST_OF_THE_TIME, "Most of the time"),
-    (GOOD_BIT_OF_THE_TIME, " A good bit of the time"),
-    (SOME_OF_THE_TIME, "Some of the time"),
-    (LITTLE_OF_THE_TIME, "A little of the time"),
-    (NONE_OF_THE_TIME, "None of the time"),
-)
-
-INTERFERENCE_DURATION_CHOICES = (
-    (ALL_OF_THE_TIME, "All of the time"),
-    (MOST_OF_THE_TIME, "Most of the time"),
-    (SOME_OF_THE_TIME, "Some of the time"),
-    (LITTLE_OF_THE_TIME, "A little of the time"),
-    (NONE_OF_THE_TIME, "None of the time"),
-)
 
 
 class Sf12(CrfModelMixin, edc_models.BaseUuidModel):
