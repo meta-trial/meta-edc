@@ -24,6 +24,7 @@ from .other_arv_regimens import OtherArvRegimens
 from .other_arv_regimens_detail import OtherArvRegimensDetail
 from .patient_history import PatientHistory
 from .physical_exam import PhysicalExam
+from .sf12 import Sf12
 from .study_medication import StudyMedication
 from .subject_requisition import SubjectRequisition
 from .subject_visit import SubjectVisit

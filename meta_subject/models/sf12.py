@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.safestring import mark_safe
 from edc_constants.choices import YES_NO
 from edc_model import models as edc_models
 
@@ -64,75 +65,78 @@ class Sf12(CrfModelMixin, edc_models.BaseUuidModel):
     )
 
     moderate_activities_now_limited = models.CharField(
-        verbose_name=(
-            "During a typical day, does your health now limit you in: "
-            "moderate activities such as moving a table, pushing a vacuum cleaner, "
-            "bowling, or playing golf? If so, how much?"
+        verbose_name=mark_safe(
+            "<b>Moderate activities</b> such as moving a table, "
+            "pushing a vacuum cleaner, bowling, or playing golf:"
         ),
         max_length=20,
         choices=HEALTH_LIMITED_CHOICES,
     )
 
     climbing_stairs_now_limited = models.CharField(
-        verbose_name=(
-            "During a typical day, does your health now limit you in: "
-            "climbing several flights of stairs? If so, how much?"
-        ),
+        verbose_name=mark_safe("Climbing <b>several</b> flights of stairs:"),
         max_length=20,
         choices=HEALTH_LIMITED_CHOICES,
     )
 
     accomplished_less_physical_health = models.CharField(
-        # TODO: verbose_name="",
+        verbose_name=mark_safe("<b>Accomplished less</b> than you would like:"),
         max_length=15,
         choices=YES_NO,
     )
 
     work_limited_physical_health = models.CharField(
-        # TODO: verbose_name="",
+        verbose_name=mark_safe(
+            "Were limited in the <b>kind</b> of work or other activities:"
+        ),
         max_length=15,
         choices=YES_NO,
     )
 
     accomplished_less_emotional = models.CharField(
-        # TODO: verbose_name="",
+        verbose_name=mark_safe("<b>Accomplished less</b> than you would like:"),
         max_length=15,
         choices=YES_NO,
     )
 
     work_less_carefully_emotional = models.CharField(
-        # TODO: verbose_name="",
+        verbose_name=mark_safe(
+            "Did work or activities <b>less carefully than usual</b>:"
+        ),
         max_length=15,
         choices=YES_NO,
     )
 
     pain_interfere_work = models.CharField(
-        # TODO: verbose_name="",
+        verbose_name=mark_safe(
+            "During the <u>past 4 weeks</u>, how much <u>did pain interfere</u> "
+            "with your normal work (including work outside the home and housework)?"
+        ),
         max_length=15,
         choices=WORK_PAIN_INTERFERENCE_CHOICES,
     )
 
     felt_calm_peaceful = models.CharField(
-        # TODO: verbose_name="",
+        verbose_name="Have you felt calm & peaceful?",
         max_length=25,
         choices=FEELING_DURATION_CHOICES,
     )
 
     felt_lot_energy = models.CharField(
-        # TODO: verbose_name="",
+        verbose_name="Did you have a lot of energy?",
         max_length=25,
         choices=FEELING_DURATION_CHOICES,
     )
 
     felt_down = models.CharField(
-        # TODO: verbose_name="",
+        verbose_name="Have you felt down-hearted and blue?",
         max_length=25,
         choices=FEELING_DURATION_CHOICES,
     )
 
     social_activities_interfered = models.CharField(
-        verboase_name=(
-            "During the past 4 weeks, how much of the time has your physical "
+        verbose_name=mark_safe(
+            "During the <u>past 4 weeks</u>, how much of the time has your physical "
             "health or emotional problems interfered with your social "
             "activities (like visiting friends, relatives, etc.)?"
         ),

@@ -21,6 +21,7 @@ from .mnsi_admin import MnsiAdmin
 from .other_arv_regimens_admin import OtherArvRegimensAdmin
 from .patient_history_admin import PatientHistoryAdmin
 from .physical_exam_admin import PhysicalExamAdmin
+from .sf12_admin import Sf12Admin
 from .study_medication_admin import StudyMedicationAdmin
 from .subject_requisition_admin import SubjectRequisitionAdmin
 from .subject_visit_admin import SubjectVisitAdmin
