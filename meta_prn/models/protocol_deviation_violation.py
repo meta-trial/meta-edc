@@ -1,6 +1,7 @@
 from django.db import models
 from edc_action_item.models import ActionItem, ActionModelMixin
 from edc_constants.choices import NOT_APPLICABLE
+from edc_constants.constants import QUESTION_RETIRED
 from edc_identifier.model_mixins import (
     NonUniqueSubjectIdentifierFieldMixin,
     TrackingModelMixin,
@@ -32,15 +33,23 @@ class ProtocolDeviationViolation(
         related_name="meta_prn_action_item",
     )
 
+    # not used for PHASE THREE
     violation_type = models.CharField(
         verbose_name="Type of violation",
         max_length=75,
         choices=PROTOCOL_VIOLATION,
-        default=NOT_APPLICABLE,
+        default=QUESTION_RETIRED,
+        null=True,
+        blank=True,
     )
 
+    # not used for PHASE THREE
     violation_type_other = models.CharField(
-        null=True, blank=True, verbose_name="If other, please specify", max_length=75
+        null=True,
+        blank=True,
+        verbose_name="If other, please specify",
+        max_length=75,
+        default=QUESTION_RETIRED,
     )
 
     action_required_old = models.CharField(
