@@ -6,38 +6,38 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_ae', '0007_auto_20210911_2036'),
+        ("meta_ae", "0007_auto_20210911_2036"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='deathreport',
-            old_name='death_location_type',
-            new_name='death_location',
+            model_name="deathreport",
+            old_name="death_location_type",
+            new_name="death_location",
         ),
         migrations.RenameField(
-            model_name='deathreport',
-            old_name='death_location_name',
-            new_name='hospital_name',
+            model_name="deathreport",
+            old_name="death_location_name",
+            new_name="hospital_name",
         ),
         migrations.RenameField(
-            model_name='deathreport',
-            old_name='informant_contacts',
-            new_name='informant_contact',
+            model_name="deathreport",
+            old_name="informant_contacts",
+            new_name="informant_contact",
         ),
         migrations.RenameField(
-            model_name='historicaldeathreport',
-            old_name='death_location_type',
-            new_name='death_location',
+            model_name="historicaldeathreport",
+            old_name="death_location_type",
+            new_name="death_location",
         ),
         migrations.RenameField(
-            model_name='historicaldeathreport',
-            old_name='death_location_name',
-            new_name='hospital_name',
+            model_name="historicaldeathreport",
+            old_name="death_location_name",
+            new_name="hospital_name",
         ),
         migrations.RenameField(
-            model_name='historicaldeathreport',
-            old_name='informant_contacts',
-            new_name='informant_contact',
+            model_name="historicaldeathreport",
+            old_name="informant_contacts",
+            new_name="informant_contact",
         ),
     ]
