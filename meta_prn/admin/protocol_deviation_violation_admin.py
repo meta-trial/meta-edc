@@ -78,7 +78,7 @@ class ProtocolDeviationViolationAdmin(
         "report_type": admin.VERTICAL,
         "safety_impact": admin.VERTICAL,
         "study_outcomes_impact": admin.VERTICAL,
-        "violation_type": admin.VERTICAL,
+        "violation": admin.VERTICAL,
     }
 
     list_display = (
