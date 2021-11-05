@@ -24,7 +24,7 @@ class Sf12(CrfModelMixin, edc_models.BaseUuidModel):
 
     moderate_activities_now_limited = models.CharField(
         verbose_name=mark_safe(
-            "<b>Moderate activities</b> such as moving a table, "
+            "<u>Moderate activities</u> such as moving a table, "
             "pushing a vacuum cleaner, bowling, or playing golf:"
         ),
         max_length=20,
@@ -32,34 +32,34 @@ class Sf12(CrfModelMixin, edc_models.BaseUuidModel):
     )
 
     climbing_stairs_now_limited = models.CharField(
-        verbose_name=mark_safe("Climbing <b>several</b> flights of stairs:"),
+        verbose_name=mark_safe("Climbing <u>several</u> flights of stairs:"),
         max_length=20,
         choices=HEALTH_LIMITED_CHOICES,
     )
 
     accomplished_less_physical_health = models.CharField(
-        verbose_name=mark_safe("<b>Accomplished less</b> than you would like:"),
+        verbose_name=mark_safe("<u>Accomplished less</u> than you would like:"),
         max_length=15,
         choices=YES_NO,
     )
 
     work_limited_physical_health = models.CharField(
         verbose_name=mark_safe(
-            "Were limited in the <b>kind</b> of work or other activities:"
+            "Were limited in the <u>kind</u> of work or other activities:"
         ),
         max_length=15,
         choices=YES_NO,
     )
 
     accomplished_less_emotional = models.CharField(
-        verbose_name=mark_safe("<b>Accomplished less</b> than you would like:"),
+        verbose_name=mark_safe("<u>Accomplished less</u> than you would like:"),
         max_length=15,
         choices=YES_NO,
     )
 
     work_less_carefully_emotional = models.CharField(
         verbose_name=mark_safe(
-            "Did work or activities <b>less carefully than usual</b>:"
+            "Did work or activities <u>less carefully than usual</u>:"
         ),
         max_length=15,
         choices=YES_NO,
