@@ -1,3 +1,5 @@
+from unittest import skipIf
+
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, tag
@@ -15,7 +17,8 @@ from meta_screening.models import (
 )
 
 
-class TestScreeningPartThree(TestCase):
+@skipIf(get_meta_version() == PHASE_THREE, "for META2 only")
+class TestICP(TestCase):
     def setUp(self):
         obj = ScreeningPartOne(
             screening_consent=YES,
@@ -55,6 +58,7 @@ class TestScreeningPartThree(TestCase):
         obj.appt_datetime = get_utcnow() + relativedelta(days=1)
         obj.save()
 
+    @tag("e24")
     def test_creates_icp_referral(self):
         obj = ScreeningPartThree.objects.get(
             screening_identifier=self.screening_identifier

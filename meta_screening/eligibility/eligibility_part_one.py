@@ -1,59 +1,55 @@
-from edc_constants.constants import FEMALE, MALE, NO, TBD, YES
+from edc_constants.constants import FEMALE, MALE, NO, NOT_APPLICABLE, YES
+from edc_screening.screening_eligibility import FC, ScreeningEligibility
 
 from meta_edc.meta_version import PHASE_THREE, get_meta_version
 
-from .base_eligibility_part_x import BaseEligibilityPartX
 
+class EligibilityPartOne(ScreeningEligibility):
 
-class EligibilityPartOne(BaseEligibilityPartX):
-    def assess_eligibility(self):
-        """Updates model instance fields `eligible_part_one`
-        and `reasons_ineligible_part_one`.
-        """
-        self.obj.eligible_part_one = TBD
-        self.obj.reasons_ineligible_part_one = None
-        self.check_for_required_field_values()
-        reasons_ineligible = self.get_reasons_ineligible()
-        self.obj.reasons_ineligible_part_one = "|".join(reasons_ineligible)
-        self.obj.eligible_part_one = NO if reasons_ineligible else YES
-        if self.obj.eligible_part_one == YES or self.obj.eligible_part_two != TBD:
-            self.obj.continue_part_two = YES
+    eligible_fld_name = "eligible_part_one"
+    reasons_ineligible_fld_name = "reasons_ineligible_part_one"
 
-    @classmethod
-    def get_required_fields(cls):
-        return [
-            "gender",
-            "age_in_years",
-            "hiv_pos",
-            "art_six_months",
-            "on_rx_stable",
-            "lives_nearby",
-            (
-                "staying_nearby_12"
-                if get_meta_version() == PHASE_THREE
-                else "staying_nearby_6"
-            ),
-            "pregnant",
-        ]
+    def __init__(self, **kwargs):
+        self.age_in_years = None
+        self.art_six_months = None
+        self.gender = None
+        self.hiv_pos = None
+        self.lives_nearby = None
+        self.meta_phase_two = None
+        self.on_rx_stable = None
+        self.pregnant = None
+        self.staying_nearby_6 = None
+        self.staying_nearby_12 = None
+        super().__init__(**kwargs)
 
-    def get_reasons_ineligible(self):
-        reasons_ineligible = []
-        if self.obj.gender not in [MALE, FEMALE]:
-            reasons_ineligible.append("gender invalid")
-        if self.obj.age_in_years < 18:
-            reasons_ineligible.append("age<18")
-        if self.obj.hiv_pos == NO:
-            reasons_ineligible.append("not HIV+")
-        if self.obj.art_six_months == NO:
-            reasons_ineligible.append("ART<6m")
-        if self.obj.on_rx_stable == NO:
-            reasons_ineligible.append("ART not stable")
-        if self.obj.lives_nearby == NO:
-            reasons_ineligible.append("Not living nearby")
-        if get_meta_version() == PHASE_THREE and self.obj.staying_nearby_12 == NO:
-            reasons_ineligible.append("Unable/Unwilling to stay nearby")
-        elif self.obj.staying_nearby_6 == NO:
-            reasons_ineligible.append("Unable/Unwilling to stay nearby")
-        if self.obj.pregnant == YES:
-            reasons_ineligible.append("Pregnant (unconfirmed)")
-        return reasons_ineligible
+    def get_required_fields(self) -> dict[str, FC]:
+        if get_meta_version() == PHASE_THREE:
+            fields = {
+                "age_in_years": FC(range(18, 120), "age<18"),
+                "art_six_months": FC(YES, "ART<6m"),
+                "gender": FC([MALE, FEMALE], "gender invalid"),
+                "hiv_pos": FC(YES, "not HIV+"),
+                "lives_nearby": FC(YES, "Not living nearby"),
+                "meta_phase_two": FC(NO, "META Phase 2 participant"),
+                "on_rx_stable": FC(YES, "ART not stable"),
+                "pregnant": FC([NO, NOT_APPLICABLE], "Pregnant (unconfirmed)"),
+                "staying_nearby_12": FC(YES, "Unable/Unwilling to stay nearby for 12m"),
+            }
+        else:
+            fields = {
+                "age_in_years": FC(range(18, 120), "age<18"),
+                "art_six_months": FC(YES, "ART<6m"),
+                "gender": FC([MALE, FEMALE], "gender invalid"),
+                "hiv_pos": FC(YES, "not HIV+"),
+                "lives_nearby": FC(YES, "Not living nearby"),
+                "on_rx_stable": FC(YES, "ART not stable"),
+                "pregnant": FC([NO, NOT_APPLICABLE], "Pregnant (unconfirmed)"),
+                "staying_nearby_6": FC(YES, "Unable/Unwilling to stay nearby for 6m"),
+            }
+        return fields
+
+    def set_fld_attrs_on_model(self) -> None:
+        if self.eligible == YES:
+            self.model_obj.continue_part_two = YES
+        else:
+            self.model_obj.continue_part_two = NO

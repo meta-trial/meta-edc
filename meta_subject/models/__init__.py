@@ -10,6 +10,7 @@ from .blood_results import (
 from .complications import Complications
 from .complications_glycemia import ComplicationsGlycemia
 from .concomitant_medication import ConcomitantMedication
+from .diet_and_lifestyle import DietAndLifestyle
 from .eq5d3l import Eq5d3l
 from .followup_examination import FollowupExamination
 from .followup_vitals import FollowupVitals
@@ -25,6 +26,7 @@ from .other_arv_regimens_detail import OtherArvRegimensDetail
 from .patient_history import PatientHistory
 from .physical_exam import PhysicalExam
 from .sf12 import Sf12
+from .signals import study_medication_on_pre_save
 from .study_medication import StudyMedication
 from .subject_requisition import SubjectRequisition
 from .subject_visit import SubjectVisit

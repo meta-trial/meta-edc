@@ -1,48 +1,47 @@
-from edc_constants.constants import NO, TBD, YES
+from edc_constants.constants import NO, NOT_APPLICABLE, YES
+from edc_screening.screening_eligibility import FC, ScreeningEligibility
 
 from meta_edc.meta_version import PHASE_THREE, get_meta_version
 
-from .base_eligibility_part_x import BaseEligibilityPartX
 
+class EligibilityPartTwo(ScreeningEligibility):
 
-class EligibilityPartTwo(BaseEligibilityPartX):
-    def assess_eligibility(self):
-        """Updates model instance fields `eligible_part_two`
-        and `reasons_ineligible_part_two`.
-        """
-        self.obj.eligible_part_two = TBD
-        self.obj.reasons_ineligible_part_two = None
-        self.check_for_required_field_values()
-        reasons_ineligible = self.get_reasons_ineligible()
-        self.obj.reasons_ineligible_part_two = "|".join(reasons_ineligible)
-        self.obj.eligible_part_two = NO if reasons_ineligible else YES
+    eligible_fld_name = "eligible_part_two"
+    reasons_ineligible_fld_name = "reasons_ineligible_part_two"
 
-    @classmethod
-    def get_required_fields(cls):
-        fields = [
-            "congestive_heart_failure",
-            "liver_disease",
-            "alcoholism",
-            "acute_metabolic_acidosis",
-            "renal_function_condition",
-            "tissue_hypoxia_condition",
-            "acute_condition",
-            "metformin_sensitivity",
-        ]
+    def __init__(self, **kwargs):
+        self.acute_condition = None
+        self.acute_metabolic_acidosis = None
+        self.advised_to_fast = None
+        self.alcoholism = None
+        self.appt_datetime = None
+        self.congestive_heart_failure = None
+        self.has_dm = None
+        self.on_dm_medication = None
+        self.liver_disease = None
+        self.metformin_sensitivity = None
+        self.renal_function_condition = None
+        self.tissue_hypoxia_condition = None
+        super().__init__(**kwargs)
+
+    def get_required_fields(self) -> dict[str, FC]:
+        fields = {
+            "acute_condition": FC(NO, None),
+            "acute_metabolic_acidosis": FC(NO, None),
+            "advised_to_fast": FC([YES, NOT_APPLICABLE], "Not advised to fast"),
+            "alcoholism": FC(NO, None),
+            "congestive_heart_failure": FC(NO, None),
+            "liver_disease": FC(NO, None),
+            "metformin_sensitivity": FC(NO, None),
+            "renal_function_condition": FC(NO, None),
+            "tissue_hypoxia_condition": FC(NO, None),
+            "appt_datetime": FC(ignore_if_missing=True),
+        }
         if get_meta_version() == PHASE_THREE:
-            fields.extend(["has_dm", "on_dm_medication"])
+            fields.update(
+                {
+                    "has_dm": FC(NO, "Diabetic"),
+                    "on_dm_medication": FC(NO, "taking anti-diabetic medications"),
+                }
+            )
         return fields
-
-    def get_reasons_ineligible(self):
-        reasons_ineligible = []
-        responses = {}
-        for field in self.get_required_fields():
-            responses.update({field: getattr(self.obj, field)})
-        for k, v in responses.items():
-            if v == YES:
-                reasons_ineligible.append(k.title().replace("_", " "))
-        if not reasons_ineligible and self.obj.advised_to_fast == NO:
-            reasons_ineligible.append("Not advised to fast")
-        if not reasons_ineligible and not self.obj.appt_datetime:
-            reasons_ineligible.append("Not scheduled for stage 2")
-        return reasons_ineligible

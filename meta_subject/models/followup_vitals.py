@@ -16,6 +16,11 @@ class FollowupVitals(
     CrfModelMixin,
     edc_models.BaseUuidModel,
 ):
+
+    # TODO: Grading for blood pressure?? sokoine
+    # TODO: Add action item modelmixin, grading like blood results
+    # TODO: waist circumference at enrolment
+
     weight_determination = models.CharField(
         verbose_name="Is weight estimated or measured?",
         max_length=15,

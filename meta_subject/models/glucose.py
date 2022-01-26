@@ -13,6 +13,7 @@ class Glucose(
     OgttModelMixin,
     edc_models.BaseUuidModel,
 ):
+    # TODO: diagnosis of diabetes is 11.1mmol / L ONLY
 
     """A user model to capture IFG and OGTT"""
 

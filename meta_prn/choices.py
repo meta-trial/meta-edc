@@ -1,11 +1,27 @@
-from edc_constants.constants import (
-    MALIGNANCY,
-    NOT_APPLICABLE,
-    OTHER,
-    TUBERCULOSIS,
-    UNKNOWN,
+from edc_constants.constants import NOT_APPLICABLE, OTHER
+
+# PHASE_THREE ONLY
+CLINICAL_WITHDRAWAL_REASONS = (
+    ("pregnancy", "Pregnancy"),
+    ("kidney_disease", "Development of chronic kidney disease"),
+    ("liver_disease", "Development of chronic liver disease"),
+    ("intercurrent_illness", "Intercurrent illness which prevents further treatment"),
+    ("investigator_decision", "Investigator decision"),
+    (
+        OTHER,
+        (
+            "Other condition that justifies the discontinuation of "
+            "treatment in the clinician’s opinion (specify below)"
+        ),
+    ),
 )
-from edc_protocol_violation.choices import DEVIATION_VIOLATION
+
+# PHASE_THREE ONLY
+TOXICITY_WITHDRAWAL_REASONS = (
+    ("lactic_acidosis", "Development of lactic acidosis or hyperlactatemia"),
+    ("hepatomegaly", "Development of hepatomegaly with steatosis"),
+    (OTHER, "Other (specify below)"),
+)
 
 LOSS_CHOICES = (
     ("unknown_address", "Changed to an unknown address"),

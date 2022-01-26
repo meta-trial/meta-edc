@@ -58,7 +58,7 @@ screening_listboard_url = f"{app_prefix}_dashboard:screening_listboard_url"
 )
 class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
-    sid_count = 2
+    sid_count = 5
 
     menu_labels = [
         "Screening",
@@ -76,6 +76,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
     @classmethod
     def setUpTestData(cls):
+        super().setUpTestData()
         site_auths.initialize()
         import_module("edc_action_item.auths")
         import_module("edc_adverse_event.auths")
@@ -356,8 +357,8 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         for field, _ in add_screening_page.form.fields.items():
             try:
                 add_screening_page.form[field] = part_one_data[field]
-            except KeyError:
-                print(field)
+            except KeyError as e:
+                print(f"{field}. Got {e}.")
         page = add_screening_page.form.submit()
         soup = BeautifulSoup(page.content, "html.parser")
         errorlist = soup.find_all("ul", "errorlist")
@@ -449,7 +450,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         obj.save()
         return obj
 
-    @tag("webtest")
+    @tag("webtest3")
     def test_to_subject_dashboard(self):
         add_or_update_django_sites(apps=django_apps, sites=all_sites)
         self.login(

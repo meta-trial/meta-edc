@@ -40,7 +40,7 @@ crfs_d1 = FormsCollection(
     Crf(show_order=360, model="meta_subject.malariatest"),
     Crf(show_order=370, model="meta_subject.urinedipsticktest"),
     Crf(show_order=400, model="meta_subject.studymedication"),
-    Crf(show_order=500, model="meta_subject.hepatitistest"),
+    Crf(show_order=500, model="meta_subject.hepatitistest", required=False),
     name="day1",
 )
 
@@ -50,9 +50,9 @@ crfs_w2 = FormsCollection(
     Crf(show_order=200, model="meta_subject.bloodresultsglu"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
-    Crf(show_order=450, model="meta_subject.healtheconomicssimple"),
     Crf(show_order=460, model="meta_subject.eq5d3l"),
-    Crf(show_order=470, model="meta_subject.sf12"),
+    Crf(show_order=465, model="meta_subject.sf12"),
+    Crf(show_order=470, model="meta_subject.healtheconomicssimple"),
     Crf(show_order=500, model="meta_subject.hepatitistest", required=False),
     name="week2",
 )

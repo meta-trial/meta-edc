@@ -12,6 +12,8 @@ from ..admin_site import meta_consent_admin
 from ..forms import SubjectConsentForm
 from ..models import SubjectConsent
 
+# TODO: Assessment score "The client has completed the assessment of understanding with a passing score"
+
 
 @admin.register(SubjectConsent, site=meta_consent_admin)
 class SubjectConsentAdmin(

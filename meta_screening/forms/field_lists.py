@@ -21,6 +21,7 @@ def get_part_one_fields():
     ]
     if get_meta_version() == PHASE_THREE:
         fields = ["staying_nearby_12" if x == "staying_nearby_6" else x for x in fields]
+        fields.append("meta_phase_two")
     return tuple(fields)
 
 
@@ -68,13 +69,25 @@ def get_part_three_vitals_fields():
         ]
 
 
-part_three_ifg_fields = (
-    "fasting",
-    "fasting_duration_str",
-    "ifg_datetime",
-    "ifg_value",
-    "ifg_units",
-)
+def get_part_three_ifg_fields():
+    if get_meta_version() == PHASE_THREE:
+        return (
+            "fasting",
+            "fasting_duration_str",
+            "fasting_opinion",
+            "ifg_datetime",
+            "ifg_value",
+            "ifg_units",
+        )
+    else:
+        return (
+            "fasting",
+            "fasting_duration_str",
+            "ifg_datetime",
+            "ifg_value",
+            "ifg_units",
+        )
+
 
 part_three_ogtt_fields = (
     "ogtt_base_datetime",
@@ -83,7 +96,7 @@ part_three_ogtt_fields = (
     "ogtt_units",
 )
 
-part_three_glucose_fields = part_three_ifg_fields + part_three_ogtt_fields
+part_three_glucose_fields = get_part_three_ifg_fields() + part_three_ogtt_fields
 
 part_three_pregnancy_fields = (
     "urine_bhcg_performed",
@@ -136,7 +149,7 @@ def get_part_three_fields():
     fields = None
     if get_meta_version() == PHASE_TWO:
         fields = (
-            *part_three_ifg_fields,
+            *get_part_three_ifg_fields(),
             *part_three_ogtt_fields,
             *part_three_other_fields,
             *get_part_three_vitals_fields(),
@@ -148,7 +161,7 @@ def get_part_three_fields():
             "part_three_report_datetime",
             *get_part_three_vitals_fields(),
             *part_three_pregnancy_fields,
-            *part_three_ifg_fields,
+            *get_part_three_ifg_fields(),
             *part_three_ogtt_fields,
             *part_three_other_fields,
             *part_three_comment_fields,

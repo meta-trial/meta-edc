@@ -3,10 +3,11 @@ from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from edc_action_item import ActionItemDeleteError, delete_action_item
 from edc_constants.constants import YES
+from edc_pharmacy.utils import create_prescription
 from edc_randomization.site_randomizers import site_randomizers
 from edc_visit_schedule.site_visit_schedules import site_visit_schedules
 
-from meta_edc.meta_version import get_meta_version
+from meta_edc.meta_version import PHASE_THREE, get_meta_version
 from meta_screening.models import SubjectScreening
 from meta_subject.models import SubjectVisit
 
@@ -57,6 +58,13 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
             schedule.put_on_schedule(
                 subject_identifier=instance.subject_identifier,
                 onschedule_datetime=instance.consent_datetime,
+            )
+        if get_meta_version() == PHASE_THREE:
+            create_prescription(
+                subject_identifier=instance.subject_identifier,
+                report_datetime=instance.consent_datetime,
+                randomizer_name=get_meta_version(),
+                medication_name="Metformin",
             )
 
         # create / delete action for reconsent

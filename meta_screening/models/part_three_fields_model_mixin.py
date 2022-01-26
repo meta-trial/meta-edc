@@ -1,6 +1,6 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from edc_constants.choices import NO, YES_NO
+from edc_constants.choices import NO, YES_NO, YES_NO_UNSURE
 from edc_glucose.model_mixins import FastingModelMixin, IfgModelMixin, OgttModelMixin
 from edc_lab.choices import GLUCOSE_UNITS, SERUM_CREATININE_UNITS
 from edc_vitals.model_mixins import (
@@ -10,6 +10,8 @@ from edc_vitals.model_mixins import (
 )
 
 from .creatinine_fields_model_mixin import CreatinineModelFieldsMixin
+
+# TODO: repeat IFG and OGTT after 48-72 hours if response to fasting is unsure in opinion of the clinician (PART 4)
 
 
 class PartThreeFieldsModelMixin(
@@ -24,6 +26,17 @@ class PartThreeFieldsModelMixin(
 ):
 
     lower_bmi_value = 15.0
+
+    # TODO: NO and UNSURE means dont test, come back later
+
+    # added 19/11/2021
+    fasting_opinion = models.CharField(
+        verbose_name="In the opinion of the clinican, has the participant fasted?",
+        max_length=15,
+        choices=YES_NO_UNSURE,
+        null=True,
+        blank=False,
+    )
 
     ifg_units = models.CharField(
         verbose_name="IFG units",

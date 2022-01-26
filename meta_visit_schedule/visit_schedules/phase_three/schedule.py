@@ -112,7 +112,7 @@ visit002 = Visit(
     title="Week 2",
     timepoint=1,
     rbase=relativedelta(weeks=2),
-    rlower=relativedelta(days=0),
+    rlower=relativedelta(days=3),
     rupper=relativedelta(days=4),
     requisitions=requisitions_w2,
     crfs=crfs_w2,

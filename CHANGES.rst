@@ -1,6 +1,30 @@
 Changes
 =======
 
+Unreleased
+----------
+-set week 2 lower bound to 3 days in window period
+
+TODO
+- BMI value absurd value??
+- missed visit / ltfu action, define LTFU
+- pregnancy outcomes notification form
+- collect waist circumference at enrolment only
+- add assessment scores to consent
+- screening add diet and lifestyle
+- customize off study reasons
+- evaluate appointment progress before exception EoS
+- separate off study drug from EoS, add off study drug CRF
+- put off study drug patients onto simplified 36m appointment only
+  In the case of an AE, normal schedule continues
+- back on study drug form??
+- update reasons for withdrawal??
+- grade blood pressure
+- SF-12 in both english and Swahili (forms) as proxy model
+  with non-user Q indicating language chosen
+- EoS prodedure:
+
+
 0.1.75
 ------
 - bump edc to 0.3.50

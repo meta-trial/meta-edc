@@ -27,7 +27,6 @@ class TestRandomizers(MetaTestCaseMixin, TestCase):
             [obj.sid, obj.assignment, obj.site_name, obj.gender],
         )
 
-    @tag("87")
     @override_settings(META_PHASE=PHASE_TWO)
     def test_randomize_phase_two(self):
         self.assertEqual(get_meta_version(), 2)
@@ -56,7 +55,7 @@ class TestRandomizers(MetaTestCaseMixin, TestCase):
         except ObjectDoesNotExist:
             self.fail("RegisteredSubject unexpectedly does not exist")
 
-    @tag("87")
+    @tag("e23")
     @override_settings(META_PHASE=PHASE_THREE)
     def test_randomize_phase_three(self):
         self.assertEqual(get_meta_version(), 3)

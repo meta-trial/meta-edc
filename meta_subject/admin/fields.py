@@ -16,6 +16,6 @@ def get_blood_pressure_fields():
 
 def get_respiratory_o2_fields():
     if get_meta_version() == PHASE_THREE:
-        return ["respiratory_rate", "oxygen_saturation"]
+        return ["respiratory_rate"]
     else:
         return []

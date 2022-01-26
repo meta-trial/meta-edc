@@ -7,7 +7,6 @@ from edc_appointment.constants import IN_PROGRESS_APPT, INCOMPLETE_APPT
 from edc_appointment.tests.appointment_test_case_mixin import AppointmentTestCaseMixin
 from edc_constants.constants import YES
 from edc_facility.import_holidays import import_holidays
-from edc_facility.models import Holiday
 from edc_list_data.site_list_data import site_list_data
 from edc_metadata import REQUIRED
 from edc_metadata.models import CrfMetadata
@@ -47,11 +46,11 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
 
     import_randomization_list = True
 
-    sid_count = 10
+    sid_count = 2
 
     @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
+    def setUpTestData(cls):
+        import_holidays(test=True)
         add_or_update_django_sites(sites=get_sites_by_country("tanzania"))
         site_randomizers._registry = {}
         if cls.import_randomization_list:
@@ -65,18 +64,8 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
                 RandomizerPhaseThree.import_list(
                     verbose=False, sid_count_for_tests=cls.sid_count
                 )
-        import_holidays(test=True)
         site_list_data.initialize()
         site_list_data.autodiscover()
-
-    @classmethod
-    def tearDownClass(cls):
-        super().tearDownClass()
-        if get_meta_version() == PHASE_TWO:
-            RandomizerPhaseTwo.model_cls().objects.all().delete()
-        elif get_meta_version() == PHASE_THREE:
-            RandomizerPhaseThree.model_cls().objects.all().delete()
-        Holiday.objects.all().delete()
 
     def get_subject_screening(
         self,
@@ -96,6 +85,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
             user_created="erikvw", user_modified="erikvw", **part_one_eligible_options
         )
         screening_identifier = part_one.screening_identifier
+        self.assertEqual(part_one.reasons_ineligible_part_one, None)
         self.assertEqual(part_one.eligible_part_one, YES)
 
         screening_part_two = ScreeningPartTwo.objects.get(
@@ -104,8 +94,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
         for k, v in part_two_eligible_options.items():
             setattr(screening_part_two, k, v)
         screening_part_two.save()
-        print(screening_part_two.reasons_ineligible_part_two)
-        self.assertEqual(screening_part_two.reasons_ineligible_part_two, "")
+        self.assertEqual(screening_part_two.reasons_ineligible_part_two, None)
         self.assertEqual(screening_part_two.eligible_part_two, YES)
 
         screening_part_three = ScreeningPartThree.objects.get(
@@ -114,7 +103,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
         for k, v in part_three_eligible_options.items():
             setattr(screening_part_three, k, v)
         screening_part_three.save()
-        self.assertEqual(screening_part_three.reasons_ineligible_part_three, "")
+        self.assertEqual(screening_part_three.reasons_ineligible_part_three, None)
         self.assertEqual(screening_part_three.eligible_part_three, YES)
 
         subject_screening = SubjectScreening.objects.get(

@@ -1,9 +1,16 @@
 from django.db import models
 from edc_constants.choices import YES_NO_TBD
 from edc_constants.constants import TBD
+from edc_screening.model_mixins import (
+    EligibilityModelMixin as BaseEligibilityModelMixin,
+)
+
+from ..eligibility import Eligibility
 
 
-class EligibilityModelMixin(models.Model):
+class EligibilityModelMixin(BaseEligibilityModelMixin):
+
+    eligibility_cls = Eligibility
 
     eligible_part_one = models.CharField(
         max_length=15,
@@ -40,6 +47,9 @@ class EligibilityModelMixin(models.Model):
     reasons_ineligible_part_three = models.TextField(
         max_length=150, null=True, editable=False
     )
+
+    def get_report_datetime_for_eligibility_datetime(self):
+        return self.part_three_report_datetime
 
     class Meta:
         abstract = True
