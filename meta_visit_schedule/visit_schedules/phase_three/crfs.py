@@ -1,8 +1,10 @@
 from edc_visit_schedule import Crf, FormsCollection
 
 # TODO: whats the difference between bloodresultsglu and glucose??
+
 crfs_prn = FormsCollection(
     Crf(show_order=10, model="meta_subject.bloodresultsfbc"),
+    Crf(show_order=150, model="meta_subject.glucose"),
     Crf(show_order=220, model="meta_subject.bloodresultsglu"),
     Crf(show_order=230, model="meta_subject.bloodresultshba1c"),
     Crf(show_order=240, model="meta_subject.bloodresultsrft"),
@@ -192,7 +194,7 @@ crfs_33m = FormsCollection(
 crfs_36m = FormsCollection(
     Crf(show_order=10, model="meta_subject.followupvitals"),
     Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=200, model="meta_subject.bloodresultsglu"),
+    Crf(show_order=150, model="meta_subject.glucose"),
     Crf(show_order=210, model="meta_subject.bloodresultshba1c"),
     Crf(show_order=220, model="meta_subject.bloodresultsrft"),
     Crf(show_order=230, model="meta_subject.bloodresultslft"),

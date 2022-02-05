@@ -1,5 +1,3 @@
-from typing import Optional
-
 from edc_reportable import (
     MICROMOLES_PER_LITER,
     MILLIMOLES_PER_LITER,

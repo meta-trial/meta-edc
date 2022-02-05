@@ -12,9 +12,8 @@ from meta_lists.models import OffstudyReasons
 from ..choices import CLINICAL_WITHDRAWAL_REASONS, TOXICITY_WITHDRAWAL_REASONS
 
 # TODO: confirm all appointments are either new, incomplete or done
-# TODO: take off study meds but coninue followup
-# TODO: follow on new schedule, if permanently off drug
-# TODO: tel followup? annual GLU testing
+# TODO: take off study meds but coninue followup (WITHDRAWAL)
+# TODO: follow on new schedule, if permanently off drug (Single 36m visit)
 
 
 class EndOfStudy(

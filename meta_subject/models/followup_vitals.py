@@ -4,6 +4,7 @@ from edc_vitals.model_mixins import (
     BloodPressureModelMixin,
     SimpleBloodPressureModelMixin,
 )
+from edc_vitals.models import WaistCircumferenceField
 
 from ..choices import WEIGHT_DETERMINATION
 from ..model_mixins import CrfModelMixin, VitalsFieldsModelMixin
@@ -17,9 +18,8 @@ class FollowupVitals(
     edc_models.BaseUuidModel,
 ):
 
-    # TODO: Grading for blood pressure?? sokoine
+    # TODO: Grading for blood pressure?? sokoine See DAIDS
     # TODO: Add action item modelmixin, grading like blood results
-    # TODO: waist circumference at enrolment
 
     weight_determination = models.CharField(
         verbose_name="Is weight estimated or measured?",

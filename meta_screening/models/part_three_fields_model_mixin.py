@@ -25,7 +25,7 @@ class PartThreeFieldsModelMixin(
     models.Model,
 ):
 
-    lower_bmi_value = 15.0
+    lower_bmi_value = 13.0
 
     # TODO: NO and UNSURE means dont test, come back later
 

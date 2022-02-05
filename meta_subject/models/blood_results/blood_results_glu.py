@@ -8,6 +8,7 @@ from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
 from edc_model import models as edc_models
 
 
+# TODO: this is a IFG!!
 class BloodResultsGlu(
     CrfWithActionModelMixin,
     GlucoseModelMixin,

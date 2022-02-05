@@ -168,7 +168,7 @@ list_data = {
     ],
 }
 if get_meta_version() == PHASE_THREE:
-    # TODO: customize for META PHASE THREE
+    # TODO: customize for META PHASE THREE. see updated EoS form for the reasons
     """
     4 = Patient experienced an unacceptable toxicity
         A = Development of lactic acidosis or hyperlactatemia

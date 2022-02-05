@@ -29,7 +29,7 @@ class MissedVisitAction(Action):
     create_by_user = False
 
     def get_next_actions(self):
-        # TODO: define LTFU
+        # TODO: define LTFU, 6 months off study medication
         ltfu = None
         if ltfu:
             next_actions = [LTFU_ACTION]

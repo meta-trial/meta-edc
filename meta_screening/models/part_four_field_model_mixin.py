@@ -1,7 +1,8 @@
 from django.db import models
 
 # TODO: add assessment of understanding section (P4?) and duration?
-# TODO: diet and lifestyle discussion duration?
+#  (WAIT, just ask if the assessment form was completed)
+# TODO: diet and lifestyle discussion duration? (WAIT, skip for now. Training issue, not to be documented)
 from edc_constants.choices import YES_NO, YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE
 

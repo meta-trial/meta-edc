@@ -53,6 +53,7 @@ def get_part_three_vitals_fields():
         return [
             "height",
             "weight",
+            "waist_circumference",
             "sys_blood_pressure_one",
             "dia_blood_pressure_one",
             "sys_blood_pressure_two",

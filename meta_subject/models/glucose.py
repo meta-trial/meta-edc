@@ -13,7 +13,8 @@ class Glucose(
     OgttModelMixin,
     edc_models.BaseUuidModel,
 ):
-    # TODO: diagnosis of diabetes is 11.1mmol / L ONLY
+    # TODO: diagnosis of diabetes is OGTT 11.1mmol / L ONLY. Triggers EoS form
+    # TODO: move IFG to bloogresultglu. Use this form for OGTT only 27/01/2021
 
     """A user model to capture IFG and OGTT"""
 
