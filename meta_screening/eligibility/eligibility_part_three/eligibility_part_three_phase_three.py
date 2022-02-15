@@ -33,6 +33,7 @@ class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
             self.eligible = NO
 
     def set_fld_attrs_on_model(self) -> None:
+        """Set extra attr on the model"""
         super().set_fld_attrs_on_model()
         self.model_obj.inclusion_a = self.inclusion_a
         self.model_obj.inclusion_b = self.inclusion_b
@@ -40,6 +41,7 @@ class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
         self.model_obj.inclusion_d = NOT_APPLICABLE
 
     def get_required_fields(self) -> dict[str, FC]:
+        """Get default fields as well as severe_htn"""
         fields = super().get_required_fields()
         fields.update({"severe_htn": FC(NO, SEVERE_HTN)})
         return fields

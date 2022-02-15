@@ -72,15 +72,15 @@ def eligibility_button(subject_screening_model_wrapper):
     comment = []
     obj = subject_screening_model_wrapper.object
     tooltip = None
-    if not obj.eligible and obj.reasons_ineligible:
+    if obj.reasons_ineligible:
         comment = obj.reasons_ineligible.split("|")
         comment = list(set(comment))
         comment.sort()
-    eligibility = Eligibility(obj)
+    eligibility = Eligibility(obj, update_model=False)
     soup = BeautifulSoup(eligibility.eligibility_display_label, features="html.parser")
     return dict(
         eligible=obj.eligible,
-        eligible_final=eligibility.eligible,
+        eligible_final=obj.eligible,
         display_label=soup.get_text(),
         comment=comment,
         tooltip=tooltip,
