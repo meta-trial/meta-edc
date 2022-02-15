@@ -68,7 +68,6 @@ class ScreeningTestMixin:
 
 class TestForms(ScreeningTestMixin, TestCase):
     def setUp(self):
-
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         part_two_eligible_options = deepcopy(get_part_two_eligible_options())
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
@@ -85,7 +84,6 @@ class TestForms(ScreeningTestMixin, TestCase):
         obj.save()
         self.data = part_three_eligible_options
 
-    @tag("x")
     def test_screening_form_one_ok(self):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         data = {k: v for k, v in part_one_eligible_options.items()}
@@ -94,23 +92,19 @@ class TestForms(ScreeningTestMixin, TestCase):
         form.is_valid()
         self.assertEqual(form._errors, {})
 
-    @tag("x")
     def test_screening_form_two_ok(self):
         part_two_eligible_options = deepcopy(get_part_two_eligible_options())
         form = ScreeningPartTwoForm(data=part_two_eligible_options)
         form.is_valid()
         self.assertEqual(form._errors, {})
 
-    @tag("x")
     def test_screening_form_three_ok(self):
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
         form = ScreeningPartThreeForm(data=part_three_eligible_options)
         form.is_valid()
         self.assertEqual(form._errors, {})
 
-    @tag("x")
     def test_screening_ok(self):
-
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         part_two_eligible_options = deepcopy(get_part_two_eligible_options())
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
@@ -143,7 +137,6 @@ class TestForms(ScreeningTestMixin, TestCase):
         self.assertEqual(form._errors, {})
         form.save()
 
-    @tag("x")
     def test_screening_two_urine_bhcg_pregnant_yes(self):
         instance = self.complete_part_one(gender=FEMALE, pregnant=YES)
         _, instance = self.complete_part_two(instance=instance)
@@ -207,7 +200,6 @@ class TestForms(ScreeningTestMixin, TestCase):
         part_three_form.is_valid()
         self.assertNotIn("urine_bhcg", part_three_form._errors)
 
-    @tag("x")
     def test_screening_two_urine_bhcg_pregnant_na(self):
         instance = self.complete_part_one(gender=FEMALE, pregnant=NOT_APPLICABLE)
         _, instance = self.complete_part_two(instance=instance)
@@ -238,7 +230,6 @@ class TestForms(ScreeningTestMixin, TestCase):
             part_three_form._errors.get("urine_bhcg_date")[0],
         )
 
-    @tag("x")
     def test_screening_two_urine_bhcg_pregnant_no(self):
         instance = self.complete_part_one(gender=FEMALE, pregnant=NO)
         _, instance = self.complete_part_two(instance=instance)
@@ -350,7 +341,6 @@ class TestForms(ScreeningTestMixin, TestCase):
             part_three_form._errors.get("urine_bhcg_value")[0],
         )
 
-    @tag("x")
     def test_screening_two_urine_bhcg_male_pregnant(self):
         instance = self.complete_part_one(gender=MALE, pregnant=NOT_APPLICABLE)
         _, instance = self.complete_part_two(instance=instance)
@@ -390,7 +380,6 @@ class TestForms(ScreeningTestMixin, TestCase):
         part_three_form.is_valid()
         self.assertNotIn("urine_bhcg", part_three_form._errors)
 
-    @tag("x")
     def test_screening_creatinine(self):
         instance = self.complete_part_one(hospital_identifier="9678281237")
         _, instance = self.complete_part_two(instance=instance)

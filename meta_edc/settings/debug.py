@@ -6,7 +6,7 @@ from .defaults import *  # noqa
 
 print(f"Settings file {__file__}")  # noqa
 
-SITE_ID = SiteID(default=10)
+SITE_ID = SiteID(default=30)
 EDC_SITES_UAT_DOMAIN = False
 DEBUG = True
 ALLOWED_HOSTS = [

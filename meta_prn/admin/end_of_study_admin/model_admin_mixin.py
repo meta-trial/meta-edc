@@ -2,23 +2,16 @@ from copy import copy
 
 from django.contrib import admin
 from edc_action_item import action_fields, action_fieldset_tuple
-from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
-from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
-from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
+from edc_model_admin import audit_fieldset_tuple
 
 from meta_ae.models import DeathReport
 
-from ..admin_site import meta_prn_admin
-from ..forms import EndOfStudyForm
-from ..models import EndOfStudy, LossToFollowup
+from ...models import LossToFollowup
 
 
-@admin.register(EndOfStudy, site=meta_prn_admin)
-class EndOfStudyAdmin(
-    DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
-):
+class EndOfStudyAdminMixin:
 
-    form = EndOfStudyForm
+    form = None
 
     additional_instructions = (
         "Note: if the patient is <i>deceased</i>, complete form "

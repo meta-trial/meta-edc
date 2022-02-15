@@ -3,8 +3,14 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from edc_constants.constants import YES
 
+from meta_edc.meta_version import PHASE_TWO, get_meta_version
+
 from .icp_referral import IcpReferral
 from .proxy_models import ScreeningPartThree
+
+
+class IcpReferralError(Exception):
+    pass
 
 
 def refer_to_icp(obj):
@@ -14,6 +20,8 @@ def refer_to_icp(obj):
     3.    HbA1c ≥ 6.5% (48 mmol/mol).13
 
     """
+    if get_meta_version() != PHASE_TWO:
+        raise IcpReferralError("ICP referral for META2 only. Got 3")
     ifg_value = False
     ogtt_value = False
     hba1c_value = False
@@ -31,6 +39,8 @@ def refer_to_icp(obj):
 
 
 def update_or_create_icp_referral(obj):
+    if get_meta_version() != PHASE_TWO:
+        raise IcpReferralError("ICP referral for META2 only. Got 3")
     referral_reasons = []
     if obj.converted_ifg_value and obj.converted_ifg_value >= 7.0:
         referral_reasons.append("IFG >= 7.0")
@@ -74,10 +84,14 @@ def update_or_create_icp_referral(obj):
     dispatch_uid="refer_to_icp_on_post_save",
 )
 def refer_to_icp_on_post_save(sender, instance, raw, created, **kwargs):
-    """Refer to ICP if subject meets criteria."""
+    """Refer to ICP if subject meets criteria.
+
+    PHASE_TWO only.
+    """
     if not raw:
-        if not instance.eligible and instance.eligibility_datetime:
-            if refer_to_icp(instance):
-                update_or_create_icp_referral(instance)
-            else:
-                IcpReferral.objects.filter(subject_screening=instance).delete()
+        if not instance.eligible:
+            if get_meta_version() == PHASE_TWO:
+                if refer_to_icp(instance):
+                    update_or_create_icp_referral(instance)
+                else:
+                    IcpReferral.objects.filter(subject_screening=instance).delete()

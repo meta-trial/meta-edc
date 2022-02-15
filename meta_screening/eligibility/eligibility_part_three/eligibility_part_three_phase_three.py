@@ -1,53 +1,62 @@
-from edc_constants.constants import NO, TBD, YES
-from edc_reportable import calculate_egfr
+from edc_constants.constants import NO, NOT_APPLICABLE, TBD, YES
+from edc_screening.screening_eligibility import FC, ScreeningEligibilityError
+
+from meta_edc.meta_version import PHASE_THREE, get_meta_version
 
 from ...constants import EGFR_LT_45, IFT_OGTT, IFT_OGTT_INCOMPLETE, SEVERE_HTN
 from .base_eligibility_part_three import BaseEligibilityPartThree
 
 
 class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
-    def assess_eligibility(self):
-        super().assess_eligibility()
-        a, b = self.calculate_inclusion_field_values()
-        self.obj.inclusion_a = a
-        self.obj.inclusion_b = b
-        reasons_ineligible = []
-        if a == TBD or b == TBD:
-            reasons_ineligible.append(IFT_OGTT_INCOMPLETE)
-            self.obj.eligible_part_three = TBD
-        if a == NO and b == NO:
-            reasons_ineligible.append(IFT_OGTT)
-            self.obj.eligible_part_three = NO
-        if self.obj.severe_htn == YES:
-            reasons_ineligible.append(SEVERE_HTN)
-        if not reasons_ineligible:
-            self.obj.calculated_egfr_value = calculate_egfr(**self.obj.__dict__)
-            if self.obj.calculated_egfr_value and self.obj.calculated_egfr_value < 45.0:
-                reasons_ineligible.append(EGFR_LT_45)
-                self.obj.eligible_part_three = NO
-        if not reasons_ineligible:
-            self.obj.eligible_part_three = YES
-            self.obj.eligibility_datetime = self.obj.part_three_report_datetime
-        elif IFT_OGTT_INCOMPLETE not in reasons_ineligible:
-            self.obj.eligible_part_three = NO
-            self.obj.eligibility_datetime = None
-        self.obj.reasons_ineligible_part_three = "|".join(reasons_ineligible)
+    def __init__(self, **kwargs):
+        if get_meta_version() != PHASE_THREE:
+            raise ScreeningEligibilityError(
+                f"Invalid META Phase. Expected {PHASE_THREE}. Got {get_meta_version()}"
+            )
+        self.inclusion_a = TBD
+        self.inclusion_b = TBD
+        self.severe_htn = None
+        super().__init__(**kwargs)
 
-    def calculate_inclusion_field_values(self):
+    def assess_eligibility(self) -> None:
+        # TODO: check if calculates correctly if glucose is HIGH 9999.99
+        super().assess_eligibility()
+        self.calculate_inclusion_field_values()
+        if self.inclusion_a == TBD or self.inclusion_b == TBD:
+            self.reasons_ineligible.update(ifg_ogtt=IFT_OGTT_INCOMPLETE)
+            self.eligible = TBD
+        if self.inclusion_a == NO or self.inclusion_b == NO:
+            self.reasons_ineligible.update(ifg_ogtt=IFT_OGTT)
+            self.eligible = NO
+        if self.calculated_egfr_value and self.calculated_egfr_value < 45.0:
+            self.reasons_ineligible.update(egfr=EGFR_LT_45)
+            self.eligible = NO
+
+    def set_fld_attrs_on_model(self) -> None:
+        super().set_fld_attrs_on_model()
+        self.model_obj.inclusion_a = self.inclusion_a
+        self.model_obj.inclusion_b = self.inclusion_b
+        self.model_obj.inclusion_c = NOT_APPLICABLE
+        self.model_obj.inclusion_d = NOT_APPLICABLE
+
+    def get_required_fields(self) -> dict[str, FC]:
+        fields = super().get_required_fields()
+        fields.update({"severe_htn": FC(NO, SEVERE_HTN)})
+        return fields
+
+    def calculate_inclusion_field_values(self) -> None:
         # IFG (6.1 to 6.9 mmol/L)
-        if not self.obj.converted_ifg_value:
-            inclusion_a = TBD
-        elif 6.1 <= self.obj.converted_ifg_value <= 6.9:
-            inclusion_a = YES
+        if not self.converted_ifg_value:
+            self.inclusion_a = TBD
+        elif 6.1 <= self.converted_ifg_value <= 6.9:
+            self.inclusion_a = YES
         else:
-            inclusion_a = NO
+            self.inclusion_a = NO
 
         # OGTT (7.8 to 11.10 mmol/L)
-        if not self.obj.converted_ogtt_value:
-            inclusion_b = TBD
-        elif 7.8 <= self.obj.converted_ogtt_value <= 11.10:
-            inclusion_b = YES
+        if not self.converted_ogtt_value:
+            self.inclusion_b = TBD
+        elif 7.8 <= self.converted_ogtt_value <= 11.10:
+            self.inclusion_b = YES
         else:
-            inclusion_b = NO
-
-        return inclusion_a, inclusion_b
+            self.inclusion_b = NO

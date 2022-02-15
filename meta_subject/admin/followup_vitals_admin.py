@@ -22,7 +22,10 @@ class FollowupVitalsAdmin(
         (
             "Vitals",
             {
-                "description": "To be completed by the research nurse",
+                "description": (
+                    "To be completed by the research nurse. <BR>"
+                    "Refer to SOP for blood pressure measurement procedure."
+                ),
                 "fields": (
                     "weight",
                     *get_blood_pressure_fields(),

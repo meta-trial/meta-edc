@@ -99,6 +99,15 @@ class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, edc_models.BaseUuidMod
         blank=True,
     )
 
+    # PHASE_THREE_ONLY
+    previous_arv_regimen_start_date = models.DateField(
+        verbose_name=(
+            "When did the patient start this previous antiretroviral therapy regimen?"
+        ),
+        null=True,
+        blank=True,
+    )
+
     current_smoker = models.CharField(
         verbose_name=mark_safe("Is the patient a <u>current</u> smoker?"),
         max_length=15,

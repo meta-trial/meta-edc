@@ -1,12 +1,11 @@
 from django import forms
-from edc_crf.forms import CrfFormValidatorMixin
 from edc_crf.modelform_mixins import CrfModelFormMixin
-from edc_form_validators.form_validator import FormValidator
+from edc_qol.forms import Sf12FormValidator as BaseSf12FormValidator
 
 from ..models import Sf12
 
 
-class Sf12FormValidator(CrfFormValidatorMixin, FormValidator):
+class Sf12FormValidator(BaseSf12FormValidator):
     pass
 
 

@@ -34,7 +34,6 @@ requisitions_d1 = FormsCollection(
     Requisition(show_order=40, panel=rft_panel, required=True, additional=False),
     Requisition(show_order=50, panel=lft_panel, required=True, additional=False),
     Requisition(show_order=60, panel=insulin_panel, required=True, additional=False),
-    Requisition(show_order=70, panel=hba1c_panel, required=True, additional=False),
     name="requisitions_day1",
 )
 
@@ -81,7 +80,6 @@ requisitions_12m = FormsCollection(
     Requisition(
         show_order=10, panel=blood_glucose_panel, required=True, additional=False
     ),
-    Requisition(show_order=20, panel=hba1c_panel, required=True, additional=False),
     Requisition(show_order=30, panel=rft_panel, required=True, additional=False),
     Requisition(show_order=40, panel=lft_panel, required=True, additional=False),
     Requisition(show_order=50, panel=lipids_panel, required=True, additional=False),
@@ -115,7 +113,6 @@ requisitions_24m = FormsCollection(
     Requisition(
         show_order=10, panel=blood_glucose_panel, required=True, additional=False
     ),
-    Requisition(show_order=20, panel=hba1c_panel, required=True, additional=False),
     Requisition(show_order=30, panel=rft_panel, required=True, additional=False),
     Requisition(show_order=40, panel=lft_panel, required=True, additional=False),
     Requisition(show_order=50, panel=lipids_panel, required=True, additional=False),
@@ -151,7 +148,6 @@ requisitions_36m = FormsCollection(
     Requisition(
         show_order=10, panel=blood_glucose_panel, required=True, additional=False
     ),
-    Requisition(show_order=20, panel=hba1c_panel, required=True, additional=False),
     Requisition(show_order=30, panel=rft_panel, required=True, additional=False),
     Requisition(show_order=40, panel=lft_panel, required=True, additional=False),
     Requisition(show_order=50, panel=lipids_panel, required=True, additional=False),

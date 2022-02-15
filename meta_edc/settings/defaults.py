@@ -185,6 +185,7 @@ if META_PHASE == 3:
         "meta_rando.apps.AppConfig",
         "meta_prn.apps.AppConfig",
         "meta_export.apps.AppConfig",
+        "meta_pharmacy.apps.AppConfig",
         "meta_screening.apps.AppConfig",
         "meta_sites.apps.AppConfig",
         "meta_edc.apps.AppConfig",
@@ -470,7 +471,7 @@ GIT_DIR = BASE_DIR
 
 # django_crypto_fields
 KEY_PATH = env.str("DJANGO_KEY_FOLDER")
-AUTO_CREATE_KEYS = env.str("DJANGO_AUTO_CREATE_KEYS")
+AUTO_CREATE_KEYS = env("DJANGO_AUTO_CREATE_KEYS")
 
 EXPORT_FOLDER = env.str("DJANGO_EXPORT_FOLDER") or os.path.expanduser("~/")
 

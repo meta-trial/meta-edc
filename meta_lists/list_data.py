@@ -2,6 +2,7 @@ from edc_constants.constants import DEAD, NONE, OTHER, UNKNOWN
 from edc_ltfu.constants import LOST_TO_FOLLOWUP
 from edc_transfer.constants import TRANSFERRED
 
+from meta_edc.meta_version import PHASE_THREE, get_meta_version
 from meta_prn.constants import LATE_EXCLUSION, OTHER_RX_DISCONTINUATION, WITHDRAWAL
 
 list_data = {
@@ -131,7 +132,10 @@ list_data = {
         (OTHER, "Other, specify ..."),
     ],
     "meta_lists.offstudyreasons": [
-        ("completed_followup", "Patient completed 12 months of follow-up"),
+        ("completed_followup", "Patient completed 36 months of follow-up"),
+        ("diabetes", "Patient developed diabetes"),
+        ("clinical_withdrawal", "Patient is withdrawn on CLINICAL grounds ..."),
+        ("", ""),
         ("clinical_endpoint", "Patient reached a clinical endpoint"),
         ("toxicity", "Patient experienced an unacceptable toxicity"),
         (
@@ -160,9 +164,46 @@ list_data = {
         ("working_schooling", "Away working/schooling"),
         ("too_sick", "Too sick or weak to come to the centre"),
         ("lack_of_transport", "Transportation difficulty"),
-        (
-            OTHER,
-            "Other reason (specify below)",
-        ),
+        (OTHER, "Other reason (specify below)"),
     ],
 }
+if get_meta_version() == PHASE_THREE:
+    # TODO: customize for META PHASE THREE. see updated EoS form for the reasons
+    """
+    4 = Patient experienced an unacceptable toxicity
+        A = Development of lactic acidosis or hyperlactatemia
+        B = Development of hepatomegaly with steatosis
+        C = Other (specify below)
+    """
+
+    list_data.update(
+        {
+            "meta_lists.offstudyreasons": [
+                ("completed_followup", "Patient completed 36 months of follow-up"),
+                ("diabetes", "Patient developed diabetes"),
+                ("clinical_withdrawal", "Patient is withdrawn on CLINICAL grounds ..."),
+                (
+                    "toxicity",
+                    "Patient experienced an unacceptable toxicity, specify below ...",
+                ),
+                ("clinical_endpoint", "Patient reached a clinical endpoint"),
+                ("toxicity", "Patient experienced an unacceptable toxicity"),
+                (
+                    "intercurrent_illness",
+                    "Intercurrent illness which prevents further treatment",
+                ),
+                (LOST_TO_FOLLOWUP, "Patient lost to follow-up"),
+                (DEAD, "Patient reported/known to have died"),
+                (WITHDRAWAL, "Patient withdrew consent to participate further"),
+                (
+                    LATE_EXCLUSION,
+                    (
+                        "Patient fulfilled late exclusion criteria (due to abnormal "
+                        "blood values or raised blood pressure at enrolment"
+                    ),
+                ),
+                (TRANSFERRED, "Patient has been transferred to another health centre"),
+                (OTHER, "Other reason (specify below)"),
+            ]
+        }
+    )

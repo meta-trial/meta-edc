@@ -18,7 +18,6 @@ class TestPhysicalExam(MetaTestCaseMixin, TestCase):
         self.data = {
             "abdominal_tenderness": NO,
             "dia_blood_pressure": 100,
-            "abdominal_tenderness": NO,
             "abdominal_tenderness_description": None,
             "enlarged_liver": YES,
             "heart_rate": 40,

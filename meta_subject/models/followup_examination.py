@@ -149,6 +149,8 @@ class FollowupExamination(
         blank=True,
     )
 
+    # TODO: Add diagnoses m2m with other inseatd of any_other_problems
+
     # 6a
     any_other_problems = models.CharField(
         verbose_name=(

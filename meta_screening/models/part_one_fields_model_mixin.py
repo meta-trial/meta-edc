@@ -25,6 +25,14 @@ class PartOneFieldsModelMixin(models.Model):
         choices=SELECTION_METHOD,
     )
 
+    meta_phase_two = models.CharField(
+        verbose_name="Was the subject enrolled in the META Phase 2 trial?",
+        max_length=15,
+        choices=YES_NO,
+        null=True,
+        blank=False,
+    )
+
     hospital_identifier = EncryptedCharField(unique=True, blank=False)
 
     ethnicity = models.CharField(

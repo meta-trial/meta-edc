@@ -1,5 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
-from django.test import TestCase, tag
+from django.test import TestCase, override_settings
 from edc_action_item.models import ActionItem
 from edc_adverse_event.constants import (
     AE_FOLLOWUP_ACTION,
@@ -55,6 +55,7 @@ class TestActions(MetaTestCaseMixin, TestCase):
         else:
             self.assertEqual(action_item.status, NEW)
 
+    @override_settings(EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=False)
     def test_ae_initial_G4_creates_ae_tmg_action(self):
         subject_screening = self.get_subject_screening()
         subject_consent = self.get_subject_consent(subject_screening)

@@ -9,6 +9,12 @@ from edc_visit_schedule.model_mixins import OffScheduleModelMixin
 
 from meta_lists.models import OffstudyReasons
 
+from ..choices import CLINICAL_WITHDRAWAL_REASONS, TOXICITY_WITHDRAWAL_REASONS
+
+# TODO: confirm all appointments are either new, incomplete or done
+# TODO: take off study meds but coninue followup (WITHDRAWAL)
+# TODO: follow on new schedule, if permanently off drug (Single 36m visit)
+
 
 class EndOfStudy(
     OffScheduleModelMixin, ActionModelMixin, TrackingModelMixin, BaseUuidModel
@@ -21,6 +27,13 @@ class EndOfStudy(
     offschedule_datetime = models.DateTimeField(
         verbose_name="Date patient was terminated from the study",
         validators=[datetime_not_future],
+        blank=False,
+        null=True,
+    )
+
+    last_seen_date = models.DateField(
+        verbose_name="Date patient was last seen",
+        validators=[date_not_future],
         blank=False,
         null=True,
     )
@@ -43,6 +56,41 @@ class EndOfStudy(
         null=True,
     )
 
+    # PHASE THREE
+    clinical_withdrawal_reason = models.CharField(
+        verbose_name="If withdrawn for `clinical` reasons, please specify ...",
+        max_length=25,
+        choices=CLINICAL_WITHDRAWAL_REASONS,
+        blank=True,
+        null=True,
+    )
+
+    # PHASE THREE
+    clinical_withdrawal_reason_other = models.TextField(
+        verbose_name="If other `clinical` reason, please specify ...",
+        max_length=500,
+        blank=True,
+        null=True,
+    )
+
+    # PHASE THREE
+    toxicity_withdrawal_reason = models.CharField(
+        verbose_name="If withdrawn for a `toxicity`, please specify ...",
+        max_length=25,
+        choices=TOXICITY_WITHDRAWAL_REASONS,
+        blank=True,
+        null=True,
+    )
+
+    # PHASE THREE
+    toxicity_withdrawal_reason_other = models.TextField(
+        verbose_name="If other `toxicity`, please specify ...",
+        max_length=500,
+        blank=True,
+        null=True,
+    )
+
+    # TODO: 6m off drug and duration ?? See SOP
     ltfu_date = models.DateField(
         verbose_name="Date lost to followup, if applicable",
         validators=[date_not_future],

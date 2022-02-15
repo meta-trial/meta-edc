@@ -35,8 +35,8 @@ from edc_label.auth_objects import LABELING
 from edc_mnsi.auth_objects import MNSI, MNSI_SUPER, MNSI_VIEW
 from edc_offstudy.auth_objects import OFFSTUDY
 from edc_pharmacy.auth_objects import PHARMACIST_ROLE, SITE_PHARMACIST_ROLE
-from edc_qol.auth_objects import EURO_QOL, EURO_QOL_SUPER, EURO_QOL_VIEW
-from edc_randomization.auth_objects import RANDO_UNBLINDED, RANDO_VIEW
+from edc_qol.auth_objects import QOL, QOL_SUPER, QOL_VIEW
+from edc_randomization.auth_objects import RANDO_BLINDED, RANDO_UNBLINDED
 from edc_screening.auth_objects import SCREENING, SCREENING_VIEW
 from edc_unblinding.auth_objects import UNBLINDING_REQUESTORS
 from sarscov2.auth import SARSCOV2, sarscov2_codenames
@@ -58,7 +58,7 @@ site_auths.update_role(
     META_CLINIC,
     UNBLINDING_REQUESTORS,
     MNSI,
-    EURO_QOL,
+    QOL,
     name=CLINICIAN_ROLE,
 )
 
@@ -68,7 +68,7 @@ site_auths.update_role(
     APPOINTMENT,
     META_CLINIC_SUPER,
     MNSI_SUPER,
-    EURO_QOL_SUPER,
+    QOL_SUPER,
     UNBLINDING_REQUESTORS,
     name=CLINICIAN_SUPER_ROLE,
 )
@@ -79,7 +79,7 @@ site_auths.update_role(
     APPOINTMENT,
     META_CLINIC,
     MNSI,
-    EURO_QOL,
+    QOL,
     name=NURSE_ROLE,
 )
 
@@ -91,7 +91,7 @@ site_auths.update_role(
     LABELING,
     META_CLINIC,
     MNSI,
-    EURO_QOL,
+    QOL,
     OFFSTUDY,
     SCREENING,
     TMG,
@@ -106,7 +106,7 @@ site_auths.update_role(
     APPOINTMENT_VIEW,
     META_AUDITOR,
     MNSI_VIEW,
-    EURO_QOL_VIEW,
+    QOL_VIEW,
     TMG_REVIEW,
     name=AUDITOR_ROLE,
 )
@@ -117,7 +117,7 @@ site_auths.update_role(
     AE_REVIEW,
     META_AUDITOR,
     MNSI_VIEW,
-    EURO_QOL_VIEW,
+    QOL_VIEW,
     SCREENING_VIEW,
     TMG_REVIEW,
     name=SITE_DATA_MANAGER_ROLE,
@@ -133,7 +133,7 @@ site_auths.update_role(
 )
 
 site_auths.update_role(RANDO_UNBLINDED, name=PHARMACIST_ROLE)
-site_auths.update_role(RANDO_VIEW, name=SITE_PHARMACIST_ROLE)
+site_auths.update_role(RANDO_BLINDED, name=SITE_PHARMACIST_ROLE)
 
 
 if get_meta_version() == 2:

@@ -5,8 +5,10 @@ from edc_screening.screening_identifier import (
     ScreeningIdentifier as BaseScreeningIdentifier,
 )
 
+from ..eligibility import Eligibility
 from .calculated_model_mixin import CalculatedModelMixin
 from .eligibility_model_mixin import EligibilityModelMixin
+from .part_four_field_model_mixin import PartFourFieldsModelMixin
 from .part_one_fields_model_mixin import PartOneFieldsModelMixin
 from .part_three_fields_model_mixin import PartThreeFieldsModelMixin
 from .part_two_fields_model_mixin import PartTwoFieldsModelMixin
@@ -25,6 +27,7 @@ class SubjectScreening(
     PartOneFieldsModelMixin,
     PartTwoFieldsModelMixin,
     PartThreeFieldsModelMixin,
+    PartFourFieldsModelMixin,
     EligibilityModelMixin,
     CalculatedModelMixin,
     ScreeningModelMixin,
@@ -32,6 +35,7 @@ class SubjectScreening(
 ):
 
     identifier_cls = ScreeningIdentifier
+    eligibility_cls = Eligibility
 
     def save(self, *args, **kwargs):
         if self._meta.label_lower == "meta_screening.subjectscreening":

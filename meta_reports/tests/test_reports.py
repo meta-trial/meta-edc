@@ -2,7 +2,6 @@ from django.contrib.auth.models import User
 from django.test import TestCase, tag
 from django.test.client import RequestFactory
 from edc_adverse_event.models import AeClassification
-from edc_list_data.site_list_data import site_list_data
 from model_bakery import baker
 
 from meta_reports.ae_report import AeReport
@@ -10,15 +9,6 @@ from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 
 
 class TestReports(MetaTestCaseMixin, TestCase):
-    @classmethod
-    def setUpClass(cls):
-        site_list_data.autodiscover()
-        super().setUpClass()
-
-    @classmethod
-    def tearDownClass(cls):
-        super().tearDownClass()
-
     def setUp(self):
         self.user = User.objects.create(
             username="erikvw", is_staff=True, is_active=True
@@ -27,6 +17,7 @@ class TestReports(MetaTestCaseMixin, TestCase):
         subject_consent = self.get_subject_consent(subject_screening)
         self.subject_identifier = subject_consent.subject_identifier
 
+    @tag("1")
     def test_aereport(self):
 
         rf = RequestFactory()

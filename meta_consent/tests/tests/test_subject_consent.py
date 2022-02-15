@@ -1,4 +1,4 @@
-from django.test import TestCase, tag
+from django.test import TestCase
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 

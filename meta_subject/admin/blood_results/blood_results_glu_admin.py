@@ -8,7 +8,7 @@ from ...forms import BloodResultsGluForm
 from ...models import BloodResultsGlu
 from ..modeladmin import CrfModelAdmin
 
-# TODO: add is poc?
+# TODO: add is poc? YES
 
 
 @admin.register(BloodResultsGlu, site=meta_subject_admin)

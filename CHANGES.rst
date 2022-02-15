@@ -1,6 +1,31 @@
 Changes
 =======
 
+0.1.76
+------
+- set week 2 lower bound to 3 days in window period
+- rename euro-qol auth groups in auths.py
+- rename rando groups in auths.py
+- add meta_pharmacy app
+- missing prescriptions management command
+- add StudyMedicationForm
+- create prescription in signal on consent post-save
+- update offstudy reasons in list_data.py
+- populate static pharmacy models in signal (apps.py)
+- separate admin class for Phase 3 EoS
+- update phase 3 withdrawal reasons (meta_prn.choices.py)
+- add EndOfStudyPhaseThreeForm, EndOfStudyPhaseThreeFormValidator
+- add last_seen_date, clinical_withdrawal_reason,
+  toxicity_withdrawal_reason to EoS model
+- refactor eligibility classes - part 1,2,3
+- add fasting_opinion question to glucose
+- PartFourFieldsModelMixin
+- ask "Was the subject enrolled in the META Phase 2 trial?" (part_one_fields_model_mixin.py)
+- remove oxygen_saturation
+- import from edc_qol
+- add to patient history: previous_arv_regimen_start_date
+- fix pdf report - point to FollowupVitals.weight (meta_reports)
+
 0.1.75
 ------
 - bump edc to 0.3.50
@@ -74,9 +99,6 @@ Changes
   to `violation_other` (meta_prn)
 - Change datatype of field in model ProtocolDeviationViolation `actions_required`
   from CharField to ForeignKey. Update data to match existing (meta_prn)
-
-
-
 
 0.1.66
 ------
