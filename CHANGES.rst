@@ -3,8 +3,7 @@ Changes
 
 Unreleased
 ----------
--set week 2 lower bound to 3 days in window period
-
+- set week 2 lower bound to 3 days in window period
 - rename euro-qol auth groups in auths.py
 - rename rando groups in auths.py
 - add meta_pharmacy app
@@ -25,6 +24,7 @@ Unreleased
 - remove oxygen_saturation
 - import from edc_qol
 - add to patient history: previous_arv_regimen_start_date
+- fix pdf report - point to FollowupVitals.weight (meta_reports)
 
 0.1.75
 ------
