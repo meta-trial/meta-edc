@@ -1,8 +1,8 @@
 Changes
 =======
 
-Unreleased
-----------
+0.1.76
+------
 - set week 2 lower bound to 3 days in window period
 - rename euro-qol auth groups in auths.py
 - rename rando groups in auths.py
@@ -99,9 +99,6 @@ Unreleased
   to `violation_other` (meta_prn)
 - Change datatype of field in model ProtocolDeviationViolation `actions_required`
   from CharField to ForeignKey. Update data to match existing (meta_prn)
-
-
-
 
 0.1.66
 ------
