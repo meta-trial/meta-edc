@@ -1,10 +1,7 @@
 from edc_blood_results import BLOOD_RESULTS_GLU_ACTION
-from edc_blood_results.model_mixins import (
-    BloodResultsModelMixin,
-    GlucoseModelMixin,
-    RequisitionModelMixin,
-)
+from edc_blood_results.model_mixins import BloodResultsModelMixin, GlucoseModelMixin
 from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
+from edc_lab.model_mixins import CrfWithRequisitionModelMixin
 from edc_model import models as edc_models
 
 
@@ -12,7 +9,7 @@ from edc_model import models as edc_models
 class BloodResultsGlu(
     CrfWithActionModelMixin,
     GlucoseModelMixin,
-    RequisitionModelMixin,
+    CrfWithRequisitionModelMixin,
     BloodResultsModelMixin,
     edc_models.BaseUuidModel,
 ):

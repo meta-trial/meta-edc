@@ -45,3 +45,6 @@ class EligibilityPartTwo(ScreeningEligibility):
                 }
             )
         return fields
+
+    def set_eligible_model_field(self):
+        setattr(self.model_obj, self.eligible_fld_name, self.eligible)

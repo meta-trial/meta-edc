@@ -77,7 +77,7 @@ def eligibility_button(subject_screening_model_wrapper):
         comment = list(set(comment))
         comment.sort()
     eligibility = Eligibility(obj, update_model=False)
-    soup = BeautifulSoup(eligibility.eligibility_display_label, features="html.parser")
+    soup = BeautifulSoup(eligibility.display_label, features="html.parser")
     return dict(
         eligible=obj.eligible,
         eligible_final=obj.eligible,

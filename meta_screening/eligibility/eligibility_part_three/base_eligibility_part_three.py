@@ -79,3 +79,6 @@ class BaseEligibilityPartThree(ScreeningEligibility):
             )
         except ConversionNotHandled as e:
             raise ConversionNotHandled(f"OGTT. {e}")
+
+    def set_eligible_model_field(self):
+        setattr(self.model_obj, self.eligible_fld_name, self.eligible)

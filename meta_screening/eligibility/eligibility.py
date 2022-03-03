@@ -149,7 +149,7 @@ class Eligibility:
                 )
 
     @property
-    def eligibility_display_label(self):
+    def display_label(self):
         if self.eligible == YES:
             display_label = "ELIGIBLE"
         elif self.eligible == TBD:
@@ -169,7 +169,7 @@ class Eligibility:
             f"P2: {self.part_two.eligible.upper()}<BR>"
             f"P3: {self.part_three.eligible.upper()}<BR>"
         )
-        display_label = self.eligibility_display_label
+        display_label = self.display_label
         if "PENDING" in display_label:
             display_label = f'<font color="orange"><B>{display_label}</B></font>'
         return status_str + display_label

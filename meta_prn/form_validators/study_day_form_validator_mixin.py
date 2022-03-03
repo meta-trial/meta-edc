@@ -52,7 +52,6 @@ class StudyDayFormValidatorMixin:
                         f"Subject was registered on {formatted_date}"
                     )
                 }
-                print(message)
                 self._errors.update(message)
                 self._error_codes.append(INVALID_ERROR)
                 raise forms.ValidationError(message, code=INVALID_ERROR)

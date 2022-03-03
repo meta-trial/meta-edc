@@ -54,6 +54,17 @@ class PartThreeFieldsModelMixin(
         blank=True,
     )
 
+    ogtt_units = models.CharField(
+        verbose_name="Units (Blood glucose 2hrs after...)",
+        max_length=15,
+        choices=GLUCOSE_UNITS,
+        null=True,
+        blank=True,
+    )
+
+    # TODO add fields for a repreat OGTT
+    # ogtt_repeat =
+
     creatinine_units = models.CharField(
         verbose_name="Units (creatinine)",
         max_length=15,

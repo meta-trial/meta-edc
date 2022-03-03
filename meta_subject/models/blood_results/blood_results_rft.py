@@ -3,11 +3,11 @@ from edc_blood_results.model_mixins import (
     BloodResultsModelMixin,
     CreatinineModelMixin,
     EgfrModelMixin,
-    RequisitionModelMixin,
     UreaModelMixin,
     UricAcidModelMixin,
 )
 from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
+from edc_lab.model_mixins import CrfWithRequisitionModelMixin
 from edc_lab_panel.panels import rft_panel
 from edc_model import models as edc_models
 from edc_reportable import calculate_egfr
@@ -21,7 +21,7 @@ class BloodResultsRft(
     EgfrModelMixin,
     UreaModelMixin,
     UricAcidModelMixin,
-    RequisitionModelMixin,
+    CrfWithRequisitionModelMixin,
     BloodResultsModelMixin,
     edc_models.BaseUuidModel,
 ):

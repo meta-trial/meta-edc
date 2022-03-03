@@ -53,3 +53,6 @@ class EligibilityPartOne(ScreeningEligibility):
             self.model_obj.continue_part_two = YES
         else:
             self.model_obj.continue_part_two = NO
+
+    def set_eligible_model_field(self):
+        setattr(self.model_obj, self.eligible_fld_name, self.eligible)
