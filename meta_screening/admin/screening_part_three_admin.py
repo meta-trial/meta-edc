@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
 
-from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
+from meta_edc.meta_version import PHASE_THREE, get_meta_version
 
 from ..admin_site import meta_screening_admin
 from ..forms import (
@@ -18,6 +18,7 @@ from .fieldsets import (
     get_part_three_glucose_fieldset,
     get_part_three_other_fieldset,
     get_part_three_pregnancy_fieldset,
+    get_part_three_repeat_glucose_fieldset,
     get_part_three_vitals_fieldset,
     get_part_two_fieldset,
 )
@@ -33,6 +34,7 @@ def get_fieldsets():
             get_part_three_pregnancy_fieldset(),
             get_part_three_glucose_fieldset(),
             get_part_three_other_fieldset(),
+            get_part_three_repeat_glucose_fieldset(),
             comments_fieldset,
             calculated_values_fieldset,
             audit_fieldset_tuple,

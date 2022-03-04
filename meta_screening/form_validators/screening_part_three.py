@@ -2,8 +2,8 @@ from django import forms
 from edc_constants.constants import NEG, NO, POS, YES
 from edc_form_validators import FormValidator
 from edc_glucose.form_validators import (
+    FbgOgttFormValidatorMixin,
     GlucoseFormValidatorMixin,
-    IfgOgttFormValidatorMixin,
 )
 from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
 from edc_reportable import BmiFormValidatorMixin, EgfrFormValidatorMixin
@@ -23,7 +23,7 @@ class ScreeningPartThreeFormValidatorError(Exception):
 
 class ScreeningPartThreeFormValidator(
     GlucoseFormValidatorMixin,
-    IfgOgttFormValidatorMixin,
+    FbgOgttFormValidatorMixin,
     BmiFormValidatorMixin,
     EgfrFormValidatorMixin,
     BloodPressureFormValidatorMixin,
@@ -38,7 +38,7 @@ class ScreeningPartThreeFormValidator(
 
     def clean_phase_two(self):
         self.validate_report_datetimes()
-        self.validate_ifg_required_fields()
+        self.validate_fbg_required_fields()
         validate_glucose_as_millimoles_per_liter("ifg", self.cleaned_data)
         self.validate_ogtt_required_fields()
         validate_glucose_as_millimoles_per_liter("ogtt", self.cleaned_data)
@@ -46,7 +46,7 @@ class ScreeningPartThreeFormValidator(
         self.required_if(YES, field="hba1c_performed", field_required="hba1c_value")
         self.require_all_vitals_fields()
         self.validate_pregnancy()
-        self.validate_ogtt_dates()
+        self.validate_ogtt_dates(prefix="ogtt")
         self.validate_bmi()
         self.validate_egfr()
         self.validate_ifg_before_ogtt()
@@ -64,29 +64,59 @@ class ScreeningPartThreeFormValidator(
         )
         self.raise_on_avg_blood_pressure_suggests_severe_htn(**self.cleaned_data)
         self.validate_pregnancy()
-        self.validate_ifg_required_fields()
+        self.validate_fbg_required_fields()
         validate_glucose_as_millimoles_per_liter("ifg", self.cleaned_data)
         self.validate_ifg_before_ogtt()
         self.validate_ogtt_time_interval()
         self.validate_ogtt_required_fields()
         self.validate_ogtt_dates()
         validate_glucose_as_millimoles_per_liter("ogtt", self.cleaned_data)
+        self.validate_repeat_ogtt()
         self.validate_creatinine_required_fields()
         self.required_if(YES, field="hba1c_performed", field_required="hba1c_value")
         self.validate_egfr()
         self.validate_suitability_for_study()
 
+    def validate_repeat_ogtt(self):
+        """Validate like first OGTT and ...
+
+        Ensure repeat OGTT at least three days after first OGTT
+        """
+        self.applicable_if(
+            YES,
+            field="repeat_glucose_opinion",
+            field_applicable="repeat_glucose_performed",
+        )
+        for fld in [
+            "ogtt2_base_datetime",
+            "ogtt2_datetime",
+            "ogtt2_value",
+            "ogtt2_units",
+        ]:
+            self.required_if(YES, field="repeat_glucose_performed", field_required=fld)
+        if self.cleaned_data.get("repeat_glucose_performed") == YES:
+            for ogtt_dte, ogtt2_dte in [
+                ("ogtt_base_datetime", "ogtt2_base_datetime"),
+                ("ogtt_datetime", "ogtt2_datetime"),
+            ]:
+                if self.cleaned_data.get(ogtt_dte) and self.cleaned_data.get(ogtt2_dte):
+                    tdelta = (
+                        self.cleaned_data.get(ogtt2_dte).date()
+                        - self.cleaned_data.get(ogtt_dte).date()
+                    )
+                    if tdelta.days < 3:
+                        raise forms.ValidationError(
+                            {
+                                ogtt2_dte: "Invalid. Must be at least 3 days after first OGTT"
+                            }
+                        )
+            self.validate_ogtt_time_interval(ogtt_prefix="ogtt2")
+            self.validate_ogtt_required_fields(ogtt_prefix="ogtt2")
+            self.validate_ogtt_dates(ogtt_prefix="ogtt2")
+            validate_glucose_as_millimoles_per_liter("ogtt2", self.cleaned_data)
+
     def validate_report_datetimes(self):
         pass
-        # report_datetime = self.self.cleaned_data.get("report_datetime")
-        # part_two_report_datetime = self.self.cleaned_data.get(
-        #     "part_two_report_datetime"
-        # )
-        # part_three_report_datetime = self.self.cleaned_data.get(
-        #     "part_three_report_datetime"
-        # )
-        # if part_two_report_datetime < report_datetime:
-        #     raise forms.ValidationError()
 
     def validate_suitability_for_study(self):
         self.required_if(

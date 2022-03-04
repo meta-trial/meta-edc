@@ -1,4 +1,4 @@
-from .eligibility import Eligibility, SubjectScreeningEligibilityError
+from .eligibility import MetaEligibility, SubjectScreeningEligibilityError
 from .eligibility_part_one import EligibilityPartOne
 from .eligibility_part_three import (
     EligibilityPartThreePhaseThree,

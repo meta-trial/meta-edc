@@ -9,7 +9,7 @@ from edc_dashboard.url_names import url_names
 from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
-from meta_screening.eligibility import Eligibility
+from meta_screening.eligibility import MetaEligibility
 
 from ..admin_site import meta_screening_admin
 from ..eligibility import format_reasons_ineligible
@@ -79,8 +79,10 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "calculated_bmi_value",
         "calculated_egfr_value",
         "converted_ifg_value",
+        "converted_ifg2_value",
         "converted_creatinine_value",
         "converted_ogtt_value",
+        "converted_ogtt2_value",
         "inclusion_a",
         "inclusion_b",
         "inclusion_c",
@@ -102,14 +104,22 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "has_dm": admin.VERTICAL,
         "on_dm_medication": admin.VERTICAL,
         "fasting": admin.VERTICAL,
+        "fasting_opinion": admin.VERTICAL,
         "ifg_units": admin.VERTICAL,
+        "ifg2_units": admin.VERTICAL,
         "gender": admin.VERTICAL,
         "hba1c_performed": admin.VERTICAL,
+        "meta_phase_two": admin.VERTICAL,
         "hiv_pos": admin.VERTICAL,
         "liver_disease": admin.VERTICAL,
         "lives_nearby": admin.VERTICAL,
         "metformin_sensitivity": admin.VERTICAL,
         "ogtt_units": admin.VERTICAL,
+        "repeat_fasting": admin.VERTICAL,
+        "repeat_fasting_opinion": admin.VERTICAL,
+        "repeat_glucose_opinion": admin.VERTICAL,
+        "repeat_glucose_performed": admin.VERTICAL,
+        "ogtt2_units": admin.VERTICAL,
         "on_rx_stable": admin.VERTICAL,
         "pregnant": admin.VERTICAL,
         "renal_function_condition": admin.VERTICAL,
@@ -142,7 +152,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
 
     @staticmethod
     def eligiblity_status(obj=None):
-        eligibility = Eligibility(obj)
+        eligibility = MetaEligibility(obj, update_model=False)
         return mark_safe(eligibility.eligibility_status)
 
     def dashboard(self, obj=None, label=None):

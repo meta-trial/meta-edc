@@ -1,6 +1,6 @@
 from django.db import models
 from edc_constants.choices import YES_NO
-from edc_glucose.model_mixins import FastingModelMixin, IfgModelMixin, OgttModelMixin
+from edc_glucose.model_mixins import FastingModelMixin, FbgModelMixin, OgttModelMixin
 from edc_model import models as edc_models
 
 from ..model_mixins import CrfModelMixin
@@ -9,7 +9,7 @@ from ..model_mixins import CrfModelMixin
 class Glucose(
     CrfModelMixin,
     FastingModelMixin,
-    IfgModelMixin,
+    FbgModelMixin,
     OgttModelMixin,
     edc_models.BaseUuidModel,
 ):

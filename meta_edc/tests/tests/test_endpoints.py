@@ -280,7 +280,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Consent", screening_listboard_page)
 
     @skipIf(get_meta_version() != 3, "not version 3")
-    @tag("webtest")
+    @tag("webtest1")
     def test_screening_form_phase3(self):
         self.login(superuser=False, roles=[STAFF_ROLE, CLINICIAN_ROLE])
         site_randomizers._registry = {}

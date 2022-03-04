@@ -33,9 +33,26 @@ class CalculatedModelMixin(models.Model):
         help_text=f"{MILLIMOLES_PER_LITER} (system converted)",
     )
 
+    converted_ifg2_value = models.DecimalField(
+        verbose_name="REPEAT Fasting glucose",
+        max_digits=8,
+        decimal_places=4,
+        null=True,
+        help_text=f"{MILLIMOLES_PER_LITER} (system converted)",
+    )
+
     # converted if necessary
     converted_ogtt_value = models.DecimalField(
         verbose_name="Blood glucose level 2-hours",
+        max_digits=8,
+        decimal_places=4,
+        null=True,
+        help_text=f"{MILLIMOLES_PER_LITER} (system converted)",
+    )
+
+    # converted if necessary
+    converted_ogtt2_value = models.DecimalField(
+        verbose_name="REPEAT Blood glucose level 2-hours",
         max_digits=8,
         decimal_places=4,
         null=True,

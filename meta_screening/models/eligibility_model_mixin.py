@@ -5,12 +5,12 @@ from edc_screening.model_mixins import (
     EligibilityModelMixin as BaseEligibilityModelMixin,
 )
 
-from ..eligibility import Eligibility
+from ..eligibility import MetaEligibility
 
 
 class EligibilityModelMixin(BaseEligibilityModelMixin):
 
-    eligibility_cls = Eligibility
+    eligibility_cls = MetaEligibility
 
     eligible_part_one = models.CharField(
         max_length=15,

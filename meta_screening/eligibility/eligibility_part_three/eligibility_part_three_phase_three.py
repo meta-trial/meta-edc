@@ -1,4 +1,4 @@
-from edc_constants.constants import NO, NOT_APPLICABLE, TBD, YES
+from edc_constants.constants import NO, NOT_APPLICABLE, PENDING, TBD, YES
 from edc_screening.screening_eligibility import FC, ScreeningEligibilityError
 
 from meta_edc.meta_version import PHASE_THREE, get_meta_version
@@ -47,18 +47,26 @@ class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
         return fields
 
     def calculate_inclusion_field_values(self) -> None:
-        # IFG (6.1 to 6.9 mmol/L)
-        if not self.converted_ifg_value:
+        if self.repeat_glucose_performed == PENDING:
             self.inclusion_a = TBD
-        elif 6.1 <= self.converted_ifg_value <= 6.9:
-            self.inclusion_a = YES
-        else:
-            self.inclusion_a = NO
-
-        # OGTT (7.8 to 11.10 mmol/L)
-        if not self.converted_ogtt_value:
             self.inclusion_b = TBD
-        elif 7.8 <= self.converted_ogtt_value <= 11.10:
-            self.inclusion_b = YES
         else:
-            self.inclusion_b = NO
+            converted_ifg_value = self.converted_ifg2_value or self.converted_ifg_value
+            converted_ogtt_value = (
+                self.converted_ogtt2_value or self.converted_ogtt_value
+            )
+            # IFG (6.1 to 6.9 mmol/L)
+            if not converted_ifg_value:
+                self.inclusion_a = TBD
+            elif 6.1 <= converted_ifg_value <= 6.9:
+                self.inclusion_a = YES
+            else:
+                self.inclusion_a = NO
+
+            # OGTT (7.8 to 11.10 mmol/L)
+            if not converted_ogtt_value:
+                self.inclusion_b = TBD
+            elif 7.8 <= converted_ogtt_value <= 11.10:
+                self.inclusion_b = YES
+            else:
+                self.inclusion_b = NO

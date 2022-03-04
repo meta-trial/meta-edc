@@ -19,7 +19,7 @@ options = dict(
 
 class ScreeningPartOne(SubjectScreening):
     def save(self, *args, **kwargs):
-        # eligibility_part_one = EligibilityPartOne(model_obj=self, **options)
+        # EligibilityPartOne(model_obj=self, **options)
         # self.eligible_part_one = eligibility.eligible
         # self.reasons_ineligible_part_one = eligibility.reasons_ineligible_as_str or None
         if self.eligible_part_one == YES:
@@ -35,11 +35,11 @@ class ScreeningPartOne(SubjectScreening):
 
 
 class ScreeningPartTwo(SubjectScreening):
-    def save(self, *args, **kwargs):
-        # EligibilityPartTwo(model_obj=self, **options)
-        # self.eligible_part_two = eligibility.eligible
-        # self.reasons_ineligible_part_two = eligibility.reasons_ineligible_as_str
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     EligibilityPartTwo(model_obj=self, **options)
+    #     # self.eligible_part_two = eligibility.eligible
+    #     # self.reasons_ineligible_part_two = eligibility.reasons_ineligible_as_str
+    #     super().save(*args, **kwargs)
 
     class Meta:
         proxy = True
@@ -48,12 +48,12 @@ class ScreeningPartTwo(SubjectScreening):
 
 
 class ScreeningPartThree(SubjectScreening):
-    def save(self, *args, **kwargs):
-        # if get_meta_version() == PHASE_THREE:
-        #     EligibilityPartThreePhaseThree(model_obj=self, **options)
-        # else:
-        #     EligibilityPartThreePhaseTwo(model_obj=self, **options)
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if get_meta_version() == PHASE_THREE:
+    #         EligibilityPartThreePhaseThree(model_obj=self, **options)
+    #     else:
+    #         EligibilityPartThreePhaseTwo(model_obj=self, **options)
+    #     super().save(*args, **kwargs)
 
     class Meta:
         proxy = True

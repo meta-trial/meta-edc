@@ -111,6 +111,8 @@ def get_part_three_eligible_options():
         ogtt_datetime=tomorrow + relativedelta(hours=2),
         ogtt_units=MILLIMOLES_PER_LITER,
         ogtt_value=7.5,
+        repeat_glucose_opinion=NO,
+        repeat_glucose_performed=NO,
         part_three_report_datetime=now,
         reasons_unsuitable=None,
         sys_blood_pressure=120,

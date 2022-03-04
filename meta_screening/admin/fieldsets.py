@@ -12,6 +12,10 @@ from ..forms import (
     part_three_other_fields,
     part_three_pregnancy_fields,
 )
+from ..forms.field_lists import (
+    part_three_repeat_ifg_fields,
+    part_three_repeat_ogtt_fields,
+)
 
 
 def get_part_one_fieldset(collapse=None):
@@ -58,6 +62,19 @@ def get_part_three_glucose_fieldset(collapse=None):
     return "Part 3a: Glucose", dct
 
 
+def get_part_three_repeat_glucose_fieldset(collapse=None):
+    fields = ["repeat_glucose_opinion", "repeat_glucose_performed"]
+    fields.extend(part_three_repeat_ifg_fields)
+    fields.extend(part_three_repeat_ogtt_fields)
+    dct = {
+        "fields": fields,
+        "description": "IMPORTANT: Repeat FBG / OGTT must be performed at least three days after the first FBG / OGTT",
+    }
+    if collapse:
+        dct.update(classes=("collapse",))
+    return "Part 3c: Repeat Glucose Measurements (FBG / OGTT)", dct
+
+
 def get_part_three_other_fieldset(collapse=None):
     dct = {"fields": part_three_other_fields}
     if collapse:
@@ -96,6 +113,8 @@ if get_meta_version() == PHASE_THREE:
                 "dia_blood_pressure_avg",
                 "converted_ifg_value",
                 "converted_ogtt_value",
+                "converted_ifg2_value",
+                "converted_ogtt2_value",
                 "converted_creatinine_value",
                 "calculated_egfr_value",
             ),

@@ -17,7 +17,7 @@ class SubjectScreeningEligibilityError(Exception):
     pass
 
 
-class Eligibility:
+class MetaEligibility:
     """A wrapper class for three eligibility classes.
 
     Determines if a subject is eligible or not.
@@ -63,6 +63,9 @@ class Eligibility:
         self.assess_eligibility_for_all_parts()
         if self.update_model:
             self.update_model_final()
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}()"
 
     def assess_eligibility_for_all_parts(self):
         eligibility_part_one_cls = EligibilityPartOne

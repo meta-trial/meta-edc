@@ -1,7 +1,9 @@
 from copy import deepcopy
+from decimal import Decimal
 from unittest import skipIf
 
-from django.test import TestCase
+from dateutil.relativedelta import relativedelta
+from django.test import TestCase, tag
 from edc_constants.constants import NO, TBD, YES
 from edc_reportable import (
     MICROMOLES_PER_LITER,
@@ -71,12 +73,12 @@ class TestScreeningPartThree(TestCase):
             screening_identifier=self.screening_identifier,
         )
 
-    @skipIf(get_meta_version() != PHASE_TWO, "not META2")
+    @skipIf(get_meta_version() != PHASE_TWO, "test is for META2 only")
     def test_eligible_part_three_defaults_phase_two(self):
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
         self._test_eligible(part_three_eligible_options)
 
-    @skipIf(get_meta_version() != PHASE_THREE, "not META3")
+    @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
     def test_eligible_part_three_defaults_phase_three(self):
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
         part_three_eligible_options["ifg_value"] = 6.9
@@ -103,7 +105,7 @@ class TestScreeningPartThree(TestCase):
         obj.refresh_from_db()
         self.assertEqual(eligibility_datetime, obj.eligibility_datetime)
 
-    @skipIf(get_meta_version() != PHASE_TWO, "not META2")
+    @skipIf(get_meta_version() != PHASE_TWO, "test is for META2 only")
     def test_eligible2_phase_two(self):
         obj = self.get_screening_part_three_obj()
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
@@ -121,7 +123,8 @@ class TestScreeningPartThree(TestCase):
         obj.refresh_from_db()
         self._test_eligible2(obj, BMI_IFT_OGTT_INCOMPLETE, BMI_IFT_OGTT)
 
-    @skipIf(get_meta_version() != PHASE_THREE, "not META3")
+    @tag("1")
+    @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
     def test_eligible2_phase_three(self):
         obj = self.get_screening_part_three_obj()
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
@@ -129,6 +132,9 @@ class TestScreeningPartThree(TestCase):
             setattr(obj, k, v)
         obj.save()
         obj.refresh_from_db()
+
+        self.assertEqual(obj.converted_ogtt_value, obj.ogtt_value)
+
         self.assertIsNone(obj.reasons_ineligible_part_three)
         self.assertEqual(obj.eligible_part_three, YES)
         obj.severe_htn = YES
@@ -148,6 +154,73 @@ class TestScreeningPartThree(TestCase):
         obj.save()
         obj.refresh_from_db()
         self._test_eligible2(obj, IFT_OGTT_INCOMPLETE, IFT_OGTT)
+
+    @tag("1")
+    @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
+    def test_eligible2_phase_three_repeat_ogtt2_updates_converted(self):
+        obj = self.get_screening_part_three_obj()
+        part_three_eligible_options = deepcopy(get_part_three_eligible_options())
+        for k, v in part_three_eligible_options.items():
+            setattr(obj, k, v)
+        obj.save()
+        obj.refresh_from_db()
+
+        obj.oggt2_performed = YES
+        obj.ogtt2_base_datetime = obj.ogtt_base_datetime + relativedelta(days=3)
+        obj.ogtt2_datetime = obj.ogtt_datetime + relativedelta(days=3)
+        obj.ogtt2_units = obj.ogtt_units
+        obj.ogtt2_value = 6.9
+        obj.save()
+        obj.refresh_from_db()
+
+        self.assertEqual(obj.converted_ogtt_value, obj.ogtt_value)
+        self.assertEqual(obj.converted_ogtt2_value, obj.ogtt2_value)
+
+    @tag("2")
+    @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
+    def test_eligible2_phase_three_by_repeat_ogtt(self):
+        obj = self.get_screening_part_three_obj()
+        part_three_eligible_options = deepcopy(get_part_three_eligible_options())
+        for k, v in part_three_eligible_options.items():
+            setattr(obj, k, v)
+        obj.save()
+        obj.refresh_from_db()
+
+        # eligible by single OGTT
+        self.assertIsNone(obj.reasons_ineligible_part_three)
+        self.assertEqual(obj.eligible_part_three, YES)
+
+        obj.oggt2_performed = YES
+        obj.ogtt2_base_datetime = obj.ogtt_base_datetime + relativedelta(days=3)
+        obj.ogtt2_datetime = obj.ogtt_datetime + relativedelta(days=3)
+        obj.ogtt2_units = obj.ogtt_units
+        obj.ogtt2_value = Decimal("8.1000")
+        obj.save()
+        obj.refresh_from_db()
+
+        self.assertEqual(obj.converted_ogtt_value, obj.ogtt_value)
+        self.assertEqual(obj.converted_ogtt2_value, obj.ogtt2_value)
+        self.assertIsNone(obj.reasons_ineligible_part_three)
+        self.assertEqual(obj.eligible_part_three, YES)
+
+        obj.ogtt2_value = Decimal("5.5000")
+        obj.save()
+        obj.refresh_from_db()
+
+        self.assertEqual(obj.converted_ogtt_value, obj.ogtt_value)
+        self.assertEqual(obj.converted_ogtt2_value, obj.ogtt2_value)
+        self.assertEqual(obj.eligible_part_three, NO)
+        self.assertIsNotNone(obj.reasons_ineligible_part_three)
+        self.assertIn(IFT_OGTT, obj.reasons_ineligible_part_three)
+
+        obj.ogtt2_value = Decimal("7.9000")
+        obj.save()
+        obj.refresh_from_db()
+
+        self.assertEqual(obj.converted_ogtt_value, obj.ogtt_value)
+        self.assertEqual(obj.converted_ogtt2_value, obj.ogtt2_value)
+        self.assertEqual(obj.eligible_part_three, YES)
+        self.assertIsNone(obj.reasons_ineligible_part_three)
 
     def _test_eligible2(self, obj, incomplete_reason: str, ineligible_reason: str):
         self.assertIsNone(obj.reasons_ineligible_part_one)
@@ -231,7 +304,7 @@ class TestScreeningPartThree(TestCase):
         self.assertTrue(obj.eligible)
         self.assertFalse(obj.consented)
 
-    @skipIf(get_meta_version() != PHASE_TWO, "not META2")
+    @skipIf(get_meta_version() != PHASE_TWO, "test is for META2 only")
     def test_tbd_eligible_egfr_not_calculated_phase_two(self):
         ifg_value = 7.0
         ogtt_value = 7.5
@@ -241,7 +314,7 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
-    @skipIf(get_meta_version() != PHASE_THREE, "not META3")
+    @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
     def test_yes_eligible_egfr_not_calculated_phase_three(self):
         """Is eligible, since phase three will allow for EGFR to be considered
         late exclusion.
@@ -281,13 +354,13 @@ class TestScreeningPartThree(TestCase):
         obj.save()
         return obj
 
-    @skipIf(get_meta_version() != PHASE_TWO, "not META2")
+    @skipIf(get_meta_version() != PHASE_TWO, "test is for META2 only")
     def test_not_eligible_egfr_less_than_45_phase_two(self):
         ifg_value = 7.0
         ogtt_value = 7.5
         self._test_not_eligible_egfr_less_than_45(ifg_value, ogtt_value)
 
-    @skipIf(get_meta_version() != PHASE_THREE, "not META3")
+    @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
     def test_not_eligible_egfr_less_than_45_phase_three(self):
         ifg_value = 6.9
         ogtt_value = 7.8

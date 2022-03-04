@@ -90,11 +90,27 @@ def get_part_three_ifg_fields():
         )
 
 
+part_three_repeat_ifg_fields = (
+    "repeat_fasting",
+    "repeat_fasting_duration_str",
+    "repeat_fasting_opinion",
+    "ifg2_datetime",
+    "ifg2_value",
+    "ifg2_units",
+)
+
 part_three_ogtt_fields = (
     "ogtt_base_datetime",
     "ogtt_datetime",
     "ogtt_value",
     "ogtt_units",
+)
+
+part_three_repeat_ogtt_fields = (
+    "ogtt2_base_datetime",
+    "ogtt2_datetime",
+    "ogtt2_value",
+    "ogtt2_units",
 )
 
 part_three_glucose_fields = get_part_three_ifg_fields() + part_three_ogtt_fields
@@ -125,6 +141,8 @@ calculated_fields = (
     "calculated_bmi_value",
     "converted_ifg_value",
     "converted_ogtt_value",
+    "converted_ifg2_value",
+    "converted_ogtt2_value",
     "converted_creatinine_value",
     "calculated_egfr_value",
     "inclusion_a",
