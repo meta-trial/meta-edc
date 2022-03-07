@@ -9,7 +9,11 @@ from edc_protocol_violation.action_items import (
     ProtocolDeviationViolationAction as BaseProtocolDeviationViolationAction,
 )
 
-from .constants import UNBLINDING_REQUEST_ACTION, UNBLINDING_REVIEW_ACTION
+from .constants import (
+    PREGNANCY_ACTION,
+    UNBLINDING_REQUEST_ACTION,
+    UNBLINDING_REVIEW_ACTION,
+)
 
 
 class EndOfStudyAction(ActionWithNotification):
@@ -20,6 +24,7 @@ class EndOfStudyAction(ActionWithNotification):
         UNBLINDING_REVIEW_ACTION,
         DEATH_REPORT_ACTION,
         LTFU_ACTION,
+        PREGNANCY_ACTION,
     ]
     reference_model = "meta_prn.endofstudy"
     show_link_to_changelist = True
@@ -33,6 +38,22 @@ class LossToFollowupAction(ActionWithNotification):
     notification_display_name = " Loss to Follow Up Report"
     parent_action_names = []
     reference_model = "meta_prn.losstofollowup"
+    show_link_to_changelist = True
+    show_link_to_add = True
+    admin_site_name = "meta_prn_admin"
+    priority = HIGH_PRIORITY
+
+    def get_next_actions(self):
+        next_actions = [END_OF_STUDY_ACTION]
+        return next_actions
+
+
+class PregnancyAction(ActionWithNotification):
+    name = PREGNANCY_ACTION
+    display_name = "Submit Delivery Form"
+    notification_display_name = "Delivery Form"
+    parent_action_names = []
+    reference_model = "meta_prn.delivery"
     show_link_to_changelist = True
     show_link_to_add = True
     admin_site_name = "meta_prn_admin"
@@ -99,3 +120,4 @@ site_action_items.register(EndOfStudyAction)
 site_action_items.register(LossToFollowupAction)
 site_action_items.register(UnblindingRequestAction)
 site_action_items.register(UnblindingReviewAction)
+site_action_items.register(PregnancyAction)

@@ -1,6 +1,10 @@
-from edc_constants.constants import NOT_APPLICABLE, OTHER
+from edc_constants.constants import NOT_APPLICABLE, OTHER, UNKNOWN
 
 # PHASE_THREE ONLY
+from meta_ae.constants import HOSPITAL_CLINIC
+
+from .constants import LIVE_AT_TERM, LIVE_PRETERM
+
 CLINICAL_WITHDRAWAL_REASONS = (
     ("pregnancy", "Pregnancy"),
     ("kidney_disease", "Development of chronic kidney disease"),
@@ -17,6 +21,22 @@ CLINICAL_WITHDRAWAL_REASONS = (
 )
 
 # PHASE_THREE ONLY
+DELIVERY_LOCATIONS = (
+    ("home", "At home"),
+    (HOSPITAL_CLINIC, "Hospital / Clinic"),
+    (OTHER, "Other location, specify"),
+)
+
+INFORMANT_RELATIONSHIP = (
+    ("husband_wife", "Husband/wife"),
+    ("Parent", "Parent"),
+    ("child", "Child"),
+    (UNKNOWN, "Unknown"),
+    (OTHER, "Other"),
+    (NOT_APPLICABLE, "Not applicable"),
+)
+
+
 TOXICITY_WITHDRAWAL_REASONS = (
     ("lactic_acidosis", "Development of lactic acidosis or hyperlactatemia"),
     ("hepatomegaly", "Development of hepatomegaly with steatosis"),
@@ -71,3 +91,17 @@ ACTION_REQUIRED = (
 
 
 REASON_STUDY_TERMINATED = ()
+
+MATERNAL_OUTCOMES = (
+    ("no_complications", "No complications"),
+    ("complications_full_recovery", "Complications with full recovery"),
+    ("complications_ongoing_recovery", "Complications with ongoing recovery"),
+    ("maternal_mortality", "Maternal mortality"),
+)
+
+FETAL_OUTCOMES = (
+    (LIVE_AT_TERM, "Live birth at term"),
+    (LIVE_PRETERM, "Live birth preterm"),
+    ("stillbirth", "Stillbirth"),
+    ("miscarriage", "Miscarriage"),
+)

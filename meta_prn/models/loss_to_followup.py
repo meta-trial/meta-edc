@@ -1,7 +1,6 @@
-from django.core.validators import MinValueValidator
 from django.db import models
 from edc_action_item.models.action_model_mixin import ActionModelMixin
-from edc_constants.choices import YES_NO, YES_NO_NA
+from edc_constants.choices import YES_NO
 from edc_constants.constants import OTHER
 from edc_identifier.model_mixins import (
     NonUniqueSubjectIdentifierFieldMixin,
@@ -76,7 +75,7 @@ class LossToFollowup(
         blank=False,
     )
 
-    class Meta:
+    class Meta(edc_models.BaseUuidModel.Meta):
         verbose_name = "Loss to Follow Up"
         verbose_name_plural = "Loss to Follow Up"
         indexes = [
