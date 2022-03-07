@@ -1,4 +1,4 @@
-edc==0.3.67
+edc==0.3.68
 edc-qol>=0.1.3
 edc-mnsi>=0.1.4
 edc-he>=0.1.1
