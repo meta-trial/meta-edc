@@ -177,7 +177,7 @@ class ScreeningPartThreeFormValidator(
     def require_all_vitals_fields(self):
         require_all = False
         fields = get_part_three_vitals_fields()
-        fields.pop("waist_circumference")
+        fields.remove("waist_circumference")
         for field in fields:
             if self.cleaned_data.get(field):
                 require_all = True
