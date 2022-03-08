@@ -19,7 +19,7 @@ from edc_utils import get_utcnow
 from meta_ae.choices import INFORMANT_RELATIONSHIP
 
 from ..choices import DELIVERY_LOCATIONS, MATERNAL_OUTCOMES
-from ..constants import PREGNANCY_ACTION
+from ..constants import DELIVERY_ACTION
 
 
 class Delivery(
@@ -31,9 +31,9 @@ class Delivery(
 ):
     """form 25"""
 
-    action_name = PREGNANCY_ACTION
+    action_name = DELIVERY_ACTION
 
-    tracking_identifier_prefix = "PR"
+    tracking_identifier_prefix = "DL"
 
     report_datetime = models.DateTimeField(
         verbose_name="Report Date and Time", default=get_utcnow

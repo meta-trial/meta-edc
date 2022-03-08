@@ -4,7 +4,6 @@ from edc_vitals.model_mixins import (
     BloodPressureModelMixin,
     SimpleBloodPressureModelMixin,
 )
-from edc_vitals.models import WaistCircumferenceField
 
 from ..choices import WEIGHT_DETERMINATION
 from ..model_mixins import CrfModelMixin, VitalsFieldsModelMixin

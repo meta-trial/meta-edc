@@ -17,6 +17,10 @@ class FollowupVitalsAdmin(
 
     form = FollowupVitalsForm
 
+    additional_instructions = [
+        "If participant is pregnant, complete the action linked CRF `Pregnancy notification`."
+    ]
+
     fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime")}),
         (
