@@ -5,8 +5,6 @@ from edc_model import models as edc_models
 
 from ..model_mixins import CrfModelMixin
 
-# TODO: if pregnant, take of study drug (action item)
-
 
 class UrineDipstickTest(CrfModelMixin, edc_models.BaseUuidModel):
 

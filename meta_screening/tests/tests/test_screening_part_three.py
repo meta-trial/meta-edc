@@ -123,7 +123,6 @@ class TestScreeningPartThree(TestCase):
         obj.refresh_from_db()
         self._test_eligible2(obj, BMI_IFT_OGTT_INCOMPLETE, BMI_IFT_OGTT)
 
-    @tag("1")
     @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
     def test_eligible2_phase_three(self):
         obj = self.get_screening_part_three_obj()
@@ -155,7 +154,6 @@ class TestScreeningPartThree(TestCase):
         obj.refresh_from_db()
         self._test_eligible2(obj, IFT_OGTT_INCOMPLETE, IFT_OGTT)
 
-    @tag("1")
     @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
     def test_eligible2_phase_three_repeat_ogtt2_updates_converted(self):
         obj = self.get_screening_part_three_obj()

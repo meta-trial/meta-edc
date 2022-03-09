@@ -1,14 +1,26 @@
 from django.db import models
 from django.db.models import PROTECT
+from edc_action_item.models import ActionModelMixin
+from edc_identifier.model_mixins import TrackingModelMixin
 from edc_model import models as edc_models
 from edc_sites.models import SiteModelMixin
 from edc_utils import get_utcnow
 
 from ..choices import FETAL_OUTCOMES
+from ..constants import BIRTH_OUTCOME_ACTION
 from .delivery import Delivery
 
 
-class BirthOutcomes(SiteModelMixin, edc_models.BaseUuidModel):
+class BirthOutcomes(
+    SiteModelMixin,
+    ActionModelMixin,
+    TrackingModelMixin,
+    edc_models.BaseUuidModel,
+):
+
+    action_name = BIRTH_OUTCOME_ACTION
+
+    tracking_identifier_prefix = "BO"
 
     delivery = models.ForeignKey(Delivery, on_delete=PROTECT)
 
@@ -31,6 +43,10 @@ class BirthOutcomes(SiteModelMixin, edc_models.BaseUuidModel):
 
     def __str__(self):
         return f"{self.maternal_identifier} #{self.birth_order or '-'}"
+
+    @property
+    def subject_identifier(self):
+        return self.maternal_identifier
 
     def save(self, *args, **kwargs):
         self.report_datetime = self.delivery.report_datetime

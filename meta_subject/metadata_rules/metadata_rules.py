@@ -29,13 +29,13 @@ class HealthEconomicsRuleGroup(CrfRuleGroup):
 
 
 @register()
-class HepatitisTestRuleGroup(CrfRuleGroup):
+class UrinePregnancyRuleGroup(CrfRuleGroup):
 
-    hep = CrfRule(
-        predicate=pc.hepatitis_test_required,
+    bhcg = CrfRule(
+        predicate=pc.urine_pregnancy_required,
         consequence=REQUIRED,
         alternative=NOT_REQUIRED,
-        target_models=["hepatitistest"],
+        target_models=["urinepregnancy"],
     )
 
     class Meta:

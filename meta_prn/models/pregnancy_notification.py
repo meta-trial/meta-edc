@@ -8,8 +8,7 @@ from edc_identifier.model_mixins import (
     TrackingModelMixin,
 )
 from edc_model import models as edc_models
-from edc_model.models import date_not_future
-from edc_protocol.validators import date_not_before_study_start
+from edc_model.models import date_is_future
 from edc_sites.models import SiteModelMixin
 from edc_utils import get_utcnow
 
@@ -46,10 +45,7 @@ class PregnancyNotification(
 
     edd = models.DateField(
         verbose_name="Estimated date of delivery :",
-        validators=[
-            date_not_future,
-            date_not_before_study_start,
-        ],
+        validators=[date_is_future],
     )
 
     class Meta(edc_models.BaseUuidModel.Meta):

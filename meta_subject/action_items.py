@@ -11,13 +11,19 @@ from edc_blood_results.action_items import (
 from edc_blood_results.action_items import (
     BloodResultsRftAction as BaseBloodResultsRftAction,
 )
-from edc_constants.constants import HIGH_PRIORITY, NONE, YES
+from edc_constants.constants import HIGH_PRIORITY, NONE, POS, YES
 from edc_ltfu.constants import LTFU_ACTION
 from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_reportable import GRADE3, GRADE4
 from edc_visit_schedule.utils import is_baseline
 
-from .constants import FOLLOWUP_EXAMINATION_ACTION, MISSED_VISIT_ACTION
+from meta_prn.constants import PREGNANCY_NOTIFICATION_ACTION
+
+from .constants import (
+    FOLLOWUP_EXAMINATION_ACTION,
+    MISSED_VISIT_ACTION,
+    URINE_PREGNANCY_ACTION,
+)
 
 
 class MissedVisitAction(Action):
@@ -62,6 +68,23 @@ class FollowupExaminationAction(Action):
         return next_actions
 
 
+class UrinePregnancyAction(Action):
+    name = URINE_PREGNANCY_ACTION
+    priority = HIGH_PRIORITY
+    display_name = "Urine Pregnancy Test"
+    reference_model = "meta_subject.urinepregnancy"
+    show_on_dashboard = True
+    create_by_user = False
+
+    def get_next_actions(self):
+        next_actions = []
+        if (self.reference_obj.bhcg_value == POS) and not is_baseline(
+            self.reference_obj.subject_visit
+        ):
+            next_actions.append(PREGNANCY_NOTIFICATION_ACTION)
+        return next_actions
+
+
 class BloodResultsRftAction(BaseBloodResultsRftAction):
     def get_next_actions(self):
         next_actions = super().get_next_actions()
@@ -83,6 +106,7 @@ def register_actions():
         BloodResultsHba1cAction,
         FollowupExaminationAction,
         MissedVisitAction,
+        UrinePregnancyAction,
     ]:
         try:
             site_action_items.register(action_item_cls)

@@ -110,31 +110,49 @@ class Predicates(PredicateCollection):
                 required = True
         return required
 
-    def hepatitis_test_required(self, visit, **kwargs) -> bool:
+    def urine_pregnancy_required(self, visit, **kwargs) -> bool:
         """Returns True if required.
 
-        Bu default is required at baseline. If not then at week2 or 1 month"""
-        model_cls = django_apps.get_model(f"{self.app_label}.hepatitistest")
-        hcv_performed = False
-        hbsag_performed = False
-        required = True
-        for visit_code in [DAY1, WEEK2, MONTH1]:
-            try:
-                obj = model_cls.objects.get(
-                    subject_visit__subject_identifier=visit.subject_identifier,
-                    subject_visit__visit_code=visit_code,
-                    subject_visit__visit_code_sequence=0,
+        Bu default is not required at baseline, otherwise at 1, 3, 6, etc"""
+        if is_baseline(visit) or (
+            visit.appointment.visit_code == WEEK2
+            and visit.appointment.visit_code_sequence == 0
+        ):
+            required = False
+        else:
+            # look for preg notification, get edd,
+            pregnancy_notification_model_cls = django_apps.get_model(
+                "meta_prn.pregnancynotification"
+            )
+            delivery_model_cls = django_apps.get_model("meta_prn.delivery")
+            urine_pregnancy_model_cls = django_apps.get_model(
+                f"{self.app_label}.urinepregnancy"
+            )
+
+            required = True
+            pregnancy_notifications = (
+                pregnancy_notification_model_cls.objects.filter(
+                    subject_identifier=visit.subject_identifier,
                 )
-            except ObjectDoesNotExist:
-                pass
-            else:
-                if not hbsag_performed:
-                    hbsag_performed = obj.hbsag_performed == YES
-                if not hcv_performed:
-                    hcv_performed = obj.hcv_performed == YES
-                if hbsag_performed and hcv_performed:
-                    required = False
-                    break
+                .order_by("edd")
+                .last()
+            )
+
+            #
+            # try:
+            #     obj = pregnancy_notification_model_cls.objects.filter(
+            #         subject_visit__subject_identifier=visit.subject_identifier,
+            #     )
+            # except ObjectDoesNotExist:
+            #     pass
+            #     else:
+            #         if not hbsag_performed:
+            #             hbsag_performed = obj.hbsag_performed == YES
+            #         if not hcv_performed:
+            #             hcv_performed = obj.hcv_performed == YES
+            #         if hbsag_performed and hcv_performed:
+            #             required = False
+            #             break
         return required
 
     def mnsi_required(self, visit, **kwargs) -> bool:

@@ -1,14 +1,33 @@
+from dateutil.relativedelta import relativedelta
+from edc_constants.constants import POS, YES
+from edc_utils import get_utcnow
 from edc_visit_tracking.constants import SCHEDULED
 from faker import Faker
 from model_bakery.recipe import Recipe, seq
 
-from .models import FollowupExamination, SubjectRequisition, SubjectVisit
+from .models import (
+    FollowupExamination,
+    SubjectRequisition,
+    SubjectVisit,
+    UrinePregnancy,
+)
 
 fake = Faker()
 
 subjectvisit = Recipe(SubjectVisit, reason=SCHEDULED)
 
 subjectrequisition = Recipe(SubjectRequisition)
+
+urinepregnancy = Recipe(
+    UrinePregnancy,
+    # site=None,
+    action_identifier=None,
+    # subject_identifier=None,
+    report_datetime=get_utcnow(),
+    performed=YES,
+    not_performed_reason=None,
+    bhcg_value=POS,
+)
 
 followupexamination = Recipe(
     FollowupExamination,

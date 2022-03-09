@@ -2,4 +2,5 @@ from .birth_outcomes_form import BirthOutcomesForm
 from .delivery_form import DeliveryForm
 from .end_of_study_form import EndOfStudyPhaseThreeForm, EndOfStudyPhaseTwoForm
 from .loss_to_followup_form import LossToFollowupForm
+from .pregnancy_notification_form import PregnancyNotificationForm
 from .protocol_deviation_violation_form import ProtocolDeviationViolationForm

@@ -17,7 +17,6 @@ class TestReports(MetaTestCaseMixin, TestCase):
         subject_consent = self.get_subject_consent(subject_screening)
         self.subject_identifier = subject_consent.subject_identifier
 
-    @tag("1")
     def test_aereport(self):
 
         rf = RequestFactory()
