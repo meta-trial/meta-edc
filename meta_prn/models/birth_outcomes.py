@@ -1,7 +1,10 @@
 from django.db import models
 from django.db.models import PROTECT
 from edc_action_item.models import ActionModelMixin
-from edc_identifier.model_mixins import TrackingModelMixin
+from edc_identifier.model_mixins import (
+    NonUniqueSubjectIdentifierFieldMixin,
+    TrackingModelMixin,
+)
 from edc_model import models as edc_models
 from edc_sites.models import SiteModelMixin
 from edc_utils import get_utcnow
@@ -12,6 +15,7 @@ from .delivery import Delivery
 
 
 class BirthOutcomes(
+    NonUniqueSubjectIdentifierFieldMixin,
     SiteModelMixin,
     ActionModelMixin,
     TrackingModelMixin,
@@ -23,8 +27,6 @@ class BirthOutcomes(
     tracking_identifier_prefix = "BO"
 
     delivery = models.ForeignKey(Delivery, on_delete=PROTECT)
-
-    maternal_identifier = models.CharField(max_length=50)
 
     report_datetime = models.DateTimeField(
         verbose_name="Report Date and Time",
@@ -42,19 +44,15 @@ class BirthOutcomes(
     )
 
     def __str__(self):
-        return f"{self.maternal_identifier} #{self.birth_order or '-'}"
-
-    @property
-    def subject_identifier(self):
-        return self.maternal_identifier
+        return f"{self.subject_identifier} #{self.birth_order or '-'}"
 
     def save(self, *args, **kwargs):
         self.report_datetime = self.delivery.report_datetime
-        self.maternal_identifier = self.delivery.subject_identifier
+        self.subject_identifier = self.delivery.subject_identifier
         super().save(*args, **kwargs)
 
     class Meta(edc_models.BaseUuidModel.Meta):
         verbose_name = "Birth Outcomes"
         verbose_name_plural = "Birth Outcomes"
-        ordering = ["maternal_identifier", "birth_order"]
-        unique_together = ["maternal_identifier", "birth_order"]
+        ordering = ["subject_identifier", "birth_order"]
+        unique_together = ["subject_identifier", "birth_order"]

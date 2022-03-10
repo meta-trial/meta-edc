@@ -174,7 +174,6 @@ class TestScreeningPartThree(TestCase):
         self.assertEqual(obj.converted_ogtt_value, obj.ogtt_value)
         self.assertEqual(obj.converted_ogtt2_value, obj.ogtt2_value)
 
-    @tag("2")
     @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
     def test_eligible2_phase_three_by_repeat_ogtt(self):
         obj = self.get_screening_part_three_obj()

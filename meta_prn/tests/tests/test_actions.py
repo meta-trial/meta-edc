@@ -1,6 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, override_settings, tag
 from edc_action_item.models import ActionItem
+from edc_utils import get_utcnow
 from edc_visit_schedule.constants import MONTH1
 from model_bakery.baker import make_recipe
 
@@ -27,6 +28,8 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
         urine_pregnancy = make_recipe(
             "meta_subject.urinepregnancy",
             subject_visit=subject_visit,
+            report_datetime=get_utcnow(),
+            assay_date=get_utcnow().date(),
         )
 
         try:
@@ -75,6 +78,6 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
 
         birth_outcomes = make_recipe(
             "meta_prn.birthoutcomes",
-            maternal_identifier=subject_visit.subject_identifier,
+            subject_identifier=subject_visit.subject_identifier,
             delivery=delivery,
         )

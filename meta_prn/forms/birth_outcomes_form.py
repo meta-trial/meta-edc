@@ -21,7 +21,7 @@ class BirthOutcomesForm(SiteModelFormMixin, FormValidatorMixin, forms.ModelForm)
 
     form_validator_cls = BirthOutcomesFormValidator
 
-    maternal_identifier = forms.CharField(
+    subject_identifier = forms.CharField(
         label="Maternal Identifier",
         required=False,
         widget=forms.TextInput(attrs={"readonly": "readonly"}),

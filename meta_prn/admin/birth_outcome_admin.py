@@ -22,7 +22,7 @@ class BirthOutcomesAdmin(
     form = BirthOutcomesForm
 
     fieldsets = (
-        (None, {"fields": ("maternal_identifier", "report_datetime")}),
+        (None, {"fields": ("subject_identifier", "report_datetime")}),
         (
             "Birth Outcome",
             {
@@ -37,7 +37,7 @@ class BirthOutcomesAdmin(
     )
 
     list_display = (
-        "maternal_identifier",
+        "subject_identifier",
         "delivery_report",
         "dashboard",
         "birth_order",
@@ -54,7 +54,7 @@ class BirthOutcomesAdmin(
     }
 
     search_fields = (
-        "maternal_identifier",
+        "subject_identifier",
         "delivery__action_identifier",
         "delivery__tracking_identifier",
     )
@@ -62,16 +62,16 @@ class BirthOutcomesAdmin(
     @admin.display
     def delivery_report(self, obj=None, label=None):
         url = reverse("meta_prn_admin:meta_prn_delivery_changelist")
-        url = f"{url}?q={obj.maternal_identifier}"
+        url = f"{url}?q={obj.subject_identifier}"
         context = dict(title="Delivery", url=url, label="Delivery")
         return render_to_string("dashboard_button.html", context=context)
 
     def get_subject_dashboard_url_kwargs(self, obj):
-        return dict(subject_identifier=obj.maternal_identifier)
+        return dict(subject_identifier=obj.subject_identifier)
 
     def view_on_site(self, obj):
         try:
-            RegisteredSubject.objects.get(subject_identifier=obj.maternal_identifier)
+            RegisteredSubject.objects.get(subject_identifier=obj.subject_identifier)
         except ObjectDoesNotExist:
             url = reverse(self.get_subject_listboard_url_name())
         else:

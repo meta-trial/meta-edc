@@ -2,7 +2,8 @@
 # TODO: if pos, take of study drug and estimate delivery date for the pregnancy outcomes form. See Form 25/26
 from django.db import models
 from edc_action_item.models import ActionModelMixin
-from edc_constants.choices import YES_NO
+from edc_constants.choices import YES_NO, YES_NO_UNSURE
+from edc_constants.constants import YES
 from edc_identifier.model_mixins import (
     NonUniqueSubjectIdentifierFieldMixin,
     TrackingModelMixin,
@@ -12,7 +13,13 @@ from edc_model.models import date_is_future
 from edc_sites.models import SiteModelMixin
 from edc_utils import get_utcnow
 
+from meta_subject.models import UrinePregnancy
+
 from ..constants import PREGNANCY_NOTIFICATION_ACTION
+
+
+class PregnancyNotificationError(Exception):
+    pass
 
 
 class PregnancyNotification(
@@ -44,9 +51,37 @@ class PregnancyNotification(
     )
 
     edd = models.DateField(
-        verbose_name="Estimated date of delivery :",
+        verbose_name="Estimated date of delivery",
         validators=[date_is_future],
     )
+
+    may_contact = models.CharField(
+        verbose_name=(
+            "Has the participant agreed to be contacted to provide information on the "
+            "delivery and birth outcomes?"
+        ),
+        max_length=15,
+        choices=YES_NO_UNSURE,
+        help_text=(
+            "If YES/UNSURE, a visit will be scheduled on the EDD. "
+            "If NO, the participant will be taken off study now"
+        ),
+        default=YES,
+    )
+
+    def save(self, *args, **kwargs):
+        if (
+            not self.id
+            and not UrinePregnancy.objects.filter(
+                subject_visit__subject_identifier=self.subject_identifier,
+                notified=False,
+                assay_date__lte=self.report_datetime.date(),
+            ).exists()
+        ):
+            raise PregnancyNotificationError(
+                "Invalid. A positive Urine βhCG cannot be found. Perhaps catch this in the form."
+            )
+        super().save(*args, **kwargs)
 
     class Meta(edc_models.BaseUuidModel.Meta):
         verbose_name = "Pregnancy Notification"

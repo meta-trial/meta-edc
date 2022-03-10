@@ -6,6 +6,8 @@ from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdmin
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
+from meta_subject.models import UrinePregnancy
+
 from ..admin_site import meta_prn_admin
 from ..forms import PregnancyNotificationForm
 from ..models import PregnancyNotification
@@ -18,11 +20,20 @@ class PregnancyNotificationAdmin(
 
     form = PregnancyNotificationForm
 
+    additional_instructions = (
+        "Important: A positive Urine βhCG must be entered before this form "
+        f"may be completed (See `{UrinePregnancy._meta.verbose_name}`)."
+    )
+
     fieldsets = (
         (None, {"fields": ("subject_identifier", "report_datetime")}),
         (
-            "Loss to followup",
+            "Pregnancy information",
             {"fields": ("bhcg_confirmed", "unconfirmed_details", "edd")},
+        ),
+        (
+            "Followup",
+            {"fields": ("may_contact",)},
         ),
         action_fieldset_tuple,
         audit_fieldset_tuple,
@@ -38,6 +49,7 @@ class PregnancyNotificationAdmin(
 
     radio_fields = {
         "bhcg_confirmed": admin.VERTICAL,
+        "may_contact": admin.VERTICAL,
     }
 
     search_fields = ("subject_identifier", "action_identifier", "tracking_identifier")

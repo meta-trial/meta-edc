@@ -1,8 +1,9 @@
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
-from edc_constants.constants import YES
+from edc_constants.constants import FEMALE, YES
 from edc_lab_panel.panels import hba1c_panel
 from edc_metadata.metadata_rules import PredicateCollection
+from edc_registration.models import RegisteredSubject
 from edc_visit_schedule.constants import DAY1, MONTH1, MONTH3, MONTH6, WEEK2
 from edc_visit_schedule.utils import is_baseline
 
@@ -114,9 +115,16 @@ class Predicates(PredicateCollection):
         """Returns True if required.
 
         Bu default is not required at baseline, otherwise at 1, 3, 6, etc"""
-        if is_baseline(visit) or (
-            visit.appointment.visit_code == WEEK2
-            and visit.appointment.visit_code_sequence == 0
+        registered_subject = RegisteredSubject.objects.get(
+            subject_identifier=visit.subject_identifier
+        )
+        if (
+            registered_subject.gender != FEMALE
+            or is_baseline(visit)
+            or (
+                visit.appointment.visit_code == WEEK2
+                and visit.appointment.visit_code_sequence == 0
+            )
         ):
             required = False
         else:

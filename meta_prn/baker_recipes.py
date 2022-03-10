@@ -47,7 +47,7 @@ birthoutcomes = Recipe(
     BirthOutcomes,
     delivery=None,
     action_identifier=None,
-    maternal_identifier=None,
+    subject_identifier=None,
     report_datetime=get_utcnow(),
     birth_order=1,
     birth_outcome=LIVE_AT_TERM,

@@ -20,13 +20,13 @@ subjectrequisition = Recipe(SubjectRequisition)
 
 urinepregnancy = Recipe(
     UrinePregnancy,
-    # site=None,
     action_identifier=None,
-    # subject_identifier=None,
     report_datetime=get_utcnow(),
     performed=YES,
     not_performed_reason=None,
     bhcg_value=POS,
+    notified=False,
+    notified_datetime=None,
 )
 
 followupexamination = Recipe(
