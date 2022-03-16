@@ -1,5 +1,6 @@
 from edc_constants.constants import (
     ABSENT,
+    DEAD,
     MICROSCOPY,
     NO,
     NO_EXAM,
@@ -13,13 +14,18 @@ from edc_constants.constants import (
 from edc_reportable.constants import GRADE3, GRADE4
 from edc_visit_tracking.constants import MISSED_VISIT, SCHEDULED, UNSCHEDULED
 
+from meta_ae.constants import HOSPITAL_CLINIC
+
 from .constants import (
     ALL_OF_THE_TIME,
     APPT,
     APPT_OTHER,
     GOOD_BIT_OF_THE_TIME,
     LITTLE_OF_THE_TIME,
+    LIVE_AT_TERM,
+    LIVE_PRETERM,
     MOST_OF_THE_TIME,
+    NO_COMPLICATIONS,
     NONE_OF_THE_TIME,
     SOME_OF_THE_TIME,
 )
@@ -40,6 +46,12 @@ CHILDCARE_CHOICES = (
     ("house_maintenance", "House maintenance"),
     ("nothing", "Nothing"),
     (OTHER, "Other, specify"),
+)
+
+DELIVERY_LOCATIONS = (
+    ("home", "At home"),
+    (HOSPITAL_CLINIC, "Hospital / Clinic"),
+    (OTHER, "Other location, specify"),
 )
 
 DESCRIBE_HEALTH_CHOICES = (
@@ -64,6 +76,14 @@ FEELING_DURATION_CHOICES = (
     (SOME_OF_THE_TIME, "Some of the time"),
     (LITTLE_OF_THE_TIME, "A little of the time"),
     (NONE_OF_THE_TIME, "None of the time"),
+)
+
+
+FETAL_OUTCOMES = (
+    (LIVE_AT_TERM, "Live birth at term"),
+    (LIVE_PRETERM, "Live birth preterm"),
+    ("stillbirth", "Stillbirth"),
+    ("miscarriage", "Miscarriage"),
 )
 
 FOLLOWUP_REASONS = (
@@ -115,6 +135,13 @@ MALARIA_TEST_CHOICES = (
     (RAPID_TEST, "Rapid test"),
     (MICROSCOPY, "Microscopy"),
     (NOT_APPLICABLE, "Not applicable"),
+)
+
+MATERNAL_OUTCOMES = (
+    (NO_COMPLICATIONS, "No complications"),
+    ("complications_full_recovery", "Complications with full recovery"),
+    ("complications_ongoing_recovery", "Complications with ongoing recovery"),
+    (DEAD, "Maternal mortality"),
 )
 
 PAYEE_CHOICES = (

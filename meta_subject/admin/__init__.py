@@ -1,4 +1,5 @@
 from .autocomplete_admin import ArvRegimensAdmin
+from .birth_outcome_admin import BirthOutcomesAdmin
 from .blood_results import (
     BloodResultsFbcAdmin,
     BloodResultsGluAdmin,
@@ -8,6 +9,7 @@ from .blood_results import (
 from .complications_admin import ComplicationsAdmin
 from .complications_glycemia_admin import ComplicationsGlycemiaAdmin
 from .concomitant_medication_admin import ConcomitantMedicationAdmin
+from .delivery_admin import DeliveryAdmin
 from .eq5d3l_admin import Eq5d3lAdmin
 from .followup_examination_admin import FollowupExaminationAdmin
 from .followup_vitals_admin import FollowupVitalsAdmin
@@ -21,6 +23,7 @@ from .mnsi_admin import MnsiAdmin
 from .other_arv_regimens_admin import OtherArvRegimensAdmin
 from .patient_history_admin import PatientHistoryAdmin
 from .physical_exam_admin import PhysicalExamAdmin
+from .pregnancy_update_admin import PregnancyUpdateAdmin
 from .sf12_admin import Sf12Admin
 from .study_medication_admin import StudyMedicationAdmin
 from .subject_requisition_admin import SubjectRequisitionAdmin

@@ -3,7 +3,7 @@ from edc_screening.screening_eligibility import FC, ScreeningEligibilityError
 
 from meta_edc.meta_version import PHASE_THREE, get_meta_version
 
-from ...constants import EGFR_LT_45, IFT_OGTT, IFT_OGTT_INCOMPLETE, SEVERE_HTN
+from ...constants import EGFR_LT_45, FBG_OGTT_INCOMPLETE, IFT_OGTT, SEVERE_HTN
 from .base_eligibility_part_three import BaseEligibilityPartThree
 
 
@@ -23,10 +23,10 @@ class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
         super().assess_eligibility()
         self.calculate_inclusion_field_values()
         if self.inclusion_a == TBD or self.inclusion_b == TBD:
-            self.reasons_ineligible.update(ifg_ogtt=IFT_OGTT_INCOMPLETE)
+            self.reasons_ineligible.update(fbg_ogtt=FBG_OGTT_INCOMPLETE)
             self.eligible = TBD
         if self.inclusion_a == NO or self.inclusion_b == NO:
-            self.reasons_ineligible.update(ifg_ogtt=IFT_OGTT)
+            self.reasons_ineligible.update(fbg_ogtt=IFT_OGTT)
             self.eligible = NO
         if self.calculated_egfr_value and self.calculated_egfr_value < 45.0:
             self.reasons_ineligible.update(egfr=EGFR_LT_45)
@@ -47,18 +47,25 @@ class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
         return fields
 
     def calculate_inclusion_field_values(self) -> None:
+        """Decide which values to use, first or repeat"""
         if self.repeat_glucose_performed == PENDING:
             self.inclusion_a = TBD
             self.inclusion_b = TBD
         else:
-            converted_ifg_value = self.converted_ifg2_value or self.converted_ifg_value
+            converted_fbg_value = (
+                self.converted_fbg2_value
+                if self.fbg2_performed == YES
+                else self.converted_fbg_value
+            )
             converted_ogtt_value = (
-                self.converted_ogtt2_value or self.converted_ogtt_value
+                self.converted_ogtt2_value
+                if self.ogtt2_performed == YES
+                else self.converted_ogtt_value
             )
             # IFG (6.1 to 6.9 mmol/L)
-            if not converted_ifg_value:
+            if not converted_fbg_value:
                 self.inclusion_a = TBD
-            elif 6.1 <= converted_ifg_value <= 6.9:
+            elif 6.1 <= converted_fbg_value <= 6.9:
                 self.inclusion_a = YES
             else:
                 self.inclusion_a = NO

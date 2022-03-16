@@ -56,8 +56,8 @@ class IcpReferral(SiteModelMixin, BaseUuidModel):
         choices=YES_NO_NA,
     )
 
-    ifg_value = models.DecimalField(
-        verbose_name="Fasting glucose levels",
+    fbg_value = models.DecimalField(
+        verbose_name="FBG level",
         max_digits=8,
         decimal_places=4,
         null=True,

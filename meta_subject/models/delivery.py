@@ -1,19 +1,15 @@
 # TODO: urine_bhcg form (probably not necessary)
 # TODO: if pos, take of study drug and estimate delivery date for the pregnancy outcomes form. See Form 25/26
+from django.apps import apps as django_apps
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django_crypto_fields.fields import EncryptedTextField
-from edc_action_item.models import ActionModelMixin
 from edc_constants.choices import YES_NO
-from edc_identifier.model_mixins import (
-    NonUniqueSubjectIdentifierFieldMixin,
-    TrackingModelMixin,
-)
+from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
 from edc_model import models as edc_models
 from edc_model.models import datetime_not_future
 from edc_model_fields.fields import OtherCharField
 from edc_protocol.validators import datetime_not_before_study_start
-from edc_sites.models import SiteModelMixin
 from edc_utils import get_utcnow
 
 from meta_ae.choices import INFORMANT_RELATIONSHIP
@@ -22,11 +18,12 @@ from ..choices import DELIVERY_LOCATIONS, MATERNAL_OUTCOMES
 from ..constants import DELIVERY_ACTION
 
 
+class DeliveryError(Exception):
+    pass
+
+
 class Delivery(
-    NonUniqueSubjectIdentifierFieldMixin,
-    SiteModelMixin,
-    ActionModelMixin,
-    TrackingModelMixin,
+    CrfWithActionModelMixin,
     edc_models.BaseUuidModel,
 ):
     """form 25"""
@@ -114,7 +111,24 @@ class Delivery(
         help_text="Each to be reported individually below",
     )
 
+    def save(self, *args, **kwargs):
+        pregnancy_notification_model_cls = django_apps.get_model(
+            "meta_prn.pregnancynotification"
+        )
+        if (
+            not self.id
+            and not pregnancy_notification_model_cls.objects.filter(
+                subject_identifier=self.subject_identifier,
+                delivered=False,
+            ).exists()
+        ):
+            raise DeliveryError(
+                f"Invalid. A {pregnancy_notification_model_cls._meta.verbose_name} cannot be found. "
+                "Perhaps catch this in the form."
+            )
+        super().save(*args, **kwargs)
+
     class Meta(edc_models.BaseUuidModel.Meta):
         verbose_name = "Delivery"
         verbose_name_plural = "Delivery"
-        unique_together = ["subject_identifier", "delivery_datetime"]
+        unique_together = ["subject_visit", "delivery_datetime"]

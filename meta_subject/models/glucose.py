@@ -18,13 +18,13 @@ class Glucose(
 
     """A user model to capture IFG and OGTT"""
 
-    ifg_performed = models.CharField(
+    fbg_performed = models.CharField(
         verbose_name="Was the IFG test performed?",
         max_length=15,
         choices=YES_NO,
     )
 
-    ifg_not_performed_reason = models.CharField(
+    fbg_not_performed_reason = models.CharField(
         verbose_name="If NO, provide reason", max_length=150, null=True, blank=True
     )
 

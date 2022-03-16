@@ -25,16 +25,16 @@ class CalculatedModelMixin(models.Model):
     )
 
     # converted if necessary
-    converted_ifg_value = models.DecimalField(
-        verbose_name="Fasting glucose",
+    converted_fbg_value = models.DecimalField(
+        verbose_name="FBG level",
         max_digits=8,
         decimal_places=4,
         null=True,
         help_text=f"{MILLIMOLES_PER_LITER} (system converted)",
     )
 
-    converted_ifg2_value = models.DecimalField(
-        verbose_name="REPEAT Fasting glucose",
+    converted_fbg2_value = models.DecimalField(
+        verbose_name="Repeat FBG level",
         max_digits=8,
         decimal_places=4,
         null=True,
@@ -43,7 +43,7 @@ class CalculatedModelMixin(models.Model):
 
     # converted if necessary
     converted_ogtt_value = models.DecimalField(
-        verbose_name="Blood glucose level 2-hours",
+        verbose_name="OGTT (2-hours)",
         max_digits=8,
         decimal_places=4,
         null=True,
@@ -52,7 +52,7 @@ class CalculatedModelMixin(models.Model):
 
     # converted if necessary
     converted_ogtt2_value = models.DecimalField(
-        verbose_name="REPEAT Blood glucose level 2-hours",
+        verbose_name="Repeat OGTT (2-hours)",
         max_digits=8,
         decimal_places=4,
         null=True,
@@ -61,9 +61,7 @@ class CalculatedModelMixin(models.Model):
 
     # calculated
     inclusion_a = models.CharField(
-        verbose_name=(
-            "BMI>30 combined with impaired fasting glucose (6.1 to 6.9 mmol/L)"
-        ),
+        verbose_name="BMI>30 combined with FBG (6.1 to 6.9 mmol/L)",
         max_length=15,
         choices=YES_NO_TBD,
         default=TBD,
@@ -72,10 +70,7 @@ class CalculatedModelMixin(models.Model):
 
     # calculated
     inclusion_b = models.CharField(
-        verbose_name=(
-            "BMI>30 combined with impaired glucose tolerance at "
-            "2 hours (7.0 to 11.10 mmol/L)"
-        ),
+        verbose_name="BMI>30 combined with OGTT (2 hours) (7.0 to 11.10 mmol/L)",
         max_length=15,
         choices=YES_NO_TBD,
         default=TBD,
@@ -84,9 +79,7 @@ class CalculatedModelMixin(models.Model):
 
     # calculated
     inclusion_c = models.CharField(
-        verbose_name=(
-            "BMI<=30 combined with impaired fasting glucose (6.3 to 6.9 mmol/L)"
-        ),
+        verbose_name="BMI<=30 combined with FBG (6.3 to 6.9 mmol/L)",
         max_length=15,
         choices=YES_NO_TBD,
         default=TBD,
@@ -95,10 +88,7 @@ class CalculatedModelMixin(models.Model):
 
     # calculated
     inclusion_d = models.CharField(
-        verbose_name=(
-            "BMI<=30 combined with impaired glucose tolerance at 2 hours "
-            "(9.0 to 11.10 mmol/L)"
-        ),
+        verbose_name="BMI<=30 combined with OGTT (2 hours) (9.0 to 11.10 mmol/L)",
         max_length=15,
         choices=YES_NO_TBD,
         default=TBD,

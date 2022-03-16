@@ -18,23 +18,25 @@ class BaseEligibilityPartThree(ScreeningEligibility):
         self.bmi = None
         self.calculated_egfr_value = None
         self.converted_creatinine_value = None
-        self.converted_ifg_value = None
-        self.converted_ifg2_value = None
+        setattr(self, "converted_fbg_value", None)
+        setattr(self, "converted_fbg2_value", None)
         self.converted_ogtt_value = None
         self.converted_ogtt2_value = None
         self.creatinine_units = None
         self.creatinine_value = None
         # self.eligible_part_three = None
         self.height = None
-        self.ifg_units = None
-        self.ifg2_units = None
-        self.ifg_value = None
-        self.ifg2_value = None
+        setattr(self, "fbg_units", None)
+        setattr(self, "fbg2_units", None)
+        setattr(self, "fbg_value", None)
+        setattr(self, "fbg2_value", None)
         self.ogtt_units = None
         self.ogtt_value = None
         self.ogtt2_units = None
         self.ogtt2_value = None
         self.repeat_glucose_performed = None
+        self.fbg2_performed = None
+        self.ogtt2_performed = None
         self.weight = None
         self.unsuitable_agreed = None
         super().__init__(**kwargs)
@@ -46,10 +48,20 @@ class BaseEligibilityPartThree(ScreeningEligibility):
 
     def set_fld_attrs_on_model(self) -> None:
         self.model_obj.converted_creatinine_value = self.converted_creatinine_value
-        self.model_obj.converted_ifg_value = self.converted_ifg_value
-        self.model_obj.converted_ifg2_value = self.converted_ifg2_value
+        setattr(
+            self.model_obj,
+            "converted_fbg_value",
+            getattr(self, "converted_fbg_value"),
+        )
+        setattr(
+            self.model_obj,
+            "converted_fbg2_value",
+            getattr(self, "converted_fbg2_value"),
+        )
         self.model_obj.converted_ogtt_value = self.converted_ogtt_value
         self.model_obj.converted_ogtt2_value = self.converted_ogtt2_value
+        self.model_obj.fbg2_performed = self.fbg2_performed
+        self.model_obj.ogtt2_performed = self.ogtt2_performed
         if self.bmi:
             self.model_obj.calculated_bmi_value = self.bmi.value
 
@@ -58,16 +70,18 @@ class BaseEligibilityPartThree(ScreeningEligibility):
             "creatinine_units": FC(ignore_if_missing=True),
             "creatinine_value": FC(ignore_if_missing=True),
             "height": FC(value=range(0, 500), msg="Missing height"),
-            "ifg_units": FC(ignore_if_missing=True),
-            "ifg2_units": FC(ignore_if_missing=True),
-            "ifg_value": FC(ignore_if_missing=True),
-            "ifg2_value": FC(ignore_if_missing=True),
+            "fbg_units": FC(ignore_if_missing=True),
+            "fbg2_units": FC(ignore_if_missing=True),
+            "fbg_value": FC(ignore_if_missing=True),
+            "fbg2_value": FC(ignore_if_missing=True),
             "ogtt_units": FC(ignore_if_missing=True),
             "ogtt_value": FC(ignore_if_missing=True),
             "ogtt2_units": FC(ignore_if_missing=True),
             "ogtt2_value": FC(ignore_if_missing=True),
             "weight": FC(value=range(0, 500), msg="Missing weight"),
             "repeat_glucose_performed": FC(ignore_if_missing=True),
+            "fbg2_performed": FC(ignore_if_missing=True),
+            "ogtt2_performed": FC(ignore_if_missing=True),
             "unsuitable_agreed": FC(value=[NO, NOT_APPLICABLE]),
         }
 
@@ -81,17 +95,17 @@ class BaseEligibilityPartThree(ScreeningEligibility):
         except ConversionNotHandled as e:
             raise ConversionNotHandled(f"Creatinine. {e}")
         try:
-            self.converted_ifg_value = convert_units(
-                self.ifg_value,
-                units_from=self.ifg_units,
+            self.converted_fbg_value = convert_units(
+                self.fbg_value,
+                units_from=self.fbg_units,
                 units_to=MILLIMOLES_PER_LITER,
             )
         except ConversionNotHandled as e:
             raise ConversionNotHandled(f"IFG. {e}")
         try:
-            self.converted_ifg2_value = convert_units(
-                self.ifg2_value,
-                units_from=self.ifg2_units,
+            self.converted_fbg2_value = convert_units(
+                self.fbg2_value,
+                units_from=self.fbg2_units,
                 units_to=MILLIMOLES_PER_LITER,
             )
         except ConversionNotHandled as e:

@@ -163,7 +163,11 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
         if appt_datetime:
             options.update(appt_datetime=appt_datetime)
         appointment = self.get_appointment(**options)
-        return SubjectVisit.objects.create(appointment=appointment, reason=SCHEDULED)
+        return SubjectVisit.objects.create(
+            appointment=appointment,
+            reason=SCHEDULED,
+            report_datetime=appointment.appt_datetime,
+        )
 
     @staticmethod
     def get_next_subject_visit(subject_visit):
@@ -175,7 +179,11 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
         next_appointment.appt_status = IN_PROGRESS_APPT
         next_appointment.save()
         return SubjectVisit.objects.create(
-            appointment=next_appointment, reason=SCHEDULED
+            appointment=next_appointment,
+            reason=SCHEDULED,
+            report_datetime=next_appointment.appt_datetime,
+            visit_code=next_appointment.visit_code,
+            visit_code_sequence=next_appointment.visit_code_sequence,
         )
 
     @staticmethod

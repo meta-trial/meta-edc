@@ -9,7 +9,7 @@ from ..form_validators import ScreeningPartThreeFormValidator
 from ..models import ScreeningPartThree
 from .field_lists import get_part_three_fields
 
-ifg_units_fld = ScreeningPartThree._meta.get_field("ifg_units")
+fbg_units_fld = ScreeningPartThree._meta.get_field("fbg_units")
 
 
 class ScreeningPartThreeForm(

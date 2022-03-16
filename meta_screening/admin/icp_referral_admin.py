@@ -56,7 +56,7 @@ class IcpReferralAdmin(
                     "ethnicity",
                     "hiv_pos",
                     "art_six_months",
-                    "ifg_value",
+                    "fbg_value",
                     "hba1c_value",
                     "ogtt_value",
                 )
@@ -89,7 +89,7 @@ class IcpReferralAdmin(
         "ethnicity",
         "hiv_pos",
         "art_six_months",
-        "ifg_value",
+        "fbg_value",
         "hba1c_value",
         "ogtt_value",
         "meta_eligible",

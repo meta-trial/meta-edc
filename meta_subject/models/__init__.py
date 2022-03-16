@@ -1,3 +1,4 @@
+from .birth_outcomes import BirthOutcomes
 from .blood_results import (
     BloodResultsFbc,
     BloodResultsGlu,
@@ -10,6 +11,7 @@ from .blood_results import (
 from .complications import Complications
 from .complications_glycemia import ComplicationsGlycemia
 from .concomitant_medication import ConcomitantMedication
+from .delivery import Delivery
 from .diet_and_lifestyle import DietAndLifestyle
 from .eq5d3l import Eq5d3l
 from .followup_examination import FollowupExamination
@@ -25,8 +27,12 @@ from .other_arv_regimens import OtherArvRegimens
 from .other_arv_regimens_detail import OtherArvRegimensDetail
 from .patient_history import PatientHistory
 from .physical_exam import PhysicalExam
+from .pregnancy_update import PregnancyUpdate
 from .sf12 import Sf12
-from .signals import study_medication_on_pre_save
+from .signals import (
+    study_medication_on_pre_save,
+    update_pregnancy_notification_on_delivery_on_post_save,
+)
 from .study_medication import StudyMedication
 from .subject_requisition import SubjectRequisition
 from .subject_visit import SubjectVisit

@@ -79,9 +79,9 @@ class TestICP(TestCase):
         obj.creatinine_units = MICROMOLES_PER_LITER
         obj.fasting = YES
         obj.fasting_duration_str = "8h"
-        obj.ifg_value = 7.5
-        obj.ifg_units = MILLIMOLES_PER_LITER
-        obj.ifg_datetime = get_utcnow()
+        obj.fbg_value = 7.5
+        obj.fbg_units = MILLIMOLES_PER_LITER
+        obj.fbg_datetime = get_utcnow()
         obj.ogtt_base_datetime = get_utcnow()
         obj.ogtt_value = 12.0
         obj.ogtt_units = MILLIMOLES_PER_LITER

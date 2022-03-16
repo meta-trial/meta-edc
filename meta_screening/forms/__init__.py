@@ -1,8 +1,8 @@
 from .field_lists import (
     calculated_fields,
     get_part_one_fields,
+    get_part_three_fbg_fields,
     get_part_three_fields,
-    get_part_three_ifg_fields,
     get_part_three_vitals_fields,
     get_part_two_fields,
     part_three_comment_fields,

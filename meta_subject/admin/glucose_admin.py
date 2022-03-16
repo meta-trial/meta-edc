@@ -24,14 +24,14 @@ class GlucoseAdmin(CrfModelAdmin):
             },
         ),
         (
-            "IFG",
+            "FBG",
             {
                 "fields": (
-                    "ifg_performed",
-                    "ifg_not_performed_reason",
-                    "ifg_datetime",
-                    "ifg_value",
-                    "ifg_units",
+                    "fbg_performed",
+                    "fbg_not_performed_reason",
+                    "fbg_datetime",
+                    "fbg_value",
+                    "fbg_units",
                 )
             },
         ),
@@ -53,8 +53,8 @@ class GlucoseAdmin(CrfModelAdmin):
 
     radio_fields = {
         "fasting": admin.VERTICAL,
-        "ifg_units": admin.VERTICAL,
-        "ifg_performed": admin.VERTICAL,
+        "fbg_units": admin.VERTICAL,
+        "fbg_performed": admin.VERTICAL,
         "ogtt_performed": admin.VERTICAL,
         "ogtt_units": admin.VERTICAL,
     }

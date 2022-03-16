@@ -69,9 +69,21 @@ class PregnancyNotification(
         default=YES,
     )
 
+    delivered = models.BooleanField(
+        default=False, editable=False, help_text="Auto updated from Delivery"
+    )
+
+    delivery_datetime = models.DateTimeField(
+        verbose_name="Date and time of delivery :",
+        null=True,
+        editable=False,
+        help_text="Auto updated from Delivery",
+    )
+
     def save(self, *args, **kwargs):
         if (
             not self.id
+            and self.bhcg_confirmed == YES
             and not UrinePregnancy.objects.filter(
                 subject_visit__subject_identifier=self.subject_identifier,
                 notified=False,

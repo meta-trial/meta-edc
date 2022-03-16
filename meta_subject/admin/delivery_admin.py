@@ -3,14 +3,18 @@ from copy import copy
 from django.contrib import admin
 from django.template.loader import render_to_string
 from django.urls import reverse
-from edc_action_item import action_fields, action_fieldset_tuple
-from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
+from edc_action_item import (
+    ModelAdminActionItemMixin,
+    action_fields,
+    action_fieldset_tuple,
+)
+from edc_form_label import FormLabelModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin, TabularInlineMixin, audit_fieldset_tuple
-from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
-from ..admin_site import meta_prn_admin
+from ..admin_site import meta_subject_admin
 from ..forms import BirthOutcomesForm, DeliveryForm
 from ..models import BirthOutcomes, Delivery
+from .modeladmin import CrfModelAdminMixin
 
 
 class BirthOutcomesInlineAdmin(TabularInlineMixin, admin.TabularInline):
@@ -24,9 +28,12 @@ class BirthOutcomesInlineAdmin(TabularInlineMixin, admin.TabularInline):
     ]
 
 
-@admin.register(Delivery, site=meta_prn_admin)
+@admin.register(Delivery, site=meta_subject_admin)
 class DeliveryAdmin(
-    DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
+    CrfModelAdminMixin,
+    FormLabelModelAdminMixin,
+    ModelAdminActionItemMixin,
+    SimpleHistoryAdmin,
 ):
 
     form = DeliveryForm
@@ -34,7 +41,7 @@ class DeliveryAdmin(
     inlines = [BirthOutcomesInlineAdmin]
 
     fieldsets = (
-        (None, {"fields": ("subject_identifier", "report_datetime")}),
+        (None, {"fields": ("subject_visit", "report_datetime")}),
         (
             "Source of information",
             {
@@ -70,7 +77,7 @@ class DeliveryAdmin(
     )
 
     list_display = (
-        "subject_identifier",
+        "subject_visit",
         "birth_outcomes",
         "dashboard",
         "delivery_datetime",
@@ -93,18 +100,24 @@ class DeliveryAdmin(
         "maternal_outcome": admin.VERTICAL,
     }
 
-    search_fields = ("subject_identifier", "action_identifier", "tracking_identifier")
+    readonly_fields = action_fields
+
+    search_fields = (
+        "subject_visit__subject_identifier",
+        "action_identifier",
+        "tracking_identifier",
+    )
 
     @admin.display
     def birth_outcomes(self, obj=None, label=None):
-        url = reverse("meta_prn_admin:meta_prn_birthoutcomes_changelist")
+        url = reverse("meta_subject_admin:meta_subject_birthoutcomes_changelist")
         url = f"{url}?q={obj.subject_identifier}"
         context = dict(title="Outcomes", url=url, label="Outcomes")
         return render_to_string("dashboard_button.html", context=context)
 
-    def get_readonly_fields(self, request, obj=None):
-        fields = super().get_readonly_fields(request, obj)
-        action_flds = copy(list(action_fields))
-        action_flds.remove("action_identifier")
-        fields = list(action_flds) + list(fields)
-        return fields
+    # def get_readonly_fields(self, request, obj=None):
+    #     fields = super().get_readonly_fields(request, obj)
+    #     action_flds = copy(list(action_fields))
+    #     action_flds.remove("action_identifier")
+    #     fields = list(action_flds) + list(fields)
+    #     return fields

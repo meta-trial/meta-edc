@@ -1,18 +1,31 @@
 from django import forms
-from edc_action_item.forms.action_item_form_mixin import ActionItemFormMixin
+from django.core.exceptions import ObjectDoesNotExist
+from edc_action_item.forms import ActionItemFormMixin
 from edc_constants.constants import NO
+from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators.form_validator import FormValidator
-from edc_form_validators.form_validator_mixin import FormValidatorMixin
-from edc_sites.forms import SiteModelFormMixin
 
 from meta_ae.constants import HOSPITAL_CLINIC
+from meta_prn.models import PregnancyNotification
 
 from ..models import Delivery
 
 
 class DeliveryFormValidator(FormValidator):
     def clean(self):
+        try:
+            PregnancyNotification.objects.get(
+                subject_identifier=self.cleaned_data.get(
+                    "subject_visit"
+                ).subject_identifier
+            )
+        except ObjectDoesNotExist:
+            raise forms.ValidationError(
+                f"{PregnancyNotification._meta.verbose_name} not found."
+            )
+
         self.validate_informant()
+
         self.validate_delivery_location()
 
     def validate_informant(self):
@@ -41,17 +54,9 @@ class DeliveryFormValidator(FormValidator):
         )
 
 
-class DeliveryForm(
-    SiteModelFormMixin, FormValidatorMixin, ActionItemFormMixin, forms.ModelForm
-):
+class DeliveryForm(CrfModelFormMixin, ActionItemFormMixin, forms.ModelForm):
 
     form_validator_cls = DeliveryFormValidator
-
-    subject_identifier = forms.CharField(
-        label="Subject Identifier",
-        required=False,
-        widget=forms.TextInput(attrs={"readonly": "readonly"}),
-    )
 
     class Meta:
         model = Delivery

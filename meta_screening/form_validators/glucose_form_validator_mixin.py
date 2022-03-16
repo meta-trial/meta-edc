@@ -10,7 +10,7 @@
 #
 #         class MyFormValidator(GlucoseFormValidatorMixin, FormValidator):
 #             def clean(self):
-#                 self.validate_ifg()
+#                 self.validate_fbg()
 #                 self.validate_ogtt()
 #                 self.validate_ogtt_dates()
 #                 self.validate_glucose_dates()
@@ -20,29 +20,29 @@
 #     max_val = Decimal("30.00")
 #     high_value = Decimal("9999.99")
 #
-#     def validate_ifg(self):
-#         """Uses fields `fasting`,`fasting_duration_str`, `ifg_value`,
-#         `ifg_datetime`, `ifg_units`
+#     def validate_fbg(self):
+#         """Uses fields `fasting`,`fasting_duration_str`, `fbg_value`,
+#         `fbg_datetime`, `fbg_units`
 #         """
 #         self.required_if(YES, field="fasting", field_required="fasting_duration_str")
 #
-#         self.required_if(YES, field="fasting", field_required="ifg_datetime")
+#         self.required_if(YES, field="fasting", field_required="fbg_datetime")
 #
-#         self.required_if(YES, field="fasting", field_required="ifg_value")
+#         self.required_if(YES, field="fasting", field_required="fbg_value")
 #
 #         self.required_if_true(
-#             self.cleaned_data.get("ifg_datetime"),
-#             field_required="ifg_value",
+#             self.cleaned_data.get("fbg_datetime"),
+#             field_required="fbg_value",
 #         )
 #
 #         self.required_if_true(
-#             self.cleaned_data.get("ifg_value"),
-#             field_required="ifg_units",
+#             self.cleaned_data.get("fbg_value"),
+#             field_required="fbg_units",
 #         )
 #
 #         self.required_if_true(
-#             self.cleaned_data.get("ifg_value"),
-#             field_required="ifg_datetime",
+#             self.cleaned_data.get("fbg_value"),
+#             field_required="fbg_datetime",
 #         )
 #
 #     def validate_ogtt(self):
@@ -110,18 +110,18 @@
 #                     }
 #                 )
 #
-#     def validate_ifg_before_ogtt(self):
-#         """Validate the IFG is performed before the OGTT"""
-#         ifg_dte = self.cleaned_data.get("ifg_datetime")
+#     def validate_fbg_before_ogtt(self):
+#         """Validate the FBG is performed before the OGTT"""
+#         fbg_dte = self.cleaned_data.get("fbg_datetime")
 #         ogtt_base_dte = self.cleaned_data.get("ogtt_base_datetime")
-#         if ifg_dte and ogtt_base_dte:
-#             total_seconds = (ogtt_base_dte - ifg_dte).total_seconds()
+#         if fbg_dte and ogtt_base_dte:
+#             total_seconds = (ogtt_base_dte - fbg_dte).total_seconds()
 #             if total_seconds <= 1:
 #                 raise forms.ValidationError(
 #                     {
 #                         "ogtt_base_datetime": (
 #                             "Invalid date. Expected to be after time "
-#                             "IFG level was measured"
+#                             "FBG level was measured"
 #                         )
 #                     }
 #                 )

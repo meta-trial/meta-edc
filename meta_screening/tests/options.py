@@ -91,7 +91,7 @@ def get_part_two_eligible_options():
     return options
 
 
-def get_part_three_eligible_options():
+def get_part_three_eligible_options(report_datetime: datetime = None):
     options = dict(
         creatinine_performed=YES,
         creatinine_units=MICROMOLES_PER_LITER,
@@ -104,16 +104,16 @@ def get_part_three_eligible_options():
         hba1c_performed=YES,
         hba1c_value=7.0,
         height=110,
-        ifg_datetime=tomorrow,
-        ifg_units=MILLIMOLES_PER_LITER,
-        ifg_value=7.0,
+        fbg_datetime=tomorrow,
+        fbg_units=MILLIMOLES_PER_LITER,
+        fbg_value=7.0,
         ogtt_base_datetime=tomorrow + relativedelta(minutes=5),
         ogtt_datetime=tomorrow + relativedelta(hours=2),
         ogtt_units=MILLIMOLES_PER_LITER,
         ogtt_value=7.5,
         repeat_glucose_opinion=NO,
-        repeat_glucose_performed=NO,
-        part_three_report_datetime=now,
+        ogtt2_performed=NOT_APPLICABLE,
+        part_three_report_datetime=report_datetime or now,
         reasons_unsuitable=None,
         sys_blood_pressure=120,
         sys_blood_pressure_one=120,
@@ -127,7 +127,7 @@ def get_part_three_eligible_options():
         weight=65,
     )
     if get_meta_version() == PHASE_THREE:
-        options["ifg_value"] = 6.9
+        options["fbg_value"] = 6.9
         options["ogtt_value"] = 7.8
         options["fasting_opinion"] = YES
         options["severe_htn"] = NO

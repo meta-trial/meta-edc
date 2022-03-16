@@ -1,4 +1,4 @@
-from edc_action_item import Action, site_action_items
+from edc_action_item import Action, ActionWithNotification, site_action_items
 from edc_action_item.site_action_items import AlreadyRegistered
 from edc_adverse_event.constants import AE_INITIAL_ACTION
 from edc_blood_results.action_items import (
@@ -17,9 +17,14 @@ from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_reportable import GRADE3, GRADE4
 from edc_visit_schedule.utils import is_baseline
 
-from meta_prn.constants import PREGNANCY_NOTIFICATION_ACTION
+from meta_prn.constants import (
+    OFFSCHEDULE_ACTION,
+    OFFSCHEDULE_PREGNANCY_ACTION,
+    PREGNANCY_NOTIFICATION_ACTION,
+)
 
 from .constants import (
+    DELIVERY_ACTION,
     FOLLOWUP_EXAMINATION_ACTION,
     MISSED_VISIT_ACTION,
     URINE_PREGNANCY_ACTION,
@@ -96,6 +101,22 @@ class BloodResultsRftAction(BaseBloodResultsRftAction):
         return next_actions
 
 
+class DeliveryAction(ActionWithNotification):
+    name = DELIVERY_ACTION
+    display_name = "Submit Delivery Form"
+    notification_display_name = "Delivery Form"
+    parent_action_names = [PREGNANCY_NOTIFICATION_ACTION]
+    reference_model = "meta_subject.delivery"
+    show_link_to_changelist = True
+    show_link_to_add = True
+    admin_site_name = "meta_subject_admin"
+    priority = HIGH_PRIORITY
+
+    def get_next_actions(self):
+        next_actions = [OFFSCHEDULE_PREGNANCY_ACTION]
+        return next_actions
+
+
 def register_actions():
     for action_item_cls in [
         BloodResultsFbcAction,
@@ -107,6 +128,7 @@ def register_actions():
         FollowupExaminationAction,
         MissedVisitAction,
         UrinePregnancyAction,
+        DeliveryAction,
     ]:
         try:
             site_action_items.register(action_item_cls)

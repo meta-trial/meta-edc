@@ -13,14 +13,6 @@ class PartFourFieldsModelMixin(models.Model):
     # TODO: "In the opinion of the clinican, has the participant fasted?"
     # TODO: the second measure is used for eligibility
 
-    # fasting_opinion = models.CharField(
-    #     verbose_name="In the opinion of the clinican, has the participant fasted?",
-    #     max_length=15,
-    #     choices=YES_NO_UNSURE,
-    #     null=True,
-    #     blank=False,
-    # )
-
     # Assessment of understanding
     aou = models.CharField(
         verbose_name="Have the research staff assessed the subject's understanding of the study?",

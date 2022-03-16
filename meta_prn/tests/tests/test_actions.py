@@ -1,19 +1,27 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, override_settings, tag
 from edc_action_item.models import ActionItem
+from edc_appointment.models import Appointment
+from edc_constants.constants import FEMALE
 from edc_utils import get_utcnow
 from edc_visit_schedule.constants import MONTH1
 from model_bakery.baker import make_recipe
 
 from meta_edc.meta_version import PHASE_TWO
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
+from meta_visit_schedule.constants import DELIVERY
 
 
 @override_settings(META_PHASE=PHASE_TWO)
 class TestMetadataRules(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()
-        self.subject_visit = self.get_subject_visit()
+        self.subject_screening = self.get_subject_screening(gender=FEMALE)
+        self.subject_consent = self.get_subject_consent(self.subject_screening)
+        self.subject_visit = self.get_subject_visit(
+            subject_screening=self.subject_screening,
+            subject_consent=self.subject_consent,
+        )
         self.data = dict(
             subject_visit=self.subject_visit.pk,
             report_datetime=self.subject_visit.report_datetime,
@@ -50,34 +58,32 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
                 "ActionItem for pregnancynotification unexpectedly does not exist"
             )
 
-        pregnancy_notification = make_recipe(
+        make_recipe(
             "meta_prn.pregnancynotification",
             subject_identifier=subject_visit.subject_identifier,
         )
 
         try:
-            ActionItem.objects.get(
-                parent_action_item__action_identifier=pregnancy_notification.action_identifier,
-                reference_model="meta_prn.delivery",
-            )
+            Appointment.objects.get(visit_code=DELIVERY)
         except ObjectDoesNotExist:
-            self.fail("ActionItem for delivery unexpectedly does not exist")
+            self.fail("delivery appointment unexpectedly does not exist")
+
+        subject_visit = self.get_subject_visit(
+            subject_screening=self.subject_screening,
+            subject_consent=self.subject_consent,
+            visit_code=DELIVERY,
+            visit_code_sequence=0,
+        )
+
+        delivery = make_recipe(
+            "meta_subject.delivery",
+            subject_visit=subject_visit,
+        )
 
         try:
             ActionItem.objects.get(
-                parent_action_item__action_identifier=pregnancy_notification.action_identifier,
-                reference_model="meta_prn.delivery",
+                parent_action_item__action_identifier=delivery.action_identifier,
+                reference_model="meta_prn.offschedulepregnancy",
             )
         except ObjectDoesNotExist:
-            self.fail("ActionItem for delivery unexpectedly does not exist")
-
-        delivery = make_recipe(
-            "meta_prn.delivery",
-            subject_identifier=subject_visit.subject_identifier,
-        )
-
-        birth_outcomes = make_recipe(
-            "meta_prn.birthoutcomes",
-            subject_identifier=subject_visit.subject_identifier,
-            delivery=delivery,
-        )
+            self.fail("ActionItem for offschedulepregnancy unexpectedly does not exist")

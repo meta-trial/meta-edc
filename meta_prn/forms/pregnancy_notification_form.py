@@ -1,6 +1,6 @@
 from django import forms
 from edc_action_item.forms.action_item_form_mixin import ActionItemFormMixin
-from edc_constants.constants import NO
+from edc_constants.constants import NO, YES
 from edc_form_validators.form_validator import FormValidator
 from edc_form_validators.form_validator_mixin import FormValidatorMixin
 from edc_sites.forms import SiteModelFormMixin
@@ -15,7 +15,7 @@ class PregnancyNotificationFormValidator(FormValidator):
         self.required_if(
             NO, field="bhcg_confirmed", field_required="unconfirmed_details"
         )
-        if self.instance.id is None:
+        if self.instance.id is None and self.cleaned_data.get("bhcg_confirmed") == YES:
             if not UrinePregnancy.objects.filter(
                 subject_visit__subject_identifier=self.cleaned_data.get(
                     "subject_identifier"

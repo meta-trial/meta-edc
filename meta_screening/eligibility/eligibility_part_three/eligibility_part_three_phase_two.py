@@ -5,8 +5,8 @@ from edc_screening.screening_eligibility import ScreeningEligibilityError
 from meta_edc.meta_version import PHASE_TWO, get_meta_version
 
 from ...constants import (
+    BMI_FBG_OGTT_INCOMPLETE,
     BMI_IFT_OGTT,
-    BMI_IFT_OGTT_INCOMPLETE,
     EGFR_LT_45,
     EGFR_NOT_CALCULATED,
 )
@@ -36,7 +36,7 @@ class EligibilityPartThreePhaseTwo(BaseEligibilityPartThree):
             self.reasons_ineligible.update({"bmi_ift_ogtt": BMI_IFT_OGTT})
             self.eligible = NO
         elif a == TBD or b == TBD or c == TBD or d == TBD:
-            self.reasons_ineligible.update({"bmi_ift_ogtt": BMI_IFT_OGTT_INCOMPLETE})
+            self.reasons_ineligible.update({"bmi_ift_ogtt": BMI_FBG_OGTT_INCOMPLETE})
             self.eligible = TBD
         if not self.reasons_ineligible:
             self.model_obj.calculated_egfr_value = calculate_egfr(
@@ -51,7 +51,7 @@ class EligibilityPartThreePhaseTwo(BaseEligibilityPartThree):
         if not self.reasons_ineligible:
             self.eligible = YES
         elif (
-            BMI_IFT_OGTT_INCOMPLETE not in self.reasons_ineligible.values()
+            BMI_FBG_OGTT_INCOMPLETE not in self.reasons_ineligible.values()
             and EGFR_NOT_CALCULATED not in self.reasons_ineligible.values()
         ):
             self.eligible = NO
@@ -65,9 +65,9 @@ class EligibilityPartThreePhaseTwo(BaseEligibilityPartThree):
 
     def calculate_inclusion_field_values(self):
         # (a) BMI > 30 combined with IFG (6.1 to 6.9 mmol/L)
-        if self.bmi.value is None or not self.converted_ifg_value:
+        if self.bmi.value is None or not self.converted_fbg_value:
             inclusion_a = TBD
-        elif self.bmi.value > 30.0 and 6.1 <= self.converted_ifg_value <= 6.9:
+        elif self.bmi.value > 30.0 and 6.1 <= self.converted_fbg_value <= 6.9:
             inclusion_a = YES
         else:
             inclusion_a = NO
@@ -81,9 +81,9 @@ class EligibilityPartThreePhaseTwo(BaseEligibilityPartThree):
             inclusion_b = NO
 
         # (c) BMI <= 30 combined with IFG (6.3 to 6.9 mmol/L)
-        if self.bmi.value is None or not self.converted_ifg_value:
+        if self.bmi.value is None or not self.converted_fbg_value:
             inclusion_c = TBD
-        elif self.bmi.value <= 30.0 and 6.3 <= self.converted_ifg_value <= 6.9:
+        elif self.bmi.value <= 30.0 and 6.3 <= self.converted_fbg_value <= 6.9:
             inclusion_c = YES
         else:
             inclusion_c = NO

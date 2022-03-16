@@ -257,18 +257,18 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
         part_three_data = deepcopy(get_part_three_eligible_options())
         report_datetime = part_three_data.get("part_three_report_datetime")
-        ifg_datetime = part_three_data.get("ifg_datetime")
+        fbg_datetime = part_three_data.get("fbg_datetime")
         ogtt_datetime = part_three_data.get("ogtt_datetime")
         part_three_data = deepcopy(part_three_data)
         part_three_data.update(
-            dict(
-                part_three_report_datetime_0=report_datetime.strftime("%Y-%m-%d"),
-                part_three_report_datetime_1=report_datetime.strftime("%H:%M"),
-                ifg_datetime_0=ifg_datetime.strftime("%Y-%m-%d"),
-                ifg_datetime_1=ifg_datetime.strftime("%H:%M"),
-                ogtt_datetime_0=ogtt_datetime.strftime("%Y-%m-%d"),
-                ogtt_datetime_1=ogtt_datetime.strftime("%H:%M"),
-            )
+            {
+                "part_three_report_datetime_0": report_datetime.strftime("%Y-%m-%d"),
+                "part_three_report_datetime_1": report_datetime.strftime("%H:%M"),
+                "fbg_datetime_0": fbg_datetime.strftime("%Y-%m-%d"),
+                "fbg_datetime_1": fbg_datetime.strftime("%H:%M"),
+                "ogtt_datetime_0": ogtt_datetime.strftime("%Y-%m-%d"),
+                "ogtt_datetime_1": ogtt_datetime.strftime("%H:%M"),
+            }
         )
         (
             screening_listboard_page,
@@ -280,7 +280,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Consent", screening_listboard_page)
 
     @skipIf(get_meta_version() != 3, "not version 3")
-    @tag("webtest1")
+    @tag("webtest")
     def test_screening_form_phase3(self):
         self.login(superuser=False, roles=[STAFF_ROLE, CLINICIAN_ROLE])
         site_randomizers._registry = {}
@@ -323,14 +323,14 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
         part_three_data = deepcopy(get_part_three_eligible_options())
         report_datetime = part_three_data.get("part_three_report_datetime")
-        ifg_datetime = part_three_data.get("ifg_datetime")
+        fbg_datetime = part_three_data.get("fbg_datetime")
         ogtt_datetime = part_three_data.get("ogtt_datetime")
         part_three_data.update(
             dict(
                 part_three_report_datetime_0=report_datetime.strftime("%Y-%m-%d"),
                 part_three_report_datetime_1=report_datetime.strftime("%H:%M"),
-                ifg_datetime_0=ifg_datetime.strftime("%Y-%m-%d"),
-                ifg_datetime_1=ifg_datetime.strftime("%H:%M"),
+                fbg_datetime_0=fbg_datetime.strftime("%Y-%m-%d"),
+                fbg_datetime_1=fbg_datetime.strftime("%H:%M"),
                 ogtt_datetime_0=ogtt_datetime.strftime("%Y-%m-%d"),
                 ogtt_datetime_1=ogtt_datetime.strftime("%H:%M"),
             )
@@ -450,7 +450,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         obj.save()
         return obj
 
-    @tag("webtest3")
+    @tag("webtest")
     def test_to_subject_dashboard(self):
         add_or_update_django_sites(apps=django_apps, sites=all_sites)
         self.login(

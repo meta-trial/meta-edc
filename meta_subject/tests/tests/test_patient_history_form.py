@@ -49,7 +49,7 @@ class BaseTestPatientHistory(MetaTestCaseMixin, TestCase):
             "past_year_symptoms": None,
             "peripheral_oedema": YES,
             "previous_arv_regimen": [],
-            "report_datetime": get_utcnow(),
+            "report_datetime": self.subject_visit.report_datetime,
             "respiratory_rate": 12,
             "subject_visit": self.subject_visit.pk,
             "symptoms": symptoms,

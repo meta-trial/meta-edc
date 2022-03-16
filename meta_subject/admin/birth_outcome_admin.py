@@ -1,5 +1,3 @@
-from copy import copy
-
 from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
@@ -9,12 +7,12 @@ from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_registration.models import RegisteredSubject
 
-from ..admin_site import meta_prn_admin
+from ..admin_site import meta_subject_admin
 from ..forms import BirthOutcomesForm
 from ..models import BirthOutcomes
 
 
-@admin.register(BirthOutcomes, site=meta_prn_admin)
+@admin.register(BirthOutcomes, site=meta_subject_admin)
 class BirthOutcomesAdmin(
     DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
 ):
@@ -22,7 +20,7 @@ class BirthOutcomesAdmin(
     form = BirthOutcomesForm
 
     fieldsets = (
-        (None, {"fields": ("subject_identifier", "report_datetime")}),
+        (None, {"fields": ("subject_visit", "report_datetime")}),
         (
             "Birth Outcome",
             {
@@ -37,7 +35,7 @@ class BirthOutcomesAdmin(
     )
 
     list_display = (
-        "subject_identifier",
+        "subject_visit",
         "delivery_report",
         "dashboard",
         "birth_order",
@@ -54,7 +52,7 @@ class BirthOutcomesAdmin(
     }
 
     search_fields = (
-        "subject_identifier",
+        "subject_visit__subject_identifier",
         "delivery__action_identifier",
         "delivery__tracking_identifier",
     )

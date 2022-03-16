@@ -2,6 +2,7 @@ from django import forms
 from edc_constants.constants import NEG, NO, POS, YES
 from edc_form_validators import FormValidator
 from edc_glucose.form_validators import (
+    FastingFormValidatorMixin,
     FbgOgttFormValidatorMixin,
     GlucoseFormValidatorMixin,
 )
@@ -23,6 +24,7 @@ class ScreeningPartThreeFormValidatorError(Exception):
 
 class ScreeningPartThreeFormValidator(
     GlucoseFormValidatorMixin,
+    FastingFormValidatorMixin,
     FbgOgttFormValidatorMixin,
     BmiFormValidatorMixin,
     EgfrFormValidatorMixin,
@@ -39,7 +41,7 @@ class ScreeningPartThreeFormValidator(
     def clean_phase_two(self):
         self.validate_report_datetimes()
         self.validate_fbg_required_fields()
-        validate_glucose_as_millimoles_per_liter("ifg", self.cleaned_data)
+        validate_glucose_as_millimoles_per_liter("fbg", self.cleaned_data)
         self.validate_ogtt_required_fields()
         validate_glucose_as_millimoles_per_liter("ogtt", self.cleaned_data)
         self.validate_creatinine_required_fields()
@@ -49,7 +51,7 @@ class ScreeningPartThreeFormValidator(
         self.validate_ogtt_dates(prefix="ogtt")
         self.validate_bmi()
         self.validate_egfr()
-        self.validate_ifg_before_ogtt()
+        self.validate_fbg_before_ogtt()
         self.validate_ogtt_time_interval()
         self.validate_suitability_for_study()
 
@@ -64,18 +66,48 @@ class ScreeningPartThreeFormValidator(
         )
         self.raise_on_avg_blood_pressure_suggests_severe_htn(**self.cleaned_data)
         self.validate_pregnancy()
+
+        self.validate_fasting_required_fields()
         self.validate_fbg_required_fields()
-        validate_glucose_as_millimoles_per_liter("ifg", self.cleaned_data)
-        self.validate_ifg_before_ogtt()
+        validate_glucose_as_millimoles_per_liter("fbg", self.cleaned_data)
+        self.validate_fbg_before_ogtt()
         self.validate_ogtt_time_interval()
         self.validate_ogtt_required_fields()
         self.validate_ogtt_dates()
         validate_glucose_as_millimoles_per_liter("ogtt", self.cleaned_data)
+
+        self.validate_fasting_required_fields(fasting_prefix="repeat_fasting")
+
+        self.required_if(YES, field="repeat_fasting", field_required="fbg2_performed")
+        self.validate_repeat_fbg()
         self.validate_repeat_ogtt()
+
         self.validate_creatinine_required_fields()
         self.required_if(YES, field="hba1c_performed", field_required="hba1c_value")
         self.validate_egfr()
         self.validate_suitability_for_study()
+
+    def validate_repeat_fbg(self):
+        """Validate like first FBG and ...
+
+        Ensure repeat FBG at least three days after first FBG
+        """
+        self.applicable_if(
+            YES,
+            field="repeat_glucose_opinion",
+            field_applicable="repeat_glucose_performed",
+        )
+        self.required_if(
+            YES, field="repeat_glucose_performed", field_required="fbg2_performed"
+        )
+        for fld in [
+            "fbg2_datetime",
+            "fbg2_value",
+            "fbg2_units",
+        ]:
+            self.required_if(
+                YES, field="fbg2_performed", field_required="fbg2_performed"
+            )
 
     def validate_repeat_ogtt(self):
         """Validate like first OGTT and ...
@@ -88,13 +120,17 @@ class ScreeningPartThreeFormValidator(
             field_applicable="repeat_glucose_performed",
         )
         for fld in [
+            "ogtt2_performed",
             "ogtt2_base_datetime",
             "ogtt2_datetime",
             "ogtt2_value",
             "ogtt2_units",
         ]:
             self.required_if(YES, field="repeat_glucose_performed", field_required=fld)
-        if self.cleaned_data.get("repeat_glucose_performed") == YES:
+        if (
+            self.cleaned_data.get("repeat_glucose_performed") == YES
+            and self.cleaned_data.get("ogtt2_performed") == YES
+        ):
             for ogtt_dte, ogtt2_dte in [
                 ("ogtt_base_datetime", "ogtt2_base_datetime"),
                 ("ogtt_datetime", "ogtt2_datetime"),

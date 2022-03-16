@@ -1,18 +1,6 @@
-from edc_constants.constants import DEAD, NOT_APPLICABLE, OTHER, UNKNOWN
+from edc_constants.constants import NOT_APPLICABLE, OTHER, UNKNOWN
 
-# PHASE_THREE ONLY
-from meta_ae.constants import HOSPITAL_CLINIC
-
-from .constants import (
-    CLINICIAN,
-    INVESTIGATOR,
-    LIVE_AT_TERM,
-    LIVE_PRETERM,
-    NO_COMPLICATIONS,
-    PATIENT,
-    PREGNANCY,
-    SAE,
-)
+from .constants import CLINICIAN, INVESTIGATOR, PATIENT, PREGNANCY, SAE
 
 CLINICAL_WITHDRAWAL_REASONS = (
     ("pregnancy", "Pregnancy"),
@@ -30,11 +18,6 @@ CLINICAL_WITHDRAWAL_REASONS = (
 )
 
 # PHASE_THREE ONLY
-DELIVERY_LOCATIONS = (
-    ("home", "At home"),
-    (HOSPITAL_CLINIC, "Hospital / Clinic"),
-    (OTHER, "Other location, specify"),
-)
 
 INFORMANT_RELATIONSHIP = (
     ("husband_wife", "Husband/wife"),
@@ -101,19 +84,6 @@ ACTION_REQUIRED = (
 
 REASON_STUDY_TERMINATED = ()
 
-MATERNAL_OUTCOMES = (
-    (NO_COMPLICATIONS, "No complications"),
-    ("complications_full_recovery", "Complications with full recovery"),
-    ("complications_ongoing_recovery", "Complications with ongoing recovery"),
-    (DEAD, "Maternal mortality"),
-)
-
-FETAL_OUTCOMES = (
-    (LIVE_AT_TERM, "Live birth at term"),
-    (LIVE_PRETERM, "Live birth preterm"),
-    ("stillbirth", "Stillbirth"),
-    ("miscarriage", "Miscarriage"),
-)
 WITHDRAWAL_STUDY_MEDICATION_REASONS = (
     (PREGNANCY, "Pregnancy"),
     (SAE, "Participant is experiencing a serious adverse event"),

@@ -14,12 +14,12 @@ from edc_utils.date import get_utcnow
 
 from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
 from meta_screening.constants import (
+    BMI_FBG_OGTT_INCOMPLETE,
     BMI_IFT_OGTT,
-    BMI_IFT_OGTT_INCOMPLETE,
     EGFR_LT_45,
     EGFR_NOT_CALCULATED,
+    FBG_OGTT_INCOMPLETE,
     IFT_OGTT,
-    IFT_OGTT_INCOMPLETE,
 )
 from meta_screening.models import ScreeningPartOne, ScreeningPartThree, ScreeningPartTwo
 
@@ -78,10 +78,11 @@ class TestScreeningPartThree(TestCase):
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
         self._test_eligible(part_three_eligible_options)
 
+    @tag("4")
     @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
     def test_eligible_part_three_defaults_phase_three(self):
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
-        part_three_eligible_options["ifg_value"] = 6.9
+        part_three_eligible_options["fbg_value"] = 6.9
         part_three_eligible_options["ogtt_value"] = 7.8
         self._test_eligible(part_three_eligible_options)
 
@@ -93,6 +94,7 @@ class TestScreeningPartThree(TestCase):
         self.assertIsNone(obj.reasons_ineligible_part_three)
         self.assertEqual(obj.eligible_part_three, YES)
 
+    @tag("4")
     def test_eligible_datetime_does_not_change_on_resave(self):
         obj = self.get_screening_part_three_obj()
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
@@ -121,8 +123,9 @@ class TestScreeningPartThree(TestCase):
         obj.ogtt_value = None
         obj.save()
         obj.refresh_from_db()
-        self._test_eligible2(obj, BMI_IFT_OGTT_INCOMPLETE, BMI_IFT_OGTT)
+        self._test_eligible2(obj, BMI_FBG_OGTT_INCOMPLETE, BMI_IFT_OGTT)
 
+    @tag("22")
     @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
     def test_eligible2_phase_three(self):
         obj = self.get_screening_part_three_obj()
@@ -152,8 +155,24 @@ class TestScreeningPartThree(TestCase):
         obj.ogtt_value = None
         obj.save()
         obj.refresh_from_db()
-        self._test_eligible2(obj, IFT_OGTT_INCOMPLETE, IFT_OGTT)
+        self._test_eligible2(obj, FBG_OGTT_INCOMPLETE, IFT_OGTT)
 
+    @tag("22")
+    @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
+    def test_eligible2_phase_three_ogtt2_not_performed_is_ok(self):
+        obj = self.get_screening_part_three_obj()
+        part_three_eligible_options = deepcopy(get_part_three_eligible_options())
+        for k, v in part_three_eligible_options.items():
+            setattr(obj, k, v)
+        obj.save()
+        obj.refresh_from_db()
+        obj.oggt2_performed = NO
+        obj.save()
+        obj.refresh_from_db()
+
+        self.assertEqual(obj.eligible_part_three, YES)
+
+    @tag("22")
     @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
     def test_eligible2_phase_three_repeat_ogtt2_updates_converted(self):
         obj = self.get_screening_part_three_obj()
@@ -163,6 +182,7 @@ class TestScreeningPartThree(TestCase):
         obj.save()
         obj.refresh_from_db()
 
+        obj.repeat_glucose_opinion = YES
         obj.oggt2_performed = YES
         obj.ogtt2_base_datetime = obj.ogtt_base_datetime + relativedelta(days=3)
         obj.ogtt2_datetime = obj.ogtt_datetime + relativedelta(days=3)
@@ -174,10 +194,12 @@ class TestScreeningPartThree(TestCase):
         self.assertEqual(obj.converted_ogtt_value, obj.ogtt_value)
         self.assertEqual(obj.converted_ogtt2_value, obj.ogtt2_value)
 
+    @tag("22")
     @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
     def test_eligible2_phase_three_by_repeat_ogtt(self):
         obj = self.get_screening_part_three_obj()
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
+
         for k, v in part_three_eligible_options.items():
             setattr(obj, k, v)
         obj.save()
@@ -187,7 +209,8 @@ class TestScreeningPartThree(TestCase):
         self.assertIsNone(obj.reasons_ineligible_part_three)
         self.assertEqual(obj.eligible_part_three, YES)
 
-        obj.oggt2_performed = YES
+        obj.repeat_glucose_opinion = YES
+        obj.ogtt2_performed = YES
         obj.ogtt2_base_datetime = obj.ogtt_base_datetime + relativedelta(days=3)
         obj.ogtt2_datetime = obj.ogtt_datetime + relativedelta(days=3)
         obj.ogtt2_units = obj.ogtt_units
@@ -260,9 +283,9 @@ class TestScreeningPartThree(TestCase):
 
         obj.fasting = YES
         obj.fasting_duration_str = "8h"
-        obj.ifg_value = 6.9
-        obj.ifg_units = MILLIMOLES_PER_LITER
-        obj.ifg_datetime = get_utcnow()
+        obj.fbg_value = 6.9
+        obj.fbg_units = MILLIMOLES_PER_LITER
+        obj.fbg_datetime = get_utcnow()
         obj.save()
 
         self.assertEqual(obj.reasons_ineligible_part_three, incomplete_reason)
@@ -303,9 +326,9 @@ class TestScreeningPartThree(TestCase):
 
     @skipIf(get_meta_version() != PHASE_TWO, "test is for META2 only")
     def test_tbd_eligible_egfr_not_calculated_phase_two(self):
-        ifg_value = 7.0
+        fbg_value = 7.0
         ogtt_value = 7.5
-        obj = self._test_egfr_not_calculated(ifg_value, ogtt_value)
+        obj = self._test_egfr_not_calculated(fbg_value, ogtt_value)
         self.assertIn(EGFR_NOT_CALCULATED, obj.reasons_ineligible_part_three)
         self.assertEqual(obj.eligible_part_three, TBD)
         self.assertFalse(obj.eligible)
@@ -316,22 +339,22 @@ class TestScreeningPartThree(TestCase):
         """Is eligible, since phase three will allow for EGFR to be considered
         late exclusion.
         """
-        ifg_value = 6.9
+        fbg_value = 6.9
         ogtt_value = 7.8
-        obj = self._test_egfr_not_calculated(ifg_value, ogtt_value)
+        obj = self._test_egfr_not_calculated(fbg_value, ogtt_value)
         self.assertNotIn(EGFR_NOT_CALCULATED, obj.reasons_ineligible_part_three or "")
         self.assertEqual(obj.eligible_part_three, YES)
         self.assertTrue(obj.eligible)
         self.assertFalse(obj.consented)
 
-    def _test_egfr_not_calculated(self, ifg_value, ogtt_value):
+    def _test_egfr_not_calculated(self, fbg_value, ogtt_value):
         obj = self.get_screening_part_three_obj()
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertFalse(obj.reasons_ineligible_part_one)
         self.assertEqual(obj.eligible_part_two, YES)
         self.assertFalse(obj.reasons_ineligible_part_two)
 
-        obj.ifg_value = ifg_value
+        obj.fbg_value = fbg_value
         obj.ogtt_value = ogtt_value
 
         obj.part_three_report_datetime = get_utcnow()
@@ -342,8 +365,8 @@ class TestScreeningPartThree(TestCase):
         obj.creatinine_performed = NO
         obj.fasting = YES
         obj.fasting_duration_str = "8h"
-        obj.ifg_units = MILLIMOLES_PER_LITER
-        obj.ifg_datetime = get_utcnow()
+        obj.fbg_units = MILLIMOLES_PER_LITER
+        obj.fbg_datetime = get_utcnow()
         obj.ogtt_base_datetime = get_utcnow()
         obj.ogtt_units = MILLIMOLES_PER_LITER
         obj.ogtt_datetime = get_utcnow()
@@ -353,17 +376,17 @@ class TestScreeningPartThree(TestCase):
 
     @skipIf(get_meta_version() != PHASE_TWO, "test is for META2 only")
     def test_not_eligible_egfr_less_than_45_phase_two(self):
-        ifg_value = 7.0
+        fbg_value = 7.0
         ogtt_value = 7.5
-        self._test_not_eligible_egfr_less_than_45(ifg_value, ogtt_value)
+        self._test_not_eligible_egfr_less_than_45(fbg_value, ogtt_value)
 
     @skipIf(get_meta_version() != PHASE_THREE, "test is for META3 only")
     def test_not_eligible_egfr_less_than_45_phase_three(self):
-        ifg_value = 6.9
+        fbg_value = 6.9
         ogtt_value = 7.8
-        self._test_not_eligible_egfr_less_than_45(ifg_value, ogtt_value)
+        self._test_not_eligible_egfr_less_than_45(fbg_value, ogtt_value)
 
-    def _test_not_eligible_egfr_less_than_45(self, ifg_value, ogtt_value):
+    def _test_not_eligible_egfr_less_than_45(self, fbg_value, ogtt_value):
 
         obj = self.get_screening_part_three_obj()
         self.assertEqual(obj.eligible_part_one, YES)
@@ -371,7 +394,7 @@ class TestScreeningPartThree(TestCase):
         self.assertEqual(obj.eligible_part_two, YES)
         self.assertFalse(obj.reasons_ineligible_part_two)
 
-        obj.ifg_value = ifg_value
+        obj.fbg_value = fbg_value
         obj.ogtt_value = ogtt_value
 
         # defaults
@@ -383,8 +406,8 @@ class TestScreeningPartThree(TestCase):
         obj.hba1c_performed = YES
         obj.hba1c_value = 7.0
         obj.height = 110
-        obj.ifg_datetime = get_utcnow()
-        obj.ifg_units = MILLIMOLES_PER_LITER
+        obj.fbg_datetime = get_utcnow()
+        obj.fbg_units = MILLIMOLES_PER_LITER
         obj.ogtt_base_datetime = get_utcnow()
         obj.ogtt_datetime = get_utcnow()
         obj.ogtt_units = MILLIMOLES_PER_LITER

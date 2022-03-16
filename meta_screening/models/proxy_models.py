@@ -1,13 +1,5 @@
 from edc_constants.constants import NO, TBD, YES
 
-from meta_edc.meta_version import PHASE_THREE, get_meta_version
-
-from ..eligibility import (
-    EligibilityPartOne,
-    EligibilityPartThreePhaseThree,
-    EligibilityPartThreePhaseTwo,
-    EligibilityPartTwo,
-)
 from .subject_screening import SubjectScreening
 
 options = dict(
@@ -19,9 +11,6 @@ options = dict(
 
 class ScreeningPartOne(SubjectScreening):
     def save(self, *args, **kwargs):
-        # EligibilityPartOne(model_obj=self, **options)
-        # self.eligible_part_one = eligibility.eligible
-        # self.reasons_ineligible_part_one = eligibility.reasons_ineligible_as_str or None
         if self.eligible_part_one == YES:
             self.continue_part_two = YES
         else:
@@ -35,12 +24,6 @@ class ScreeningPartOne(SubjectScreening):
 
 
 class ScreeningPartTwo(SubjectScreening):
-    # def save(self, *args, **kwargs):
-    #     EligibilityPartTwo(model_obj=self, **options)
-    #     # self.eligible_part_two = eligibility.eligible
-    #     # self.reasons_ineligible_part_two = eligibility.reasons_ineligible_as_str
-    #     super().save(*args, **kwargs)
-
     class Meta:
         proxy = True
         verbose_name = "Subject Screening: Part Two"
@@ -48,13 +31,6 @@ class ScreeningPartTwo(SubjectScreening):
 
 
 class ScreeningPartThree(SubjectScreening):
-    # def save(self, *args, **kwargs):
-    #     if get_meta_version() == PHASE_THREE:
-    #         EligibilityPartThreePhaseThree(model_obj=self, **options)
-    #     else:
-    #         EligibilityPartThreePhaseTwo(model_obj=self, **options)
-    #     super().save(*args, **kwargs)
-
     class Meta:
         proxy = True
         verbose_name = "Subject Screening: Part Three"

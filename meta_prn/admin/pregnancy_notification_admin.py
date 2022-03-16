@@ -43,9 +43,10 @@ class PregnancyNotificationAdmin(
         "subject_identifier",
         "dashboard",
         "edd",
+        "may_contact",
     )
 
-    list_filter = ("edd",)
+    list_filter = ("edd", "may_contact")
 
     radio_fields = {
         "bhcg_confirmed": admin.VERTICAL,

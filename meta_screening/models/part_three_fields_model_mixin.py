@@ -1,9 +1,14 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from edc_constants.choices import NO, YES_NO, YES_NO_PENDING_NA, YES_NO_UNSURE
+from edc_constants.choices import (
+    NO,
+    YES_NO,
+    YES_NO_NA,
+    YES_NO_PENDING_NA,
+    YES_NO_UNSURE,
+)
 from edc_constants.constants import NOT_APPLICABLE
 from edc_glucose.model_mixins import (
-    FastingModelMixin,
     fasting_model_mixin_factory,
     fbg_model_mixin_factory,
     ogtt_model_mixin_factory,
@@ -15,9 +20,8 @@ from edc_vitals.model_mixins import (
     WeightHeightBmiModelMixin,
 )
 
-from .creatinine_fields_model_mixin import CreatinineModelFieldsMixin
-
 # TODO: repeat FBG and OGTT after 48-72 hours if response to fasting is unsure in opinion of the clinician (PART 4)
+from .creatinine_fields_model_mixin import CreatinineModelFieldsMixin
 
 
 class FastingModelMixin(
@@ -40,9 +44,9 @@ class FastingModelMixin(
 
 class FbgModelMixin(
     fbg_model_mixin_factory(
-        "ifg",
-        ifg_units=models.CharField(
-            verbose_name="IFG units",
+        "fbg",
+        fbg_units=models.CharField(
+            verbose_name="FBG units",
             max_length=15,
             choices=GLUCOSE_UNITS,
             null=True,
@@ -50,9 +54,9 @@ class FbgModelMixin(
         ),
     ),
     fbg_model_mixin_factory(
-        "ifg2",
-        ifg2_units=models.CharField(
-            verbose_name="IFG units",
+        "fbg2",
+        fbg2_units=models.CharField(
+            verbose_name="FBG units",
             max_length=15,
             choices=GLUCOSE_UNITS,
             null=True,
@@ -85,7 +89,7 @@ class OgttModelMixin(
     ogtt_model_mixin_factory(
         "ogtt",
         ogtt_units=models.CharField(
-            verbose_name="Units (OGTT)",
+            verbose_name="OGTT Units",
             max_length=15,
             choices=GLUCOSE_UNITS,
             null=True,
@@ -95,7 +99,7 @@ class OgttModelMixin(
     ogtt_model_mixin_factory(
         "ogtt2",
         ogtt2_units=models.CharField(
-            verbose_name="Units (Repeat OGTT)",
+            verbose_name="Repeat OGTT Units",
             max_length=15,
             choices=GLUCOSE_UNITS,
             null=True,
@@ -137,6 +141,22 @@ class PartThreeFieldsModelMixin(
         choices=YES_NO_PENDING_NA,
         default=NOT_APPLICABLE,
         help_text="If repeated, must be at least 3 days after the first glucose measures (FBG, OGTT)",
+    )
+
+    fbg2_performed = models.CharField(
+        verbose_name="Was the FBG repeated?",
+        max_length=15,
+        choices=YES_NO_NA,
+        default=NOT_APPLICABLE,
+        help_text="If repeated, must be at least 3 days after the first FBG measures",
+    )
+
+    ogtt2_performed = models.CharField(
+        verbose_name="Was the OGTT repeated?",
+        max_length=15,
+        choices=YES_NO_NA,
+        default=NOT_APPLICABLE,
+        help_text="If repeated, must be at least 3 days after the first OGTT measures",
     )
 
     creatinine_units = models.CharField(

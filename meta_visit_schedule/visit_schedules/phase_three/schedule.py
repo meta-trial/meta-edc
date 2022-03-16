@@ -17,6 +17,7 @@ from ...constants import (
     MONTH30,
     MONTH33,
     MONTH36,
+    SCHEDULE,
     WEEK2,
 )
 from .crfs import (
@@ -59,8 +60,6 @@ from .requisitions import requisitions_prn as default_requisitions_prn
 from .requisitions import requisitions_unscheduled as default_requisitions_unscheduled
 from .requisitions import requisitions_w2
 
-SCHEDULE = "schedule"
-
 
 class Visit(BaseVisit):
     def __init__(
@@ -89,7 +88,7 @@ schedule = Schedule(
     name=SCHEDULE,
     verbose_name="Day 1 to Month 12 Follow-up",
     onschedule_model="meta_prn.onschedule",
-    offschedule_model="meta_prn.endofstudy",
+    offschedule_model="meta_prn.offschedule",
     consent_model="meta_consent.subjectconsent",
     appointment_model="edc_appointment.appointment",
 )

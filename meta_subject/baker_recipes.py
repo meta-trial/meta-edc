@@ -1,11 +1,15 @@
-from dateutil.relativedelta import relativedelta
-from edc_constants.constants import POS, YES
+from edc_constants.constants import NO, NOT_APPLICABLE, POS, YES
 from edc_utils import get_utcnow
 from edc_visit_tracking.constants import SCHEDULED
 from faker import Faker
-from model_bakery.recipe import Recipe, seq
+from model_bakery.recipe import Recipe
 
+from meta_ae.constants import HOSPITAL_CLINIC
+
+from .constants import LIVE_AT_TERM, NO_COMPLICATIONS
 from .models import (
+    BirthOutcomes,
+    Delivery,
     FollowupExamination,
     SubjectRequisition,
     SubjectVisit,
@@ -56,4 +60,33 @@ followupexamination = Recipe(
     # hepatomegaly=None,
     # referral=None,
     # referral_reason=None,
+)
+
+delivery = Recipe(
+    Delivery,
+    # site=None,
+    action_identifier=None,
+    report_datetime=get_utcnow(),
+    informant_is_patient=YES,
+    informant_contact=None,
+    informant_relation=NOT_APPLICABLE,
+    informant_relation_other=None,
+    delivery_datetime=get_utcnow(),
+    delivery_time_estimated=NO,
+    delivery_location=HOSPITAL_CLINIC,
+    delivery_location_other=None,
+    delivery_location_name="Big hospital",
+    delivery_ga=40,
+    gm_treated=NO,
+    maternal_outcome=NO_COMPLICATIONS,
+)
+
+birthoutcomes = Recipe(
+    BirthOutcomes,
+    delivery=None,
+    action_identifier=None,
+    report_datetime=get_utcnow(),
+    birth_order=1,
+    birth_outcome=LIVE_AT_TERM,
+    birth_weight=320,
 )

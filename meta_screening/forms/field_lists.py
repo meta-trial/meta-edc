@@ -70,33 +70,30 @@ def get_part_three_vitals_fields():
         ]
 
 
-def get_part_three_ifg_fields():
+def get_part_three_fbg_fields():
     if get_meta_version() == PHASE_THREE:
         return (
             "fasting",
             "fasting_duration_str",
             "fasting_opinion",
-            "ifg_datetime",
-            "ifg_value",
-            "ifg_units",
+            "fbg_datetime",
+            "fbg_value",
+            "fbg_units",
         )
     else:
         return (
             "fasting",
             "fasting_duration_str",
-            "ifg_datetime",
-            "ifg_value",
-            "ifg_units",
+            "fbg_datetime",
+            "fbg_value",
+            "fbg_units",
         )
 
 
-part_three_repeat_ifg_fields = (
-    "repeat_fasting",
-    "repeat_fasting_duration_str",
-    "repeat_fasting_opinion",
-    "ifg2_datetime",
-    "ifg2_value",
-    "ifg2_units",
+part_three_repeat_fbg_fields = (
+    "fbg2_datetime",
+    "fbg2_value",
+    "fbg2_units",
 )
 
 part_three_ogtt_fields = (
@@ -113,7 +110,7 @@ part_three_repeat_ogtt_fields = (
     "ogtt2_units",
 )
 
-part_three_glucose_fields = get_part_three_ifg_fields() + part_three_ogtt_fields
+part_three_glucose_fields = get_part_three_fbg_fields() + part_three_ogtt_fields
 
 part_three_pregnancy_fields = (
     "urine_bhcg_performed",
@@ -139,9 +136,9 @@ calculated_fields = (
     "sys_blood_pressure_avg",
     "dia_blood_pressure_avg",
     "calculated_bmi_value",
-    "converted_ifg_value",
+    "converted_fbg_value",
     "converted_ogtt_value",
-    "converted_ifg2_value",
+    "converted_fbg2_value",
     "converted_ogtt2_value",
     "converted_creatinine_value",
     "calculated_egfr_value",
@@ -168,7 +165,7 @@ def get_part_three_fields():
     fields = None
     if get_meta_version() == PHASE_TWO:
         fields = (
-            *get_part_three_ifg_fields(),
+            *get_part_three_fbg_fields(),
             *part_three_ogtt_fields,
             *part_three_other_fields,
             *get_part_three_vitals_fields(),
@@ -180,7 +177,7 @@ def get_part_three_fields():
             "part_three_report_datetime",
             *get_part_three_vitals_fields(),
             *part_three_pregnancy_fields,
-            *get_part_three_ifg_fields(),
+            *get_part_three_fbg_fields(),
             *part_three_ogtt_fields,
             *part_three_other_fields,
             *part_three_comment_fields,

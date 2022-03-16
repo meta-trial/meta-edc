@@ -7,6 +7,8 @@ from edc_registration.models import RegisteredSubject
 from edc_visit_schedule.constants import DAY1, MONTH1, MONTH3, MONTH6, WEEK2
 from edc_visit_schedule.utils import is_baseline
 
+from meta_visit_schedule.constants import SCHEDULE_PREGNANCY
+
 
 def hba1c_crf_required_at_baseline(visit):
     model_name = "meta_subject.bloodresultshba1c"
@@ -53,6 +55,19 @@ class Predicates(PredicateCollection):
 
     app_label = "meta_subject"
     visit_model = "meta_subject.subjectvisit"
+
+    @staticmethod
+    def pregnancy_notification_exists(visit, **kwargs):
+        model_cls = django_apps.get_model("meta_prn.pregnancynotification")
+        try:
+            model_cls.objects.get(
+                subject_identifier=visit.subject_identifier, delivered=False
+            )
+        except ObjectDoesNotExist:
+            required = False
+        else:
+            required = True
+        return required
 
     @staticmethod
     def hba1c_crf_required(visit, **kwargs) -> bool:
@@ -111,7 +126,8 @@ class Predicates(PredicateCollection):
                 required = True
         return required
 
-    def urine_pregnancy_required(self, visit, **kwargs) -> bool:
+    @staticmethod
+    def urine_pregnancy_required(visit, **kwargs) -> bool:
         """Returns True if required.
 
         Bu default is not required at baseline, otherwise at 1, 3, 6, etc"""
@@ -119,49 +135,17 @@ class Predicates(PredicateCollection):
             subject_identifier=visit.subject_identifier
         )
         if (
-            registered_subject.gender != FEMALE
-            or is_baseline(visit)
-            or (
-                visit.appointment.visit_code == WEEK2
-                and visit.appointment.visit_code_sequence == 0
+            registered_subject.gender == FEMALE
+            and visit.schedule_name != SCHEDULE_PREGNANCY
+            and not is_baseline(visit)
+            and (
+                visit.appointment.visit_code != WEEK2
+                and visit.appointment.visit_code_sequence != 0
             )
         ):
-            required = False
+            return True
         else:
-            # look for preg notification, get edd,
-            pregnancy_notification_model_cls = django_apps.get_model(
-                "meta_prn.pregnancynotification"
-            )
-            delivery_model_cls = django_apps.get_model("meta_prn.delivery")
-            urine_pregnancy_model_cls = django_apps.get_model(
-                f"{self.app_label}.urinepregnancy"
-            )
-
-            required = True
-            pregnancy_notifications = (
-                pregnancy_notification_model_cls.objects.filter(
-                    subject_identifier=visit.subject_identifier,
-                )
-                .order_by("edd")
-                .last()
-            )
-
-            #
-            # try:
-            #     obj = pregnancy_notification_model_cls.objects.filter(
-            #         subject_visit__subject_identifier=visit.subject_identifier,
-            #     )
-            # except ObjectDoesNotExist:
-            #     pass
-            #     else:
-            #         if not hbsag_performed:
-            #             hbsag_performed = obj.hbsag_performed == YES
-            #         if not hcv_performed:
-            #             hcv_performed = obj.hcv_performed == YES
-            #         if hbsag_performed and hcv_performed:
-            #             required = False
-            #             break
-        return required
+            return False
 
     def mnsi_required(self, visit, **kwargs) -> bool:
         """Returns True if MNSI assessment was not performed at the

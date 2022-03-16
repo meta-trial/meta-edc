@@ -3,7 +3,7 @@ from edc_constants.constants import NO, TBD, YES
 from edc_utils import get_utcnow
 
 from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
-from meta_screening.constants import BMI_IFT_OGTT_INCOMPLETE, EGFR_NOT_CALCULATED
+from meta_screening.constants import BMI_FBG_OGTT_INCOMPLETE, EGFR_NOT_CALCULATED
 
 from .eligibility_part_one import EligibilityPartOne
 from .eligibility_part_three import (
@@ -119,7 +119,7 @@ class MetaEligibility:
                 self.part_two.eligible == TBD,
                 self.part_three.eligible == TBD,
                 EGFR_NOT_CALCULATED in self.reasons_ineligible,
-                BMI_IFT_OGTT_INCOMPLETE in self.reasons_ineligible,
+                BMI_FBG_OGTT_INCOMPLETE in self.reasons_ineligible,
             ]
         ):
             self.eligible = TBD
@@ -159,7 +159,7 @@ class MetaEligibility:
             display_label = "PENDING"
             if EGFR_NOT_CALCULATED in self.reasons_ineligible:
                 display_label = "PENDING (SCR/eGFR)"
-            elif BMI_IFT_OGTT_INCOMPLETE in self.reasons_ineligible:
+            elif BMI_FBG_OGTT_INCOMPLETE in self.reasons_ineligible:
                 display_label = "PENDING (BMI/IFT/OGTT)"
         else:
             display_label = "not eligible"

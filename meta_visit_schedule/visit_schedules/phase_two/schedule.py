@@ -2,7 +2,7 @@ from dateutil.relativedelta import relativedelta
 from edc_visit_schedule import Schedule
 from edc_visit_schedule import Visit as BaseVisit
 
-from ...constants import DAY1, MONTH1, MONTH3, MONTH6, MONTH9, MONTH12, WEEK2
+from ...constants import DAY1, MONTH1, MONTH3, MONTH6, MONTH9, MONTH12, SCHEDULE, WEEK2
 from .crfs import crfs_1m, crfs_3m, crfs_6m, crfs_9m, crfs_12m, crfs_d1, crfs_missed
 from .crfs import crfs_prn as default_crfs_prn
 from .crfs import crfs_unscheduled as default_crfs_unscheduled
@@ -19,8 +19,6 @@ from .requisitions import requisitions_prn as default_requisitions_prn
 from .requisitions import requisitions_w2
 
 default_requisitions = None
-
-SCHEDULE = "schedule"
 
 
 class Visit(BaseVisit):

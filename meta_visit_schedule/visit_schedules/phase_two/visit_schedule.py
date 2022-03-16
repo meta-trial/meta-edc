@@ -1,9 +1,7 @@
 from edc_visit_schedule import VisitSchedule
 
+from ...constants import VISIT_SCHEDULE
 from .schedule import schedule
-
-VISIT_SCHEDULE = "visit_schedule"
-
 
 visit_schedule = VisitSchedule(
     name=VISIT_SCHEDULE,

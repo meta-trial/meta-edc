@@ -13,7 +13,7 @@ from ..forms import (
     part_three_pregnancy_fields,
 )
 from ..forms.field_lists import (
-    part_three_repeat_ifg_fields,
+    part_three_repeat_fbg_fields,
     part_three_repeat_ogtt_fields,
 )
 
@@ -63,8 +63,16 @@ def get_part_three_glucose_fieldset(collapse=None):
 
 
 def get_part_three_repeat_glucose_fieldset(collapse=None):
-    fields = ["repeat_glucose_opinion", "repeat_glucose_performed"]
-    fields.extend(part_three_repeat_ifg_fields)
+    fields = [
+        "repeat_glucose_opinion",
+        "repeat_glucose_performed",
+        "repeat_fasting",
+        "repeat_fasting_duration_str",
+        "repeat_fasting_opinion",
+        "fbg2_performed",
+    ]
+    fields.extend(part_three_repeat_fbg_fields)
+    fields.append("ogtt2_performed")
     fields.extend(part_three_repeat_ogtt_fields)
     dct = {
         "fields": fields,
@@ -111,9 +119,9 @@ if get_meta_version() == PHASE_THREE:
             "fields": (
                 "sys_blood_pressure_avg",
                 "dia_blood_pressure_avg",
-                "converted_ifg_value",
+                "converted_fbg_value",
                 "converted_ogtt_value",
-                "converted_ifg2_value",
+                "converted_fbg2_value",
                 "converted_ogtt2_value",
                 "converted_creatinine_value",
                 "calculated_egfr_value",
@@ -127,7 +135,7 @@ else:
             "classes": ("collapse",),
             "fields": (
                 "calculated_bmi_value",
-                "converted_ifg_value",
+                "converted_fbg_value",
                 "converted_ogtt_value",
                 "converted_creatinine_value",
                 "calculated_egfr_value",
