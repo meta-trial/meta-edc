@@ -13,9 +13,9 @@ from meta_visit_schedule.constants import SCHEDULE, SCHEDULE_PREGNANCY, VISIT_SC
     post_save,
     weak=False,
     sender=PregnancyNotification,
-    dispatch_uid="update_schedule_on_pregnancy_notification_on_post_save",
+    dispatch_uid="update_schedule_on_pregnancy_notification_post_save",
 )
-def update_schedule_on_pregnancy_notification_on_post_save(
+def update_schedule_on_pregnancy_notification_post_save(
     sender, instance, raw, **kwargs
 ):
     if not raw:

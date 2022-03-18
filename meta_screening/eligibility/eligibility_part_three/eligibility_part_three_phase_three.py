@@ -19,16 +19,17 @@ class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
         super().__init__(**kwargs)
 
     def assess_eligibility(self) -> None:
+        """Subject is eligible if either a qualifying FBG OR a qualifying OGTT"""
         # TODO: check if calculates correctly if glucose is HIGH 9999.99
         super().assess_eligibility()
         self.calculate_inclusion_field_values()
         if self.inclusion_a == TBD or self.inclusion_b == TBD:
             self.reasons_ineligible.update(fbg_ogtt=FBG_OGTT_INCOMPLETE)
             self.eligible = TBD
-        if self.inclusion_a == NO or self.inclusion_b == NO:
+        elif self.inclusion_a == NO and self.inclusion_b == NO:
             self.reasons_ineligible.update(fbg_ogtt=IFT_OGTT)
             self.eligible = NO
-        if self.calculated_egfr_value and self.calculated_egfr_value < 45.0:
+        elif self.calculated_egfr_value and self.calculated_egfr_value < 45.0:
             self.reasons_ineligible.update(egfr=EGFR_LT_45)
             self.eligible = NO
 
@@ -52,17 +53,11 @@ class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
             self.inclusion_a = TBD
             self.inclusion_b = TBD
         else:
-            converted_fbg_value = (
-                self.converted_fbg2_value
-                if self.fbg2_performed == YES
-                else self.converted_fbg_value
-            )
+            converted_fbg_value = self.converted_fbg2_value or self.converted_fbg_value
             converted_ogtt_value = (
-                self.converted_ogtt2_value
-                if self.ogtt2_performed == YES
-                else self.converted_ogtt_value
+                self.converted_ogtt2_value or self.converted_ogtt_value
             )
-            # IFG (6.1 to 6.9 mmol/L)
+            # FBG (6.1 to 6.9 mmol/L)
             if not converted_fbg_value:
                 self.inclusion_a = TBD
             elif 6.1 <= converted_fbg_value <= 6.9:

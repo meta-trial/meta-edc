@@ -13,26 +13,13 @@ from meta_subject.constants import DELIVERY_ACTION, URINE_PREGNANCY_ACTION
 
 from .constants import (
     OFFSCHEDULE_ACTION,
+    OFFSCHEDULE_POSTNATAL_ACTION,
     OFFSCHEDULE_PREGNANCY_ACTION,
     PREGNANCY_NOTIFICATION_ACTION,
     UNBLINDING_REQUEST_ACTION,
     UNBLINDING_REVIEW_ACTION,
 )
 from .pregnancy_mixin import PregnancyMixin
-
-
-class EndOfStudyAction(ActionWithNotification):
-    name = END_OF_STUDY_ACTION
-    display_name = "Submit End of Study Report"
-    notification_display_name = "End of Study Report"
-    parent_action_names = [
-        OFFSCHEDULE_ACTION,
-        OFFSCHEDULE_PREGNANCY_ACTION,
-    ]
-    reference_model = "meta_prn.endofstudy"
-    show_link_to_changelist = True
-    admin_site_name = "meta_prn_admin"
-    priority = HIGH_PRIORITY
 
 
 class OffscheduleAction(ActionWithNotification):
@@ -69,9 +56,39 @@ class OffschedulePregnancyAction(ActionWithNotification):
     admin_site_name = "meta_prn_admin"
     priority = HIGH_PRIORITY
 
+
+class OffschedulePostnatalAction(ActionWithNotification):
+    name = OFFSCHEDULE_POSTNATAL_ACTION
+    display_name = "Submit Off-Schedule (Postnatal)"
+    notification_display_name = "Off-Schedule (Postnatal)"
+    parent_action_names = [
+        UNBLINDING_REVIEW_ACTION,
+        DEATH_REPORT_ACTION,
+        LTFU_ACTION,
+        DELIVERY_ACTION,
+    ]
+    reference_model = "meta_prn.offschedulepostnatal"
+    show_link_to_changelist = True
+    admin_site_name = "meta_prn_admin"
+    priority = HIGH_PRIORITY
+
     def get_next_actions(self):
         next_actions = [END_OF_STUDY_ACTION]
         return next_actions
+
+
+class EndOfStudyAction(ActionWithNotification):
+    name = END_OF_STUDY_ACTION
+    display_name = "Submit End of Study Report"
+    notification_display_name = "End of Study Report"
+    parent_action_names = [
+        OFFSCHEDULE_ACTION,
+        OFFSCHEDULE_PREGNANCY_ACTION,
+    ]
+    reference_model = "meta_prn.endofstudy"
+    show_link_to_changelist = True
+    admin_site_name = "meta_prn_admin"
+    priority = HIGH_PRIORITY
 
 
 class LossToFollowupAction(PregnancyMixin, ActionWithNotification):
@@ -166,3 +183,4 @@ site_action_items.register(UnblindingRequestAction)
 site_action_items.register(UnblindingReviewAction)
 site_action_items.register(OffscheduleAction)
 site_action_items.register(OffschedulePregnancyAction)
+site_action_items.register(OffschedulePostnatalAction)

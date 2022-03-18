@@ -1,14 +1,24 @@
+from dateutil.relativedelta import relativedelta
 from django.apps import apps as django_apps
+from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
+from edc_appointment.models import Appointment
 from edc_consent.utils import get_consent_model_cls
 from edc_pharmacy.utils import create_prescription
+from edc_visit_schedule import site_visit_schedules
 from edc_visit_schedule.constants import DAY1
 
 from meta_edc.meta_version import PHASE_THREE, get_meta_version
+from meta_visit_schedule.constants import (
+    SCHEDULE_POSTNATAL,
+    SCHEDULE_PREGNANCY,
+    VISIT_SCHEDULE,
+)
 
 from .delivery import Delivery
 from .study_medication import StudyMedication
+from .subject_visit import SubjectVisit
 
 
 @receiver(
@@ -43,9 +53,9 @@ def study_medication_on_pre_save(sender, instance, raw, **kwargs):
     post_save,
     weak=False,
     sender=Delivery,
-    dispatch_uid="update_pregnancy_notification_on_delivery_on_post_save",
+    dispatch_uid="update_pregnancy_notification_on_delivery_post_save",
 )
-def update_pregnancy_notification_on_delivery_on_post_save(
+def update_pregnancy_notification_on_delivery_post_save(
     sender, instance, raw, **kwargs
 ):
     if not raw:
@@ -55,3 +65,49 @@ def update_pregnancy_notification_on_delivery_on_post_save(
             delivered=False,
             delivery_datetime=None,
         ).update(delivered=True, delivery_datetime=instance.delivery_datetime)
+
+
+@receiver(
+    post_save,
+    weak=False,
+    sender=Delivery,
+    dispatch_uid="update_schedule_on_delivery_post_save",
+)
+def update_schedule_on_delivery_post_save(sender, instance, raw, **kwargs):
+    if not raw:
+        offschedule_model_cls = django_apps.get_model("meta_prn.offschedulepregnancy")
+        try:
+            offschedule_model_cls.objects.get(
+                subject_identifier=instance.subject_identifier
+            )
+        except ObjectDoesNotExist:
+            last_subject_visit = (
+                SubjectVisit.objects.filter(
+                    subject_identifier=instance.subject_identifier,
+                    schedule_name=SCHEDULE_PREGNANCY,
+                )
+                .order_by("report_datetime")
+                .last()
+            )
+            visit_schedule = site_visit_schedules.get_visit_schedule(
+                visit_schedule_name=VISIT_SCHEDULE
+            )
+            schedule = visit_schedule.schedules.get(SCHEDULE_PREGNANCY)
+            schedule.take_off_schedule(
+                offschedule_datetime=last_subject_visit.report_datetime,
+                subject_identifier=instance.subject_identifier,
+            )
+            schedule = visit_schedule.schedules.get(SCHEDULE_POSTNATAL)
+
+            first_appt_datetime = Appointment.objects.get(
+                subject_identifier=instance.subject_identifier,
+                visit_code=DAY1,
+                visit_code_sequence=0,
+                timepoint=0,
+            ).appt_datetime + relativedelta(months=36)
+
+            schedule.put_on_schedule(
+                onschedule_datetime=last_subject_visit.report_datetime,
+                subject_identifier=instance.subject_identifier,
+                first_appt_datetime=first_appt_datetime,
+            )

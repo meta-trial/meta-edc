@@ -27,3 +27,15 @@ class OnSchedulePregnancy(OnScheduleModelMixin, BaseUuidModel):
 
     class Meta(OnScheduleModelMixin.Meta):
         pass
+
+
+class OnSchedulePostnatal(OnScheduleModelMixin, BaseUuidModel):
+
+    on_site = CurrentSiteManager()
+
+    objects = SubjectIdentifierManager()
+
+    history = HistoricalRecords()
+
+    class Meta(OnScheduleModelMixin.Meta):
+        pass
