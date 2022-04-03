@@ -1,7 +1,6 @@
 from django.test import TestCase, override_settings
 from edc_constants.constants import COMPLETE, NO, NONE, NOT_APPLICABLE, YES
 from edc_list_data import PreloadData
-from edc_utils.date import get_utcnow
 
 from meta_edc.meta_version import PHASE_THREE, PHASE_TWO
 from meta_lists.models import (
@@ -59,6 +58,7 @@ class BaseTestPatientHistory(MetaTestCaseMixin, TestCase):
             "waist_circumference": 61,
             "weight": 65,
             "crf_status": COMPLETE,
+            "vl_undetectable": YES,
         }
 
 

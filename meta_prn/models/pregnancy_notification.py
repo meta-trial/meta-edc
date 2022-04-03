@@ -55,6 +55,7 @@ class PregnancyNotification(
         validators=[date_is_future],
     )
 
+    # TODO: remove this question
     may_contact = models.CharField(
         verbose_name=(
             "Has the participant agreed to be contacted to provide information on the "

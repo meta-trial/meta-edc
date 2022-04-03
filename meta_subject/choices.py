@@ -6,6 +6,7 @@ from edc_constants.constants import (
     NO_EXAM,
     NOT_APPLICABLE,
     OTHER,
+    PATIENT,
     PRESENT,
     PRESENT_WITH_REINFORCEMENT,
     RAPID_TEST,
@@ -14,6 +15,7 @@ from edc_constants.constants import (
 from edc_reportable.constants import GRADE3, GRADE4
 from edc_visit_tracking.constants import MISSED_VISIT, SCHEDULED, UNSCHEDULED
 
+from meta_ae.choices import INFORMANT_RELATIONSHIP
 from meta_ae.constants import HOSPITAL_CLINIC
 
 from .constants import (
@@ -48,10 +50,17 @@ CHILDCARE_CHOICES = (
     (OTHER, "Other, specify"),
 )
 
+DELIVERY_INFO_SOURCE = (
+    (PATIENT, "Study participant"),
+    (OTHER, "Other"),
+    (NOT_APPLICABLE, "Not applicable"),
+)
+
 DELIVERY_LOCATIONS = (
     ("home", "At home"),
     (HOSPITAL_CLINIC, "Hospital / Clinic"),
     (OTHER, "Other location, specify"),
+    (NOT_APPLICABLE, "Not applicable"),
 )
 
 DESCRIBE_HEALTH_CHOICES = (
@@ -114,6 +123,15 @@ INFO_SOURCE = (
     (OTHER, "Other"),
 )
 
+DELIVERY_INFORMANT_RELATIONSHIP = list(INFORMANT_RELATIONSHIP)
+DELIVERY_INFORMANT_RELATIONSHIP.extend(
+    [
+        (HOSPITAL_CLINIC, "Hospital / Clinic records"),
+        (NOT_APPLICABLE, "Not applicable"),
+    ]
+)
+DELIVERY_INFORMANT_RELATIONSHIP = tuple(DELIVERY_INFORMANT_RELATIONSHIP)
+
 INTERFERENCE_DURATION_CHOICES = (
     (ALL_OF_THE_TIME, "All of the time"),
     (MOST_OF_THE_TIME, "Most of the time"),
@@ -142,6 +160,7 @@ MATERNAL_OUTCOMES = (
     ("complications_full_recovery", "Complications with full recovery"),
     ("complications_ongoing_recovery", "Complications with ongoing recovery"),
     (DEAD, "Maternal mortality"),
+    (NOT_APPLICABLE, "Not applicable"),
 )
 
 PAYEE_CHOICES = (

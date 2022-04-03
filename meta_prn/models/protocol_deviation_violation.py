@@ -1,6 +1,5 @@
 from django.db import models
 from edc_action_item.models import ActionItem, ActionModelMixin
-from edc_constants.choices import NOT_APPLICABLE
 from edc_constants.constants import QUESTION_RETIRED
 from edc_identifier.model_mixins import (
     NonUniqueSubjectIdentifierFieldMixin,
@@ -57,7 +56,9 @@ class ProtocolDeviationViolation(
     )
 
     def natural_key(self):
-        return (self.action_identifier,)
+        return tuple(
+            self.action_identifier,
+        )
 
     class Meta(ProtocolDeviationViolationModelMixin.Meta, BaseUuidModel.Meta):
         pass

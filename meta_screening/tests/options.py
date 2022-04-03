@@ -10,7 +10,6 @@ from edc_constants.constants import (
     NO,
     NOT_APPLICABLE,
     RANDOM_SAMPLING,
-    TBD,
     YES,
 )
 from edc_reportable.units import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
@@ -46,6 +45,7 @@ def get_part_one_eligible_options():
         screening_consent=YES,
         selection_method=RANDOM_SAMPLING,
         staying_nearby_6=YES,
+        vl_undetectable=YES,
     )
     if get_meta_version() == PHASE_THREE:
         options["meta_phase_two"] = NO

@@ -58,9 +58,10 @@ class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
                 self.converted_ogtt2_value or self.converted_ogtt_value
             )
             # FBG (6.1 to 6.9 mmol/L)
+            # TODO ensure only 1 decimal place is reported on the form
             if not converted_fbg_value:
                 self.inclusion_a = TBD
-            elif 6.1 <= converted_fbg_value <= 6.9:
+            elif 6.1 <= converted_fbg_value < 7.0:
                 self.inclusion_a = YES
             else:
                 self.inclusion_a = NO
@@ -68,7 +69,7 @@ class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
             # OGTT (7.8 to 11.10 mmol/L)
             if not converted_ogtt_value:
                 self.inclusion_b = TBD
-            elif 7.8 <= converted_ogtt_value <= 11.10:
+            elif 7.8 <= converted_ogtt_value < 11.1:
                 self.inclusion_b = YES
             else:
                 self.inclusion_b = NO

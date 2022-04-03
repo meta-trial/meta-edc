@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ObjectDoesNotExist
 from edc_action_item.forms import ActionItemFormMixin
-from edc_constants.constants import NO
+from edc_constants.constants import NO, OTHER
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators.form_validator import FormValidator
 
@@ -24,17 +24,20 @@ class DeliveryFormValidator(FormValidator):
                 f"{PregnancyNotification._meta.verbose_name} not found."
             )
 
+        self.required_if(
+            NO, field="info_available", field_required="info_not_available_reason"
+        )
+        self.required_if(
+            YES, field="info_available", field_required="info_not_available_reason"
+        )
+
         self.validate_informant()
 
         self.validate_delivery_location()
 
     def validate_informant(self):
-        self.required_if(
-            NO, field="informant_is_patient", field_required="informant_contact"
-        )
-        self.required_if(
-            NO, field="informant_is_patient", field_required="informant_relation"
-        )
+        self.required_if(OTHER, field="info_source", field_required="info_source_other")
+        self.required_if(NO, field="info_source", field_required="informant_relation")
 
         self.validate_other_specify(
             field="informant_relation", field_required="informant_relation_other"

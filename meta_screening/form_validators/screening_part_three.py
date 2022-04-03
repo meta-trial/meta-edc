@@ -48,7 +48,7 @@ class ScreeningPartThreeFormValidator(
         self.required_if(YES, field="hba1c_performed", field_required="hba1c_value")
         self.require_all_vitals_fields()
         self.validate_pregnancy()
-        self.validate_ogtt_dates(prefix="ogtt")
+        self.validate_ogtt_dates(ogtt_prefix="ogtt")
         self.validate_bmi()
         self.validate_egfr()
         self.validate_fbg_before_ogtt()
@@ -66,7 +66,6 @@ class ScreeningPartThreeFormValidator(
         )
         self.raise_on_avg_blood_pressure_suggests_severe_htn(**self.cleaned_data)
         self.validate_pregnancy()
-
         self.validate_fasting_required_fields()
         self.validate_fbg_required_fields()
         validate_glucose_as_millimoles_per_liter("fbg", self.cleaned_data)
@@ -75,13 +74,10 @@ class ScreeningPartThreeFormValidator(
         self.validate_ogtt_required_fields()
         self.validate_ogtt_dates()
         validate_glucose_as_millimoles_per_liter("ogtt", self.cleaned_data)
-
         self.validate_fasting_required_fields(fasting_prefix="repeat_fasting")
-
         self.required_if(YES, field="repeat_fasting", field_required="fbg2_performed")
         self.validate_repeat_fbg()
         self.validate_repeat_ogtt()
-
         self.validate_creatinine_required_fields()
         self.required_if(YES, field="hba1c_performed", field_required="hba1c_value")
         self.validate_egfr()

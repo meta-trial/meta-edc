@@ -1,5 +1,3 @@
-from copy import copy
-
 from django.contrib import admin
 from django.template.loader import render_to_string
 from django.urls import reverse
@@ -46,8 +44,10 @@ class DeliveryAdmin(
             "Source of information",
             {
                 "fields": (
-                    "informant_is_patient",
-                    "informant_contact",
+                    "info_available",
+                    "info_not_available_reason",
+                    "info_source",
+                    "info_source_other",
                     "informant_relation",
                     "informant_relation_other",
                 )
@@ -92,7 +92,8 @@ class DeliveryAdmin(
     )
 
     radio_fields = {
-        "informant_is_patient": admin.VERTICAL,
+        "info_available": admin.VERTICAL,
+        "info_source": admin.VERTICAL,
         "informant_relation": admin.VERTICAL,
         "delivery_time_estimated": admin.VERTICAL,
         "delivery_location": admin.VERTICAL,
@@ -114,10 +115,3 @@ class DeliveryAdmin(
         url = f"{url}?q={obj.subject_identifier}"
         context = dict(title="Outcomes", url=url, label="Outcomes")
         return render_to_string("dashboard_button.html", context=context)
-
-    # def get_readonly_fields(self, request, obj=None):
-    #     fields = super().get_readonly_fields(request, obj)
-    #     action_flds = copy(list(action_fields))
-    #     action_flds.remove("action_identifier")
-    #     fields = list(action_flds) + list(fields)
-    #     return fields

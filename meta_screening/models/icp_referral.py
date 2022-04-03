@@ -19,6 +19,7 @@ class IcpReferralManager(models.Manager):
 
 
 class IcpReferral(SiteModelMixin, BaseUuidModel):
+    """ "Not used"""
 
     subject_screening = models.OneToOneField(
         SubjectScreening, null=True, on_delete=models.PROTECT

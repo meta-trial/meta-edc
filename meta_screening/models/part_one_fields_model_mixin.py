@@ -58,6 +58,14 @@ class PartOneFieldsModelMixin(models.Model):
         help_text="in regular attendance for care",
     )
 
+    vl_undetectable = models.CharField(
+        verbose_name=(
+            "Does the patient have a viral load measure of < 400 copies/ml taken within the last 6 months"
+        ),
+        max_length=15,
+        choices=YES_NO_NA,
+    )
+
     lives_nearby = models.CharField(
         verbose_name=(
             "Is the patient living within the catchment population of the facility"

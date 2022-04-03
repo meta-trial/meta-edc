@@ -1,6 +1,6 @@
-from edc_constants.constants import NOT_APPLICABLE, OTHER, UNKNOWN
+from edc_constants.constants import NOT_APPLICABLE, OTHER, PATIENT, UNKNOWN
 
-from .constants import CLINICIAN, INVESTIGATOR, PATIENT, PREGNANCY, SAE
+from .constants import CLINICIAN, INVESTIGATOR, PREGNANCY, SAE
 
 CLINICAL_WITHDRAWAL_REASONS = (
     ("pregnancy", "Pregnancy"),

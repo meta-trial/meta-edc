@@ -1,4 +1,4 @@
-from edc_constants.constants import NO, NOT_APPLICABLE, POS, YES
+from edc_constants.constants import NO, NOT_APPLICABLE, PATIENT, POS, YES
 from edc_utils import get_utcnow
 from edc_visit_tracking.constants import SCHEDULED
 from faker import Faker
@@ -67,8 +67,8 @@ delivery = Recipe(
     # site=None,
     action_identifier=None,
     report_datetime=get_utcnow(),
-    informant_is_patient=YES,
-    informant_contact=None,
+    info_available=YES,
+    info_source=PATIENT,
     informant_relation=NOT_APPLICABLE,
     informant_relation_other=None,
     delivery_datetime=get_utcnow(),

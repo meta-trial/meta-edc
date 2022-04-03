@@ -18,7 +18,6 @@ from edc_reportable import GRADE3, GRADE4
 from edc_visit_schedule.utils import is_baseline
 
 from meta_prn.constants import (
-    OFFSCHEDULE_ACTION,
     OFFSCHEDULE_PREGNANCY_ACTION,
     PREGNANCY_NOTIFICATION_ACTION,
 )
@@ -45,11 +44,6 @@ class MissedVisitAction(Action):
         if ltfu:
             next_actions = [LTFU_ACTION]
         return next_actions
-
-    # def ltfu(self):
-    #     if self.reference_model_cls().objects.all().count() == 3:
-    #         return True
-    #     return None
 
 
 class FollowupExaminationAction(Action):

@@ -55,4 +55,5 @@ subjectscreening = Recipe(
     ogtt_base_datetime=get_utcnow(),
     unsuitable_for_study=NO,
     unsuitable_agreed=NOT_APPLICABLE,
+    vl_undetectable=YES,
 )

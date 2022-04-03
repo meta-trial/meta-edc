@@ -17,6 +17,7 @@ class EligibilityPartOne(ScreeningEligibility):
         self.lives_nearby = None
         self.meta_phase_two = None
         self.on_rx_stable = None
+        self.vl_undetectable = None
         self.pregnant = None
         self.staying_nearby_6 = None
         self.staying_nearby_12 = None
@@ -29,6 +30,7 @@ class EligibilityPartOne(ScreeningEligibility):
                 "art_six_months": FC(YES, "ART<6m"),
                 "gender": FC([MALE, FEMALE], "gender invalid"),
                 "hiv_pos": FC(YES, "not HIV+"),
+                "vl_undetectable": FC(YES, "no VL<400 within 6m"),
                 "lives_nearby": FC(YES, "Not living nearby"),
                 "meta_phase_two": FC(NO, "META Phase 2 participant"),
                 "on_rx_stable": FC(YES, "ART not stable"),

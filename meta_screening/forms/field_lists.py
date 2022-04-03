@@ -20,6 +20,8 @@ def get_part_one_fields():
         "continue_part_two",
     ]
     if get_meta_version() == PHASE_THREE:
+
+        fields.insert(fields.index("on_rx_stable") + 1, "vl_undetectable")
         fields = ["staying_nearby_12" if x == "staying_nearby_6" else x for x in fields]
         fields.append("meta_phase_two")
     return tuple(fields)
