@@ -4,8 +4,7 @@ from edc_constants.choices import (
     NO,
     YES_NO,
     YES_NO_NA,
-    YES_NO_PENDING_NA,
-    YES_NO_UNSURE,
+    YES_NO_PENDING_NA_GLUCOSE_SCREENING,
 )
 from edc_constants.constants import NOT_APPLICABLE
 from edc_glucose.model_mixins import (
@@ -20,7 +19,6 @@ from edc_vitals.model_mixins import (
     WeightHeightBmiModelMixin,
 )
 
-# TODO: repeat FBG and OGTT after 48-72 hours if response to fasting is unsure in opinion of the clinician (PART 4)
 from .creatinine_fields_model_mixin import CreatinineModelFieldsMixin
 
 
@@ -31,9 +29,9 @@ class FastingModelMixin(
         repeat_fasting=models.CharField(
             verbose_name="Has the participant fasted?",
             max_length=15,
-            choices=YES_NO,
-            null=True,
-            blank=True,
+            choices=YES_NO_NA,
+            blank=False,
+            default=NOT_APPLICABLE,
             help_text="As reported by patient",
         ),
     ),
@@ -64,23 +62,6 @@ class FbgModelMixin(
         ),
     ),
 ):
-    # added 19/11/2021
-    fasting_opinion = models.CharField(
-        verbose_name="In the opinion of the clinican, has the participant fasted?",
-        max_length=15,
-        choices=YES_NO_UNSURE,
-        null=True,
-        blank=False,
-    )
-
-    repeat_fasting_opinion = models.CharField(
-        verbose_name="In the opinion of the clinican, has the participant fasted for these repeat glucose measurement?",
-        max_length=15,
-        choices=YES_NO_UNSURE,
-        null=True,
-        blank=True,
-    )
-
     class Meta:
         abstract = True
 
@@ -123,40 +104,20 @@ class PartThreeFieldsModelMixin(
     models.Model,
 ):
 
-    lower_bmi_value = 13.0
-
-    # TODO: NO and UNSURE means dont test, come back later
-
     repeat_glucose_opinion = models.CharField(
         verbose_name="In opinion of the clinician, should the glucose measurements be repeated?",
         max_length=15,
         choices=YES_NO,
         default=NO,
-        help_text="If to be repeated, do so at least 3 days after the first OGTT",
+        help_text="If repeated, must be at least 3 days after the first glucose measures (FBG, OGTT)",
     )
 
     repeat_glucose_performed = models.CharField(
         verbose_name="Were the glucose measurements repeated?",
         max_length=15,
-        choices=YES_NO_PENDING_NA,
+        choices=YES_NO_PENDING_NA_GLUCOSE_SCREENING,
         default=NOT_APPLICABLE,
-        help_text="If repeated, must be at least 3 days after the first glucose measures (FBG, OGTT)",
-    )
-
-    fbg2_performed = models.CharField(
-        verbose_name="Was the FBG repeated?",
-        max_length=15,
-        choices=YES_NO_NA,
-        default=NOT_APPLICABLE,
-        help_text="If repeated, must be at least 3 days after the first FBG measures",
-    )
-
-    ogtt2_performed = models.CharField(
-        verbose_name="Was the OGTT repeated?",
-        max_length=15,
-        choices=YES_NO_NA,
-        default=NOT_APPLICABLE,
-        help_text="If repeated, must be at least 3 days after the first OGTT measures",
+        help_text="Select YES when you are ready to enter the repeat results",
     )
 
     creatinine_units = models.CharField(

@@ -138,9 +138,9 @@ class Predicates(PredicateCollection):
             registered_subject.gender == FEMALE
             and visit.schedule_name != SCHEDULE_PREGNANCY
             and not is_baseline(visit)
-            and (
-                visit.appointment.visit_code != WEEK2
-                and visit.appointment.visit_code_sequence != 0
+            and not (
+                visit.appointment.visit_code == WEEK2
+                and visit.appointment.visit_code_sequence == 0
             )
         ):
             return True

@@ -6,11 +6,7 @@ from edc_randomization.randomization_list_importer import (
 )
 from edc_randomization.site_randomizers import site_randomizers
 
-from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
-
-
-class RandomizerPhaseTwo(Randomizer):
-    name = PHASE_TWO
+from meta_edc.meta_version import PHASE_THREE
 
 
 class RandomizationListImporterPhaseThree(RandomizationListImporter):
@@ -60,8 +56,4 @@ class RandomizerPhaseThree(Randomizer):
         return [(4, "gender")]
 
 
-if get_meta_version() == PHASE_TWO:
-    site_randomizers.register(RandomizerPhaseTwo)
-
-if get_meta_version() == PHASE_THREE:
-    site_randomizers.register(RandomizerPhaseThree)
+site_randomizers.register(RandomizerPhaseThree)

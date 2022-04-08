@@ -1,18 +1,12 @@
 from edc_constants.constants import NO, NOT_APPLICABLE, PENDING, TBD, YES
 from edc_screening.screening_eligibility import FC, ScreeningEligibilityError
 
-from meta_edc.meta_version import PHASE_THREE, get_meta_version
-
 from ...constants import EGFR_LT_45, FBG_OGTT_INCOMPLETE, IFT_OGTT, SEVERE_HTN
 from .base_eligibility_part_three import BaseEligibilityPartThree
 
 
 class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
     def __init__(self, **kwargs):
-        if get_meta_version() != PHASE_THREE:
-            raise ScreeningEligibilityError(
-                f"Invalid META Phase. Expected {PHASE_THREE}. Got {get_meta_version()}"
-            )
         self.inclusion_a = TBD
         self.inclusion_b = TBD
         self.severe_htn = None
@@ -53,9 +47,15 @@ class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
             self.inclusion_a = TBD
             self.inclusion_b = TBD
         else:
-            converted_fbg_value = self.converted_fbg2_value or self.converted_fbg_value
+            converted_fbg_value = (
+                self.converted_fbg2_value
+                if self.repeat_glucose_opinion == YES
+                else self.converted_fbg_value
+            )
             converted_ogtt_value = (
-                self.converted_ogtt2_value or self.converted_ogtt_value
+                self.converted_ogtt2_value
+                if self.repeat_glucose_opinion == YES
+                else self.converted_ogtt_value
             )
             # FBG (6.1 to 6.9 mmol/L)
             # TODO ensure only 1 decimal place is reported on the form

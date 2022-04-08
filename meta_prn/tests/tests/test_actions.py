@@ -1,5 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
-from django.test import TestCase, override_settings, tag
+from django.test import TestCase
 from edc_action_item.models import ActionItem
 from edc_appointment.models import Appointment
 from edc_constants.constants import FEMALE
@@ -7,12 +7,10 @@ from edc_utils import get_utcnow
 from edc_visit_schedule.constants import MONTH1
 from model_bakery.baker import make_recipe
 
-from meta_edc.meta_version import PHASE_TWO
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_visit_schedule.constants import DELIVERY
 
 
-@override_settings(META_PHASE=PHASE_TWO)
 class TestMetadataRules(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()
@@ -27,7 +25,6 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
             report_datetime=self.subject_visit.report_datetime,
         )
 
-    @tag("1")
     def test_pregnancy_actions(self):
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         subject_visit = self.get_next_subject_visit(subject_visit)

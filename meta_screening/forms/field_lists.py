@@ -1,11 +1,9 @@
-from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
-
-
 def get_part_one_fields():
     fields = [
-        "screening_consent",
-        "selection_method",
         "report_datetime",
+        "screening_consent",
+        "meta_phase_two",
+        "selection_method",
         "hospital_identifier",
         "initials",
         "gender",
@@ -14,16 +12,12 @@ def get_part_one_fields():
         "hiv_pos",
         "art_six_months",
         "on_rx_stable",
+        "vl_undetectable",
         "lives_nearby",
-        "staying_nearby_6",
+        "staying_nearby_12",
         "pregnant",
         "continue_part_two",
     ]
-    if get_meta_version() == PHASE_THREE:
-
-        fields.insert(fields.index("on_rx_stable") + 1, "vl_undetectable")
-        fields = ["staying_nearby_12" if x == "staying_nearby_6" else x for x in fields]
-        fields.append("meta_phase_two")
     return tuple(fields)
 
 
@@ -44,52 +38,30 @@ def get_part_two_fields():
         "advised_to_fast",
         "appt_datetime",
     ]
-    if get_meta_version() == PHASE_TWO:
-        fields.remove("has_dm")
-        fields.remove("on_dm_medication")
     return tuple(fields)
 
 
 def get_part_three_vitals_fields():
-    if get_meta_version() == PHASE_THREE:
-        return [
-            "height",
-            "weight",
-            "waist_circumference",
-            "sys_blood_pressure_one",
-            "dia_blood_pressure_one",
-            "sys_blood_pressure_two",
-            "dia_blood_pressure_two",
-            "severe_htn",
-        ]
-    else:
-        return [
-            "height",
-            "weight",
-            "waist_circumference",
-            "sys_blood_pressure",
-            "dia_blood_pressure",
-        ]
+    return [
+        "height",
+        "weight",
+        "waist_circumference",
+        "sys_blood_pressure_one",
+        "dia_blood_pressure_one",
+        "sys_blood_pressure_two",
+        "dia_blood_pressure_two",
+        "severe_htn",
+    ]
 
 
 def get_part_three_fbg_fields():
-    if get_meta_version() == PHASE_THREE:
-        return (
-            "fasting",
-            "fasting_duration_str",
-            "fasting_opinion",
-            "fbg_datetime",
-            "fbg_value",
-            "fbg_units",
-        )
-    else:
-        return (
-            "fasting",
-            "fasting_duration_str",
-            "fbg_datetime",
-            "fbg_value",
-            "fbg_units",
-        )
+    return (
+        "fasting",
+        "fasting_duration_str",
+        "fbg_datetime",
+        "fbg_value",
+        "fbg_units",
+    )
 
 
 part_three_repeat_fbg_fields = (
@@ -112,7 +84,9 @@ part_three_repeat_ogtt_fields = (
     "ogtt2_units",
 )
 
-part_three_glucose_fields = get_part_three_fbg_fields() + part_three_ogtt_fields
+part_three_glucose_fields = (
+    get_part_three_fbg_fields() + part_three_ogtt_fields + ("repeat_glucose_opinion",)
+)
 
 part_three_pregnancy_fields = (
     "urine_bhcg_performed",
@@ -124,6 +98,17 @@ part_three_other_fields = (
     "creatinine_performed",
     "creatinine_value",
     "creatinine_units",
+    "hba1c_performed",
+    "hba1c_value",
+)
+
+part_three_creatinine_fields = (
+    "creatinine_performed",
+    "creatinine_value",
+    "creatinine_units",
+)
+
+part_three_hba1c_fields = (
     "hba1c_performed",
     "hba1c_value",
 )
@@ -164,24 +149,12 @@ part_three_labs = (
 
 
 def get_part_three_fields():
-    fields = None
-    if get_meta_version() == PHASE_TWO:
-        fields = (
-            *get_part_three_fbg_fields(),
-            *part_three_ogtt_fields,
-            *part_three_other_fields,
-            *get_part_three_vitals_fields(),
-            *part_three_pregnancy_fields,
-            *part_three_comment_fields,
-        )
-    elif get_meta_version() == PHASE_THREE:
-        fields = (
-            "part_three_report_datetime",
-            *get_part_three_vitals_fields(),
-            *part_three_pregnancy_fields,
-            *get_part_three_fbg_fields(),
-            *part_three_ogtt_fields,
-            *part_three_other_fields,
-            *part_three_comment_fields,
-        )
-    return fields
+    return (
+        "part_three_report_datetime",
+        *get_part_three_vitals_fields(),
+        *part_three_pregnancy_fields,
+        *get_part_three_fbg_fields(),
+        *part_three_ogtt_fields,
+        *part_three_other_fields,
+        *part_three_comment_fields,
+    )

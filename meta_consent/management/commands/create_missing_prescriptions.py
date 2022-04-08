@@ -4,13 +4,14 @@ from edc_pharmacy.utils import create_prescription
 
 from meta_consent.models import SubjectConsent
 from meta_edc.meta_version import get_meta_version
+from meta_pharmacy.constants import METFORMIN
 
 
 class Command(BaseCommand):
     help = "Create missing prescriptions"
 
     def handle(self, *args, **options):
-        medication = Medication.objects.get(name="metformin")
+        medication = Medication.objects.get(name=METFORMIN)
         subject_identifiers = Rx.objects.values_list(
             "subject_identifier", flat=True
         ).all()

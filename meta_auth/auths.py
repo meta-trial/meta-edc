@@ -41,8 +41,6 @@ from edc_screening.auth_objects import SCREENING, SCREENING_VIEW
 from edc_unblinding.auth_objects import UNBLINDING_REQUESTORS
 from sarscov2.auth import SARSCOV2, sarscov2_codenames
 
-from meta_edc.meta_version import get_meta_version
-
 from .auth_objects import META_AUDITOR, META_CLINIC, META_CLINIC_SUPER, clinic_codenames
 
 # meta groups
@@ -134,7 +132,3 @@ site_auths.update_role(
 
 site_auths.update_role(RANDO_UNBLINDED, name=PHARMACIST_ROLE)
 site_auths.update_role(RANDO_BLINDED, name=SITE_PHARMACIST_ROLE)
-
-
-if get_meta_version() == 2:
-    site_auths.add_group(*sarscov2_codenames, name=SARSCOV2)

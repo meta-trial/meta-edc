@@ -2,14 +2,10 @@ from django.db import models
 from edc_constants.constants import NO, TBD, YES
 from edc_utils import get_utcnow
 
-from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
 from meta_screening.constants import BMI_FBG_OGTT_INCOMPLETE, EGFR_NOT_CALCULATED
 
 from .eligibility_part_one import EligibilityPartOne
-from .eligibility_part_three import (
-    EligibilityPartThreePhaseThree,
-    EligibilityPartThreePhaseTwo,
-)
+from .eligibility_part_three import EligibilityPartThreePhaseThree
 from .eligibility_part_two import EligibilityPartTwo
 
 
@@ -70,12 +66,7 @@ class MetaEligibility:
     def assess_eligibility_for_all_parts(self):
         eligibility_part_one_cls = EligibilityPartOne
         eligibility_part_two_cls = EligibilityPartTwo
-        if get_meta_version() == PHASE_THREE:
-            eligibility_part_three_cls = EligibilityPartThreePhaseThree
-        elif get_meta_version() == PHASE_TWO:
-            eligibility_part_three_cls = EligibilityPartThreePhaseTwo
-        else:
-            raise SubjectScreeningEligibilityError("META Phase unknown.")
+        eligibility_part_three_cls = EligibilityPartThreePhaseThree
         self.part_one = eligibility_part_one_cls(
             model_obj=self.model_obj,
             update_model=self.update_model,

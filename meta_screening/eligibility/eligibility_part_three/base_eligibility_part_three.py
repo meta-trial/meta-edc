@@ -18,50 +18,39 @@ class BaseEligibilityPartThree(ScreeningEligibility):
         self.bmi = None
         self.calculated_egfr_value = None
         self.converted_creatinine_value = None
-        setattr(self, "converted_fbg_value", None)
-        setattr(self, "converted_fbg2_value", None)
+        self.converted_fbg_value = None
+        self.converted_fbg2_value = None
         self.converted_ogtt_value = None
         self.converted_ogtt2_value = None
         self.creatinine_units = None
         self.creatinine_value = None
-        # self.eligible_part_three = None
         self.height = None
-        setattr(self, "fbg_units", None)
-        setattr(self, "fbg2_units", None)
-        setattr(self, "fbg_value", None)
-        setattr(self, "fbg2_value", None)
+        self.fbg_units = None
+        self.fbg2_units = None
+        self.fbg_value = None
+        self.fbg2_value = None
         self.ogtt_units = None
         self.ogtt_value = None
         self.ogtt2_units = None
         self.ogtt2_value = None
+        self.repeat_glucose_opinion = None
         self.repeat_glucose_performed = None
-        self.fbg2_performed = None
-        self.ogtt2_performed = None
         self.weight = None
         self.unsuitable_agreed = None
         super().__init__(**kwargs)
 
     def assess_eligibility(self) -> None:
         self.convert_lab_values_to_standard_units()
-        self.bmi = calculate_bmi(weight_kg=self.weight, height_cm=self.height)
+        if self.weight and self.height:
+            self.bmi = calculate_bmi(weight_kg=self.weight, height_cm=self.height)
         self.calculated_egfr_value = calculate_egfr(**self.model_obj.__dict__)
 
     def set_fld_attrs_on_model(self) -> None:
         self.model_obj.converted_creatinine_value = self.converted_creatinine_value
-        setattr(
-            self.model_obj,
-            "converted_fbg_value",
-            getattr(self, "converted_fbg_value"),
-        )
-        setattr(
-            self.model_obj,
-            "converted_fbg2_value",
-            getattr(self, "converted_fbg2_value"),
-        )
+        self.model_obj.converted_fbg_value = self.converted_fbg_value
         self.model_obj.converted_ogtt_value = self.converted_ogtt_value
+        self.model_obj.converted_fbg2_value = self.converted_fbg2_value
         self.model_obj.converted_ogtt2_value = self.converted_ogtt2_value
-        self.model_obj.fbg2_performed = self.fbg2_performed
-        self.model_obj.ogtt2_performed = self.ogtt2_performed
         if self.bmi:
             self.model_obj.calculated_bmi_value = self.bmi.value
 
@@ -79,9 +68,8 @@ class BaseEligibilityPartThree(ScreeningEligibility):
             "ogtt2_units": FC(ignore_if_missing=True),
             "ogtt2_value": FC(ignore_if_missing=True),
             "weight": FC(value=range(0, 500), msg="Missing weight"),
+            "repeat_glucose_opinion": FC(ignore_if_missing=True),
             "repeat_glucose_performed": FC(ignore_if_missing=True),
-            "fbg2_performed": FC(ignore_if_missing=True),
-            "ogtt2_performed": FC(ignore_if_missing=True),
             "unsuitable_agreed": FC(value=[NO, NOT_APPLICABLE]),
         }
 
@@ -101,7 +89,7 @@ class BaseEligibilityPartThree(ScreeningEligibility):
                 units_to=MILLIMOLES_PER_LITER,
             )
         except ConversionNotHandled as e:
-            raise ConversionNotHandled(f"IFG. {e}")
+            raise ConversionNotHandled(f"FBG. {e}")
         try:
             self.converted_fbg2_value = convert_units(
                 self.fbg2_value,
@@ -109,7 +97,7 @@ class BaseEligibilityPartThree(ScreeningEligibility):
                 units_to=MILLIMOLES_PER_LITER,
             )
         except ConversionNotHandled as e:
-            raise ConversionNotHandled(f"IFG. {e}")
+            raise ConversionNotHandled(f"FBG2. {e}")
         try:
             self.converted_ogtt_value = convert_units(
                 self.ogtt_value,

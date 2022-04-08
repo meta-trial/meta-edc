@@ -1,9 +1,8 @@
 from django import forms
-from django.test import TestCase, override_settings, tag
+from django.test import TestCase
 from edc_lab.models import Panel
 from edc_reportable import MILLIGRAMS_PER_DECILITER
 
-from meta_edc.meta_version import PHASE_TWO, get_meta_version
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_subject.forms.blood_results.blood_results_rft_form import (
     BloodResultsRftFormValidator,
@@ -15,9 +14,7 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()
         self.subject_visit = self.get_subject_visit()
-        panel = Panel.objects.get(
-            name="chemistry" if get_meta_version() == PHASE_TWO else "chemistry_rft"
-        )
+        panel = Panel.objects.get(name="chemistry_rft")
         requisition = SubjectRequisition.objects.create(
             subject_visit=self.subject_visit,
             panel=panel,

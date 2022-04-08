@@ -32,7 +32,7 @@ from model_bakery import baker
 from webtest.app import AppError
 
 from meta_edc.meta_version import get_meta_version
-from meta_rando.randomizers import RandomizerPhaseThree, RandomizerPhaseTwo
+from meta_rando.randomizers import RandomizerPhaseThree
 from meta_screening.models import ScreeningPartOne, ScreeningPartThree, ScreeningPartTwo
 from meta_screening.models.subject_screening import SubjectScreening
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
@@ -211,75 +211,6 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             else:
                 self.assertNotIn(label, response)
 
-    @skipIf(get_meta_version() != 2, "not version 2")
-    @tag("webtest")
-    # @override_settings(META_PHASE=2)
-    def test_screening_form_phase2(self):
-        self.login(superuser=False, roles=[STAFF_ROLE, CLINICIAN_ROLE])
-        site_randomizers._registry = {}
-        site_randomizers.loaded = False
-        site_randomizers.register(RandomizerPhaseTwo)
-        register_admin()
-
-        part_one_data = deepcopy(get_part_one_eligible_options())
-        report_datetime = part_one_data.get("report_datetime")
-        part_one_data.update(
-            dict(
-                report_datetime_0=report_datetime.strftime("%Y-%m-%d"),
-                report_datetime_1=report_datetime.strftime("%H:%M"),
-                continue_part_two=YES,
-            )
-        )
-        (
-            home_page,
-            add_screening_part_two,
-            screening_identifier,
-        ) = self.webtest_for_screening_form_part_one(part_one_data)
-
-        part_two_data = deepcopy(get_part_two_eligible_options())
-        report_datetime = part_two_data.get("part_two_report_datetime")
-        appt_datetime = part_two_data.get("appt_datetime")
-        part_two_data.update(
-            dict(
-                part_two_report_datetime_0=report_datetime.strftime("%Y-%m-%d"),
-                part_two_report_datetime_1=report_datetime.strftime("%H:%M"),
-                appt_datetime_0=appt_datetime.strftime("%Y-%m-%d"),
-                appt_datetime_1=appt_datetime.strftime("%H:%M"),
-            )
-        )
-        (
-            home_page,
-            add_screening_part_three,
-            screening_identifier,
-        ) = self.webtest_for_screening_form_part_two(
-            home_page, add_screening_part_two, screening_identifier, part_two_data
-        )
-
-        part_three_data = deepcopy(get_part_three_eligible_options())
-        report_datetime = part_three_data.get("part_three_report_datetime")
-        fbg_datetime = part_three_data.get("fbg_datetime")
-        ogtt_datetime = part_three_data.get("ogtt_datetime")
-        part_three_data = deepcopy(part_three_data)
-        part_three_data.update(
-            {
-                "part_three_report_datetime_0": report_datetime.strftime("%Y-%m-%d"),
-                "part_three_report_datetime_1": report_datetime.strftime("%H:%M"),
-                "fbg_datetime_0": fbg_datetime.strftime("%Y-%m-%d"),
-                "fbg_datetime_1": fbg_datetime.strftime("%H:%M"),
-                "ogtt_datetime_0": ogtt_datetime.strftime("%Y-%m-%d"),
-                "ogtt_datetime_1": ogtt_datetime.strftime("%H:%M"),
-            }
-        )
-        (
-            screening_listboard_page,
-            screening_identifier,
-        ) = self.webtest_for_screening_form_part_three(
-            home_page, add_screening_part_three, screening_identifier, part_three_data
-        )
-        self.assertIn(screening_identifier, screening_listboard_page)
-        self.assertIn("Consent", screening_listboard_page)
-
-    @skipIf(get_meta_version() != 3, "not version 3")
     @tag("webtest")
     def test_screening_form_phase3(self):
         self.login(superuser=False, roles=[STAFF_ROLE, CLINICIAN_ROLE])

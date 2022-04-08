@@ -1,8 +1,5 @@
 from .eligibility import MetaEligibility, SubjectScreeningEligibilityError
 from .eligibility_part_one import EligibilityPartOne
-from .eligibility_part_three import (
-    EligibilityPartThreePhaseThree,
-    EligibilityPartThreePhaseTwo,
-)
+from .eligibility_part_three import EligibilityPartThreePhaseThree
 from .eligibility_part_two import EligibilityPartTwo
 from .utils import format_reasons_ineligible

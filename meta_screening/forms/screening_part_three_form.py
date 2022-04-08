@@ -3,8 +3,6 @@ from edc_form_validators import FormValidatorMixin
 from edc_glucose.constants import GLUCOSE_HIGH_READING
 from edc_screening.modelform_mixins import AlreadyConsentedFormMixin
 
-from meta_edc.meta_version import PHASE_TWO, get_meta_version
-
 from ..form_validators import ScreeningPartThreeFormValidator
 from ..models import ScreeningPartThree
 from .field_lists import get_part_three_fields
@@ -18,7 +16,7 @@ class ScreeningPartThreeForm(
 
     form_validator_cls = ScreeningPartThreeFormValidator
 
-    AUTO_NUMBER_START = 29 if get_meta_version() == PHASE_TWO else 31
+    AUTO_NUMBER_START = 31
 
     def clean(self):
         cleaned_data = super().clean()

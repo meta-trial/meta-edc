@@ -1,8 +1,7 @@
-from django.test import TestCase, override_settings
+from django.test import TestCase
 from edc_constants.constants import COMPLETE, NO, NONE, NOT_APPLICABLE, YES
 from edc_list_data import PreloadData
 
-from meta_edc.meta_version import PHASE_THREE, PHASE_TWO
 from meta_lists.models import (
     ArvRegimens,
     BaselineSymptoms,
@@ -62,19 +61,6 @@ class BaseTestPatientHistory(MetaTestCaseMixin, TestCase):
         }
 
 
-@override_settings(META_PHASE=PHASE_TWO)
-class TestPatientHistoryPhaseTwo(BaseTestPatientHistory):
-    def test_ok(self):
-        from meta_lists.list_data import list_data
-
-        PreloadData(list_data=list_data)
-        data = {k: v for k, v in self.get_options().items()}
-        form = PatientHistoryForm(data=data)
-        form.is_valid()
-        self.assertEqual(form._errors, {})
-
-
-@override_settings(META_PHASE=PHASE_THREE)
 class TestPatientHistoryPhaseThree(BaseTestPatientHistory):
     def test_ok_phase_three(self):
         from meta_lists.list_data import list_data

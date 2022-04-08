@@ -16,7 +16,7 @@ from edc_reportable.units import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
 from faker import Faker
 from pyparsing import alphas
 
-from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
+from meta_edc.meta_version import get_meta_version
 from meta_screening.forms import (
     get_part_one_fields,
     get_part_three_fields,
@@ -44,21 +44,14 @@ def get_part_one_eligible_options():
         report_datetime=now,
         screening_consent=YES,
         selection_method=RANDOM_SAMPLING,
-        staying_nearby_6=YES,
+        staying_nearby_12=YES,
         vl_undetectable=YES,
+        meta_phase_two=NO,
     )
-    if get_meta_version() == PHASE_THREE:
-        options["meta_phase_two"] = NO
-        options["staying_nearby_12"] = options.pop("staying_nearby_6")
-        if fld := [f for f in get_part_one_fields() if f not in options]:
-            raise TypeError(
-                f"Missing part one fields for meta phase {get_meta_version()}. Got {fld}."
-            )
-    else:
-        if fld := [f for f in get_part_one_fields() if f not in options]:
-            raise TypeError(
-                f"Missing part one fields for meta phase {get_meta_version()}. Got {fld}."
-            )
+    if fld := [f for f in get_part_one_fields() if f not in options]:
+        raise TypeError(
+            f"Missing part one fields for meta phase {get_meta_version()}. Got {fld}."
+        )
     return options
 
 
@@ -76,18 +69,13 @@ def get_part_two_eligible_options():
         part_two_report_datetime=now,
         renal_function_condition=NO,
         tissue_hypoxia_condition=NO,
+        has_dm=NO,
+        on_dm_medication=NO,
     )
-    if get_meta_version() == PHASE_THREE:
-        options.update(has_dm=NO, on_dm_medication=NO)
-        if fld := [f for f in get_part_two_fields() if f not in options]:
-            raise TypeError(
-                f"Missing part two fields for meta phase {get_meta_version()}. Got {fld}."
-            )
-    else:
-        if fld := [f for f in get_part_two_fields() if f not in options]:
-            raise TypeError(
-                f"Missing part two fields for meta phase {get_meta_version()}. Got {fld}."
-            )
+    if fld := [f for f in get_part_two_fields() if f not in options]:
+        raise TypeError(
+            f"Missing part two fields for meta phase {get_meta_version()}. Got {fld}."
+        )
     return options
 
 
@@ -106,11 +94,11 @@ def get_part_three_eligible_options(report_datetime: datetime = None):
         height=110,
         fbg_datetime=tomorrow,
         fbg_units=MILLIMOLES_PER_LITER,
-        fbg_value=7.0,
+        fbg_value=6.9,
         ogtt_base_datetime=tomorrow + relativedelta(minutes=5),
         ogtt_datetime=tomorrow + relativedelta(hours=2),
         ogtt_units=MILLIMOLES_PER_LITER,
-        ogtt_value=7.5,
+        ogtt_value=7.8,
         repeat_glucose_opinion=NO,
         ogtt2_performed=NOT_APPLICABLE,
         part_three_report_datetime=report_datetime or now,
@@ -125,21 +113,12 @@ def get_part_three_eligible_options(report_datetime: datetime = None):
         urine_bhcg_value=NOT_APPLICABLE,
         waist_circumference=130,
         weight=65,
+        severe_htn=NO,
     )
-    if get_meta_version() == PHASE_THREE:
-        options["fbg_value"] = 6.9
-        options["ogtt_value"] = 7.8
-        options["fasting_opinion"] = YES
-        options["severe_htn"] = NO
-        if fld := [f for f in get_part_three_fields() if f not in options]:
-            raise TypeError(
-                f"Missing part three fields for meta phase {get_meta_version()}. Got {fld}."
-            )
-    elif get_meta_version() == PHASE_TWO:
-        if fld := [f for f in get_part_three_fields() if f not in options]:
-            raise TypeError(
-                f"Missing part three fields for meta phase {get_meta_version()}. Got {fld}."
-            )
+    if fld := [f for f in get_part_three_fields() if f not in options]:
+        raise TypeError(
+            f"Missing part three fields for meta phase {get_meta_version()}. Got {fld}."
+        )
     return options
 
 

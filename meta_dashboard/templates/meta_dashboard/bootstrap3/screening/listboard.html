@@ -21,10 +21,11 @@
     <th>#</th>
     <th></th>
     {% if meta_version == 2 %}<th>Corona</th>{% endif %}
-    <th>Screening ID</th>
-    <th>Initials</th>
-    <th>Age/Gender</th>
-    <th>Study ID</th>
+    <th>ScreenID</th>
+    <th>FBG/OGTT x 2</th>
+    <th>Init</th>
+    <th>Age</th>
+    <th>StudyID</th>
     <th>User</th>
     <th>Modified</th>
     <!-- end results header -->
@@ -62,6 +63,16 @@
         {% endif %}
     </td>{% endif %}
     <td>{{ result.human_screening_identifier }} </td>
+    <td nowrap>
+        {% if result.repeat_glucose_performed == 'PENDING' %}
+            {% if result.repeat_due_in_days < 3 %}
+                <span style="color:orange">Pending</span>
+            {% else %}
+                <span style="color:red">Overdue ({{ result.repeat_due_in_days }}d)</span>
+            {% endif %}
+        {% elif result.repeat_glucose_performed == YES %}<span style="color:green">Done</span>
+        {% else %}-{% endif %}
+    </td>
     <td nowrap>{{ result.initials }}</td>
     <td nowrap>{{ result.age_in_years }} yrs {{ result.gender }}</td>
     <td nowrap>{% if result.consent %}{{ result.consent.subject_identifier }}{% else %} -- {% endif %}</td>

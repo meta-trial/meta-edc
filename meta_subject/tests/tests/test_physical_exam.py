@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-from django.test import TestCase, tag
+from django.test import TestCase
 from edc_appointment.constants import IN_PROGRESS_APPT
 from edc_appointment.models import Appointment
 from edc_constants.constants import COMPLETE, NO, YES

@@ -17,8 +17,7 @@ from edc_utils.date import get_utcnow
 from edc_visit_tracking.constants import SCHEDULED
 from model_bakery import baker
 
-from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
-from meta_rando.randomizers import RandomizerPhaseThree, RandomizerPhaseTwo
+from meta_rando.randomizers import RandomizerPhaseThree
 from meta_sites import fqdn
 from meta_subject.models import SubjectVisit
 from meta_visit_schedule.constants import DAY1
@@ -46,7 +45,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
 
     import_randomization_list = True
 
-    sid_count = 2
+    sid_count = 5
 
     @classmethod
     def setUpTestData(cls):
@@ -54,16 +53,10 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
         add_or_update_django_sites(sites=get_sites_by_country("tanzania"))
         site_randomizers._registry = {}
         if cls.import_randomization_list:
-            if get_meta_version() == PHASE_TWO:
-                site_randomizers.register(RandomizerPhaseTwo)
-                RandomizerPhaseTwo.import_list(
-                    verbose=False, sid_count_for_tests=cls.sid_count
-                )
-            elif get_meta_version() == PHASE_THREE:
-                site_randomizers.register(RandomizerPhaseThree)
-                RandomizerPhaseThree.import_list(
-                    verbose=False, sid_count_for_tests=cls.sid_count
-                )
+            site_randomizers.register(RandomizerPhaseThree)
+            RandomizerPhaseThree.import_list(
+                verbose=False, sid_count_for_tests=cls.sid_count
+            )
         site_list_data.initialize()
         site_list_data.autodiscover()
 

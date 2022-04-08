@@ -1,18 +1,13 @@
-from unittest import skipIf
-
 from dateutil.relativedelta import relativedelta
-from django.conf import settings
 from django.test import TestCase
 from edc_constants.constants import NO, YES
 from edc_utils import get_utcnow
 from model_bakery import baker
 
-from meta_edc.meta_version import PHASE_TWO
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_visit_schedule.constants import MONTH1, MONTH3, MONTH6, MONTH9, MONTH12, WEEK2
 
 
-@skipIf(settings.META_PHASE == PHASE_TWO, "MNSI not in Phase 2")
 class TestMnsiRequired(MetaTestCaseMixin, TestCase):
     def setUp(self):
 

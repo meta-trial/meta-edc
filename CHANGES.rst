@@ -1,5 +1,18 @@
 Changes
 =======
+0.1.77
+------
+- add pregnancy, delivery, birth outcomes
+- add repeat glucose tests in screening part three
+- BMI normal range (5-60)
+- remove all conditional statements for PHASE2
+- remove sarscov2 requirement
+- remove PHASE2 randomizer
+- remove PHAS2 only tests
+- add part three report datetime to form
+- change fasting blood glucose field prefix from `ifg` to `fbg`
+- add <400 in last 6m question to P3 screening
+- add migrations
 
 0.1.76
 ------

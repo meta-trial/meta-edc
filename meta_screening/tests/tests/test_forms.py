@@ -1,8 +1,9 @@
 from copy import deepcopy
 from random import choices
 
-from django.test import TestCase, tag
-from edc_constants.constants import FEMALE, MALE, NEG, NO, NOT_APPLICABLE, POS, YES
+from dateutil.relativedelta import relativedelta
+from django.test import TestCase
+from edc_constants.constants import FEMALE, MALE, NO, NOT_APPLICABLE, POS, YES
 from edc_utils.date import get_utcnow
 
 from meta_screening.forms import (
@@ -70,7 +71,6 @@ class TestForms(ScreeningTestMixin, TestCase):
     def setUp(self):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         part_two_eligible_options = deepcopy(get_part_two_eligible_options())
-        part_three_eligible_options = deepcopy(get_part_three_eligible_options())
         obj = ScreeningPartOne(**part_one_eligible_options)
         obj.save()
 
@@ -82,7 +82,10 @@ class TestForms(ScreeningTestMixin, TestCase):
         for k, v in part_two_eligible_options.items():
             setattr(obj, k, v)
         obj.save()
-        self.data = part_three_eligible_options
+        # part_three_eligible_options = deepcopy(
+        #     get_part_three_eligible_options(report_datetime=obj.report_datetime)
+        # )
+        # self.data = part_three_eligible_options
 
     def test_screening_form_one_ok(self):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
@@ -99,7 +102,12 @@ class TestForms(ScreeningTestMixin, TestCase):
         self.assertEqual(form._errors, {})
 
     def test_screening_form_three_ok(self):
-        part_three_eligible_options = deepcopy(get_part_three_eligible_options())
+        obj = ScreeningPartThree.objects.get(
+            screening_identifier=self.screening_identifier
+        )
+        part_three_eligible_options = deepcopy(
+            get_part_three_eligible_options(report_datetime=obj.report_datetime)
+        )
         form = ScreeningPartThreeForm(data=part_three_eligible_options)
         form.is_valid()
         self.assertEqual(form._errors, {})
@@ -143,6 +151,8 @@ class TestForms(ScreeningTestMixin, TestCase):
 
         # if pregnant == YES, urine_bhcg_performed is applicable
         data = dict(
+            part_three_report_datetime=instance.part_two_report_datetime
+            + relativedelta(days=1),
             urine_bhcg_value=NOT_APPLICABLE,
             urine_bhcg_performed=NOT_APPLICABLE,
         )
@@ -156,6 +166,8 @@ class TestForms(ScreeningTestMixin, TestCase):
 
         # if pregnant == YES and urine_bhcg_performed=NO, urine_bhcg_value is NA
         data = dict(
+            part_three_report_datetime=instance.part_two_report_datetime
+            + relativedelta(days=1),
             urine_bhcg_value=POS,  # WRONG
             urine_bhcg_performed=NO,
         )
@@ -169,6 +181,8 @@ class TestForms(ScreeningTestMixin, TestCase):
 
         # if pregnant == YES and urine_bhcg_performed=NO, urine_bhcg_value is NA OK
         data = dict(
+            part_three_report_datetime=instance.part_two_report_datetime
+            + relativedelta(days=1),
             urine_bhcg_performed=NO,
             urine_bhcg_value=NOT_APPLICABLE,
         )
@@ -192,6 +206,8 @@ class TestForms(ScreeningTestMixin, TestCase):
         # if pregnant == YES and urine_bhcg_performed=YES and urine_bhcg is NEG
         # and urine_bhcg_date is now => OK
         data = dict(
+            part_three_report_datetime=instance.part_two_report_datetime
+            + relativedelta(days=1),
             urine_bhcg_value=POS,
             urine_bhcg_performed=YES,
             urine_bhcg_date=get_utcnow().date(),

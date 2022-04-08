@@ -1,12 +1,11 @@
 from copy import deepcopy
-from unittest import skipIf
 
 from dateutil.relativedelta import relativedelta
-from django.test import TestCase, override_settings, tag
+from django.test import TestCase
 from edc_constants.constants import NO, NOT_APPLICABLE, TBD, YES
 from edc_utils.date import get_utcnow
 
-from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
+from meta_pharmacy.constants import METFORMIN
 from meta_screening.models import ScreeningPartOne, ScreeningPartTwo
 
 from ...eligibility import EligibilityPartOne
@@ -28,20 +27,9 @@ class TestScreeningPartTwo(TestCase):
 
         self.screening_identifier = model_obj.screening_identifier
 
-    @override_settings(META_PHASE=PHASE_TWO)
-    def test_defaults_phase_two(self):
-        self._test_defaults()
-
-    @skipIf(get_meta_version() != PHASE_THREE, "not META3")
     def test_defaults_phase_three(self):
         self._test_defaults()
 
-    @skipIf(get_meta_version() != PHASE_TWO, "not META2")
-    def test_eligible_phase_two(self):
-        self._test_eligible()
-
-    @tag("101")
-    @skipIf(get_meta_version() != PHASE_THREE, "not META3")
     def test_eligible_phase_three(self):
         self._test_eligible()
 
@@ -87,7 +75,7 @@ class TestScreeningPartTwo(TestCase):
         obj.metformin_sensitivity = YES
         obj.save()
 
-        self.assertIn("Metformin", obj.reasons_ineligible_part_two)
+        self.assertIn(METFORMIN, (obj.reasons_ineligible_part_two or "").lower())
         self.assertEqual(obj.eligible_part_two, NO)
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)

@@ -4,6 +4,7 @@ from .defaults import *  # noqa
 
 print(f"Settings file {__file__}")  # noqa
 
+
 SITE_ID = SiteID(default=1)
 EDC_SITES_UAT_DOMAIN = True
 EDC_CONSENT_BYPASS_CONSENT_DATETIME_VALIDATION = True

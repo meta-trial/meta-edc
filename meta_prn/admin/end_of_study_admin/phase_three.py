@@ -4,14 +4,13 @@ from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdmin
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
-from meta_edc.meta_version import PHASE_THREE, get_meta_version
-
 from ...admin_site import meta_prn_admin
 from ...forms import EndOfStudyPhaseThreeForm
 from ...models import EndOfStudy
 from .model_admin_mixin import EndOfStudyAdminMixin
 
 
+@admin.register(EndOfStudy, site=meta_prn_admin)
 class EndOfStudyPhaseThreeAdmin(
     EndOfStudyAdminMixin,
     DataManagerModelAdminMixin,
@@ -50,7 +49,3 @@ class EndOfStudyPhaseThreeAdmin(
         "clinical_withdrawal_reason": admin.VERTICAL,
         "toxicity_withdrawal_reason": admin.VERTICAL,
     }
-
-
-if get_meta_version() == PHASE_THREE:
-    meta_prn_admin.register(EndOfStudy, EndOfStudyPhaseThreeAdmin)
