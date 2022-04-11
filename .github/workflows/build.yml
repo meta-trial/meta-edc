@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: ${{ matrix.codebase }} / Meta 3 / Dj ${{ matrix.django-version }} / Py ${{ matrix.python-version }}
+    name: ${{ matrix.codebase }} / Dj ${{ matrix.django-version }} / Py ${{ matrix.python-version }}
     runs-on: ubuntu-latest
 
     strategy:
