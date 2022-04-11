@@ -23,6 +23,7 @@ setup(
     url="https://github.com/meta-trial/meta-edc",
     license="GPL license, see LICENSE",
     description="META Trial EDC (http://www.isrctn.com/ISRCTN76157257)",
+    long_description_content_type="text/x-rst",
     long_description=README,
     zip_safe=False,
     keywords="django meta EDC",
