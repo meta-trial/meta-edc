@@ -1,7 +1,8 @@
 Changes
 =======
-0.1.77
-------
+
+0.1.77 - 0.1.79
+---------------
 - add pregnancy, delivery, birth outcomes
 - add repeat glucose tests in screening part three
 - BMI normal range (5-60)
