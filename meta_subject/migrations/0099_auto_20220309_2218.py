@@ -6,38 +6,58 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_subject', '0098_auto_20220309_2106'),
+        ("meta_subject", "0098_auto_20220309_2106"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='historicalurinepregnancy',
-            name='notified',
-            field=models.BooleanField(default=False, editable=False, help_text='Auto-updated by Pregnancy Notification PRN form'),
+            model_name="historicalurinepregnancy",
+            name="notified",
+            field=models.BooleanField(
+                default=False,
+                editable=False,
+                help_text="Auto-updated by Pregnancy Notification PRN form",
+            ),
         ),
         migrations.AddField(
-            model_name='historicalurinepregnancy',
-            name='notified_datetime',
-            field=models.DateTimeField(editable=False, help_text='Auto-updated by Pregnancy Notification PRN form', null=True),
+            model_name="historicalurinepregnancy",
+            name="notified_datetime",
+            field=models.DateTimeField(
+                editable=False,
+                help_text="Auto-updated by Pregnancy Notification PRN form",
+                null=True,
+            ),
         ),
         migrations.AddField(
-            model_name='urinepregnancy',
-            name='notified',
-            field=models.BooleanField(default=False, editable=False, help_text='Auto-updated by Pregnancy Notification PRN form'),
+            model_name="urinepregnancy",
+            name="notified",
+            field=models.BooleanField(
+                default=False,
+                editable=False,
+                help_text="Auto-updated by Pregnancy Notification PRN form",
+            ),
         ),
         migrations.AddField(
-            model_name='urinepregnancy',
-            name='notified_datetime',
-            field=models.DateTimeField(editable=False, help_text='Auto-updated by Pregnancy Notification PRN form', null=True),
+            model_name="urinepregnancy",
+            name="notified_datetime",
+            field=models.DateTimeField(
+                editable=False,
+                help_text="Auto-updated by Pregnancy Notification PRN form",
+                null=True,
+            ),
         ),
         migrations.AlterField(
-            model_name='historicalurinepregnancy',
-            name='assay_date',
-            field=models.DateField(blank=True, null=True, verbose_name='Urine βhCG date'),
+            model_name="historicalurinepregnancy",
+            name="assay_date",
+            field=models.DateField(
+                blank=True, null=True, verbose_name="Urine βhCG date"
+            ),
         ),
         migrations.AlterField(
-            model_name='urinepregnancy',
-            name='assay_date',
-            field=models.DateField(blank=True, null=True, verbose_name='Urine βhCG date'),
+            model_name="urinepregnancy",
+            name="assay_date",
+            field=models.DateField(
+                blank=True, null=True, verbose_name="Urine βhCG date"
+            ),
         ),
     ]
