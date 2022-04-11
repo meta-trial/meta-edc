@@ -24,7 +24,8 @@ class PregnancyNotificationFormValidator(FormValidator):
                 assay_date__lte=self.cleaned_data.get("report_datetime"),
             ).exists():
                 raise forms.ValidationError(
-                    f"Invalid. A positive Urine βhCG cannot be found. See {UrinePregnancy._meta.verbose_name}"
+                    "Invalid. A positive Urine βhCG cannot be found. "
+                    f"See {UrinePregnancy._meta.verbose_name}"
                 )
 
 
