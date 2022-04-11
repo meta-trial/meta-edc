@@ -11,3 +11,8 @@ from .modeladmin import CrfModelAdmin
 class MedicationAdherenceAdmin(MedicationAdherenceAdminMixin, CrfModelAdmin):
 
     form = MedicationAdherenceForm
+
+    radio_fields = {
+        "pill_count_performed": admin.VERTICAL,
+        "last_missed_pill": admin.VERTICAL,
+    }

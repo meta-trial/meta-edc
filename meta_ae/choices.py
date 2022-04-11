@@ -21,7 +21,7 @@ AE_ACTION_REQUIRED = (
 DEATH_LOCATIONS = (
     ("home", "At home"),
     (HOSPITAL_CLINIC, "Hospital/clinic"),
-    ("home", "Elsewhere"),
+    ("elsewhere", "Elsewhere"),
 )
 
 

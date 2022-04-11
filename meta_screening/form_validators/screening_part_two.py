@@ -26,12 +26,10 @@ class ScreeningPartTwoFormValidator(FormValidator):
         )
 
     @property
-    def eligible_part_two(self):
+    def eligible_part_two(self) -> bool:
         """Returns False if any of the required fields is YES."""
-        for fld in EligibilityPartTwo.get_required_fields():
-            if not self.cleaned_data.get(fld) or self.cleaned_data.get(fld) == YES:
-                return False
-        return True
+        eligibility = EligibilityPartTwo(cleaned_data=self.cleaned_data)
+        return eligibility.is_eligible
 
     def raise_if_not_future_appt_datetime(self):
         """Raises if appt_datetime is not future relative to

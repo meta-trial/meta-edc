@@ -1,0 +1,21 @@
+TODO
+- eGFR < 45 at enrollment -> late exclusion
+- BMI value absurd value?? (BMI 14.5? Screened?? SYWY-TFFZ)
+- missed visit / ltfu action, define LTFU
+- pregnancy outcomes notification form
+- collect waist circumference at enrolment only
+- add assessment scores to consent ??
+- screening add diet and lifestyle ??
+- customize off study reasons
+- evaluate appointment progress before exception EoS
+- separate off study drug from EoS, add off study drug CRF
+- put off study drug patients onto simplified 36m appointment only
+  In the case of an AE, normal schedule continues
+- back on study drug form??
+- update reasons for withdrawal??
+- grade blood pressure
+- SF-12 in both english and Swahili (forms) as proxy model
+  with non-user Q indicating language chosen
+- EoS prodedure:
+
+#Assessment score "The client has completed the assessment of understanding with a passing score" (meta-consent)

@@ -1,17 +1,16 @@
 from textwrap import fill
 
+from edc_randomization.auth_objects import RANDO_UNBLINDED
 from edc_randomization.models import RandomizationList
-from edc_registration.models import RegisteredSubject
 from edc_reports.crf_pdf_report import CrfPdfReport
-from meta_permissions.group_names import RANDO
 from reportlab.lib.units import cm
 from reportlab.platypus import Table
 
-from meta_subject.models import Followup
+from meta_subject.models import FollowupVitals
 
 
 def get_weight_for_timepoint(subject_identifier=None, reference_dt=None):
-    qs = Followup.objects.filter(
+    qs = FollowupVitals.objects.filter(
         subject_visit__appointment__subject_identifier=subject_identifier,
         report_datetime__lte=reference_dt,
     ).order_by("-report_datetime")
@@ -32,9 +31,6 @@ class MetaCrfPdfReport(CrfPdfReport):
     def __init__(self, subject_identifier=None, **kwargs):
         super().__init__(**kwargs)
         self.subject_identifier = subject_identifier
-        self.registered_subject = RegisteredSubject.objects.get(
-            subject_identifier=self.subject_identifier
-        )
         self.drug_assignment = RandomizationList.objects.get(
             subject_identifier=self.subject_identifier
         ).get_drug_assignment_display()
@@ -47,7 +43,7 @@ class MetaCrfPdfReport(CrfPdfReport):
             reference_dt=model_obj.report_datetime,
         )
         assignment = "*****************"
-        if self.request.user.groups.filter(name=RANDO).exists():
+        if self.request.user.groups.filter(name=RANDO_UNBLINDED).exists():
             assignment = fill(self.drug_assignment, width=80)
         rows = [
             ["Subject:", self.subject_identifier],

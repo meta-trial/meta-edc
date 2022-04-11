@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django_crypto_fields.fields import EncryptedCharField
 from edc_constants.choices import SELECTION_METHOD, YES_NO, YES_NO_NA, YESDEFAULT_NO
@@ -11,9 +12,9 @@ from ..constants import PREG_YES_NO_NA
 class PartOneFieldsModelMixin(models.Model):
 
     screening_consent = models.CharField(
-        verbose_name=(
+        verbose_name=format_html(
             "Has the subject given his/her verbal consent "
-            "to be screened for the META trial?"
+            "to be screened for the <u>META Phase 3</u> trial?"
         ),
         max_length=15,
         choices=YES_NO,
@@ -23,6 +24,16 @@ class PartOneFieldsModelMixin(models.Model):
         verbose_name="How was the patient selected from the outpatients CTC?",
         max_length=25,
         choices=SELECTION_METHOD,
+    )
+
+    meta_phase_two = models.CharField(
+        verbose_name=format_html(
+            "Was the subject enrolled in the <u>META Phase 2</u> trial?"
+        ),
+        max_length=15,
+        choices=YES_NO,
+        null=True,
+        blank=False,
     )
 
     hospital_identifier = EncryptedCharField(unique=True, blank=False)
@@ -36,8 +47,8 @@ class PartOneFieldsModelMixin(models.Model):
     )
 
     art_six_months = models.CharField(
-        verbose_name=(
-            "Has the patient been on anti-retroviral therapy for at least 6 months"
+        verbose_name=format_html(
+            "Has the patient been on anti-retroviral therapy for <u>at least 6 months</u>"
         ),
         max_length=15,
         choices=YES_NO_NA,
@@ -48,6 +59,15 @@ class PartOneFieldsModelMixin(models.Model):
         max_length=15,
         choices=YES_NO_NA,
         help_text="in regular attendance for care",
+    )
+
+    vl_undetectable = models.CharField(
+        verbose_name=format_html(
+            "Does the patient have a viral load measure of less than 400 copies per ml "
+            "taken <u>within the last 6 months</u>"
+        ),
+        max_length=15,
+        choices=YES_NO_NA,
     )
 
     lives_nearby = models.CharField(
@@ -72,9 +92,9 @@ class PartOneFieldsModelMixin(models.Model):
 
     # META PHASE_THREE ONLY
     staying_nearby_12 = models.CharField(
-        verbose_name=(
+        verbose_name=format_html(
             "Is the patient planning to remain in the catchment area "
-            "for at least 12 months"
+            "for <u>at least 12 months</u>"
         ),
         max_length=15,
         choices=YES_NO,

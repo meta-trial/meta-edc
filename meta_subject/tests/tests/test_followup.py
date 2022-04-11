@@ -1,12 +1,10 @@
-from django.test import TestCase, override_settings
+from django.test import TestCase
 from model_bakery.baker import make_recipe
 
-from meta_edc.meta_version import PHASE_TWO
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_subject.forms import FollowupExaminationForm
 
 
-@override_settings(META_PHASE=PHASE_TWO)
 class TestFollowup(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()

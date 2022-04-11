@@ -1,25 +1,15 @@
-from meta_edc.meta_version import PHASE_THREE, get_meta_version
-
-
 def get_htn_fieldset(part=None):
     fields = [
         "htn_diagnosis",
         "on_htn_treatment",
         "htn_treatment",
         "other_htn_treatment",
-        "taking_statins",
+        "dyslipidaemia_diagnosis",
+        "on_dyslipidaemia_treatment",
+        "dyslipidaemia_rx",
+        "concomitant_conditions",
+        "concomitant_medications",
     ]
-    if get_meta_version() == PHASE_THREE:
-        fields.remove("taking_statins")
-        fields.extend(
-            [
-                "dyslipidaemia_diagnosis",
-                "on_dyslipidaemia_treatment",
-                "dyslipidaemia_rx",
-                "concomitant_conditions",
-                "concomitant_medications",
-            ]
-        )
 
     return (
         f"Part {part}: Hypertension",
@@ -31,6 +21,7 @@ def get_hiv_fieldset(part=None):
     title = "HIV, ARVs and other prophylaxis"
     if part:
         title = f"Part {part}: {title}"
+    # TODO: previous_arv_regimen_start_date is PHASE 3 only
     fields = [
         "hiv_diagnosis_date",
         "arv_initiation_date",
@@ -44,6 +35,7 @@ def get_hiv_fieldset(part=None):
         "has_previous_arv_regimen",
         "previous_arv_regimen",
         "other_previous_arv_regimen",
+        "previous_arv_regimen_start_date",
         "on_oi_prophylaxis",
         "oi_prophylaxis",
         "other_oi_prophylaxis",

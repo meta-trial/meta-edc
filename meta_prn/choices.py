@@ -1,11 +1,39 @@
-from edc_constants.constants import (
-    MALIGNANCY,
-    NOT_APPLICABLE,
-    OTHER,
-    TUBERCULOSIS,
-    UNKNOWN,
+from edc_constants.constants import NOT_APPLICABLE, OTHER, PATIENT, UNKNOWN
+
+from .constants import CLINICIAN, INVESTIGATOR, PREGNANCY, SAE
+
+CLINICAL_WITHDRAWAL_REASONS = (
+    ("pregnancy", "Pregnancy"),
+    ("kidney_disease", "Development of chronic kidney disease"),
+    ("liver_disease", "Development of chronic liver disease"),
+    ("intercurrent_illness", "Intercurrent illness which prevents further treatment"),
+    ("investigator_decision", "Investigator decision"),
+    (
+        OTHER,
+        (
+            "Other condition that justifies the discontinuation of "
+            "treatment in the clinician’s opinion (specify below)"
+        ),
+    ),
 )
-from edc_protocol_violation.choices import DEVIATION_VIOLATION
+
+# PHASE_THREE ONLY
+
+INFORMANT_RELATIONSHIP = (
+    ("husband_wife", "Husband/wife"),
+    ("Parent", "Parent"),
+    ("child", "Child"),
+    (UNKNOWN, "Unknown"),
+    (OTHER, "Other"),
+    (NOT_APPLICABLE, "Not applicable"),
+)
+
+
+TOXICITY_WITHDRAWAL_REASONS = (
+    ("lactic_acidosis", "Development of lactic acidosis or hyperlactatemia"),
+    ("hepatomegaly", "Development of hepatomegaly with steatosis"),
+    (OTHER, "Other (specify below)"),
+)
 
 LOSS_CHOICES = (
     ("unknown_address", "Changed to an unknown address"),
@@ -55,3 +83,15 @@ ACTION_REQUIRED = (
 
 
 REASON_STUDY_TERMINATED = ()
+
+WITHDRAWAL_STUDY_MEDICATION_REASONS = (
+    (PREGNANCY, "Pregnancy"),
+    (SAE, "Participant is experiencing a serious adverse event"),
+    (
+        CLINICIAN,
+        "Other condition that justifies discontinuation of treatment in the clinician’s opinion (specify below)",
+    ),
+    (INVESTIGATOR, " Investigator decision"),
+    (PATIENT, "Patient decision"),
+    (OTHER, "Other reason (specify below)"),
+)

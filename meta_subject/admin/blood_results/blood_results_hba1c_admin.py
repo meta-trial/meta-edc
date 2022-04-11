@@ -8,7 +8,7 @@ from ...forms import BloodResultsHba1cForm
 from ...models import BloodResultsHba1c
 from ..modeladmin import CrfModelAdmin
 
-# TODO: add is poc?
+# TODO: add is poc? YES, always
 
 
 @admin.register(BloodResultsHba1c, site=meta_subject_admin)

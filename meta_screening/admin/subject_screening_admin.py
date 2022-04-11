@@ -9,7 +9,7 @@ from edc_dashboard.url_names import url_names
 from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
-from meta_screening.eligibility import Eligibility
+from meta_screening.eligibility import MetaEligibility
 
 from ..admin_site import meta_screening_admin
 from ..eligibility import format_reasons_ineligible
@@ -78,9 +78,11 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         # calculated values
         "calculated_bmi_value",
         "calculated_egfr_value",
-        "converted_ifg_value",
+        "converted_fbg_value",
+        "converted_fbg2_value",
         "converted_creatinine_value",
         "converted_ogtt_value",
+        "converted_ogtt2_value",
         "inclusion_a",
         "inclusion_b",
         "inclusion_c",
@@ -88,41 +90,48 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
     )
 
     radio_fields = {
-        "already_fasted": admin.VERTICAL,
         "acute_condition": admin.VERTICAL,
         "acute_metabolic_acidosis": admin.VERTICAL,
         "advised_to_fast": admin.VERTICAL,
         "alcoholism": admin.VERTICAL,
+        "already_fasted": admin.VERTICAL,
         "art_six_months": admin.VERTICAL,
         "congestive_heart_failure": admin.VERTICAL,
         "continue_part_two": admin.VERTICAL,
         "creatinine_performed": admin.VERTICAL,
         "creatinine_units": admin.VERTICAL,
         "ethnicity": admin.VERTICAL,
-        "has_dm": admin.VERTICAL,
-        "on_dm_medication": admin.VERTICAL,
         "fasting": admin.VERTICAL,
-        "ifg_units": admin.VERTICAL,
+        "fbg2_units": admin.VERTICAL,
+        "fbg_units": admin.VERTICAL,
         "gender": admin.VERTICAL,
+        "has_dm": admin.VERTICAL,
         "hba1c_performed": admin.VERTICAL,
         "hiv_pos": admin.VERTICAL,
         "liver_disease": admin.VERTICAL,
         "lives_nearby": admin.VERTICAL,
+        "meta_phase_two": admin.VERTICAL,
         "metformin_sensitivity": admin.VERTICAL,
+        "ogtt2_units": admin.VERTICAL,
         "ogtt_units": admin.VERTICAL,
+        "on_dm_medication": admin.VERTICAL,
         "on_rx_stable": admin.VERTICAL,
         "pregnant": admin.VERTICAL,
         "renal_function_condition": admin.VERTICAL,
+        "repeat_fasting": admin.VERTICAL,
+        "repeat_glucose_opinion": admin.VERTICAL,
+        "repeat_glucose_performed": admin.VERTICAL,
         "screening_consent": admin.VERTICAL,
         "selection_method": admin.VERTICAL,
         "severe_htn": admin.VERTICAL,
-        "staying_nearby_6": admin.VERTICAL,
         "staying_nearby_12": admin.VERTICAL,
+        "staying_nearby_6": admin.VERTICAL,
         "tissue_hypoxia_condition": admin.VERTICAL,
         "unsuitable_agreed": admin.VERTICAL,
         "unsuitable_for_study": admin.VERTICAL,
-        "urine_bhcg_value": admin.VERTICAL,
         "urine_bhcg_performed": admin.VERTICAL,
+        "urine_bhcg_value": admin.VERTICAL,
+        "vl_undetectable": admin.VERTICAL,
     }
 
     def post_url_on_delete_kwargs(self, request, obj):
@@ -142,7 +151,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
 
     @staticmethod
     def eligiblity_status(obj=None):
-        eligibility = Eligibility(obj)
+        eligibility = MetaEligibility(obj, update_model=False)
         return mark_safe(eligibility.eligibility_status)
 
     def dashboard(self, obj=None, label=None):

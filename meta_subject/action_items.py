@@ -1,4 +1,4 @@
-from edc_action_item import Action, site_action_items
+from edc_action_item import Action, ActionWithNotification, site_action_items
 from edc_action_item.site_action_items import AlreadyRegistered
 from edc_adverse_event.constants import AE_INITIAL_ACTION
 from edc_blood_results.action_items import (
@@ -11,12 +11,39 @@ from edc_blood_results.action_items import (
 from edc_blood_results.action_items import (
     BloodResultsRftAction as BaseBloodResultsRftAction,
 )
-from edc_constants.constants import HIGH_PRIORITY, NONE, YES
+from edc_constants.constants import HIGH_PRIORITY, NONE, POS, YES
+from edc_ltfu.constants import LTFU_ACTION
 from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_reportable import GRADE3, GRADE4
 from edc_visit_schedule.utils import is_baseline
 
-from .constants import FOLLOWUP_EXAMINATION_ACTION
+from meta_prn.constants import (
+    OFFSCHEDULE_PREGNANCY_ACTION,
+    PREGNANCY_NOTIFICATION_ACTION,
+)
+
+from .constants import (
+    DELIVERY_ACTION,
+    FOLLOWUP_EXAMINATION_ACTION,
+    MISSED_VISIT_ACTION,
+    URINE_PREGNANCY_ACTION,
+)
+
+
+class MissedVisitAction(Action):
+    name = MISSED_VISIT_ACTION
+    priority = HIGH_PRIORITY
+    display_name = "Missed Visits: LTFU"
+    reference_model = "meta_subject.subjectvisitmissed"
+    show_on_dashboard = True
+    create_by_user = False
+
+    def get_next_actions(self):
+        # TODO: define LTFU, 6 months off study medication
+        ltfu = None
+        if ltfu:
+            next_actions = [LTFU_ACTION]
+        return next_actions
 
 
 class FollowupExaminationAction(Action):
@@ -40,6 +67,23 @@ class FollowupExaminationAction(Action):
         return next_actions
 
 
+class UrinePregnancyAction(Action):
+    name = URINE_PREGNANCY_ACTION
+    priority = HIGH_PRIORITY
+    display_name = "Urine Pregnancy Test"
+    reference_model = "meta_subject.urinepregnancy"
+    show_on_dashboard = True
+    create_by_user = False
+
+    def get_next_actions(self):
+        next_actions = []
+        if (self.reference_obj.bhcg_value == POS) and not is_baseline(
+            self.reference_obj.subject_visit
+        ):
+            next_actions.append(PREGNANCY_NOTIFICATION_ACTION)
+        return next_actions
+
+
 class BloodResultsRftAction(BaseBloodResultsRftAction):
     def get_next_actions(self):
         next_actions = super().get_next_actions()
@@ -48,6 +92,22 @@ class BloodResultsRftAction(BaseBloodResultsRftAction):
             and self.reference_obj.egfr_value < 45.0
         ):
             next_actions = [END_OF_STUDY_ACTION]
+        return next_actions
+
+
+class DeliveryAction(ActionWithNotification):
+    name = DELIVERY_ACTION
+    display_name = "Submit Delivery Form"
+    notification_display_name = "Delivery Form"
+    parent_action_names = [PREGNANCY_NOTIFICATION_ACTION]
+    reference_model = "meta_subject.delivery"
+    show_link_to_changelist = True
+    show_link_to_add = True
+    admin_site_name = "meta_subject_admin"
+    priority = HIGH_PRIORITY
+
+    def get_next_actions(self):
+        next_actions = [OFFSCHEDULE_PREGNANCY_ACTION]
         return next_actions
 
 
@@ -60,6 +120,9 @@ def register_actions():
         BloodResultsGluAction,
         BloodResultsHba1cAction,
         FollowupExaminationAction,
+        MissedVisitAction,
+        UrinePregnancyAction,
+        DeliveryAction,
     ]:
         try:
             site_action_items.register(action_item_cls)

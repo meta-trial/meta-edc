@@ -17,12 +17,19 @@ class FollowupVitalsAdmin(
 
     form = FollowupVitalsForm
 
+    additional_instructions = [
+        "If participant is pregnant, complete the action linked CRF `Pregnancy notification`."
+    ]
+
     fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime")}),
         (
             "Vitals",
             {
-                "description": "To be completed by the research nurse",
+                "description": (
+                    "To be completed by the research nurse. <BR>"
+                    "Refer to SOP for blood pressure measurement procedure."
+                ),
                 "fields": (
                     "weight",
                     *get_blood_pressure_fields(),

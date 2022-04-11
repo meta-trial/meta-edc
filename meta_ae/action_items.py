@@ -19,10 +19,10 @@ from edc_blood_results.constants import (
 )
 from edc_constants.constants import CLOSED, DEAD, HIGH_PRIORITY, NO, YES
 from edc_ltfu.constants import LOST_TO_FOLLOWUP
-from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_reportable import GRADE3, GRADE4, GRADE5
 from edc_visit_schedule.utils import get_offschedule_models
 
+from meta_prn.pregnancy_mixin import PregnancyMixin
 from meta_subject.constants import FOLLOWUP_EXAMINATION_ACTION
 
 
@@ -187,7 +187,7 @@ class AeTmgAction(ActionWithNotification):
         return self.reference_obj.report_status == CLOSED
 
 
-class DeathReportAction(ActionWithNotification):
+class DeathReportAction(PregnancyMixin, ActionWithNotification):
     name = DEATH_REPORT_ACTION
     display_name = "Submit Death Report"
     notification_display_name = "Death Report"
@@ -220,7 +220,7 @@ class DeathReportAction(ActionWithNotification):
         try:
             off_schedule_cls.objects.get(subject_identifier=self.subject_identifier)
         except ObjectDoesNotExist:
-            next_actions.append(END_OF_STUDY_ACTION)
+            next_actions.append(self.get_next_offschedule_action())
         return next_actions
 
 

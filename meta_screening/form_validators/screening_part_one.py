@@ -25,6 +25,8 @@ class ScreeningPartOneFormValidator(ConsentFormValidatorMixin, FormValidator):
 
         self.applicable_if(YES, field="hiv_pos", field_applicable="on_rx_stable")
 
+        self.applicable_if(YES, field="hiv_pos", field_applicable="vl_undetectable")
+
         self.not_applicable_if(
             MALE, field="gender", field_applicable="pregnant", inverse=False
         )

@@ -19,6 +19,7 @@ class IcpReferralManager(models.Manager):
 
 
 class IcpReferral(SiteModelMixin, BaseUuidModel):
+    """ "Not used"""
 
     subject_screening = models.OneToOneField(
         SubjectScreening, null=True, on_delete=models.PROTECT
@@ -56,8 +57,8 @@ class IcpReferral(SiteModelMixin, BaseUuidModel):
         choices=YES_NO_NA,
     )
 
-    ifg_value = models.DecimalField(
-        verbose_name="Fasting glucose levels",
+    fbg_value = models.DecimalField(
+        verbose_name="FBG level",
         max_digits=8,
         decimal_places=4,
         null=True,

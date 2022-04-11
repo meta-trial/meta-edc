@@ -7,6 +7,7 @@ from edc_screening.screening_identifier import (
 
 from .calculated_model_mixin import CalculatedModelMixin
 from .eligibility_model_mixin import EligibilityModelMixin
+from .part_four_field_model_mixin import PartFourFieldsModelMixin
 from .part_one_fields_model_mixin import PartOneFieldsModelMixin
 from .part_three_fields_model_mixin import PartThreeFieldsModelMixin
 from .part_two_fields_model_mixin import PartTwoFieldsModelMixin
@@ -25,6 +26,7 @@ class SubjectScreening(
     PartOneFieldsModelMixin,
     PartTwoFieldsModelMixin,
     PartThreeFieldsModelMixin,
+    PartFourFieldsModelMixin,
     EligibilityModelMixin,
     CalculatedModelMixin,
     ScreeningModelMixin,

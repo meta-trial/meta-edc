@@ -4,7 +4,7 @@ from django.db import migrations
 from edc_reportable import MILLIMOLES_PER_LITER
 
 
-def update_ifg(apps, schema_editor):
+def update_fbg(apps, schema_editor):
     SubjectScreening = apps.get_model("meta_screening", "SubjectScreening")
     for obj in SubjectScreening._default_manager.all():
         eligible = obj.eligible
@@ -20,4 +20,4 @@ class Migration(migrations.Migration):
 
     dependencies = [("meta_screening", "0011_auto_20191107_0342")]
 
-    operations = [migrations.RunPython(update_ifg)]
+    operations = [migrations.RunPython(update_fbg)]

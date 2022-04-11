@@ -1,0 +1,8 @@
+- are we detecting new HTN diagnoses, see severe_htn on physical exam
+
+- are we capturing SoC medications
+- review diet and lifestyle at 12 months
+- remove hepatitis
+- remove hba1c venous
+
+- add missing other specify fields on followup examination

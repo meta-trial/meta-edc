@@ -12,8 +12,6 @@ from edc_lab_panel.panels import (
     rft_panel,
 )
 
-from meta_edc.meta_version import PHASE_THREE, get_meta_version
-
 chemistry_panel = RequisitionPanelGroup(
     lft_panel,
     rft_panel,
@@ -30,21 +28,10 @@ subject_lab_profile = LabProfile(
     reference_range_collection_name="meta",
 )
 
-if get_meta_version() == PHASE_THREE:
-    subject_lab_profile.add_panel(blood_glucose_panel)
-    subject_lab_profile.add_panel(fbc_panel)
-    subject_lab_profile.add_panel(hba1c_panel)
-    subject_lab_profile.add_panel(insulin_panel)
-    subject_lab_profile.add_panel(lft_panel)
-    subject_lab_profile.add_panel(lipids_panel)
-    subject_lab_profile.add_panel(rft_panel)
-else:
-    subject_lab_profile.add_panel(fbc_panel)
-    subject_lab_profile.add_panel(blood_glucose_panel)
-    subject_lab_profile.add_panel(blood_glucose_poc_panel)
-    subject_lab_profile.add_panel(hba1c_panel)
-    subject_lab_profile.add_panel(hba1c_poc_panel)
-    # subject_lab_profile.add_panel(lipids_panel)
-    # subject_lab_profile.add_panel(lft_panel)
-    # subject_lab_profile.add_panel(rft_panel)
-    subject_lab_profile.add_panel(chemistry_panel)
+subject_lab_profile.add_panel(blood_glucose_panel)
+subject_lab_profile.add_panel(fbc_panel)
+subject_lab_profile.add_panel(hba1c_panel)
+subject_lab_profile.add_panel(insulin_panel)
+subject_lab_profile.add_panel(lft_panel)
+subject_lab_profile.add_panel(lipids_panel)
+subject_lab_profile.add_panel(rft_panel)

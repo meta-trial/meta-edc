@@ -4,10 +4,10 @@ from edc_blood_results.model_mixins import (
     CholModelMixin,
     HdlModelMixin,
     LdlModelMixin,
-    RequisitionModelMixin,
     TrigModelMixin,
 )
 from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
+from edc_lab.model_mixins import CrfWithRequisitionModelMixin
 from edc_lab_panel.panels import lipids_panel
 from edc_model import models as edc_models
 
@@ -18,7 +18,7 @@ class BloodResultsLipid(
     LdlModelMixin,
     TrigModelMixin,
     CholModelMixin,
-    RequisitionModelMixin,
+    CrfWithRequisitionModelMixin,
     BloodResultsModelMixin,
     edc_models.BaseUuidModel,
 ):

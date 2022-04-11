@@ -1,23 +1,20 @@
-from meta_edc.meta_version import PHASE_THREE, get_meta_version
+from edc_constants.constants import NO, TBD, YES
 
-from ..eligibility import (
-    EligibilityPartOne,
-    EligibilityPartThreePhaseThree,
-    EligibilityPartThreePhaseTwo,
-    EligibilityPartTwo,
-    RequiredFieldValueMissing,
-)
 from .subject_screening import SubjectScreening
+
+options = dict(
+    eligible_value_default=TBD,
+    eligible_values_list=[YES, NO, TBD],
+    is_eligible_value=YES,
+)
 
 
 class ScreeningPartOne(SubjectScreening):
     def save(self, *args, **kwargs):
-        eligibility = EligibilityPartOne(self)
-        try:
-            eligibility.assess_eligibility()
-        except RequiredFieldValueMissing:
-            pass
-        eligibility.update_eligibility_fields()
+        if self.eligible_part_one == YES:
+            self.continue_part_two = YES
+        else:
+            self.continue_part_two = NO
         super().save(*args, **kwargs)
 
     class Meta:
@@ -27,15 +24,6 @@ class ScreeningPartOne(SubjectScreening):
 
 
 class ScreeningPartTwo(SubjectScreening):
-    def save(self, *args, **kwargs):
-        eligibility = EligibilityPartTwo(self)
-        try:
-            eligibility.assess_eligibility()
-        except RequiredFieldValueMissing:
-            pass
-        eligibility.update_eligibility_fields()
-        super().save(*args, **kwargs)
-
     class Meta:
         proxy = True
         verbose_name = "Subject Screening: Part Two"
@@ -43,15 +31,6 @@ class ScreeningPartTwo(SubjectScreening):
 
 
 class ScreeningPartThree(SubjectScreening):
-    def save(self, *args, **kwargs):
-        if get_meta_version() == PHASE_THREE:
-            eligibility = EligibilityPartThreePhaseThree(self)
-        else:
-            eligibility = EligibilityPartThreePhaseTwo(self)
-        eligibility.assess_eligibility()
-        eligibility.update_eligibility_fields()
-        super().save(*args, **kwargs)
-
     class Meta:
         proxy = True
         verbose_name = "Subject Screening: Part Three"

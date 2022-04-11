@@ -1,9 +1,10 @@
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
 from edc_consent import ConsentModelWrapperMixin
+from edc_constants.constants import PENDING
 from edc_model_wrapper import ModelWrapper
 from edc_subject_model_wrappers import SubjectConsentModelWrapper as BaseModelWrapper
-from sarscov2.models import CoronavirusKap
+from edc_utils import get_utcnow
 
 
 class SubjectConsentModelWrapper(BaseModelWrapper):
@@ -61,13 +62,10 @@ class SubjectScreeningModelWrapper(ConsentModelWrapperMixin, ModelWrapper):
         return self.href.replace("subjectscreening", "screeningpartthree")
 
     @property
-    def coronavirus_kap(self):
-        try:
-            return CoronavirusKap.objects.get(
-                screening_identifier=self.screening_identifier
-            )
-        except ObjectDoesNotExist:
-            return None
+    def repeat_due_in_days(self):
+        if self.repeat_glucose_performed == PENDING and self.object.ogtt_datetime:
+            return (get_utcnow() - self.object.ogtt_datetime).days
+        return 0
 
 
 class ScreeningPartOneModelWrapper(SubjectScreeningModelWrapper):

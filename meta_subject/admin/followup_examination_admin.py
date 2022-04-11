@@ -45,6 +45,10 @@ class FollowupExaminationAdmin(
 
     autocomplete_fields = ["art_new_regimen"]
 
+    additional_instructions = [
+        "If participant is pregnant, complete the action linked CRF `Pregnancy notification`."
+    ]
+
     fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime")}),
         (

@@ -19,7 +19,7 @@ class TestVisitSchedule(TestCase):
 
     def test_schedule_models(self):
         self.assertEqual(schedule.onschedule_model, "meta_prn.onschedule")
-        self.assertEqual(schedule.offschedule_model, "meta_prn.endofstudy")
+        self.assertEqual(schedule.offschedule_model, "meta_prn.offschedule")
         self.assertEqual(schedule.consent_model, "meta_consent.subjectconsent")
         self.assertEqual(schedule.appointment_model, "edc_appointment.appointment")
 

@@ -9,7 +9,72 @@ from edc_protocol_violation.action_items import (
     ProtocolDeviationViolationAction as BaseProtocolDeviationViolationAction,
 )
 
-from .constants import UNBLINDING_REQUEST_ACTION, UNBLINDING_REVIEW_ACTION
+from meta_subject.constants import DELIVERY_ACTION, URINE_PREGNANCY_ACTION
+
+from .constants import (
+    OFFSCHEDULE_ACTION,
+    OFFSCHEDULE_POSTNATAL_ACTION,
+    OFFSCHEDULE_PREGNANCY_ACTION,
+    PREGNANCY_NOTIFICATION_ACTION,
+    UNBLINDING_REQUEST_ACTION,
+    UNBLINDING_REVIEW_ACTION,
+)
+from .pregnancy_mixin import PregnancyMixin
+
+
+class OffscheduleAction(ActionWithNotification):
+    name = OFFSCHEDULE_ACTION
+    display_name = "Submit Off-Schedule"
+    notification_display_name = "Off-Schedule"
+    parent_action_names = [
+        UNBLINDING_REVIEW_ACTION,
+        DEATH_REPORT_ACTION,
+        LTFU_ACTION,
+    ]
+    reference_model = "meta_prn.offschedule"
+    show_link_to_changelist = True
+    admin_site_name = "meta_prn_admin"
+    priority = HIGH_PRIORITY
+
+    def get_next_actions(self):
+        next_actions = [END_OF_STUDY_ACTION]
+        return next_actions
+
+
+class OffschedulePregnancyAction(ActionWithNotification):
+    name = OFFSCHEDULE_PREGNANCY_ACTION
+    display_name = "Submit Off-Schedule (Pregnancy)"
+    notification_display_name = "Off-Schedule (Pregnancy)"
+    parent_action_names = [
+        UNBLINDING_REVIEW_ACTION,
+        DEATH_REPORT_ACTION,
+        LTFU_ACTION,
+        DELIVERY_ACTION,
+    ]
+    reference_model = "meta_prn.offschedulepregnancy"
+    show_link_to_changelist = True
+    admin_site_name = "meta_prn_admin"
+    priority = HIGH_PRIORITY
+
+
+class OffschedulePostnatalAction(ActionWithNotification):
+    name = OFFSCHEDULE_POSTNATAL_ACTION
+    display_name = "Submit Off-Schedule (Postnatal)"
+    notification_display_name = "Off-Schedule (Postnatal)"
+    parent_action_names = [
+        UNBLINDING_REVIEW_ACTION,
+        DEATH_REPORT_ACTION,
+        LTFU_ACTION,
+        DELIVERY_ACTION,
+    ]
+    reference_model = "meta_prn.offschedulepostnatal"
+    show_link_to_changelist = True
+    admin_site_name = "meta_prn_admin"
+    priority = HIGH_PRIORITY
+
+    def get_next_actions(self):
+        next_actions = [END_OF_STUDY_ACTION]
+        return next_actions
 
 
 class EndOfStudyAction(ActionWithNotification):
@@ -17,9 +82,8 @@ class EndOfStudyAction(ActionWithNotification):
     display_name = "Submit End of Study Report"
     notification_display_name = "End of Study Report"
     parent_action_names = [
-        UNBLINDING_REVIEW_ACTION,
-        DEATH_REPORT_ACTION,
-        LTFU_ACTION,
+        OFFSCHEDULE_ACTION,
+        OFFSCHEDULE_PREGNANCY_ACTION,
     ]
     reference_model = "meta_prn.endofstudy"
     show_link_to_changelist = True
@@ -27,7 +91,7 @@ class EndOfStudyAction(ActionWithNotification):
     priority = HIGH_PRIORITY
 
 
-class LossToFollowupAction(ActionWithNotification):
+class LossToFollowupAction(PregnancyMixin, ActionWithNotification):
     name = LTFU_ACTION
     display_name = "Submit Loss to Follow Up Report"
     notification_display_name = " Loss to Follow Up Report"
@@ -39,8 +103,25 @@ class LossToFollowupAction(ActionWithNotification):
     priority = HIGH_PRIORITY
 
     def get_next_actions(self):
-        next_actions = [END_OF_STUDY_ACTION]
+        next_actions = [self.get_next_offschedule_action()]
         return next_actions
+
+
+class PregnancyNotificationAction(ActionWithNotification):
+    name = PREGNANCY_NOTIFICATION_ACTION
+    display_name = "Submit Pregnancy Notification"
+    notification_display_name = "Pregnancy Notification"
+    parent_action_names = [URINE_PREGNANCY_ACTION]
+    reference_model = "meta_prn.pregnancynotification"
+    show_link_to_changelist = True
+    show_link_to_add = True
+    admin_site_name = "meta_prn_admin"
+    priority = HIGH_PRIORITY
+
+
+# TODO: WithdrawalStudyMedicationAction
+# class WithdrawalStudyMedicationAction(ActionWithNotification):
+#     name = WITHDRAWAL_STUDY_MEDICATION_ACTION
 
 
 class UnblindingRequestAction(ActionWithNotification):
@@ -64,7 +145,7 @@ class UnblindingRequestAction(ActionWithNotification):
         return next_actions
 
 
-class UnblindingReviewAction(ActionWithNotification):
+class UnblindingReviewAction(PregnancyMixin, ActionWithNotification):
     name = UNBLINDING_REVIEW_ACTION
     display_name = "Unblinding review pending"
     notification_display_name = " Unblinding review needed"
@@ -83,7 +164,7 @@ class UnblindingReviewAction(ActionWithNotification):
         next_actions = []
         next_actions = self.append_to_next_if_required(
             next_actions=next_actions,
-            action_name=END_OF_STUDY_ACTION,
+            action_name=self.get_next_offschedule_action(),
             required=self.reference_obj.approved == YES,
         )
         return next_actions
@@ -94,8 +175,12 @@ class ProtocolDeviationViolationAction(BaseProtocolDeviationViolationAction):
     admin_site_name = "meta_prn_admin"
 
 
-site_action_items.register(ProtocolDeviationViolationAction)
 site_action_items.register(EndOfStudyAction)
 site_action_items.register(LossToFollowupAction)
+site_action_items.register(PregnancyNotificationAction)
+site_action_items.register(ProtocolDeviationViolationAction)
 site_action_items.register(UnblindingRequestAction)
 site_action_items.register(UnblindingReviewAction)
+site_action_items.register(OffscheduleAction)
+site_action_items.register(OffschedulePregnancyAction)
+site_action_items.register(OffschedulePostnatalAction)

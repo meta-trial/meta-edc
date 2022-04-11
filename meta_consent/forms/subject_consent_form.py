@@ -7,11 +7,13 @@ from edc_sites.forms import SiteModelFormMixin
 
 from ..models import SubjectConsent
 
+# TODO: Assessment score "The client has completed the assessment of understanding with a passing score"
+
 
 class SubjectConsentFormValidator(SubjectConsentFormValidatorMixin, FormValidator):
-    def validate_identity(self):
-        """Validate that the identity is a hospital number and
-        matches that on the screening form.
+    def validate_identity(self) -> None:
+        """Override to validate `identity_type` is a hospital
+        number and `identity` matches the screening form.
         """
         if self.cleaned_data.get("identity_type") != "hospital_no":
             raise forms.ValidationError(

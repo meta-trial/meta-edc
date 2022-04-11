@@ -48,9 +48,8 @@ else:
         )
     env.read_env(os.path.join(ENV_DIR, ".env"))
 
-META_PHASE = env.int("META_PHASE")
-
-# META_PHASE = confirm_meta_version(META_PHASE)
+# META_PHASE = env.int("META_PHASE")
+META_PHASE = 3
 
 DEBUG = env("DJANGO_DEBUG")
 
@@ -78,7 +77,6 @@ SENTRY_ENABLED = env("SENTRY_ENABLED")
 DEFENDER_ENABLED = env("DEFENDER_ENABLED")
 
 INSTALLED_APPS = [
-    # "django.contrib.admin",
     "meta_edc.apps.AdminConfig",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -99,6 +97,7 @@ INSTALLED_APPS = [
     "storages",
     "edc_action_item.apps.AppConfig",
     "edc_appointment.apps.AppConfig",
+    "edc_auth.apps.AppConfig",
     "edc_adverse_event.apps.AppConfig",
     "edc_consent.apps.AppConfig",
     "edc_crf.apps.AppConfig",
@@ -143,54 +142,28 @@ INSTALLED_APPS = [
     "edc_timepoint.apps.AppConfig",
     "edc_unblinding.apps.AppConfig",
     "edc_form_describer.apps.AppConfig",
+    "edc_adherence.apps.AppConfig",
+    "edc_dx.apps.AppConfig",
+    "edc_refusal.apps.AppConfig",
+    "meta_consent.apps.AppConfig",
+    "meta_data_manager.apps.AppConfig",
+    "meta_lists.apps.AppConfig",
+    "meta_dashboard.apps.AppConfig",
+    "meta_labs.apps.AppConfig",
+    "meta_metadata_rules.apps.AppConfig",
+    "meta_reference.apps.AppConfig",
+    "meta_subject.apps.AppConfig",
+    "meta_visit_schedule.apps.AppConfig",
+    "meta_ae.apps.AppConfig",
+    "meta_auth.apps.AppConfig",
+    "meta_rando.apps.AppConfig",
+    "meta_prn.apps.AppConfig",
+    "meta_export.apps.AppConfig",
+    "meta_pharmacy.apps.AppConfig",
+    "meta_screening.apps.AppConfig",
+    "meta_sites.apps.AppConfig",
+    "meta_edc.apps.AppConfig",
 ]
-if META_PHASE == 2:
-    META_APPS = [
-        "sarscov2.apps.AppConfig",
-        "meta_consent.apps.AppConfig",
-        "meta_data_manager.apps.AppConfig",
-        "meta_lists.apps.AppConfig",
-        "meta_dashboard.apps.AppConfig",
-        "meta_labs.apps.AppConfig",
-        "meta_metadata_rules.apps.AppConfig",
-        "meta_reference.apps.AppConfig",
-        "meta_subject.apps.AppConfig",
-        "meta_visit_schedule.apps.AppConfig",
-        "meta_ae.apps.AppConfig",
-        "meta_auth.apps.AppConfig",
-        "meta_rando.apps.AppConfig",
-        "meta_prn.apps.AppConfig",
-        "meta_export.apps.AppConfig",
-        "meta_screening.apps.AppConfig",
-        "meta_sites.apps.AppConfig",
-        "meta_edc.apps.AppConfig",
-    ]
-if META_PHASE == 3:
-    META_APPS = [
-        "sarscov2.apps.AppConfig",
-        "edc_adherence.apps.AppConfig",
-        "edc_dx.apps.AppConfig",
-        "edc_refusal.apps.AppConfig",
-        "meta_consent.apps.AppConfig",
-        "meta_data_manager.apps.AppConfig",
-        "meta_lists.apps.AppConfig",
-        "meta_dashboard.apps.AppConfig",
-        "meta_labs.apps.AppConfig",
-        "meta_metadata_rules.apps.AppConfig",
-        "meta_reference.apps.AppConfig",
-        "meta_subject.apps.AppConfig",
-        "meta_visit_schedule.apps.AppConfig",
-        "meta_ae.apps.AppConfig",
-        "meta_auth.apps.AppConfig",
-        "meta_rando.apps.AppConfig",
-        "meta_prn.apps.AppConfig",
-        "meta_export.apps.AppConfig",
-        "meta_screening.apps.AppConfig",
-        "meta_sites.apps.AppConfig",
-        "meta_edc.apps.AppConfig",
-    ]
-INSTALLED_APPS.extend(META_APPS)
-INSTALLED_APPS.append("edc_auth.apps.AppConfig")
 
 if not DEFENDER_ENABLED:
     INSTALLED_APPS.pop(INSTALLED_APPS.index("defender"))
@@ -470,7 +443,7 @@ GIT_DIR = BASE_DIR
 
 # django_crypto_fields
 KEY_PATH = env.str("DJANGO_KEY_FOLDER")
-AUTO_CREATE_KEYS = env.str("DJANGO_AUTO_CREATE_KEYS")
+AUTO_CREATE_KEYS = env("DJANGO_AUTO_CREATE_KEYS")
 
 EXPORT_FOLDER = env.str("DJANGO_EXPORT_FOLDER") or os.path.expanduser("~/")
 

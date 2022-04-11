@@ -1,132 +1,157 @@
+from django.db import models
 from edc_constants.constants import NO, TBD, YES
 from edc_utils import get_utcnow
 
-from meta_screening.constants import BMI_IFT_OGTT_INCOMPLETE, EGFR_NOT_CALCULATED
+from meta_screening.constants import BMI_FBG_OGTT_INCOMPLETE, EGFR_NOT_CALCULATED
+
+from .eligibility_part_one import EligibilityPartOne
+from .eligibility_part_three import EligibilityPartThreePhaseThree
+from .eligibility_part_two import EligibilityPartTwo
 
 
 class SubjectScreeningEligibilityError(Exception):
     pass
 
 
-class Eligibility:
-    """
+class MetaEligibility:
+    """A wrapper class for three eligibility classes.
+
     Determines if a subject is eligible or not.
 
     Eligibility is assessed in three parts.
 
     Instantiated in the save() method of the screening proxy models.
 
-    For example, for part one:
-
-        def save(self, *args, **kwargs):
-            eligibility = Eligibility(self)
-            try:
-                eligibility.assess_eligibility_for_part_one()
-            except EligibilityPartOneError:
-                pass
-            eligibility.update_eligibility_fields()
-            super().save(*args, **kwargs)
+    # For example, for part one:
+    #
+    #     def save(self, *args, **kwargs):
+    #         eligibility = Eligibility(self)
+    #         try:
+    #             eligibility.assess_eligibility_for_part_one()
+    #         except EligibilityPartOneError:
+    #             pass
+    #         eligibility.update_eligibility_fields()
+    #         super().save(*args, **kwargs)
 
     """
 
     eligibility_values = [YES, NO, TBD]
+    default_options = dict(
+        eligible_value_default=TBD,
+        eligible_values_list=[YES, NO, TBD],
+        is_eligible_value=YES,
+    )
 
-    def __init__(self, obj):
-        self.obj = obj
+    def __init__(
+        self,
+        model_obj: models.Model = None,
+        defaults: dict = None,
+        update_model=None,
+    ):
+        self.part_one = None
+        self.part_two = None
+        self.part_three = None
+        self.update_model = True if update_model is None else update_model
+        self.eligible = NO
+        self.reasons_ineligible = {}
+        self.model_obj = model_obj
+        self.default_options = defaults or self.default_options
+        self.assess_eligibility_for_all_parts()
+        if self.update_model:
+            self.update_model_final()
 
-    def update_eligibility_fields(self):
-        """Updates model instance fields `eligible`, `eligibility_datetime` and
-        `reasons_ineligible`.
-        """
-        reasons_ineligible = []
-        if self.obj.unsuitable_for_study == YES:
-            self.obj.eligible = False
-            reasons_ineligible.append("Subject unsuitable")
-        else:
-            self.obj.eligible = self.is_eligible
-        if self.obj.eligible:
-            self.obj.reasons_ineligible = None
-        else:
-            reasons_ineligible = self.get_reasons_if_ineligible(reasons_ineligible)
-            if reasons_ineligible:
-                self.obj.reasons_ineligible = "|".join(reasons_ineligible)
-            else:
-                self.obj.reasons_ineligible = None
-        self.obj.eligibility_datetime = (
-            self.obj.part_three_report_datetime or get_utcnow()
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}()"
+
+    def assess_eligibility_for_all_parts(self):
+        eligibility_part_one_cls = EligibilityPartOne
+        eligibility_part_two_cls = EligibilityPartTwo
+        eligibility_part_three_cls = EligibilityPartThreePhaseThree
+        self.part_one = eligibility_part_one_cls(
+            model_obj=self.model_obj,
+            update_model=self.update_model,
+            **self.default_options,
         )
+        self.reasons_ineligible.update(**self.part_one.reasons_ineligible)
+        self.part_two = eligibility_part_two_cls(
+            model_obj=self.model_obj,
+            update_model=self.update_model,
+            **self.default_options,
+        )
+        self.reasons_ineligible.update(**self.part_two.reasons_ineligible)
+        self.part_three = eligibility_part_three_cls(
+            model_obj=self.model_obj,
+            update_model=self.update_model,
+            **self.default_options,
+        )
+        self.reasons_ineligible.update(**self.part_three.reasons_ineligible)
+        if self.model_obj.unsuitable_for_study == YES:
+            self.reasons_ineligible.update(unsuitable_for_study="Subject unsuitable")
+        self.check_eligibility_values_or_raise()
+        if all(
+            [
+                self.part_one.eligible == YES,
+                self.part_two.eligible == YES,
+                self.part_three.eligible == YES,
+            ]
+        ):
+            self.eligible = YES
+        elif any(
+            [
+                self.part_one.eligible == NO,
+                self.part_two.eligible == NO,
+                self.part_three.eligible == NO,
+            ]
+        ):
+            self.eligible = NO
+        elif any(
+            [
+                self.part_one.eligible == TBD,
+                self.part_two.eligible == TBD,
+                self.part_three.eligible == TBD,
+                EGFR_NOT_CALCULATED in self.reasons_ineligible,
+                BMI_FBG_OGTT_INCOMPLETE in self.reasons_ineligible,
+            ]
+        ):
+            self.eligible = TBD
 
-    def get_reasons_if_ineligible(self, reasons_ineligible):
-        if self.obj.reasons_ineligible_part_one:
-            reasons_ineligible.append(self.obj.reasons_ineligible_part_one)
-        if self.obj.reasons_ineligible_part_two:
-            reasons_ineligible.append(self.obj.reasons_ineligible_part_two)
-        if self.obj.reasons_ineligible_part_three:
-            reasons_ineligible.append(self.obj.reasons_ineligible_part_three)
-        return reasons_ineligible
+    def update_model_final(self):
+        self.model_obj.reasons_ineligible = "|".join(self.reasons_ineligible)
+        self.model_obj.eligible = self.is_eligible
+        if self.is_eligible:
+            self.model_obj.eligibility_datetime = (
+                self.model_obj.part_three_report_datetime or get_utcnow()
+            )
+        else:
+            self.model_obj.eligibility_datetime = None
 
     @property
-    def is_eligible(self):
+    def is_eligible(self) -> bool:
         """Returns True if eligible else False"""
         return True if self.eligible == YES else False
 
-    @property
-    def eligible(self):
-        """Returns YES, NO or TBD.
-
-        Can only be final if all three parts have been assessed.
-        """
-        eligible = NO
-        p1_value = self.obj.eligible_part_one
-        p2_value = self.obj.eligible_part_two
-        p3_value = self.obj.eligible_part_three
-        self.check_eligibility_values_or_raise(p1_value, p2_value, p3_value)
-        for part in [p1_value, p2_value, p3_value]:
-            if part not in self.eligibility_values:
+    def check_eligibility_values_or_raise(self):
+        for response in [
+            self.part_one.eligible,
+            self.part_two.eligible,
+            self.part_three.eligible,
+        ]:
+            if response not in self.eligibility_values:
                 raise SubjectScreeningEligibilityError(
                     "Invalid value for `eligible`. "
-                    f"Expected one of [{self.eligibility_values}]. Got `{part}`."
-                )
-        if p1_value == TBD or p2_value == TBD or p3_value == TBD:
-            eligible = TBD
-        if p1_value == YES and p2_value == YES and p3_value == YES:
-            eligible = YES
-        return eligible
-
-    def check_eligibility_values_or_raise(self, p1_value, p2_value, p3_value):
-        for part in [p1_value, p2_value, p3_value]:
-            if part not in self.eligibility_values:
-                raise SubjectScreeningEligibilityError(
-                    "Invalid value for `eligible`. "
-                    f"Expected one of [{self.eligibility_values}]. Got `{part}`."
+                    f"Expected one of [{self.eligibility_values}]. Got `{response}`."
                 )
 
     @property
-    def eligibility_display_label(self):
-        responses = [
-            self.obj.eligible_part_one,
-            self.obj.eligible_part_two,
-            self.obj.eligible_part_three,
-        ]
-        if self.obj.eligible:
+    def display_label(self):
+        if self.eligible == YES:
             display_label = "ELIGIBLE"
-        elif TBD in responses and NO not in responses:
-            if self.obj.reasons_ineligible == EGFR_NOT_CALCULATED:
+        elif self.eligible == TBD:
+            display_label = "PENDING"
+            if EGFR_NOT_CALCULATED in self.reasons_ineligible:
                 display_label = "PENDING (SCR/eGFR)"
-            else:
-                display_label = "PENDING"
-        elif (
-            self.obj.eligible_part_one == YES
-            and self.obj.eligible_part_two == YES
-            and BMI_IFT_OGTT_INCOMPLETE in self.obj.reasons_ineligible
-        ):
-            display_label = "PENDING (BMI/IFT/OGTT)"
-        elif (
-            self.obj.eligible_part_one == YES
-            and self.obj.eligible_part_two == YES
-            and self.obj.reasons_ineligible == EGFR_NOT_CALCULATED
-        ):
-            display_label = "PENDING (SCR/eGFR)"
+            elif BMI_FBG_OGTT_INCOMPLETE in self.reasons_ineligible:
+                display_label = "PENDING (BMI/IFT/OGTT)"
         else:
             display_label = "not eligible"
         return display_label
@@ -134,13 +159,11 @@ class Eligibility:
     @property
     def eligibility_status(self):
         status_str = (
-            f"P1: {self.obj.eligible_part_one.upper()}<BR>"
-            f"P2: {self.obj.eligible_part_two.upper()}<BR>"
-            f"P3: {self.obj.eligible_part_three.upper()}<BR>"
+            f"P1: {self.part_one.eligible.upper()}<BR>"
+            f"P2: {self.part_two.eligible.upper()}<BR>"
+            f"P3: {self.part_three.eligible.upper()}<BR>"
         )
-        display_label = self.eligibility_display_label
-
+        display_label = self.display_label
         if "PENDING" in display_label:
             display_label = f'<font color="orange"><B>{display_label}</B></font>'
-
         return status_str + display_label
