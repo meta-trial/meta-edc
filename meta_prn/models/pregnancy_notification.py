@@ -1,5 +1,6 @@
 # TODO: urine_bhcg form (probably not necessary)
-# TODO: if pos, take of study drug and estimate delivery date for the pregnancy outcomes form. See Form 25/26
+# TODO: if pos, take of study drug and estimate delivery
+#  date for the pregnancy outcomes form. See Form 25/26
 from django.db import models
 from edc_action_item.models import ActionModelMixin
 from edc_constants.choices import YES_NO, YES_NO_UNSURE
@@ -58,8 +59,8 @@ class PregnancyNotification(
     # TODO: remove this question
     may_contact = models.CharField(
         verbose_name=(
-            "Has the participant agreed to be contacted to provide information on the "
-            "delivery and birth outcomes?"
+            "Has the participant agreed to be contacted to provide "
+            "information on the delivery and birth outcomes?"
         ),
         max_length=15,
         choices=YES_NO_UNSURE,
@@ -92,7 +93,8 @@ class PregnancyNotification(
             ).exists()
         ):
             raise PregnancyNotificationError(
-                "Invalid. A positive Urine βhCG cannot be found. Perhaps catch this in the form."
+                "Invalid. A positive Urine βhCG cannot be found. "
+                "Perhaps catch this in the form."
             )
         super().save(*args, **kwargs)
 

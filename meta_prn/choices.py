@@ -89,7 +89,8 @@ WITHDRAWAL_STUDY_MEDICATION_REASONS = (
     (SAE, "Participant is experiencing a serious adverse event"),
     (
         CLINICIAN,
-        "Other condition that justifies discontinuation of treatment in the clinician’s opinion (specify below)",
+        "Other condition that justifies discontinuation of "
+        "treatment in the clinician’s opinion (specify below)",
     ),
     (INVESTIGATOR, " Investigator decision"),
     (PATIENT, "Patient decision"),

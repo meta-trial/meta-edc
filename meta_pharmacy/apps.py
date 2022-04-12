@@ -36,7 +36,7 @@ def post_migrate_populate_pharmacy_models(sender=None, **kwargs):  # noqa
 
     try:
         medication_obj = medication_model_cls.objects.get(name=METFORMIN)
-    except ObjectDoesNotExist as e:
+    except ObjectDoesNotExist:
         medication_obj = medication_model_cls.objects.create(
             name=METFORMIN, display_name="Metformin"
         )
@@ -49,7 +49,7 @@ def post_migrate_populate_pharmacy_models(sender=None, **kwargs):  # noqa
         formulation_obj = formulation_model_cls.objects.get(
             medication=medication_obj, strength=500, units=units
         )
-    except ObjectDoesNotExist as e:
+    except ObjectDoesNotExist:
         formulation_model_cls.objects.create(
             medication=medication_obj,
             strength=500,

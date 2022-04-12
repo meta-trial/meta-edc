@@ -105,11 +105,17 @@ class PartThreeFieldsModelMixin(
 ):
 
     repeat_glucose_opinion = models.CharField(
-        verbose_name="In opinion of the clinician, should the glucose measurements be repeated?",
+        verbose_name=(
+            "In opinion of the clinician, "
+            "should the glucose measurements be repeated?"
+        ),
         max_length=15,
         choices=YES_NO,
         default=NO,
-        help_text="If repeated, must be at least 3 days after the first glucose measures (FBG, OGTT)",
+        help_text=(
+            "If repeated, must be at least 3 days "
+            "after the first glucose measures (FBG, OGTT)"
+        ),
     )
 
     repeat_glucose_performed = models.CharField(

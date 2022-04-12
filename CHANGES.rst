@@ -1,6 +1,10 @@
 Changes
 =======
 
+0.1.80
+------
+- minor fix to HE form validator
+
 0.1.77 - 0.1.79
 ---------------
 - add pregnancy, delivery, birth outcomes

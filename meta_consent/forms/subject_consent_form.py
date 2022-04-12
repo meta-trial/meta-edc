@@ -7,7 +7,8 @@ from edc_sites.forms import SiteModelFormMixin
 
 from ..models import SubjectConsent
 
-# TODO: Assessment score "The client has completed the assessment of understanding with a passing score"
+# TODO: Assessment score "The client has completed the
+#  assessment of understanding with a passing score"
 
 
 class SubjectConsentFormValidator(SubjectConsentFormValidatorMixin, FormValidator):

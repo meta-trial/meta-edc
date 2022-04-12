@@ -7,7 +7,9 @@ from edc_he.form_validators import HeEducationFormValidatorMixin
 from ..models import HealthEconomicsSimple
 
 
-class HealthEconomicsFormValidator(HeEducationFormValidatorMixin, FormValidator):
+class HealthEconomicsFormValidator(
+    HeEducationFormValidatorMixin, CrfFormValidatorMixin, FormValidator
+):
     def clean(self):
         self.clean_education()
 

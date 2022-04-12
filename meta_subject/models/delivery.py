@@ -1,5 +1,6 @@
 # TODO: urine_bhcg form (probably not necessary)
-# TODO: if pos, take of study drug and estimate delivery date for the pregnancy outcomes form. See Form 25/26
+# TODO: if pos, take of study drug and estimate
+#  delivery date for the pregnancy outcomes form. See Form 25/26
 from django.apps import apps as django_apps
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
@@ -103,7 +104,10 @@ class Delivery(
     delivery_location_other = OtherCharField()
 
     delivery_location_name = models.CharField(
-        verbose_name="If delivery occurred at a `hospital` or `clinic`, please give name of the facility",
+        verbose_name=(
+            "If delivery occurred at a `hospital` or `clinic`, "
+            "please give name of the facility"
+        ),
         max_length=150,
         null=True,
         blank=True,
@@ -147,8 +151,8 @@ class Delivery(
             ).exists()
         ):
             raise DeliveryError(
-                f"Invalid. A {pregnancy_notification_model_cls._meta.verbose_name} cannot be found. "
-                "Perhaps catch this in the form."
+                f"Invalid. A {pregnancy_notification_model_cls._meta.verbose_name} "
+                "cannot be found. Perhaps catch this in the form."
             )
         super().save(*args, **kwargs)
 
