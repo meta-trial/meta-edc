@@ -11,6 +11,7 @@ from .models import (
     BirthOutcomes,
     Delivery,
     FollowupExamination,
+    MedicationAdherence,
     SubjectRequisition,
     SubjectVisit,
     UrinePregnancy,
@@ -21,6 +22,18 @@ fake = Faker()
 subjectvisit = Recipe(SubjectVisit, reason=SCHEDULED)
 
 subjectrequisition = Recipe(SubjectRequisition)
+
+medicationadherence = Recipe(
+    MedicationAdherence,
+    report_datetime=get_utcnow(),
+    visual_score_slider=90,
+    visual_score_confirmed=90,
+    last_missed_pill=NO,
+    pill_count_performed=YES,
+    pill_count=3,
+    missed_pill_reason=[],
+    other_missed_pill_reason=None,
+)
 
 urinepregnancy = Recipe(
     UrinePregnancy,

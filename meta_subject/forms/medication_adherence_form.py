@@ -12,8 +12,13 @@ from ..models import MedicationAdherence
 class MedicationAdherenceFormValidator(
     MedicationAdherenceFormValidatorMixin, FormValidator
 ):
-    def clean(self):
-        self.required_if(YES, field="pill_count_performed", field_required="pill_count")
+    pass
+    # def clean(self):
+    #     self.required_if(
+    #         YES,
+    #         field="pill_count_performed",
+    #         field_required="pill_count",
+    #     )
 
 
 class MedicationAdherenceForm(
