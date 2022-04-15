@@ -1,6 +1,11 @@
 Changes
 =======
 
+0.1.81
+------
+- fix pill count eval as int
+- incorporate changes to pharmacy prescriptions and refills
+
 0.1.80
 ------
 - minor fix to HE form validator
