@@ -47,6 +47,7 @@ def study_medication_on_pre_save(sender, instance, raw, **kwargs):
                 report_datetime=subject_consent.consent_datetime,
                 randomizer_name=get_meta_version(),
                 medications=[METFORMIN],
+                site=subject_consent.site,
             )
         except PrescriptionAlreadyExists:
             pass

@@ -2,10 +2,7 @@ import sys
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.management import color_style
-from edc_consent.utils import get_consent_model_cls
-from edc_pharmacy.prescribe import create_prescription
 
-from meta_edc.meta_version import get_meta_version
 from meta_pharmacy.constants import METFORMIN
 
 style = color_style()

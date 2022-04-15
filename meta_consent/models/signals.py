@@ -68,6 +68,7 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
                     report_datetime=instance.consent_datetime,
                     medications=[instance.study_medication_name],
                     randomizer_name=get_meta_version(),
+                    site=instance.site,
                 )
             except PrescriptionAlreadyExists:
                 pass
