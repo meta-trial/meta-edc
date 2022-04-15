@@ -1,7 +1,6 @@
 import sys
 from copy import deepcopy
 from importlib import import_module
-from unittest import skipIf
 
 from bs4 import BeautifulSoup
 from dateutil.relativedelta import relativedelta
@@ -19,6 +18,7 @@ from edc_appointment.models import Appointment
 from edc_auth.auth_objects import AUDITOR_ROLE, CLINICIAN_ROLE, STAFF_ROLE
 from edc_auth.auth_updater import AuthUpdater
 from edc_auth.site_auths import site_auths
+from edc_consent import site_consents
 from edc_constants.constants import YES
 from edc_dashboard.url_names import url_names
 from edc_export.auth_objects import DATA_EXPORTER_ROLE
@@ -27,7 +27,6 @@ from edc_randomization.admin import register_admin
 from edc_randomization.site_randomizers import site_randomizers
 from edc_sites import add_or_update_django_sites
 from edc_test_utils.webtest import login
-from edc_utils import get_utcnow
 from model_bakery import baker
 from webtest.app import AppError
 
@@ -381,7 +380,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         obj.save()
         return obj
 
-    @tag("webtest")
+    @tag("webtest3")
     def test_to_subject_dashboard(self):
         add_or_update_django_sites(apps=django_apps, sites=all_sites)
         self.login(
@@ -400,16 +399,18 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         response = add_subjectconsent_page.form.submit()
         self.assertIn("Please correct the errors below", response)
 
+        consents = site_consents.get_consents_by_model("meta_consent.subjectconsent")
+        consent_datetime = consents[0].start + relativedelta(months=1)
         subject_consent = baker.make_recipe(
             "meta_consent.subjectconsent",
             screening_identifier=subject_screening.screening_identifier,
             dob=(
-                get_utcnow() - relativedelta(years=subject_screening.age_in_years)
+                consent_datetime - relativedelta(years=subject_screening.age_in_years)
             ).date(),
             first_name="Melissa",
             last_name="Rodriguez",
             initials="MR",
-            consent_datetime=get_utcnow(),
+            consent_datetime=consent_datetime,
         )
 
         home_page = self.app.get(reverse("home_url"), user=self.user, status=200)

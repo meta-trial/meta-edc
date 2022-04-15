@@ -5,7 +5,8 @@ from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from edc_appointment.models import Appointment
 from edc_consent.utils import get_consent_model_cls
-from edc_pharmacy.utils import create_prescription
+from edc_pharmacy.exceptions import PrescriptionAlreadyExists
+from edc_pharmacy.prescribe import create_prescription
 from edc_visit_schedule import site_visit_schedules
 from edc_visit_schedule.constants import DAY1
 
@@ -31,6 +32,8 @@ from .subject_visit import SubjectVisit
 def study_medication_on_pre_save(sender, instance, raw, **kwargs):
     """Create a prescription if one does not exist
 
+    All refills are created against the prescription
+
     Note: this should not be necessary if consented after meta_consent.signal
           was updated to call `create_prescription`.
     """
@@ -38,12 +41,15 @@ def study_medication_on_pre_save(sender, instance, raw, **kwargs):
         subject_consent = get_consent_model_cls().objects.get(
             subject_identifier=instance.subject_visit.subject_identifier,
         )
-        create_prescription(
-            subject_identifier=subject_consent.subject_identifier,
-            report_datetime=subject_consent.consent_datetime,
-            randomizer_name=get_meta_version(),
-            medication_name=METFORMIN,
-        )
+        try:
+            create_prescription(
+                subject_identifier=subject_consent.subject_identifier,
+                report_datetime=subject_consent.consent_datetime,
+                randomizer_name=get_meta_version(),
+                medications=[METFORMIN],
+            )
+        except PrescriptionAlreadyExists:
+            pass
 
 
 @receiver(

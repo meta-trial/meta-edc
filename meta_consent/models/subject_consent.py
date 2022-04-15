@@ -20,6 +20,8 @@ from edc_search.model_mixins import SearchSlugManager
 from edc_sites.models import SiteModelMixin
 from edc_visit_tracking.managers import CurrentSiteManager
 
+from meta_pharmacy.constants import METFORMIN
+
 from .model_mixins import SearchSlugModelMixin
 
 
@@ -64,6 +66,13 @@ class SubjectConsent(
 
     completed_by_next_of_kin = models.CharField(
         max_length=10, default=NO, choices=YES_NO, editable=False
+    )
+
+    study_medication_name = models.CharField(
+        max_length=25,
+        default=METFORMIN,
+        editable=False,
+        help_text="Used by `create_prescription` in the signal",
     )
 
     on_site = CurrentSiteManager()

@@ -3,12 +3,12 @@ from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from edc_action_item import ActionItemDeleteError, delete_action_item
 from edc_constants.constants import YES
-from edc_pharmacy.utils import create_prescription
+from edc_pharmacy.exceptions import PrescriptionAlreadyExists
+from edc_pharmacy.prescribe import create_prescription
 from edc_randomization.site_randomizers import site_randomizers
 from edc_visit_schedule.site_visit_schedules import site_visit_schedules
 
 from meta_edc.meta_version import get_meta_version
-from meta_pharmacy.constants import METFORMIN
 from meta_screening.models import SubjectScreening
 from meta_subject.models import SubjectVisit
 
@@ -60,12 +60,17 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
                 subject_identifier=instance.subject_identifier,
                 onschedule_datetime=instance.consent_datetime,
             )
-            create_prescription(
-                subject_identifier=instance.subject_identifier,
-                report_datetime=instance.consent_datetime,
-                randomizer_name=get_meta_version(),
-                medication_name=METFORMIN,
-            )
+
+            # All refills are created against this prescription
+            try:
+                create_prescription(
+                    subject_identifier=instance.subject_identifier,
+                    report_datetime=instance.consent_datetime,
+                    medications=[instance.study_medication_name],
+                    randomizer_name=get_meta_version(),
+                )
+            except PrescriptionAlreadyExists:
+                pass
 
         # create / delete action for reconsent
         if instance.completed_by_next_of_kin == YES:

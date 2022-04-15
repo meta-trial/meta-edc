@@ -34,7 +34,11 @@ from edc_export.auth_objects import DATA_EXPORTER_ROLE
 from edc_label.auth_objects import LABELING
 from edc_mnsi.auth_objects import MNSI, MNSI_SUPER, MNSI_VIEW
 from edc_offstudy.auth_objects import OFFSTUDY
-from edc_pharmacy.auth_objects import PHARMACIST_ROLE, SITE_PHARMACIST_ROLE
+from edc_pharmacy.auth_objects import (
+    PHARMACIST_ROLE,
+    PRESCRIBER_ROLE,
+    SITE_PHARMACIST_ROLE,
+)
 from edc_qol.auth_objects import QOL, QOL_SUPER, QOL_VIEW
 from edc_randomization.auth_objects import RANDO_BLINDED, RANDO_UNBLINDED
 from edc_screening.auth_objects import SCREENING, SCREENING_VIEW
@@ -57,6 +61,7 @@ site_auths.update_role(
     UNBLINDING_REQUESTORS,
     MNSI,
     QOL,
+    PRESCRIBER_ROLE,
     name=CLINICIAN_ROLE,
 )
 
@@ -68,6 +73,7 @@ site_auths.update_role(
     MNSI_SUPER,
     QOL_SUPER,
     UNBLINDING_REQUESTORS,
+    PRESCRIBER_ROLE,
     name=CLINICIAN_SUPER_ROLE,
 )
 

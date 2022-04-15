@@ -1,6 +1,6 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from edc_pharmacy.models import Medication, Rx
-from edc_pharmacy.utils import create_prescription
+from edc_pharmacy.prescripe.utils import create_prescription
 
 from meta_consent.models import SubjectConsent
 from meta_edc.meta_version import get_meta_version

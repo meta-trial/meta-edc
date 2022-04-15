@@ -17,6 +17,7 @@ from edc_utils.date import get_utcnow
 from edc_visit_tracking.constants import SCHEDULED
 from model_bakery import baker
 
+from meta_pharmacy.prepare_meta_pharmacy import prepare_meta_pharmacy
 from meta_rando.randomizers import RandomizerPhaseThree
 from meta_sites import fqdn
 from meta_subject.models import SubjectVisit
@@ -59,6 +60,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
             )
         site_list_data.initialize()
         site_list_data.autodiscover()
+        prepare_meta_pharmacy()
 
     def get_subject_screening(
         self,
