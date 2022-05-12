@@ -7,7 +7,7 @@ from edc_glucose.form_validators import (
     GlucoseFormValidatorMixin,
 )
 from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
-from edc_reportable import BmiFormValidatorMixin, EgfrFormValidatorMixin
+from edc_reportable import BmiFormValidatorMixin, EgfrCkdEpiFormValidatorMixin
 from edc_vitals.form_validators import (
     BloodPressureFormValidatorMixin,
     WeightHeightBmiFormValidatorMixin,
@@ -26,7 +26,7 @@ class ScreeningPartThreeFormValidator(
     FastingFormValidatorMixin,
     FbgOgttFormValidatorMixin,
     BmiFormValidatorMixin,
-    EgfrFormValidatorMixin,
+    EgfrCkdEpiFormValidatorMixin,
     BloodPressureFormValidatorMixin,
     WeightHeightBmiFormValidatorMixin,
     FormValidator,

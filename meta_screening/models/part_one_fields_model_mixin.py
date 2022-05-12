@@ -63,8 +63,8 @@ class PartOneFieldsModelMixin(models.Model):
 
     vl_undetectable = models.CharField(
         verbose_name=format_html(
-            "Does the patient have a viral load measure of less than 400 copies per ml "
-            "taken <u>within the last 6 months</u>"
+            "Does the patient have a viral load measure of less than 1000 copies per ml "
+            "taken <u>within the last 12 months</u>"
         ),
         max_length=15,
         choices=YES_NO_NA,
