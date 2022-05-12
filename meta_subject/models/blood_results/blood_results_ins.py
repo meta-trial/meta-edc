@@ -1,8 +1,8 @@
-from edc_blood_results import BLOOD_RESULTS_INSULIN_ACTION
-from edc_blood_results.model_mixins import BloodResultsModelMixin, InsulinModelMixin
 from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
 from edc_lab.model_mixins import CrfWithRequisitionModelMixin
 from edc_lab_panel.panels import insulin_panel
+from edc_lab_results import BLOOD_RESULTS_INSULIN_ACTION
+from edc_lab_results.model_mixins import BloodResultsModelMixin, InsulinModelMixin
 from edc_model import models as edc_models
 
 

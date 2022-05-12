@@ -1,17 +1,17 @@
 from edc_action_item import Action, ActionWithNotification, site_action_items
 from edc_action_item.site_action_items import AlreadyRegistered
 from edc_adverse_event.constants import AE_INITIAL_ACTION
-from edc_blood_results.action_items import (
+from edc_constants.constants import HIGH_PRIORITY, NONE, POS, YES
+from edc_lab_results.action_items import (
     BloodResultsFbcAction,
     BloodResultsGluAction,
     BloodResultsHba1cAction,
     BloodResultsLftAction,
     BloodResultsLipidAction,
 )
-from edc_blood_results.action_items import (
+from edc_lab_results.action_items import (
     BloodResultsRftAction as BaseBloodResultsRftAction,
 )
-from edc_constants.constants import HIGH_PRIORITY, NONE, POS, YES
 from edc_ltfu.constants import LTFU_ACTION
 from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_reportable import GRADE3, GRADE4

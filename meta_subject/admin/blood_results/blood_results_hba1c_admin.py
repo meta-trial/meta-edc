@@ -1,7 +1,7 @@
 from django.contrib import admin
-from edc_blood_results.admin import BloodResultsModelAdminMixin
-from edc_blood_results.fieldsets import BloodResultFieldset
 from edc_lab_panel.panels import hba1c_panel
+from edc_lab_results.admin import BloodResultsModelAdminMixin
+from edc_lab_results.fieldsets import BloodResultFieldset
 
 from ...admin_site import meta_subject_admin
 from ...forms import BloodResultsHba1cForm
