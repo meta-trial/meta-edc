@@ -20,7 +20,7 @@ class OtherArvRegimensDetailFormValidator(FormValidator):
 class InlineCrfModelFormMixin(FormValidatorMixin, forms.ModelForm):
     @property
     def subject_visit(self):
-        return get_subject_visit(self, subject_visit_attr=self.subject_visit_attr)
+        return get_subject_visit(self, visit_model_attr=self.subject_visit_attr)
 
     @property
     def subject_visit_attr(self):
