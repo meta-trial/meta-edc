@@ -60,6 +60,7 @@ urlpatterns = [
     *paths_for_urlpatterns("edc_subject_dashboard"),
     *paths_for_urlpatterns("edc_unblinding"),
     *paths_for_urlpatterns("edc_visit_schedule"),
+    *paths_for_urlpatterns("canned_views"),
     *paths_for_urlpatterns("meta_ae"),
     *paths_for_urlpatterns("meta_consent"),
     *paths_for_urlpatterns("meta_export"),

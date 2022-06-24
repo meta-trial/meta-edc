@@ -145,6 +145,7 @@ INSTALLED_APPS = [
     "edc_adherence.apps.AppConfig",
     "edc_dx.apps.AppConfig",
     "edc_refusal.apps.AppConfig",
+    "canned_views.apps.AppConfig",
     "meta_consent.apps.AppConfig",
     "meta_data_manager.apps.AppConfig",
     "meta_lists.apps.AppConfig",
