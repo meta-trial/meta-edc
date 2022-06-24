@@ -7,12 +7,8 @@ from django.db.models import F
 
 def func(apps, schema_editor):
     model_cls = apps.get_model("meta_subject", "studymedication")
-    model_cls.objects.filter(refill_date__isnull=True).update(
-        refill_date=F("report_datetime")
-    )
-    model_cls.history.filter(refill_date__isnull=True).update(
-        refill_date=F("report_datetime")
-    )
+    model_cls.objects.filter(refill_date__isnull=True).update(refill_date=F("report_datetime"))
+    model_cls.history.filter(refill_date__isnull=True).update(refill_date=F("report_datetime"))
 
 
 class Migration(migrations.Migration):

@@ -59,9 +59,7 @@ def study_medication_on_pre_save(sender, instance, raw, **kwargs):
     sender=Delivery,
     dispatch_uid="update_pregnancy_notification_on_delivery_post_save",
 )
-def update_pregnancy_notification_on_delivery_post_save(
-    sender, instance, raw, **kwargs
-):
+def update_pregnancy_notification_on_delivery_post_save(sender, instance, raw, **kwargs):
     if not raw:
         model_cls = django_apps.get_model("meta_prn.pregnancynotification")
         model_cls.objects.filter(
@@ -81,9 +79,7 @@ def update_schedule_on_delivery_post_save(sender, instance, raw, **kwargs):
     if not raw:
         offschedule_model_cls = django_apps.get_model("meta_prn.offschedulepregnancy")
         try:
-            offschedule_model_cls.objects.get(
-                subject_identifier=instance.subject_identifier
-            )
+            offschedule_model_cls.objects.get(subject_identifier=instance.subject_identifier)
         except ObjectDoesNotExist:
             last_subject_visit = (
                 SubjectVisit.objects.filter(

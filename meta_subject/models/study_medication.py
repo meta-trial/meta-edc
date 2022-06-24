@@ -4,9 +4,7 @@ from edc_pharmacy.models import StudyMedicationCrfModelMixin
 from ..model_mixins import CrfModelMixin
 
 
-class StudyMedication(
-    StudyMedicationCrfModelMixin, CrfModelMixin, edc_models.BaseUuidModel
-):
+class StudyMedication(StudyMedicationCrfModelMixin, CrfModelMixin, edc_models.BaseUuidModel):
     class Meta(
         StudyMedicationCrfModelMixin.Meta,
         CrfModelMixin.Meta,

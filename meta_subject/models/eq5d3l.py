@@ -9,7 +9,5 @@ class Eq5d3l(
     CrfModelMixin,
     edc_models.BaseUuidModel,
 ):
-    class Meta(
-        Eq5d3lModelMixin.Meta, CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta
-    ):
+    class Meta(Eq5d3lModelMixin.Meta, CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         pass

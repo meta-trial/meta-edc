@@ -11,9 +11,7 @@ style = color_style()
 def prepare_meta_pharmacy():
     from django.apps import apps as django_apps
 
-    sys.stdout.write(
-        style.MIGRATE_HEADING("Populating static pharmacy models for META3:\n")
-    )
+    sys.stdout.write(style.MIGRATE_HEADING("Populating static pharmacy models for META3:\n"))
 
     medication_model_cls = django_apps.get_model("edc_pharmacy.medication")
     formulation_model_cls = django_apps.get_model("edc_pharmacy.formulation")

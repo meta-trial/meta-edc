@@ -51,14 +51,10 @@ class ProtocolDeviationViolation(
         default=QUESTION_RETIRED,
     )
 
-    action_required_old = models.CharField(
-        max_length=45, choices=ACTION_REQUIRED, null=True
-    )
+    action_required_old = models.CharField(max_length=45, choices=ACTION_REQUIRED, null=True)
 
     def natural_key(self):
-        return tuple(
-            self.action_identifier,
-        )
+        return (self.action_identifier,)  # noqa
 
     class Meta(ProtocolDeviationViolationModelMixin.Meta, BaseUuidModel.Meta):
         pass

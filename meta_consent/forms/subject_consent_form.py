@@ -17,18 +17,13 @@ class SubjectConsentFormValidator(SubjectConsentFormValidatorMixin, FormValidato
         number and `identity` matches the screening form.
         """
         if self.cleaned_data.get("identity_type") != "hospital_no":
-            raise forms.ValidationError(
-                {"identity_type": "Expected 'hospital number'."}
-            )
+            raise forms.ValidationError({"identity_type": "Expected 'hospital number'."})
 
-        if self.subject_screening.hospital_identifier != self.cleaned_data.get(
-            "identity"
-        ):
+        if self.subject_screening.hospital_identifier != self.cleaned_data.get("identity"):
             raise forms.ValidationError(
                 {
                     "identity": (
-                        "The hospital identifier does not match that "
-                        "reported at screening."
+                        "The hospital identifier does not match that " "reported at screening."
                     )
                 }
             )
@@ -50,13 +45,10 @@ class SubjectConsentForm(
         widget=forms.TextInput(attrs={"readonly": "readonly"}),
     )
 
-    def clean_gender_of_consent(self):
+    def validate_gender_of_consent(self):
         return None
 
-    def clean_guardian_and_dob(self):
-        return None
-
-    def clean_identity_with_unique_fields(self):
+    def validate_guardian_and_dob(self):
         return None
 
     class Meta:

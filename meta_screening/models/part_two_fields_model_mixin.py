@@ -36,8 +36,7 @@ class PartTwoFieldsModelMixin(models.Model):
 
     congestive_heart_failure = models.CharField(
         verbose_name=(
-            "Does the patient have congestive heart failure "
-            "requiring pharmacologic therapy"
+            "Does the patient have congestive heart failure " "requiring pharmacologic therapy"
         ),
         max_length=15,
         choices=YES_NO,
@@ -59,8 +58,7 @@ class PartTwoFieldsModelMixin(models.Model):
 
     alcoholism = models.CharField(
         verbose_name=(
-            "Does the patient have any evidence of alcoholism or "
-            "acute alcohol intoxication"
+            "Does the patient have any evidence of alcoholism or " "acute alcohol intoxication"
         ),
         max_length=15,
         choices=YES_NO,
@@ -96,8 +94,7 @@ class PartTwoFieldsModelMixin(models.Model):
 
     tissue_hypoxia_condition = models.CharField(
         verbose_name=(
-            "Does the patient have any acute condition which can cause tissue "
-            "hypoxia"
+            "Does the patient have any acute condition which can cause tissue " "hypoxia"
         ),
         max_length=15,
         choices=YES_NO,
@@ -130,8 +127,7 @@ class PartTwoFieldsModelMixin(models.Model):
         null=True,
         blank=False,
         help_text=(
-            "For example: Magnesium stearate, sodium "
-            "carboxymethylcellulose, hypromellose"
+            "For example: Magnesium stearate, sodium " "carboxymethylcellulose, hypromellose"
         ),
     )
 

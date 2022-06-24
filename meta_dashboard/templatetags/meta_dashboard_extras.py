@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup
 from django import template
-from django.conf import settings
 from edc_constants.constants import NO, TBD, YES
 from edc_dashboard.url_names import url_names
+from edc_dashboard.utils import get_bootstrap_version
 
 from meta_screening.eligibility import MetaEligibility
 
@@ -10,8 +10,7 @@ register = template.Library()
 
 
 @register.inclusion_tag(
-    f"meta_dashboard/bootstrap{settings.EDC_BOOTSTRAP}/"
-    f"buttons/screening_button.html",
+    f"meta_dashboard/bootstrap{get_bootstrap_version()}/" f"buttons/screening_button.html",
     takes_context=True,
 )
 def screening_button(context, model_wrapper):
@@ -65,8 +64,7 @@ def screening_button(context, model_wrapper):
 
 
 @register.inclusion_tag(
-    f"meta_dashboard/bootstrap{settings.EDC_BOOTSTRAP}/"
-    f"buttons/eligibility_button.html"
+    f"meta_dashboard/bootstrap{get_bootstrap_version()}/" f"buttons/eligibility_button.html"
 )
 def eligibility_button(subject_screening_model_wrapper):
     comment = []
@@ -89,7 +87,7 @@ def eligibility_button(subject_screening_model_wrapper):
 
 
 @register.inclusion_tag(
-    f"meta_dashboard/bootstrap{settings.EDC_BOOTSTRAP}/buttons/add_consent_button.html",
+    f"meta_dashboard/bootstrap{get_bootstrap_version()}/buttons/add_consent_button.html",
     takes_context=True,
 )
 def add_consent_button(context, model_wrapper):
@@ -115,8 +113,7 @@ def refusal_button(context, subject_refusal_model_wrapper):
 
 
 @register.inclusion_tag(
-    f"meta_dashboard/bootstrap{settings.EDC_BOOTSTRAP}/"
-    f"buttons/dashboard_button.html"
+    f"meta_dashboard/bootstrap{get_bootstrap_version()}/" f"buttons/dashboard_button.html"
 )
 def dashboard_button(model_wrapper):
     subject_dashboard_url = url_names.get("subject_dashboard_url")

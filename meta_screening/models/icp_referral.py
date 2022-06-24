@@ -47,9 +47,7 @@ class IcpReferral(SiteModelMixin, BaseUuidModel):
         max_length=15, choices=ETHNICITY, help_text="Used for eGFR calculation"
     )
 
-    hiv_pos = models.CharField(
-        verbose_name="HIV positive", max_length=15, choices=YES_NO
-    )
+    hiv_pos = models.CharField(verbose_name="HIV positive", max_length=15, choices=YES_NO)
 
     art_six_months = models.CharField(
         verbose_name="On anti-retroviral therapy for at least 6 months",
@@ -112,9 +110,7 @@ class IcpReferral(SiteModelMixin, BaseUuidModel):
         return f"{self.screening_identifier} {self.gender} {self.age_in_years}"
 
     def natural_key(self):
-        return tuple(
-            self.screening_identifier,
-        )
+        return (self.screening_identifier,)  # noqa
 
     class Meta:
         pass

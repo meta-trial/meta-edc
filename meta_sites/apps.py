@@ -7,7 +7,7 @@ from django.db.models.signals import post_migrate
 
 from meta_edc.meta_version import get_meta_version
 
-from .sites import all_sites, fqdn
+from .sites import all_sites
 
 style = color_style()
 

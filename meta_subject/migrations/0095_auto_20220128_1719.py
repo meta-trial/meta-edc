@@ -11,7 +11,7 @@ import django_audit_fields.fields.userfield
 import django_audit_fields.fields.uuid_auto_field
 import django_audit_fields.models.audit_model_mixin
 import django_revision.revision_field
-import edc_model.models.validators.date
+import edc_model.validators.date
 import edc_protocol.validators
 import edc_utils.date
 import edc_visit_tracking.managers
@@ -271,7 +271,7 @@ class Migration(migrations.Migration):
                         help_text="If reporting today, use today's date/time, otherwise use the date/time this information was reported.",
                         validators=[
                             edc_protocol.validators.datetime_not_before_study_start,
-                            edc_model.models.validators.date.datetime_not_future,
+                            edc_model.validators.date.datetime_not_future,
                         ],
                         verbose_name="Report Date",
                     ),
@@ -464,7 +464,7 @@ class Migration(migrations.Migration):
                         help_text="If reporting today, use today's date/time, otherwise use the date/time this information was reported.",
                         validators=[
                             edc_protocol.validators.datetime_not_before_study_start,
-                            edc_model.models.validators.date.datetime_not_future,
+                            edc_model.validators.date.datetime_not_future,
                         ],
                         verbose_name="Report Date",
                     ),

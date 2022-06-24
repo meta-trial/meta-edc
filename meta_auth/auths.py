@@ -43,7 +43,6 @@ from edc_qol.auth_objects import QOL, QOL_SUPER, QOL_VIEW
 from edc_randomization.auth_objects import RANDO_BLINDED, RANDO_UNBLINDED
 from edc_screening.auth_objects import SCREENING, SCREENING_VIEW
 from edc_unblinding.auth_objects import UNBLINDING_REQUESTORS
-from sarscov2.auth import SARSCOV2, sarscov2_codenames
 
 from .auth_objects import META_AUDITOR, META_CLINIC, META_CLINIC_SUPER, clinic_codenames
 

@@ -1,9 +1,10 @@
+from typing import Any
+
 from django.db import models
 from edc_constants.constants import NO, TBD, YES
 from edc_utils import get_utcnow
 
-from meta_screening.constants import BMI_FBG_OGTT_INCOMPLETE, EGFR_NOT_CALCULATED
-
+from ..constants import BMI_FBG_OGTT_INCOMPLETE, EGFR_NOT_CALCULATED
 from .eligibility_part_one import EligibilityPartOne
 from .eligibility_part_three import EligibilityPartThreePhaseThree
 from .eligibility_part_two import EligibilityPartTwo
@@ -60,10 +61,10 @@ class MetaEligibility:
         if self.update_model:
             self.update_model_final()
 
-    def __repr__(self) -> str:
+    def __repr__(self: Any) -> str:
         return f"{self.__class__.__name__}()"
 
-    def assess_eligibility_for_all_parts(self):
+    def assess_eligibility_for_all_parts(self: Any):
         eligibility_part_one_cls = EligibilityPartOne
         eligibility_part_two_cls = EligibilityPartTwo
         eligibility_part_three_cls = EligibilityPartThreePhaseThree
@@ -115,7 +116,7 @@ class MetaEligibility:
         ):
             self.eligible = TBD
 
-    def update_model_final(self):
+    def update_model_final(self: Any):
         self.model_obj.reasons_ineligible = "|".join(self.reasons_ineligible)
         self.model_obj.eligible = self.is_eligible
         if self.is_eligible:
@@ -126,11 +127,11 @@ class MetaEligibility:
             self.model_obj.eligibility_datetime = None
 
     @property
-    def is_eligible(self) -> bool:
+    def is_eligible(self: Any) -> bool:
         """Returns True if eligible else False"""
         return True if self.eligible == YES else False
 
-    def check_eligibility_values_or_raise(self):
+    def check_eligibility_values_or_raise(self: Any):
         for response in [
             self.part_one.eligible,
             self.part_two.eligible,
@@ -143,7 +144,7 @@ class MetaEligibility:
                 )
 
     @property
-    def display_label(self):
+    def display_label(self: Any):
         if self.eligible == YES:
             display_label = "ELIGIBLE"
         elif self.eligible == TBD:
@@ -151,13 +152,13 @@ class MetaEligibility:
             if EGFR_NOT_CALCULATED in self.reasons_ineligible:
                 display_label = "PENDING (SCR/eGFR)"
             elif BMI_FBG_OGTT_INCOMPLETE in self.reasons_ineligible:
-                display_label = "PENDING (BMI/IFT/OGTT)"
+                display_label = "PENDING (BMI/FBG/OGTT)"
         else:
             display_label = "not eligible"
         return display_label
 
     @property
-    def eligibility_status(self):
+    def eligibility_status(self: Any):
         status_str = (
             f"P1: {self.part_one.eligible.upper()}<BR>"
             f"P2: {self.part_two.eligible.upper()}<BR>"

@@ -24,7 +24,7 @@ class StudyMedicationFormValidator(BaseStudyMedicationFormValidator):
                 and self.cleaned_data.get("dosage_guideline").dose != 1000
             ):
                 raise forms.ValidationError(
-                    {"dosage_guideline": f"Invalid. Expected 1000mg/day at baseline"}
+                    {"dosage_guideline": "Invalid. Expected 1000mg/day at baseline"}
                 )
 
 

@@ -16,9 +16,7 @@ class SubjectRefusalManager(SearchSlugManager, models.Manager):
         return self.get(subject_identifier=subject_identifier)
 
 
-class SubjectRefusal(
-    NonUniqueSubjectIdentifierModelMixin, SiteModelMixin, BaseUuidModel
-):
+class SubjectRefusal(NonUniqueSubjectIdentifierModelMixin, SiteModelMixin, BaseUuidModel):
 
     subject_screening = models.ForeignKey(SubjectScreening, on_delete=models.PROTECT)
 

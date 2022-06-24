@@ -9,6 +9,7 @@ from .models import SubjectConsent, SubjectReconsent
 
 fake = Faker()
 
+
 subjectconsent = Recipe(
     SubjectConsent,
     assessment_score=YES,

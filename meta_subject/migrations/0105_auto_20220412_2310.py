@@ -6,28 +6,38 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_subject', '0104_auto_20220412_2151'),
+        ("meta_subject", "0104_auto_20220412_2151"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='historicalstudymedication',
-            name='refill_date',
+            model_name="historicalstudymedication",
+            name="refill_date",
             field=models.DateField(null=True),
         ),
         migrations.AddField(
-            model_name='studymedication',
-            name='refill_date',
+            model_name="studymedication",
+            name="refill_date",
             field=models.DateField(null=True),
         ),
         migrations.AlterField(
-            model_name='historicalstudymedication',
-            name='order_next',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No')], default='Yes', max_length=15, verbose_name='Order refill for next scheduled visit?'),
+            model_name="historicalstudymedication",
+            name="order_next",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No")],
+                default="Yes",
+                max_length=15,
+                verbose_name="Order refill for next scheduled visit?",
+            ),
         ),
         migrations.AlterField(
-            model_name='studymedication',
-            name='order_next',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No')], default='Yes', max_length=15, verbose_name='Order refill for next scheduled visit?'),
+            model_name="studymedication",
+            name="order_next",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No")],
+                default="Yes",
+                max_length=15,
+                verbose_name="Order refill for next scheduled visit?",
+            ),
         ),
     ]

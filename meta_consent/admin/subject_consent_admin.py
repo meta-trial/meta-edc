@@ -82,15 +82,11 @@ class SubjectConsentAdmin(
         extra_context = extra_context or {}
         obj = SubjectConsent.objects.get(id=object_id)
         try:
-            protected = [
-                SubjectVisit.objects.get(subject_identifier=obj.subject_identifier)
-            ]
+            protected = [SubjectVisit.objects.get(subject_identifier=obj.subject_identifier)]
         except ObjectDoesNotExist:
             protected = None
         except MultipleObjectsReturned:
-            protected = SubjectVisit.objects.filter(
-                subject_identifier=obj.subject_identifier
-            )
+            protected = SubjectVisit.objects.filter(subject_identifier=obj.subject_identifier)
         extra_context.update({"protected": protected})
         return super().delete_view(request, object_id, extra_context)
 

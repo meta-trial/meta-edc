@@ -34,9 +34,7 @@ class BaseStudyTerminationConclusion(ActionModelMixin, models.Model):
     objects = ActionIdentifierManager()
 
     def natural_key(self):
-        return tuple(
-            self.action_identifier,
-        )
+        return (self.action_identifier,)  # noqa
 
     class Meta:
         abstract = True

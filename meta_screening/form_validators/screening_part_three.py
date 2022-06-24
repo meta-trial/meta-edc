@@ -13,8 +13,8 @@ from edc_vitals.form_validators import (
     WeightHeightBmiFormValidatorMixin,
 )
 
-from meta_screening.forms import get_part_three_vitals_fields
-from meta_screening.models import SubjectScreening
+from ..forms import get_part_three_vitals_fields
+from ..models import SubjectScreening
 
 
 class ScreeningPartThreeFormValidatorError(Exception):
@@ -107,9 +107,7 @@ class ScreeningPartThreeFormValidator(
                     )
                     if tdelta.days < 3:
                         raise forms.ValidationError(
-                            {
-                                ogtt2_dte: "Invalid. Must be at least 3 days after first OGTT"
-                            }
+                            {ogtt2_dte: "Invalid. Must be at least 3 days after first OGTT"}
                         )
             self.validate_ogtt_time_interval(ogtt_prefix="ogtt2")
             self.validate_ogtt_required_fields(ogtt_prefix="ogtt2")
@@ -137,9 +135,7 @@ class ScreeningPartThreeFormValidator(
             )
 
     def validate_creatinine_required_fields(self):
-        self.required_if(
-            YES, field="creatinine_performed", field_required="creatinine_value"
-        )
+        self.required_if(YES, field="creatinine_performed", field_required="creatinine_value")
         self.required_if_true(
             self.cleaned_data.get("creatinine_value"), field_required="creatinine_units"
         )
@@ -156,21 +152,13 @@ class ScreeningPartThreeFormValidator(
         self.applicable_if(
             YES, field="urine_bhcg_performed", field_applicable="urine_bhcg_value"
         )
-        self.required_if(
-            YES, field="urine_bhcg_performed", field_required="urine_bhcg_date"
-        )
+        self.required_if(YES, field="urine_bhcg_performed", field_required="urine_bhcg_date")
 
-        if (
-            self.instance.pregnant == YES
-            and self.cleaned_data.get("urine_bhcg_value") == NEG
-        ):
+        if self.instance.pregnant == YES and self.cleaned_data.get("urine_bhcg_value") == NEG:
             raise forms.ValidationError(
                 {"urine_bhcg_value": "Invalid, part one says subject is pregnant"}
             )
-        elif (
-            self.instance.pregnant == NO
-            and self.cleaned_data.get("urine_bhcg_value") == POS
-        ):
+        elif self.instance.pregnant == NO and self.cleaned_data.get("urine_bhcg_value") == POS:
             raise forms.ValidationError(
                 {"urine_bhcg_value": "Invalid, part one says subject is not pregnant"}
             )

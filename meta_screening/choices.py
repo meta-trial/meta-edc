@@ -1,9 +1,4 @@
 from edc_constants.constants import BLACK, NO, NOT_APPLICABLE, OTHER, YES
-from edc_reportable import (
-    MICROMOLES_PER_LITER,
-    MICROMOLES_PER_LITER_DISPLAY,
-    MILLIGRAMS_PER_DECILITER,
-)
 
 ETHNICITY = ((BLACK, "Black"), (OTHER, "Other"))
 
@@ -22,6 +17,6 @@ YES_NO_NOT_ELIGIBLE = (
     (NO, NO),
     (
         NOT_APPLICABLE,
-        ("Not applicable, subject is not eligible based on the criteria above"),
+        "Not applicable, subject is not eligible based on the criteria above",
     ),
 )

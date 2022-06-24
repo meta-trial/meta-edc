@@ -17,8 +17,7 @@ class PartFourFieldsModelMixin(models.Model):
     # Assessment of understanding
     aou = models.CharField(
         verbose_name=(
-            "Have the research staff assessed the "
-            "subject's understanding of the study?"
+            "Have the research staff assessed the " "subject's understanding of the study?"
         ),
         max_length=15,
         choices=YES_NO,
@@ -32,8 +31,7 @@ class PartFourFieldsModelMixin(models.Model):
 
     aou_duration = models.IntegerField(
         verbose_name=(
-            "How much time was spent on assessing "
-            "the subject's understanding of the study?"
+            "How much time was spent on assessing " "the subject's understanding of the study?"
         ),
         null=True,
         blank=False,

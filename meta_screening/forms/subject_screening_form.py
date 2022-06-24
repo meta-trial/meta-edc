@@ -6,9 +6,7 @@ from ..form_validators import SubjectScreeningFormValidator
 from ..models import SubjectScreening
 
 
-class SubjectScreeningForm(
-    AlreadyConsentedFormMixin, FormValidatorMixin, forms.ModelForm
-):
+class SubjectScreeningForm(AlreadyConsentedFormMixin, FormValidatorMixin, forms.ModelForm):
 
     form_validator_cls = SubjectScreeningFormValidator
 

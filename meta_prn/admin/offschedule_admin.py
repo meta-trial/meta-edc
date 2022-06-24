@@ -13,6 +13,7 @@ class OffScheduleAdmin(
 ):
 
     instructions = None
+
     fields = ("subject_identifier", "offschedule_datetime")
 
     list_display = ("subject_identifier", "dashboard", "offschedule_datetime")

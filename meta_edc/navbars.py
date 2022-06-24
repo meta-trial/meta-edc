@@ -21,9 +21,7 @@ navbar.append_item(
 )
 
 navbar.append_item(
-    [item for item in meta_dashboard_navbar.items if item.name == "consented_subject"][
-        0
-    ]
+    [item for item in meta_dashboard_navbar.items if item.name == "consented_subject"][0]
 )
 
 for item in review_navbar.items:

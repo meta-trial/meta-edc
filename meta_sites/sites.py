@@ -2,6 +2,7 @@ from edc_sites.single_site import SingleSite
 
 fqdn = "meta3.clinicedc.org"
 
+
 all_sites = {
     "tanzania": (
         SingleSite(

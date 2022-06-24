@@ -11,9 +11,7 @@ from .modeladmin import CrfModelAdminMixin
 
 
 @admin.register(FollowupVitals, site=meta_subject_admin)
-class FollowupVitalsAdmin(
-    CrfModelAdminMixin, FormLabelModelAdminMixin, SimpleHistoryAdmin
-):
+class FollowupVitalsAdmin(CrfModelAdminMixin, FormLabelModelAdminMixin, SimpleHistoryAdmin):
 
     form = FollowupVitalsForm
 

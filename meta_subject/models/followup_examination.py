@@ -50,8 +50,7 @@ class FollowupExamination(
         related_name="symptoms_g3",
         verbose_name="For these symptoms, were any grade 3 events",
         help_text=(
-            "Refer to DAIDS toxicity table. "
-            "Please complete Serious Adverse Event form"
+            "Refer to DAIDS toxicity table. " "Please complete Serious Adverse Event form"
         ),
     )
     symptoms_g3_detail = models.TextField(
@@ -66,8 +65,7 @@ class FollowupExamination(
         related_name="symptoms_g4",
         verbose_name="For these symptoms, were any grade 4 events",
         help_text=(
-            "Refer to DAIDS toxicity table. "
-            "Please complete Serious Adverse Event form"
+            "Refer to DAIDS toxicity table. " "Please complete Serious Adverse Event form"
         ),
     )
     symptoms_g4_detail = models.TextField(
@@ -91,9 +89,7 @@ class FollowupExamination(
         ),
         max_length=25,
         choices=YES_NO,
-        help_text=(
-            "Includes other routine appointments, e.g. BP check or family planning"
-        ),
+        help_text=("Includes other routine appointments, e.g. BP check or family planning"),
     )
 
     # 5b
@@ -107,8 +103,7 @@ class FollowupExamination(
     # 5c
     attended_clinic_detail = models.TextField(
         verbose_name=(
-            "If YES, attend other clinic or hospital, "
-            "please provide details of this event"
+            "If YES, attend other clinic or hospital, " "please provide details of this event"
         ),
         help_text=(
             "If the participant was given a referral letter or "
@@ -119,9 +114,7 @@ class FollowupExamination(
     )
 
     attended_clinic_sae = models.CharField(
-        verbose_name=mark_safe(
-            "Does the event constitute a <u>Serious Adverse Event</u>"
-        ),
+        verbose_name=mark_safe("Does the event constitute a <u>Serious Adverse Event</u>"),
         max_length=25,
         choices=YES_NO_NA,
         default=NOT_APPLICABLE,
@@ -142,8 +135,7 @@ class FollowupExamination(
     # 5d
     prescribed_medication_detail = models.TextField(
         verbose_name=(
-            "If YES, prescribed any other medication, "
-            "please provide details of this visit"
+            "If YES, prescribed any other medication, " "please provide details of this visit"
         ),
         null=True,
         blank=True,

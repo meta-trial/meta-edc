@@ -15,9 +15,7 @@ class DeliveryFormValidator(FormValidator):
     def clean(self):
         try:
             PregnancyNotification.objects.get(
-                subject_identifier=self.cleaned_data.get(
-                    "subject_visit"
-                ).subject_identifier
+                subject_identifier=self.cleaned_data.get("subject_visit").subject_identifier
             )
         except ObjectDoesNotExist:
             raise forms.ValidationError(

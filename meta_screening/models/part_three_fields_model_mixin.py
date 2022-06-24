@@ -106,8 +106,7 @@ class PartThreeFieldsModelMixin(
 
     repeat_glucose_opinion = models.CharField(
         verbose_name=(
-            "In opinion of the clinician, "
-            "should the glucose measurements be repeated?"
+            "In opinion of the clinician, " "should the glucose measurements be repeated?"
         ),
         max_length=15,
         choices=YES_NO,

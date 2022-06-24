@@ -32,10 +32,7 @@ class EndOfStudyPhaseTwoFormValidator(
                     other_stored_value=OTHER_RX_DISCONTINUATION,
                 )
 
-            if (
-                self.cleaned_data.get("offschedule_reason").name
-                != OTHER_RX_DISCONTINUATION
-            ):
+            if self.cleaned_data.get("offschedule_reason").name != OTHER_RX_DISCONTINUATION:
                 self.validate_other_specify(
                     field="offschedule_reason",
                     other_specify_field="other_offschedule_reason",
@@ -101,10 +98,7 @@ class EndOfStudyPhaseThreeFormValidator(
                     other_stored_value=OTHER_RX_DISCONTINUATION,
                 )
 
-            if (
-                self.cleaned_data.get("offschedule_reason").name
-                != OTHER_RX_DISCONTINUATION
-            ):
+            if self.cleaned_data.get("offschedule_reason").name != OTHER_RX_DISCONTINUATION:
                 self.validate_other_specify(
                     field="offschedule_reason",
                     other_specify_field="other_offschedule_reason",

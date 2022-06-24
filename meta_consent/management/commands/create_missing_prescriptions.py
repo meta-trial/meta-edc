@@ -12,9 +12,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         medication = Medication.objects.get(name=METFORMIN)
-        subject_identifiers = Rx.objects.values_list(
-            "subject_identifier", flat=True
-        ).all()
+        subject_identifiers = Rx.objects.values_list("subject_identifier", flat=True).all()
         for instance in SubjectConsent.objects.exclude(
             subject_identifier__in=subject_identifiers
         ):

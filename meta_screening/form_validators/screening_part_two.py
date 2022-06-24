@@ -8,13 +8,9 @@ from ..eligibility import EligibilityPartTwo
 class ScreeningPartTwoFormValidator(FormValidator):
     def clean(self):
 
-        self.applicable_if_true(
-            self.eligible_part_two, field_applicable="already_fasted"
-        )
+        self.applicable_if_true(self.eligible_part_two, field_applicable="already_fasted")
 
-        self.applicable_if(
-            NO, field="already_fasted", field_applicable="advised_to_fast"
-        )
+        self.applicable_if(NO, field="already_fasted", field_applicable="advised_to_fast")
 
         self.required_if_true(self.eligible_part_two, field_required="appt_datetime")
 

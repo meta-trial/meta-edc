@@ -27,9 +27,7 @@ class PartOneFieldsModelMixin(models.Model):
     )
 
     meta_phase_two = models.CharField(
-        verbose_name=format_html(
-            "Was the subject enrolled in the <u>META Phase 2</u> trial?"
-        ),
+        verbose_name=format_html("Was the subject enrolled in the <u>META Phase 2</u> trial?"),
         max_length=15,
         choices=YES_NO,
         null=True,
@@ -71,9 +69,7 @@ class PartOneFieldsModelMixin(models.Model):
     )
 
     lives_nearby = models.CharField(
-        verbose_name=(
-            "Is the patient living within the catchment population of the facility"
-        ),
+        verbose_name=("Is the patient living within the catchment population of the facility"),
         max_length=15,
         choices=YES_NO,
     )
@@ -81,8 +77,7 @@ class PartOneFieldsModelMixin(models.Model):
     # META PHASE_TWO ONLY
     staying_nearby_6 = models.CharField(
         verbose_name=(
-            "Is the patient planning to remain in the catchment area "
-            "for at least 6 months"
+            "Is the patient planning to remain in the catchment area " "for at least 6 months"
         ),
         max_length=15,
         choices=YES_NO,
@@ -107,9 +102,7 @@ class PartOneFieldsModelMixin(models.Model):
     )
 
     continue_part_two = models.CharField(
-        verbose_name=mark_safe(
-            "Continue with <U>part two</U> of the screening process?"
-        ),
+        verbose_name=mark_safe("Continue with <U>part two</U> of the screening process?"),
         max_length=15,
         choices=YESDEFAULT_NO,
         default=YES,

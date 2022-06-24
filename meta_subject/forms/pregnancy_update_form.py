@@ -1,5 +1,5 @@
 from django import forms
-from edc_constants.constants import NO, YES
+from edc_constants.constants import YES
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import FormValidator
 

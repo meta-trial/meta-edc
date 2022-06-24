@@ -43,17 +43,11 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     DEFENDER_ENABLED=False,
     DJANGO_LAB_DASHBOARD_REQUISITION_MODEL="meta_subject.subjectrequisition",
     ADVERSE_EVENT_ADMIN_SITE="meta_ae_admin",
-    EDC_DX_LABELS=dict(
-        hiv="HIV", dm="Diabetes", htn="Hypertension", chol="High Cholesterol"
-    ),
+    EDC_DX_LABELS=dict(hiv="HIV", dm="Diabetes", htn="Hypertension", chol="High Cholesterol"),
     ADVERSE_EVENT_APP_LABEL="meta_ae",
     EDC_NAVBAR_DEFAULT="meta_dashboard",
-    EDC_PROTOCOL_STUDY_OPEN_DATETIME=datetime(
-        2019, 4, 30, 0, 0, 0, tzinfo=gettz("UTC")
-    ),
-    EDC_PROTOCOL_STUDY_CLOSE_DATETIME=datetime(
-        2023, 12, 31, 23, 59, 59, tzinfo=gettz("UTC")
-    ),
+    EDC_PROTOCOL_STUDY_OPEN_DATETIME=datetime(2019, 4, 30, 0, 0, 0, tzinfo=gettz("UTC")),
+    EDC_PROTOCOL_STUDY_CLOSE_DATETIME=datetime(2023, 12, 31, 23, 59, 59, tzinfo=gettz("UTC")),
     DJANGO_LANGUAGES=dict(
         en="English",
         lg="Luganda",
@@ -126,7 +120,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_label.apps.AppConfig",
         "edc_locator.apps.AppConfig",
         "edc_reference.apps.AppConfig",
-        "edc_reports.apps.AppConfig",
+        "edc_pdf_reports.apps.AppConfig",
         "edc_identifier.apps.AppConfig",
         "edc_metadata.apps.AppConfig",
         "edc_model_admin.apps.AppConfig",
@@ -152,7 +146,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_mnsi.apps.AppConfig",
         "edc_unblinding.apps.AppConfig",
         "edc_qol.apps.AppConfig",
-        "sarscov2.apps.AppConfig",
+        # "sarscov2.apps.AppConfig",
         "edc_dx_review.apps.AppConfig",
         "edc_dx.apps.AppConfig",
         "meta_auth.apps.AppConfig",
@@ -160,7 +154,6 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "meta_lists.apps.AppConfig",
         "meta_dashboard.apps.AppConfig",
         "meta_labs.apps.AppConfig",
-        "meta_metadata_rules.apps.AppConfig",
         "meta_rando.apps.AppConfig",
         "meta_reference.apps.AppConfig",
         "meta_subject.apps.AppConfig",
@@ -189,13 +182,10 @@ def main():
             "meta_ae.tests",
             "meta_dashboard.tests",
             "meta_edc.tests",
-            "meta_export.tests",
             "meta_labs.tests",
             "meta_lists.tests",
-            "meta_metadata_rules.tests",
             "meta_prn.tests",
             "meta_rando.tests",
-            "meta_reference.tests",
             "meta_screening.tests",
             "meta_subject.tests",
             "meta_visit_schedule.tests",

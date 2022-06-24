@@ -9,10 +9,8 @@ from edc_dashboard.url_names import url_names
 from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
-from meta_screening.eligibility import MetaEligibility
-
 from ..admin_site import meta_screening_admin
-from ..eligibility import format_reasons_ineligible
+from ..eligibility import MetaEligibility, format_reasons_ineligible
 from ..forms import SubjectScreeningForm
 from ..models import SubjectScreening
 from .fieldsets import (

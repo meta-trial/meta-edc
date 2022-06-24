@@ -28,9 +28,7 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
     """
     if not raw:
         if not created:
-            _, schedule = site_visit_schedules.get_by_onschedule_model(
-                "meta_prn.onschedule"
-            )
+            _, schedule = site_visit_schedules.get_by_onschedule_model("meta_prn.onschedule")
             schedule.refresh_schedule(subject_identifier=instance.subject_identifier)
         else:
             subject_screening = SubjectScreening.objects.get(
@@ -38,9 +36,7 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
             )
             subject_screening.subject_identifier = instance.subject_identifier
             subject_screening.consented = True
-            subject_screening.save_base(
-                update_fields=["subject_identifier", "consented"]
-            )
+            subject_screening.save_base(update_fields=["subject_identifier", "consented"])
 
             # randomize
             site_randomizers.randomize(
@@ -53,9 +49,7 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
             )
 
             # put subject on schedule
-            _, schedule = site_visit_schedules.get_by_onschedule_model(
-                "meta_prn.onschedule"
-            )
+            _, schedule = site_visit_schedules.get_by_onschedule_model("meta_prn.onschedule")
             schedule.put_on_schedule(
                 subject_identifier=instance.subject_identifier,
                 onschedule_datetime=instance.consent_datetime,
@@ -96,9 +90,7 @@ def subject_consent_on_post_delete(sender, instance, using, **kwargs):
     """Updates/Resets subject screening."""
     # don't allow if subject visits exist. This should be caught
     # in the ModelAdmin delete view
-    if SubjectVisit.objects.filter(
-        subject_identifier=instance.subject_identifier
-    ).exists():
+    if SubjectVisit.objects.filter(subject_identifier=instance.subject_identifier).exists():
         raise ValidationError("Unable to delete consent. Visit data exists.")
 
     _, schedule = site_visit_schedules.get_by_onschedule_model("meta_prn.onschedule")

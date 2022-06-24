@@ -37,9 +37,7 @@ class SubjectScreening(
 
     def save(self, *args, **kwargs):
         if self._meta.label_lower == "meta_screening.subjectscreening":
-            raise SubjectScreeningModelError(
-                "Unable to save. Save via P1-3 proxy models."
-            )
+            raise SubjectScreeningModelError("Unable to save. Save via P1-3 proxy models.")
         self.consent_ability = QUESTION_RETIRED
         super().save(*args, **kwargs)
 

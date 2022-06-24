@@ -23,9 +23,7 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
         self.data = dict(subject_visit=self.subject_visit, requisition=requisition)
 
     def test_model(self):
-        self.data.update(
-            creatinine_value=1.1, creatinine_units=MILLIGRAMS_PER_DECILITER
-        )
+        self.data.update(creatinine_value=1.1, creatinine_units=MILLIGRAMS_PER_DECILITER)
         obj = BloodResultsRft.objects.create(**self.data)
         self.assertIsNotNone(obj.egfr_value)
         self.assertIsNotNone(obj.egfr_units)

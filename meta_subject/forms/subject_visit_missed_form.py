@@ -13,9 +13,9 @@ class SubjectVisitMissedFormValidator(FormValidator):
         )
 
         if self.cleaned_data.get("contact_made") in [NO, NOT_APPLICABLE]:
-            if not self.cleaned_data.get(
-                "contact_attempts_count"
-            ) and self.cleaned_data.get("contact_attempts_explained"):
+            if not self.cleaned_data.get("contact_attempts_count") and self.cleaned_data.get(
+                "contact_attempts_explained"
+            ):
 
                 raise forms.ValidationError(
                     {"contact_attempts_explained": "This field is not required"}
@@ -38,9 +38,7 @@ class SubjectVisitMissedFormValidator(FormValidator):
                     {"contact_attempts_explained": "This field is not required"}
                 )
 
-        self.required_if(
-            YES, field="contact_attempted", field_required="contact_last_date"
-        )
+        self.required_if(YES, field="contact_attempted", field_required="contact_last_date")
 
         self.required_if(YES, field="contact_attempted", field_required="contact_made")
 

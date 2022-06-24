@@ -49,15 +49,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="historicalurinepregnancy",
             name="assay_date",
-            field=models.DateField(
-                blank=True, null=True, verbose_name="Urine βhCG date"
-            ),
+            field=models.DateField(blank=True, null=True, verbose_name="Urine βhCG date"),
         ),
         migrations.AlterField(
             model_name="urinepregnancy",
             name="assay_date",
-            field=models.DateField(
-                blank=True, null=True, verbose_name="Urine βhCG date"
-            ),
+            field=models.DateField(blank=True, null=True, verbose_name="Urine βhCG date"),
         ),
     ]

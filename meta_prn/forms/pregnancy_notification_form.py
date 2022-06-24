@@ -12,14 +12,10 @@ from ..models import PregnancyNotification
 
 class PregnancyNotificationFormValidator(FormValidator):
     def clean(self):
-        self.required_if(
-            NO, field="bhcg_confirmed", field_required="unconfirmed_details"
-        )
+        self.required_if(NO, field="bhcg_confirmed", field_required="unconfirmed_details")
         if self.instance.id is None and self.cleaned_data.get("bhcg_confirmed") == YES:
             if not UrinePregnancy.objects.filter(
-                subject_visit__subject_identifier=self.cleaned_data.get(
-                    "subject_identifier"
-                ),
+                subject_visit__subject_identifier=self.cleaned_data.get("subject_identifier"),
                 notified=False,
                 assay_date__lte=self.cleaned_data.get("report_datetime"),
             ).exists():

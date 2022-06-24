@@ -1,7 +1,8 @@
 from django.db import models
 from edc_crf.crf_inline_model_mixin import CrfInlineModelMixin
 from edc_model import models as edc_models
-from edc_model.models import HistoricalRecords, date_is_not_now, date_not_future
+from edc_model.models import HistoricalRecords
+from edc_model.validators import date_is_not_now, date_not_future
 from edc_model_fields.fields import OtherCharField
 from edc_sites.models import CurrentSiteManager
 
@@ -47,9 +48,7 @@ class OtherArvRegimensDetail(CrfInlineModelMixin, edc_models.BaseUuidModel):
         blank=True,
     )
 
-    notes = models.CharField(
-        verbose_name="Notes", max_length=100, null=True, blank=True
-    )
+    notes = models.CharField(verbose_name="Notes", max_length=100, null=True, blank=True)
 
     on_site = CurrentSiteManager()
     objects = InlineModelManager()

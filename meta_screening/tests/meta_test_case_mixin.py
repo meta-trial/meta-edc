@@ -55,9 +55,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
         site_randomizers._registry = {}
         if cls.import_randomization_list:
             site_randomizers.register(RandomizerPhaseThree)
-            RandomizerPhaseThree.import_list(
-                verbose=False, sid_count_for_tests=cls.sid_count
-            )
+            RandomizerPhaseThree.import_list(verbose=False, sid_count_for_tests=cls.sid_count)
         site_list_data.initialize()
         site_list_data.autodiscover()
         prepare_meta_pharmacy()
@@ -73,9 +71,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
         if report_datetime:
             part_one_eligible_options.update(report_datetime=report_datetime)
-        part_one_eligible_options["gender"] = (
-            gender or part_one_eligible_options["gender"]
-        )
+        part_one_eligible_options["gender"] = gender or part_one_eligible_options["gender"]
         part_one = ScreeningPartOne.objects.create(
             user_created="erikvw", user_modified="erikvw", **part_one_eligible_options
         )
@@ -124,10 +120,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
             screening_identifier=subject_screening.screening_identifier,
             initials=subject_screening.initials,
             gender=subject_screening.gender,
-            dob=(
-                get_utcnow().date()
-                - relativedelta(years=subject_screening.age_in_years)
-            ),
+            dob=(get_utcnow().date() - relativedelta(years=subject_screening.age_in_years)),
             site=Site.objects.get(id=site_id or settings.SITE_ID),
             consent_datetime=consent_datetime or subject_screening.report_datetime,
         )
@@ -143,9 +136,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
         gender=None,
     ):
         reason = reason or SCHEDULED
-        subject_screening = subject_screening or self.get_subject_screening(
-            gender=gender
-        )
+        subject_screening = subject_screening or self.get_subject_screening(gender=gender)
         subject_consent = subject_consent or self.get_subject_consent(subject_screening)
         options = dict(
             subject_identifier=subject_consent.subject_identifier,

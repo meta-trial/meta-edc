@@ -10,9 +10,7 @@ from meta_prn.constants import (
 )
 
 
-class OffSchedule(
-    ActionModelMixin, TrackingModelMixin, OffScheduleModelMixin, BaseUuidModel
-):
+class OffSchedule(ActionModelMixin, TrackingModelMixin, OffScheduleModelMixin, BaseUuidModel):
 
     action_name = OFFSCHEDULE_ACTION
 

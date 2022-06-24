@@ -18,10 +18,6 @@ class LossToFollowupAdmin(
 
     form = LossToFollowupForm
 
-    # additional_instructions = (
-    #     "Note:"
-    # )
-
     fieldsets = (
         (None, {"fields": ("subject_identifier", "report_datetime")}),
         (

@@ -34,9 +34,7 @@ class TestMedicationAdherence(MetaTestCaseMixin, TestCase):
 
     def test_ok(self):
         subject_visit = self.get_next_subject_visit(self.subject_visit)
-        obj = make_recipe(
-            "meta_subject.medicationadherence", subject_visit=subject_visit
-        )
+        obj = make_recipe("meta_subject.medicationadherence", subject_visit=subject_visit)
         form = MedicationAdherenceForm(instance=obj)
         form.is_valid()
         self.assertIsNone(form._errors)

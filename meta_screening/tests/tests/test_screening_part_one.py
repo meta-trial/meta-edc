@@ -20,9 +20,7 @@ class TestSubjectScreeningPartOneModel(TestCase):
         self.assertEqual(eligibility.eligible, YES)
         self.assertDictEqual(eligibility.reasons_ineligible, {})
         # model attrs
-        self.assertIsNone(
-            getattr(model_obj, EligibilityPartOne.reasons_ineligible_fld_name)
-        )
+        self.assertIsNone(getattr(model_obj, EligibilityPartOne.reasons_ineligible_fld_name))
         self.assertEqual(
             getattr(model_obj, EligibilityPartOne.eligible_fld_name),
             EligibilityPartOne.is_eligible_value,
@@ -35,9 +33,7 @@ class TestSubjectScreeningPartOneModel(TestCase):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         part_one_eligible_options.update(gender=None)
         eligibility = EligibilityPartOne(cleaned_data=part_one_eligible_options)
-        self.assertEqual(
-            eligibility.eligible, EligibilityPartOne.eligible_value_default
-        )
+        self.assertEqual(eligibility.eligible, EligibilityPartOne.eligible_value_default)
         self.assertIn("gender", eligibility.reasons_ineligible)
 
         # try as model
@@ -104,9 +100,7 @@ class TestSubjectScreeningPartOneModel(TestCase):
         obj = ScreeningPartOne(**part_one_eligible_options)
         self.assertIsNone(obj.reasons_ineligible_part_one)
         obj.save()
-        self.assertIn(
-            "Unable/Unwilling to stay nearby for", obj.reasons_ineligible_part_one
-        )
+        self.assertIn("Unable/Unwilling to stay nearby for", obj.reasons_ineligible_part_one)
         self.assertEqual(obj.eligible_part_one, NO)
         setattr(obj, staying_nearby, YES)
         obj.save()

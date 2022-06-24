@@ -53,9 +53,7 @@ class SubjectReconsentAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
     def view_on_site(self, obj):
         url_name = url_names.get("subject_dashboard_url")
         try:
-            return reverse(
-                url_name, kwargs=dict(subject_identifier=obj.subject_identifier)
-            )
+            return reverse(url_name, kwargs=dict(subject_identifier=obj.subject_identifier))
         except NoReverseMatch:
             return super().view_on_site(obj)
 
@@ -64,14 +62,10 @@ class SubjectReconsentAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         extra_context = extra_context or {}
         obj = SubjectReconsent.objects.get(id=object_id)
         try:
-            protected = [
-                SubjectVisit.objects.get(subject_identifier=obj.subject_identifier)
-            ]
+            protected = [SubjectVisit.objects.get(subject_identifier=obj.subject_identifier)]
         except ObjectDoesNotExist:
             protected = None
         except MultipleObjectsReturned:
-            protected = SubjectVisit.objects.filter(
-                subject_identifier=obj.subject_identifier
-            )
+            protected = SubjectVisit.objects.filter(subject_identifier=obj.subject_identifier)
         extra_context.update({"protected": protected})
         return super().delete_view(request, object_id, extra_context)

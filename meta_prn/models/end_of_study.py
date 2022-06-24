@@ -3,7 +3,8 @@ from edc_action_item.models import ActionModelMixin
 from edc_constants.choices import YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE
 from edc_identifier.model_mixins import TrackingModelMixin
-from edc_model.models import BaseUuidModel, date_not_future, datetime_not_future
+from edc_model.models import BaseUuidModel
+from edc_model.validators import date_not_future, datetime_not_future
 from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_visit_schedule.model_mixins import OffScheduleModelMixin
 
@@ -16,9 +17,7 @@ from ..choices import CLINICAL_WITHDRAWAL_REASONS, TOXICITY_WITHDRAWAL_REASONS
 # TODO: follow on new schedule, if permanently off drug (Single 36m visit)
 
 
-class EndOfStudy(
-    OffScheduleModelMixin, ActionModelMixin, TrackingModelMixin, BaseUuidModel
-):
+class EndOfStudy(OffScheduleModelMixin, ActionModelMixin, TrackingModelMixin, BaseUuidModel):
 
     action_name = END_OF_STUDY_ACTION
 
@@ -99,9 +98,7 @@ class EndOfStudy(
     )
 
     transferred_consent = models.CharField(
-        verbose_name=(
-            "If transferred, has the patient provided consent to be followed-up?"
-        ),
+        verbose_name=("If transferred, has the patient provided consent to be followed-up?"),
         choices=YES_NO_NA,
         max_length=15,
         default=NOT_APPLICABLE,

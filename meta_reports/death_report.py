@@ -129,18 +129,12 @@ class DeathReport(MetaCrfPdfReport):
             ],
             (3 * cm, 3 * cm, 3 * cm, 9 * cm),
         )
-        self.set_table_style(
-            t, bg_cmd=("BACKGROUND", (0, 0), (3, -1), colors.lightgrey)
-        )
+        self.set_table_style(t, bg_cmd=("BACKGROUND", (0, 0), (3, -1), colors.lightgrey))
         story.append(t)
 
-        qs = DeathReportModel.history.filter(id=self.death_report.id).order_by(
-            "-history_date"
-        )
+        qs = DeathReportModel.history.filter(id=self.death_report.id).order_by("-history_date")
         for obj in qs:
-            username = (
-                obj.user_created if obj.history_type == "+" else obj.user_modified
-            )
+            username = obj.user_created if obj.history_type == "+" else obj.user_modified
             t = Table(
                 [
                     [

@@ -51,9 +51,7 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
                 reference_model="meta_prn.pregnancynotification",
             )
         except ObjectDoesNotExist:
-            self.fail(
-                "ActionItem for pregnancynotification unexpectedly does not exist"
-            )
+            self.fail("ActionItem for pregnancynotification unexpectedly does not exist")
 
         make_recipe(
             "meta_prn.pregnancynotification",
