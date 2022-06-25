@@ -9,7 +9,7 @@ from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
 from ..admin_site import meta_prn_admin
-from ..forms import ProtocolDeviationViolationForm
+from ..forms import ProtocolIncidentForm
 from ..models import ProtocolDeviationViolation
 
 
@@ -18,7 +18,7 @@ class ProtocolDeviationViolationAdmin(
     DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
 ):
 
-    form = ProtocolDeviationViolationForm
+    form = ProtocolIncidentForm
 
     fieldsets = (
         (
@@ -33,22 +33,18 @@ class ProtocolDeviationViolationAdmin(
             },
         ),
         (
-            "Details of protocol violation",
+            "Details of incident",
             {
-                "description": (
-                    "The following questions are only required if "
-                    "this is a protocol violation."
-                ),
                 "fields": (
                     "safety_impact",
                     "safety_impact_details",
                     "study_outcomes_impact",
                     "study_outcomes_impact_details",
-                    "violation_datetime",
-                    "violation",
-                    "violation_other",
-                    "violation_description",
-                    "violation_reason",
+                    "incident_datetime",
+                    "incident",
+                    "incident_other",
+                    "incident_description",
+                    "incident_reason",
                 ),
             },
         ),
@@ -78,7 +74,7 @@ class ProtocolDeviationViolationAdmin(
         "report_type": admin.VERTICAL,
         "safety_impact": admin.VERTICAL,
         "study_outcomes_impact": admin.VERTICAL,
-        "violation": admin.VERTICAL,
+        "incident": admin.VERTICAL,
     }
 
     list_display = (

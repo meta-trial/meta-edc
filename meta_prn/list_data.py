@@ -28,6 +28,5 @@ list_data = {
             "Standard WPD, ICH-GCP, local/national regulations not met",
         ),
         (OTHER, "Other"),
-        (NOT_APPLICABLE, "Not applicable"),
     ],
 }

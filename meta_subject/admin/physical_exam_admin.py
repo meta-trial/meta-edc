@@ -11,7 +11,7 @@ from .modeladmin import CrfModelAdmin
 def get_other_vitals_fieldset():
     return (
         "Part 2: Other vitals",
-        {"fields": ["temperature"]},
+        {"fields": ["temperature", "waist_circumference"]},
     )
 
 

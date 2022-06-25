@@ -1,20 +1,19 @@
 from django.db import models
 from edc_action_item.models import ActionItem, ActionModelMixin
-from edc_constants.constants import QUESTION_RETIRED
 from edc_identifier.model_mixins import (
     NonUniqueSubjectIdentifierFieldMixin,
     TrackingModelMixin,
 )
 from edc_model.models import BaseUuidModel
-from edc_protocol_violation.constants import PROTOCOL_DEVIATION_VIOLATION_ACTION
-from edc_protocol_violation.model_mixins import ProtocolDeviationViolationModelMixin
+from edc_protocol_violation.constants import PROTOCOL_INCIDENT_ACTION
+from edc_protocol_violation.model_mixins import ProtocolIncidentModelMixin
 from edc_sites.models import SiteModelMixin
 
-from ..choices import ACTION_REQUIRED, PROTOCOL_VIOLATION
+from ..choices import ACTION_REQUIRED
 
 
 class ProtocolDeviationViolation(
-    ProtocolDeviationViolationModelMixin,
+    ProtocolIncidentModelMixin,
     NonUniqueSubjectIdentifierFieldMixin,
     SiteModelMixin,
     ActionModelMixin,
@@ -22,7 +21,7 @@ class ProtocolDeviationViolation(
     BaseUuidModel,
 ):
 
-    action_name = PROTOCOL_DEVIATION_VIOLATION_ACTION
+    action_name = PROTOCOL_INCIDENT_ACTION
 
     action_item = models.ForeignKey(
         ActionItem,
@@ -32,29 +31,10 @@ class ProtocolDeviationViolation(
         related_name="meta_prn_action_item",
     )
 
-    # not used for PHASE THREE
-    violation_type = models.CharField(
-        verbose_name="Type of violation",
-        max_length=75,
-        choices=PROTOCOL_VIOLATION,
-        default=QUESTION_RETIRED,
-        null=True,
-        blank=True,
-    )
-
-    # not used for PHASE THREE
-    violation_type_other = models.CharField(
-        null=True,
-        blank=True,
-        verbose_name="If other, please specify",
-        max_length=75,
-        default=QUESTION_RETIRED,
-    )
-
     action_required_old = models.CharField(max_length=45, choices=ACTION_REQUIRED, null=True)
 
     def natural_key(self):
         return (self.action_identifier,)  # noqa
 
-    class Meta(ProtocolDeviationViolationModelMixin.Meta, BaseUuidModel.Meta):
+    class Meta(ProtocolIncidentModelMixin.Meta, BaseUuidModel.Meta):
         pass

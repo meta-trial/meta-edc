@@ -6,7 +6,7 @@ from edc_constants.constants import HIGH_PRIORITY, TBD, YES
 from edc_ltfu.constants import LTFU_ACTION
 from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_protocol_violation.action_items import (
-    ProtocolDeviationViolationAction as BaseProtocolDeviationViolationAction,
+    ProtocolIncidentAction as BaseProtocolIncidentAction,
 )
 
 from meta_subject.constants import DELIVERY_ACTION, URINE_PREGNANCY_ACTION
@@ -170,7 +170,7 @@ class UnblindingReviewAction(PregnancyMixin, ActionWithNotification):
         return next_actions
 
 
-class ProtocolDeviationViolationAction(BaseProtocolDeviationViolationAction):
+class ProtocolIncidentAction(BaseProtocolIncidentAction):
     reference_model = "meta_prn.protocoldeviationviolation"
     admin_site_name = "meta_prn_admin"
 
@@ -178,7 +178,7 @@ class ProtocolDeviationViolationAction(BaseProtocolDeviationViolationAction):
 site_action_items.register(EndOfStudyAction)
 site_action_items.register(LossToFollowupAction)
 site_action_items.register(PregnancyNotificationAction)
-site_action_items.register(ProtocolDeviationViolationAction)
+site_action_items.register(ProtocolIncidentAction)
 site_action_items.register(UnblindingRequestAction)
 site_action_items.register(UnblindingReviewAction)
 site_action_items.register(OffscheduleAction)
