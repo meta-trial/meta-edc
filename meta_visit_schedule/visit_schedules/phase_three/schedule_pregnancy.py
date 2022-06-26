@@ -23,7 +23,7 @@ visit = Visit(
     timepoint=200,
     rbase=relativedelta(days=0),
     rlower=relativedelta(days=0),
-    rupper=relativedelta(months=2),
+    rupper=relativedelta(months=12),
     crfs=crfs_pregnancy,
     crfs_prn=crfs_prn or default_crfs_prn,
     crfs_missed=crfs_missed,

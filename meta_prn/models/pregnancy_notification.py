@@ -10,7 +10,6 @@ from edc_identifier.model_mixins import (
     TrackingModelMixin,
 )
 from edc_model import models as edc_models
-from edc_model.validators import date_is_future
 from edc_sites.models import SiteModelMixin
 from edc_utils import get_utcnow
 
@@ -43,6 +42,14 @@ class PregnancyNotification(
         verbose_name="Has the pregnancy been confirmed by urine βHCG?",
         max_length=5,
         choices=YES_NO,
+        help_text="If YES, the UPT result must already be entered in the EDC.",
+    )
+
+    bhcg_date = models.DateField(
+        verbose_name="βHCG result date",
+        null=True,
+        blank=True,
+        help_text="Will be validated against a UPT result in the EDC.",
     )
 
     unconfirmed_details = models.TextField(
@@ -53,7 +60,6 @@ class PregnancyNotification(
 
     edd = models.DateField(
         verbose_name="Estimated date of delivery",
-        validators=[date_is_future],
     )
 
     # TODO: remove this question

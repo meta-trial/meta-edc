@@ -1,8 +1,9 @@
+from django.apps import apps as django_apps
 from django.utils.safestring import mark_safe
 from edc_action_item.action_with_notification import ActionWithNotification
 from edc_action_item.site_action_items import site_action_items
 from edc_adverse_event.constants import DEATH_REPORT_ACTION
-from edc_constants.constants import HIGH_PRIORITY, TBD, YES
+from edc_constants.constants import HIGH_PRIORITY, NOT_SURE, TBD, YES
 from edc_ltfu.constants import LTFU_ACTION
 from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_protocol_violation.action_items import (
@@ -37,7 +38,16 @@ class OffscheduleAction(ActionWithNotification):
     priority = HIGH_PRIORITY
 
     def get_next_actions(self):
-        next_actions = [END_OF_STUDY_ACTION]
+        pregnancy_notification = (
+            django_apps.get_model("meta_prn.pregnancynotification")
+            .objects.filter(subject_identifier=self.subject_identifier)
+            .last()
+        )
+
+        if pregnancy_notification and pregnancy_notification.may_contact in [YES, NOT_SURE]:
+            next_actions = []
+        else:
+            next_actions = [END_OF_STUDY_ACTION]
         return next_actions
 
 

@@ -60,6 +60,10 @@ def study_medication_on_pre_save(sender, instance, raw, **kwargs):
     dispatch_uid="update_pregnancy_notification_on_delivery_post_save",
 )
 def update_pregnancy_notification_on_delivery_post_save(sender, instance, raw, **kwargs):
+    """Updates PregnancyNotification model instance when the delivery form is submitted.
+
+    Sets delivered=True and delivery_datetime
+    """
     if not raw:
         model_cls = django_apps.get_model("meta_prn.pregnancynotification")
         model_cls.objects.filter(
@@ -76,6 +80,14 @@ def update_pregnancy_notification_on_delivery_post_save(sender, instance, raw, *
     dispatch_uid="update_schedule_on_delivery_post_save",
 )
 def update_schedule_on_delivery_post_save(sender, instance, raw, **kwargs):
+    """Takes a participant off the SCHEDULE_PREGNANCY schedule and puts them on
+    SCHEDULE_POSTNATAL when delivery form is submitted.
+
+    - gets last report_datetime of the subject visit for SCHEDULE_PREGNANCY
+    - take_off_schedule SCHEDULE_PREGNANCY using the last visit datetime
+    - put_on_schedule SCHEDULE_POSTNATAL
+    - sets first appointment of SCHEDULE_POSTNATAL to be 36 months from baseline
+    """
     if not raw:
         offschedule_model_cls = django_apps.get_model("meta_prn.offschedulepregnancy")
         try:
