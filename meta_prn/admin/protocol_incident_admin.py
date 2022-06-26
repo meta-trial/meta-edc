@@ -10,10 +10,10 @@ from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
 from ..admin_site import meta_prn_admin
 from ..forms import ProtocolIncidentForm
-from ..models import ProtocolDeviationViolation
+from ..models import ProtocolIncident
 
 
-@admin.register(ProtocolDeviationViolation, site=meta_prn_admin)
+@admin.register(ProtocolIncident, site=meta_prn_admin)
 class ProtocolDeviationViolationAdmin(
     DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
 ):

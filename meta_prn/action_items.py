@@ -171,7 +171,7 @@ class UnblindingReviewAction(PregnancyMixin, ActionWithNotification):
 
 
 class ProtocolIncidentAction(BaseProtocolIncidentAction):
-    reference_model = "meta_prn.protocoldeviationviolation"
+    reference_model = "meta_prn.protocolincident"
     admin_site_name = "meta_prn_admin"
 
 

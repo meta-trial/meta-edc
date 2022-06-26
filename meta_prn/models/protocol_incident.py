@@ -12,7 +12,7 @@ from edc_sites.models import SiteModelMixin
 from ..choices import ACTION_REQUIRED
 
 
-class ProtocolDeviationViolation(
+class ProtocolIncident(
     ProtocolIncidentModelMixin,
     NonUniqueSubjectIdentifierFieldMixin,
     SiteModelMixin,
