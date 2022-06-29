@@ -1,4 +1,4 @@
-from edc_constants.constants import BLACK, NO, NOT_APPLICABLE, OTHER, YES
+from edc_constants.constants import BLACK, NO, NOT_APPLICABLE, OTHER, PENDING, YES
 
 ETHNICITY = ((BLACK, "Black"), (OTHER, "Other"))
 
@@ -19,4 +19,10 @@ YES_NO_NOT_ELIGIBLE = (
         NOT_APPLICABLE,
         "Not applicable, subject is not eligible based on the criteria above",
     ),
+)
+
+YES_PENDING_NA = (
+    (YES, YES),
+    (PENDING, "Decision pending"),
+    (NOT_APPLICABLE, "Not applicable"),
 )

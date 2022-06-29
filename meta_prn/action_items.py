@@ -94,6 +94,7 @@ class EndOfStudyAction(ActionWithNotification):
     parent_action_names = [
         OFFSCHEDULE_ACTION,
         OFFSCHEDULE_PREGNANCY_ACTION,
+        OFFSCHEDULE_POSTNATAL_ACTION,
     ]
     reference_model = "meta_prn.endofstudy"
     show_link_to_changelist = True

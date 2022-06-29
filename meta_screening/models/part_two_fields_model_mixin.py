@@ -1,8 +1,9 @@
+from django.contrib import admin
 from django.db import models
 from edc_constants.choices import POS_NEG_NA, YES_NO, YES_NO_NA
-from edc_constants.constants import NO, NOT_APPLICABLE
+from edc_constants.constants import NO, NOT_APPLICABLE, YES
 
-from ..choices import YES_NO_NOT_ELIGIBLE
+from ..choices import YES_NO_NOT_ELIGIBLE, YES_PENDING_NA
 from ..constants import PREG_YES_NO_NA
 
 
@@ -36,7 +37,7 @@ class PartTwoFieldsModelMixin(models.Model):
 
     congestive_heart_failure = models.CharField(
         verbose_name=(
-            "Does the patient have congestive heart failure " "requiring pharmacologic therapy"
+            "Does the patient have congestive heart failure requiring pharmacologic therapy"
         ),
         max_length=15,
         choices=YES_NO,
@@ -58,7 +59,7 @@ class PartTwoFieldsModelMixin(models.Model):
 
     alcoholism = models.CharField(
         verbose_name=(
-            "Does the patient have any evidence of alcoholism or " "acute alcohol intoxication"
+            "Does the patient have any evidence of alcoholism or acute alcohol intoxication"
         ),
         max_length=15,
         choices=YES_NO,
@@ -94,7 +95,7 @@ class PartTwoFieldsModelMixin(models.Model):
 
     tissue_hypoxia_condition = models.CharField(
         verbose_name=(
-            "Does the patient have any acute condition which can cause tissue " "hypoxia"
+            "Does the patient have any acute condition which can cause tissue hypoxia"
         ),
         max_length=15,
         choices=YES_NO,
@@ -127,7 +128,7 @@ class PartTwoFieldsModelMixin(models.Model):
         null=True,
         blank=False,
         help_text=(
-            "For example: Magnesium stearate, sodium " "carboxymethylcellulose, hypromellose"
+            "For example: Magnesium stearate, sodium carboxymethylcellulose, hypromellose"
         ),
     )
 
@@ -156,25 +157,65 @@ class PartTwoFieldsModelMixin(models.Model):
         default=NO,
     )
 
+    agree_to_p3 = models.CharField(
+        verbose_name=(
+            "Has the patient agreed to complete/return for the second stage of the screening?"
+        ),
+        max_length=15,
+        choices=YES_NO_NOT_ELIGIBLE,
+        default=YES,
+        help_text=(
+            "If patient is not continuing to the second stage today, advised to "
+            "fast and provide a return appointment date below"
+        ),
+    )
+
     advised_to_fast = models.CharField(
         verbose_name=(
-            "Has the patient been advised to return fasted for the second "
+            "Has the patient been advised to return FASTED for the second "
             "stage of the screening?"
         ),
         max_length=15,
         choices=YES_NO_NA,
         default=NOT_APPLICABLE,
+        help_text="Not applicable if continuing to the second stage today",
     )
 
     appt_datetime = models.DateTimeField(
-        verbose_name="Appointment date for second stage of screening",
+        verbose_name="Appointment date for second stage of screening (P3)",
         null=True,
         blank=True,
+        help_text="Leave blank if continuing to the second stage today",
+    )
+
+    p3_ltfu = models.CharField(
+        max_length=15,
+        verbose_name="Consider the patient 'lost to screening' for now?",
+        choices=YES_PENDING_NA,
+        default=NOT_APPLICABLE,
         help_text=(
-            "You may use today's date if the patient has already fasted and has "
-            "agreed to complete the second stage of screening today"
+            "Only applicable if the patient missed the appointment for the second stage "
+            "of screening (P3), several attempts have been made to contact the patient, "
+            "and the patient has not started P3. See above"
         ),
     )
+
+    p3_ltfu_date = models.DateField(
+        verbose_name="Date decision made",
+        null=True,
+        blank=True,
+        help_text="Must be after the appointment date for the second stage of screening (P3)",
+    )
+
+    p3_ltfu_comment = models.TextField(
+        verbose_name="Provide any additional comments on this decision (or leave blank)",
+        null=True,
+        blank=True,
+    )
+
+    @admin.display(description="P3 appointment", ordering="appt_datetime")
+    def p3_appt(self):
+        return self.appt_datetime
 
     class Meta:
         abstract = True

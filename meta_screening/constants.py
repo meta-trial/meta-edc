@@ -18,3 +18,8 @@ PREG_YES_NO_NA = (
 
 CONVERSION_FACTOR = 18.018018
 SEVERE_HTN = "Severe HTN"
+PENDING_REPEAT = "pending_p3_repeat"
+PRE_DM = "pre_dm"
+HI_OGTT = "hi_ogtt"
+NORMAL_FBG_OGTT = "normal_fbg_ogtt"
+HI_FBG = "hi_fbg"

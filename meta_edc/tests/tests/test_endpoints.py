@@ -20,7 +20,7 @@ from edc_auth.auth_objects import AUDITOR_ROLE, CLINICIAN_ROLE, STAFF_ROLE
 from edc_auth.auth_updater import AuthUpdater
 from edc_auth.site_auths import site_auths
 from edc_consent import site_consents
-from edc_constants.constants import YES
+from edc_constants.constants import PENDING, YES
 from edc_dashboard.url_names import url_names
 from edc_export.auth_objects import DATA_EXPORTER_ROLE
 from edc_lab.auth_objects import LAB_TECHNICIAN_ROLE
@@ -28,6 +28,7 @@ from edc_randomization.admin import register_admin
 from edc_randomization.site_randomizers import site_randomizers
 from edc_sites import add_or_update_django_sites
 from edc_test_utils.webtest import login
+from edc_utils import get_utcnow
 from model_bakery import baker
 from webtest.app import AppError
 
@@ -230,6 +231,10 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             screening_identifier,
         ) = self.webtest_for_screening_form_part_one(part_one_data)
         part_two_data = deepcopy(get_part_two_eligible_options())
+        if part_two_data.get("appt_datetime") < get_utcnow():
+            part_two_data.update(p3_ltfu=PENDING)
+            # part_two_data.update(p3_ltfu_date=get_utcnow().date())
+        part_two_data.update()
         report_datetime = part_two_data.get("part_two_report_datetime")
         appt_datetime = part_two_data.get("appt_datetime")
         part_two_data.update(
@@ -250,6 +255,8 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
 
         part_three_data = deepcopy(get_part_three_eligible_options())
         report_datetime = part_three_data.get("part_three_report_datetime")
+        part_three_data.update(hba1c_datetime=report_datetime)
+        hba1c_datetime = part_three_data.get("hba1c_datetime")
         fbg_datetime = part_three_data.get("fbg_datetime")
         ogtt_datetime = part_three_data.get("ogtt_datetime")
         part_three_data.update(
@@ -260,6 +267,8 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
                 fbg_datetime_1=fbg_datetime.strftime("%H:%M"),
                 ogtt_datetime_0=ogtt_datetime.strftime("%Y-%m-%d"),
                 ogtt_datetime_1=ogtt_datetime.strftime("%H:%M"),
+                hba1c_datetime_0=hba1c_datetime.strftime("%Y-%m-%d"),
+                hba1c_datetime_1=hba1c_datetime.strftime("%H:%M"),
             )
         )
         (

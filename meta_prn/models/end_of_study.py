@@ -98,7 +98,7 @@ class EndOfStudy(OffScheduleModelMixin, ActionModelMixin, TrackingModelMixin, Ba
     )
 
     transferred_consent = models.CharField(
-        verbose_name=("If transferred, has the patient provided consent to be followed-up?"),
+        verbose_name="If transferred, has the patient provided consent to be followed-up?",
         choices=YES_NO_NA,
         max_length=15,
         default=NOT_APPLICABLE,

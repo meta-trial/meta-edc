@@ -3,8 +3,40 @@ Changes
 
 0.1.81
 ------
-- fix pill count eval as int
+- fix issues with eligibility allow invalid OGTT, refactor
+  eligibility calc in Eligibility class
+- only call eligibility class in save method - once
+- reuse display label as func instead of calling entire class
+- add PII group to pharmacists
+- separate offschedule forms from End of Study form. Update action
+  itens to only create EOS action after Offschedule forms are added.
+- remove EOS phase 2 code
+- check not on any schedule before allowing EOS submit
+- add detail to reasons ineligible key/value pairs
+- fix issue with pregnancy workflow
+- add additional questions to screening
+  - part 2: only accept appt date if patient agrees to P3
+  - part 2/3: ask for contact number, indicate patient will not
+    return after several attemps
+  - always allow P3 regardless of LTFU report in P2 (see signal)
+  - get appt date for repeat GLU
+  - add additional filters and columns to changelist for
+    subjectscreening with links to screen and subject
+    listboards/dashboards
+  - add date from HBA1C on screening form
+- use protocol incident model mixin instead of protocol violation
+  model mixin. Mostly changes choices and form validator
+- remove admin and form for original HE CRF
+- update forms reference
+- add canned views as a requirement
+- update build
+- bump edc
+- change VL from 6m to within 12m
+- fix pill count eval as int on medication adherence
 - incorporate changes to pharmacy prescriptions and refills
+- management command to create missing rx
+- change 1010 lower from 15 to 10 days
+- refactor from edc-blood-results to edc-lab-results
 
 0.1.80
 ------

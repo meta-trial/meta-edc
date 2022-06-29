@@ -2,9 +2,10 @@ from django.contrib import admin
 from django.template.loader import render_to_string
 from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
-from django.utils.safestring import mark_safe
+from django.utils.html import format_html
 from django.utils.translation import gettext as _
 from django_audit_fields.admin import audit_fieldset_tuple
+from edc_constants.constants import YES
 from edc_dashboard.url_names import url_names
 from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
@@ -15,17 +16,19 @@ from ..forms import SubjectScreeningForm
 from ..models import SubjectScreening
 from .fieldsets import (
     calculated_values_fieldset,
+    get_p3_screening_appt_update_fields,
     get_part_one_fieldset,
     get_part_three_fieldset,
     get_part_two_fieldset,
 )
+from .list_filters import EligibilityPending, P3Ltfu
 
 
 @admin.register(SubjectScreening, site=meta_screening_admin)
 class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin):
 
     form = SubjectScreeningForm
-
+    list_per_page = 15
     post_url_on_delete_name = "screening_listboard_url"
     subject_listboard_url_name = "screening_listboard_url"
 
@@ -37,6 +40,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
     fieldsets = (
         get_part_one_fieldset(),
         get_part_two_fieldset(),
+        get_p3_screening_appt_update_fields(),
         get_part_three_fieldset(),
         calculated_values_fieldset,
         audit_fieldset_tuple,
@@ -48,6 +52,8 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "demographics",
         "reasons",
         "report_datetime",
+        "p3_appt",
+        "p3_repeat_appt",
         "user_created",
         "created",
     )
@@ -55,13 +61,15 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
     list_filter = (
         "report_datetime",
         "part_three_report_datetime",
+        EligibilityPending,
+        P3Ltfu,
         "gender",
         "eligible",
-        "consented",
-        "refused",
         "eligible_part_one",
         "eligible_part_two",
         "eligible_part_three",
+        "consented",
+        "refused",
     )
 
     search_fields = (
@@ -91,6 +99,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "acute_condition": admin.VERTICAL,
         "acute_metabolic_acidosis": admin.VERTICAL,
         "advised_to_fast": admin.VERTICAL,
+        "agree_to_p3": admin.VERTICAL,
         "alcoholism": admin.VERTICAL,
         "already_fasted": admin.VERTICAL,
         "art_six_months": admin.VERTICAL,
@@ -114,6 +123,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "ogtt_units": admin.VERTICAL,
         "on_dm_medication": admin.VERTICAL,
         "on_rx_stable": admin.VERTICAL,
+        "p3_ltfu": admin.VERTICAL,
         "pregnant": admin.VERTICAL,
         "renal_function_condition": admin.VERTICAL,
         "repeat_fasting": admin.VERTICAL,
@@ -137,20 +147,32 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
 
     @staticmethod
     def demographics(obj=None):
-        return mark_safe(
-            f"{obj.get_gender_display()} {obj.age_in_years}yrs<BR>"
-            f"Initials: {obj.initials.upper()}<BR><BR>"
-            f"Hospital ID: {obj.hospital_identifier}"
-        )
+        data = [
+            f"{obj.get_gender_display()} {obj.age_in_years}yrs",
+            f"Initials: {obj.initials.upper()}<BR>",
+            f"Hospital ID: {obj.hospital_identifier}",
+        ]
+        if obj.repeat_glucose_opinion == YES:
+            data.append(f"Contact #: {obj.contact_number or '--'}")
+        return format_html("<BR>".join(data))
 
-    @staticmethod
-    def reasons(obj=None):
+    def reasons(self, obj=None):
+        if not obj.reasons_ineligible:
+            return self.dashboard(obj)
         return format_reasons_ineligible(obj.reasons_ineligible)
 
-    @staticmethod
-    def eligiblity_status(obj=None):
+    def eligiblity_status(self, obj=None):
         eligibility = MetaEligibility(obj, update_model=False)
-        return mark_safe(eligibility.eligibility_status)
+        screening_listboard_url = reverse(
+            url_names.get(self.subject_listboard_url_name), args=(obj.screening_identifier,)
+        )
+        context = dict(
+            title=_("Go to screening listboard"),
+            url=f"{screening_listboard_url}?q={obj.screening_identifier}",
+            label="Screening",
+        )
+        button = render_to_string("dashboard_button.html", context=context)
+        return format_html(button + "<BR>" + eligibility.eligibility_status(add_urls=True))
 
     def dashboard(self, obj=None, label=None):
         try:

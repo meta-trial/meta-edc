@@ -4,7 +4,7 @@ from edc_constants.constants import NO, TBD, YES
 from edc_dashboard.url_names import url_names
 from edc_dashboard.utils import get_bootstrap_version
 
-from meta_screening.eligibility import MetaEligibility
+from meta_screening.eligibility import get_display_label
 
 register = template.Library()
 
@@ -74,8 +74,8 @@ def eligibility_button(subject_screening_model_wrapper):
         comment = obj.reasons_ineligible.split("|")
         comment = list(set(comment))
         comment.sort()
-    eligibility = MetaEligibility(obj, update_model=False)
-    soup = BeautifulSoup(eligibility.display_label, features="html.parser")
+    display_label = get_display_label(obj)
+    soup = BeautifulSoup(display_label, features="html.parser")
     return dict(
         eligible=obj.eligible,
         eligible_final=obj.eligible,

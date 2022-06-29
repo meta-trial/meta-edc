@@ -23,6 +23,7 @@ from edc_auth.auth_objects import (
     CLINICIAN_ROLE,
     CLINICIAN_SUPER_ROLE,
     NURSE_ROLE,
+    PII,
 )
 from edc_auth.site_auths import site_auths
 from edc_data_manager.auth_objects import (
@@ -135,5 +136,5 @@ site_auths.update_role(
     name=DATA_EXPORTER_ROLE,
 )
 
-site_auths.update_role(RANDO_UNBLINDED, name=PHARMACIST_ROLE)
-site_auths.update_role(RANDO_BLINDED, name=SITE_PHARMACIST_ROLE)
+site_auths.update_role(RANDO_UNBLINDED, PII, name=PHARMACIST_ROLE)
+site_auths.update_role(RANDO_BLINDED, PII, name=SITE_PHARMACIST_ROLE)

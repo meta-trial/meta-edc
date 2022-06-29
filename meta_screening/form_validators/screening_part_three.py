@@ -50,6 +50,12 @@ class ScreeningPartThreeFormValidator(
         self.validate_ogtt_required_fields()
         self.validate_ogtt_dates()
         validate_glucose_as_millimoles_per_liter("ogtt", self.cleaned_data)
+
+        self.required_if(
+            YES, field="repeat_glucose_opinion", field_required="repeat_appt_datetime"
+        )
+        self.required_if(YES, field="repeat_glucose_opinion", field_required="contact_number")
+
         self.applicable_if(
             YES, field="repeat_glucose_performed", field_applicable="repeat_fasting"
         )
@@ -57,6 +63,7 @@ class ScreeningPartThreeFormValidator(
         self.validate_repeat_fbg()
         self.validate_repeat_ogtt()
         self.validate_creatinine_required_fields()
+        self.required_if(YES, field="hba1c_performed", field_required="hba1c_datetime")
         self.required_if(YES, field="hba1c_performed", field_required="hba1c_value")
         self.validate_egfr()
         self.validate_suitability_for_study()
@@ -141,6 +148,7 @@ class ScreeningPartThreeFormValidator(
         )
 
     def validate_pregnancy(self):
+        # TODO: REVIEW FOR INVALID PERMUTATIONS SNK3BYP7 (AMANA)
         self.applicable_if(
             YES,
             NO,

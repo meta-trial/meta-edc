@@ -17,7 +17,8 @@ class OffSchedule(ActionModelMixin, TrackingModelMixin, OffScheduleModelMixin, B
     tracking_identifier_prefix = "OX"
 
     class Meta(OffScheduleModelMixin.Meta):
-        pass
+        verbose_name = "Off-schedule"
+        verbose_name_plural = "Off-schedule"
 
 
 class OffSchedulePregnancy(
@@ -28,7 +29,8 @@ class OffSchedulePregnancy(
     tracking_identifier_prefix = "OP"
 
     class Meta(OffScheduleModelMixin.Meta):
-        pass
+        verbose_name = "Off-schedule: Pregnancy"
+        verbose_name_plural = "Off-schedule: Pregnancy"
 
 
 class OffSchedulePostnatal(
@@ -39,4 +41,5 @@ class OffSchedulePostnatal(
     tracking_identifier_prefix = "ON"
 
     class Meta(OffScheduleModelMixin.Meta):
-        pass
+        verbose_name = "Off-schedule: post-natal"
+        verbose_name_plural = "Off-schedule: post-natal"

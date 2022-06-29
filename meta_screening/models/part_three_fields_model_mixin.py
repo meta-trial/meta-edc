@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from edc_constants.choices import (
@@ -117,6 +118,13 @@ class PartThreeFieldsModelMixin(
         ),
     )
 
+    repeat_appt_datetime = models.DateTimeField(
+        verbose_name="Appointment date for repeat glucose testing",
+        null=True,
+        blank=True,
+        help_text="must be at least 3 days after the first glucose measures (FBG, OGTT)",
+    )
+
     repeat_glucose_performed = models.CharField(
         verbose_name="Were the glucose measurements repeated?",
         max_length=15,
@@ -158,6 +166,12 @@ class PartThreeFieldsModelMixin(
         help_text="",
     )
 
+    hba1c_datetime = models.DateTimeField(
+        verbose_name="HbA1c date and time",
+        null=True,
+        blank=True,
+        help_text="Date and time of result.",
+    )
     hba1c_value = models.DecimalField(
         verbose_name="HbA1c",
         max_digits=8,
@@ -174,6 +188,10 @@ class PartThreeFieldsModelMixin(
         default=NO,
         help_text="",
     )
+
+    @admin.display(description="P3 repeat appt", ordering="repeat_appt_datetime")
+    def p3_repeat_appt(self):
+        return self.repeat_appt_datetime
 
     class Meta:
         abstract = True
