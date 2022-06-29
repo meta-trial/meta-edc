@@ -188,10 +188,10 @@ class ProtocolIncidentAction(BaseProtocolIncidentAction):
 
 site_action_items.register(EndOfStudyAction)
 site_action_items.register(LossToFollowupAction)
+site_action_items.register(OffscheduleAction)
+site_action_items.register(OffschedulePostnatalAction)
+site_action_items.register(OffschedulePregnancyAction)
 site_action_items.register(PregnancyNotificationAction)
 site_action_items.register(ProtocolIncidentAction)
 site_action_items.register(UnblindingRequestAction)
 site_action_items.register(UnblindingReviewAction)
-site_action_items.register(OffscheduleAction)
-site_action_items.register(OffschedulePregnancyAction)
-site_action_items.register(OffschedulePostnatalAction)

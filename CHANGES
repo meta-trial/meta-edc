@@ -3,6 +3,9 @@ Changes
 
 0.1.81
 ------
+- add eGFR notification for a creatinine that calcs to a 20% drop
+  in eGFR from baseline
+- add CRF status to each CRF
 - fix issues with eligibility allow invalid OGTT, refactor
   eligibility calc in Eligibility class
 - only call eligibility class in save method - once

@@ -1,10 +1,13 @@
 from edc_constants.constants import (
     ABSENT,
+    CLOSED,
     DEAD,
     MICROSCOPY,
+    NEW,
     NO,
     NO_EXAM,
     NOT_APPLICABLE,
+    OPEN,
     OTHER,
     PATIENT,
     PRESENT,
@@ -184,6 +187,13 @@ PRESENT_ABSENT_NOEXAM_NDS = (
     (NO_EXAM, "Exam not performed"),
 )
 # 0 = Present   1 = Present with reinforcement   2 = Absent
+
+REPORT_STATUS = (
+    (NEW, "New"),
+    (OPEN, "Open. Some information is still pending."),
+    (CLOSED, "Closed. This report is complete"),
+)
+
 
 TRANSPORT_CHOICES = (
     ("bus", "Bus"),

@@ -7,6 +7,7 @@ from edc_action_item import (
     action_fieldset_tuple,
 )
 from edc_constants.constants import NONE, YES
+from edc_crf.fieldset import crf_status_fieldset
 from edc_form_label.form_label_modeladmin_mixin import FormLabelModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin
 
@@ -123,6 +124,7 @@ class FollowupExaminationAdmin(
                 ),
             },
         ),
+        crf_status_fieldset,
         action_fieldset_tuple,
         audit_fieldset_tuple,
     )

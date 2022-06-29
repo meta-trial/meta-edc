@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
+from edc_crf.fieldset import crf_status_fieldset
 from edc_form_label.form_label_modeladmin_mixin import FormLabelModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin
 
@@ -37,6 +38,7 @@ class FollowupVitalsAdmin(CrfModelAdminMixin, FormLabelModelAdminMixin, SimpleHi
                 ),
             },
         ),
+        crf_status_fieldset,
         audit_fieldset_tuple,
     )
 

@@ -19,8 +19,11 @@ class BloodResultsRftAdmin(BloodResultsModelAdminMixin, CrfModelAdmin):
         ).fieldsets,
         (
             "Calculated eGFR",
-            {"classes": ("collapse",), "fields": ["egfr_value", "egfr_units"]},
+            {
+                "classes": ("collapse",),
+                "fields": ["egfr_value", "egfr_units", "egfr_percent_change"],
+            },
         ),
     )
 
-    readonly_fields = ["egfr_value", "egfr_units"]
+    readonly_fields = ["egfr_value", "egfr_units", "egfr_percent_change"]

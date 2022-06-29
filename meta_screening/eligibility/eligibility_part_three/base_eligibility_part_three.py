@@ -17,11 +17,6 @@ class BaseEligibilityPartThree(ScreeningEligibility):
     def __init__(self, **kwargs):
         self.bmi = None
         self.calculated_egfr_value = None
-        # self.converted_creatinine_value = None
-        # self.converted_fbg_value = None
-        # self.converted_fbg2_value = None
-        # self.converted_ogtt_value = None
-        # self.converted_ogtt2_value = None
         self.creatinine_units = None
         self.creatinine_value = None
         self.height = None

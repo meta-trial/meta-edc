@@ -118,7 +118,6 @@ class TestScreeningPartThree(TestCase):
         self.assertIsNone(obj.reasons_ineligible_part_three)
         self.assertEqual(obj.eligible_part_three, YES)
 
-    @tag("1")
     def test_eligible2_phase_three_missing_ogtt(self):
         obj = self.get_screening_part_three_obj()
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())

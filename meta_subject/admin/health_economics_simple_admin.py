@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
+from edc_crf.fieldset import crf_status_fieldset
 from edc_he import education_fieldset, education_radio_fields
 
 from ..admin_site import meta_subject_admin
@@ -26,6 +27,7 @@ class HealthEconomicsSimpleAdmin(CrfModelAdmin):
             },
         ),
         education_fieldset,
+        crf_status_fieldset,
         audit_fieldset_tuple,
     )
 
