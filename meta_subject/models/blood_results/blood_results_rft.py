@@ -13,9 +13,9 @@ from edc_lab_results.model_mixins import (
     UreaModelMixin,
     UricAcidModelMixin,
 )
-from edc_lab_results.utils import calculate_egfr_percent_change
 from edc_model import models as edc_models
 from edc_reportable import EgfrCkdEpi
+from edc_reportable.calculators import egfr_percent_change
 from edc_reportable.units import EGFR_UNITS
 from edc_screening.utils import get_subject_screening_model_cls
 from edc_visit_schedule.constants import DAY1
@@ -66,7 +66,7 @@ class BloodResultsRft(
                     subject_visit__visit_code=DAY1,
                     subject_visit__visit_code_sequence=0,
                 )
-                self.egfr_percent_change = calculate_egfr_percent_change(
+                self.egfr_percent_change = egfr_percent_change(
                     float(self.egfr_value), float(baseline_obj.egfr_value)
                 )
                 if self.egfr_percent_change >= 0.20:

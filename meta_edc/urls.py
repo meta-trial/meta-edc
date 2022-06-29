@@ -68,7 +68,6 @@ urlpatterns = [
     *paths_for_urlpatterns("meta_prn"),
     *paths_for_urlpatterns("meta_screening"),
     *paths_for_urlpatterns("meta_subject"),
-    *paths_for_urlpatterns("sarscov2"),
 ]
 
 if settings.DEFENDER_ENABLED:

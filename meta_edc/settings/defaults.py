@@ -84,7 +84,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    "import_export",
+    # "import_export",
     "defender",
     "multisite",
     "django_crypto_fields.apps.AppConfig",
@@ -459,7 +459,6 @@ DATA_DICTIONARY_APP_LABELS = [
     "meta_prn",
     "meta_screening",
     "meta_ae",
-    "sarscov2",
     "edc_appointment",
 ]
 
@@ -476,9 +475,6 @@ EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
     *env.list("EDC_PROTOCOL_STUDY_CLOSE_DATETIME")
 )
 EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
-
-
-SARSCOV2_REDIRECT_URL_NAME = "screening_listboard_url"
 
 # static
 if env("AWS_ENABLED"):

@@ -7,7 +7,6 @@
     <!-- begin results header -->
     <th>#</th>
     <th></th>
-    <th>Corona</th>
     <th>Identifier</th>
     <th>Subject</th>
     <th>Age / Born</th>
@@ -18,18 +17,6 @@
 {% endblock listboard_table_header %}
 
 {% block listboard_table_columns %}
-
-    <td nowrap>
-        {% if perms.sarscov2 %}
-            {% if result.coronavirus_kap %}
-            <a class="btn btn-sm btn-success" title="Edit Coronavirus KAP"
-               href="{% url 'sarscov2_admin:sarscov2_coronaviruskap_change' result.coronavirus_kap.id %}?next=meta_dashboard:subject_listboard_url">Edit</a>
-            {% else %}
-            <a class="btn btn-sm btn-warning" title="Add Coronavirus KAP"
-               href="{% url 'sarscov2_admin:sarscov2_coronaviruskap_add' %}?screening_identifier={{result.screening_identifier}}&next=meta_dashboard:subject_listboard_url">Add</a>
-            {% endif %}
-        {% endif %}
-    </td>
     <td>{{ result.subject_identifier }}
     </td>
     <td>
