@@ -45,8 +45,6 @@ class TestFollowup(MetaTestCaseMixin, TestCase):
 
     def test_ok(self):
         subject_visit = self.get_next_subject_visit(self.subject_visit)
-        obj = make_recipe(
-            "meta_subject.followupexamination", subject_visit=subject_visit
-        )
+        obj = make_recipe("meta_subject.followupexamination", subject_visit=subject_visit)
         form = FollowupExaminationForm(instance=obj)
         form.is_valid()

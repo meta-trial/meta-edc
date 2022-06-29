@@ -62,7 +62,7 @@ def get_part_two_eligible_options():
         advised_to_fast=YES,
         alcoholism=NO,
         already_fasted=NO,
-        appt_datetime=now + relativedelta(days=1),
+        appt_datetime=now + relativedelta(days=10),
         congestive_heart_failure=NO,
         liver_disease=NO,
         metformin_sensitivity=NO,
@@ -71,6 +71,10 @@ def get_part_two_eligible_options():
         tissue_hypoxia_condition=NO,
         has_dm=NO,
         on_dm_medication=NO,
+        agree_to_p3=YES,
+        p3_ltfu=NOT_APPLICABLE,
+        p3_ltfu_date=None,
+        p3_ltfu_comment=None,
     )
     if fld := [f for f in get_part_two_fields() if f not in options]:
         raise TypeError(
@@ -90,6 +94,7 @@ def get_part_three_eligible_options(report_datetime: datetime = None):
         fasting=YES,
         fasting_duration_str="8h",
         hba1c_performed=YES,
+        hba1c_datetime=report_datetime or now,
         hba1c_value=7.0,
         height=110,
         fbg_datetime=tomorrow,

@@ -10,6 +10,7 @@ from ..forms import (
 )
 from ..models import ScreeningPartTwo
 from .fieldsets import (
+    get_p3_screening_appt_update_fields,
     get_part_one_fieldset,
     get_part_three_fieldset,
     get_part_two_fieldset,
@@ -21,6 +22,7 @@ def get_fieldsets():
     return (
         get_part_one_fieldset(collapse=True),
         get_part_two_fieldset(),
+        get_p3_screening_appt_update_fields(),
         get_part_three_fieldset(collapse=True),
         audit_fieldset_tuple,
     )

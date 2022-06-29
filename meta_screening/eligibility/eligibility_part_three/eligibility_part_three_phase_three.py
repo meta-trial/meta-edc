@@ -1,7 +1,17 @@
-from edc_constants.constants import NO, NOT_APPLICABLE, PENDING, TBD, YES
-from edc_screening.screening_eligibility import FC, ScreeningEligibilityError
+from typing import Any
 
-from ...constants import EGFR_LT_45, FBG_OGTT_INCOMPLETE, IFT_OGTT, SEVERE_HTN
+from edc_constants.constants import DM, NO, NORMAL, NOT_APPLICABLE, PENDING, TBD, YES
+from edc_screening.screening_eligibility import FC
+
+from ...constants import (
+    EGFR_LT_45,
+    FBG_OGTT_INCOMPLETE,
+    HI_FBG,
+    HI_OGTT,
+    NORMAL_FBG_OGTT,
+    PRE_DM,
+    SEVERE_HTN,
+)
 from .base_eligibility_part_three import BaseEligibilityPartThree
 
 
@@ -12,22 +22,55 @@ class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
         self.severe_htn = None
         super().__init__(**kwargs)
 
-    def assess_eligibility(self) -> None:
-        """Subject is eligible if either a qualifying FBG OR a qualifying OGTT"""
+    def assess_eligibility(self: Any) -> None:
+        """Subject is eligible if either a qualifying FBG (pre-diabetes)
+        OR a qualifying OGTT
+
+        However, OGTT overrides FBG. For example, a qualifying FBG
+        that suggest pre-diabetes cannot override an OGTT that
+        implies diabetes.
+
+        FBG-HI + OGTT-HI -> NO
+        FBG-HI + OGTT-PRE -> YES
+        FBG-HI + OGTT-NORMAL -> NO
+
+        FBG-PRE + OGTT-HI -> NO
+        FBG-PRE + OGTT-PRE -> YES
+        FBG-PRE + OGTT-NORMAL -> YES **(note FBG overrides
+                                        OGTT in this case)
+
+        FBG-NORMAL + OGTT-HI -> NO
+        FBG-NORMAL + OGTT-PRE -> YES
+        FBG-NORMAL + OGTT-NORMAL -> NO
+        """
         # TODO: check if calculates correctly if glucose is HIGH 9999.99
         super().assess_eligibility()
-        self.calculate_inclusion_field_values()
-        if self.inclusion_a == TBD or self.inclusion_b == TBD:
-            self.reasons_ineligible.update(fbg_ogtt=FBG_OGTT_INCOMPLETE)
+        if (
+            self.repeat_glucose_performed == PENDING
+            or not self.fbg_category
+            or not self.ogtt_category
+        ):
             self.eligible = TBD
-        elif self.inclusion_a == NO and self.inclusion_b == NO:
-            self.reasons_ineligible.update(fbg_ogtt=IFT_OGTT)
-            self.eligible = NO
-        elif self.calculated_egfr_value and self.calculated_egfr_value < 45.0:
-            self.reasons_ineligible.update(egfr=EGFR_LT_45)
+            self.reasons_ineligible.update(fbg_ogtt_incomplete=FBG_OGTT_INCOMPLETE)
+        else:
+            if self.ogtt_category == PRE_DM:
+                self.eligible = YES
+            elif self.ogtt_category == DM:
+                self.eligible = NO
+                self.reasons_ineligible.update(hi_ogtt=HI_OGTT)
+            elif self.fbg_category == PRE_DM and self.ogtt_category == NORMAL:
+                self.eligible = YES
+            elif self.fbg_category == NORMAL and self.ogtt_category == NORMAL:
+                self.eligible = NO
+                self.reasons_ineligible.update(normal_fbg_ogtt=NORMAL_FBG_OGTT)
+            elif self.fbg_category == DM and self.ogtt_category == NORMAL:
+                self.eligible = NO
+                self.reasons_ineligible.update(hi_fbg=HI_FBG)
+        if self.calculated_egfr_value and self.calculated_egfr_value < 45.0:
+            self.reasons_ineligible.update(egfr_low=EGFR_LT_45)
             self.eligible = NO
 
-    def set_fld_attrs_on_model(self) -> None:
+    def set_fld_attrs_on_model(self: Any) -> None:
         """Set extra attr on the model"""
         super().set_fld_attrs_on_model()
         self.model_obj.inclusion_a = self.inclusion_a
@@ -35,41 +78,48 @@ class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
         self.model_obj.inclusion_c = NOT_APPLICABLE
         self.model_obj.inclusion_d = NOT_APPLICABLE
 
-    def get_required_fields(self) -> dict[str, FC]:
+    def get_required_fields(self: Any) -> dict[str, FC]:
         """Get default fields as well as severe_htn"""
         fields = super().get_required_fields()
         fields.update({"severe_htn": FC(NO, SEVERE_HTN)})
         return fields
 
-    def calculate_inclusion_field_values(self) -> None:
-        """Decide which values to use, first or repeat"""
-        if self.repeat_glucose_performed == PENDING:
-            self.inclusion_a = TBD
-            self.inclusion_b = TBD
+    @property
+    def fbg_category(self):
+        # FBG (6.1 to 6.9 mmol/L)
+        value = (
+            self.converted_fbg2_value
+            if self.repeat_glucose_opinion == YES
+            else self.converted_fbg_value
+        )
+        if not value:
+            fbg_category = None
+        elif 6.1 <= value < 7.0:
+            fbg_category = PRE_DM
+        elif value >= 7.0:
+            fbg_category = DM
+        elif value < 6.1:
+            fbg_category = NORMAL
         else:
-            converted_fbg_value = (
-                self.converted_fbg2_value
-                if self.repeat_glucose_opinion == YES
-                else self.converted_fbg_value
-            )
-            converted_ogtt_value = (
-                self.converted_ogtt2_value
-                if self.repeat_glucose_opinion == YES
-                else self.converted_ogtt_value
-            )
-            # FBG (6.1 to 6.9 mmol/L)
-            # TODO ensure only 1 decimal place is reported on the form
-            if not converted_fbg_value:
-                self.inclusion_a = TBD
-            elif 6.1 <= converted_fbg_value < 7.0:
-                self.inclusion_a = YES
-            else:
-                self.inclusion_a = NO
+            raise ValueError("Invalid FBG value")
+        return fbg_category
 
-            # OGTT (7.8 to 11.10 mmol/L)
-            if not converted_ogtt_value:
-                self.inclusion_b = TBD
-            elif 7.8 <= converted_ogtt_value < 11.1:
-                self.inclusion_b = YES
-            else:
-                self.inclusion_b = NO
+    @property
+    def ogtt_category(self):
+        # OGTT (7.8 to 11.10 mmol/L)
+        value = (
+            self.converted_ogtt2_value
+            if self.repeat_glucose_opinion == YES
+            else self.converted_ogtt_value
+        )
+        if not value:
+            ogtt_category = None
+        elif 7.8 <= value < 11.1:
+            ogtt_category = PRE_DM
+        elif value >= 11.1:
+            ogtt_category = DM
+        elif value < 7.8:
+            ogtt_category = NORMAL
+        else:
+            raise ValueError("Invalid OGTT value")
+        return ogtt_category

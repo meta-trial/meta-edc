@@ -1,8 +1,8 @@
 from textwrap import fill
 
+from edc_pdf_reports.crf_pdf_report import CrfPdfReport
 from edc_randomization.auth_objects import RANDO_UNBLINDED
 from edc_randomization.models import RandomizationList
-from edc_reports.crf_pdf_report import CrfPdfReport
 from reportlab.lib.units import cm
 from reportlab.platypus import Table
 
@@ -59,9 +59,7 @@ class MetaCrfPdfReport(CrfPdfReport):
             ],
             [
                 "Randomization date:",
-                self.registered_subject.randomization_datetime.strftime(
-                    "%Y-%m-%d %H:%M"
-                ),
+                self.registered_subject.randomization_datetime.strftime("%Y-%m-%d %H:%M"),
             ],
             ["Assignment:", assignment],
         ]

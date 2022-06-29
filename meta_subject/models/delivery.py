@@ -7,9 +7,10 @@ from django.db import models
 from django_crypto_fields.fields import EncryptedTextField
 from edc_constants.choices import YES_NO, YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE, PATIENT, YES
+from edc_crf.crf_status_model_mixin import CrfStatusModelMixin
 from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
 from edc_model import models as edc_models
-from edc_model.models import datetime_not_future
+from edc_model.validators import datetime_not_future
 from edc_model_fields.fields import OtherCharField
 from edc_protocol.validators import datetime_not_before_study_start
 from edc_utils import get_utcnow
@@ -28,10 +29,14 @@ class DeliveryError(Exception):
 
 
 class Delivery(
+    CrfStatusModelMixin,
     CrfWithActionModelMixin,
     edc_models.BaseUuidModel,
 ):
-    """form 25"""
+    """form 25
+
+    See also in signals `update_pregnancy_notification_on_delivery_post_save`
+    """
 
     action_name = DELIVERY_ACTION
 

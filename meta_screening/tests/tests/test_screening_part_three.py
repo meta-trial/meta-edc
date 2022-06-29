@@ -2,7 +2,7 @@ from copy import deepcopy
 from decimal import Decimal
 
 from dateutil.relativedelta import relativedelta
-from django.test import TestCase
+from django.test import TestCase, tag
 from edc_constants.constants import NO, TBD, YES
 from edc_reportable import (
     MICROMOLES_PER_LITER,
@@ -14,8 +14,9 @@ from edc_utils.date import get_utcnow
 from meta_screening.constants import (
     EGFR_LT_45,
     EGFR_NOT_CALCULATED,
+    FBG_OGTT,
     FBG_OGTT_INCOMPLETE,
-    IFT_OGTT,
+    NORMAL_FBG_OGTT,
 )
 from meta_screening.models import ScreeningPartOne, ScreeningPartThree, ScreeningPartTwo
 
@@ -36,9 +37,7 @@ class TestScreeningPartThree(TestCase):
         obj.refresh_from_db()
         self.screening_identifier = obj.screening_identifier
 
-        obj = ScreeningPartTwo.objects.get(
-            screening_identifier=self.screening_identifier
-        )
+        obj = ScreeningPartTwo.objects.get(screening_identifier=self.screening_identifier)
         for k, v in part_two_eligible_options.items():
             getattr(obj, k)
             setattr(obj, k, v)
@@ -60,6 +59,7 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
+    @tag("3")
     def get_screening_part_three_obj(self):
         """Returns an SubjectScreening obj.
 
@@ -117,13 +117,19 @@ class TestScreeningPartThree(TestCase):
         obj.refresh_from_db()
         self.assertIsNone(obj.reasons_ineligible_part_three)
         self.assertEqual(obj.eligible_part_three, YES)
+
+    def test_eligible2_phase_three_missing_ogtt(self):
+        obj = self.get_screening_part_three_obj()
+        part_three_eligible_options = deepcopy(get_part_three_eligible_options())
+        for k, v in part_three_eligible_options.items():
+            setattr(obj, k, v)
         obj.ogtt_base_datetime = None
         obj.ogtt_datetime = None
         obj.ogtt_units = None
         obj.ogtt_value = None
         obj.save()
         obj.refresh_from_db()
-        self._test_eligible2(obj, FBG_OGTT_INCOMPLETE, IFT_OGTT)
+        self._test_eligible2(obj, FBG_OGTT_INCOMPLETE, FBG_OGTT)
 
     def test_eligible2_phase_three_ogtt2_not_performed_is_ok(self):
         obj = self.get_screening_part_three_obj()
@@ -219,7 +225,7 @@ class TestScreeningPartThree(TestCase):
         # not eligible because the FBG2 and OGTT2 do not qualify
         self.assertEqual(obj.eligible_part_three, NO)
         self.assertIsNotNone(obj.reasons_ineligible_part_three)
-        self.assertIn(IFT_OGTT, obj.reasons_ineligible_part_three)
+        self.assertIn(NORMAL_FBG_OGTT, obj.reasons_ineligible_part_three)
 
         obj.ogtt2_value = Decimal("7.9000")
         obj.save()
@@ -392,3 +398,6 @@ class TestScreeningPartThree(TestCase):
         self.assertEqual(obj.eligible_part_three, NO)
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
+
+    def test_pregnancy(self):
+        pass

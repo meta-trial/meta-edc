@@ -10,9 +10,7 @@ from .modeladmin import CrfModelAdmin
 
 
 @admin.register(SubjectVisitMissed, site=meta_subject_admin)
-class SubjectVisitMissedAdmin(
-    CrfModelAdmin, FormLabelModelAdminMixin, SimpleHistoryAdmin
-):
+class SubjectVisitMissedAdmin(CrfModelAdmin, FormLabelModelAdminMixin, SimpleHistoryAdmin):
 
     form = SubjectVisitMissedForm
 

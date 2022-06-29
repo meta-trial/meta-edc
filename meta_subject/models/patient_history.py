@@ -33,9 +33,7 @@ class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, edc_models.BaseUuidMod
 
     htn_treatment = models.ManyToManyField(
         HypertensionMedications,
-        verbose_name=(
-            "What medications is the patient currently taking for hypertension?"
-        ),
+        verbose_name=("What medications is the patient currently taking for hypertension?"),
         blank=True,
     )
 
@@ -129,9 +127,7 @@ class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, edc_models.BaseUuidMod
     )
 
     other_dm_symptoms = OtherCharField(
-        verbose_name=mark_safe(
-            "If other symptom in the <u>past year</u>, please specify ..."
-        ),
+        verbose_name=mark_safe("If other symptom in the <u>past year</u>, please specify ..."),
         null=True,
         blank=True,
     )

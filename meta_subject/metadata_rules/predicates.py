@@ -15,7 +15,7 @@ def hba1c_crf_required_at_baseline(visit):
     screening_model_cls = django_apps.get_model("meta_screening.subjectscreening")
     bloodresults_model_cls = django_apps.get_model(model_name)
     required = False
-    if is_baseline(visit):
+    if is_baseline(instance=visit):
         try:
             screening_model_cls.objects.get(
                 subject_identifier=visit.subject_identifier,
@@ -40,7 +40,7 @@ def hba1c_crf_required_at_baseline(visit):
 def hba1c_requisition_required_at_baseline(visit):
     screening_model_cls = django_apps.get_model("meta_screening.subjectscreening")
     required = False
-    if is_baseline(visit):
+    if is_baseline(instance=visit):
         try:
             screening_model_cls.objects.get(
                 subject_identifier=visit.subject_identifier,
@@ -60,9 +60,7 @@ class Predicates(PredicateCollection):
     def pregnancy_notification_exists(visit, **kwargs):
         model_cls = django_apps.get_model("meta_prn.pregnancynotification")
         try:
-            model_cls.objects.get(
-                subject_identifier=visit.subject_identifier, delivered=False
-            )
+            model_cls.objects.get(subject_identifier=visit.subject_identifier, delivered=False)
         except ObjectDoesNotExist:
             required = False
         else:
@@ -137,7 +135,7 @@ class Predicates(PredicateCollection):
         if (
             registered_subject.gender == FEMALE
             and visit.schedule_name != SCHEDULE_PREGNANCY
-            and not is_baseline(visit)
+            and not is_baseline(instance=visit)
             and not (
                 visit.appointment.visit_code == WEEK2
                 and visit.appointment.visit_code_sequence == 0

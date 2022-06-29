@@ -7,9 +7,7 @@ from ..models import ScreeningPartOne
 from .field_lists import get_part_one_fields
 
 
-class ScreeningPartOneForm(
-    AlreadyConsentedFormMixin, FormValidatorMixin, forms.ModelForm
-):
+class ScreeningPartOneForm(AlreadyConsentedFormMixin, FormValidatorMixin, forms.ModelForm):
 
     form_validator_cls = ScreeningPartOneFormValidator
 

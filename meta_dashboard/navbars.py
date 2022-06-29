@@ -7,6 +7,7 @@ no_url_namespace = False  # True if settings.APP_NAME == "meta_dashboard" else F
 
 navbar = Navbar(name="meta_dashboard")
 
+
 navbar.append_item(
     NavbarItem(
         name="screened_subject",

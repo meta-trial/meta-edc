@@ -12,9 +12,7 @@ class PatientHistoryFormValidator(ArvHistoryFormValidatorMixin, FormValidator):
 
         self.m2m_single_selection_if(NONE, m2m_field="symptoms")
 
-        self.m2m_other_specify(
-            OTHER, m2m_field="symptoms", field_other="other_symptoms"
-        )
+        self.m2m_other_specify(OTHER, m2m_field="symptoms", field_other="other_symptoms")
 
         self.date_not_before(
             "hiv_diagnosis_date",
@@ -51,9 +49,7 @@ class PatientHistoryFormValidator(ArvHistoryFormValidatorMixin, FormValidator):
         self.applicable_if(NO, field="current_smoker", field_applicable="former_smoker")
 
         self.m2m_single_selection_if(NONE, m2m_field="past_year_symptoms")
-        self.m2m_other_specify(
-            OTHER, m2m_field="dm_symptoms", field_other="other_dm_symptoms"
-        )
+        self.m2m_other_specify(OTHER, m2m_field="dm_symptoms", field_other="other_dm_symptoms")
 
 
 class PatientHistoryForm(CrfModelFormMixin, forms.ModelForm):

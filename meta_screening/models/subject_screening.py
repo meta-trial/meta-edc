@@ -1,3 +1,5 @@
+from django.core.validators import RegexValidator
+from django_crypto_fields.fields import EncryptedCharField
 from edc_constants.constants import QUESTION_RETIRED
 from edc_model.models import BaseUuidModel
 from edc_screening.model_mixins import ScreeningModelMixin
@@ -35,11 +37,15 @@ class SubjectScreening(
 
     identifier_cls = ScreeningIdentifier
 
+    contact_number = EncryptedCharField(
+        validators=[RegexValidator(r"^[0-9\-\(\)\ ]+$", message="Enter a valid number")],
+        null=True,
+        help_text="Provide a contact number if repeating glucose measures",
+    )
+
     def save(self, *args, **kwargs):
         if self._meta.label_lower == "meta_screening.subjectscreening":
-            raise SubjectScreeningModelError(
-                "Unable to save. Save via P1-3 proxy models."
-            )
+            raise SubjectScreeningModelError("Unable to save. Save via P1-3 proxy models.")
         self.consent_ability = QUESTION_RETIRED
         super().save(*args, **kwargs)
 

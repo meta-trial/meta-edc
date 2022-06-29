@@ -6,38 +6,63 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_screening', '0040_auto_20220316_2147'),
+        ("meta_screening", "0040_auto_20220316_2147"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='historicalscreeningpartone',
-            name='vl_undetectable',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No'), ('N/A', 'Not applicable')], default='Yes', max_length=15, verbose_name='Does the patient have a viral load measure of < 400 copies/ml taken within the last 6 months'),
+            model_name="historicalscreeningpartone",
+            name="vl_undetectable",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No"), ("N/A", "Not applicable")],
+                default="Yes",
+                max_length=15,
+                verbose_name="Does the patient have a viral load measure of < 400 copies/ml taken within the last 6 months",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='historicalscreeningpartthree',
-            name='vl_undetectable',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No'), ('N/A', 'Not applicable')], default='Yes', max_length=15, verbose_name='Does the patient have a viral load measure of < 400 copies/ml taken within the last 6 months'),
+            model_name="historicalscreeningpartthree",
+            name="vl_undetectable",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No"), ("N/A", "Not applicable")],
+                default="Yes",
+                max_length=15,
+                verbose_name="Does the patient have a viral load measure of < 400 copies/ml taken within the last 6 months",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='historicalscreeningparttwo',
-            name='vl_undetectable',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No'), ('N/A', 'Not applicable')], default='Yes', max_length=15, verbose_name='Does the patient have a viral load measure of < 400 copies/ml taken within the last 6 months'),
+            model_name="historicalscreeningparttwo",
+            name="vl_undetectable",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No"), ("N/A", "Not applicable")],
+                default="Yes",
+                max_length=15,
+                verbose_name="Does the patient have a viral load measure of < 400 copies/ml taken within the last 6 months",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='historicalsubjectscreening',
-            name='vl_undetectable',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No'), ('N/A', 'Not applicable')], default='Yes', max_length=15, verbose_name='Does the patient have a viral load measure of < 400 copies/ml taken within the last 6 months'),
+            model_name="historicalsubjectscreening",
+            name="vl_undetectable",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No"), ("N/A", "Not applicable")],
+                default="Yes",
+                max_length=15,
+                verbose_name="Does the patient have a viral load measure of < 400 copies/ml taken within the last 6 months",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='subjectscreening',
-            name='vl_undetectable',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No'), ('N/A', 'Not applicable')], default='Yes', max_length=15, verbose_name='Does the patient have a viral load measure of < 400 copies/ml taken within the last 6 months'),
+            model_name="subjectscreening",
+            name="vl_undetectable",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No"), ("N/A", "Not applicable")],
+                default="Yes",
+                max_length=15,
+                verbose_name="Does the patient have a viral load measure of < 400 copies/ml taken within the last 6 months",
+            ),
             preserve_default=False,
         ),
     ]

@@ -41,9 +41,7 @@ class TestActions(MetaTestCaseMixin, TestCase):
             "meta_ae.aeinitial", subject_identifier=subject_consent.subject_identifier
         )
 
-        action_item = ActionItem.objects.get(
-            action_identifier=ae_initial.action_identifier
-        )
+        action_item = ActionItem.objects.get(action_identifier=ae_initial.action_identifier)
         try:
             action_item = ActionItem.objects.get(
                 parent_action_item=action_item,

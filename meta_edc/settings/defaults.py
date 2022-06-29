@@ -84,7 +84,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    "import_export",
+    # "import_export",
     "defender",
     "multisite",
     "django_crypto_fields.apps.AppConfig",
@@ -134,7 +134,7 @@ INSTALLED_APPS = [
     "edc_randomization.apps.AppConfig",
     "edc_reference.apps.AppConfig",
     "edc_registration.apps.AppConfig",
-    "edc_reports.apps.AppConfig",
+    "edc_pdf_reports.apps.AppConfig",
     "edc_review_dashboard.apps.AppConfig",
     "edc_screening.apps.AppConfig",
     "edc_sites.apps.AppConfig",
@@ -145,12 +145,12 @@ INSTALLED_APPS = [
     "edc_adherence.apps.AppConfig",
     "edc_dx.apps.AppConfig",
     "edc_refusal.apps.AppConfig",
+    "canned_views.apps.AppConfig",
     "meta_consent.apps.AppConfig",
     "meta_data_manager.apps.AppConfig",
     "meta_lists.apps.AppConfig",
     "meta_dashboard.apps.AppConfig",
     "meta_labs.apps.AppConfig",
-    "meta_metadata_rules.apps.AppConfig",
     "meta_reference.apps.AppConfig",
     "meta_subject.apps.AppConfig",
     "meta_visit_schedule.apps.AppConfig",
@@ -262,9 +262,7 @@ WSGI_APPLICATION = f"{APP_NAME}.wsgi.application"
 AUTHENTICATION_BACKENDS = ["edc_auth.backends.ModelBackendWithSite"]
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
@@ -278,9 +276,7 @@ PASSWORD_HASHERS = [
 ]
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
         "OPTIONS": {"min_length": 20},
@@ -327,9 +323,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 EXPORT_FILENAME_TIMESTAMP_FORMAT = "%Y%m%d"
 
 # django_revision
-with open(
-    os.path.join(os.path.dirname(os.path.join(BASE_DIR, APP_NAME)), "VERSION")
-) as f:
+with open(os.path.join(os.path.dirname(os.path.join(BASE_DIR, APP_NAME)), "VERSION")) as f:
     REVISION = f.read().strip()
 
 # EDC_AUTH_SKIP_AUTH_UPDATER = True
@@ -377,9 +371,7 @@ LAB_DASHBOARD_BASE_TEMPLATES = env.dict("DJANGO_LAB_DASHBOARD_BASE_TEMPLATES")
 LAB_DASHBOARD_URL_NAMES = env.dict("DJANGO_LAB_DASHBOARD_URL_NAMES")
 
 # edc-diagnosis
-EDC_DX_LABELS = dict(
-    hiv="HIV", dm="Diabetes", htn="Hypertension", chol="High Cholesterol"
-)
+EDC_DX_LABELS = dict(hiv="HIV", dm="Diabetes", htn="Hypertension", chol="High Cholesterol")
 # edc-label
 EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK = env("EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK")
 
@@ -467,7 +459,6 @@ DATA_DICTIONARY_APP_LABELS = [
     "meta_prn",
     "meta_screening",
     "meta_ae",
-    "sarscov2",
     "edc_appointment",
 ]
 
@@ -484,9 +475,6 @@ EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
     *env.list("EDC_PROTOCOL_STUDY_CLOSE_DATETIME")
 )
 EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
-
-
-SARSCOV2_REDIRECT_URL_NAME = "screening_listboard_url"
 
 # static
 if env("AWS_ENABLED"):

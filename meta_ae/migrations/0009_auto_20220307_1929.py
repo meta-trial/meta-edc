@@ -6,18 +6,34 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_ae', '0008_auto_20211011_1657'),
+        ("meta_ae", "0008_auto_20211011_1657"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='deathreport',
-            name='death_location',
-            field=models.CharField(choices=[('home', 'At home'), ('hospital_clinic', 'Hospital/clinic'), ('elsewhere', 'Elsewhere')], max_length=50, verbose_name='Where did the participant die?'),
+            model_name="deathreport",
+            name="death_location",
+            field=models.CharField(
+                choices=[
+                    ("home", "At home"),
+                    ("hospital_clinic", "Hospital/clinic"),
+                    ("elsewhere", "Elsewhere"),
+                ],
+                max_length=50,
+                verbose_name="Where did the participant die?",
+            ),
         ),
         migrations.AlterField(
-            model_name='historicaldeathreport',
-            name='death_location',
-            field=models.CharField(choices=[('home', 'At home'), ('hospital_clinic', 'Hospital/clinic'), ('elsewhere', 'Elsewhere')], max_length=50, verbose_name='Where did the participant die?'),
+            model_name="historicaldeathreport",
+            name="death_location",
+            field=models.CharField(
+                choices=[
+                    ("home", "At home"),
+                    ("hospital_clinic", "Hospital/clinic"),
+                    ("elsewhere", "Elsewhere"),
+                ],
+                max_length=50,
+                verbose_name="Where did the participant die?",
+            ),
         ),
     ]

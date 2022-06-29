@@ -1,5 +1,4 @@
 from django.apps import apps as django_apps
-from django.conf import settings
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from django.utils.safestring import mark_safe
 from edc_action_item import ActionWithNotification, site_action_items
@@ -11,14 +10,15 @@ from edc_adverse_event.constants import (
     DEATH_REPORT_ACTION,
     DEATH_REPORT_TMG_ACTION,
 )
-from edc_blood_results.constants import (
+from edc_constants.constants import CLOSED, DEAD, HIGH_PRIORITY, NO, YES
+from edc_lab_results.constants import (
     BLOOD_RESULTS_FBC_ACTION,
     BLOOD_RESULTS_GLU_ACTION,
     BLOOD_RESULTS_LFT_ACTION,
     BLOOD_RESULTS_RFT_ACTION,
 )
-from edc_constants.constants import CLOSED, DEAD, HIGH_PRIORITY, NO, YES
 from edc_ltfu.constants import LOST_TO_FOLLOWUP
+from edc_notification.utils import get_email_contacts
 from edc_reportable import GRADE3, GRADE4, GRADE5
 from edc_visit_schedule.utils import get_offschedule_models
 
@@ -39,8 +39,8 @@ class AeFollowupAction(ActionWithNotification):
     admin_site_name = "meta_ae_admin"
     instructions = mark_safe(
         "Upon submission the TMG group will be notified "
-        f'by email at <a href="mailto:{settings.EMAIL_CONTACTS.get("tmg") or "#"}">'
-        f'{settings.EMAIL_CONTACTS.get("tmg") or "unknown"}</a>'
+        f'by email at <a href="mailto:{get_email_contacts("tmg") or "#"}">'
+        f'{get_email_contacts("tmg") or "unknown"}</a>'
     )
     priority = HIGH_PRIORITY
 
@@ -59,8 +59,7 @@ class AeFollowupAction(ActionWithNotification):
             next_actions=next_actions,
             action_name=DEATH_REPORT_ACTION,
             required=(
-                self.reference_obj.outcome == DEAD
-                or self.reference_obj.ae_grade == GRADE5
+                self.reference_obj.outcome == DEAD or self.reference_obj.ae_grade == GRADE5
             ),
         )
 
@@ -104,8 +103,7 @@ class AeInitialAction(ActionWithNotification):
         """
         next_actions = []
         deceased = (
-            self.reference_obj.ae_grade == GRADE5
-            or self.reference_obj.sae_reason.name == DEAD
+            self.reference_obj.ae_grade == GRADE5 or self.reference_obj.sae_reason.name == DEAD
         )
 
         # add next AeFollowup if not deceased
@@ -119,8 +117,7 @@ class AeInitialAction(ActionWithNotification):
             next_actions=next_actions,
             action_name=AE_SUSAR_ACTION,
             required=(
-                self.reference_obj.susar == YES
-                and self.reference_obj.susar_reported == NO
+                self.reference_obj.susar == YES and self.reference_obj.susar_reported == NO
             ),
         )
 
@@ -145,9 +142,7 @@ class AeInitialAction(ActionWithNotification):
         next_actions = self.append_to_next_if_required(
             next_actions=next_actions,
             action_name=AE_TMG_ACTION,
-            required=(
-                self.reference_obj.ae_grade == GRADE3 and self.reference_obj.sae == YES
-            ),
+            required=(self.reference_obj.ae_grade == GRADE3 and self.reference_obj.sae == YES),
         )
 
         return next_actions
@@ -249,8 +244,7 @@ class DeathReportTmgAction(ActionWithNotification):
         cause_of_death on Death Report.
         """
         return (
-            self.reference_obj.death_report.cause_of_death
-            == self.reference_obj.cause_of_death
+            self.reference_obj.death_report.cause_of_death == self.reference_obj.cause_of_death
         )
 
     def close_action_item_on_save(self):

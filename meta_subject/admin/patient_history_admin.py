@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
+from edc_crf.fieldset import crf_status_fieldset
 
 from ..admin_site import meta_subject_admin
 from ..forms import PatientHistoryForm
@@ -20,6 +21,7 @@ class PatientHistoryAdmin(CrfModelAdmin):
         get_hiv_fieldset(part="2"),
         get_htn_fieldset(part="3"),
         get_other_history_fieldset(part="4"),
+        crf_status_fieldset,
         audit_fieldset_tuple,
     ]
 

@@ -3,8 +3,8 @@ from edc_reportable import (
     MICROMOLES_PER_LITER,
     MILLIMOLES_PER_LITER,
     ConversionNotHandled,
+    EgfrCkdEpi,
     calculate_bmi,
-    calculate_egfr,
     convert_units,
 )
 from edc_screening.screening_eligibility import FC, ScreeningEligibility
@@ -17,11 +17,6 @@ class BaseEligibilityPartThree(ScreeningEligibility):
     def __init__(self, **kwargs):
         self.bmi = None
         self.calculated_egfr_value = None
-        # self.converted_creatinine_value = None
-        # self.converted_fbg_value = None
-        # self.converted_fbg2_value = None
-        # self.converted_ogtt_value = None
-        # self.converted_ogtt2_value = None
         self.creatinine_units = None
         self.creatinine_value = None
         self.height = None
@@ -40,10 +35,9 @@ class BaseEligibilityPartThree(ScreeningEligibility):
         super().__init__(**kwargs)
 
     def assess_eligibility(self) -> None:
-        # self.convert_lab_values_to_standard_units()
         if self.weight and self.height:
             self.bmi = calculate_bmi(weight_kg=self.weight, height_cm=self.height)
-        self.calculated_egfr_value = calculate_egfr(**self.model_obj.__dict__)
+        self.calculated_egfr_value = EgfrCkdEpi(**self.model_obj.__dict__).value
 
     def set_fld_attrs_on_model(self) -> None:
         self.model_obj.converted_creatinine_value = self.converted_creatinine_value

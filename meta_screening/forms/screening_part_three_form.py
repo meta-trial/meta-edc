@@ -10,9 +10,7 @@ from .field_lists import get_part_three_fields
 fbg_units_fld = ScreeningPartThree._meta.get_field("fbg_units")
 
 
-class ScreeningPartThreeForm(
-    AlreadyConsentedFormMixin, FormValidatorMixin, forms.ModelForm
-):
+class ScreeningPartThreeForm(AlreadyConsentedFormMixin, FormValidatorMixin, forms.ModelForm):
 
     form_validator_cls = ScreeningPartThreeFormValidator
 

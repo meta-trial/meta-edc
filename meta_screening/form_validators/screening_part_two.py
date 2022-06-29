@@ -1,6 +1,9 @@
+from zoneinfo import ZoneInfo
+
 from django import forms
 from edc_constants.constants import NO, YES
-from edc_form_validators import FormValidator
+from edc_form_validators import INVALID_ERROR, FormValidator
+from edc_utils import get_utcnow
 
 from ..eligibility import EligibilityPartTwo
 
@@ -8,22 +11,42 @@ from ..eligibility import EligibilityPartTwo
 class ScreeningPartTwoFormValidator(FormValidator):
     def clean(self):
 
-        self.applicable_if_true(
-            self.eligible_part_two, field_applicable="already_fasted"
-        )
+        if (
+            self.cleaned_data.get("agree_to_p3") == YES
+            and self.cleaned_data.get("advised_to_fast") == NO
+        ):
+            self.raise_validation_error(
+                {"advised_to_fast": "Expected YES. Patient has agreed to return"},
+                INVALID_ERROR,
+            )
+        self.applicable_if_true(self.eligible_part_two, field_applicable="already_fasted")
 
-        self.applicable_if(
-            NO, field="already_fasted", field_applicable="advised_to_fast"
-        )
+        self.applicable_if(YES, NO, field="already_fasted", field_applicable="agree_to_p3")
 
-        self.required_if_true(self.eligible_part_two, field_required="appt_datetime")
+        self.applicable_if(YES, field="agree_to_p3", field_applicable="advised_to_fast")
 
-        if self.cleaned_data.get("already_fasted") == NO:
+        self.required_if(YES, field="advised_to_fast", field_required="appt_datetime")
+
+        if self.cleaned_data.get("appt_datetime"):
             self.raise_if_not_future_appt_datetime()
 
-        self.required_if(
-            YES, field="unsuitable_for_study", field_required="reasons_unsuitable"
+        if not self.instance.part_three_report_datetime:
+            self.applicable_if_true(
+                self.cleaned_data.get("appt_datetime")
+                and self.cleaned_data.get("appt_datetime").astimezone(ZoneInfo("UTC"))
+                < get_utcnow(),
+                field_applicable="p3_ltfu",
+                applicable_msg="Appointment date has past",
+                not_applicable_msg="This field is not applicable. See appointment date above",
+            )
+
+        self.not_applicable_if_true(
+            self.instance.part_three_report_datetime,
+            field_applicable="p3_ltfu",
+            not_applicable_msg="The second stage of screening (P3) has already been started.",
         )
+
+        self.required_if(YES, field="p3_ltfu", field_required="p3_ltfu_date")
 
     @property
     def eligible_part_two(self) -> bool:

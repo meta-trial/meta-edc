@@ -7,9 +7,7 @@ from ..models import ScreeningPartTwo
 from .field_lists import get_part_two_fields
 
 
-class ScreeningPartTwoForm(
-    AlreadyConsentedFormMixin, FormValidatorMixin, forms.ModelForm
-):
+class ScreeningPartTwoForm(AlreadyConsentedFormMixin, FormValidatorMixin, forms.ModelForm):
 
     form_validator_cls = ScreeningPartTwoFormValidator
 

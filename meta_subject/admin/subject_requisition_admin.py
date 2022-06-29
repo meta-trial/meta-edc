@@ -20,8 +20,6 @@ from .modeladmin import CrfModelAdmin
 @admin.register(SubjectRequisition, site=meta_subject_admin)
 class SubjectRequisitionAdmin(RequisitionAdminMixin, CrfModelAdmin):
 
-    # show_save_next = False
-
     form = SubjectRequisitionForm
 
     fieldsets = (
@@ -40,9 +38,7 @@ class SubjectRequisitionAdmin(RequisitionAdminMixin, CrfModelAdmin):
     }
 
     def get_search_results(self, request, queryset, search_term):
-        queryset, use_distinct = super().get_search_results(
-            request, queryset, search_term
-        )
+        queryset, use_distinct = super().get_search_results(request, queryset, search_term)
         path = urlsplit(request.META.get("HTTP_REFERER")).path
         query = urlsplit(request.META.get("HTTP_REFERER")).query
         if "bloodresult" in path:

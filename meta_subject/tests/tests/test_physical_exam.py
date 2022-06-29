@@ -61,16 +61,12 @@ class TestPhysicalExam(MetaTestCaseMixin, TestCase):
 
     def test_irregular_heartbeat(self):
         data = deepcopy(self.data)
-        data.update(
-            irregular_heartbeat=YES, irregular_heartbeat_description="blah blah blah"
-        )
+        data.update(irregular_heartbeat=YES, irregular_heartbeat_description="blah blah blah")
         form = PhysicalExamForm(data=data)
         form.is_valid()
         self.assertEqual(form._errors, {})
 
-        data.update(
-            irregular_heartbeat=NO, irregular_heartbeat_description="blah blah blah"
-        )
+        data.update(irregular_heartbeat=NO, irregular_heartbeat_description="blah blah blah")
         form = PhysicalExamForm(data=data)
         form.is_valid()
         self.assertEqual(
@@ -92,9 +88,7 @@ class TestPhysicalExam(MetaTestCaseMixin, TestCase):
         form.is_valid()
         self.assertEqual(form._errors, {})
 
-        data.update(
-            abdominal_tenderness=NO, abdominal_tenderness_description="blah blah blah"
-        )
+        data.update(abdominal_tenderness=NO, abdominal_tenderness_description="blah blah blah")
         form = PhysicalExamForm(data=data)
         form.is_valid()
         self.assertEqual(

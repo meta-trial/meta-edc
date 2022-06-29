@@ -47,8 +47,7 @@ class DeathReportModelMixin(models.Model):
         related_name="secondary_cause_of_death",
         verbose_name="Secondary cause of death",
         help_text=(
-            "Secondary cause of death in the opinion of the "
-            "local study doctor and local PI"
+            "Secondary cause of death in the opinion of the " "local study doctor and local PI"
         ),
     )
 

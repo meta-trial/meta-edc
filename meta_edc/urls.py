@@ -4,6 +4,7 @@ from django.contrib.auth.views import LogoutView
 from django.urls.conf import include, path, re_path
 from django.views.defaults import page_not_found, server_error  # noqa
 from django.views.generic import RedirectView
+from edc_dashboard.utils import get_index_page
 from edc_dashboard.views import AdministrationView
 from edc_utils.paths_for_urlpatterns import paths_for_urlpatterns
 
@@ -59,6 +60,7 @@ urlpatterns = [
     *paths_for_urlpatterns("edc_subject_dashboard"),
     *paths_for_urlpatterns("edc_unblinding"),
     *paths_for_urlpatterns("edc_visit_schedule"),
+    *paths_for_urlpatterns("canned_views"),
     *paths_for_urlpatterns("meta_ae"),
     *paths_for_urlpatterns("meta_consent"),
     *paths_for_urlpatterns("meta_export"),
@@ -66,7 +68,6 @@ urlpatterns = [
     *paths_for_urlpatterns("meta_prn"),
     *paths_for_urlpatterns("meta_screening"),
     *paths_for_urlpatterns("meta_subject"),
-    *paths_for_urlpatterns("sarscov2"),
 ]
 
 if settings.DEFENDER_ENABLED:
@@ -78,7 +79,7 @@ urlpatterns += [
     path("admin/", admin.site.urls),
     path(
         "switch_sites/",
-        LogoutView.as_view(next_page=settings.INDEX_PAGE),
+        LogoutView.as_view(next_page=get_index_page()),
         name="switch_sites_url",
     ),
     path("home/", HomeView.as_view(), name="home_url"),

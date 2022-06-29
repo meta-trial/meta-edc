@@ -5,7 +5,8 @@ from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from edc_appointment.models import Appointment
 from edc_consent.utils import get_consent_model_cls
-from edc_pharmacy.utils import create_prescription
+from edc_pharmacy.exceptions import PrescriptionAlreadyExists
+from edc_pharmacy.prescribe import create_prescription
 from edc_visit_schedule import site_visit_schedules
 from edc_visit_schedule.constants import DAY1
 
@@ -31,6 +32,8 @@ from .subject_visit import SubjectVisit
 def study_medication_on_pre_save(sender, instance, raw, **kwargs):
     """Create a prescription if one does not exist
 
+    All refills are created against the prescription
+
     Note: this should not be necessary if consented after meta_consent.signal
           was updated to call `create_prescription`.
     """
@@ -38,12 +41,16 @@ def study_medication_on_pre_save(sender, instance, raw, **kwargs):
         subject_consent = get_consent_model_cls().objects.get(
             subject_identifier=instance.subject_visit.subject_identifier,
         )
-        create_prescription(
-            subject_identifier=subject_consent.subject_identifier,
-            report_datetime=subject_consent.consent_datetime,
-            randomizer_name=get_meta_version(),
-            medication_name=METFORMIN,
-        )
+        try:
+            create_prescription(
+                subject_identifier=subject_consent.subject_identifier,
+                report_datetime=subject_consent.consent_datetime,
+                randomizer_name=get_meta_version(),
+                medications=[METFORMIN],
+                site=subject_consent.site,
+            )
+        except PrescriptionAlreadyExists:
+            pass
 
 
 @receiver(
@@ -52,9 +59,11 @@ def study_medication_on_pre_save(sender, instance, raw, **kwargs):
     sender=Delivery,
     dispatch_uid="update_pregnancy_notification_on_delivery_post_save",
 )
-def update_pregnancy_notification_on_delivery_post_save(
-    sender, instance, raw, **kwargs
-):
+def update_pregnancy_notification_on_delivery_post_save(sender, instance, raw, **kwargs):
+    """Updates PregnancyNotification model instance when the delivery form is submitted.
+
+    Sets delivered=True and delivery_datetime
+    """
     if not raw:
         model_cls = django_apps.get_model("meta_prn.pregnancynotification")
         model_cls.objects.filter(
@@ -71,12 +80,18 @@ def update_pregnancy_notification_on_delivery_post_save(
     dispatch_uid="update_schedule_on_delivery_post_save",
 )
 def update_schedule_on_delivery_post_save(sender, instance, raw, **kwargs):
+    """Takes a participant off the SCHEDULE_PREGNANCY schedule and puts them on
+    SCHEDULE_POSTNATAL when delivery form is submitted.
+
+    - gets last report_datetime of the subject visit for SCHEDULE_PREGNANCY
+    - take_off_schedule SCHEDULE_PREGNANCY using the last visit datetime
+    - put_on_schedule SCHEDULE_POSTNATAL
+    - sets first appointment of SCHEDULE_POSTNATAL to be 36 months from baseline
+    """
     if not raw:
         offschedule_model_cls = django_apps.get_model("meta_prn.offschedulepregnancy")
         try:
-            offschedule_model_cls.objects.get(
-                subject_identifier=instance.subject_identifier
-            )
+            offschedule_model_cls.objects.get(subject_identifier=instance.subject_identifier)
         except ObjectDoesNotExist:
             last_subject_visit = (
                 SubjectVisit.objects.filter(

@@ -69,7 +69,7 @@ class Visit(BaseVisit):
         crfs_prn=None,
         requisitions_prn=None,
         allow_unscheduled=None,
-        **kwargs
+        **kwargs,
     ):
         super().__init__(
             allow_unscheduled=True if allow_unscheduled is None else allow_unscheduled,
@@ -93,6 +93,8 @@ schedule = Schedule(
     appointment_model="edc_appointment.appointment",
 )
 
+
+# TODO: do not allow a few days between consent and first appt
 
 visit000 = Visit(
     code=DAY1,
@@ -123,7 +125,7 @@ visit01 = Visit(
     title="Month 1",
     timepoint=2,
     rbase=relativedelta(months=1),
-    rlower=relativedelta(days=15),
+    rlower=relativedelta(days=10),
     rupper=relativedelta(days=30),
     requisitions=requisitions_1m,
     crfs=crfs_1m,

@@ -1,12 +1,13 @@
+from django.apps import apps as django_apps
 from django.utils.safestring import mark_safe
 from edc_action_item.action_with_notification import ActionWithNotification
 from edc_action_item.site_action_items import site_action_items
 from edc_adverse_event.constants import DEATH_REPORT_ACTION
-from edc_constants.constants import HIGH_PRIORITY, TBD, YES
+from edc_constants.constants import HIGH_PRIORITY, NOT_SURE, TBD, YES
 from edc_ltfu.constants import LTFU_ACTION
 from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_protocol_violation.action_items import (
-    ProtocolDeviationViolationAction as BaseProtocolDeviationViolationAction,
+    ProtocolIncidentAction as BaseProtocolIncidentAction,
 )
 
 from meta_subject.constants import DELIVERY_ACTION, URINE_PREGNANCY_ACTION
@@ -37,7 +38,16 @@ class OffscheduleAction(ActionWithNotification):
     priority = HIGH_PRIORITY
 
     def get_next_actions(self):
-        next_actions = [END_OF_STUDY_ACTION]
+        pregnancy_notification = (
+            django_apps.get_model("meta_prn.pregnancynotification")
+            .objects.filter(subject_identifier=self.subject_identifier)
+            .last()
+        )
+
+        if pregnancy_notification and pregnancy_notification.may_contact in [YES, NOT_SURE]:
+            next_actions = []
+        else:
+            next_actions = [END_OF_STUDY_ACTION]
         return next_actions
 
 
@@ -84,6 +94,7 @@ class EndOfStudyAction(ActionWithNotification):
     parent_action_names = [
         OFFSCHEDULE_ACTION,
         OFFSCHEDULE_PREGNANCY_ACTION,
+        OFFSCHEDULE_POSTNATAL_ACTION,
     ]
     reference_model = "meta_prn.endofstudy"
     show_link_to_changelist = True
@@ -170,17 +181,17 @@ class UnblindingReviewAction(PregnancyMixin, ActionWithNotification):
         return next_actions
 
 
-class ProtocolDeviationViolationAction(BaseProtocolDeviationViolationAction):
-    reference_model = "meta_prn.protocoldeviationviolation"
+class ProtocolIncidentAction(BaseProtocolIncidentAction):
+    reference_model = "meta_prn.protocolincident"
     admin_site_name = "meta_prn_admin"
 
 
 site_action_items.register(EndOfStudyAction)
 site_action_items.register(LossToFollowupAction)
+site_action_items.register(OffscheduleAction)
+site_action_items.register(OffschedulePostnatalAction)
+site_action_items.register(OffschedulePregnancyAction)
 site_action_items.register(PregnancyNotificationAction)
-site_action_items.register(ProtocolDeviationViolationAction)
+site_action_items.register(ProtocolIncidentAction)
 site_action_items.register(UnblindingRequestAction)
 site_action_items.register(UnblindingReviewAction)
-site_action_items.register(OffscheduleAction)
-site_action_items.register(OffschedulePregnancyAction)
-site_action_items.register(OffschedulePostnatalAction)

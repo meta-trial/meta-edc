@@ -1,6 +1,6 @@
 from django.contrib import admin
-from edc_blood_results.admin import BloodResultsModelAdminMixin
-from edc_blood_results.fieldsets import BloodResultFieldset
+from edc_lab_results.admin import BloodResultsModelAdminMixin
+from edc_lab_results.fieldsets import BloodResultFieldset
 
 from ...admin_site import meta_subject_admin
 from ...forms import BloodResultsRftForm
@@ -19,8 +19,11 @@ class BloodResultsRftAdmin(BloodResultsModelAdminMixin, CrfModelAdmin):
         ).fieldsets,
         (
             "Calculated eGFR",
-            {"classes": ("collapse",), "fields": ["egfr_value", "egfr_units"]},
+            {
+                "classes": ("collapse",),
+                "fields": ["egfr_value", "egfr_units", "egfr_percent_change"],
+            },
         ),
     )
 
-    readonly_fields = ["egfr_value", "egfr_units"]
+    readonly_fields = ["egfr_value", "egfr_units", "egfr_percent_change"]

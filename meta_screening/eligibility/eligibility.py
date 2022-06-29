@@ -1,9 +1,12 @@
+from typing import Any
+
 from django.db import models
+from django.urls import reverse
+from django.utils.html import format_html
 from edc_constants.constants import NO, TBD, YES
 from edc_utils import get_utcnow
 
-from meta_screening.constants import BMI_FBG_OGTT_INCOMPLETE, EGFR_NOT_CALCULATED
-
+from ..constants import EGFR_NOT_CALCULATED
 from .eligibility_part_one import EligibilityPartOne
 from .eligibility_part_three import EligibilityPartThreePhaseThree
 from .eligibility_part_two import EligibilityPartTwo
@@ -11,6 +14,58 @@ from .eligibility_part_two import EligibilityPartTwo
 
 class SubjectScreeningEligibilityError(Exception):
     pass
+
+
+def get_eligible_as_word(
+    obj=None,
+    eligible_part_one=None,
+    eligible_part_two=None,
+    eligible_part_three=None,
+    unsuitable_for_study=None,
+    reasons_ineligible=None,
+):
+    eligible = TBD
+    eligible_part_one = obj.eligible_part_one if obj else eligible_part_one
+    eligible_part_two = obj.eligible_part_two if obj else eligible_part_two
+    eligible_part_three = obj.eligible_part_three if obj else eligible_part_three
+    unsuitable_for_study = obj.unsuitable_for_study if obj else unsuitable_for_study
+
+    if unsuitable_for_study == YES:
+        reasons_ineligible.update(unsuitable_for_study="Subject unsuitable")
+        eligible = NO
+    elif all(
+        [
+            eligible_part_one == YES,
+            eligible_part_two == YES,
+            eligible_part_three == YES,
+        ]
+    ):
+        eligible = YES
+    elif NO in [eligible_part_one, eligible_part_two, eligible_part_three]:
+        eligible = NO
+    elif TBD in [eligible_part_one, eligible_part_two, eligible_part_three]:
+        eligible = TBD
+    if eligible == YES and reasons_ineligible:
+        raise SubjectScreeningEligibilityError(
+            f"Expected reasons_ineligible to be None. Got {reasons_ineligible}."
+        )
+    return eligible, reasons_ineligible
+
+
+def get_display_label(obj):
+    eligible, reasons_ineligible = get_eligible_as_word(obj)
+
+    if eligible == YES:
+        display_label = "ELIGIBLE"
+    elif eligible == TBD:
+        display_label = "PENDING"
+        if EGFR_NOT_CALCULATED in obj.reasons_ineligible:
+            display_label = "PENDING (SCR/eGFR)"
+        elif "fbg_ogtt_incomplete" in obj.reasons_ineligible:
+            display_label = "PENDING (FBG/OGTT)"
+    else:
+        display_label = "not eligible"
+    return display_label
 
 
 class MetaEligibility:
@@ -52,7 +107,7 @@ class MetaEligibility:
         self.part_two = None
         self.part_three = None
         self.update_model = True if update_model is None else update_model
-        self.eligible = NO
+        self.eligible = TBD
         self.reasons_ineligible = {}
         self.model_obj = model_obj
         self.default_options = defaults or self.default_options
@@ -60,10 +115,10 @@ class MetaEligibility:
         if self.update_model:
             self.update_model_final()
 
-    def __repr__(self) -> str:
+    def __repr__(self: Any) -> str:
         return f"{self.__class__.__name__}()"
 
-    def assess_eligibility_for_all_parts(self):
+    def assess_eligibility_for_all_parts(self: Any):
         eligibility_part_one_cls = EligibilityPartOne
         eligibility_part_two_cls = EligibilityPartTwo
         eligibility_part_three_cls = EligibilityPartThreePhaseThree
@@ -85,37 +140,16 @@ class MetaEligibility:
             **self.default_options,
         )
         self.reasons_ineligible.update(**self.part_three.reasons_ineligible)
-        if self.model_obj.unsuitable_for_study == YES:
-            self.reasons_ineligible.update(unsuitable_for_study="Subject unsuitable")
         self.check_eligibility_values_or_raise()
-        if all(
-            [
-                self.part_one.eligible == YES,
-                self.part_two.eligible == YES,
-                self.part_three.eligible == YES,
-            ]
-        ):
-            self.eligible = YES
-        elif any(
-            [
-                self.part_one.eligible == NO,
-                self.part_two.eligible == NO,
-                self.part_three.eligible == NO,
-            ]
-        ):
-            self.eligible = NO
-        elif any(
-            [
-                self.part_one.eligible == TBD,
-                self.part_two.eligible == TBD,
-                self.part_three.eligible == TBD,
-                EGFR_NOT_CALCULATED in self.reasons_ineligible,
-                BMI_FBG_OGTT_INCOMPLETE in self.reasons_ineligible,
-            ]
-        ):
-            self.eligible = TBD
+        self.eligible, self.reasons_ineligible = get_eligible_as_word(
+            eligible_part_one=self.part_one.eligible,
+            eligible_part_two=self.part_two.eligible,
+            eligible_part_three=self.part_three.eligible,
+            reasons_ineligible=self.reasons_ineligible,
+            unsuitable_for_study=self.model_obj.unsuitable_for_study,
+        )
 
-    def update_model_final(self):
+    def update_model_final(self: Any):
         self.model_obj.reasons_ineligible = "|".join(self.reasons_ineligible)
         self.model_obj.eligible = self.is_eligible
         if self.is_eligible:
@@ -126,11 +160,11 @@ class MetaEligibility:
             self.model_obj.eligibility_datetime = None
 
     @property
-    def is_eligible(self) -> bool:
+    def is_eligible(self: Any) -> bool:
         """Returns True if eligible else False"""
         return True if self.eligible == YES else False
 
-    def check_eligibility_values_or_raise(self):
+    def check_eligibility_values_or_raise(self: Any):
         for response in [
             self.part_one.eligible,
             self.part_two.eligible,
@@ -143,26 +177,34 @@ class MetaEligibility:
                 )
 
     @property
-    def display_label(self):
-        if self.eligible == YES:
-            display_label = "ELIGIBLE"
-        elif self.eligible == TBD:
-            display_label = "PENDING"
-            if EGFR_NOT_CALCULATED in self.reasons_ineligible:
-                display_label = "PENDING (SCR/eGFR)"
-            elif BMI_FBG_OGTT_INCOMPLETE in self.reasons_ineligible:
-                display_label = "PENDING (BMI/IFT/OGTT)"
-        else:
-            display_label = "not eligible"
-        return display_label
+    def display_label(self: Any):
+        return get_display_label(obj=self.model_obj)
 
-    @property
-    def eligibility_status(self):
-        status_str = (
-            f"P1: {self.part_one.eligible.upper()}<BR>"
-            f"P2: {self.part_two.eligible.upper()}<BR>"
-            f"P3: {self.part_three.eligible.upper()}<BR>"
-        )
+    def eligibility_status(self: Any, add_urls=None):
+        if add_urls:
+            url_p1 = reverse(
+                "meta_screening_admin:meta_screening_screeningpartone_change",
+                args=(self.part_one.model_obj.id,),
+            )
+            url_p2 = reverse(
+                "meta_screening_admin:meta_screening_screeningparttwo_change",
+                args=(self.part_two.model_obj.id,),
+            )
+            url_p3 = reverse(
+                "meta_screening_admin:meta_screening_screeningpartthree_change",
+                args=(self.part_three.model_obj.id,),
+            )
+            status_str = format_html(
+                f'<A href="{url_p1}">P1: {self.part_one.eligible.upper()}</A><BR>'
+                f'<A href="{url_p2}">P2: {self.part_two.eligible.upper()}</A><BR>'
+                f'<A href="{url_p3}">P3: {self.part_three.eligible.upper()}</A><BR>'
+            )
+        else:
+            status_str = (
+                f"P1: {self.part_one.eligible.upper()}<BR>"
+                f"P2: {self.part_two.eligible.upper()}<BR>"
+                f"P3: {self.part_three.eligible.upper()}<BR>"
+            )
         display_label = self.display_label
         if "PENDING" in display_label:
             display_label = f'<font color="orange"><B>{display_label}</B></font>'

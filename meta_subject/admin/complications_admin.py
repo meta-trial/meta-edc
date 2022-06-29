@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
+from edc_crf.fieldset import crf_status_fieldset
 
 from ..admin_site import meta_subject_admin
 from ..models import Complications
@@ -26,5 +27,6 @@ class ComplicationsAdmin(CrfModelAdmin):
             "Peripheral pulses",
             {"fields": ("dorsalis_pedis_pulse", "posterior_tibial_pulse")},
         ),
+        crf_status_fieldset,
         audit_fieldset_tuple,
     )

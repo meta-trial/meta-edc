@@ -28,8 +28,12 @@ class PregnancyNotificationAdmin(
     fieldsets = (
         (None, {"fields": ("subject_identifier", "report_datetime")}),
         (
-            "Pregnancy information",
-            {"fields": ("bhcg_confirmed", "unconfirmed_details", "edd")},
+            "Pregnancy",
+            {"fields": ("bhcg_confirmed", "unconfirmed_details", "bhcg_date")},
+        ),
+        (
+            "Delivery",
+            {"fields": ("edd",)},
         ),
         (
             "Followup",

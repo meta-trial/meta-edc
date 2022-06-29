@@ -1,2 +1,81 @@
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+write_to = "_version.py"
+
+[tool.black]
+line-length = 95
+target-version = ["py39"]
+extend-exclude = '''^(.*\/)*\b(migrations)\b($|\/.*$)'''
+
 [tool.isort]
 profile = "black"
+py_version = "39"
+skip = [".tox", ".eggs", "migrations"]
+
+[tool.coverage.run]
+parallel = false
+branch = true
+source = ["meta_edc"]
+
+[tool.coverage.paths]
+source = ["meta_edc"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+omit = ["requirements.txt"]
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist =
+    py{39,310}-dj{32,40}-edc{prod},
+    py{39,310}-dj{32,40}-edc{dev},
+#    FIXME: Disable testing djdev env until failing testrunner issue resolved
+#    py{39,310}-dj{32,40,dev}-edc{dev},
+    lint
+
+isolated_build = true
+
+[gh-actions]
+python =
+    3.9: py39, lint
+    3.10: py310
+
+[gh-actions:env]
+DJANGO =
+    3.2: dj32, lint
+    4.0: dj40
+    dev: djdev
+EDC_CODEBASE =
+    Prod: edcprod, lint
+    Dev: edcdev
+
+[testenv]
+deps =
+    -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/tox.txt
+    -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/test_utils.txt
+    -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/third_party_dev.txt
+    dj32: Django>=3.2,<3.3
+    dj40: Django>=4.0,<4.1
+    djdev: https://github.com/django/django/tarball/main
+
+commands =
+    pip install -U pip
+    pip --version
+    edcdev: pip install -U -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/edc.txt
+    edcdev: pip install -U git+https://github.com/effect-trial/effect-form-validators.git@develop
+    pip freeze
+    coverage run runtests.py
+    coverage report
+
+[testenv:lint]
+deps = -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/lint.txt
+commands =
+    isort --profile=black --check --diff .
+    black --check --diff .
+    flake8 .
+"""

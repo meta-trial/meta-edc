@@ -11,11 +11,11 @@ from .blood_results import (
 from .complications_glycemia_form import ComplicationsGlycemiaForm
 from .concomitant_medication_form import ConcomitantMedicationForm
 from .delivery_form import DeliveryForm
+from .egfr_notification_form import EgfrNotificationForm
 from .eq53d3l_form import Eq5d3lForm
 from .followup_examination_form import FollowupExaminationForm
 from .followup_vitals_form import FollowupVitalsForm
 from .glucose_form import GlucoseForm
-from .health_economics_form import HealthEconomicsForm
 from .health_economics_simple_form import HealthEconomicsSimpleForm
 from .hepatitis_test_form import HepatitisTestForm
 from .malaria_test_form import MalariaTestForm

@@ -1,6 +1,6 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from edc_pharmacy.models import Medication, Rx
-from edc_pharmacy.utils import create_prescription
+from edc_pharmacy.prescribe import create_prescription
 
 from meta_consent.models import SubjectConsent
 from meta_edc.meta_version import get_meta_version
@@ -12,9 +12,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         medication = Medication.objects.get(name=METFORMIN)
-        subject_identifiers = Rx.objects.values_list(
-            "subject_identifier", flat=True
-        ).all()
+        subject_identifiers = Rx.objects.values_list("subject_identifier", flat=True).all()
         for instance in SubjectConsent.objects.exclude(
             subject_identifier__in=subject_identifiers
         ):
@@ -22,5 +20,6 @@ class Command(BaseCommand):
                 subject_identifier=instance.subject_identifier,
                 report_datetime=instance.consent_datetime,
                 randomizer_name=get_meta_version(),
-                medication_name=medication.name,
+                medications=[medication],
+                site=instance.site,
             )

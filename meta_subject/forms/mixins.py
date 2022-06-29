@@ -25,9 +25,7 @@ class ArvHistoryFormValidatorMixin:
             "Invalid. Cannot be before HIV diagnosis date.",
         )
 
-        self.required_if_not_none(
-            "cd4", "cd4_date", field_required_evaluate_as_int=True
-        )
+        self.required_if_not_none("cd4", "cd4_date", field_required_evaluate_as_int=True)
 
         self.date_not_before(
             "hiv_diagnosis_date",
@@ -62,9 +60,7 @@ class ArvHistoryFormValidatorMixin:
             field_required="other_previous_arv_regimen",
         )
 
-        self.required_if(
-            YES, field="on_oi_prophylaxis", field_required="oi_prophylaxis"
-        )
+        self.required_if(YES, field="on_oi_prophylaxis", field_required="oi_prophylaxis")
 
         self.m2m_other_specify(
             OTHER, m2m_field="oi_prophylaxis", field_other="other_oi_prophylaxis"

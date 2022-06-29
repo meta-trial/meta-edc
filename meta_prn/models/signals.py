@@ -15,9 +15,8 @@ from meta_visit_schedule.constants import SCHEDULE, SCHEDULE_PREGNANCY, VISIT_SC
     sender=PregnancyNotification,
     dispatch_uid="update_schedule_on_pregnancy_notification_post_save",
 )
-def update_schedule_on_pregnancy_notification_post_save(
-    sender, instance, raw, **kwargs
-):
+def update_schedule_on_pregnancy_notification_post_save(sender, instance, raw, **kwargs):
+
     if not raw:
         try:
             OffSchedule.objects.get(subject_identifier=instance.subject_identifier)

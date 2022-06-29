@@ -1,12 +1,13 @@
 from django.db import models
 from django.utils.safestring import mark_safe
-from edc_constants.choices import POS_NEG, POS_NEG_NOT_DONE, YES_NO
-from edc_model import models as edc_models
+from edc_constants.choices import POS_NEG, YES_NO
+from edc_model.models import BaseUuidModel
+from edc_model.validators import date_is_not_now, date_is_past
 
 from ..model_mixins import CrfModelMixin
 
 
-class HepatitisTest(CrfModelMixin, edc_models.BaseUuidModel):
+class HepatitisTest(CrfModelMixin, BaseUuidModel):
 
     # Hepatitis B Surface Antigen Test
     hbsag_performed = models.CharField(
@@ -26,7 +27,7 @@ class HepatitisTest(CrfModelMixin, edc_models.BaseUuidModel):
 
     hbsag_date = models.DateField(
         verbose_name=mark_safe("<i>HbSAg date</i>"),
-        validators=[edc_models.date_is_past, edc_models.date_is_not_now],
+        validators=[date_is_past, date_is_not_now],
         null=True,
         blank=True,
         help_text="Approximate if not known",
@@ -49,12 +50,12 @@ class HepatitisTest(CrfModelMixin, edc_models.BaseUuidModel):
 
     hcv_date = models.DateField(
         verbose_name=mark_safe("<i>HCV date</i>"),
-        validators=[edc_models.date_is_past, edc_models.date_is_not_now],
+        validators=[date_is_past, date_is_not_now],
         null=True,
         blank=True,
         help_text="Approximate if not known",
     )
 
-    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+    class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Hepatitis Tests"
         verbose_name_plural = "Hepatitis Tests"

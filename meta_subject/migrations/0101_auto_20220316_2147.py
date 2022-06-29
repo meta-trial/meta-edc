@@ -12,7 +12,7 @@ import django_audit_fields.fields.uuid_auto_field
 import django_audit_fields.models.audit_model_mixin
 import django_crypto_fields.fields.encrypted_text_field
 import django_revision.revision_field
-import edc_model.models.validators.date
+import edc_model.validators.date
 import edc_model_fields.fields.other_charfield
 import edc_protocol.validators
 import edc_utils.date
@@ -192,7 +192,7 @@ class Migration(migrations.Migration):
                     models.DateTimeField(
                         help_text="If TIME unknown, estimate",
                         validators=[
-                            edc_model.models.validators.date.datetime_not_future,
+                            edc_model.validators.date.datetime_not_future,
                             edc_protocol.validators.datetime_not_before_study_start,
                         ],
                         verbose_name="Date and time of delivery :",
@@ -938,7 +938,7 @@ class Migration(migrations.Migration):
                     models.DateTimeField(
                         help_text="If TIME unknown, estimate",
                         validators=[
-                            edc_model.models.validators.date.datetime_not_future,
+                            edc_model.validators.date.datetime_not_future,
                             edc_protocol.validators.datetime_not_before_study_start,
                         ],
                         verbose_name="Date and time of delivery :",

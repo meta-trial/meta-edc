@@ -6,48 +6,48 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_screening', '0029_auto_20211123_1645'),
+        ("meta_screening", "0029_auto_20211123_1645"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='historicalscreeningpartone',
-            name='diet_and_lifestyle',
+            model_name="historicalscreeningpartone",
+            name="diet_and_lifestyle",
         ),
         migrations.RemoveField(
-            model_name='historicalscreeningpartone',
-            name='diet_and_lifestyle_duration',
+            model_name="historicalscreeningpartone",
+            name="diet_and_lifestyle_duration",
         ),
         migrations.RemoveField(
-            model_name='historicalscreeningpartthree',
-            name='diet_and_lifestyle',
+            model_name="historicalscreeningpartthree",
+            name="diet_and_lifestyle",
         ),
         migrations.RemoveField(
-            model_name='historicalscreeningpartthree',
-            name='diet_and_lifestyle_duration',
+            model_name="historicalscreeningpartthree",
+            name="diet_and_lifestyle_duration",
         ),
         migrations.RemoveField(
-            model_name='historicalscreeningparttwo',
-            name='diet_and_lifestyle',
+            model_name="historicalscreeningparttwo",
+            name="diet_and_lifestyle",
         ),
         migrations.RemoveField(
-            model_name='historicalscreeningparttwo',
-            name='diet_and_lifestyle_duration',
+            model_name="historicalscreeningparttwo",
+            name="diet_and_lifestyle_duration",
         ),
         migrations.RemoveField(
-            model_name='historicalsubjectscreening',
-            name='diet_and_lifestyle',
+            model_name="historicalsubjectscreening",
+            name="diet_and_lifestyle",
         ),
         migrations.RemoveField(
-            model_name='historicalsubjectscreening',
-            name='diet_and_lifestyle_duration',
+            model_name="historicalsubjectscreening",
+            name="diet_and_lifestyle_duration",
         ),
         migrations.RemoveField(
-            model_name='subjectscreening',
-            name='diet_and_lifestyle',
+            model_name="subjectscreening",
+            name="diet_and_lifestyle",
         ),
         migrations.RemoveField(
-            model_name='subjectscreening',
-            name='diet_and_lifestyle_duration',
+            model_name="subjectscreening",
+            name="diet_and_lifestyle_duration",
         ),
     ]

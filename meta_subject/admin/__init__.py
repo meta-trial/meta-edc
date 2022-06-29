@@ -10,11 +10,11 @@ from .complications_admin import ComplicationsAdmin
 from .complications_glycemia_admin import ComplicationsGlycemiaAdmin
 from .concomitant_medication_admin import ConcomitantMedicationAdmin
 from .delivery_admin import DeliveryAdmin
+from .egfr_notification_admin import EgfrNotificationAdmin
 from .eq5d3l_admin import Eq5d3lAdmin
 from .followup_examination_admin import FollowupExaminationAdmin
 from .followup_vitals_admin import FollowupVitalsAdmin
 from .glucose_admin import GlucoseAdmin
-from .health_economics_admin import HealthEconomicsAdmin
 from .health_economics_simple_admin import HealthEconomicsSimpleAdmin
 from .hepatitis_test_admin import HepatitisTestAdmin
 from .malaria_test_admin import MalariaTestAdmin

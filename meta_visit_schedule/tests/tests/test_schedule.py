@@ -1,13 +1,8 @@
 from django.test import TestCase
 
 from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
-
-if get_meta_version() == 2:
-    from meta_visit_schedule.visit_schedules.phase_two import visit_schedule
-elif get_meta_version() == 3:
-    from meta_visit_schedule.visit_schedules.phase_three import visit_schedule
-
 from meta_visit_schedule.visit_schedules import schedule
+from meta_visit_schedule.visit_schedules.phase_three import visit_schedule
 
 
 class TestVisitSchedule(TestCase):
@@ -87,9 +82,7 @@ class TestVisitSchedule(TestCase):
                         actual,
                         msg=f"see requisitions for visit {visit_code}",
                     )
-                    actual = [
-                        requisition.name for requisition in visit.requisitions_prn
-                    ]
+                    actual = [requisition.name for requisition in visit.requisitions_prn]
                     actual.sort()
                     self.assertEqual(
                         prn, actual, msg=f"see PRN requisitions for visit {visit_code}"
@@ -181,6 +174,4 @@ class TestVisitSchedule(TestCase):
 
                     actual = [crf.model for crf in visit.crfs_prn]
                     actual.sort()
-                    self.assertEqual(
-                        prn, actual, msg=f"see PRN CRFs for visit {visit_code}"
-                    )
+                    self.assertEqual(prn, actual, msg=f"see PRN CRFs for visit {visit_code}")

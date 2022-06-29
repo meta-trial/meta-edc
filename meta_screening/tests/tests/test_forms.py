@@ -76,9 +76,7 @@ class TestForms(ScreeningTestMixin, TestCase):
 
         self.screening_identifier = obj.screening_identifier
 
-        obj = ScreeningPartTwo.objects.get(
-            screening_identifier=self.screening_identifier
-        )
+        obj = ScreeningPartTwo.objects.get(screening_identifier=self.screening_identifier)
         for k, v in part_two_eligible_options.items():
             setattr(obj, k, v)
         obj.save()
@@ -102,9 +100,7 @@ class TestForms(ScreeningTestMixin, TestCase):
         self.assertEqual(form._errors, {})
 
     def test_screening_form_three_ok(self):
-        obj = ScreeningPartThree.objects.get(
-            screening_identifier=self.screening_identifier
-        )
+        obj = ScreeningPartThree.objects.get(screening_identifier=self.screening_identifier)
         part_three_eligible_options = deepcopy(
             get_part_three_eligible_options(report_datetime=obj.report_datetime)
         )
@@ -125,9 +121,7 @@ class TestForms(ScreeningTestMixin, TestCase):
 
         screening_identifier = form.instance.screening_identifier
 
-        instance = ScreeningPartTwo.objects.get(
-            screening_identifier=screening_identifier
-        )
+        instance = ScreeningPartTwo.objects.get(screening_identifier=screening_identifier)
         data = {k: v for k, v in part_two_eligible_options.items()}
         form = ScreeningPartTwoForm(data=part_two_eligible_options, instance=instance)
         form.is_valid()
@@ -138,9 +132,7 @@ class TestForms(ScreeningTestMixin, TestCase):
             screening_identifier=form.instance.screening_identifier
         )
 
-        form = ScreeningPartThreeForm(
-            data=part_three_eligible_options, instance=instance
-        )
+        form = ScreeningPartThreeForm(data=part_three_eligible_options, instance=instance)
         form.is_valid()
         self.assertEqual(form._errors, {})
         form.save()

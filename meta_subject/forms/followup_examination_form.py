@@ -23,9 +23,7 @@ class FollowupExaminationFormValidator(FormValidator):
     def validate_all_symptoms(self):
 
         self.m2m_single_selection_if(NONE, m2m_field="symptoms")
-        self.m2m_other_not_specify(
-            NONE, m2m_field="symptoms", field_other="symptoms_detail"
-        )
+        self.m2m_other_not_specify(NONE, m2m_field="symptoms", field_other="symptoms_detail")
         self.m2m_single_selection_if(NONE, m2m_field="symptoms_g3")
         self.m2m_single_selection_if(NONE, m2m_field="symptoms_g4")
 
@@ -33,9 +31,7 @@ class FollowupExaminationFormValidator(FormValidator):
         symptoms = []
         if self.cleaned_data.get("symptoms"):
             symptoms = [
-                obj.name
-                for obj in self.cleaned_data.get("symptoms")
-                if obj.name != NONE
+                obj.name for obj in self.cleaned_data.get("symptoms") if obj.name != NONE
             ]
         symptoms_g3 = []
         if self.cleaned_data.get("symptoms_g3"):
@@ -45,15 +41,11 @@ class FollowupExaminationFormValidator(FormValidator):
             symptoms_g4 = [obj.name for obj in self.cleaned_data.get("symptoms_g4")]
         if symptoms_g3 != [NONE] and [x for x in symptoms_g3 if x not in symptoms]:
             raise forms.ValidationError(
-                {
-                    "symptoms_g3": "Invalid selection. Must be from above list of symptoms"
-                }
+                {"symptoms_g3": "Invalid selection. Must be from above list of symptoms"}
             )
         if symptoms_g4 != [NONE] and [x for x in symptoms_g4 if x not in symptoms]:
             raise forms.ValidationError(
-                {
-                    "symptoms_g4": "Invalid selection. Must be from above list of symptoms"
-                }
+                {"symptoms_g4": "Invalid selection. Must be from above list of symptoms"}
             )
 
         # provide detail always
@@ -98,13 +90,9 @@ class FollowupExaminationFormValidator(FormValidator):
 
     def validate_hospitalizations(self):
         self.required_if(YES, field="attend_clinic", field_required="admitted_hospital")
-        self.required_if(
-            YES, field="attend_clinic", field_required="attend_clinic_details"
-        )
+        self.required_if(YES, field="attend_clinic", field_required="attend_clinic_details")
         self.required_if(YES, field="attend_clinic", field_required="attend_clinic_sae")
-        self.required_if(
-            YES, field="attend_clinic", field_required="prescribed_medication"
-        )
+        self.required_if(YES, field="attend_clinic", field_required="prescribed_medication")
         self.required_if(
             YES,
             field="prescribed_medication",

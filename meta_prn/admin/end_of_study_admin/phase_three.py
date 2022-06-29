@@ -5,7 +5,7 @@ from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
 from ...admin_site import meta_prn_admin
-from ...forms import EndOfStudyPhaseThreeForm
+from ...forms import EndOfStudyForm
 from ...models import EndOfStudy
 from .model_admin_mixin import EndOfStudyAdminMixin
 
@@ -18,7 +18,7 @@ class EndOfStudyPhaseThreeAdmin(
     SimpleHistoryAdmin,
 ):
 
-    form = EndOfStudyPhaseThreeForm
+    form = EndOfStudyForm
 
     fieldsets = (
         [

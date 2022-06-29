@@ -35,6 +35,7 @@ def get_part_two_fields():
         "has_dm",
         "on_dm_medication",
         "already_fasted",
+        "agree_to_p3",
         "advised_to_fast",
         "appt_datetime",
     ]
@@ -85,7 +86,9 @@ part_three_repeat_ogtt_fields = (
 )
 
 part_three_glucose_fields = (
-    get_part_three_fbg_fields() + part_three_ogtt_fields + ("repeat_glucose_opinion",)
+    get_part_three_fbg_fields()
+    + part_three_ogtt_fields
+    + ("repeat_glucose_opinion", "repeat_appt_datetime", "contact_number")
 )
 
 part_three_pregnancy_fields = (
@@ -99,6 +102,7 @@ part_three_other_fields = (
     "creatinine_value",
     "creatinine_units",
     "hba1c_performed",
+    "hba1c_datetime",
     "hba1c_value",
 )
 
@@ -110,6 +114,7 @@ part_three_creatinine_fields = (
 
 part_three_hba1c_fields = (
     "hba1c_performed",
+    "hba1c_datetime",
     "hba1c_value",
 )
 

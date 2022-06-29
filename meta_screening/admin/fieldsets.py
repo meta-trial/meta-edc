@@ -1,3 +1,4 @@
+from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
 from ..forms import (
@@ -73,8 +74,8 @@ def get_part_three_repeat_glucose_fieldset(collapse=None):
     dct = {
         "fields": fields,
         "description": (
-            "IMPORTANT: If you decide to repeat the FBG / OGTT, do so at least three days "
-            "after the first FBG / OGTT"
+            "IMPORTANT: If you decide to repeat the FBG / OGTT, do so at least "
+            "three days after the first FBG / OGTT"
         ),
     }
     if collapse:
@@ -120,6 +121,23 @@ def get_part_three_pregnancy_fieldset(collapse=None):
     if collapse:
         dct.update(classes=("collapse",))
     return "Part 3b: Pregnancy", dct
+
+
+def get_p3_screening_appt_update_fields(collapse=None):
+    dct = {
+        "description": format_html(
+            '<span style="color:orange;font-weight:bold">IMPORTANT:</span>'
+            "This section is only applicable if the subject "
+            "missed the appointment for the second stage of screening (P3). "
+            "If the subject appears for screening after this sections has "
+            "been completed, you may, of course, proceed to screen "
+            "the subject as per protocol."
+        ),
+        "fields": ["p3_ltfu", "p3_ltfu_date", "p3_ltfu_comment"],
+    }
+    if collapse:
+        dct.update(classes=("collapse",))
+    return "Part 3 screening appointment update", dct
 
 
 comments_fieldset = (

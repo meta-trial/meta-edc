@@ -17,9 +17,7 @@ class TestScreeningPartTwo(TestCase):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         model_obj = ScreeningPartOne(**part_one_eligible_options)
         model_obj.save()
-        self.assertIsNone(
-            getattr(model_obj, EligibilityPartOne.reasons_ineligible_fld_name)
-        )
+        self.assertIsNone(getattr(model_obj, EligibilityPartOne.reasons_ineligible_fld_name))
         self.assertEqual(
             getattr(model_obj, EligibilityPartOne.eligible_fld_name),
             EligibilityPartOne.is_eligible_value,
@@ -35,9 +33,7 @@ class TestScreeningPartTwo(TestCase):
 
     def _test_defaults(self):
 
-        obj = ScreeningPartTwo.objects.get(
-            screening_identifier=self.screening_identifier
-        )
+        obj = ScreeningPartTwo.objects.get(screening_identifier=self.screening_identifier)
         self.assertEqual(obj.eligible_part_two, TBD)
         self.assertIn("not answered", obj.reasons_ineligible_part_two)
 
@@ -46,9 +42,7 @@ class TestScreeningPartTwo(TestCase):
 
     def _test_eligible(self):
 
-        obj = ScreeningPartTwo.objects.get(
-            screening_identifier=self.screening_identifier
-        )
+        obj = ScreeningPartTwo.objects.get(screening_identifier=self.screening_identifier)
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertIsNone(obj.reasons_ineligible_part_one)
 

@@ -20,9 +20,7 @@ class EligibilityModelMixin(BaseEligibilityModelMixin):
         help_text="system calculated value",
     )
 
-    reasons_ineligible_part_one = models.TextField(
-        max_length=150, null=True, editable=False
-    )
+    reasons_ineligible_part_one = models.TextField(max_length=150, null=True, editable=False)
 
     eligible_part_two = models.CharField(
         max_length=15,
@@ -32,9 +30,7 @@ class EligibilityModelMixin(BaseEligibilityModelMixin):
         help_text="system calculated value",
     )
 
-    reasons_ineligible_part_two = models.TextField(
-        max_length=150, null=True, editable=False
-    )
+    reasons_ineligible_part_two = models.TextField(max_length=150, null=True, editable=False)
 
     eligible_part_three = models.CharField(
         max_length=15,
@@ -44,9 +40,7 @@ class EligibilityModelMixin(BaseEligibilityModelMixin):
         help_text="system calculated value",
     )
 
-    reasons_ineligible_part_three = models.TextField(
-        max_length=150, null=True, editable=False
-    )
+    reasons_ineligible_part_three = models.TextField(max_length=150, null=True, editable=False)
 
     def get_report_datetime_for_eligibility_datetime(self):
         return self.part_three_report_datetime
