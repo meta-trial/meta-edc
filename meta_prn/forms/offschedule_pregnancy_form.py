@@ -5,14 +5,14 @@ from edc_form_validators.form_validator_mixin import FormValidatorMixin
 from edc_sites.forms import SiteModelFormMixin
 from edc_visit_schedule.modelform_mixins import OffScheduleModelFormMixin
 
-from ..models import OffSchedule
+from ..models import OffSchedulePregnancy
 
 
-class OffScheduleFormValidator(FormValidator):
+class OffSchedulePregnancyFormValidator(FormValidator):
     pass
 
 
-class OffScheduleForm(
+class OffSchedulePregnancyForm(
     OffScheduleModelFormMixin,
     SiteModelFormMixin,
     FormValidatorMixin,
@@ -20,7 +20,7 @@ class OffScheduleForm(
     forms.ModelForm,
 ):
 
-    form_validator_cls = OffScheduleFormValidator
+    form_validator_cls = OffSchedulePregnancyFormValidator
 
     subject_identifier = forms.CharField(
         label="Subject Identifier",
@@ -29,5 +29,5 @@ class OffScheduleForm(
     )
 
     class Meta:
-        model = OffSchedule
+        model = OffSchedulePregnancy
         fields = "__all__"

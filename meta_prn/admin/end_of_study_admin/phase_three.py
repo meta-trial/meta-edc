@@ -26,10 +26,10 @@ class EndOfStudyPhaseThreeAdmin(
             {
                 "fields": (
                     "subject_identifier",
-                    "offschedule_datetime",
+                    "offstudy_datetime",
                     "last_seen_date",
-                    "offschedule_reason",
-                    "other_offschedule_reason",
+                    "offstudy_reason",
+                    "other_offstudy_reason",
                     "ltfu_date",
                     "death_date",
                     "clinical_withdrawal_reason",
@@ -45,7 +45,7 @@ class EndOfStudyPhaseThreeAdmin(
     )
 
     radio_fields = {
-        "offschedule_reason": admin.VERTICAL,
+        "offstudy_reason": admin.VERTICAL,
         "clinical_withdrawal_reason": admin.VERTICAL,
         "toxicity_withdrawal_reason": admin.VERTICAL,
     }
