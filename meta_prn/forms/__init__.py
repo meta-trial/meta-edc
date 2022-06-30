@@ -1,5 +1,6 @@
 from .end_of_study_form import EndOfStudyForm
 from .loss_to_followup_form import LossToFollowupForm
 from .offschedule_form import OffScheduleForm
+from .offschedule_pregnancy_form import OffSchedulePregnancyForm
 from .pregnancy_notification_form import PregnancyNotificationForm
 from .protocol_incident_form import ProtocolIncidentForm

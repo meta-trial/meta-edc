@@ -2,7 +2,6 @@ from django import forms
 from edc_action_item.forms import ActionItemFormMixin
 from edc_form_validators import FormValidatorMixin
 from edc_sites.forms import SiteModelFormMixin
-from edc_visit_schedule.modelform_mixins import OffScheduleModelFormMixin
 
 from ..form_validators import EndOfStudyFormValidator
 from ..models import EndOfStudy
@@ -11,7 +10,6 @@ from ..models import EndOfStudy
 class EndOfStudyForm(
     SiteModelFormMixin,
     ActionItemFormMixin,
-    OffScheduleModelFormMixin,
     FormValidatorMixin,
     forms.ModelForm,
 ):
@@ -27,4 +25,4 @@ class EndOfStudyForm(
     class Meta:
         model = EndOfStudy
         fields = "__all__"
-        labels = {"offschedule_datetime": "Date patient terminated from study:"}
+        labels = {"offstudy_datetime": "Date patient terminated from study:"}

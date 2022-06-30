@@ -4,31 +4,27 @@ from edc_constants.choices import YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE
 from edc_identifier.model_mixins import TrackingModelMixin
 from edc_model.models import BaseUuidModel
-from edc_model.validators import date_not_future, datetime_not_future
+from edc_model.validators import date_not_future
 from edc_offstudy.constants import END_OF_STUDY_ACTION
-from edc_visit_schedule.model_mixins import OffScheduleModelMixin
+from edc_visit_schedule.model_mixins.schedule_model_mixin import ScheduleModelMixin
 
 from meta_lists.models import OffstudyReasons
 
 from ..choices import CLINICAL_WITHDRAWAL_REASONS, TOXICITY_WITHDRAWAL_REASONS
+from .model_mixins import OffStudyModelMixin
 
 # TODO: confirm all appointments are either new, incomplete or done
 # TODO: take off study meds but coninue followup (WITHDRAWAL)
 # TODO: follow on new schedule, if permanently off drug (Single 36m visit)
 
 
-class EndOfStudy(OffScheduleModelMixin, ActionModelMixin, TrackingModelMixin, BaseUuidModel):
+class EndOfStudy(
+    OffStudyModelMixin, ScheduleModelMixin, ActionModelMixin, TrackingModelMixin, BaseUuidModel
+):
 
     action_name = END_OF_STUDY_ACTION
 
     tracking_identifier_prefix = "ST"
-
-    offschedule_datetime = models.DateTimeField(
-        verbose_name="Date patient was terminated from the study",
-        validators=[datetime_not_future],
-        blank=False,
-        null=True,
-    )
 
     last_seen_date = models.DateField(
         verbose_name="Date patient was last seen",
@@ -37,14 +33,14 @@ class EndOfStudy(OffScheduleModelMixin, ActionModelMixin, TrackingModelMixin, Ba
         null=True,
     )
 
-    offschedule_reason = models.ForeignKey(
+    offstudy_reason = models.ForeignKey(
         OffstudyReasons,
         verbose_name="Reason patient was terminated from the study",
         on_delete=models.PROTECT,
         null=True,
     )
 
-    other_offschedule_reason = models.TextField(
+    other_offstudy_reason = models.TextField(
         verbose_name="If OTHER, please specify", max_length=500, blank=True, null=True
     )
 
@@ -111,6 +107,6 @@ class EndOfStudy(OffScheduleModelMixin, ActionModelMixin, TrackingModelMixin, Ba
         null=True,
     )
 
-    class Meta(OffScheduleModelMixin.Meta):
+    class Meta(OffStudyModelMixin.Meta):
         verbose_name = "End of Study"
         verbose_name_plural = "End of Study"

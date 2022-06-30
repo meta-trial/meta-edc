@@ -34,17 +34,19 @@ class ScreeningPartTwoFormValidator(FormValidator):
             self.applicable_if_true(
                 self.cleaned_data.get("appt_datetime")
                 and self.cleaned_data.get("appt_datetime").astimezone(ZoneInfo("UTC"))
-                < get_utcnow(),
+                <= get_utcnow(),
                 field_applicable="p3_ltfu",
                 applicable_msg="Appointment date has past",
                 not_applicable_msg="This field is not applicable. See appointment date above",
             )
-
-        self.not_applicable_if_true(
-            self.instance.part_three_report_datetime,
-            field_applicable="p3_ltfu",
-            not_applicable_msg="The second stage of screening (P3) has already been started.",
-        )
+        else:
+            self.not_applicable_if_true(
+                self.instance.part_three_report_datetime,
+                field_applicable="p3_ltfu",
+                not_applicable_msg=(
+                    "The second stage of screening (P3) has already been started."
+                ),
+            )
 
         self.required_if(YES, field="p3_ltfu", field_required="p3_ltfu_date")
 

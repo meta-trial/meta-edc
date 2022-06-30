@@ -26,9 +26,9 @@ class EndOfStudyAdminMixin:
             {
                 "fields": (
                     "subject_identifier",
-                    "offschedule_datetime",
-                    "offschedule_reason",
-                    "other_offschedule_reason",
+                    "offstudy_datetime",
+                    "offstudy_reason",
+                    "other_offstudy_reason",
                     "ltfu_date",
                     "death_date",
                     "comment",
@@ -42,14 +42,14 @@ class EndOfStudyAdminMixin:
     list_display = (
         "subject_identifier",
         "dashboard",
-        "offschedule_datetime",
+        "offstudy_datetime",
         "tracking_identifier",
         "action_identifier",
     )
 
-    list_filter = ("offschedule_datetime",)
+    list_filter = ("offstudy_datetime",)
 
-    radio_fields = {"offschedule_reason": admin.VERTICAL}
+    radio_fields = {"offstudy_reason": admin.VERTICAL}
 
     search_fields = ("subject_identifier", "action_identifier", "tracking_identifier")
 
