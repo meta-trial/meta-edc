@@ -40,6 +40,7 @@ def create_missing_offschedule(apps, schema_editor):
         tracking_identifier = TrackingIdentifier(
             identifier_prefix="OX",
             identifier_type="meta_prn.offschedule",
+            site=eos.site,
         ).identifier
         try:
             action_item = action_item_model_cls.objects.get(
