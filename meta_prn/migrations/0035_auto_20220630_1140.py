@@ -10,10 +10,12 @@ from meta_prn.constants import OFFSCHEDULE_ACTION
 
 
 def create_missing_offschedule(apps, schema_editor):
+    site_model_cls = apps.get_model("sites.site")
     eos_model_cls = apps.get_model("meta_prn.endofstudy")
     offschedule_model_cls = apps.get_model("meta_prn.offschedule")
     action_item_model_cls = apps.get_model("edc_action_item.actionitem")
     action_type_model_cls = apps.get_model("edc_action_item.actiontype")
+
     subject_schedule_history_model_cls = apps.get_model(
         "edc_visit_schedule.subjectschedulehistory"
     )
@@ -36,11 +38,12 @@ def create_missing_offschedule(apps, schema_editor):
 
     # create missing offschedule model instances
     for eos in tqdm(qs, total=total):
+        site = site_model_cls.objects.get(id=eos.site.id)
         # create action items model instances
         tracking_identifier = TrackingIdentifier(
             identifier_prefix="OX",
             identifier_type="meta_prn.offschedule",
-            site=eos.site,
+            site=site,
         ).identifier
         try:
             action_item = action_item_model_cls.objects.get(
@@ -71,7 +74,7 @@ def create_missing_offschedule(apps, schema_editor):
             action_item=action_item,
             report_datetime=eos.offschedule_datetime,
             offschedule_datetime=eos.offschedule_datetime,
-            site=eos.site,
+            site=site,
         )
         action_item.status = CLOSED
         action_item.save()
