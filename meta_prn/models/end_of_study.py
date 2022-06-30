@@ -1,51 +1,21 @@
-from arrow import arrow
 from django.db import models
 from edc_action_item.models import ActionModelMixin
 from edc_constants.choices import YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE
 from edc_identifier.model_mixins import TrackingModelMixin
 from edc_model.models import BaseUuidModel
-from edc_model.validators import date_not_future, datetime_not_future
+from edc_model.validators import date_not_future
 from edc_offstudy.constants import END_OF_STUDY_ACTION
-from edc_protocol.validators import (
-    date_not_before_study_start,
-    datetime_not_before_study_start,
-)
 from edc_visit_schedule.model_mixins.schedule_model_mixin import ScheduleModelMixin
 
 from meta_lists.models import OffstudyReasons
 
 from ..choices import CLINICAL_WITHDRAWAL_REASONS, TOXICITY_WITHDRAWAL_REASONS
+from .model_mixins import OffStudyModelMixin
 
 # TODO: confirm all appointments are either new, incomplete or done
 # TODO: take off study meds but coninue followup (WITHDRAWAL)
 # TODO: follow on new schedule, if permanently off drug (Single 36m visit)
-
-
-class OffStudyModelMixin(models.Model):
-
-    offstudy_datetime = models.DateTimeField(
-        verbose_name="Date patient was terminated from the study",
-        validators=[datetime_not_future],
-        blank=False,
-        null=True,
-    )
-
-    def save(self, *args, **kwargs):
-        try:
-            self.offstudy_datetime.date()
-        except AttributeError:
-            dt = self.offstudy_datetime.date()
-            date_not_before_study_start(dt)
-            date_not_future(dt)
-        else:
-            datetime_not_before_study_start(self.offstudy_datetime)
-            datetime_not_future(self.offstudy_datetime)
-        self.report_datetime = self.offstudy_datetime
-        super().save(*args, **kwargs)
-
-    class Meta:
-        abstract = True
 
 
 class EndOfStudy(

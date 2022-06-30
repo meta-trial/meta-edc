@@ -43,7 +43,9 @@ class ScreeningPartTwoFormValidator(FormValidator):
             self.not_applicable_if_true(
                 self.instance.part_three_report_datetime,
                 field_applicable="p3_ltfu",
-                not_applicable_msg="The second stage of screening (P3) has already been started.",
+                not_applicable_msg=(
+                    "The second stage of screening (P3) has already been started."
+                ),
             )
 
         self.required_if(YES, field="p3_ltfu", field_required="p3_ltfu_date")
