@@ -46,7 +46,7 @@ def create_missing_offschedule(apps, schema_editor):
             )
         except ObjectDoesNotExist:
             action_item = action_item_model_cls(
-                action_identifier=ActionIdentifier().identifier,
+                action_identifier=uuid4().hex.upper(),
                 subject_identifier=eos.subject_identifier,
                 action_type=action_type,
                 report_datetime=eos.offschedule_datetime,
