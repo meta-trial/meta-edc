@@ -79,7 +79,7 @@ class BloodResultsRft(
             try:
                 obj = model_cls.objects.get(subject_visit=self.subject_visit)
             except ObjectDoesNotExist:
-                obj = model_cls.objects.create(
+                model_cls.objects.create(
                     subject_visit=self.subject_visit,
                     report_datetime=self.report_datetime,
                     creatinine_date=self.assay_datetime.date(),
@@ -91,10 +91,10 @@ class BloodResultsRft(
                 obj.egfr_percent_change = self.egfr_percent_change
                 obj.creatinine_date = self.assay_datetime.date()
                 obj.save()
-            finally:
-                if obj.report_status != CLOSED:
-                    obj.action_item.status = OPEN
-                    obj.save()
+            # finally:
+            #     if obj.report_status != CLOSED:
+            #         obj.action_item.status = OPEN
+            #         obj.save()
 
     class Meta(CrfWithActionModelMixin.Meta, edc_models.BaseUuidModel.Meta):
         verbose_name = "Blood Result: RFT"
