@@ -1,16 +1,26 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
+from edc_consent.actions import (
+    flag_as_verified_against_paper,
+    unflag_as_verified_against_paper,
+)
 from edc_consent.modeladmin_mixins import ModelAdminConsentMixin
 from edc_identifier import SubjectIdentifierError, is_subject_identifier_or_raise
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
+from edc_pharmacy.exceptions import PrescriptionAlreadyExists
+from edc_pharmacy.models import Medication
+from edc_pharmacy.prescribe import create_prescription
 
+from meta_edc.meta_version import get_meta_version
+from meta_pharmacy.constants import METFORMIN
 from meta_screening.models.subject_screening import SubjectScreening
 from meta_subject.models import SubjectVisit
 
 from ..admin_site import meta_consent_admin
 from ..forms import SubjectConsentForm
 from ..models import SubjectConsent
+from .actions import create_missing_metformin_rx
 
 
 @admin.register(SubjectConsent, site=meta_consent_admin)
@@ -19,6 +29,12 @@ class SubjectConsentAdmin(
 ):
 
     form = SubjectConsentForm
+
+    actions = [
+        flag_as_verified_against_paper,
+        unflag_as_verified_against_paper,
+        create_missing_metformin_rx,
+    ]
 
     fieldsets = (
         (
@@ -104,3 +120,26 @@ class SubjectConsentAdmin(
         except KeyError:
             pass
         return next_options
+
+    @admin.action(permissions=["view"], description="Create missing METFORMIN prescription")
+    def create_missing_metformin_rx(self, request, queryset):
+        medication = Medication.objects.get(name=METFORMIN)
+        subject_identifiers = queryset.values_list("subject_identifier", flat=True)
+        subject_consents_wo_rx = SubjectConsent.objects.filter(
+            subject_identifier__in=subject_identifiers
+        )
+        n = 0
+        for instance in subject_consents_wo_rx:
+            try:
+                create_prescription(
+                    subject_identifier=instance.subject_identifier,
+                    report_datetime=instance.consent_datetime,
+                    randomizer_name=get_meta_version(),
+                    medications=[medication],
+                    site_id=instance.site.id,
+                )
+            except PrescriptionAlreadyExists:
+                pass
+            else:
+                n += 1
+        messages.success(f"Created {n} missing {medication.display_name} prescriptions.")

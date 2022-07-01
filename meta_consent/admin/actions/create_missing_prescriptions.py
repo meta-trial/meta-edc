@@ -11,11 +11,13 @@ from meta_pharmacy.constants import METFORMIN
 @admin.action(permissions=["view"], description="Create missing METFORMIN prescription")
 def create_missing_metformin_rx(modeladmin, request, queryset):
     medication = Medication.objects.get(name=METFORMIN)
+    total = queryset.count()
     subject_identifiers = queryset.values_list("subject_identifier", flat=True)
     subject_consents_wo_rx = SubjectConsent.objects.filter(
         subject_identifier__in=subject_identifiers
     )
-    n = 0
+    created = 0
+    exist = 0
     for instance in subject_consents_wo_rx:
         try:
             create_prescription(
@@ -26,7 +28,11 @@ def create_missing_metformin_rx(modeladmin, request, queryset):
                 site_id=instance.site.id,
             )
         except PrescriptionAlreadyExists:
-            pass
+            exist += 1
         else:
-            n += 1
-    messages.success(f"Created {n} missing {medication.display_name} prescriptions.")
+            created += 1
+    messages.success(
+        request,
+        f"Created {created}/{total} missing {medication.display_name} prescriptions. "
+        f"Got {exist}/{total} prescriptions already exist",
+    )
