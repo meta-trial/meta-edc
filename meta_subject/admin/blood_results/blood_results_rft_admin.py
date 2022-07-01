@@ -11,6 +11,7 @@ from ..modeladmin import CrfModelAdmin
 @admin.register(BloodResultsRft, site=meta_subject_admin)
 class BloodResultsRftAdmin(BloodResultsModelAdminMixin, CrfModelAdmin):
     form = BloodResultsRftForm
+    actions = ["create_or_update_egfr_notification"]
     fieldsets = (
         *BloodResultFieldset(
             BloodResultsRft.lab_panel,
@@ -27,3 +28,8 @@ class BloodResultsRftAdmin(BloodResultsModelAdminMixin, CrfModelAdmin):
     )
 
     readonly_fields = ["egfr_value", "egfr_units", "egfr_percent_change"]
+
+    @admin.action(permissions=["view"], description="Create or update eGFR notification")
+    def create_or_update_egfr_notification(self, request, queryset):
+        for obj in queryset:
+            obj.save()
