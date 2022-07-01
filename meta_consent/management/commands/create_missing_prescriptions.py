@@ -1,4 +1,4 @@
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 from edc_pharmacy.exceptions import PrescriptionAlreadyExists
 from edc_pharmacy.models import Medication, Rx
 from edc_pharmacy.prescribe import create_prescription
@@ -26,7 +26,9 @@ class Command(BaseCommand):
                     report_datetime=instance.consent_datetime,
                     randomizer_name=get_meta_version(),
                     medications=[medication],
-                    site=instance.site,
+                    site_id=instance.site.id,
                 )
             except PrescriptionAlreadyExists:
                 pass
+            except CommandError as e:
+                print(f"Failed for {instance.subject_identifier}. Got {e}")
