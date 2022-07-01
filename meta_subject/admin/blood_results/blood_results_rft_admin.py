@@ -1,10 +1,10 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 from edc_lab_results.admin import BloodResultsModelAdminMixin
 from edc_lab_results.fieldsets import BloodResultFieldset
 
 from ...admin_site import meta_subject_admin
 from ...forms import BloodResultsRftForm
-from ...models import BloodResultsRft
+from ...models import BloodResultsRft, EgfrNotification
 from ..modeladmin import CrfModelAdmin
 
 
@@ -31,5 +31,8 @@ class BloodResultsRftAdmin(BloodResultsModelAdminMixin, CrfModelAdmin):
 
     @admin.action(permissions=["view"], description="Create or update eGFR notification")
     def create_or_update_egfr_notification(self, request, queryset):
+        total = EgfrNotification.objects.all().count()
         for obj in queryset:
             obj.save()
+        new_total = EgfrNotification.objects.all().count()
+        messages.success(request, f"Created {new_total - total} new eGFR notifications.")
