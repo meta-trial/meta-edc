@@ -20,7 +20,6 @@ from meta_subject.models import SubjectVisit
 from ..admin_site import meta_consent_admin
 from ..forms import SubjectConsentForm
 from ..models import SubjectConsent
-from .actions import create_missing_metformin_rx
 
 
 @admin.register(SubjectConsent, site=meta_consent_admin)
@@ -33,7 +32,7 @@ class SubjectConsentAdmin(
     actions = [
         flag_as_verified_against_paper,
         unflag_as_verified_against_paper,
-        create_missing_metformin_rx,
+        "create_missing_metformin_rx",
     ]
 
     fieldsets = (
@@ -124,12 +123,10 @@ class SubjectConsentAdmin(
     @admin.action(permissions=["view"], description="Create missing METFORMIN prescription")
     def create_missing_metformin_rx(self, request, queryset):
         medication = Medication.objects.get(name=METFORMIN)
-        subject_identifiers = queryset.values_list("subject_identifier", flat=True)
-        subject_consents_wo_rx = SubjectConsent.objects.filter(
-            subject_identifier__in=subject_identifiers
-        )
-        n = 0
-        for instance in subject_consents_wo_rx:
+        total = queryset.count()
+        created = 0
+        exist = 0
+        for instance in queryset:
             try:
                 create_prescription(
                     subject_identifier=instance.subject_identifier,
@@ -139,7 +136,11 @@ class SubjectConsentAdmin(
                     site_id=instance.site.id,
                 )
             except PrescriptionAlreadyExists:
-                pass
+                exist += 1
             else:
-                n += 1
-        messages.success(f"Created {n} missing {medication.display_name} prescriptions.")
+                created += 1
+        messages.success(
+            request,
+            f"Created {created}/{total} missing {medication.display_name} prescriptions. "
+            f"Got {exist}/{total} prescriptions already exist",
+        )
