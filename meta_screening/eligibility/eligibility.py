@@ -25,8 +25,7 @@ def get_eligible_as_word(
     reasons_ineligible=None,
 ):
     eligible = TBD
-    if not reasons_ineligible:
-        reasons_ineligible = {}
+    reasons_ineligible = {} if reasons_ineligible is None else reasons_ineligible
     eligible_part_one = obj.eligible_part_one if obj else eligible_part_one
     eligible_part_two = obj.eligible_part_two if obj else eligible_part_two
     eligible_part_three = obj.eligible_part_three if obj else eligible_part_three
@@ -55,8 +54,7 @@ def get_eligible_as_word(
 
 
 def get_display_label(obj):
-    eligible, reasons_ineligible = get_eligible_as_word(obj)
-
+    eligible, _ = get_eligible_as_word(obj)
     if eligible == YES:
         display_label = "ELIGIBLE"
     elif eligible == TBD:
