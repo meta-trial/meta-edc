@@ -59,7 +59,7 @@ def get_display_label(obj):
         display_label = "ELIGIBLE"
     elif eligible == TBD:
         display_label = "PENDING"
-        if EGFR_NOT_CALCULATED in obj.reasons_ineligible:
+        if EGFR_NOT_CALCULATED in (obj.reasons_ineligible or {}):
             display_label = "PENDING (SCR/eGFR)"
         elif "fbg_ogtt_incomplete" in obj.reasons_ineligible:
             display_label = "PENDING (FBG/OGTT)"
