@@ -1,5 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
-from django.test import TestCase
+from django.test import TestCase, tag
 from edc_action_item.models import ActionItem
 from edc_appointment.models import Appointment
 from edc_constants.constants import FEMALE
@@ -7,6 +7,7 @@ from edc_utils import get_utcnow
 from edc_visit_schedule.constants import MONTH1
 from model_bakery.baker import make_recipe
 
+from meta_prn.models import OffSchedulePregnancy
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_visit_schedule.constants import DELIVERY
 
@@ -25,6 +26,7 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
             report_datetime=self.subject_visit.report_datetime,
         )
 
+    @tag("1")
     def test_pregnancy_actions(self):
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         subject_visit = self.get_next_subject_visit(subject_visit)
@@ -59,7 +61,7 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
         )
 
         try:
-            Appointment.objects.get(visit_code=DELIVERY)
+            appointment = Appointment.objects.get(visit_code=DELIVERY)
         except ObjectDoesNotExist:
             self.fail("delivery appointment unexpectedly does not exist")
 
@@ -68,6 +70,7 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
             subject_consent=self.subject_consent,
             visit_code=DELIVERY,
             visit_code_sequence=0,
+            appt_datetime=appointment.appt_datetime,
         )
 
         delivery = make_recipe(
@@ -82,3 +85,14 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
             )
         except ObjectDoesNotExist:
             self.fail("ActionItem for offschedulepregnancy unexpectedly does not exist")
+
+        offschedule_pregancy = OffSchedulePregnancy.objects.get(
+            subject_identifier=delivery.subject_visit.subject_identifier
+        )
+        try:
+            ActionItem.objects.get(
+                parent_action_item__action_identifier=offschedule_pregancy.action_identifier,
+                reference_model="meta_prn.endofstudy",
+            )
+        except ObjectDoesNotExist:
+            self.fail("ActionItem for endofstudy unexpectedly does not exist")

@@ -7,6 +7,7 @@ from edc_action_item import (
     action_fieldset_tuple,
 )
 from edc_crf.fieldset import crf_status_fieldset
+from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
 from edc_form_label import FormLabelModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 
@@ -18,6 +19,7 @@ from .modeladmin import CrfModelAdminMixin
 
 @admin.register(EgfrNotification, site=meta_subject_admin)
 class EgfrNotificationAdmin(
+    DataManagerModelAdminMixin,
     CrfModelAdminMixin,
     FormLabelModelAdminMixin,
     ModelAdminActionItemMixin,
@@ -25,10 +27,6 @@ class EgfrNotificationAdmin(
 ):
 
     form = EgfrNotificationForm
-
-    # additional_instructions = (
-    #     "Important:"
-    # )
 
     fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime")}),
@@ -57,7 +55,7 @@ class EgfrNotificationAdmin(
         "egfr_percent_change",
     )
 
-    list_filter = ("report_status", "report_datetime", "creatinine_date")
+    list_filter = ("site", "report_status", "report_datetime", "creatinine_date")
 
     radio_fields = {"report_status": admin.VERTICAL}
 

@@ -1,8 +1,0 @@
-edc==0.3.70
-edc-qol>=0.1.4
-edc-mnsi>=0.1.6
-edc-he>=0.1.1
-beautifulsoup4
-git+https://github.com/erikvw/django-import-export.git@get_export_admin_action
-edc-pharmacy>=0.1.11
-edc-adherence>=0.1.6

@@ -41,6 +41,7 @@ class MissedVisitAction(Action):
 
     def get_next_actions(self):
         # TODO: define LTFU, 6 months off study medication
+        next_actions = []
         ltfu = None
         if ltfu:
             next_actions = [LTFU_ACTION]

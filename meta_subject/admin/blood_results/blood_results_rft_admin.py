@@ -10,6 +10,7 @@ from ..modeladmin import CrfModelAdmin
 
 @admin.register(BloodResultsRft, site=meta_subject_admin)
 class BloodResultsRftAdmin(BloodResultsModelAdminMixin, CrfModelAdmin):
+
     form = BloodResultsRftForm
     actions = ["create_or_update_egfr_notification"]
     fieldsets = (

@@ -50,24 +50,27 @@ class DeliveryFormValidator(FormValidator):
             < self.cleaned_data.get("delivery_datetime").date()
         ):
             self.raise_validation_error(
-                {
-                    "delivery_datetime": (
-                        "Expected a date on or before the report date/time above"
-                    )
-                },
+                {"delivery_datetime": "Expected a date on or before the report date above"},
                 INVALID_ERROR,
             )
         if (
             self.cleaned_data.get("delivery_datetime")
-            and pregnancy_notification.bhcg_date
-            >= self.cleaned_data.get("delivery_datetime").date()
+            and (
+                pregnancy_notification.bhcg_date
+                or pregnancy_notification.report_datetime.date()
+            )
+            > self.cleaned_data.get("delivery_datetime").date()
         ):
-            dte = formatted_date(pregnancy_notification.bhcg_date)
+            dte = formatted_date(
+                pregnancy_notification.bhcg_date
+                or pregnancy_notification.report_datetime.date()
+            )
+            word = "UPT date" if pregnancy_notification.bhcg_date else "Pregnancy report date"
             self.raise_validation_error(
                 {
                     "delivery_datetime": (
-                        "Expected a date after the UPT date reported on the "
-                        f"{pregnancy_notification._meta.verbose_name}. UPT date was {dte}."
+                        f"Expected a date after the {word} on the "
+                        f"{pregnancy_notification._meta.verbose_name}. {word} was {dte}."
                     )
                 },
                 INVALID_ERROR,

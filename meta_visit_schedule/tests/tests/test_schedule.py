@@ -9,7 +9,7 @@ class TestVisitSchedule(TestCase):
     def test_visit_schedule_models(self):
 
         self.assertEqual(visit_schedule.death_report_model, "meta_ae.deathreport")
-        self.assertEqual(visit_schedule.offstudy_model, "edc_offstudy.subjectoffstudy")
+        self.assertEqual(visit_schedule.offstudy_model, "meta_prn.endofstudy")
         self.assertEqual(visit_schedule.locator_model, "edc_locator.subjectlocator")
 
     def test_schedule_models(self):

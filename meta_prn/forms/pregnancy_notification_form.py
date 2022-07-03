@@ -1,3 +1,4 @@
+from dateutil.relativedelta import relativedelta
 from django import forms
 from django.core.exceptions import ObjectDoesNotExist
 from edc_action_item.forms.action_item_form_mixin import ActionItemFormMixin
@@ -58,10 +59,44 @@ class PregnancyNotificationFormValidator(FormValidator):
                     f"See also PRN CRF {UrinePregnancy._meta.verbose_name}",
                     INVALID_ERROR,
                 )
-        if self.cleaned_data.get("edd") and self.cleaned_data.get(
-            "edd"
-        ) < self.cleaned_data.get("bhcg_date"):
-            self.raise_validation_error({"edd": "Expected a date after the UPT date."})
+        if (
+            self.cleaned_data.get("edd")
+            and self.cleaned_data.get("bhcg_date")
+            and self.cleaned_data.get("edd") < self.cleaned_data.get("bhcg_date")
+        ):
+            self.raise_validation_error(
+                {"edd": "Expected a date after the UPT date."}, INVALID_ERROR
+            )
+        if (
+            self.cleaned_data.get("edd")
+            and self.cleaned_data.get("bhcg_date")
+            and self.cleaned_data.get("edd")
+            > self.cleaned_data.get("bhcg_date") + relativedelta(months=9)
+        ):
+            self.raise_validation_error(
+                {"edd": "Expected a date within 9 months of UPT date."}, INVALID_ERROR
+            )
+
+        # no UPT result
+        if (
+            self.cleaned_data.get("report_datetime")
+            and not self.cleaned_data.get("bhcg_date")
+            and self.cleaned_data.get("bhcg_confirmed") == NO
+        ):
+            if (
+                self.cleaned_data.get("report_datetime")
+                and self.cleaned_data.get("edd")
+                < self.cleaned_data.get("report_datetime").date()
+            ):
+                self.raise_validation_error(
+                    {"edd": "Expected a date after the report date."}, INVALID_ERROR
+                )
+            if self.cleaned_data.get("report_datetime") and self.cleaned_data.get(
+                "edd"
+            ) > self.cleaned_data.get("report_datetime").date() + relativedelta(months=9):
+                self.raise_validation_error(
+                    {"edd": "Expected a date within 9 months of report date."}, INVALID_ERROR
+                )
 
 
 class PregnancyNotificationForm(

@@ -1,9 +1,18 @@
-from edc_constants.constants import DEAD, NONE, OTHER, UNKNOWN
+from edc_constants.constants import (
+    DEAD,
+    DELIVERY,
+    DIABETES,
+    NONE,
+    OTHER,
+    PREGNANCY,
+    TOXICITY,
+    UNKNOWN,
+)
 from edc_ltfu.constants import LOST_TO_FOLLOWUP
+from edc_offstudy.constants import COMPLETED_FOLLOWUP, WITHDRAWAL
 from edc_transfer.constants import TRANSFERRED
 
-from meta_edc.meta_version import PHASE_THREE, get_meta_version
-from meta_prn.constants import LATE_EXCLUSION, OTHER_RX_DISCONTINUATION, WITHDRAWAL
+from meta_prn.constants import CLINICAL_WITHDRAWAL, LATE_EXCLUSION
 
 list_data = {
     "meta_lists.abnormalfootappearanceobservations": [
@@ -131,32 +140,6 @@ list_data = {
         (UNKNOWN, "Unknown"),
         (OTHER, "Other, specify ..."),
     ],
-    "meta_lists.offstudyreasons": [
-        ("completed_followup", "Patient completed 36 months of follow-up"),
-        ("diabetes", "Patient developed diabetes"),
-        ("clinical_withdrawal", "Patient is withdrawn on CLINICAL grounds ..."),
-        ("", ""),
-        ("clinical_endpoint", "Patient reached a clinical endpoint"),
-        ("toxicity", "Patient experienced an unacceptable toxicity"),
-        (
-            "intercurrent_illness",
-            "Intercurrent illness which prevents further treatment",
-        ),
-        (LOST_TO_FOLLOWUP, "Patient lost to follow-up"),
-        (DEAD, "Patient reported/known to have died"),
-        (WITHDRAWAL, "Patient withdrew consent to participate further"),
-        (LATE_EXCLUSION, "Patient fulfilled late exclusion criteria*"),
-        (TRANSFERRED, "Patient has been transferred to another health centre"),
-        (
-            OTHER_RX_DISCONTINUATION,
-            "Other condition that justifies the discontinuation of "
-            "treatment in the clinician’s opinion (specify below)",
-        ),
-        (
-            OTHER,
-            "Other reason (specify below)",
-        ),
-    ],
     "meta_lists.subjectvisitmissedreasons": [
         ("forgot", "Forgot / Can’t remember being told about appointment"),
         ("family_emergency", "Family emergency (e.g. funeral) and was away"),
@@ -166,44 +149,40 @@ list_data = {
         ("lack_of_transport", "Transportation difficulty"),
         (OTHER, "Other reason (specify below)"),
     ],
+    "meta_lists.offstudyreasons": [
+        (COMPLETED_FOLLOWUP, "Patient completed 36 months of follow-up"),
+        (DELIVERY, "Delivered / Completed followup from pregnancy"),
+        (PREGNANCY, "Pregnancy, declined further followup"),
+        (DIABETES, "Patient developed diabetes"),
+        (CLINICAL_WITHDRAWAL, "Patient is withdrawn on CLINICAL grounds ..."),
+        ("clinical_endpoint", "Patient reached a clinical endpoint"),  # see limit_choices_to
+        (
+            TOXICITY,
+            "Patient experienced an unacceptable toxicity",
+        ),
+        (
+            "intercurrent_illness",
+            "Intercurrent illness which prevents further treatment",  # see limit_choices_to
+        ),
+        (LOST_TO_FOLLOWUP, "Patient lost to follow-up"),
+        (DEAD, "Patient reported/known to have died"),
+        (WITHDRAWAL, "Patient withdrew consent to participate further"),
+        (
+            LATE_EXCLUSION,
+            (
+                "Patient fulfilled late exclusion criteria (due to abnormal "
+                "blood values or raised blood pressure at enrolment"
+            ),
+        ),
+        (TRANSFERRED, "Patient has been transferred to another health centre"),
+        (OTHER, "Other reason (specify below)"),
+    ],
+    "meta_lists.transferreasons": [
+        ("moved", "Moved away from the area"),
+        ("unhappy_with_care", "Was unhappy with the care they are receiving"),
+        ("need_specialized_treatment", "Needed more specialist treatment"),
+        ("drug_supply", "Due to drug supply "),
+        ("stigma", "Concerned about stigma"),
+        (OTHER, "Other reason (specify below)"),
+    ],
 }
-if get_meta_version() == PHASE_THREE:
-    # TODO: customize for META PHASE THREE. see updated EoS form for the reasons
-    """
-    4 = Patient experienced an unacceptable toxicity
-        A = Development of lactic acidosis or hyperlactatemia
-        B = Development of hepatomegaly with steatosis
-        C = Other (specify below)
-    """
-
-    list_data.update(
-        {
-            "meta_lists.offstudyreasons": [
-                ("completed_followup", "Patient completed 36 months of follow-up"),
-                ("diabetes", "Patient developed diabetes"),
-                ("clinical_withdrawal", "Patient is withdrawn on CLINICAL grounds ..."),
-                (
-                    "toxicity",
-                    "Patient experienced an unacceptable toxicity, specify below ...",
-                ),
-                ("clinical_endpoint", "Patient reached a clinical endpoint"),
-                ("toxicity", "Patient experienced an unacceptable toxicity"),
-                (
-                    "intercurrent_illness",
-                    "Intercurrent illness which prevents further treatment",
-                ),
-                (LOST_TO_FOLLOWUP, "Patient lost to follow-up"),
-                (DEAD, "Patient reported/known to have died"),
-                (WITHDRAWAL, "Patient withdrew consent to participate further"),
-                (
-                    LATE_EXCLUSION,
-                    (
-                        "Patient fulfilled late exclusion criteria (due to abnormal "
-                        "blood values or raised blood pressure at enrolment"
-                    ),
-                ),
-                (TRANSFERRED, "Patient has been transferred to another health centre"),
-                (OTHER, "Other reason (specify below)"),
-            ]
-        }
-    )
