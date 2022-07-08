@@ -138,7 +138,6 @@ INSTALLED_APPS = [
     "edc_review_dashboard.apps.AppConfig",
     "edc_screening.apps.AppConfig",
     "edc_sites.apps.AppConfig",
-    "edc_stata.apps.AppConfig",
     "edc_subject_dashboard.apps.AppConfig",
     "edc_timepoint.apps.AppConfig",
     "edc_unblinding.apps.AppConfig",
