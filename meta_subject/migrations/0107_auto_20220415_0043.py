@@ -11,6 +11,7 @@ from meta_pharmacy.constants import METFORMIN
 
 def func(apps, schema_editor):
     medication = apps.get_model("edc_pharmacy.medication")._default_manager.get(name=METFORMIN)
+    site_model_cls = apps.get_model("sites.site")
     subject_identifiers = [
         tpl[0]
         for tpl in apps.get_model("edc_pharmacy.rx")._default_manager.values_list(
@@ -20,11 +21,13 @@ def func(apps, schema_editor):
     for subject_consent in apps.get_model(get_consent_model_name())._default_manager.exclude(
         subject_identifier__in=subject_identifiers
     ):
+        site = site_model_cls.objects.get(id=subject_consent.site.id)
         create_prescription(
             subject_identifier=subject_consent.subject_identifier,
             report_datetime=subject_consent.consent_datetime,
             randomizer_name=get_meta_version(),
             medications=[METFORMIN],
+            site_id=site.id,
         )
     for obj in apps.get_model("edc_pharmacy.rx")._default_manager.all():
         obj.medications.clear()

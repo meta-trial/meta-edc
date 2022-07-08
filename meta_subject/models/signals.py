@@ -1,22 +1,15 @@
-from dateutil.relativedelta import relativedelta
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
-from edc_appointment.models import Appointment
 from edc_consent.utils import get_consent_model_cls
 from edc_pharmacy.exceptions import PrescriptionAlreadyExists
 from edc_pharmacy.prescribe import create_prescription
-from edc_visit_schedule import site_visit_schedules
 from edc_visit_schedule.constants import DAY1
 
 from meta_edc.meta_version import get_meta_version
 from meta_pharmacy.constants import METFORMIN
-from meta_visit_schedule.constants import (
-    SCHEDULE_POSTNATAL,
-    SCHEDULE_PREGNANCY,
-    VISIT_SCHEDULE,
-)
+from meta_visit_schedule.constants import SCHEDULE_PREGNANCY
 
 from .delivery import Delivery
 from .study_medication import StudyMedication
@@ -80,13 +73,12 @@ def update_pregnancy_notification_on_delivery_post_save(sender, instance, raw, *
     dispatch_uid="update_schedule_on_delivery_post_save",
 )
 def update_schedule_on_delivery_post_save(sender, instance, raw, **kwargs):
-    """Takes a participant off the SCHEDULE_PREGNANCY schedule and puts them on
-    SCHEDULE_POSTNATAL when delivery form is submitted.
+    """Takes a participant off the SCHEDULE_PREGNANCY schedule when
+    delivery model is submitted.
 
-    - gets last report_datetime of the subject visit for SCHEDULE_PREGNANCY
-    - take_off_schedule SCHEDULE_PREGNANCY using the last visit datetime
-    - put_on_schedule SCHEDULE_POSTNATAL
-    - sets first appointment of SCHEDULE_POSTNATAL to be 36 months from baseline
+    - gets last report_datetime of the subject visit for
+      SCHEDULE_PREGNANCY
+    - automatically submit offschedulepregnancy model
     """
     if not raw:
         offschedule_model_cls = django_apps.get_model("meta_prn.offschedulepregnancy")
@@ -101,25 +93,15 @@ def update_schedule_on_delivery_post_save(sender, instance, raw, **kwargs):
                 .order_by("report_datetime")
                 .last()
             )
-            visit_schedule = site_visit_schedules.get_visit_schedule(
-                visit_schedule_name=VISIT_SCHEDULE
+            delivery = Delivery.objects.get(
+                subject_visit__subject_identifier=instance.subject_identifier,
             )
-            schedule = visit_schedule.schedules.get(SCHEDULE_PREGNANCY)
-            schedule.take_off_schedule(
-                offschedule_datetime=last_subject_visit.report_datetime,
-                subject_identifier=instance.subject_identifier,
+            offschedule_datetime = (
+                delivery.delivery_datetime
+                if delivery.delivery_datetime > last_subject_visit.report_datetime
+                else last_subject_visit.report_datetime
             )
-            schedule = visit_schedule.schedules.get(SCHEDULE_POSTNATAL)
-
-            first_appt_datetime = Appointment.objects.get(
+            offschedule_model_cls.objects.create(
                 subject_identifier=instance.subject_identifier,
-                visit_code=DAY1,
-                visit_code_sequence=0,
-                timepoint=0,
-            ).appt_datetime + relativedelta(months=36)
-
-            schedule.put_on_schedule(
-                onschedule_datetime=last_subject_visit.report_datetime,
-                subject_identifier=instance.subject_identifier,
-                first_appt_datetime=first_appt_datetime,
+                offschedule_datetime=offschedule_datetime,
             )

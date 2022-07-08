@@ -1,13 +1,12 @@
-from edc_constants.constants import NOT_APPLICABLE, OTHER, PATIENT, UNKNOWN
+from edc_constants.constants import NOT_APPLICABLE, OTHER, PATIENT, PREGNANCY, UNKNOWN
 
-from .constants import CLINICIAN, INVESTIGATOR, PREGNANCY, SAE
+from .constants import CLINICIAN, INVESTIGATOR, SAE
 
 CLINICAL_WITHDRAWAL_REASONS = (
-    ("pregnancy", "Pregnancy"),
     ("kidney_disease", "Development of chronic kidney disease"),
     ("liver_disease", "Development of chronic liver disease"),
     ("intercurrent_illness", "Intercurrent illness which prevents further treatment"),
-    ("investigator_decision", "Investigator decision"),
+    ("investigator_decision", "Investigator decision (specify below)"),
     (
         OTHER,
         (
@@ -15,6 +14,7 @@ CLINICAL_WITHDRAWAL_REASONS = (
             "treatment in the clinician’s opinion (specify below)"
         ),
     ),
+    (NOT_APPLICABLE, "Not applicable"),
 )
 
 
@@ -33,7 +33,8 @@ INFORMANT_RELATIONSHIP = (
 TOXICITY_WITHDRAWAL_REASONS = (
     ("lactic_acidosis", "Development of lactic acidosis or hyperlactatemia"),
     ("hepatomegaly", "Development of hepatomegaly with steatosis"),
-    (OTHER, "Other (specify below)"),
+    (OTHER, "Other toxicity (specify below)"),
+    (NOT_APPLICABLE, "Not applicable"),
 )
 
 LOSS_CHOICES = (

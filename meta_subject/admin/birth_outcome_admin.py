@@ -20,7 +20,7 @@ class BirthOutcomesAdmin(
     form = BirthOutcomesForm
 
     fieldsets = (
-        (None, {"fields": ("subject_visit", "report_datetime")}),
+        (None, {"fields": ("delivery", "report_datetime")}),
         (
             "Birth Outcome",
             {
@@ -35,7 +35,6 @@ class BirthOutcomesAdmin(
     )
 
     list_display = (
-        "subject_visit",
         "delivery_report",
         "dashboard",
         "birth_order",
@@ -52,7 +51,7 @@ class BirthOutcomesAdmin(
     }
 
     search_fields = (
-        "subject_visit__subject_identifier",
+        "delivery__action_identifier__subject_visit__subject_identifier",
         "delivery__action_identifier",
         "delivery__tracking_identifier",
     )

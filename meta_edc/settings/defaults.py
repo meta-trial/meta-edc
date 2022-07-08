@@ -138,6 +138,7 @@ INSTALLED_APPS = [
     "edc_review_dashboard.apps.AppConfig",
     "edc_screening.apps.AppConfig",
     "edc_sites.apps.AppConfig",
+    "edc_stata.apps.AppConfig",
     "edc_subject_dashboard.apps.AppConfig",
     "edc_timepoint.apps.AppConfig",
     "edc_unblinding.apps.AppConfig",
@@ -466,8 +467,8 @@ DATA_DICTIONARY_APP_LABELS = [
 EDC_PROTOCOL = env.str("EDC_PROTOCOL")
 EDC_PROTOCOL_INSTITUTION_NAME = env.str("EDC_PROTOCOL_INSTITUTION_NAME")
 EDC_PROTOCOL_NUMBER = env.str("EDC_PROTOCOL_NUMBER")
-EDC_PROTOCOL_PROJECT_NAME = env.str("EDC_PROTOCOL_PROJECT_NAME")
-EDC_PROTOCOL_PROJECT_NAME = "META3" if META_PHASE == 3 else "META2"
+# EDC_PROTOCOL_PROJECT_NAME = env.str("EDC_PROTOCOL_PROJECT_NAME")
+EDC_PROTOCOL_PROJECT_NAME = "META3"
 EDC_PROTOCOL_STUDY_OPEN_DATETIME = get_datetime_from_env(
     *env.list("EDC_PROTOCOL_STUDY_OPEN_DATETIME")
 )

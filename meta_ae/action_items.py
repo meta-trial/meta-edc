@@ -22,6 +22,7 @@ from edc_notification.utils import get_email_contacts
 from edc_reportable import GRADE3, GRADE4, GRADE5
 from edc_visit_schedule.utils import get_offschedule_models
 
+from meta_prn.constants import OFFSTUDY_MEDICATION_ACTION
 from meta_prn.pregnancy_mixin import PregnancyMixin
 from meta_subject.constants import FOLLOWUP_EXAMINATION_ACTION
 
@@ -215,7 +216,9 @@ class DeathReportAction(PregnancyMixin, ActionWithNotification):
         try:
             off_schedule_cls.objects.get(subject_identifier=self.subject_identifier)
         except ObjectDoesNotExist:
-            next_actions.append(self.get_next_offschedule_action())
+            next_actions.extend(
+                [self.get_next_offschedule_action(), OFFSTUDY_MEDICATION_ACTION]
+            )
         return next_actions
 
 
@@ -253,7 +256,7 @@ class DeathReportTmgAction(ActionWithNotification):
         return self.reference_obj.report_status == CLOSED
 
     def get_next_actions(self):
-        """Returns an second DeathReportTmgAction if the
+        """Returns a second DeathReportTmgAction if the
         submitted report does not match the cause of death
         of the original death report.
 

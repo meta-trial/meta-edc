@@ -33,7 +33,7 @@ class Delivery(
     CrfWithActionModelMixin,
     edc_models.BaseUuidModel,
 ):
-    """form 25
+    """A user model to capture delivery and birth outcomes.
 
     See also in signals `update_pregnancy_notification_on_delivery_post_save`
     """

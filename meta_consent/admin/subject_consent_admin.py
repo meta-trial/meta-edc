@@ -1,10 +1,19 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
+from edc_consent.actions import (
+    flag_as_verified_against_paper,
+    unflag_as_verified_against_paper,
+)
 from edc_consent.modeladmin_mixins import ModelAdminConsentMixin
 from edc_identifier import SubjectIdentifierError, is_subject_identifier_or_raise
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
+from edc_pharmacy.exceptions import PrescriptionAlreadyExists
+from edc_pharmacy.models import Medication
+from edc_pharmacy.prescribe import create_prescription
 
+from meta_edc.meta_version import get_meta_version
+from meta_pharmacy.constants import METFORMIN
 from meta_screening.models.subject_screening import SubjectScreening
 from meta_subject.models import SubjectVisit
 
@@ -19,6 +28,12 @@ class SubjectConsentAdmin(
 ):
 
     form = SubjectConsentForm
+
+    actions = [
+        flag_as_verified_against_paper,
+        unflag_as_verified_against_paper,
+        "create_missing_metformin_rx",
+    ]
 
     fieldsets = (
         (
@@ -104,3 +119,28 @@ class SubjectConsentAdmin(
         except KeyError:
             pass
         return next_options
+
+    @admin.action(permissions=["view"], description="Create missing METFORMIN prescription")
+    def create_missing_metformin_rx(self, request, queryset):
+        medication = Medication.objects.get(name=METFORMIN)
+        total = queryset.count()
+        created = 0
+        exist = 0
+        for instance in queryset:
+            try:
+                create_prescription(
+                    subject_identifier=instance.subject_identifier,
+                    report_datetime=instance.consent_datetime,
+                    randomizer_name=get_meta_version(),
+                    medications=[medication],
+                    site_id=instance.site.id,
+                )
+            except PrescriptionAlreadyExists:
+                exist += 1
+            else:
+                created += 1
+        messages.success(
+            request,
+            f"Created {created}/{total} missing {medication.display_name} prescriptions. "
+            f"Got {exist}/{total} prescriptions already exist",
+        )
