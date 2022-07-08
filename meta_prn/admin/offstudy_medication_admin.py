@@ -7,16 +7,16 @@ from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
 from ..admin_site import meta_prn_admin
-from ..forms import OffStudyMedicationForm
-from ..models import OffStudyMedication
+from ..forms import OffstudyMedicationForm
+from ..models import OffstudyMedication
 
 
-@admin.register(OffStudyMedication, site=meta_prn_admin)
-class OffStudyMedicationAdmin(
+@admin.register(OffstudyMedication, site=meta_prn_admin)
+class OffstudyMedicationAdmin(
     DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
 ):
 
-    form = OffStudyMedicationForm
+    form = OffstudyMedicationForm
 
     fieldsets = (
         (None, {"fields": ("subject_identifier", "report_datetime")}),

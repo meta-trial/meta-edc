@@ -1,8 +1,8 @@
 Changes
 =======
 
-unreleased
-----------
+0.1.86
+------
 - add off study medication form and action item, remove
   questions on medication pause
 - add subject transfer form
@@ -12,6 +12,7 @@ unreleased
   from supporting documents, separate out toxicity reasons, etc
 - update linkages between actions
 - remove post natal schedule
+- bump edc 0.3.94
 
 0.1.85
 ------

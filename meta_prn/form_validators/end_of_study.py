@@ -10,7 +10,7 @@ from edc_adverse_event.form_validator_mixins import (
     RequiresDeathReportFormValidatorMixin,
 )
 from edc_consent.constants import CONSENT_WITHDRAWAL
-from edc_constants.constants import DEAD, DELIVERY, PREGNANCY
+from edc_constants.constants import DEAD, DELIVERY, OTHER, PREGNANCY, TOXICITY
 from edc_form_validators import INVALID_ERROR, FormValidator
 from edc_ltfu.constants import LOST_TO_FOLLOWUP, LTFU
 from edc_ltfu.modelform_mixins import RequiresLtfuFormValidatorMixin
@@ -20,7 +20,11 @@ from edc_transfer.constants import TRANSFERRED
 from edc_utils import formatted_date
 from edc_visit_schedule.constants import MONTH36
 
-from ..constants import INVESTIGATOR_DECISION, WITHDRAWAL_STUDY_MEDICATION_ACTION
+from ..constants import (
+    CLINICAL_WITHDRAWAL,
+    INVESTIGATOR_DECISION,
+    OFFSTUDY_MEDICATION_ACTION,
+)
 
 
 class EndOfStudyFormValidator(
@@ -39,17 +43,6 @@ class EndOfStudyFormValidator(
 
         self.validate_completed_36m()
 
-        self.required_if(
-            LOST_TO_FOLLOWUP,
-            field="offstudy_reason",
-            field_required="ltfu_date",
-        )
-        if (
-            self.cleaned_data.get("offstudy_reason")
-            and self.cleaned_data.get("offstudy_reason").name == LTFU
-        ):
-            self.validate_ltfu()
-
         self.required_if(DEAD, field="offstudy_reason", field_required="death_date")
         self.validate_death_report_if_deceased()
 
@@ -62,28 +55,38 @@ class EndOfStudyFormValidator(
         self.required_if(TRANSFERRED, field="offstudy_reason", field_required="transfer_date")
         self.validate_transfer()
 
-        self.required_if(
-            INVESTIGATOR_DECISION,
-            "offstudy_reason",
-            field_required="investigator_decision",
+        self.required_if(LTFU, field="offstudy_reason", field_required="ltfu_date")
+        self.validate_ltfu()
+
+        self.applicable_if(
+            TOXICITY, field="offstudy_reason", field_applicable="toxicity_withdrawal_reason"
+        )
+        self.validate_other_specify(
+            field="toxicity_withdrawal_reason",
+            other_specify_field="toxicity_withdrawal_reason_other",
+        )
+
+        self.applicable_if(
+            CLINICAL_WITHDRAWAL,
+            field="offstudy_reason",
+            field_applicable="clinical_withdrawal_reason",
+        )
+
+        self.validate_other_specify(
+            other_stored_value=INVESTIGATOR_DECISION,
+            field="clinical_withdrawal_reason",
+            other_specify_field="clinical_withdrawal_investigator_decision",
+        )
+
+        self.validate_other_specify(
+            field="clinical_withdrawal_reason",
+            other_specify_field="clinical_withdrawal_reason_other",
         )
 
         self.required_if(
             CONSENT_WITHDRAWAL,
             field="offstudy_reason",
             field_required="consent_withdrawal_reason",
-        )
-
-        self.required_if(
-            "included_in_error",
-            field="offstudy_reason",
-            field_required="included_in_error",
-        )
-
-        self.required_if(
-            "included_in_error",
-            field="offstudy_reason",
-            field_required="included_in_error_date",
         )
 
     def validate_completed_36m(self):
@@ -199,7 +202,7 @@ class EndOfStudyFormValidator(
                 subject_identifier=self.subject_identifier
             )
         except ObjectDoesNotExist:
-            action_type = ActionType.objects.get(name=WITHDRAWAL_STUDY_MEDICATION_ACTION)
+            action_type = ActionType.objects.get(name=OFFSTUDY_MEDICATION_ACTION)
             url = reverse("edc_action_item_admin:edc_action_item_actionitem_add")
             data = dict(
                 subject_identifier=self.subject_identifier,
@@ -214,7 +217,7 @@ class EndOfStudyFormValidator(
 
             self.raise_validation_error(
                 format_html(
-                    "Participant is reported to be on study medication. Complete form for an"
+                    "Participant is reported to be on study medication. Complete "
                     f'<a href="{url}?{query_string}" title="Add new form">'
                     f"{off_study_medication_model_cls._meta.verbose_name}</A> PRN action and try again."
                 ),

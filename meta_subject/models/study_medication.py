@@ -1,10 +1,6 @@
-from django.core.validators import RegexValidator
 from django.db import models
 from edc_model import models as edc_models
-from edc_model.validators import date_not_future
 from edc_pharmacy.models import StudyMedicationCrfModelMixin
-from edc_protocol.validators import date_not_before_study_start
-from edc_utils import get_utcnow
 
 from ..model_mixins import CrfModelMixin
 

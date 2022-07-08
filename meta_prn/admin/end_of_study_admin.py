@@ -1,8 +1,11 @@
+from dateutil.relativedelta import relativedelta
 from django.contrib import admin
 from edc_action_item import action_fieldset_tuple
 from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
+
+from meta_consent.models import SubjectConsent
 
 from ..admin_site import meta_prn_admin
 from ..forms import EndOfStudyForm
@@ -18,14 +21,7 @@ class EndOfStudyAdmin(
 
     form = EndOfStudyForm
 
-    # additional_instructions = (
-    #     "Note: if the patient is <i>deceased</i>, complete form "
-    #     f"`{DeathReport._meta.verbose_name}` before completing this form. "
-    #     "<BR>If the patient is </i>lost to follow up</i>, complete form "
-    #     f"`{LossToFollowup._meta.verbose_name}` before completing this form."
-    #     "<BR>If the patient is </i>transferred</i>, complete form "
-    #     f"`{SubjectTransfer._meta.verbose_name}` before completing this form."
-    # )
+    date_hierarchy = "offstudy_datetime"
 
     fieldsets = (
         [
@@ -97,3 +93,32 @@ class EndOfStudyAdmin(
         "clinical_withdrawal_reason": admin.VERTICAL,
         "toxicity_withdrawal_reason": admin.VERTICAL,
     }
+
+    search_fields = ["subject_identifier"]
+
+    list_filter = ["offstudy_reason", "last_seen_date"]
+
+    list_display = [
+        "subject_identifier",
+        "terminated",
+        "last_seen",
+        "months",
+        "reason",
+    ]
+
+    @admin.display(description="terminated", ordering="offstudy_datetime")
+    def terminated(self, obj):
+        return obj.offstudy_datetime.date()
+
+    @admin.display(description="last_seen", ordering="last_seen_date")
+    def last_seen(self, obj):
+        return obj.last_seen_date
+
+    @admin.display(description="reason", ordering="offstudy_reason")
+    def reason(self, obj):
+        return obj.offstudy_reason
+
+    @admin.display(description="months")
+    def months(self, obj):
+        subject_consent = SubjectConsent.objects.get(subject_identifier=obj.subject_identifier)
+        return relativedelta(obj.offstudy_datetime, subject_consent.consent_datetime).months

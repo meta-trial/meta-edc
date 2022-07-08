@@ -37,7 +37,6 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
             pass
         self.assertEqual({}, form._errors)
 
-    @tag("1")
     def test_egfr_drop(self):
         self.data.update(creatinine_value=1.1, creatinine_units=MILLIGRAMS_PER_DECILITER)
         obj_1000 = BloodResultsRft.objects.create(**self.data)

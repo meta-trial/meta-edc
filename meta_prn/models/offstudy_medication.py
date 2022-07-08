@@ -1,21 +1,19 @@
 from django.db import models
 from edc_action_item.models import ActionModelMixin
-from edc_constants.choices import YES_NO
 from edc_identifier.model_mixins import (
     NonUniqueSubjectIdentifierFieldMixin,
     TrackingModelMixin,
 )
 from edc_model import models as edc_models
 from edc_model.models import OtherCharField
-from edc_model.validators import date_is_future
 from edc_sites.models import SiteModelMixin
 from edc_utils import get_utcnow
 
 from ..choices import WITHDRAWAL_STUDY_MEDICATION_REASONS
-from ..constants import WITHDRAWAL_STUDY_MEDICATION_ACTION
+from ..constants import OFFSTUDY_MEDICATION_ACTION
 
 
-class OffStudyMedication(
+class OffstudyMedication(
     NonUniqueSubjectIdentifierFieldMixin,
     SiteModelMixin,
     ActionModelMixin,
@@ -23,7 +21,7 @@ class OffStudyMedication(
     edc_models.BaseUuidModel,
 ):
 
-    action_name = WITHDRAWAL_STUDY_MEDICATION_ACTION
+    action_name = OFFSTUDY_MEDICATION_ACTION
 
     tracking_identifier_prefix = "WM"
 

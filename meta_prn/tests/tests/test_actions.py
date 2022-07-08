@@ -26,7 +26,6 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
             report_datetime=self.subject_visit.report_datetime,
         )
 
-    @tag("1")
     def test_pregnancy_actions(self):
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         subject_visit = self.get_next_subject_visit(subject_visit)

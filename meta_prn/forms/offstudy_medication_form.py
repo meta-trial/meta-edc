@@ -4,14 +4,14 @@ from edc_form_validators.form_validator import FormValidator
 from edc_form_validators.form_validator_mixin import FormValidatorMixin
 from edc_sites.forms import SiteModelFormMixin
 
-from ..models import OffStudyMedication
+from ..models import OffstudyMedication
 
 
 class OffScheduleFormValidator(FormValidator):
     pass
 
 
-class OffStudyMedicationForm(
+class OffstudyMedicationForm(
     SiteModelFormMixin,
     FormValidatorMixin,
     ActionItemFormMixin,
@@ -27,5 +27,5 @@ class OffStudyMedicationForm(
     )
 
     class Meta:
-        model = OffStudyMedication
+        model = OffstudyMedication
         fields = "__all__"

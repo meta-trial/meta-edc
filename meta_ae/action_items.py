@@ -22,7 +22,7 @@ from edc_notification.utils import get_email_contacts
 from edc_reportable import GRADE3, GRADE4, GRADE5
 from edc_visit_schedule.utils import get_offschedule_models
 
-from meta_prn.constants import WITHDRAWAL_STUDY_MEDICATION_ACTION
+from meta_prn.constants import OFFSTUDY_MEDICATION_ACTION
 from meta_prn.pregnancy_mixin import PregnancyMixin
 from meta_subject.constants import FOLLOWUP_EXAMINATION_ACTION
 
@@ -217,7 +217,7 @@ class DeathReportAction(PregnancyMixin, ActionWithNotification):
             off_schedule_cls.objects.get(subject_identifier=self.subject_identifier)
         except ObjectDoesNotExist:
             next_actions.extend(
-                [self.get_next_offschedule_action(), WITHDRAWAL_STUDY_MEDICATION_ACTION]
+                [self.get_next_offschedule_action(), OFFSTUDY_MEDICATION_ACTION]
             )
         return next_actions
 

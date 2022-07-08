@@ -17,10 +17,10 @@ from meta_subject.constants import DELIVERY_ACTION, URINE_PREGNANCY_ACTION
 from .constants import (
     OFFSCHEDULE_ACTION,
     OFFSCHEDULE_PREGNANCY_ACTION,
+    OFFSTUDY_MEDICATION_ACTION,
     PREGNANCY_NOTIFICATION_ACTION,
     UNBLINDING_REQUEST_ACTION,
     UNBLINDING_REVIEW_ACTION,
-    WITHDRAWAL_STUDY_MEDICATION_ACTION,
 )
 from .pregnancy_mixin import PregnancyMixin
 
@@ -48,9 +48,9 @@ class OffscheduleAction(ActionWithNotification):
         )
 
         if pregnancy_notification and pregnancy_notification.may_contact in [YES, NOT_SURE]:
-            next_actions = [WITHDRAWAL_STUDY_MEDICATION_ACTION]
+            next_actions = [OFFSTUDY_MEDICATION_ACTION]
         else:
-            next_actions = [WITHDRAWAL_STUDY_MEDICATION_ACTION, END_OF_STUDY_ACTION]
+            next_actions = [OFFSTUDY_MEDICATION_ACTION, END_OF_STUDY_ACTION]
         return next_actions
 
 
@@ -103,7 +103,7 @@ class LossToFollowupAction(PregnancyMixin, ActionWithNotification):
     singleton = True
 
     def get_next_actions(self):
-        next_actions = [self.get_next_offschedule_action(), WITHDRAWAL_STUDY_MEDICATION_ACTION]
+        next_actions = [self.get_next_offschedule_action(), OFFSTUDY_MEDICATION_ACTION]
         return next_actions
 
 
@@ -119,8 +119,8 @@ class PregnancyNotificationAction(ActionWithNotification):
     priority = HIGH_PRIORITY
 
 
-class WithdrawalStudyMedicationAction(ActionWithNotification):
-    name = WITHDRAWAL_STUDY_MEDICATION_ACTION
+class OffstudyMedicationAction(ActionWithNotification):
+    name = OFFSTUDY_MEDICATION_ACTION
     display_name = "Withdrawal Study Medication"
     notification_display_name = "Withdrawal Study Medication"
     parent_action_names = [
@@ -188,7 +188,7 @@ class SubjectTransferAction(PregnancyMixin, BaseSubjectTransferAction):
     admin_site_name = "meta_prn_admin"
 
     def get_next_actions(self):
-        return [self.get_next_offschedule_action(), WITHDRAWAL_STUDY_MEDICATION_ACTION]
+        return [self.get_next_offschedule_action(), OFFSTUDY_MEDICATION_ACTION]
 
 
 class ProtocolIncidentAction(BaseProtocolIncidentAction):
@@ -205,4 +205,4 @@ site_action_items.register(ProtocolIncidentAction)
 site_action_items.register(SubjectTransferAction)
 site_action_items.register(UnblindingRequestAction)
 site_action_items.register(UnblindingReviewAction)
-site_action_items.register(WithdrawalStudyMedicationAction)
+site_action_items.register(OffstudyMedicationAction)
