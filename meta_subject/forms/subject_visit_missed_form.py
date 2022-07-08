@@ -1,7 +1,7 @@
 from django import forms
 from edc_constants.constants import NO, NOT_APPLICABLE, OTHER, YES
 from edc_crf.modelform_mixins import CrfModelFormMixin
-from edc_form_validators import FormValidator
+from edc_form_validators import INVALID_ERROR, FormValidator
 
 from ..models import SubjectVisitMissed
 
@@ -17,16 +17,16 @@ class SubjectVisitMissedFormValidator(FormValidator):
                 "contact_attempts_explained"
             ):
 
-                raise forms.ValidationError(
-                    {"contact_attempts_explained": "This field is not required"}
+                self.raise_validation_error(
+                    {"contact_attempts_explained": "This field is not required"}, INVALID_ERROR
                 )
             if (
                 self.cleaned_data.get("contact_attempts_count")
                 and self.cleaned_data.get("contact_attempts_count") < 3
                 and not self.cleaned_data.get("contact_attempts_explained")
             ):
-                raise forms.ValidationError(
-                    {"contact_attempts_explained": "This field is required"}
+                self.raise_validation_error(
+                    {"contact_attempts_explained": "This field is required"}, INVALID_ERROR
                 )
 
             if (
@@ -34,8 +34,8 @@ class SubjectVisitMissedFormValidator(FormValidator):
                 and self.cleaned_data.get("contact_attempts_count") >= 3
                 and self.cleaned_data.get("contact_attempts_explained")
             ):
-                raise forms.ValidationError(
-                    {"contact_attempts_explained": "This field is not required"}
+                self.raise_validation_error(
+                    {"contact_attempts_explained": "This field is not required"}, INVALID_ERROR
                 )
 
         self.required_if(YES, field="contact_attempted", field_required="contact_last_date")
