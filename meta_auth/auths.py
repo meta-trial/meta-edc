@@ -45,10 +45,18 @@ from edc_randomization.auth_objects import RANDO_BLINDED, RANDO_UNBLINDED
 from edc_screening.auth_objects import SCREENING, SCREENING_VIEW
 from edc_unblinding.auth_objects import UNBLINDING_REQUESTORS
 
-from .auth_objects import META_AUDITOR, META_CLINIC, META_CLINIC_SUPER, clinic_codenames
+from .auth_objects import (
+    META_AUDITOR,
+    META_CLINIC,
+    META_CLINIC_SUPER,
+    clinic_auditor_codenames,
+    clinic_codenames,
+)
 
 # meta groups
-site_auths.add_group(*clinic_codenames, name=META_AUDITOR, view_only=True)
+site_auths.add_group(
+    *clinic_codenames, *clinic_auditor_codenames, name=META_AUDITOR, view_only=True
+)
 site_auths.add_group(*clinic_codenames, name=META_CLINIC, no_delete=True)
 site_auths.add_group(*clinic_codenames, name=META_CLINIC_SUPER)
 

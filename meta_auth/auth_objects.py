@@ -7,6 +7,7 @@ META_EXPORT = "META_EXPORT"
 
 clinic_codenames = []
 autocomplete_models = []
+clinic_auditor_codenames = []
 
 
 for app_config in django_apps.get_app_configs():
@@ -16,6 +17,9 @@ for app_config in django_apps.get_app_configs():
         for model_cls in app_config.get_models():
             for prefix in ["view"]:
                 clinic_codenames.append(
+                    f"{app_config.name}.{prefix}_{model_cls._meta.model_name}"
+                )
+                clinic_auditor_codenames.append(
                     f"{app_config.name}.{prefix}_{model_cls._meta.model_name}"
                 )
 
@@ -28,6 +32,9 @@ for app_config in django_apps.get_app_configs():
         for model_cls in app_config.get_models():
             if "historical" in model_cls._meta.label_lower:
                 clinic_codenames.append(f"{app_config.name}.view_{model_cls._meta.model_name}")
+                clinic_auditor_codenames.append(
+                    f"{app_config.name}.view_{model_cls._meta.model_name}"
+                )
             elif model_cls._meta.label_lower in autocomplete_models:
                 clinic_codenames.append(f"{app_config.name}.view_{model_cls._meta.model_name}")
             else:
@@ -36,7 +43,6 @@ for app_config in django_apps.get_app_configs():
                         f"{app_config.name}.{prefix}{model_cls._meta.model_name}"
                     )
 clinic_codenames.sort()
-
 
 ae_local_reviewer = [
     "meta_subject.add_aelocalreview",
