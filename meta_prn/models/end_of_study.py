@@ -109,11 +109,17 @@ class EndOfStudy(
         validators=[date_not_future],
         blank=True,
         null=True,
-        help_text="A Delivery CRF must be on file. Use delivery date, if reported, or report date from Delivery CRF",
+        help_text=(
+            "A Delivery CRF must be on file. Use delivery date, "
+            "if reported, or report date from Delivery CRF"
+        ),
     )
 
     clinical_withdrawal_reason = models.CharField(
-        verbose_name="If the patient was withdrawn on CLINICAL grounds, please specify PRIMARY reason",
+        verbose_name=(
+            "If the patient was withdrawn on CLINICAL grounds, "
+            "please specify PRIMARY reason"
+        ),
         max_length=25,
         choices=CLINICAL_WITHDRAWAL_REASONS,
         default=NOT_APPLICABLE,

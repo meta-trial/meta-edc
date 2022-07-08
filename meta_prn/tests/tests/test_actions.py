@@ -1,5 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
-from django.test import TestCase, tag
+from django.test import TestCase
 from edc_action_item.models import ActionItem
 from edc_appointment.models import Appointment
 from edc_constants.constants import FEMALE
@@ -26,7 +26,7 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
             report_datetime=self.subject_visit.report_datetime,
         )
 
-    def test_pregnancy_actions(self):
+    def test_pregnancy_actions(self):  # noqa
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         subject_visit = self.get_next_subject_visit(subject_visit)
         self.assertEqual(subject_visit.visit_code, MONTH1)

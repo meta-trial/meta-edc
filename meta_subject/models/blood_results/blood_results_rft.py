@@ -1,7 +1,7 @@
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models, transaction
-from edc_constants.constants import CLOSED, NEW, OPEN
+from edc_constants.constants import NEW
 from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
 from edc_lab.model_mixins import CrfWithRequisitionModelMixin
 from edc_lab_panel.panels import rft_panel

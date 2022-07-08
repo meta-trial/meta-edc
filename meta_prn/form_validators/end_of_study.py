@@ -10,9 +10,9 @@ from edc_adverse_event.form_validator_mixins import (
     RequiresDeathReportFormValidatorMixin,
 )
 from edc_consent.constants import CONSENT_WITHDRAWAL
-from edc_constants.constants import DEAD, DELIVERY, OTHER, PREGNANCY, TOXICITY
+from edc_constants.constants import DEAD, DELIVERY, PREGNANCY, TOXICITY
 from edc_form_validators import INVALID_ERROR, FormValidator
-from edc_ltfu.constants import LOST_TO_FOLLOWUP, LTFU
+from edc_ltfu.constants import LTFU
 from edc_ltfu.modelform_mixins import RequiresLtfuFormValidatorMixin
 from edc_offstudy.constants import COMPLETED_FOLLOWUP
 from edc_offstudy.utils import OffstudyError, off_all_schedules_or_raise
@@ -126,7 +126,8 @@ class EndOfStudyFormValidator(
                 self.raise_validation_error(
                     {
                         "offstudy_reason": (
-                            f"Invalid. {delivery_model_cls._meta.verbose_name} has been submitted."
+                            f"Invalid. {delivery_model_cls._meta.verbose_name} "
+                            "has been submitted."
                         )
                     },
                     INVALID_ERROR,
@@ -139,7 +140,8 @@ class EndOfStudyFormValidator(
                 self.raise_validation_error(
                     {
                         "offstudy_reason": (
-                            f"Invalid. {pregnancy_notification_model_cls._meta.verbose_name} has not been submitted."
+                            f"Invalid. {pregnancy_notification_model_cls._meta.verbose_name} "
+                            "has not been submitted."
                         )
                     },
                     INVALID_ERROR,
@@ -153,7 +155,8 @@ class EndOfStudyFormValidator(
                         {
                             "pregnancy_date": (
                                 "Invalid. Does not match date on "
-                                f"{pregnancy_notification_model_cls._meta.verbose_name}. Expected {dt}."
+                                f"{pregnancy_notification_model_cls._meta.verbose_name}. "
+                                f"Expected {dt}."
                             )
                         },
                         INVALID_ERROR,
@@ -173,7 +176,8 @@ class EndOfStudyFormValidator(
                 self.raise_validation_error(
                     {
                         "offstudy_reason": (
-                            f"Invalid. {delivery_model_cls._meta.verbose_name} has not been submitted."
+                            f"Invalid. {delivery_model_cls._meta.verbose_name} "
+                            "has not been submitted."
                         )
                     },
                     INVALID_ERROR,
@@ -189,7 +193,8 @@ class EndOfStudyFormValidator(
                         {
                             "delivery_date": (
                                 "Invalid. Does not match date on "
-                                f"{delivery_model_cls._meta.verbose_name}. Expected {dt}."
+                                f"{delivery_model_cls._meta.verbose_name}. "
+                                f"Expected {dt}."
                             )
                         },
                         INVALID_ERROR,
@@ -219,7 +224,8 @@ class EndOfStudyFormValidator(
                 format_html(
                     "Participant is reported to be on study medication. Complete "
                     f'<a href="{url}?{query_string}" title="Add new form">'
-                    f"{off_study_medication_model_cls._meta.verbose_name}</A> PRN action and try again."
+                    f"{off_study_medication_model_cls._meta.verbose_name}</A> "
+                    "PRN action and try again."
                 ),
                 INVALID_ERROR,
             )
@@ -259,7 +265,8 @@ class EndOfStudyFormValidator(
                 self.raise_validation_error(
                     {
                         "offstudy_reason": (
-                            f"Invalid. {transfer_model_cls._meta.verbose_name} has not been submitted."
+                            f"Invalid. {transfer_model_cls._meta.verbose_name} "
+                            "has not been submitted."
                         )
                     },
                     INVALID_ERROR,

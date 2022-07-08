@@ -26,6 +26,10 @@ class PregnancyNotificationFormValidator(FormValidator):
 
         self.required_if(NO, field="bhcg_confirmed", field_required="unconfirmed_details")
         self.required_if(YES, field="bhcg_confirmed", field_required="bhcg_date")
+        self.validate_bhcg()
+        self.validate_edd()
+
+    def validate_bhcg(self):
         if (
             self.cleaned_data.get("bhcg_date")
             and self.cleaned_data.get("report_datetime")
@@ -59,6 +63,8 @@ class PregnancyNotificationFormValidator(FormValidator):
                     f"See also PRN CRF {UrinePregnancy._meta.verbose_name}",
                     INVALID_ERROR,
                 )
+
+    def validate_edd(self):
         if (
             self.cleaned_data.get("edd")
             and self.cleaned_data.get("bhcg_date")
@@ -76,8 +82,6 @@ class PregnancyNotificationFormValidator(FormValidator):
             self.raise_validation_error(
                 {"edd": "Expected a date within 9 months of UPT date."}, INVALID_ERROR
             )
-
-        # no UPT result
         if (
             self.cleaned_data.get("report_datetime")
             and not self.cleaned_data.get("bhcg_date")

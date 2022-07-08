@@ -1,5 +1,5 @@
 from django import forms
-from django.test import TestCase, tag
+from django.test import TestCase
 from edc_lab.models import Panel
 from edc_reportable import MILLIGRAMS_PER_DECILITER
 

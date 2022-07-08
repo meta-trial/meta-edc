@@ -59,7 +59,8 @@ class EndOfStudyAdmin(
             "Toxicity (if applicable)",
             {
                 "description": (
-                    "This section is applicable if the patient experienced an unacceptable toxicity, as indicated above"
+                    "This section is applicable if the patient experienced an "
+                    "unacceptable toxicity, as indicated above"
                 ),
                 "fields": (
                     "toxicity_withdrawal_reason",
@@ -71,7 +72,8 @@ class EndOfStudyAdmin(
             "Withdrawn on CLINICAL grounds (if applicable)",
             {
                 "description": (
-                    "This section is applicable if the patient was withdrawn on clinical grounds, as indicated above"
+                    "This section is applicable if the patient was withdrawn "
+                    "on clinical grounds, as indicated above"
                 ),
                 "fields": (
                     "clinical_withdrawal_reason",

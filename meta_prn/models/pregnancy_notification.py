@@ -1,6 +1,3 @@
-# TODO: urine_bhcg form (probably not necessary)
-# TODO: if pos, take of study drug and estimate delivery
-#  date for the pregnancy outcomes form. See Form 25/26
 from django.db import models
 from edc_action_item.models import ActionModelMixin
 from edc_constants.choices import YES_NO, YES_NO_UNSURE
