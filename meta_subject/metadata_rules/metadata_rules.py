@@ -1,4 +1,4 @@
-from edc_lab_panel.panels import hba1c_poc_panel
+from edc_lab_panel.panels import hba1c_poc_panel, insulin_panel
 from edc_metadata import NOT_REQUIRED, REQUIRED
 from edc_metadata.metadata_rules import (
     CrfRule,
@@ -66,6 +66,37 @@ class HbA1cRequisitionRuleGroup(RequisitionRuleGroup):
         consequence=REQUIRED,
         alternative=NOT_REQUIRED,
         target_panels=[hba1c_poc_panel],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"
+        requisition_model = "meta_subject.subjectrequisition"
+
+
+@register()
+class InsulinCrfRuleGroup(CrfRuleGroup):
+
+    insulin = CrfRule(
+        predicate=pc.insulin_crf_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["bloodresultsins"],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"
+
+
+@register()
+class InsulinRequisitionRuleGroup(RequisitionRuleGroup):
+
+    insulin = RequisitionRule(
+        predicate=pc.insulin_requisition_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_panels=[insulin_panel],
     )
 
     class Meta:
