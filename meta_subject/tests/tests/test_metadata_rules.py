@@ -21,7 +21,6 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
         form = FollowupExaminationForm(instance=obj)
         form.is_valid()
 
-    @tag("2")
     def test_pregnancy_not_required_for_male(self):
         self.subject_visit = self.get_subject_visit(gender=MALE)
         subject_visit = self.get_next_subject_visit(self.subject_visit)

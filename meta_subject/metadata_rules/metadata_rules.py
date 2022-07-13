@@ -87,3 +87,18 @@ class MnsiTestRuleGroup(CrfRuleGroup):
     class Meta:
         app_label = "meta_subject"
         source_model = "meta_subject.subjectvisit"
+
+
+@register()
+class Sf12RuleGroup(CrfRuleGroup):
+
+    sf12 = CrfRule(
+        predicate=pc.sf12_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["sf12"],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"

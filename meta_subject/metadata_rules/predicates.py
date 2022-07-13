@@ -2,7 +2,7 @@ from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
 from edc_constants.constants import FEMALE, YES
 from edc_lab_panel.panels import hba1c_panel
-from edc_metadata.metadata_rules import PredicateCollection
+from edc_metadata.metadata_rules import PersistantSingletonMixin, PredicateCollection
 from edc_registration.models import RegisteredSubject
 from edc_visit_schedule.constants import DAY1, MONTH1, MONTH3, MONTH6, WEEK2
 from edc_visit_schedule.utils import is_baseline
@@ -51,7 +51,7 @@ def hba1c_requisition_required_at_baseline(visit):
     return required
 
 
-class Predicates(PredicateCollection):
+class Predicates(PersistantSingletonMixin, PredicateCollection):
 
     app_label = "meta_subject"
     visit_model = "meta_subject.subjectvisit"
@@ -164,3 +164,9 @@ class Predicates(PredicateCollection):
                     required = False
                     break
         return required
+
+    def sf12_required(self, visit, **kwargs):
+        model = f"{self.app_label}.sf12"
+        return self.persistant_singleton_required(
+            visit, model=model, exclude_visit_codes=[DAY1]
+        )

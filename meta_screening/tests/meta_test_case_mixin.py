@@ -149,11 +149,14 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
         if appt_datetime:
             options.update(appt_datetime=appt_datetime)
         appointment = self.get_appointment(**options)
-        return SubjectVisit.objects.create(
+        subject_visit = SubjectVisit(
             appointment=appointment,
             reason=SCHEDULED,
             report_datetime=appointment.appt_datetime,
         )
+        subject_visit.save()
+        subject_visit.refresh_from_db()
+        return subject_visit
 
     @staticmethod
     def get_next_subject_visit(subject_visit):
@@ -164,13 +167,16 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
         next_appointment = appointment.next_by_timepoint
         next_appointment.appt_status = IN_PROGRESS_APPT
         next_appointment.save()
-        return SubjectVisit.objects.create(
+        subject_visit = SubjectVisit(
             appointment=next_appointment,
             reason=SCHEDULED,
             report_datetime=next_appointment.appt_datetime,
             visit_code=next_appointment.visit_code,
             visit_code_sequence=next_appointment.visit_code_sequence,
         )
+        subject_visit.save()
+        subject_visit.refresh_from_db()
+        return subject_visit
 
     @staticmethod
     def get_crf_metadata(subject_visit):

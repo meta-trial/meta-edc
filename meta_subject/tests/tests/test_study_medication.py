@@ -9,6 +9,5 @@ class TestPhysicalExam(MetaTestCaseMixin, TestCase):
         super().setUp()
         self.subject_visit = self.get_subject_visit()
 
-    @tag("1")
     def test_ok(self):
         StudyMedication(subject_visit=self.subject_visit)
