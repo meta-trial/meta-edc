@@ -67,6 +67,7 @@ crfs_1m = FormsCollection(
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=450, model="meta_subject.healtheconomicssimple", required=False),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
     Crf(show_order=470, model="meta_subject.mnsi"),
     name="1m",
@@ -80,6 +81,7 @@ crfs_3m = FormsCollection(
     Crf(show_order=220, model="meta_subject.bloodresultslft"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
     Crf(show_order=470, model="meta_subject.mnsi", required=False),
     name="3m",
@@ -94,6 +96,7 @@ crfs_6m = FormsCollection(
     Crf(show_order=230, model="meta_subject.bloodresultsfbc"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
     Crf(show_order=470, model="meta_subject.mnsi", required=False),
     name="6m",
@@ -105,6 +108,7 @@ crfs_9m = FormsCollection(
     Crf(show_order=200, model="meta_subject.bloodresultsglu"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
     name="9m",
 )
@@ -120,6 +124,7 @@ crfs_12m = FormsCollection(
     Crf(show_order=250, model="meta_subject.bloodresultslipid"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
     name="12m",
 )
@@ -130,6 +135,7 @@ crfs_15m = FormsCollection(
     Crf(show_order=200, model="meta_subject.bloodresultsglu"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
     name="15m",
 )
@@ -141,6 +147,7 @@ crfs_18m = FormsCollection(
     Crf(show_order=220, model="meta_subject.bloodresultsfbc"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
     name="18m",
 )
@@ -151,6 +158,7 @@ crfs_21m = FormsCollection(
     Crf(show_order=200, model="meta_subject.bloodresultsglu"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
     name="21m",
 )
@@ -166,6 +174,8 @@ crfs_24m = FormsCollection(
     Crf(show_order=250, model="meta_subject.bloodresultslipid"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
+    Crf(show_order=465, model="meta_subject.sf12", required=False),
     name="24m",
 )
 
@@ -175,6 +185,8 @@ crfs_27m = FormsCollection(
     Crf(show_order=200, model="meta_subject.bloodresultsglu"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
+    Crf(show_order=465, model="meta_subject.sf12", required=False),
     name="27m",
 )
 
@@ -187,6 +199,8 @@ crfs_30m = FormsCollection(
     Crf(show_order=230, model="meta_subject.bloodresultsfbc"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
+    Crf(show_order=465, model="meta_subject.sf12", required=False),
     name="30m",
 )
 
@@ -196,6 +210,8 @@ crfs_33m = FormsCollection(
     Crf(show_order=200, model="meta_subject.bloodresultsglu"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
+    Crf(show_order=465, model="meta_subject.sf12", required=False),
     name="33m",
 )
 
@@ -210,5 +226,7 @@ crfs_36m = FormsCollection(
     Crf(show_order=250, model="meta_subject.bloodresultslipid"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
+    Crf(show_order=465, model="meta_subject.sf12", required=False),
     name="36m",
 )

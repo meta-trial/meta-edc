@@ -170,3 +170,9 @@ class Predicates(PersistantSingletonMixin, PredicateCollection):
         return self.persistant_singleton_required(
             visit, model=model, exclude_visit_codes=[DAY1]
         )
+
+    def eq5d3l_required(self, visit, **kwargs):
+        model = f"{self.app_label}.eq5d3l"
+        return self.persistant_singleton_required(
+            visit, model=model, exclude_visit_codes=[DAY1]
+        )

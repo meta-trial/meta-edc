@@ -102,3 +102,18 @@ class Sf12RuleGroup(CrfRuleGroup):
     class Meta:
         app_label = "meta_subject"
         source_model = "meta_subject.subjectvisit"
+
+
+@register()
+class Eq53dlRuleGroup(CrfRuleGroup):
+
+    eq5d3l = CrfRule(
+        predicate=pc.eq5d3l_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["eq5d3l"],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"
