@@ -1,4 +1,4 @@
-from edc_lab_panel.panels import hba1c_poc_panel
+from edc_lab_panel.panels import hba1c_poc_panel, insulin_panel
 from edc_metadata import NOT_REQUIRED, REQUIRED
 from edc_metadata.metadata_rules import (
     CrfRule,
@@ -75,6 +75,37 @@ class HbA1cRequisitionRuleGroup(RequisitionRuleGroup):
 
 
 @register()
+class InsulinCrfRuleGroup(CrfRuleGroup):
+
+    insulin = CrfRule(
+        predicate=pc.insulin_crf_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["bloodresultsins"],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"
+
+
+@register()
+class InsulinRequisitionRuleGroup(RequisitionRuleGroup):
+
+    insulin = RequisitionRule(
+        predicate=pc.insulin_requisition_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_panels=[insulin_panel],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"
+        requisition_model = "meta_subject.subjectrequisition"
+
+
+@register()
 class MnsiTestRuleGroup(CrfRuleGroup):
 
     mnsi = CrfRule(
@@ -82,6 +113,36 @@ class MnsiTestRuleGroup(CrfRuleGroup):
         consequence=REQUIRED,
         alternative=NOT_REQUIRED,
         target_models=["mnsi"],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"
+
+
+@register()
+class Sf12RuleGroup(CrfRuleGroup):
+
+    sf12 = CrfRule(
+        predicate=pc.sf12_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["sf12"],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"
+
+
+@register()
+class Eq53dlRuleGroup(CrfRuleGroup):
+
+    eq5d3l = CrfRule(
+        predicate=pc.eq5d3l_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["eq5d3l"],
     )
 
     class Meta:

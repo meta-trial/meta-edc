@@ -1,8 +1,14 @@
 Changes
 =======
 
-0.1.86
+0.1.89
 ------
+- bump edc=0.3.96
+- require insulin for Mwananyamala and Temeke only
+- make Eq53dl and sf12 persistant singletons
+
+0.1.86 - 0.1.88
+---------------
 - add off study medication form and action item, remove
   questions on medication pause
 - add subject transfer form

@@ -1,9 +1,10 @@
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
 from edc_constants.constants import FEMALE, YES
-from edc_lab_panel.panels import hba1c_panel
-from edc_metadata.metadata_rules import PredicateCollection
+from edc_lab_panel.panels import hba1c_panel, insulin_panel
+from edc_metadata.metadata_rules import PersistantSingletonMixin, PredicateCollection
 from edc_registration.models import RegisteredSubject
+from edc_sites import get_site_by_attr
 from edc_visit_schedule.constants import DAY1, MONTH1, MONTH3, MONTH6, WEEK2
 from edc_visit_schedule.utils import is_baseline
 
@@ -51,7 +52,7 @@ def hba1c_requisition_required_at_baseline(visit):
     return required
 
 
-class Predicates(PredicateCollection):
+class Predicates(PersistantSingletonMixin, PredicateCollection):
 
     app_label = "meta_subject"
     visit_model = "meta_subject.subjectvisit"
@@ -95,6 +96,40 @@ class Predicates(PredicateCollection):
             and visit.appointment.visit_code_sequence == 0
             and visit.appointment.visit_code
             in visit.schedule.requisition_required_at(hba1c_panel)
+        ):
+            required = True
+        return required
+
+    @staticmethod
+    def insulin_crf_required(visit, **kwargs) -> bool:
+        """Require at baseline visit"""
+        required = False
+        if (
+            visit.site.id
+            in [
+                get_site_by_attr("name", "mwananyamala").site_id,
+                get_site_by_attr("name", "temeke").site_id,
+            ]
+            and visit.appointment.visit_code
+            in visit.schedule.crf_required_at("meta_subject.bloodresultsins")
+            and visit.appointment.visit_code_sequence == 0
+        ):
+            required = True
+        return required
+
+    @staticmethod
+    def insulin_requisition_required(visit, **kwargs) -> bool:
+        """Require at baseline visit"""
+        required = False
+        if (
+            visit.site.id
+            in [
+                get_site_by_attr("name", "mwananyamala").site_id,
+                get_site_by_attr("name", "temeke").site_id,
+            ]
+            and visit.appointment.visit_code
+            in visit.schedule.requisition_required_at(insulin_panel)
+            and visit.appointment.visit_code_sequence == 0
         ):
             required = True
         return required
@@ -164,3 +199,15 @@ class Predicates(PredicateCollection):
                     required = False
                     break
         return required
+
+    def sf12_required(self, visit, **kwargs):
+        model = f"{self.app_label}.sf12"
+        return self.persistant_singleton_required(
+            visit, model=model, exclude_visit_codes=[DAY1]
+        )
+
+    def eq5d3l_required(self, visit, **kwargs):
+        model = f"{self.app_label}.eq5d3l"
+        return self.persistant_singleton_required(
+            visit, model=model, exclude_visit_codes=[DAY1]
+        )

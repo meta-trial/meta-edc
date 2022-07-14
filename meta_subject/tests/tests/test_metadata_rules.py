@@ -1,5 +1,5 @@
 from dateutil.relativedelta import relativedelta
-from django.test import TestCase, tag
+from django.test import TestCase
 from edc_appointment.models import Appointment
 from edc_constants.constants import FEMALE, MALE, YES
 from edc_utils import get_utcnow
@@ -21,7 +21,6 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
         form = FollowupExaminationForm(instance=obj)
         form.is_valid()
 
-    @tag("2")
     def test_pregnancy_not_required_for_male(self):
         self.subject_visit = self.get_subject_visit(gender=MALE)
         subject_visit = self.get_next_subject_visit(self.subject_visit)
