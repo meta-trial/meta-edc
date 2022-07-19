@@ -3,7 +3,7 @@ from decimal import Decimal
 
 from dateutil.relativedelta import relativedelta
 from django.test import TestCase, tag
-from edc_constants.constants import NO, TBD, YES
+from edc_constants.constants import FEMALE, NO, NOT_APPLICABLE, POS, TBD, YES
 from edc_reportable import (
     MICROMOLES_PER_LITER,
     MILLIMOLES_PER_LITER,
@@ -399,5 +399,41 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
-    def test_pregnancy(self):
-        pass
+    @tag("1")
+    def test_pregnancy_detected_in_p3(self):
+        """P1 pregnant==NO, p3"""
+        # pregnant==NO
+        # urine_bhcg_performed == YES
+        # urine_bhcg_value == POS
+
+        part_one_eligible_options = deepcopy(get_part_one_eligible_options())
+        part_one_eligible_options.update(gender=FEMALE, pregnant=NO)
+        model_obj = ScreeningPartOne(**part_one_eligible_options)
+        model_obj.save()
+        part_two_eligible_options = deepcopy(get_part_two_eligible_options())
+
+        for k, v in part_two_eligible_options.items():
+            setattr(model_obj, k, v)
+        model_obj.save()
+        self.assertEqual(YES, model_obj.eligible_part_one)
+        self.assertEqual(YES, model_obj.eligible_part_two)
+        self.assertEqual(TBD, model_obj.eligible_part_three)
+
+        part_three_eligible_options = deepcopy(get_part_three_eligible_options())
+        model_obj = self.get_screening_part_three_obj()
+        for k, v in part_three_eligible_options.items():
+            setattr(model_obj, k, v)
+
+        model_obj.urine_bhcg_performed = NO
+        model_obj.urine_bhcg_value = NOT_APPLICABLE
+        model_obj.urine_bhcg_date = None
+        model_obj.save()
+        self.assertIsNone(model_obj.reasons_ineligible_part_three)
+        self.assertEqual(model_obj.eligible_part_three, YES)
+
+        model_obj.urine_bhcg_performed = YES
+        model_obj.urine_bhcg_value = POS
+        model_obj.urine_bhcg_date = model_obj.part_three_report_datetime
+        model_obj.save()
+        self.assertIn("UPT positive", model_obj.reasons_ineligible_part_three)
+        self.assertEqual(model_obj.eligible_part_three, NO)
