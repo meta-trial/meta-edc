@@ -5,6 +5,6 @@ from ..models import DeathReportTmg
 
 
 class DeathReportTmgForm(DeathReportTmgModelFormMixin, forms.ModelForm):
-    class Meta:
+    class Meta(DeathReportTmgModelFormMixin.Meta):
         model = DeathReportTmg
         fields = "__all__"

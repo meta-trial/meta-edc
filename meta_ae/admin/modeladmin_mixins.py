@@ -4,7 +4,7 @@ from django.template.loader import render_to_string
 from django.urls.base import reverse
 from django.utils.safestring import mark_safe
 from edc_action_item import action_fieldset_tuple
-from edc_action_item.modeladmin_mixins import ModelAdminActionItemMixin
+from edc_action_item.modeladmin_mixins import ActionItemModelAdminMixin
 from edc_adverse_event.forms import AeFollowupForm
 from edc_adverse_event.modeladmin_mixins import (
     AdverseEventModelAdminMixin,
@@ -23,7 +23,7 @@ class AeReviewModelAdminMixin(
     ModelAdminSubjectDashboardMixin,
     NonAeInitialModelAdminMixin,
     AdverseEventModelAdminMixin,
-    ModelAdminActionItemMixin,
+    ActionItemModelAdminMixin,
 ):
 
     form = AeFollowupForm
@@ -72,7 +72,8 @@ class AeReviewModelAdminMixin(
         "ae_initial__action_identifier",
     ]
 
-    def description(self, obj):
+    @staticmethod
+    def description(obj=None):
         """Returns a formatted comprehensive description of the SAE
         combining multiple fields.
         """

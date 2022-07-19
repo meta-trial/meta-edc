@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.template.loader import render_to_string
 from django.urls import reverse
 from edc_action_item import (
-    ModelAdminActionItemMixin,
+    ActionItemModelAdminMixin,
     action_fields,
     action_fieldset_tuple,
 )
@@ -31,7 +31,7 @@ class BirthOutcomesInlineAdmin(TabularInlineMixin, admin.TabularInline):
 class DeliveryAdmin(
     CrfModelAdminMixin,
     FormLabelModelAdminMixin,
-    ModelAdminActionItemMixin,
+    ActionItemModelAdminMixin,
     SimpleHistoryAdmin,
 ):
 

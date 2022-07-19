@@ -13,7 +13,7 @@ from edc_vitals.form_validators import (
     WeightHeightBmiFormValidatorMixin,
 )
 
-from ..forms import get_part_three_vitals_fields
+from ..forms import part_three_vitals_fields
 from ..models import SubjectScreening
 
 
@@ -173,8 +173,7 @@ class ScreeningPartThreeFormValidator(
 
     def require_all_vitals_fields(self):
         require_all = False
-        fields = get_part_three_vitals_fields()
-        fields.remove("waist_circumference")
+        fields = part_three_vitals_fields
         for field in fields:
             if self.cleaned_data.get(field):
                 require_all = True

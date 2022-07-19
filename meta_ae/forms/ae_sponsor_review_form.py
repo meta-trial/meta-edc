@@ -5,6 +5,6 @@ from .modelform_mixins import AeReviewModelFormMixin
 
 
 class AeSponsorReviewForm(AeReviewModelFormMixin, forms.ModelForm):
-    class Meta:
+    class Meta(AeReviewModelFormMixin.Meta):
         model = AeSponsorReview
         fields = "__all__"

@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
 
@@ -5,8 +7,8 @@ from ..admin_site import meta_screening_admin
 from ..forms import (
     ScreeningPartTwoForm,
     calculated_fields,
-    get_part_one_fields,
-    get_part_three_fields,
+    part_one_fields,
+    part_three_fields,
 )
 from ..models import ScreeningPartTwo
 from .fieldsets import (
@@ -18,7 +20,9 @@ from .fieldsets import (
 from .subject_screening_admin import SubjectScreeningAdmin
 
 
-def get_fieldsets():
+def get_fieldsets() -> Tuple[
+    Tuple[str, dict], Tuple[str, dict], Tuple[str, dict], Tuple[str, dict], Tuple[str, dict]
+]:
     return (
         get_part_one_fieldset(collapse=True),
         get_part_two_fieldset(),
@@ -39,7 +43,7 @@ class ScreeningPartTwoAdmin(SubjectScreeningAdmin):
     fieldsets = get_fieldsets()
 
     readonly_fields = (
-        *get_part_one_fields(),
-        *get_part_three_fields(),
+        *part_one_fields,
+        *part_three_fields,
         *calculated_fields,
     )

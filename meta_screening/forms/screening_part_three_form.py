@@ -5,7 +5,7 @@ from edc_screening.modelform_mixins import AlreadyConsentedFormMixin
 
 from ..form_validators import ScreeningPartThreeFormValidator
 from ..models import ScreeningPartThree
-from .field_lists import get_part_three_fields
+from .field_lists import part_three_fields
 
 fbg_units_fld = ScreeningPartThree._meta.get_field("fbg_units")
 
@@ -26,4 +26,4 @@ class ScreeningPartThreeForm(AlreadyConsentedFormMixin, FormValidatorMixin, form
 
     class Meta:
         model = ScreeningPartThree
-        fields = get_part_three_fields()
+        fields = part_three_fields

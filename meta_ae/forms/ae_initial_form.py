@@ -5,6 +5,6 @@ from ..models import AeInitial
 
 
 class AeInitialForm(AeInitialModelFormMixin, forms.ModelForm):
-    class Meta:
+    class Meta(AeInitialModelFormMixin.Meta):
         model = AeInitial
         fields = "__all__"

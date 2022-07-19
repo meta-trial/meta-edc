@@ -17,14 +17,9 @@ def trigger_error(request):
 
 handler403 = "edc_dashboard.views.edc_handler403"
 handler404 = "edc_dashboard.views.edc_handler404"
-
-if settings.SENTRY_ENABLED:
-    handler500 = "edc_dashboard.views.error_handlers.sentry.handler500"
-else:
-    handler500 = "edc_dashboard.views.edc_handler500"
+handler500 = "edc_dashboard.views.edc_handler500"
 
 urlpatterns = [
-    path("sentry-debug/", trigger_error),
     path("accounts/", include("edc_auth.urls")),
     path("administration/", AdministrationView.as_view(), name="administration_url"),
     path("subject/", include("meta_dashboard.urls")),

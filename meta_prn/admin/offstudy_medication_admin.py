@@ -1,7 +1,5 @@
-from copy import copy
-
 from django.contrib import admin
-from edc_action_item import action_fields, action_fieldset_tuple
+from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
 from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
@@ -13,7 +11,10 @@ from ..models import OffstudyMedication
 
 @admin.register(OffstudyMedication, site=meta_prn_admin)
 class OffstudyMedicationAdmin(
-    DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
+    DataManagerModelAdminMixin,
+    ModelAdminSubjectDashboardMixin,
+    ActionItemModelAdminMixin,
+    SimpleHistoryAdmin,
 ):
 
     form = OffstudyMedicationForm
@@ -54,10 +55,3 @@ class OffstudyMedicationAdmin(
     }
 
     search_fields = ("subject_identifier", "action_identifier", "tracking_identifier")
-
-    def get_readonly_fields(self, request, obj=None):
-        fields = super().get_readonly_fields(request, obj)
-        action_flds = copy(list(action_fields))
-        action_flds.remove("action_identifier")
-        fields = list(action_flds) + list(fields)
-        return fields

@@ -1,15 +1,17 @@
+from typing import Tuple
+
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
 from ..forms import (
-    get_part_one_fields,
-    get_part_three_fields,
-    get_part_three_vitals_fields,
-    get_part_two_fields,
+    part_one_fields,
     part_three_comment_fields,
+    part_three_fields,
     part_three_glucose_fields,
     part_three_other_fields,
     part_three_pregnancy_fields,
+    part_three_vitals_fields,
+    part_two_fields,
 )
 from ..forms.field_lists import (
     part_three_creatinine_fields,
@@ -19,37 +21,39 @@ from ..forms.field_lists import (
 )
 
 
-def get_part_one_fieldset(collapse=None):
+def get_part_one_fieldset(collapse=None) -> Tuple[str, dict]:
 
     dct = {
         "description": mark_safe(
             "To be completed by the <u>study clinician</u> or the "
             "<u>research nurse</u> in consultation with the study clinician"
         ),
-        "fields": get_part_one_fields(),
+        "fields": part_one_fields,
     }
     if collapse:
         dct.update(classes=("collapse",))
     return "Part 1", dct
 
 
-def get_part_two_fieldset(collapse=None):
+def get_part_two_fieldset(collapse=None) -> Tuple[str, dict]:
     dct = {
         "description": mark_safe(
             "To be completed by the <u>study clinician</u> or the "
             "<u>research nurse</u> in consultation with the study clinician"
         ),
-        "fields": get_part_two_fields(),
+        "fields": part_two_fields,
     }
     if collapse:
         dct.update(classes=("collapse",))
     return "Part 2", dct
 
 
-def get_part_three_fieldset(collapse=None):
+def get_part_three_fieldset(
+    collapse=None,
+) -> Tuple[str, dict]:
     dct = {
         "description": mark_safe("To be completed by the <u>study clinician</u>"),
-        "fields": get_part_three_fields(),
+        "fields": part_three_fields,
     }
     if collapse:
         dct.update(classes=("collapse",))
@@ -63,7 +67,7 @@ def get_part_three_glucose_fieldset(collapse=None):
     return "Part 3c:  Glucose Measurements (FBG / OGTT)", dct
 
 
-def get_part_three_repeat_glucose_fieldset(collapse=None):
+def get_part_three_repeat_glucose_fieldset(collapse=None) -> Tuple[str, dict]:
     fields = [
         "repeat_glucose_performed",
         "repeat_fasting",
@@ -83,47 +87,47 @@ def get_part_three_repeat_glucose_fieldset(collapse=None):
     return "Part 3d: Repeat Glucose Measurements (FBG / OGTT)", dct
 
 
-def get_part_three_other_fieldset(collapse=None):
+def get_part_three_other_fieldset(collapse=None) -> Tuple[str, dict]:
     dct = {"fields": part_three_other_fields}
     if collapse:
         dct.update(classes=("collapse",))
     return "Part 3e: Creatinine / HbA1c", dct
 
 
-def get_part_three_creatinine_fieldset(collapse=None):
+def get_part_three_creatinine_fieldset(collapse=None) -> Tuple[str, dict]:
     dct = {"fields": part_three_creatinine_fields}
     if collapse:
         dct.update(classes=("collapse",))
     return "Part 3e: Creatinine", dct
 
 
-def get_part_three_hba1c_fieldset(collapse=None):
+def get_part_three_hba1c_fieldset(collapse=None) -> Tuple[str, dict]:
     dct = {"fields": part_three_hba1c_fields}
     if collapse:
         dct.update(classes=("collapse",))
     return "Part 3f: HbA1c", dct
 
 
-def get_part_three_report_datetime_fieldset():
+def get_part_three_report_datetime_fieldset() -> Tuple[str, dict]:
     dct = {"fields": ["part_three_report_datetime"]}
     return "Part 3", dct
 
 
-def get_part_three_vitals_fieldset(collapse=None):
-    dct = {"fields": get_part_three_vitals_fields()}
+def get_part_three_vitals_fieldset(collapse=None) -> Tuple[str, dict]:
+    dct = {"fields": part_three_vitals_fields}
     if collapse:
         dct.update(classes=("collapse",))
     return "Part 3a: Vitals", dct
 
 
-def get_part_three_pregnancy_fieldset(collapse=None):
+def get_part_three_pregnancy_fieldset(collapse=None) -> Tuple[str, dict]:
     dct = {"fields": part_three_pregnancy_fields}
     if collapse:
         dct.update(classes=("collapse",))
     return "Part 3b: Pregnancy", dct
 
 
-def get_p3_screening_appt_update_fields(collapse=None):
+def get_p3_screening_appt_update_fields(collapse=None) -> Tuple[str, dict]:
     dct = {
         "description": format_html(
             '<span style="color:orange;font-weight:bold">IMPORTANT:</span>'
@@ -140,14 +144,14 @@ def get_p3_screening_appt_update_fields(collapse=None):
     return "Part 3 screening appointment update", dct
 
 
-comments_fieldset = (
+comments_fieldset: Tuple[str, dict] = (
     "Additional Comments",
     {
         "fields": (*part_three_comment_fields,),
     },
 )
 
-calculated_values_fieldset = (
+calculated_values_fieldset: Tuple[str, dict] = (
     "Calculated values",
     {
         "classes": ("collapse",),

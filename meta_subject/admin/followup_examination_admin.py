@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_action_item import (
-    ModelAdminActionItemMixin,
+    ActionItemModelAdminMixin,
     action_fields,
     action_fieldset_tuple,
 )
@@ -38,7 +38,7 @@ class GradedEventFilter(admin.SimpleListFilter):
 class FollowupExaminationAdmin(
     CrfModelAdminMixin,
     FormLabelModelAdminMixin,
-    ModelAdminActionItemMixin,
+    ActionItemModelAdminMixin,
     SimpleHistoryAdmin,
 ):
 

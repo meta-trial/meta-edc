@@ -1,5 +1,5 @@
 from django import forms
-from django.apps import apps as django_apps
+from edc_adverse_event.form_validator_mixins import DeathReportFormValidatorMixin
 from edc_adverse_event.forms import DeathReportModelFormMixin
 from edc_constants.constants import OTHER
 from edc_form_validators import FormValidator
@@ -8,13 +8,8 @@ from ..constants import HOSPITAL_CLINIC
 from ..models import DeathReport
 
 
-class DeathReportFormValidator(FormValidator):
-    @property
-    def cause_of_death_model_cls(self):
-        return django_apps.get_model("edc_adverse_event.causeofdeath")
-
+class DeathReportFormValidator(DeathReportFormValidatorMixin, FormValidator):
     def clean(self):
-
         self.required_if(
             HOSPITAL_CLINIC,
             field="death_location",
@@ -27,6 +22,7 @@ class DeathReportFormValidator(FormValidator):
         )
 
         other = self.cause_of_death_model_cls.objects.get(name=OTHER)
+
         self.validate_other_specify(
             field="cause_of_death",
             other_specify_field="cause_of_death_other",
@@ -42,12 +38,8 @@ class DeathReportFormValidator(FormValidator):
 
 class DeathReportForm(DeathReportModelFormMixin, forms.ModelForm):
 
-    subject_identifier = forms.CharField(
-        label="Subject identifier",
-        required=False,
-        widget=forms.TextInput(attrs={"readonly": "readonly"}),
-    )
+    form_validator_cls = DeathReportFormValidator
 
-    class Meta:
+    class Meta(DeathReportModelFormMixin.Meta):
         model = DeathReport
         fields = "__all__"
