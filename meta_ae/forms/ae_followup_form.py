@@ -5,6 +5,6 @@ from ..models import AeFollowup
 
 
 class AeFollowupForm(AeFollowupModelFormMixin, forms.ModelForm):
-    class Meta:
+    class Meta(AeFollowupModelFormMixin.Meta):
         model = AeFollowup
         fields = "__all__"

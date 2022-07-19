@@ -1,4 +1,5 @@
 from dateutil.relativedelta import relativedelta
+from edc_facility.constants import FIVE_DAY_CLINIC
 from edc_visit_schedule import Schedule
 from edc_visit_schedule import Visit as BaseVisit
 
@@ -105,7 +106,7 @@ visit000 = Visit(
     rupper=relativedelta(days=0),
     requisitions=requisitions_d1,
     crfs=crfs_d1,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 
 visit002 = Visit(
@@ -117,7 +118,7 @@ visit002 = Visit(
     rupper=relativedelta(days=4),
     requisitions=requisitions_w2,
     crfs=crfs_w2,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 
 visit01 = Visit(
@@ -129,7 +130,7 @@ visit01 = Visit(
     rupper=relativedelta(days=30),
     requisitions=requisitions_1m,
     crfs=crfs_1m,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 
 
@@ -142,7 +143,7 @@ visit03 = Visit(
     rupper=relativedelta(months=2),
     requisitions=requisitions_3m,
     crfs=crfs_3m,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 
 visit06 = Visit(
@@ -154,7 +155,7 @@ visit06 = Visit(
     rupper=relativedelta(months=2),
     requisitions=requisitions_6m,
     crfs=crfs_6m,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 
 visit09 = Visit(
@@ -166,7 +167,7 @@ visit09 = Visit(
     rupper=relativedelta(months=2),
     requisitions=requisitions_9m,
     crfs=crfs_9m,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 visit12 = Visit(
     code=MONTH12,
@@ -177,7 +178,7 @@ visit12 = Visit(
     rupper=relativedelta(months=2),
     requisitions=requisitions_12m,
     crfs=crfs_12m,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 
 visit15 = Visit(
@@ -189,7 +190,7 @@ visit15 = Visit(
     rupper=relativedelta(months=2),
     requisitions=requisitions_15m,
     crfs=crfs_15m,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 
 visit18 = Visit(
@@ -201,7 +202,7 @@ visit18 = Visit(
     rupper=relativedelta(months=2),
     requisitions=requisitions_18m,
     crfs=crfs_18m,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 
 visit21 = Visit(
@@ -213,7 +214,7 @@ visit21 = Visit(
     rupper=relativedelta(months=2),
     requisitions=requisitions_21m,
     crfs=crfs_21m,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 
 visit24 = Visit(
@@ -225,7 +226,7 @@ visit24 = Visit(
     rupper=relativedelta(months=2),
     requisitions=requisitions_24m,
     crfs=crfs_24m,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 
 visit27 = Visit(
@@ -237,7 +238,7 @@ visit27 = Visit(
     rupper=relativedelta(months=2),
     requisitions=requisitions_27m,
     crfs=crfs_27m,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 
 visit30 = Visit(
@@ -249,7 +250,7 @@ visit30 = Visit(
     rupper=relativedelta(months=2),
     requisitions=requisitions_30m,
     crfs=crfs_30m,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 
 visit33 = Visit(
@@ -261,7 +262,7 @@ visit33 = Visit(
     rupper=relativedelta(months=2),
     requisitions=requisitions_33m,
     crfs=crfs_33m,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 
 visit36 = Visit(
@@ -273,7 +274,7 @@ visit36 = Visit(
     rupper=relativedelta(months=1),
     requisitions=requisitions_36m,
     crfs=crfs_36m,
-    facility_name="7-day-clinic",
+    facility_name=FIVE_DAY_CLINIC,
 )
 
 

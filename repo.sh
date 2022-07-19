@@ -33,7 +33,7 @@ pip install -e ../edc-adherence
 pip install -e ../edc-adverse-event
 pip install -e ../edc-appointment
 pip install -e ../edc-auth
-pip install -e ../edc-blood-results
+pip install -e ../edc-lab-results
 pip install -e ../edc-consent
 pip install -e ../edc-constants
 pip install -e ../edc-crf

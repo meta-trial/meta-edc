@@ -5,6 +5,6 @@ from ..models import AeTmg
 
 
 class AeTmgForm(AeTmgModelFormMixin, forms.ModelForm):
-    class Meta:
+    class Meta(AeTmgModelFormMixin.Meta):
         model = AeTmg
         fields = "__all__"

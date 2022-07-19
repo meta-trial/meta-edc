@@ -1,6 +1,17 @@
 Changes
 =======
 
+- bump edc=0.3.97
+- update imports
+- update modelform and modeladmin classes using
+  subject_identifier and action_identifier
+- remove sentry and sauce from settings / templates
+- add "contact_number" to P2 and P3
+- use AppointmentListFilter on screening modeladmin
+- data migration to update existing records for missing/missing_count
+  variables in lab result forms
+- change visits to 5-day clinic from 7-day
+
 0.1.89
 ------
 - bump edc=0.3.96

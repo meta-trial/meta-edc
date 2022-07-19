@@ -1,8 +1,8 @@
 from datetime import datetime
 from random import sample
 from secrets import choice
+from zoneinfo import ZoneInfo
 
-import arrow
 from dateutil.relativedelta import relativedelta
 from edc_constants.constants import (
     BLACK,
@@ -17,14 +17,10 @@ from faker import Faker
 from pyparsing import alphas
 
 from meta_edc.meta_version import get_meta_version
-from meta_screening.forms import (
-    get_part_one_fields,
-    get_part_three_fields,
-    get_part_two_fields,
-)
+from meta_screening.forms import part_one_fields, part_three_fields, part_two_fields
 
 fake = Faker()
-now = arrow.get(datetime(2019, 5, 5), "UTC").datetime
+now = datetime(2019, 5, 5).astimezone(ZoneInfo("UTC"))
 tomorrow = now + relativedelta(days=1)
 
 
@@ -48,7 +44,7 @@ def get_part_one_eligible_options():
         vl_undetectable=YES,
         meta_phase_two=NO,
     )
-    if fld := [f for f in get_part_one_fields() if f not in options]:
+    if fld := [f for f in part_one_fields if f not in options]:
         raise TypeError(
             f"Missing part one fields for meta phase {get_meta_version()}. Got {fld}."
         )
@@ -75,8 +71,9 @@ def get_part_two_eligible_options():
         p3_ltfu=NOT_APPLICABLE,
         p3_ltfu_date=None,
         p3_ltfu_comment=None,
+        contact_number=None,
     )
-    if fld := [f for f in get_part_two_fields() if f not in options]:
+    if fld := [f for f in part_two_fields if f not in options]:
         raise TypeError(
             f"Missing part two fields for meta phase {get_meta_version()}. Got {fld}."
         )
@@ -120,13 +117,8 @@ def get_part_three_eligible_options(report_datetime: datetime = None):
         weight=65,
         severe_htn=NO,
     )
-    if fld := [f for f in get_part_three_fields() if f not in options]:
+    if fld := [f for f in part_three_fields if f not in options]:
         raise TypeError(
             f"Missing part three fields for meta phase {get_meta_version()}. Got {fld}."
         )
     return options
-
-
-# part_one_eligible_options = get_part_one_eligible_options()
-# part_two_eligible_options = get_part_two_eligible_options()
-# part_three_eligible_options = get_part_three_eligible_options()

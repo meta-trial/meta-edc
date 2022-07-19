@@ -5,6 +5,6 @@ from ..models import AeSusar
 
 
 class AeSusarForm(AeSusarModelFormMixin, forms.ModelForm):
-    class Meta:
+    class Meta(AeSusarModelFormMixin.Meta):
         model = AeSusar
         fields = "__all__"

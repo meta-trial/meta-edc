@@ -1,9 +1,20 @@
 from django.contrib import admin
 from django.db.models import Q
 from django.utils.translation import gettext as _
+from edc_appointment.admin import AppointmentListFilter
 from edc_constants.constants import NO, NOT_APPLICABLE, PENDING, TBD, YES
 
 from meta_screening.constants import PENDING_REPEAT
+
+NEXT_MONTH = "next_month"
+NEXT_WEEK = "next_week"
+THIS_WEEK = "this_week"
+TODAY = "today"
+LAST_WEEK = "last_week"
+LAST_MONTH = "last_month"
+NOT_NULL = "not_null"
+PAST_DATE = "past_date"
+FUTURE_DATE = "future_date"
 
 
 class EligibilityPending(admin.SimpleListFilter):
@@ -37,7 +48,7 @@ class EligibilityPending(admin.SimpleListFilter):
             )
 
 
-class P3Ltfu(admin.SimpleListFilter):
+class P3LtfuListFilter(admin.SimpleListFilter):
     title = _("Contact for P3?")
 
     parameter_name = "p3_ltfu_custom"
@@ -69,3 +80,17 @@ class P3Ltfu(admin.SimpleListFilter):
                 | Q(eligible_part_two=TBD)
                 | Q(eligible_part_three=TBD)
             )
+
+
+class P3ApptListFilter(AppointmentListFilter):
+    title = _("Part 3 appointment")
+    parameter_name = "p3_appt_datetime"
+    field_name = "appt_datetime"
+
+    @property
+    def extra_queryset_options(self):
+        return dict(
+            eligible_part_one=YES,
+            eligible_part_two=YES,
+            eligible_part_three=TBD,
+        )

@@ -2,7 +2,7 @@ from copy import copy
 
 from django.contrib import admin
 from edc_action_item import (
-    ModelAdminActionItemMixin,
+    ActionItemModelAdminMixin,
     action_fields,
     action_fieldset_tuple,
 )
@@ -22,7 +22,7 @@ class EgfrNotificationAdmin(
     DataManagerModelAdminMixin,
     CrfModelAdminMixin,
     FormLabelModelAdminMixin,
-    ModelAdminActionItemMixin,
+    ActionItemModelAdminMixin,
     SimpleHistoryAdmin,
 ):
 

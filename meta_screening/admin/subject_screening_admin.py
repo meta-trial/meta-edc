@@ -21,7 +21,7 @@ from .fieldsets import (
     get_part_three_fieldset,
     get_part_two_fieldset,
 )
-from .list_filters import EligibilityPending, P3Ltfu
+from .list_filters import EligibilityPending, P3LtfuListFilter
 
 
 @admin.register(SubjectScreening, site=meta_screening_admin)
@@ -62,7 +62,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "report_datetime",
         "part_three_report_datetime",
         EligibilityPending,
-        P3Ltfu,
+        P3LtfuListFilter,
         "gender",
         "eligible",
         "eligible_part_one",

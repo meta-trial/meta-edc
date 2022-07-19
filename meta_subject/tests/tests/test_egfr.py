@@ -52,6 +52,6 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
         self.data.update(creatinine_value=1.5, creatinine_units=MILLIGRAMS_PER_DECILITER)
         obj_2000 = BloodResultsRft.objects.create(**self.data)
 
-        is_drop_20 = obj_1000.egfr_value - obj_2000.egfr_value >= 0.20 * obj_1000.egfr_value
-        if is_drop_20:
-            print("dropped")
+        self.assertTrue(
+            obj_1000.egfr_value - obj_2000.egfr_value >= 0.20 * obj_1000.egfr_value
+        )
