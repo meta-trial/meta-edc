@@ -1,6 +1,13 @@
 Changes
 =======
 
+0.1.91
+------
+- remove UPT metadata rule
+-
+
+0.1.90
+------
 - bump edc=0.3.97
 - update imports
 - update modelform and modeladmin classes using

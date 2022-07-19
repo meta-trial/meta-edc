@@ -38,24 +38,7 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
             [obj.model for obj in self.get_crf_metadata(subject_visit)],
         )
 
-    def test_pregnancy_required_for_female(self):
-        self.subject_visit = self.get_subject_visit(gender=FEMALE)
-        subject_visit = self.get_next_subject_visit(self.subject_visit)
-        subject_visit = self.get_next_subject_visit(subject_visit)
-        self.assertEqual(subject_visit.visit_code, MONTH1)
-
-        self.assertIn(
-            "meta_subject.urinepregnancy",
-            [obj.model for obj in self.get_crf_metadata(subject_visit)],
-        )
-
-        subject_visit = self.get_next_subject_visit(subject_visit)
-        self.assertIn(
-            "meta_subject.urinepregnancy",
-            [obj.model for obj in self.get_crf_metadata(subject_visit)],
-        )
-
-    def test_pregnancy_required_for_female2(self):
+    def test_pregnancy_and_notification(self):
         self.subject_visit = self.get_subject_visit(gender=FEMALE)
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         subject_visit = self.get_next_subject_visit(subject_visit)

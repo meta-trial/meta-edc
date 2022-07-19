@@ -1,14 +1,11 @@
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
-from edc_constants.constants import FEMALE, YES
+from edc_constants.constants import YES
 from edc_lab_panel.panels import hba1c_panel, insulin_panel
 from edc_metadata.metadata_rules import PersistantSingletonMixin, PredicateCollection
-from edc_registration.models import RegisteredSubject
 from edc_sites import get_site_by_attr
 from edc_visit_schedule.constants import DAY1, MONTH1, MONTH3, MONTH6, WEEK2
 from edc_visit_schedule.utils import is_baseline
-
-from meta_visit_schedule.constants import SCHEDULE_PREGNANCY
 
 
 def hba1c_crf_required_at_baseline(visit):
@@ -158,27 +155,6 @@ class Predicates(PersistantSingletonMixin, PredicateCollection):
             except ObjectDoesNotExist:
                 required = True
         return required
-
-    @staticmethod
-    def urine_pregnancy_required(visit, **kwargs) -> bool:
-        """Returns True if required.
-
-        Bu default is not required at baseline, otherwise at 1, 3, 6, etc"""
-        registered_subject = RegisteredSubject.objects.get(
-            subject_identifier=visit.subject_identifier
-        )
-        if (
-            registered_subject.gender == FEMALE
-            and visit.schedule_name != SCHEDULE_PREGNANCY
-            and not is_baseline(instance=visit)
-            and not (
-                visit.appointment.visit_code == WEEK2
-                and visit.appointment.visit_code_sequence == 0
-            )
-        ):
-            return True
-        else:
-            return False
 
     def mnsi_required(self, visit, **kwargs) -> bool:
         """Returns True if MNSI assessment was not performed at the
