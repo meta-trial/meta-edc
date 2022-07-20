@@ -399,7 +399,6 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
-    @tag("1")
     def test_pregnancy_detected_in_p3(self):
         """P1 pregnant==NO, p3"""
         # pregnant==NO

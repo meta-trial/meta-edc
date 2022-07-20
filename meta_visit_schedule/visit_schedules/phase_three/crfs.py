@@ -16,7 +16,7 @@ crfs_prn = FormsCollection(
     Crf(show_order=360, model="meta_subject.concomitantmedication"),
     Crf(show_order=380, model="meta_subject.urinepregnancy"),
     Crf(show_order=1000, model="meta_subject.pregnancyupdate"),
-    Crf(show_order=1100, model="meta_subject.egfrnotification"),
+    Crf(show_order=1100, model="meta_subject.egfrdropnotification"),
     name="prn",
 )
 
