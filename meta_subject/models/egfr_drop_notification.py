@@ -10,17 +10,17 @@ from meta_screening.models.creatinine_fields_model_mixin import (
 )
 
 from ..choices import REPORT_STATUS
-from ..constants import EGFR_NOTIFICATION_ACTION
+from ..constants import EGFR_DROP_NOTIFICATION_ACTION
 
 
-class EgfrNotification(
+class EgfrDropNotification(
     CrfStatusModelMixin,
     CrfWithActionModelMixin,
     CreatinineModelFieldsMixin,
     edc_models.BaseUuidModel,
 ):
 
-    action_name = EGFR_NOTIFICATION_ACTION
+    action_name = EGFR_DROP_NOTIFICATION_ACTION
 
     tracking_identifier_prefix = "EG"
 
@@ -55,5 +55,5 @@ class EgfrNotification(
         super().save(*args, **kwargs)
 
     class Meta(edc_models.BaseUuidModel.Meta):
-        verbose_name = "eGFR Notification"
-        verbose_name_plural = "eGFR Notifications"
+        verbose_name = "eGFR Drop Notification"
+        verbose_name_plural = "eGFR Drop Notifications"

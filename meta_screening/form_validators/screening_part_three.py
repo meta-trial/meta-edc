@@ -1,5 +1,5 @@
 from django import forms
-from edc_constants.constants import NEG, NO, POS, YES
+from edc_constants.constants import NO, YES
 from edc_form_validators import FormValidator
 from edc_glucose.form_validators import (
     FastingFormValidatorMixin,
@@ -161,15 +161,6 @@ class ScreeningPartThreeFormValidator(
             YES, field="urine_bhcg_performed", field_applicable="urine_bhcg_value"
         )
         self.required_if(YES, field="urine_bhcg_performed", field_required="urine_bhcg_date")
-
-        if self.instance.pregnant == YES and self.cleaned_data.get("urine_bhcg_value") == NEG:
-            raise forms.ValidationError(
-                {"urine_bhcg_value": "Invalid, part one says subject is pregnant"}
-            )
-        elif self.instance.pregnant == NO and self.cleaned_data.get("urine_bhcg_value") == POS:
-            raise forms.ValidationError(
-                {"urine_bhcg_value": "Invalid, part one says subject is not pregnant"}
-            )
 
     def require_all_vitals_fields(self):
         require_all = False

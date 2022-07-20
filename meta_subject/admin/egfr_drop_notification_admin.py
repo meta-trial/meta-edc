@@ -12,13 +12,13 @@ from edc_form_label import FormLabelModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 
 from ..admin_site import meta_subject_admin
-from ..forms import EgfrNotificationForm
-from ..models import EgfrNotification
+from ..forms import EgfrDropNotificationForm
+from ..models import EgfrDropNotification
 from .modeladmin import CrfModelAdminMixin
 
 
-@admin.register(EgfrNotification, site=meta_subject_admin)
-class EgfrNotificationAdmin(
+@admin.register(EgfrDropNotification, site=meta_subject_admin)
+class EgfrDropNotificationAdmin(
     DataManagerModelAdminMixin,
     CrfModelAdminMixin,
     FormLabelModelAdminMixin,
@@ -26,7 +26,7 @@ class EgfrNotificationAdmin(
     SimpleHistoryAdmin,
 ):
 
-    form = EgfrNotificationForm
+    form = EgfrDropNotificationForm
 
     fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime")}),

@@ -13,18 +13,18 @@ from edc_lab_results.action_items import (
     BloodResultsRftAction as BaseBloodResultsRftAction,
 )
 from edc_ltfu.constants import LTFU_ACTION
-from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_reportable import GRADE3, GRADE4
 from edc_visit_schedule.utils import is_baseline
 
 from meta_prn.constants import (
+    OFFSCHEDULE_ACTION,
     OFFSCHEDULE_PREGNANCY_ACTION,
     PREGNANCY_NOTIFICATION_ACTION,
 )
 
 from .constants import (
     DELIVERY_ACTION,
-    EGFR_NOTIFICATION_ACTION,
+    EGFR_DROP_NOTIFICATION_ACTION,
     FOLLOWUP_EXAMINATION_ACTION,
     MISSED_VISIT_ACTION,
     URINE_PREGNANCY_ACTION,
@@ -93,7 +93,7 @@ class BloodResultsRftAction(BaseBloodResultsRftAction):
     def get_next_actions(self):
         next_actions = super().get_next_actions()
         if self.reference_obj.egfr_value is not None and self.reference_obj.egfr_value < 45.0:
-            next_actions = [END_OF_STUDY_ACTION]
+            next_actions.append(OFFSCHEDULE_ACTION)
         return next_actions
 
 
@@ -113,12 +113,12 @@ class DeliveryAction(ActionWithNotification):
         return next_actions
 
 
-class EgfrNotificationAction(ActionWithNotification):
-    name = EGFR_NOTIFICATION_ACTION
+class EgfrDropNotificationAction(ActionWithNotification):
+    name = EGFR_DROP_NOTIFICATION_ACTION
     display_name = "eGFR drop warning"
     notification_display_name = "eGFR drop warning"
     parent_action_names = []
-    reference_model = "meta_subject.egfrnotification"
+    reference_model = "meta_subject.egfrdropnotification"
     show_link_to_changelist = True
     show_link_to_add = True
     admin_site_name = "meta_subject_admin"
@@ -140,12 +140,13 @@ def register_actions():
         MissedVisitAction,
         UrinePregnancyAction,
         DeliveryAction,
-        EgfrNotificationAction,
+        EgfrDropNotificationAction,
     ]:
         try:
             site_action_items.register(action_item_cls)
         except AlreadyRegistered:
-            pass
+            del site_action_items.registry[action_item_cls.name]
+            site_action_items.register(action_item_cls)
 
 
 register_actions()

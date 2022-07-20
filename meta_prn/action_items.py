@@ -4,6 +4,7 @@ from edc_action_item.action_with_notification import ActionWithNotification
 from edc_action_item.site_action_items import site_action_items
 from edc_adverse_event.constants import DEATH_REPORT_ACTION
 from edc_constants.constants import HIGH_PRIORITY, NOT_SURE, TBD, YES
+from edc_lab_results import BLOOD_RESULTS_RFT_ACTION
 from edc_ltfu.constants import LTFU_ACTION
 from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_protocol_violation.action_items import (
@@ -33,6 +34,7 @@ class OffscheduleAction(ActionWithNotification):
         UNBLINDING_REVIEW_ACTION,
         DEATH_REPORT_ACTION,
         LTFU_ACTION,
+        BLOOD_RESULTS_RFT_ACTION,
     ]
     reference_model = "meta_prn.offschedule"
     show_link_to_changelist = True

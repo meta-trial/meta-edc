@@ -5,10 +5,10 @@ from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import INVALID_ERROR
 from edc_form_validators.form_validator import FormValidator
 
-from ..models import EgfrNotification
+from ..models import EgfrDropNotification
 
 
-class EgfrNotificationFormValidator(FormValidator):
+class EgfrDropNotificationFormValidator(FormValidator):
     def clean(self):
         self.required_if(OPEN, CLOSED, field="report_status", field_required="narrative")
         if self.cleaned_data.get("report_status") == NEW:
@@ -17,16 +17,10 @@ class EgfrNotificationFormValidator(FormValidator):
             )
 
 
-class EgfrNotificationForm(CrfModelFormMixin, ActionItemFormMixin, forms.ModelForm):
+class EgfrDropNotificationForm(CrfModelFormMixin, ActionItemFormMixin, forms.ModelForm):
 
-    form_validator_cls = EgfrNotificationFormValidator
+    form_validator_cls = EgfrDropNotificationFormValidator
 
-    subject_identifier = forms.CharField(
-        label="Subject Identifier",
-        required=False,
-        widget=forms.TextInput(attrs={"readonly": "readonly"}),
-    )
-
-    class Meta:
-        model = EgfrNotification
+    class Meta(ActionItemFormMixin.Meta):
+        model = EgfrDropNotification
         fields = "__all__"

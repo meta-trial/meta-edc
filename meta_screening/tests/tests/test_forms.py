@@ -343,11 +343,6 @@ class TestForms(ScreeningTestMixin, TestCase):
         )
         part_three_form = ScreeningPartThreeForm(data=data, instance=instance)
         part_three_form.is_valid()
-        self.assertIn("urine_bhcg_value", part_three_form._errors)
-        self.assertIn(
-            "Invalid, part one says subject is not pregnant",
-            part_three_form._errors.get("urine_bhcg_value")[0],
-        )
 
     def test_screening_two_urine_bhcg_male_pregnant(self):
         instance = self.complete_part_one(gender=MALE, pregnant=NOT_APPLICABLE)

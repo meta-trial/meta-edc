@@ -29,21 +29,6 @@ class HealthEconomicsRuleGroup(CrfRuleGroup):
 
 
 @register()
-class UrinePregnancyRuleGroup(CrfRuleGroup):
-
-    bhcg = CrfRule(
-        predicate=pc.urine_pregnancy_required,
-        consequence=REQUIRED,
-        alternative=NOT_REQUIRED,
-        target_models=["urinepregnancy"],
-    )
-
-    class Meta:
-        app_label = "meta_subject"
-        source_model = "meta_subject.subjectvisit"
-
-
-@register()
 class HbA1cCrfRuleGroup(CrfRuleGroup):
 
     hba1c = CrfRule(

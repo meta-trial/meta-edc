@@ -1,4 +1,4 @@
-from edc_constants.constants import NO, NOT_APPLICABLE
+from edc_constants.constants import NEG, NO, NOT_APPLICABLE
 from edc_reportable import (
     MICROMOLES_PER_LITER,
     MILLIMOLES_PER_LITER,
@@ -32,6 +32,7 @@ class BaseEligibilityPartThree(ScreeningEligibility):
         self.repeat_glucose_performed = None
         self.weight = None
         self.unsuitable_agreed = None
+        self.urine_bhcg_value = None
         super().__init__(**kwargs)
 
     def assess_eligibility(self) -> None:
@@ -64,6 +65,7 @@ class BaseEligibilityPartThree(ScreeningEligibility):
             "weight": FC(value=range(0, 500), msg="Missing weight"),
             "repeat_glucose_opinion": FC(ignore_if_missing=True),
             "repeat_glucose_performed": FC(ignore_if_missing=True),
+            "urine_bhcg_value": FC(value=[NEG, NOT_APPLICABLE], msg="UPT positive"),
             "unsuitable_agreed": FC(value=[NO, NOT_APPLICABLE]),
         }
 
