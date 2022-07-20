@@ -1,4 +1,4 @@
-from edc_constants.constants import NEG, NO, NOT_APPLICABLE, POS
+from edc_constants.constants import NEG, NO, NOT_APPLICABLE
 from edc_reportable import (
     MICROMOLES_PER_LITER,
     MILLIMOLES_PER_LITER,

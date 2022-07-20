@@ -1,5 +1,5 @@
 from django import forms
-from edc_constants.constants import NEG, NO, POS, YES
+from edc_constants.constants import NO, YES
 from edc_form_validators import FormValidator
 from edc_glucose.form_validators import (
     FastingFormValidatorMixin,

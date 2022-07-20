@@ -2,7 +2,7 @@ from copy import deepcopy
 from decimal import Decimal
 
 from dateutil.relativedelta import relativedelta
-from django.test import TestCase, tag
+from django.test import TestCase
 from edc_constants.constants import FEMALE, NO, NOT_APPLICABLE, POS, TBD, YES
 from edc_reportable import (
     MICROMOLES_PER_LITER,
@@ -59,7 +59,6 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
-    @tag("3")
     def get_screening_part_three_obj(self):
         """Returns an SubjectScreening obj.
 
