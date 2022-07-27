@@ -29,9 +29,11 @@ class BloodResultsRftForm(ActionItemFormMixin, CrfModelFormMixin, forms.ModelFor
         fields = "__all__"
         help_texts = {
             "egfr_value": mark_safe(
-                "Calculated using 2009 CKD-EPI Creatinine. See https://nephron.com/epi_equation"
+                "Calculated using 2009 CKD-EPI Creatinine. "
+                "See https://nephron.com/epi_equation"
             ),
             "egfr_drop_value": mark_safe(
-                "Calculated using 2009 CKD-EPI Creatinine. See https://nephron.com/epi_equation"
+                "Calculated using 2009 CKD-EPI Creatinine. "
+                "See https://nephron.com/epi_equation"
             ),
         }
