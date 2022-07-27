@@ -1,5 +1,6 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
+from django_crypto_fields.fields import EncryptedCharField
 from edc_constants.choices import GENDER, YES_NO, YES_NO_NA
 from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_sites.models import CurrentSiteManager, SiteModelMixin
@@ -35,7 +36,7 @@ class IcpReferral(SiteModelMixin, BaseUuidModel):
         help_text="Date and time of report.",
     )
 
-    hospital_identifier = models.CharField(max_length=25, unique=True)
+    hospital_identifier = EncryptedCharField(null=True, blank=True)
 
     gender = models.CharField(choices=GENDER, max_length=10)
 
@@ -87,7 +88,7 @@ class IcpReferral(SiteModelMixin, BaseUuidModel):
 
     referred = models.BooleanField(verbose_name="Referred", default=False)
 
-    referred = models.DateTimeField(null=True, help_text="Date and time of referral")
+    referred_datetime = models.DateTimeField(null=True, help_text="Date and time of referral")
 
     referral_reasons = models.TextField(null=True)
 

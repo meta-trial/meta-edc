@@ -20,6 +20,7 @@ from edc_auth.auth_objects import (
     AUDITOR,
     AUDITOR_ROLE,
     CLINIC,
+    CLINIC_SUPER,
     CLINICIAN_ROLE,
     CLINICIAN_SUPER_ROLE,
     NURSE_ROLE,
@@ -45,27 +46,18 @@ from edc_randomization.auth_objects import RANDO_BLINDED, RANDO_UNBLINDED
 from edc_screening.auth_objects import SCREENING, SCREENING_VIEW
 from edc_unblinding.auth_objects import UNBLINDING_REQUESTORS
 
-from .auth_objects import (
-    META_AUDITOR,
-    META_CLINIC,
-    META_CLINIC_SUPER,
-    clinic_auditor_codenames,
-    clinic_codenames,
-)
+from .auth_objects import clinic_codenames
 
-# meta groups
-site_auths.add_group(
-    *clinic_codenames, *clinic_auditor_codenames, name=META_AUDITOR, view_only=True
-)
-site_auths.add_group(*clinic_codenames, name=META_CLINIC, no_delete=True)
-site_auths.add_group(*clinic_codenames, name=META_CLINIC_SUPER)
+site_auths.update_group(*clinic_codenames, name=AUDITOR, view_only=True)
+site_auths.update_group(*clinic_codenames, name=CLINIC, no_delete=True)
+site_auths.update_group(*clinic_codenames, name=CLINIC_SUPER)
 
 # update edc roles
 site_auths.update_role(
     ACTION_ITEM,
     AE,
     APPOINTMENT,
-    META_CLINIC,
+    CLINIC,
     UNBLINDING_REQUESTORS,
     MNSI,
     QOL,
@@ -77,7 +69,7 @@ site_auths.update_role(
     ACTION_ITEM,
     AE_SUPER,
     APPOINTMENT,
-    META_CLINIC_SUPER,
+    CLINIC_SUPER,
     MNSI_SUPER,
     QOL_SUPER,
     UNBLINDING_REQUESTORS,
@@ -89,7 +81,7 @@ site_auths.update_role(
     ACTION_ITEM,
     AE,
     APPOINTMENT,
-    META_CLINIC,
+    CLINIC,
     MNSI,
     QOL,
     name=NURSE_ROLE,
@@ -101,7 +93,7 @@ site_auths.update_role(
     APPOINTMENT,
     CLINIC,
     LABELING,
-    META_CLINIC,
+    CLINIC,
     MNSI,
     QOL,
     OFFSTUDY,
@@ -116,7 +108,7 @@ site_auths.update_role(
     ACTION_ITEM_VIEW_ONLY,
     AE_REVIEW,
     APPOINTMENT_VIEW,
-    META_AUDITOR,
+    AUDITOR,
     MNSI_VIEW,
     QOL_VIEW,
     TMG_REVIEW,
@@ -127,7 +119,7 @@ site_auths.update_role(
     AUDITOR,
     ACTION_ITEM,
     AE_REVIEW,
-    META_AUDITOR,
+    AUDITOR,
     MNSI_VIEW,
     QOL_VIEW,
     SCREENING_VIEW,

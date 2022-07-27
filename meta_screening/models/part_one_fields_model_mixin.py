@@ -69,12 +69,11 @@ class PartOneFieldsModelMixin(models.Model):
     )
 
     lives_nearby = models.CharField(
-        verbose_name=("Is the patient living within the catchment population of the facility"),
+        verbose_name="Is the patient living within the catchment population of the facility",
         max_length=15,
         choices=YES_NO,
     )
 
-    # META PHASE_TWO ONLY
     staying_nearby_6 = models.CharField(
         verbose_name=(
             "Is the patient planning to remain in the catchment area " "for at least 6 months"
@@ -83,9 +82,10 @@ class PartOneFieldsModelMixin(models.Model):
         choices=YES_NO,
         null=True,
         blank=False,
+        help_text="META PHASE_TWO ONLY",
+        editable=False,
     )
 
-    # META PHASE_THREE ONLY
     staying_nearby_12 = models.CharField(
         verbose_name=format_html(
             "Is the patient planning to remain in the catchment area "

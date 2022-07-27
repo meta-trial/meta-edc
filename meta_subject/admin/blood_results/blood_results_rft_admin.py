@@ -1,6 +1,10 @@
 from django.contrib import admin, messages
 from edc_lab_results.admin import BloodResultsModelAdminMixin
-from edc_lab_results.fieldsets import BloodResultFieldset
+from edc_lab_results.fieldsets import (
+    BloodResultFieldset,
+    calculate_egfr_drop_fieldset,
+    calculate_egfr_fieldset,
+)
 
 from ...admin_site import meta_subject_admin
 from ...forms import BloodResultsRftForm
@@ -17,22 +21,9 @@ class BloodResultsRftAdmin(BloodResultsModelAdminMixin, CrfModelAdmin):
         *BloodResultFieldset(
             BloodResultsRft.lab_panel,
             model_cls=BloodResultsRft,
+            extra_fieldsets=[(5, calculate_egfr_fieldset), (6, calculate_egfr_drop_fieldset)],
             excluded_utest_ids=["egfr", "egfr_drop"],
         ).fieldsets,
-        (
-            "Calculated eGFR",
-            {
-                "classes": ("collapse",),
-                "fields": ["egfr_value", "egfr_units", "egfr_grade"],
-            },
-        ),
-        (
-            "Calculated eGFR Drop",
-            {
-                "classes": ("collapse",),
-                "fields": ["egfr_drop_value", "egfr_drop_units", "egfr_drop_grade"],
-            },
-        ),
     )
 
     readonly_fields = [

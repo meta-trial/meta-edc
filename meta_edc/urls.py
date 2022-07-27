@@ -26,6 +26,7 @@ urlpatterns = [
     *paths_for_urlpatterns("edc_action_item"),
     *paths_for_urlpatterns("edc_adverse_event"),
     *paths_for_urlpatterns("edc_appointment"),
+    # *paths_for_urlpatterns("edc_call_manager"),
     *paths_for_urlpatterns("edc_consent"),
     *paths_for_urlpatterns("edc_crf"),
     *paths_for_urlpatterns("edc_dashboard"),
