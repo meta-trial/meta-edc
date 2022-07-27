@@ -1,6 +1,22 @@
 Changes
 =======
 
+0.1.92
+------
+- bump edc==0.3.99
+- remove unused screening part four
+- fix / refactor auth permissions
+- use SIMPLE_HISTORY_PERMISSIONS_ENABLED=True instead of
+  SIMPLE_HISTORY_REVERT_DISABLED. Requires erikvw/django-simple-history
+  until PR is accepted.
+- set next action to LTFU if last visit more than 182 days past
+- refactor bloodresultrft factory call, override form help_text
+- data fix migration for missing action identifiers in
+  subjectvisitmissed
+- data fix migration for rx where medication not selected in m2m
+- data fix migration to recalculate eGFR and store old value in new
+  field (old_egfr_value)
+
 0.1.91
 ------
 - remove UPT metadata rule

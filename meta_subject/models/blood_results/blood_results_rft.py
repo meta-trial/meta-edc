@@ -1,6 +1,6 @@
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
-from django.db import transaction
+from django.db import models, transaction
 from edc_constants.constants import NEW
 from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
 from edc_lab.model_mixins import CrfWithRequisitionModelMixin
@@ -38,6 +38,22 @@ class BloodResultsRft(
     action_name = BLOOD_RESULTS_RFT_ACTION
     tracking_identifier_prefix = "RF"
     lab_panel = rft_panel
+
+    old_egfr_value = models.DecimalField(
+        decimal_places=4,
+        max_digits=8,
+        null=True,
+        editable=False,
+        help_text="incorrect ckd-epi calculation (w/ 1.150 as ethnicity factor)",
+    )
+
+    old_egfr_drop_value = models.DecimalField(
+        decimal_places=4,
+        max_digits=10,
+        null=True,
+        editable=False,
+        help_text="incorrect ckd-epi calculation (w/ 1.150 as ethnicity factor)",
+    )
 
     def save(self, *args, **kwargs):
         if self.creatinine_value:

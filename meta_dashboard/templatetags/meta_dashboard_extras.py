@@ -28,7 +28,7 @@ def screening_button(context, model_wrapper):
 
     p2 = model_wrapper.object.eligible_part_two
     p3 = model_wrapper.object.eligible_part_three
-    p1_enabled = perms.user.has_perms(
+    p1_enabled = perms.user.has_perm(
         "meta_screening.view_screeningpartone"
     ) or perms.user.has_perm("meta_screening.change_screeningpartone")
     p2_enabled = (

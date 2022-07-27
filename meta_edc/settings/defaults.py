@@ -5,6 +5,7 @@ from pathlib import Path
 import environ
 from edc_appointment.constants import SCHEDULED_APPT, UNSCHEDULED_APPT
 from edc_constants.constants import COMPLETE
+from edc_protocol_violation.constants import PROTOCOL_INCIDENT
 from edc_utils import get_datetime_from_env
 
 BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
@@ -96,6 +97,7 @@ INSTALLED_APPS = [
     "edc_adverse_event.apps.AppConfig",
     "edc_consent.apps.AppConfig",
     "edc_crf.apps.AppConfig",
+    # "edc_call_manager.apps.AppConfig",
     "edc_reportable.apps.AppConfig",
     "edc_lab.apps.AppConfig",
     "edc_visit_schedule.apps.AppConfig",
@@ -374,6 +376,9 @@ HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
 # edc-mnsi
 EDC_MNSI_MODEL = "meta_subject.mnsi"
 
+# edc-protocol-incident
+EDC_PROTOCOL_VIOLATION_TYPE = PROTOCOL_INCIDENT
+
 # edc-qol
 EDC_QOL_EQ5D3L_MODEL = "meta_subject.eq5d3l"
 
@@ -433,8 +438,8 @@ AUTO_CREATE_KEYS = env("DJANGO_AUTO_CREATE_KEYS")
 EXPORT_FOLDER = env.str("DJANGO_EXPORT_FOLDER") or os.path.expanduser("~/")
 
 # django_simple_history
-SIMPLE_HISTORY_PERMISSIONS_ENABLED = env.str("SIMPLE_HISTORY_PERMISSIONS_ENABLED")
-SIMPLE_HISTORY_REVERT_DISABLED = env.str("SIMPLE_HISTORY_REVERT_DISABLED")
+SIMPLE_HISTORY_REVERT_DISABLED = False
+SIMPLE_HISTORY_ENFORCE_HISTORY_MODEL_PERMISSIONS = True
 
 FQDN = env.str("DJANGO_FQDN")  # ???
 INDEX_PAGE = env.str("DJANGO_INDEX_PAGE")

@@ -20,3 +20,4 @@ class ScreeningPartTwoForm(AlreadyConsentedFormMixin, FormValidatorMixin, forms.
     class Meta:
         model = ScreeningPartTwo
         fields = part_two_fields
+        help_texts = {"contact_number": "(Encryption: RSA local)"}

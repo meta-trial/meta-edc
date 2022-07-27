@@ -1,3 +1,4 @@
+from django.apps import apps as django_apps
 from edc_action_item import Action, ActionWithNotification, site_action_items
 from edc_action_item.site_action_items import AlreadyRegistered
 from edc_adverse_event.constants import AE_INITIAL_ACTION
@@ -15,6 +16,7 @@ from edc_lab_results.action_items import (
 from edc_ltfu.constants import LTFU_ACTION
 from edc_reportable import GRADE3, GRADE4
 from edc_visit_schedule.utils import is_baseline
+from edc_visit_tracking.constants import MISSED_VISIT
 
 from meta_prn.constants import (
     OFFSCHEDULE_ACTION,
@@ -42,8 +44,21 @@ class MissedVisitAction(Action):
     def get_next_actions(self):
         # TODO: define LTFU, 6 months off study medication
         next_actions = []
-        ltfu = None
-        if ltfu:
+        subjectconsent_model_cls = django_apps.get_model("meta_consent.subjectconsent")
+        subjectvisit_model_cls = django_apps.get_model("meta_subject.subjectvisit")
+        subject_consent = subjectconsent_model_cls.objects.get(
+            subject_identifier=self.subject_identifier
+        )
+        last_visit = (
+            subjectvisit_model_cls.objects.filter(subject_identifier=self.subject_identifier)
+            .exclude(reason=MISSED_VISIT)
+            .order_by("report_datetime")
+            .last()
+        )
+        if (
+            last_visit
+            and (last_visit.report_datetime - subject_consent.consent_datetime).days >= 182
+        ):
             next_actions = [LTFU_ACTION]
         return next_actions
 

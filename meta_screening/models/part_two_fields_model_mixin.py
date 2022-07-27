@@ -132,7 +132,6 @@ class PartTwoFieldsModelMixin(models.Model):
         ),
     )
 
-    # META PHASE_THREE ONLY
     has_dm = models.CharField(
         verbose_name="Is the patient known to have diabetes?",
         max_length=15,
@@ -141,7 +140,6 @@ class PartTwoFieldsModelMixin(models.Model):
         blank=False,
     )
 
-    # META PHASE_THREE ONLY
     on_dm_medication = models.CharField(
         verbose_name="Is the patient known to be taking anti-diabetic medications?",
         max_length=15,

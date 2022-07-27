@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.safestring import mark_safe
 from edc_action_item.forms import ActionItemFormMixin
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import FormValidator
@@ -26,3 +27,11 @@ class BloodResultsRftForm(ActionItemFormMixin, CrfModelFormMixin, forms.ModelFor
     class Meta:
         model = BloodResultsRft
         fields = "__all__"
+        help_texts = {
+            "egfr_value": mark_safe(
+                "Calculated using 2009 CKD-EPI Creatinine. See https://nephron.com/epi_equation"
+            ),
+            "egfr_drop_value": mark_safe(
+                "Calculated using 2009 CKD-EPI Creatinine. See https://nephron.com/epi_equation"
+            ),
+        }

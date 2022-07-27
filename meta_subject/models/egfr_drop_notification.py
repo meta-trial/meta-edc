@@ -36,7 +36,7 @@ class EgfrDropNotification(
         decimal_places=2,
         null=True,
         blank=True,
-        help_text="Copied from RFT result eGFR section",
+        help_text="Copied from RFT result eGFR section.",
     )
 
     narrative = models.TextField(
