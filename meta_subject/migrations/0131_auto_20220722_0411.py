@@ -31,6 +31,7 @@ def update_missing_action_items_for_missed_visits(apps, schema_editor):
             priority=HIGH_PRIORITY,
             status=CLOSED,
             auto_created=True,
+            site_id=subject_visit.site_id,
         )
         obj.action_identifier = action_item.action_identifier
         obj.save_base(update_fields=["action_identifier"])
