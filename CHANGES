@@ -1,6 +1,11 @@
 Changes
 =======
 
+0.1.93
+------
+- fix migration meta_subject 0131
+- bump edc=0.4.0
+
 0.1.92
 ------
 - bump edc==0.3.99
