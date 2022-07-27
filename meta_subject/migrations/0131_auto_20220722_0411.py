@@ -23,7 +23,7 @@ def update_missing_action_items_for_missed_visits(apps, schema_editor):
         subject_visit = subjectvisit_model_cls.objects.get(id=obj.subject_visit_id)
         action_item = actionitem_model_cls.objects.create(
             subject_identifier=subject_visit.subject_identifier,
-            action_identifier=ActionIdentifier().identifier,
+            action_identifier=ActionIdentifier(site_id=subject_visit.site_id).identifier,
             report_datetime=subject_visit.report_datetime,
             action_type=action_type,
             reference_model="meta_subject.subjectvisitmissed",
