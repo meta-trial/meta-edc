@@ -89,7 +89,7 @@ class FollowupExamination(
         ),
         max_length=25,
         choices=YES_NO,
-        help_text=("Includes other routine appointments, e.g. BP check or family planning"),
+        help_text="Includes other routine appointments, e.g. BP check or family planning",
     )
 
     # 5b
@@ -114,7 +114,9 @@ class FollowupExamination(
     )
 
     attended_clinic_sae = models.CharField(
-        verbose_name=mark_safe("Does the event constitute a <u>Serious Adverse Event</u>"),
+        verbose_name=mark_safe(  # nosec B308
+            "Does the event constitute a <u>Serious Adverse Event</u>"
+        ),
         max_length=25,
         choices=YES_NO_NA,
         default=NOT_APPLICABLE,

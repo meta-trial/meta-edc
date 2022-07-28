@@ -247,8 +247,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** Heart rate:
@@ -265,8 +265,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If the heartbeat is <u>irregular</u>, please describe
@@ -301,8 +301,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **14.0.** Presence of peripheral oedema?
@@ -311,8 +311,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **15.0.** Abdominal tenderness on palpation?
@@ -321,8 +321,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, abdominal tenderness, please describe
@@ -337,8 +337,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 
@@ -377,33 +377,33 @@
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** If other, please specify ...
@@ -487,8 +487,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **15.0.** Which antiretroviral therapy regimen was the patient previously on?
@@ -518,8 +518,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** If YES, which prophylaxis is the patient on?
@@ -527,10 +527,10 @@
 - column: oi_prophylaxis
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `tmp_smx`: *TMP/SMX* 
-  - `fluconazole`: *Fluconazole* 
-  - `isoniazid`: *Isoniazid* 
-  - `OTHER`: *Other, specify* 
+  - `tmp_smx`: *TMP/SMX*
+  - `fluconazole`: *Fluconazole*
+  - `isoniazid`: *Isoniazid*
+  - `OTHER`: *Other, specify*
 ---
 
 **20.0.** If other, please specify ...
@@ -549,8 +549,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **22.0.** Is the patient on treatment for hypertension?
@@ -559,9 +559,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **23.0.** What medications is the patient currently taking for hypertension?
@@ -569,28 +569,28 @@
 - column: htn_treatment
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `amlodipine`: *Amlodipine* 
-  - `atenolol`: *Atenolol* 
-  - `bendroflumethiazide`: *Bendroflumethiazide* 
-  - `bisoprolol`: *Bisoprolol* 
-  - `captopril`: *Captopril* 
-  - `diltiazem`: *Diltiazem* 
-  - `enalapril`: *Enalapril* 
-  - `eplerenone`: *Eplerenone* 
-  - `furosemide`: *Furosemide* 
-  - `hydralazine`: *Hydralazine* 
-  - `hydrochlothiazide`: *Hydrochlothiazide* 
-  - `indapamide`: *Indapamide* 
-  - `losartan`: *Losartan* 
-  - `metoprolol`: *Metoprolol* 
-  - `nifedipine`: *Nifedipine* 
-  - `perindopril`: *Perindopril* 
-  - `propanolol`: *Propanolol* 
-  - `spironolactone`: *Spironolactone* 
-  - `telmisartan`: *Telmisartan* 
-  - `torsemide`: *Torsemide* 
-  - `verapamil`: *Verapamil* 
-  - `OTHER`: *Other, specify* 
+  - `amlodipine`: *Amlodipine*
+  - `atenolol`: *Atenolol*
+  - `bendroflumethiazide`: *Bendroflumethiazide*
+  - `bisoprolol`: *Bisoprolol*
+  - `captopril`: *Captopril*
+  - `diltiazem`: *Diltiazem*
+  - `enalapril`: *Enalapril*
+  - `eplerenone`: *Eplerenone*
+  - `furosemide`: *Furosemide*
+  - `hydralazine`: *Hydralazine*
+  - `hydrochlothiazide`: *Hydrochlothiazide*
+  - `indapamide`: *Indapamide*
+  - `losartan`: *Losartan*
+  - `metoprolol`: *Metoprolol*
+  - `nifedipine`: *Nifedipine*
+  - `perindopril`: *Perindopril*
+  - `propanolol`: *Propanolol*
+  - `spironolactone`: *Spironolactone*
+  - `telmisartan`: *Telmisartan*
+  - `torsemide`: *Torsemide*
+  - `verapamil`: *Verapamil*
+  - `OTHER`: *Other, specify*
 ---
 
 **24.0.** If other medication(s), please specify ...
@@ -607,8 +607,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **26.0.** Is the patient on treatment for dyslipidaemia?
@@ -617,9 +617,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **27.0.** What medication is the patient currently taking for dyslipidaemia?
@@ -628,10 +628,10 @@
 - type: CharField
 - length: 25
 - responses:
-  - `atorvastatin`: *Atorvastatin* 
-  - `rosuvastatin`: *Rosuvastatin* 
-  - `OTHER`: *Other, specify below ...* 
-  - `N/A`: *Not applicable* 
+  - `atorvastatin`: *Atorvastatin*
+  - `rosuvastatin`: *Rosuvastatin*
+  - `OTHER`: *Other, specify below ...*
+  - `N/A`: *Not applicable*
 ---
 
 **28.0.** Does the patient have any other conditions not mentioned above?
@@ -656,8 +656,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **31.0.** Is the patient a <u>previous</u> smoker?
@@ -666,9 +666,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **32.0.** In the <u>past year</u>, have you had any of the following symptoms?
@@ -676,11 +676,11 @@
 - column: dm_symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `frequent_urination`: *Wanting to urinate more often than usual* 
-  - `excessive_thirst`: *Wanting to drink water more than usual* 
-  - `excessive_eating`: *Wanting to eat food more than usual* 
-  - `OTHER`: *Other, specify* 
-  - `none`: *No symptoms to report* 
+  - `frequent_urination`: *Wanting to urinate more often than usual*
+  - `excessive_thirst`: *Wanting to drink water more than usual*
+  - `excessive_eating`: *Wanting to eat food more than usual*
+  - `OTHER`: *Other, specify*
+  - `none`: *No symptoms to report*
 ---
 
 **33.0.** If other symptom in the <u>past year</u>, please specify ...
@@ -699,8 +699,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 
@@ -738,8 +738,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 
@@ -802,8 +802,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *IU/L* 
-  - `U/L`: *U/L* 
+  - `IU/L`: *IU/L*
+  - `U/L`: *U/L*
 ---
 
 **7.0.** abnormal
@@ -812,8 +812,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -822,12 +822,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -838,8 +838,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If any results are abnormal, are results within grade 3 or above?
@@ -850,9 +850,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -931,8 +931,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -941,12 +941,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -957,8 +957,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If any results are abnormal, are results within grade 3 or above?
@@ -969,9 +969,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -1042,7 +1042,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **7.0.** abnormal
@@ -1051,8 +1051,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -1061,12 +1061,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: CREATININE**
@@ -1083,8 +1083,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `umol/L`: *μmol/L (micromoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `umol/L`: *μmol/L (micromoles/L)*
 ---
 
 **11.0.** abnormal
@@ -1093,8 +1093,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -1103,12 +1103,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: URIC_ACID**
@@ -1125,8 +1125,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `mg/dL`: *mg/dL* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `mg/dL`: *mg/dL*
 ---
 
 **15.0.** abnormal
@@ -1135,8 +1135,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -1145,12 +1145,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -1161,8 +1161,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **18.0.** If any results are abnormal, are results within grade 3 or above?
@@ -1173,9 +1173,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -1200,7 +1200,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mL/min/1.73m2`: *mL/min/1.73m2* 
+  - `mL/min/1.73m2`: *mL/min/1.73m2*
 ---
 
 
@@ -1263,7 +1263,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **7.0.** abnormal
@@ -1272,8 +1272,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -1282,12 +1282,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALT**
@@ -1304,7 +1304,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **11.0.** abnormal
@@ -1313,8 +1313,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -1323,12 +1323,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALP**
@@ -1345,7 +1345,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **15.0.** abnormal
@@ -1354,8 +1354,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -1364,12 +1364,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: AMYLASE**
@@ -1386,7 +1386,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **19.0.** abnormal
@@ -1395,8 +1395,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -1405,12 +1405,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: GGT**
@@ -1427,7 +1427,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **23.0.** abnormal
@@ -1436,8 +1436,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -1446,12 +1446,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALBUMIN**
@@ -1468,8 +1468,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
-  - `g/L`: *g/L* 
+  - `g/dL`: *g/dL*
+  - `g/L`: *g/L*
 ---
 
 **27.0.** abnormal
@@ -1478,8 +1478,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -1488,12 +1488,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -1504,8 +1504,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **30.0.** If any results are abnormal, are results within grade 3 or above?
@@ -1516,9 +1516,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -1589,7 +1589,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **7.0.** abnormal
@@ -1598,8 +1598,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -1608,12 +1608,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: HCT**
@@ -1630,7 +1630,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `%`: *%* 
+  - `%`: *%*
 ---
 
 **11.0.** abnormal
@@ -1639,8 +1639,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -1649,12 +1649,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: RBC**
@@ -1671,8 +1671,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm^3* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm^3*
 ---
 
 **15.0.** abnormal
@@ -1681,8 +1681,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -1691,12 +1691,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: WBC**
@@ -1713,8 +1713,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **19.0.** abnormal
@@ -1723,8 +1723,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -1733,12 +1733,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: PLATELETS**
@@ -1755,8 +1755,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **23.0.** abnormal
@@ -1765,8 +1765,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -1775,12 +1775,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCV**
@@ -1797,7 +1797,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `fL/cell`: *fL/cell* 
+  - `fL/cell`: *fL/cell*
 ---
 
 **27.0.** abnormal
@@ -1806,8 +1806,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -1816,12 +1816,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCH**
@@ -1838,7 +1838,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `pg/cell`: *pg/cell* 
+  - `pg/cell`: *pg/cell*
 ---
 
 **31.0.** abnormal
@@ -1847,8 +1847,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **32.0.** reportable
@@ -1857,12 +1857,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCHC**
@@ -1879,7 +1879,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **35.0.** abnormal
@@ -1888,8 +1888,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **36.0.** reportable
@@ -1898,12 +1898,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -1914,8 +1914,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **38.0.** If any results are abnormal, are results within grade 3 or above?
@@ -1926,9 +1926,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -1999,7 +1999,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **7.0.** abnormal
@@ -2008,8 +2008,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -2018,12 +2018,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: HDL**
@@ -2040,7 +2040,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **11.0.** abnormal
@@ -2049,8 +2049,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -2059,12 +2059,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: TRIG**
@@ -2081,7 +2081,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **15.0.** abnormal
@@ -2090,8 +2090,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -2100,12 +2100,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: CHOL**
@@ -2122,7 +2122,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **19.0.** abnormal
@@ -2131,8 +2131,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -2141,12 +2141,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -2157,8 +2157,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **22.0.** If any results are abnormal, are results within grade 3 or above?
@@ -2169,9 +2169,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -2217,8 +2217,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** Diagnostic test used
@@ -2227,9 +2227,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `rapid_test`: *Rapid test* 
-  - `microscopy`: *Microscopy* 
-  - `N/A`: *Not applicable* 
+  - `rapid_test`: *Rapid test*
+  - `microscopy`: *Microscopy*
+  - `N/A`: *Not applicable*
 ---
 
 **5.0.** If NO, provide reason
@@ -2246,9 +2246,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `present`: *Present* 
-  - `absent`: *Absent* 
-  - `N/A`: *Not Applicable* 
+  - `present`: *Present*
+  - `absent`: *Absent*
+  - `N/A`: *Not Applicable*
 ---
 
 
@@ -2286,8 +2286,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -2304,9 +2304,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `present`: *Present* 
-  - `absent`: *Absent* 
-  - `N/A`: *Not Applicable* 
+  - `present`: *Present*
+  - `absent`: *Absent*
+  - `N/A`: *Not Applicable*
 ---
 
 **6.0.** Protein?
@@ -2315,9 +2315,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `present`: *Present* 
-  - `absent`: *Absent* 
-  - `N/A`: *Not Applicable* 
+  - `present`: *Present*
+  - `absent`: *Absent*
+  - `N/A`: *Not Applicable*
 ---
 
 **7.0.** Glucose?
@@ -2326,9 +2326,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `present`: *Present* 
-  - `absent`: *Absent* 
-  - `N/A`: *Not Applicable* 
+  - `present`: *Present*
+  - `absent`: *Absent*
+  - `N/A`: *Not Applicable*
 ---
 
 
@@ -2387,8 +2387,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -2405,8 +2405,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -2514,8 +2514,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -2582,33 +2582,33 @@
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -2624,33 +2624,33 @@
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -2666,33 +2666,33 @@
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -2709,8 +2709,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -2725,9 +2725,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -2738,9 +2738,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -2753,8 +2753,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -2763,9 +2763,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -2784,9 +2784,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -2795,9 +2795,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -2814,8 +2814,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -2846,8 +2846,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -2856,8 +2856,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -2866,8 +2866,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -2886,8 +2886,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -2898,8 +2898,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -2908,8 +2908,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -3002,8 +3002,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `fasting`: *Fasting* 
-  - `non_fasting`: *Non-fasting* 
+  - `fasting`: *Fasting*
+  - `non_fasting`: *Non-fasting*
 ---
 
 **Section: Glucose**
@@ -3020,8 +3020,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **8.0.** abnormal
@@ -3030,8 +3030,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** reportable
@@ -3040,12 +3040,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -3056,8 +3056,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If any results are abnormal, are results within grade 3 or above?
@@ -3068,9 +3068,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -3137,8 +3137,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -3155,8 +3155,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -3228,8 +3228,8 @@
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -3246,13 +3246,13 @@
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -3260,14 +3260,14 @@
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -3315,9 +3315,9 @@
 - type: CharField
 - length: 45
 - responses:
-  - `no_problems_in_walking`: *I have no problems in walking about* 
-  - `some_problems_in_walking`: *I have some problems in walking about* 
-  - `confined_to_bed`: *I am confined to bed* 
+  - `no_problems_in_walking`: *I have no problems in walking about*
+  - `some_problems_in_walking`: *I have some problems in walking about*
+  - `confined_to_bed`: *I am confined to bed*
 ---
 
 **4.0.** Self-care
@@ -3326,9 +3326,9 @@
 - type: CharField
 - length: 45
 - responses:
-  - `no_problems_with_self_care`: *I have no problems with self-care* 
-  - `problems_washing_dressing_myself`: *I have some problems washing or dressing myself* 
-  - `unable_to_wash_dress_myself`: *I am unable to wash or dress myself* 
+  - `no_problems_with_self_care`: *I have no problems with self-care*
+  - `problems_washing_dressing_myself`: *I have some problems washing or dressing myself*
+  - `unable_to_wash_dress_myself`: *I am unable to wash or dress myself*
 ---
 
 **5.0.** Usual activities
@@ -3339,9 +3339,9 @@
 - type: CharField
 - length: 45
 - responses:
-  - `no_problems_performing_usual_activities`: *I have no problems with performing my usual activities* 
-  - `some_problems_performing_usual_activities`: *I have some problems with performing my usual activities* 
-  - `unable_to_perform_usual_activities`: *I am unable to perform my usual activities* 
+  - `no_problems_performing_usual_activities`: *I have no problems with performing my usual activities*
+  - `some_problems_performing_usual_activities`: *I have some problems with performing my usual activities*
+  - `unable_to_perform_usual_activities`: *I am unable to perform my usual activities*
 ---
 
 **6.0.** Pain / Discomfort
@@ -3350,9 +3350,9 @@
 - type: CharField
 - length: 45
 - responses:
-  - `no_pain_discomfort`: *I have no pain or discomfort* 
-  - `moderate_pain_discomfort`: *I have moderate pain or discomfort* 
-  - `extreme_pain_discomfort`: *I have extreme pain or discomfort* 
+  - `no_pain_discomfort`: *I have no pain or discomfort*
+  - `moderate_pain_discomfort`: *I have moderate pain or discomfort*
+  - `extreme_pain_discomfort`: *I have extreme pain or discomfort*
 ---
 
 **7.0.** Anxiety / Depression
@@ -3361,9 +3361,9 @@
 - type: CharField
 - length: 45
 - responses:
-  - `not_anxious_depressed`: *I am not anxious or depressed* 
-  - `moderately_anxious_depressed`: *I am moderately anxious or depressed* 
-  - `extremely_anxious_depressed`: *I am extremely anxious or depressed* 
+  - `not_anxious_depressed`: *I am not anxious or depressed*
+  - `moderately_anxious_depressed`: *I am moderately anxious or depressed*
+  - `extremely_anxious_depressed`: *I am extremely anxious or depressed*
 ---
 
 **Section: How is your health TODAY?**
@@ -3394,8 +3394,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)* 
-  - `COMPLETE`: *Complete* 
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
 ---
 
 **11.0.** Any comments related to status of this CRF
@@ -3443,11 +3443,11 @@
 - type: CharField
 - length: 15
 - responses:
-  - `excellent`: *Excellent* 
-  - `very_good`: *Very good* 
-  - `good`: *Good* 
-  - `fair`: *Fair* 
-  - `poor`: *Poor* 
+  - `excellent`: *Excellent*
+  - `very_good`: *Very good*
+  - `good`: *Good*
+  - `fair`: *Fair*
+  - `poor`: *Poor*
 ---
 
 **Section: Part 2: Activities limited by health**
@@ -3458,9 +3458,9 @@
 - type: CharField
 - length: 20
 - responses:
-  - `limited_a_lot`: *YES, limited a lot* 
-  - `limited_a_little`: *YES, limited a little* 
-  - `not_limited_at_all`: *NO, not at all limited* 
+  - `limited_a_lot`: *YES, limited a lot*
+  - `limited_a_little`: *YES, limited a little*
+  - `not_limited_at_all`: *NO, not at all limited*
 ---
 
 **5.0.** Climbing <u>several</u> flights of stairs:
@@ -3469,9 +3469,9 @@
 - type: CharField
 - length: 20
 - responses:
-  - `limited_a_lot`: *YES, limited a lot* 
-  - `limited_a_little`: *YES, limited a little* 
-  - `not_limited_at_all`: *NO, not at all limited* 
+  - `limited_a_lot`: *YES, limited a lot*
+  - `limited_a_little`: *YES, limited a little*
+  - `not_limited_at_all`: *NO, not at all limited*
 ---
 
 **Section: Part 3: Physical health problems (last 4 weeks)**
@@ -3482,8 +3482,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** Were limited in the <u>kind</u> of work or other activities:
@@ -3492,8 +3492,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 4: Emotional problems (last 4 weeks)**
@@ -3504,8 +3504,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Did work or activities <u>less carefully than usual</u>:
@@ -3514,8 +3514,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 5: Pain (last 4 weeks)**
@@ -3526,11 +3526,11 @@
 - type: CharField
 - length: 15
 - responses:
-  - `not_at_all`: *Not at all* 
-  - `a_little_bit`: *A little bit* 
-  - `moderately`: *Moderately* 
-  - `quite_a-bit`: *Quite a bit* 
-  - `extremely`: *Extremely* 
+  - `not_at_all`: *Not at all*
+  - `a_little_bit`: *A little bit*
+  - `moderately`: *Moderately*
+  - `quite_a-bit`: *Quite a bit*
+  - `extremely`: *Extremely*
 ---
 
 **Section: Part 6: Feeling (last 4 weeks)**
@@ -3541,12 +3541,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `all_of_the_time`: *All of the time* 
-  - `most_of_the_time`: *Most of the time* 
-  - `good_bit_of_the_time`: * A good bit of the time* 
-  - `some_of_the_time`: *Some of the time* 
-  - `little_of_the_time`: *A little of the time* 
-  - `none_of_the_time`: *None of the time* 
+  - `all_of_the_time`: *All of the time*
+  - `most_of_the_time`: *Most of the time*
+  - `good_bit_of_the_time`: * A good bit of the time*
+  - `some_of_the_time`: *Some of the time*
+  - `little_of_the_time`: *A little of the time*
+  - `none_of_the_time`: *None of the time*
 ---
 
 **12.0.** Did you have a lot of energy?
@@ -3555,12 +3555,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `all_of_the_time`: *All of the time* 
-  - `most_of_the_time`: *Most of the time* 
-  - `good_bit_of_the_time`: * A good bit of the time* 
-  - `some_of_the_time`: *Some of the time* 
-  - `little_of_the_time`: *A little of the time* 
-  - `none_of_the_time`: *None of the time* 
+  - `all_of_the_time`: *All of the time*
+  - `most_of_the_time`: *Most of the time*
+  - `good_bit_of_the_time`: * A good bit of the time*
+  - `some_of_the_time`: *Some of the time*
+  - `little_of_the_time`: *A little of the time*
+  - `none_of_the_time`: *None of the time*
 ---
 
 **13.0.** Have you felt down-hearted and blue?
@@ -3569,12 +3569,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `all_of_the_time`: *All of the time* 
-  - `most_of_the_time`: *Most of the time* 
-  - `good_bit_of_the_time`: * A good bit of the time* 
-  - `some_of_the_time`: *Some of the time* 
-  - `little_of_the_time`: *A little of the time* 
-  - `none_of_the_time`: *None of the time* 
+  - `all_of_the_time`: *All of the time*
+  - `most_of_the_time`: *Most of the time*
+  - `good_bit_of_the_time`: * A good bit of the time*
+  - `some_of_the_time`: *Some of the time*
+  - `little_of_the_time`: *A little of the time*
+  - `none_of_the_time`: *None of the time*
 ---
 
 **Section: Part 7: Social activities (last 4 weeks)**
@@ -3585,11 +3585,11 @@
 - type: CharField
 - length: 25
 - responses:
-  - `all_of_the_time`: *All of the time* 
-  - `most_of_the_time`: *Most of the time* 
-  - `some_of_the_time`: *Some of the time* 
-  - `little_of_the_time`: *A little of the time* 
-  - `none_of_the_time`: *None of the time* 
+  - `all_of_the_time`: *All of the time*
+  - `most_of_the_time`: *Most of the time*
+  - `some_of_the_time`: *Some of the time*
+  - `little_of_the_time`: *A little of the time*
+  - `none_of_the_time`: *None of the time*
 ---
 
 **Section: CRF Status**
@@ -3602,8 +3602,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)* 
-  - `COMPLETE`: *Complete* 
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
 ---
 
 **16.0.** Any comments related to status of this CRF
@@ -3649,11 +3649,11 @@
 - type: CharField
 - length: 25
 - responses:
-  - `never_married`: *Never married* 
-  - `married`: *Currently married* 
-  - `separated`: *Separated* 
-  - `divorced`: *Divorced* 
-  - `widowed`: *Widow / Spinster* 
+  - `never_married`: *Never married*
+  - `married`: *Currently married*
+  - `separated`: *Separated*
+  - `divorced`: *Divorced*
+  - `widowed`: *Widow / Spinster*
 ---
 
 **4.0.** What is your occupation/profession?
@@ -3678,11 +3678,11 @@
 - type: CharField
 - length: 50
 - responses:
-  - `primary`: *Primary Certificate* 
-  - `secondary`: *Secondary Certificate* 
-  - `tertiary`: *post-Secondary/Tertiary/College* 
-  - `OTHER`: *Other, please specify ...* 
-  - `N/A`: *Not applicable, never went to school* 
+  - `primary`: *Primary Certificate*
+  - `secondary`: *Secondary Certificate*
+  - `tertiary`: *post-Secondary/Tertiary/College*
+  - `OTHER`: *Other, please specify ...*
+  - `N/A`: *Not applicable, never went to school*
 ---
 
 **6.1.** If other, please specify ...
@@ -3707,9 +3707,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **9.0.** If YES, for how many years
@@ -3724,9 +3724,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, for how many years
@@ -3741,9 +3741,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** If YES, for how many years
@@ -3839,8 +3839,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -3907,33 +3907,33 @@
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -3949,33 +3949,33 @@
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -3991,33 +3991,33 @@
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -4034,8 +4034,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -4050,9 +4050,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -4063,9 +4063,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -4078,8 +4078,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -4088,9 +4088,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -4109,9 +4109,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -4120,9 +4120,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -4139,8 +4139,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -4171,8 +4171,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -4181,8 +4181,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -4191,8 +4191,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -4211,8 +4211,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -4223,8 +4223,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -4233,8 +4233,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -4327,8 +4327,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `fasting`: *Fasting* 
-  - `non_fasting`: *Non-fasting* 
+  - `fasting`: *Fasting*
+  - `non_fasting`: *Non-fasting*
 ---
 
 **Section: Glucose**
@@ -4345,8 +4345,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **8.0.** abnormal
@@ -4355,8 +4355,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** reportable
@@ -4365,12 +4365,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -4381,8 +4381,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If any results are abnormal, are results within grade 3 or above?
@@ -4393,9 +4393,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -4462,8 +4462,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -4480,8 +4480,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -4553,8 +4553,8 @@
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -4571,13 +4571,13 @@
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -4585,14 +4585,14 @@
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -4638,8 +4638,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -4663,9 +4663,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `POS`: *Positive* 
-  - `NEG`: *Negative* 
-  - `N/A`: *Not applicable* 
+  - `POS`: *Positive*
+  - `NEG`: *Negative*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -4703,11 +4703,11 @@
 - type: CharField
 - length: 25
 - responses:
-  - `never_married`: *Never married* 
-  - `married`: *Currently married* 
-  - `separated`: *Separated* 
-  - `divorced`: *Divorced* 
-  - `widowed`: *Widow / Spinster* 
+  - `never_married`: *Never married*
+  - `married`: *Currently married*
+  - `separated`: *Separated*
+  - `divorced`: *Divorced*
+  - `widowed`: *Widow / Spinster*
 ---
 
 **4.0.** What is your occupation/profession?
@@ -4732,11 +4732,11 @@
 - type: CharField
 - length: 50
 - responses:
-  - `primary`: *Primary Certificate* 
-  - `secondary`: *Secondary Certificate* 
-  - `tertiary`: *post-Secondary/Tertiary/College* 
-  - `OTHER`: *Other, please specify ...* 
-  - `N/A`: *Not applicable, never went to school* 
+  - `primary`: *Primary Certificate*
+  - `secondary`: *Secondary Certificate*
+  - `tertiary`: *post-Secondary/Tertiary/College*
+  - `OTHER`: *Other, please specify ...*
+  - `N/A`: *Not applicable, never went to school*
 ---
 
 **6.1.** If other, please specify ...
@@ -4761,9 +4761,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **9.0.** If YES, for how many years
@@ -4778,9 +4778,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, for how many years
@@ -4795,9 +4795,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** If YES, for how many years
@@ -4843,8 +4843,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, please provide a reason
@@ -4862,9 +4862,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **6.0.** Do you ever have any burning pain in your legs and/or feet?
@@ -4873,9 +4873,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **7.0.** Are your feet too sensitive to touch?
@@ -4884,9 +4884,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.0.** Do you get muscle cramps in your legs and/or feet?
@@ -4895,9 +4895,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **9.0.** Do you ever have any prickling feelings in your legs or feet?
@@ -4906,9 +4906,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **10.0.** Does it hurt when the bed covers touch your skin?
@@ -4917,9 +4917,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** When you get into the tub or shower, are you able to tell the hot water from the cold water?
@@ -4928,9 +4928,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **12.0.** Have you ever had an open sore on your foot?
@@ -4939,9 +4939,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Has your doctor ever told you that you have diabetic neuropathy?
@@ -4950,9 +4950,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** Do you feel weak all over most of the time?
@@ -4961,9 +4961,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **15.0.** Are your symptoms worse at night?
@@ -4972,9 +4972,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **16.0.** Do your legs hurt when you walk?
@@ -4983,9 +4983,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **17.0.** Are you able to sense your feet when you walk?
@@ -4994,9 +4994,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **18.0.** Is the skin on your feet so dry that it cracks open?
@@ -5005,9 +5005,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **19.0.** Have you ever had an amputation?
@@ -5016,9 +5016,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 2a: Physical Assessment - Right Foot**
@@ -5031,9 +5031,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `not_examined`: *Not examined* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `not_examined`: *Not examined*
 ---
 
 **21.0.** If NO, check all that apply to RIGHT foot?
@@ -5041,19 +5041,19 @@
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `callous_formation`: *Callous formation* 
-  - `deformity_amputation`: *Deformity – amputation* 
-  - `deformity_flat_feet`: *Deformity – flat feet* 
-  - `deformity_halux_valgus`: *Deformity – halux valgus* 
-  - `deformity_hammer_toes`: *Deformity – hammer toes* 
-  - `deformity_joint_subluxation`: *Deformity – joint subluxation* 
-  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)* 
-  - `deformity_overlapping_toes`: *Deformity – overlapping toes* 
-  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads* 
-  - `dry_skin`: *Dry skin* 
-  - `infection`: *Infection* 
-  - `fissure`: *Fissure* 
-  - `OTHER`: *Other abnormality, please specify* 
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -5072,9 +5072,9 @@
 - type: CharField
 - length: 35
 - responses:
-  - `absent`: *Absent* 
-  - `present`: *Present* 
-  - `not_examined`: *Not examined* 
+  - `absent`: *Absent*
+  - `present`: *Present*
+  - `not_examined`: *Not examined*
 ---
 
 **23.0.** Ankle reflexes, RIGHT foot?
@@ -5085,10 +5085,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `present`: *Present* 
-  - `present_with_reinforcement`: *Present/Reinforcement* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `present`: *Present*
+  - `present_with_reinforcement`: *Present/Reinforcement*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **24.0.** Vibration perception at great toe, RIGHT foot?
@@ -5099,10 +5099,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `present`: *Present* 
-  - `decreased`: *Decreased* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `present`: *Present*
+  - `decreased`: *Decreased*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **25.0.** Monofilament, RIGHT foot?
@@ -5113,10 +5113,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `NORMAL`: *Normal* 
-  - `reduced`: *Reduced* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `NORMAL`: *Normal*
+  - `reduced`: *Reduced*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **Section: Part 2b: Physical Assessment - Left Foot**
@@ -5129,9 +5129,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `not_examined`: *Not examined* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `not_examined`: *Not examined*
 ---
 
 **27.0.** If NO, check all that apply to LEFT foot?
@@ -5139,19 +5139,19 @@
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `callous_formation`: *Callous formation* 
-  - `deformity_amputation`: *Deformity – amputation* 
-  - `deformity_flat_feet`: *Deformity – flat feet* 
-  - `deformity_halux_valgus`: *Deformity – halux valgus* 
-  - `deformity_hammer_toes`: *Deformity – hammer toes* 
-  - `deformity_joint_subluxation`: *Deformity – joint subluxation* 
-  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)* 
-  - `deformity_overlapping_toes`: *Deformity – overlapping toes* 
-  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads* 
-  - `dry_skin`: *Dry skin* 
-  - `infection`: *Infection* 
-  - `fissure`: *Fissure* 
-  - `OTHER`: *Other abnormality, please specify* 
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -5170,9 +5170,9 @@
 - type: CharField
 - length: 35
 - responses:
-  - `absent`: *Absent* 
-  - `present`: *Present* 
-  - `not_examined`: *Not examined* 
+  - `absent`: *Absent*
+  - `present`: *Present*
+  - `not_examined`: *Not examined*
 ---
 
 **29.0.** Ankle reflexes, LEFT foot?
@@ -5183,10 +5183,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `present`: *Present* 
-  - `present_with_reinforcement`: *Present/Reinforcement* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `present`: *Present*
+  - `present_with_reinforcement`: *Present/Reinforcement*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **30.0.** Vibration perception at great toe, LEFT foot?
@@ -5197,10 +5197,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `present`: *Present* 
-  - `decreased`: *Decreased* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `present`: *Present*
+  - `decreased`: *Decreased*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **31.0.** Monofilament, LEFT foot?
@@ -5211,10 +5211,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `NORMAL`: *Normal* 
-  - `reduced`: *Reduced* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `NORMAL`: *Normal*
+  - `reduced`: *Reduced*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **Section: CRF status**
@@ -5227,8 +5227,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)* 
-  - `COMPLETE`: *Complete* 
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
 ---
 
 **33.0.** Any comments related to status of this CRF
@@ -5340,8 +5340,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -5408,33 +5408,33 @@
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -5450,33 +5450,33 @@
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -5492,33 +5492,33 @@
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -5535,8 +5535,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -5551,9 +5551,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -5564,9 +5564,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -5579,8 +5579,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -5589,9 +5589,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -5610,9 +5610,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -5621,9 +5621,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -5640,8 +5640,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -5672,8 +5672,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -5682,8 +5682,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -5692,8 +5692,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -5712,8 +5712,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -5724,8 +5724,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -5734,8 +5734,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -5828,8 +5828,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `fasting`: *Fasting* 
-  - `non_fasting`: *Non-fasting* 
+  - `fasting`: *Fasting*
+  - `non_fasting`: *Non-fasting*
 ---
 
 **Section: Glucose**
@@ -5846,8 +5846,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **8.0.** abnormal
@@ -5856,8 +5856,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** reportable
@@ -5866,12 +5866,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -5882,8 +5882,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If any results are abnormal, are results within grade 3 or above?
@@ -5894,9 +5894,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -5967,7 +5967,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **7.0.** abnormal
@@ -5976,8 +5976,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -5986,12 +5986,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: CREATININE**
@@ -6008,8 +6008,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `umol/L`: *μmol/L (micromoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `umol/L`: *μmol/L (micromoles/L)*
 ---
 
 **11.0.** abnormal
@@ -6018,8 +6018,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -6028,12 +6028,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: URIC_ACID**
@@ -6050,8 +6050,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `mg/dL`: *mg/dL* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `mg/dL`: *mg/dL*
 ---
 
 **15.0.** abnormal
@@ -6060,8 +6060,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -6070,12 +6070,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -6086,8 +6086,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **18.0.** If any results are abnormal, are results within grade 3 or above?
@@ -6098,9 +6098,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -6125,7 +6125,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mL/min/1.73m2`: *mL/min/1.73m2* 
+  - `mL/min/1.73m2`: *mL/min/1.73m2*
 ---
 
 
@@ -6188,7 +6188,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **7.0.** abnormal
@@ -6197,8 +6197,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -6207,12 +6207,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALT**
@@ -6229,7 +6229,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **11.0.** abnormal
@@ -6238,8 +6238,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -6248,12 +6248,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALP**
@@ -6270,7 +6270,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **15.0.** abnormal
@@ -6279,8 +6279,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -6289,12 +6289,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: AMYLASE**
@@ -6311,7 +6311,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **19.0.** abnormal
@@ -6320,8 +6320,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -6330,12 +6330,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: GGT**
@@ -6352,7 +6352,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **23.0.** abnormal
@@ -6361,8 +6361,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -6371,12 +6371,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALBUMIN**
@@ -6393,8 +6393,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
-  - `g/L`: *g/L* 
+  - `g/dL`: *g/dL*
+  - `g/L`: *g/L*
 ---
 
 **27.0.** abnormal
@@ -6403,8 +6403,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -6413,12 +6413,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -6429,8 +6429,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **30.0.** If any results are abnormal, are results within grade 3 or above?
@@ -6441,9 +6441,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -6510,8 +6510,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -6528,8 +6528,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -6601,8 +6601,8 @@
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -6619,13 +6619,13 @@
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -6633,14 +6633,14 @@
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -6686,8 +6686,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -6711,9 +6711,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `POS`: *Positive* 
-  - `NEG`: *Negative* 
-  - `N/A`: *Not applicable* 
+  - `POS`: *Positive*
+  - `NEG`: *Negative*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -6753,8 +6753,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, please provide a reason
@@ -6772,9 +6772,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **6.0.** Do you ever have any burning pain in your legs and/or feet?
@@ -6783,9 +6783,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **7.0.** Are your feet too sensitive to touch?
@@ -6794,9 +6794,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.0.** Do you get muscle cramps in your legs and/or feet?
@@ -6805,9 +6805,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **9.0.** Do you ever have any prickling feelings in your legs or feet?
@@ -6816,9 +6816,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **10.0.** Does it hurt when the bed covers touch your skin?
@@ -6827,9 +6827,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** When you get into the tub or shower, are you able to tell the hot water from the cold water?
@@ -6838,9 +6838,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **12.0.** Have you ever had an open sore on your foot?
@@ -6849,9 +6849,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Has your doctor ever told you that you have diabetic neuropathy?
@@ -6860,9 +6860,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** Do you feel weak all over most of the time?
@@ -6871,9 +6871,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **15.0.** Are your symptoms worse at night?
@@ -6882,9 +6882,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **16.0.** Do your legs hurt when you walk?
@@ -6893,9 +6893,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **17.0.** Are you able to sense your feet when you walk?
@@ -6904,9 +6904,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **18.0.** Is the skin on your feet so dry that it cracks open?
@@ -6915,9 +6915,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **19.0.** Have you ever had an amputation?
@@ -6926,9 +6926,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 2a: Physical Assessment - Right Foot**
@@ -6941,9 +6941,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `not_examined`: *Not examined* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `not_examined`: *Not examined*
 ---
 
 **21.0.** If NO, check all that apply to RIGHT foot?
@@ -6951,19 +6951,19 @@
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `callous_formation`: *Callous formation* 
-  - `deformity_amputation`: *Deformity – amputation* 
-  - `deformity_flat_feet`: *Deformity – flat feet* 
-  - `deformity_halux_valgus`: *Deformity – halux valgus* 
-  - `deformity_hammer_toes`: *Deformity – hammer toes* 
-  - `deformity_joint_subluxation`: *Deformity – joint subluxation* 
-  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)* 
-  - `deformity_overlapping_toes`: *Deformity – overlapping toes* 
-  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads* 
-  - `dry_skin`: *Dry skin* 
-  - `infection`: *Infection* 
-  - `fissure`: *Fissure* 
-  - `OTHER`: *Other abnormality, please specify* 
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -6982,9 +6982,9 @@
 - type: CharField
 - length: 35
 - responses:
-  - `absent`: *Absent* 
-  - `present`: *Present* 
-  - `not_examined`: *Not examined* 
+  - `absent`: *Absent*
+  - `present`: *Present*
+  - `not_examined`: *Not examined*
 ---
 
 **23.0.** Ankle reflexes, RIGHT foot?
@@ -6995,10 +6995,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `present`: *Present* 
-  - `present_with_reinforcement`: *Present/Reinforcement* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `present`: *Present*
+  - `present_with_reinforcement`: *Present/Reinforcement*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **24.0.** Vibration perception at great toe, RIGHT foot?
@@ -7009,10 +7009,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `present`: *Present* 
-  - `decreased`: *Decreased* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `present`: *Present*
+  - `decreased`: *Decreased*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **25.0.** Monofilament, RIGHT foot?
@@ -7023,10 +7023,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `NORMAL`: *Normal* 
-  - `reduced`: *Reduced* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `NORMAL`: *Normal*
+  - `reduced`: *Reduced*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **Section: Part 2b: Physical Assessment - Left Foot**
@@ -7039,9 +7039,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `not_examined`: *Not examined* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `not_examined`: *Not examined*
 ---
 
 **27.0.** If NO, check all that apply to LEFT foot?
@@ -7049,19 +7049,19 @@
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `callous_formation`: *Callous formation* 
-  - `deformity_amputation`: *Deformity – amputation* 
-  - `deformity_flat_feet`: *Deformity – flat feet* 
-  - `deformity_halux_valgus`: *Deformity – halux valgus* 
-  - `deformity_hammer_toes`: *Deformity – hammer toes* 
-  - `deformity_joint_subluxation`: *Deformity – joint subluxation* 
-  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)* 
-  - `deformity_overlapping_toes`: *Deformity – overlapping toes* 
-  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads* 
-  - `dry_skin`: *Dry skin* 
-  - `infection`: *Infection* 
-  - `fissure`: *Fissure* 
-  - `OTHER`: *Other abnormality, please specify* 
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -7080,9 +7080,9 @@
 - type: CharField
 - length: 35
 - responses:
-  - `absent`: *Absent* 
-  - `present`: *Present* 
-  - `not_examined`: *Not examined* 
+  - `absent`: *Absent*
+  - `present`: *Present*
+  - `not_examined`: *Not examined*
 ---
 
 **29.0.** Ankle reflexes, LEFT foot?
@@ -7093,10 +7093,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `present`: *Present* 
-  - `present_with_reinforcement`: *Present/Reinforcement* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `present`: *Present*
+  - `present_with_reinforcement`: *Present/Reinforcement*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **30.0.** Vibration perception at great toe, LEFT foot?
@@ -7107,10 +7107,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `present`: *Present* 
-  - `decreased`: *Decreased* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `present`: *Present*
+  - `decreased`: *Decreased*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **31.0.** Monofilament, LEFT foot?
@@ -7121,10 +7121,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `NORMAL`: *Normal* 
-  - `reduced`: *Reduced* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `NORMAL`: *Normal*
+  - `reduced`: *Reduced*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **Section: CRF status**
@@ -7137,8 +7137,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)* 
-  - `COMPLETE`: *Complete* 
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
 ---
 
 **33.0.** Any comments related to status of this CRF
@@ -7254,8 +7254,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -7322,33 +7322,33 @@
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -7364,33 +7364,33 @@
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -7406,33 +7406,33 @@
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -7449,8 +7449,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -7465,9 +7465,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -7478,9 +7478,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -7493,8 +7493,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -7503,9 +7503,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -7524,9 +7524,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -7535,9 +7535,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -7554,8 +7554,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -7586,8 +7586,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -7596,8 +7596,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -7606,8 +7606,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -7626,8 +7626,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -7638,8 +7638,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -7648,8 +7648,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -7742,8 +7742,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `fasting`: *Fasting* 
-  - `non_fasting`: *Non-fasting* 
+  - `fasting`: *Fasting*
+  - `non_fasting`: *Non-fasting*
 ---
 
 **Section: Glucose**
@@ -7760,8 +7760,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **8.0.** abnormal
@@ -7770,8 +7770,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** reportable
@@ -7780,12 +7780,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -7796,8 +7796,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If any results are abnormal, are results within grade 3 or above?
@@ -7808,9 +7808,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -7881,7 +7881,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **7.0.** abnormal
@@ -7890,8 +7890,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -7900,12 +7900,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: CREATININE**
@@ -7922,8 +7922,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `umol/L`: *μmol/L (micromoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `umol/L`: *μmol/L (micromoles/L)*
 ---
 
 **11.0.** abnormal
@@ -7932,8 +7932,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -7942,12 +7942,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: URIC_ACID**
@@ -7964,8 +7964,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `mg/dL`: *mg/dL* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `mg/dL`: *mg/dL*
 ---
 
 **15.0.** abnormal
@@ -7974,8 +7974,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -7984,12 +7984,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -8000,8 +8000,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **18.0.** If any results are abnormal, are results within grade 3 or above?
@@ -8012,9 +8012,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -8039,7 +8039,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mL/min/1.73m2`: *mL/min/1.73m2* 
+  - `mL/min/1.73m2`: *mL/min/1.73m2*
 ---
 
 
@@ -8102,7 +8102,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **7.0.** abnormal
@@ -8111,8 +8111,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -8121,12 +8121,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALT**
@@ -8143,7 +8143,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **11.0.** abnormal
@@ -8152,8 +8152,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -8162,12 +8162,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALP**
@@ -8184,7 +8184,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **15.0.** abnormal
@@ -8193,8 +8193,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -8203,12 +8203,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: AMYLASE**
@@ -8225,7 +8225,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **19.0.** abnormal
@@ -8234,8 +8234,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -8244,12 +8244,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: GGT**
@@ -8266,7 +8266,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **23.0.** abnormal
@@ -8275,8 +8275,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -8285,12 +8285,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALBUMIN**
@@ -8307,8 +8307,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
-  - `g/L`: *g/L* 
+  - `g/dL`: *g/dL*
+  - `g/L`: *g/L*
 ---
 
 **27.0.** abnormal
@@ -8317,8 +8317,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -8327,12 +8327,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -8343,8 +8343,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **30.0.** If any results are abnormal, are results within grade 3 or above?
@@ -8355,9 +8355,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -8428,7 +8428,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **7.0.** abnormal
@@ -8437,8 +8437,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -8447,12 +8447,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: HCT**
@@ -8469,7 +8469,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `%`: *%* 
+  - `%`: *%*
 ---
 
 **11.0.** abnormal
@@ -8478,8 +8478,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -8488,12 +8488,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: RBC**
@@ -8510,8 +8510,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm^3* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm^3*
 ---
 
 **15.0.** abnormal
@@ -8520,8 +8520,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -8530,12 +8530,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: WBC**
@@ -8552,8 +8552,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **19.0.** abnormal
@@ -8562,8 +8562,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -8572,12 +8572,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: PLATELETS**
@@ -8594,8 +8594,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **23.0.** abnormal
@@ -8604,8 +8604,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -8614,12 +8614,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCV**
@@ -8636,7 +8636,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `fL/cell`: *fL/cell* 
+  - `fL/cell`: *fL/cell*
 ---
 
 **27.0.** abnormal
@@ -8645,8 +8645,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -8655,12 +8655,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCH**
@@ -8677,7 +8677,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `pg/cell`: *pg/cell* 
+  - `pg/cell`: *pg/cell*
 ---
 
 **31.0.** abnormal
@@ -8686,8 +8686,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **32.0.** reportable
@@ -8696,12 +8696,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCHC**
@@ -8718,7 +8718,7 @@
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **35.0.** abnormal
@@ -8727,8 +8727,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **36.0.** reportable
@@ -8737,12 +8737,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -8753,8 +8753,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **38.0.** If any results are abnormal, are results within grade 3 or above?
@@ -8765,9 +8765,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -8834,8 +8834,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -8852,8 +8852,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -8925,8 +8925,8 @@
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -8943,13 +8943,13 @@
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -8957,14 +8957,14 @@
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -9010,8 +9010,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -9035,9 +9035,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `POS`: *Positive* 
-  - `NEG`: *Negative* 
-  - `N/A`: *Not applicable* 
+  - `POS`: *Positive*
+  - `NEG`: *Negative*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -9077,8 +9077,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, please provide a reason
@@ -9096,9 +9096,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **6.0.** Do you ever have any burning pain in your legs and/or feet?
@@ -9107,9 +9107,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **7.0.** Are your feet too sensitive to touch?
@@ -9118,9 +9118,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.0.** Do you get muscle cramps in your legs and/or feet?
@@ -9129,9 +9129,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **9.0.** Do you ever have any prickling feelings in your legs or feet?
@@ -9140,9 +9140,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **10.0.** Does it hurt when the bed covers touch your skin?
@@ -9151,9 +9151,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** When you get into the tub or shower, are you able to tell the hot water from the cold water?
@@ -9162,9 +9162,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **12.0.** Have you ever had an open sore on your foot?
@@ -9173,9 +9173,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Has your doctor ever told you that you have diabetic neuropathy?
@@ -9184,9 +9184,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** Do you feel weak all over most of the time?
@@ -9195,9 +9195,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **15.0.** Are your symptoms worse at night?
@@ -9206,9 +9206,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **16.0.** Do your legs hurt when you walk?
@@ -9217,9 +9217,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **17.0.** Are you able to sense your feet when you walk?
@@ -9228,9 +9228,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **18.0.** Is the skin on your feet so dry that it cracks open?
@@ -9239,9 +9239,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **19.0.** Have you ever had an amputation?
@@ -9250,9 +9250,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 2a: Physical Assessment - Right Foot**
@@ -9265,9 +9265,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `not_examined`: *Not examined* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `not_examined`: *Not examined*
 ---
 
 **21.0.** If NO, check all that apply to RIGHT foot?
@@ -9275,19 +9275,19 @@
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `callous_formation`: *Callous formation* 
-  - `deformity_amputation`: *Deformity – amputation* 
-  - `deformity_flat_feet`: *Deformity – flat feet* 
-  - `deformity_halux_valgus`: *Deformity – halux valgus* 
-  - `deformity_hammer_toes`: *Deformity – hammer toes* 
-  - `deformity_joint_subluxation`: *Deformity – joint subluxation* 
-  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)* 
-  - `deformity_overlapping_toes`: *Deformity – overlapping toes* 
-  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads* 
-  - `dry_skin`: *Dry skin* 
-  - `infection`: *Infection* 
-  - `fissure`: *Fissure* 
-  - `OTHER`: *Other abnormality, please specify* 
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -9306,9 +9306,9 @@
 - type: CharField
 - length: 35
 - responses:
-  - `absent`: *Absent* 
-  - `present`: *Present* 
-  - `not_examined`: *Not examined* 
+  - `absent`: *Absent*
+  - `present`: *Present*
+  - `not_examined`: *Not examined*
 ---
 
 **23.0.** Ankle reflexes, RIGHT foot?
@@ -9319,10 +9319,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `present`: *Present* 
-  - `present_with_reinforcement`: *Present/Reinforcement* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `present`: *Present*
+  - `present_with_reinforcement`: *Present/Reinforcement*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **24.0.** Vibration perception at great toe, RIGHT foot?
@@ -9333,10 +9333,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `present`: *Present* 
-  - `decreased`: *Decreased* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `present`: *Present*
+  - `decreased`: *Decreased*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **25.0.** Monofilament, RIGHT foot?
@@ -9347,10 +9347,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `NORMAL`: *Normal* 
-  - `reduced`: *Reduced* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `NORMAL`: *Normal*
+  - `reduced`: *Reduced*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **Section: Part 2b: Physical Assessment - Left Foot**
@@ -9363,9 +9363,9 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `not_examined`: *Not examined* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `not_examined`: *Not examined*
 ---
 
 **27.0.** If NO, check all that apply to LEFT foot?
@@ -9373,19 +9373,19 @@
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `callous_formation`: *Callous formation* 
-  - `deformity_amputation`: *Deformity – amputation* 
-  - `deformity_flat_feet`: *Deformity – flat feet* 
-  - `deformity_halux_valgus`: *Deformity – halux valgus* 
-  - `deformity_hammer_toes`: *Deformity – hammer toes* 
-  - `deformity_joint_subluxation`: *Deformity – joint subluxation* 
-  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)* 
-  - `deformity_overlapping_toes`: *Deformity – overlapping toes* 
-  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads* 
-  - `dry_skin`: *Dry skin* 
-  - `infection`: *Infection* 
-  - `fissure`: *Fissure* 
-  - `OTHER`: *Other abnormality, please specify* 
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -9404,9 +9404,9 @@
 - type: CharField
 - length: 35
 - responses:
-  - `absent`: *Absent* 
-  - `present`: *Present* 
-  - `not_examined`: *Not examined* 
+  - `absent`: *Absent*
+  - `present`: *Present*
+  - `not_examined`: *Not examined*
 ---
 
 **29.0.** Ankle reflexes, LEFT foot?
@@ -9417,10 +9417,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `present`: *Present* 
-  - `present_with_reinforcement`: *Present/Reinforcement* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `present`: *Present*
+  - `present_with_reinforcement`: *Present/Reinforcement*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **30.0.** Vibration perception at great toe, LEFT foot?
@@ -9431,10 +9431,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `present`: *Present* 
-  - `decreased`: *Decreased* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `present`: *Present*
+  - `decreased`: *Decreased*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **31.0.** Monofilament, LEFT foot?
@@ -9445,10 +9445,10 @@
 - type: CharField
 - length: 35
 - responses:
-  - `NORMAL`: *Normal* 
-  - `reduced`: *Reduced* 
-  - `absent`: *Absent* 
-  - `not_examined`: *Not examined* 
+  - `NORMAL`: *Normal*
+  - `reduced`: *Reduced*
+  - `absent`: *Absent*
+  - `not_examined`: *Not examined*
 ---
 
 **Section: CRF status**
@@ -9461,8 +9461,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)* 
-  - `COMPLETE`: *Complete* 
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
 ---
 
 **33.0.** Any comments related to status of this CRF
@@ -9578,8 +9578,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -9646,33 +9646,33 @@
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -9688,33 +9688,33 @@
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -9730,33 +9730,33 @@
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -9773,8 +9773,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -9789,9 +9789,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -9802,9 +9802,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -9817,8 +9817,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -9827,9 +9827,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -9848,9 +9848,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -9859,9 +9859,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -9878,8 +9878,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -9910,8 +9910,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -9920,8 +9920,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -9930,8 +9930,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -9950,8 +9950,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -9962,8 +9962,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -9972,8 +9972,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -10066,8 +10066,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `fasting`: *Fasting* 
-  - `non_fasting`: *Non-fasting* 
+  - `fasting`: *Fasting*
+  - `non_fasting`: *Non-fasting*
 ---
 
 **Section: Glucose**
@@ -10084,8 +10084,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **8.0.** abnormal
@@ -10094,8 +10094,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** reportable
@@ -10104,12 +10104,12 @@
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -10120,8 +10120,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If any results are abnormal, are results within grade 3 or above?
@@ -10132,9 +10132,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -10201,8 +10201,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -10219,8 +10219,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -10292,8 +10292,8 @@
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -10310,13 +10310,13 @@
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -10324,14 +10324,14 @@
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -10377,8 +10377,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -10402,9 +10402,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `POS`: *Positive* 
-  - `NEG`: *Negative* 
-  - `N/A`: *Not applicable* 
+  - `POS`: *Positive*
+  - `NEG`: *Negative*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -10494,8 +10494,8 @@
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -10562,33 +10562,33 @@
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -10604,33 +10604,33 @@
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -10646,33 +10646,33 @@
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -10689,8 +10689,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -10705,9 +10705,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -10718,9 +10718,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -10733,8 +10733,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -10743,9 +10743,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -10764,9 +10764,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -10775,9 +10775,9 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -10794,8 +10794,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -10826,8 +10826,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -10836,8 +10836,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -10846,8 +10846,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -10866,8 +10866,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -10878,8 +10878,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -10888,8 +10888,8 @@
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -10965,8 +10965,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** How long have they fasted in hours and/or minutes?
@@ -10987,8 +10987,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** If NO, provide reason
@@ -11020,9 +11020,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `N/A`: *Not applicable* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: OGTT**
@@ -11033,8 +11033,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If NO, provide reason
@@ -11077,9 +11077,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `N/A`: *Not applicable* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -11150,8 +11150,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -11160,12 +11160,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -11176,8 +11176,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If any results are abnormal, are results within grade 3 or above?
@@ -11188,9 +11188,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -11261,7 +11261,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **7.0.** abnormal
@@ -11270,8 +11270,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -11280,12 +11280,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: CREATININE**
@@ -11302,8 +11302,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `umol/L`: *μmol/L (micromoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `umol/L`: *μmol/L (micromoles/L)*
 ---
 
 **11.0.** abnormal
@@ -11312,8 +11312,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -11322,12 +11322,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: URIC_ACID**
@@ -11344,8 +11344,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `mg/dL`: *mg/dL* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `mg/dL`: *mg/dL*
 ---
 
 **15.0.** abnormal
@@ -11354,8 +11354,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -11364,12 +11364,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -11380,8 +11380,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **18.0.** If any results are abnormal, are results within grade 3 or above?
@@ -11392,9 +11392,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -11419,7 +11419,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mL/min/1.73m2`: *mL/min/1.73m2* 
+  - `mL/min/1.73m2`: *mL/min/1.73m2*
 ---
 
 
@@ -11482,7 +11482,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **7.0.** abnormal
@@ -11491,8 +11491,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -11501,12 +11501,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALT**
@@ -11523,7 +11523,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **11.0.** abnormal
@@ -11532,8 +11532,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -11542,12 +11542,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALP**
@@ -11564,7 +11564,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **15.0.** abnormal
@@ -11573,8 +11573,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -11583,12 +11583,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: AMYLASE**
@@ -11605,7 +11605,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **19.0.** abnormal
@@ -11614,8 +11614,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -11624,12 +11624,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: GGT**
@@ -11646,7 +11646,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **23.0.** abnormal
@@ -11655,8 +11655,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -11665,12 +11665,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALBUMIN**
@@ -11687,8 +11687,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
-  - `g/L`: *g/L* 
+  - `g/dL`: *g/dL*
+  - `g/L`: *g/L*
 ---
 
 **27.0.** abnormal
@@ -11697,8 +11697,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -11707,12 +11707,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -11723,8 +11723,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **30.0.** If any results are abnormal, are results within grade 3 or above?
@@ -11735,9 +11735,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -11808,7 +11808,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **7.0.** abnormal
@@ -11817,8 +11817,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -11827,12 +11827,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: HCT**
@@ -11849,7 +11849,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `%`: *%* 
+  - `%`: *%*
 ---
 
 **11.0.** abnormal
@@ -11858,8 +11858,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -11868,12 +11868,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: RBC**
@@ -11890,8 +11890,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm^3* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm^3*
 ---
 
 **15.0.** abnormal
@@ -11900,8 +11900,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -11910,12 +11910,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: WBC**
@@ -11932,8 +11932,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **19.0.** abnormal
@@ -11942,8 +11942,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -11952,12 +11952,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: PLATELETS**
@@ -11974,8 +11974,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **23.0.** abnormal
@@ -11984,8 +11984,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -11994,12 +11994,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCV**
@@ -12016,7 +12016,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `fL/cell`: *fL/cell* 
+  - `fL/cell`: *fL/cell*
 ---
 
 **27.0.** abnormal
@@ -12025,8 +12025,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -12035,12 +12035,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCH**
@@ -12057,7 +12057,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `pg/cell`: *pg/cell* 
+  - `pg/cell`: *pg/cell*
 ---
 
 **31.0.** abnormal
@@ -12066,8 +12066,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **32.0.** reportable
@@ -12076,12 +12076,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCHC**
@@ -12098,7 +12098,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **35.0.** abnormal
@@ -12107,8 +12107,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **36.0.** reportable
@@ -12117,12 +12117,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -12133,8 +12133,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **38.0.** If any results are abnormal, are results within grade 3 or above?
@@ -12145,9 +12145,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -12218,7 +12218,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **7.0.** abnormal
@@ -12227,8 +12227,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -12237,12 +12237,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: HDL**
@@ -12259,7 +12259,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **11.0.** abnormal
@@ -12268,8 +12268,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -12278,12 +12278,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: TRIG**
@@ -12300,7 +12300,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **15.0.** abnormal
@@ -12309,8 +12309,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -12319,12 +12319,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: CHOL**
@@ -12341,7 +12341,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **19.0.** abnormal
@@ -12350,8 +12350,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -12360,12 +12360,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -12376,8 +12376,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **22.0.** If any results are abnormal, are results within grade 3 or above?
@@ -12388,9 +12388,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -12457,8 +12457,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -12475,8 +12475,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -12548,8 +12548,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -12566,13 +12566,13 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -12580,14 +12580,14 @@ A user model to capture IFG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -12633,8 +12633,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -12658,9 +12658,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `POS`: *Positive* 
-  - `NEG`: *Negative* 
-  - `N/A`: *Not applicable* 
+  - `POS`: *Positive*
+  - `NEG`: *Negative*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -12758,8 +12758,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -12826,33 +12826,33 @@ A user model to capture IFG and OGTT
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -12868,33 +12868,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -12910,33 +12910,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -12953,8 +12953,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -12969,9 +12969,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -12982,9 +12982,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -12997,8 +12997,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -13007,9 +13007,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -13028,9 +13028,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -13039,9 +13039,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -13058,8 +13058,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -13090,8 +13090,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -13100,8 +13100,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -13110,8 +13110,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -13130,8 +13130,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -13142,8 +13142,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -13152,8 +13152,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -13246,8 +13246,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `fasting`: *Fasting* 
-  - `non_fasting`: *Non-fasting* 
+  - `fasting`: *Fasting*
+  - `non_fasting`: *Non-fasting*
 ---
 
 **Section: Glucose**
@@ -13264,8 +13264,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **8.0.** abnormal
@@ -13274,8 +13274,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** reportable
@@ -13284,12 +13284,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -13300,8 +13300,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If any results are abnormal, are results within grade 3 or above?
@@ -13312,9 +13312,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -13381,8 +13381,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -13399,8 +13399,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -13472,8 +13472,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -13490,13 +13490,13 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -13504,14 +13504,14 @@ A user model to capture IFG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -13557,8 +13557,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -13582,9 +13582,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `POS`: *Positive* 
-  - `NEG`: *Negative* 
-  - `N/A`: *Not applicable* 
+  - `POS`: *Positive*
+  - `NEG`: *Negative*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -13674,8 +13674,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -13742,33 +13742,33 @@ A user model to capture IFG and OGTT
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -13784,33 +13784,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -13826,33 +13826,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -13869,8 +13869,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -13885,9 +13885,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -13898,9 +13898,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -13913,8 +13913,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -13923,9 +13923,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -13944,9 +13944,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -13955,9 +13955,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -13974,8 +13974,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -14006,8 +14006,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -14016,8 +14016,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -14026,8 +14026,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -14046,8 +14046,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -14058,8 +14058,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -14068,8 +14068,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -14162,8 +14162,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `fasting`: *Fasting* 
-  - `non_fasting`: *Non-fasting* 
+  - `fasting`: *Fasting*
+  - `non_fasting`: *Non-fasting*
 ---
 
 **Section: Glucose**
@@ -14180,8 +14180,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **8.0.** abnormal
@@ -14190,8 +14190,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** reportable
@@ -14200,12 +14200,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -14216,8 +14216,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If any results are abnormal, are results within grade 3 or above?
@@ -14228,9 +14228,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -14301,7 +14301,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **7.0.** abnormal
@@ -14310,8 +14310,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -14320,12 +14320,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: HCT**
@@ -14342,7 +14342,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `%`: *%* 
+  - `%`: *%*
 ---
 
 **11.0.** abnormal
@@ -14351,8 +14351,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -14361,12 +14361,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: RBC**
@@ -14383,8 +14383,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm^3* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm^3*
 ---
 
 **15.0.** abnormal
@@ -14393,8 +14393,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -14403,12 +14403,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: WBC**
@@ -14425,8 +14425,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **19.0.** abnormal
@@ -14435,8 +14435,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -14445,12 +14445,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: PLATELETS**
@@ -14467,8 +14467,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **23.0.** abnormal
@@ -14477,8 +14477,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -14487,12 +14487,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCV**
@@ -14509,7 +14509,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `fL/cell`: *fL/cell* 
+  - `fL/cell`: *fL/cell*
 ---
 
 **27.0.** abnormal
@@ -14518,8 +14518,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -14528,12 +14528,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCH**
@@ -14550,7 +14550,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `pg/cell`: *pg/cell* 
+  - `pg/cell`: *pg/cell*
 ---
 
 **31.0.** abnormal
@@ -14559,8 +14559,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **32.0.** reportable
@@ -14569,12 +14569,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCHC**
@@ -14591,7 +14591,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **35.0.** abnormal
@@ -14600,8 +14600,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **36.0.** reportable
@@ -14610,12 +14610,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -14626,8 +14626,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **38.0.** If any results are abnormal, are results within grade 3 or above?
@@ -14638,9 +14638,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -14707,8 +14707,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -14725,8 +14725,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -14798,8 +14798,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -14816,13 +14816,13 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -14830,14 +14830,14 @@ A user model to capture IFG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -14883,8 +14883,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -14908,9 +14908,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `POS`: *Positive* 
-  - `NEG`: *Negative* 
-  - `N/A`: *Not applicable* 
+  - `POS`: *Positive*
+  - `NEG`: *Negative*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -15002,8 +15002,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -15070,33 +15070,33 @@ A user model to capture IFG and OGTT
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -15112,33 +15112,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -15154,33 +15154,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -15197,8 +15197,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -15213,9 +15213,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -15226,9 +15226,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -15241,8 +15241,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -15251,9 +15251,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -15272,9 +15272,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -15283,9 +15283,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -15302,8 +15302,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -15334,8 +15334,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -15344,8 +15344,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -15354,8 +15354,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -15374,8 +15374,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -15386,8 +15386,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -15396,8 +15396,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -15490,8 +15490,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `fasting`: *Fasting* 
-  - `non_fasting`: *Non-fasting* 
+  - `fasting`: *Fasting*
+  - `non_fasting`: *Non-fasting*
 ---
 
 **Section: Glucose**
@@ -15508,8 +15508,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **8.0.** abnormal
@@ -15518,8 +15518,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** reportable
@@ -15528,12 +15528,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -15544,8 +15544,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If any results are abnormal, are results within grade 3 or above?
@@ -15556,9 +15556,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -15625,8 +15625,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -15643,8 +15643,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -15716,8 +15716,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -15734,13 +15734,13 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -15748,14 +15748,14 @@ A user model to capture IFG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -15801,8 +15801,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -15826,9 +15826,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `POS`: *Positive* 
-  - `NEG`: *Negative* 
-  - `N/A`: *Not applicable* 
+  - `POS`: *Positive*
+  - `NEG`: *Negative*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -15918,8 +15918,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -15986,33 +15986,33 @@ A user model to capture IFG and OGTT
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -16028,33 +16028,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -16070,33 +16070,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -16113,8 +16113,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -16129,9 +16129,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -16142,9 +16142,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -16157,8 +16157,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -16167,9 +16167,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -16188,9 +16188,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -16199,9 +16199,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -16218,8 +16218,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -16250,8 +16250,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -16260,8 +16260,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -16270,8 +16270,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -16290,8 +16290,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -16302,8 +16302,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -16312,8 +16312,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -16389,8 +16389,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** How long have they fasted in hours and/or minutes?
@@ -16411,8 +16411,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** If NO, provide reason
@@ -16444,9 +16444,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `N/A`: *Not applicable* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: OGTT**
@@ -16457,8 +16457,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If NO, provide reason
@@ -16501,9 +16501,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `N/A`: *Not applicable* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -16574,8 +16574,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -16584,12 +16584,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -16600,8 +16600,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If any results are abnormal, are results within grade 3 or above?
@@ -16612,9 +16612,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -16685,7 +16685,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **7.0.** abnormal
@@ -16694,8 +16694,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -16704,12 +16704,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: CREATININE**
@@ -16726,8 +16726,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `umol/L`: *μmol/L (micromoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `umol/L`: *μmol/L (micromoles/L)*
 ---
 
 **11.0.** abnormal
@@ -16736,8 +16736,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -16746,12 +16746,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: URIC_ACID**
@@ -16768,8 +16768,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `mg/dL`: *mg/dL* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `mg/dL`: *mg/dL*
 ---
 
 **15.0.** abnormal
@@ -16778,8 +16778,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -16788,12 +16788,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -16804,8 +16804,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **18.0.** If any results are abnormal, are results within grade 3 or above?
@@ -16816,9 +16816,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -16843,7 +16843,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mL/min/1.73m2`: *mL/min/1.73m2* 
+  - `mL/min/1.73m2`: *mL/min/1.73m2*
 ---
 
 
@@ -16906,7 +16906,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **7.0.** abnormal
@@ -16915,8 +16915,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -16925,12 +16925,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALT**
@@ -16947,7 +16947,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **11.0.** abnormal
@@ -16956,8 +16956,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -16966,12 +16966,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALP**
@@ -16988,7 +16988,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **15.0.** abnormal
@@ -16997,8 +16997,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -17007,12 +17007,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: AMYLASE**
@@ -17029,7 +17029,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **19.0.** abnormal
@@ -17038,8 +17038,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -17048,12 +17048,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: GGT**
@@ -17070,7 +17070,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **23.0.** abnormal
@@ -17079,8 +17079,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -17089,12 +17089,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALBUMIN**
@@ -17111,8 +17111,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
-  - `g/L`: *g/L* 
+  - `g/dL`: *g/dL*
+  - `g/L`: *g/L*
 ---
 
 **27.0.** abnormal
@@ -17121,8 +17121,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -17131,12 +17131,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -17147,8 +17147,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **30.0.** If any results are abnormal, are results within grade 3 or above?
@@ -17159,9 +17159,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -17232,7 +17232,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **7.0.** abnormal
@@ -17241,8 +17241,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -17251,12 +17251,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: HCT**
@@ -17273,7 +17273,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `%`: *%* 
+  - `%`: *%*
 ---
 
 **11.0.** abnormal
@@ -17282,8 +17282,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -17292,12 +17292,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: RBC**
@@ -17314,8 +17314,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm^3* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm^3*
 ---
 
 **15.0.** abnormal
@@ -17324,8 +17324,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -17334,12 +17334,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: WBC**
@@ -17356,8 +17356,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **19.0.** abnormal
@@ -17366,8 +17366,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -17376,12 +17376,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: PLATELETS**
@@ -17398,8 +17398,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **23.0.** abnormal
@@ -17408,8 +17408,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -17418,12 +17418,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCV**
@@ -17440,7 +17440,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `fL/cell`: *fL/cell* 
+  - `fL/cell`: *fL/cell*
 ---
 
 **27.0.** abnormal
@@ -17449,8 +17449,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -17459,12 +17459,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCH**
@@ -17481,7 +17481,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `pg/cell`: *pg/cell* 
+  - `pg/cell`: *pg/cell*
 ---
 
 **31.0.** abnormal
@@ -17490,8 +17490,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **32.0.** reportable
@@ -17500,12 +17500,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCHC**
@@ -17522,7 +17522,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **35.0.** abnormal
@@ -17531,8 +17531,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **36.0.** reportable
@@ -17541,12 +17541,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -17557,8 +17557,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **38.0.** If any results are abnormal, are results within grade 3 or above?
@@ -17569,9 +17569,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -17642,7 +17642,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **7.0.** abnormal
@@ -17651,8 +17651,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -17661,12 +17661,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: HDL**
@@ -17683,7 +17683,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **11.0.** abnormal
@@ -17692,8 +17692,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -17702,12 +17702,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: TRIG**
@@ -17724,7 +17724,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **15.0.** abnormal
@@ -17733,8 +17733,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -17743,12 +17743,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: CHOL**
@@ -17765,7 +17765,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **19.0.** abnormal
@@ -17774,8 +17774,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -17784,12 +17784,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -17800,8 +17800,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **22.0.** If any results are abnormal, are results within grade 3 or above?
@@ -17812,9 +17812,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -17881,8 +17881,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -17899,8 +17899,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -17972,8 +17972,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -17990,13 +17990,13 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -18004,14 +18004,14 @@ A user model to capture IFG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -18057,8 +18057,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -18082,9 +18082,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `POS`: *Positive* 
-  - `NEG`: *Negative* 
-  - `N/A`: *Not applicable* 
+  - `POS`: *Positive*
+  - `NEG`: *Negative*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -18182,8 +18182,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -18250,33 +18250,33 @@ A user model to capture IFG and OGTT
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -18292,33 +18292,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -18334,33 +18334,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -18377,8 +18377,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -18393,9 +18393,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -18406,9 +18406,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -18421,8 +18421,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -18431,9 +18431,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -18452,9 +18452,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -18463,9 +18463,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -18482,8 +18482,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -18514,8 +18514,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -18524,8 +18524,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -18534,8 +18534,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -18554,8 +18554,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -18566,8 +18566,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -18576,8 +18576,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -18670,8 +18670,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `fasting`: *Fasting* 
-  - `non_fasting`: *Non-fasting* 
+  - `fasting`: *Fasting*
+  - `non_fasting`: *Non-fasting*
 ---
 
 **Section: Glucose**
@@ -18688,8 +18688,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **8.0.** abnormal
@@ -18698,8 +18698,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** reportable
@@ -18708,12 +18708,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -18724,8 +18724,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If any results are abnormal, are results within grade 3 or above?
@@ -18736,9 +18736,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -18805,8 +18805,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -18823,8 +18823,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -18896,8 +18896,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -18914,13 +18914,13 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -18928,14 +18928,14 @@ A user model to capture IFG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -18981,8 +18981,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -19006,9 +19006,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `POS`: *Positive* 
-  - `NEG`: *Negative* 
-  - `N/A`: *Not applicable* 
+  - `POS`: *Positive*
+  - `NEG`: *Negative*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -19098,8 +19098,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -19166,33 +19166,33 @@ A user model to capture IFG and OGTT
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -19208,33 +19208,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -19250,33 +19250,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -19293,8 +19293,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -19309,9 +19309,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -19322,9 +19322,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -19337,8 +19337,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -19347,9 +19347,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -19368,9 +19368,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -19379,9 +19379,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -19398,8 +19398,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -19430,8 +19430,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -19440,8 +19440,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -19450,8 +19450,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -19470,8 +19470,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -19482,8 +19482,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -19492,8 +19492,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -19586,8 +19586,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `fasting`: *Fasting* 
-  - `non_fasting`: *Non-fasting* 
+  - `fasting`: *Fasting*
+  - `non_fasting`: *Non-fasting*
 ---
 
 **Section: Glucose**
@@ -19604,8 +19604,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **8.0.** abnormal
@@ -19614,8 +19614,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** reportable
@@ -19624,12 +19624,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -19640,8 +19640,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If any results are abnormal, are results within grade 3 or above?
@@ -19652,9 +19652,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -19725,7 +19725,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **7.0.** abnormal
@@ -19734,8 +19734,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -19744,12 +19744,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: CREATININE**
@@ -19766,8 +19766,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `umol/L`: *μmol/L (micromoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `umol/L`: *μmol/L (micromoles/L)*
 ---
 
 **11.0.** abnormal
@@ -19776,8 +19776,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -19786,12 +19786,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: URIC_ACID**
@@ -19808,8 +19808,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `mg/dL`: *mg/dL* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `mg/dL`: *mg/dL*
 ---
 
 **15.0.** abnormal
@@ -19818,8 +19818,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -19828,12 +19828,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -19844,8 +19844,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **18.0.** If any results are abnormal, are results within grade 3 or above?
@@ -19856,9 +19856,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -19883,7 +19883,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mL/min/1.73m2`: *mL/min/1.73m2* 
+  - `mL/min/1.73m2`: *mL/min/1.73m2*
 ---
 
 
@@ -19946,7 +19946,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **7.0.** abnormal
@@ -19955,8 +19955,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -19965,12 +19965,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALT**
@@ -19987,7 +19987,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **11.0.** abnormal
@@ -19996,8 +19996,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -20006,12 +20006,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALP**
@@ -20028,7 +20028,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **15.0.** abnormal
@@ -20037,8 +20037,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -20047,12 +20047,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: AMYLASE**
@@ -20069,7 +20069,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **19.0.** abnormal
@@ -20078,8 +20078,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -20088,12 +20088,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: GGT**
@@ -20110,7 +20110,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **23.0.** abnormal
@@ -20119,8 +20119,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -20129,12 +20129,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALBUMIN**
@@ -20151,8 +20151,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
-  - `g/L`: *g/L* 
+  - `g/dL`: *g/dL*
+  - `g/L`: *g/L*
 ---
 
 **27.0.** abnormal
@@ -20161,8 +20161,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -20171,12 +20171,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -20187,8 +20187,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **30.0.** If any results are abnormal, are results within grade 3 or above?
@@ -20199,9 +20199,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -20272,7 +20272,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **7.0.** abnormal
@@ -20281,8 +20281,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -20291,12 +20291,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: HCT**
@@ -20313,7 +20313,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `%`: *%* 
+  - `%`: *%*
 ---
 
 **11.0.** abnormal
@@ -20322,8 +20322,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -20332,12 +20332,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: RBC**
@@ -20354,8 +20354,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm^3* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm^3*
 ---
 
 **15.0.** abnormal
@@ -20364,8 +20364,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -20374,12 +20374,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: WBC**
@@ -20396,8 +20396,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **19.0.** abnormal
@@ -20406,8 +20406,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -20416,12 +20416,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: PLATELETS**
@@ -20438,8 +20438,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **23.0.** abnormal
@@ -20448,8 +20448,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -20458,12 +20458,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCV**
@@ -20480,7 +20480,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `fL/cell`: *fL/cell* 
+  - `fL/cell`: *fL/cell*
 ---
 
 **27.0.** abnormal
@@ -20489,8 +20489,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -20499,12 +20499,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCH**
@@ -20521,7 +20521,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `pg/cell`: *pg/cell* 
+  - `pg/cell`: *pg/cell*
 ---
 
 **31.0.** abnormal
@@ -20530,8 +20530,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **32.0.** reportable
@@ -20540,12 +20540,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCHC**
@@ -20562,7 +20562,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **35.0.** abnormal
@@ -20571,8 +20571,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **36.0.** reportable
@@ -20581,12 +20581,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -20597,8 +20597,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **38.0.** If any results are abnormal, are results within grade 3 or above?
@@ -20609,9 +20609,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -20678,8 +20678,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -20696,8 +20696,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -20769,8 +20769,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -20787,13 +20787,13 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -20801,14 +20801,14 @@ A user model to capture IFG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -20854,8 +20854,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -20879,9 +20879,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `POS`: *Positive* 
-  - `NEG`: *Negative* 
-  - `N/A`: *Not applicable* 
+  - `POS`: *Positive*
+  - `NEG`: *Negative*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -20977,8 +20977,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -21045,33 +21045,33 @@ A user model to capture IFG and OGTT
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -21087,33 +21087,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -21129,33 +21129,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -21172,8 +21172,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -21188,9 +21188,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -21201,9 +21201,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -21216,8 +21216,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -21226,9 +21226,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -21247,9 +21247,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -21258,9 +21258,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -21277,8 +21277,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -21309,8 +21309,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -21319,8 +21319,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -21329,8 +21329,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -21349,8 +21349,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -21361,8 +21361,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -21371,8 +21371,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -21465,8 +21465,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `fasting`: *Fasting* 
-  - `non_fasting`: *Non-fasting* 
+  - `fasting`: *Fasting*
+  - `non_fasting`: *Non-fasting*
 ---
 
 **Section: Glucose**
@@ -21483,8 +21483,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **8.0.** abnormal
@@ -21493,8 +21493,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** reportable
@@ -21503,12 +21503,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -21519,8 +21519,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If any results are abnormal, are results within grade 3 or above?
@@ -21531,9 +21531,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -21600,8 +21600,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -21618,8 +21618,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -21691,8 +21691,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -21709,13 +21709,13 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -21723,14 +21723,14 @@ A user model to capture IFG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -21776,8 +21776,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -21801,9 +21801,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `POS`: *Positive* 
-  - `NEG`: *Negative* 
-  - `N/A`: *Not applicable* 
+  - `POS`: *Positive*
+  - `NEG`: *Negative*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -21893,8 +21893,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -21961,33 +21961,33 @@ A user model to capture IFG and OGTT
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -22003,33 +22003,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -22045,33 +22045,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -22088,8 +22088,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -22104,9 +22104,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -22117,9 +22117,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -22132,8 +22132,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -22142,9 +22142,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -22163,9 +22163,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -22174,9 +22174,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -22193,8 +22193,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -22225,8 +22225,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -22235,8 +22235,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -22245,8 +22245,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -22265,8 +22265,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -22277,8 +22277,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -22287,8 +22287,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -22364,8 +22364,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** How long have they fasted in hours and/or minutes?
@@ -22386,8 +22386,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** If NO, provide reason
@@ -22419,9 +22419,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `N/A`: *Not applicable* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: OGTT**
@@ -22432,8 +22432,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If NO, provide reason
@@ -22476,9 +22476,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `N/A`: *Not applicable* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -22549,8 +22549,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -22559,12 +22559,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -22575,8 +22575,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If any results are abnormal, are results within grade 3 or above?
@@ -22587,9 +22587,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -22660,7 +22660,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **7.0.** abnormal
@@ -22669,8 +22669,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -22679,12 +22679,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: CREATININE**
@@ -22701,8 +22701,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `umol/L`: *μmol/L (micromoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `umol/L`: *μmol/L (micromoles/L)*
 ---
 
 **11.0.** abnormal
@@ -22711,8 +22711,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -22721,12 +22721,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: URIC_ACID**
@@ -22743,8 +22743,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `mg/dL`: *mg/dL* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `mg/dL`: *mg/dL*
 ---
 
 **15.0.** abnormal
@@ -22753,8 +22753,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -22763,12 +22763,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -22779,8 +22779,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **18.0.** If any results are abnormal, are results within grade 3 or above?
@@ -22791,9 +22791,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -22818,7 +22818,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mL/min/1.73m2`: *mL/min/1.73m2* 
+  - `mL/min/1.73m2`: *mL/min/1.73m2*
 ---
 
 
@@ -22881,7 +22881,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **7.0.** abnormal
@@ -22890,8 +22890,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -22900,12 +22900,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALT**
@@ -22922,7 +22922,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **11.0.** abnormal
@@ -22931,8 +22931,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -22941,12 +22941,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALP**
@@ -22963,7 +22963,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **15.0.** abnormal
@@ -22972,8 +22972,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -22982,12 +22982,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: AMYLASE**
@@ -23004,7 +23004,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **19.0.** abnormal
@@ -23013,8 +23013,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -23023,12 +23023,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: GGT**
@@ -23045,7 +23045,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **23.0.** abnormal
@@ -23054,8 +23054,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -23064,12 +23064,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALBUMIN**
@@ -23086,8 +23086,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
-  - `g/L`: *g/L* 
+  - `g/dL`: *g/dL*
+  - `g/L`: *g/L*
 ---
 
 **27.0.** abnormal
@@ -23096,8 +23096,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -23106,12 +23106,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -23122,8 +23122,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **30.0.** If any results are abnormal, are results within grade 3 or above?
@@ -23134,9 +23134,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -23207,7 +23207,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **7.0.** abnormal
@@ -23216,8 +23216,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -23226,12 +23226,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: HCT**
@@ -23248,7 +23248,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `%`: *%* 
+  - `%`: *%*
 ---
 
 **11.0.** abnormal
@@ -23257,8 +23257,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -23267,12 +23267,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: RBC**
@@ -23289,8 +23289,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm^3* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm^3*
 ---
 
 **15.0.** abnormal
@@ -23299,8 +23299,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -23309,12 +23309,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: WBC**
@@ -23331,8 +23331,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **19.0.** abnormal
@@ -23341,8 +23341,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -23351,12 +23351,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: PLATELETS**
@@ -23373,8 +23373,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **23.0.** abnormal
@@ -23383,8 +23383,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -23393,12 +23393,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCV**
@@ -23415,7 +23415,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `fL/cell`: *fL/cell* 
+  - `fL/cell`: *fL/cell*
 ---
 
 **27.0.** abnormal
@@ -23424,8 +23424,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -23434,12 +23434,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCH**
@@ -23456,7 +23456,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `pg/cell`: *pg/cell* 
+  - `pg/cell`: *pg/cell*
 ---
 
 **31.0.** abnormal
@@ -23465,8 +23465,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **32.0.** reportable
@@ -23475,12 +23475,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCHC**
@@ -23497,7 +23497,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **35.0.** abnormal
@@ -23506,8 +23506,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **36.0.** reportable
@@ -23516,12 +23516,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -23532,8 +23532,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **38.0.** If any results are abnormal, are results within grade 3 or above?
@@ -23544,9 +23544,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -23617,7 +23617,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **7.0.** abnormal
@@ -23626,8 +23626,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -23636,12 +23636,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: HDL**
@@ -23658,7 +23658,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **11.0.** abnormal
@@ -23667,8 +23667,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -23677,12 +23677,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: TRIG**
@@ -23699,7 +23699,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **15.0.** abnormal
@@ -23708,8 +23708,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -23718,12 +23718,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: CHOL**
@@ -23740,7 +23740,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **19.0.** abnormal
@@ -23749,8 +23749,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -23759,12 +23759,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -23775,8 +23775,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **22.0.** If any results are abnormal, are results within grade 3 or above?
@@ -23787,9 +23787,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -23856,8 +23856,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -23874,8 +23874,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -23947,8 +23947,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -23965,13 +23965,13 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -23979,14 +23979,14 @@ A user model to capture IFG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -24032,8 +24032,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -24057,9 +24057,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `POS`: *Positive* 
-  - `NEG`: *Negative* 
-  - `N/A`: *Not applicable* 
+  - `POS`: *Positive*
+  - `NEG`: *Negative*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -24157,8 +24157,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** Heart rate:
@@ -24225,33 +24225,33 @@ A user model to capture IFG and OGTT
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -24267,33 +24267,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -24309,33 +24309,33 @@ A user model to capture IFG and OGTT
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `none`: *--No symptoms to report* 
-  - `abdominal_pain_general`: *Abdominal pain (General)* 
-  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)* 
-  - `blurred_vision`: *Blurred vision* 
-  - `diarrhoea`: *Diarrhoea* 
-  - `dizziness`: *Dizziness* 
-  - `fatigue`: *Fatigue* 
-  - `flatulence`: *Flatulence (gas)* 
-  - `headaches`: *Headaches* 
-  - `increased_appetite`: *Increased appetite* 
-  - `joint_pain`: *Joint pain* 
-  - `loss_of_appetite`: *Loss of appetite* 
-  - `muscle_cramping`: *Muscle cramping* 
-  - `muscle_pain`: *Muscle pain* 
-  - `nausea`: *Nausea* 
-  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs* 
-  - `pounding_heartbeat`: *Fast or pounding heartbeat* 
-  - `rash`: *Rash* 
-  - `shakiness`: *Shakiness* 
-  - `shallow_breathing`: *Fast or shallow breathing* 
-  - `skin_itching`: *Skin itching* 
-  - `sweating`: *Sweating* 
-  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs* 
-  - `unusual_sleepiness`: *Unusual sleepiness* 
-  - `vomiting`: *Vomiting* 
-  - `weakness`: *Weakness* 
-  - `OTHER`: *Other, specify* 
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -24352,8 +24352,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.2.** If YES, please provide details of the event
@@ -24368,9 +24368,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **8.399999999999999.** If YES, what grade?
@@ -24381,9 +24381,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `3`: *Grade 3* 
-  - `4`: *Grade 4* 
-  - `N/A`: *Not applicable* 
+  - `3`: *Grade 3*
+  - `4`: *Grade 4*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Part 3: Hospitalizations or other external access to care**
@@ -24396,8 +24396,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If YES, were they admitted to hospital?
@@ -24406,9 +24406,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **11.0.** If YES, attend other clinic or hospital, please provide details of this event
@@ -24427,9 +24427,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** Was the participant prescribed any other medication at this clinic or hospital visit?
@@ -24438,9 +24438,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **14.0.** If YES, prescribed any other medication, please provide details of this visit
@@ -24457,8 +24457,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** If YES, please provide reason for change
@@ -24489,8 +24489,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **19.0.** Enlarged liver
@@ -24499,8 +24499,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** Jaundice
@@ -24509,8 +24509,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **Section: Part 3: Summary**
@@ -24529,8 +24529,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **23.0.** Do you think the participant has hepatomegaly with steatosis?
@@ -24541,8 +24541,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** Is the participant being referred
@@ -24551,8 +24551,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **25.0.** If YES, where are they being referred to
@@ -24628,8 +24628,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** How long have they fasted in hours and/or minutes?
@@ -24650,8 +24650,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** If NO, provide reason
@@ -24683,9 +24683,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `N/A`: *Not applicable* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: OGTT**
@@ -24696,8 +24696,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **11.0.** If NO, provide reason
@@ -24740,9 +24740,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `N/A`: *Not applicable* 
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -24813,8 +24813,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -24823,12 +24823,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -24839,8 +24839,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **10.0.** If any results are abnormal, are results within grade 3 or above?
@@ -24851,9 +24851,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -24924,7 +24924,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
 ---
 
 **7.0.** abnormal
@@ -24933,8 +24933,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -24943,12 +24943,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: CREATININE**
@@ -24965,8 +24965,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mg/dL`: *mg/dL* 
-  - `umol/L`: *μmol/L (micromoles/L)* 
+  - `mg/dL`: *mg/dL*
+  - `umol/L`: *μmol/L (micromoles/L)*
 ---
 
 **11.0.** abnormal
@@ -24975,8 +24975,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -24985,12 +24985,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: URIC_ACID**
@@ -25007,8 +25007,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L (millimoles/L)* 
-  - `mg/dL`: *mg/dL* 
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `mg/dL`: *mg/dL*
 ---
 
 **15.0.** abnormal
@@ -25017,8 +25017,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -25027,12 +25027,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -25043,8 +25043,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **18.0.** If any results are abnormal, are results within grade 3 or above?
@@ -25055,9 +25055,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -25082,7 +25082,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mL/min/1.73m2`: *mL/min/1.73m2* 
+  - `mL/min/1.73m2`: *mL/min/1.73m2*
 ---
 
 
@@ -25145,7 +25145,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **7.0.** abnormal
@@ -25154,8 +25154,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -25164,12 +25164,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALT**
@@ -25186,7 +25186,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **11.0.** abnormal
@@ -25195,8 +25195,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -25205,12 +25205,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALP**
@@ -25227,7 +25227,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **15.0.** abnormal
@@ -25236,8 +25236,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -25246,12 +25246,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: AMYLASE**
@@ -25268,7 +25268,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **19.0.** abnormal
@@ -25277,8 +25277,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -25287,12 +25287,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: GGT**
@@ -25309,7 +25309,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `IU/L`: *U/L* 
+  - `IU/L`: *U/L*
 ---
 
 **23.0.** abnormal
@@ -25318,8 +25318,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -25328,12 +25328,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: ALBUMIN**
@@ -25350,8 +25350,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
-  - `g/L`: *g/L* 
+  - `g/dL`: *g/dL*
+  - `g/L`: *g/L*
 ---
 
 **27.0.** abnormal
@@ -25360,8 +25360,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -25370,12 +25370,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -25386,8 +25386,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **30.0.** If any results are abnormal, are results within grade 3 or above?
@@ -25398,9 +25398,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -25471,7 +25471,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **7.0.** abnormal
@@ -25480,8 +25480,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -25490,12 +25490,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: HCT**
@@ -25512,7 +25512,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `%`: *%* 
+  - `%`: *%*
 ---
 
 **11.0.** abnormal
@@ -25521,8 +25521,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -25531,12 +25531,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: RBC**
@@ -25553,8 +25553,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm^3* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm^3*
 ---
 
 **15.0.** abnormal
@@ -25563,8 +25563,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -25573,12 +25573,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: WBC**
@@ -25595,8 +25595,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **19.0.** abnormal
@@ -25605,8 +25605,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -25615,12 +25615,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: PLATELETS**
@@ -25637,8 +25637,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `10^9/L`: *10^9/L* 
-  - `cells/mm^3`: *cells/mm<sup>3</sup>* 
+  - `10^9/L`: *10^9/L*
+  - `cells/mm^3`: *cells/mm<sup>3</sup>*
 ---
 
 **23.0.** abnormal
@@ -25647,8 +25647,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **24.0.** reportable
@@ -25657,12 +25657,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCV**
@@ -25679,7 +25679,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `fL/cell`: *fL/cell* 
+  - `fL/cell`: *fL/cell*
 ---
 
 **27.0.** abnormal
@@ -25688,8 +25688,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **28.0.** reportable
@@ -25698,12 +25698,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCH**
@@ -25720,7 +25720,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `pg/cell`: *pg/cell* 
+  - `pg/cell`: *pg/cell*
 ---
 
 **31.0.** abnormal
@@ -25729,8 +25729,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **32.0.** reportable
@@ -25739,12 +25739,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: MCHC**
@@ -25761,7 +25761,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `g/dL`: *g/dL* 
+  - `g/dL`: *g/dL*
 ---
 
 **35.0.** abnormal
@@ -25770,8 +25770,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **36.0.** reportable
@@ -25780,12 +25780,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -25796,8 +25796,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **38.0.** If any results are abnormal, are results within grade 3 or above?
@@ -25808,9 +25808,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -25881,7 +25881,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **7.0.** abnormal
@@ -25890,8 +25890,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **8.0.** reportable
@@ -25900,12 +25900,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: HDL**
@@ -25922,7 +25922,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **11.0.** abnormal
@@ -25931,8 +25931,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **12.0.** reportable
@@ -25941,12 +25941,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: TRIG**
@@ -25963,7 +25963,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **15.0.** abnormal
@@ -25972,8 +25972,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **16.0.** reportable
@@ -25982,12 +25982,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: CHOL**
@@ -26004,7 +26004,7 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `mmol/L`: *mmol/L* 
+  - `mmol/L`: *mmol/L*
 ---
 
 **19.0.** abnormal
@@ -26013,8 +26013,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **20.0.** reportable
@@ -26023,12 +26023,12 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `N/A`: *Not applicable* 
-  - `3`: *Yes, grade 3* 
-  - `4`: *Yes, grade 4* 
-  - `No`: *Not reportable* 
-  - `Already reported`: *Already reported* 
-  - `present_at_baseline`: *Present at baseline* 
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
 ---
 
 **Section: Conclusion**
@@ -26039,8 +26039,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **22.0.** If any results are abnormal, are results within grade 3 or above?
@@ -26051,9 +26051,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Summary**
@@ -26120,8 +26120,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **7.0.** special instructions
@@ -26138,8 +26138,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **9.0.** next dosage guideline
@@ -26211,8 +26211,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **6.0.** Number of pills left in the bottle
@@ -26229,13 +26229,13 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `today`: *today* 
-  - `yesterday`: *yesterday* 
-  - `earlier_this_week`: *earlier this week* 
-  - `last_week`: *last week* 
-  - `lt_month_ago`: *less than a month ago* 
-  - `gt_month_ago`: *more than a month ago* 
-  - `NEVER`: *have never missed taking my study pills* 
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
 ---
 
 **8.0.** Reasons for missing study pills
@@ -26243,14 +26243,14 @@ A user model to capture IFG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills* 
-  - `dont_like_taking`: *I don't like taking my pills* 
-  - `make_me_ill`: *My pills sometimes make me feel sick* 
-  - `misplaced_pills`: *I sometimes misplace my pills* 
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me* 
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills* 
-  - `not_feeling_well`: *I have not been feeling well* 
-  - `OTHER`: *Other, please specify ...* 
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **9.0.** If other, please specify ...
@@ -26296,8 +26296,8 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 15
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If NO, provide reason
@@ -26321,9 +26321,9 @@ A user model to capture IFG and OGTT
 - type: CharField
 - length: 25
 - responses:
-  - `POS`: *Positive* 
-  - `NEG`: *Negative* 
-  - `N/A`: *Not applicable* 
+  - `POS`: *Positive*
+  - `NEG`: *Negative*
+  - `N/A`: *Not applicable*
 ---
 
 
@@ -26365,8 +26365,8 @@ form 25
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
+  - `Yes`: *Yes*
+  - `No`: *No*
 ---
 
 **4.0.** If the report was not available, please explain?
@@ -26381,9 +26381,9 @@ form 25
 - type: CharField
 - length: 25
 - responses:
-  - `patient`: *Study participant* 
-  - `OTHER`: *Other* 
-  - `N/A`: *Not applicable* 
+  - `patient`: *Study participant*
+  - `OTHER`: *Other*
+  - `N/A`: *Not applicable*
 ---
 
 **5.1.** If not reported from study participant, please give the name and contact details of the informant.
@@ -26402,13 +26402,13 @@ form 25
 - type: CharField
 - length: 25
 - responses:
-  - `husband_wife`: *Husband/wife* 
-  - `Parent`: *Parent* 
-  - `child`: *Child* 
-  - `unknown`: *Unknown* 
-  - `OTHER`: *Other* 
-  - `hospital_clinic`: *Hospital / Clinic records* 
-  - `N/A`: *Not applicable* 
+  - `husband_wife`: *Husband/wife*
+  - `Parent`: *Parent*
+  - `child`: *Child*
+  - `unknown`: *Unknown*
+  - `OTHER`: *Other*
+  - `hospital_clinic`: *Hospital / Clinic records*
+  - `N/A`: *Not applicable*
 ---
 
 **6.1.** If other, please specify ...
@@ -26436,9 +26436,9 @@ form 25
 - type: CharField
 - length: 3
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **9.0.** Where did the delivery occur?
@@ -26447,10 +26447,10 @@ form 25
 - type: CharField
 - length: 25
 - responses:
-  - `home`: *At home* 
-  - `hospital_clinic`: *Hospital / Clinic* 
-  - `OTHER`: *Other location, specify* 
-  - `N/A`: *Not applicable* 
+  - `home`: *At home*
+  - `hospital_clinic`: *Hospital / Clinic*
+  - `OTHER`: *Other location, specify*
+  - `N/A`: *Not applicable*
 ---
 
 **9.1.** If other, please specify ...
@@ -26481,9 +26481,9 @@ form 25
 - type: CharField
 - length: 5
 - responses:
-  - `Yes`: *Yes* 
-  - `No`: *No* 
-  - `N/A`: *Not applicable* 
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
 ---
 
 **13.0.** What was the maternal outcome of the pregnancy?
@@ -26492,11 +26492,11 @@ form 25
 - type: CharField
 - length: 50
 - responses:
-  - `no_complications`: *No complications* 
-  - `complications_full_recovery`: *Complications with full recovery* 
-  - `complications_ongoing_recovery`: *Complications with ongoing recovery* 
-  - `dead`: *Maternal mortality* 
-  - `N/A`: *Not applicable* 
+  - `no_complications`: *No complications*
+  - `complications_full_recovery`: *Complications with full recovery*
+  - `complications_ongoing_recovery`: *Complications with ongoing recovery*
+  - `dead`: *Maternal mortality*
+  - `N/A`: *Not applicable*
 ---
 
 **Section: Outcomes**

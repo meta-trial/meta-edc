@@ -23,7 +23,7 @@ class ScreeningFormMixin:
                     url_name,
                     kwargs={"screening_identifier": self.instance.screening_identifier},
                 )
-                msg = mark_safe(
+                msg = mark_safe(  # nosec B308 B703
                     "Not allowed. Subject is not eligible. "
                     f'See subject <A href="{url}?q={screening_identifier}">'
                     f"{screening_identifier}</A>"

@@ -6,26 +6,36 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_consent', '0008_auto_20220412_2151'),
+        ("meta_consent", "0008_auto_20220412_2151"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='historicalsubjectconsent',
-            options={'get_latest_by': ('history_date', 'history_id'), 'ordering': ('-history_date', '-history_id'), 'verbose_name': 'historical Subject Consent', 'verbose_name_plural': 'historical Subject Consents'},
+            name="historicalsubjectconsent",
+            options={
+                "get_latest_by": ("history_date", "history_id"),
+                "ordering": ("-history_date", "-history_id"),
+                "verbose_name": "historical Subject Consent",
+                "verbose_name_plural": "historical Subject Consents",
+            },
         ),
         migrations.AlterModelOptions(
-            name='historicalsubjectreconsent',
-            options={'get_latest_by': ('history_date', 'history_id'), 'ordering': ('-history_date', '-history_id'), 'verbose_name': 'historical Subject re-consent', 'verbose_name_plural': 'historical Subject re-consents'},
+            name="historicalsubjectreconsent",
+            options={
+                "get_latest_by": ("history_date", "history_id"),
+                "ordering": ("-history_date", "-history_id"),
+                "verbose_name": "historical Subject re-consent",
+                "verbose_name_plural": "historical Subject re-consents",
+            },
         ),
         migrations.AlterField(
-            model_name='historicalsubjectconsent',
-            name='history_date',
+            model_name="historicalsubjectconsent",
+            name="history_date",
             field=models.DateTimeField(db_index=True),
         ),
         migrations.AlterField(
-            model_name='historicalsubjectreconsent',
-            name='history_date',
+            model_name="historicalsubjectreconsent",
+            name="history_date",
             field=models.DateTimeField(db_index=True),
         ),
     ]

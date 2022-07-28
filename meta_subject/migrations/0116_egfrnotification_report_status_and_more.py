@@ -6,18 +6,34 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_subject', '0115_historicalegfrnotification_egfrnotification'),
+        ("meta_subject", "0115_historicalegfrnotification_egfrnotification"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='egfrnotification',
-            name='report_status',
-            field=models.CharField(choices=[('New', 'New'), ('open', 'Open. Some information is still pending.'), ('closed', 'Closed. This report is complete')], default='New', max_length=15),
+            model_name="egfrnotification",
+            name="report_status",
+            field=models.CharField(
+                choices=[
+                    ("New", "New"),
+                    ("open", "Open. Some information is still pending."),
+                    ("closed", "Closed. This report is complete"),
+                ],
+                default="New",
+                max_length=15,
+            ),
         ),
         migrations.AddField(
-            model_name='historicalegfrnotification',
-            name='report_status',
-            field=models.CharField(choices=[('New', 'New'), ('open', 'Open. Some information is still pending.'), ('closed', 'Closed. This report is complete')], default='New', max_length=15),
+            model_name="historicalegfrnotification",
+            name="report_status",
+            field=models.CharField(
+                choices=[
+                    ("New", "New"),
+                    ("open", "Open. Some information is still pending."),
+                    ("closed", "Closed. This report is complete"),
+                ],
+                default="New",
+                max_length=15,
+            ),
         ),
     ]

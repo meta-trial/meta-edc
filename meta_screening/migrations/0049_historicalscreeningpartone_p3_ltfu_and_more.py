@@ -8,108 +8,231 @@ import django_crypto_fields.fields.encrypted_char_field
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_screening', '0048_rename_appt_datetime_repeat_historicalscreeningpartone_repeat_appt_datetime_and_more'),
+        (
+            "meta_screening",
+            "0048_rename_appt_datetime_repeat_historicalscreeningpartone_repeat_appt_datetime_and_more",
+        ),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='historicalscreeningpartone',
-            name='p3_ltfu',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No'), ('N/A', 'Not applicable')], default='N/A', help_text='Only applicable if the subject missed the appointment for the second stage of screening', max_length=15, verbose_name='Should additional attempts be made to contact this subject'),
+            model_name="historicalscreeningpartone",
+            name="p3_ltfu",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No"), ("N/A", "Not applicable")],
+                default="N/A",
+                help_text="Only applicable if the subject missed the appointment for the second stage of screening",
+                max_length=15,
+                verbose_name="Should additional attempts be made to contact this subject",
+            ),
         ),
         migrations.AddField(
-            model_name='historicalscreeningpartone',
-            name='p3_ltfu_comment',
-            field=models.TextField(null=True, verbose_name='Provide any additional comments on this decision (or leave blank)'),
+            model_name="historicalscreeningpartone",
+            name="p3_ltfu_comment",
+            field=models.TextField(
+                null=True,
+                verbose_name="Provide any additional comments on this decision (or leave blank)",
+            ),
         ),
         migrations.AddField(
-            model_name='historicalscreeningpartone',
-            name='p3_ltfu_date',
-            field=models.DateField(blank=True, help_text='Must be after the appointment date for the second stage of screening', null=True, verbose_name='Date decision made'),
+            model_name="historicalscreeningpartone",
+            name="p3_ltfu_date",
+            field=models.DateField(
+                blank=True,
+                help_text="Must be after the appointment date for the second stage of screening",
+                null=True,
+                verbose_name="Date decision made",
+            ),
         ),
         migrations.AddField(
-            model_name='historicalscreeningpartthree',
-            name='p3_ltfu',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No'), ('N/A', 'Not applicable')], default='N/A', help_text='Only applicable if the subject missed the appointment for the second stage of screening', max_length=15, verbose_name='Should additional attempts be made to contact this subject'),
+            model_name="historicalscreeningpartthree",
+            name="p3_ltfu",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No"), ("N/A", "Not applicable")],
+                default="N/A",
+                help_text="Only applicable if the subject missed the appointment for the second stage of screening",
+                max_length=15,
+                verbose_name="Should additional attempts be made to contact this subject",
+            ),
         ),
         migrations.AddField(
-            model_name='historicalscreeningpartthree',
-            name='p3_ltfu_comment',
-            field=models.TextField(null=True, verbose_name='Provide any additional comments on this decision (or leave blank)'),
+            model_name="historicalscreeningpartthree",
+            name="p3_ltfu_comment",
+            field=models.TextField(
+                null=True,
+                verbose_name="Provide any additional comments on this decision (or leave blank)",
+            ),
         ),
         migrations.AddField(
-            model_name='historicalscreeningpartthree',
-            name='p3_ltfu_date',
-            field=models.DateField(blank=True, help_text='Must be after the appointment date for the second stage of screening', null=True, verbose_name='Date decision made'),
+            model_name="historicalscreeningpartthree",
+            name="p3_ltfu_date",
+            field=models.DateField(
+                blank=True,
+                help_text="Must be after the appointment date for the second stage of screening",
+                null=True,
+                verbose_name="Date decision made",
+            ),
         ),
         migrations.AddField(
-            model_name='historicalscreeningparttwo',
-            name='p3_ltfu',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No'), ('N/A', 'Not applicable')], default='N/A', help_text='Only applicable if the subject missed the appointment for the second stage of screening', max_length=15, verbose_name='Should additional attempts be made to contact this subject'),
+            model_name="historicalscreeningparttwo",
+            name="p3_ltfu",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No"), ("N/A", "Not applicable")],
+                default="N/A",
+                help_text="Only applicable if the subject missed the appointment for the second stage of screening",
+                max_length=15,
+                verbose_name="Should additional attempts be made to contact this subject",
+            ),
         ),
         migrations.AddField(
-            model_name='historicalscreeningparttwo',
-            name='p3_ltfu_comment',
-            field=models.TextField(null=True, verbose_name='Provide any additional comments on this decision (or leave blank)'),
+            model_name="historicalscreeningparttwo",
+            name="p3_ltfu_comment",
+            field=models.TextField(
+                null=True,
+                verbose_name="Provide any additional comments on this decision (or leave blank)",
+            ),
         ),
         migrations.AddField(
-            model_name='historicalscreeningparttwo',
-            name='p3_ltfu_date',
-            field=models.DateField(blank=True, help_text='Must be after the appointment date for the second stage of screening', null=True, verbose_name='Date decision made'),
+            model_name="historicalscreeningparttwo",
+            name="p3_ltfu_date",
+            field=models.DateField(
+                blank=True,
+                help_text="Must be after the appointment date for the second stage of screening",
+                null=True,
+                verbose_name="Date decision made",
+            ),
         ),
         migrations.AddField(
-            model_name='historicalsubjectscreening',
-            name='p3_ltfu',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No'), ('N/A', 'Not applicable')], default='N/A', help_text='Only applicable if the subject missed the appointment for the second stage of screening', max_length=15, verbose_name='Should additional attempts be made to contact this subject'),
+            model_name="historicalsubjectscreening",
+            name="p3_ltfu",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No"), ("N/A", "Not applicable")],
+                default="N/A",
+                help_text="Only applicable if the subject missed the appointment for the second stage of screening",
+                max_length=15,
+                verbose_name="Should additional attempts be made to contact this subject",
+            ),
         ),
         migrations.AddField(
-            model_name='historicalsubjectscreening',
-            name='p3_ltfu_comment',
-            field=models.TextField(null=True, verbose_name='Provide any additional comments on this decision (or leave blank)'),
+            model_name="historicalsubjectscreening",
+            name="p3_ltfu_comment",
+            field=models.TextField(
+                null=True,
+                verbose_name="Provide any additional comments on this decision (or leave blank)",
+            ),
         ),
         migrations.AddField(
-            model_name='historicalsubjectscreening',
-            name='p3_ltfu_date',
-            field=models.DateField(blank=True, help_text='Must be after the appointment date for the second stage of screening', null=True, verbose_name='Date decision made'),
+            model_name="historicalsubjectscreening",
+            name="p3_ltfu_date",
+            field=models.DateField(
+                blank=True,
+                help_text="Must be after the appointment date for the second stage of screening",
+                null=True,
+                verbose_name="Date decision made",
+            ),
         ),
         migrations.AddField(
-            model_name='subjectscreening',
-            name='p3_ltfu',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No'), ('N/A', 'Not applicable')], default='N/A', help_text='Only applicable if the subject missed the appointment for the second stage of screening', max_length=15, verbose_name='Should additional attempts be made to contact this subject'),
+            model_name="subjectscreening",
+            name="p3_ltfu",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No"), ("N/A", "Not applicable")],
+                default="N/A",
+                help_text="Only applicable if the subject missed the appointment for the second stage of screening",
+                max_length=15,
+                verbose_name="Should additional attempts be made to contact this subject",
+            ),
         ),
         migrations.AddField(
-            model_name='subjectscreening',
-            name='p3_ltfu_comment',
-            field=models.TextField(null=True, verbose_name='Provide any additional comments on this decision (or leave blank)'),
+            model_name="subjectscreening",
+            name="p3_ltfu_comment",
+            field=models.TextField(
+                null=True,
+                verbose_name="Provide any additional comments on this decision (or leave blank)",
+            ),
         ),
         migrations.AddField(
-            model_name='subjectscreening',
-            name='p3_ltfu_date',
-            field=models.DateField(blank=True, help_text='Must be after the appointment date for the second stage of screening', null=True, verbose_name='Date decision made'),
+            model_name="subjectscreening",
+            name="p3_ltfu_date",
+            field=models.DateField(
+                blank=True,
+                help_text="Must be after the appointment date for the second stage of screening",
+                null=True,
+                verbose_name="Date decision made",
+            ),
         ),
         migrations.AlterField(
-            model_name='historicalscreeningpartone',
-            name='contact_number',
-            field=django_crypto_fields.fields.encrypted_char_field.EncryptedCharField(blank=True, help_text='Provide a contact number if repeating glucose measures (Encryption: RSA local)', max_length=71, null=True, validators=[django.core.validators.RegexValidator('^[0-9\\-\\(\\)\\ ]+$', message='Enter a valid number')]),
+            model_name="historicalscreeningpartone",
+            name="contact_number",
+            field=django_crypto_fields.fields.encrypted_char_field.EncryptedCharField(
+                blank=True,
+                help_text="Provide a contact number if repeating glucose measures (Encryption: RSA local)",
+                max_length=71,
+                null=True,
+                validators=[
+                    django.core.validators.RegexValidator(
+                        "^[0-9\\-\\(\\)\\ ]+$", message="Enter a valid number"
+                    )
+                ],
+            ),
         ),
         migrations.AlterField(
-            model_name='historicalscreeningpartthree',
-            name='contact_number',
-            field=django_crypto_fields.fields.encrypted_char_field.EncryptedCharField(blank=True, help_text='Provide a contact number if repeating glucose measures (Encryption: RSA local)', max_length=71, null=True, validators=[django.core.validators.RegexValidator('^[0-9\\-\\(\\)\\ ]+$', message='Enter a valid number')]),
+            model_name="historicalscreeningpartthree",
+            name="contact_number",
+            field=django_crypto_fields.fields.encrypted_char_field.EncryptedCharField(
+                blank=True,
+                help_text="Provide a contact number if repeating glucose measures (Encryption: RSA local)",
+                max_length=71,
+                null=True,
+                validators=[
+                    django.core.validators.RegexValidator(
+                        "^[0-9\\-\\(\\)\\ ]+$", message="Enter a valid number"
+                    )
+                ],
+            ),
         ),
         migrations.AlterField(
-            model_name='historicalscreeningparttwo',
-            name='contact_number',
-            field=django_crypto_fields.fields.encrypted_char_field.EncryptedCharField(blank=True, help_text='Provide a contact number if repeating glucose measures (Encryption: RSA local)', max_length=71, null=True, validators=[django.core.validators.RegexValidator('^[0-9\\-\\(\\)\\ ]+$', message='Enter a valid number')]),
+            model_name="historicalscreeningparttwo",
+            name="contact_number",
+            field=django_crypto_fields.fields.encrypted_char_field.EncryptedCharField(
+                blank=True,
+                help_text="Provide a contact number if repeating glucose measures (Encryption: RSA local)",
+                max_length=71,
+                null=True,
+                validators=[
+                    django.core.validators.RegexValidator(
+                        "^[0-9\\-\\(\\)\\ ]+$", message="Enter a valid number"
+                    )
+                ],
+            ),
         ),
         migrations.AlterField(
-            model_name='historicalsubjectscreening',
-            name='contact_number',
-            field=django_crypto_fields.fields.encrypted_char_field.EncryptedCharField(blank=True, help_text='Provide a contact number if repeating glucose measures (Encryption: RSA local)', max_length=71, null=True, validators=[django.core.validators.RegexValidator('^[0-9\\-\\(\\)\\ ]+$', message='Enter a valid number')]),
+            model_name="historicalsubjectscreening",
+            name="contact_number",
+            field=django_crypto_fields.fields.encrypted_char_field.EncryptedCharField(
+                blank=True,
+                help_text="Provide a contact number if repeating glucose measures (Encryption: RSA local)",
+                max_length=71,
+                null=True,
+                validators=[
+                    django.core.validators.RegexValidator(
+                        "^[0-9\\-\\(\\)\\ ]+$", message="Enter a valid number"
+                    )
+                ],
+            ),
         ),
         migrations.AlterField(
-            model_name='subjectscreening',
-            name='contact_number',
-            field=django_crypto_fields.fields.encrypted_char_field.EncryptedCharField(blank=True, help_text='Provide a contact number if repeating glucose measures (Encryption: RSA local)', max_length=71, null=True, validators=[django.core.validators.RegexValidator('^[0-9\\-\\(\\)\\ ]+$', message='Enter a valid number')]),
+            model_name="subjectscreening",
+            name="contact_number",
+            field=django_crypto_fields.fields.encrypted_char_field.EncryptedCharField(
+                blank=True,
+                help_text="Provide a contact number if repeating glucose measures (Encryption: RSA local)",
+                max_length=71,
+                null=True,
+                validators=[
+                    django.core.validators.RegexValidator(
+                        "^[0-9\\-\\(\\)\\ ]+$", message="Enter a valid number"
+                    )
+                ],
+            ),
         ),
     ]

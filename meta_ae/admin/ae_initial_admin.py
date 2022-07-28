@@ -14,7 +14,7 @@ class AeInitialAdmin(AeInitialModelAdminMixin, SimpleHistoryAdmin):
 
     form = AeInitialForm
     email_contact = get_email_contacts("ae_reports")
-    additional_instructions = mark_safe(
+    additional_instructions = mark_safe(  # nosec B308 B703
         "Complete the initial AE report and forward to the TMG. "
         f'Email to <a href="mailto:{email_contact}">{email_contact}</a>'
     )

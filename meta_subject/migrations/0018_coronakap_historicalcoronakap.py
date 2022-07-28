@@ -155,15 +155,11 @@ class Migration(migrations.Migration):
                 ("height", edc_vitals.models.fields.height.HeightField()),
                 (
                     "sys_blood_pressure_r1",
-                    edc_vitals.models.fields.blood_pressure.SystolicPressureField(
-                        null=True
-                    ),
+                    edc_vitals.models.fields.blood_pressure.SystolicPressureField(null=True),
                 ),
                 (
                     "dia_blood_pressure_r1",
-                    edc_vitals.models.fields.blood_pressure.DiastolicPressureField(
-                        null=True
-                    ),
+                    edc_vitals.models.fields.blood_pressure.DiastolicPressureField(null=True),
                 ),
                 (
                     "married",
@@ -878,15 +874,11 @@ class Migration(migrations.Migration):
                 ("height", edc_vitals.models.fields.height.HeightField()),
                 (
                     "sys_blood_pressure_r1",
-                    edc_vitals.models.fields.blood_pressure.SystolicPressureField(
-                        null=True
-                    ),
+                    edc_vitals.models.fields.blood_pressure.SystolicPressureField(null=True),
                 ),
                 (
                     "dia_blood_pressure_r1",
-                    edc_vitals.models.fields.blood_pressure.DiastolicPressureField(
-                        null=True
-                    ),
+                    edc_vitals.models.fields.blood_pressure.DiastolicPressureField(null=True),
                 ),
                 (
                     "married",

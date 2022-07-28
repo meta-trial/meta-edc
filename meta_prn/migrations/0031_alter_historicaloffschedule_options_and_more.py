@@ -6,32 +6,50 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_prn', '0030_auto_20220627_1119'),
+        ("meta_prn", "0030_auto_20220627_1119"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='historicaloffschedule',
-            options={'get_latest_by': 'history_date', 'ordering': ('-history_date', '-history_id'), 'verbose_name': 'historical Off-schedule'},
+            name="historicaloffschedule",
+            options={
+                "get_latest_by": "history_date",
+                "ordering": ("-history_date", "-history_id"),
+                "verbose_name": "historical Off-schedule",
+            },
         ),
         migrations.AlterModelOptions(
-            name='historicaloffschedulepostnatal',
-            options={'get_latest_by': 'history_date', 'ordering': ('-history_date', '-history_id'), 'verbose_name': 'historical Off-schedule: post-natal'},
+            name="historicaloffschedulepostnatal",
+            options={
+                "get_latest_by": "history_date",
+                "ordering": ("-history_date", "-history_id"),
+                "verbose_name": "historical Off-schedule: post-natal",
+            },
         ),
         migrations.AlterModelOptions(
-            name='historicaloffschedulepregnancy',
-            options={'get_latest_by': 'history_date', 'ordering': ('-history_date', '-history_id'), 'verbose_name': 'historical Off-schedule: Pregnancy'},
+            name="historicaloffschedulepregnancy",
+            options={
+                "get_latest_by": "history_date",
+                "ordering": ("-history_date", "-history_id"),
+                "verbose_name": "historical Off-schedule: Pregnancy",
+            },
         ),
         migrations.AlterModelOptions(
-            name='offschedule',
-            options={'verbose_name': 'Off-schedule', 'verbose_name_plural': 'Off-schedule'},
+            name="offschedule",
+            options={"verbose_name": "Off-schedule", "verbose_name_plural": "Off-schedule"},
         ),
         migrations.AlterModelOptions(
-            name='offschedulepostnatal',
-            options={'verbose_name': 'Off-schedule: post-natal', 'verbose_name_plural': 'Off-schedule: post-natal'},
+            name="offschedulepostnatal",
+            options={
+                "verbose_name": "Off-schedule: post-natal",
+                "verbose_name_plural": "Off-schedule: post-natal",
+            },
         ),
         migrations.AlterModelOptions(
-            name='offschedulepregnancy',
-            options={'verbose_name': 'Off-schedule: Pregnancy', 'verbose_name_plural': 'Off-schedule: Pregnancy'},
+            name="offschedulepregnancy",
+            options={
+                "verbose_name": "Off-schedule: Pregnancy",
+                "verbose_name_plural": "Off-schedule: Pregnancy",
+            },
         ),
     ]

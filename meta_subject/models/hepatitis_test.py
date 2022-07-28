@@ -18,7 +18,7 @@ class HepatitisTest(CrfModelMixin, BaseUuidModel):
     )
 
     hbsag = models.CharField(
-        verbose_name=mark_safe("<u>HbSAg</u>"),
+        verbose_name=mark_safe("<u>HbSAg</u>"),  # nosec B308
         max_length=15,
         choices=POS_NEG,
         null=True,
@@ -26,7 +26,7 @@ class HepatitisTest(CrfModelMixin, BaseUuidModel):
     )
 
     hbsag_date = models.DateField(
-        verbose_name=mark_safe("<i>HbSAg date</i>"),
+        verbose_name=mark_safe("<i>HbSAg date</i>"),  # nosec B308
         validators=[date_is_past, date_is_not_now],
         null=True,
         blank=True,
@@ -41,7 +41,7 @@ class HepatitisTest(CrfModelMixin, BaseUuidModel):
     )
 
     hcv = models.CharField(
-        verbose_name=mark_safe("<u>HCV</u>"),
+        verbose_name=mark_safe("<u>HCV</u>"),  # nosec B308
         max_length=15,
         choices=POS_NEG,
         null=True,
@@ -49,7 +49,7 @@ class HepatitisTest(CrfModelMixin, BaseUuidModel):
     )
 
     hcv_date = models.DateField(
-        verbose_name=mark_safe("<i>HCV date</i>"),
+        verbose_name=mark_safe("<i>HCV date</i>"),  # nosec B308
         validators=[date_is_past, date_is_not_now],
         null=True,
         blank=True,

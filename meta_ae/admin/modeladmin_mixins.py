@@ -86,13 +86,14 @@ class AeReviewModelAdminMixin(
             try:
                 ae_followup = self.model.objects.get(parent_action_item=obj.action_item)
             except ObjectDoesNotExist:
-                ae_followup = None
+                pass
             else:
                 follow_up_reports = self.follow_up_reports(ae_followup)
         elif obj.followup == NO and obj.ae_grade != NOT_APPLICABLE:
             follow_up_reports = self.initial_ae(obj)
         if follow_up_reports:
-            return mark_safe(f"{obj.get_outcome_display()}. See {follow_up_reports}.")
+            text = f"{obj.get_outcome_display()}. See {follow_up_reports}."
+            return mark_safe(text)  # nosec B308 B703
         return obj.get_outcome_display()
 
     def follow_up_reports(self, obj):
@@ -104,9 +105,10 @@ class AeReviewModelAdminMixin(
             url_name = "_".join(obj.ae_initial._meta.label_lower.split("."))
             namespace = self.admin_site.name
             url = reverse(f"{namespace}:{url_name}_changelist")
-            return mark_safe(
+            text = str(
                 f'<a data-toggle="tooltip" title="go to ae initial report" '
                 f'href="{url}?q={obj.ae_initial.action_identifier}">'
                 f"{obj.ae_initial.identifier}</a>"
             )
+            return mark_safe(text)  # nosec B308 B703
         return None

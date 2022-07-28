@@ -182,9 +182,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "gender",
-                    models.CharField(
-                        choices=[("M", "Male"), ("F", "Female")], max_length=10
-                    ),
+                    models.CharField(choices=[("M", "Male"), ("F", "Female")], max_length=10),
                 ),
                 (
                     "age_in_years",
@@ -918,9 +916,7 @@ class Migration(migrations.Migration):
                 ("hospital_identifier", models.CharField(max_length=25, unique=True)),
                 (
                     "gender",
-                    models.CharField(
-                        choices=[("M", "Male"), ("F", "Female")], max_length=10
-                    ),
+                    models.CharField(choices=[("M", "Male"), ("F", "Female")], max_length=10),
                 ),
                 ("age_in_years", models.IntegerField()),
                 ("initials", models.CharField(max_length=3)),
@@ -992,9 +988,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "referred",
-                    models.DateTimeField(
-                        help_text="Date and time of referral", null=True
-                    ),
+                    models.DateTimeField(help_text="Date and time of referral", null=True),
                 ),
                 ("referral_reasons", models.TextField(null=True)),
                 (
@@ -1170,9 +1164,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "gender",
-                    models.CharField(
-                        choices=[("M", "Male"), ("F", "Female")], max_length=10
-                    ),
+                    models.CharField(choices=[("M", "Male"), ("F", "Female")], max_length=10),
                 ),
                 (
                     "age_in_years",
@@ -1996,9 +1988,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "gender",
-                    models.CharField(
-                        choices=[("M", "Male"), ("F", "Female")], max_length=10
-                    ),
+                    models.CharField(choices=[("M", "Male"), ("F", "Female")], max_length=10),
                 ),
                 (
                     "age_in_years",
@@ -2822,9 +2812,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "gender",
-                    models.CharField(
-                        choices=[("M", "Male"), ("F", "Female")], max_length=10
-                    ),
+                    models.CharField(choices=[("M", "Male"), ("F", "Female")], max_length=10),
                 ),
                 (
                     "age_in_years",
@@ -3648,9 +3636,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "gender",
-                    models.CharField(
-                        choices=[("M", "Male"), ("F", "Female")], max_length=10
-                    ),
+                    models.CharField(choices=[("M", "Male"), ("F", "Female")], max_length=10),
                 ),
                 (
                     "age_in_years",
@@ -4414,9 +4400,7 @@ class Migration(migrations.Migration):
                 ("hospital_identifier", models.CharField(db_index=True, max_length=25)),
                 (
                     "gender",
-                    models.CharField(
-                        choices=[("M", "Male"), ("F", "Female")], max_length=10
-                    ),
+                    models.CharField(choices=[("M", "Male"), ("F", "Female")], max_length=10),
                 ),
                 ("age_in_years", models.IntegerField()),
                 ("initials", models.CharField(max_length=3)),
@@ -4488,9 +4472,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "referred",
-                    models.DateTimeField(
-                        help_text="Date and time of referral", null=True
-                    ),
+                    models.DateTimeField(help_text="Date and time of referral", null=True),
                 ),
                 ("referral_reasons", models.TextField(null=True)),
                 (

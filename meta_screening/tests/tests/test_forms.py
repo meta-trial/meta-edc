@@ -28,7 +28,7 @@ class ScreeningTestMixin:
     def complete_part_one(self, hospital_identifier=None, **options):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         hospital_identifier = hospital_identifier or "".join(
-            [str(x) for x in choices(range(10), k=9)]
+            [str(x) for x in choices(range(10), k=9)]  # nosec B311
         )
         data = {k: v for k, v in part_one_eligible_options.items()}
         data.update(hospital_identifier=hospital_identifier)

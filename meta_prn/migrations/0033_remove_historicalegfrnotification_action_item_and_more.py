@@ -6,34 +6,34 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_prn', '0032_historicalegfrnotification_egfrnotification'),
+        ("meta_prn", "0032_historicalegfrnotification_egfrnotification"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='historicalegfrnotification',
-            name='action_item',
+            model_name="historicalegfrnotification",
+            name="action_item",
         ),
         migrations.RemoveField(
-            model_name='historicalegfrnotification',
-            name='history_user',
+            model_name="historicalegfrnotification",
+            name="history_user",
         ),
         migrations.RemoveField(
-            model_name='historicalegfrnotification',
-            name='parent_action_item',
+            model_name="historicalegfrnotification",
+            name="parent_action_item",
         ),
         migrations.RemoveField(
-            model_name='historicalegfrnotification',
-            name='related_action_item',
+            model_name="historicalegfrnotification",
+            name="related_action_item",
         ),
         migrations.RemoveField(
-            model_name='historicalegfrnotification',
-            name='site',
+            model_name="historicalegfrnotification",
+            name="site",
         ),
         migrations.DeleteModel(
-            name='EgfrNotification',
+            name="EgfrNotification",
         ),
         migrations.DeleteModel(
-            name='HistoricalEgfrNotification',
+            name="HistoricalEgfrNotification",
         ),
     ]

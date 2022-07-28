@@ -38,9 +38,7 @@ class Migration(migrations.Migration):
         migrations.RemoveField(
             model_name="historicalmedicationadherence", name="visual_score"
         ),
-        migrations.RemoveField(
-            model_name="historicalpatienthistory", name="family_diabetics"
-        ),
+        migrations.RemoveField(model_name="historicalpatienthistory", name="family_diabetics"),
         migrations.RemoveField(
             model_name="historicalpatienthistory", name="hypertension_treatment"
         ),
@@ -50,20 +48,14 @@ class Migration(migrations.Migration):
         migrations.RemoveField(
             model_name="historicalphysicalexam", name="has_abdominal_tenderness"
         ),
-        migrations.RemoveField(
-            model_name="historicalphysicalexam", name="has_enlarged_liver"
-        ),
+        migrations.RemoveField(model_name="historicalphysicalexam", name="has_enlarged_liver"),
         migrations.RemoveField(
             model_name="historicalphysicalexam", name="is_heartbeat_regular"
         ),
         migrations.RemoveField(model_name="medicationadherence", name="visual_score"),
         migrations.RemoveField(model_name="patienthistory", name="family_diabetics"),
-        migrations.RemoveField(
-            model_name="patienthistory", name="other_past_year_symptoms"
-        ),
-        migrations.RemoveField(
-            model_name="physicalexam", name="has_abdominal_tenderness"
-        ),
+        migrations.RemoveField(model_name="patienthistory", name="other_past_year_symptoms"),
+        migrations.RemoveField(model_name="physicalexam", name="has_abdominal_tenderness"),
         migrations.RemoveField(model_name="physicalexam", name="has_enlarged_liver"),
         migrations.RemoveField(model_name="physicalexam", name="is_heartbeat_regular"),
         migrations.AddField(
@@ -381,9 +373,7 @@ class Migration(migrations.Migration):
                 verbose_name="If other, please specify ...",
             ),
         ),
-        migrations.RemoveField(
-            model_name="medicationadherence", name="missed_pill_reason"
-        ),
+        migrations.RemoveField(model_name="medicationadherence", name="missed_pill_reason"),
         migrations.AddField(
             model_name="medicationadherence",
             name="missed_pill_reason",
@@ -420,9 +410,7 @@ class Migration(migrations.Migration):
                 verbose_name="Is the patient a <u>previous</u> smoker?",
             ),
         ),
-        migrations.RemoveField(
-            model_name="patienthistory", name="hypertension_treatment"
-        ),
+        migrations.RemoveField(model_name="patienthistory", name="hypertension_treatment"),
         migrations.AddField(
             model_name="patienthistory",
             name="hypertension_treatment",

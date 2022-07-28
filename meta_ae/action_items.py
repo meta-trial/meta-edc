@@ -38,7 +38,7 @@ class AeFollowupAction(ActionWithNotification):
     create_by_user = False
     show_link_to_changelist = True
     admin_site_name = "meta_ae_admin"
-    instructions = mark_safe(
+    instructions = mark_safe(  # nosec B308 B703
         "Upon submission the TMG group will be notified "
         f'by email at <a href="mailto:{get_email_contacts("tmg") or "#"}">'
         f'{get_email_contacts("tmg") or "unknown"}</a>'
@@ -55,7 +55,7 @@ class AeFollowupAction(ActionWithNotification):
             required=self.reference_obj.followup == YES,
         )
 
-        # add Death report to next_actions if G5/Death
+        # add Death Report to next_actions if G5/Death
         next_actions = self.append_to_next_if_required(
             next_actions=next_actions,
             action_name=DEATH_REPORT_ACTION,
@@ -176,7 +176,7 @@ class AeTmgAction(ActionWithNotification):
     color_style = "info"
     show_link_to_changelist = True
     admin_site_name = "meta_ae_admin"
-    instructions = mark_safe("This report is to be completed by the TMG only.")
+    instructions = mark_safe("This report is to be completed by the TMG only.")  # nosec B308
     priority = HIGH_PRIORITY
 
     def close_action_item_on_save(self):
@@ -235,7 +235,7 @@ class DeathReportTmgAction(ActionWithNotification):
     color_style = "info"
     show_link_to_changelist = True
     admin_site_name = "meta_ae_admin"
-    instructions = mark_safe("This report is to be completed by the TMG only.")
+    instructions = mark_safe("This report is to be completed by the TMG only.")  # nosec B308
 
     def reopen_action_item_on_change(self):
         """Do not reopen if status is CLOSED."""
