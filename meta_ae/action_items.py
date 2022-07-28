@@ -38,7 +38,7 @@ class AeFollowupAction(ActionWithNotification):
     create_by_user = False
     show_link_to_changelist = True
     admin_site_name = "meta_ae_admin"
-    instructions = mark_safe(  # nosec B308 B703
+    instructions = mark_safe(  # nosec B308, B703
         "Upon submission the TMG group will be notified "
         f'by email at <a href="mailto:{get_email_contacts("tmg") or "#"}">'
         f'{get_email_contacts("tmg") or "unknown"}</a>'

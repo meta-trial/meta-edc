@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
 from django.urls.base import reverse
+from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from edc_action_item import action_fieldset_tuple
 from edc_action_item.modeladmin_mixins import ActionItemModelAdminMixin
@@ -92,8 +93,11 @@ class AeReviewModelAdminMixin(
         elif obj.followup == NO and obj.ae_grade != NOT_APPLICABLE:
             follow_up_reports = self.initial_ae(obj)
         if follow_up_reports:
-            text = f"{obj.get_outcome_display()}. See {follow_up_reports}."
-            return mark_safe(text)  # nosec B308 B703
+            return format_html(
+                "{}. See {}",
+                mark_safe(obj.get_outcome_display()),  # nosec B703, B308
+                mark_safe(follow_up_reports),  # nosec B703, B308
+            )
         return obj.get_outcome_display()
 
     def follow_up_reports(self, obj):
@@ -105,10 +109,13 @@ class AeReviewModelAdminMixin(
             url_name = "_".join(obj.ae_initial._meta.label_lower.split("."))
             namespace = self.admin_site.name
             url = reverse(f"{namespace}:{url_name}_changelist")
-            text = str(
-                f'<a data-toggle="tooltip" title="go to ae initial report" '
-                f'href="{url}?q={obj.ae_initial.action_identifier}">'
-                f"{obj.ae_initial.identifier}</a>"
+            return format_html(
+                '<a data-toggle="tooltip" title="go to ae initial report" '
+                'href="{url}?q={action_identifier}">{identifier}</a>',
+                url=mark_safe(url),  # nosec B703, B308
+                action_identifier=mark_safe(  # nosec B703, B308
+                    obj.ae_initial.action_identifier
+                ),
+                identifier=mark_safe(obj.ae_initial.identifier),  # nosec B703, B308
             )
-            return mark_safe(text)  # nosec B308 B703
         return None

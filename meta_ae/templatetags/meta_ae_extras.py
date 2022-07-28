@@ -25,6 +25,6 @@ def format_ae_description(context, ae_initial, wrap_length):
     context["OTHER"] = OTHER
     context["YES"] = YES
     context["ae_initial"] = ae_initial
-    context["sae_reason"] = mark_safe(formatted_sae_reason)  # nosec B308 B703
-    context["ae_description"] = mark_safe(formatted_ae_description)  # nosec B308 B703
+    context["sae_reason"] = mark_safe(formatted_sae_reason)  # nosec B308, B703
+    context["ae_description"] = mark_safe(formatted_ae_description)  # nosec B308, B703
     return context
