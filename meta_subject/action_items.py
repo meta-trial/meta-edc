@@ -31,6 +31,7 @@ from .constants import (
     MISSED_VISIT_ACTION,
     URINE_PREGNANCY_ACTION,
 )
+from .models import StudyMedication
 
 
 class MissedVisitAction(Action):
@@ -55,6 +56,7 @@ class MissedVisitAction(Action):
             .order_by("report_datetime")
             .last()
         )
+        last_refill_until = StudyMedication.objects.get(subject_visit=last_visit)
         if (
             last_visit
             and (last_visit.report_datetime - subject_consent.consent_datetime).days >= 182

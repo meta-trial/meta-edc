@@ -3,7 +3,6 @@ from django.template.loader import render_to_string
 from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
 from django.utils.html import format_html
-from django.utils.translation import gettext as _
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_constants.constants import YES
 from edc_dashboard.url_names import url_names
@@ -81,7 +80,6 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
     )
 
     readonly_fields = (
-        # calculated values
         "calculated_bmi_value",
         "calculated_egfr_value",
         "converted_fbg_value",
@@ -167,7 +165,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
             url_names.get(self.subject_listboard_url_name), args=(obj.screening_identifier,)
         )
         context = dict(
-            title=_("Go to screening listboard"),
+            title="Go to screening listboard",
             url=f"{screening_listboard_url}?q={obj.screening_identifier}",
             label="Screening",
         )
@@ -183,10 +181,10 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         except NoReverseMatch:
             url = reverse(url_names.get("screening_listboard_url"), kwargs={})
             context = dict(
-                title=_("Go to screening listboard"),
+                title="Go to screening listboard",
                 url=f"{url}?q={obj.screening_identifier}",
                 label=label,
             )
         else:
-            context = dict(title=_("Go to subject dashboard"), url=url, label=label)
+            context = dict(title="Go to subject dashboard", url=url, label=label)
         return render_to_string("dashboard_button.html", context=context)
