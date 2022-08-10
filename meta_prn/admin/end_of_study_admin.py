@@ -110,6 +110,9 @@ class EndOfStudyAdmin(
         "reason",
     )
 
+    def get_list_filter(self, request) -> Tuple[str, ...]:
+        pass
+
     @admin.display(description="terminated", ordering="offstudy_datetime")
     def terminated(self, obj):
         return obj.offstudy_datetime.date()

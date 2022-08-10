@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
+from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
 
 from ..admin_site import meta_subject_admin
 from ..models import Complications
@@ -8,7 +9,7 @@ from .modeladmin import CrfModelAdmin
 
 
 @admin.register(Complications, site=meta_subject_admin)
-class ComplicationsAdmin(CrfModelAdmin):
+class ComplicationsAdmin(DataManagerModelAdminMixin, CrfModelAdmin):
 
     fieldsets = (
         ("Eye Examination", {"fields": ("cataracts", "fundoscopy")}),

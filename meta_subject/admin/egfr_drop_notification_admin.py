@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from django.contrib import admin
 from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
@@ -44,31 +46,26 @@ class EgfrDropNotificationAdmin(
 
     radio_fields = {"report_status": admin.VERTICAL}
 
-    search_fields = (
+    search_fields: Tuple[str, ...] = (
         "subject_visit__subject_identifier",
         "action_identifier",
         "tracking_identifier",
     )
 
-    def get_readonly_fields(self, request, obj=None) -> tuple:
+    def get_readonly_fields(self, request, obj=None) -> Tuple[str, ...]:
         fields = super().get_readonly_fields(request, obj)
-        fields = ("creatinine_date", "egfr_percent_change") + fields
-        return tuple(fields)
+        return ("creatinine_date", "egfr_percent_change") + fields
 
-    def get_list_filter(self, request) -> tuple:
+    def get_list_filter(self, request) -> Tuple[str, ...]:
         list_filter = super().get_list_filter(request)
-        list_filter = ("report_status", "creatinine_date") + list_filter
-        return list_filter
+        return ("report_status", "creatinine_date") + list_filter
 
-    def get_list_display(self, request) -> tuple:
+    def get_list_display(self, request) -> Tuple[str, ...]:
         list_display = super().get_list_display(request)
-        egfr_fields = [
-            "report_datetime",
+        custom_fields = (
             "report_status",
+            "report_datetime",
             "creatinine_date",
             "egfr_percent_change",
-            "created",
-            "modified",
-        ]
-        list_display = [f for f in list_display if f not in egfr_fields] + egfr_fields
-        return tuple(list_display)
+        )
+        return tuple(f for f in list_display if f not in custom_fields) + custom_fields

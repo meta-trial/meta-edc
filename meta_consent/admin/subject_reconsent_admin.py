@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from django.contrib import admin
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from django.urls.base import reverse
@@ -36,8 +38,6 @@ class SubjectReconsentAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         audit_fieldset_tuple,
     )
 
-    search_fields = ("subject_identifier", "identity")
-
     radio_fields = {
         "assessment_score": admin.VERTICAL,
         "consent_copy": admin.VERTICAL,
@@ -46,9 +46,14 @@ class SubjectReconsentAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "study_questions": admin.VERTICAL,
     }
 
-    def get_readonly_fields(self, request, obj=None):
+    def get_search_fields(self, request) -> Tuple[str, ...]:
+        search_fields = super().get_search_fields(request)
+        custom_fields = ("subject_identifier", "identity")
+        return tuple(set(search_fields + custom_fields))
+
+    def get_readonly_fields(self, request, obj=None) -> Tuple[str, ...]:
         readonly_fields = super().get_readonly_fields(request, obj=obj)
-        return list(readonly_fields) + list(audit_fields)
+        return tuple(set(readonly_fields + audit_fields))
 
     def view_on_site(self, obj):
         url_name = url_names.get("subject_dashboard_url")

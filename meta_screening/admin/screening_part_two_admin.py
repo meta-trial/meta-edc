@@ -42,7 +42,7 @@ class ScreeningPartTwoAdmin(SubjectScreeningAdmin):
 
     fieldsets = get_fieldsets()
 
-    readonly_fields = (
+    readonly_fields: Tuple[str, ...] = (
         *part_one_fields,
         *part_three_fields,
         *calculated_fields,
