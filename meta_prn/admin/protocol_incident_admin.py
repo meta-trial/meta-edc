@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from django.contrib import admin
 from django.utils.html import format_html
 from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
@@ -78,7 +80,7 @@ class ProtocolDeviationViolationAdmin(
         "incident": admin.VERTICAL,
     }
 
-    list_display = (
+    list_display: Tuple[str, ...] = (
         "subject_identifier",
         "dashboard",
         "description",
@@ -91,14 +93,14 @@ class ProtocolDeviationViolationAdmin(
         "user_created",
     )
 
-    list_filter = ("action_required", "report_status", "report_type")
+    list_filter: Tuple[str, ...] = ("action_required", "report_status", "report_type")
 
-    search_fields = [
+    search_fields: Tuple[str, ...] = (
         "subject_identifier",
         "action_identifier",
         "short_description",
         "tracking_identifier",
-    ]
+    )
 
     def status(self, obj=None):
         if obj.report_status == CLOSED:

@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from dateutil.relativedelta import relativedelta
 from django.contrib import admin
 from edc_action_item import action_fieldset_tuple
@@ -96,17 +98,17 @@ class EndOfStudyAdmin(
         "toxicity_withdrawal_reason": admin.VERTICAL,
     }
 
-    search_fields = ["subject_identifier"]
+    search_fields: Tuple[str, ...] = ("subject_identifier",)
 
-    list_filter = ["offstudy_reason", "last_seen_date"]
+    list_filter: Tuple[str, ...] = ("offstudy_reason", "last_seen_date")
 
-    list_display = [
+    list_display: Tuple[str, ...] = (
         "subject_identifier",
         "terminated",
         "last_seen",
         "months",
         "reason",
-    ]
+    )
 
     @admin.display(description="terminated", ordering="offstudy_datetime")
     def terminated(self, obj):

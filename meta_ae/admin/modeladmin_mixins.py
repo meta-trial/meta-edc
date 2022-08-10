@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
@@ -55,23 +57,23 @@ class AeReviewModelAdminMixin(
         "ae_grade": admin.VERTICAL,
     }
 
-    list_display = [
+    list_display: Tuple[str, ...] = (
         "identifier",
         "dashboard",
         "description",
         "initial_ae",
         "follow_up_reports",
         "user",
-    ]
+    )
 
-    list_filter = ("ae_grade", "followup", "outcome_date", "report_datetime")
+    list_filter: Tuple[str, ...] = ("ae_grade", "followup", "outcome_date", "report_datetime")
 
-    search_fields = [
+    search_fields: Tuple[str, ...] = (
         "action_identifier",
         "ae_initial__tracking_identifier",
         "ae_initial__subject_identifier",
         "ae_initial__action_identifier",
-    ]
+    )
 
     @staticmethod
     def description(obj=None):

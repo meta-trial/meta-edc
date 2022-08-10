@@ -19,11 +19,13 @@ class SubjectConsentFormValidator(SubjectConsentFormValidatorMixin, FormValidato
         if self.cleaned_data.get("identity_type") != "hospital_no":
             raise forms.ValidationError({"identity_type": "Expected 'hospital number'."})
 
-        if self.subject_screening.hospital_identifier != self.cleaned_data.get("identity"):
+        if self.subject_screening.hospital_identifier != (
+            self.cleaned_data.get("identity") or getattr(self.instance, "identity", "")
+        ):
             raise forms.ValidationError(
                 {
                     "identity": (
-                        "The hospital identifier does not match that " "reported at screening."
+                        "The hospital identifier does not match that reported at screening."
                     )
                 }
             )
