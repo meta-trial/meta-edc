@@ -287,15 +287,17 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             description="Add Subject Screening"
         )
         # submit blank form
-        response = add_screening_page.form.submit()
+        response = add_screening_page.forms.get("screeningpartone_form").submit()
         self.assertIn("Please correct the errors below", response)
         # submit completed form
-        for field, _ in add_screening_page.form.fields.items():
+        for field, _ in add_screening_page.forms.get("screeningpartone_form").fields.items():
             try:
-                add_screening_page.form[field] = part_one_data[field]
+                add_screening_page.forms.get("screeningpartone_form")[field] = part_one_data[
+                    field
+                ]
             except KeyError as e:
                 print(f"{field}. Got {e}.")
-        page = add_screening_page.form.submit()
+        page = add_screening_page.forms.get("screeningpartone_form").submit()
         soup = BeautifulSoup(page.content, "html.parser")
         errorlist = soup.find_all("ul", "errorlist")
         self.assertEqual([], errorlist)
@@ -319,12 +321,16 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self, home_page, add_screening_part_two, screening_identifier, part_two_data
     ):
         # submit completed form
-        for field, _ in add_screening_part_two.form.fields.items():
+        for field, _ in add_screening_part_two.forms.get(
+            "screeningparttwo_form"
+        ).fields.items():
             try:
-                add_screening_part_two.form[field] = part_two_data[field]
+                add_screening_part_two.forms.get("screeningparttwo_form")[
+                    field
+                ] = part_two_data[field]
             except KeyError:
                 print(field)
-        page = add_screening_part_two.form.submit()
+        page = add_screening_part_two.forms.get("screeningparttwo_form").submit()
         soup = BeautifulSoup(page.content, "html.parser")
         errorlist = soup.find_all("ul", "errorlist")
         self.assertEqual([], errorlist)
@@ -343,12 +349,16 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self, home_page, add_screening_part_three, screening_identifier, part_three_data
     ):
         # submit completed form
-        for field, _ in add_screening_part_three.form.fields.items():
+        for field, _ in add_screening_part_three.forms.get(
+            "screeningpartthree_form"
+        ).fields.items():
             try:
-                add_screening_part_three.form[field] = part_three_data[field]
+                add_screening_part_three.forms.get("screeningpartthree_form")[
+                    field
+                ] = part_three_data[field]
             except KeyError:
                 print(field)
-        page = add_screening_part_three.form.submit()
+        page = add_screening_part_three.forms.get("screeningpartthree_form").submit()
         soup = BeautifulSoup(page.content, "html.parser")
         errorlist = soup.find_all("ul", "errorlist")
         self.assertEqual([], errorlist)

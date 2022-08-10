@@ -1,6 +1,11 @@
 Changes
 =======
 
+0.1.94
+------
+- add lipids to AE Actions
+
+
 0.1.93
 ------
 - fix migration meta_subject 0131

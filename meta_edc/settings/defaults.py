@@ -25,8 +25,7 @@ env = environ.Env(
     DJANGO_LIVE_SYSTEM=(bool, False),
     DJANGO_LOGGING_ENABLED=(bool, True),
     DJANGO_SESSION_COOKIE_SECURE=(bool, True),
-    DJANGO_USE_I18N=(bool, True),
-    DJANGO_USE_L10N=(bool, False),
+    DJANGO_USE_I18N=(bool, False),
     DJANGO_USE_TZ=(bool, True),
     DEFENDER_ENABLED=(bool, False),
     EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=(bool, True),
@@ -61,6 +60,7 @@ ETC_DIR = env.str("DJANGO_ETC_FOLDER")
 
 TEST_DIR = os.path.join(BASE_DIR, APP_NAME, "tests")
 
+# INTERNAL_IPS = ["127.0.0.1"]
 ALLOWED_HOSTS = ["*"]  # env.list('DJANGO_ALLOWED_HOSTS')
 
 ENFORCE_RELATED_ACTION_ITEM_EXISTS = False
@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+    # "debug_toolbar",
     "defender",
     "multisite",
     "django_crypto_fields.apps.AppConfig",
@@ -166,6 +167,7 @@ if not DEFENDER_ENABLED:
     INSTALLED_APPS.pop(INSTALLED_APPS.index("defender"))
 
 MIDDLEWARE = [
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -188,6 +190,7 @@ MIDDLEWARE.extend(
         "edc_lab_dashboard.middleware.DashboardMiddleware",
         "edc_adverse_event.middleware.DashboardMiddleware",
         # 'simple_history.middleware.HistoryRequestMiddleware'
+        # "django_cprofile_middleware.middleware.ProfilerMiddleware",
     ]
 )
 
@@ -256,13 +259,6 @@ WSGI_APPLICATION = f"{APP_NAME}.wsgi.application"
 
 AUTHENTICATION_BACKENDS = ["edc_auth.backends.ModelBackendWithSite"]
 
-AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
-]
-
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.Argon2PasswordHasher",
     "django.contrib.auth.hashers.PBKDF2PasswordHasher",
@@ -282,19 +278,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = env.str("DJANGO_LANGUAGE_CODE")
-
+USE_I18N = False  # disable trans
+USE_L10N = False  # set to False so DATE formats below are used
+USE_TZ = True
+LANGUAGE_CODE = env.str("DJANGO_LANGUAGE_CODE")  # ignored if USE_L10N = False
 LANGUAGES = [x.split(":") for x in env.list("DJANGO_LANGUAGES")] or (("en", "English"),)
-
 TIME_ZONE = env.str("DJANGO_TIME_ZONE")
-
-USE_I18N = env("DJANGO_USE_I18N")
-
-# set to False so DATE formats below are used
-USE_L10N = env("DJANGO_USE_L10N")
-
-USE_TZ = env("DJANGO_USE_TZ")
-
 DATE_INPUT_FORMATS = ["%Y-%m-%d", "%d/%m/%Y"]
 DATETIME_INPUT_FORMATS = [
     "%Y-%m-%d %H:%M:%S",  # '2006-10-25 14:30:59'

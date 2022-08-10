@@ -1,4 +1,5 @@
 from django.contrib import admin, messages
+from edc_action_item import action_fieldset_tuple
 from edc_lab_results.admin import BloodResultsModelAdminMixin
 from edc_lab_results.fieldsets import (
     BloodResultFieldset,
@@ -21,7 +22,11 @@ class BloodResultsRftAdmin(BloodResultsModelAdminMixin, CrfModelAdmin):
         *BloodResultFieldset(
             BloodResultsRft.lab_panel,
             model_cls=BloodResultsRft,
-            extra_fieldsets=[(5, calculate_egfr_fieldset), (6, calculate_egfr_drop_fieldset)],
+            extra_fieldsets=[
+                (5, calculate_egfr_fieldset),
+                (6, calculate_egfr_drop_fieldset),
+                (-1, action_fieldset_tuple),
+            ],
             excluded_utest_ids=["egfr", "egfr_drop"],
         ).fieldsets,
     )

@@ -72,6 +72,7 @@ if settings.DEFENDER_ENABLED:
     )
 
 urlpatterns += [
+    # path("__debug__/", include("debug_toolbar.urls")),
     path("admin/", admin.site.urls),
     path(
         "switch_sites/",

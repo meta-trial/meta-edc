@@ -20,5 +20,8 @@ class OnScheduleAdmin(
 
     list_filter = ("onschedule_datetime",)
 
-    def get_readonly_fields(self, request, obj=None):
-        return ["subject_identifier", "onschedule_datetime"]
+    def get_readonly_fields(self, request, obj=None) -> tuple:
+        return (
+            "subject_identifier",
+            "onschedule_datetime",
+        )
