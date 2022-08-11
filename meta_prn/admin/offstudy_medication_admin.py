@@ -61,7 +61,3 @@ class OffstudyMedicationAdmin(
             "last_dose_date",
         )
         return custom_fields + tuple(f for f in list_filter if f not in custom_fields)
-
-    def get_search_fields(self, request) -> Tuple[str, ...]:
-        custom_fields = ("subject_identifier", "action_identifier", "tracking_identifier")
-        return tuple(set(super().get_search_fields(request) + custom_fields))

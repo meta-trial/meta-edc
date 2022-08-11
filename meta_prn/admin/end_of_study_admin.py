@@ -2,16 +2,19 @@ from typing import Tuple
 
 from dateutil.relativedelta import relativedelta
 from django.contrib import admin
+from django.utils.html import format_html
 from edc_action_item import action_fieldset_tuple
+from edc_constants.constants import OTHER
 from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
+from meta_ae.models import DeathReport
 from meta_consent.models import SubjectConsent
 
 from ..admin_site import meta_prn_admin
 from ..forms import EndOfStudyForm
-from ..models import EndOfStudy
+from ..models import EndOfStudy, LossToFollowup
 
 
 @admin.register(EndOfStudy, site=meta_prn_admin)
@@ -20,6 +23,15 @@ class EndOfStudyAdmin(
     ModelAdminSubjectDashboardMixin,
     SimpleHistoryAdmin,
 ):
+
+    additional_instructions = format_html(
+        "Note: if the patient is <i>deceased</i>, complete form "
+        "`{}` before completing this form. "
+        "<BR>If the patient is </i>lost to follow up</i>, complete form "
+        "`{}` before completing this form.",
+        DeathReport._meta.verbose_name,
+        LossToFollowup._meta.verbose_name,
+    )
 
     form = EndOfStudyForm
 
@@ -98,20 +110,28 @@ class EndOfStudyAdmin(
         "toxicity_withdrawal_reason": admin.VERTICAL,
     }
 
-    search_fields: Tuple[str, ...] = ("subject_identifier",)
-
-    list_filter: Tuple[str, ...] = ("offstudy_reason", "last_seen_date")
-
-    list_display: Tuple[str, ...] = (
-        "subject_identifier",
-        "terminated",
-        "last_seen",
-        "months",
-        "reason",
-    )
+    def get_list_display(self, request) -> Tuple[str, ...]:
+        list_display = super().get_list_display(request)
+        custom_fields = (
+            "subject_identifier",
+            "terminated",
+            "last_seen",
+            "months",
+            "reason",
+        )
+        return custom_fields + tuple(
+            f for f in list_display if f not in custom_fields + ("__str__",)
+        )
 
     def get_list_filter(self, request) -> Tuple[str, ...]:
-        pass
+        list_filter = super().get_list_filter(request)
+        custom_fields = ("offstudy_reason", "last_seen_date")
+        return custom_fields + tuple(f for f in list_filter if f not in custom_fields)
+
+    def get_search_fields(self, request) -> Tuple[str, ...]:
+        search_fields = super().get_search_fields(request)
+        custom_fields = ("subject_identifier",)
+        return tuple(set(custom_fields + search_fields))
 
     @admin.display(description="terminated", ordering="offstudy_datetime")
     def terminated(self, obj):
@@ -121,11 +141,13 @@ class EndOfStudyAdmin(
     def last_seen(self, obj):
         return obj.last_seen_date
 
-    @admin.display(description="reason", ordering="offstudy_reason")
+    @admin.display(description="Offstudy reason", ordering="offstudy_reason")
     def reason(self, obj):
-        return obj.offstudy_reason
+        return (
+            obj.offstudy_reason if obj.offstudy_reason != OTHER else obj.other_offstudy_reason
+        )
 
-    @admin.display(description="months")
+    @admin.display(description="M")
     def months(self, obj):
         subject_consent = SubjectConsent.objects.get(subject_identifier=obj.subject_identifier)
         return relativedelta(obj.offstudy_datetime, subject_consent.consent_datetime).months

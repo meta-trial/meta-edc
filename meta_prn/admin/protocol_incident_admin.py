@@ -80,27 +80,31 @@ class ProtocolDeviationViolationAdmin(
         "incident": admin.VERTICAL,
     }
 
-    list_display: Tuple[str, ...] = (
-        "subject_identifier",
-        "dashboard",
-        "description",
-        "report_datetime",
-        "status",
-        "action_required",
-        "report_type",
-        "tracking_identifier",
-        "action_identifier",
-        "user_created",
-    )
+    def get_list_display(self, request) -> Tuple[str, ...]:
+        list_display = super().get_list_display(request)
+        custom_fields = (
+            "subject_identifier",
+            "dashboard",
+            "description",
+            "report_datetime",
+            "status",
+            "action_required",
+            "report_type",
+            "tracking_identifier",
+            "action_identifier",
+            "user_created",
+        )
+        return custom_fields + tuple(f for f in list_display if f not in custom_fields)
 
-    list_filter: Tuple[str, ...] = ("action_required", "report_status", "report_type")
+    def get_list_filter(self, request) -> Tuple[str, ...]:
+        list_filter = super().get_list_filter(request)
+        custom_fields = ("action_required", "report_status", "report_type")
+        return custom_fields + tuple(f for f in list_filter if f not in custom_fields)
 
-    search_fields: Tuple[str, ...] = (
-        "subject_identifier",
-        "action_identifier",
-        "short_description",
-        "tracking_identifier",
-    )
+    def get_search_fields(self, request) -> Tuple[str, ...]:
+        search_fields = super().get_search_fields(request)
+        custom_fields = ("short_description",)
+        return tuple(set(custom_fields + search_fields))
 
     def status(self, obj=None):
         if obj.report_status == CLOSED:

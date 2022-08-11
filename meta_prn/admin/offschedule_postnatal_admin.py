@@ -27,12 +27,6 @@ class OffSchedulePostnatalAdmin(
         audit_fieldset_tuple,
     )
 
-    list_display: Tuple[str, ...] = ("subject_identifier", "dashboard", "offschedule_datetime")
-
-    list_filter: Tuple[str, ...] = ("offschedule_datetime",)
-
-    readonly_fields: Tuple[str, ...] = ("subject_identifier", "offschedule_datetime")
-
     def get_list_display(self, request) -> Tuple[str, ...]:
         list_display = super().get_list_display(request)
         custom_fields = ("subject_identifier", "dashboard", "offschedule_datetime")

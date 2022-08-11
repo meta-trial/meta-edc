@@ -21,7 +21,9 @@ class OnScheduleAdmin(
     def get_list_display(self, request) -> Tuple[str, ...]:
         list_display = super().get_list_display(request)
         custom_fields = ("subject_identifier", "dashboard", "onschedule_datetime")
-        return custom_fields + tuple(f for f in list_display if f not in custom_fields)
+        return custom_fields + tuple(
+            f for f in list_display if f not in custom_fields + ("__str__",)
+        )
 
     def get_list_filter(self, request) -> Tuple[str, ...]:
         list_filter = super().get_list_filter(request)
@@ -33,3 +35,6 @@ class OnScheduleAdmin(
             "subject_identifier",
             "onschedule_datetime",
         )
+
+    def get_search_fields(self, request) -> Tuple[str, ...]:
+        return tuple(set(super().get_search_fields(request) + ("subject_identifier",)))

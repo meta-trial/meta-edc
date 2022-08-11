@@ -58,5 +58,3 @@ class LossToFollowupAdmin(
         "home_visited": admin.VERTICAL,
         "loss_category": admin.VERTICAL,
     }
-
-    search_fields = ("subject_identifier", "action_identifier", "tracking_identifier")
