@@ -15,6 +15,7 @@ schedule = Schedule(
     offschedule_model="meta_prn.offschedulepregnancy",
     consent_model="meta_consent.subjectconsent",
     appointment_model="edc_appointment.appointment",
+    base_timepoint=200,
 )
 
 
