@@ -1,5 +1,4 @@
 # install editable repos
-pip install -U Django==3.2.11
 pip install argon2-cffi
 pip install arrow
 pip install boto3
@@ -10,7 +9,6 @@ pip install mysqlclient
 pip install pyrabbit
 pip install python-dateutil
 pip install python-memcached
-pip install pytz
 pip install reportlab
 pip uninstall sentry_sdk
 pip install tqdm
@@ -90,4 +88,3 @@ pip install -e ../edc-utils
 pip install -e ../edc-visit-schedule
 pip install -e ../edc-visit-tracking
 pip install -e ../edc-vitals
-pip install -U Django==3.2.11

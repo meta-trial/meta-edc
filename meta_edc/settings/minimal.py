@@ -16,6 +16,6 @@ env.read_env(os.path.join(ENV_DIR, ".env"))
 
 EDC_SITES_MODULE_NAME = env.str("EDC_SITES_MODULE_NAME")
 ETC_DIR = env.str("DJANGO_ETC_FOLDER")
-SECRET_KEY = "blahblahblah"
+SECRET_KEY = "blahblahblah"  # nosec B105
 ALLOWED_HOSTS = ["*"]
 SITE_ID = SiteID(default=1)  # 1 is not a site

@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.utils.translation import gettext_lazy as _
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_action_item import (
     ActionItemModelAdminMixin,
@@ -18,13 +17,13 @@ from .modeladmin import CrfModelAdminMixin
 
 
 class GradedEventFilter(admin.SimpleListFilter):
-    title = _("Graded events")
+    title = "Graded events"
     parameter_name = "grade"
 
     def lookups(self, request, model_admin):
         return (
-            ("g3", _("Grade 3")),
-            ("g4", _("Grade 4")),
+            ("g3", "Grade 3"),
+            ("g4", "Grade 4"),
         )
 
     def queryset(self, request, queryset):
@@ -155,12 +154,14 @@ class FollowupExaminationAdmin(
 
     list_filter = (GradedEventFilter,)
 
-    def g3(self, obj=None):
+    @staticmethod
+    def g3(obj=None):
         if NONE not in [o.name for o in obj.symptoms_g3.all()]:
             return YES
         return None
 
-    def g4(self, obj=None):
+    @staticmethod
+    def g4(obj=None):
         if NONE not in [o.name for o in obj.symptoms_g4.all()]:
             return YES
         return None

@@ -33,12 +33,12 @@ class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, edc_models.BaseUuidMod
 
     htn_treatment = models.ManyToManyField(
         HypertensionMedications,
-        verbose_name=("What medications is the patient currently taking for hypertension?"),
+        verbose_name="What medications is the patient currently taking for hypertension?",
         blank=True,
     )
 
     other_htn_treatment = OtherCharField(
-        verbose_name=mark_safe("If other medication(s), please specify ..."),
+        verbose_name=mark_safe("If other medication(s), please specify ..."),  # nosec B308
         null=True,
         blank=True,
     )
@@ -107,13 +107,13 @@ class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, edc_models.BaseUuidMod
     )
 
     current_smoker = models.CharField(
-        verbose_name=mark_safe("Is the patient a <u>current</u> smoker?"),
+        verbose_name=mark_safe("Is the patient a <u>current</u> smoker?"),  # nosec B308
         max_length=15,
         choices=YES_NO,
     )
 
     former_smoker = models.CharField(
-        verbose_name=mark_safe("Is the patient a <u>previous</u> smoker?"),
+        verbose_name=mark_safe("Is the patient a <u>previous</u> smoker?"),  # nosec B308
         max_length=15,
         choices=YES_NO_NA,
         default=NOT_APPLICABLE,
@@ -121,13 +121,15 @@ class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, edc_models.BaseUuidMod
 
     dm_symptoms = models.ManyToManyField(
         DiabetesSymptoms,
-        verbose_name=mark_safe(
+        verbose_name=mark_safe(  # nosec B308
             "In the <u>past year</u>, have you had any of the following symptoms?"
         ),
     )
 
     other_dm_symptoms = OtherCharField(
-        verbose_name=mark_safe("If other symptom in the <u>past year</u>, please specify ..."),
+        verbose_name=mark_safe(  # nosec B308
+            "If other symptom in the <u>past year</u>, please specify ..."
+        ),
         null=True,
         blank=True,
     )

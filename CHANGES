@@ -1,6 +1,11 @@
 Changes
 =======
 
+0.1.94
+------
+- add lipids to AE Actions
+
+
 0.1.93
 ------
 - fix migration meta_subject 0131
@@ -166,7 +171,7 @@ Changes
 
 0.1.71
 ------
-- update auths for changes in edc-auth 
+- update auths for changes in edc-auth
 
 0.1.70
 ------

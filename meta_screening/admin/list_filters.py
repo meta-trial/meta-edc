@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.db.models import Q
-from django.utils.translation import gettext as _
 from edc_appointment.admin import AppointmentListFilter
 from edc_constants.constants import NO, NOT_APPLICABLE, PENDING, TBD, YES
 
@@ -18,7 +17,7 @@ FUTURE_DATE = "future_date"
 
 
 class EligibilityPending(admin.SimpleListFilter):
-    title = _("P3 pending")
+    title = "P3 pending"
 
     parameter_name = "eligibility_pending"
 
@@ -49,7 +48,7 @@ class EligibilityPending(admin.SimpleListFilter):
 
 
 class P3LtfuListFilter(admin.SimpleListFilter):
-    title = _("Contact for P3?")
+    title = "Contact for P3?"
 
     parameter_name = "p3_ltfu_custom"
 
@@ -83,7 +82,7 @@ class P3LtfuListFilter(admin.SimpleListFilter):
 
 
 class P3ApptListFilter(AppointmentListFilter):
-    title = _("Part 3 appointment")
+    title = "Part 3 appointment"
     parameter_name = "p3_appt_datetime"
     field_name = "appt_datetime"
 

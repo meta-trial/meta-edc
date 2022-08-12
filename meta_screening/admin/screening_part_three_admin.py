@@ -76,8 +76,8 @@ class ScreeningPartThreeAdmin(SubjectScreeningAdmin):
         "refused",
     )
 
-    readonly_fields = (
+    readonly_fields: Tuple[str, ...] = (
         *part_one_fields,
-        *[f for f in part_two_fields if f != "contact_number"],
+        *(f for f in part_two_fields if f != "contact_number"),
         *calculated_fields,
     )

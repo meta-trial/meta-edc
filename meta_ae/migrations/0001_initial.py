@@ -156,9 +156,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "ae_treatment",
-                    models.TextField(
-                        verbose_name="Specify action taken for treatment of AE:"
-                    ),
+                    models.TextField(verbose_name="Specify action taken for treatment of AE:"),
                 ),
                 (
                     "ae_auto_created",
@@ -1583,9 +1581,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "ae_description",
-                    models.TextField(
-                        blank=True, null=True, verbose_name="Description of AE:"
-                    ),
+                    models.TextField(blank=True, null=True, verbose_name="Description of AE:"),
                 ),
                 (
                     "investigator_comments",
@@ -2065,9 +2061,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "ae_treatment",
-                    models.TextField(
-                        verbose_name="Specify action taken for treatment of AE:"
-                    ),
+                    models.TextField(verbose_name="Specify action taken for treatment of AE:"),
                 ),
                 (
                     "ae_auto_created",
@@ -2405,9 +2399,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "outcome_date",
-                    models.DateField(
-                        validators=[edc_model.validators.date.date_not_future]
-                    ),
+                    models.DateField(validators=[edc_model.validators.date.date_not_future]),
                 ),
                 (
                     "ae_grade",
@@ -2895,9 +2887,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "ae_description",
-                    models.TextField(
-                        blank=True, null=True, verbose_name="Description of AE:"
-                    ),
+                    models.TextField(blank=True, null=True, verbose_name="Description of AE:"),
                 ),
                 (
                     "investigator_comments",
@@ -3293,9 +3283,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "outcome_date",
-                    models.DateField(
-                        validators=[edc_model.validators.date.date_not_future]
-                    ),
+                    models.DateField(validators=[edc_model.validators.date.date_not_future]),
                 ),
                 (
                     "ae_grade",

@@ -6,16 +6,16 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_subject', '0128_auto_20220720_0055'),
+        ("meta_subject", "0128_auto_20220720_0055"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='bloodresultsrft',
-            name='egfr_percent_change',
+            model_name="bloodresultsrft",
+            name="egfr_percent_change",
         ),
         migrations.RemoveField(
-            model_name='historicalbloodresultsrft',
-            name='egfr_percent_change',
+            model_name="historicalbloodresultsrft",
+            name="egfr_percent_change",
         ),
     ]

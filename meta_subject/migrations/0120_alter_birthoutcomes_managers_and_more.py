@@ -8,87 +8,87 @@ import meta_subject.models.birth_outcomes
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_subject', '0119_historicalstudymedication_roundup_divisible_by_and_more'),
+        ("meta_subject", "0119_historicalstudymedication_roundup_divisible_by_and_more"),
     ]
 
     operations = [
         migrations.AlterModelManagers(
-            name='birthoutcomes',
+            name="birthoutcomes",
             managers=[
-                ('on_site', edc_sites.models.CurrentSiteManager()),
-                ('objects', meta_subject.models.birth_outcomes.Manager()),
+                ("on_site", edc_sites.models.CurrentSiteManager()),
+                ("objects", meta_subject.models.birth_outcomes.Manager()),
             ],
         ),
         migrations.RemoveField(
-            model_name='birthoutcomes',
-            name='action_identifier',
+            model_name="birthoutcomes",
+            name="action_identifier",
         ),
         migrations.RemoveField(
-            model_name='birthoutcomes',
-            name='action_item',
+            model_name="birthoutcomes",
+            name="action_item",
         ),
         migrations.RemoveField(
-            model_name='birthoutcomes',
-            name='action_item_reason',
+            model_name="birthoutcomes",
+            name="action_item_reason",
         ),
         migrations.RemoveField(
-            model_name='birthoutcomes',
-            name='parent_action_identifier',
+            model_name="birthoutcomes",
+            name="parent_action_identifier",
         ),
         migrations.RemoveField(
-            model_name='birthoutcomes',
-            name='parent_action_item',
+            model_name="birthoutcomes",
+            name="parent_action_item",
         ),
         migrations.RemoveField(
-            model_name='birthoutcomes',
-            name='related_action_identifier',
+            model_name="birthoutcomes",
+            name="related_action_identifier",
         ),
         migrations.RemoveField(
-            model_name='birthoutcomes',
-            name='related_action_item',
+            model_name="birthoutcomes",
+            name="related_action_item",
         ),
         migrations.RemoveField(
-            model_name='birthoutcomes',
-            name='subject_visit',
+            model_name="birthoutcomes",
+            name="subject_visit",
         ),
         migrations.RemoveField(
-            model_name='birthoutcomes',
-            name='tracking_identifier',
+            model_name="birthoutcomes",
+            name="tracking_identifier",
         ),
         migrations.RemoveField(
-            model_name='historicalbirthoutcomes',
-            name='action_identifier',
+            model_name="historicalbirthoutcomes",
+            name="action_identifier",
         ),
         migrations.RemoveField(
-            model_name='historicalbirthoutcomes',
-            name='action_item',
+            model_name="historicalbirthoutcomes",
+            name="action_item",
         ),
         migrations.RemoveField(
-            model_name='historicalbirthoutcomes',
-            name='action_item_reason',
+            model_name="historicalbirthoutcomes",
+            name="action_item_reason",
         ),
         migrations.RemoveField(
-            model_name='historicalbirthoutcomes',
-            name='parent_action_identifier',
+            model_name="historicalbirthoutcomes",
+            name="parent_action_identifier",
         ),
         migrations.RemoveField(
-            model_name='historicalbirthoutcomes',
-            name='parent_action_item',
+            model_name="historicalbirthoutcomes",
+            name="parent_action_item",
         ),
         migrations.RemoveField(
-            model_name='historicalbirthoutcomes',
-            name='related_action_identifier',
+            model_name="historicalbirthoutcomes",
+            name="related_action_identifier",
         ),
         migrations.RemoveField(
-            model_name='historicalbirthoutcomes',
-            name='related_action_item',
+            model_name="historicalbirthoutcomes",
+            name="related_action_item",
         ),
         migrations.RemoveField(
-            model_name='historicalbirthoutcomes',
-            name='subject_visit',
+            model_name="historicalbirthoutcomes",
+            name="subject_visit",
         ),
         migrations.RemoveField(
-            model_name='historicalbirthoutcomes',
-            name='tracking_identifier',
+            model_name="historicalbirthoutcomes",
+            name="tracking_identifier",
         ),
     ]

@@ -15,16 +15,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="followupvitals",
             name="dia_blood_pressure",
-            field=edc_vitals.models.fields.blood_pressure.DiastolicPressureField(
-                null=True
-            ),
+            field=edc_vitals.models.fields.blood_pressure.DiastolicPressureField(null=True),
         ),
         migrations.AlterField(
             model_name="followupvitals",
             name="sys_blood_pressure",
-            field=edc_vitals.models.fields.blood_pressure.SystolicPressureField(
-                null=True
-            ),
+            field=edc_vitals.models.fields.blood_pressure.SystolicPressureField(null=True),
         ),
         migrations.AlterField(
             model_name="followupvitals",
@@ -34,16 +30,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="historicalfollowupvitals",
             name="dia_blood_pressure",
-            field=edc_vitals.models.fields.blood_pressure.DiastolicPressureField(
-                null=True
-            ),
+            field=edc_vitals.models.fields.blood_pressure.DiastolicPressureField(null=True),
         ),
         migrations.AlterField(
             model_name="historicalfollowupvitals",
             name="sys_blood_pressure",
-            field=edc_vitals.models.fields.blood_pressure.SystolicPressureField(
-                null=True
-            ),
+            field=edc_vitals.models.fields.blood_pressure.SystolicPressureField(null=True),
         ),
         migrations.AlterField(
             model_name="historicalfollowupvitals",
@@ -53,16 +45,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="historicalphysicalexam",
             name="dia_blood_pressure",
-            field=edc_vitals.models.fields.blood_pressure.DiastolicPressureField(
-                null=True
-            ),
+            field=edc_vitals.models.fields.blood_pressure.DiastolicPressureField(null=True),
         ),
         migrations.AlterField(
             model_name="historicalphysicalexam",
             name="sys_blood_pressure",
-            field=edc_vitals.models.fields.blood_pressure.SystolicPressureField(
-                null=True
-            ),
+            field=edc_vitals.models.fields.blood_pressure.SystolicPressureField(null=True),
         ),
         migrations.AlterField(
             model_name="historicalphysicalexam",
@@ -72,16 +60,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="physicalexam",
             name="dia_blood_pressure",
-            field=edc_vitals.models.fields.blood_pressure.DiastolicPressureField(
-                null=True
-            ),
+            field=edc_vitals.models.fields.blood_pressure.DiastolicPressureField(null=True),
         ),
         migrations.AlterField(
             model_name="physicalexam",
             name="sys_blood_pressure",
-            field=edc_vitals.models.fields.blood_pressure.SystolicPressureField(
-                null=True
-            ),
+            field=edc_vitals.models.fields.blood_pressure.SystolicPressureField(null=True),
         ),
         migrations.AlterField(
             model_name="physicalexam",

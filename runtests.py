@@ -3,9 +3,9 @@ import logging
 import sys
 from datetime import datetime
 from os.path import abspath, dirname, join
+from zoneinfo import ZoneInfo
 
 import django
-from dateutil.tz import gettz
 from django.conf import settings
 from django.test.runner import DiscoverRunner
 from edc_test_utils import DefaultTestSettings
@@ -46,8 +46,10 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     EDC_DX_LABELS=dict(hiv="HIV", dm="Diabetes", htn="Hypertension", chol="High Cholesterol"),
     ADVERSE_EVENT_APP_LABEL="meta_ae",
     EDC_NAVBAR_DEFAULT="meta_dashboard",
-    EDC_PROTOCOL_STUDY_OPEN_DATETIME=datetime(2019, 4, 30, 0, 0, 0, tzinfo=gettz("UTC")),
-    EDC_PROTOCOL_STUDY_CLOSE_DATETIME=datetime(2023, 12, 31, 23, 59, 59, tzinfo=gettz("UTC")),
+    EDC_PROTOCOL_STUDY_OPEN_DATETIME=datetime(2019, 4, 30, 0, 0, 0, tzinfo=ZoneInfo("UTC")),
+    EDC_PROTOCOL_STUDY_CLOSE_DATETIME=datetime(
+        2023, 12, 31, 23, 59, 59, tzinfo=ZoneInfo("UTC")
+    ),
     DJANGO_LANGUAGES=dict(
         en="English",
         lg="Luganda",
@@ -90,16 +92,9 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "django_revision.apps.AppConfig",
         # "debug_toolbar",
         "django_extensions",
-        "django_celery_results",
-        "django_celery_beat",
         "logentry_admin",
         "simple_history",
         "storages",
-        # "corsheaders",
-        "rest_framework",
-        "rest_framework.authtoken",
-        # "django_collect_offline.apps.AppConfig",
-        # "django_collect_offline_files.apps.AppConfig",
         "edc_action_item.apps.AppConfig",
         "edc_adverse_event.apps.AppConfig",
         "edc_appointment.apps.AppConfig",

@@ -102,11 +102,13 @@ class PartOneFieldsModelMixin(models.Model):
     )
 
     continue_part_two = models.CharField(
-        verbose_name=mark_safe("Continue with <U>part two</U> of the screening process?"),
+        verbose_name=mark_safe(  # nosec B308
+            "Continue with <U>part two</U> of the screening process?"
+        ),
         max_length=15,
         choices=YESDEFAULT_NO,
         default=YES,
-        help_text=mark_safe(
+        help_text=mark_safe(  # nosec B308
             "<B>Important</B>: This response will be be automatically "
             "set to YES if:<BR><BR>"
             "- the participant meets the eligibility criteria for part one, or;<BR><BR>"

@@ -1,8 +1,8 @@
-from copy import copy
+from typing import Tuple
 
 from django.contrib import admin
 from django_audit_fields import audit_fieldset_tuple
-from edc_action_item import action_fields, action_fieldset_tuple
+from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
 from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
@@ -13,7 +13,10 @@ from ..models import OffSchedulePostnatal
 
 @admin.register(OffSchedulePostnatal, site=meta_prn_admin)
 class OffSchedulePostnatalAdmin(
-    DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
+    DataManagerModelAdminMixin,
+    ActionItemModelAdminMixin,
+    ModelAdminSubjectDashboardMixin,
+    SimpleHistoryAdmin,
 ):
 
     instructions = None
@@ -24,14 +27,16 @@ class OffSchedulePostnatalAdmin(
         audit_fieldset_tuple,
     )
 
-    list_display = ("subject_identifier", "dashboard", "offschedule_datetime")
+    def get_list_display(self, request) -> Tuple[str, ...]:
+        list_display = super().get_list_display(request)
+        custom_fields = ("subject_identifier", "dashboard", "offschedule_datetime")
+        return custom_fields + tuple(f for f in list_display if f not in custom_fields)
 
-    list_filter = ("offschedule_datetime",)
+    def get_list_filter(self, request) -> Tuple[str, ...]:
+        list_filter = super().get_list_filter(request)
+        custom_fields = ("offschedule_datetime",)
+        return custom_fields + tuple(f for f in list_filter if f not in custom_fields)
 
-    readonly_fields = ["subject_identifier", "offschedule_datetime"]
-
-    def get_readonly_fields(self, request, obj=None):
-        fields = super().get_readonly_fields(request, obj)
-        action_flds = copy(list(action_fields))
-        fields = list(action_flds) + list(fields)
-        return fields
+    def get_readonly_fields(self, request, obj=None) -> Tuple[str, ...]:
+        custom_fields = ("subject_identifier", "offschedule_datetime")
+        return tuple(set(super().get_readonly_fields(request, obj=obj) + custom_fields))

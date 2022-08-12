@@ -1,4 +1,5 @@
 from django.contrib import admin
+from edc_action_item import ActionItemModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_transfer.modeladmin_mixins import SubjectTransferModelAdminMixin
@@ -10,7 +11,10 @@ from ..models import SubjectTransfer
 
 @admin.register(SubjectTransfer, site=meta_prn_admin)
 class SubjectTransferAdmin(
-    SubjectTransferModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
+    SubjectTransferModelAdminMixin,
+    ActionItemModelAdminMixin,
+    ModelAdminSubjectDashboardMixin,
+    SimpleHistoryAdmin,
 ):
 
     form = SubjectTransferForm

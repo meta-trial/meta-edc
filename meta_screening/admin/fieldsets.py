@@ -1,6 +1,5 @@
 from typing import Tuple
 
-from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
 from ..forms import (
@@ -24,7 +23,7 @@ from ..forms.field_lists import (
 def get_part_one_fieldset(collapse=None) -> Tuple[str, dict]:
 
     dct = {
-        "description": mark_safe(
+        "description": mark_safe(  # nosec B308
             "To be completed by the <u>study clinician</u> or the "
             "<u>research nurse</u> in consultation with the study clinician"
         ),
@@ -37,7 +36,7 @@ def get_part_one_fieldset(collapse=None) -> Tuple[str, dict]:
 
 def get_part_two_fieldset(collapse=None) -> Tuple[str, dict]:
     dct = {
-        "description": mark_safe(
+        "description": mark_safe(  # nosec B308
             "To be completed by the <u>study clinician</u> or the "
             "<u>research nurse</u> in consultation with the study clinician"
         ),
@@ -52,7 +51,9 @@ def get_part_three_fieldset(
     collapse=None,
 ) -> Tuple[str, dict]:
     dct = {
-        "description": mark_safe("To be completed by the <u>study clinician</u>"),
+        "description": mark_safe(  # nosec B308
+            "To be completed by the <u>study clinician</u>"
+        ),
         "fields": part_three_fields,
     }
     if collapse:
@@ -129,7 +130,7 @@ def get_part_three_pregnancy_fieldset(collapse=None) -> Tuple[str, dict]:
 
 def get_p3_screening_appt_update_fields(collapse=None) -> Tuple[str, dict]:
     dct = {
-        "description": format_html(
+        "description": mark_safe(  # nosec B308
             '<span style="color:orange;font-weight:bold">IMPORTANT:</span>'
             "This section is only applicable if the subject "
             "missed the appointment for the second stage of screening (P3). "

@@ -657,9 +657,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="bloodresultsrft",
             name="creatinine_value",
-            field=models.DecimalField(
-                blank=True, decimal_places=2, max_digits=6, null=True
-            ),
+            field=models.DecimalField(blank=True, decimal_places=2, max_digits=6, null=True),
         ),
         migrations.AlterField(
             model_name="bloodresultsrft",
@@ -758,9 +756,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="historicalbloodresultsrft",
             name="creatinine_value",
-            field=models.DecimalField(
-                blank=True, decimal_places=2, max_digits=6, null=True
-            ),
+            field=models.DecimalField(blank=True, decimal_places=2, max_digits=6, null=True),
         ),
         migrations.AlterField(
             model_name="historicalglucose",

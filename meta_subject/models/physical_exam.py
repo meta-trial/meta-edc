@@ -20,7 +20,7 @@ class PhysicalExam(
 ):
 
     irregular_heartbeat = models.CharField(
-        verbose_name=mark_safe("Is the heart beat <u>irregular</u>?"),
+        verbose_name=mark_safe("Is the heart beat <u>irregular</u>?"),  # nosec B308
         max_length=15,
         choices=YES_NO,
     )

@@ -30,21 +30,15 @@ class Migration(migrations.Migration):
         migrations.AlterModelOptions(
             name="symptoms", options={"ordering": ["display_index", "display_name"]}
         ),
-        migrations.RemoveIndex(
-            model_name="arvregimens", name="meta_lists__id_10dc52_idx"
-        ),
+        migrations.RemoveIndex(model_name="arvregimens", name="meta_lists__id_10dc52_idx"),
         migrations.RemoveIndex(
             model_name="baselinesymptoms", name="meta_lists__id_5d3e73_idx"
         ),
         migrations.RemoveIndex(
             model_name="diabetessymptoms", name="meta_lists__id_de7534_idx"
         ),
-        migrations.RemoveIndex(
-            model_name="offstudyreasons", name="meta_lists__id_d6cb87_idx"
-        ),
-        migrations.RemoveIndex(
-            model_name="oiprophylaxis", name="meta_lists__id_509dd4_idx"
-        ),
+        migrations.RemoveIndex(model_name="offstudyreasons", name="meta_lists__id_d6cb87_idx"),
+        migrations.RemoveIndex(model_name="oiprophylaxis", name="meta_lists__id_509dd4_idx"),
         migrations.RemoveIndex(model_name="symptoms", name="meta_lists__id_f12990_idx"),
         migrations.RenameField(
             model_name="arvregimens", old_name="name", new_name="display_name"
@@ -79,9 +73,7 @@ class Migration(migrations.Migration):
         migrations.RenameField(
             model_name="oiprophylaxis", old_name="short_name", new_name="name"
         ),
-        migrations.RenameField(
-            model_name="symptoms", old_name="short_name", new_name="name"
-        ),
+        migrations.RenameField(model_name="symptoms", old_name="short_name", new_name="name"),
         migrations.AddIndex(
             model_name="arvregimens",
             index=models.Index(

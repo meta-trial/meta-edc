@@ -1,7 +1,5 @@
-from copy import copy
-
 from django.contrib import admin
-from edc_action_item import action_fields, action_fieldset_tuple
+from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
 from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
@@ -13,7 +11,10 @@ from ..models import LossToFollowup
 
 @admin.register(LossToFollowup, site=meta_prn_admin)
 class LossToFollowupAdmin(
-    DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
+    DataManagerModelAdminMixin,
+    ActionItemModelAdminMixin,
+    ModelAdminSubjectDashboardMixin,
+    SimpleHistoryAdmin,
 ):
 
     form = LossToFollowupForm
@@ -57,12 +58,3 @@ class LossToFollowupAdmin(
         "home_visited": admin.VERTICAL,
         "loss_category": admin.VERTICAL,
     }
-
-    search_fields = ("subject_identifier", "action_identifier", "tracking_identifier")
-
-    def get_readonly_fields(self, request, obj=None):
-        fields = super().get_readonly_fields(request, obj)
-        action_flds = copy(list(action_fields))
-        action_flds.remove("action_identifier")
-        fields = list(action_flds) + list(fields)
-        return fields

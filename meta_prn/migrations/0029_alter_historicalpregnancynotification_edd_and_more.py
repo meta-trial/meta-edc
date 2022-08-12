@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_prn', '0028_historicalpregnancynotification_bhcg_date_and_more'),
+        ("meta_prn", "0028_historicalpregnancynotification_bhcg_date_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='historicalpregnancynotification',
-            name='edd',
-            field=models.DateField(verbose_name='Estimated date of delivery'),
+            model_name="historicalpregnancynotification",
+            name="edd",
+            field=models.DateField(verbose_name="Estimated date of delivery"),
         ),
         migrations.AlterField(
-            model_name='pregnancynotification',
-            name='edd',
-            field=models.DateField(verbose_name='Estimated date of delivery'),
+            model_name="pregnancynotification",
+            name="edd",
+            field=models.DateField(verbose_name="Estimated date of delivery"),
         ),
     ]

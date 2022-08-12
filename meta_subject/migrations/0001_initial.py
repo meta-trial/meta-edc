@@ -321,9 +321,7 @@ class Migration(migrations.Migration):
                 ),
                 "abstract": False,
             },
-            managers=[
-                ("on_site", meta_subject.models.subject_visit.CurrentSiteManager())
-            ],
+            managers=[("on_site", meta_subject.models.subject_visit.CurrentSiteManager())],
         ),
         migrations.CreateModel(
             name="UrineDipstickTest",
@@ -594,15 +592,11 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "identifier_prefix",
-                    models.CharField(
-                        editable=False, max_length=50, null=True, unique=True
-                    ),
+                    models.CharField(editable=False, max_length=50, null=True, unique=True),
                 ),
                 (
                     "primary_aliquot_identifier",
-                    models.CharField(
-                        editable=False, max_length=18, null=True, unique=True
-                    ),
+                    models.CharField(editable=False, max_length=18, null=True, unique=True),
                 ),
                 (
                     "consent_model",
@@ -1016,9 +1010,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "cd4_date",
-                    models.DateField(
-                        blank=True, null=True, verbose_name="Date of last CD4"
-                    ),
+                    models.DateField(blank=True, null=True, verbose_name="Date of last CD4"),
                 ),
                 (
                     "other_current_arv_regimen",
@@ -1392,9 +1384,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "pill_count",
-                    models.IntegerField(
-                        verbose_name="Number of pills left in the bottle"
-                    ),
+                    models.IntegerField(verbose_name="Number of pills left in the bottle"),
                 ),
                 (
                     "missed_pill_reason",
@@ -2193,15 +2183,11 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "identifier_prefix",
-                    models.CharField(
-                        db_index=True, editable=False, max_length=50, null=True
-                    ),
+                    models.CharField(db_index=True, editable=False, max_length=50, null=True),
                 ),
                 (
                     "primary_aliquot_identifier",
-                    models.CharField(
-                        db_index=True, editable=False, max_length=18, null=True
-                    ),
+                    models.CharField(db_index=True, editable=False, max_length=18, null=True),
                 ),
                 (
                     "consent_model",
@@ -2661,9 +2647,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "cd4_date",
-                    models.DateField(
-                        blank=True, null=True, verbose_name="Date of last CD4"
-                    ),
+                    models.DateField(blank=True, null=True, verbose_name="Date of last CD4"),
                 ),
                 (
                     "other_current_arv_regimen",
@@ -3049,9 +3033,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "pill_count",
-                    models.IntegerField(
-                        verbose_name="Number of pills left in the bottle"
-                    ),
+                    models.IntegerField(verbose_name="Number of pills left in the bottle"),
                 ),
                 (
                     "missed_pill_reason",
@@ -3706,9 +3688,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "off_work_days",
-                    models.IntegerField(
-                        verbose_name="How much time did you take off work?"
-                    ),
+                    models.IntegerField(verbose_name="How much time did you take off work?"),
                 ),
                 (
                     "travel_time",
@@ -6411,9 +6391,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "haemoglobin",
-                    models.DecimalField(
-                        blank=True, decimal_places=1, max_digits=6, null=True
-                    ),
+                    models.DecimalField(blank=True, decimal_places=1, max_digits=6, null=True),
                 ),
                 (
                     "haemoglobin_units",
@@ -7154,9 +7132,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "off_work_days",
-                    models.IntegerField(
-                        verbose_name="How much time did you take off work?"
-                    ),
+                    models.IntegerField(verbose_name="How much time did you take off work?"),
                 ),
                 (
                     "travel_time",
@@ -9630,9 +9606,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "haemoglobin",
-                    models.DecimalField(
-                        blank=True, decimal_places=1, max_digits=6, null=True
-                    ),
+                    models.DecimalField(blank=True, decimal_places=1, max_digits=6, null=True),
                 ),
                 (
                     "haemoglobin_units",

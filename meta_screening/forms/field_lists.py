@@ -1,4 +1,6 @@
-part_one_fields: tuple = (
+from typing import Tuple
+
+part_one_fields: Tuple[str, ...] = (
     "report_datetime",
     "screening_consent",
     "meta_phase_two",
@@ -19,7 +21,7 @@ part_one_fields: tuple = (
 )
 
 
-part_two_fields: tuple = (
+part_two_fields: Tuple[str, ...] = (
     "part_two_report_datetime",
     "congestive_heart_failure",
     "liver_disease",
@@ -39,7 +41,7 @@ part_two_fields: tuple = (
 )
 
 
-part_three_vitals_fields: tuple = (
+part_three_vitals_fields: Tuple[str, ...] = (
     "height",
     "weight",
     "sys_blood_pressure_one",
@@ -50,7 +52,7 @@ part_three_vitals_fields: tuple = (
 )
 
 
-part_three_fbg_fields: tuple = (
+part_three_fbg_fields: Tuple[str, ...] = (
     "fasting",
     "fasting_duration_str",
     "fbg_datetime",
@@ -59,39 +61,39 @@ part_three_fbg_fields: tuple = (
 )
 
 
-part_three_repeat_fbg_fields: tuple = (
+part_three_repeat_fbg_fields: Tuple[str, ...] = (
     "fbg2_datetime",
     "fbg2_value",
     "fbg2_units",
 )
 
-part_three_ogtt_fields: tuple = (
+part_three_ogtt_fields: Tuple[str, ...] = (
     "ogtt_base_datetime",
     "ogtt_datetime",
     "ogtt_value",
     "ogtt_units",
 )
 
-part_three_repeat_ogtt_fields: tuple = (
+part_three_repeat_ogtt_fields: Tuple[str, ...] = (
     "ogtt2_base_datetime",
     "ogtt2_datetime",
     "ogtt2_value",
     "ogtt2_units",
 )
 
-part_three_glucose_fields: tuple = (
+part_three_glucose_fields: Tuple[str, ...] = (
     *part_three_fbg_fields,
     *part_three_ogtt_fields,
     *("repeat_glucose_opinion", "repeat_appt_datetime", "contact_number"),
 )
 
-part_three_pregnancy_fields: tuple = (
+part_three_pregnancy_fields: Tuple[str, ...] = (
     "urine_bhcg_performed",
     "urine_bhcg_value",
     "urine_bhcg_date",
 )
 
-part_three_other_fields: tuple = (
+part_three_other_fields: Tuple[str, ...] = (
     "creatinine_performed",
     "creatinine_value",
     "creatinine_units",
@@ -100,25 +102,25 @@ part_three_other_fields: tuple = (
     "hba1c_value",
 )
 
-part_three_creatinine_fields: tuple = (
+part_three_creatinine_fields: Tuple[str, ...] = (
     "creatinine_performed",
     "creatinine_value",
     "creatinine_units",
 )
 
-part_three_hba1c_fields: tuple = (
+part_three_hba1c_fields: Tuple[str, ...] = (
     "hba1c_performed",
     "hba1c_datetime",
     "hba1c_value",
 )
 
-part_three_comment_fields: tuple = (
+part_three_comment_fields: Tuple[str, ...] = (
     "unsuitable_for_study",
     "reasons_unsuitable",
     "unsuitable_agreed",
 )
 
-calculated_fields: tuple = (
+calculated_fields: Tuple[str, ...] = (
     "sys_blood_pressure_avg",
     "dia_blood_pressure_avg",
     "calculated_bmi_value",
@@ -135,8 +137,7 @@ calculated_fields: tuple = (
 )
 
 
-# META PHASE_THREE ONLY
-part_three_labs: tuple = (
+part_three_labs: Tuple[str, ...] = (
     "haemoglobin_value",
     "wbc_value",
     "ast_value",
@@ -147,7 +148,7 @@ part_three_labs: tuple = (
 )
 
 
-part_three_fields: tuple = (
+part_three_fields: Tuple[str, ...] = (
     "part_three_report_datetime",
     *part_three_vitals_fields,
     *part_three_pregnancy_fields,

@@ -171,7 +171,7 @@ class UnblindingReviewAction(PregnancyMixin, ActionWithNotification):
     priority = HIGH_PRIORITY
     color_style = "info"
     create_by_user = False
-    instructions = mark_safe(
+    instructions = mark_safe(  # nosec B308
         "This report is to be completed by the UNBLINDING REVIEWERS only."
     )
 

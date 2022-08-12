@@ -1,6 +1,6 @@
 {% comment %}Button to add a subject consent{% endcomment %}
 
-<a id="subjectconsent_add_{{ screening_identifier }}" 
+<a id="subjectconsent_add_{{ screening_identifier }}"
  	title="{{ title }}"
     class="btn btn-warning btn-sm" data-toggle="tooltip"  data-placement="right"
         {% if perms.meta_consent.view_subjectconsent or perms.meta_consent.change_subjectconsent %}

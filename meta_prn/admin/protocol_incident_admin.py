@@ -1,8 +1,8 @@
-from copy import copy
+from typing import Tuple
 
 from django.contrib import admin
 from django.utils.html import format_html
-from edc_action_item import action_fields, action_fieldset_tuple
+from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
 from edc_constants.constants import CLOSED, OPEN
 from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
@@ -15,7 +15,10 @@ from ..models import ProtocolIncident
 
 @admin.register(ProtocolIncident, site=meta_prn_admin)
 class ProtocolDeviationViolationAdmin(
-    DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
+    DataManagerModelAdminMixin,
+    ActionItemModelAdminMixin,
+    ModelAdminSubjectDashboardMixin,
+    SimpleHistoryAdmin,
 ):
 
     form = ProtocolIncidentForm
@@ -77,34 +80,31 @@ class ProtocolDeviationViolationAdmin(
         "incident": admin.VERTICAL,
     }
 
-    list_display = (
-        "subject_identifier",
-        "dashboard",
-        "description",
-        "report_datetime",
-        "status",
-        "action_required",
-        "report_type",
-        "tracking_identifier",
-        "action_identifier",
-        "user_created",
-    )
+    def get_list_display(self, request) -> Tuple[str, ...]:
+        list_display = super().get_list_display(request)
+        custom_fields = (
+            "subject_identifier",
+            "dashboard",
+            "description",
+            "report_datetime",
+            "status",
+            "action_required",
+            "report_type",
+            "tracking_identifier",
+            "action_identifier",
+            "user_created",
+        )
+        return custom_fields + tuple(f for f in list_display if f not in custom_fields)
 
-    list_filter = ("action_required", "report_status", "report_type")
+    def get_list_filter(self, request) -> Tuple[str, ...]:
+        list_filter = super().get_list_filter(request)
+        custom_fields = ("action_required", "report_status", "report_type")
+        return custom_fields + tuple(f for f in list_filter if f not in custom_fields)
 
-    search_fields = [
-        "subject_identifier",
-        "action_identifier",
-        "short_description",
-        "tracking_identifier",
-    ]
-
-    def get_readonly_fields(self, request, obj=None):
-        fields = super().get_readonly_fields(request, obj)
-        action_flds = copy(list(action_fields))
-        action_flds.remove("action_identifier")
-        fields = list(action_flds) + list(fields)
-        return fields
+    def get_search_fields(self, request) -> Tuple[str, ...]:
+        search_fields = super().get_search_fields(request)
+        custom_fields = ("short_description",)
+        return tuple(set(custom_fields + search_fields))
 
     def status(self, obj=None):
         if obj.report_status == CLOSED:

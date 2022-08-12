@@ -41,9 +41,7 @@ class Migration(migrations.Migration):
         migrations.RemoveField(
             model_name="historicalpatienthistory", name="has_enlarged_liver"
         ),
-        migrations.RemoveField(
-            model_name="historicalpatienthistory", name="heart_rate"
-        ),
+        migrations.RemoveField(model_name="historicalpatienthistory", name="heart_rate"),
         migrations.RemoveField(
             model_name="historicalpatienthistory", name="irregular_heartbeat"
         ),
@@ -54,32 +52,22 @@ class Migration(migrations.Migration):
         migrations.RemoveField(
             model_name="historicalpatienthistory", name="peripheral_oedema"
         ),
-        migrations.RemoveField(
-            model_name="historicalpatienthistory", name="respiratory_rate"
-        ),
+        migrations.RemoveField(model_name="historicalpatienthistory", name="respiratory_rate"),
         migrations.RemoveField(
             model_name="historicalpatienthistory", name="sys_blood_pressure"
         ),
-        migrations.RemoveField(
-            model_name="historicalpatienthistory", name="temperature"
-        ),
+        migrations.RemoveField(model_name="historicalpatienthistory", name="temperature"),
         migrations.RemoveField(
             model_name="historicalpatienthistory", name="waist_circumference"
         ),
         migrations.RemoveField(model_name="historicalpatienthistory", name="weight"),
-        migrations.RemoveField(
-            model_name="patienthistory", name="abdominal_tenderness"
-        ),
+        migrations.RemoveField(model_name="patienthistory", name="abdominal_tenderness"),
         migrations.RemoveField(model_name="patienthistory", name="dia_blood_pressure"),
-        migrations.RemoveField(
-            model_name="patienthistory", name="has_abdominal_tenderness"
-        ),
+        migrations.RemoveField(model_name="patienthistory", name="has_abdominal_tenderness"),
         migrations.RemoveField(model_name="patienthistory", name="has_enlarged_liver"),
         migrations.RemoveField(model_name="patienthistory", name="heart_rate"),
         migrations.RemoveField(model_name="patienthistory", name="irregular_heartbeat"),
-        migrations.RemoveField(
-            model_name="patienthistory", name="is_heartbeat_regular"
-        ),
+        migrations.RemoveField(model_name="patienthistory", name="is_heartbeat_regular"),
         migrations.RemoveField(model_name="patienthistory", name="jaundice"),
         migrations.RemoveField(model_name="patienthistory", name="peripheral_oedema"),
         migrations.RemoveField(model_name="patienthistory", name="respiratory_rate"),

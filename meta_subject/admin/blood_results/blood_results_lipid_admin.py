@@ -1,4 +1,5 @@
 from django.contrib import admin
+from edc_action_item import action_fieldset_tuple
 from edc_lab_results.admin import BloodResultsModelAdminMixin
 from edc_lab_results.fieldsets import BloodResultFieldset
 
@@ -12,5 +13,9 @@ from ..modeladmin import CrfModelAdmin
 class BloodResultsLipidAdmin(BloodResultsModelAdminMixin, CrfModelAdmin):
     form = BloodResultsLipidForm
     fieldsets = BloodResultFieldset(
-        BloodResultsLipid.lab_panel, model_cls=BloodResultsLipid
+        BloodResultsLipid.lab_panel,
+        model_cls=BloodResultsLipid,
+        extra_fieldsets=[
+            (-1, action_fieldset_tuple),
+        ],
     ).fieldsets

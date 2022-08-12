@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_subject', '0118_delivery_crf_status_delivery_crf_status_comments_and_more'),
+        ("meta_subject", "0118_delivery_crf_status_delivery_crf_status_comments_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='historicalstudymedication',
-            name='roundup_divisible_by',
+            model_name="historicalstudymedication",
+            name="roundup_divisible_by",
             field=models.IntegerField(default=32),
         ),
         migrations.AddField(
-            model_name='studymedication',
-            name='roundup_divisible_by',
+            model_name="studymedication",
+            name="roundup_divisible_by",
             field=models.IntegerField(default=32),
         ),
     ]

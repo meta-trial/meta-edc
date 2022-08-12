@@ -1,7 +1,10 @@
+from typing import Tuple
+
 from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
 from django.urls.base import reverse
+from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from edc_action_item import action_fieldset_tuple
 from edc_action_item.modeladmin_mixins import ActionItemModelAdminMixin
@@ -54,23 +57,23 @@ class AeReviewModelAdminMixin(
         "ae_grade": admin.VERTICAL,
     }
 
-    list_display = [
+    list_display: Tuple[str, ...] = (
         "identifier",
         "dashboard",
         "description",
         "initial_ae",
         "follow_up_reports",
         "user",
-    ]
+    )
 
-    list_filter = ("ae_grade", "followup", "outcome_date", "report_datetime")
+    list_filter: Tuple[str, ...] = ("ae_grade", "followup", "outcome_date", "report_datetime")
 
-    search_fields = [
+    search_fields: Tuple[str, ...] = (
         "action_identifier",
         "ae_initial__tracking_identifier",
         "ae_initial__subject_identifier",
         "ae_initial__action_identifier",
-    ]
+    )
 
     @staticmethod
     def description(obj=None):
@@ -86,13 +89,17 @@ class AeReviewModelAdminMixin(
             try:
                 ae_followup = self.model.objects.get(parent_action_item=obj.action_item)
             except ObjectDoesNotExist:
-                ae_followup = None
+                pass
             else:
                 follow_up_reports = self.follow_up_reports(ae_followup)
         elif obj.followup == NO and obj.ae_grade != NOT_APPLICABLE:
             follow_up_reports = self.initial_ae(obj)
         if follow_up_reports:
-            return mark_safe(f"{obj.get_outcome_display()}. See {follow_up_reports}.")
+            return format_html(
+                "{}. See {}",
+                mark_safe(obj.get_outcome_display()),  # nosec B703, B308
+                mark_safe(follow_up_reports),  # nosec B703, B308
+            )
         return obj.get_outcome_display()
 
     def follow_up_reports(self, obj):
@@ -104,9 +111,13 @@ class AeReviewModelAdminMixin(
             url_name = "_".join(obj.ae_initial._meta.label_lower.split("."))
             namespace = self.admin_site.name
             url = reverse(f"{namespace}:{url_name}_changelist")
-            return mark_safe(
-                f'<a data-toggle="tooltip" title="go to ae initial report" '
-                f'href="{url}?q={obj.ae_initial.action_identifier}">'
-                f"{obj.ae_initial.identifier}</a>"
+            return format_html(
+                '<a data-toggle="tooltip" title="go to ae initial report" '
+                'href="{url}?q={action_identifier}">{identifier}</a>',
+                url=mark_safe(url),  # nosec B703, B308
+                action_identifier=mark_safe(  # nosec B703, B308
+                    obj.ae_initial.action_identifier
+                ),
+                identifier=mark_safe(obj.ae_initial.identifier),  # nosec B703, B308
             )
         return None

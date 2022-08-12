@@ -4,6 +4,6 @@ from ..models import ProtocolIncident
 
 
 class ProtocolIncidentForm(Base):
-    class Meta:
+    class Meta(Base.Meta):
         model = ProtocolIncident
         fields = "__all__"

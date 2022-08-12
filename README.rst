@@ -114,7 +114,7 @@ Once logged in, go to you user account and update your group memberships. As a p
 
 * ACCOUNT_MANAGER
 * ADMINISTRATION
-* AE 
+* AE
 * AE_REVIEW
 * CLINIC
 * DATA_MANAGER

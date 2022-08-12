@@ -6,28 +6,51 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meta_prn', '0027_rename_historicalprotocoldeviationviolation_historicalprotocolincident_and_more'),
+        (
+            "meta_prn",
+            "0027_rename_historicalprotocoldeviationviolation_historicalprotocolincident_and_more",
+        ),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='historicalpregnancynotification',
-            name='bhcg_date',
-            field=models.DateField(blank=True, help_text='Will be validated against a UPT result in the EDC.', null=True, verbose_name='βHCG result date'),
+            model_name="historicalpregnancynotification",
+            name="bhcg_date",
+            field=models.DateField(
+                blank=True,
+                help_text="Will be validated against a UPT result in the EDC.",
+                null=True,
+                verbose_name="βHCG result date",
+            ),
         ),
         migrations.AddField(
-            model_name='pregnancynotification',
-            name='bhcg_date',
-            field=models.DateField(blank=True, help_text='Will be validated against a UPT result in the EDC.', null=True, verbose_name='βHCG result date'),
+            model_name="pregnancynotification",
+            name="bhcg_date",
+            field=models.DateField(
+                blank=True,
+                help_text="Will be validated against a UPT result in the EDC.",
+                null=True,
+                verbose_name="βHCG result date",
+            ),
         ),
         migrations.AlterField(
-            model_name='historicalpregnancynotification',
-            name='bhcg_confirmed',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No')], help_text='If YES, the UPT result must already be entered in the EDC.', max_length=5, verbose_name='Has the pregnancy been confirmed by urine βHCG?'),
+            model_name="historicalpregnancynotification",
+            name="bhcg_confirmed",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No")],
+                help_text="If YES, the UPT result must already be entered in the EDC.",
+                max_length=5,
+                verbose_name="Has the pregnancy been confirmed by urine βHCG?",
+            ),
         ),
         migrations.AlterField(
-            model_name='pregnancynotification',
-            name='bhcg_confirmed',
-            field=models.CharField(choices=[('Yes', 'Yes'), ('No', 'No')], help_text='If YES, the UPT result must already be entered in the EDC.', max_length=5, verbose_name='Has the pregnancy been confirmed by urine βHCG?'),
+            model_name="pregnancynotification",
+            name="bhcg_confirmed",
+            field=models.CharField(
+                choices=[("Yes", "Yes"), ("No", "No")],
+                help_text="If YES, the UPT result must already be entered in the EDC.",
+                max_length=5,
+                verbose_name="Has the pregnancy been confirmed by urine βHCG?",
+            ),
         ),
     ]

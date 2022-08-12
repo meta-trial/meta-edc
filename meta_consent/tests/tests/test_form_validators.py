@@ -1,10 +1,11 @@
+from zoneinfo import ZoneInfo
+
 from dateutil.relativedelta import relativedelta
 from django import forms
 from django.test import TestCase
 from edc_consent.constants import HOSPITAL_NUMBER
 from edc_constants.constants import FEMALE
 from edc_utils.date import get_utcnow
-from pytz import timezone
 
 from meta_consent.forms import SubjectConsentFormValidator
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
@@ -21,7 +22,7 @@ class TestFormValidators(MetaTestCaseMixin, TestCase):
 
     @staticmethod
     def get_now():
-        return get_utcnow().astimezone(timezone("Africa/Dar_es_Salaam"))
+        return get_utcnow().astimezone(ZoneInfo("Africa/Dar_es_Salaam"))
 
     def test_ok(self):
         consent_datetime = self.get_now()
@@ -43,7 +44,7 @@ class TestFormValidators(MetaTestCaseMixin, TestCase):
         consent_datetime = self.subject_screening.eligibility_datetime - relativedelta(
             minutes=1
         )
-        consent_datetime = consent_datetime.astimezone(timezone("Africa/Dar_es_Salaam"))
+        consent_datetime = consent_datetime.astimezone(ZoneInfo("Africa/Dar_es_Salaam"))
         cleaned_data = dict(
             screening_identifier=self.screening_identifier,
             gender=FEMALE,
@@ -65,7 +66,7 @@ class TestFormValidators(MetaTestCaseMixin, TestCase):
         consent_datetime = self.subject_screening.eligibility_datetime + relativedelta(
             minutes=1
         )
-        consent_datetime = consent_datetime.astimezone(timezone("Africa/Dar_es_Salaam"))
+        consent_datetime = consent_datetime.astimezone(ZoneInfo("Africa/Dar_es_Salaam"))
         cleaned_data = dict(
             screening_identifier=self.screening_identifier,
             gender=FEMALE,

@@ -3,14 +3,7 @@ from edc_action_item.auth_objects import (
     ACTION_ITEM_EXPORT,
     ACTION_ITEM_VIEW_ONLY,
 )
-from edc_adverse_event.auth_objects import (
-    AE,
-    AE_REVIEW,
-    AE_SUPER,
-    TMG,
-    TMG_REVIEW,
-    TMG_ROLE,
-)
+from edc_adverse_event.auth_objects import AE, AE_REVIEW, AE_SUPER, TMG_REVIEW, TMG_ROLE
 from edc_appointment.auth_objects import (
     APPOINTMENT,
     APPOINTMENT_EXPORT,
@@ -27,15 +20,9 @@ from edc_auth.auth_objects import (
     PII,
 )
 from edc_auth.site_auths import site_auths
-from edc_data_manager.auth_objects import (
-    DATA_MANAGER_EXPORT,
-    DATA_MANAGER_ROLE,
-    SITE_DATA_MANAGER_ROLE,
-)
+from edc_data_manager.auth_objects import DATA_MANAGER_EXPORT
 from edc_export.auth_objects import DATA_EXPORTER_ROLE
-from edc_label.auth_objects import LABELING
 from edc_mnsi.auth_objects import MNSI, MNSI_SUPER, MNSI_VIEW
-from edc_offstudy.auth_objects import OFFSTUDY
 from edc_pharmacy.auth_objects import (
     PHARMACIST_ROLE,
     PRESCRIBER_ROLE,
@@ -43,7 +30,6 @@ from edc_pharmacy.auth_objects import (
 )
 from edc_qol.auth_objects import QOL, QOL_SUPER, QOL_VIEW
 from edc_randomization.auth_objects import RANDO_BLINDED, RANDO_UNBLINDED
-from edc_screening.auth_objects import SCREENING, SCREENING_VIEW
 from edc_unblinding.auth_objects import UNBLINDING_REQUESTORS
 
 from .auth_objects import clinic_codenames
@@ -87,20 +73,6 @@ site_auths.update_role(
     name=NURSE_ROLE,
 )
 
-site_auths.update_role(
-    ACTION_ITEM,
-    AE,
-    APPOINTMENT,
-    CLINIC,
-    LABELING,
-    CLINIC,
-    MNSI,
-    QOL,
-    OFFSTUDY,
-    SCREENING,
-    TMG,
-    name=DATA_MANAGER_ROLE,
-)
 
 site_auths.update_role(ACTION_ITEM, UNBLINDING_REQUESTORS, name=TMG_ROLE)
 
@@ -113,18 +85,6 @@ site_auths.update_role(
     QOL_VIEW,
     TMG_REVIEW,
     name=AUDITOR_ROLE,
-)
-
-site_auths.update_role(
-    AUDITOR,
-    ACTION_ITEM,
-    AE_REVIEW,
-    AUDITOR,
-    MNSI_VIEW,
-    QOL_VIEW,
-    SCREENING_VIEW,
-    TMG_REVIEW,
-    name=SITE_DATA_MANAGER_ROLE,
 )
 
 

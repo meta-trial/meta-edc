@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from django.contrib import admin
 from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
 from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
@@ -37,21 +39,25 @@ class OffstudyMedicationAdmin(
         audit_fieldset_tuple,
     )
 
-    list_display = (
-        "subject_identifier",
-        "dashboard",
-        "stop_date",
-        "last_dose_date",
-    )
-
-    list_filter = (
-        "reason",
-        "stop_date",
-        "last_dose_date",
-    )
-
     radio_fields = {
         "reason": admin.VERTICAL,
     }
 
-    search_fields = ("subject_identifier", "action_identifier", "tracking_identifier")
+    def get_list_display(self, request) -> Tuple[str, ...]:
+        list_display = super().get_list_display(request)
+        custom_fields = (
+            "subject_identifier",
+            "dashboard",
+            "stop_date",
+            "last_dose_date",
+        )
+        return custom_fields + tuple(f for f in list_display if f not in custom_fields)
+
+    def get_list_filter(self, request) -> Tuple[str, ...]:
+        list_filter = super().get_list_filter(request)
+        custom_fields = (
+            "reason",
+            "stop_date",
+            "last_dose_date",
+        )
+        return custom_fields + tuple(f for f in list_filter if f not in custom_fields)
