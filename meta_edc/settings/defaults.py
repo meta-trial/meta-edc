@@ -103,6 +103,7 @@ INSTALLED_APPS = [
     "edc_device.apps.AppConfig",
     "edc_dashboard.apps.AppConfig",
     "edc_data_manager.apps.AppConfig",
+    "edc_egfr.apps.AppConfig",
     "edc_export.apps.AppConfig",
     "edc_facility.apps.AppConfig",
     "edc_fieldsets.apps.AppConfig",
@@ -353,11 +354,15 @@ LAB_DASHBOARD_URL_NAMES = env.dict("DJANGO_LAB_DASHBOARD_URL_NAMES")
 
 # edc-diagnosis
 EDC_DX_LABELS = dict(hiv="HIV", dm="Diabetes", htn="Hypertension", chol="High Cholesterol")
-# edc-label
-EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK = env("EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK")
+
+# edc-egfr
+EDC_EGFR_DROP_NOTIFICATION_MODEL = "meta_subject.egfrdropnotification"
 
 # edc_facility
 HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
+
+# edc-label
+EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK = env("EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK")
 
 # edc-mnsi
 EDC_MNSI_MODEL = "meta_subject.mnsi"

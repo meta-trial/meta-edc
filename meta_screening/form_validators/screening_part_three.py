@@ -1,5 +1,6 @@
 from django import forms
 from edc_constants.constants import NO, YES
+from edc_egfr.form_validator_mixins import EgfrCkdEpiFormValidatorMixin
 from edc_form_validators import FormValidator
 from edc_glucose.form_validators import (
     FastingFormValidatorMixin,
@@ -7,7 +8,7 @@ from edc_glucose.form_validators import (
     GlucoseFormValidatorMixin,
 )
 from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
-from edc_reportable import BmiFormValidatorMixin, EgfrCkdEpiFormValidatorMixin
+from edc_reportable import BmiFormValidatorMixin
 from edc_vitals.form_validators import (
     BloodPressureFormValidatorMixin,
     WeightHeightBmiFormValidatorMixin,

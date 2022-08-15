@@ -3,6 +3,7 @@ from edc_action_item import Action, ActionWithNotification, site_action_items
 from edc_action_item.site_action_items import AlreadyRegistered
 from edc_adverse_event.constants import AE_INITIAL_ACTION
 from edc_constants.constants import HIGH_PRIORITY, NEW, NONE, POS, YES
+from edc_egfr.constants import EGFR_DROP_NOTIFICATION_ACTION
 from edc_lab_results.action_items import (
     BloodResultsFbcAction,
     BloodResultsGluAction,
@@ -26,7 +27,6 @@ from meta_prn.constants import (
 
 from .constants import (
     DELIVERY_ACTION,
-    EGFR_DROP_NOTIFICATION_ACTION,
     FOLLOWUP_EXAMINATION_ACTION,
     MISSED_VISIT_ACTION,
     URINE_PREGNANCY_ACTION,
