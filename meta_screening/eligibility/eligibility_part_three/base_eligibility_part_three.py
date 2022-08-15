@@ -1,9 +1,10 @@
 from edc_constants.constants import NEG, NO, NOT_APPLICABLE
+from edc_egfr import EgfrCkdEpi
+from edc_egfr.calculators import EgfrCalculatorError
 from edc_reportable import (
     MICROMOLES_PER_LITER,
     MILLIMOLES_PER_LITER,
     ConversionNotHandled,
-    EgfrCkdEpi,
     calculate_bmi,
     convert_units,
 )
@@ -38,7 +39,16 @@ class BaseEligibilityPartThree(ScreeningEligibility):
     def assess_eligibility(self) -> None:
         if self.weight and self.height:
             self.bmi = calculate_bmi(weight_kg=self.weight, height_cm=self.height)
-        self.calculated_egfr_value = EgfrCkdEpi(**self.model_obj.__dict__).value
+        try:
+            self.calculated_egfr_value = EgfrCkdEpi(
+                gender=self.model_obj.gender,
+                age_in_years=self.model_obj.age_in_years,
+                ethnicity=self.model_obj.gender,
+                creatinine_value=self.model_obj.creatinine_value,
+                creatinine_units=self.model_obj.creatinine_units,
+            ).value
+        except EgfrCalculatorError:
+            pass
 
     def set_fld_attrs_on_model(self) -> None:
         self.model_obj.converted_creatinine_value = self.converted_creatinine_value

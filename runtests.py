@@ -19,6 +19,7 @@ base_dir = dirname(abspath(__file__))
 DEFAULT_SETTINGS = DefaultTestSettings(
     calling_file=__file__,
     META_PHASE=PHASE_THREE,
+    EDC_EGFR_DROP_NOTIFICATION_MODEL="meta_subject.egfrdropnotification",
     EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=False,
     EDC_MNSI_ABNORMAL_FOOT_APPEARANCE_OBSERVATIONS_MODEL=(
         "meta_lists.abnormalfootappearanceobservations"
@@ -105,6 +106,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_consent.apps.AppConfig",
         "edc_device.apps.AppConfig",
         "edc_dashboard.apps.AppConfig",
+        "edc_egfr.apps.AppConfig",
         "edc_export.apps.AppConfig",
         "edc_facility.apps.AppConfig",
         "edc_fieldsets.apps.AppConfig",
