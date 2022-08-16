@@ -2,7 +2,7 @@ from typing import Tuple
 
 from django.contrib import admin
 from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
-from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
+from edc_data_manager.modeladmin_mixins import DataManagerModelAdminMixin
 from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
