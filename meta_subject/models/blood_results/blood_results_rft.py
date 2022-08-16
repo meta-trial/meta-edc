@@ -1,6 +1,6 @@
 from django.db import models
 from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
-from edc_egfr.model_mixins import EgfrDropModelMixin, EgfrModelMixin
+from edc_egfr.model_mixins import EgfrModelMixin
 from edc_lab.model_mixins import CrfWithRequisitionModelMixin
 from edc_lab_panel.panels import rft_panel
 from edc_lab_results import BLOOD_RESULTS_RFT_ACTION
@@ -17,7 +17,6 @@ class BloodResultsRft(
     CrfWithActionModelMixin,
     CreatinineModelMixin,
     EgfrModelMixin,
-    EgfrDropModelMixin,
     UreaModelMixin,
     UricAcidModelMixin,
     CrfWithRequisitionModelMixin,

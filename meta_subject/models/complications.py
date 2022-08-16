@@ -1,6 +1,6 @@
 from django.db import models
 from edc_constants.choices import NORMAL_ABNORMAL, PRESENT_ABSENT, YES_NO
-from edc_data_manager.data_manager_modeladmin_mixin import DataManagerModelAdminMixin
+from edc_data_manager.modeladmin_mixins import DataManagerModelAdminMixin
 from edc_model import models as edc_models
 
 from ..choices import FUNDOSCOPY_CHOICES

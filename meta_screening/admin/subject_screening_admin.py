@@ -47,7 +47,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
 
     list_display = (
         "screening_identifier",
-        "eligiblity_status",
+        "eligibility_status",
         "demographics",
         "reasons",
         "report_datetime",
@@ -159,7 +159,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
             return self.dashboard(obj)
         return format_reasons_ineligible(obj.reasons_ineligible)
 
-    def eligiblity_status(self, obj=None):
+    def eligibility_status(self, obj=None):
         eligibility = MetaEligibility(obj, update_model=False)
         screening_listboard_url = reverse(
             url_names.get(self.subject_listboard_url_name), args=(obj.screening_identifier,)
