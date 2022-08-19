@@ -139,6 +139,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_timepoint.apps.AppConfig",
         "edc_list_data.apps.AppConfig",
         "edc_review_dashboard.apps.AppConfig",
+        "edc_refusal.apps.AppConfig",
         "edc_sites.apps.AppConfig",
         "edc_mnsi.apps.AppConfig",
         "edc_unblinding.apps.AppConfig",
