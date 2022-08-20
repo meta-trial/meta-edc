@@ -13,8 +13,8 @@ class PartOneFieldsModelMixin(models.Model):
 
     screening_consent = models.CharField(
         verbose_name=format_html(
-            "Has the subject given his/her verbal consent "
-            "to be screened for the <u>META Phase 3</u> trial?"
+            "Has the subject given his/her verbal consent to be screened for "
+            "the <u>META Phase 3</u> trial?"
         ),
         max_length=15,
         choices=YES_NO,

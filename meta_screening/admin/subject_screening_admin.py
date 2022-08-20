@@ -8,9 +8,10 @@ from edc_constants.constants import YES
 from edc_dashboard.url_names import url_names
 from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
+from edc_screening import format_reasons_ineligible
 
 from ..admin_site import meta_screening_admin
-from ..eligibility import MetaEligibility, format_reasons_ineligible
+from ..eligibility import MetaEligibility
 from ..forms import SubjectScreeningForm
 from ..models import SubjectScreening
 from .fieldsets import (
@@ -157,7 +158,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
     def reasons(self, obj=None):
         if not obj.reasons_ineligible:
             return self.dashboard(obj)
-        return format_reasons_ineligible(obj.reasons_ineligible)
+        return format_reasons_ineligible(obj.reasons_ineligible, delimiter="<BR>")
 
     def eligibility_status(self, obj=None):
         eligibility = MetaEligibility(obj, update_model=False)

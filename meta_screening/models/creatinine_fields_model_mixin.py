@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.safestring import mark_safe
+from django.utils.html import format_html
 from edc_constants.constants import NOT_APPLICABLE
 from edc_lab.choices import SERUM_CREATININE_UNITS_NA
 
@@ -7,7 +7,7 @@ from edc_lab.choices import SERUM_CREATININE_UNITS_NA
 class CreatinineModelFieldsMixin(models.Model):
 
     creatinine_value = models.DecimalField(
-        verbose_name=mark_safe("Creatinine <u>level</u>"),  # nosec B308
+        verbose_name=format_html("Creatinine {}", "<B>level</B>"),
         max_digits=8,
         decimal_places=2,
         null=True,
