@@ -1,5 +1,5 @@
 from django import forms
-from edc_action_item.forms import ActionItemFormMixin
+from edc_action_item.forms import ActionItemCrfFormMixin
 from edc_constants.constants import NONE, OTHER, YES
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import FormValidator
@@ -107,10 +107,10 @@ class FollowupExaminationFormValidator(FormValidator):
         )
 
 
-class FollowupExaminationForm(CrfModelFormMixin, ActionItemFormMixin, forms.ModelForm):
+class FollowupExaminationForm(CrfModelFormMixin, ActionItemCrfFormMixin, forms.ModelForm):
 
     form_validator_cls = FollowupExaminationFormValidator
 
-    class Meta:
+    class Meta(ActionItemCrfFormMixin.Meta):
         model = FollowupExamination
         fields = "__all__"

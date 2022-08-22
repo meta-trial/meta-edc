@@ -1,5 +1,5 @@
 from django import forms
-from edc_action_item.forms import ActionItemFormMixin
+from edc_action_item.forms import ActionItemCrfFormMixin
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import FormValidator
 from edc_lab_panel.panels import lipids_panel
@@ -12,10 +12,10 @@ class BloodResultsLipidFormValidator(BloodResultsFormValidatorMixin, FormValidat
     panel = lipids_panel
 
 
-class BloodResultsLipidForm(ActionItemFormMixin, CrfModelFormMixin, forms.ModelForm):
+class BloodResultsLipidForm(ActionItemCrfFormMixin, CrfModelFormMixin, forms.ModelForm):
 
     form_validator_cls = BloodResultsLipidFormValidator
 
-    class Meta:
+    class Meta(ActionItemCrfFormMixin.Meta):
         model = BloodResultsLipid
         fields = "__all__"

@@ -1,4 +1,5 @@
 from django import forms
+from edc_action_item.forms import ActionItemCrfFormMixin
 from edc_constants.constants import NO, YES
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import INVALID_ERROR, FormValidator
@@ -23,10 +24,10 @@ class UrinePregnancyFormValidator(FormValidator):
         self.applicable_if(YES, field="performed", field_applicable="bhcg_value")
 
 
-class UrinePregnancyForm(CrfModelFormMixin, forms.ModelForm):
+class UrinePregnancyForm(CrfModelFormMixin, ActionItemCrfFormMixin, forms.ModelForm):
 
     form_validator_cls = UrinePregnancyFormValidator
 
-    class Meta:
+    class Meta(ActionItemCrfFormMixin.Meta):
         model = UrinePregnancy
         fields = "__all__"

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from edc_constants.choices import POS_NEG_NA, YES_NO, YES_NO_NA
-from edc_constants.constants import NO, NOT_APPLICABLE, YES
+from edc_constants.constants import NO, NOT_APPLICABLE
 
 from ..choices import YES_NO_NOT_ELIGIBLE, YES_PENDING_NA
 from ..constants import PREG_YES_NO_NA
@@ -161,7 +161,7 @@ class PartTwoFieldsModelMixin(models.Model):
         ),
         max_length=15,
         choices=YES_NO_NOT_ELIGIBLE,
-        default=YES,
+        default=NOT_APPLICABLE,
         help_text=(
             "If patient is not continuing to the second stage today, advised to "
             "fast and provide a return appointment date below"

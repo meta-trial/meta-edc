@@ -1,6 +1,7 @@
 from urllib.parse import parse_qs, urlsplit
 
 from django.contrib import admin
+from django_audit_fields.admin import audit_fieldset_tuple
 from edc_constants.constants import YES
 from edc_lab.admin import (
     RequisitionAdminMixin,
@@ -9,7 +10,6 @@ from edc_lab.admin import (
     requisition_status_fieldset,
     requisition_verify_fieldset,
 )
-from edc_model_admin import audit_fieldset_tuple
 
 from ..admin_site import meta_subject_admin
 from ..forms import SubjectRequisitionForm

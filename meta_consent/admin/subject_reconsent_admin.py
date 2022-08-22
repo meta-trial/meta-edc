@@ -4,8 +4,9 @@ from django.contrib import admin
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
+from django_audit_fields.admin import audit_fields, audit_fieldset_tuple
 from edc_dashboard.url_names import url_names
-from edc_model_admin import SimpleHistoryAdmin, audit_fields, audit_fieldset_tuple
+from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
 from meta_subject.models import SubjectVisit

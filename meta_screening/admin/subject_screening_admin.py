@@ -63,6 +63,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "part_three_report_datetime",
         EligibilityPending,
         P3LtfuListFilter,
+        "p3_ltfu",
         "gender",
         "eligible",
         "eligible_part_one",

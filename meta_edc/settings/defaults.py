@@ -84,6 +84,7 @@ INSTALLED_APPS = [
     # "debug_toolbar",
     "defender",
     "multisite",
+    "fontawesomefree",
     "django_crypto_fields.apps.AppConfig",
     "django_revision.apps.AppConfig",
     "django_extensions",
@@ -165,7 +166,6 @@ if not DEFENDER_ENABLED:
     INSTALLED_APPS.pop(INSTALLED_APPS.index("defender"))
 
 MIDDLEWARE = [
-    # "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -205,6 +205,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "edc_model_admin.context_processors.admin_theme",
             ]
         },
     }
@@ -364,6 +365,8 @@ HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
 # edc-label
 EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK = env("EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK")
 
+# edc_model_admin
+EDC_MODEL_ADMIN_CSS_THEME = "edc_indigo"
 # edc-mnsi
 EDC_MNSI_MODEL = "meta_subject.mnsi"
 
@@ -483,6 +486,10 @@ if env("AWS_ENABLED"):
     STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
     STATIC_URL = f"{os.path.join(AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)}/"
     STATIC_ROOT = ""
+elif DEBUG:
+    STATIC_URL = env.str("DJANGO_STATIC_URL")
+    STATIC_ROOT = os.path.expanduser("~/source/edc_source/meta-edc/static/")
+
 else:
     # run collectstatic, check nginx LOCATION
     STATIC_URL = env.str("DJANGO_STATIC_URL")

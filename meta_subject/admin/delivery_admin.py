@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.template.loader import render_to_string
 from django.urls import reverse
+from django_audit_fields.admin import audit_fieldset_tuple
 from edc_action_item import (
     ActionItemModelAdminMixin,
     action_fields,
@@ -8,7 +9,7 @@ from edc_action_item import (
 )
 from edc_crf.fieldset import crf_status_fieldset
 from edc_form_label import FormLabelModelAdminMixin
-from edc_model_admin import SimpleHistoryAdmin, TabularInlineMixin, audit_fieldset_tuple
+from edc_model_admin import SimpleHistoryAdmin, TabularInlineMixin
 
 from ..admin_site import meta_subject_admin
 from ..forms import BirthOutcomesForm, DeliveryForm
