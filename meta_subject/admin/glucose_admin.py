@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
-from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
 
 from ..admin_site import meta_subject_admin
@@ -10,7 +9,7 @@ from .modeladmin import CrfModelAdmin
 
 
 @admin.register(Glucose, site=meta_subject_admin)
-class GlucoseAdmin(ActionItemModelAdminMixin, CrfModelAdmin):
+class GlucoseAdmin(CrfModelAdmin):
 
     form = GlucoseForm
 
@@ -52,7 +51,6 @@ class GlucoseAdmin(ActionItemModelAdminMixin, CrfModelAdmin):
         ),
         crf_status_fieldset,
         audit_fieldset_tuple,
-        action_fieldset_tuple,
     )
 
     radio_fields = {

@@ -6,8 +6,8 @@ from django_audit_fields.admin import audit_fieldset_tuple
 from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
 from edc_constants.constants import CLOSED, OPEN
 from edc_data_manager.modeladmin_mixins import DataManagerModelAdminMixin
-from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
+from edc_model_admin.history import SimpleHistoryAdmin
 
 from ..admin_site import meta_prn_admin
 from ..forms import ProtocolIncidentForm

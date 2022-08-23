@@ -6,8 +6,8 @@ from django.template.loader import render_to_string
 from django.urls import NoReverseMatch, reverse
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_data_manager.modeladmin_mixins import DataManagerModelAdminMixin
-from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
+from edc_model_admin.history import SimpleHistoryAdmin
 from edc_registration.models import RegisteredSubject
 
 from ..admin_site import meta_subject_admin

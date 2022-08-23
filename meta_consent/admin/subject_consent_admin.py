@@ -7,8 +7,8 @@ from edc_consent.actions import (
 )
 from edc_consent.modeladmin_mixins import ModelAdminConsentMixin
 from edc_identifier import SubjectIdentifierError, is_subject_identifier_or_raise
-from edc_model_admin import SimpleHistoryAdmin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
+from edc_model_admin.history import SimpleHistoryAdmin
 from edc_pharmacy.exceptions import PrescriptionAlreadyExists
 from edc_pharmacy.models import Medication
 from edc_pharmacy.prescribe import create_prescription

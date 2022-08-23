@@ -2,7 +2,7 @@ from django import forms
 from edc_constants.constants import YES
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import FormValidator
-from edc_model_form.inline_model_form_mixin import InlineModelFormMixin
+from edc_model_form.mixins import InlineModelFormMixin
 
 from ..models import OtherArvRegimens
 

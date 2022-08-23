@@ -9,7 +9,8 @@ from edc_action_item import (
 )
 from edc_crf.fieldset import crf_status_fieldset
 from edc_form_label import FormLabelModelAdminMixin
-from edc_model_admin import SimpleHistoryAdmin, TabularInlineMixin
+from edc_model_admin.history import SimpleHistoryAdmin
+from edc_model_admin.mixins import TabularInlineMixin
 
 from ..admin_site import meta_subject_admin
 from ..forms import BirthOutcomesForm, DeliveryForm

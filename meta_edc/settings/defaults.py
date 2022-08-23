@@ -81,7 +81,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    # "debug_toolbar",
     "defender",
     "multisite",
     "fontawesomefree",
@@ -452,6 +451,8 @@ DATA_DICTIONARY_APP_LABELS = [
     "meta_screening",
     "meta_ae",
     "edc_appointment",
+    "edc_locator",
+    "edc_offstudy",
 ]
 
 # edc_protocol

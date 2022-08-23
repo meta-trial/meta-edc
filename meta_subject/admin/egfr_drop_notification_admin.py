@@ -2,7 +2,7 @@ from django.contrib import admin
 from edc_action_item import ActionItemModelAdminMixin
 from edc_data_manager.modeladmin_mixins import DataManagerModelAdminMixin
 from edc_egfr.admin import EgfrDropNotificationAdminMixin
-from edc_model_admin import SimpleHistoryAdmin
+from edc_model_admin.history import SimpleHistoryAdmin
 
 from ..admin_site import meta_subject_admin
 from ..forms import EgfrDropNotificationForm
