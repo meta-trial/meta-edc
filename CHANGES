@@ -3,7 +3,7 @@ Changes
 
 0.2.1
 -----
-- bump edc=0.4.15
+- bump edc=0.4.16
 - downupgrade to django 4.0.7 (m2m html control issue)
 - refactor imports from edc-model-admin
 
