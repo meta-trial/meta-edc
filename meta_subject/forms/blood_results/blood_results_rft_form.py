@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.safestring import mark_safe
-from edc_action_item.forms import ActionItemFormMixin
+from edc_action_item.forms import ActionItemCrfFormMixin
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import FormValidator
 from edc_lab_panel.panels import rft_panel
@@ -20,14 +20,15 @@ class BloodResultsRftFormValidator(
         self.validate_bmi()
 
 
-class BloodResultsRftForm(ActionItemFormMixin, CrfModelFormMixin, forms.ModelForm):
+class BloodResultsRftForm(ActionItemCrfFormMixin, CrfModelFormMixin, forms.ModelForm):
 
     form_validator_cls = BloodResultsRftFormValidator
 
-    class Meta:
+    class Meta(ActionItemCrfFormMixin.Meta):
         model = BloodResultsRft
         fields = "__all__"
         help_texts = {
+            "action_identifier": "(read-only)",
             "egfr_value": mark_safe(  # nosec B308
                 "Calculated using 2009 CKD-EPI Creatinine. "
                 "See https://nephron.com/epi_equation"

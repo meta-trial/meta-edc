@@ -2,7 +2,7 @@ from django import forms
 from edc_constants.constants import YES
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import FormValidator
-from edc_model_form.inline_model_form_mixin import InlineModelFormMixin
+from edc_model_form.mixins import InlineModelFormMixin
 
 from ..models import OtherArvRegimens
 
@@ -14,7 +14,7 @@ class OtherArvRegimensFormValidator(FormValidator):
             field="has_other_regimens",
             field_required="arv_regimen",
             field_required_inline_set="otherarvregimensdetail_set",
-            required_msg=("Based on your response, additional ARV Regimen(s) are required."),
+            required_msg="Based on your response, additional ARV Regimen(s) are required.",
             not_required_msg=(
                 "Based on your response, additional ARV Regimen(s) are NOT required."
             ),

@@ -32,7 +32,6 @@ from edc_utils import get_utcnow
 from model_bakery import baker
 from webtest.app import AppError
 
-from meta_edc.meta_version import get_meta_version
 from meta_rando.randomizers import RandomizerPhaseThree
 from meta_screening.models import ScreeningPartOne, ScreeningPartThree, ScreeningPartTwo
 from meta_screening.models.subject_screening import SubjectScreening
@@ -110,7 +109,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.login(superuser=False, roles={STAFF_ROLE, AE_ROLE, TMG_ROLE})
         response = self.app.get(reverse("meta_ae:home_url"), user=self.user, status=302)
         response = response.follow()
-        self.assertIn(f"META{get_meta_version()}: Adverse Events", response)
+        self.assertIn("META Adverse Events", response)
         self.app.get(reverse("edc_adverse_event:ae_home_url"), user=self.user, status=200)
         self.app.get(reverse("edc_adverse_event:tmg_home_url"), user=self.user, status=200)
 

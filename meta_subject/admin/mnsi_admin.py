@@ -6,7 +6,7 @@ from edc_mnsi.fieldsets import calculated_values_fieldset
 from edc_mnsi.fieldsets import get_fieldsets as get_mnsi_fieldsets
 from edc_mnsi.model_admin_mixin import MnsiModelAdminMixin, radio_fields
 from edc_mnsi.models import Mnsi as DefaultMnsi
-from edc_model_admin import SimpleHistoryAdmin
+from edc_model_admin.history import SimpleHistoryAdmin
 
 from meta_subject.admin_site import meta_subject_admin
 

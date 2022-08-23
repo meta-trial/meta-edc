@@ -1,9 +1,24 @@
 Changes
 =======
 
-0.1.94
-------
+0.2.1
+-----
+- bump edc=0.4.16
+- downupgrade to django 4.0.7 (m2m html control issue)
+- refactor imports from edc-model-admin
+
+
+0.1.94 -0.2.0
+-------------
+- bump edc=0.4.12
+- upgrade to django 4.1
+- upgrade django-crypto-fields, django-revision
 - add lipids to AE Actions
+- add query button to subject consent
+- fix isue with negative GFR percentage triggering notification
+- default screening P2 agree_to_p3 to NA
+- change insulin units to MICRO_IU_MILLILITER
+- add p3_ltfu to screening admin list_filter
 
 
 0.1.93

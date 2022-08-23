@@ -8,7 +8,7 @@ from edc_action_item import (
 from edc_constants.constants import NONE, YES
 from edc_crf.fieldset import crf_status_fieldset
 from edc_form_label.form_label_modeladmin_mixin import FormLabelModelAdminMixin
-from edc_model_admin import SimpleHistoryAdmin
+from edc_model_admin.history import SimpleHistoryAdmin
 
 from ..admin_site import meta_subject_admin
 from ..forms import FollowupExaminationForm

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
-from edc_model_admin import TabularInlineMixin
+from edc_model_admin.mixins import TabularInlineMixin
 
 from ..admin_site import meta_subject_admin
 from ..forms import OtherArvRegimensDetailForm, OtherArvRegimensForm

@@ -22,7 +22,7 @@ class ListboardView(
     listboard_template = "subject_listboard_template"
     listboard_url = "subject_listboard_url"
     listboard_panel_style = "success"
-    listboard_fa_icon = "far fa-user-circle"
+    listboard_fa_icon = "fas fa-user-circle fa-2x"
     listboard_model = "meta_consent.subjectconsent"
     listboard_view_permission_codename = "edc_dashboard.view_subject_listboard"
 

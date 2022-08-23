@@ -3,7 +3,7 @@ from django.db.models import Q
 from edc_appointment.admin import AppointmentListFilter
 from edc_constants.constants import NO, NOT_APPLICABLE, PENDING, TBD, YES
 
-from meta_screening.constants import PENDING_REPEAT
+from ..constants import PENDING_REPEAT
 
 NEXT_MONTH = "next_month"
 NEXT_WEEK = "next_week"

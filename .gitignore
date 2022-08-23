@@ -1,3 +1,4 @@
+static/
 *.env
 __pycache__
 repo.sh

@@ -1,4 +1,5 @@
 from django import forms
+from edc_action_item.forms import ActionItemCrfFormMixin
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators.form_validator import FormValidator
 from edc_glucose.form_validators import FbgOgttFormValidatorMixin
@@ -11,9 +12,9 @@ class GlucoseFormValidator(FbgOgttFormValidatorMixin, FormValidator):
         self.validate_glucose_testing_matrix()
 
 
-class GlucoseForm(CrfModelFormMixin, forms.ModelForm):
+class GlucoseForm(CrfModelFormMixin, ActionItemCrfFormMixin, forms.ModelForm):
     form_validator_cls = GlucoseFormValidator
 
-    class Meta:
-        model = Glucose  # "Glucose (IFG, OGTT)"
+    class Meta(ActionItemCrfFormMixin.Meta):
+        model = Glucose
         fields = "__all__"

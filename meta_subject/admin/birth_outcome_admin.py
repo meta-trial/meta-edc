@@ -1,10 +1,13 @@
+from typing import Tuple
+
 from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
 from django.urls import NoReverseMatch, reverse
+from django_audit_fields.admin import audit_fieldset_tuple
 from edc_data_manager.modeladmin_mixins import DataManagerModelAdminMixin
-from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
+from edc_model_admin.history import SimpleHistoryAdmin
 from edc_registration.models import RegisteredSubject
 
 from ..admin_site import meta_subject_admin
@@ -14,7 +17,9 @@ from ..models import BirthOutcomes
 
 @admin.register(BirthOutcomes, site=meta_subject_admin)
 class BirthOutcomesAdmin(
-    DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
+    DataManagerModelAdminMixin,
+    ModelAdminSubjectDashboardMixin,
+    SimpleHistoryAdmin,
 ):
 
     form = BirthOutcomesForm
@@ -41,20 +46,26 @@ class BirthOutcomesAdmin(
         "birth_outcome",
     )
 
-    list_filter = (
-        "birth_order",
-        "birth_outcome",
-    )
-
     radio_fields = {
         "birth_outcome": admin.VERTICAL,
     }
 
-    search_fields = (
-        "delivery__action_identifier__subject_visit__subject_identifier",
-        "delivery__action_identifier",
-        "delivery__tracking_identifier",
-    )
+    def get_list_filter(self, request) -> Tuple[str, ...]:
+        fields = super().get_list_filter(request)
+        custom_fields = (
+            "birth_order",
+            "birth_outcome",
+        )
+        return custom_fields + fields
+
+    def get_search_fields(self, request) -> Tuple[str, ...]:
+        fields = super().get_search_fields(request)
+        custom_fields = (
+            "delivery__action_identifier__subject_visit__subject_identifier",
+            "delivery__action_identifier",
+            "delivery__tracking_identifier",
+        )
+        return tuple(set(fields + custom_fields))
 
     @admin.display
     def delivery_report(self, obj=None, label=None):

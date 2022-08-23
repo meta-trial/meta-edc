@@ -1,6 +1,6 @@
 from django import forms
 from django.core.exceptions import ObjectDoesNotExist
-from edc_action_item.forms import ActionItemFormMixin
+from edc_action_item.forms import ActionItemCrfFormMixin
 from edc_constants.constants import NO, OTHER
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import INVALID_ERROR
@@ -87,10 +87,10 @@ class DeliveryFormValidator(FormValidator):
         )
 
 
-class DeliveryForm(CrfModelFormMixin, ActionItemFormMixin, forms.ModelForm):
+class DeliveryForm(CrfModelFormMixin, ActionItemCrfFormMixin, forms.ModelForm):
 
     form_validator_cls = DeliveryFormValidator
 
-    class Meta:
+    class Meta(ActionItemCrfFormMixin.Meta):
         model = Delivery
         fields = "__all__"

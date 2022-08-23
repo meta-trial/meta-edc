@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.urls.conf import include, path, re_path
 from django.views.defaults import page_not_found, server_error  # noqa
@@ -20,9 +19,10 @@ handler404 = "edc_dashboard.views.edc_handler404"
 handler500 = "edc_dashboard.views.edc_handler500"
 
 urlpatterns = [
-    path("accounts/", include("edc_auth.urls")),
+    path("accounts/", include("edc_auth.urls_for_accounts", namespace="auth")),
     path("administration/", AdministrationView.as_view(), name="administration_url"),
     path("subject/", include("meta_dashboard.urls")),
+    *paths_for_urlpatterns("edc_auth"),
     *paths_for_urlpatterns("edc_action_item"),
     *paths_for_urlpatterns("edc_adverse_event"),
     *paths_for_urlpatterns("edc_appointment"),
@@ -53,6 +53,7 @@ urlpatterns = [
     *paths_for_urlpatterns("edc_refusal"),
     *paths_for_urlpatterns("edc_registration"),
     *paths_for_urlpatterns("edc_review_dashboard"),
+    *paths_for_urlpatterns("edc_sites"),
     *paths_for_urlpatterns("edc_subject_dashboard"),
     *paths_for_urlpatterns("edc_unblinding"),
     *paths_for_urlpatterns("edc_visit_schedule"),
@@ -73,7 +74,7 @@ if settings.DEFENDER_ENABLED:
 
 urlpatterns += [
     # path("__debug__/", include("debug_toolbar.urls")),
-    path("admin/", admin.site.urls),
+    path("admin/", RedirectView.as_view(url="/")),
     path(
         "switch_sites/",
         LogoutView.as_view(next_page=get_index_page()),

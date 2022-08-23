@@ -2,12 +2,10 @@ from django.apps import AppConfig as DjangoAppConfig
 from django.conf import settings
 from edc_facility.apps import AppConfig as BaseEdcFacilityAppConfig
 
-from meta_edc.meta_version import get_meta_version
-
 
 class AppConfig(DjangoAppConfig):
     name = "meta_reports"
-    verbose_name = f"META{get_meta_version()}: Reports"
+    verbose_name = "META Reports"
 
 
 if settings.APP_NAME == "meta_reports":

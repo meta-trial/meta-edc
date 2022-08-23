@@ -1,13 +1,14 @@
 from django.contrib import admin, messages
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
+from django_audit_fields.admin import audit_fieldset_tuple
 from edc_consent.actions import (
     flag_as_verified_against_paper,
     unflag_as_verified_against_paper,
 )
 from edc_consent.modeladmin_mixins import ModelAdminConsentMixin
 from edc_identifier import SubjectIdentifierError, is_subject_identifier_or_raise
-from edc_model_admin import SimpleHistoryAdmin, audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
+from edc_model_admin.history import SimpleHistoryAdmin
 from edc_pharmacy.exceptions import PrescriptionAlreadyExists
 from edc_pharmacy.models import Medication
 from edc_pharmacy.prescribe import create_prescription
