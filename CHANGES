@@ -1,6 +1,11 @@
 Changes
 =======
 
+0.2.3
+-----
+- bump edc=0.4.17
+- add migrations for action-identifier field
+
 0.2.2
 -----
 - bump edc=0.4.16
