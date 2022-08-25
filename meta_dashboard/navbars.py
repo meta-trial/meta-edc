@@ -14,7 +14,7 @@ navbar.append_item(
         title="Screening",
         label="Screening",
         fa_icon="fa-solid fa-user-plus",
-        codename="edc_navbar.nav_screening_section",
+        codename="edc_listboard.view_screening_listboard",
         url_name="screening_listboard_url",
         no_url_namespace=no_url_namespace,
     )
@@ -26,7 +26,7 @@ navbar.append_item(
         title="Subjects",
         label="Subjects",
         fa_icon="fa-solid fa-user-circle",
-        codename="edc_navbar.nav_subject_section",
+        codename="edc_listboard.view_subject_listboard",
         url_name="subject_listboard_url",
         no_url_namespace=no_url_namespace,
     )

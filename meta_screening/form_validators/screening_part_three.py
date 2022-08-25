@@ -55,7 +55,9 @@ class ScreeningPartThreeFormValidator(
         self.required_if(
             YES, field="repeat_glucose_opinion", field_required="repeat_appt_datetime"
         )
-        self.required_if(YES, field="repeat_glucose_opinion", field_required="contact_number")
+        self.required_if(
+            YES, field="repeat_glucose_opinion", field_required="contact_number", inverse=False
+        )
 
         self.applicable_if(
             YES, field="repeat_glucose_performed", field_applicable="repeat_fasting"
