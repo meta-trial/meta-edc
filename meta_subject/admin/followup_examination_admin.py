@@ -1,10 +1,6 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
-from edc_action_item import (
-    ActionItemModelAdminMixin,
-    action_fields,
-    action_fieldset_tuple,
-)
+from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
 from edc_constants.constants import NONE, YES
 from edc_crf.fieldset import crf_status_fieldset
 from edc_form_label.form_label_modeladmin_mixin import FormLabelModelAdminMixin
@@ -130,7 +126,7 @@ class FollowupExaminationAdmin(
 
     filter_horizontal = ("symptoms", "symptoms_g3", "symptoms_g4")
 
-    readonly_fields = action_fields
+    # readonly_fields = action_fields
 
     radio_fields = {
         "abdominal_tenderness": admin.VERTICAL,

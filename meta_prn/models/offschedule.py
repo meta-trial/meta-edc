@@ -1,5 +1,4 @@
 from edc_action_item.models import ActionModelMixin
-from edc_identifier.model_mixins import TrackingModelMixin
 from edc_model.models import BaseUuidModel
 from edc_visit_schedule.model_mixins import OffScheduleModelMixin
 
@@ -10,7 +9,7 @@ from meta_prn.constants import (
 )
 
 
-class OffSchedule(ActionModelMixin, TrackingModelMixin, OffScheduleModelMixin, BaseUuidModel):
+class OffSchedule(ActionModelMixin, OffScheduleModelMixin, BaseUuidModel):
 
     action_name = OFFSCHEDULE_ACTION
 
@@ -21,9 +20,7 @@ class OffSchedule(ActionModelMixin, TrackingModelMixin, OffScheduleModelMixin, B
         verbose_name_plural = "Off-schedule"
 
 
-class OffSchedulePregnancy(
-    ActionModelMixin, TrackingModelMixin, OffScheduleModelMixin, BaseUuidModel
-):
+class OffSchedulePregnancy(ActionModelMixin, OffScheduleModelMixin, BaseUuidModel):
     action_name = OFFSCHEDULE_PREGNANCY_ACTION
 
     tracking_identifier_prefix = "OP"
@@ -33,9 +30,7 @@ class OffSchedulePregnancy(
         verbose_name_plural = "Off-schedule: Pregnancy"
 
 
-class OffSchedulePostnatal(
-    ActionModelMixin, TrackingModelMixin, OffScheduleModelMixin, BaseUuidModel
-):
+class OffSchedulePostnatal(ActionModelMixin, OffScheduleModelMixin, BaseUuidModel):
     action_name = OFFSCHEDULE_POSTNATAL_ACTION
 
     tracking_identifier_prefix = "ON"
