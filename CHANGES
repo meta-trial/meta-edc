@@ -4,10 +4,12 @@ Changes
 0.2.5
 -----
 - minor fix for subject listboard. Changed custom search field to 'identity'
+- add migration to update missing SID in registered_subject table (meta_rando)
 
 0.2.4
 -----
 - bump edc=0.4.20 (permission changes)
+- downgrade to django 3.2.13
 
 0.2.3
 -----
@@ -17,7 +19,7 @@ Changes
 0.2.2
 -----
 - bump edc=0.4.16
-- downupgrade to django 4.0.7 (m2m html control issue)
+- downgrade to django 4.0.7 (m2m html control issue)
 - refactor imports from edc-model-admin
 - add migrations for models with action-identifier
 
