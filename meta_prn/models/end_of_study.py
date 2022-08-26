@@ -10,7 +10,6 @@ from edc_constants.constants import (
     PREGNANCY,
     TOXICITY,
 )
-from edc_identifier.model_mixins import TrackingModelMixin
 from edc_ltfu.constants import LOST_TO_FOLLOWUP
 from edc_model.models import BaseUuidModel
 from edc_model.validators import date_not_future
@@ -34,9 +33,7 @@ from ..constants import CLINICAL_WITHDRAWAL
 from .model_mixins import OffStudyModelMixin
 
 
-class EndOfStudy(
-    OffStudyModelMixin, ScheduleModelMixin, ActionModelMixin, TrackingModelMixin, BaseUuidModel
-):
+class EndOfStudy(OffStudyModelMixin, ScheduleModelMixin, ActionModelMixin, BaseUuidModel):
 
     action_name = END_OF_STUDY_ACTION
 

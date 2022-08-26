@@ -2,7 +2,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from edc_constants.constants import NOT_APPLICABLE
 
-from meta_screening.models import ScreeningPartThree
+from .proxy_models import ScreeningPartThree
 
 
 @receiver(

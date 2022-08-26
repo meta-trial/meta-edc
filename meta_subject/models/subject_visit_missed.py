@@ -16,12 +16,6 @@ class SubjectVisitMissed(
 
     action_name = MISSED_VISIT_ACTION
 
-    tracking_identifier_prefix = "MV"
-
-    action_identifier = models.CharField(max_length=50, unique=True, null=True)
-
-    tracking_identifier = models.CharField(max_length=30, unique=True, null=True)
-
     missed_reasons = models.ManyToManyField(
         SubjectVisitMissedReasons, blank=True, related_name="meta_missed_reasons"
     )

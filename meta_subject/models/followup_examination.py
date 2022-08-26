@@ -22,10 +22,6 @@ class FollowupExamination(
 
     tracking_identifier_prefix = "FU"
 
-    action_identifier = models.CharField(max_length=50, unique=True, null=True)
-
-    tracking_identifier = models.CharField(max_length=30, unique=True, null=True)
-
     # 4a
     symptoms = models.ManyToManyField(
         Symptoms,

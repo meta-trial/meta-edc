@@ -19,3 +19,4 @@ ALLOWED_HOSTS = [
 
 # edc_model_admin
 EDC_MODEL_ADMIN_CSS_THEME = "edc_purple"
+LIVE_SYSTEM = False

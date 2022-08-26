@@ -16,3 +16,4 @@ ALLOWED_HOSTS = [
     "temeke.tz.meta3.clinicedc.org",
 ]
 EDC_MODEL_ADMIN_CSS_THEME = "edc_indigo"
+LIVE_SYSTEM = True

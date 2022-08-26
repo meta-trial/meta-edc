@@ -7,11 +7,13 @@ from edc_screening.screening_identifier import (
     ScreeningIdentifier as BaseScreeningIdentifier,
 )
 
-from .calculated_model_mixin import CalculatedModelMixin
-from .eligibility_model_mixin import EligibilityModelMixin
-from .part_one_fields_model_mixin import PartOneFieldsModelMixin
-from .part_three_fields_model_mixin import PartThreeFieldsModelMixin
-from .part_two_fields_model_mixin import PartTwoFieldsModelMixin
+from ..model_mixins import (
+    CalculatedModelMixin,
+    EligibilityModelMixin,
+    PartOneFieldsModelMixin,
+    PartThreeFieldsModelMixin,
+    PartTwoFieldsModelMixin,
+)
 
 
 class SubjectScreeningModelError(Exception):

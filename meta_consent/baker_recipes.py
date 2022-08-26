@@ -44,7 +44,6 @@ subjectreconsent = Recipe(
     study_questions=YES,
     consent_copy=YES,
     action_identifier=None,
-    tracking_identifier=None,
     user_created="erikvw",
     user_modified="erikvw",
 )

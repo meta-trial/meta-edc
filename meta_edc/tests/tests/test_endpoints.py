@@ -87,11 +87,12 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         import_module("edc_export.auths")
         import_module("edc_lab.auths")
         import_module("edc_lab_dashboard.auths")
+        import_module("edc_review_dashboard.auths")
+        import_module("edc_subject_dashboard.auths")
         import_module("edc_navbar.auths")
         import_module("edc_pharmacy.auths")
         import_module("edc_screening.auths")
         import_module("meta_auth.auths")
-        import_module("meta_screening.auths")
         AuthUpdater(verbose=False)
 
     def setUp(self):
@@ -125,22 +126,23 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertNotIn("Action items", response)
         self.assertNotIn("Export data", response)
         self.assertNotIn("Synchronization", response)
+
         self.assertIn("Switch sites", response)
         self.assertIn("Log out", response)
 
-    @tag("webtest")
+    @tag("webtest1")
     def test_home_auditor(self):
         self.login(superuser=False, roles=[STAFF_ROLE, AUDITOR_ROLE])
         response = self.app.get(reverse("home_url"), user=self.user, status=200)
+        self.assertNotIn("Pharmacy", response)
+        self.assertNotIn("Export data", response)
+        self.assertNotIn("Synchronization", response)
+
         self.assertIn("Screening", response)
         self.assertIn("Subjects", response)
         self.assertIn("Specimens", response)
         self.assertIn("Adverse events", response)
         self.assertIn("TMG Reports", response)
-        self.assertNotIn("Pharmacy", response)
-        self.assertIn("Action items", response)
-        self.assertNotIn("Export data", response)
-        self.assertNotIn("Synchronization", response)
         self.assertIn("Switch sites", response)
         self.assertIn("Log out", response)
 

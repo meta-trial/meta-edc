@@ -1,7 +1,7 @@
 from django.db import models
 from edc_constants.choices import GENDER
 from edc_model import models as edc_models
-from edc_randomization.models import RandomizationListModelMixin
+from edc_randomization.model_mixins import RandomizationListModelMixin
 
 
 class RandomizationList(RandomizationListModelMixin, edc_models.BaseUuidModel):

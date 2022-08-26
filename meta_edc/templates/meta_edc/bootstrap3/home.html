@@ -32,28 +32,28 @@
       <div class="panel-heading">{{ protocol_name |default:project_name }} {{ site_title|default:request.site.name|title }}</div>
 
       <div class="list-group">
-      {% if perms.edc_dashboard.view_screening_listboard %}
+      {% if perms.edc_screening.view_screening_listboard %}
         <a id="home_list_group_screening_listboard" href="{% url screening_listboard_url|default:'screening_listboard_url_cannot_be_none' %}" class="list-group-item"><i class="fas fa-user-plus fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Screening</a>
       {% endif %}
-      {% if perms.edc_dashboard.view_subject_listboard %}
+      {% if perms.edc_subject_dashboard.view_subject_listboard %}
         <a id="home_list_group_subject_listboard" href="{% url subject_listboard_url|default:'subject_listboard_url_cannot_be_none' %}" class="list-group-item"><i class="fas fa-user-circle fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Subjects</a>
       {% endif %}
-      {% if perms.edc_dashboard.view_subject_review_listboard %}
+      {% if perms.edc_review_dashboard.view_subject_review_listboard %}
         <a id="home_list_group_subject_review_listboard" href="{% url subject_review_listboard_url|default:'subject_review_listboard_url_cannot_be_none' %}" class="list-group-item"><i class="fas fa-calendar fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Subject Review</a>
       {% endif %}
-      {% if perms.edc_navbar.nav_ae_section %}
+      {% if perms.edc_adverse_event.nav_ae_section %}
         <a id="home_list_group_ae" href="{% url 'edc_adverse_event:ae_home_url' %}" class="list-group-item"><i class="fas fa-heartbeat fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Adverse events</a>
       {% endif %}
-      {% if perms.edc_navbar.nav_tmg_section %}
+      {% if perms.edc_adverse_event.nav_tmg_section %}
         <a id="home_list_group_aetmg" href="{% url 'edc_adverse_event:tmg_home_url' %}" class="list-group-item"><i class="fas fa-heartbeat fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;TMG Reports</a>
       {% endif %}
-      {% if perms.edc_navbar.nav_lab_section %}
+      {% if perms.edc_lab_dashboard.nav_lab_section %}
         <a id="home_list_group_requisition_listboard" href="{% url requisition_listboard_url|default:'requisition_listboard_url_cannot_be_none' %}" class="list-group-item"><i class="fas fa-flask fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Specimens</a>
       {% endif %}
-      {% if perms.edc_navbar.nav_action_item_section %}
+      {% if perms.edc_action_item.nav_action_item_section %}
         <a href="{% url 'edc_action_item:home_url' %}" class="list-group-item"><i class="fas fa-bolt fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Action items</a>
       {% endif %}
-      {% if perms.edc_navbar.nav_data_manager_section %}
+      {% if perms.edc_data_manager.nav_data_manager_section %}
         <a href="{% url 'edc_data_manager:home_url' %}" class="list-group-item"><i class="fas fa-database fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Data Management</a>
       {% endif %}
       {% if perms.edc_navbar.nav_pharmacy_section %}

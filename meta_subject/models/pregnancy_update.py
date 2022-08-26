@@ -7,10 +7,7 @@ from edc_utils import get_utcnow
 from ..model_mixins import CrfModelMixin
 
 
-class PregnancyUpdate(
-    CrfModelMixin,
-    edc_models.BaseUuidModel,
-):
+class PregnancyUpdate(CrfModelMixin, edc_models.BaseUuidModel):
 
     pregnancy_notification = models.ForeignKey(
         "meta_prn.pregnancynotification", on_delete=PROTECT
