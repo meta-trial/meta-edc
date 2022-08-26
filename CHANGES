@@ -1,6 +1,10 @@
 Changes
 =======
 
+0.2.4
+-----
+- minor fix for subject listboard. Changed custom search field to 'identity'
+
 0.2.3
 -----
 - bump edc=0.4.17
