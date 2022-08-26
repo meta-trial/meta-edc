@@ -28,6 +28,7 @@ from edc_unblinding.auth_objects import UNBLINDING_REQUESTORS
 
 from .auth_objects import clinic_codenames, screening_codenames
 
+# update edc_auth default groups
 site_auths.update_group(*clinic_codenames, name=AUDITOR, view_only=True)
 site_auths.update_group(*clinic_codenames, name=CLINIC, no_delete=True)
 site_auths.update_group(*clinic_codenames, name=CLINIC_SUPER)
@@ -35,7 +36,7 @@ site_auths.update_group(*screening_codenames, name=SCREENING, no_delete=True)
 site_auths.update_group(*screening_codenames, name=SCREENING_SUPER)
 site_auths.update_group(*screening_codenames, name=SCREENING_VIEW, view_only=True)
 
-# update edc roles
+# update edc_auth default roles
 site_auths.update_role(
     UNBLINDING_REQUESTORS,
     MNSI,
