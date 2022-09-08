@@ -86,7 +86,7 @@ class BirthOutcomes(
         super().save(*args, **kwargs)
 
     @property
-    def visit(self):
+    def related_visit(self):
         return self.delivery.subject_visit
 
     class Meta(edc_models.BaseUuidModel.Meta):

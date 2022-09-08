@@ -13,7 +13,11 @@ from edc_protocol_violation.action_items import (
 from edc_transfer.action_items import SubjectTransferAction as BaseSubjectTransferAction
 from edc_transfer.constants import SUBJECT_TRANSFER_ACTION
 
-from meta_subject.constants import DELIVERY_ACTION, URINE_PREGNANCY_ACTION
+from meta_subject.constants import (
+    DELIVERY_ACTION,
+    MISSED_VISIT_ACTION,
+    URINE_PREGNANCY_ACTION,
+)
 
 from .constants import (
     OFFSCHEDULE_ACTION,
@@ -96,7 +100,7 @@ class LossToFollowupAction(PregnancyMixin, ActionWithNotification):
     name = LTFU_ACTION
     display_name = "Submit Loss to Follow Up Report"
     notification_display_name = " Loss to Follow Up Report"
-    parent_action_names = []
+    parent_action_names = [MISSED_VISIT_ACTION]
     reference_model = "meta_prn.losstofollowup"
     show_link_to_changelist = True
     show_link_to_add = True

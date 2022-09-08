@@ -91,7 +91,6 @@ class ProtocolDeviationViolationAdmin(
             "status",
             "action_required",
             "report_type",
-            "tracking_identifier",
             "action_identifier",
             "user_created",
         )

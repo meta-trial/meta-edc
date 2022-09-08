@@ -35,10 +35,11 @@ class StudyMedicationAdmin(CrfModelAdmin):
             {
                 "description": "This refill will be dispensed at this visit",
                 "fields": (
-                    "refill_date",
+                    "refill_start_datetime",
                     "dosage_guideline",
                     "formulation",
                     "refill_to_next_visit",
+                    "refill_end_datetime",
                     "special_instructions",
                 ),
             },
@@ -48,7 +49,7 @@ class StudyMedicationAdmin(CrfModelAdmin):
             {
                 "description": "This refill will be dispensed at the next scheduled visit",
                 "fields": (
-                    "order_next",
+                    "order_or_update_next",
                     "next_dosage_guideline",
                     "next_formulation",
                 ),
@@ -63,6 +64,6 @@ class StudyMedicationAdmin(CrfModelAdmin):
         "formulation": admin.VERTICAL,
         "next_dosage_guideline": admin.VERTICAL,
         "next_formulation": admin.VERTICAL,
-        "order_next": admin.VERTICAL,
+        "order_or_update_next": admin.VERTICAL,
         "refill_to_next_visit": admin.VERTICAL,
     }

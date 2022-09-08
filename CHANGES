@@ -1,6 +1,15 @@
 Changes
 =======
 
+0.2.7
+-----
+- bump edc=0.4.21
+- refactor for changed attrs `related_visit` and `related_visit_model_attr`.
+- upgrade edc-pharmacy to fix permissions issue
+- rework study medication report. link with pharmacy refill by dates only instead of
+  dates plus visit code/sequence.
+- remove nonexistent field `tracking identifier` from procotol incident admin.
+
 0.2.6
 -----
 - add migration to update missing SID in registered_subject table (meta_rando)
