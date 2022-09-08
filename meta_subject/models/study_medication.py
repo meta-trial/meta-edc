@@ -1,6 +1,6 @@
 from django.db import models
 from edc_model import models as edc_models
-from edc_pharmacy.models import StudyMedicationCrfModelMixin
+from edc_pharmacy.model_mixins import StudyMedicationCrfModelMixin
 
 from ..model_mixins import CrfModelMixin
 
