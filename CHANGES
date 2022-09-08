@@ -1,6 +1,13 @@
 Changes
 =======
 
+0.2.9
+-----
+- bump edc=0.4.22
+- update pharmacy groups and roles
+- fix migration 0147 - remove constraint before removing
+  fields (meta_subject)
+
 0.2.8
 -----
 - bump edc=0.4.22
