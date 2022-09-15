@@ -92,6 +92,10 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         import_module("edc_navbar.auths")
         import_module("edc_pharmacy.auths")
         import_module("edc_screening.auths")
+        import_module("edc_qol.auths")
+        import_module("edc_mnsi.auths")
+        import_module("edc_unblinding.auths")
+        import_module("edc_randomization.auths")
         import_module("meta_auth.auths")
         AuthUpdater(verbose=False)
 

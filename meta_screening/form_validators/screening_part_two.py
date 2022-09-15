@@ -4,6 +4,7 @@ from django import forms
 from edc_constants.constants import NO, YES
 from edc_form_validators import INVALID_ERROR, FormValidator
 from edc_utils import get_utcnow
+from edc_utils.round_up import round_half_away_from_zero
 
 from ..eligibility import EligibilityPartTwo
 
@@ -73,7 +74,7 @@ class ScreeningPartTwoFormValidator(FormValidator):
                         "appt_datetime": (
                             f"Invalid date. Must be at least 10hrs "
                             f"from report date/time. Got {tdelta.days} "
-                            f"days {round(hours,1)} hrs."
+                            f"days {round_half_away_from_zero(hours,1)} hrs."
                         )
                     }
                 )

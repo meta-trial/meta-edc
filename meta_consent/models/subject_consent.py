@@ -31,6 +31,9 @@ class SubjectIdentifier(BaseSubjectIdentifier):
 
 
 class SubjectConsentManager(SearchSlugManager, models.Manager):
+
+    use_in_migrations = True
+
     def get_by_natural_key(self, subject_identifier, version):
         return self.get(subject_identifier=subject_identifier, version=version)
 
@@ -64,6 +67,13 @@ class SubjectConsent(
         verbose_name="Screening datetime", null=True, editable=False
     )
 
+    ethnicity = models.CharField(
+        max_length=15,
+        help_text="fromm screening",
+        editable=False,
+        null=True,
+    )
+
     completed_by_next_of_kin = models.CharField(
         max_length=10, default=NO, choices=YES_NO, editable=False
     )
@@ -91,6 +101,7 @@ class SubjectConsent(
         self.screening_datetime = subject_screening.report_datetime
         self.subject_type = "subject"
         self.citizen = NOT_APPLICABLE
+        self.ethnicity = subject_screening.ethnicity
         super().save(*args, **kwargs)
 
     def natural_key(self):

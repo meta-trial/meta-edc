@@ -68,15 +68,25 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
         report_datetime=None,
         eligibility_datetime=None,
         gender=None,
+        ethnicity=None,
+        age_in_years=None,
     ):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         part_two_eligible_options = deepcopy(get_part_two_eligible_options())
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
         if report_datetime:
             part_one_eligible_options.update(report_datetime=report_datetime)
+        part_one_eligible_options["age_in_years"] = (
+            age_in_years or part_one_eligible_options["age_in_years"]
+        )
         part_one_eligible_options["gender"] = gender or part_one_eligible_options["gender"]
+        part_one_eligible_options["ethnicity"] = (
+            ethnicity or part_one_eligible_options["ethnicity"]
+        )
         part_one = ScreeningPartOne.objects.create(
-            user_created="erikvw", user_modified="erikvw", **part_one_eligible_options
+            user_created="erikvw",
+            user_modified="erikvw",
+            **part_one_eligible_options,
         )
         screening_identifier = part_one.screening_identifier
         self.assertEqual(part_one.reasons_ineligible_part_one, None)
@@ -137,9 +147,17 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
         reason=None,
         appt_datetime=None,
         gender=None,
+        ethnicity=None,
+        age_in_years=None,
+        screening_datetime=None,
     ):
         reason = reason or SCHEDULED
-        subject_screening = subject_screening or self.get_subject_screening(gender=gender)
+        subject_screening = subject_screening or self.get_subject_screening(
+            gender=gender,
+            ethnicity=ethnicity,
+            age_in_years=age_in_years,
+            report_datetime=screening_datetime,
+        )
         subject_consent = subject_consent or self.get_subject_consent(subject_screening)
         options = dict(
             subject_identifier=subject_consent.subject_identifier,
