@@ -24,7 +24,6 @@ class BloodResultsRft(
     edc_models.BaseUuidModel,
 ):
     action_name = BLOOD_RESULTS_RFT_ACTION
-    tracking_identifier_prefix = "RF"
     lab_panel = rft_panel
     egfr_formula_name = "ckd-epi"
 

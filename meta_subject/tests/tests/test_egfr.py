@@ -1,13 +1,20 @@
+from __future__ import annotations
+
 from copy import deepcopy
+from decimal import Decimal
 
 from django import forms
-from django.test import TestCase
+from django.test import TestCase, tag
 from edc_action_item import site_action_items
 from edc_action_item.models import ActionItem
+from edc_constants.constants import BLACK, MALE
 from edc_egfr.calculators import egfr_percent_change
 from edc_lab.models import Panel
 from edc_lab_results import BLOOD_RESULTS_EGFR_ACTION, BLOOD_RESULTS_RFT_ACTION
-from edc_reportable import MILLIGRAMS_PER_DECILITER
+from edc_registration import get_registered_subject_model_cls
+from edc_reportable import MICROMOLES_PER_LITER, MILLIGRAMS_PER_DECILITER
+from edc_utils import age, get_utcnow
+from edc_utils.round_up import round_half_away_from_zero
 
 from meta_prn.constants import OFFSCHEDULE_ACTION
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
@@ -79,8 +86,10 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
             float(obj_1000.egfr_value - obj_2000.egfr_value), 0.20 * float(obj_1000.egfr_value)
         )
         self.assertEqual(
-            round(float(obj_2000.egfr_drop_value), 2),
-            round(egfr_percent_change(obj_2000.egfr_value, obj_1000.egfr_value), 2),
+            round_half_away_from_zero(float(obj_2000.egfr_drop_value), 2),
+            round_half_away_from_zero(
+                egfr_percent_change(obj_2000.egfr_value, obj_1000.egfr_value), 2
+            ),
         )
 
     def test_egfr_drop_percent_drop_cannot_be_negative(self):
@@ -108,6 +117,7 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
         self.assertEqual(float(obj_2000.egfr_drop_value), 0.0)
 
     def test_egfr_below_45(self):
+
         data = deepcopy(self.data)
         data.update(creatinine_value=1.1, creatinine_units=MILLIGRAMS_PER_DECILITER)
         BloodResultsRft.objects.create(**data)
@@ -148,3 +158,58 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
                 action_identifier=obj_2000.action_identifier,
             )
         )
+
+    @tag("1")
+    def test_egfr_ethnicity(self):
+
+        subject_visit = self.get_subject_visit(
+            ethnicity=BLACK, age_in_years=60, screening_datetime=get_utcnow(), gender=MALE
+        )
+        rs = get_registered_subject_model_cls().objects.get(
+            subject_identifier=subject_visit.subject_identifier
+        )
+        self.assertEqual(rs.ethnicity, BLACK)
+        self.assertEqual(
+            age(rs.dob, reference_dt=subject_visit.report_datetime.date()).years, 60
+        )
+
+        panel = Panel.objects.get(name="chemistry_rft")
+        requisition = SubjectRequisition.objects.create(
+            subject_visit=subject_visit,
+            panel=panel,
+            requisition_datetime=subject_visit.report_datetime,
+        )
+        data = dict(
+            subject_visit=subject_visit,
+            requisition=requisition,
+            assay_datetime=requisition.requisition_datetime,
+        )
+        data = deepcopy(data)
+        data.update(creatinine_value=152.0, creatinine_units=MICROMOLES_PER_LITER)
+        obj_1000 = BloodResultsRft.objects.create(**data)
+        obj_1000.refresh_from_db()
+        self.assertEqual(round_half_away_from_zero(obj_1000.egfr_value, 3), Decimal("49.030"))
+        self.assertEqual(round_half_away_from_zero(obj_1000.egfr_value, 2), Decimal("49.03"))
+        self.assertEqual(round_half_away_from_zero(obj_1000.egfr_value, 1), Decimal("49.0"))
+        self.assertEqual(round_half_away_from_zero(obj_1000.egfr_value), Decimal("49"))
+
+        subject_visit = self.get_next_subject_visit(subject_visit)
+        subject_visit.refresh_from_db()
+        panel = Panel.objects.get(name="chemistry_rft")
+        requisition = SubjectRequisition.objects.create(
+            subject_visit=subject_visit,
+            panel=panel,
+            requisition_datetime=subject_visit.report_datetime,
+        )
+        data = dict(
+            subject_visit=subject_visit,
+            requisition=requisition,
+            assay_datetime=requisition.requisition_datetime,
+        )
+        data.update(creatinine_value=150.8, creatinine_units=MICROMOLES_PER_LITER)
+        obj_2000 = BloodResultsRft.objects.create(**data)
+        obj_2000.refresh_from_db()
+        self.assertEqual(round_half_away_from_zero(obj_2000.egfr_value, 3), Decimal("49.503"))
+        self.assertEqual(round_half_away_from_zero(obj_2000.egfr_value, 2), Decimal("49.50"))
+        self.assertEqual(round_half_away_from_zero(obj_2000.egfr_value, 1), Decimal("49.5"))
+        self.assertEqual(round_half_away_from_zero(obj_2000.egfr_value), Decimal("50"))

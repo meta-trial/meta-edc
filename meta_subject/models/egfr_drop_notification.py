@@ -12,8 +12,6 @@ class EgfrDropNotification(
 
     action_name = EGFR_DROP_NOTIFICATION_ACTION
 
-    tracking_identifier_prefix = "EG"
-
     class Meta(edc_models.BaseUuidModel.Meta):
         verbose_name = "eGFR Drop Notification"
         verbose_name_plural = "eGFR Drop Notifications"

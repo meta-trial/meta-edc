@@ -1,14 +1,10 @@
 #!/usr/bin/env python
 import logging
-import sys
 from datetime import datetime
 from os.path import abspath, dirname, join
 from zoneinfo import ZoneInfo
 
-import django
-from django.conf import settings
-from django.test.runner import DiscoverRunner
-from edc_test_utils import DefaultTestSettings
+from edc_test_utils import DefaultTestSettings, func_main
 from multisite import SiteID
 
 from meta_edc.meta_version import PHASE_THREE
@@ -16,7 +12,7 @@ from meta_edc.meta_version import PHASE_THREE
 app_name = "meta_edc"
 base_dir = dirname(abspath(__file__))
 
-DEFAULT_SETTINGS = DefaultTestSettings(
+project_settings = DefaultTestSettings(
     calling_file=__file__,
     META_PHASE=PHASE_THREE,
     EDC_EGFR_DROP_NOTIFICATION_MODEL="meta_subject.egfrdropnotification",
@@ -170,29 +166,51 @@ DEFAULT_SETTINGS = DefaultTestSettings(
 
 
 def main():
-    if not settings.configured:
-        settings.configure(**DEFAULT_SETTINGS)
-    django.setup()
-    tags = [t.split("=")[1] for t in sys.argv if t.startswith("--tag")]
-    failfast = True if [t for t in sys.argv if t == "--failfast"] else False
-    failures = DiscoverRunner(failfast=failfast, tags=tags).run_tests(
-        [
-            "tests",
-            "meta_ae.tests",
-            "meta_dashboard.tests",
-            "meta_edc.tests",
-            "meta_labs.tests",
-            "meta_lists.tests",
-            "meta_prn.tests",
-            "meta_rando.tests",
-            "meta_screening.tests",
-            "meta_subject.tests",
-            "meta_visit_schedule.tests",
-        ]
-    )
-    sys.exit(bool(failures))
+    tests = [
+        "tests",
+        "meta_ae.tests",
+        "meta_dashboard.tests",
+        "meta_edc.tests",
+        "meta_labs.tests",
+        "meta_lists.tests",
+        "meta_prn.tests",
+        "meta_rando.tests",
+        "meta_screening.tests",
+        "meta_subject.tests",
+        "meta_visit_schedule.tests",
+    ]
+
+    func_main(project_settings, *tests)
 
 
 if __name__ == "__main__":
     logging.basicConfig()
     main()
+
+# def main():
+#     if not settings.configured:
+#         settings.configure(**DEFAULT_SETTINGS)
+#     django.setup()
+#     tags = [t.split("=")[1] for t in sys.argv if t.startswith("--tag")]
+#     failfast = True if [t for t in sys.argv if t == "--failfast"] else False
+#     failures = DiscoverRunner(failfast=failfast, tags=tags).run_tests(
+#         [
+#             "tests",
+#             "meta_ae.tests",
+#             "meta_dashboard.tests",
+#             "meta_edc.tests",
+#             "meta_labs.tests",
+#             "meta_lists.tests",
+#             "meta_prn.tests",
+#             "meta_rando.tests",
+#             "meta_screening.tests",
+#             "meta_subject.tests",
+#             "meta_visit_schedule.tests",
+#         ]
+#     )
+#     sys.exit(bool(failures))
+#
+#
+# if __name__ == "__main__":
+#     logging.basicConfig()
+#     main()
