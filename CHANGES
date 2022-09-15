@@ -1,10 +1,11 @@
 Changes
 =======
 
-unreleased
-----------
-- bump edc=0.4.23
-
+0.2.10
+------
+- bump edc=0.4.25
+- fix issue where eGFR not reading ethnicity
+- add migrations to recalc eGFR and drop notification
 
 0.2.9
 -----
