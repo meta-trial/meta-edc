@@ -15,10 +15,11 @@ from edc_form_validators import INVALID_ERROR, FormValidator
 from edc_ltfu.constants import LTFU
 from edc_ltfu.modelform_mixins import RequiresLtfuFormValidatorMixin
 from edc_offstudy.constants import COMPLETED_FOLLOWUP
-from edc_offstudy.utils import OffstudyError, off_all_schedules_or_raise
+from edc_offstudy.utils import OffstudyError
 from edc_transfer.constants import TRANSFERRED
 from edc_utils import formatted_date
 from edc_visit_schedule.constants import MONTH36
+from edc_visit_schedule.utils import off_all_schedules_or_raise
 
 from ..constants import (
     CLINICAL_WITHDRAWAL,
