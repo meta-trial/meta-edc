@@ -1,6 +1,10 @@
-from django.contrib import admin
+from django.contrib import admin, messages
+from django.contrib.messages import ERROR, SUCCESS
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
+from edc_pharmacy.model_mixins.study_medication_crf_model_mixin import (
+    StudyMedicationError,
+)
 
 from ..admin_site import meta_subject_admin
 from ..forms import StudyMedicationForm
@@ -10,6 +14,8 @@ from .modeladmin import CrfModelAdmin
 
 @admin.register(StudyMedication, site=meta_subject_admin)
 class StudyMedicationAdmin(CrfModelAdmin):
+
+    actions = ["create_or_update_rx_refills"]
 
     form = StudyMedicationForm
 
@@ -67,3 +73,21 @@ class StudyMedicationAdmin(CrfModelAdmin):
         "order_or_update_next": admin.VERTICAL,
         "refill_to_next_visit": admin.VERTICAL,
     }
+
+    @admin.action(permissions=["view"], description="Create or update RX Refills")
+    def create_or_update_rx_refills(self, request, queryset):
+        updated = 0
+        errors = 0
+        for obj in StudyMedication.objects.filter(site_id=request.site.id).order_by(
+            "modified"
+        ):
+            try:
+                obj.save()
+            except StudyMedicationError:
+                messages.add_message(request, ERROR, f"Failed to update document. See {obj}.")
+                errors += 1
+            else:
+                updated += 1
+        messages.add_message(
+            request, SUCCESS, f"Updated {updated} documents with {errors} errors."
+        )
