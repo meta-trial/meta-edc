@@ -1,8 +1,7 @@
 from django.db import models
 from django.db.models import PROTECT
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
-from edc_model import models as edc_models
-from edc_model.models import HistoricalRecords
+from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_offstudy.model_mixins import OffstudyCrfModelMixin
 from edc_sites.models import CurrentSiteManager, SiteModelMixin
 from edc_utils import get_utcnow
@@ -36,10 +35,7 @@ class Manager(models.Manager):
 
 
 class BirthOutcomes(
-    RequiresConsentFieldsModelMixin,
-    OffstudyCrfModelMixin,
-    SiteModelMixin,
-    edc_models.BaseUuidModel,
+    RequiresConsentFieldsModelMixin, OffstudyCrfModelMixin, SiteModelMixin, BaseUuidModel
 ):
     """A user model to capture birth outcomes.
 
@@ -89,7 +85,7 @@ class BirthOutcomes(
     def related_visit(self):
         return self.delivery.subject_visit
 
-    class Meta(edc_models.BaseUuidModel.Meta):
+    class Meta(BaseUuidModel.Meta):
         verbose_name = "Birth Outcomes"
         verbose_name_plural = "Birth Outcomes"
         ordering = ["delivery", "birth_order"]

@@ -81,6 +81,8 @@ class ProtocolDeviationViolationAdmin(
         "incident": admin.VERTICAL,
     }
 
+    search_fields = ("subject_identifier",)
+
     def get_list_display(self, request) -> Tuple[str, ...]:
         list_display = super().get_list_display(request)
         custom_fields = (

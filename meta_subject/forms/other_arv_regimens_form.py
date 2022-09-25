@@ -1,13 +1,13 @@
 from django import forms
 from edc_constants.constants import YES
+from edc_crf.crf_form_validator import CrfFormValidator
 from edc_crf.modelform_mixins import CrfModelFormMixin
-from edc_form_validators import FormValidator
 from edc_model_form.mixins import InlineModelFormMixin
 
 from ..models import OtherArvRegimens
 
 
-class OtherArvRegimensFormValidator(FormValidator):
+class OtherArvRegimensFormValidator(CrfFormValidator):
     def clean(self):
         self.required_if(
             YES,

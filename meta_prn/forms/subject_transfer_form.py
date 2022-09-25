@@ -1,5 +1,6 @@
 from django import forms
 from edc_form_validators import FormValidatorMixin
+from edc_offstudy.modelform_mixins import OffstudyNonCrfModelFormMixin
 from edc_sites.forms import SiteModelFormMixin
 from edc_transfer.form_validators import SubjectTransferFormValidator
 
@@ -8,6 +9,7 @@ from ..models import SubjectTransfer
 
 class SubjectTransferForm(
     SiteModelFormMixin,
+    OffstudyNonCrfModelFormMixin,
     FormValidatorMixin,
     forms.ModelForm,
 ):

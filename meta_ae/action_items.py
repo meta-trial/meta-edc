@@ -24,7 +24,7 @@ from edc_reportable import GRADE3, GRADE4, GRADE5
 from edc_visit_schedule.utils import get_offschedule_models
 
 from meta_prn.constants import OFFSTUDY_MEDICATION_ACTION
-from meta_prn.pregnancy_mixin import PregnancyMixin
+from meta_prn.pregnancy_action_item_mixin import PregnancyActionItemMixin
 from meta_subject.constants import FOLLOWUP_EXAMINATION_ACTION
 
 
@@ -185,7 +185,7 @@ class AeTmgAction(ActionWithNotification):
         return self.reference_obj.report_status == CLOSED
 
 
-class DeathReportAction(PregnancyMixin, ActionWithNotification):
+class DeathReportAction(PregnancyActionItemMixin, ActionWithNotification):
     name = DEATH_REPORT_ACTION
     display_name = "Submit Death Report"
     notification_display_name = "Death Report"

@@ -1,11 +1,11 @@
 from django.db import models
 from edc_constants.choices import YES_NO
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
 
 from ..model_mixins import CrfModelMixin
 
 
-class OtherArvRegimens(CrfModelMixin, edc_models.BaseUuidModel):
+class OtherArvRegimens(CrfModelMixin, BaseUuidModel):
     has_other_regimens = models.CharField(
         verbose_name=(
             "Are there additional ARV regimens to report "
@@ -15,6 +15,6 @@ class OtherArvRegimens(CrfModelMixin, edc_models.BaseUuidModel):
         choices=YES_NO,
     )
 
-    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+    class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Other ARV Regimens"
         verbose_name_plural = "Other ARV Regimens"

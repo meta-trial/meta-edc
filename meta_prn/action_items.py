@@ -27,7 +27,7 @@ from .constants import (
     UNBLINDING_REQUEST_ACTION,
     UNBLINDING_REVIEW_ACTION,
 )
-from .pregnancy_mixin import PregnancyMixin
+from .pregnancy_action_item_mixin import PregnancyActionItemMixin
 
 
 class OffscheduleAction(ActionWithNotification):
@@ -96,7 +96,7 @@ class EndOfStudyAction(ActionWithNotification):
     singleton = True
 
 
-class LossToFollowupAction(PregnancyMixin, ActionWithNotification):
+class LossToFollowupAction(PregnancyActionItemMixin, ActionWithNotification):
     name = LTFU_ACTION
     display_name = "Submit Loss to Follow Up Report"
     notification_display_name = " Loss to Follow Up Report"
@@ -125,7 +125,7 @@ class PregnancyNotificationAction(ActionWithNotification):
     priority = HIGH_PRIORITY
 
 
-class OffstudyMedicationAction(ActionWithNotification):
+class OffStudyMedicationAction(ActionWithNotification):
     name = OFFSTUDY_MEDICATION_ACTION
     display_name = "Withdrawal Study Medication"
     notification_display_name = "Withdrawal Study Medication"
@@ -164,7 +164,7 @@ class UnblindingRequestAction(ActionWithNotification):
         return next_actions
 
 
-class UnblindingReviewAction(PregnancyMixin, ActionWithNotification):
+class UnblindingReviewAction(PregnancyActionItemMixin, ActionWithNotification):
     name = UNBLINDING_REVIEW_ACTION
     display_name = "Unblinding review pending"
     notification_display_name = " Unblinding review needed"
@@ -189,7 +189,7 @@ class UnblindingReviewAction(PregnancyMixin, ActionWithNotification):
         return next_actions
 
 
-class SubjectTransferAction(PregnancyMixin, BaseSubjectTransferAction):
+class SubjectTransferAction(PregnancyActionItemMixin, BaseSubjectTransferAction):
     reference_model = "meta_prn.subjecttransfer"
     admin_site_name = "meta_prn_admin"
 
@@ -211,4 +211,4 @@ site_action_items.register(ProtocolIncidentAction)
 site_action_items.register(SubjectTransferAction)
 site_action_items.register(UnblindingRequestAction)
 site_action_items.register(UnblindingReviewAction)
-site_action_items.register(OffstudyMedicationAction)
+site_action_items.register(OffStudyMedicationAction)

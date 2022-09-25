@@ -1,5 +1,4 @@
 from django.db import models
-from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
 from edc_egfr.model_mixins import EgfrModelMixin
 from edc_lab.model_mixins import CrfWithRequisitionModelMixin
 from edc_lab_panel.panels import rft_panel
@@ -10,7 +9,9 @@ from edc_lab_results.model_mixins import (
     UreaModelMixin,
     UricAcidModelMixin,
 )
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
+
+from ...model_mixins import CrfWithActionModelMixin
 
 
 class BloodResultsRft(
@@ -21,7 +22,7 @@ class BloodResultsRft(
     UricAcidModelMixin,
     CrfWithRequisitionModelMixin,
     BloodResultsModelMixin,
-    edc_models.BaseUuidModel,
+    BaseUuidModel,
 ):
     action_name = BLOOD_RESULTS_RFT_ACTION
     lab_panel = rft_panel
@@ -43,6 +44,6 @@ class BloodResultsRft(
         help_text="incorrect ckd-epi calculation (w/ 1.150 as ethnicity factor)",
     )
 
-    class Meta(CrfWithActionModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+    class Meta(CrfWithActionModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Blood Result: RFT"
         verbose_name_plural = "Blood Results: RFT"

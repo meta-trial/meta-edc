@@ -1,11 +1,11 @@
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
 from edc_qol.model_mixins import Sf12ModelMixin
 
 from ..model_mixins import CrfModelMixin
 
 
-class Sf12(Sf12ModelMixin, CrfModelMixin, edc_models.BaseUuidModel):
-    class Meta(Sf12ModelMixin.Meta, CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+class Sf12(Sf12ModelMixin, CrfModelMixin, BaseUuidModel):
+    class Meta(Sf12ModelMixin.Meta, CrfModelMixin.Meta, BaseUuidModel.Meta):
         pass
 
 

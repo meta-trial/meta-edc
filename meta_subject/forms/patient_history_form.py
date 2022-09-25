@@ -1,13 +1,13 @@
 from django import forms
 from edc_constants.constants import NO, NONE, OTHER, YES
+from edc_crf.crf_form_validator import CrfFormValidator
 from edc_crf.modelform_mixins import CrfModelFormMixin
-from edc_form_validators import FormValidator
 
 from ..models import PatientHistory
 from .mixins import ArvHistoryFormValidatorMixin
 
 
-class PatientHistoryFormValidator(ArvHistoryFormValidatorMixin, FormValidator):
+class PatientHistoryFormValidator(ArvHistoryFormValidatorMixin, CrfFormValidator):
     def clean(self):
 
         self.m2m_single_selection_if(NONE, m2m_field="symptoms")

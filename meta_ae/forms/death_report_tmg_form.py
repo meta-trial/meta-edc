@@ -1,5 +1,5 @@
 from django import forms
-from edc_adverse_event.forms import DeathReportTmgModelFormMixin
+from edc_adverse_event.modelform_mixins import DeathReportTmgModelFormMixin
 
 from ..models import DeathReportTmg
 

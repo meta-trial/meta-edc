@@ -1,8 +1,8 @@
 from django import forms
 from django.utils.safestring import mark_safe
 from edc_action_item.forms import ActionItemCrfFormMixin
+from edc_crf.crf_form_validator import CrfFormValidator
 from edc_crf.modelform_mixins import CrfModelFormMixin
-from edc_form_validators import FormValidator
 from edc_lab_panel.panels import rft_panel
 from edc_lab_results.form_validator_mixins import BloodResultsFormValidatorMixin
 from edc_reportable import BmiFormValidatorMixin
@@ -11,7 +11,7 @@ from ...models import BloodResultsRft
 
 
 class BloodResultsRftFormValidator(
-    BloodResultsFormValidatorMixin, BmiFormValidatorMixin, FormValidator
+    BloodResultsFormValidatorMixin, BmiFormValidatorMixin, CrfFormValidator
 ):
     panel = rft_panel
 

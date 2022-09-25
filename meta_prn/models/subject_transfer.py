@@ -1,14 +1,14 @@
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
 from edc_sites.models import CurrentSiteManager
 from edc_transfer.model_mixins import SubjectTransferModelMixin
 
 
 class SubjectTransfer(
     SubjectTransferModelMixin,
-    edc_models.BaseUuidModel,
+    BaseUuidModel,
 ):
 
     on_site = CurrentSiteManager()
 
-    class Meta(SubjectTransferModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+    class Meta(SubjectTransferModelMixin.Meta, BaseUuidModel.Meta):
         pass

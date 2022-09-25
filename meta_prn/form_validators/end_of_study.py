@@ -235,7 +235,6 @@ class EndOfStudyFormValidator(
         try:
             off_all_schedules_or_raise(
                 subject_identifier=self.cleaned_data.get("subject_identifier"),
-                offstudy_datetime=self.cleaned_data.get("offstudy_datetime"),
             )
         except OffstudyError as e:
             self.raise_validation_error(str(e), INVALID_ERROR)

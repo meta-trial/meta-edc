@@ -1,5 +1,5 @@
 from django import forms
-from edc_adverse_event.forms import AeInitialModelFormMixin
+from edc_adverse_event.modelform_mixins import AeInitialModelFormMixin
 
 from ..models import AeInitial
 

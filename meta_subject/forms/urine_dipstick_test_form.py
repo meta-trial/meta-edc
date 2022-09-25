@@ -1,12 +1,12 @@
 from django import forms
 from edc_constants.constants import NO, YES
+from edc_crf.crf_form_validator import CrfFormValidator
 from edc_crf.modelform_mixins import CrfModelFormMixin
-from edc_form_validators import FormValidator
 
 from ..models import UrineDipstickTest
 
 
-class UrineDipstickTestFormValidator(FormValidator):
+class UrineDipstickTestFormValidator(CrfFormValidator):
     def clean(self):
 
         self.required_if(NO, field="performed", field_required="not_performed_reason")

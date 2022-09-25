@@ -2,16 +2,16 @@ from django.db import models
 from django.utils.safestring import mark_safe
 from edc_constants.choices import YES_NO, YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
 from edc_model_fields.fields import OtherCharField
 
 from meta_lists.models import DiabetesSymptoms, HypertensionMedications, Symptoms
-from meta_subject.choices import DYSLIPIDAEMIA_RX_CHOICES
 
+from ..choices import DYSLIPIDAEMIA_RX_CHOICES
 from ..model_mixins import ArvHistoryModelMixin, CrfModelMixin
 
 
-class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, edc_models.BaseUuidModel):
+class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, BaseUuidModel):
 
     symptoms = models.ManyToManyField(
         Symptoms, verbose_name="Do you have any of the following symptoms?"
@@ -143,6 +143,6 @@ class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, edc_models.BaseUuidMod
         help_text="Immediate family is parents, siblings, and children",
     )
 
-    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+    class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Patient History"
         verbose_name_plural = "Patient History"

@@ -1,11 +1,11 @@
 from django import forms
+from edc_crf.crf_form_validator import CrfFormValidator
 from edc_crf.modelform_mixins import CrfModelFormMixin
-from edc_form_validators import FormValidator
 
 from ..models import ComplicationsGlycemia
 
 
-class AdditionalScreeningFormValidator(FormValidator):
+class AdditionalScreeningFormValidator(CrfFormValidator):
     def clean(self):
         pass
 

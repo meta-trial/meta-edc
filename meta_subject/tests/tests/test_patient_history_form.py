@@ -9,12 +9,13 @@ from meta_lists.models import (
     OiProphylaxis,
 )
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
+from meta_screening.tests.options import now
 from meta_subject.forms import PatientHistoryForm
 
 
 class BaseTestPatientHistory(MetaTestCaseMixin, TestCase):
     def get_options(self):
-        self.subject_visit = self.get_subject_visit()
+        self.subject_visit = self.get_subject_visit(appt_datetime=now)
         symptoms = BaselineSymptoms.objects.filter(name=NONE)
         arv_regimen = ArvRegimens.objects.filter(name="TDF_3TC_ATV_r")
         oi_prophylaxis = OiProphylaxis.objects.filter(name__in=["fluconazole", "isoniazid"])

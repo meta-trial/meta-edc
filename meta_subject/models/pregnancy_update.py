@@ -1,13 +1,13 @@
 from django.db import models
 from django.db.models import PROTECT
 from edc_constants.choices import YES_NO
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
 from edc_utils import get_utcnow
 
 from ..model_mixins import CrfModelMixin
 
 
-class PregnancyUpdate(CrfModelMixin, edc_models.BaseUuidModel):
+class PregnancyUpdate(CrfModelMixin, BaseUuidModel):
 
     pregnancy_notification = models.ForeignKey(
         "meta_prn.pregnancynotification", on_delete=PROTECT
@@ -26,6 +26,6 @@ class PregnancyUpdate(CrfModelMixin, edc_models.BaseUuidModel):
 
     comment = models.TextField(verbose_name="Comment / Updates", null=True)
 
-    class Meta(edc_models.BaseUuidModel.Meta):
+    class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Pregnancy Update"
         verbose_name_plural = "Pregnancy Update"

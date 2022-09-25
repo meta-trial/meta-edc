@@ -13,11 +13,12 @@ from edc_lab.models import Panel
 from edc_lab_results import BLOOD_RESULTS_EGFR_ACTION, BLOOD_RESULTS_RFT_ACTION
 from edc_registration import get_registered_subject_model_cls
 from edc_reportable import MICROMOLES_PER_LITER, MILLIGRAMS_PER_DECILITER
-from edc_utils import age, get_utcnow
+from edc_utils import age
 from edc_utils.round_up import round_half_away_from_zero
 
 from meta_prn.constants import OFFSCHEDULE_ACTION
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
+from meta_screening.tests.options import now
 from meta_subject.forms.blood_results.blood_results_rft_form import (
     BloodResultsRftFormValidator,
 )
@@ -39,6 +40,7 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
         )
         self.data = dict(
             subject_visit=self.subject_visit,
+            report_datetime=self.subject_visit.report_datetime,
             requisition=requisition,
             assay_datetime=requisition.requisition_datetime,
         )
@@ -54,8 +56,11 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
         self.assertIsNotNone(obj.egfr_units)
 
     def test_ok(self):
-        data = dict(subject_visit=self.subject_visit)
-        form = BloodResultsRftFormValidator(cleaned_data=data)
+        data = dict(
+            subject_visit=self.subject_visit,
+            report_datetime=self.subject_visit.report_datetime,
+        )
+        form = BloodResultsRftFormValidator(cleaned_data=data, model=BloodResultsRft)
         try:
             form.validate()
         except forms.ValidationError:
@@ -163,7 +168,7 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
     def test_egfr_ethnicity(self):
 
         subject_visit = self.get_subject_visit(
-            ethnicity=BLACK, age_in_years=60, screening_datetime=get_utcnow(), gender=MALE
+            ethnicity=BLACK, age_in_years=60, appt_datetime=now, gender=MALE
         )
         rs = get_registered_subject_model_cls().objects.get(
             subject_identifier=subject_visit.subject_identifier
@@ -178,11 +183,13 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
             subject_visit=subject_visit,
             panel=panel,
             requisition_datetime=subject_visit.report_datetime,
+            drawn_datetime=subject_visit.report_datetime,
         )
         data = dict(
             subject_visit=subject_visit,
             requisition=requisition,
             assay_datetime=requisition.requisition_datetime,
+            report_datetime=requisition.requisition_datetime,
         )
         data = deepcopy(data)
         data.update(creatinine_value=152.0, creatinine_units=MICROMOLES_PER_LITER)

@@ -1,13 +1,14 @@
 from django import forms
-from edc_crf.modelform_mixins import CrfModelFormMixin
+from edc_crf.modelform_mixins import RequisitionModelFormMixin
 from edc_lab.form_validators import RequisitionFormValidator
-from edc_lab.forms import RequisitionFormMixin
 from edc_metadata.constants import NOT_REQUIRED
 
 from ..models import SubjectRequisition
 
 
-class SubjectRequisitionForm(RequisitionFormMixin, CrfModelFormMixin, forms.ModelForm):
+class SubjectRequisitionForm(RequisitionModelFormMixin, forms.ModelForm):
+
+    report_datetime_field_attr = "requisition_datetime"
 
     form_validator_cls = RequisitionFormValidator
 

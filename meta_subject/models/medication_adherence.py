@@ -1,12 +1,10 @@
 from edc_adherence.model_mixins import MedicationAdherenceModelMixin
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
 
 from ..model_mixins import CrfModelMixin
 
 
-class MedicationAdherence(
-    MedicationAdherenceModelMixin, CrfModelMixin, edc_models.BaseUuidModel
-):
-    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+class MedicationAdherence(MedicationAdherenceModelMixin, CrfModelMixin, BaseUuidModel):
+    class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Medication Adherence"
         verbose_name_plural = "Medication Adherence"
