@@ -2,9 +2,9 @@ from django import forms
 from django.core.exceptions import ObjectDoesNotExist
 from edc_action_item.forms import ActionItemCrfFormMixin
 from edc_constants.constants import NO, OTHER
+from edc_crf.crf_form_validator import CrfFormValidator
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import INVALID_ERROR
-from edc_form_validators.form_validator import FormValidator
 from edc_utils import formatted_date
 
 from meta_ae.constants import HOSPITAL_CLINIC
@@ -13,7 +13,7 @@ from meta_prn.models import PregnancyNotification
 from ..models import Delivery
 
 
-class DeliveryFormValidator(FormValidator):
+class DeliveryFormValidator(CrfFormValidator):
     def clean(self):
         try:
             pregnancy_notification = PregnancyNotification.objects.get(

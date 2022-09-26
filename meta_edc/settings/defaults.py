@@ -372,6 +372,8 @@ EDC_MODEL_ADMIN_CSS_THEME = "edc_indigo"
 # edc-mnsi
 EDC_MNSI_MODEL = "meta_subject.mnsi"
 
+EDC_OFFSTUDY_OFFSTUDY_MODEL = "meta_prn.endofstudy"
+
 # edc-protocol-incident
 EDC_PROTOCOL_VIOLATION_TYPE = PROTOCOL_INCIDENT
 

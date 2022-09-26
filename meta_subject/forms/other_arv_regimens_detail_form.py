@@ -1,11 +1,12 @@
 from django import forms
-from edc_form_validators import FormValidator, FormValidatorMixin
-from edc_visit_tracking.modelform_mixins import get_subject_visit
+from edc_crf.crf_form_validator import CrfFormValidator
+from edc_crf.modelform_mixins import InlineCrfModelFormMixin
+from edc_form_validators import FormValidatorMixin
 
 from ..models import OtherArvRegimensDetail
 
 
-class OtherArvRegimensDetailFormValidator(FormValidator):
+class OtherArvRegimensDetailFormValidator(CrfFormValidator):
     def clean(self):
         if not self.cleaned_data.get("DELETE"):
             self.validate_other_specify(
@@ -17,15 +18,7 @@ class OtherArvRegimensDetailFormValidator(FormValidator):
             )
 
 
-class InlineCrfModelFormMixin(FormValidatorMixin, forms.ModelForm):
-    @property
-    def subject_visit(self):
-        return get_subject_visit(
-            self, related_visit_model_attr=self._meta.model.related_visit_model_attr()
-        )
-
-
-class OtherArvRegimensDetailForm(InlineCrfModelFormMixin, forms.ModelForm):
+class OtherArvRegimensDetailForm(InlineCrfModelFormMixin, FormValidatorMixin, forms.ModelForm):
 
     form_validator_cls = OtherArvRegimensDetailFormValidator
 

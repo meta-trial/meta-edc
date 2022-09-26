@@ -3,20 +3,17 @@ from django.db.models import PROTECT
 from django.utils.safestring import mark_safe
 from edc_constants.choices import YES_NO, YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE
-from edc_crf.crf_status_model_mixin import CrfStatusModelMixin
-from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
 from edc_model_fields.fields import OtherCharField
 
 from meta_lists.models import ArvRegimens, Symptoms
 
 from ..choices import GRADE34_CHOICES
 from ..constants import FOLLOWUP_EXAMINATION_ACTION
+from ..model_mixins import CrfWithActionModelMixin
 
 
-class FollowupExamination(
-    CrfStatusModelMixin, CrfWithActionModelMixin, edc_models.BaseUuidModel
-):
+class FollowupExamination(CrfWithActionModelMixin, BaseUuidModel):
 
     action_name = FOLLOWUP_EXAMINATION_ACTION
 
@@ -256,6 +253,6 @@ class FollowupExamination(
         ),
     )
 
-    class Meta(CrfWithActionModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+    class Meta(CrfWithActionModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Clinic follow up: Examination"
         verbose_name_plural = "Clinic follow up: Examination"

@@ -4,7 +4,7 @@ from edc_constants.choices import YES_NO
 from edc_constants.constants import OTHER
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierFieldMixin
 from edc_ltfu.constants import LTFU_ACTION
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel, OtherCharField
 from edc_sites.models import SiteModelMixin
 from edc_utils.date import get_utcnow
 
@@ -20,7 +20,7 @@ class LossToFollowup(
     NonUniqueSubjectIdentifierFieldMixin,
     SiteModelMixin,
     ActionModelMixin,
-    edc_models.BaseUuidModel,
+    BaseUuidModel,
 ):
 
     action_name = LTFU_ACTION
@@ -61,7 +61,7 @@ class LossToFollowup(
         choices=LOSS_CHOICES,
     )
 
-    loss_category_other = edc_models.OtherCharField()
+    loss_category_other = OtherCharField()
 
     comment = models.TextField(
         verbose_name=(
@@ -71,7 +71,7 @@ class LossToFollowup(
         blank=False,
     )
 
-    class Meta(edc_models.BaseUuidModel.Meta):
+    class Meta(BaseUuidModel.Meta):
         verbose_name = "Loss to Follow Up"
         verbose_name_plural = "Loss to Follow Up"
         indexes = [

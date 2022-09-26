@@ -20,7 +20,7 @@ from meta_edc.meta_version import get_meta_version
 from meta_screening.forms import part_one_fields, part_three_fields, part_two_fields
 
 fake = Faker()
-now = datetime(2019, 5, 5).astimezone(ZoneInfo("UTC"))
+now = datetime(2019, 5, 1).astimezone(ZoneInfo("UTC"))
 tomorrow = now + relativedelta(days=1)
 
 

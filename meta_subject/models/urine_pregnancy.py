@@ -3,7 +3,7 @@ from edc_constants.choices import POS_NEG_NA, YES_NO
 from edc_model import models as edc_models
 
 from ..constants import URINE_PREGNANCY_ACTION
-from ..model_mixins.crf_model_mixin import CrfWithActionModelMixin
+from ..model_mixins import CrfWithActionModelMixin
 
 
 class UrinePregnancy(CrfWithActionModelMixin, edc_models.BaseUuidModel):

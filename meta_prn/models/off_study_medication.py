@@ -1,29 +1,36 @@
 from django.db import models
 from edc_action_item.models import ActionModelMixin
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierFieldMixin
-from edc_model import models as edc_models
-from edc_model.models import OtherCharField
+from edc_model.models import BaseUuidModel, OtherCharField
+from edc_pharmacy.models import Medication
 from edc_sites.models import SiteModelMixin
 from edc_utils import get_utcnow
+from edc_visit_schedule import SubjectSchedule
+
+from meta_pharmacy.constants import METFORMIN
 
 from ..choices import WITHDRAWAL_STUDY_MEDICATION_REASONS
 from ..constants import OFFSTUDY_MEDICATION_ACTION
 
 
-class OffstudyMedication(
+class OffStudyMedication(
     NonUniqueSubjectIdentifierFieldMixin,
     SiteModelMixin,
     ActionModelMixin,
-    edc_models.BaseUuidModel,
+    BaseUuidModel,
 ):
 
     action_name = OFFSTUDY_MEDICATION_ACTION
 
-    tracking_identifier_prefix = "WM"
+    subject_schedule_cls = SubjectSchedule
+
+    offschedule_compare_dates_as_datetimes = False
 
     report_datetime = models.DateTimeField(
         verbose_name="Report Date and Time", default=get_utcnow
     )
+
+    medications = models.ManyToManyField(Medication, limit_choices_to={"name": METFORMIN})
 
     stop_date = models.DateField(
         verbose_name="Date decision to stop study medication",
@@ -47,6 +54,6 @@ class OffstudyMedication(
         blank=True,
     )
 
-    class Meta(edc_models.BaseUuidModel.Meta):
+    class Meta(BaseUuidModel.Meta):
         verbose_name = "Withdrawal of Study Drug"
         verbose_name_plural = "Withdrawal of Study Drug"

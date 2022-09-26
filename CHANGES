@@ -1,6 +1,12 @@
 Changes
 =======
 
+0.2.11
+------
+- bump edc=0.4.30
+- update modelform, validators, models for changes to edc mixins
+- update view class declarations for changes to view mixins
+
 0.2.10
 ------
 - bump edc=0.4.25

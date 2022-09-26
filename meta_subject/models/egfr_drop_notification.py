@@ -1,17 +1,18 @@
-from edc_crf.crf_with_action_model_mixin import CrfWithActionModelMixin
 from edc_egfr.constants import EGFR_DROP_NOTIFICATION_ACTION
 from edc_egfr.model_mixins import EgfrDropNotificationModelMixin
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
+
+from ..model_mixins import CrfWithActionModelMixin
 
 
 class EgfrDropNotification(
     EgfrDropNotificationModelMixin,
     CrfWithActionModelMixin,
-    edc_models.BaseUuidModel,
+    BaseUuidModel,
 ):
 
     action_name = EGFR_DROP_NOTIFICATION_ACTION
 
-    class Meta(edc_models.BaseUuidModel.Meta):
+    class Meta(CrfWithActionModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "eGFR Drop Notification"
         verbose_name_plural = "eGFR Drop Notifications"

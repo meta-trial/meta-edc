@@ -3,7 +3,7 @@ from edc_action_item.models import ActionModelMixin
 from edc_constants.choices import YES_NO, YES_NO_UNSURE
 from edc_constants.constants import YES
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierFieldMixin
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
 from edc_sites.models import SiteModelMixin
 from edc_utils import get_utcnow
 
@@ -20,7 +20,7 @@ class PregnancyNotification(
     NonUniqueSubjectIdentifierFieldMixin,
     SiteModelMixin,
     ActionModelMixin,
-    edc_models.BaseUuidModel,
+    BaseUuidModel,
 ):
 
     action_name = PREGNANCY_NOTIFICATION_ACTION
@@ -97,7 +97,7 @@ class PregnancyNotification(
             )
         super().save(*args, **kwargs)
 
-    class Meta(edc_models.BaseUuidModel.Meta):
+    class Meta(BaseUuidModel.Meta):
         verbose_name = "Pregnancy Notification"
         verbose_name_plural = "Pregnancy Notifications"
         unique_together = ["subject_identifier", "edd"]

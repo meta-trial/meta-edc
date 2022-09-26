@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 from copy import deepcopy
+from datetime import datetime
 
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
@@ -13,7 +16,6 @@ from edc_metadata.models import CrfMetadata
 from edc_randomization.site_randomizers import site_randomizers
 from edc_sites import add_or_update_django_sites, get_sites_by_country
 from edc_sites.tests.site_test_case_mixin import SiteTestCaseMixin
-from edc_utils.date import get_utcnow
 from edc_visit_tracking.constants import SCHEDULED
 from model_bakery import baker
 
@@ -33,6 +35,7 @@ from .options import (
     get_part_one_eligible_options,
     get_part_three_eligible_options,
     get_part_two_eligible_options,
+    now,
 )
 
 
@@ -65,11 +68,11 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
 
     def get_subject_screening(
         self,
-        report_datetime=None,
-        eligibility_datetime=None,
-        gender=None,
-        ethnicity=None,
-        age_in_years=None,
+        report_datetime: datetime | None = None,
+        eligibility_datetime: datetime | None = None,
+        gender: str | None = None,
+        ethnicity: str | None = None,
+        age_in_years: int | None = None,
     ):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         part_two_eligible_options = deepcopy(get_part_two_eligible_options())
@@ -133,23 +136,24 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
             screening_identifier=subject_screening.screening_identifier,
             initials=subject_screening.initials,
             gender=subject_screening.gender,
-            dob=(get_utcnow().date() - relativedelta(years=subject_screening.age_in_years)),
+            dob=(now.date() - relativedelta(years=subject_screening.age_in_years)),
             site=Site.objects.get(id=site_id or settings.SITE_ID),
             consent_datetime=consent_datetime or subject_screening.report_datetime,
         )
 
     def get_subject_visit(
         self,
-        visit_code=None,
-        visit_code_sequence=None,
+        visit_code: str | None = None,
+        visit_code_sequence: int | None = None,
         subject_screening=None,
         subject_consent=None,
-        reason=None,
-        appt_datetime=None,
-        gender=None,
-        ethnicity=None,
-        age_in_years=None,
-        screening_datetime=None,
+        reason: str | None = None,
+        appt_datetime: datetime | None = None,
+        gender: str | None = None,
+        ethnicity: str | None = None,
+        age_in_years: int | None = None,
+        screening_datetime: datetime | None = None,
+        eligibility_datetime: datetime | None = None,
     ):
         reason = reason or SCHEDULED
         subject_screening = subject_screening or self.get_subject_screening(
@@ -157,6 +161,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
             ethnicity=ethnicity,
             age_in_years=age_in_years,
             report_datetime=screening_datetime,
+            eligibility_datetime=eligibility_datetime,
         )
         subject_consent = subject_consent or self.get_subject_consent(subject_screening)
         options = dict(

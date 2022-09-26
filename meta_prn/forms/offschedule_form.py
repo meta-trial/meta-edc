@@ -22,11 +22,11 @@ class OffScheduleForm(
 
     form_validator_cls = OffScheduleFormValidator
 
-    subject_identifier = forms.CharField(
-        label="Subject Identifier",
-        required=False,
-        widget=forms.TextInput(attrs={"readonly": "readonly"}),
-    )
+    # subject_identifier = forms.CharField(
+    #     label="Subject Identifier",
+    #     required=False,
+    #     widget=forms.TextInput(attrs={"readonly": "readonly"}),
+    # )
 
     class Meta:
         model = OffSchedule

@@ -116,6 +116,7 @@ class EndOfStudyAdmin(
         list_display = super().get_list_display(request)
         custom_fields = (
             "subject_identifier",
+            "dashboard",
             "terminated",
             "last_seen",
             "months",

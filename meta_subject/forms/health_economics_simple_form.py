@@ -1,15 +1,12 @@
 from django import forms
-from edc_crf.forms import CrfFormValidatorMixin
+from edc_crf.crf_form_validator import CrfFormValidator
 from edc_crf.modelform_mixins import CrfModelFormMixin
-from edc_form_validators.form_validator import FormValidator
 from edc_he.form_validators import HeEducationFormValidatorMixin
 
 from ..models import HealthEconomicsSimple
 
 
-class HealthEconomicsFormValidator(
-    HeEducationFormValidatorMixin, CrfFormValidatorMixin, FormValidator
-):
+class HealthEconomicsFormValidator(HeEducationFormValidatorMixin, CrfFormValidator):
     def clean(self):
         self.clean_education()
 

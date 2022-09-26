@@ -6,6 +6,7 @@ from edc_constants.constants import FEMALE, NO, YES
 from edc_form_validators import INVALID_ERROR
 from edc_form_validators.form_validator import FormValidator
 from edc_form_validators.form_validator_mixin import FormValidatorMixin
+from edc_offstudy.modelform_mixins import OffstudyNonCrfModelFormMixin
 from edc_registration.models import RegisteredSubject
 from edc_sites.forms import SiteModelFormMixin
 from edc_visit_schedule.constants import DAY1
@@ -104,7 +105,11 @@ class PregnancyNotificationFormValidator(FormValidator):
 
 
 class PregnancyNotificationForm(
-    SiteModelFormMixin, FormValidatorMixin, ActionItemFormMixin, forms.ModelForm
+    SiteModelFormMixin,
+    OffstudyNonCrfModelFormMixin,
+    FormValidatorMixin,
+    ActionItemFormMixin,
+    forms.ModelForm,
 ):
 
     form_validator_cls = PregnancyNotificationFormValidator

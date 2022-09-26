@@ -4,9 +4,11 @@ from django.dispatch import receiver
 from edc_constants.constants import YES
 from edc_visit_schedule import site_visit_schedules
 
-from meta_prn.models import OffSchedule, PregnancyNotification
 from meta_subject.models import SubjectVisit, UrinePregnancy
 from meta_visit_schedule.constants import SCHEDULE, SCHEDULE_PREGNANCY, VISIT_SCHEDULE
+
+from .offschedule import OffSchedule
+from .pregnancy_notification import PregnancyNotification
 
 
 @receiver(

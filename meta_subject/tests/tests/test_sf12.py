@@ -8,13 +8,14 @@ from edc_qol.constants import ALL_OF_THE_TIME, NONE_OF_THE_TIME, SOME_OF_THE_TIM
 from edc_visit_schedule.constants import MONTH1, MONTH3, WEEK2
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
+from meta_screening.tests.options import now
 from meta_subject.forms import Sf12Form
 
 
 class TestSf12(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()
-        self.subject_visit = self.get_subject_visit()
+        self.subject_visit = self.get_subject_visit(appt_datetime=now)
         self.data = dict(
             subject_visit=self.subject_visit,
             report_datetime=self.subject_visit.report_datetime,

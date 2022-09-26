@@ -1,13 +1,13 @@
 from django import forms
 from edc_action_item.forms import ActionItemCrfFormMixin
 from edc_constants.constants import NONE, OTHER, YES
+from edc_crf.crf_form_validator import CrfFormValidator
 from edc_crf.modelform_mixins import CrfModelFormMixin
-from edc_form_validators import FormValidator
 
 from ..models import FollowupExamination
 
 
-class FollowupExaminationFormValidator(FormValidator):
+class FollowupExaminationFormValidator(CrfFormValidator):
     def clean(self):
 
         self.validate_all_symptoms()

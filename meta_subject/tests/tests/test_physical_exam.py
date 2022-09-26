@@ -1,15 +1,11 @@
 from copy import deepcopy
 
 from django.test import TestCase
-from edc_appointment.constants import IN_PROGRESS_APPT
-from edc_appointment.models import Appointment
 from edc_constants.constants import COMPLETE, NO, YES
-from edc_visit_tracking.constants import SCHEDULED
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
+from meta_screening.tests.options import now
 from meta_subject.forms import PhysicalExamForm
-from meta_subject.models import SubjectVisit
-from meta_visit_schedule.constants import DAY1
 
 
 class TestPhysicalExam(MetaTestCaseMixin, TestCase):
@@ -26,7 +22,7 @@ class TestPhysicalExam(MetaTestCaseMixin, TestCase):
             "jaundice": YES,
             "oxygen_saturation": 10,
             "peripheral_oedema": NO,
-            "report_datetime": NO,
+            "report_datetime": now,
             "respiratory_rate": 30,
             "sys_blood_pressure": 80,
             "temperature": 37,
@@ -35,24 +31,12 @@ class TestPhysicalExam(MetaTestCaseMixin, TestCase):
             "crf_status": COMPLETE,
         }
 
-        self.subject_visit = self.get_subject_visit()
+        self.subject_visit = self.get_subject_visit(appt_datetime=now)
 
         self.data.update(
             subject_visit=self.subject_visit.pk,
             report_datetime=self.subject_visit.report_datetime,
         )
-
-    def start_visit(self):
-        subject_screening = self.get_subject_screening()
-        subject_consent = self.get_subject_consent(subject_screening)
-        subject_identifier = subject_consent.subject_identifier
-
-        appointment = Appointment.objects.get(
-            subject_identifier=subject_identifier, visit_code=DAY1
-        )
-        appointment.appt_status = IN_PROGRESS_APPT
-        appointment.save()
-        return SubjectVisit.objects.create(appointment=appointment, reason=SCHEDULED)
 
     def test_ok(self):
         form = PhysicalExamForm(data=self.data)

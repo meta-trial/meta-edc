@@ -92,6 +92,7 @@ schedule = Schedule(
     offschedule_model="meta_prn.offschedule",
     consent_model="meta_consent.subjectconsent",
     appointment_model="edc_appointment.appointment",
+    offstudymedication_model="meta_prn.offstudymedication",
 )
 
 

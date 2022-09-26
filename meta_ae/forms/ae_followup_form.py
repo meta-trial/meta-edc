@@ -1,5 +1,5 @@
 from django import forms
-from edc_adverse_event.forms import AeFollowupModelFormMixin
+from edc_adverse_event.modelform_mixins import AeFollowupModelFormMixin
 
 from ..models import AeFollowup
 
