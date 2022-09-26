@@ -1,7 +1,7 @@
 from django import forms
 from edc_constants.constants import NO, YES
 from edc_egfr.form_validator_mixins import EgfrCkdEpiFormValidatorMixin
-from edc_form_validators import FormValidator
+from edc_form_validators import INVALID_ERROR, FormValidator
 from edc_glucose.form_validators import (
     FastingFormValidatorMixin,
     FbgOgttFormValidatorMixin,
@@ -9,6 +9,7 @@ from edc_glucose.form_validators import (
 )
 from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
 from edc_reportable import BmiFormValidatorMixin
+from edc_utils import formatted_datetime, to_utc
 from edc_vitals.form_validators import (
     BloodPressureFormValidatorMixin,
     WeightHeightBmiFormValidatorMixin,
@@ -125,7 +126,21 @@ class ScreeningPartThreeFormValidator(
             validate_glucose_as_millimoles_per_liter("ogtt2", self.cleaned_data)
 
     def validate_report_datetimes(self):
-        pass
+        if (
+            self.cleaned_data.get("part_three_report_datetime")
+            and to_utc(self.cleaned_data.get("part_three_report_datetime"))
+            < self.instance.part_two_report_datetime
+        ):
+            dte = formatted_datetime(self.instance.part_two_report_datetime)
+            self.raise_validation_error(
+                {
+                    "part_three_report_datetime": (
+                        "Cannot be before Part Two report datetime. "
+                        f"Expected date after {dte}."
+                    )
+                },
+                INVALID_ERROR,
+            )
 
     def validate_suitability_for_study(self):
         self.required_if(

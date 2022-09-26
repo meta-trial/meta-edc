@@ -3,7 +3,7 @@ from zoneinfo import ZoneInfo
 from django import forms
 from edc_constants.constants import NO, YES
 from edc_form_validators import INVALID_ERROR, FormValidator
-from edc_utils import get_utcnow
+from edc_utils import formatted_datetime, get_utcnow, to_utc
 from edc_utils.round_up import round_half_away_from_zero
 
 from ..eligibility import EligibilityPartTwo
@@ -11,6 +11,8 @@ from ..eligibility import EligibilityPartTwo
 
 class ScreeningPartTwoFormValidator(FormValidator):
     def clean(self):
+
+        self.validate_report_datetimes()
 
         if (
             self.cleaned_data.get("agree_to_p3") == YES
@@ -56,6 +58,40 @@ class ScreeningPartTwoFormValidator(FormValidator):
         """Returns False if any of the required fields is YES."""
         eligibility = EligibilityPartTwo(cleaned_data=self.cleaned_data)
         return eligibility.is_eligible
+
+    def validate_report_datetimes(self):
+        if (
+            self.cleaned_data.get("part_two_report_datetime")
+            and to_utc(self.cleaned_data.get("part_two_report_datetime"))
+            < self.instance.report_datetime
+        ):
+            dte = formatted_datetime(self.instance.report_datetime)
+            self.raise_validation_error(
+                {
+                    "part_two_report_datetime": (
+                        "Cannot be before `Part One` report datetime. "
+                        f"Expected date after {dte}."
+                    )
+                },
+                INVALID_ERROR,
+            )
+
+        if (
+            self.cleaned_data.get("part_two_report_datetime")
+            and self.instance.part_three_report_datetime
+            and to_utc(self.cleaned_data.get("part_two_report_datetime"))
+            > self.instance.part_three_report_datetime
+        ):
+            dte = formatted_datetime(self.instance.part_three_report_datetime)
+            self.raise_validation_error(
+                {
+                    "part_two_report_datetime": (
+                        "Cannot be after `Part Three` report datetime. "
+                        f"Expected date before {dte}."
+                    )
+                },
+                INVALID_ERROR,
+            )
 
     def raise_if_not_future_appt_datetime(self):
         """Raises if appt_datetime is not future relative to
