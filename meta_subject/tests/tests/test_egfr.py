@@ -212,6 +212,7 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
             subject_visit=subject_visit,
             requisition=requisition,
             assay_datetime=requisition.requisition_datetime,
+            report_datetime=requisition.requisition_datetime,
         )
         data.update(creatinine_value=150.8, creatinine_units=MICROMOLES_PER_LITER)
         obj_2000 = BloodResultsRft.objects.create(**data)
