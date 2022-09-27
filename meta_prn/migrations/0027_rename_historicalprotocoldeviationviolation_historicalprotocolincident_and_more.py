@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("edc_protocol_violation", "0006_protocolincidents_and_more"),
+        ("edc_protocol_incident", "0006_protocolincidents_and_more"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ("edc_action_item", "0028_auto_20210203_0706"),
         ("sites", "0002_alter_domain_unique"),

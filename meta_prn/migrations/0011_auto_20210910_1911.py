@@ -6,7 +6,7 @@ from django.db.migrations import RunPython
 
 def convert_actions_required_to_fk(apps, schema_editor):
     model_cls = apps.get_model("meta_prn", "protocoldeviationviolation")
-    list_model_cls = apps.get_model("edc_protocol_violation", "actionsrequired")
+    list_model_cls = apps.get_model("edc_protocol_incident", "actionsrequired")
     for obj in model_cls.objects.all():
         try:
             action_required = list_model_cls.objects.get(name=obj.action_required_old)

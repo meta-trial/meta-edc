@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
                 null=True,
                 on_delete=django.db.models.deletion.DO_NOTHING,
                 related_name="+",
-                to="edc_protocol_violation.protocolviolations",
+                to="edc_protocol_incident.protocolviolations",
             ),
         ),
         migrations.AddField(
@@ -62,7 +62,7 @@ class Migration(migrations.Migration):
                 null=True,
                 on_delete=django.db.models.deletion.PROTECT,
                 related_name="+",
-                to="edc_protocol_violation.protocolviolations",
+                to="edc_protocol_incident.protocolviolations",
             ),
         ),
         migrations.AddField(

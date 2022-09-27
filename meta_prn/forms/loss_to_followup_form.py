@@ -2,7 +2,7 @@ from django import forms
 from edc_action_item.forms.action_item_form_mixin import ActionItemFormMixin
 from edc_constants.constants import YES
 from edc_form_validators.form_validator import FormValidator
-from edc_form_validators.form_validator_mixin import FormValidatorMixin
+from edc_form_validators.form_validator_mixins import FormValidatorMixin
 from edc_offstudy.modelform_mixins import OffstudyNonCrfModelFormMixin
 from edc_sites.forms import SiteModelFormMixin
 

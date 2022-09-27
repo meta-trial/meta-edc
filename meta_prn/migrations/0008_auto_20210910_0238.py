@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ("edc_action_item", "0028_auto_20210203_0706"),
-        ("edc_protocol_violation", "0001_initial"),
+        ("edc_protocol_incident", "0001_initial"),
         ("meta_prn", "0007_auto_20210721_0335"),
     ]
 

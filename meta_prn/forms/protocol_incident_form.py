@@ -1,4 +1,4 @@
-from edc_protocol_violation.forms import ProtocolIncidentForm as Base
+from edc_protocol_incident.forms import ProtocolIncidentForm as Base
 
 from ..models import ProtocolIncident
 

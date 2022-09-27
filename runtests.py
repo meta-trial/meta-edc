@@ -127,7 +127,7 @@ project_settings = DefaultTestSettings(
         "edc_pharmacy.apps.AppConfig",
         # "edc_pharmacy_dashboard.apps.AppConfig",
         "edc_protocol.apps.AppConfig",
-        "edc_protocol_violation.apps.AppConfig",
+        "edc_protocol_incident.apps.AppConfig",
         "edc_prn.apps.AppConfig",
         "edc_randomization.apps.AppConfig",
         "edc_registration.apps.AppConfig",

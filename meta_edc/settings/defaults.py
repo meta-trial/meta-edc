@@ -5,7 +5,7 @@ from pathlib import Path
 import environ
 from edc_appointment.constants import SCHEDULED_APPT, UNSCHEDULED_APPT
 from edc_constants.constants import COMPLETE
-from edc_protocol_violation.constants import PROTOCOL_INCIDENT
+from edc_protocol_incident.constants import PROTOCOL_INCIDENT
 from edc_utils import get_datetime_from_env
 
 BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
@@ -123,7 +123,7 @@ INSTALLED_APPS = [
     "edc_pharmacy.apps.AppConfig",
     "edc_pdutils.apps.AppConfig",
     "edc_protocol.apps.AppConfig",
-    "edc_protocol_violation.apps.AppConfig",
+    "edc_protocol_incident.apps.AppConfig",
     "edc_prn.apps.AppConfig",
     "edc_qol.apps.AppConfig",
     "edc_randomization.apps.AppConfig",

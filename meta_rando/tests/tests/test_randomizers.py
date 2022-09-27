@@ -1,5 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
-from django.test import TestCase, override_settings, tag
+from django.test import TestCase, override_settings
 from edc_constants.constants import FEMALE, MALE
 from edc_randomization.site_randomizers import site_randomizers
 from edc_registration.models import RegisteredSubject
@@ -21,7 +21,6 @@ class TestRandomizers(MetaTestCaseMixin, TestCase):
             [obj.sid, obj.assignment, obj.site_name, obj.gender],
         )
 
-    @tag("e23")
     @override_settings(META_PHASE=PHASE_THREE)
     def test_randomize_phase_three(self):
         self.assertEqual(get_meta_version(), 3)

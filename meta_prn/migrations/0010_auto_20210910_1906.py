@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("edc_protocol_violation", "0001_initial"),
+        ("edc_protocol_incident", "0001_initial"),
         ("meta_prn", "0009_auto_20210910_0239"),
     ]
 
@@ -63,7 +63,7 @@ class Migration(migrations.Migration):
                 null=True,
                 on_delete=django.db.models.deletion.DO_NOTHING,
                 related_name="+",
-                to="edc_protocol_violation.actionsrequired",
+                to="edc_protocol_incident.actionsrequired",
             ),
         ),
         migrations.AddField(
@@ -74,7 +74,7 @@ class Migration(migrations.Migration):
                 null=True,
                 on_delete=django.db.models.deletion.PROTECT,
                 related_name="+",
-                to="edc_protocol_violation.actionsrequired",
+                to="edc_protocol_incident.actionsrequired",
             ),
         ),
     ]

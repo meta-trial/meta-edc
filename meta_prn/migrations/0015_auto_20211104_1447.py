@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("edc_protocol_violation", "0003_auto_20211104_1456"),
+        ("edc_protocol_incident", "0003_auto_20211104_1456"),
         ("meta_prn", "0014_auto_20211003_1709"),
     ]
 
@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 null=True,
                 on_delete=django.db.models.deletion.DO_NOTHING,
                 related_name="+",
-                to="edc_protocol_violation.protocolviolations",
+                to="edc_protocol_incident.protocolviolations",
                 verbose_name="Type of violation",
             ),
         ),
@@ -89,7 +89,7 @@ class Migration(migrations.Migration):
                 null=True,
                 on_delete=django.db.models.deletion.PROTECT,
                 related_name="+",
-                to="edc_protocol_violation.protocolviolations",
+                to="edc_protocol_incident.protocolviolations",
                 verbose_name="Type of violation",
             ),
         ),
