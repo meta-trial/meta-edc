@@ -7,7 +7,7 @@ from edc_constants.constants import HIGH_PRIORITY, NOT_SURE, TBD, YES
 from edc_lab_results import BLOOD_RESULTS_RFT_ACTION
 from edc_ltfu.constants import LTFU_ACTION
 from edc_offstudy.constants import END_OF_STUDY_ACTION
-from edc_protocol_violation.action_items import (
+from edc_protocol_incident.action_items import (
     ProtocolIncidentAction as BaseProtocolIncidentAction,
 )
 from edc_transfer.action_items import SubjectTransferAction as BaseSubjectTransferAction

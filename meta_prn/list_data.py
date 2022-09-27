@@ -1,7 +1,7 @@
 from edc_constants.constants import NOT_APPLICABLE, OTHER
 
 list_data = {
-    "edc_protocol_violation.protocolviolations": [
+    "edc_protocol_incident.protocolviolations": [
         ("failure_to_obtain_informed_consent", "Failure to obtain informed " "consent"),
         ("enrollment_of_ineligible_patient", "Enrollment of ineligible patient"),
         (
@@ -30,7 +30,7 @@ list_data = {
         (OTHER, "Other"),
         (NOT_APPLICABLE, "Not applicable"),
     ],
-    "edc_protocol_violation.protocolincidents": [
+    "edc_protocol_incident.protocolincidents": [
         ("failure_to_obtain_informed_consent", "Failure to obtain informed " "consent"),
         ("enrollment_of_ineligible_patient", "Enrollment of ineligible patient"),
         (

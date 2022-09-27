@@ -6,7 +6,7 @@ from django.db.migrations import RunPython
 
 def convert_violation_type_to_fk(apps, schema_editor):
     model_cls = apps.get_model("meta_prn", "protocoldeviationviolation")
-    list_model_cls = apps.get_model("edc_protocol_violation", "protocolviolations")
+    list_model_cls = apps.get_model("edc_protocol_incident", "protocolviolations")
     for obj in model_cls.objects.all():
         violation_type = list_model_cls.objects.get(name=obj.violation_type)
         obj.violation = violation_type

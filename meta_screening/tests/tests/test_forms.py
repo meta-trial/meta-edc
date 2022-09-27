@@ -2,7 +2,7 @@ from copy import deepcopy
 from random import choices
 
 from dateutil.relativedelta import relativedelta
-from django.test import TestCase
+from django.test import TestCase, tag
 from edc_constants.constants import FEMALE, MALE, NO, NOT_APPLICABLE, POS, YES
 from edc_utils.date import get_utcnow
 
@@ -21,6 +21,7 @@ from ..options import (
     get_part_one_eligible_options,
     get_part_three_eligible_options,
     get_part_two_eligible_options,
+    now,
 )
 
 
@@ -71,15 +72,18 @@ class TestForms(ScreeningTestMixin, TestCase):
     def setUp(self):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         part_two_eligible_options = deepcopy(get_part_two_eligible_options())
-        obj = ScreeningPartOne(**part_one_eligible_options)
-        obj.save()
+        self.screening_part_one = ScreeningPartOne(**part_one_eligible_options)
+        self.screening_part_one.save()
 
-        self.screening_identifier = obj.screening_identifier
+        self.screening_identifier = self.screening_part_one.screening_identifier
 
-        obj = ScreeningPartTwo.objects.get(screening_identifier=self.screening_identifier)
+        self.screening_part_two = ScreeningPartTwo.objects.get(
+            screening_identifier=self.screening_identifier
+        )
         for k, v in part_two_eligible_options.items():
-            setattr(obj, k, v)
-        obj.save()
+            setattr(self.screening_part_two, k, v)
+        self.screening_part_two.report_datetime = now
+        self.screening_part_two.save()
         # part_three_eligible_options = deepcopy(
         #     get_part_three_eligible_options(report_datetime=obj.report_datetime)
         # )
@@ -93,18 +97,23 @@ class TestForms(ScreeningTestMixin, TestCase):
         form.is_valid()
         self.assertEqual(form._errors, {})
 
+    @tag("1")
     def test_screening_form_two_ok(self):
         part_two_eligible_options = deepcopy(get_part_two_eligible_options())
-        form = ScreeningPartTwoForm(data=part_two_eligible_options)
+        form = ScreeningPartTwoForm(
+            data=part_two_eligible_options, instance=self.screening_part_two
+        )
         form.is_valid()
         self.assertEqual(form._errors, {})
 
     def test_screening_form_three_ok(self):
         obj = ScreeningPartThree.objects.get(screening_identifier=self.screening_identifier)
+        obj.part_two_report_datetime = now
+        obj.save()
         part_three_eligible_options = deepcopy(
             get_part_three_eligible_options(report_datetime=obj.report_datetime)
         )
-        form = ScreeningPartThreeForm(data=part_three_eligible_options)
+        form = ScreeningPartThreeForm(data=part_three_eligible_options, instance=obj)
         form.is_valid()
         self.assertEqual(form._errors, {})
 

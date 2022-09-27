@@ -1,7 +1,15 @@
+from __future__ import annotations
+
+from datetime import datetime
+
 from django import forms
 from edc_constants.constants import NO, YES
 from edc_egfr.form_validator_mixins import EgfrCkdEpiFormValidatorMixin
-from edc_form_validators import INVALID_ERROR, FormValidator
+from edc_form_validators import (
+    INVALID_ERROR,
+    FormValidator,
+    ReportDatetimeFormValidatorMixin,
+)
 from edc_glucose.form_validators import (
     FastingFormValidatorMixin,
     FbgOgttFormValidatorMixin,
@@ -9,7 +17,7 @@ from edc_glucose.form_validators import (
 )
 from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
 from edc_reportable import BmiFormValidatorMixin
-from edc_utils import formatted_datetime, to_utc
+from edc_utils import formatted_datetime
 from edc_vitals.form_validators import (
     BloodPressureFormValidatorMixin,
     WeightHeightBmiFormValidatorMixin,
@@ -31,8 +39,12 @@ class ScreeningPartThreeFormValidator(
     EgfrCkdEpiFormValidatorMixin,
     BloodPressureFormValidatorMixin,
     WeightHeightBmiFormValidatorMixin,
+    ReportDatetimeFormValidatorMixin,
     FormValidator,
 ):
+
+    report_datetime_field_attr = "part_three_report_datetime"
+
     def clean(self):
         self.validate_report_datetimes()
         self.require_all_vitals_fields()
@@ -45,7 +57,7 @@ class ScreeningPartThreeFormValidator(
         self.raise_on_avg_blood_pressure_suggests_severe_htn(**self.cleaned_data)
         self.validate_pregnancy()
         self.validate_fasting_required_fields()
-        self.validate_fbg_required_fields("fbg", "part_three_report_datetime")
+        self.validate_fbg_required_fields("fbg")
         validate_glucose_as_millimoles_per_liter("fbg", self.cleaned_data)
         self.validate_fbg_before_ogtt()
         self.validate_ogtt_time_interval()
@@ -71,6 +83,10 @@ class ScreeningPartThreeFormValidator(
         self.required_if(YES, field="hba1c_performed", field_required="hba1c_value")
         self.validate_egfr()
         self.validate_suitability_for_study()
+
+    @property
+    def part_two_report_datetime(self) -> datetime | None:
+        return self.instance.part_two_report_datetime
 
     def validate_repeat_fbg(self):
         """Validate like first FBG and ...
@@ -127,14 +143,14 @@ class ScreeningPartThreeFormValidator(
 
     def validate_report_datetimes(self):
         if (
-            self.cleaned_data.get("part_three_report_datetime")
-            and to_utc(self.cleaned_data.get("part_three_report_datetime"))
-            < self.instance.part_two_report_datetime
+            self.report_datetime
+            and self.part_two_report_datetime
+            and self.report_datetime < self.part_two_report_datetime
         ):
-            dte = formatted_datetime(self.instance.part_two_report_datetime)
+            dte = formatted_datetime(self.part_two_report_datetime)
             self.raise_validation_error(
                 {
-                    "part_three_report_datetime": (
+                    self.report_datetime_field_attr: (
                         "Cannot be before Part Two report datetime. "
                         f"Expected date after {dte}."
                     )

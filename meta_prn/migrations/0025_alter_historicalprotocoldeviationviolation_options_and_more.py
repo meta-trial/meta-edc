@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         (
-            "edc_protocol_violation",
+            "edc_protocol_incident",
             "0005_protocolincident_historicalprotocolincident_and_more",
         ),
         ("meta_prn", "0024_alter_protocoldeviationviolation_violation"),

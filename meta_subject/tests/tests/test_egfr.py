@@ -4,7 +4,7 @@ from copy import deepcopy
 from decimal import Decimal
 
 from django import forms
-from django.test import TestCase, tag
+from django.test import TestCase
 from edc_action_item import site_action_items
 from edc_action_item.models import ActionItem
 from edc_constants.constants import BLACK, MALE
@@ -164,7 +164,6 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
             )
         )
 
-    @tag("1")
     def test_egfr_ethnicity(self):
 
         subject_visit = self.get_subject_visit(
