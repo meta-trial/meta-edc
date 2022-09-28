@@ -1,7 +1,10 @@
 from django.contrib import admin, messages
 from django.contrib.messages import ERROR, SUCCESS
+from django.core.exceptions import ObjectDoesNotExist
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
+from edc_offstudy.exceptions import OffstudyError
+from edc_pharmacy.exceptions import NextStudyMedicationError, RefillCreatorError
 from edc_pharmacy.model_mixins.study_medication_crf_model_mixin import (
     StudyMedicationError,
 )
@@ -50,18 +53,6 @@ class StudyMedicationAdmin(CrfModelAdmin):
                 ),
             },
         ),
-        # (
-        #     "Next refill",
-        #     {
-        #         "description": "This refill will be dispensed at the next scheduled visit",
-        #         "fields": (
-        #             "order_or_update_next",
-        #             "next_dosage_guideline",
-        #             "next_formulation",
-        #         ),
-        #     },
-        # ),
-        # refill_fieldset_tuple
         crf_status_fieldset,
         audit_fieldset_tuple,
     )
@@ -69,9 +60,6 @@ class StudyMedicationAdmin(CrfModelAdmin):
     radio_fields = {
         "formulation": admin.VERTICAL,
         "refill": admin.VERTICAL,
-        # "next_dosage_guideline": admin.VERTICAL,
-        # "next_formulation": admin.VERTICAL,
-        # "order_or_update_next": admin.VERTICAL,
         "refill_to_next_visit": admin.VERTICAL,
     }
 
@@ -84,8 +72,27 @@ class StudyMedicationAdmin(CrfModelAdmin):
         ):
             try:
                 obj.save()
-            except StudyMedicationError:
-                messages.add_message(request, ERROR, f"Failed to update document. See {obj}.")
+            except NextStudyMedicationError as e:
+                messages.add_message(request, ERROR, f"NextStudyMedicationError: {e}")
+                errors += 1
+            except ObjectDoesNotExist as e:
+                messages.add_message(
+                    request,
+                    ERROR,
+                    (
+                        f"ObjectDoesNotExist: {obj.subject_identifier}, "
+                        f"{obj.related_visit}, {str(e)}"
+                    ),
+                )
+                errors += 1
+            except StudyMedicationError as e:
+                messages.add_message(request, ERROR, f"StudyMedicationError: {e}")
+                errors += 1
+            except RefillCreatorError as e:
+                messages.add_message(request, ERROR, f"RefillCreatorError: {e}")
+                errors += 1
+            except OffstudyError as e:
+                messages.add_message(request, ERROR, f"OffstudyError: {e}")
                 errors += 1
             else:
                 updated += 1
