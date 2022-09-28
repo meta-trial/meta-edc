@@ -79,9 +79,7 @@ class StudyMedicationAdmin(CrfModelAdmin):
         dosage_guideline_followup = DosageGuideline.objects.get(
             medication=medication, dose=Decimal("2000.0")
         )
-        for obj in StudyMedication.objects.filter(site_id=request.site.id).order_by(
-            "modified"
-        ):
+        for obj in queryset:
             obj.refill_identifier = obj.id
             if not obj.formulation:
                 obj.formulation = formulation
