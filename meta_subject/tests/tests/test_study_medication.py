@@ -1,12 +1,8 @@
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase
-from edc_constants.constants import NO, YES
-from edc_pharmacy.exceptions import PrescriptionAlreadyExists
-from edc_pharmacy.model_mixins.study_medication_crf_model_mixin import (
-    NextStudyMedicationError,
-    StudyMedicationError,
-)
+from edc_constants.constants import YES
+from edc_pharmacy.exceptions import PrescriptionAlreadyExists, StudyMedicationError
 from edc_pharmacy.models import DosageGuideline, Formulation, Medication, RxRefill
 from edc_pharmacy.prescribe import create_prescription
 from edc_registration.models import RegisteredSubject
@@ -54,39 +50,6 @@ class TestStudyMedication(MetaTestCaseMixin, TestCase):
             obj.save()
         self.assertIn("Dosage guideline", str(cm.exception))
 
-    def test_next_refill_information_if_refill_to_next_visit(self):
-        medication = Medication.objects.get(name=METFORMIN)
-        formulation = Formulation.objects.filter(medication=medication)[0]
-        dosage_guideline = DosageGuideline.objects.filter(medication=medication)[0]
-        opts = dict(
-            subject_visit=self.subject_visit,
-            refill_start_datetime=self.subject_visit.report_datetime,
-            formulation=formulation,
-            dosage_guideline=dosage_guideline,
-            refill_to_next_visit=YES,
-        )
-        obj = StudyMedication(order_or_update_next=YES, **opts)
-        self.assertRaises(NextStudyMedicationError, obj.save)
-
-        next_formulation = Formulation.objects.filter(medication=medication)[0]
-        next_dosage_guideline = DosageGuideline.objects.filter(medication=medication)[0]
-
-        obj = StudyMedication(
-            order_or_update_next=YES, next_formulation=next_formulation, **opts
-        )
-        self.assertRaises(NextStudyMedicationError, obj.save)
-
-        obj = StudyMedication(
-            order_or_update_next=YES,
-            next_formulation=next_formulation,
-            next_dosage_guideline=next_dosage_guideline,
-            **opts,
-        )
-        try:
-            obj.save()
-        except NextStudyMedicationError:
-            self.fail("NextStudyMedicationError unexpectedly raised")
-
     def test_study_med_longitudinal_and_one_rx_refill_created(self):
         medication = Medication.objects.get(name=METFORMIN)
         formulation = Formulation.objects.filter(medication=medication)[0]
@@ -97,7 +60,6 @@ class TestStudyMedication(MetaTestCaseMixin, TestCase):
             formulation=formulation,
             dosage_guideline=dosage_guideline,
             refill_to_next_visit=YES,
-            order_or_update_next=NO,
         )
         obj.save()
         try:
@@ -122,7 +84,6 @@ class TestStudyMedication(MetaTestCaseMixin, TestCase):
             formulation=formulation,
             dosage_guideline=dosage_guideline,
             refill_to_next_visit=YES,
-            order_or_update_next=NO,
         )
         obj.save()
         obj.save()
@@ -145,7 +106,6 @@ class TestStudyMedication(MetaTestCaseMixin, TestCase):
             formulation=formulation,
             dosage_guideline=dosage_guideline,
             refill_to_next_visit=YES,
-            order_or_update_next=NO,
         )
         obj.save()
         obj.save()
@@ -166,7 +126,6 @@ class TestStudyMedication(MetaTestCaseMixin, TestCase):
             formulation=formulation,
             dosage_guideline=dosage_guideline,
             refill_to_next_visit=YES,
-            order_or_update_next=NO,
         )
         obj.save()
         try:
@@ -199,7 +158,6 @@ class TestStudyMedication(MetaTestCaseMixin, TestCase):
                 formulation=formulation,
                 dosage_guideline=dosage_guideline,
                 refill_to_next_visit=YES,
-                order_or_update_next=NO,
             )
             obj.save()
             date_sequence.append(obj.refill_start_datetime)
@@ -221,30 +179,6 @@ class TestStudyMedication(MetaTestCaseMixin, TestCase):
             date_sequence.append(rx_refill.refill_end_datetime)
         dte1, dte2, dte3, dte4 = date_sequence
         self.assertTrue(dte1 <= dte2 <= dte3 <= dte4)
-
-    def test_study_med_longitudinal_and_one_rx_refill_created_and_order_next(self):
-        medication = Medication.objects.get(name=METFORMIN)
-        obj = StudyMedication(
-            subject_visit=self.subject_visit,
-            refill_start_datetime=self.subject_visit.report_datetime,
-            formulation=Formulation.objects.filter(medication=medication)[0],
-            dosage_guideline=DosageGuideline.objects.filter(medication=medication)[0],
-            next_formulation=Formulation.objects.filter(medication=medication)[0],
-            next_dosage_guideline=DosageGuideline.objects.filter(medication=medication)[1],
-            refill_to_next_visit=YES,
-            order_or_update_next=YES,
-        )
-        obj.save()
-        self.assertEqual(RxRefill.objects.filter(rx=obj.rx).count(), 2)
-        rx_refills = RxRefill.objects.filter(rx=obj.rx).order_by("refill_start_datetime")
-        date_sequence = [
-            rx_refills[0].refill_start_datetime,
-            rx_refills[0].refill_end_datetime,
-            rx_refills[1].refill_start_datetime,
-            rx_refills[1].refill_end_datetime,
-        ]
-        dte1, dte2, dte3, dte4 = date_sequence
-        self.assertTrue(dte1 < dte2 <= dte3 < dte4)
 
     def test_study_med_longitudinal(self):
         StudyMedication(

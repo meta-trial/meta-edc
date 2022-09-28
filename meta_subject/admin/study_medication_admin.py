@@ -22,8 +22,8 @@ class StudyMedicationAdmin(CrfModelAdmin):
     autocomplete_fields = [
         "dosage_guideline",
         "formulation",
-        "next_dosage_guideline",
-        "next_formulation",
+        # "next_dosage_guideline",
+        # "next_formulation",
     ]
 
     fieldsets = (
@@ -33,13 +33,13 @@ class StudyMedicationAdmin(CrfModelAdmin):
                 "fields": (
                     "subject_visit",
                     "report_datetime",
+                    "refill",
                 )
             },
         ),
         (
-            "This refill",
+            "Details",
             {
-                "description": "This refill will be dispensed at this visit",
                 "fields": (
                     "refill_start_datetime",
                     "dosage_guideline",
@@ -50,17 +50,17 @@ class StudyMedicationAdmin(CrfModelAdmin):
                 ),
             },
         ),
-        (
-            "Next refill",
-            {
-                "description": "This refill will be dispensed at the next scheduled visit",
-                "fields": (
-                    "order_or_update_next",
-                    "next_dosage_guideline",
-                    "next_formulation",
-                ),
-            },
-        ),
+        # (
+        #     "Next refill",
+        #     {
+        #         "description": "This refill will be dispensed at the next scheduled visit",
+        #         "fields": (
+        #             "order_or_update_next",
+        #             "next_dosage_guideline",
+        #             "next_formulation",
+        #         ),
+        #     },
+        # ),
         # refill_fieldset_tuple
         crf_status_fieldset,
         audit_fieldset_tuple,
@@ -68,9 +68,10 @@ class StudyMedicationAdmin(CrfModelAdmin):
 
     radio_fields = {
         "formulation": admin.VERTICAL,
-        "next_dosage_guideline": admin.VERTICAL,
-        "next_formulation": admin.VERTICAL,
-        "order_or_update_next": admin.VERTICAL,
+        "refill": admin.VERTICAL,
+        # "next_dosage_guideline": admin.VERTICAL,
+        # "next_formulation": admin.VERTICAL,
+        # "order_or_update_next": admin.VERTICAL,
         "refill_to_next_visit": admin.VERTICAL,
     }
 
