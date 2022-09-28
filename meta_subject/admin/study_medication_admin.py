@@ -25,8 +25,6 @@ class StudyMedicationAdmin(CrfModelAdmin):
     autocomplete_fields = [
         "dosage_guideline",
         "formulation",
-        # "next_dosage_guideline",
-        # "next_formulation",
     ]
 
     fieldsets = (
