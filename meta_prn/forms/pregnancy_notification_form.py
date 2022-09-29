@@ -6,6 +6,7 @@ from edc_constants.constants import FEMALE, NO, YES
 from edc_form_validators import INVALID_ERROR
 from edc_form_validators.form_validator import FormValidator
 from edc_form_validators.form_validator_mixins import FormValidatorMixin
+from edc_model_form.mixins import BaseModelFormMixin
 from edc_offstudy.modelform_mixins import OffstudyNonCrfModelFormMixin
 from edc_registration.models import RegisteredSubject
 from edc_sites.forms import SiteModelFormMixin
@@ -109,6 +110,7 @@ class PregnancyNotificationForm(
     OffstudyNonCrfModelFormMixin,
     FormValidatorMixin,
     ActionItemFormMixin,
+    BaseModelFormMixin,
     forms.ModelForm,
 ):
 

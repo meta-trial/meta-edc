@@ -16,35 +16,35 @@ class Migration(migrations.Migration):
             name="bloodresultsfbc",
             managers=[
                 ("objects", edc_visit_tracking.managers.CrfModelManager()),
-                ("on_site", edc_visit_tracking.managers.CurrentSiteManager()),
+                ("on_site", edc_visit_tracking.managers.CrfCurrentSiteManager()),
             ],
         ),
         migrations.AlterModelManagers(
             name="bloodresultshba1c",
             managers=[
                 ("objects", edc_visit_tracking.managers.CrfModelManager()),
-                ("on_site", edc_visit_tracking.managers.CurrentSiteManager()),
+                ("on_site", edc_visit_tracking.managers.CrfCurrentSiteManager()),
             ],
         ),
         migrations.AlterModelManagers(
             name="bloodresultslft",
             managers=[
                 ("objects", edc_visit_tracking.managers.CrfModelManager()),
-                ("on_site", edc_visit_tracking.managers.CurrentSiteManager()),
+                ("on_site", edc_visit_tracking.managers.CrfCurrentSiteManager()),
             ],
         ),
         migrations.AlterModelManagers(
             name="bloodresultslipid",
             managers=[
                 ("objects", edc_visit_tracking.managers.CrfModelManager()),
-                ("on_site", edc_visit_tracking.managers.CurrentSiteManager()),
+                ("on_site", edc_visit_tracking.managers.CrfCurrentSiteManager()),
             ],
         ),
         migrations.AlterModelManagers(
             name="bloodresultsrft",
             managers=[
                 ("objects", edc_visit_tracking.managers.CrfModelManager()),
-                ("on_site", edc_visit_tracking.managers.CurrentSiteManager()),
+                ("on_site", edc_visit_tracking.managers.CrfCurrentSiteManager()),
             ],
         ),
         migrations.AlterField(

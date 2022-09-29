@@ -2,7 +2,7 @@ from copy import deepcopy
 from random import choices
 
 from dateutil.relativedelta import relativedelta
-from django.test import TestCase, tag
+from django.test import TestCase
 from edc_constants.constants import FEMALE, MALE, NO, NOT_APPLICABLE, POS, YES
 from edc_utils.date import get_utcnow
 
@@ -97,7 +97,6 @@ class TestForms(ScreeningTestMixin, TestCase):
         form.is_valid()
         self.assertEqual(form._errors, {})
 
-    @tag("1")
     def test_screening_form_two_ok(self):
         part_two_eligible_options = deepcopy(get_part_two_eligible_options())
         form = ScreeningPartTwoForm(

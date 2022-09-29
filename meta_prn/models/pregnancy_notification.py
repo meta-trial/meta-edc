@@ -17,9 +17,9 @@ class PregnancyNotificationError(Exception):
 
 
 class PregnancyNotification(
-    NonUniqueSubjectIdentifierFieldMixin,
     SiteModelMixin,
     ActionModelMixin,
+    NonUniqueSubjectIdentifierFieldMixin,
     BaseUuidModel,
 ):
 

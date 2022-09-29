@@ -790,7 +790,7 @@ class Migration(migrations.Migration):
                 "abstract": False,
             },
             managers=[
-                ("on_site", edc_visit_tracking.managers.CurrentSiteManager()),
+                ("on_site", edc_visit_tracking.managers.CrfCurrentSiteManager()),
                 ("objects", edc_visit_tracking.managers.CrfModelManager()),
             ],
         ),

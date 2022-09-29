@@ -1,4 +1,5 @@
 from django.apps import apps as django_apps
+from django.contrib.sites.managers import CurrentSiteManager
 from django.contrib.sites.models import Site
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.db import models
@@ -12,7 +13,6 @@ from edc_model.models import BaseUuidModel
 from edc_registration.models import RegisteredSubject
 from edc_sites.models import SiteModelMixin
 from edc_utils import get_utcnow
-from edc_visit_tracking.managers import CurrentSiteManager
 
 from ..action_items import RECONSENT_ACTION
 from .model_mixins import SearchSlugModelMixin

@@ -19,8 +19,9 @@ from edc_offstudy.constants import (
     LATE_EXCLUSION,
     WITHDRAWAL,
 )
+from edc_offstudy.model_mixins import OffstudyModelMixin
+from edc_sites.models import SiteModelMixin
 from edc_transfer.constants import TRANSFERRED
-from edc_visit_schedule.model_mixins.schedule_model_mixin import ScheduleModelMixin
 
 from meta_lists.models import OffstudyReasons
 
@@ -30,10 +31,9 @@ from ..choices import CLINICAL_WITHDRAWAL_REASONS, TOXICITY_WITHDRAWAL_REASONS
 # TODO: take off study meds but coninue followup (WITHDRAWAL)
 # TODO: follow on new schedule, if permanently off drug (Single 36m visit)
 from ..constants import CLINICAL_WITHDRAWAL
-from .model_mixins import OffStudyModelMixin
 
 
-class EndOfStudy(OffStudyModelMixin, ScheduleModelMixin, ActionModelMixin, BaseUuidModel):
+class EndOfStudy(SiteModelMixin, ActionModelMixin, OffstudyModelMixin, BaseUuidModel):
 
     action_name = END_OF_STUDY_ACTION
 
@@ -172,6 +172,6 @@ class EndOfStudy(OffStudyModelMixin, ScheduleModelMixin, ActionModelMixin, BaseU
         null=True,
     )
 
-    class Meta(OffStudyModelMixin.Meta):
+    class Meta(OffstudyModelMixin.Meta):
         verbose_name = "End of Study"
         verbose_name_plural = "End of Study"

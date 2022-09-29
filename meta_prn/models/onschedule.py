@@ -1,41 +1,21 @@
-from edc_identifier.managers import SubjectIdentifierManager
-from edc_model.models import BaseUuidModel, HistoricalRecords
-from edc_visit_schedule.model_mixins import CurrentSiteManager, OnScheduleModelMixin
+from edc_model.models import BaseUuidModel
+from edc_sites.models import SiteModelMixin
+from edc_visit_schedule.model_mixins import OnScheduleModelMixin
 
 
-class OnSchedule(OnScheduleModelMixin, BaseUuidModel):
+class OnSchedule(SiteModelMixin, OnScheduleModelMixin, BaseUuidModel):
 
     """A model used by the system. Auto-completed by subject_consent."""
 
-    on_site = CurrentSiteManager()
-
-    objects = SubjectIdentifierManager()
-
-    history = HistoricalRecords()
-
     class Meta(OnScheduleModelMixin.Meta, BaseUuidModel.Meta):
         pass
 
 
-class OnSchedulePregnancy(OnScheduleModelMixin, BaseUuidModel):
-
-    on_site = CurrentSiteManager()
-
-    objects = SubjectIdentifierManager()
-
-    history = HistoricalRecords()
-
+class OnSchedulePregnancy(SiteModelMixin, OnScheduleModelMixin, BaseUuidModel):
     class Meta(OnScheduleModelMixin.Meta, BaseUuidModel.Meta):
         pass
 
 
-class OnSchedulePostnatal(OnScheduleModelMixin, BaseUuidModel):
-
-    on_site = CurrentSiteManager()
-
-    objects = SubjectIdentifierManager()
-
-    history = HistoricalRecords()
-
+class OnSchedulePostnatal(SiteModelMixin, OnScheduleModelMixin, BaseUuidModel):
     class Meta(OnScheduleModelMixin.Meta):
         pass
