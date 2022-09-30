@@ -5,16 +5,11 @@ from edc_constants.constants import NO, NOT_APPLICABLE
 from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
 from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_reference.model_mixins import ReferenceModelMixin
-from edc_sites.models import CurrentSiteManager as BaseCurrentSiteManager
 from edc_sites.models import SiteModelMixin
-from edc_visit_tracking.managers import VisitModelManager
+from edc_visit_tracking.managers import VisitCurrentSiteManager, VisitModelManager
 from edc_visit_tracking.model_mixins import VisitModelMixin
 
 from ..choices import INFO_SOURCE, VISIT_REASON, VISIT_UNSCHEDULED_REASON
-
-
-class CurrentSiteManager(VisitModelManager, BaseCurrentSiteManager):
-    pass
 
 
 class SubjectVisit(
@@ -67,7 +62,7 @@ class SubjectVisit(
         choices=INFO_SOURCE,
     )
 
-    on_site = CurrentSiteManager()
+    on_site = VisitCurrentSiteManager()
 
     objects = VisitModelManager()
 

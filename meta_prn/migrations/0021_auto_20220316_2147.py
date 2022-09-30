@@ -13,8 +13,8 @@ import django_revision.revision_field
 import edc_identifier.managers
 import edc_model.validators.date
 import edc_protocol.validators
+import edc_sites.models
 import edc_utils.date
-import edc_visit_schedule.model_mixins.schedule_model_mixin
 import simple_history.models
 from django.conf import settings
 from django.db import migrations, models
@@ -695,7 +695,7 @@ class Migration(migrations.Migration):
                 ("objects", django.db.models.manager.Manager()),
                 (
                     "on_site",
-                    edc_visit_schedule.model_mixins.schedule_model_mixin.CurrentSiteManager(),
+                    edc_sites.models.CurrentSiteManager(),
                 ),
             ],
         ),
@@ -855,7 +855,7 @@ class Migration(migrations.Migration):
                 ("objects", django.db.models.manager.Manager()),
                 (
                     "on_site",
-                    edc_visit_schedule.model_mixins.schedule_model_mixin.CurrentSiteManager(),
+                    edc_sites.models.CurrentSiteManager(),
                 ),
             ],
         ),
@@ -963,7 +963,7 @@ class Migration(migrations.Migration):
             managers=[
                 (
                     "on_site",
-                    edc_visit_schedule.model_mixins.schedule_model_mixin.CurrentSiteManager(),
+                    edc_sites.models.CurrentSiteManager(),
                 ),
                 ("objects", edc_identifier.managers.SubjectIdentifierManager()),
             ],

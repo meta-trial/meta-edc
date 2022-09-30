@@ -5,7 +5,6 @@ from edc_model.models import BaseUuidModel, OtherCharField
 from edc_pharmacy.models import Medication
 from edc_sites.models import SiteModelMixin
 from edc_utils import get_utcnow
-from edc_visit_schedule import SubjectSchedule
 
 from meta_pharmacy.constants import METFORMIN
 
@@ -21,8 +20,6 @@ class OffStudyMedication(
 ):
 
     action_name = OFFSTUDY_MEDICATION_ACTION
-
-    subject_schedule_cls = SubjectSchedule
 
     offschedule_compare_dates_as_datetimes = False
 

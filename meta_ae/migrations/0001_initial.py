@@ -327,7 +327,7 @@ class Migration(migrations.Migration):
             options={"verbose_name": "AE Initial Report", "abstract": False},
             managers=[
                 ("on_site", edc_action_item.managers.ActionIdentifierSiteManager()),
-                ("objects", edc_action_item.managers.ActionIdentifierManager()),
+                ("objects", edc_action_item.managers.ActionIdentifierModelManager()),
             ],
         ),
         migrations.CreateModel(
@@ -597,7 +597,7 @@ class Migration(migrations.Migration):
             options={"verbose_name": "Death Report", "abstract": False},
             managers=[
                 ("on_site", edc_action_item.managers.ActionIdentifierSiteManager()),
-                ("objects", edc_action_item.managers.ActionIdentifierManager()),
+                ("objects", edc_action_item.managers.ActionIdentifierModelManager()),
             ],
         ),
         migrations.CreateModel(
@@ -2979,7 +2979,7 @@ class Migration(migrations.Migration):
             options={"verbose_name": "AE TMG Report", "abstract": False},
             managers=[
                 ("on_site", edc_action_item.managers.ActionIdentifierSiteManager()),
-                ("objects", edc_action_item.managers.ActionIdentifierManager()),
+                ("objects", edc_action_item.managers.ActionIdentifierModelManager()),
             ],
         ),
         migrations.CreateModel(
@@ -3160,7 +3160,7 @@ class Migration(migrations.Migration):
             options={"verbose_name": "AE SUSAR Report", "abstract": False},
             managers=[
                 ("on_site", edc_action_item.managers.ActionIdentifierSiteManager()),
-                ("objects", edc_action_item.managers.ActionIdentifierManager()),
+                ("objects", edc_action_item.managers.ActionIdentifierModelManager()),
             ],
         ),
         migrations.CreateModel(
@@ -3362,7 +3362,7 @@ class Migration(migrations.Migration):
             options={"verbose_name": "AE Follow-up Report", "abstract": False},
             managers=[
                 ("on_site", edc_action_item.managers.ActionIdentifierSiteManager()),
-                ("objects", edc_action_item.managers.ActionIdentifierManager()),
+                ("objects", edc_action_item.managers.ActionIdentifierModelManager()),
             ],
         ),
         migrations.CreateModel(

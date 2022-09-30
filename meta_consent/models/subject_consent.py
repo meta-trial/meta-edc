@@ -1,4 +1,5 @@
 from django.apps import apps as django_apps
+from django.contrib.sites.managers import CurrentSiteManager
 from django.db import models
 from edc_consent.field_mixins import (
     CitizenFieldsMixin,
@@ -18,7 +19,6 @@ from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_registration.model_mixins import UpdatesOrCreatesRegistrationModelMixin
 from edc_search.model_mixins import SearchSlugManager
 from edc_sites.models import SiteModelMixin
-from edc_visit_tracking.managers import CurrentSiteManager
 
 from meta_pharmacy.constants import METFORMIN
 

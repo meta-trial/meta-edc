@@ -1,6 +1,7 @@
 from django import forms
 from edc_action_item.forms import ActionItemFormMixin
 from edc_form_validators import FormValidatorMixin
+from edc_model_form.mixins import BaseModelFormMixin
 from edc_offstudy.modelform_mixins import OffstudyModelFormMixin
 from edc_sites.forms import SiteModelFormMixin
 
@@ -13,6 +14,7 @@ class EndOfStudyForm(
     ActionItemFormMixin,
     SiteModelFormMixin,
     FormValidatorMixin,
+    BaseModelFormMixin,
     forms.ModelForm,
 ):
 

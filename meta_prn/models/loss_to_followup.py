@@ -17,9 +17,9 @@ LOSS_CHOICES = (
 
 
 class LossToFollowup(
-    NonUniqueSubjectIdentifierFieldMixin,
     SiteModelMixin,
     ActionModelMixin,
+    NonUniqueSubjectIdentifierFieldMixin,
     BaseUuidModel,
 ):
 

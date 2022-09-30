@@ -10,10 +10,10 @@ from ..choices import ACTION_REQUIRED
 
 
 class ProtocolIncident(
-    ProtocolIncidentModelMixin,
-    NonUniqueSubjectIdentifierFieldMixin,
     SiteModelMixin,
     ActionModelMixin,
+    ProtocolIncidentModelMixin,
+    NonUniqueSubjectIdentifierFieldMixin,
     BaseUuidModel,
 ):
 

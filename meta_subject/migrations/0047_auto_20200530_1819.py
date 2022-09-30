@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AlterModelManagers(
             name="subjectvisit",
             managers=[
-                ("on_site", meta_subject.models.subject_visit.CurrentSiteManager()),
+                ("on_site", edc_visit_tracking.managers.VisitCurrentSiteManager()),
                 ("objects", edc_visit_tracking.managers.VisitModelManager()),
             ],
         ),

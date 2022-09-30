@@ -35,7 +35,7 @@ class Manager(models.Manager):
 
 
 class BirthOutcomes(
-    RequiresConsentFieldsModelMixin, OffstudyCrfModelMixin, SiteModelMixin, BaseUuidModel
+    SiteModelMixin, RequiresConsentFieldsModelMixin, OffstudyCrfModelMixin, BaseUuidModel
 ):
     """A user model to capture birth outcomes.
 
