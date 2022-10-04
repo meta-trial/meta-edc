@@ -37,15 +37,10 @@ class SubjectConsentFormValidator(SubjectConsentFormValidatorMixin, FormValidato
 
 
 class SubjectConsentForm(
-    SiteModelFormMixin, FormValidatorMixin, ConsentModelFormMixin, forms.ModelForm
+    SiteModelFormMixin, ConsentModelFormMixin, FormValidatorMixin, forms.ModelForm
 ):
 
     form_validator_cls = SubjectConsentFormValidator
-
-    screening_identifier = forms.CharField(
-        label="Screening identifier",
-        widget=forms.TextInput(attrs={"readonly": "readonly"}),
-    )
 
     def validate_gender_of_consent(self):
         return None
@@ -66,4 +61,8 @@ class SubjectConsentForm(
                 "Format is 'LASTNAME, FIRSTNAME'. "
                 "All uppercase separated by a comma."
             ),
+            "screening_identifier": "(read-only)",
+        }
+        widgets = {
+            "screening_identifier": forms.TextInput(attrs={"readonly": "readonly"}),
         }

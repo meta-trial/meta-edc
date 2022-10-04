@@ -8,8 +8,10 @@ from edc_form_validators.form_validator import FormValidator
 from edc_form_validators.form_validator_mixins import FormValidatorMixin
 from edc_model_form.mixins import BaseModelFormMixin
 from edc_offstudy.modelform_mixins import OffstudyNonCrfModelFormMixin
+from edc_prn.modelform_mixins import PrnFormValidatorMixin
 from edc_registration.models import RegisteredSubject
 from edc_sites.forms import SiteModelFormMixin
+from edc_utils.date import to_local
 from edc_visit_schedule.constants import DAY1
 
 from meta_subject.models import UrinePregnancy
@@ -17,11 +19,11 @@ from meta_subject.models import UrinePregnancy
 from ..models import PregnancyNotification
 
 
-class PregnancyNotificationFormValidator(FormValidator):
+class PregnancyNotificationFormValidator(PrnFormValidatorMixin, FormValidator):
     def clean(self):
         try:
             RegisteredSubject.objects.get(
-                subject_identifier=self.cleaned_data.get("subject_identifier"), gender=FEMALE
+                subject_identifier=self.subject_identifier, gender=FEMALE
             )
         except ObjectDoesNotExist:
             self.raise_validation_error("Participant is not female.")
@@ -34,9 +36,8 @@ class PregnancyNotificationFormValidator(FormValidator):
     def validate_bhcg(self):
         if (
             self.cleaned_data.get("bhcg_date")
-            and self.cleaned_data.get("report_datetime")
-            and self.cleaned_data.get("bhcg_date")
-            > self.cleaned_data.get("report_datetime").date()
+            and self.report_datetime
+            and self.cleaned_data.get("bhcg_date") > to_local(self.report_datetime).date()
         ):
             self.raise_validation_error(
                 {"bhcg_date": "Expected a date on or before the report date/time."},
@@ -49,9 +50,7 @@ class PregnancyNotificationFormValidator(FormValidator):
         ):
             if (
                 not UrinePregnancy.objects.filter(
-                    subject_visit__subject_identifier=self.cleaned_data.get(
-                        "subject_identifier"
-                    ),
+                    subject_visit__subject_identifier=self.subject_identifier,
                     notified=False,
                     assay_date=self.cleaned_data.get("bhcg_date"),
                 )
@@ -85,21 +84,20 @@ class PregnancyNotificationFormValidator(FormValidator):
                 {"edd": "Expected a date within 9 months of UPT date."}, INVALID_ERROR
             )
         if (
-            self.cleaned_data.get("report_datetime")
+            self.report_datetime
             and not self.cleaned_data.get("bhcg_date")
             and self.cleaned_data.get("bhcg_confirmed") == NO
         ):
             if (
-                self.cleaned_data.get("report_datetime")
-                and self.cleaned_data.get("edd")
-                < self.cleaned_data.get("report_datetime").date()
+                self.report_datetime
+                and self.cleaned_data.get("edd") < to_local(self.report_datetime).date()
             ):
                 self.raise_validation_error(
                     {"edd": "Expected a date after the report date."}, INVALID_ERROR
                 )
-            if self.cleaned_data.get("report_datetime") and self.cleaned_data.get(
-                "edd"
-            ) > self.cleaned_data.get("report_datetime").date() + relativedelta(months=9):
+            if self.report_datetime and self.cleaned_data.get("edd") > to_local(
+                self.report_datetime
+            ).date() + relativedelta(months=9):
                 self.raise_validation_error(
                     {"edd": "Expected a date within 9 months of report date."}, INVALID_ERROR
                 )
@@ -108,9 +106,9 @@ class PregnancyNotificationFormValidator(FormValidator):
 class PregnancyNotificationForm(
     SiteModelFormMixin,
     OffstudyNonCrfModelFormMixin,
-    FormValidatorMixin,
     ActionItemFormMixin,
     BaseModelFormMixin,
+    FormValidatorMixin,
     forms.ModelForm,
 ):
 

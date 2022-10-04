@@ -11,8 +11,8 @@ from ..models import SubjectTransfer
 class SubjectTransferForm(
     SiteModelFormMixin,
     OffstudyNonCrfModelFormMixin,
-    FormValidatorMixin,
     BaseModelFormMixin,
+    FormValidatorMixin,
     forms.ModelForm,
 ):
 

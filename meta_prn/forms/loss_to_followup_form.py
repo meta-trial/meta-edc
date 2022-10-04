@@ -5,12 +5,13 @@ from edc_form_validators.form_validator import FormValidator
 from edc_form_validators.form_validator_mixins import FormValidatorMixin
 from edc_model_form.mixins import BaseModelFormMixin
 from edc_offstudy.modelform_mixins import OffstudyNonCrfModelFormMixin
+from edc_prn.modelform_mixins import PrnFormValidatorMixin
 from edc_sites.forms import SiteModelFormMixin
 
 from ..models import LossToFollowup
 
 
-class LossToFollowupFormValidator(FormValidator):
+class LossToFollowupFormValidator(PrnFormValidatorMixin, FormValidator):
     def clean(self):
         self.required_if(YES, field="home_visit", field_required="home_visit_detail")
         self.validate_other_specify(
@@ -21,9 +22,9 @@ class LossToFollowupFormValidator(FormValidator):
 class LossToFollowupForm(
     SiteModelFormMixin,
     OffstudyNonCrfModelFormMixin,
-    FormValidatorMixin,
     ActionItemFormMixin,
     BaseModelFormMixin,
+    FormValidatorMixin,
     forms.ModelForm,
 ):
 

@@ -13,8 +13,8 @@ class EndOfStudyForm(
     OffstudyModelFormMixin,
     ActionItemFormMixin,
     SiteModelFormMixin,
-    FormValidatorMixin,
     BaseModelFormMixin,
+    FormValidatorMixin,
     forms.ModelForm,
 ):
 

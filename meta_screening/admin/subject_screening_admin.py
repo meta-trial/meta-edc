@@ -8,7 +8,7 @@ from edc_constants.constants import YES
 from edc_dashboard.url_names import url_names
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
-from edc_screening import format_reasons_ineligible
+from edc_screening.utils import format_reasons_ineligible
 
 from ..admin_site import meta_screening_admin
 from ..eligibility import MetaEligibility
