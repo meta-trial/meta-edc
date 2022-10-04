@@ -2,6 +2,7 @@ from django import forms
 from django.core.exceptions import ObjectDoesNotExist
 from edc_action_item.forms import ActionItemFormMixin
 from edc_form_validators import FormValidatorMixin
+from edc_model_form.mixins import BaseModelFormMixin
 from edc_registration.models import RegisteredSubject
 from edc_sites.forms import SiteModelFormMixin
 
@@ -9,14 +10,12 @@ from ..models import SubjectReconsent
 
 
 class SubjectReconsentForm(
-    SiteModelFormMixin, FormValidatorMixin, ActionItemFormMixin, forms.ModelForm
+    SiteModelFormMixin,
+    ActionItemFormMixin,
+    BaseModelFormMixin,
+    FormValidatorMixin,
+    forms.ModelForm,
 ):
-
-    subject_identifier = forms.CharField(
-        label="Subject identifier",
-        widget=forms.TextInput(attrs={"readonly": "readonly"}),
-    )
-
     def clean(self):
         cleaned_data = super().clean()
         try:
@@ -31,3 +30,8 @@ class SubjectReconsentForm(
     class Meta:
         model = SubjectReconsent
         fields = "__all__"
+        help_text = {"action_identifier": "(read-only)", "subject_identifier": "(read-only)"}
+        widgets = {
+            "action_identifier": forms.TextInput(attrs={"readonly": "readonly"}),
+            "subject_identifier": forms.TextInput(attrs={"readonly": "readonly"}),
+        }

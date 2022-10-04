@@ -1,8 +1,9 @@
 from edc_constants.constants import CLOSED, OTHER, YES
 from edc_form_validators import FormValidator
+from edc_prn.modelform_mixins import PrnFormValidatorMixin
 
 
-class ProtocolIncidentFormValidator(FormValidator):
+class ProtocolIncidentFormValidator(PrnFormValidatorMixin, FormValidator):
     def clean(self):
 
         self.required_if(YES, field="safety_impact", field_required="safety_impact_details")

@@ -1,11 +1,10 @@
 from django.apps import apps as django_apps
-from django.test import TestCase, tag
+from django.test import TestCase
 from edc_sites.models import CurrentSiteManager as DefaultCurrentSiteManager
 from edc_visit_tracking.managers import CrfCurrentSiteManager, VisitCurrentSiteManager
 
 
 class TestManagers(TestCase):
-    @tag("1")
     def test_models(self):
         app_label = "meta_subject"
         app_config = django_apps.get_app_config(app_label)

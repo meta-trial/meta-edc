@@ -16,6 +16,7 @@ from edc_ltfu.constants import LTFU
 from edc_ltfu.modelform_mixins import RequiresLtfuFormValidatorMixin
 from edc_offstudy.constants import COMPLETED_FOLLOWUP
 from edc_offstudy.utils import OffstudyError
+from edc_prn.modelform_mixins import PrnFormValidatorMixin
 from edc_transfer.constants import TRANSFERRED
 from edc_utils import formatted_date
 from edc_visit_schedule.constants import MONTH36
@@ -31,6 +32,7 @@ from ..constants import (
 class EndOfStudyFormValidator(
     RequiresDeathReportFormValidatorMixin,
     RequiresLtfuFormValidatorMixin,
+    PrnFormValidatorMixin,
     FormValidator,
 ):
     death_report_model = "meta_ae.deathreport"

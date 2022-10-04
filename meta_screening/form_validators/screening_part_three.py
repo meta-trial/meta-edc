@@ -5,19 +5,17 @@ from datetime import datetime
 from django import forms
 from edc_constants.constants import NO, YES
 from edc_egfr.form_validator_mixins import EgfrCkdEpiFormValidatorMixin
-from edc_form_validators import (
-    INVALID_ERROR,
-    FormValidator,
-    ReportDatetimeFormValidatorMixin,
-)
+from edc_form_validators import INVALID_ERROR, FormValidator
 from edc_glucose.form_validators import (
     FastingFormValidatorMixin,
     FbgOgttFormValidatorMixin,
     GlucoseFormValidatorMixin,
 )
 from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
+from edc_prn.modelform_mixins import PrnFormValidatorMixin
 from edc_reportable import BmiFormValidatorMixin
 from edc_utils import formatted_datetime
+from edc_utils.date import to_local, to_utc
 from edc_vitals.form_validators import (
     BloodPressureFormValidatorMixin,
     WeightHeightBmiFormValidatorMixin,
@@ -39,7 +37,7 @@ class ScreeningPartThreeFormValidator(
     EgfrCkdEpiFormValidatorMixin,
     BloodPressureFormValidatorMixin,
     WeightHeightBmiFormValidatorMixin,
-    ReportDatetimeFormValidatorMixin,
+    PrnFormValidatorMixin,
     FormValidator,
 ):
 
@@ -145,9 +143,9 @@ class ScreeningPartThreeFormValidator(
         if (
             self.report_datetime
             and self.part_two_report_datetime
-            and self.report_datetime < self.part_two_report_datetime
+            and to_utc(self.report_datetime) < self.part_two_report_datetime
         ):
-            dte = formatted_datetime(self.part_two_report_datetime)
+            dte = formatted_datetime(to_local(self.part_two_report_datetime))
             self.raise_validation_error(
                 {
                     self.report_datetime_field_attr: (

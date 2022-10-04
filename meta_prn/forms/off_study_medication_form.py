@@ -1,19 +1,40 @@
-from datetime import datetime
+from __future__ import annotations
 
 from django import forms
 from edc_action_item.forms import ActionItemFormMixin
+from edc_form_validators import INVALID_ERROR
 from edc_form_validators.form_validator import FormValidator
 from edc_form_validators.form_validator_mixins import FormValidatorMixin
 from edc_model_form.mixins import BaseModelFormMixin
 from edc_offstudy.modelform_mixins import OffstudyNonCrfModelFormMixin
+from edc_prn.modelform_mixins import PrnFormValidatorMixin
 from edc_sites.forms import SiteModelFormMixin
+from edc_utils.date import to_local
 from edc_visit_schedule.modelform_mixins import VisitScheduleNonCrfModelFormMixin
 
 from ..models import OffStudyMedication
 
 
-class OffScheduleFormValidator(FormValidator):
-    pass
+class OffStudyMedicationFormValidator(PrnFormValidatorMixin, FormValidator):
+    def clean(self):
+        if (
+            self.cleaned_data.get("stop_date")
+            and self.report_datetime
+            and self.cleaned_data.get("stop_date") > to_local(self.report_datetime).date()
+        ):
+            self.raise_validation_error(
+                {"stop_date": "Cannot be after report date."}, INVALID_ERROR
+            )
+        if (
+            self.cleaned_data.get("last_dose_date")
+            and self.cleaned_data.get("stop_date")
+            and self.cleaned_data.get("last_dose_date") > self.cleaned_data.get("stop_date")
+        ):
+            self.raise_validation_error(
+                {"last_dose_date": "Cannot be after decision to stop medication."},
+                INVALID_ERROR,
+            )
+        self.validate_other_specify(field="reason", other_specify_field="reason_other")
 
 
 class OffStudyMedicationForm(
@@ -21,24 +42,13 @@ class OffStudyMedicationForm(
     VisitScheduleNonCrfModelFormMixin,
     OffstudyNonCrfModelFormMixin,
     SiteModelFormMixin,
-    FormValidatorMixin,
     BaseModelFormMixin,
+    FormValidatorMixin,
     forms.ModelForm,
 ):
 
-    form_validator_cls = OffScheduleFormValidator
+    form_validator_cls = OffStudyMedicationFormValidator
     get_by_model_attr = "offstudymedication_model"
-    report_datetime_field_attr = "report_datetime"
-
-    @property
-    def subject_identifier(self) -> str:
-        return self.cleaned_data.get("subject_identifier") or self.instance.subject_identifier
-
-    @property
-    def report_datetime(self) -> datetime:
-        return self.cleaned_data.get(self.report_datetime_field_attr) or getattr(
-            self.instance, self.report_datetime_field_attr
-        )
 
     class Meta:
         model = OffStudyMedication

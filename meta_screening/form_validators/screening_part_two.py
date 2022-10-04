@@ -1,22 +1,19 @@
 from __future__ import annotations
 
 from datetime import datetime
-from zoneinfo import ZoneInfo
 
 from django import forms
 from edc_constants.constants import NO, YES
-from edc_form_validators import (
-    INVALID_ERROR,
-    FormValidator,
-    ReportDatetimeFormValidatorMixin,
-)
-from edc_utils import formatted_datetime, get_utcnow
+from edc_form_validators import INVALID_ERROR, FormValidator
+from edc_prn.modelform_mixins import PrnFormValidatorMixin
+from edc_utils import formatted_datetime, get_utcnow, to_utc
+from edc_utils.date import to_local
 from edc_utils.round_up import round_half_away_from_zero
 
 from ..eligibility import EligibilityPartTwo
 
 
-class ScreeningPartTwoFormValidator(ReportDatetimeFormValidatorMixin, FormValidator):
+class ScreeningPartTwoFormValidator(PrnFormValidatorMixin, FormValidator):
 
     report_datetime_field_attr = "part_two_report_datetime"
 
@@ -40,14 +37,12 @@ class ScreeningPartTwoFormValidator(ReportDatetimeFormValidatorMixin, FormValida
 
         self.required_if(YES, field="advised_to_fast", field_required="appt_datetime")
 
-        if self.cleaned_data.get("appt_datetime"):
-            self.raise_if_not_future_appt_datetime()
+        self.raise_if_not_future_appt_datetime()
 
         if not self.part_three_report_datetime:
             self.applicable_if_true(
                 self.cleaned_data.get("appt_datetime")
-                and self.cleaned_data.get("appt_datetime").astimezone(ZoneInfo("UTC"))
-                <= get_utcnow(),
+                and to_utc(self.cleaned_data.get("appt_datetime")) <= get_utcnow(),
                 field_applicable="p3_ltfu",
                 applicable_msg="Appointment date has past",
                 not_applicable_msg="This field is not applicable. See appointment date above",
@@ -78,8 +73,11 @@ class ScreeningPartTwoFormValidator(ReportDatetimeFormValidatorMixin, FormValida
         return eligibility.is_eligible
 
     def validate_report_datetimes(self):
-        if self.report_datetime and self.report_datetime < self.part_one_report_datetime:
-            dte = formatted_datetime(self.part_one_report_datetime)
+        if (
+            self.report_datetime
+            and to_utc(self.report_datetime) < self.part_one_report_datetime
+        ):
+            dte = formatted_datetime(to_local(self.part_one_report_datetime))
             self.raise_validation_error(
                 {
                     self.report_datetime_field_attr: (
@@ -93,9 +91,9 @@ class ScreeningPartTwoFormValidator(ReportDatetimeFormValidatorMixin, FormValida
         if (
             self.report_datetime
             and self.part_three_report_datetime
-            and self.report_datetime > self.part_three_report_datetime
+            and to_utc(self.report_datetime) > self.part_three_report_datetime
         ):
-            dte = formatted_datetime(self.part_three_report_datetime)
+            dte = formatted_datetime(to_local(self.part_three_report_datetime))
             self.raise_validation_error(
                 {
                     self.report_datetime_field_attr: (
@@ -112,7 +110,7 @@ class ScreeningPartTwoFormValidator(ReportDatetimeFormValidatorMixin, FormValida
         """
         appt_datetime = self.cleaned_data.get("appt_datetime")
         if appt_datetime and self.report_datetime:
-            tdelta = appt_datetime - self.report_datetime
+            tdelta = appt_datetime - to_local(self.report_datetime)
 
             hours = tdelta.seconds / 3600
 

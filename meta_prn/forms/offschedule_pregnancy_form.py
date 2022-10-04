@@ -3,22 +3,23 @@ from edc_action_item.forms.action_item_form_mixin import ActionItemFormMixin
 from edc_form_validators.form_validator import FormValidator
 from edc_form_validators.form_validator_mixins import FormValidatorMixin
 from edc_model_form.mixins import BaseModelFormMixin
+from edc_prn.modelform_mixins import PrnFormValidatorMixin
 from edc_sites.forms import SiteModelFormMixin
 from edc_visit_schedule.modelform_mixins import OffScheduleModelFormMixin
 
 from ..models import OffSchedulePregnancy
 
 
-class OffSchedulePregnancyFormValidator(FormValidator):
+class OffSchedulePregnancyFormValidator(PrnFormValidatorMixin, FormValidator):
     pass
 
 
 class OffSchedulePregnancyForm(
     OffScheduleModelFormMixin,
     SiteModelFormMixin,
-    FormValidatorMixin,
     ActionItemFormMixin,
     BaseModelFormMixin,
+    FormValidatorMixin,
     forms.ModelForm,
 ):
 

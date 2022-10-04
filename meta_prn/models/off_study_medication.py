@@ -1,7 +1,7 @@
 from django.db import models
 from edc_action_item.models import ActionModelMixin
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierFieldMixin
-from edc_model.models import BaseUuidModel, OtherCharField
+from edc_model.models import BaseUuidModel
 from edc_pharmacy.models import Medication
 from edc_sites.models import SiteModelMixin
 from edc_utils import get_utcnow
@@ -43,10 +43,14 @@ class OffStudyMedication(
         choices=WITHDRAWAL_STUDY_MEDICATION_REASONS,
     )
 
-    reason_other = OtherCharField()
+    reason_other = models.TextField(
+        verbose_name="If other, please specify ...",
+        null=True,
+        blank=True,
+    )
 
     comment = models.TextField(
-        verbose_name="Comment",
+        verbose_name="Any additional comments",
         null=True,
         blank=True,
     )
