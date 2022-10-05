@@ -8,6 +8,8 @@ from edc_constants.constants import COMPLETE
 from edc_protocol_incident.constants import PROTOCOL_INCIDENT
 from edc_utils import get_datetime_from_env
 
+from .logging import LOGGING  # noqa
+
 BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 ENV_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 env = environ.Env(
@@ -68,7 +70,6 @@ DEFAULT_APPOINTMENT_TYPE = "hospital"
 LOGIN_URL = "/accounts/login/"
 LOGOUT_REDIRECT_URL = "/accounts/login/"
 
-SENTRY_ENABLED = env("SENTRY_ENABLED")
 DEFENDER_ENABLED = env("DEFENDER_ENABLED")
 
 INSTALLED_APPS = [
@@ -304,6 +305,12 @@ SHORT_DATETIME_FORMAT = "d/m/Y H:i"
 # See also any inte_* or edc_* apps.py
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# edc-appointment
+EDC_APPOINTMENT_APPT_REASON_CHOICES = (
+    (SCHEDULED_APPT, "Scheduled visit (study)"),
+    (UNSCHEDULED_APPT, "Routine / Unscheduled (non-study)"),
+)
+
 # edc-pdutils
 EXPORT_FILENAME_TIMESTAMP_FORMAT = "%Y%m%d"
 
@@ -438,7 +445,6 @@ SIMPLE_HISTORY_ENFORCE_HISTORY_MODEL_PERMISSIONS = True
 FQDN = env.str("DJANGO_FQDN")  # ???
 INDEX_PAGE = env.str("DJANGO_INDEX_PAGE")
 INDEX_PAGE_LABEL = env.str("DJANGO_INDEX_PAGE_LABEL")
-DJANGO_LOG_FOLDER = env.str("DJANGO_LOG_FOLDER")
 
 # edc_adverse_event
 ADVERSE_EVENT_ADMIN_SITE = env.str("EDC_ADVERSE_EVENT_ADMIN_SITE")
@@ -470,6 +476,8 @@ EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
 )
 EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
 
+DJANGO_LOG_FOLDER = env.str("DJANGO_LOG_FOLDER")
+
 # static
 if env("AWS_ENABLED"):
     # see
@@ -496,9 +504,6 @@ else:
     # run collectstatic, check nginx LOCATION
     STATIC_URL = env.str("DJANGO_STATIC_URL")
     STATIC_ROOT = env.str("DJANGO_STATIC_ROOT")
-
-if env("DJANGO_LOGGING_ENABLED"):
-    from .logging import LOGGING  # noqa
 
 # CELERY
 # see docs on setting up the broker
@@ -531,11 +536,6 @@ if CELERY_ENABLED:
         #     CELERY_ROUTES = {
         #         'edc_data_manager.tasks.*': {'queue': 'normal'},
         #     }
-
-EDC_APPOINTMENT_APPT_REASON_CHOICES = (
-    (SCHEDULED_APPT, "Scheduled visit (study)"),
-    (UNSCHEDULED_APPT, "Routine / Unscheduled (non-study)"),
-)
 
 
 if "test" in sys.argv:
