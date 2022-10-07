@@ -14,15 +14,9 @@ class OtherArvRegimensInlineAdmin(TabularInlineMixin, admin.TabularInline):
     extra = 1
     view_on_site = False
     autocomplete_fields = ["arv_regimen"]
-    insert_after = "has_other_regimens"
-
-    def get_formset(self, request, obj=None, **kwargs):
-        formset = super().get_formset(request, obj=None, **kwargs)
-        # formset.validate_min = True
-        return formset
 
     fieldsets = (
-        [
+        (
             "ARV Regimen History",
             {
                 "description": (
@@ -36,7 +30,7 @@ class OtherArvRegimensInlineAdmin(TabularInlineMixin, admin.TabularInline):
                     "notes",
                 ),
             },
-        ],
+        ),
     )
 
 
