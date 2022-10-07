@@ -85,7 +85,7 @@ INSTALLED_APPS = [
     "fontawesomefree",
     "django_crypto_fields.apps.AppConfig",
     "django_revision.apps.AppConfig",
-    "django_extensions",
+    # "django_extensions",
     "logentry_admin",
     "simple_history",
     "storages",
@@ -182,6 +182,7 @@ if not DEFENDER_ENABLED:
 
 MIDDLEWARE.extend(
     [
+        "edc_protocol.middleware.ProtocolMiddleware",
         "edc_dashboard.middleware.DashboardMiddleware",
         "edc_subject_dashboard.middleware.DashboardMiddleware",
         "edc_lab_dashboard.middleware.DashboardMiddleware",

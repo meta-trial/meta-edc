@@ -1,8 +1,8 @@
 from django.conf import settings
-from django.contrib.auth.views import LogoutView
 from django.urls.conf import include, path, re_path
 from django.views.defaults import page_not_found, server_error  # noqa
 from django.views.generic import RedirectView
+from edc_auth.views import LogoutView
 from edc_dashboard.utils import get_index_page
 from edc_dashboard.views import AdministrationView
 from edc_utils.paths_for_urlpatterns import paths_for_urlpatterns
@@ -26,7 +26,6 @@ urlpatterns = [
     *paths_for_urlpatterns("edc_action_item"),
     *paths_for_urlpatterns("edc_adverse_event"),
     *paths_for_urlpatterns("edc_appointment"),
-    # *paths_for_urlpatterns("edc_call_manager"),
     *paths_for_urlpatterns("edc_consent"),
     *paths_for_urlpatterns("edc_crf"),
     *paths_for_urlpatterns("edc_dashboard"),
