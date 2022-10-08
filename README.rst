@@ -4,6 +4,11 @@
 META Edc
 --------
 
+Metformin treatment in Africa- META
+
+https://www.lstmed.ac.uk/research/departments/international-public-health/respond-africa/meta
+
+
 This codebase is used for two randomized clinical trials:
 
 ____
