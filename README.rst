@@ -40,6 +40,8 @@ See also https://github.com/clinicedc/edc
 
 |django|
 
+To setup a demo system, see https://github.com/meta-trial/meta3-sample
+
 
 .. |pypi| image:: https://img.shields.io/pypi/v/meta-edc.svg
     :target: https://pypi.python.org/pypi/meta-edc
