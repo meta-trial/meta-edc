@@ -4,6 +4,12 @@
 META Edc
 --------
 
+Metformin treatment in Africa- META
+
+https://www.lstmed.ac.uk/research/departments/international-public-health/respond-africa/meta
+
+py 3.10 / DJ 4.1.2 / edc 0.4.44
+
 This codebase is used for two randomized clinical trials:
 
 ____
@@ -50,7 +56,7 @@ Create a virtualenv, clone the main repo and checkout master
 
 .. code-block:: bash
 
-  conda create -n edc python=3.7
+  conda create -n edc python=3.10
   conda activate edc
 
 
@@ -60,7 +66,7 @@ Clone the main repo and checkout master
 
   mkdir ~/projects
   cd projects
-  https://github.com/meta-trial/meta-edc.git
+  git clone https://github.com/meta-trial/meta-edc.git
   cd ~/projects/meta-edc
   git checkout master
 
@@ -89,11 +95,10 @@ Continue with the installation
   cd ~/projects/meta-edc
   git checkout master
   pip install .
-  pip install -U -r requirements/stable-v0.1.10.txt
+  pip install -U git+https://github.com/erikvw/django-simple-history.git
   python manage.py migrate
   python manage.py import_randomization_list
   python manage.py import_holidays
-
 
 Create a user and start up `runserver`
 
