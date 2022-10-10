@@ -23,7 +23,7 @@ def update_forms_reference(sender=None, **kwargs):
         os.mkdir(doc_folder)
     forms = FormsReference(visit_schedules=[visit_schedule], admin_site=meta_subject_admin)
     path = os.path.join(doc_folder, "forms_reference.md")
-    forms.to_file(path=path, exists_ok=True)
+    forms.to_file(path=path, overwrite=True)
 
 
 class Command(BaseCommand):
