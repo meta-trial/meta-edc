@@ -1,6 +1,11 @@
 Changes
 =======
 
+unreleased
+----------
+- fix error raised when running update_forms_reference
+- update docs/forms_reference.md
+
 0.2.30
 ------
 - bump edc=0.4.46
@@ -372,4 +377,3 @@ Changes
 0.1.46
 ------
 - bump up to DJ>=3.0.3, python 3.8, edc==0.1.10
-
