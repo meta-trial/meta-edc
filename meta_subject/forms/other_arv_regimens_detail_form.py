@@ -17,6 +17,9 @@ class OtherArvRegimensDetailFormValidator(CrfFormValidator):
                 field_required="arv_regimen_start_date",
             )
 
+    def validate_crf_report_datetime(self):
+        pass
+
 
 class OtherArvRegimensDetailForm(InlineCrfModelFormMixin, FormValidatorMixin, forms.ModelForm):
 
