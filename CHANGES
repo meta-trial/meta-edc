@@ -1,10 +1,14 @@
 Changes
 =======
 
-0.2.12
+0.2.29
 ------
 - bump edc=0.4.45
 - remove report_datetime validator for inline
+
+0.2.28
+------
+- bump edc=0.4.44
 
 0.2.11
 ------
