@@ -9,7 +9,7 @@ class CalculatedModelMixin(models.Model):
     # calculated
     calculated_egfr_value = models.DecimalField(
         verbose_name="eGFR",
-        max_digits=8,
+        max_digits=10,
         decimal_places=4,
         null=True,
         help_text="mL/min/1.73m2 (system calculated)",
@@ -18,7 +18,7 @@ class CalculatedModelMixin(models.Model):
     # converted if necessary
     converted_creatinine_value = models.DecimalField(
         verbose_name="Serum creatinine",
-        max_digits=8,
+        max_digits=10,
         decimal_places=4,
         null=True,
         help_text=f"{MICROMOLES_PER_LITER_DISPLAY} (system converted)",
@@ -27,7 +27,7 @@ class CalculatedModelMixin(models.Model):
     # converted if necessary
     converted_fbg_value = models.DecimalField(
         verbose_name="FBG level",
-        max_digits=8,
+        max_digits=10,
         decimal_places=4,
         null=True,
         help_text=f"{MILLIMOLES_PER_LITER} (system converted)",
@@ -35,7 +35,7 @@ class CalculatedModelMixin(models.Model):
 
     converted_fbg2_value = models.DecimalField(
         verbose_name="Repeat FBG level",
-        max_digits=8,
+        max_digits=10,
         decimal_places=4,
         null=True,
         help_text=f"{MILLIMOLES_PER_LITER} (system converted)",
@@ -44,7 +44,7 @@ class CalculatedModelMixin(models.Model):
     # converted if necessary
     converted_ogtt_value = models.DecimalField(
         verbose_name="OGTT (2-hours)",
-        max_digits=8,
+        max_digits=10,
         decimal_places=4,
         null=True,
         help_text=f"{MILLIMOLES_PER_LITER} (system converted)",
@@ -53,7 +53,7 @@ class CalculatedModelMixin(models.Model):
     # converted if necessary
     converted_ogtt2_value = models.DecimalField(
         verbose_name="Repeat OGTT (2-hours)",
-        max_digits=8,
+        max_digits=10,
         decimal_places=4,
         null=True,
         help_text=f"{MILLIMOLES_PER_LITER} (system converted)",

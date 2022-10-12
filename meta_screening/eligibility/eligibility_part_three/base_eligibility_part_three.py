@@ -89,6 +89,8 @@ class BaseEligibilityPartThree(ScreeningEligibility):
             )
         except ConversionNotHandled as e:
             raise ConversionNotHandled(f"Creatinine. {e}")
+        if value and float(value) > 999999.9999:
+            raise ConversionNotHandled("Creatinine value is absurd.")
         return value
 
     @property
