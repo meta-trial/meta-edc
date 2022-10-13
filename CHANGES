@@ -1,10 +1,12 @@
 Changes
 =======
 
-unreleased
-----------
+0.2.31
+------
 - fix error raised when running update_forms_reference
 - update docs/forms_reference.md
+- update imports from edc_screening
+- bump edc=0.4.47
 
 0.2.30
 ------
