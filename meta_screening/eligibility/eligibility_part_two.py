@@ -1,5 +1,6 @@
 from edc_constants.constants import NO, NOT_APPLICABLE, YES
-from edc_screening.screening_eligibility import FC, ScreeningEligibility
+from edc_screening.fc import FC
+from edc_screening.screening_eligibility import ScreeningEligibility
 
 
 class EligibilityPartTwo(ScreeningEligibility):

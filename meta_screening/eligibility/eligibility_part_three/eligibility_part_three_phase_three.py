@@ -1,7 +1,7 @@
 from typing import Any
 
 from edc_constants.constants import DM, NO, NORMAL, NOT_APPLICABLE, PENDING, TBD, YES
-from edc_screening.screening_eligibility import FC
+from edc_screening.fc import FC
 
 from ...constants import (
     EGFR_LT_45,
