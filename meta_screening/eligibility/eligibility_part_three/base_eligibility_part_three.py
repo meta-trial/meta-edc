@@ -8,7 +8,8 @@ from edc_reportable import (
     calculate_bmi,
     convert_units,
 )
-from edc_screening.screening_eligibility import FC, ScreeningEligibility
+from edc_screening.fc import FC
+from edc_screening.screening_eligibility import ScreeningEligibility
 
 
 class BaseEligibilityPartThree(ScreeningEligibility):

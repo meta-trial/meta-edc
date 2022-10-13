@@ -4,6 +4,7 @@ from edc_constants.choices import YES_NO
 from edc_constants.constants import NO, NOT_APPLICABLE
 from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
 from edc_model.models import BaseUuidModel, HistoricalRecords
+from edc_offstudy.model_mixins import OffstudyNonCrfModelMixin
 from edc_reference.model_mixins import ReferenceModelMixin
 from edc_sites.models import SiteModelMixin
 from edc_visit_tracking.managers import VisitCurrentSiteManager, VisitModelManager
@@ -18,6 +19,7 @@ class SubjectVisit(
     CreatesMetadataModelMixin,
     SiteModelMixin,
     RequiresConsentFieldsModelMixin,
+    OffstudyNonCrfModelMixin,
     BaseUuidModel,
 ):
 
