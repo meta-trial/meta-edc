@@ -1,7 +1,7 @@
 Changes
 =======
 
-0.2.31
+0.2.32
 ------
 - fix error raised when running update_forms_reference
 - update docs/forms_reference.md
