@@ -1,5 +1,6 @@
 import os
 import sys
+from importlib.metadata import version
 from pathlib import Path
 
 import environ
@@ -8,10 +9,6 @@ from edc_constants.constants import COMPLETE
 from edc_protocol_incident.constants import PROTOCOL_INCIDENT
 from edc_utils import get_datetime_from_env
 
-from .logging import LOGGING  # noqa
-
-BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
-ENV_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 env = environ.Env(
     AWS_ENABLED=(bool, False),
     CDN_ENABLED=(bool, False),
@@ -34,6 +31,14 @@ env = environ.Env(
     EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK=(bool, True),
     TWILIO_ENABLED=(bool, False),
 )
+
+DEBUG = env("DJANGO_DEBUG")
+
+if LOGGING_ENABLED := env("DJANGO_LOGGING_ENABLED"):
+    from .logging import *  # noqa
+
+BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
+ENV_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 
 # copy your .env file from .envs/ to BASE_DIR
 if "test" in sys.argv:
@@ -245,7 +250,6 @@ if env.str("DJANGO_CACHE") == "redis":
     SESSION_CACHE_ALIAS = "default"
     DJANGO_REDIS_IGNORE_EXCEPTIONS = True
     DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = True
-
 elif env.str("DJANGO_CACHE") == "memcached":
     CACHES = {
         "default": {
@@ -316,10 +320,7 @@ EDC_APPOINTMENT_APPT_REASON_CHOICES = (
 EXPORT_FILENAME_TIMESTAMP_FORMAT = "%Y%m%d"
 
 # django_revision
-with open(os.path.join(os.path.dirname(os.path.join(BASE_DIR, APP_NAME)), "VERSION")) as f:
-    REVISION = f.read().strip()
-
-# EDC_AUTH_SKIP_AUTH_UPDATER = True
+REVISION = version(APP_NAME)
 
 # enforce https if DEBUG=False!
 # Note: will cause "CSRF verification failed. Request aborted"
@@ -329,7 +330,6 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = env.str("DJANGO_CSRF_COOKIE_SECURE")
     SECURE_PROXY_SSL_HEADER = env.tuple("DJANGO_SECURE_PROXY_SSL_HEADER")
     SESSION_COOKIE_SECURE = env.str("DJANGO_SESSION_COOKIE_SECURE")
-
     # other security defaults
     SECURE_SSL_REDIRECT = True
     SECURE_HSTS_SECONDS = 31_536_000
@@ -477,9 +477,7 @@ EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
 )
 EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
 
-DJANGO_LOG_FOLDER = env.str("DJANGO_LOG_FOLDER")
-
-# static
+# static / AWS
 if env("AWS_ENABLED"):
     # see
     # https://www.digitalocean.com/community/tutorials/
@@ -500,7 +498,6 @@ if env("AWS_ENABLED"):
 elif DEBUG:
     STATIC_URL = env.str("DJANGO_STATIC_URL")
     STATIC_ROOT = os.path.expanduser("~/source/edc_source/meta-edc/static/")
-
 else:
     # run collectstatic, check nginx LOCATION
     STATIC_URL = env.str("DJANGO_STATIC_URL")
