@@ -20,6 +20,7 @@ ALLOWED_HOSTS = [
 ]
 
 SECURE_SSL_REDIRECT = False
+EDC_MODEL_ADMIN_CSS_THEME = "edc_purple"
 
 if os.path.exists(BASE_DIR) and not os.path.exists(KEY_PATH):  # noqa
     os.makedirs(KEY_PATH)  # noqa
