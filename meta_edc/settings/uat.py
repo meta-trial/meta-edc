@@ -1,9 +1,11 @@
+from importlib.metadata import version
+
 from multisite import SiteID
 
 from .defaults import *  # noqa
 
-print(f"Settings file {__file__}")  # noqa
-
+print(f"Settings file {__file__}")
+print(f"Version: {version('meta_edc')}")
 
 SITE_ID = SiteID(default=1)
 EDC_SITES_UAT_DOMAIN = True

@@ -1,6 +1,6 @@
 from django.db import models
 from edc_egfr.model_mixins import EgfrModelMixin
-from edc_lab.model_mixins import CrfWithRequisitionModelMixin
+from edc_lab.model_mixins import CrfWithRequisitionModelMixin, requisition_fk_options
 from edc_lab_panel.panels import rft_panel
 from edc_lab_results import BLOOD_RESULTS_RFT_ACTION
 from edc_lab_results.model_mixins import (
@@ -27,6 +27,10 @@ class BloodResultsRft(
     action_name = BLOOD_RESULTS_RFT_ACTION
     lab_panel = rft_panel
     egfr_formula_name = "ckd-epi"
+
+    requisition = models.ForeignKey(
+        limit_choices_to={"panel__name": rft_panel.name}, **requisition_fk_options
+    )
 
     old_egfr_value = models.DecimalField(
         decimal_places=4,

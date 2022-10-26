@@ -15,8 +15,8 @@ from edc_registration import get_registered_subject_model_cls
 from edc_reportable import MICROMOLES_PER_LITER, MILLIGRAMS_PER_DECILITER
 from edc_utils import age
 from edc_utils.round_up import round_half_away_from_zero
+from edc_visit_schedule.constants import OFFSCHEDULE_ACTION
 
-from meta_prn.constants import OFFSCHEDULE_ACTION
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_screening.tests.options import now
 from meta_subject.forms.blood_results.blood_results_rft_form import (

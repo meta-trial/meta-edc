@@ -4,7 +4,7 @@ from multisite import SiteID
 
 from .defaults import *  # noqa
 
-print(f"Settings file {__file__}")  # noqa
+print(f"Settings file {__file__}")
 
 SITE_ID = SiteID(default=30)
 EDC_SITES_UAT_DOMAIN = False

@@ -76,7 +76,7 @@ class PartOneFieldsModelMixin(models.Model):
 
     staying_nearby_6 = models.CharField(
         verbose_name=(
-            "Is the patient planning to remain in the catchment area " "for at least 6 months"
+            "Is the patient planning to remain in the catchment area for at least 6 months"
         ),
         max_length=15,
         choices=YES_NO,

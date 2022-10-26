@@ -6,7 +6,9 @@ from unittest import skip
 from bs4 import BeautifulSoup
 from dateutil.relativedelta import relativedelta
 from django.apps import apps as django_apps
+from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.contrib.sites.models import Site
 from django.test import tag
 from django.test.utils import override_settings
 from django.urls.base import reverse
@@ -228,6 +230,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
                 report_datetime_0=report_datetime.strftime("%Y-%m-%d"),
                 report_datetime_1=report_datetime.strftime("%H:%M"),
                 continue_part_two=YES,
+                site=Site.objects.get(id=settings.SITE_ID).id,
             )
         )
         (
