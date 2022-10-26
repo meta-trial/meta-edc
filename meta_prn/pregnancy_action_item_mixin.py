@@ -4,8 +4,9 @@ from typing import TYPE_CHECKING
 
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
+from edc_visit_schedule.constants import OFFSCHEDULE_ACTION
 
-from .constants import OFFSCHEDULE_ACTION, OFFSCHEDULE_PREGNANCY_ACTION
+from .constants import OFFSCHEDULE_PREGNANCY_ACTION
 
 if TYPE_CHECKING:
     from .models import OffSchedulePregnancy

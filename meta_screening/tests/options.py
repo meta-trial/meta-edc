@@ -4,6 +4,8 @@ from secrets import choice
 from zoneinfo import ZoneInfo
 
 from dateutil.relativedelta import relativedelta
+from django.conf import settings
+from django.contrib.sites.models import Site
 from edc_constants.constants import (
     BLACK,
     FEMALE,
@@ -43,6 +45,7 @@ def get_part_one_eligible_options():
         staying_nearby_12=YES,
         vl_undetectable=YES,
         meta_phase_two=NO,
+        site=Site.objects.get(id=settings.SITE_ID),
     )
     if fld := [f for f in part_one_fields if f not in options]:
         raise TypeError(

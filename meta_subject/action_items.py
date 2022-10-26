@@ -16,11 +16,11 @@ from edc_lab_results.action_items import (
 )
 from edc_ltfu.constants import LTFU_ACTION
 from edc_reportable import GRADE3, GRADE4
+from edc_visit_schedule.constants import OFFSCHEDULE_ACTION
 from edc_visit_schedule.utils import is_baseline
 from edc_visit_tracking.constants import MISSED_VISIT
 
 from meta_prn.constants import (
-    OFFSCHEDULE_ACTION,
     OFFSCHEDULE_PREGNANCY_ACTION,
     PREGNANCY_NOTIFICATION_ACTION,
 )

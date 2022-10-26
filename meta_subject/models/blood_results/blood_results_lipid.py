@@ -1,4 +1,5 @@
-from edc_lab.model_mixins import CrfWithRequisitionModelMixin
+from django.db import models
+from edc_lab.model_mixins import CrfWithRequisitionModelMixin, requisition_fk_options
 from edc_lab_panel.panels import lipids_panel
 from edc_lab_results import BLOOD_RESULTS_LIPID_ACTION
 from edc_lab_results.model_mixins import (
@@ -26,6 +27,10 @@ class BloodResultsLipid(
     action_name = BLOOD_RESULTS_LIPID_ACTION
     tracking_identifier_prefix = "LP"
     lab_panel = lipids_panel
+
+    requisition = models.ForeignKey(
+        limit_choices_to={"panel__name": lipids_panel.name}, **requisition_fk_options
+    )
 
     class Meta(CrfWithActionModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Blood Result: Lipids"

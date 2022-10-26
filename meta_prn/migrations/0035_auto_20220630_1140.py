@@ -5,9 +5,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import migrations
 from edc_action_item.identifiers import ActionIdentifier
 from edc_constants.constants import CLOSED, HIGH_PRIORITY, NEW
+from edc_visit_schedule.constants import OFFSCHEDULE_ACTION
 from tqdm import tqdm
-
-from meta_prn.constants import OFFSCHEDULE_ACTION
 
 
 def create_missing_offschedule(apps, schema_editor):

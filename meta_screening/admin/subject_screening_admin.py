@@ -132,6 +132,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "screening_consent": admin.VERTICAL,
         "selection_method": admin.VERTICAL,
         "severe_htn": admin.VERTICAL,
+        "site": admin.VERTICAL,
         "staying_nearby_12": admin.VERTICAL,
         "staying_nearby_6": admin.VERTICAL,
         "tissue_hypoxia_condition": admin.VERTICAL,

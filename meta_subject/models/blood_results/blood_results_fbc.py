@@ -1,4 +1,6 @@
-from edc_lab.model_mixins import CrfWithRequisitionModelMixin
+from django.db import models
+from edc_crf.model_mixins import CrfWithActionModelMixin
+from edc_lab.model_mixins import CrfWithRequisitionModelMixin, requisition_fk_options
 from edc_lab_panel.panels import fbc_panel
 from edc_lab_results import BLOOD_RESULTS_FBC_ACTION
 from edc_lab_results.model_mixins import (
@@ -13,8 +15,6 @@ from edc_lab_results.model_mixins import (
     WbcModelMixin,
 )
 from edc_model.models import BaseUuidModel
-
-from ...model_mixins import CrfWithActionModelMixin
 
 
 class BloodResultsFbc(
@@ -35,6 +35,10 @@ class BloodResultsFbc(
     tracking_identifier_prefix = "FB"
 
     lab_panel = fbc_panel
+
+    requisition = models.ForeignKey(
+        limit_choices_to={"panel__name": fbc_panel.name}, **requisition_fk_options
+    )
 
     class Meta(CrfWithActionModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Blood Result: FBC"

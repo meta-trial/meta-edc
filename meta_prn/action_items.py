@@ -12,6 +12,7 @@ from edc_protocol_incident.action_items import (
 )
 from edc_transfer.action_items import SubjectTransferAction as BaseSubjectTransferAction
 from edc_transfer.constants import SUBJECT_TRANSFER_ACTION
+from edc_visit_schedule.constants import OFFSCHEDULE_ACTION
 
 from meta_subject.constants import (
     DELIVERY_ACTION,
@@ -20,7 +21,6 @@ from meta_subject.constants import (
 )
 
 from .constants import (
-    OFFSCHEDULE_ACTION,
     OFFSCHEDULE_PREGNANCY_ACTION,
     OFFSTUDY_MEDICATION_ACTION,
     PREGNANCY_NOTIFICATION_ACTION,

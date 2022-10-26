@@ -1,8 +1,15 @@
 Changes
 =======
 
-0.2.32
+0.2.34
 ------
+- add site question to screening form
+- limit choice to on FK to panel attr for requisitions
+- bump edc=0.4.49
+- bump edc-egfr=0.1.10
+
+0.2.32 - 0.2.33
+---------------
 - fix error raised when running update_forms_reference
 - update docs/forms_reference.md
 - update imports from edc_screening

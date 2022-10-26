@@ -1,13 +1,10 @@
 from edc_action_item.models import ActionModelMixin
 from edc_model.models import BaseUuidModel
 from edc_sites.models import SiteModelMixin
+from edc_visit_schedule.constants import OFFSCHEDULE_ACTION
 from edc_visit_schedule.model_mixins import OffScheduleModelMixin
 
-from ..constants import (
-    OFFSCHEDULE_ACTION,
-    OFFSCHEDULE_POSTNATAL_ACTION,
-    OFFSCHEDULE_PREGNANCY_ACTION,
-)
+from ..constants import OFFSCHEDULE_POSTNATAL_ACTION, OFFSCHEDULE_PREGNANCY_ACTION
 
 
 class OffSchedule(SiteModelMixin, ActionModelMixin, OffScheduleModelMixin, BaseUuidModel):

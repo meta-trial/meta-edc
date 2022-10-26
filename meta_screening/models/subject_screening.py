@@ -1,4 +1,6 @@
+from django.contrib.sites.models import Site
 from django.core.validators import RegexValidator
+from django.db import models
 from django_crypto_fields.fields import EncryptedCharField
 from edc_constants.constants import QUESTION_RETIRED
 from edc_model.models import BaseUuidModel
@@ -42,6 +44,8 @@ class SubjectScreening(
         null=True,
         help_text="Provide a contact number if repeating glucose measures (Encryption: RSA)",
     )
+
+    site = models.ForeignKey(Site, on_delete=models.PROTECT, null=True, related_name="+")
 
     def save(self, *args, **kwargs):
         if self._meta.label_lower == "meta_screening.subjectscreening":

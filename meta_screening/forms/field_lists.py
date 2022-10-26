@@ -10,6 +10,7 @@ part_one_fields: Tuple[str, ...] = (
     "gender",
     "age_in_years",
     "ethnicity",
+    "site",
     "hiv_pos",
     "art_six_months",
     "on_rx_stable",
