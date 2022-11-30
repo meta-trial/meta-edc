@@ -15,7 +15,6 @@ from edc_metadata import REQUIRED
 from edc_metadata.models import CrfMetadata
 from edc_randomization.site_randomizers import site_randomizers
 from edc_sites import add_or_update_django_sites, get_sites_by_country
-from edc_sites.tests.site_test_case_mixin import SiteTestCaseMixin
 from edc_visit_tracking.constants import SCHEDULED
 from model_bakery import baker
 
@@ -39,7 +38,7 @@ from .options import (
 )
 
 
-class MetaTestCaseMixin(AppointmentTestCaseMixin, SiteTestCaseMixin):
+class MetaTestCaseMixin(AppointmentTestCaseMixin):
 
     fqdn = fqdn
 

@@ -47,11 +47,7 @@ project_settings = DefaultTestSettings(
     EDC_PROTOCOL_STUDY_CLOSE_DATETIME=datetime(
         2023, 12, 31, 23, 59, 59, tzinfo=ZoneInfo("UTC")
     ),
-    DJANGO_LANGUAGES=dict(
-        en="English",
-        lg="Luganda",
-        rny="Runyankore",
-    ),
+    DJANGO_LANGUAGES=[["en", "English"], ["sw", "Swahili"]],
     DASHBOARD_BASE_TEMPLATES=dict(
         edc_base_template="edc_dashboard/base.html",
         listboard_base_template="meta_edc/base.html",

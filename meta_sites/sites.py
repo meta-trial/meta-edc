@@ -1,7 +1,7 @@
 from edc_sites.single_site import SingleSite
 
 fqdn = "meta3.clinicedc.org"
-
+languages = dict(sw="Swahili", en="English")
 
 all_sites = {
     "tanzania": (
@@ -12,6 +12,7 @@ all_sites = {
             country="tanzania",
             country_code="tz",
             domain=f"hindu-mandal.tz.{fqdn}",
+            languages=languages,
         ),
         SingleSite(
             20,
@@ -20,6 +21,7 @@ all_sites = {
             country="tanzania",
             country_code="tz",
             domain=f"amana.tz.{fqdn}",
+            languages=languages,
         ),
         SingleSite(
             30,
@@ -28,6 +30,7 @@ all_sites = {
             country="tanzania",
             country_code="tz",
             domain=f"temeke.tz.{fqdn}",
+            languages=languages,
         ),
         SingleSite(
             40,
@@ -35,6 +38,7 @@ all_sites = {
             title="Mwananyamala Hospital",
             country="tanzania",
             country_code="tz",
+            languages=languages,
             domain=f"mwananyamala.tz.{fqdn}",
         ),
         SingleSite(
@@ -43,6 +47,7 @@ all_sites = {
             title="Mbagala Hospital",
             country="tanzania",
             country_code="tz",
+            languages=languages,
             domain=f"mbagala.tz.{fqdn}",
         ),
         SingleSite(
@@ -51,6 +56,7 @@ all_sites = {
             title="Mnazi Moja Hospital",
             country="tanzania",
             country_code="tz",
+            languages=languages,
             domain=f"mnazi-moja.tz.{fqdn}",
         ),
     ),
