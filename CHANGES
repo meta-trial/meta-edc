@@ -8,7 +8,7 @@ Changes
   hospital visit (meta-subject)
 - apply changes from edc-adverse-events related to withdrawing an AE
   and investigator AE classification (meta-ae)
--
+- update for changes in edc-protocl-incident
 
 0.2.34
 ------
