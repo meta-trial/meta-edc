@@ -5,16 +5,6 @@ from edc_constants.constants import NO, NOT_APPLICABLE, PENDING, TBD, YES
 
 from ..constants import PENDING_REPEAT
 
-NEXT_MONTH = "next_month"
-NEXT_WEEK = "next_week"
-THIS_WEEK = "this_week"
-TODAY = "today"
-LAST_WEEK = "last_week"
-LAST_MONTH = "last_month"
-NOT_NULL = "not_null"
-PAST_DATE = "past_date"
-FUTURE_DATE = "future_date"
-
 
 class EligibilityPending(admin.SimpleListFilter):
     title = "P3 pending"

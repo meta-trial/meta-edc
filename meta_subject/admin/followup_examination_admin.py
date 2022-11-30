@@ -79,8 +79,8 @@ class FollowupExaminationAdmin(
                 "description": "To be completed by the study physician",
                 "fields": (
                     "attended_clinic",
-                    "admitted_hospital",
                     "attended_clinic_detail",
+                    "admitted_hospital",
                     "attended_clinic_sae",
                     "prescribed_medication",
                     "prescribed_medication_detail",

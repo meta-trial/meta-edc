@@ -89,10 +89,14 @@ class FollowupExaminationFormValidator(CrfFormValidator):
         )
 
     def validate_hospitalizations(self):
-        self.required_if(YES, field="attend_clinic", field_required="admitted_hospital")
-        self.required_if(YES, field="attend_clinic", field_required="attend_clinic_details")
-        self.required_if(YES, field="attend_clinic", field_required="attend_clinic_sae")
-        self.required_if(YES, field="attend_clinic", field_required="prescribed_medication")
+        self.required_if(YES, field="attended_clinic", field_required="attended_clinic_detail")
+        self.applicable_if(YES, field="attended_clinic", field_applicable="admitted_hospital")
+        self.applicable_if(
+            YES, field="attended_clinic", field_applicable="attended_clinic_sae"
+        )
+        self.applicable_if(
+            YES, field="attended_clinic", field_applicable="prescribed_medication"
+        )
         self.required_if(
             YES,
             field="prescribed_medication",

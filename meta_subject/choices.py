@@ -2,7 +2,6 @@ from edc_constants.constants import (
     ABSENT,
     CLOSED,
     DEAD,
-    MICROSCOPY,
     NEW,
     NO,
     NO_EXAM,
@@ -12,7 +11,6 @@ from edc_constants.constants import (
     PATIENT,
     PRESENT,
     PRESENT_WITH_REINFORCEMENT,
-    RAPID_TEST,
     YES,
 )
 from edc_reportable.constants import GRADE3, GRADE4
@@ -150,12 +148,6 @@ FUNDOSCOPY_CHOICES = (
     ("proliferative_retinopathy", "Proliferative retinopathy"),
     ("maculopathy", "Maculopathy"),
     (NO_EXAM, "Exam not performed"),
-)
-
-MALARIA_TEST_CHOICES = (
-    (RAPID_TEST, "Rapid test"),
-    (MICROSCOPY, "Microscopy"),
-    (NOT_APPLICABLE, "Not applicable"),
 )
 
 MATERNAL_OUTCOMES = (

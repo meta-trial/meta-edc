@@ -9,6 +9,7 @@ list_data = {
         # ("diarrhoea", "Diarrhoea"),
         # ("renal_impairment", "Renal impairment"),
         (OTHER, "Other"),
+        (NOT_APPLICABLE, "Not applicable"),
     ],
     "edc_adverse_event.saereason": [
         (NOT_APPLICABLE, "Not applicable"),
