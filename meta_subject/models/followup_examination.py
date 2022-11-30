@@ -74,29 +74,19 @@ class FollowupExamination(CrfWithActionModelMixin, BaseUuidModel):
         blank=True,
     )
 
-    # 5a
     attended_clinic = models.CharField(
         verbose_name=(
-            "Since the participant's last visit did they attend any other clinic or hospital "
-            "for care for any reason"
+            "Since the participant's last study visit did they attend any clinic or hospital "
+            "for care for ANY reason"
         ),
         max_length=25,
         choices=YES_NO,
         help_text="Includes other routine appointments, e.g. BP check or family planning",
     )
 
-    # 5b
-    admitted_hospital = models.CharField(
-        verbose_name="If YES, were they admitted to hospital?",
-        max_length=25,
-        choices=YES_NO_NA,
-        default=NOT_APPLICABLE,
-    )
-
-    # 5c
     attended_clinic_detail = models.TextField(
         verbose_name=(
-            "If YES, attend other clinic or hospital, " "please provide details of this event"
+            "If YES, attend clinic or hospital, please provide details of this event"
         ),
         help_text=(
             "If the participant was given a referral letter or "
@@ -104,6 +94,13 @@ class FollowupExamination(CrfWithActionModelMixin, BaseUuidModel):
         ),
         null=True,
         blank=True,
+    )
+
+    admitted_hospital = models.CharField(
+        verbose_name="If YES, were they admitted to hospital?",
+        max_length=25,
+        choices=YES_NO_NA,
+        default=NOT_APPLICABLE,
     )
 
     attended_clinic_sae = models.CharField(

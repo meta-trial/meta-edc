@@ -1,6 +1,15 @@
 Changes
 =======
 
+0.2.35
+------
+- Clinical exam: followup: reorder questions in hospitalisation section,
+  fix validation and clarify question prompt to catch ANY clinic or
+  hospital visit (meta-subject)
+- apply changes from edc-adverse-events related to withdrawing an AE
+  and investigator AE classification (meta-ae)
+-
+
 0.2.34
 ------
 - add site question to screening form
