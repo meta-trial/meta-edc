@@ -29,7 +29,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_prn", "0029_alter_historicalpregnancynotification_edd_and_more"),
     ]

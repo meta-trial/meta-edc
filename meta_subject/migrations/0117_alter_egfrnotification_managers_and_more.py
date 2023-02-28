@@ -6,7 +6,6 @@ import edc_visit_tracking.managers
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0116_egfrnotification_report_status_and_more"),
     ]

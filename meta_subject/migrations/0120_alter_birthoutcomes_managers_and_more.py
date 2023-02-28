@@ -6,7 +6,6 @@ import meta_subject.models.birth_outcomes
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0119_historicalstudymedication_roundup_divisible_by_and_more"),
     ]

@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_prn", "0051_historicalprotocolincident_reasons_withdrawn_and_more"),
     ]

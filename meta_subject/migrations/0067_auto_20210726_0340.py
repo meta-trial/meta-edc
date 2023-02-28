@@ -21,7 +21,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_lists", "0011_auto_20210624_0225"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),

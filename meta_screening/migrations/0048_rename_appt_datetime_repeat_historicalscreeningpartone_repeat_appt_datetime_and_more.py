@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_screening", "0047_historicalscreeningpartone_appt_datetime_repeat_and_more"),
     ]

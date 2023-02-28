@@ -5,7 +5,6 @@ import edc_visit_tracking.managers
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0154_auto_20220928_0419"),
     ]

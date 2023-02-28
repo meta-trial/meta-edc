@@ -20,7 +20,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("edc_action_item", "0024_auto_20191024_1000"),
         ("sites", "0002_alter_domain_unique"),

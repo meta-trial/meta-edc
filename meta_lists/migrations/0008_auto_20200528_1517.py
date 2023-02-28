@@ -17,7 +17,6 @@ def update_ltfu(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_lists", "0007_auto_20200516_2356"),
     ]

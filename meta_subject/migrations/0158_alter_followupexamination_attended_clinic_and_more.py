@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0157_remove_bloodresultsfbc_crf_status_and_more"),
     ]

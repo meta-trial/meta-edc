@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("edc_protocol_incident", "0006_protocolincidents_and_more"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),

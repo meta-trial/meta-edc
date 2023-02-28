@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_prn", "0042_remove_endofstudy_investigator_decision_and_more"),
     ]

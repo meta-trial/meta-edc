@@ -18,7 +18,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("sites", "0002_alter_domain_unique"),
         ("meta_subject", "0081_auto_20210817_2306"),

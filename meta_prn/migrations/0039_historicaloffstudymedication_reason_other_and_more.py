@@ -5,7 +5,6 @@ import edc_model.models.fields.other_charfield
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_prn", "0038_alter_endofstudy_delivery_date_and_more"),
     ]

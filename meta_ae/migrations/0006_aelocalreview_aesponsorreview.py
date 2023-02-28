@@ -14,7 +14,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("edc_adverse_event", "0006_auto_20210425_1628"),
         ("meta_ae", "0005_auto_20210624_0225"),

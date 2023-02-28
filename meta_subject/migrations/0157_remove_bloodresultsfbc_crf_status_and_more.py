@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0156_alter_bloodresultsfbc_assay_datetime_and_more"),
     ]

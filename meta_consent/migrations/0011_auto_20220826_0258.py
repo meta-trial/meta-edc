@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_consent", "0010_alter_historicalsubjectreconsent_action_identifier_and_more"),
     ]

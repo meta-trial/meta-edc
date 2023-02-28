@@ -5,7 +5,6 @@ import edc_model.validators.date
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0137_alter_egfrdropnotification_egfr_percent_change_and_more"),
     ]
