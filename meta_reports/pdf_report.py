@@ -20,7 +20,6 @@ def get_weight_for_timepoint(subject_identifier=None, reference_dt=None):
 
 
 class MetaCrfPdfReport(CrfPdfReport):
-
     logo_data = {
         "app_label": "meta_edc",
         "filename": "meta_logo.png",
@@ -36,7 +35,6 @@ class MetaCrfPdfReport(CrfPdfReport):
         ).get_drug_assignment_display()
 
     def draw_demographics(self, story, **kwargs):
-
         model_obj = getattr(self, self.model_attr)
         weight = get_weight_for_timepoint(
             subject_identifier=self.subject_identifier,

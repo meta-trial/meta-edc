@@ -8,7 +8,6 @@ from ..model_mixins import CrfModelMixin
 
 
 class HepatitisTest(CrfModelMixin, BaseUuidModel):
-
     # Hepatitis B Surface Antigen Test
     hbsag_performed = models.CharField(
         verbose_name="Was Hepatitis B Surface Antigen test performed?",

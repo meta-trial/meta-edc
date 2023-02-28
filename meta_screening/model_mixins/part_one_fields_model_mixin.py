@@ -10,7 +10,6 @@ from ..constants import PREG_YES_NO_NA
 
 
 class PartOneFieldsModelMixin(models.Model):
-
     screening_consent = models.CharField(
         verbose_name=format_html(
             "Has the subject given his/her verbal consent to be screened for "

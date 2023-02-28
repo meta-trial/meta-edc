@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0117_alter_egfrnotification_managers_and_more"),
     ]

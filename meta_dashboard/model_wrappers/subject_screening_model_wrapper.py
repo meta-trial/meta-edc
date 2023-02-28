@@ -17,7 +17,6 @@ class SubjectConsentModelWrapper(BaseModelWrapper):
 
 
 class SubjectScreeningModelWrapper(ConsentModelWrapperMixin, ModelWrapper):
-
     consent_model_wrapper_cls = SubjectConsentModelWrapper
     model = "meta_screening.subjectscreening"
     next_url_attrs = ["screening_identifier"]
@@ -69,7 +68,6 @@ class SubjectScreeningModelWrapper(ConsentModelWrapperMixin, ModelWrapper):
 
 
 class ScreeningPartOneModelWrapper(SubjectScreeningModelWrapper):
-
     model = "meta_screening.screeningpartone"
 
     @property

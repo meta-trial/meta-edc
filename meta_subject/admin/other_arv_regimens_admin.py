@@ -36,7 +36,6 @@ class OtherArvRegimensInlineAdmin(TabularInlineMixin, admin.TabularInline):
 
 @admin.register(OtherArvRegimens, site=meta_subject_admin)
 class OtherArvRegimensAdmin(CrfModelAdmin):
-
     form = OtherArvRegimensForm
 
     inlines = [OtherArvRegimensInlineAdmin]

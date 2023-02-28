@@ -10,7 +10,6 @@ from .modeladmin import CrfModelAdmin
 
 @admin.register(ComplicationsGlycemia, site=meta_subject_admin)
 class ComplicationsGlycemiaAdmin(CrfModelAdmin):
-
     form = ComplicationsGlycemiaForm
 
     fieldsets = (

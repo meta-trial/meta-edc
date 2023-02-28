@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0136_egfrdropnotification_creatinine_quantifier_and_more"),
     ]

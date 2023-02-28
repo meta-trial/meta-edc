@@ -70,7 +70,6 @@ class TestPregnancyNotification(MetaTestCaseMixin, TestCase):
             self.fail("PregnancyNotificationError unexpectedly NOT raised")
 
     def test_pregnancy_notification_takes_off_schedule(self):
-
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         subject_visit = self.get_next_subject_visit(subject_visit)
         self.assertEqual(subject_visit.visit_code, MONTH1)

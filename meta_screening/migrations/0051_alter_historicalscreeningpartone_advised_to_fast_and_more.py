@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_screening", "0050_historicalscreeningpartone_agree_to_p3_and_more"),
     ]

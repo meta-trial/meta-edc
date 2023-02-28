@@ -31,7 +31,6 @@ class SubjectIdentifier(BaseSubjectIdentifier):
 
 
 class SubjectConsentManager(SearchSlugManager, models.Manager):
-
     use_in_migrations = True
 
     def get_by_natural_key(self, subject_identifier, version):

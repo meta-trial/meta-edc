@@ -38,7 +38,6 @@ def update_missing_action_items_for_missed_visits(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0130_auto_20220720_0216"),
     ]

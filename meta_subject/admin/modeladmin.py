@@ -10,10 +10,8 @@ class ModelAdminMixin(ModelAdminSubjectDashboardMixin):
 
 
 class CrfModelAdminMixin(ModelAdminCrfDashboardMixin):
-
     pass
 
 
 class CrfModelAdmin(ModelAdminCrfDashboardMixin, SimpleHistoryAdmin):
-
     pass

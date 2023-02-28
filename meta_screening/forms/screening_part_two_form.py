@@ -8,7 +8,6 @@ from .field_lists import part_two_fields
 
 
 class ScreeningPartTwoForm(AlreadyConsentedFormMixin, FormValidatorMixin, forms.ModelForm):
-
     form_validator_cls = ScreeningPartTwoFormValidator
 
     AUTO_NUMBER_START = 17

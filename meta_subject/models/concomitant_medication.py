@@ -4,7 +4,6 @@ from ..model_mixins import CrfModelMixin
 
 
 class ConcomitantMedication(CrfModelMixin, BaseUuidModel):
-
     # prescription
     # days
     # dosage

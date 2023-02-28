@@ -13,7 +13,6 @@ class SubjectVisitMissed(
     CrfWithActionModelMixin,
     BaseUuidModel,
 ):
-
     action_name = MISSED_VISIT_ACTION
 
     missed_reasons = models.ManyToManyField(

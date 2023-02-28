@@ -20,9 +20,15 @@ from .fieldsets import (
 from .subject_screening_admin import SubjectScreeningAdmin
 
 
-def get_fieldsets() -> Tuple[
-    Tuple[str, dict], Tuple[str, dict], Tuple[str, dict], Tuple[str, dict], Tuple[str, dict]
-]:
+def get_fieldsets() -> (
+    Tuple[
+        Tuple[str, dict],
+        Tuple[str, dict],
+        Tuple[str, dict],
+        Tuple[str, dict],
+        Tuple[str, dict],
+    ]
+):
     return (
         get_part_one_fieldset(collapse=True),
         get_part_two_fieldset(),
@@ -34,7 +40,6 @@ def get_fieldsets() -> Tuple[
 
 @admin.register(ScreeningPartTwo, site=meta_screening_admin)
 class ScreeningPartTwoAdmin(SubjectScreeningAdmin):
-
     post_url_on_delete_name = "screening_dashboard_url"
     subject_listboard_url_name = "screening_listboard_url"
 

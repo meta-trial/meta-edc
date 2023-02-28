@@ -88,7 +88,6 @@ class DeliveryFormValidator(CrfFormValidator):
 
 
 class DeliveryForm(CrfModelFormMixin, ActionItemCrfFormMixin, forms.ModelForm):
-
     form_validator_cls = DeliveryFormValidator
 
     class Meta(ActionItemCrfFormMixin.Meta):

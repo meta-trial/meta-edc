@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0113_bloodresultsrft_egfr_percent_change_and_more"),
     ]

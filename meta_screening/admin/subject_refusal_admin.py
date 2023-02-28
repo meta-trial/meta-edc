@@ -12,7 +12,6 @@ from ..models import SubjectRefusal
 
 @admin.register(SubjectRefusal, site=meta_screening_admin)
 class SubjectRefusalAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin):
-
     form = SubjectRefusalForm
 
     autocomplete_fields = ["subject_screening"]

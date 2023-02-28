@@ -8,7 +8,6 @@ from ..constants import OFFSCHEDULE_POSTNATAL_ACTION, OFFSCHEDULE_PREGNANCY_ACTI
 
 
 class OffSchedule(SiteModelMixin, ActionModelMixin, OffScheduleModelMixin, BaseUuidModel):
-
     action_name = OFFSCHEDULE_ACTION
     offschedule_compare_dates_as_datetimes = False
 
@@ -20,7 +19,6 @@ class OffSchedule(SiteModelMixin, ActionModelMixin, OffScheduleModelMixin, BaseU
 class OffSchedulePregnancy(
     SiteModelMixin, ActionModelMixin, OffScheduleModelMixin, BaseUuidModel
 ):
-
     action_name = OFFSCHEDULE_PREGNANCY_ACTION
 
     class Meta(OffScheduleModelMixin.Meta, BaseUuidModel.Meta):
@@ -31,7 +29,6 @@ class OffSchedulePregnancy(
 class OffSchedulePostnatal(
     SiteModelMixin, ActionModelMixin, OffScheduleModelMixin, BaseUuidModel
 ):
-
     action_name = OFFSCHEDULE_POSTNATAL_ACTION
 
     class Meta(OffScheduleModelMixin.Meta, BaseUuidModel.Meta):

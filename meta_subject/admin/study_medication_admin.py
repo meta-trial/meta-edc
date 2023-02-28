@@ -23,7 +23,6 @@ from .modeladmin import CrfModelAdmin
 
 @admin.register(StudyMedication, site=meta_subject_admin)
 class StudyMedicationAdmin(CrfModelAdmin):
-
     actions = ["create_or_update_rx_refills"]
 
     form = StudyMedicationForm

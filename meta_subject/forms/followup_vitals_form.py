@@ -10,7 +10,6 @@ class FollowupVitalsFormValidator(CrfFormValidator):
 
 
 class FollowupVitalsForm(CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = FollowupVitalsFormValidator
 
     class Meta:

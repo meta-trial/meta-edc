@@ -11,7 +11,6 @@ from ..models import DeathReport
 
 @admin.register(DeathReport, site=meta_ae_admin)
 class DeathReportAdmin(DeathReportModelAdminMixin, SimpleHistoryAdmin):
-
     form = DeathReportForm
 
     fieldsets = (

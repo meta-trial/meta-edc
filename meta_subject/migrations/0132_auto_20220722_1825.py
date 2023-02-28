@@ -17,7 +17,6 @@ def update_rx_missing_medication(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0131_auto_20220722_0411"),
     ]

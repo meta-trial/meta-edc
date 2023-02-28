@@ -16,7 +16,6 @@ class FollowupVitals(
     CrfModelMixin,
     edc_models.BaseUuidModel,
 ):
-
     # TODO: Grading for blood pressure?? sokoine See DAIDS
     # TODO: Add action item modelmixin, grading like blood results
 

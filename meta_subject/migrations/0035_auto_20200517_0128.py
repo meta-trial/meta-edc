@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_lists", "0007_auto_20200516_2356"),
         ("meta_subject", "0034_auto_20200517_0125"),

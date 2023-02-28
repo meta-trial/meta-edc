@@ -17,7 +17,6 @@ def update_fbg(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [("meta_screening", "0011_auto_20191107_0342")]
 
     operations = [migrations.RunPython(update_fbg)]

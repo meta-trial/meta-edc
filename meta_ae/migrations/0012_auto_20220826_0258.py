@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_ae", "0011_alter_aefollowup_action_identifier_and_more"),
     ]

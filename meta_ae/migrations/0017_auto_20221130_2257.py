@@ -5,7 +5,6 @@ from tqdm import tqdm
 
 
 def update_investigator_ae_classification(apps, schema_editor):
-
     ae_tmg_cls = apps.get_model("meta_ae", "aetmg")
     ae_classification_cls = apps.get_model("edc_adverse_event", "aeclassification")
     ae_classification = ae_classification_cls.objects.get(name=NOT_APPLICABLE)
@@ -18,7 +17,6 @@ def update_investigator_ae_classification(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_ae", "0016_rename_narrative_aetmg_investigator_narrative_and_more"),
     ]

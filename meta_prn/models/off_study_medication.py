@@ -18,7 +18,6 @@ class OffStudyMedication(
     ActionModelMixin,
     BaseUuidModel,
 ):
-
     action_name = OFFSTUDY_MEDICATION_ACTION
 
     offschedule_compare_dates_as_datetimes = False

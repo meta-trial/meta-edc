@@ -4,7 +4,6 @@ from edc_vitals.models import WeightField
 
 
 class VitalsFieldsModelMixin(models.Model):
-
     weight = WeightField(null=True)
 
     # 10

@@ -9,7 +9,6 @@ import edc_vitals.models.fields.weight
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0135_auto_20220722_2212"),
     ]

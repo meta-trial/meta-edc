@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_screening", "0049_historicalscreeningpartone_p3_ltfu_and_more"),
     ]

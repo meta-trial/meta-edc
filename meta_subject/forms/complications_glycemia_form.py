@@ -11,7 +11,6 @@ class AdditionalScreeningFormValidator(CrfFormValidator):
 
 
 class ComplicationsGlycemiaForm(CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = AdditionalScreeningFormValidator
 
     class Meta:

@@ -13,7 +13,6 @@ def func(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0107_auto_20220415_0043"),
     ]

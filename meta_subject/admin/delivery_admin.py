@@ -36,7 +36,6 @@ class DeliveryAdmin(
     ActionItemModelAdminMixin,
     SimpleHistoryAdmin,
 ):
-
     form = DeliveryForm
 
     inlines = [BirthOutcomesInlineAdmin]

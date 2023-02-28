@@ -38,7 +38,6 @@ def update_refill_end_datetimes(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0146_auto_20220907_0207"),
     ]

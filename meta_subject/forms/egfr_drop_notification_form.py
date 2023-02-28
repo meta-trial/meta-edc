@@ -18,7 +18,6 @@ class EgfrDropNotificationFormValidator(CrfFormValidator):
 
 
 class EgfrDropNotificationForm(CrfModelFormMixin, ActionItemCrfFormMixin, forms.ModelForm):
-
     form_validator_cls = EgfrDropNotificationFormValidator
 
     class Meta(ActionItemCrfFormMixin.Meta):

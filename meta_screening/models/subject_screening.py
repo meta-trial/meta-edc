@@ -23,7 +23,6 @@ class SubjectScreeningModelError(Exception):
 
 
 class ScreeningIdentifier(BaseScreeningIdentifier):
-
     template = "S{random_string}"
 
 
@@ -36,7 +35,6 @@ class SubjectScreening(
     ScreeningModelMixin,
     BaseUuidModel,
 ):
-
     identifier_cls = ScreeningIdentifier
 
     contact_number = EncryptedCharField(

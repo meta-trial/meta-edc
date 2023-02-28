@@ -18,7 +18,6 @@ def update_followup_examination_action_identifier(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0049_auto_20200613_2041"),
     ]

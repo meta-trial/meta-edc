@@ -7,7 +7,6 @@ from ..models import SubjectRequisition
 
 
 class SubjectRequisitionForm(RequisitionModelFormMixin, forms.ModelForm):
-
     report_datetime_field_attr = "requisition_datetime"
 
     form_validator_cls = RequisitionFormValidator

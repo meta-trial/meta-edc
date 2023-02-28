@@ -10,7 +10,6 @@ from .modeladmin import CrfModelAdmin
 
 @admin.register(ConcomitantMedication, site=meta_subject_admin)
 class ConcomitantMedicationAdmin(CrfModelAdmin):
-
     form = ConcomitantMedicationForm
 
     fieldsets = (

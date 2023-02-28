@@ -43,7 +43,6 @@ def update_for_protocol_incident(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_prn", "0033_remove_historicalegfrnotification_action_item_and_more"),
     ]

@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_ae", "0006_aelocalreview_aesponsorreview"),
     ]

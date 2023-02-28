@@ -10,7 +10,6 @@ from ...model_wrappers import ScreeningPartOneModelWrapper
 
 
 class ListboardView(ScreeningListboardView):
-
     listboard_model = "meta_screening.screeningpartone"
     model_wrapper_cls = ScreeningPartOneModelWrapper
     navbar_selected_item = "screened_subject"

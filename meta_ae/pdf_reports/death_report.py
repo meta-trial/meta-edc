@@ -4,5 +4,4 @@ from .meta_pdf_report_mixin import MetaCrfReportMixin
 
 
 class DeathReport(MetaCrfReportMixin, BaseDeathReport):
-
     pass

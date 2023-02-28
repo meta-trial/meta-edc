@@ -10,7 +10,6 @@ from .modeladmin import CrfModelAdmin
 
 @admin.register(PregnancyUpdate, site=meta_subject_admin)
 class PregnancyUpdateAdmin(CrfModelAdmin):
-
     form = PregnancyUpdateForm
 
     fieldsets = (

@@ -15,7 +15,6 @@ pc = Predicates()
 
 @register()
 class HealthEconomicsRuleGroup(CrfRuleGroup):
-
     hecon = CrfRule(
         predicate=pc.health_economics_required,
         consequence=REQUIRED,
@@ -30,7 +29,6 @@ class HealthEconomicsRuleGroup(CrfRuleGroup):
 
 @register()
 class HbA1cCrfRuleGroup(CrfRuleGroup):
-
     hba1c = CrfRule(
         predicate=pc.hba1c_crf_required,
         consequence=REQUIRED,
@@ -45,7 +43,6 @@ class HbA1cCrfRuleGroup(CrfRuleGroup):
 
 @register()
 class HbA1cRequisitionRuleGroup(RequisitionRuleGroup):
-
     hba1c = RequisitionRule(
         predicate=pc.hba1c_requisition_required,
         consequence=REQUIRED,
@@ -61,7 +58,6 @@ class HbA1cRequisitionRuleGroup(RequisitionRuleGroup):
 
 @register()
 class InsulinCrfRuleGroup(CrfRuleGroup):
-
     insulin = CrfRule(
         predicate=pc.insulin_crf_required,
         consequence=REQUIRED,
@@ -76,7 +72,6 @@ class InsulinCrfRuleGroup(CrfRuleGroup):
 
 @register()
 class InsulinRequisitionRuleGroup(RequisitionRuleGroup):
-
     insulin = RequisitionRule(
         predicate=pc.insulin_requisition_required,
         consequence=REQUIRED,
@@ -92,7 +87,6 @@ class InsulinRequisitionRuleGroup(RequisitionRuleGroup):
 
 @register()
 class MnsiTestRuleGroup(CrfRuleGroup):
-
     mnsi = CrfRule(
         predicate=pc.mnsi_required,
         consequence=REQUIRED,
@@ -107,7 +101,6 @@ class MnsiTestRuleGroup(CrfRuleGroup):
 
 @register()
 class Sf12RuleGroup(CrfRuleGroup):
-
     sf12 = CrfRule(
         predicate=pc.sf12_required,
         consequence=REQUIRED,
@@ -122,7 +115,6 @@ class Sf12RuleGroup(CrfRuleGroup):
 
 @register()
 class Eq53dlRuleGroup(CrfRuleGroup):
-
     eq5d3l = CrfRule(
         predicate=pc.eq5d3l_required,
         consequence=REQUIRED,

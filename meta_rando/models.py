@@ -5,7 +5,6 @@ from edc_randomization.model_mixins import RandomizationListModelMixin
 
 
 class RandomizationList(RandomizationListModelMixin, edc_models.BaseUuidModel):
-
     gender = models.CharField(max_length=25, choices=GENDER)
 
     class Meta(RandomizationListModelMixin.Meta, edc_models.BaseUuidModel.Meta):

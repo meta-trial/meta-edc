@@ -7,7 +7,6 @@ import meta_consent.models.subject_consent
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_consent", "0013_auto_20220826_0406"),
     ]

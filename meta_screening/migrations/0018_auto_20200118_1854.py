@@ -7,7 +7,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_screening", "0017_auto_20191213_0314"),
     ]

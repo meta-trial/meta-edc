@@ -4,7 +4,6 @@ from reportlab.lib.units import cm
 
 
 class CustomAeReport(AeReport):
-
     logo_data = {
         "app_label": "meta_edc",
         "filename": "meta_logo.png",
@@ -14,5 +13,4 @@ class CustomAeReport(AeReport):
 
 
 class AeListboardView(AeListboardViewMixin):
-
     pdf_report_cls = CustomAeReport

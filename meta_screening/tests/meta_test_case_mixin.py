@@ -39,7 +39,6 @@ from .options import (
 
 
 class MetaTestCaseMixin(AppointmentTestCaseMixin):
-
     fqdn = fqdn
 
     default_sites = get_sites_by_country("tanzania")

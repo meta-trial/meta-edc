@@ -48,7 +48,6 @@ def update_revised_egrf(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0134_auto_20220722_2211"),
     ]

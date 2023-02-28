@@ -11,7 +11,6 @@ from .modeladmin import CrfModelAdmin
 
 @admin.register(Eq5d3l, site=meta_subject_admin)
 class Eq5d3lAdmin(CrfModelAdmin):
-
     form = Eq5d3lForm
 
     fieldsets = (

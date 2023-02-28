@@ -6,7 +6,6 @@ import edc_model.validators.date
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_lists", "0012_auto_20210728_1809"),
         ("meta_prn", "0036_remove_endofstudy_meta_prn_en_id_a50384_idx_and_more"),

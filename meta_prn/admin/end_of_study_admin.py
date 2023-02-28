@@ -25,7 +25,6 @@ class EndOfStudyAdmin(
     ActionItemModelAdminMixin,
     SimpleHistoryAdmin,
 ):
-
     additional_instructions = format_html(
         "Note: if the patient is <i>deceased</i>, complete form "
         "`{}` before completing this form. "

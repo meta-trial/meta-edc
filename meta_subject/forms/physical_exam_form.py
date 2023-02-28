@@ -8,7 +8,6 @@ from ..models import PhysicalExam
 
 class PhysicalExamFormValidator(CrfFormValidator):
     def clean(self):
-
         self.required_if(
             YES,
             field="irregular_heartbeat",
@@ -23,7 +22,6 @@ class PhysicalExamFormValidator(CrfFormValidator):
 
 
 class PhysicalExamForm(CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = PhysicalExamFormValidator
 
     class Meta:

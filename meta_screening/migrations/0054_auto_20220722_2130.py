@@ -5,7 +5,6 @@ import django_crypto_fields.fields.encrypted_char_field
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_screening", "0053_auto_20220704_1841"),
     ]

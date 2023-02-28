@@ -20,7 +20,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("edc_pharmacy", "0001_initial"),
         ("sites", "0002_alter_domain_unique"),

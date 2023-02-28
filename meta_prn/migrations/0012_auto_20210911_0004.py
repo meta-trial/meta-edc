@@ -15,7 +15,6 @@ def convert_violation_type_to_fk(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_prn", "0011_auto_20210910_1911"),
     ]

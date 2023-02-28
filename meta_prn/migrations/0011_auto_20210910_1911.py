@@ -18,7 +18,6 @@ def convert_actions_required_to_fk(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_prn", "0010_auto_20210910_1906"),
     ]

@@ -7,7 +7,6 @@ from ..models import SubjectScreening
 
 
 class SubjectScreeningForm(AlreadyConsentedFormMixin, FormValidatorMixin, forms.ModelForm):
-
     form_validator_cls = SubjectScreeningFormValidator
 
     def clean(self):
