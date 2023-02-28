@@ -5,7 +5,6 @@ from edc_prn.modelform_mixins import PrnFormValidatorMixin
 
 class ProtocolIncidentFormValidator(PrnFormValidatorMixin, FormValidator):
     def clean(self):
-
         self.required_if(YES, field="safety_impact", field_required="safety_impact_details")
 
         self.required_if(

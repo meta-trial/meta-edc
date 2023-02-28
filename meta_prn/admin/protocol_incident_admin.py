@@ -18,5 +18,4 @@ class ProtocolIncidentAdmin(
     ModelAdminSubjectDashboardMixin,
     SimpleHistoryAdmin,
 ):
-
     form = ProtocolIncidentForm

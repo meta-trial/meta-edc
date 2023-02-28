@@ -10,7 +10,6 @@ from .modeladmin import CrfModelAdmin
 
 @admin.register(UrinePregnancy, site=meta_subject_admin)
 class UrinePregnancyAdmin(CrfModelAdmin):
-
     form = UrinePregnancyForm
 
     fieldsets = (

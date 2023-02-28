@@ -26,7 +26,6 @@ class RandomizationListImporterPhaseThree(RandomizationListImporter):
 
 
 class RandomizerPhaseThree(Randomizer):
-
     name = PHASE_THREE
     model = "meta_rando.randomizationlist"
     filename = "randomization_list_phase_three.csv"

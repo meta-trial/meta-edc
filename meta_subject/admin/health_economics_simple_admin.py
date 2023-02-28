@@ -11,7 +11,6 @@ from .modeladmin import CrfModelAdmin
 
 @admin.register(HealthEconomicsSimple, site=meta_subject_admin)
 class HealthEconomicsSimpleAdmin(CrfModelAdmin):
-
     form = HealthEconomicsSimpleForm
 
     fieldsets = (

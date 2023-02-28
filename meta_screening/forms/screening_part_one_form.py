@@ -12,7 +12,6 @@ from .field_lists import part_one_fields
 class ScreeningPartOneForm(
     AlreadyConsentedFormMixin, SiteModelFormMixin, FormValidatorMixin, forms.ModelForm
 ):
-
     form_validator_cls = ScreeningPartOneFormValidator
 
     site = SiteField()

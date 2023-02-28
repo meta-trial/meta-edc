@@ -11,7 +11,6 @@ class ConcomitantMedicationFormValidator(CrfFormValidator):
 
 
 class ConcomitantMedicationForm(CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = ConcomitantMedicationFormValidator
 
     class Meta:

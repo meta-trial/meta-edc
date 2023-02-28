@@ -37,7 +37,6 @@ class DeathReportFormValidator(DeathReportFormValidatorMixin, FormValidator):
 
 
 class DeathReportForm(DeathReportModelFormMixin, forms.ModelForm):
-
     form_validator_cls = DeathReportFormValidator
 
     class Meta(DeathReportModelFormMixin.Meta):

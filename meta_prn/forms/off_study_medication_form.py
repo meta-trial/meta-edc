@@ -46,7 +46,6 @@ class OffStudyMedicationForm(
     FormValidatorMixin,
     forms.ModelForm,
 ):
-
     form_validator_cls = OffStudyMedicationFormValidator
     get_by_model_attr = "offstudymedication_model"
 

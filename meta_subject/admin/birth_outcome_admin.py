@@ -21,7 +21,6 @@ class BirthOutcomesAdmin(
     ModelAdminSubjectDashboardMixin,
     SimpleHistoryAdmin,
 ):
-
     form = BirthOutcomesForm
 
     fieldsets = (

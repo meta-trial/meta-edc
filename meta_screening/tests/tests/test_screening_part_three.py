@@ -364,7 +364,6 @@ class TestScreeningPartThree(TestCase):
         self._test_not_eligible_egfr_less_than_45(fbg_value, ogtt_value)
 
     def _test_not_eligible_egfr_less_than_45(self, fbg_value, ogtt_value):
-
         obj = self.get_screening_part_three_obj()
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertFalse(obj.reasons_ineligible_part_one)

@@ -32,7 +32,6 @@ class TestScreeningPartTwo(TestCase):
         self._test_eligible()
 
     def _test_defaults(self):
-
         obj = ScreeningPartTwo.objects.get(screening_identifier=self.screening_identifier)
         self.assertEqual(obj.eligible_part_two, TBD)
         self.assertIn("not answered", obj.reasons_ineligible_part_two)
@@ -41,7 +40,6 @@ class TestScreeningPartTwo(TestCase):
         self.assertFalse(obj.consented)
 
     def _test_eligible(self):
-
         obj = ScreeningPartTwo.objects.get(screening_identifier=self.screening_identifier)
         self.assertEqual(obj.eligible_part_one, YES)
         self.assertIsNone(obj.reasons_ineligible_part_one)

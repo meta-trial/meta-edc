@@ -19,7 +19,6 @@ class OffStudyMedicationAdmin(
     ActionItemModelAdminMixin,
     SimpleHistoryAdmin,
 ):
-
     form = OffStudyMedicationForm
 
     fieldsets = (

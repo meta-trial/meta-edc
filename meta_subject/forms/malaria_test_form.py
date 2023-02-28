@@ -6,7 +6,6 @@ from ..models import MalariaTest
 
 
 class MalariaTestForm(CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = MalariaTestFormValidator
 
     class Meta:

@@ -9,7 +9,6 @@ class AppConfig(DjangoAppConfig):
 
 
 if settings.APP_NAME == "meta_reports":
-
     from dateutil.relativedelta import FR, MO, SA, SU, TH, TU, WE
 
     class EdcFacilityAppConfig(BaseEdcFacilityAppConfig):

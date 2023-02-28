@@ -10,7 +10,6 @@ from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 
 
 class TestRandomizers(MetaTestCaseMixin, TestCase):
-
     import_randomization_list = False
 
     def test_import(self):

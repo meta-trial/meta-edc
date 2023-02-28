@@ -26,7 +26,6 @@ from .list_filters import EligibilityPending, P3LtfuListFilter
 
 @admin.register(SubjectScreening, site=meta_screening_admin)
 class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin):
-
     form = SubjectScreeningForm
     list_per_page = 15
     post_url_on_delete_name = "screening_listboard_url"

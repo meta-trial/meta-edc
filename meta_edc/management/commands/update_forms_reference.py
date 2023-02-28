@@ -9,7 +9,6 @@ style = color_style()
 
 
 def update_forms_reference(sender=None, **kwargs):
-
     from edc_form_describer import FormsReference
 
     from meta_subject.admin_site import meta_subject_admin
@@ -27,9 +26,7 @@ def update_forms_reference(sender=None, **kwargs):
 
 
 class Command(BaseCommand):
-
     help = "Update forms reference document (.md)"
 
     def handle(self, *args, **options):
-
         update_forms_reference()

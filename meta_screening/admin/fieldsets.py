@@ -21,7 +21,6 @@ from ..forms.field_lists import (
 
 
 def get_part_one_fieldset(collapse=None) -> Tuple[str, dict]:
-
     dct = {
         "description": mark_safe(  # nosec B308
             "To be completed by the <u>study clinician</u> or the "

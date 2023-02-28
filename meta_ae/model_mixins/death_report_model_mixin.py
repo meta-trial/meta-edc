@@ -8,7 +8,6 @@ from ..choices import DEATH_LOCATIONS, INFORMANT_RELATIONSHIP
 
 
 class DeathReportModelMixin(models.Model):
-
     death_location = models.CharField(
         verbose_name="Where did the participant die?",
         max_length=50,

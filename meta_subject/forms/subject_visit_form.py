@@ -19,7 +19,6 @@ class SubjectVisitForm(
     FormValidatorMixin,
     forms.ModelForm,
 ):
-
     form_validator_cls = SubjectVisitFormValidator
 
     class Meta:

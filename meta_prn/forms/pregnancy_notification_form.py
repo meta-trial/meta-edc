@@ -111,7 +111,6 @@ class PregnancyNotificationForm(
     FormValidatorMixin,
     forms.ModelForm,
 ):
-
     form_validator_cls = PregnancyNotificationFormValidator
 
     subject_identifier = forms.CharField(

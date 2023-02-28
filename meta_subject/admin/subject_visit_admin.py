@@ -12,7 +12,6 @@ from .modeladmin import ModelAdminMixin
 
 @admin.register(SubjectVisit, site=meta_subject_admin)
 class SubjectVisitAdmin(VisitModelAdminMixin, ModelAdminMixin, SimpleHistoryAdmin):
-
     show_dashboard_in_list_display_pos = 2
 
     form = SubjectVisitForm

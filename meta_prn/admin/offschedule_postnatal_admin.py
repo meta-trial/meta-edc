@@ -18,7 +18,6 @@ class OffSchedulePostnatalAdmin(
     ModelAdminSubjectDashboardMixin,
     SimpleHistoryAdmin,
 ):
-
     instructions = None
 
     fieldsets = (

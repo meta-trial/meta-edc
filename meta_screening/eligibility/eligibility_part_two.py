@@ -4,7 +4,6 @@ from edc_screening.screening_eligibility import ScreeningEligibility
 
 
 class EligibilityPartTwo(ScreeningEligibility):
-
     eligible_fld_name = "eligible_part_two"
     reasons_ineligible_fld_name = "reasons_ineligible_part_two"
 

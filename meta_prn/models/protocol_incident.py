@@ -16,7 +16,6 @@ class ProtocolIncident(
     NonUniqueSubjectIdentifierFieldMixin,
     BaseUuidModel,
 ):
-
     action_name = PROTOCOL_INCIDENT_ACTION
 
     action_item = models.ForeignKey(

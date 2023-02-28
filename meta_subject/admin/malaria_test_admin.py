@@ -9,5 +9,4 @@ from .modeladmin import CrfModelAdmin
 
 @admin.register(MalariaTest, site=meta_subject_admin)
 class MalariaTestAdmin(MalariaTestModelAdminMixin, CrfModelAdmin):
-
     form = MalariaTestForm

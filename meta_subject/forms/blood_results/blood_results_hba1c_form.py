@@ -13,7 +13,6 @@ class BloodResultsHba1cFormValidator(BloodResultsFormValidatorMixin, CrfFormVali
 
 
 class BloodResultsHba1cForm(ActionItemCrfFormMixin, CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = BloodResultsHba1cFormValidator
 
     class Meta(ActionItemCrfFormMixin.Meta):

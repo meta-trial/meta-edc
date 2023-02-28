@@ -9,7 +9,6 @@ from ..models import FollowupExamination
 
 class FollowupExaminationFormValidator(CrfFormValidator):
     def clean(self):
-
         self.validate_all_symptoms()
 
         self.validate_other_problems()
@@ -21,7 +20,6 @@ class FollowupExaminationFormValidator(CrfFormValidator):
         self.required_if(YES, field="referral", field_required="referral_reason")
 
     def validate_all_symptoms(self):
-
         self.m2m_single_selection_if(NONE, m2m_field="symptoms")
         self.m2m_other_not_specify(NONE, m2m_field="symptoms", field_other="symptoms_detail")
         self.m2m_single_selection_if(NONE, m2m_field="symptoms_g3")
@@ -112,7 +110,6 @@ class FollowupExaminationFormValidator(CrfFormValidator):
 
 
 class FollowupExaminationForm(CrfModelFormMixin, ActionItemCrfFormMixin, forms.ModelForm):
-
     form_validator_cls = FollowupExaminationFormValidator
 
     class Meta(ActionItemCrfFormMixin.Meta):

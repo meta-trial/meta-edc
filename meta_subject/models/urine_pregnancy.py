@@ -7,7 +7,6 @@ from ..model_mixins import CrfWithActionModelMixin
 
 
 class UrinePregnancy(CrfWithActionModelMixin, edc_models.BaseUuidModel):
-
     action_name = URINE_PREGNANCY_ACTION
     tracking_identifier_prefix = "UP"
 

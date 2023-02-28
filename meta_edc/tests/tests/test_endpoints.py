@@ -59,7 +59,6 @@ screening_listboard_url = f"{app_prefix}_dashboard:screening_listboard_url"
     SITE_ID=10,
 )
 class AdminSiteTest(MetaTestCaseMixin, WebTest):
-
     sid_count = 5
 
     menu_labels = [

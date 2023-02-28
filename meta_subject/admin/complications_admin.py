@@ -10,7 +10,6 @@ from .modeladmin import CrfModelAdmin
 
 @admin.register(Complications, site=meta_subject_admin)
 class ComplicationsAdmin(DataManagerModelAdminMixin, CrfModelAdmin):
-
     fieldsets = (
         ("Eye Examination", {"fields": ("cataracts", "fundoscopy")}),
         (

@@ -9,7 +9,6 @@ from .mixins import ArvHistoryFormValidatorMixin
 
 class PatientHistoryFormValidator(ArvHistoryFormValidatorMixin, CrfFormValidator):
     def clean(self):
-
         self.m2m_single_selection_if(NONE, m2m_field="symptoms")
 
         self.m2m_other_specify(OTHER, m2m_field="symptoms", field_other="other_symptoms")
@@ -53,7 +52,6 @@ class PatientHistoryFormValidator(ArvHistoryFormValidatorMixin, CrfFormValidator
 
 
 class PatientHistoryForm(CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = PatientHistoryFormValidator
 
     class Meta:

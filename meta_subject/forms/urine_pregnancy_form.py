@@ -10,7 +10,6 @@ from ..models import UrinePregnancy
 
 class UrinePregnancyFormValidator(CrfFormValidator):
     def clean(self):
-
         self.required_if(NO, field="performed", field_required="not_performed_reason")
         self.required_if(YES, field="performed", field_required="assay_date")
         if (
@@ -26,7 +25,6 @@ class UrinePregnancyFormValidator(CrfFormValidator):
 
 
 class UrinePregnancyForm(CrfModelFormMixin, ActionItemCrfFormMixin, forms.ModelForm):
-
     form_validator_cls = UrinePregnancyFormValidator
 
     class Meta(ActionItemCrfFormMixin.Meta):

@@ -22,7 +22,6 @@ class OffSchedulePregnancyForm(
     FormValidatorMixin,
     forms.ModelForm,
 ):
-
     form_validator_cls = OffSchedulePregnancyFormValidator
 
     subject_identifier = forms.CharField(

@@ -10,7 +10,6 @@ class EgfrDropNotification(
     CrfWithActionModelMixin,
     BaseUuidModel,
 ):
-
     action_name = EGFR_DROP_NOTIFICATION_ACTION
 
     class Meta(CrfWithActionModelMixin.Meta, BaseUuidModel.Meta):

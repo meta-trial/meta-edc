@@ -13,7 +13,6 @@ class BloodResultsLipidFormValidator(BloodResultsFormValidatorMixin, CrfFormVali
 
 
 class BloodResultsLipidForm(ActionItemCrfFormMixin, CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = BloodResultsLipidFormValidator
 
     class Meta(ActionItemCrfFormMixin.Meta):

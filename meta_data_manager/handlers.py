@@ -5,7 +5,6 @@ from meta_screening.models import SubjectScreening
 
 
 class BaselineHbA1cRuleHandler(QueryRuleHandler):
-
     name = "baseline_hba1c"
     display_name = "Baseline HbA1c"
     model_name = "meta_subject.bloodresultshba1c"

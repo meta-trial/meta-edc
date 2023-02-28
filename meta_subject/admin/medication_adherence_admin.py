@@ -16,5 +16,4 @@ pill_count_fieldset_tuple = (
 
 @admin.register(MedicationAdherence, site=meta_subject_admin)
 class MedicationAdherenceAdmin(MedicationAdherenceAdminMixin, CrfModelAdmin):
-
     form = MedicationAdherenceForm

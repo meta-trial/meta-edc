@@ -17,7 +17,6 @@ class EndOfStudyForm(
     FormValidatorMixin,
     forms.ModelForm,
 ):
-
     form_validator_cls = EndOfStudyFormValidator
 
     subject_identifier = forms.CharField(

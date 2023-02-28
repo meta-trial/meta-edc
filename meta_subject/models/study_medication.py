@@ -6,7 +6,6 @@ from ..model_mixins import CrfModelMixin
 
 
 class StudyMedication(StudyMedicationCrfModelMixin, CrfModelMixin, BaseUuidModel):
-
     roundup_divisible_by = models.IntegerField(default=32)
 
     class Meta(

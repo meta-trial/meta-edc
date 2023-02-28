@@ -9,5 +9,4 @@ from ..models import AeFollowup
 
 @admin.register(AeFollowup, site=meta_ae_admin)
 class AeFollowupAdmin(AeFollowupModelAdminMixin, SimpleHistoryAdmin):
-
     form = AeFollowupForm

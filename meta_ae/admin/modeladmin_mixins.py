@@ -28,7 +28,6 @@ class AeReviewModelAdminMixin(
     AdverseEventModelAdminMixin,
     ActionItemModelAdminMixin,
 ):
-
     form = AeFollowupForm
 
     fieldsets = (

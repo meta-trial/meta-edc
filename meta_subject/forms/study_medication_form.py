@@ -35,7 +35,6 @@ class StudyMedicationFormValidator(BaseStudyMedicationFormValidator):
 
 
 class StudyMedicationForm(StudyMedicationModelFormMixin, CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = StudyMedicationFormValidator
 
     class Meta:

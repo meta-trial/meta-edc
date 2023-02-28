@@ -18,7 +18,6 @@ p = inflect.engine()
 
 
 class DeathReport(MetaCrfPdfReport):
-
     model_attr = "death_report"
 
     def __init__(self, death_report=None, **kwargs):
@@ -26,7 +25,6 @@ class DeathReport(MetaCrfPdfReport):
         self.death_report = death_report
 
     def get_report_story(self, **kwargs):
-
         story = []
 
         self.draw_demographics(story)

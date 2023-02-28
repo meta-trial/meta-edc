@@ -2,7 +2,6 @@ from django.forms.widgets import Input
 
 
 class SliderWidget(Input):
-
     input_type = "range"
     class_type = "slider"
     units = "%"

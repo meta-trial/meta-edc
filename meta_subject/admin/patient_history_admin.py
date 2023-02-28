@@ -11,7 +11,6 @@ from .modeladmin import CrfModelAdmin
 
 @admin.register(PatientHistory, site=meta_subject_admin)
 class PatientHistoryAdmin(CrfModelAdmin):
-
     form = PatientHistoryForm
 
     autocomplete_fields = ["current_arv_regimen", "previous_arv_regimen"]

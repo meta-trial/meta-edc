@@ -40,7 +40,6 @@ class ScreeningPartThreeFormValidator(
     PrnFormValidatorMixin,
     FormValidator,
 ):
-
     report_datetime_field_attr = "part_three_report_datetime"
 
     def clean(self):

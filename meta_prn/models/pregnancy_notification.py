@@ -22,7 +22,6 @@ class PregnancyNotification(
     NonUniqueSubjectIdentifierFieldMixin,
     BaseUuidModel,
 ):
-
     action_name = PREGNANCY_NOTIFICATION_ACTION
 
     tracking_identifier_prefix = "PN"

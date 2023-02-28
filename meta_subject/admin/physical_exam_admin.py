@@ -18,7 +18,6 @@ def get_other_vitals_fieldset():
 
 @admin.register(PhysicalExam, site=meta_subject_admin)
 class PhysicalExamAdmin(CrfModelAdmin):
-
     form = PhysicalExamForm
 
     fieldsets = (

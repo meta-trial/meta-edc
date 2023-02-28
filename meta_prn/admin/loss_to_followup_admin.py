@@ -17,7 +17,6 @@ class LossToFollowupAdmin(
     ModelAdminSubjectDashboardMixin,
     SimpleHistoryAdmin,
 ):
-
     form = LossToFollowupForm
 
     fieldsets = (

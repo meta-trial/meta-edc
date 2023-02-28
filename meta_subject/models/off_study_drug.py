@@ -8,7 +8,6 @@ from ..model_mixins import CrfModelMixin
 
 
 class OffStudyMedication(CrfModelMixin, BaseUuidModel):
-
     last_dose_date = models.DateField(
         verbose_name="Date of last known dose",
         validators=[date_not_before_study_start, date_not_future],

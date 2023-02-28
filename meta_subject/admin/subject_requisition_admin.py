@@ -19,7 +19,6 @@ from .modeladmin import CrfModelAdmin
 
 @admin.register(SubjectRequisition, site=meta_subject_admin)
 class SubjectRequisitionAdmin(RequisitionAdminMixin, CrfModelAdmin):
-
     form = SubjectRequisitionForm
 
     fieldsets = (

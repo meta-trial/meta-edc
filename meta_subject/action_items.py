@@ -104,7 +104,6 @@ class UrinePregnancyAction(Action):
 
 
 class BloodResultsRftAction(BaseBloodResultsRftAction):
-
     reference_model = "meta_subject.bloodresultsrft"
 
     def get_next_actions(self):
