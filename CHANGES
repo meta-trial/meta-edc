@@ -1,6 +1,10 @@
 Changes
 =======
 
+0.2.38
+------
+- add missing migrations (meta_ae and meta_subject)
+
 0.2.37
 ------
 - bump edc=0.4.70 (fixes issue where CRFs for some participants cannot be
