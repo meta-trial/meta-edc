@@ -3,7 +3,10 @@ Changes
 
 0.2.37
 ------
-- bump edc=0.4.70 (fixes issue where CRFs for some participants cannot be saved at month 12/15)
+- bump edc=0.4.70 (fixes issue where CRFs for some participants cannot be
+  saved at month 12/15)
+- add Python 3.11 support
+- drop Django 4.0 support
 
 0.2.35
 ------
