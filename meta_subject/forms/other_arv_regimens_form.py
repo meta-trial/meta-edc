@@ -22,7 +22,6 @@ class OtherArvRegimensFormValidator(CrfFormValidator):
 
 
 class OtherArvRegimensForm(InlineModelFormMixin, CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = OtherArvRegimensFormValidator
 
     def clean(self):

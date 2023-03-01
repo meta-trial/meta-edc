@@ -14,11 +14,9 @@ from ..eligibility import EligibilityPartTwo
 
 
 class ScreeningPartTwoFormValidator(PrnFormValidatorMixin, FormValidator):
-
     report_datetime_field_attr = "part_two_report_datetime"
 
     def clean(self):
-
         self.validate_report_datetimes()
 
         if (

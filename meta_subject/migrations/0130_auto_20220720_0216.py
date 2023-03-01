@@ -12,7 +12,6 @@ def update_egfr_drop_field_to_percent(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0129_auto_20220720_0108"),
     ]

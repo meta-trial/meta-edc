@@ -18,5 +18,4 @@ class EgfrDropNotificationAdmin(
     ActionItemModelAdminMixin,
     SimpleHistoryAdmin,
 ):
-
     form = EgfrDropNotificationForm

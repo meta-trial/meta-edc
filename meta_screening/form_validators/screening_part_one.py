@@ -7,7 +7,6 @@ from edc_prn.modelform_mixins import PrnFormValidatorMixin
 
 class ScreeningPartOneFormValidator(PrnFormValidatorMixin, FormValidator):
     def clean(self):
-
         get_consent_for_period_or_raise(self.report_datetime)
 
         if (

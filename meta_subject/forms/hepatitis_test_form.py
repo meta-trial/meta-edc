@@ -8,7 +8,6 @@ from ..models import HepatitisTest
 
 class HepatitisTestFormValidator(CrfFormValidator):
     def clean(self):
-
         self.required_if(YES, field="hbsag_performed", field_required="hbsag")
         self.required_if(YES, field="hbsag_performed", field_required="hbsag_date")
         self.required_if(YES, field="hcv_performed", field_required="hcv")
@@ -16,7 +15,6 @@ class HepatitisTestFormValidator(CrfFormValidator):
 
 
 class HepatitisTestForm(CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = HepatitisTestFormValidator
 
     class Meta:

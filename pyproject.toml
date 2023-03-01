@@ -7,12 +7,12 @@ write_to = "_version.py"
 
 [tool.black]
 line-length = 95
-target-version = ["py39"]
+target-version = ["py310"]
 extend-exclude = '''^(.*\/)*\b(migrations)\b($|\/.*$)'''
 
 [tool.isort]
 profile = "black"
-py_version = "39"
+py_version = "310"
 skip = [".tox", ".eggs", "migrations"]
 
 [tool.coverage.run]
@@ -27,28 +27,29 @@ source = ["meta_edc"]
 show_missing = true
 skip_covered = true
 omit = ["requirements.txt"]
+exclude_lines = [
+  "pragma: no cover",
+  "if TYPE_CHECKING:",
+]
 
 [tool.tox]
 legacy_tox_ini = """
 [tox]
 envlist =
-    py{39,310}-dj{32,40}-edc{prod},
-    py{39,310}-dj{32,40}-edc{dev},
-#    FIXME: Disable testing djdev env until failing testrunner issue resolved
-#    py{39,310}-dj{32,40,dev}-edc{dev},
+    py{310,311}-dj{41}-edc{prod},
+    py{310,311}-dj{41,dev}-edc{dev},
     lint
 
 isolated_build = true
 
 [gh-actions]
 python =
-    3.9: py39, lint
     3.10: py310
+    3.11: py311, lint
 
 [gh-actions:env]
 DJANGO =
-    3.2: dj32, lint
-    4.0: dj40
+    4.1: dj41, lint
     dev: djdev
 EDC_CODEBASE =
     Prod: edcprod, lint
@@ -59,8 +60,7 @@ deps =
     -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/tox.txt
     -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/test_utils.txt
     -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/third_party_dev.txt
-    dj32: Django>=3.2,<3.3
-    dj40: Django>=4.0,<4.1
+    dj41: Django>=4.1,<4.2
     djdev: https://github.com/django/django/tarball/main
 
 commands =

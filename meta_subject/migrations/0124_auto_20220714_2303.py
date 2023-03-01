@@ -34,7 +34,6 @@ def update_bloodresults(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0123_auto_20220714_2136"),
     ]

@@ -9,7 +9,6 @@ from ..eligibility import MetaEligibility
 
 
 class EligibilityModelMixin(BaseEligibilityModelMixin):
-
     eligibility_cls = MetaEligibility
 
     eligible_part_one = models.CharField(

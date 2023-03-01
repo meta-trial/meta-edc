@@ -11,7 +11,6 @@ from .delivery import Delivery
 
 
 class Manager(models.Manager):
-
     use_in_migrations = True
 
     def get_by_natural_key(

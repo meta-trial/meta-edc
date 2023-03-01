@@ -8,7 +8,6 @@ from ..model_mixins import CrfModelMixin
 
 
 class Complications(DataManagerModelAdminMixin, CrfModelMixin, edc_models.BaseUuidModel):
-
     cataracts = models.CharField(
         verbose_name="Presence of cataracts", max_length=15, choices=YES_NO
     )

@@ -17,7 +17,6 @@ class SubjectVisitMissedFormValidator(CrfFormValidator):
             if not self.cleaned_data.get("contact_attempts_count") and self.cleaned_data.get(
                 "contact_attempts_explained"
             ):
-
                 self.raise_validation_error(
                     {"contact_attempts_explained": "This field is not required"}, INVALID_ERROR
                 )
@@ -51,7 +50,6 @@ class SubjectVisitMissedFormValidator(CrfFormValidator):
 
 
 class SubjectVisitMissedForm(CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = SubjectVisitMissedFormValidator
 
     class Meta:

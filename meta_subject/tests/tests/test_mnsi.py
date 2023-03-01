@@ -10,7 +10,6 @@ from meta_visit_schedule.constants import MONTH1, MONTH3, MONTH6, MONTH9, MONTH1
 
 class TestMnsiRequired(MetaTestCaseMixin, TestCase):
     def setUp(self):
-
         super().setUp()
         self.baseline_datetime = get_utcnow() - relativedelta(months=6)
 

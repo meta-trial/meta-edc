@@ -4,7 +4,6 @@ from tqdm import tqdm
 
 
 def update_rs_missing_ethnicity(apps, schema_editor):
-
     register_subject_model_cls = apps.get_model("edc_registration.registeredsubject")
     subject_screening_model_cls = apps.get_model("meta_screening.subjectscreening")
     subject_consent_model_cls = apps.get_model("meta_consent.subjectconsent")
@@ -21,7 +20,6 @@ def update_rs_missing_ethnicity(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_consent", "0014_alter_subjectconsent_managers"),
         ("meta_subject", "0149_auto_20220913_2139"),

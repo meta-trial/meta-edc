@@ -27,7 +27,6 @@ class LossToFollowupForm(
     FormValidatorMixin,
     forms.ModelForm,
 ):
-
     form_validator_cls = LossToFollowupFormValidator
 
     subject_identifier = forms.CharField(

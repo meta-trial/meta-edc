@@ -5,7 +5,6 @@ from edc_reportable.units import MICROMOLES_PER_LITER_DISPLAY, MILLIMOLES_PER_LI
 
 
 class CalculatedModelMixin(models.Model):
-
     # calculated
     calculated_egfr_value = models.DecimalField(
         verbose_name="eGFR",

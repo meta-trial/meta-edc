@@ -5,7 +5,6 @@ import edc_crf.model_mixins.crf_status_model_mixin
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0150_auto_20220914_0039"),
     ]

@@ -11,7 +11,6 @@ from .modeladmin import CrfModelAdmin
 
 @admin.register(Sf12, site=meta_subject_admin)
 class Sf12Admin(CrfModelAdmin):
-
     form = Sf12Form
 
     fieldsets = (

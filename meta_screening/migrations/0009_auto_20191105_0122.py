@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [("meta_screening", "0008_auto_20191031_0745")]
 
     operations = [

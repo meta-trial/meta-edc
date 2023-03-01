@@ -17,7 +17,6 @@ class BirthOutcomesFormValidator(CrfFormValidator):
 
 
 class BirthOutcomesForm(InlineCrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = BirthOutcomesFormValidator
 
     class Meta:

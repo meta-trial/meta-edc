@@ -27,7 +27,6 @@ from ..models import SubjectConsent
 class SubjectConsentAdmin(
     ModelAdminConsentMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
 ):
-
     form = SubjectConsentForm
 
     actions = [

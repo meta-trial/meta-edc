@@ -122,7 +122,6 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
         self.assertEqual(float(obj_2000.egfr_drop_value), 0.0)
 
     def test_egfr_below_45(self):
-
         data = deepcopy(self.data)
         data.update(creatinine_value=1.1, creatinine_units=MILLIGRAMS_PER_DECILITER)
         BloodResultsRft.objects.create(**data)
@@ -165,7 +164,6 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
         )
 
     def test_egfr_ethnicity(self):
-
         subject_visit = self.get_subject_visit(
             ethnicity=BLACK, age_in_years=60, appt_datetime=now, gender=MALE
         )

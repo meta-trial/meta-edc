@@ -8,7 +8,6 @@ from ..constants import PREG_YES_NO_NA
 
 
 class PartTwoFieldsModelMixin(models.Model):
-
     part_two_report_datetime = models.DateTimeField(
         verbose_name="Part 2 report date and time",
         null=True,

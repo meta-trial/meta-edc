@@ -11,7 +11,6 @@ from ..models import AeInitial
 
 @admin.register(AeInitial, site=meta_ae_admin)
 class AeInitialAdmin(AeInitialModelAdminMixin, SimpleHistoryAdmin):
-
     form = AeInitialForm
     email_contact = get_email_contacts("ae_reports")
     additional_instructions = format_html(

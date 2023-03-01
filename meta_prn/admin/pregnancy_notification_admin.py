@@ -21,7 +21,6 @@ class PregnancyNotificationAdmin(
     ModelAdminSubjectDashboardMixin,
     SimpleHistoryAdmin,
 ):
-
     form = PregnancyNotificationForm
 
     additional_instructions = (

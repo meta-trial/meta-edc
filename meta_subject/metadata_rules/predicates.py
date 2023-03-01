@@ -50,7 +50,6 @@ def hba1c_requisition_required_at_baseline(visit):
 
 
 class Predicates(PersistantSingletonMixin, PredicateCollection):
-
     app_label = "meta_subject"
     visit_model = "meta_subject.subjectvisit"
 
@@ -144,7 +143,6 @@ class Predicates(PersistantSingletonMixin, PredicateCollection):
             visit.appointment.visit_code == MONTH1
             and visit.appointment.visit_code_sequence == 0
         ):
-
             model_cls = django_apps.get_model(f"{self.app_label}.healtheconomicssimple")
             try:
                 model_cls.objects.get(

@@ -31,7 +31,6 @@ def get_fieldsets():
 
 @admin.register(ScreeningPartOne, site=meta_screening_admin)
 class ScreeningPartOneAdmin(SiteModelAdminMixin, SubjectScreeningAdmin):
-
     form = ScreeningPartOneForm
 
     fieldsets = get_fieldsets()

@@ -15,7 +15,6 @@ def update_egfr_drop_action(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0125_auto_20220719_2134"),
     ]

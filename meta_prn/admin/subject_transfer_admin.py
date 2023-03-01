@@ -16,5 +16,4 @@ class SubjectTransferAdmin(
     ModelAdminSubjectDashboardMixin,
     SimpleHistoryAdmin,
 ):
-
     form = SubjectTransferForm

@@ -22,7 +22,6 @@ class OtherArvRegimensDetailFormValidator(CrfFormValidator):
 
 
 class OtherArvRegimensDetailForm(InlineCrfModelFormMixin, FormValidatorMixin, forms.ModelForm):
-
     form_validator_cls = OtherArvRegimensDetailFormValidator
 
     class Meta:

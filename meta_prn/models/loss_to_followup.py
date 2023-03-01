@@ -22,7 +22,6 @@ class LossToFollowup(
     NonUniqueSubjectIdentifierFieldMixin,
     BaseUuidModel,
 ):
-
     action_name = LTFU_ACTION
 
     tracking_identifier_prefix = "LF"

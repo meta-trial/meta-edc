@@ -28,7 +28,6 @@ def update_missing_sid_in_registeredsubject(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_rando", "0002_auto_20220704_1841"),
     ]

@@ -7,7 +7,6 @@ import meta_subject.models.subject_visit
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0046_auto_20200530_1804"),
     ]

@@ -39,7 +39,6 @@ class EndOfStudyFormValidator(
     ltfu_model = None
 
     def clean(self):
-
         self.confirm_off_all_schedules()
         self.validate_study_medication_status()
         self.validate_offstudy_datetime_against_last_seen_date()

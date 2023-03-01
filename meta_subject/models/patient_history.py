@@ -12,7 +12,6 @@ from ..model_mixins import ArvHistoryModelMixin, CrfModelMixin
 
 
 class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, BaseUuidModel):
-
     symptoms = models.ManyToManyField(
         Symptoms, verbose_name="Do you have any of the following symptoms?"
     )

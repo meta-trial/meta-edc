@@ -7,7 +7,6 @@ from ..model_mixins import CrfModelMixin
 
 
 class UrineDipstickTest(CrfModelMixin, edc_models.BaseUuidModel):
-
     performed = models.CharField(
         verbose_name="Was the urine dipstick test performed?",
         max_length=15,

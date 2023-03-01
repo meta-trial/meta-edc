@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_prn", "0041_endofstudy_transfer_date_and_more"),
     ]

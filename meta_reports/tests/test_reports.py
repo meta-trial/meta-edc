@@ -16,7 +16,6 @@ class TestReports(MetaTestCaseMixin, TestCase):
         self.subject_identifier = subject_consent.subject_identifier
 
     def test_aereport(self):
-
         rf = RequestFactory()
         request = rf.get("/")
         request.user = self.user

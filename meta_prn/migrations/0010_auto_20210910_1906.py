@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("edc_protocol_incident", "0001_initial"),
         ("meta_prn", "0009_auto_20210910_0239"),

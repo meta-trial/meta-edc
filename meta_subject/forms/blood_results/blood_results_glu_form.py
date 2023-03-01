@@ -18,7 +18,6 @@ class BloodResultsGluFormValidator(
 
 
 class BloodResultsGluForm(ActionItemCrfFormMixin, CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = BloodResultsGluFormValidator
 
     class Meta(ActionItemCrfFormMixin.Meta):

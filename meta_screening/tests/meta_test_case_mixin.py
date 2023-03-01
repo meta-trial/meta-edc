@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
-from datetime import datetime
+from datetime import date, datetime
 
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
@@ -39,7 +39,6 @@ from .options import (
 
 
 class MetaTestCaseMixin(AppointmentTestCaseMixin):
-
     fqdn = fqdn
 
     default_sites = get_sites_by_country("tanzania")
@@ -127,7 +126,12 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin):
         return subject_screening
 
     @staticmethod
-    def get_subject_consent(subject_screening, consent_datetime=None, site_id=None):
+    def get_subject_consent(
+        subject_screening: SubjectScreening,
+        consent_datetime: datetime = None,
+        dob: date = None,
+        site_id: int = None,
+    ):
         return baker.make_recipe(
             "meta_consent.subjectconsent",
             user_created="erikvw",
@@ -135,7 +139,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin):
             screening_identifier=subject_screening.screening_identifier,
             initials=subject_screening.initials,
             gender=subject_screening.gender,
-            dob=(now.date() - relativedelta(years=subject_screening.age_in_years)),
+            dob=dob or (now.date() - relativedelta(years=subject_screening.age_in_years)),
             site=Site.objects.get(id=site_id or settings.SITE_ID),
             consent_datetime=consent_datetime or subject_screening.report_datetime,
         )

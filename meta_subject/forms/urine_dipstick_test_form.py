@@ -8,7 +8,6 @@ from ..models import UrineDipstickTest
 
 class UrineDipstickTestFormValidator(CrfFormValidator):
     def clean(self):
-
         self.required_if(NO, field="performed", field_required="not_performed_reason")
 
         self.applicable_if(YES, field="performed", field_applicable="ketones")
@@ -19,7 +18,6 @@ class UrineDipstickTestFormValidator(CrfFormValidator):
 
 
 class UrineDipstickTestForm(CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = UrineDipstickTestFormValidator
 
     class Meta:

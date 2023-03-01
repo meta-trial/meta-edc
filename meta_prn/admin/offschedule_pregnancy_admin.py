@@ -19,7 +19,6 @@ class OffSchedulePregnancyAdmin(
     ModelAdminSubjectDashboardMixin,
     SimpleHistoryAdmin,
 ):
-
     instructions = None
 
     form = OffSchedulePregnancyForm

@@ -39,7 +39,6 @@ class SubjectConsentFormValidator(SubjectConsentFormValidatorMixin, FormValidato
 class SubjectConsentForm(
     SiteModelFormMixin, ConsentModelFormMixin, FormValidatorMixin, forms.ModelForm
 ):
-
     form_validator_cls = SubjectConsentFormValidator
 
     def validate_gender_of_consent(self):

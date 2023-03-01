@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("edc_mnsi", "0003_alter_mnsi_abnormal_obs_left_foot_and_more"),
         ("meta_subject", "0110_auto_20220512_1811"),

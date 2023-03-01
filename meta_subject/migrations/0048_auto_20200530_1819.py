@@ -8,7 +8,6 @@ def update_subject_visit_metadata(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0047_auto_20200530_1819"),
     ]

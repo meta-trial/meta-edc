@@ -14,7 +14,6 @@ from ..model_mixins import CrfWithActionModelMixin
 
 
 class FollowupExamination(CrfWithActionModelMixin, BaseUuidModel):
-
     action_name = FOLLOWUP_EXAMINATION_ACTION
 
     tracking_identifier_prefix = "FU"

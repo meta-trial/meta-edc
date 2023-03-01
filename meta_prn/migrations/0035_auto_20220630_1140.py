@@ -85,7 +85,6 @@ def create_missing_offschedule(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_prn", "0034_auto_20220630_1110"),
     ]

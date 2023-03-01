@@ -35,7 +35,6 @@ class TestSf12(MetaTestCaseMixin, TestCase):
         )
 
     def test_baseline_not_required(self):
-
         form = Sf12Form(data=self.data)
         form.is_valid()
         self.assertEqual({}, form._errors)

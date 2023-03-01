@@ -19,7 +19,6 @@ import meta_subject.models.other_arv_regimens
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_lists", "0012_auto_20210728_1809"),
         ("sites", "0002_alter_domain_unique"),

@@ -12,7 +12,6 @@ class PregnancyUpdateFormValidator(CrfFormValidator):
 
 
 class PregnancyUpdateForm(CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = PregnancyUpdateFormValidator
 
     class Meta:

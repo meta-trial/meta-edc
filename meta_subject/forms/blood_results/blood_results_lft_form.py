@@ -13,7 +13,6 @@ class BloodResultsLftFormValidator(BloodResultsFormValidatorMixin, CrfFormValida
 
 
 class BloodResultsLftForm(ActionItemCrfFormMixin, CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = BloodResultsLftFormValidator
 
     class Meta(ActionItemCrfFormMixin.Meta):

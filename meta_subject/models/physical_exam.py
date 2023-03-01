@@ -18,7 +18,6 @@ class PhysicalExam(
     CrfModelMixin,
     edc_models.BaseUuidModel,
 ):
-
     irregular_heartbeat = models.CharField(
         verbose_name=mark_safe("Is the heart beat <u>irregular</u>?"),  # nosec B308
         max_length=15,

@@ -11,7 +11,6 @@ from .other_arv_regimens import OtherArvRegimens
 
 
 class InlineModelManager(models.Manager):
-
     use_in_migrations = True
 
     def get_by_natural_key(
@@ -23,7 +22,6 @@ class InlineModelManager(models.Manager):
 
 
 class OtherArvRegimensDetail(CrfInlineModelMixin, BaseUuidModel):
-
     other_arv_regimens = models.ForeignKey(
         OtherArvRegimens,
         on_delete=models.PROTECT,

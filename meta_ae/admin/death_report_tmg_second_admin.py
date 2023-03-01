@@ -9,5 +9,4 @@ from ..models import DeathReportTmgSecond
 
 @admin.register(DeathReportTmgSecond, site=meta_ae_admin)
 class DeathReportTmgSecondAdmin(DeathReportTmgModelAdminMixin, SimpleHistoryAdmin):
-
     form = DeathReportTmgSecondForm

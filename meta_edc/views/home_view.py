@@ -9,7 +9,6 @@ from meta_edc.meta_version import get_meta_version
 
 
 class HomeView(EdcViewMixin, NavbarViewMixin, TemplateView):
-
     template_name = f"meta_edc/bootstrap{get_bootstrap_version()}/home.html"
     navbar_name = settings.APP_NAME
     navbar_selected_item = "home"

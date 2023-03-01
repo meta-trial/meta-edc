@@ -13,5 +13,4 @@ class CustomDeathReport(DeathReport):
 
 
 class DeathReportListboardView(DeathReportListboardViewMixin):
-
     pdf_report_cls = CustomDeathReport

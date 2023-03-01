@@ -9,7 +9,6 @@ import edc_utils.date
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_prn", "0048_auto_20220922_2236"),
     ]

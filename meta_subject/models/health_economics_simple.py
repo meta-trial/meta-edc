@@ -7,7 +7,6 @@ from ..model_mixins import CrfModelMixin
 
 
 class HealthEconomicsSimple(HealthEconomicsEducationModelMixin, CrfModelMixin, BaseUuidModel):
-
     occupation = models.CharField(
         verbose_name="What is your occupation/profession?", max_length=50
     )
