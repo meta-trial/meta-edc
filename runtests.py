@@ -165,6 +165,7 @@ def main():
     tests = [
         "tests",
         "meta_ae.tests",
+        "meta_consent.tests",
         "meta_dashboard.tests",
         "meta_edc.tests",
         "meta_labs.tests",
