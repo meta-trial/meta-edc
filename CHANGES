@@ -1,6 +1,10 @@
 Changes
 =======
 
+0.2.37
+------
+- bump edc=0.4.70 (fixes issue where CRFs for some participants cannot be saved at month 12/15)
+
 0.2.35
 ------
 - Clinical exam: followup: reorder questions in hospitalisation section,
@@ -8,7 +12,7 @@ Changes
   hospital visit (meta-subject)
 - apply changes from edc-adverse-events related to withdrawing an AE
   and investigator AE classification (meta-ae)
-- update for changes in edc-protocl-incident
+- update for changes in edc-protocol-incident
 
 0.2.34
 ------
