@@ -1,12 +1,7 @@
 from django.contrib import admin
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from edc_constants.choices import (
-    NO,
-    YES_NO,
-    YES_NO_NA,
-    YES_NO_PENDING_NA_GLUCOSE_SCREENING,
-)
+from edc_constants.choices import NO, YES_NO, YES_NO_PENDING_NA_GLUCOSE_SCREENING
 from edc_constants.constants import NOT_APPLICABLE
 from edc_glucose.model_mixins import (
     fasting_model_mixin_factory,
@@ -22,23 +17,32 @@ from edc_vitals.model_mixins import (
 
 from .creatinine_fields_model_mixin import CreatinineModelFieldsMixin
 
-
-class FastingModelMixin(
-    fasting_model_mixin_factory(),
-    fasting_model_mixin_factory(
-        "repeat",
-        repeat_fasting=models.CharField(
-            verbose_name="Has the participant fasted?",
-            max_length=15,
-            choices=YES_NO_NA,
-            blank=False,
-            default=NOT_APPLICABLE,
-            help_text="As reported by patient",
-        ),
-    ),
-):
-    class Meta:
-        abstract = True
+# class FastingModelMixin(
+#     fasting_model_mixin_factory(
+#         None,
+#         fasting=models.CharField(
+#             verbose_name="Has the participant fasted?",
+#             max_length=15,
+#             choices=YES_NO,
+#             null=True,
+#             blank=False,
+#             help_text="As reported by patient",
+#         ),
+#     ),
+#     fasting_model_mixin_factory(
+#         "repeat",
+#         repeat_fasting=models.CharField(
+#             verbose_name="Has the participant fasted?",
+#             max_length=15,
+#             choices=YES_NO,
+#             null=True,
+#             blank=False,
+#             help_text="As reported by patient",
+#         ),
+#     ),
+# ):
+#     class Meta:
+#         abstract = True
 
 
 class FbgModelMixin(
@@ -95,7 +99,18 @@ class OgttModelMixin(
 
 
 class PartThreeFieldsModelMixin(
-    FastingModelMixin,
+    fasting_model_mixin_factory(
+        None,
+        fasting=models.CharField(
+            verbose_name="Has the participant fasted?",
+            max_length=15,
+            choices=YES_NO,
+            null=True,
+            blank=False,
+            help_text="As reported by patient",
+        ),
+    ),
+    fasting_model_mixin_factory("repeat"),
     FbgModelMixin,
     OgttModelMixin,
     CreatinineModelFieldsMixin,

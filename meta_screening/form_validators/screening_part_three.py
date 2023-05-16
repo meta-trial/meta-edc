@@ -9,11 +9,9 @@ from edc_form_validators import INVALID_ERROR, FormValidator
 from edc_glucose.form_validators import (
     FastingFormValidatorMixin,
     FbgOgttFormValidatorMixin,
-    GlucoseFormValidatorMixin,
 )
 from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
 from edc_prn.modelform_mixins import PrnFormValidatorMixin
-from edc_reportable import BmiFormValidatorMixin
 from edc_utils import formatted_datetime
 from edc_utils.date import to_local, to_utc
 from edc_vitals.form_validators import (
@@ -30,10 +28,8 @@ class ScreeningPartThreeFormValidatorError(Exception):
 
 
 class ScreeningPartThreeFormValidator(
-    GlucoseFormValidatorMixin,
     FastingFormValidatorMixin,
     FbgOgttFormValidatorMixin,
-    BmiFormValidatorMixin,
     EgfrCkdEpiFormValidatorMixin,
     BloodPressureFormValidatorMixin,
     WeightHeightBmiFormValidatorMixin,
