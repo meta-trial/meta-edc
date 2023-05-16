@@ -1,3 +1,4 @@
+from edc_adverse_event.constants import NOT_RELATED
 from edc_constants.constants import NO, NOT_APPLICABLE, YES
 from edc_reportable.constants import GRADE4
 from edc_utils.date import get_utcnow
@@ -17,7 +18,7 @@ aeinitial = Recipe(
     ae_study_relation_possibility=YES,
     ae_start_date=get_utcnow().date(),
     ae_awareness_date=get_utcnow().date(),
-    study_drug_relation="not_related",
+    study_drug_relation=NOT_RELATED,
     ae_treatment="Some special treatment",
     sae=NO,
     susar=NO,
