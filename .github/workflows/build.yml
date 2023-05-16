@@ -5,19 +5,17 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: ${{ matrix.codebase }} / Dj ${{ matrix.django-version }} / Py ${{ matrix.python-version }}
+    name: build (Python ${{ matrix.python-version }}, Django ${{ matrix.django-version }})
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
-        codebase: ['Prod', 'Dev']
-        django-version: ['4.1', 'dev']
         python-version: ['3.10', '3.11']
+        django-version: ['4.1', '4.2', 'dev']
         exclude:
-          - codebase: 'Prod'
+          - python-version: '3.10'
             django-version: 'dev'
-
     services:
       mysql:
         image: mysql:latest
@@ -66,7 +64,6 @@ jobs:
           tox -v
         env:
           DJANGO: ${{ matrix.django-version }}
-          EDC_CODEBASE: ${{ matrix.codebase }}
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
