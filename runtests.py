@@ -94,6 +94,7 @@ project_settings = DefaultTestSettings(
         "edc_auth.apps.AppConfig",
         "edc_model_wrapper.apps.AppConfig",
         "edc_crf.apps.AppConfig",
+        "edc_he.apps.AppConfig",
         "edc_data_manager.apps.AppConfig",
         "edc_consent.apps.AppConfig",
         "edc_device.apps.AppConfig",
