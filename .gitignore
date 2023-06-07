@@ -1,3 +1,4 @@
+get_data*
 static/
 *.env
 __pycache__

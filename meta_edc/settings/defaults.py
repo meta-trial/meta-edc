@@ -100,6 +100,7 @@ INSTALLED_APPS = [
     "edc_adverse_event.apps.AppConfig",
     "edc_consent.apps.AppConfig",
     "edc_crf.apps.AppConfig",
+    "edc_he.apps.AppConfig",
     "edc_reportable.apps.AppConfig",
     "edc_lab.apps.AppConfig",
     "edc_visit_schedule.apps.AppConfig",
@@ -351,7 +352,7 @@ SUBJECT_REQUISITION_MODEL = env.str("EDC_SUBJECT_REQUISITION_MODEL")
 SUBJECT_VISIT_MODEL = env.str("EDC_SUBJECT_VISIT_MODEL")
 SUBJECT_VISIT_MISSED_MODEL = env.str("EDC_SUBJECT_VISIT_MISSED_MODEL")
 SUBJECT_VISIT_MISSED_REASONS_MODEL = env.str("EDC_SUBJECT_VISIT_MISSED_REASONS_MODEL")
-
+SUBJECT_REFUSAL_MODEL = env.str("EDC_SUBJECT_REFUSAL_MODEL")
 EDC_BLOOD_RESULTS_MODEL_APP_LABEL = "meta_subject"
 
 EDC_NAVBAR_DEFAULT = env("EDC_NAVBAR_DEFAULT")
