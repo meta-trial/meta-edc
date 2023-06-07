@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
-from edc_qol.admin import eq5d3l_fieldsets, eq5d3l_radio_fields
+from edc_qol.modeladmin_mixins import eq5d3l_fieldsets, eq5d3l_radio_fields
 
 from ..admin_site import meta_subject_admin
 from ..forms import Eq5d3lForm

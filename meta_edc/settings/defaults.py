@@ -100,6 +100,7 @@ INSTALLED_APPS = [
     "edc_adverse_event.apps.AppConfig",
     "edc_consent.apps.AppConfig",
     "edc_crf.apps.AppConfig",
+    "edc_he.apps.AppConfig",
     "edc_reportable.apps.AppConfig",
     "edc_lab.apps.AppConfig",
     "edc_visit_schedule.apps.AppConfig",
