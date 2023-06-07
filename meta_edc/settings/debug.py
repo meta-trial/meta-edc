@@ -6,7 +6,14 @@ from .defaults import *  # noqa
 
 print(f"Settings file {__file__}")
 
-SITE_ID = SiteID(default=30)
+# TZ Sites:
+# SITE_ID = SiteID(default=20)  # Amana
+# SITE_ID = SiteID(default=10)  # Hindu Mandal
+# SITE_ID = SiteID(default=40)  # Mwananyamala
+# SITE_ID = SiteID(default=50)  # Mbagala
+# SITE_ID = SiteID(default=60)  # Mnazi-Moja
+SITE_ID = SiteID(default=30)  # Temeke
+
 EDC_SITES_UAT_DOMAIN = False
 DEBUG = True
 ALLOWED_HOSTS = [
