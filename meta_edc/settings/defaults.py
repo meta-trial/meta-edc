@@ -370,6 +370,9 @@ EDC_DX_LABELS = dict(hiv="HIV", dm="Diabetes", htn="Hypertension", chol="High Ch
 # edc-egfr
 EDC_EGFR_DROP_NOTIFICATION_MODEL = "meta_subject.egfrdropnotification"
 
+# edc-export
+EDC_EXPORT_EXPORT_PII_USERS = env.list("EDC_EXPORT_EXPORT_PII_USERS")
+
 # edc_facility
 HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
 
