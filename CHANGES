@@ -1,6 +1,11 @@
 Changes
 =======
 
+0.2.41
+------
+- fix cannot save Screening Part 3 with FBG date same as report date (#635)
+- bump to edc 0.4.98
+
 0.2.38
 ------
 - add missing migrations (meta_ae and meta_subject)
