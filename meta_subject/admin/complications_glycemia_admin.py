@@ -1,15 +1,16 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
+from edc_model_admin.history import SimpleHistoryAdmin
 
 from ..admin_site import meta_subject_admin
 from ..forms import ComplicationsGlycemiaForm
 from ..models import ComplicationsGlycemia
-from .modeladmin import CrfModelAdmin
+from .modeladmin import CrfModelAdminMixin
 
 
 @admin.register(ComplicationsGlycemia, site=meta_subject_admin)
-class ComplicationsGlycemiaAdmin(CrfModelAdmin):
+class ComplicationsGlycemiaAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     form = ComplicationsGlycemiaForm
 
     fieldsets = (

@@ -1,6 +1,7 @@
 from django.apps import apps as django_apps
 from django.contrib.sites.managers import CurrentSiteManager
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from edc_consent.field_mixins import (
     CitizenFieldsMixin,
     IdentityFieldsMixin,
@@ -59,16 +60,16 @@ class SubjectConsent(
     subject_screening_model = "meta_screening.subjectscreening"
 
     screening_identifier = models.CharField(
-        verbose_name="Screening identifier", max_length=50, unique=True
+        verbose_name=_("Screening identifier"), max_length=50, unique=True
     )
 
     screening_datetime = models.DateTimeField(
-        verbose_name="Screening datetime", null=True, editable=False
+        verbose_name=_("Screening datetime"), null=True, editable=False
     )
 
     ethnicity = models.CharField(
         max_length=15,
-        help_text="fromm screening",
+        help_text=_("from screening"),
         editable=False,
         null=True,
     )

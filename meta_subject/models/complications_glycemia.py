@@ -1,6 +1,6 @@
 from django.db import models
 from edc_constants.choices import NORMAL_ABNORMAL_NOEXAM
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
 
 from ..choices import (
     FUNDOSCOPY_CHOICES,
@@ -11,7 +11,7 @@ from ..choices import (
 from ..model_mixins import CrfModelMixin
 
 
-class ComplicationsGlycemia(CrfModelMixin, edc_models.BaseUuidModel):
+class ComplicationsGlycemia(CrfModelMixin, BaseUuidModel):
 
     """Not used"""
 
@@ -207,6 +207,6 @@ class ComplicationsGlycemia(CrfModelMixin, edc_models.BaseUuidModel):
         choices=YES_NO_NO_EXAM,
     )
 
-    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+    class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Complications (Raised Glycemia)"
         verbose_name_plural = "Complications (Raised Glycemia)"

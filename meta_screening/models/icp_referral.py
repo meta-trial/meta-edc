@@ -92,9 +92,9 @@ class IcpReferral(SiteModelMixin, BaseUuidModel):
 
     referral_reasons = models.TextField(null=True)
 
-    on_site = CurrentSiteManager()
-
     objects = IcpReferralManager()
+
+    on_site = CurrentSiteManager()
 
     history = HistoricalRecords(inherit=True)
 

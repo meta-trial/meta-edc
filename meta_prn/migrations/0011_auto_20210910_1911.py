@@ -14,7 +14,7 @@ def convert_actions_required_to_fk(apps, schema_editor):
             raise ObjectDoesNotExist(f"{e}. Got name={obj.action_required_old}")
 
         obj.action_required = action_required
-        obj.save()
+        obj.save_base(update_fields=["action_required"])
 
 
 class Migration(migrations.Migration):

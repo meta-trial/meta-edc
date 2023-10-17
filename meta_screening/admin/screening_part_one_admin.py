@@ -2,7 +2,7 @@ from typing import Tuple
 
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
-from edc_sites.modeladmin_mixins import SiteModelAdminMixin
+from edc_sites.admin import SiteModelAdminMixin
 
 from ..admin_site import meta_screening_admin
 from ..forms import (

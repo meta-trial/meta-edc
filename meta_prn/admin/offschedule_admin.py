@@ -4,9 +4,9 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django_audit_fields import audit_fieldset_tuple
 from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
-from edc_data_manager.modeladmin_mixins import DataManagerModelAdminMixin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
+from edc_sites.admin import SiteModelAdminMixin
 
 from ..admin_site import meta_prn_admin
 from ..forms import OffScheduleForm
@@ -15,7 +15,7 @@ from ..models import EndOfStudy, OffSchedule
 
 @admin.register(OffSchedule, site=meta_prn_admin)
 class OffScheduleAdmin(
-    DataManagerModelAdminMixin,
+    SiteModelAdminMixin,
     ActionItemModelAdminMixin,
     ModelAdminSubjectDashboardMixin,
     SimpleHistoryAdmin,

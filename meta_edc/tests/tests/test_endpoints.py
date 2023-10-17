@@ -214,6 +214,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             else:
                 self.assertNotIn(label, response)
 
+    @tag("1")
     @tag("webtest")
     def test_screening_form_phase3(self):
         self.login(superuser=False, roles=[STAFF_ROLE, CLINICIAN_ROLE])

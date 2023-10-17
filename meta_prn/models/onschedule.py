@@ -3,7 +3,7 @@ from edc_sites.models import SiteModelMixin
 from edc_visit_schedule.model_mixins import OnScheduleModelMixin
 
 
-class OnSchedule(SiteModelMixin, OnScheduleModelMixin, BaseUuidModel):
+class OnSchedule(OnScheduleModelMixin, SiteModelMixin, BaseUuidModel):
 
     """A model used by the system. Auto-completed by subject_consent."""
 
@@ -11,11 +11,11 @@ class OnSchedule(SiteModelMixin, OnScheduleModelMixin, BaseUuidModel):
         pass
 
 
-class OnSchedulePregnancy(SiteModelMixin, OnScheduleModelMixin, BaseUuidModel):
+class OnSchedulePregnancy(OnScheduleModelMixin, SiteModelMixin, BaseUuidModel):
     class Meta(OnScheduleModelMixin.Meta, BaseUuidModel.Meta):
         pass
 
 
-class OnSchedulePostnatal(SiteModelMixin, OnScheduleModelMixin, BaseUuidModel):
+class OnSchedulePostnatal(OnScheduleModelMixin, SiteModelMixin, BaseUuidModel):
     class Meta(OnScheduleModelMixin.Meta):
         pass

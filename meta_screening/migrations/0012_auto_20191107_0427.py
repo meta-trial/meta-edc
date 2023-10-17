@@ -5,8 +5,8 @@ from edc_reportable import MILLIMOLES_PER_LITER
 
 
 def update_fbg(apps, schema_editor):
-    SubjectScreening = apps.get_model("meta_screening", "SubjectScreening")
-    for obj in SubjectScreening._default_manager.all():
+    subject_screening_model_cls = apps.get_model("meta_screening", "SubjectScreening")
+    for obj in subject_screening_model_cls._default_manager.all():
         eligible = obj.eligible
         obj.converted_fasting_glucose = obj.fasting_glucose
         obj.fasting_glucose_units = MILLIMOLES_PER_LITER

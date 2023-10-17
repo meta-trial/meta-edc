@@ -1,7 +1,7 @@
-from edc_adverse_event.pdf_reports import AeReport as BaseAeReport
+from edc_adverse_event.pdf_reports import AePdfReport as BaseAePdfReport
 
 from .meta_pdf_report_mixin import MetaCrfReportMixin
 
 
-class AeReport(MetaCrfReportMixin, BaseAeReport):
+class AeReport(MetaCrfReportMixin, BaseAePdfReport):
     pass

@@ -59,8 +59,8 @@ class BirthOutcomes(
         verbose_name="Weight (gm)", help_text="gm", null=True, blank=True
     )
 
-    on_site = CurrentSiteManager()
     objects = Manager()
+    on_site = CurrentSiteManager()
     history = HistoricalRecords(inherit=True)
 
     def __str__(self):

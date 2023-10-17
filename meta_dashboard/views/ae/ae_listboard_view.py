@@ -1,9 +1,10 @@
-from edc_adverse_event.pdf_reports import AeReport
 from edc_adverse_event.view_mixins import AeListboardViewMixin
 from reportlab.lib.units import cm
 
+from meta_reports.ae_report import AePdfReport
 
-class CustomAeReport(AeReport):
+
+class CustomAeReport(AePdfReport):
     logo_data = {
         "app_label": "meta_edc",
         "filename": "meta_logo.png",

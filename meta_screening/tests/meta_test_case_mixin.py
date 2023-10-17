@@ -7,7 +7,7 @@ from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.sites.models import Site
 from edc_appointment.constants import IN_PROGRESS_APPT, INCOMPLETE_APPT
-from edc_appointment.tests.appointment_test_case_mixin import AppointmentTestCaseMixin
+from edc_appointment.tests.test_case_mixins import AppointmentTestCaseMixin
 from edc_constants.constants import YES
 from edc_facility.import_holidays import import_holidays
 from edc_list_data.site_list_data import site_list_data

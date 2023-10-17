@@ -1,7 +1,7 @@
-from django.conf import settings
 from django.db import models
 from edc_adverse_event.choices import STUDY_DRUG_RELATIONSHIP
 from edc_adverse_event.models import AeClassification
+from edc_adverse_event.utils import get_adverse_event_app_label
 from edc_constants.choices import YES_NO
 from edc_model import models as edc_models
 from edc_model.validators import datetime_not_future
@@ -12,7 +12,7 @@ from ..choices import AE_TYPE
 
 class AeReviewModelMixin(models.Model):
     ae_initial = models.ForeignKey(
-        f"{settings.ADVERSE_EVENT_APP_LABEL}.aeinitial", on_delete=models.PROTECT
+        f"{get_adverse_event_app_label()}.aeinitial", on_delete=models.PROTECT
     )
 
     report_datetime = models.DateTimeField(

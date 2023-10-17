@@ -1,4 +1,4 @@
-from edc_visit_schedule import VisitSchedule
+from edc_visit_schedule.visit_schedule import VisitSchedule
 
 from ...constants import VISIT_SCHEDULE
 from .schedule import schedule

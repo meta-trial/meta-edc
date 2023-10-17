@@ -1,5 +1,5 @@
 from django.db import models
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
 from edc_vitals.model_mixins import (
     BloodPressureModelMixin,
     SimpleBloodPressureModelMixin,
@@ -14,7 +14,7 @@ class FollowupVitals(
     BloodPressureModelMixin,
     SimpleBloodPressureModelMixin,
     CrfModelMixin,
-    edc_models.BaseUuidModel,
+    BaseUuidModel,
 ):
     # TODO: Grading for blood pressure?? sokoine See DAIDS
     # TODO: Add action item modelmixin, grading like blood results
@@ -25,6 +25,6 @@ class FollowupVitals(
         choices=WEIGHT_DETERMINATION,
     )
 
-    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+    class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Clinic follow up: Vitals"
         verbose_name_plural = "Clinic follow ups: Vitals"

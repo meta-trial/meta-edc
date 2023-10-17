@@ -2,7 +2,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.safestring import mark_safe
 from edc_constants.choices import YES_NO
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
 from edc_vitals.model_mixins import (
     BloodPressureModelMixin,
     SimpleBloodPressureModelMixin,
@@ -16,7 +16,7 @@ class PhysicalExam(
     BloodPressureModelMixin,
     VitalsFieldsModelMixin,
     CrfModelMixin,
-    edc_models.BaseUuidModel,
+    BaseUuidModel,
 ):
     irregular_heartbeat = models.CharField(
         verbose_name=mark_safe("Is the heart beat <u>irregular</u>?"),  # nosec B308
@@ -57,6 +57,6 @@ class PhysicalExam(
         verbose_name="Enlarged liver on palpation?", max_length=15, choices=YES_NO
     )
 
-    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+    class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Physical Exam"
         verbose_name_plural = "Physical Exams"

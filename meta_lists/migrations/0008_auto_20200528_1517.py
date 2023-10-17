@@ -13,7 +13,7 @@ def update_ltfu(apps, schema_editor):
         pass
     else:
         obj.name = LOST_TO_FOLLOWUP
-        obj.save()
+        obj.save_base(update_fields=["name"])
 
 
 class Migration(migrations.Migration):

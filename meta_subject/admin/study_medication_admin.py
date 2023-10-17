@@ -5,6 +5,7 @@ from django.contrib.messages import ERROR, SUCCESS
 from django.core.exceptions import ObjectDoesNotExist
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
+from edc_model_admin.history import SimpleHistoryAdmin
 from edc_offstudy.exceptions import OffstudyError
 from edc_pharmacy.exceptions import NextStudyMedicationError, RefillCreatorError
 from edc_pharmacy.model_mixins.study_medication_crf_model_mixin import (
@@ -18,11 +19,11 @@ from meta_pharmacy.constants import METFORMIN
 from ..admin_site import meta_subject_admin
 from ..forms import StudyMedicationForm
 from ..models import StudyMedication
-from .modeladmin import CrfModelAdmin
+from .modeladmin import CrfModelAdminMixin
 
 
 @admin.register(StudyMedication, site=meta_subject_admin)
-class StudyMedicationAdmin(CrfModelAdmin):
+class StudyMedicationAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     actions = ["create_or_update_rx_refills"]
 
     form = StudyMedicationForm

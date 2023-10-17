@@ -1,6 +1,10 @@
 Changes
 =======
 
+unreleased
+----------
+- bump edc to 0.5.27, py3.11, dj 4.2
+
 0.2.38
 ------
 - add missing migrations (meta_ae and meta_subject)

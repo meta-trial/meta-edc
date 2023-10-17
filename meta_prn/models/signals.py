@@ -2,7 +2,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from edc_constants.constants import YES
-from edc_visit_schedule import site_visit_schedules
+from edc_visit_schedule.site_visit_schedules import site_visit_schedules
 
 from meta_subject.models import SubjectVisit, UrinePregnancy
 from meta_visit_schedule.constants import SCHEDULE, SCHEDULE_PREGNANCY, VISIT_SCHEDULE

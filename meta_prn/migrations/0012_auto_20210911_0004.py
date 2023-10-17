@@ -11,7 +11,7 @@ def convert_violation_type_to_fk(apps, schema_editor):
         violation_type = list_model_cls.objects.get(name=obj.violation_type)
         obj.violation = violation_type
         obj.violation_other = obj.violation_type_other
-        obj.save()
+        obj.save_base(update_fields=["violation", "violation_other"])
 
 
 class Migration(migrations.Migration):

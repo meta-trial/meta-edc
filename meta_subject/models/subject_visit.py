@@ -64,9 +64,9 @@ class SubjectVisit(
         choices=INFO_SOURCE,
     )
 
-    on_site = VisitCurrentSiteManager()
-
     objects = VisitModelManager()
+
+    on_site = VisitCurrentSiteManager()
 
     history = HistoricalRecords()
 
