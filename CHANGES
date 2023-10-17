@@ -1,9 +1,14 @@
 Changes
-=======
+-------
 
-unreleased
-----------
-- bump edc to 0.5.27, py3.11, dj 4.2
+0.2.42
+------
+- bump edc to 0.5.35, py3.11, dj 4.2
+
+0.2.41
+------
+- fix cannot save Screening Part 3 with FBG date same as report date (#635)
+- bump to edc 0.4.98
 
 0.2.38
 ------
