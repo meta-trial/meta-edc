@@ -1,6 +1,6 @@
-from edc_auth.get_clinic_codenames import get_clinic_codenames
+from edc_auth.get_app_codenames import get_app_codenames
 
-clinic_codenames = get_clinic_codenames(
+clinic_codenames = get_app_codenames(
     "meta_prn", "meta_subject", "meta_consent", list_app="meta_lists"
 )
 

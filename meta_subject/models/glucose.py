@@ -5,7 +5,7 @@ from edc_glucose.model_mixins import (
     fbg_model_mixin_factory,
     ogtt_model_mixin_factory,
 )
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
 
 from ..model_mixins import CrfModelMixin
 
@@ -25,7 +25,7 @@ class Glucose(
     ),
     fbg_model_mixin_factory("fbg"),
     ogtt_model_mixin_factory("ogtt"),
-    edc_models.BaseUuidModel,
+    BaseUuidModel,
 ):
     # TODO: diagnosis of diabetes is OGTT 11.1mmol / L ONLY. Triggers EoS form
     # TODO: move IFG to bloogresultglu. Use this form for OGTT only 27/01/2021
@@ -52,6 +52,6 @@ class Glucose(
         verbose_name="If NO, provide reason", max_length=150, null=True, blank=True
     )
 
-    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+    class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Glucose (IFG, OGTT)"
         verbose_name_plural = "Glucose (IFG, OGTT)"

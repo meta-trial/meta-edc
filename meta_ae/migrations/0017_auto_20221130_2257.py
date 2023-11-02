@@ -13,7 +13,7 @@ def update_investigator_ae_classification(apps, schema_editor):
         ae_tmg_cls.objects.filter(investigator_ae_classification__isnull=True), total=total
     ):
         obj.investigator_ae_classification = ae_classification
-        obj.save()
+        obj.save_base(update_fields=["investigator_ae_classification"])
 
 
 class Migration(migrations.Migration):

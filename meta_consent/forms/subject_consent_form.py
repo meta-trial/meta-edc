@@ -1,14 +1,12 @@
 from django import forms
 from django.conf import settings
+from django.utils.translation import gettext_lazy as _
 from edc_consent.form_validators import SubjectConsentFormValidatorMixin
 from edc_consent.modelform_mixins import ConsentModelFormMixin
 from edc_form_validators import FormValidator, FormValidatorMixin
 from edc_sites.forms import SiteModelFormMixin
 
 from ..models import SubjectConsent
-
-# TODO: Assessment score "The client has completed the
-#  assessment of understanding with a passing score"
 
 
 class SubjectConsentFormValidator(SubjectConsentFormValidatorMixin, FormValidator):
@@ -17,7 +15,7 @@ class SubjectConsentFormValidator(SubjectConsentFormValidatorMixin, FormValidato
         number and `identity` matches the screening form.
         """
         if self.cleaned_data.get("identity_type") != "hospital_no":
-            raise forms.ValidationError({"identity_type": "Expected 'hospital number'."})
+            raise forms.ValidationError({"identity_type": _("Expected 'hospital number'.")})
 
         if self.subject_screening.hospital_identifier != (
             self.cleaned_data.get("identity") or getattr(self.instance, "identity", "")
@@ -25,7 +23,7 @@ class SubjectConsentFormValidator(SubjectConsentFormValidatorMixin, FormValidato
             raise forms.ValidationError(
                 {
                     "identity": (
-                        "The hospital identifier does not match that reported at screening."
+                        _("The hospital identifier does not match that reported at screening.")
                     )
                 }
             )
@@ -52,15 +50,19 @@ class SubjectConsentForm(
         fields = "__all__"
         help_texts = {
             "identity": (
-                "Use Country ID Number, Passport number, driver's license "
-                "number or Country ID receipt number"
+                _(
+                    "Use Country ID Number, Passport number, driver's license "
+                    "number or Country ID receipt number"
+                )
             ),
             "witness_name": (
-                "Required only if participant is illiterate. "
-                "Format is 'LASTNAME, FIRSTNAME'. "
-                "All uppercase separated by a comma."
+                _(
+                    "Required only if participant is illiterate. "
+                    "Format is 'LASTNAME, FIRSTNAME'. "
+                    "All uppercase separated by a comma."
+                )
             ),
-            "screening_identifier": "(read-only)",
+            "screening_identifier": _("(read-only)"),
         }
         widgets = {
             "screening_identifier": forms.TextInput(attrs={"readonly": "readonly"}),

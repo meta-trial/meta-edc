@@ -17,33 +17,6 @@ from edc_vitals.model_mixins import (
 
 from .creatinine_fields_model_mixin import CreatinineModelFieldsMixin
 
-# class FastingModelMixin(
-#     fasting_model_mixin_factory(
-#         None,
-#         fasting=models.CharField(
-#             verbose_name="Has the participant fasted?",
-#             max_length=15,
-#             choices=YES_NO,
-#             null=True,
-#             blank=False,
-#             help_text="As reported by patient",
-#         ),
-#     ),
-#     fasting_model_mixin_factory(
-#         "repeat",
-#         repeat_fasting=models.CharField(
-#             verbose_name="Has the participant fasted?",
-#             max_length=15,
-#             choices=YES_NO,
-#             null=True,
-#             blank=False,
-#             help_text="As reported by patient",
-#         ),
-#     ),
-# ):
-#     class Meta:
-#         abstract = True
-
 
 class FbgModelMixin(
     fbg_model_mixin_factory(

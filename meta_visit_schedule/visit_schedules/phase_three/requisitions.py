@@ -7,7 +7,7 @@ from edc_lab_panel.panels import (
     lipids_panel,
     rft_panel,
 )
-from edc_visit_schedule import FormsCollection, Requisition
+from edc_visit_schedule.visit import FormsCollection, Requisition
 
 requisitions_prn = FormsCollection(
     Requisition(show_order=200, panel=blood_glucose_panel, required=True, additional=False),

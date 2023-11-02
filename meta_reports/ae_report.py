@@ -1,5 +1,5 @@
-from edc_adverse_event.pdf_reports import AeReport as BaseAeReport
+from edc_adverse_event.pdf_reports import AePdfReport as BaseAePdfReport
 
 
-class AeReport(BaseAeReport):
+class AePdfReport(BaseAePdfReport):
     weight_model = "meta_subject.followup"

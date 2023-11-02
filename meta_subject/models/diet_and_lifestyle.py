@@ -1,11 +1,11 @@
 from django.db import models
 from edc_constants.choices import YES_NO
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
 
 from ..model_mixins import CrfModelMixin
 
 
-class DietAndLifestyle(CrfModelMixin, edc_models.BaseUuidModel):
+class DietAndLifestyle(CrfModelMixin, BaseUuidModel):
     diet_and_lifestyle = models.CharField(
         verbose_name=(
             "Has the participant received the META3 " "approved diet and lifetsyle counseling?"
@@ -27,6 +27,6 @@ class DietAndLifestyle(CrfModelMixin, edc_models.BaseUuidModel):
         help_text="Report in minutes. This response is not criteria for eligibility",
     )
 
-    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+    class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Clinic follow up: Examination"
         verbose_name_plural = "Clinic follow up: Examination"

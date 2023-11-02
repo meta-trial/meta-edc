@@ -10,15 +10,16 @@ from edc_lab.admin import (
     requisition_status_fieldset,
     requisition_verify_fieldset,
 )
+from edc_model_admin.history import SimpleHistoryAdmin
 
 from ..admin_site import meta_subject_admin
 from ..forms import SubjectRequisitionForm
 from ..models import SubjectRequisition
-from .modeladmin import CrfModelAdmin
+from .modeladmin import CrfModelAdminMixin
 
 
 @admin.register(SubjectRequisition, site=meta_subject_admin)
-class SubjectRequisitionAdmin(RequisitionAdminMixin, CrfModelAdmin):
+class SubjectRequisitionAdmin(RequisitionAdminMixin, CrfModelAdminMixin, SimpleHistoryAdmin):
     form = SubjectRequisitionForm
 
     fieldsets = (

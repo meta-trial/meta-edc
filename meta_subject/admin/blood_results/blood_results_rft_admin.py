@@ -10,6 +10,7 @@ from edc_lab_results.fieldsets import (
     calculate_egfr_drop_fieldset,
     calculate_egfr_fieldset,
 )
+from edc_model_admin.history import SimpleHistoryAdmin
 from edc_registration.models import RegisteredSubject
 from edc_utils import get_utcnow
 from edc_utils.round_up import round_half_away_from_zero
@@ -19,11 +20,13 @@ from edc_visit_schedule.utils import is_baseline
 from ...admin_site import meta_subject_admin
 from ...forms import BloodResultsRftForm
 from ...models import BloodResultsRft, EgfrDropNotification, SubjectVisit
-from ..modeladmin import CrfModelAdmin
+from ..modeladmin import CrfModelAdminMixin
 
 
 @admin.register(BloodResultsRft, site=meta_subject_admin)
-class BloodResultsRftAdmin(BloodResultsModelAdminMixin, CrfModelAdmin):
+class BloodResultsRftAdmin(
+    BloodResultsModelAdminMixin, CrfModelAdminMixin, SimpleHistoryAdmin
+):
     form = BloodResultsRftForm
     actions = ["create_or_update_egfr_notification", "recalculate_egfr"]
     fieldsets = (

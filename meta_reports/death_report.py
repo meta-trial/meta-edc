@@ -17,7 +17,7 @@ User = get_user_model()
 p = inflect.engine()
 
 
-class DeathReport(MetaCrfPdfReport):
+class DeathPdfReport(MetaCrfPdfReport):
     model_attr = "death_report"
 
     def __init__(self, death_report=None, **kwargs):

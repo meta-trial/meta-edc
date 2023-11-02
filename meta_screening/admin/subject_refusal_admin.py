@@ -4,6 +4,7 @@ from django.urls.exceptions import NoReverseMatch
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
+from edc_sites.admin import SiteModelAdminMixin
 
 from ..admin_site import meta_screening_admin
 from ..forms import SubjectRefusalForm
@@ -11,7 +12,9 @@ from ..models import SubjectRefusal
 
 
 @admin.register(SubjectRefusal, site=meta_screening_admin)
-class SubjectRefusalAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin):
+class SubjectRefusalAdmin(
+    SiteModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
+):
     form = SubjectRefusalForm
 
     autocomplete_fields = ["subject_screening"]

@@ -1,6 +1,7 @@
 from dateutil.relativedelta import relativedelta
 from edc_facility.constants import FIVE_DAY_CLINIC
-from edc_visit_schedule import Schedule, Visit
+from edc_visit_schedule.schedule import Schedule
+from edc_visit_schedule.visit import Visit
 
 from ...constants import DELIVERY, SCHEDULE_PREGNANCY
 from .crfs import crfs_missed

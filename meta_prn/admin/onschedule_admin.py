@@ -1,9 +1,9 @@
 from typing import Tuple
 
 from django.contrib import admin
-from edc_data_manager.modeladmin_mixins import DataManagerModelAdminMixin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
+from edc_sites.admin import SiteModelAdminMixin
 
 from ..admin_site import meta_prn_admin
 from ..models import OnSchedule
@@ -11,7 +11,7 @@ from ..models import OnSchedule
 
 @admin.register(OnSchedule, site=meta_prn_admin)
 class OnScheduleAdmin(
-    DataManagerModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
+    SiteModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
 ):
     instructions = None
 
