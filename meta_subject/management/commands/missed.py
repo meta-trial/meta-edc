@@ -1,3 +1,4 @@
+import urllib.parse
 from datetime import date, datetime
 
 from dateutil.relativedelta import relativedelta
@@ -11,6 +12,8 @@ from tqdm import tqdm
 
 from meta_prn.models import EndOfStudy, OffSchedule, OffStudyMedication
 from meta_subject.models import SubjectVisit, SubjectVisitMissed
+
+urllib.parse.quote("D-cHO$?N-1cOYHl^2^GDbZ:o-^X")
 
 visit_codes = [
     "1000",
