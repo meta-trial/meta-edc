@@ -1,6 +1,11 @@
 Changes
 -------
 
+0.2.43
+------
+- bump edc to 0.5.37
+- remove references to `edc-reference`.
+
 0.2.42
 ------
 - bump edc to 0.5.35, py3.11, dj 4.2
