@@ -2,8 +2,9 @@ from copy import deepcopy
 
 from django.test import TestCase
 from edc_constants.constants import COMPLETE, YES
-from edc_metadata import KEYED, NOT_REQUIRED, REQUIRED, TargetModelNotScheduledForVisit
+from edc_metadata import KEYED, NOT_REQUIRED, REQUIRED
 from edc_metadata.metadata import CrfMetadataGetter
+from edc_metadata.metadata_handler import MetadataHandlerError
 from edc_qol.constants import ALL_OF_THE_TIME, NONE_OF_THE_TIME, SOME_OF_THE_TIME
 from edc_visit_schedule.constants import MONTH1, MONTH3, WEEK2
 
@@ -38,7 +39,7 @@ class TestSf12(MetaTestCaseMixin, TestCase):
         form = Sf12Form(data=self.data)
         form.is_valid()
         self.assertEqual({}, form._errors)
-        self.assertRaises(TargetModelNotScheduledForVisit, form.save)
+        self.assertRaises(MetadataHandlerError, form.save)
 
         crf_metadata_getter = CrfMetadataGetter(appointment=self.subject_visit.appointment)
         self.assertFalse(

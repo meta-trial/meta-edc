@@ -33,7 +33,7 @@ from ..choices import CLINICAL_WITHDRAWAL_REASONS, TOXICITY_WITHDRAWAL_REASONS
 from ..constants import CLINICAL_WITHDRAWAL
 
 
-class EndOfStudy(SiteModelMixin, ActionModelMixin, OffstudyModelMixin, BaseUuidModel):
+class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidModel):
     action_name = END_OF_STUDY_ACTION
 
     tracking_identifier_prefix = "ST"

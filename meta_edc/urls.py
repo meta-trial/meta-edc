@@ -80,6 +80,7 @@ urlpatterns += [
         name="switch_sites_url",
     ),
     path("home/", HomeView.as_view(), name="home_url"),
+    path("i18n/", include("django.conf.urls.i18n")),
     re_path(".", RedirectView.as_view(url="/"), name="home_url"),
     re_path("", HomeView.as_view(), name="home_url"),
 ]

@@ -6,11 +6,13 @@ from edc_model_admin.history import SimpleHistoryAdmin
 from ..admin_site import meta_subject_admin
 from ..forms import SubjectVisitMissedForm
 from ..models import SubjectVisitMissed
-from .modeladmin import CrfModelAdmin
+from .modeladmin import CrfModelAdminMixin
 
 
 @admin.register(SubjectVisitMissed, site=meta_subject_admin)
-class SubjectVisitMissedAdmin(CrfModelAdmin, FormLabelModelAdminMixin, SimpleHistoryAdmin):
+class SubjectVisitMissedAdmin(
+    CrfModelAdminMixin, FormLabelModelAdminMixin, SimpleHistoryAdmin
+):
     form = SubjectVisitMissedForm
 
     fieldsets = (

@@ -2,5 +2,6 @@ include AUTHORS CHANGES LICENSE VERSION
 include MANIFEST.in
 include *.rst
 include *.txt
+include */locale/*/LC_MESSAGES/*.mo
 recursive-include meta_edc/templates *
 recursive-include label_templates *

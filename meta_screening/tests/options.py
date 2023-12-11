@@ -1,6 +1,7 @@
 from datetime import datetime
 from random import sample
 from secrets import choice
+from string import ascii_uppercase
 from zoneinfo import ZoneInfo
 
 from dateutil.relativedelta import relativedelta
@@ -16,7 +17,6 @@ from edc_constants.constants import (
 )
 from edc_reportable.units import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
 from faker import Faker
-from pyparsing import alphas
 
 from meta_edc.meta_version import get_meta_version
 from meta_screening.forms import part_one_fields, part_three_fields, part_two_fields
@@ -35,7 +35,7 @@ def get_part_one_eligible_options():
         gender=FEMALE,
         hiv_pos=YES,
         hospital_identifier="".join(map(str, sample(range(0, 10), 10))),
-        initials=f"{choice(alphas)}{choice(alphas)}".upper(),
+        initials=f"{choice(ascii_uppercase)}{choice(ascii_uppercase)}",
         lives_nearby=YES,
         on_rx_stable=YES,
         pregnant=NOT_APPLICABLE,

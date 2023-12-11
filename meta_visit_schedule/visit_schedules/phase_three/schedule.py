@@ -1,7 +1,7 @@
 from dateutil.relativedelta import relativedelta
 from edc_facility.constants import FIVE_DAY_CLINIC
-from edc_visit_schedule import Schedule
-from edc_visit_schedule import Visit as BaseVisit
+from edc_visit_schedule.schedule import Schedule
+from edc_visit_schedule.visit import Visit as BaseVisit
 
 from ...constants import (
     DAY1,

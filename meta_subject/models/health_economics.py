@@ -2,7 +2,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from edc_constants.choices import YES_NO, YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE
-from edc_model import models as edc_models
+from edc_model.models import BaseUuidModel
 
 from ..choices import (
     ACTIVITY_CHOICES,
@@ -13,7 +13,7 @@ from ..choices import (
 from ..model_mixins import CrfModelMixin
 
 
-class HealthEconomics(CrfModelMixin, edc_models.BaseUuidModel):
+class HealthEconomics(CrfModelMixin, BaseUuidModel):
 
     """Not used"""
 
@@ -315,6 +315,6 @@ class HealthEconomics(CrfModelMixin, edc_models.BaseUuidModel):
         help_text="in Shilling",
     )
 
-    class Meta(CrfModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+    class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Health Economics (M2)"
         verbose_name_plural = "Health Economics (M2)"

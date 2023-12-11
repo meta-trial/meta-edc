@@ -1,16 +1,17 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
+from edc_model_admin.history import SimpleHistoryAdmin
 
 from ..admin_site import meta_subject_admin
 from ..forms import PatientHistoryForm
 from ..models import PatientHistory
 from .fieldsets import get_hiv_fieldset, get_htn_fieldset, get_other_history_fieldset
-from .modeladmin import CrfModelAdmin
+from .modeladmin import CrfModelAdminMixin
 
 
 @admin.register(PatientHistory, site=meta_subject_admin)
-class PatientHistoryAdmin(CrfModelAdmin):
+class PatientHistoryAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     form = PatientHistoryForm
 
     autocomplete_fields = ["current_arv_regimen", "previous_arv_regimen"]

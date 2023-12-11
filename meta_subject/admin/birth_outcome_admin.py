@@ -5,10 +5,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
 from django.urls import NoReverseMatch, reverse
 from django_audit_fields.admin import audit_fieldset_tuple
-from edc_data_manager.modeladmin_mixins import DataManagerModelAdminMixin
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
 from edc_registration.models import RegisteredSubject
+from edc_sites.admin import SiteModelAdminMixin
 
 from ..admin_site import meta_subject_admin
 from ..forms import BirthOutcomesForm
@@ -17,7 +17,7 @@ from ..models import BirthOutcomes
 
 @admin.register(BirthOutcomes, site=meta_subject_admin)
 class BirthOutcomesAdmin(
-    DataManagerModelAdminMixin,
+    SiteModelAdminMixin,
     ModelAdminSubjectDashboardMixin,
     SimpleHistoryAdmin,
 ):

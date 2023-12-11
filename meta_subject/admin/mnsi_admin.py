@@ -12,7 +12,7 @@ from meta_subject.admin_site import meta_subject_admin
 
 from ..forms import MnsiForm
 from ..models import Mnsi
-from .modeladmin import CrfModelAdmin
+from .modeladmin import CrfModelAdminMixin
 
 
 def get_fieldsets():
@@ -42,7 +42,7 @@ radio_fields.update(crf_status=admin.VERTICAL)
 @admin.register(Mnsi, site=meta_subject_admin)
 class MnsiAdmin(
     MnsiModelAdminMixin,
-    CrfModelAdmin,
+    CrfModelAdminMixin,
     SimpleHistoryAdmin,
 ):
     form = MnsiForm

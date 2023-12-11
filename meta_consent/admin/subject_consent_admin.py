@@ -1,5 +1,6 @@
 from django.contrib import admin, messages
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
+from django.utils.translation import gettext_lazy as _
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_consent.actions import (
     flag_as_verified_against_paper,
@@ -70,7 +71,7 @@ class SubjectConsentAdmin(
                     "consent_signature",
                     "consent_copy",
                 ),
-                "description": "The following questions are directed to the interviewer.",
+                "description": _("The following questions are directed to the interviewer."),
             },
         ),
         audit_fieldset_tuple,
@@ -120,7 +121,7 @@ class SubjectConsentAdmin(
             pass
         return next_options
 
-    @admin.action(permissions=["view"], description="Create missing METFORMIN prescription")
+    @admin.action(permissions=["view"], description=_("Create missing METFORMIN prescription"))
     def create_missing_metformin_rx(self, request, queryset):
         medication = Medication.objects.get(name=METFORMIN)
         total = queryset.count()
@@ -141,6 +142,14 @@ class SubjectConsentAdmin(
                 created += 1
         messages.success(
             request,
-            f"Created {created}/{total} missing {medication.display_name} prescriptions. "
-            f"Got {exist}/{total} prescriptions already exist",
+            _(
+                "Created %(created)s/%(total)s missing %(display_name)s prescriptions. "
+                "Got %(exist)s/%(total)s prescriptions already exist"
+            )
+            % {
+                "created": created,
+                "exist": exist,
+                "total": total,
+                "display_name": medication.display_name,
+            },
         )

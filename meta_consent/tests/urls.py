@@ -10,7 +10,6 @@ urlpatterns = [
     path("edc_export/", include("edc_export.urls")),
     path("edc_device/", include("edc_device.urls")),
     path("edc_protocol/", include("edc_protocol.urls")),
-    path("edc_reference/", include("edc_reference.urls")),
     path("edc_visit_schedule/", include("edc_visit_schedule.urls")),
     path("meta_consent/", include("meta_consent.urls")),
     path("administration", RedirectView.as_view(url="admin/"), name="administration_url"),

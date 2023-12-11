@@ -32,4 +32,4 @@ class TestReports(MetaTestCaseMixin, TestCase):
             user=request.user,
             request=request,
         )
-        return report.render()
+        return report.render_to_response()

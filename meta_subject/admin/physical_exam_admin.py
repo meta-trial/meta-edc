@@ -1,12 +1,13 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
+from edc_model_admin.history import SimpleHistoryAdmin
 
 from ..admin_site import meta_subject_admin
 from ..forms import PhysicalExamForm
 from ..models import PhysicalExam
 from .fields import get_blood_pressure_fields
-from .modeladmin import CrfModelAdmin
+from .modeladmin import CrfModelAdminMixin
 
 
 def get_other_vitals_fieldset():
@@ -17,7 +18,7 @@ def get_other_vitals_fieldset():
 
 
 @admin.register(PhysicalExam, site=meta_subject_admin)
-class PhysicalExamAdmin(CrfModelAdmin):
+class PhysicalExamAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     form = PhysicalExamForm
 
     fieldsets = (

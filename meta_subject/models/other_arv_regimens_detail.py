@@ -47,8 +47,8 @@ class OtherArvRegimensDetail(CrfInlineModelMixin, BaseUuidModel):
 
     notes = models.CharField(verbose_name="Notes", max_length=100, null=True, blank=True)
 
-    on_site = CurrentSiteManager()
     objects = InlineModelManager()
+    on_site = CurrentSiteManager()
     history = HistoricalRecords(inherit=True)
 
     def natural_key(self) -> tuple:

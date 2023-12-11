@@ -4,6 +4,7 @@ import arrow
 from django import template
 from django.conf import settings
 from django.utils.safestring import mark_safe
+from edc_adverse_event.utils import get_adverse_event_app_label
 from edc_constants.constants import OTHER, YES
 from edc_dashboard.utils import get_bootstrap_version
 
@@ -11,7 +12,7 @@ register = template.Library()
 
 
 format_ae_description_template_name = (
-    f"{settings.ADVERSE_EVENT_APP_LABEL}/bootstrap{get_bootstrap_version()}/"
+    f"{get_adverse_event_app_label()}/bootstrap{get_bootstrap_version()}/"
     f"ae_initial_description.html"
 )
 

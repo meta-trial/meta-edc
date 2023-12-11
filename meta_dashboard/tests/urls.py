@@ -6,7 +6,6 @@ from edc_appointment.admin_site import edc_appointment_admin
 from edc_consent.admin_site import edc_consent_admin
 from edc_dashboard.views import AdministrationView
 from edc_locator.admin_site import edc_locator_admin
-from edc_reference.admin_site import edc_reference_admin
 
 from meta_ae.admin_site import meta_ae_admin
 from meta_consent.admin_site import meta_consent_admin
@@ -24,7 +23,6 @@ urlpatterns = [
     path("admin/", meta_test_admin.urls),
     path("admin/", meta_ae_admin.urls),
     path("admin/", meta_prn_admin.urls),
-    path("admin/", edc_reference_admin.urls),
     path("admin/", edc_locator_admin.urls),
     path("admin/", meta_consent_admin.urls),
     path("admin/", meta_subject_admin.urls),
@@ -51,7 +49,6 @@ urlpatterns = [
     path("edc_locator/", include("edc_locator.urls")),
     path("edc_pharmacy_dashboard/", include("edc_pharmacy_dashboard.urls")),
     path("edc_protocol/", include("edc_protocol.urls")),
-    path("edc_reference/", include("edc_reference.urls")),
     path("edc_subject_dashboard/", include("edc_subject_dashboard.urls")),
     path("edc_visit_schedule/", include("edc_visit_schedule.urls")),
     path("subject/", include("meta_dashboard.urls")),

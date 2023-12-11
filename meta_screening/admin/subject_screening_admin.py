@@ -3,6 +3,7 @@ from django.template.loader import render_to_string
 from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
 from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_constants.constants import YES
 from edc_dashboard.url_names import url_names
@@ -188,5 +189,5 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
                 label=label,
             )
         else:
-            context = dict(title="Go to subject dashboard", url=url, label=label)
+            context = dict(title=_("Go to subject dashboard"), url=url, label=label)
         return render_to_string("dashboard_button.html", context=context)

@@ -1,0 +1,369 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-07 09:34-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: choices.py:38 choices.py:47
+msgid "Working"
+msgstr ""
+
+#: choices.py:39 choices.py:48
+msgid "Studying"
+msgstr ""
+
+#: choices.py:40 choices.py:49
+msgid "Caring for children"
+msgstr ""
+
+#: choices.py:41
+msgid "Other, please specify"
+msgstr ""
+
+#: choices.py:46 choices.py:58 choices.py:65 choices.py:80 choices.py:110
+#: choices.py:132 choices.py:159 choices.py:167 choices.py:212
+msgid "Not applicable"
+msgstr ""
+
+#: choices.py:50
+msgid "House maintenance"
+msgstr ""
+
+#: choices.py:51
+msgid "Nothing"
+msgstr ""
+
+#: choices.py:52 choices.py:202
+msgid "Other, specify"
+msgstr ""
+
+#: choices.py:56
+msgid "Study participant"
+msgstr ""
+
+#: choices.py:57 choices.py:125 choices.py:211
+msgid "Other"
+msgstr ""
+
+#: choices.py:62
+msgid "At home"
+msgstr ""
+
+#: choices.py:63
+msgid "Hospital / Clinic"
+msgstr ""
+
+#: choices.py:64
+msgid "Other location, specify"
+msgstr ""
+
+#: choices.py:69
+msgid "Excellent"
+msgstr ""
+
+#: choices.py:70
+msgid "Very good"
+msgstr ""
+
+#: choices.py:71
+msgid "Good"
+msgstr ""
+
+#: choices.py:72
+msgid "Fair"
+msgstr ""
+
+#: choices.py:73
+msgid "Poor"
+msgstr ""
+
+#: choices.py:79
+msgid "Other, specify below ..."
+msgstr ""
+
+#: choices.py:84 choices.py:138
+msgid "All of the time"
+msgstr ""
+
+#: choices.py:85 choices.py:139
+msgid "Most of the time"
+msgstr ""
+
+#: choices.py:86
+msgid "A good bit of the time"
+msgstr ""
+
+#: choices.py:87 choices.py:140
+msgid "Some of the time"
+msgstr ""
+
+#: choices.py:88 choices.py:141
+msgid "A little of the time"
+msgstr ""
+
+#: choices.py:89 choices.py:142
+msgid "None of the time"
+msgstr ""
+
+#: choices.py:94
+msgid "Live birth at term"
+msgstr ""
+
+#: choices.py:95
+msgid "Live birth preterm"
+msgstr ""
+
+#: choices.py:96
+msgid "Stillbirth"
+msgstr ""
+
+#: choices.py:97
+msgid "Miscarriage"
+msgstr ""
+
+#: choices.py:101
+msgid "Study appointment"
+msgstr ""
+
+#: choices.py:102
+msgid "Other routine appointment"
+msgstr ""
+
+#: choices.py:103
+msgid "Unschedule visit"
+msgstr ""
+
+#: choices.py:104
+msgid "Other reason, specify below ..."
+msgstr ""
+
+#: choices.py:108 choices.py:109
+#, python-format
+msgid "Grade %(num)s"
+msgstr ""
+
+#: choices.py:114
+msgid "YES, limited a lot"
+msgstr ""
+
+#: choices.py:115
+msgid "YES, limited a little"
+msgstr ""
+
+#: choices.py:116
+msgid "NO, not at all limited"
+msgstr ""
+
+#: choices.py:120
+msgid "Hospital notes"
+msgstr ""
+
+#: choices.py:121
+msgid "Outpatient cards"
+msgstr ""
+
+#: choices.py:122
+msgid "Patient"
+msgstr ""
+
+#: choices.py:123
+msgid "Collateral History from relative/guardian"
+msgstr ""
+
+#: choices.py:124
+msgid "Not applicable (if missed)"
+msgstr ""
+
+#: choices.py:131
+msgid "Hospital / Clinic records"
+msgstr ""
+
+#: choices.py:146
+msgid "No retinopathy"
+msgstr ""
+
+#: choices.py:147
+msgid "Background retinopathy"
+msgstr ""
+
+#: choices.py:148
+msgid "Pre-proliferative retinopathy"
+msgstr ""
+
+#: choices.py:149
+msgid "Proliferative retinopathy"
+msgstr ""
+
+#: choices.py:150
+msgid "Maculopathy"
+msgstr ""
+
+#: choices.py:151 choices.py:173 choices.py:180 choices.py:234
+msgid "Exam not performed"
+msgstr ""
+
+#: choices.py:155
+msgid "No complications"
+msgstr ""
+
+#: choices.py:156
+msgid "Complications with full recovery"
+msgstr ""
+
+#: choices.py:157
+msgid "Complications with ongoing recovery"
+msgstr ""
+
+#: choices.py:158
+msgid "Maternal mortality"
+msgstr ""
+
+#: choices.py:163
+msgid "Own cash"
+msgstr ""
+
+#: choices.py:164
+msgid "Insurance"
+msgstr ""
+
+#: choices.py:165
+msgid "Relative of others paying"
+msgstr ""
+
+#: choices.py:166
+msgid "Free drugs from the pharmacy"
+msgstr ""
+
+#: choices.py:171 choices.py:177
+msgid "Present"
+msgstr ""
+
+#: choices.py:172 choices.py:179
+msgid "Absent"
+msgstr ""
+
+#: choices.py:178
+msgid "Present with reinforcement"
+msgstr ""
+
+#: choices.py:185
+msgid "New"
+msgstr ""
+
+#: choices.py:186
+msgid "Open. Some information is still pending."
+msgstr ""
+
+#: choices.py:187
+msgid "Closed. This report is complete"
+msgstr ""
+
+#: choices.py:192
+msgid "Bus"
+msgstr ""
+
+#: choices.py:193
+msgid "Train"
+msgstr ""
+
+#: choices.py:194
+msgid "Ambulance"
+msgstr ""
+
+#: choices.py:195
+msgid "Private taxi"
+msgstr ""
+
+#: choices.py:196
+msgid "Own bicycle"
+msgstr ""
+
+#: choices.py:197
+msgid "Hired motorbike"
+msgstr ""
+
+#: choices.py:198
+msgid "Own car"
+msgstr ""
+
+#: choices.py:199
+msgid "Own motorbike"
+msgstr ""
+
+#: choices.py:200
+msgid "Hired bicycle"
+msgstr ""
+
+#: choices.py:201
+msgid "Foot"
+msgstr ""
+
+#: choices.py:207
+msgid "Patient unwell (outpatient)"
+msgstr ""
+
+#: choices.py:208
+msgid "Patient hospitalised"
+msgstr ""
+
+#: choices.py:209
+msgid "Routine appointment (non-study)"
+msgstr ""
+
+#: choices.py:210
+msgid "Recurrence of symptoms"
+msgstr ""
+
+#: choices.py:216
+msgid "Scheduled visit"
+msgstr ""
+
+#: choices.py:217
+msgid "Unscheduled visit"
+msgstr ""
+
+#: choices.py:218
+msgid "Missed visit"
+msgstr ""
+
+#: choices.py:221
+msgid "Estimated"
+msgstr ""
+
+#: choices.py:221
+msgid "Measured"
+msgstr ""
+
+#: choices.py:224
+msgid "Not at all"
+msgstr ""
+
+#: choices.py:225
+msgid "A little bit"
+msgstr ""
+
+#: choices.py:226
+msgid "Moderately"
+msgstr ""
+
+#: choices.py:227
+msgid "Quite a bit"
+msgstr ""
+
+#: choices.py:228
+msgid "Extremely"
+msgstr ""

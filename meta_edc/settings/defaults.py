@@ -4,7 +4,6 @@ from importlib.metadata import version
 from pathlib import Path
 
 import environ
-from edc_appointment.constants import SCHEDULED_APPT, UNSCHEDULED_APPT
 from edc_constants.constants import COMPLETE
 from edc_protocol_incident.constants import PROTOCOL_INCIDENT
 from edc_utils import get_datetime_from_env
@@ -134,7 +133,6 @@ INSTALLED_APPS = [
     "edc_prn.apps.AppConfig",
     "edc_qol.apps.AppConfig",
     "edc_randomization.apps.AppConfig",
-    "edc_reference.apps.AppConfig",
     "edc_refusal.apps.AppConfig",
     "edc_registration.apps.AppConfig",
     "edc_pdf_reports.apps.AppConfig",
@@ -195,7 +193,6 @@ MIDDLEWARE.extend(
         "edc_adverse_event.middleware.DashboardMiddleware",
         "edc_listboard.middleware.DashboardMiddleware",
         "edc_review_dashboard.middleware.DashboardMiddleware",
-        # 'simple_history.middleware.HistoryRequestMiddleware'
     ]
 )
 
@@ -286,8 +283,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-USE_I18N = False  # disable trans
-USE_L10N = False  # set to False so DATE formats below are used
+USE_I18N = True  # disable trans
+USE_L10N = True  # set to False so DATE formats below are used
 USE_TZ = True
 LANGUAGE_CODE = env.str("DJANGO_LANGUAGE_CODE")  # ignored if USE_L10N = False
 LANGUAGES = [x.split(":") for x in env.list("DJANGO_LANGUAGES")] or (("en", "English"),)
@@ -310,12 +307,6 @@ SHORT_DATETIME_FORMAT = "d/m/Y H:i"
 
 # See also any inte_* or edc_* apps.py
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# edc-appointment
-EDC_APPOINTMENT_APPT_REASON_CHOICES = (
-    (SCHEDULED_APPT, "Scheduled visit (study)"),
-    (UNSCHEDULED_APPT, "Routine / Unscheduled (non-study)"),
-)
 
 # edc-pdutils
 EXPORT_FILENAME_TIMESTAMP_FORMAT = "%Y%m%d"

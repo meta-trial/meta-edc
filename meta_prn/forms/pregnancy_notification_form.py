@@ -26,7 +26,7 @@ class PregnancyNotificationFormValidator(PrnFormValidatorMixin, FormValidator):
                 subject_identifier=self.subject_identifier, gender=FEMALE
             )
         except ObjectDoesNotExist:
-            self.raise_validation_error("Participant is not female.")
+            self.raise_validation_error("Participant is not female.", INVALID_ERROR)
 
         self.required_if(NO, field="bhcg_confirmed", field_required="unconfirmed_details")
         self.required_if(YES, field="bhcg_confirmed", field_required="bhcg_date")

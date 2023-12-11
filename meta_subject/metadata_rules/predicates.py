@@ -2,7 +2,7 @@ from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
 from edc_constants.constants import YES
 from edc_lab_panel.panels import hba1c_panel, insulin_panel
-from edc_metadata.metadata_rules import PersistantSingletonMixin, PredicateCollection
+from edc_metadata.metadata_rules import PersistantSingletonMixin
 from edc_sites import get_site_by_attr
 from edc_visit_schedule.constants import DAY1, MONTH1, MONTH3, MONTH6, WEEK2
 from edc_visit_schedule.utils import is_baseline
@@ -49,9 +49,8 @@ def hba1c_requisition_required_at_baseline(visit):
     return required
 
 
-class Predicates(PersistantSingletonMixin, PredicateCollection):
+class Predicates(PersistantSingletonMixin):
     app_label = "meta_subject"
-    visit_model = "meta_subject.subjectvisit"
 
     @staticmethod
     def pregnancy_notification_exists(visit, **kwargs):
