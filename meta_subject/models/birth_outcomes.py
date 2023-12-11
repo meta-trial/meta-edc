@@ -84,6 +84,10 @@ class BirthOutcomes(
     def related_visit(self):
         return self.delivery.subject_visit
 
+    @property
+    def subject_identifier(self):
+        return self.delivery.subject_identifier
+
     class Meta(BaseUuidModel.Meta):
         verbose_name = "Birth Outcomes"
         verbose_name_plural = "Birth Outcomes"
