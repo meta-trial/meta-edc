@@ -118,7 +118,7 @@ class ScreeningPartTwoFormValidator(PrnFormValidatorMixin, FormValidator):
                         "appt_datetime": (
                             f"Invalid date. Must be at least 10hrs "
                             f"from report date/time. Got {tdelta.days} "
-                            f"days {round_half_away_from_zero(hours,1)} hrs."
+                            f"days {round_half_away_from_zero(hours, 1)} hrs."
                         )
                     }
                 )
