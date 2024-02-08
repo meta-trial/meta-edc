@@ -1,5 +1,4 @@
 from django import forms
-from edc_consent.utils import get_consent_for_period_or_raise
 from edc_constants.constants import MALE, YES
 from edc_form_validators import FormValidator
 from edc_prn.modelform_mixins import PrnFormValidatorMixin
@@ -7,8 +6,6 @@ from edc_prn.modelform_mixins import PrnFormValidatorMixin
 
 class ScreeningPartOneFormValidator(PrnFormValidatorMixin, FormValidator):
     def clean(self):
-        get_consent_for_period_or_raise(self.report_datetime)
-
         if (
             not self.cleaned_data.get("screening_consent")
             or self.cleaned_data.get("screening_consent") != YES

@@ -11,25 +11,27 @@ from meta_dashboard.navbars import navbar as meta_dashboard_navbar
 
 navbar = Navbar(name=settings.APP_NAME)
 
-navbar_item = copy([item for item in lab_navbar.items if item.name == "specimens"][0])
+navbar_item = copy([item for item in lab_navbar.navbar_items if item.name == "specimens"][0])
 navbar_item.active = False
 navbar_item.label = "Specimens"
-navbar.append_item(navbar_item)
+navbar.register(navbar_item)
 
-navbar.append_item(
-    [item for item in meta_dashboard_navbar.items if item.name == "screened_subject"][0]
+navbar.register(
+    [item for item in meta_dashboard_navbar.navbar_items if item.name == "screened_subject"][0]
 )
 
-navbar.append_item(
-    [item for item in meta_dashboard_navbar.items if item.name == "consented_subject"][0]
+navbar.register(
+    [item for item in meta_dashboard_navbar.navbar_items if item.name == "consented_subject"][
+        0
+    ]
 )
 
-for item in review_navbar.items:
-    navbar.append_item(item)
+for navbar_item in review_navbar.navbar_items:
+    navbar.register(navbar_item)
 
-navbar.append_item(tmg_navbar_item)
-navbar.append_item(ae_navbar_item)
-navbar.append_item(dm_navbar_item)
+navbar.register(tmg_navbar_item)
+navbar.register(ae_navbar_item)
+navbar.register(dm_navbar_item)
 
 
 site_navbars.register(navbar)

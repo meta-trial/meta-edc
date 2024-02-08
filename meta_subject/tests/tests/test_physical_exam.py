@@ -1,5 +1,7 @@
 from copy import deepcopy
 
+from django.conf import settings
+from django.contrib.sites.models import Site
 from django.test import TestCase
 from edc_constants.constants import COMPLETE, NO, YES
 
@@ -29,6 +31,7 @@ class TestPhysicalExam(MetaTestCaseMixin, TestCase):
             "waist_circumference": 100,
             "weight": 65,
             "crf_status": COMPLETE,
+            "site": Site.objects.get(id=settings.SITE_ID),
         }
 
         self.subject_visit = self.get_subject_visit(appt_datetime=now)

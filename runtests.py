@@ -4,10 +4,16 @@ from datetime import datetime
 from os.path import abspath, dirname, join
 from zoneinfo import ZoneInfo
 
+from django.conf import locale
+from edc_constants.internationalization import EXTRA_LANG_INFO
 from edc_test_utils import DefaultTestSettings, func_main
 from multisite import SiteID
 
 from meta_edc.meta_version import PHASE_THREE
+
+LANG_INFO = dict(locale.LANG_INFO, **EXTRA_LANG_INFO)
+locale.LANG_INFO = LANG_INFO
+LANGUAGE_LIST = ["sw", "en-gb", "en", "mas"]
 
 app_name = "meta_edc"
 base_dir = dirname(abspath(__file__))
@@ -45,9 +51,10 @@ project_settings = DefaultTestSettings(
     EDC_NAVBAR_DEFAULT="meta_dashboard",
     EDC_PROTOCOL_STUDY_OPEN_DATETIME=datetime(2019, 4, 30, 0, 0, 0, tzinfo=ZoneInfo("UTC")),
     EDC_PROTOCOL_STUDY_CLOSE_DATETIME=datetime(
-        2023, 12, 31, 23, 59, 59, tzinfo=ZoneInfo("UTC")
+        2025, 12, 31, 23, 59, 59, tzinfo=ZoneInfo("UTC")
     ),
-    DJANGO_LANGUAGES=[["en", "English"], ["sw", "Swahili"]],
+    LANGUAGE_CODE="en",
+    LANGUAGES=[(code, LANG_INFO[code]["name"]) for code in LANGUAGE_LIST],
     DASHBOARD_BASE_TEMPLATES=dict(
         edc_base_template="edc_dashboard/base.html",
         listboard_base_template="meta_edc/base.html",
@@ -61,6 +68,7 @@ project_settings = DefaultTestSettings(
     EDC_BOOTSTRAP=3,
     EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
     EMAIL_CONTACTS={
+        "ae_reports": "someone@example.com",
         "data_request": "someone@example.com",
         "data_manager": "someone@example.com",
         "tmg": "someone@example.com",
@@ -88,11 +96,11 @@ project_settings = DefaultTestSettings(
         "logentry_admin",
         "simple_history",
         "storages",
+        "edc_sites.apps.AppConfig",
         "edc_action_item.apps.AppConfig",
         "edc_adverse_event.apps.AppConfig",
         "edc_appointment.apps.AppConfig",
         "edc_auth.apps.AppConfig",
-        "edc_model_wrapper.apps.AppConfig",
         "edc_crf.apps.AppConfig",
         "edc_he.apps.AppConfig",
         "edc_data_manager.apps.AppConfig",
@@ -103,6 +111,7 @@ project_settings = DefaultTestSettings(
         "edc_export.apps.AppConfig",
         "edc_facility.apps.AppConfig",
         "edc_fieldsets.apps.AppConfig",
+        "edc_form_runners.apps.AppConfig",
         "edc_form_validators.apps.AppConfig",
         "edc_reportable.apps.AppConfig",
         "edc_lab.apps.AppConfig",
@@ -121,7 +130,6 @@ project_settings = DefaultTestSettings(
         "edc_visit_schedule.apps.AppConfig",
         "edc_pdutils.apps.AppConfig",
         "edc_pharmacy.apps.AppConfig",
-        # "edc_pharmacy_dashboard.apps.AppConfig",
         "edc_protocol.apps.AppConfig",
         "edc_protocol_incident.apps.AppConfig",
         "edc_prn.apps.AppConfig",
@@ -133,27 +141,26 @@ project_settings = DefaultTestSettings(
         "edc_list_data.apps.AppConfig",
         "edc_review_dashboard.apps.AppConfig",
         "edc_refusal.apps.AppConfig",
-        "edc_sites.apps.AppConfig",
         "edc_mnsi.apps.AppConfig",
         "edc_unblinding.apps.AppConfig",
         "edc_qol.apps.AppConfig",
         "edc_dx_review.apps.AppConfig",
         "edc_dx.apps.AppConfig",
-        "canned_views.apps.AppConfig",
         "meta_auth.apps.AppConfig",
         "meta_consent.apps.AppConfig",
         "meta_lists.apps.AppConfig",
         "meta_dashboard.apps.AppConfig",
         "meta_labs.apps.AppConfig",
         "meta_rando.apps.AppConfig",
-        "meta_reference.apps.AppConfig",
         "meta_subject.apps.AppConfig",
         "meta_visit_schedule.apps.AppConfig",
         "meta_ae.apps.AppConfig",
         "meta_prn.apps.AppConfig",
         "meta_export.apps.AppConfig",
+        "meta_sites.apps.AppConfig",
         "meta_screening.apps.AppConfig",
         "meta_edc.apps.AppConfig",
+        "edc_appconfig.apps.AppConfig",
     ],
     add_dashboard_middleware=True,
     add_lab_dashboard_middleware=True,
@@ -183,31 +190,3 @@ def main():
 if __name__ == "__main__":
     logging.basicConfig()
     main()
-
-# def main():
-#     if not settings.configured:
-#         settings.configure(**DEFAULT_SETTINGS)
-#     django.setup()
-#     tags = [t.split("=")[1] for t in sys.argv if t.startswith("--tag")]
-#     failfast = True if [t for t in sys.argv if t == "--failfast"] else False
-#     failures = DiscoverRunner(failfast=failfast, tags=tags).run_tests(
-#         [
-#             "tests",
-#             "meta_ae.tests",
-#             "meta_dashboard.tests",
-#             "meta_edc.tests",
-#             "meta_labs.tests",
-#             "meta_lists.tests",
-#             "meta_prn.tests",
-#             "meta_rando.tests",
-#             "meta_screening.tests",
-#             "meta_subject.tests",
-#             "meta_visit_schedule.tests",
-#         ]
-#     )
-#     sys.exit(bool(failures))
-#
-#
-# if __name__ == "__main__":
-#     logging.basicConfig()
-#     main()

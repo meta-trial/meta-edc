@@ -35,8 +35,7 @@ def update_schedule_on_pregnancy_notification_post_save(sender, instance, raw, *
             )
             schedule = visit_schedule.schedules.get(SCHEDULE)
             schedule.take_off_schedule(
-                offschedule_datetime=last_subject_visit.report_datetime,
-                subject_identifier=instance.subject_identifier,
+                instance.subject_identifier, last_subject_visit.report_datetime
             )
             schedule = visit_schedule.schedules.get(SCHEDULE_PREGNANCY)
             schedule.put_on_schedule(

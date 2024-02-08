@@ -3,7 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from edc_constants.constants import YES
 from edc_lab_panel.panels import hba1c_panel, insulin_panel
 from edc_metadata.metadata_rules import PersistantSingletonMixin
-from edc_sites import get_site_by_attr
+from edc_sites.site import sites
 from edc_visit_schedule.constants import DAY1, MONTH1, MONTH3, MONTH6, WEEK2
 from edc_visit_schedule.utils import is_baseline
 
@@ -102,8 +102,8 @@ class Predicates(PersistantSingletonMixin):
         if (
             visit.site.id
             in [
-                get_site_by_attr("name", "mwananyamala").site_id,
-                get_site_by_attr("name", "temeke").site_id,
+                sites.get_by_attr("name", "mwananyamala").site_id,
+                sites.get_by_attr("name", "temeke").site_id,
             ]
             and visit.appointment.visit_code
             in visit.schedule.crf_required_at("meta_subject.bloodresultsins")
@@ -119,8 +119,8 @@ class Predicates(PersistantSingletonMixin):
         if (
             visit.site.id
             in [
-                get_site_by_attr("name", "mwananyamala").site_id,
-                get_site_by_attr("name", "temeke").site_id,
+                sites.get_by_attr("name", "mwananyamala").site_id,
+                sites.get_by_attr("name", "temeke").site_id,
             ]
             and visit.appointment.visit_code
             in visit.schedule.requisition_required_at(insulin_panel)

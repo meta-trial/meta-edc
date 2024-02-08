@@ -1,5 +1,7 @@
 from edc_constants.constants import NO, TBD, YES
 
+from meta_consent.consents import consent_v1
+
 from .subject_screening import SubjectScreening
 
 options = dict(
@@ -10,6 +12,8 @@ options = dict(
 
 
 class ScreeningPartOne(SubjectScreening):
+    consent_definition = consent_v1
+
     def save(self, *args, **kwargs):
         if self.eligible_part_one == YES:
             self.continue_part_two = YES
@@ -24,6 +28,8 @@ class ScreeningPartOne(SubjectScreening):
 
 
 class ScreeningPartTwo(SubjectScreening):
+    consent_definition = consent_v1
+
     class Meta:
         proxy = True
         verbose_name = "Subject Screening: Part Two"
@@ -31,6 +37,8 @@ class ScreeningPartTwo(SubjectScreening):
 
 
 class ScreeningPartThree(SubjectScreening):
+    consent_definition = consent_v1
+
     class Meta:
         proxy = True
         verbose_name = "Subject Screening: Part Three"

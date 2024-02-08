@@ -1,20 +1,17 @@
-import re
-from typing import List
-
-from django.db.models import Q
 from edc_listboard.views import SubjectListboardView as BaseSubjectListboardView
 
 from meta_edc.meta_version import get_meta_version
 
 
 class SubjectListboardView(BaseSubjectListboardView):
-    def get_context_data(self, **kwargs) -> dict:
-        context = super().get_context_data(**kwargs)
-        context.update(meta_version=get_meta_version())
-        return context
+    listboard_model = "meta_consent.subjectconsent"
+    navbar_selected_item = "consented_subject"
 
-    def extra_search_options(self, search_term) -> List[Q]:
-        q_objects = super().extra_search_options(search_term)
-        if re.match(r"^[0-9\-]+$", search_term):
-            q_objects.append(Q(identity__exact=search_term))
-        return q_objects
+    def get_context_data(self, **kwargs) -> dict:
+        kwargs.update(meta_version=get_meta_version())
+        return super().get_context_data(**kwargs)
+
+    def get_search_fields(self) -> list[str]:
+        fields = super().get_search_fields()
+        fields.append("identity__exact")
+        return fields

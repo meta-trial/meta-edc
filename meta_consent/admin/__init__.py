@@ -1,2 +1,1 @@
 from .subject_consent_admin import SubjectConsentAdmin
-from .subject_reconsent_admin import SubjectReconsentAdmin

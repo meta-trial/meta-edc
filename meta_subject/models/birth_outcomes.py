@@ -1,9 +1,10 @@
 from django.db import models
-from django.db.models import PROTECT
+from django.db.models import PROTECT, Index
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_offstudy.model_mixins import OffstudyCrfModelMixin
-from edc_sites.models import CurrentSiteManager, SiteModelMixin
+from edc_sites.managers import CurrentSiteManager
+from edc_sites.model_mixins import SiteModelMixin
 from edc_utils import get_utcnow
 
 from ..choices import FETAL_OUTCOMES
@@ -91,5 +92,5 @@ class BirthOutcomes(
     class Meta(BaseUuidModel.Meta):
         verbose_name = "Birth Outcomes"
         verbose_name_plural = "Birth Outcomes"
-        ordering = ["delivery", "birth_order"]
+        indexes = [Index(fields=["delivery", "birth_order"])]
         unique_together = ["delivery", "birth_order"]

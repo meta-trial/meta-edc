@@ -3,7 +3,8 @@ from django.db import models
 from django_crypto_fields.fields import EncryptedCharField
 from edc_constants.choices import GENDER, YES_NO, YES_NO_NA
 from edc_model.models import BaseUuidModel, HistoricalRecords
-from edc_sites.models import CurrentSiteManager, SiteModelMixin
+from edc_sites.managers import CurrentSiteManager
+from edc_sites.model_mixins import SiteModelMixin
 from edc_utils.date import get_utcnow
 
 from ..choices import ETHNICITY

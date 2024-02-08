@@ -15,20 +15,20 @@ from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
 from django_extensions.management.color import color_style
 from django_webtest import WebTest
-from edc_adverse_event.auth_objects import AE_ROLE, TMG_ROLE
+from edc_adverse_event.constants import AE_ROLE, TMG_ROLE
 from edc_appointment.constants import IN_PROGRESS_APPT, SCHEDULED_APPT
 from edc_appointment.models import Appointment
-from edc_auth.auth_objects import AUDITOR_ROLE, CLINICIAN_ROLE, STAFF_ROLE
 from edc_auth.auth_updater import AuthUpdater
+from edc_auth.constants import AUDITOR_ROLE, CLINICIAN_ROLE, STAFF_ROLE
 from edc_auth.site_auths import site_auths
-from edc_consent import site_consents
+from edc_consent.site_consents import site_consents
 from edc_constants.constants import PENDING, YES
 from edc_dashboard.url_names import url_names
-from edc_export.auth_objects import DATA_EXPORTER_ROLE
+from edc_export.constants import DATA_EXPORTER_ROLE
 from edc_lab.auth_objects import LAB_TECHNICIAN_ROLE
 from edc_randomization.admin import register_admin
 from edc_randomization.site_randomizers import site_randomizers
-from edc_sites import add_or_update_django_sites
+from edc_sites.utils import add_or_update_django_sites
 from edc_test_utils.webtest import login
 from edc_utils import get_utcnow
 from model_bakery import baker
@@ -214,7 +214,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             else:
                 self.assertNotIn(label, response)
 
-    @tag("webtest")
+    @tag("1")
     def test_screening_form_phase3(self):
         self.login(superuser=False, roles=[STAFF_ROLE, CLINICIAN_ROLE])
         site_randomizers._registry = {}
@@ -287,6 +287,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn(screening_identifier, screening_listboard_page)
         self.assertIn("Consent", screening_listboard_page)
 
+    @tag("1")
     def webtest_for_screening_form_part_one(self, part_one_data):
         home_page = self.app.get(reverse("home_url"), user=self.user, status=200)
         screening_listboard_page = home_page.click(description="Screening", index=1)
@@ -332,9 +333,9 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             "screeningparttwo_form"
         ).fields.items():
             try:
-                add_screening_part_two.forms.get("screeningparttwo_form")[
-                    field
-                ] = part_two_data[field]
+                add_screening_part_two.forms.get("screeningparttwo_form")[field] = (
+                    part_two_data[field]
+                )
             except KeyError:
                 print(field)
         page = add_screening_part_two.forms.get("screeningparttwo_form").submit()
@@ -360,9 +361,9 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             "screeningpartthree_form"
         ).fields.items():
             try:
-                add_screening_part_three.forms.get("screeningpartthree_form")[
-                    field
-                ] = part_three_data[field]
+                add_screening_part_three.forms.get("screeningpartthree_form")[field] = (
+                    part_three_data[field]
+                )
             except KeyError:
                 print(field)
         page = add_screening_part_three.forms.get("screeningpartthree_form").submit()
@@ -398,7 +399,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
     @tag("webtest3")
     @skip("-")
     def test_to_subject_dashboard(self):
-        add_or_update_django_sites(apps=django_apps, sites=all_sites)
+        add_or_update_django_sites(apps=django_apps, single_sites=all_sites)
         self.login(superuser=False, roles=[STAFF_ROLE, CLINICIAN_ROLE], sites=[10, 20, 30])
 
         subject_screening = self.get_subject_screening()

@@ -1,5 +1,7 @@
 from copy import deepcopy
 
+from django.conf import settings
+from django.contrib.sites.models import Site
 from django.test import TestCase
 from edc_constants.constants import COMPLETE, NEVER, NO, YES
 from model_bakery.baker import make_recipe
@@ -30,6 +32,7 @@ class TestMedicationAdherence(MetaTestCaseMixin, TestCase):
         self.data.update(
             subject_visit=self.subject_visit.pk,
             report_datetime=self.subject_visit.report_datetime,
+            site=Site.objects.get(id=settings.SITE_ID),
         )
 
     def test_ok(self):

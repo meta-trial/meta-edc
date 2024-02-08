@@ -4,6 +4,8 @@ from copy import deepcopy
 from decimal import Decimal
 
 from django import forms
+from django.conf import settings
+from django.contrib.sites.models import Site
 from django.test import TestCase
 from edc_action_item import site_action_items
 from edc_action_item.models import ActionItem
@@ -43,6 +45,7 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
             report_datetime=self.subject_visit.report_datetime,
             requisition=requisition,
             assay_datetime=requisition.requisition_datetime,
+            site=Site.objects.get(id=settings.SITE_ID),
         )
 
     def tearDown(self) -> None:
@@ -83,6 +86,7 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
             subject_visit=subject_visit,
             requisition=requisition,
             assay_datetime=requisition.requisition_datetime,
+            site=Site.objects.get(id=settings.SITE_ID),
         )
         data.update(creatinine_value=1.5, creatinine_units=MILLIGRAMS_PER_DECILITER)
         obj_2000 = BloodResultsRft.objects.create(**data)
@@ -114,6 +118,7 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
             subject_visit=subject_visit,
             requisition=requisition,
             assay_datetime=requisition.requisition_datetime,
+            site=Site.objects.get(id=settings.SITE_ID),
         )
         data.update(creatinine_value=0.58, creatinine_units=MILLIGRAMS_PER_DECILITER)
         obj_2000 = BloodResultsRft.objects.create(**data)
@@ -136,6 +141,7 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
             subject_visit=subject_visit,
             requisition=requisition,
             assay_datetime=requisition.requisition_datetime,
+            site=Site.objects.get(id=settings.SITE_ID),
         )
         data.update(creatinine_value=2.0, creatinine_units=MILLIGRAMS_PER_DECILITER)
         obj_2000 = BloodResultsRft.objects.create(**data)
@@ -187,6 +193,7 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
             requisition=requisition,
             assay_datetime=requisition.requisition_datetime,
             report_datetime=requisition.requisition_datetime,
+            site=Site.objects.get(id=settings.SITE_ID),
         )
         data = deepcopy(data)
         data.update(creatinine_value=152.0, creatinine_units=MICROMOLES_PER_LITER)
@@ -210,6 +217,7 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
             requisition=requisition,
             assay_datetime=requisition.requisition_datetime,
             report_datetime=requisition.requisition_datetime,
+            site=Site.objects.get(id=settings.SITE_ID),
         )
         data.update(creatinine_value=150.8, creatinine_units=MICROMOLES_PER_LITER)
         obj_2000 = BloodResultsRft.objects.create(**data)

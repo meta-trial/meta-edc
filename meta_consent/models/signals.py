@@ -29,7 +29,7 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
     if not raw:
         if not created:
             _, schedule = site_visit_schedules.get_by_onschedule_model("meta_prn.onschedule")
-            schedule.refresh_schedule(subject_identifier=instance.subject_identifier)
+            schedule.refresh_schedule(instance.subject_identifier)
         else:
             subject_screening = SubjectScreening.objects.get(
                 screening_identifier=instance.screening_identifier
@@ -94,10 +94,7 @@ def subject_consent_on_post_delete(sender, instance, using, **kwargs):
         raise ValidationError("Unable to delete consent. Visit data exists.")
 
     _, schedule = site_visit_schedules.get_by_onschedule_model("meta_prn.onschedule")
-    schedule.take_off_schedule(
-        subject_identifier=instance.subject_identifier,
-        offschedule_datetime=instance.consent_datetime,
-    )
+    schedule.take_off_schedule(instance.subject_identifier, instance.consent_datetime)
 
     # update subject screening
     subject_screening = SubjectScreening.objects.get(

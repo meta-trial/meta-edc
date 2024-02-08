@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.contrib.sites.models import Site
 from django.test import TestCase
 from model_bakery.baker import make_recipe
 
@@ -12,7 +14,7 @@ class TestFollowup(MetaTestCaseMixin, TestCase):
         self.subject_visit = self.get_subject_visit()
 
         self.data = {
-            "site": None,
+            "site": Site.objects.get(id=settings.SITE_ID),
             "report_datetime": None,
             "subject_visit": None,
             "symptoms_detail": None,

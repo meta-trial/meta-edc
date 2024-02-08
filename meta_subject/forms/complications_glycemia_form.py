@@ -5,13 +5,8 @@ from edc_crf.modelform_mixins import CrfModelFormMixin
 from ..models import ComplicationsGlycemia
 
 
-class AdditionalScreeningFormValidator(CrfFormValidator):
-    def clean(self):
-        pass
-
-
 class ComplicationsGlycemiaForm(CrfModelFormMixin, forms.ModelForm):
-    form_validator_cls = AdditionalScreeningFormValidator
+    form_validator_cls = CrfFormValidator
 
     class Meta:
         model = ComplicationsGlycemia
