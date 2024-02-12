@@ -33,6 +33,7 @@ urlpatterns = [
     *paths_for_urlpatterns("edc_device"),
     *paths_for_urlpatterns("edc_export"),
     *paths_for_urlpatterns("edc_facility"),
+    *paths_for_urlpatterns("edc_form_runners"),
     *paths_for_urlpatterns("edc_identifier"),
     *paths_for_urlpatterns("edc_lab"),
     *paths_for_urlpatterns("edc_lab_dashboard"),
