@@ -7,3 +7,4 @@ from .ae_tmg_form import AeTmgForm
 from .death_report_form import DeathReportForm
 from .death_report_tmg_form import DeathReportTmgForm
 from .death_report_tmg_second_form import DeathReportTmgSecondForm
+from .hospitalization_form import HospitalizationForm
