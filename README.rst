@@ -48,8 +48,8 @@ To setup a demo system, see https://github.com/meta-trial/meta3-sample
 .. |pypi| image:: https://img.shields.io/pypi/v/meta-edc.svg
     :target: https://pypi.python.org/pypi/meta-edc
 
-.. |actions| image:: https://github.com/meta-trial/meta-edc/workflows/build/badge.svg?branch=develop
-  :target: https://github.com/meta-trial/meta-edc/actions?query=workflow:build
+.. |actions| image:: https://github.com/meta-trial/meta-edc/actions/workflows/build.yml/badge.svg
+  :target: https://github.com/meta-trial/meta-edc/actions/workflows/build.yml
 
 .. |codecov| image:: https://codecov.io/gh/meta-trial/meta-edc/branch/develop/graph/badge.svg
   :target: https://codecov.io/gh/meta-trial/meta-edc
