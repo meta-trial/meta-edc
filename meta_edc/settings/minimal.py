@@ -1,6 +1,7 @@
 """
 A settings file with the bare minimum attributes.
 """
+
 import os
 from pathlib import Path
 

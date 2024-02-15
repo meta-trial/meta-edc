@@ -12,7 +12,6 @@ from ..model_mixins import CrfModelMixin
 
 
 class ComplicationsGlycemia(CrfModelMixin, BaseUuidModel):
-
     """Not used"""
 
     # eye examination

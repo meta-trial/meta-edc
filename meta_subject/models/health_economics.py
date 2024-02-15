@@ -14,7 +14,6 @@ from ..model_mixins import CrfModelMixin
 
 
 class HealthEconomics(CrfModelMixin, BaseUuidModel):
-
     """Not used"""
 
     occupation = models.CharField(
