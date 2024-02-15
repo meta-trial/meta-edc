@@ -1,7 +1,6 @@
 from .birth_outcomes import BirthOutcomes
 from .blood_results import (
     BloodResultsFbc,
-    BloodResultsGlu,
     BloodResultsHba1c,
     BloodResultsIns,
     BloodResultsLft,
@@ -13,11 +12,13 @@ from .complications_glycemia import ComplicationsGlycemia
 from .concomitant_medication import ConcomitantMedication
 from .delivery import Delivery
 from .diet_and_lifestyle import DietAndLifestyle
+from .dm_referral_followup import DmReferralFollowup
 from .egfr_drop_notification import EgfrDropNotification
 from .eq5d3l import Eq5d3l
 from .followup_examination import FollowupExamination
 from .followup_vitals import FollowupVitals
 from .glucose import Glucose
+from .glucose_fbg import GlucoseFbg
 from .health_economics import HealthEconomics
 from .health_economics_simple import HealthEconomicsSimple
 from .hepatitis_test import HepatitisTest

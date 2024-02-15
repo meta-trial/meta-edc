@@ -11,12 +11,12 @@ def update_duplicate_rx_identifier(apps, schema_editor):
     qs = rx_model_cls.objects.filter(rx_identifier="0817ce95-fdc5-426b-9d4d-08fb717de2a6")
     for obj in tqdm(qs, total=qs.count()):
         obj.rx_identifier = uuid4()
-        obj.save()
+        obj.save_base(update_fields="rx_identifier")
     rx_model_cls = apps.get_model("edc_pharmacy.historicalrx")
     qs = rx_model_cls.objects.filter(rx_identifier="0817ce95-fdc5-426b-9d4d-08fb717de2a6")
     for obj in tqdm(qs, total=qs.count()):
         obj.rx_identifier = uuid4()
-        obj.save()
+        obj.save_base(update_fields="rx_identifier")
 
 
 class Migration(migrations.Migration):
@@ -27,4 +27,6 @@ class Migration(migrations.Migration):
         )
     ]
 
-    operations = [RunPython(update_duplicate_rx_identifier)]
+    # ran this in shell manually 2024/02/13
+    # operations = [RunPython(update_duplicate_rx_identifier)]
+    operations = []

@@ -4,7 +4,6 @@ from edc_form_validators import INVALID_ERROR
 from edc_pharmacy.form_validators import (
     StudyMedicationFormValidator as BaseStudyMedicationFormValidator,
 )
-from edc_pharmacy.forms import StudyMedicationModelFormMixin
 from edc_visit_schedule.constants import DAY1
 
 from ..models import StudyMedication
@@ -34,7 +33,7 @@ class StudyMedicationFormValidator(BaseStudyMedicationFormValidator):
                     )
 
 
-class StudyMedicationForm(StudyMedicationModelFormMixin, CrfModelFormMixin, forms.ModelForm):
+class StudyMedicationForm(CrfModelFormMixin, forms.ModelForm):
     form_validator_cls = StudyMedicationFormValidator
 
     class Meta:

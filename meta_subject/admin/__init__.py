@@ -2,7 +2,6 @@ from .autocomplete_admin import ArvRegimensAdmin
 from .birth_outcome_admin import BirthOutcomesAdmin
 from .blood_results import (
     BloodResultsFbcAdmin,
-    BloodResultsGluAdmin,
     BloodResultsLftAdmin,
     BloodResultsRftAdmin,
 )
@@ -10,11 +9,13 @@ from .complications_admin import ComplicationsAdmin
 from .complications_glycemia_admin import ComplicationsGlycemiaAdmin
 from .concomitant_medication_admin import ConcomitantMedicationAdmin
 from .delivery_admin import DeliveryAdmin
+from .dm_referral_followup_admin import DmReferralFollowupAdmin
 from .egfr_drop_notification_admin import EgfrDropNotificationAdmin
 from .eq5d3l_admin import Eq5d3lAdmin
 from .followup_examination_admin import FollowupExaminationAdmin
 from .followup_vitals_admin import FollowupVitalsAdmin
 from .glucose_admin import GlucoseAdmin
+from .glucose_fbg_admin import GlucoseFbgAdmin
 from .health_economics_simple_admin import HealthEconomicsSimpleAdmin
 from .hepatitis_test_admin import HepatitisTestAdmin
 from .malaria_test_admin import MalariaTestAdmin

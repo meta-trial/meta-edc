@@ -14,6 +14,20 @@ pc = Predicates()
 
 
 @register()
+class GlucoseRuleGroup(CrfRuleGroup):
+    glucose = CrfRule(
+        predicate=pc.glucose_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["glucose"],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"
+
+
+@register()
 class HealthEconomicsRuleGroup(CrfRuleGroup):
     hecon = CrfRule(
         predicate=pc.health_economics_required,

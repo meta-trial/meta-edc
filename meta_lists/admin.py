@@ -5,7 +5,12 @@ from .admin_site import meta_lists_admin
 from .models import (
     ArvRegimens,
     BaselineSymptoms,
+    Complications,
     DiabetesSymptoms,
+    DmMedications,
+    DmTreatments,
+    HealthcareWorkers,
+    Investigations,
     NonAdherenceReasons,
     OffstudyReasons,
     OiProphylaxis,
@@ -51,4 +56,29 @@ class DiabetesSymptomsAdmin(ListModelAdminMixin, admin.ModelAdmin):
 
 @admin.register(NonAdherenceReasons, site=meta_lists_admin)
 class NonAdherenceReasonsAdmin(ListModelAdminMixin, admin.ModelAdmin):
+    pass
+
+
+@admin.register(DmMedications, site=meta_lists_admin)
+class DmMedicationsAdmin(ListModelAdminMixin, admin.ModelAdmin):
+    pass
+
+
+@admin.register(DmTreatments, site=meta_lists_admin)
+class DmTreatmentsAdmin(ListModelAdminMixin, admin.ModelAdmin):
+    pass
+
+
+@admin.register(Complications, site=meta_lists_admin)
+class ComplicationsAdmin(ListModelAdminMixin, admin.ModelAdmin):
+    pass
+
+
+@admin.register(Investigations, site=meta_lists_admin)
+class InvestigationsAdmin(ListModelAdminMixin, admin.ModelAdmin):
+    pass
+
+
+@admin.register(HealthcareWorkers, site=meta_lists_admin)
+class HealthcareWorkersAdmin(ListModelAdminMixin, admin.ModelAdmin):
     pass

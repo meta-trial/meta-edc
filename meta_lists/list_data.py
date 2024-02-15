@@ -15,6 +15,33 @@ from edc_transfer.constants import TRANSFERRED
 from meta_prn.constants import CLINICAL_WITHDRAWAL, LATE_EXCLUSION
 
 list_data = {
+    "meta_lists.dmmedications": [
+        ("metformin", "Metformin"),
+        (OTHER, "Other, please specify"),
+    ],
+    "meta_lists.dmtreatments": [
+        ("diet_lifestyle", "Diet and lifestyle"),
+        ("drugs", "Oral drugs"),
+        ("insulin", "Insulin injections"),
+    ],
+    "meta_lists.complications": [
+        ("foot", "Foot check"),
+        ("eye_disease", "Diabetic eye disease"),
+        ("kidney_disease", "Kidney disease"),
+        ("heart_disease", "Heart disease"),
+    ],
+    "meta_lists.investigations": [
+        ("blood_glucose", "Blood sugar test"),
+        ("other_tests", "Other blood tests"),
+        ("physical_exam", "Physical examination"),
+        (OTHER, "Other, please specify"),
+    ],
+    "meta_lists.healthcareworkers": [
+        ("nurse", "Nurse"),
+        ("Doctor", "Doctor"),
+        ("community_hcw", "Community healthcare worker"),
+        (OTHER, "Other, please specify"),
+    ],
     "meta_lists.abnormalfootappearanceobservations": [
         ("deformities", "Deformities"),
         ("dry_skin_callus", "Dry skin, callus"),

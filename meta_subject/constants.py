@@ -1,3 +1,5 @@
+from datetime import date
+
 ALL_OF_THE_TIME = "all_of_the_time"
 APPT = "appt"
 APPT_OTHER = "other_routine_appt"
@@ -14,3 +16,4 @@ NONE_OF_THE_TIME = "none_of_the_time"
 NO_COMPLICATIONS = "no_complications"
 SOME_OF_THE_TIME = "some_of_the_time"
 URINE_PREGNANCY_ACTION = "urine_pregnancy_action"
+AMENDMENT_DATE = date(2023, 11, 24)

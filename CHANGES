@@ -1,12 +1,26 @@
 Changes
 -------
 
-0.2.42
+
+0.3.2
+------
+- diabetes followup form
+- add endpoint review questions to FBG/OGTT form
+- rename BloodResultsGlu to GlucoseFBG
+- fix issue with study medication incorrectly calculating refill
+  end datetime
+- edc 0.5.66
+
+0.3.1
+------
+- hotfix for followup exam not_evaluated
+
+0.3.0
 ------
 - bump edc to 0.5.37 / py 3.11
 - remove references to `edc-reference`.
 
-0.2.41
+0.2.41 (live release)
 ------
 - fix cannot save Screening Part 3 with FBG date same as report date (#635)
 - bump to edc 0.4.98

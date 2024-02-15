@@ -1,5 +1,4 @@
 from edc_lab_panel.panels import (
-    blood_glucose_panel,
     fbc_panel,
     hba1c_panel,
     insulin_panel,
@@ -10,7 +9,6 @@ from edc_lab_panel.panels import (
 from edc_visit_schedule.visit import Requisition, RequisitionCollection
 
 requisitions_prn = RequisitionCollection(
-    Requisition(show_order=200, panel=blood_glucose_panel, required=True, additional=False),
     Requisition(show_order=220, panel=hba1c_panel, required=True, additional=False),
     Requisition(show_order=230, panel=rft_panel, required=True, additional=False),
     Requisition(show_order=240, panel=lft_panel, required=True, additional=False),
@@ -20,10 +18,7 @@ requisitions_prn = RequisitionCollection(
     name="requisitions_prn",
 )
 
-requisitions_unscheduled = RequisitionCollection(
-    Requisition(show_order=200, panel=blood_glucose_panel, required=True, additional=False),
-    name="requisitions_unscheduled",
-)
+requisitions_unscheduled = RequisitionCollection(name="requisitions_unscheduled")
 
 requisitions_d1 = RequisitionCollection(
     Requisition(show_order=30, panel=fbc_panel, required=True, additional=False),
@@ -33,37 +28,25 @@ requisitions_d1 = RequisitionCollection(
     name="requisitions_day1",
 )
 
-requisitions_w2 = RequisitionCollection(
-    Requisition(show_order=10, panel=blood_glucose_panel, required=True, additional=False),
-    name="requisitions_week2",
-)
+requisitions_w2 = RequisitionCollection(name="requisitions_week2")
 
-requisitions_1m = RequisitionCollection(
-    Requisition(show_order=10, panel=blood_glucose_panel, required=True, additional=False),
-    name="requisitions_month1",
-)
+requisitions_1m = RequisitionCollection(name="requisitions_month1")
 
 requisitions_3m = RequisitionCollection(
-    Requisition(show_order=10, panel=blood_glucose_panel, required=True, additional=False),
     Requisition(show_order=20, panel=rft_panel, required=True, additional=False),
     Requisition(show_order=30, panel=lft_panel, required=True, additional=False),
     name="requisitions_month3",
 )
 
 requisitions_6m = RequisitionCollection(
-    Requisition(show_order=10, panel=blood_glucose_panel, required=True, additional=False),
     Requisition(show_order=20, panel=rft_panel, required=True, additional=False),
     Requisition(show_order=30, panel=lft_panel, required=True, additional=False),
     name="requisitions_month6",
 )
 
-requisitions_9m = RequisitionCollection(
-    Requisition(show_order=10, panel=blood_glucose_panel, required=True, additional=False),
-    name="requisitions_month9",
-)
+requisitions_9m = RequisitionCollection(name="requisitions_month9")
 
 requisitions_12m = RequisitionCollection(
-    Requisition(show_order=10, panel=blood_glucose_panel, required=True, additional=False),
     Requisition(show_order=30, panel=rft_panel, required=True, additional=False),
     Requisition(show_order=40, panel=lft_panel, required=True, additional=False),
     Requisition(show_order=50, panel=lipids_panel, required=True, additional=False),
@@ -71,24 +54,16 @@ requisitions_12m = RequisitionCollection(
     name="requisitions_month12",
 )
 
-requisitions_15m = RequisitionCollection(
-    Requisition(show_order=10, panel=blood_glucose_panel, required=True, additional=False),
-    name="requisitions_month15",
-)
+requisitions_15m = RequisitionCollection(name="requisitions_month15")
 
 requisitions_18m = RequisitionCollection(
-    Requisition(show_order=10, panel=blood_glucose_panel, required=True, additional=False),
     Requisition(show_order=20, panel=fbc_panel, required=True, additional=False),
     name="requisitions_month18",
 )
 
-requisitions_21m = RequisitionCollection(
-    Requisition(show_order=10, panel=blood_glucose_panel, required=True, additional=False),
-    name="requisitions_month21",
-)
+requisitions_21m = RequisitionCollection(name="requisitions_month21")
 
 requisitions_24m = RequisitionCollection(
-    Requisition(show_order=10, panel=blood_glucose_panel, required=True, additional=False),
     Requisition(show_order=30, panel=rft_panel, required=True, additional=False),
     Requisition(show_order=40, panel=lft_panel, required=True, additional=False),
     Requisition(show_order=50, panel=lipids_panel, required=True, additional=False),
@@ -96,26 +71,18 @@ requisitions_24m = RequisitionCollection(
     name="requisitions_month24",
 )
 
-requisitions_27m = RequisitionCollection(
-    Requisition(show_order=10, panel=blood_glucose_panel, required=True, additional=False),
-    name="requisitions_month27",
-)
+requisitions_27m = RequisitionCollection(name="requisitions_month27")
 
 requisitions_30m = RequisitionCollection(
-    Requisition(show_order=10, panel=blood_glucose_panel, required=True, additional=False),
     Requisition(show_order=20, panel=rft_panel, required=True, additional=False),
     Requisition(show_order=30, panel=lft_panel, required=True, additional=False),
     Requisition(show_order=40, panel=fbc_panel, required=True, additional=False),
     name="requisitions_month30",
 )
 
-requisitions_33m = RequisitionCollection(
-    Requisition(show_order=10, panel=blood_glucose_panel, required=True, additional=False),
-    name="requisitions_month33",
-)
+requisitions_33m = RequisitionCollection(name="requisitions_month33")
 
 requisitions_36m = RequisitionCollection(
-    Requisition(show_order=10, panel=blood_glucose_panel, required=True, additional=False),
     Requisition(show_order=30, panel=rft_panel, required=True, additional=False),
     Requisition(show_order=40, panel=lft_panel, required=True, additional=False),
     Requisition(show_order=50, panel=lipids_panel, required=True, additional=False),

@@ -1,4 +1,10 @@
+from __future__ import annotations
+
+from typing import Type
+
 from django.contrib import admin
+from django.contrib.admin import SimpleListFilter
+from django.template.loader import render_to_string
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
 from edc_model_admin.history import SimpleHistoryAdmin
@@ -6,6 +12,7 @@ from edc_model_admin.history import SimpleHistoryAdmin
 from ..admin_site import meta_subject_admin
 from ..forms import GlucoseForm
 from ..models import Glucose
+from .list_filters import FbgListFilter, OgttListFilter
 from .modeladmin import CrfModelAdminMixin
 
 
@@ -49,6 +56,18 @@ class GlucoseAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
                 )
             },
         ),
+        (
+            "Endpoint review",
+            {
+                "description": render_to_string(
+                    "meta_subject/endpoint_review_instructions.html", context={}
+                ),
+                "fields": (
+                    "endpoint_today",
+                    "repeat_fbg_date",
+                ),
+            },
+        ),
         crf_status_fieldset,
         audit_fieldset_tuple,
     )
@@ -59,4 +78,21 @@ class GlucoseAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         "fbg_performed": admin.VERTICAL,
         "ogtt_performed": admin.VERTICAL,
         "ogtt_units": admin.VERTICAL,
+        "endpoint_today": admin.VERTICAL,
     }
+
+    def get_list_display(self, request) -> tuple[str, ...]:
+        list_display = super().get_list_display(request)
+        list_display = list(list_display)
+        list_display.insert(3, "ogtt_value")
+        list_display.insert(3, "fbg_value")
+        list_display = tuple(list_display)
+        return list_display
+
+    def get_list_filter(self, request) -> tuple[str | Type[SimpleListFilter], ...]:
+        list_filter = super().get_list_filter(request)
+        list_filter = list(list_filter)
+        list_filter.insert(2, OgttListFilter)
+        list_filter.insert(2, FbgListFilter)
+        list_filter = tuple(list_filter)
+        return list_filter

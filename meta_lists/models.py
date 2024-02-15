@@ -65,3 +65,33 @@ class TransferReasons(ListModelMixin):
     class Meta(ListModelMixin.Meta):
         verbose_name = "Transfer Reasons"
         verbose_name_plural = "Transfer Reasons"
+
+
+class HealthcareWorkers(ListModelMixin):
+    class Meta(ListModelMixin.Meta):
+        verbose_name = "Healthcare worker"
+        verbose_name_plural = "Healthcare workers"
+
+
+class Investigations(ListModelMixin):
+    class Meta(ListModelMixin.Meta):
+        verbose_name = "Investigations"
+        verbose_name_plural = "Investigations"
+
+
+class Complications(ListModelMixin):
+    class Meta(ListModelMixin.Meta):
+        verbose_name = "Complications"
+        verbose_name_plural = "Complications"
+
+
+class DmTreatments(ListModelMixin):
+    class Meta(ListModelMixin.Meta):
+        verbose_name = "DmTreatments"
+        verbose_name_plural = "DmTreatments"
+
+
+class DmMedications(ListModelMixin):
+    class Meta(ListModelMixin.Meta):
+        verbose_name = "Diabetes Medications"
+        verbose_name_plural = "Diabetes Medications"
