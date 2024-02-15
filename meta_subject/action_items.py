@@ -6,7 +6,6 @@ from edc_constants.constants import HIGH_PRIORITY, NEW, NONE, POS, YES
 from edc_egfr.constants import EGFR_DROP_NOTIFICATION_ACTION
 from edc_lab_results.action_items import (
     BloodResultsFbcAction,
-    BloodResultsGluAction,
     BloodResultsHba1cAction,
     BloodResultsLftAction,
     BloodResultsLipidAction,
@@ -42,24 +41,31 @@ class MissedVisitAction(Action):
     create_by_user = False
 
     def get_next_actions(self):
-        # TODO: define LTFU, 6 months off study medication
+        """LTFU, 6 months off study medication using
+        diff of report_datetime and refill_end_datetime.
+        """
         next_actions = []
-        subjectconsent_model_cls = django_apps.get_model("meta_consent.subjectconsent")
-        subjectvisit_model_cls = django_apps.get_model("meta_subject.subjectvisit")
-        subject_consent = subjectconsent_model_cls.objects.get(
-            subject_identifier=self.subject_identifier
-        )
+        subject_visit_model_cls = django_apps.get_model("meta_subject.subjectvisit")
+        study_medication_model_cls = django_apps.get_model("meta_subject.studymedication")
         last_visit = (
-            subjectvisit_model_cls.objects.filter(subject_identifier=self.subject_identifier)
+            subject_visit_model_cls.objects.filter(subject_identifier=self.subject_identifier)
             .exclude(reason=MISSED_VISIT)
             .order_by("report_datetime")
             .last()
         )
-        # last_refill_until
-        # TODO: last_refill_until in below calc
+        last_study_medication = (
+            study_medication_model_cls.objects.filter(
+                subject_visit__subject_identifier=self.subject_identifier
+            )
+            .order_by("refill_end_datetime")
+            .last()
+        )
         if (
             last_visit
-            and (last_visit.report_datetime - subject_consent.consent_datetime).days >= 182
+            and last_study_medication
+            and last_study_medication.refill_end_datetime
+            and (last_study_medication.refill_end_datetime - last_visit.report_datetime).days
+            >= 182
         ):
             next_actions = [LTFU_ACTION]
         return next_actions
@@ -150,7 +156,6 @@ def register_actions():
         BloodResultsLipidAction,
         BloodResultsLftAction,
         BloodResultsRftAction,
-        BloodResultsGluAction,
         BloodResultsHba1cAction,
         FollowupExaminationAction,
         MissedVisitAction,

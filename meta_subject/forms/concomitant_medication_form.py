@@ -5,13 +5,8 @@ from edc_crf.modelform_mixins import CrfModelFormMixin
 from ..models import ConcomitantMedication
 
 
-class ConcomitantMedicationFormValidator(CrfFormValidator):
-    def clean(self):
-        pass
-
-
 class ConcomitantMedicationForm(CrfModelFormMixin, forms.ModelForm):
-    form_validator_cls = ConcomitantMedicationFormValidator
+    form_validator_cls = CrfFormValidator
 
     class Meta:
         model = ConcomitantMedication

@@ -4,8 +4,7 @@ from edc_constants.choices import YES_NO
 from edc_constants.constants import NO, NOT_APPLICABLE
 from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
 from edc_model.models import BaseUuidModel, HistoricalRecords
-from edc_offstudy.model_mixins import OffstudyNonCrfModelMixin
-from edc_sites.models import SiteModelMixin
+from edc_sites.model_mixins import SiteModelMixin
 from edc_visit_tracking.managers import VisitCurrentSiteManager, VisitModelManager
 from edc_visit_tracking.model_mixins import VisitModelMixin
 
@@ -17,10 +16,8 @@ class SubjectVisit(
     CreatesMetadataModelMixin,
     SiteModelMixin,
     RequiresConsentFieldsModelMixin,
-    OffstudyNonCrfModelMixin,
     BaseUuidModel,
 ):
-
     """A model completed by the user that captures the covering
     information for the data collected for this timepoint/appointment,
     e.g.report_datetime.

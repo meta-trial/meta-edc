@@ -1,6 +1,6 @@
 from django.apps import apps as django_apps
 from django.test import TestCase
-from edc_sites.models import CurrentSiteManager
+from edc_sites.managers import CurrentSiteManager
 
 
 class TestManagers(TestCase):

@@ -3,8 +3,10 @@ import sys
 from importlib.metadata import version
 from pathlib import Path
 
+import django
 import environ
 from edc_constants.constants import COMPLETE
+from edc_constants.internationalization import EXTRA_LANG_INFO
 from edc_protocol_incident.constants import PROTOCOL_INCIDENT
 from edc_utils import get_datetime_from_env
 
@@ -93,6 +95,7 @@ INSTALLED_APPS = [
     "logentry_admin",
     "simple_history",
     "storages",
+    "edc_sites.apps.AppConfig",
     "edc_action_item.apps.AppConfig",
     "edc_appointment.apps.AppConfig",
     "edc_auth.apps.AppConfig",
@@ -111,6 +114,7 @@ INSTALLED_APPS = [
     "edc_export.apps.AppConfig",
     "edc_facility.apps.AppConfig",
     "edc_fieldsets.apps.AppConfig",
+    "edc_form_runners.apps.AppConfig",
     "edc_form_validators.apps.AppConfig",
     "edc_lab_dashboard.apps.AppConfig",
     "edc_label.apps.AppConfig",
@@ -138,20 +142,17 @@ INSTALLED_APPS = [
     "edc_pdf_reports.apps.AppConfig",
     "edc_review_dashboard.apps.AppConfig",
     "edc_screening.apps.AppConfig",
-    "edc_sites.apps.AppConfig",
     "edc_subject_dashboard.apps.AppConfig",
     "edc_timepoint.apps.AppConfig",
     "edc_unblinding.apps.AppConfig",
     "edc_form_describer.apps.AppConfig",
     "edc_adherence.apps.AppConfig",
     "edc_dx.apps.AppConfig",
-    "canned_views.apps.AppConfig",
     "meta_consent.apps.AppConfig",
     "meta_data_manager.apps.AppConfig",
     "meta_lists.apps.AppConfig",
     "meta_dashboard.apps.AppConfig",
     "meta_labs.apps.AppConfig",
-    "meta_reference.apps.AppConfig",
     "meta_subject.apps.AppConfig",
     "meta_visit_schedule.apps.AppConfig",
     "meta_ae.apps.AppConfig",
@@ -163,6 +164,7 @@ INSTALLED_APPS = [
     "meta_screening.apps.AppConfig",
     "meta_sites.apps.AppConfig",
     "meta_edc.apps.AppConfig",
+    "edc_appconfig.apps.AppConfig",
 ]
 
 if not DEFENDER_ENABLED:
@@ -186,7 +188,7 @@ if not DEFENDER_ENABLED:
 
 MIDDLEWARE.extend(
     [
-        "edc_protocol.middleware.ProtocolMiddleware",
+        "edc_protocol.middleware.ResearchProtocolConfigMiddleware",
         "edc_dashboard.middleware.DashboardMiddleware",
         "edc_subject_dashboard.middleware.DashboardMiddleware",
         "edc_lab_dashboard.middleware.DashboardMiddleware",
@@ -286,8 +288,17 @@ AUTH_PASSWORD_VALIDATORS = [
 USE_I18N = True  # disable trans
 USE_L10N = True  # set to False so DATE formats below are used
 USE_TZ = True
-LANGUAGE_CODE = env.str("DJANGO_LANGUAGE_CODE")  # ignored if USE_L10N = False
-LANGUAGES = [x.split(":") for x in env.list("DJANGO_LANGUAGES")] or (("en", "English"),)
+
+
+LANG_INFO = dict(django.conf.locale.LANG_INFO, **EXTRA_LANG_INFO)
+django.conf.locale.LANG_INFO = LANG_INFO
+LANGUAGE_CODE = "en"
+LANGUAGE_LIST = ["sw", "en-gb", "en", "mas"]
+LANGUAGES = [(code, LANG_INFO[code]["name"]) for code in LANGUAGE_LIST]
+
+
+# LANGUAGE_CODE = env.str("DJANGO_LANGUAGE_CODE")  # ignored if USE_L10N = False
+# LANGUAGES = [x.split(":") for x in env.list("DJANGO_LANGUAGES")] or (("en", "English"),)
 TIME_ZONE = env.str("DJANGO_TIME_ZONE")
 DATE_INPUT_FORMATS = ["%Y-%m-%d", "%d/%m/%Y"]
 DATETIME_INPUT_FORMATS = [

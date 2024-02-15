@@ -1,6 +1,10 @@
+from __future__ import annotations
+
 from decimal import Decimal
+from typing import Type
 
 from django.contrib import admin, messages
+from django.contrib.admin import SimpleListFilter
 from django.contrib.messages import ERROR, SUCCESS
 from django.core.exceptions import ObjectDoesNotExist
 from django_audit_fields.admin import audit_fieldset_tuple
@@ -12,6 +16,7 @@ from edc_pharmacy.model_mixins.study_medication_crf_model_mixin import (
     StudyMedicationError,
 )
 from edc_pharmacy.models import DosageGuideline, Formulation, Medication
+from edc_utils.date import to_local
 from edc_visit_schedule.utils import is_baseline
 
 from meta_pharmacy.constants import METFORMIN
@@ -19,11 +24,13 @@ from meta_pharmacy.constants import METFORMIN
 from ..admin_site import meta_subject_admin
 from ..forms import StudyMedicationForm
 from ..models import StudyMedication
+from .list_filters import RefillEndDateListFilter, RefillStartDateListFilter
 from .modeladmin import CrfModelAdminMixin
 
 
 @admin.register(StudyMedication, site=meta_subject_admin)
 class StudyMedicationAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
+
     actions = ["create_or_update_rx_refills"]
 
     form = StudyMedicationForm
@@ -66,6 +73,41 @@ class StudyMedicationAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         "refill": admin.VERTICAL,
         "refill_to_next_visit": admin.VERTICAL,
     }
+
+    def get_list_filter(self, request) -> tuple[str | Type[SimpleListFilter], ...]:
+        list_filter = super().get_list_filter(request)
+        list_filter = list(list_filter)
+        list_filter.insert(4, "dosage_guideline")
+        list_filter.insert(4, RefillEndDateListFilter)
+        list_filter.insert(4, RefillStartDateListFilter)
+        list_filter = tuple(list_filter)
+        return list_filter
+
+    def get_list_display(self, request) -> tuple[str, ...]:
+        list_display = super().get_list_display(request)
+        list_display = list(list_display)
+        list_display.insert(4, "refill_days")
+        list_display.insert(4, "refill_end_date")
+        list_display.insert(4, "refill_start_date")
+        list_display.insert(4, "dosage_guideline")
+        list_display = tuple(list_display)
+        return list_display
+
+    @admin.display(description="days", ordering="number_of_days")
+    def refill_days(self, obj):
+        return obj.number_of_days
+
+    @admin.display(description="refill_start", ordering="refill_start_datetime")
+    def refill_start_date(self, obj):
+        if obj.refill_start_datetime:
+            return to_local(obj.refill_start_datetime).date()
+        return None
+
+    @admin.display(description="refill_end", ordering="refill_end_datetime")
+    def refill_end_date(self, obj):
+        if obj.refill_end_datetime:
+            return to_local(obj.refill_end_datetime).date()
+        return None
 
     @admin.action(permissions=["view"], description="Create or update RX Refills")
     def create_or_update_rx_refills(self, request, queryset):

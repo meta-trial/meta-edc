@@ -1,4 +1,6 @@
 from dateutil.relativedelta import relativedelta
+from django.conf import settings
+from django.contrib.sites.models import Site
 from django.test import TestCase
 from edc_constants.constants import COMPLETE, NO, YES
 from edc_utils import get_utcnow
@@ -47,6 +49,7 @@ class TestFixes(MetaTestCaseMixin, TestCase):
             "waist_circumference": 100,
             "weight": 65,
             "crf_status": COMPLETE,
+            "site": Site.objects.get(id=settings.SITE_ID),
         }
         data.update(
             subject_visit=subject_visit.pk,

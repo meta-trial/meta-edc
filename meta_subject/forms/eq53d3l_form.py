@@ -1,13 +1,9 @@
 from django import forms
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_model.widgets import SliderWidget
-from edc_qol.forms import Eq5d3lFormValidator as BaseEq5d3lFormValidator
+from edc_qol.forms import Eq5d3lFormValidator
 
 from ..models import Eq5d3l
-
-
-class Eq5d3lFormValidator(BaseEq5d3lFormValidator):
-    pass
 
 
 class Eq5d3lForm(CrfModelFormMixin, forms.ModelForm):

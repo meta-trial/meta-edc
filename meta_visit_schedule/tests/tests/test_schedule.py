@@ -1,5 +1,6 @@
 from django.test import TestCase
 
+from meta_consent.consents import consent_v1
 from meta_edc.meta_version import PHASE_THREE, PHASE_TWO, get_meta_version
 from meta_visit_schedule.visit_schedules import schedule
 from meta_visit_schedule.visit_schedules.phase_three import visit_schedule
@@ -14,7 +15,7 @@ class TestVisitSchedule(TestCase):
     def test_schedule_models(self):
         self.assertEqual(schedule.onschedule_model, "meta_prn.onschedule")
         self.assertEqual(schedule.offschedule_model, "meta_prn.offschedule")
-        self.assertEqual(schedule.consent_model, "meta_consent.subjectconsent")
+        self.assertEqual(schedule.consent_definitions, [consent_v1])
         self.assertEqual(schedule.appointment_model, "edc_appointment.appointment")
 
     def test_visit_codes_phase_two(self):

@@ -3,6 +3,8 @@ from edc_facility.constants import FIVE_DAY_CLINIC
 from edc_visit_schedule.schedule import Schedule
 from edc_visit_schedule.visit import Visit as BaseVisit
 
+from meta_consent.consents import consent_v1
+
 from ...constants import (
     DAY1,
     MONTH1,
@@ -90,7 +92,7 @@ schedule = Schedule(
     verbose_name="Day 1 to Month 12 Follow-up",
     onschedule_model="meta_prn.onschedule",
     offschedule_model="meta_prn.offschedule",
-    consent_model="meta_consent.subjectconsent",
+    consent_definitions=[consent_v1],
     appointment_model="edc_appointment.appointment",
     offstudymedication_model="meta_prn.offstudymedication",
 )

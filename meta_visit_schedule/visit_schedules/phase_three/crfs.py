@@ -1,41 +1,41 @@
-from edc_visit_schedule.visit import Crf, FormsCollection
+from edc_visit_schedule.visit import Crf, CrfCollection
 
-# TODO: whats the difference between bloodresultsglu and glucose??
-
-crfs_prn = FormsCollection(
-    Crf(show_order=10, model="meta_subject.bloodresultsfbc"),
-    Crf(show_order=150, model="meta_subject.glucose"),
-    Crf(show_order=220, model="meta_subject.bloodresultsglu"),
-    Crf(show_order=230, model="meta_subject.bloodresultshba1c"),
-    Crf(show_order=240, model="meta_subject.bloodresultsrft"),
-    Crf(show_order=250, model="meta_subject.bloodresultslft"),
-    Crf(show_order=260, model="meta_subject.bloodresultslipid"),
-    Crf(show_order=270, model="meta_subject.hepatitistest"),
-    Crf(show_order=280, model="meta_subject.malariatest"),
-    Crf(show_order=290, model="meta_subject.urinedipsticktest"),
-    Crf(show_order=360, model="meta_subject.concomitantmedication"),
-    Crf(show_order=380, model="meta_subject.urinepregnancy"),
-    Crf(show_order=1000, model="meta_subject.pregnancyupdate"),
-    Crf(show_order=1100, model="meta_subject.egfrdropnotification"),
+crfs_prn = CrfCollection(
+    Crf(show_order=105, model="meta_subject.bloodresultsfbc"),
+    Crf(show_order=156, model="meta_subject.glucose"),
+    Crf(show_order=225, model="meta_subject.glucosefbg"),
+    Crf(show_order=235, model="meta_subject.bloodresultshba1c"),
+    Crf(show_order=245, model="meta_subject.bloodresultsrft"),
+    Crf(show_order=255, model="meta_subject.bloodresultslft"),
+    Crf(show_order=265, model="meta_subject.bloodresultslipid"),
+    Crf(show_order=275, model="meta_subject.hepatitistest"),
+    Crf(show_order=285, model="meta_subject.malariatest"),
+    Crf(show_order=295, model="meta_subject.urinedipsticktest"),
+    Crf(show_order=365, model="meta_subject.concomitantmedication"),
+    Crf(show_order=385, model="meta_subject.urinepregnancy"),
+    Crf(show_order=505, model="meta_subject.pregnancyupdate"),
+    Crf(show_order=515, model="meta_subject.egfrdropnotification"),
+    Crf(show_order=615, model="meta_subject.dmreferralfollowup"),
     name="prn",
 )
 
-crfs_unscheduled = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=20, model="meta_subject.followupexamination"),
-    Crf(show_order=30, model="meta_subject.medicationadherence"),
-    Crf(show_order=200, model="meta_subject.bloodresultsglu"),
+crfs_unscheduled = CrfCollection(
+    Crf(show_order=106, model="meta_subject.followupvitals"),
+    Crf(show_order=206, model="meta_subject.followupexamination"),
+    Crf(show_order=306, model="meta_subject.medicationadherence"),
+    Crf(show_order=406, model="meta_subject.glucosefbg"),
     name="unscheduled",
 )
 
-crfs_missed = FormsCollection(
-    Crf(show_order=10, model="meta_subject.subjectvisitmissed"),
+crfs_missed = CrfCollection(
+    Crf(show_order=107, model="meta_subject.subjectvisitmissed"),
     name="missed",
 )
-crfs_d1 = FormsCollection(
-    Crf(show_order=10, model="meta_subject.physicalexam"),
-    Crf(show_order=20, model="meta_subject.patienthistory"),
-    Crf(show_order=30, model="meta_subject.otherarvregimens"),
+crfs_d1 = CrfCollection(
+    Crf(show_order=100, model="meta_subject.physicalexam"),
+    Crf(show_order=120, model="meta_subject.patienthistory"),
+    Crf(show_order=130, model="meta_subject.otherarvregimens"),
+    Crf(show_order=155, model="meta_subject.glucose", required=False),
     Crf(show_order=210, model="meta_subject.bloodresultsins"),
     Crf(show_order=220, model="meta_subject.bloodresultshba1c"),
     Crf(show_order=230, model="meta_subject.bloodresultsrft"),
@@ -48,10 +48,11 @@ crfs_d1 = FormsCollection(
     name="day1",
 )
 
-crfs_w2 = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=200, model="meta_subject.bloodresultsglu"),
+crfs_w2 = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=155, model="meta_subject.glucose", required=False),
+    Crf(show_order=200, model="meta_subject.glucosefbg"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l"),
@@ -60,10 +61,11 @@ crfs_w2 = FormsCollection(
     name="week2",
 )
 
-crfs_1m = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=200, model="meta_subject.bloodresultsglu"),
+crfs_1m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=155, model="meta_subject.glucose", required=False),
+    Crf(show_order=200, model="meta_subject.glucosefbg"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=450, model="meta_subject.healtheconomicssimple", required=False),
@@ -73,10 +75,11 @@ crfs_1m = FormsCollection(
     name="1m",
 )
 
-crfs_3m = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=200, model="meta_subject.bloodresultsglu"),
+crfs_3m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=155, model="meta_subject.glucose", required=False),
+    Crf(show_order=200, model="meta_subject.glucosefbg"),
     Crf(show_order=210, model="meta_subject.bloodresultsrft"),
     Crf(show_order=220, model="meta_subject.bloodresultslft"),
     Crf(show_order=300, model="meta_subject.studymedication"),
@@ -87,10 +90,11 @@ crfs_3m = FormsCollection(
     name="3m",
 )
 
-crfs_6m = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=200, model="meta_subject.bloodresultsglu"),
+crfs_6m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=200, model="meta_subject.glucose", required=False),
+    Crf(show_order=205, model="meta_subject.glucosefbg"),
     Crf(show_order=210, model="meta_subject.bloodresultsrft"),
     Crf(show_order=220, model="meta_subject.bloodresultslft"),
     Crf(show_order=230, model="meta_subject.bloodresultsfbc"),
@@ -102,10 +106,11 @@ crfs_6m = FormsCollection(
     name="6m",
 )
 
-crfs_9m = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=200, model="meta_subject.bloodresultsglu"),
+crfs_9m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=155, model="meta_subject.glucose", required=False),
+    Crf(show_order=200, model="meta_subject.glucosefbg"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
@@ -113,10 +118,10 @@ crfs_9m = FormsCollection(
     name="9m",
 )
 
-crfs_12m = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=200, model="meta_subject.glucose"),
+crfs_12m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=155, model="meta_subject.glucose"),
     Crf(show_order=210, model="meta_subject.bloodresultshba1c"),
     Crf(show_order=220, model="meta_subject.bloodresultsrft"),
     Crf(show_order=230, model="meta_subject.bloodresultslft"),
@@ -129,10 +134,11 @@ crfs_12m = FormsCollection(
     name="12m",
 )
 
-crfs_15m = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=200, model="meta_subject.bloodresultsglu"),
+crfs_15m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=155, model="meta_subject.glucose", required=False),
+    Crf(show_order=200, model="meta_subject.glucosefbg"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
@@ -140,10 +146,11 @@ crfs_15m = FormsCollection(
     name="15m",
 )
 
-crfs_18m = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=200, model="meta_subject.bloodresultsglu"),
+crfs_18m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=155, model="meta_subject.glucose", required=False),
+    Crf(show_order=205, model="meta_subject.glucosefbg"),
     Crf(show_order=220, model="meta_subject.bloodresultsfbc"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
@@ -152,10 +159,11 @@ crfs_18m = FormsCollection(
     name="18m",
 )
 
-crfs_21m = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=200, model="meta_subject.bloodresultsglu"),
+crfs_21m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=155, model="meta_subject.glucose", required=False),
+    Crf(show_order=200, model="meta_subject.glucosefbg"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
@@ -163,9 +171,9 @@ crfs_21m = FormsCollection(
     name="21m",
 )
 
-crfs_24m = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=15, model="meta_subject.followupexamination"),
+crfs_24m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
     Crf(show_order=200, model="meta_subject.glucose"),
     Crf(show_order=210, model="meta_subject.bloodresultshba1c"),
     Crf(show_order=220, model="meta_subject.bloodresultsrft"),
@@ -179,10 +187,11 @@ crfs_24m = FormsCollection(
     name="24m",
 )
 
-crfs_27m = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=200, model="meta_subject.bloodresultsglu"),
+crfs_27m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=155, model="meta_subject.glucose", required=False),
+    Crf(show_order=200, model="meta_subject.glucosefbg"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
@@ -190,10 +199,11 @@ crfs_27m = FormsCollection(
     name="27m",
 )
 
-crfs_30m = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=200, model="meta_subject.bloodresultsglu"),
+crfs_30m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=155, model="meta_subject.glucose", required=False),
+    Crf(show_order=205, model="meta_subject.glucosefbg"),
     Crf(show_order=210, model="meta_subject.bloodresultsrft"),
     Crf(show_order=220, model="meta_subject.bloodresultslft"),
     Crf(show_order=230, model="meta_subject.bloodresultsfbc"),
@@ -204,10 +214,11 @@ crfs_30m = FormsCollection(
     name="30m",
 )
 
-crfs_33m = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=200, model="meta_subject.bloodresultsglu"),
+crfs_33m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=155, model="meta_subject.glucose", required=False),
+    Crf(show_order=200, model="meta_subject.glucosefbg"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
@@ -215,10 +226,10 @@ crfs_33m = FormsCollection(
     name="33m",
 )
 
-crfs_36m = FormsCollection(
-    Crf(show_order=10, model="meta_subject.followupvitals"),
-    Crf(show_order=15, model="meta_subject.followupexamination"),
-    Crf(show_order=150, model="meta_subject.glucose"),
+crfs_36m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=200, model="meta_subject.glucose"),
     Crf(show_order=210, model="meta_subject.bloodresultshba1c"),
     Crf(show_order=220, model="meta_subject.bloodresultsrft"),
     Crf(show_order=230, model="meta_subject.bloodresultslft"),

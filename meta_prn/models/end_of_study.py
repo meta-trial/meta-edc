@@ -20,7 +20,7 @@ from edc_offstudy.constants import (
     WITHDRAWAL,
 )
 from edc_offstudy.model_mixins import OffstudyModelMixin
-from edc_sites.models import SiteModelMixin
+from edc_sites.model_mixins import SiteModelMixin
 from edc_transfer.constants import TRANSFERRED
 
 from meta_lists.models import OffstudyReasons

@@ -1,5 +1,7 @@
 from copy import deepcopy
 
+from django.conf import settings
+from django.contrib.sites.models import Site
 from django.test import TestCase
 from edc_constants.constants import COMPLETE, YES
 from edc_metadata import KEYED, NOT_REQUIRED, REQUIRED
@@ -33,6 +35,7 @@ class TestSf12(MetaTestCaseMixin, TestCase):
             felt_down=NONE_OF_THE_TIME,
             social_activities_interfered=SOME_OF_THE_TIME,
             crf_status=COMPLETE,
+            site=Site.objects.get(id=settings.SITE_ID),
         )
 
     def test_baseline_not_required(self):

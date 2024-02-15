@@ -3,7 +3,7 @@ from edc_crf.model_mixins import CrfInlineModelMixin
 from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_model.validators import date_is_not_now, date_not_future
 from edc_model_fields.fields import OtherCharField
-from edc_sites.models import CurrentSiteManager
+from edc_sites.managers import CurrentSiteManager
 
 from meta_lists.models import ArvRegimens
 

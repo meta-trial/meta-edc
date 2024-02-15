@@ -7,9 +7,11 @@ class MetaCrfReportMixin:
 
     @property
     def unblinded(self):
-        UnblindingRequest = django_apps.get_model("meta_prn.unblindingrequest")
+        unblinding_request_model_cls = django_apps.get_model(
+            "edc_unblinding.unblindingrequest"
+        )
         try:
-            unblinded = UnblindingRequest.objects.get(
+            unblinded = unblinding_request_model_cls.objects.get(
                 subject_identifier=self.subject_identifier, approved=True
             )
         except ObjectDoesNotExist:

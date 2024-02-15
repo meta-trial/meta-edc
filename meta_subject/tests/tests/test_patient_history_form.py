@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.contrib.sites.models import Site
 from django.test import TestCase
 from edc_constants.constants import COMPLETE, NO, NONE, NOT_APPLICABLE, YES
 from edc_list_data import PreloadData
@@ -57,6 +59,7 @@ class BaseTestPatientHistory(MetaTestCaseMixin, TestCase):
             "weight": 65,
             "crf_status": COMPLETE,
             "vl_undetectable": YES,
+            "site": Site.objects.get(id=settings.SITE_ID),
         }
 
 

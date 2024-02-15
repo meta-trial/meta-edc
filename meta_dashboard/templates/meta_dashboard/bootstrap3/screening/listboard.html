@@ -1,7 +1,6 @@
 {% extends edc_listboard_template %}
 {% load admin_urls %}
-{% load edc_dashboard_extras %}
-{% load meta_dashboard_extras %}
+{% load edc_dashboard_extras edc_subject_dashboard_extras meta_dashboard_extras %}
 
 {% block listboard_panel %}
 
@@ -33,24 +32,26 @@
 
 
 {% block listboard_table_button_column %}
-    <td style="white-space: nowrap">
+  <td style="white-space: nowrap">
     <div class="btn-group">
-    {% screening_button result %}
-    {% eligibility_button result %}
-    {% if result.eligible %}
-        {% if result.consent %}
-            {% dashboard_button result %}
+      {% render_screening_part_one_button result %}
+      {% render_screening_part_two_button result %}
+      {% render_screening_part_three_button result %}
+      {% eligibility_button result %}
+      {% if result.eligible %}
+        {% if result.consented %}
+          {% render_dashboard_button result %}
         {% else %}
-            {% add_consent_button result %}
+          {% render_subject_listboard_consent_button subject_screening=result %}
         {% endif %}
-    {% endif %}
+      {% endif %}
     </div>
-    </td>
+  </td>
 {% endblock listboard_table_button_column %}
 
 
 {% block listboard_table_columns %}
-    <td>{{ result.human_screening_identifier }} </td>
+    <td>{{ result.human_readable_identifier }} </td>
     <td nowrap>
         {% if result.repeat_glucose_performed == 'PENDING' %}
             {% if result.repeat_due_in_days < 3 %}
@@ -63,8 +64,8 @@
     </td>
     <td nowrap>{{ result.initials }}</td>
     <td nowrap>{{ result.age_in_years }} yrs {{ result.gender }}</td>
-    <td nowrap>{% if result.consent %}{{ result.consent.subject_identifier }}{% else %} -- {% endif %}</td>
+    <td nowrap>{% if result.consented %}{{ result.subject_identifier }}{% else %} -- {% endif %}</td>
     <td nowrap>{{ result.user_created }}</td>
-    <td nowrap>{{ result.object.modified|date:"SHORT_DATETIME_FORMAT" }}</td>
+    <td nowrap>{{ result.modified|date:"SHORT_DATETIME_FORMAT" }}</td>
 
 {% endblock listboard_table_columns %}

@@ -3,6 +3,8 @@ from edc_facility.constants import FIVE_DAY_CLINIC
 from edc_visit_schedule.schedule import Schedule
 from edc_visit_schedule.visit import Visit
 
+from meta_consent.consents import consent_v1
+
 from ...constants import DELIVERY, SCHEDULE_PREGNANCY
 from .crfs import crfs_missed
 from .crfs import crfs_prn
@@ -14,7 +16,7 @@ schedule = Schedule(
     verbose_name="Delivery and Birth Outcomes Follow-up",
     onschedule_model="meta_prn.onschedulepregnancy",
     offschedule_model="meta_prn.offschedulepregnancy",
-    consent_model="meta_consent.subjectconsent",
+    consent_definitions=[consent_v1],
     appointment_model="edc_appointment.appointment",
     base_timepoint=200,
 )

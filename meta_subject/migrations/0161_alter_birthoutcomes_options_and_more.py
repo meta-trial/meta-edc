@@ -2,13 +2,14 @@
 
 import _socket
 import django.core.validators
-from django.db import migrations, models
 import django_audit_fields.fields.hostname_modification_field
 import edc_lab.managers
 import edc_model.validators.date
 import edc_protocol.validators
-import edc_sites.model_mixins
+import edc_sites.models
 import edc_visit_tracking.managers
+from django.db import migrations, models
+
 import meta_subject.models.birth_outcomes
 import meta_subject.models.other_arv_regimens_detail
 
@@ -674,7 +675,7 @@ class Migration(migrations.Migration):
             name="birthoutcomes",
             managers=[
                 ("objects", meta_subject.models.birth_outcomes.Manager()),
-                ("on_site", edc_sites.model_mixins.CurrentSiteManager()),
+                ("on_site", edc_sites.models.CurrentSiteManager()),
             ],
         ),
         migrations.AlterModelManagers(
@@ -852,7 +853,7 @@ class Migration(migrations.Migration):
                     "objects",
                     meta_subject.models.other_arv_regimens_detail.InlineModelManager(),
                 ),
-                ("on_site", edc_sites.model_mixins.CurrentSiteManager()),
+                ("on_site", edc_sites.models.CurrentSiteManager()),
             ],
         ),
         migrations.AlterModelManagers(

@@ -21,15 +21,13 @@ from .fieldsets import (
 from .subject_screening_admin import SubjectScreeningAdmin
 
 
-def get_fieldsets() -> (
-    Tuple[
-        Tuple[str, dict],
-        Tuple[str, dict],
-        Tuple[str, dict],
-        Tuple[str, dict],
-        Tuple[str, dict],
-    ]
-):
+def get_fieldsets() -> Tuple[
+    Tuple[str, dict],
+    Tuple[str, dict],
+    Tuple[str, dict],
+    Tuple[str, dict],
+    Tuple[str, dict],
+]:
     return (
         get_part_one_fieldset(collapse=True),
         get_part_two_fieldset(),

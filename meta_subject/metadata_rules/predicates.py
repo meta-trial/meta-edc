@@ -1,10 +1,23 @@
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
 from edc_constants.constants import YES
 from edc_lab_panel.panels import hba1c_panel, insulin_panel
 from edc_metadata.metadata_rules import PersistantSingletonMixin
-from edc_sites import get_site_by_attr
-from edc_visit_schedule.constants import DAY1, MONTH1, MONTH3, MONTH6, WEEK2
+from edc_sites.site import sites
+from edc_visit_schedule.constants import (
+    DAY1,
+    MONTH1,
+    MONTH3,
+    MONTH6,
+    MONTH18,
+    MONTH24,
+    MONTH30,
+    MONTH36,
+    WEEK2,
+)
 from edc_visit_schedule.utils import is_baseline
 
 
@@ -51,6 +64,13 @@ def hba1c_requisition_required_at_baseline(visit):
 
 class Predicates(PersistantSingletonMixin):
     app_label = "meta_subject"
+
+    @staticmethod
+    def glucose_required(visit, **kwargs):
+        if visit.report_datetime >= datetime(2024, 1, 1, tzinfo=ZoneInfo("UTC")):
+            if visit.visit_code in [MONTH6, MONTH18, MONTH24, MONTH30, MONTH36]:
+                return True
+        return False
 
     @staticmethod
     def pregnancy_notification_exists(visit, **kwargs):
@@ -102,8 +122,8 @@ class Predicates(PersistantSingletonMixin):
         if (
             visit.site.id
             in [
-                get_site_by_attr("name", "mwananyamala").site_id,
-                get_site_by_attr("name", "temeke").site_id,
+                sites.get_by_attr("name", "mwananyamala").site_id,
+                sites.get_by_attr("name", "temeke").site_id,
             ]
             and visit.appointment.visit_code
             in visit.schedule.crf_required_at("meta_subject.bloodresultsins")
@@ -119,8 +139,8 @@ class Predicates(PersistantSingletonMixin):
         if (
             visit.site.id
             in [
-                get_site_by_attr("name", "mwananyamala").site_id,
-                get_site_by_attr("name", "temeke").site_id,
+                sites.get_by_attr("name", "mwananyamala").site_id,
+                sites.get_by_attr("name", "temeke").site_id,
             ]
             and visit.appointment.visit_code
             in visit.schedule.requisition_required_at(insulin_panel)

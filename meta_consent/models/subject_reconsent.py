@@ -11,7 +11,7 @@ from edc_identifier.managers import SubjectIdentifierManager
 from edc_identifier.model_mixins import UniqueSubjectIdentifierModelMixin
 from edc_model.models import BaseUuidModel
 from edc_registration.models import RegisteredSubject
-from edc_sites.models import SiteModelMixin
+from edc_sites.model_mixins import SiteModelMixin
 from edc_utils import get_utcnow
 
 from ..action_items import RECONSENT_ACTION
@@ -26,7 +26,6 @@ class SubjectReconsent(
     ActionModelMixin,
     BaseUuidModel,
 ):
-
     """A model completed by the user that updates the consent
     for those originally consented by next of kin.
     """
