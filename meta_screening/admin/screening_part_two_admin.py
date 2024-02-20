@@ -39,8 +39,6 @@ def get_fieldsets() -> Tuple[
 
 @admin.register(ScreeningPartTwo, site=meta_screening_admin)
 class ScreeningPartTwoAdmin(SiteModelAdminMixin, SubjectScreeningAdmin):
-    post_url_on_delete_name = "screening_dashboard_url"
-    subject_listboard_url_name = "screening_listboard_url"
 
     form = ScreeningPartTwoForm
 

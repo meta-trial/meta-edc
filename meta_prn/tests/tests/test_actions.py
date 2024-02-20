@@ -26,7 +26,7 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
             report_datetime=self.subject_visit.report_datetime,
         )
 
-    def test_pregnancy_actions(self):  # noqa
+    def test_pregnancy_actions(self):
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         subject_visit = self.get_next_subject_visit(subject_visit)
         self.assertEqual(subject_visit.visit_code, MONTH1)
@@ -41,7 +41,7 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
         try:
             ActionItem.objects.get(
                 action_identifier=urine_pregnancy.action_identifier,
-                reference_model="meta_subject.urinepregnancy",
+                action_type__reference_model="meta_subject.urinepregnancy",
             )
         except ObjectDoesNotExist:
             self.fail("ActionItem for urinepregnancy unexpectedly does not exist")
@@ -49,7 +49,7 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
         try:
             ActionItem.objects.get(
                 parent_action_item__action_identifier=urine_pregnancy.action_identifier,
-                reference_model="meta_prn.pregnancynotification",
+                action_type__reference_model="meta_prn.pregnancynotification",
             )
         except ObjectDoesNotExist:
             self.fail("ActionItem for pregnancynotification unexpectedly does not exist")
@@ -80,7 +80,7 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
         try:
             ActionItem.objects.get(
                 parent_action_item__action_identifier=delivery.action_identifier,
-                reference_model="meta_prn.offschedulepregnancy",
+                action_type__reference_model="meta_prn.offschedulepregnancy",
             )
         except ObjectDoesNotExist:
             self.fail("ActionItem for offschedulepregnancy unexpectedly does not exist")
@@ -91,7 +91,7 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
         try:
             ActionItem.objects.get(
                 parent_action_item__action_identifier=offschedule_pregancy.action_identifier,
-                reference_model="meta_prn.endofstudy",
+                action_type__reference_model="meta_prn.endofstudy",
             )
         except ObjectDoesNotExist:
             self.fail("ActionItem for endofstudy unexpectedly does not exist")
