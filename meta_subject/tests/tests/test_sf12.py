@@ -1,5 +1,8 @@
 from copy import deepcopy
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
+import time_machine
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.test import TestCase
@@ -15,6 +18,7 @@ from meta_screening.tests.options import now
 from meta_subject.forms import Sf12Form
 
 
+@time_machine.travel(datetime(2019, 6, 11, 8, 00, tzinfo=ZoneInfo("UTC")))
 class TestSf12(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()
@@ -104,6 +108,8 @@ class TestSf12(MetaTestCaseMixin, TestCase):
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         subject_visit = self.get_next_subject_visit(subject_visit)
         subject_visit = self.get_next_subject_visit(subject_visit)
+        traveller = time_machine.travel(subject_visit.report_datetime)
+        traveller.start()
         self.assertEqual(subject_visit.visit_code, MONTH3)
         crf_metadata_getter = CrfMetadataGetter(appointment=subject_visit.appointment)
         self.assertTrue(

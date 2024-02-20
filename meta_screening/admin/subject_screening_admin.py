@@ -146,6 +146,10 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
     def post_url_on_delete_kwargs(self, request, obj):
         return {}
 
+    # TODO: this is a hack!
+    def get_post_url_on_delete_name(self, request) -> str:
+        return url_names.get(self.post_url_on_delete_name)
+
     @staticmethod
     def demographics(obj=None):
         data = [

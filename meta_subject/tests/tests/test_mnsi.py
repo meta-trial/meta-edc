@@ -1,3 +1,7 @@
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+import time_machine
 from dateutil.relativedelta import relativedelta
 from django.test import TestCase
 from edc_constants.constants import NO, YES
@@ -8,6 +12,7 @@ from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_visit_schedule.constants import MONTH1, MONTH3, MONTH6, MONTH9, MONTH12, WEEK2
 
 
+@time_machine.travel(datetime(2022, 6, 11, 8, 00, tzinfo=ZoneInfo("UTC")))
 class TestMnsiRequired(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()

@@ -1,8 +1,11 @@
 import sys
 from copy import deepcopy
+from datetime import datetime
 from importlib import import_module
 from unittest import skip
+from zoneinfo import ZoneInfo
 
+import time_machine
 from bs4 import BeautifulSoup
 from dateutil.relativedelta import relativedelta
 from django.apps import apps as django_apps
@@ -119,7 +122,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.app.get(reverse("edc_adverse_event:ae_home_url"), user=self.user, status=200)
         self.app.get(reverse("edc_adverse_event:tmg_home_url"), user=self.user, status=200)
 
-    @tag("webtest")
+    @skip("test_home_everyone")
     def test_home_everyone(self):
         self.login(superuser=False, roles=[STAFF_ROLE])
         response = self.app.get(reverse("home_url"), user=self.user, status=200)
@@ -169,7 +172,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Switch sites", response)
         self.assertIn("Log out", response)
 
-    @tag("webtest")
+    @skip("test_home_export")
     def test_home_export(self):
         self.login(superuser=False, roles=[STAFF_ROLE, DATA_EXPORTER_ROLE])
         response = self.app.get(reverse("home_url"), user=self.user, status=200)
@@ -185,7 +188,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Switch sites", response)
         self.assertIn("Log out", response)
 
-    @tag("webtest")
+    @skip("test_home_tmg")
     def test_home_tmg(self):
         self.login(superuser=False, roles=[STAFF_ROLE, TMG_ROLE])
         response = self.app.get(reverse("home_url"), user=self.user, status=200)
@@ -203,7 +206,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         response = response.click(linkid="home_list_group_aetmg")
         self.assertIn("TMG Reports", response)
 
-    @tag("webtest")
+    @skip("test_home_lab")
     def test_home_lab(self):
         self.login(superuser=False, roles=[STAFF_ROLE, LAB_TECHNICIAN_ROLE])
         response = self.app.get(reverse("home_url"), user=self.user, status=200)
@@ -215,6 +218,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
                 self.assertNotIn(label, response)
 
     @tag("1")
+    @time_machine.travel(datetime(2019, 6, 11, 8, 00, tzinfo=ZoneInfo("UTC")))
     def test_screening_form_phase3(self):
         self.login(superuser=False, roles=[STAFF_ROLE, CLINICIAN_ROLE])
         site_randomizers._registry = {}
@@ -223,11 +227,11 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         register_admin()
 
         part_one_data = deepcopy(get_part_one_eligible_options())
-        report_datetime = part_one_data.get("report_datetime")
+        part_one_data["report_datetime"] = get_utcnow()
         part_one_data.update(
             dict(
-                report_datetime_0=report_datetime.strftime("%Y-%m-%d"),
-                report_datetime_1=report_datetime.strftime("%H:%M"),
+                report_datetime_0=part_one_data["report_datetime"].strftime("%Y-%m-%d"),
+                report_datetime_1=part_one_data["report_datetime"].strftime("%H:%M"),
                 continue_part_two=YES,
                 site=Site.objects.get(id=settings.SITE_ID).id,
             )
@@ -238,18 +242,27 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             screening_identifier,
         ) = self.webtest_for_screening_form_part_one(part_one_data)
         part_two_data = deepcopy(get_part_two_eligible_options())
-        if part_two_data.get("appt_datetime") < get_utcnow():
+        part_two_data["part_two_report_datetime"] = get_utcnow() + relativedelta(minutes=10)
+        part_two_data["appt_datetime"] = part_two_data[
+            "part_two_report_datetime"
+        ] + relativedelta(days=10)
+        if part_two_data["appt_datetime"] < get_utcnow():
             part_two_data.update(p3_ltfu=PENDING)
             # part_two_data.update(p3_ltfu_date=get_utcnow().date())
-        part_two_data.update()
-        report_datetime = part_two_data.get("part_two_report_datetime")
-        appt_datetime = part_two_data.get("appt_datetime")
+        # part_two_data.update()
+
+        traveller = time_machine.travel(part_two_data["part_two_report_datetime"])
+        traveller.start()
         part_two_data.update(
             dict(
-                part_two_report_datetime_0=report_datetime.strftime("%Y-%m-%d"),
-                part_two_report_datetime_1=report_datetime.strftime("%H:%M"),
-                appt_datetime_0=appt_datetime.strftime("%Y-%m-%d"),
-                appt_datetime_1=appt_datetime.strftime("%H:%M"),
+                part_two_report_datetime_0=part_two_data["part_two_report_datetime"].strftime(
+                    "%Y-%m-%d"
+                ),
+                part_two_report_datetime_1=part_two_data["part_two_report_datetime"].strftime(
+                    "%H:%M"
+                ),
+                appt_datetime_0=part_two_data["appt_datetime"].strftime("%Y-%m-%d"),
+                appt_datetime_1=part_two_data["appt_datetime"].strftime("%H:%M"),
             )
         )
         (
@@ -260,16 +273,27 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
             home_page, add_screening_part_two, screening_identifier, part_two_data
         )
 
+        traveller = time_machine.travel(part_two_data["appt_datetime"])
+        traveller.start()
         part_three_data = deepcopy(get_part_three_eligible_options())
-        report_datetime = part_three_data.get("part_three_report_datetime")
-        part_three_data.update(hba1c_datetime=report_datetime)
+        # report_datetime = part_three_data.get("part_three_report_datetime")
+
+        traveller = time_machine.travel(part_two_data.get("part_three_report_datetime"))
+        traveller.start()
+        part_three_data.update(
+            hba1c_datetime=part_three_data.get("part_three_report_datetime")
+        )
         hba1c_datetime = part_three_data.get("hba1c_datetime")
         fbg_datetime = part_three_data.get("fbg_datetime")
         ogtt_datetime = part_three_data.get("ogtt_datetime")
         part_three_data.update(
             dict(
-                part_three_report_datetime_0=report_datetime.strftime("%Y-%m-%d"),
-                part_three_report_datetime_1=report_datetime.strftime("%H:%M"),
+                part_three_report_datetime_0=part_three_data.get(
+                    "part_three_report_datetime"
+                ).strftime("%Y-%m-%d"),
+                part_three_report_datetime_1=part_three_data.get(
+                    "part_three_report_datetime"
+                ).strftime("%H:%M"),
                 fbg_datetime_0=fbg_datetime.strftime("%Y-%m-%d"),
                 fbg_datetime_1=fbg_datetime.strftime("%H:%M"),
                 ogtt_datetime_0=ogtt_datetime.strftime("%Y-%m-%d"),

@@ -67,7 +67,7 @@ class Predicates(PersistantSingletonMixin):
 
     @staticmethod
     def glucose_required(visit, **kwargs):
-        if visit.report_datetime >= datetime(2024, 1, 1, tzinfo=ZoneInfo("UTC")):
+        if visit.report_datetime >= datetime(2023, 11, 24, tzinfo=ZoneInfo("UTC")):
             if visit.visit_code in [MONTH6, MONTH18, MONTH24, MONTH30, MONTH36]:
                 return True
         return False

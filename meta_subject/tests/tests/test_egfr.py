@@ -1,12 +1,15 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from datetime import datetime
 from decimal import Decimal
+from zoneinfo import ZoneInfo
 
+import time_machine
 from django import forms
 from django.conf import settings
 from django.contrib.sites.models import Site
-from django.test import TestCase
+from django.test import TestCase, tag
 from edc_action_item import site_action_items
 from edc_action_item.models import ActionItem
 from edc_constants.constants import BLACK, MALE
@@ -31,6 +34,7 @@ from meta_subject.models import (
 )
 
 
+@time_machine.travel(datetime(2019, 6, 11, 8, 00, tzinfo=ZoneInfo("UTC")))
 class TestEgfr(MetaTestCaseMixin, TestCase):
     def setUp(self):
         self.subject_visit = self.get_subject_visit()
@@ -58,6 +62,7 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
         self.assertIsNotNone(obj.egfr_value)
         self.assertIsNotNone(obj.egfr_units)
 
+    @tag("3")
     def test_ok(self):
         data = dict(
             subject_visit=self.subject_visit,
