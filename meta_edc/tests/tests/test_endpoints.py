@@ -438,10 +438,10 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         response = add_subjectconsent_page.form.submit()
         self.assertIn("Please correct the errors below", response)
 
-        consents = site_consents.get_consents_by_model("meta_consent.subjectconsent")
+        consents = site_consents.get_consents_by_model("meta_consent.subjectconsentv1")
         consent_datetime = consents[0].start + relativedelta(months=1)
         subject_consent = baker.make_recipe(
-            "meta_consent.subjectconsent",
+            "meta_consent.subjectconsentv1",
             screening_identifier=subject_screening.screening_identifier,
             dob=(
                 consent_datetime - relativedelta(years=subject_screening.age_in_years)

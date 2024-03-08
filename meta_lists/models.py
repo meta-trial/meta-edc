@@ -95,3 +95,9 @@ class DmMedications(ListModelMixin):
     class Meta(ListModelMixin.Meta):
         verbose_name = "Diabetes Medications"
         verbose_name_plural = "Diabetes Medications"
+
+
+class MissedReferralReasons(ListModelMixin):
+    class Meta(ListModelMixin.Meta):
+        verbose_name = "Missed Referral Reasons"
+        verbose_name_plural = "Missed Referral Reasons"

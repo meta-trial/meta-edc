@@ -17,6 +17,25 @@ from meta_prn.constants import CLINICAL_WITHDRAWAL, LATE_EXCLUSION
 list_data = {
     "meta_lists.dmmedications": [
         ("metformin", "Metformin"),
+        ("glibenclamide", "Glibenclamide"),
+        ("gliclazide", "Gliclazide"),
+        ("pioglitazone", "Pioglitazone"),
+        ("sitagliptin", "Sitagliptin"),
+        ("Vildagliptin", "vildagliptin"),
+        ("dapagliflozin", "Dapagliflozin"),
+        ("epagliflozin", "Epagliflozin"),
+        ("insulin", "Insulin"),
+        (OTHER, "Other, please specify"),
+    ],
+    "meta_lists.missedreferralreasons": [
+        ("distance", "Distance to the clinic"),
+        ("travel_costs", "Cost of travel to the clinic"),
+        ("unable_to_pay_meds", "Cannot pay for the medication"),
+        ("dont_want_more_meds", "I do not want to take more medication"),
+        ("want_diet_lifestyle_only", "I planned on doing diet and lifestyle changes only"),
+        ("traditional_healer", "Visited a traditional healer"),
+        ("not_sick", "I thought I was well and had no diabetes"),
+        ("dont_like_clinic", "Do not like the service at the clinic"),
         (OTHER, "Other, please specify"),
     ],
     "meta_lists.dmtreatments": [
@@ -168,7 +187,7 @@ list_data = {
         (OTHER, "Other, specify ..."),
     ],
     "meta_lists.subjectvisitmissedreasons": [
-        ("forgot", "Forgot / Can’t remember being told about appointment"),
+        ("forgot", "Forgot / Can't remember being told about appointment"),
         ("family_emergency", "Family emergency (e.g. funeral) and was away"),
         ("travelling", "Away travelling/visiting"),
         ("working_schooling", "Away working/schooling"),

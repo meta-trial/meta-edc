@@ -1,8 +1,8 @@
 from django import forms
 from edc_crf.modelform_mixins import CrfModelFormMixin
 
-from ..form_validators import HealthEconomicsFormValidator
-from ..models import HealthEconomicsSimple
+from ...form_validators import HealthEconomicsFormValidator
+from ...models import HealthEconomicsSimple
 
 
 class HealthEconomicsSimpleForm(CrfModelFormMixin, forms.ModelForm):

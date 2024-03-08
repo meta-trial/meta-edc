@@ -19,13 +19,15 @@ class DmReferralFollowupAdmin(
 
     fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime")}),
+        ("Referral to Diabetes clinic", {"fields": ("referral_date",)}),
         (
             "Diabetes clinic attendance",
             {
                 "fields": (
                     "attended",
-                    "not_attended_reason",
                     "facility_attended",
+                    "missed_referral_reasons",
+                    "other_missed_referral_reason",
                     "attended_date",
                     "healthcare_workers",
                     "other_healthcare_workers",
@@ -75,6 +77,7 @@ class DmReferralFollowupAdmin(
         "complications_checks",
         "dm_treatments",
         "dm_medications",
+        "missed_referral_reasons",
     )
 
     radio_fields = {

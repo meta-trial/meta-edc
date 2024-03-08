@@ -34,7 +34,7 @@ class SubjectReconsent(
 
     subject_screening_model = "meta_screening.subjectscreening"
 
-    subject_consent_model = "meta_consent.subjectconsent"
+    subject_consent_model = "meta_consent.subjectconsentv1"
 
     tracking_identifier_prefix = "SR"
 

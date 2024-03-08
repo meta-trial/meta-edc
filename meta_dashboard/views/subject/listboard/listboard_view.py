@@ -4,7 +4,7 @@ from meta_edc.meta_version import get_meta_version
 
 
 class SubjectListboardView(BaseSubjectListboardView):
-    listboard_model = "meta_consent.subjectconsent"
+    listboard_model = "meta_consent.subjectconsentv1"
     navbar_selected_item = "consented_subject"
 
     def get_context_data(self, **kwargs) -> dict:

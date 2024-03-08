@@ -4,16 +4,16 @@ from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
 
 from ..admin_site import meta_consent_admin
-from ..forms import SubjectConsentForm
-from ..models import SubjectConsent
+from ..forms import SubjectConsentV1Form
+from ..models import SubjectConsentV1
 from .modeladmin_mixins import SubjectConsentModelAdminMixin
 
 
-@admin.register(SubjectConsent, site=meta_consent_admin)
-class SubjectConsentAdmin(
+@admin.register(SubjectConsentV1, site=meta_consent_admin)
+class SubjectConsentV1Admin(
     SubjectConsentModelAdminMixin,
     ModelAdminConsentMixin,
     ModelAdminSubjectDashboardMixin,
     SimpleHistoryAdmin,
 ):
-    form = SubjectConsentForm
+    form = SubjectConsentV1Form

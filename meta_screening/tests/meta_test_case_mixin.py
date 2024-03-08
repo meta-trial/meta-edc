@@ -132,7 +132,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin):
         site_id: int = None,
     ):
         return baker.make_recipe(
-            "meta_consent.subjectconsent",
+            "meta_consent.subjectconsentv1",
             user_created="erikvw",
             user_modified="erikvw",
             screening_identifier=subject_screening.screening_identifier,
