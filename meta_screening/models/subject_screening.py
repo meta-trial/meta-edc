@@ -39,7 +39,7 @@ class SubjectScreening(
     BaseUuidModel,
 ):
     identifier_cls = ScreeningIdentifier
-    consent_definition = consent_v1
+    consent_definitions = [consent_v1]
 
     contact_number = EncryptedCharField(
         validators=[RegexValidator(r"^[0-9\-\(\)\ ]+$", message="Enter a valid number")],

@@ -10,7 +10,7 @@ from edc_consent.field_mixins import (
     SampleCollectionFieldsMixin,
     VulnerabilityFieldsMixin,
 )
-from edc_consent.managers import ConsentManager
+from edc_consent.managers import ConsentObjectsManager
 from edc_consent.model_mixins import ConsentModelMixin
 from edc_constants.choices import YES_NO
 from edc_constants.constants import NO, NOT_APPLICABLE
@@ -18,7 +18,6 @@ from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 from edc_identifier.subject_identifier import SubjectIdentifier as BaseSubjectIdentifier
 from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_registration.model_mixins import UpdatesOrCreatesRegistrationModelMixin
-from edc_search.model_mixins import SearchSlugManager
 from edc_sites.model_mixins import SiteModelMixin
 
 from meta_pharmacy.constants import METFORMIN
@@ -29,13 +28,6 @@ from .model_mixins import SearchSlugModelMixin
 class SubjectIdentifier(BaseSubjectIdentifier):
     template = "{protocol_number}-{site_id}-{sequence}"
     padding = 4
-
-
-class SubjectConsentManager(SearchSlugManager, models.Manager):
-    use_in_migrations = True
-
-    def get_by_natural_key(self, subject_identifier, version):
-        return self.get(subject_identifier=subject_identifier, version=version)
 
 
 class SubjectConsent(
@@ -86,9 +78,7 @@ class SubjectConsent(
 
     on_site = CurrentSiteManager()
 
-    objects = SubjectConsentManager()
-
-    consent = ConsentManager()
+    objects = ConsentObjectsManager()
 
     history = HistoricalRecords()
 

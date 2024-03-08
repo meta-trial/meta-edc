@@ -1,16 +1,37 @@
 from django import forms
 from edc_constants.constants import NO, OTHER, YES
 from edc_crf.crf_form_validator import CrfFormValidator
+from edc_form_validators import INVALID_ERROR
+from edc_utils.date import to_local
 
 
 class DmReferralFollowupFormValidator(CrfFormValidator):
     def clean(self):
+
+        # referral_date must be before report datetime
+        if (
+            self.report_datetime
+            and self.cleaned_data.get("referral_date")
+            and self.cleaned_data.get("referral_date") >= to_local(self.report_datetime).date()
+        ):
+            self.raise_validation_error(
+                {"referral_date": "Invalid. Cannot be on or after report date"},
+                INVALID_ERROR,
+            )
+
         # Diabetes clinic attendance
-        self.required_if(
+        self.m2m_required_if(
             NO,
             field="attended",
-            field_required="not_attended_reason",
+            m2m_field="missed_referral_reasons",
         )
+
+        self.m2m_other_specify(
+            OTHER,
+            m2m_field="missed_referral_reasons",
+            field_other="other_missed_referral_reason",
+        )
+
         self.required_if(
             YES,
             field="attended",
@@ -21,6 +42,28 @@ class DmReferralFollowupFormValidator(CrfFormValidator):
             field="attended",
             field_required="attended_date",
         )
+
+        # attended_date cannot be future relative to report datetime
+        if (
+            self.report_datetime
+            and self.cleaned_data.get("attended_date")
+            and self.cleaned_data.get("attended_date") > to_local(self.report_datetime).date()
+        ):
+            self.raise_validation_error(
+                {"attended_date": "Invalid. Cannot be after report date above"}, INVALID_ERROR
+            )
+
+        # referral_date must be before report datetime
+        if (
+            self.cleaned_data.get("attended_date")
+            and self.cleaned_data.get("referral_date")
+            and self.cleaned_data.get("attended_date") < self.cleaned_data.get("referral_date")
+        ):
+            self.raise_validation_error(
+                {"attended_date": "Invalid. Cannot be before the referral date"},
+                INVALID_ERROR,
+            )
+
         self.m2m_required_if(
             YES,
             field="attended",
@@ -32,15 +75,22 @@ class DmReferralFollowupFormValidator(CrfFormValidator):
             field_other="other_healthcare_workers",
         )
 
+        self.applicable_if(
+            YES,
+            field="attended",
+            field_applicable="investigations_performed",
+        )
+
         # investigations
         self.m2m_required_if(
-            NO,
+            YES,
             field="investigations_performed",
             m2m_field="investigations",
         )
+
         self.m2m_other_specify(
             OTHER,
-            m2m_field="investigations_performed",
+            m2m_field="investigations",
             field_other="other_investigations",
         )
         self.m2m_required_if(
@@ -73,8 +123,30 @@ class DmReferralFollowupFormValidator(CrfFormValidator):
         self.required_if(
             YES,
             field="on_dm_medications",
-            field_required="on_dm_medications_init_date",
+            field_required="dm_medications_init_date",
         )
+
+        # dm_medications_init_date must be before report_datetime
+        if (
+            self.report_datetime
+            and self.cleaned_data.get("dm_medications_init_date")
+            and self.cleaned_data.get("dm_medications_init_date")
+            > to_local(self.report_datetime).date()
+        ):
+            self.raise_validation_error(
+                {"dm_medications_init_date": "Invalid. Cannot be after the report date"},
+                INVALID_ERROR,
+            )
+
+        # dm_medications_init_date must be after referral_date
+        if self.cleaned_data.get("dm_medications_init_date") and self.cleaned_data.get(
+            "dm_medications_init_date"
+        ) < self.cleaned_data.get("referral_date"):
+            self.raise_validation_error(
+                {"dm_medications_init_date": "Invalid. Cannot be before the referral date"},
+                INVALID_ERROR,
+            )
+
         self.m2m_required_if(
             YES,
             field="on_dm_medications",
@@ -95,7 +167,7 @@ class DmReferralFollowupFormValidator(CrfFormValidator):
         self.required_if(
             YES,
             field="on_dm_medications",
-            field_required="last_pill_missed",
+            field_required="last_missed_pill",
         )
 
         self.confirm_visual_scores_match()
@@ -105,6 +177,7 @@ class DmReferralFollowupFormValidator(CrfFormValidator):
             YES,
             field="on_dm_medications",
             field_required="visual_score_slider",
+            inverse=False,
         )
         self.required_if(
             YES,

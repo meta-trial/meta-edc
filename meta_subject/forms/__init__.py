@@ -16,7 +16,7 @@ from .followup_examination_form import FollowupExaminationForm
 from .followup_vitals_form import FollowupVitalsForm
 from .glucose_fbg_form import GlucoseFbgForm
 from .glucose_form import GlucoseForm
-from .health_economics_simple_form import HealthEconomicsSimpleForm
+from .health_economics import HealthEconomicsSimpleForm, HealthEconomicsUpdateForm
 from .hepatitis_test_form import HepatitisTestForm
 from .malaria_test_form import MalariaTestForm
 from .medication_adherence_form import MedicationAdherenceForm

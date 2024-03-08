@@ -34,38 +34,40 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
             subject_screening = SubjectScreening.objects.get(
                 screening_identifier=instance.screening_identifier
             )
-            subject_screening.subject_identifier = instance.subject_identifier
-            subject_screening.consented = True
-            subject_screening.save_base(update_fields=["subject_identifier", "consented"])
+            if not subject_screening.consented:
+                subject_screening.subject_identifier = instance.subject_identifier
+                subject_screening.consented = True
+                subject_screening.save_base(update_fields=["subject_identifier", "consented"])
 
-            # randomize
-            site_randomizers.randomize(
-                get_meta_version(),
-                identifier=instance.subject_identifier,
-                report_datetime=instance.consent_datetime,
-                site=instance.site,
-                user=instance.user_created,
-                gender=instance.gender,
-            )
-
-            # put subject on schedule
-            _, schedule = site_visit_schedules.get_by_onschedule_model("meta_prn.onschedule")
-            schedule.put_on_schedule(
-                subject_identifier=instance.subject_identifier,
-                onschedule_datetime=instance.consent_datetime,
-            )
-
-            # All refills are created against this prescription
-            try:
-                create_prescription(
-                    subject_identifier=instance.subject_identifier,
+                # randomize
+                site_randomizers.randomize(
+                    get_meta_version(),
+                    identifier=instance.subject_identifier,
                     report_datetime=instance.consent_datetime,
-                    medications=[instance.study_medication_name],
-                    randomizer_name=get_meta_version(),
                     site=instance.site,
+                    user=instance.user_created,
+                    gender=instance.gender,
                 )
-            except PrescriptionAlreadyExists:
-                pass
+
+                # put subject on schedule
+                _, schedule = site_visit_schedules.get_by_onschedule_model(
+                    "meta_prn.onschedule"
+                )
+                schedule.put_on_schedule(
+                    subject_identifier=instance.subject_identifier,
+                    onschedule_datetime=instance.consent_datetime,
+                )
+                # All refills are created against this prescription
+                try:
+                    create_prescription(
+                        subject_identifier=instance.subject_identifier,
+                        report_datetime=instance.consent_datetime,
+                        medications=[instance.study_medication_name],
+                        randomizer_name=get_meta_version(),
+                        site=instance.site,
+                    )
+                except PrescriptionAlreadyExists:
+                    pass
 
         # create / delete action for reconsent
         if instance.completed_by_next_of_kin == YES:

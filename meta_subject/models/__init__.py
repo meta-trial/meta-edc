@@ -19,8 +19,11 @@ from .followup_examination import FollowupExamination
 from .followup_vitals import FollowupVitals
 from .glucose import Glucose
 from .glucose_fbg import GlucoseFbg
-from .health_economics import HealthEconomics
-from .health_economics_simple import HealthEconomicsSimple
+from .health_economics import (
+    HealthEconomics,
+    HealthEconomicsSimple,
+    HealthEconomicsUpdate,
+)
 from .hepatitis_test import HepatitisTest
 from .malaria_test import MalariaTest
 from .medication_adherence import MedicationAdherence

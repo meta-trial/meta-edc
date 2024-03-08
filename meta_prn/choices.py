@@ -11,7 +11,7 @@ CLINICAL_WITHDRAWAL_REASONS = (
         OTHER,
         (
             "Other condition that justifies the discontinuation of "
-            "treatment in the clinician’s opinion (specify below)"
+            "treatment in the clinician's opinion (specify below)"
         ),
     ),
     (NOT_APPLICABLE, "Not applicable"),
@@ -92,7 +92,7 @@ WITHDRAWAL_STUDY_MEDICATION_REASONS = (
     (
         CLINICIAN,
         "Other condition that justifies discontinuation of "
-        "treatment in the clinician’s opinion (specify below)",
+        "treatment in the clinician's opinion (specify below)",
     ),
     (INVESTIGATOR, " Investigator decision"),
     (PATIENT, "Patient decision"),

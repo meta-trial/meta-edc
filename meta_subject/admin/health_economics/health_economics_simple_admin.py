@@ -4,10 +4,10 @@ from edc_crf.fieldset import crf_status_fieldset
 from edc_he import education_fieldset, education_radio_fields
 from edc_model_admin.history import SimpleHistoryAdmin
 
-from ..admin_site import meta_subject_admin
-from ..forms import HealthEconomicsSimpleForm
-from ..models import HealthEconomicsSimple
-from .modeladmin import CrfModelAdminMixin
+from ...admin_site import meta_subject_admin
+from ...forms import HealthEconomicsSimpleForm
+from ...models import HealthEconomicsSimple
+from ..modeladmin import CrfModelAdminMixin
 
 
 @admin.register(HealthEconomicsSimple, site=meta_subject_admin)

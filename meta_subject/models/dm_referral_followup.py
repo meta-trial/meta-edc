@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.html import format_html
 from edc_adherence.choices import MISSED_PILLS
 from edc_constants.choices import YES_NO, YES_NO_NA
-from edc_constants.constants import NOT_APPLICABLE
+from edc_constants.constants import NOT_APPLICABLE, QUESTION_RETIRED
 from edc_model.models import BaseUuidModel
 from edc_model_fields.fields import OtherCharField
 
@@ -13,6 +13,7 @@ from meta_lists.models import (
     DmTreatments,
     HealthcareWorkers,
     Investigations,
+    MissedReferralReasons,
 )
 
 from ..model_mixins import CrfModelMixin
@@ -32,16 +33,30 @@ class DmReferralFollowup(CrfModelMixin, BaseUuidModel):
         max_length=25,
     )
 
-    not_attended_reason = models.TextField(
+    missed_referral_reasons = models.ManyToManyField(
+        MissedReferralReasons,
         verbose_name=(
             "If 'No', please provide a reason for not seeking further care or follow up?"
         ),
+        blank=True,
+    )
+
+    other_missed_referral_reason = OtherCharField(
+        verbose_name="If other 'reason for not seeking further care', please specify ...",
         null=True,
         blank=True,
     )
 
+    not_attended_reason = models.TextField(
+        verbose_name=(
+            "If 'No', please provide a reason for not seeking further care or follow up?"
+        ),
+        default=QUESTION_RETIRED,
+        editable=False,
+    )
+
     facility_attended = models.CharField(
-        verbose_name="If ‘Yes’, please give the name of the facility you attended",
+        verbose_name="If 'Yes', please give the name of the facility you attended",
         max_length=50,
         null=True,
         blank=True,
@@ -75,7 +90,7 @@ class DmReferralFollowup(CrfModelMixin, BaseUuidModel):
 
     investigations = models.ManyToManyField(
         Investigations,
-        verbose_name="If ‘Yes’, please indicate what investigations were conducted.",
+        verbose_name="If 'Yes', please indicate what investigations were conducted.",
         blank=True,
     )
 
@@ -128,7 +143,7 @@ class DmReferralFollowup(CrfModelMixin, BaseUuidModel):
     )
 
     dm_medications_init_date = models.DateField(
-        verbose_name="If ‘Yes’, please give the date when drug treatment was started.",
+        verbose_name="If 'Yes', please give the date when drug treatment was started.",
         null=True,
         blank=True,
     )
@@ -136,7 +151,7 @@ class DmReferralFollowup(CrfModelMixin, BaseUuidModel):
     dm_medications = models.ManyToManyField(
         DmMedications,
         verbose_name=(
-            "If ‘Yes’, please indicate which diabetes drug "
+            "If 'Yes', please indicate which diabetes drug "
             "treatments you are currently taking."
         ),
         blank=True,

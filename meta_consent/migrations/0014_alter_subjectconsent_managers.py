@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             name="subjectconsent",
             managers=[
                 ("on_site", edc_visit_tracking.managers.CrfCurrentSiteManager()),
-                ("objects", meta_consent.models.subject_consent.SubjectConsentManager()),
+                ("objects", meta_consent.models.subject_consent.ConsentObjectsManager()),
             ],
         ),
     ]
