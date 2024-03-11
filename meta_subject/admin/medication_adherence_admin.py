@@ -7,13 +7,6 @@ from ..forms import MedicationAdherenceForm
 from ..models import MedicationAdherence
 from .modeladmin import CrfModelAdminMixin
 
-pill_count_fieldset_tuple = (
-    "Pill Count",
-    {
-        "fields": ["pill_count_performed", "pill_count_not_performed_reason", "pill_count"],
-    },
-)
-
 
 @admin.register(MedicationAdherence, site=meta_subject_admin)
 class MedicationAdherenceAdmin(
