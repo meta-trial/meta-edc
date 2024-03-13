@@ -33,11 +33,6 @@ env = environ.Env(
     TWILIO_ENABLED=(bool, False),
 )
 
-DEBUG = env("DJANGO_DEBUG")
-
-if LOGGING_ENABLED := env("DJANGO_LOGGING_ENABLED"):
-    from .logging import *  # noqa
-
 BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 ENV_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 
@@ -51,6 +46,11 @@ else:
             f"Environment file does not exist. Got `{os.path.join(ENV_DIR, '.env')}`"
         )
     env.read_env(os.path.join(ENV_DIR, ".env"))
+
+
+LOGGING_ENABLED = env("DJANGO_LOGGING_ENABLED")
+if LOGGING_ENABLED:
+    from .logging import *  # noqa
 
 META_PHASE = 3
 
@@ -172,6 +172,7 @@ if not DEFENDER_ENABLED:
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "multisite.middleware.DynamicSiteMiddleware",
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
@@ -291,13 +292,11 @@ USE_TZ = True
 
 LANG_INFO = dict(django.conf.locale.LANG_INFO, **EXTRA_LANG_INFO)
 django.conf.locale.LANG_INFO = LANG_INFO
-LANGUAGE_CODE = "en"
+
+LANGUAGE_CODE = "en-gb"
 LANGUAGE_LIST = ["sw", "en-gb", "en", "mas"]
 LANGUAGES = [(code, LANG_INFO[code]["name"]) for code in LANGUAGE_LIST]
 
-
-# LANGUAGE_CODE = env.str("DJANGO_LANGUAGE_CODE")  # ignored if USE_L10N = False
-# LANGUAGES = [x.split(":") for x in env.list("DJANGO_LANGUAGES")] or (("en", "English"),)
 TIME_ZONE = env.str("DJANGO_TIME_ZONE")
 DATE_INPUT_FORMATS = ["%Y-%m-%d", "%d/%m/%Y"]
 DATETIME_INPUT_FORMATS = [
@@ -354,8 +353,9 @@ SUBJECT_VISIT_MODEL = env.str("EDC_SUBJECT_VISIT_MODEL")
 SUBJECT_VISIT_MISSED_MODEL = env.str("EDC_SUBJECT_VISIT_MISSED_MODEL")
 SUBJECT_VISIT_MISSED_REASONS_MODEL = env.str("EDC_SUBJECT_VISIT_MISSED_REASONS_MODEL")
 SUBJECT_REFUSAL_MODEL = env.str("EDC_SUBJECT_REFUSAL_MODEL")
-EDC_BLOOD_RESULTS_MODEL_APP_LABEL = "meta_subject"
 
+EDC_BLOOD_RESULTS_MODEL_APP_LABEL = "meta_subject"
+EDC_DASHBOARD_APP_LABEL = "meta_dashboard"
 EDC_NAVBAR_DEFAULT = env("EDC_NAVBAR_DEFAULT")
 
 # dashboards
@@ -467,6 +467,9 @@ DATA_DICTIONARY_APP_LABELS = [
     "edc_locator",
     "edc_offstudy",
 ]
+
+# edc_form_runners
+EDC_FORM_RUNNERS_ENABLED = False
 
 # edc_protocol
 EDC_PROTOCOL = env.str("EDC_PROTOCOL")
