@@ -1,7 +1,8 @@
+from django.conf import settings
 from edc_sites.single_site import SingleSite
 from edc_sites.site import sites as site_sites
 
-fqdn = "meta3.clinicedc.org"
+domain_suffix = settings.EDC_SITES_DOMAIN_SUFFIX
 languages = ["sw", "en", "mas"]
 
 all_sites = [
@@ -11,7 +12,7 @@ all_sites = [
         title="Hindu Mandal Hospital",
         country="tanzania",
         country_code="tz",
-        domain=f"hindu-mandal.tz.{fqdn}",
+        domain=f"hindu-mandal.tz.{domain_suffix}",
         language_codes=languages,
     ),
     SingleSite(
@@ -20,7 +21,7 @@ all_sites = [
         title="Amana Hospital",
         country="tanzania",
         country_code="tz",
-        domain=f"amana.tz.{fqdn}",
+        domain=f"amana.tz.{domain_suffix}",
         language_codes=languages,
     ),
     SingleSite(
@@ -29,7 +30,7 @@ all_sites = [
         title="Temeke Hospital",
         country="tanzania",
         country_code="tz",
-        domain=f"temeke.tz.{fqdn}",
+        domain=f"temeke.tz.{domain_suffix}",
         language_codes=languages,
     ),
     SingleSite(
@@ -39,7 +40,7 @@ all_sites = [
         country="tanzania",
         country_code="tz",
         language_codes=languages,
-        domain=f"mwananyamala.tz.{fqdn}",
+        domain=f"mwananyamala.tz.{domain_suffix}",
     ),
     SingleSite(
         50,
@@ -48,7 +49,7 @@ all_sites = [
         country="tanzania",
         country_code="tz",
         language_codes=languages,
-        domain=f"mbagala.tz.{fqdn}",
+        domain=f"mbagala.tz.{domain_suffix}",
     ),
     SingleSite(
         60,
@@ -57,7 +58,7 @@ all_sites = [
         country="tanzania",
         country_code="tz",
         language_codes=languages,
-        domain=f"mnazi-moja.tz.{fqdn}",
+        domain=f"mnazi-moja.tz.{domain_suffix}",
     ),
 ]
 

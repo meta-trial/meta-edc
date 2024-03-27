@@ -14,12 +14,13 @@ from meta_subject.models import SubjectVisit
 
 from ..action_items import ReconsentAction
 from .subject_consent import SubjectConsent
+from .subject_consent_v1 import SubjectConsentV1
 
 
 @receiver(
     post_save,
     weak=False,
-    sender=SubjectConsent,
+    sender=SubjectConsentV1,
     dispatch_uid="subject_consent_on_post_save",
 )
 def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
@@ -85,23 +86,25 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
 @receiver(
     post_delete,
     weak=False,
-    sender=SubjectConsent,
     dispatch_uid="subject_consent_on_post_delete",
 )
 def subject_consent_on_post_delete(sender, instance, using, **kwargs):
     """Updates/Resets subject screening."""
     # don't allow if subject visits exist. This should be caught
     # in the ModelAdmin delete view
-    if SubjectVisit.objects.filter(subject_identifier=instance.subject_identifier).exists():
-        raise ValidationError("Unable to delete consent. Visit data exists.")
+    if sender in [SubjectConsent, SubjectConsentV1]:
+        if SubjectVisit.objects.filter(
+            subject_identifier=instance.subject_identifier
+        ).exists():
+            raise ValidationError("Unable to delete consent. Visit data exists.")
 
-    _, schedule = site_visit_schedules.get_by_onschedule_model("meta_prn.onschedule")
-    schedule.take_off_schedule(instance.subject_identifier, instance.consent_datetime)
+        _, schedule = site_visit_schedules.get_by_onschedule_model("meta_prn.onschedule")
+        schedule.take_off_schedule(instance.subject_identifier, instance.consent_datetime)
 
-    # update subject screening
-    subject_screening = SubjectScreening.objects.get(
-        screening_identifier=instance.screening_identifier
-    )
-    subject_screening.consented = False
-    subject_screening.subject_identifier = subject_screening.subject_screening_as_pk
-    subject_screening.save()
+        # update subject screening
+        subject_screening = SubjectScreening.objects.get(
+            screening_identifier=instance.screening_identifier
+        )
+        subject_screening.consented = False
+        subject_screening.subject_identifier = subject_screening.subject_screening_as_pk
+        subject_screening.save()

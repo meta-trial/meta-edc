@@ -16,7 +16,6 @@ env = environ.Env(
     CELERY_ENABLED=(bool, False),
     DATABASE_SQLITE_ENABLED=(bool, False),
     DJANGO_AUTO_CREATE_KEYS=(bool, False),
-    DJANGO_CRYPTO_FIELDS_TEMP_PATH=(bool, False),
     DJANGO_CSRF_COOKIE_SECURE=(bool, True),
     DJANGO_DEBUG=(bool, False),
     DJANGO_EDC_BOOTSTRAP=(int, 3),
@@ -33,11 +32,6 @@ env = environ.Env(
     TWILIO_ENABLED=(bool, False),
 )
 
-DEBUG = env("DJANGO_DEBUG")
-
-if LOGGING_ENABLED := env("DJANGO_LOGGING_ENABLED"):
-    from .logging import *  # noqa
-
 BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 ENV_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
 
@@ -52,7 +46,14 @@ else:
         )
     env.read_env(os.path.join(ENV_DIR, ".env"))
 
+
+LOGGING_ENABLED = env("DJANGO_LOGGING_ENABLED")
+if LOGGING_ENABLED:
+    from .logging import *  # noqa
+
 META_PHASE = 3
+
+EDC_SITES_DOMAIN_SUFFIX = ("meta3.clinicedc.org",)
 
 DEBUG = env("DJANGO_DEBUG")
 
@@ -66,8 +67,11 @@ ETC_DIR = env.str("DJANGO_ETC_FOLDER")
 
 TEST_DIR = os.path.join(BASE_DIR, APP_NAME, "tests")
 
-# INTERNAL_IPS = ["127.0.0.1"]
-ALLOWED_HOSTS = ["*"]  # env.list('DJANGO_ALLOWED_HOSTS')
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS")
+
+META3_DOMAIN_SUFFIX = "meta4.clinicedc.org"
+
+MULTISITE_REGISTER_POST_MIGRATE_SYNC_ALIAS = False
 
 ENFORCE_RELATED_ACTION_ITEM_EXISTS = False
 
@@ -99,6 +103,7 @@ INSTALLED_APPS = [
     "edc_action_item.apps.AppConfig",
     "edc_appointment.apps.AppConfig",
     "edc_auth.apps.AppConfig",
+    "edc_adherence.apps.AppConfig",
     "edc_adverse_event.apps.AppConfig",
     "edc_consent.apps.AppConfig",
     "edc_crf.apps.AppConfig",
@@ -146,7 +151,6 @@ INSTALLED_APPS = [
     "edc_timepoint.apps.AppConfig",
     "edc_unblinding.apps.AppConfig",
     "edc_form_describer.apps.AppConfig",
-    "edc_adherence.apps.AppConfig",
     "edc_dx.apps.AppConfig",
     "meta_consent.apps.AppConfig",
     "meta_data_manager.apps.AppConfig",
@@ -173,6 +177,7 @@ if not DEFENDER_ENABLED:
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "multisite.middleware.DynamicSiteMiddleware",
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
@@ -292,13 +297,11 @@ USE_TZ = True
 
 LANG_INFO = dict(django.conf.locale.LANG_INFO, **EXTRA_LANG_INFO)
 django.conf.locale.LANG_INFO = LANG_INFO
-LANGUAGE_CODE = "en"
+
+LANGUAGE_CODE = "en-gb"
 LANGUAGE_LIST = ["sw", "en-gb", "en", "mas"]
 LANGUAGES = [(code, LANG_INFO[code]["name"]) for code in LANGUAGE_LIST]
 
-
-# LANGUAGE_CODE = env.str("DJANGO_LANGUAGE_CODE")  # ignored if USE_L10N = False
-# LANGUAGES = [x.split(":") for x in env.list("DJANGO_LANGUAGES")] or (("en", "English"),)
 TIME_ZONE = env.str("DJANGO_TIME_ZONE")
 DATE_INPUT_FORMATS = ["%Y-%m-%d", "%d/%m/%Y"]
 DATETIME_INPUT_FORMATS = [
@@ -355,8 +358,9 @@ SUBJECT_VISIT_MODEL = env.str("EDC_SUBJECT_VISIT_MODEL")
 SUBJECT_VISIT_MISSED_MODEL = env.str("EDC_SUBJECT_VISIT_MISSED_MODEL")
 SUBJECT_VISIT_MISSED_REASONS_MODEL = env.str("EDC_SUBJECT_VISIT_MISSED_REASONS_MODEL")
 SUBJECT_REFUSAL_MODEL = env.str("EDC_SUBJECT_REFUSAL_MODEL")
-EDC_BLOOD_RESULTS_MODEL_APP_LABEL = "meta_subject"
 
+EDC_BLOOD_RESULTS_MODEL_APP_LABEL = "meta_subject"
+EDC_DASHBOARD_APP_LABEL = "meta_dashboard"
 EDC_NAVBAR_DEFAULT = env("EDC_NAVBAR_DEFAULT")
 
 # dashboards
@@ -406,7 +410,7 @@ EDC_RANDOMIZATION_SKIP_VERIFY_CHECKS = True
 EDC_SITES_MODULE_NAME = env.str("EDC_SITES_MODULE_NAME")
 
 # django-multisite
-CACHE_MULTISITE_KEY_PREFIX = APP_NAME
+CACHE_MULTISITE_KEY_PREFIX = "meta4"
 SILENCED_SYSTEM_CHECKS = ["sites.E101"]
 
 # django-defender
@@ -468,6 +472,9 @@ DATA_DICTIONARY_APP_LABELS = [
     "edc_locator",
     "edc_offstudy",
 ]
+
+# edc_form_runners
+EDC_FORM_RUNNERS_ENABLED = False
 
 # edc_protocol
 EDC_PROTOCOL = env.str("EDC_PROTOCOL")

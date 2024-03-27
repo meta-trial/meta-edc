@@ -80,7 +80,7 @@ class ScreeningPartTwoFormValidator(PrnFormValidatorMixin, FormValidator):
                 {
                     self.report_datetime_field_attr: (
                         "Cannot be before `Part One` report datetime. "
-                        f"Expected date after {dte}."
+                        f"Expected date after {dte}. Got {self.report_datetime}"
                     )
                 },
                 INVALID_ERROR,

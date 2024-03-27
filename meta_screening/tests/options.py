@@ -54,18 +54,18 @@ def get_part_one_eligible_options():
     return options
 
 
-def get_part_two_eligible_options():
+def get_part_two_eligible_options(report_datetime: datetime = None) -> dict:
     options = dict(
         acute_condition=NO,
         acute_metabolic_acidosis=NO,
         advised_to_fast=YES,
         alcoholism=NO,
         already_fasted=NO,
-        appt_datetime=now + relativedelta(days=10),
+        appt_datetime=report_datetime or (now + relativedelta(days=10)),
         congestive_heart_failure=NO,
         liver_disease=NO,
         metformin_sensitivity=NO,
-        part_two_report_datetime=now,
+        part_two_report_datetime=report_datetime or now,
         renal_function_condition=NO,
         tissue_hypoxia_condition=NO,
         has_dm=NO,
