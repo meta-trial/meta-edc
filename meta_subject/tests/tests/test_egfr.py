@@ -9,7 +9,7 @@ import time_machine
 from django import forms
 from django.conf import settings
 from django.contrib.sites.models import Site
-from django.test import TestCase, tag
+from django.test import TestCase
 from edc_action_item import site_action_items
 from edc_action_item.models import ActionItem
 from edc_constants.constants import BLACK, MALE
@@ -18,7 +18,7 @@ from edc_lab.models import Panel
 from edc_lab_results import BLOOD_RESULTS_EGFR_ACTION, BLOOD_RESULTS_RFT_ACTION
 from edc_registration import get_registered_subject_model_cls
 from edc_reportable import MICROMOLES_PER_LITER, MILLIGRAMS_PER_DECILITER
-from edc_utils import age
+from edc_utils import age, get_utcnow
 from edc_utils.round_up import round_half_away_from_zero
 from edc_visit_schedule.constants import OFFSCHEDULE_ACTION
 
@@ -37,7 +37,7 @@ from meta_subject.models import (
 @time_machine.travel(datetime(2019, 6, 11, 8, 00, tzinfo=ZoneInfo("UTC")))
 class TestEgfr(MetaTestCaseMixin, TestCase):
     def setUp(self):
-        self.subject_visit = self.get_subject_visit()
+        self.subject_visit = self.get_subject_visit(screening_datetime=get_utcnow())
         panel = Panel.objects.get(name="chemistry_rft")
         requisition = SubjectRequisition.objects.create(
             subject_visit=self.subject_visit,
@@ -62,11 +62,12 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
         self.assertIsNotNone(obj.egfr_value)
         self.assertIsNotNone(obj.egfr_units)
 
-    @tag("3")
     def test_ok(self):
+        traveller = time_machine.travel(self.subject_visit.report_datetime)
+        traveller.start()
         data = dict(
             subject_visit=self.subject_visit,
-            report_datetime=self.subject_visit.report_datetime,
+            report_datetime=get_utcnow(),
         )
         form = BloodResultsRftFormValidator(cleaned_data=data, model=BloodResultsRft)
         try:

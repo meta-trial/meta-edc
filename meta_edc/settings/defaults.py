@@ -16,7 +16,6 @@ env = environ.Env(
     CELERY_ENABLED=(bool, False),
     DATABASE_SQLITE_ENABLED=(bool, False),
     DJANGO_AUTO_CREATE_KEYS=(bool, False),
-    DJANGO_CRYPTO_FIELDS_TEMP_PATH=(bool, False),
     DJANGO_CSRF_COOKIE_SECURE=(bool, True),
     DJANGO_DEBUG=(bool, False),
     DJANGO_EDC_BOOTSTRAP=(int, 3),
@@ -54,6 +53,8 @@ if LOGGING_ENABLED:
 
 META_PHASE = 3
 
+EDC_SITES_DOMAIN_SUFFIX = ("meta3.clinicedc.org",)
+
 DEBUG = env("DJANGO_DEBUG")
 
 SECRET_KEY = env.str("DJANGO_SECRET_KEY")
@@ -67,6 +68,10 @@ ETC_DIR = env.str("DJANGO_ETC_FOLDER")
 TEST_DIR = os.path.join(BASE_DIR, APP_NAME, "tests")
 
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS")
+
+META3_DOMAIN_SUFFIX = "meta4.clinicedc.org"
+
+MULTISITE_REGISTER_POST_MIGRATE_SYNC_ALIAS = False
 
 ENFORCE_RELATED_ACTION_ITEM_EXISTS = False
 
@@ -98,6 +103,7 @@ INSTALLED_APPS = [
     "edc_action_item.apps.AppConfig",
     "edc_appointment.apps.AppConfig",
     "edc_auth.apps.AppConfig",
+    "edc_adherence.apps.AppConfig",
     "edc_adverse_event.apps.AppConfig",
     "edc_consent.apps.AppConfig",
     "edc_crf.apps.AppConfig",
@@ -145,7 +151,6 @@ INSTALLED_APPS = [
     "edc_timepoint.apps.AppConfig",
     "edc_unblinding.apps.AppConfig",
     "edc_form_describer.apps.AppConfig",
-    "edc_adherence.apps.AppConfig",
     "edc_dx.apps.AppConfig",
     "meta_consent.apps.AppConfig",
     "meta_data_manager.apps.AppConfig",
@@ -405,7 +410,7 @@ EDC_RANDOMIZATION_SKIP_VERIFY_CHECKS = True
 EDC_SITES_MODULE_NAME = env.str("EDC_SITES_MODULE_NAME")
 
 # django-multisite
-CACHE_MULTISITE_KEY_PREFIX = APP_NAME
+CACHE_MULTISITE_KEY_PREFIX = "meta4"
 SILENCED_SYSTEM_CHECKS = ["sites.E101"]
 
 # django-defender

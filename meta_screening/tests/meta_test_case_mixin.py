@@ -21,7 +21,7 @@ from model_bakery import baker
 
 from meta_edc.meta_version import PHASE_THREE
 from meta_pharmacy.prepare_meta_pharmacy import prepare_meta_pharmacy
-from meta_sites import fqdn
+from meta_sites.sites import domain_suffix
 from meta_subject.models import SubjectVisit
 from meta_visit_schedule.constants import DAY1
 
@@ -40,7 +40,7 @@ from .options import (
 
 
 class MetaTestCaseMixin(AppointmentTestCaseMixin):
-    fqdn = fqdn
+    fqdn = domain_suffix
 
     default_sites = sites.get_by_country("tanzania", aslist=True)
 
