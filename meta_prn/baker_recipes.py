@@ -4,7 +4,7 @@ from edc_utils import get_utcnow
 from faker import Faker
 from model_bakery.recipe import Recipe
 
-from .models import PregnancyNotification
+from .models import DmReferral, PregnancyNotification
 
 fake = Faker()
 
@@ -18,4 +18,11 @@ pregnancynotification = Recipe(
     bhcg_confirmed=YES,
     unconfirmed_details=None,
     edd=get_utcnow() + relativedelta(months=6),
+)
+
+dmreferral = Recipe(
+    DmReferral,
+    action_identifier=None,
+    subject_identifier=None,
+    report_datetime=get_utcnow(),
 )

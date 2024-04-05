@@ -10,6 +10,7 @@ from .blood_results import (
 from .complications_glycemia_form import ComplicationsGlycemiaForm
 from .concomitant_medication_form import ConcomitantMedicationForm
 from .delivery_form import DeliveryForm
+from .dm_followup_form import DmFollowupForm
 from .egfr_drop_notification_form import EgfrDropNotificationForm
 from .eq53d3l_form import Eq5d3lForm
 from .followup_examination_form import FollowupExaminationForm

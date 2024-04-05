@@ -4,7 +4,11 @@ from edc_sites.model_mixins import SiteModelMixin
 from edc_visit_schedule.constants import OFFSCHEDULE_ACTION
 from edc_visit_schedule.model_mixins import OffScheduleModelMixin
 
-from ..constants import OFFSCHEDULE_POSTNATAL_ACTION, OFFSCHEDULE_PREGNANCY_ACTION
+from ..constants import (
+    OFFSCHEDULE_DM_REFERRAL_ACTION,
+    OFFSCHEDULE_POSTNATAL_ACTION,
+    OFFSCHEDULE_PREGNANCY_ACTION,
+)
 
 
 class OffSchedule(SiteModelMixin, ActionModelMixin, OffScheduleModelMixin, BaseUuidModel):
@@ -34,3 +38,13 @@ class OffSchedulePostnatal(
     class Meta(OffScheduleModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Off-schedule: post-natal"
         verbose_name_plural = "Off-schedule: post-natal"
+
+
+class OffScheduleDmReferral(
+    SiteModelMixin, ActionModelMixin, OffScheduleModelMixin, BaseUuidModel
+):
+    action_name = OFFSCHEDULE_DM_REFERRAL_ACTION
+
+    class Meta(OffScheduleModelMixin.Meta, BaseUuidModel.Meta):
+        verbose_name = "Off-schedule: DM Referral"
+        verbose_name_plural = "Off-schedule: DM Referral"

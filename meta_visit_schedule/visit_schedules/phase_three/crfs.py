@@ -15,7 +15,6 @@ crfs_prn = CrfCollection(
     Crf(show_order=385, model="meta_subject.urinepregnancy"),
     Crf(show_order=505, model="meta_subject.pregnancyupdate"),
     Crf(show_order=515, model="meta_subject.egfrdropnotification"),
-    Crf(show_order=615, model="meta_subject.dmreferralfollowup"),
     name="prn",
 )
 

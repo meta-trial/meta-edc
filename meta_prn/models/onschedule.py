@@ -18,3 +18,9 @@ class OnSchedulePregnancy(OnScheduleModelMixin, SiteModelMixin, BaseUuidModel):
 class OnSchedulePostnatal(OnScheduleModelMixin, SiteModelMixin, BaseUuidModel):
     class Meta(OnScheduleModelMixin.Meta):
         pass
+
+
+class OnScheduleDmReferral(OnScheduleModelMixin, SiteModelMixin, BaseUuidModel):
+    class Meta(OnScheduleModelMixin.Meta, BaseUuidModel.Meta):
+        verbose_name = "On-schedule: DM Referral"
+        verbose_name_plural = "On-schedule: DM Referral"
