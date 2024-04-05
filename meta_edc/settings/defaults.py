@@ -30,6 +30,7 @@ env = environ.Env(
     EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=(bool, True),
     EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK=(bool, True),
     TWILIO_ENABLED=(bool, False),
+    EDC_SITES_DOMAIN_SUFFIX="meta4.clinicedc.org",
 )
 
 BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
@@ -53,7 +54,7 @@ if LOGGING_ENABLED:
 
 META_PHASE = 3
 
-EDC_SITES_DOMAIN_SUFFIX = "meta4.clinicedc.org"
+EDC_SITES_DOMAIN_SUFFIX = env.str("EDC_SITES_DOMAIN_SUFFIX")  # "meta4.clinicedc.org"
 
 DEBUG = env("DJANGO_DEBUG")
 
