@@ -143,7 +143,7 @@ class DmFollowup(CrfWithActionModelMixin, BaseUuidModel):
 
     on_dm_medications = models.CharField(
         verbose_name="Are you currently taking any drug therapy for diabetes?",
-        choices=YES_NO,
+        choices=YES_NO_NA,
         max_length=25,
     )
 
