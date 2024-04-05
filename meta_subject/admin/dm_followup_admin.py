@@ -53,6 +53,7 @@ class DmFollowupAdmin(
             "Diabetes treatment",
             {
                 "fields": (
+                    "treatment_prescribed",
                     "dm_treatments",
                     "on_dm_medications",
                     "dm_medications_init_date",
@@ -91,4 +92,5 @@ class DmFollowupAdmin(
         "on_dm_medications": admin.VERTICAL,
         "medications_adherent": admin.VERTICAL,
         "last_missed_pill": admin.VERTICAL,
+        "treatment_prescribed": admin.VERTICAL,
     }

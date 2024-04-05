@@ -53,7 +53,7 @@ if LOGGING_ENABLED:
 
 META_PHASE = 3
 
-EDC_SITES_DOMAIN_SUFFIX = ("meta3.clinicedc.org",)
+EDC_SITES_DOMAIN_SUFFIX = "meta4.clinicedc.org"
 
 DEBUG = env("DJANGO_DEBUG")
 

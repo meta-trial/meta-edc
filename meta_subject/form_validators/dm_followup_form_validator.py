@@ -1,8 +1,12 @@
 from django import forms
+from django.core.exceptions import ObjectDoesNotExist
 from edc_constants.constants import NO, OTHER, YES
 from edc_crf.crf_form_validator import CrfFormValidator
 from edc_form_validators import INVALID_ERROR
+from edc_utils import formatted_date
 from edc_utils.date import to_local
+
+from meta_prn.models import DmReferral
 
 
 class DmFollowupFormValidator(CrfFormValidator):
@@ -15,9 +19,30 @@ class DmFollowupFormValidator(CrfFormValidator):
             and self.cleaned_data.get("referral_date") >= to_local(self.report_datetime).date()
         ):
             self.raise_validation_error(
-                {"referral_date": "Invalid. Cannot be on or after report date"},
+                {"referral_date": "Invalid. Expected a date prior to the report date above."},
                 INVALID_ERROR,
             )
+
+        # try to match referral date to the referal form
+        try:
+            dm_referral = DmReferral.objects.get(subject_identifier=self.subject_identifier)
+        except ObjectDoesNotExist:
+            self.raise_validation_error(
+                {"__all__": "Original Referral form not found."}, INVALID_ERROR
+            )
+        else:
+            if dm_referral.referral_date != self.cleaned_data.get("referral_date"):
+                referral_dt = formatted_date(dm_referral.referral_date)
+                report_dt = formatted_date(to_local(dm_referral.report_datetime).date())
+                self.raise_validation_error(
+                    {
+                        "referral_date": (
+                            f"Invalid. Expected `{referral_dt}` "
+                            f"based on the referral form submitted on {report_dt}."
+                        )
+                    },
+                    INVALID_ERROR,
+                )
 
         # Diabetes clinic attendance
         self.m2m_required_if(
@@ -144,6 +169,20 @@ class DmFollowupFormValidator(CrfFormValidator):
         ) < self.cleaned_data.get("referral_date"):
             self.raise_validation_error(
                 {"dm_medications_init_date": "Invalid. Cannot be before the referral date"},
+                INVALID_ERROR,
+            )
+
+        # dm_medications_init_date must be on or after attended_date
+        if self.cleaned_data.get("dm_medications_init_date") and self.cleaned_data.get(
+            "dm_medications_init_date"
+        ) < self.cleaned_data.get("attended_date"):
+            self.raise_validation_error(
+                {
+                    "dm_medications_init_date": (
+                        "Invalid. Expected a date on or after date patient "
+                        "attended the health facility."
+                    )
+                },
                 INVALID_ERROR,
             )
 
