@@ -1,8 +1,19 @@
+from .dm_referral import DmReferral
 from .end_of_study import EndOfStudy
 from .loss_to_followup import LossToFollowup
 from .off_study_medication import OffStudyMedication
-from .offschedule import OffSchedule, OffSchedulePostnatal, OffSchedulePregnancy
-from .onschedule import OnSchedule, OnSchedulePostnatal, OnSchedulePregnancy
+from .offschedule import (
+    OffSchedule,
+    OffScheduleDmReferral,
+    OffSchedulePostnatal,
+    OffSchedulePregnancy,
+)
+from .onschedule import (
+    OnSchedule,
+    OnScheduleDmReferral,
+    OnSchedulePostnatal,
+    OnSchedulePregnancy,
+)
 from .pregnancy_notification import PregnancyNotification
 from .protocol_incident import ProtocolIncident
 from .signals import (

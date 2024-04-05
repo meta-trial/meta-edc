@@ -1,9 +1,11 @@
 from datetime import date
 
 ALL_OF_THE_TIME = "all_of_the_time"
+AMENDMENT_DATE = date(2023, 11, 24)
 APPT = "appt"
 APPT_OTHER = "other_routine_appt"
 DELIVERY_ACTION = "delivery_action"
+DM_FOLLOWUP_ACTION = "dm_followup_action"
 FOLLOWUP_EXAMINATION_ACTION = "followup-examination-ae"
 GOOD_BIT_OF_THE_TIME = "good_bit_of_the_time"
 LITTLE_OF_THE_TIME = "little_of_the_time"
@@ -16,4 +18,3 @@ NONE_OF_THE_TIME = "none_of_the_time"
 NO_COMPLICATIONS = "no_complications"
 SOME_OF_THE_TIME = "some_of_the_time"
 URINE_PREGNANCY_ACTION = "urine_pregnancy_action"
-AMENDMENT_DATE = date(2023, 11, 24)

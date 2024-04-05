@@ -5,7 +5,7 @@ from edc_form_validators import INVALID_ERROR
 from edc_utils.date import to_local
 
 
-class DmReferralFollowupFormValidator(CrfFormValidator):
+class DmFollowupFormValidator(CrfFormValidator):
     def clean(self):
 
         # referral_date must be before report datetime

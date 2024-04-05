@@ -16,11 +16,14 @@ from edc_visit_schedule.constants import OFFSCHEDULE_ACTION
 
 from meta_subject.constants import (
     DELIVERY_ACTION,
+    DM_FOLLOWUP_ACTION,
     MISSED_VISIT_ACTION,
     URINE_PREGNANCY_ACTION,
 )
 
 from .constants import (
+    DM_REFFERAL_ACTION,
+    OFFSCHEDULE_DM_REFERRAL_ACTION,
     OFFSCHEDULE_PREGNANCY_ACTION,
     OFFSTUDY_MEDICATION_ACTION,
     PREGNANCY_NOTIFICATION_ACTION,
@@ -56,7 +59,7 @@ class OffscheduleAction(ActionWithNotification):
         if pregnancy_notification and pregnancy_notification.may_contact in [YES, NOT_SURE]:
             next_actions = [OFFSTUDY_MEDICATION_ACTION]
         else:
-            next_actions = [OFFSTUDY_MEDICATION_ACTION, END_OF_STUDY_ACTION]
+            next_actions = [OFFSTUDY_MEDICATION_ACTION]
         return next_actions
 
 
@@ -86,8 +89,10 @@ class EndOfStudyAction(ActionWithNotification):
     display_name = "Submit End of Study Report"
     notification_display_name = "End of Study Report"
     parent_action_names = [
-        OFFSCHEDULE_ACTION,
+        # OFFSCHEDULE_ACTION,
+        OFFSTUDY_MEDICATION_ACTION,
         OFFSCHEDULE_PREGNANCY_ACTION,
+        OFFSCHEDULE_DM_REFERRAL_ACTION,
     ]
     reference_model = "meta_prn.endofstudy"
     show_link_to_changelist = True
@@ -123,6 +128,41 @@ class PregnancyNotificationAction(ActionWithNotification):
     show_link_to_add = True
     admin_site_name = "meta_prn_admin"
     priority = HIGH_PRIORITY
+
+
+class DmReferralAction(ActionWithNotification):
+    """Action to put subject on dm_referral schedule"""
+
+    name = DM_REFFERAL_ACTION
+    display_name = "Diabetes referral"
+    notification_display_name = "Diabetes referral"
+    parent_action_names = None
+    reference_model = "meta_prn.dmreferral"
+    show_link_to_changelist = True
+    show_link_to_add = True
+    admin_site_name = "meta_prn_admin"
+    priority = HIGH_PRIORITY
+    singleton = True
+
+    def get_next_actions(self):
+        next_actions = [DM_FOLLOWUP_ACTION]
+        return next_actions
+
+
+class OffscheduleDmReferralAction(ActionWithNotification):
+    name = OFFSCHEDULE_DM_REFERRAL_ACTION
+    display_name = "Submit Off-Schedule (Diabetes Referral)"
+    notification_display_name = "Off-Schedule (Diabetes Referral)"
+    parent_action_names = [DM_FOLLOWUP_ACTION]
+    reference_model = "meta_prn.offscheduledmreferral"
+    show_link_to_changelist = True
+    admin_site_name = "meta_prn_admin"
+    priority = HIGH_PRIORITY
+    singleton = True
+
+    def get_next_actions(self):
+        next_actions = [END_OF_STUDY_ACTION]
+        return next_actions
 
 
 class OffStudyMedicationAction(ActionWithNotification):
@@ -212,3 +252,5 @@ site_action_items.register(SubjectTransferAction)
 site_action_items.register(UnblindingRequestAction)
 site_action_items.register(UnblindingReviewAction)
 site_action_items.register(OffStudyMedicationAction)
+site_action_items.register(DmReferralAction)
+site_action_items.register(OffscheduleDmReferralAction)

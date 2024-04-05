@@ -20,12 +20,15 @@ from edc_visit_schedule.utils import is_baseline
 from edc_visit_tracking.constants import MISSED_VISIT
 
 from meta_prn.constants import (
+    DM_REFFERAL_ACTION,
+    OFFSCHEDULE_DM_REFERRAL_ACTION,
     OFFSCHEDULE_PREGNANCY_ACTION,
     PREGNANCY_NOTIFICATION_ACTION,
 )
 
 from .constants import (
     DELIVERY_ACTION,
+    DM_FOLLOWUP_ACTION,
     FOLLOWUP_EXAMINATION_ACTION,
     MISSED_VISIT_ACTION,
     URINE_PREGNANCY_ACTION,
@@ -150,6 +153,25 @@ class EgfrDropNotificationAction(ActionWithNotification):
         return self.reference_obj.report_status != NEW
 
 
+class DmFollowAction(ActionWithNotification):
+    name = DM_FOLLOWUP_ACTION
+    display_name = "Diabetes Followup"
+    notification_display_name = "Diabetes Followup"
+    parent_action_names = [DM_REFFERAL_ACTION]
+    reference_model = "meta_subject.dmfollowup"
+    show_link_to_changelist = True
+    show_link_to_add = False
+    show_on_dashboard = False
+    create_by_user = False
+    create_by_action = True
+    admin_site_name = "meta_subject_admin"
+    priority = HIGH_PRIORITY
+
+    def get_next_actions(self):
+        next_actions = [OFFSCHEDULE_DM_REFERRAL_ACTION]
+        return next_actions
+
+
 def register_actions():
     for action_item_cls in [
         BloodResultsFbcAction,
@@ -162,6 +184,7 @@ def register_actions():
         UrinePregnancyAction,
         DeliveryAction,
         EgfrDropNotificationAction,
+        DmFollowAction,
     ]:
         try:
             site_action_items.register(action_item_cls)

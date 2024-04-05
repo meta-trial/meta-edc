@@ -1,6 +1,6 @@
 from .birth_outcomes_form_validator import BirthOutcomesFormValidator
 from .delivery_form_validator import DeliveryFormValidator
-from .dm_referral_followup_form_validator import DmReferralFollowupFormValidator
+from .dm_followup_form_validator import DmFollowupFormValidator
 from .egfr_drop_notification_form_validator import EgfrDropNotificationFormValidator
 from .followup_examination_form_validator import FollowupExaminationFormValidator
 from .glucose_form_validator import GlucoseFormValidator

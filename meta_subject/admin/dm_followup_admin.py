@@ -1,21 +1,25 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
+from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
 from edc_adherence.model_admin_mixin import get_visual_score_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
 from edc_form_label.form_label_modeladmin_mixin import FormLabelModelAdminMixin
 from edc_model_admin.history import SimpleHistoryAdmin
 
 from ..admin_site import meta_subject_admin
-from ..forms.dm_referral_followup import DmReferralFollowupForm
-from ..models import DmReferralFollowup
+from ..forms import DmFollowupForm
+from ..models import DmFollowup
 from .modeladmin import CrfModelAdminMixin
 
 
-@admin.register(DmReferralFollowup, site=meta_subject_admin)
-class DmReferralFollowupAdmin(
-    CrfModelAdminMixin, FormLabelModelAdminMixin, SimpleHistoryAdmin
+@admin.register(DmFollowup, site=meta_subject_admin)
+class DmFollowupAdmin(
+    CrfModelAdminMixin,
+    FormLabelModelAdminMixin,
+    ActionItemModelAdminMixin,
+    SimpleHistoryAdmin,
 ):
-    form = DmReferralFollowupForm
+    form = DmFollowupForm
 
     fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime")}),
@@ -68,6 +72,7 @@ class DmReferralFollowupAdmin(
         ),
         get_visual_score_fieldset_tuple(),
         crf_status_fieldset,
+        action_fieldset_tuple,
         audit_fieldset_tuple,
     )
 

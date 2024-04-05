@@ -5,8 +5,15 @@ from edc_constants.constants import YES
 from edc_visit_schedule.site_visit_schedules import site_visit_schedules
 
 from meta_subject.models import SubjectVisit, UrinePregnancy
-from meta_visit_schedule.constants import SCHEDULE, SCHEDULE_PREGNANCY, VISIT_SCHEDULE
+from meta_visit_schedule.constants import (
+    SCHEDULE,
+    SCHEDULE_DM_REFERRAL,
+    SCHEDULE_PREGNANCY,
+    VISIT_SCHEDULE,
+)
 
+from . import OffScheduleDmReferral
+from .dm_referral import DmReferral
 from .offschedule import OffSchedule
 from .pregnancy_notification import PregnancyNotification
 
@@ -62,4 +69,37 @@ def update_urine_pregnancy_on_pregnancy_notification_on_post_save(
             ).update(
                 notified_datetime=instance.report_datetime,
                 notified=True,
+            )
+
+
+@receiver(
+    post_save,
+    weak=False,
+    sender=DmReferral,
+    dispatch_uid="update_schedule_on_dm_referral_post_save",
+)
+def update_schedule_on_dm_referral_post_save(sender, instance, raw, **kwargs):
+    if not raw:
+        try:
+            OffScheduleDmReferral.objects.get(subject_identifier=instance.subject_identifier)
+        except ObjectDoesNotExist:
+            last_subject_visit = (
+                SubjectVisit.objects.filter(
+                    subject_identifier=instance.subject_identifier,
+                    schedule_name=SCHEDULE,
+                )
+                .order_by("report_datetime")
+                .last()
+            )
+            visit_schedule = site_visit_schedules.get_visit_schedule(
+                visit_schedule_name=VISIT_SCHEDULE
+            )
+            schedule = visit_schedule.schedules.get(SCHEDULE)
+            schedule.take_off_schedule(
+                instance.subject_identifier, last_subject_visit.report_datetime
+            )
+            schedule = visit_schedule.schedules.get(SCHEDULE_DM_REFERRAL)
+            schedule.put_on_schedule(
+                onschedule_datetime=last_subject_visit.report_datetime,
+                subject_identifier=instance.subject_identifier,
             )

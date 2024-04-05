@@ -1,6 +1,7 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.html import format_html
+from edc_action_item.models import ActionItem
 from edc_adherence.choices import MISSED_PILLS
 from edc_constants.choices import YES_NO, YES_NO_NA
 from edc_constants.constants import NOT_APPLICABLE, QUESTION_RETIRED
@@ -16,10 +17,14 @@ from meta_lists.models import (
     MissedReferralReasons,
 )
 
-from ..model_mixins import CrfModelMixin
+from ..constants import DM_FOLLOWUP_ACTION
+from ..model_mixins import CrfWithActionModelMixin
 
 
-class DmReferralFollowup(CrfModelMixin, BaseUuidModel):
+class DmFollowup(CrfWithActionModelMixin, BaseUuidModel):
+
+    action_name = DM_FOLLOWUP_ACTION
+
     referral_date = models.DateField(
         verbose_name="Date of referral to diabetes clinic",
     )
@@ -199,6 +204,13 @@ class DmReferralFollowup(CrfModelMixin, BaseUuidModel):
         blank=True,
     )
 
-    class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
-        verbose_name = "Diabetes referral follow-up"
-        verbose_name_plural = "Diabetes referral follow-up"
+    def save(self, *args, **kwargs):
+        self.action_item = ActionItem.objects.get(
+            subject_identifier=self.subject_identifier, action_type__name=self.action_name
+        )
+        self.action_identifier = self.action_item.action_identifier
+        super().save(*args, **kwargs)
+
+    class Meta(CrfWithActionModelMixin.Meta, BaseUuidModel.Meta):
+        verbose_name = "Diabetes follow-up after referral"
+        verbose_name_plural = "Diabetes follow-up after referral"
