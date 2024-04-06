@@ -1,9 +1,8 @@
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 from django.urls.conf import include, path, re_path
 from django.views.defaults import page_not_found, server_error  # noqa
 from django.views.generic import RedirectView
-from edc_auth.views import LogoutView
-from edc_dashboard.utils import get_index_page
 from edc_dashboard.views import AdministrationView
 from edc_utils.paths_for_urlpatterns import paths_for_urlpatterns
 
@@ -75,11 +74,7 @@ if settings.DEFENDER_ENABLED:
 urlpatterns += [
     # path("__debug__/", include("debug_toolbar.urls")),
     path("admin/", RedirectView.as_view(url="/")),
-    path(
-        "switch_sites/",
-        LogoutView.as_view(next_page=get_index_page()),
-        name="switch_sites_url",
-    ),
+    path("switch_sites/", auth_views.logout_then_login, name="switch_sites_url"),
     path("home/", HomeView.as_view(), name="home_url"),
     path("i18n/", include("django.conf.urls.i18n")),
     re_path(".", RedirectView.as_view(url="/"), name="home_url"),
