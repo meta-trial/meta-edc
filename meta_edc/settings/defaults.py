@@ -413,6 +413,7 @@ EDC_SITES_MODULE_NAME = env.str("EDC_SITES_MODULE_NAME")
 # django-multisite
 CACHE_MULTISITE_KEY_PREFIX = "meta4"
 SILENCED_SYSTEM_CHECKS = ["sites.E101"]
+MULTISITE_SYNC_ALIAS_MANUALLY = True
 
 # django-defender
 # see if env.str("DJANGO_CACHE") == "redis" above

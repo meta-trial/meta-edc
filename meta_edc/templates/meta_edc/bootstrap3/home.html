@@ -62,7 +62,7 @@
       {% if perms.edc_export %}
         <a href="{% url 'edc_export:home_url' %}" class="list-group-item"><i class="fas fa-file-export fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Export data</a>
       {% endif %}
-        <a href="/switch_sites/" class="list-group-item"><i class="fas fa-arrows-alt fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Switch sites</a>
+        <a href="{% url 'switch_sites_url' %}" class="list-group-item"><i class="fas fa-arrows-alt fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Switch sites</a>
         <a href="{% url 'edc_auth_admin:logout' %}" class="list-group-item"><i class="fas fa-sign-out-alt fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Log out</a>
       </div>
     </div>
