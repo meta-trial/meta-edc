@@ -4,7 +4,7 @@
 {% block main %}
 
 <style>
-
+a { cursor: pointer; }
 .bg-1 {
     background-color: #428bca; /* dark blue */
     color: #ffffff;
@@ -21,8 +21,8 @@
 </style>
 
 {{ block.super }}
-
-
+<form id="switch_sites_form" method="post" action="{% url 'switch_sites_url' %}">{% csrf_token %}</form>
+<form id="logout_form" method="post" action="{% url 'edc_auth_admin:logout' %}">{% csrf_token %}</form>
 
 <div class="row">
 
@@ -62,8 +62,8 @@
       {% if perms.edc_export %}
         <a href="{% url 'edc_export:home_url' %}" class="list-group-item"><i class="fas fa-file-export fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Export data</a>
       {% endif %}
-        <a href="{% url 'switch_sites_url' %}" class="list-group-item"><i class="fas fa-arrows-alt fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Switch sites</a>
-        <a href="{% url 'edc_auth_admin:logout' %}" class="list-group-item"><i class="fas fa-sign-out-alt fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Log out</a>
+        <a onclick="document.getElementById('switch_sites_form').submit();" class="list-group-item" title="{% url 'switch_sites_url' %}"><i class="fas fa-arrows-alt fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Switch sites</a>
+        <a onclick="document.getElementById('logout_form').submit();" class="list-group-item" title="{% url 'edc_auth_admin:logout' %}"><i class="fas fa-sign-out-alt fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Log out</a>
       </div>
     </div>
   </div>
