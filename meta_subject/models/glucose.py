@@ -1,7 +1,6 @@
 from django.db import models
-from django.utils.translation import gettext as _
 from edc_constants.choices import YES_NO
-from edc_constants.constants import NO, NOT_APPLICABLE, PENDING, YES
+from edc_constants.constants import NOT_APPLICABLE
 from edc_glucose.model_mixins import (
     fasting_model_mixin_factory,
     fbg_model_mixin_factory,
@@ -10,15 +9,9 @@ from edc_glucose.model_mixins import (
 from edc_model.models import BaseUuidModel
 from edc_utils import formatted_date
 
+from ..choices import ENDPOINT_CHOICES
 from ..constants import AMENDMENT_DATE
 from ..model_mixins import CrfModelMixin
-
-ENDPOINT_CHOICES = (
-    (YES, _(YES)),
-    (PENDING, _("No. A repeat FBG will be scheduled")),
-    (NO, _(NO)),
-    (NOT_APPLICABLE, _("Not applicable")),
-)
 
 
 class Glucose(
@@ -38,10 +31,7 @@ class Glucose(
     ogtt_model_mixin_factory("ogtt"),
     BaseUuidModel,
 ):
-    # TODO: diagnosis of diabetes is OGTT 11.1mmol / L ONLY. Triggers EoS form
-    # TODO: move IFG to bloogresultglu. Use this form for OGTT only 27/01/2021
-
-    """A user model to capture IFG and OGTT"""
+    """A user model to capture FBG/RBG and OGTT"""
 
     fbg_performed = models.CharField(
         verbose_name="Was the FBG test performed?",
@@ -81,5 +71,5 @@ class Glucose(
     )
 
     class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
-        verbose_name = "Glucose (IFG, OGTT)"
-        verbose_name_plural = "Glucose (IFG, OGTT)"
+        verbose_name = "Glucose (FBG/RBG, OGTT)"
+        verbose_name_plural = "Glucose (FBG/RBG, OGTT)"
