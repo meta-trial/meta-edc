@@ -13,17 +13,17 @@ SITE_ID = SiteID(default=10)  # Hindu Mandal
 # SITE_ID = SiteID(default=50)  # Mbagala
 # SITE_ID = SiteID(default=60)  # Mnazi-Moja
 # SITE_ID = SiteID(default=30)  # Temeke
-
+INDEX_PAGE = "http://localhost:8000"
 EDC_SITES_UAT_DOMAIN = False
 DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
-    "mnazi-moja.tz.meta3.clinicedc.org",
-    "mbagala.tz.meta3.clinicedc.org",
-    "mwananyamala.tz.meta3.clinicedc.org",
-    "hindu-mandal.tz.meta3.clinicedc.org",
-    "temeke.tz.meta3.clinicedc.org",
-    "amana.tz.meta3.clinicedc.org",
+    "mnazi-moja.tz.meta4.clinicedc.org",
+    "mbagala.tz.meta4.clinicedc.org",
+    "mwananyamala.tz.meta4.clinicedc.org",
+    "hindu-mandal.tz.meta4.clinicedc.org",
+    "temeke.tz.meta4.clinicedc.org",
+    "amana.tz.meta4.clinicedc.org",
 ]
 
 SECURE_SSL_REDIRECT = False

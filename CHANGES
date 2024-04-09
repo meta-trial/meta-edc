@@ -1,8 +1,15 @@
 Changes
 -------
 
+0.3.12
+------
+- change Switch Sites and Logout ListGroup items from get to post
+- edc=0.5.80
+
 0.3.11
 ------
+- add workflow DM Referral and DM Followup
+- rename model bloodresultsglu to glucosefbg
 - edc=0.5.78
 
 0.3.9

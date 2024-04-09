@@ -10,6 +10,7 @@ from edc_constants.constants import (
     OPEN,
     OTHER,
     PATIENT,
+    PENDING,
     PRESENT,
     PRESENT_WITH_REINFORCEMENT,
     YES,
@@ -77,6 +78,13 @@ DYSLIPIDAEMIA_RX_CHOICES = (
     ("atorvastatin", "Atorvastatin"),
     ("rosuvastatin", "Rosuvastatin"),
     (OTHER, _("Other, specify below ...")),
+    (NOT_APPLICABLE, _("Not applicable")),
+)
+
+ENDPOINT_CHOICES = (
+    (YES, _(YES)),
+    (PENDING, _("No. A repeat FBG will be scheduled")),
+    (NO, _(NO)),
     (NOT_APPLICABLE, _("Not applicable")),
 )
 
