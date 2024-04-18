@@ -72,8 +72,6 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS")
 
 META3_DOMAIN_SUFFIX = "meta4.clinicedc.org"
 
-MULTISITE_REGISTER_POST_MIGRATE_SYNC_ALIAS = False
-
 ENFORCE_RELATED_ACTION_ITEM_EXISTS = False
 
 DEFAULT_APPOINTMENT_TYPE = "hospital"
@@ -91,8 +89,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+    "multisite.apps.AppConfig",
     "defender",
-    "multisite",
     "fontawesomefree",
     "django_crypto_fields.apps.AppConfig",
     "django_revision.apps.AppConfig",
@@ -244,12 +242,11 @@ if env.str("DJANGO_CACHE") == "redis":
         "default": {
             "BACKEND": "django_redis.cache.RedisCache",
             "LOCATION": "redis://127.0.0.1:6379/1",
-            # "LOCATION": "unix://[:{DJANGO_REDIS_PASSWORD}]@/path/to/socket.sock?db=0",
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
                 "PASSWORD": env.str("DJANGO_REDIS_PASSWORD"),
             },
-            "KEY_PREFIX": f"{APP_NAME}",
+            "KEY_PREFIX": env.str("DJANGO_REDIS_KEY_PREFIX", default=APP_NAME),
         }
     }
     SESSION_ENGINE = "django.contrib.sessions.backends.cache"
@@ -414,6 +411,7 @@ EDC_SITES_MODULE_NAME = env.str("EDC_SITES_MODULE_NAME")
 CACHE_MULTISITE_KEY_PREFIX = "meta4"
 SILENCED_SYSTEM_CHECKS = ["sites.E101"]
 MULTISITE_SYNC_ALIAS_MANUALLY = True
+MULTISITE_REGISTER_POST_MIGRATE_SYNC_ALIAS = False
 
 # django-defender
 # see if env.str("DJANGO_CACHE") == "redis" above

@@ -1,6 +1,6 @@
 from edc_constants.constants import NOT_APPLICABLE, OTHER, PATIENT, PREGNANCY, UNKNOWN
 
-from .constants import CLINICIAN, INVESTIGATOR, SAE
+from .constants import CLINICIAN, INVESTIGATOR, REFERRAL, SAE
 
 CLINICAL_WITHDRAWAL_REASONS = (
     ("kidney_disease", "Development of chronic kidney disease"),
@@ -95,6 +95,7 @@ WITHDRAWAL_STUDY_MEDICATION_REASONS = (
         "treatment in the clinician's opinion (specify below)",
     ),
     (INVESTIGATOR, " Investigator decision"),
+    (REFERRAL, "Referral to Diabetes clinic"),
     (PATIENT, "Patient decision"),
     (OTHER, "Other reason (specify below)"),
 )
