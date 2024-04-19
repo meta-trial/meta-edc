@@ -51,7 +51,7 @@
 
 
 {% block listboard_table_columns %}
-    <td>{{ result.human_readable_identifier }} </td>
+    <td>{{ result.human_readable_identifier }}</td>
     <td nowrap>
         {% if result.repeat_glucose_performed == 'PENDING' %}
             {% if result.repeat_due_in_days < 3 %}
