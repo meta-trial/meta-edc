@@ -1,6 +1,10 @@
 Changes
 -------
 
+0.3.15 (unreleased)
+------
+- add 'Account Management' link to home page ListGroup
+
 0.3.12
 ------
 - change Switch Sites and Logout ListGroup items from get to post
