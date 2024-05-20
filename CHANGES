@@ -1,9 +1,12 @@
 Changes
 -------
 
-0.3.15 (unreleased)
+0.3.15
 ------
 - add 'Account Management' link to home page ListGroup
+- add second visit to DM referral schedule, DmDiagnosis, DmDxResult table
+- rename in tables fasting_duration_min to delta, calc delta on save
+- add healtheconomicsupdate to month3 as singleton
 
 0.3.12
 ------
