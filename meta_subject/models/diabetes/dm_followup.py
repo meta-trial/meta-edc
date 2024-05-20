@@ -17,8 +17,8 @@ from meta_lists.models import (
     MissedReferralReasons,
 )
 
-from ..constants import DM_FOLLOWUP_ACTION
-from ..model_mixins import CrfWithActionModelMixin
+from ...constants import DM_FOLLOWUP_ACTION
+from ...model_mixins import CrfWithActionModelMixin
 
 
 class DmFollowup(CrfWithActionModelMixin, BaseUuidModel):

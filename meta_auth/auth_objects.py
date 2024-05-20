@@ -1,13 +1,20 @@
+from django.conf import settings
 from edc_auth.get_app_codenames import get_app_codenames
 
 clinic_codenames = get_app_codenames(
     "meta_prn", "meta_subject", "meta_consent", list_app="meta_lists"
 )
 
+add_perms = []
+if not settings.LIVE_SYSTEM:
+    add_perms = [
+        "meta_screening.add_screeningpartone",
+        "meta_screening.add_screeningpartthree",
+        "meta_screening.add_screeningparttwo",
+    ]
+
 screening_codenames = [
-    "meta_screening.add_screeningpartone",
-    "meta_screening.add_screeningpartthree",
-    "meta_screening.add_screeningparttwo",
+    *add_perms,
     "meta_screening.add_subjectrefusal",
     "meta_screening.change_screeningpartone",
     "meta_screening.change_screeningpartthree",

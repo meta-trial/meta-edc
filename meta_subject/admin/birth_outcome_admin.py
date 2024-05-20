@@ -60,15 +60,14 @@ class BirthOutcomesAdmin(
     def get_search_fields(self, request) -> Tuple[str, ...]:
         fields = super().get_search_fields(request)
         custom_fields = (
-            "delivery__action_identifier__subject_visit__subject_identifier",
+            "delivery__subject_visit__subject_identifier",
             "delivery__action_identifier",
-            "delivery__tracking_identifier",
         )
         return tuple(set(fields + custom_fields))
 
     @admin.display
     def delivery_report(self, obj=None, label=None):
-        url = reverse("meta_prn_admin:meta_prn_delivery_changelist")
+        url = reverse("meta_subject_admin:meta_subject_delivery_changelist")
         url = f"{url}?q={obj.subject_identifier}"
         context = dict(title="Delivery", url=url, label="Delivery")
         return render_to_string("dashboard_button.html", context=context)

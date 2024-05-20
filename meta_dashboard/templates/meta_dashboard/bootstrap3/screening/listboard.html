@@ -3,12 +3,12 @@
 {% load edc_dashboard_extras edc_subject_dashboard_extras meta_dashboard_extras %}
 
 {% block listboard_panel %}
-
+    {# screening is now disabled for live systems #}
     <a id="subjectscreening_add"
         title="{% if perms.meta_screening.add_screeningpartone %}add screening{% else %}check your permissions{% endif %}"
         class="btn btn-sm btn-default" role="button"
-        {% if not perms.meta_screening.add_screeningpartone %}disabled{% endif %}
-        href="{% if perms.meta_screening.add_screeningpartone %}{{ subject_screening_add_url }}?next={{ screening_listboard_url }}{% endif %}">
+        {% if not perms.meta_screening.add_screeningpartone or not LIVE_SYSTEM %}disabled href="#"{% else %}
+        href="{% if perms.meta_screening.add_screeningpartone %}{{ subject_screening_add_url }}?next={{ screening_listboard_url }}{% endif %}"{% endif %}>
             <i class="fas fa-plus fa-sm"></i> Add Subject Screening {% if meta_version == 3 %}(META3){% endif %}
     </a>
 

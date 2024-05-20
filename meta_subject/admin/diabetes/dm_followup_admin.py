@@ -6,10 +6,10 @@ from edc_crf.fieldset import crf_status_fieldset
 from edc_form_label.form_label_modeladmin_mixin import FormLabelModelAdminMixin
 from edc_model_admin.history import SimpleHistoryAdmin
 
-from ..admin_site import meta_subject_admin
-from ..forms import DmFollowupForm
-from ..models import DmFollowup
-from .modeladmin import CrfModelAdminMixin
+from ...admin_site import meta_subject_admin
+from ...forms import DmFollowupForm
+from ...models import DmFollowup
+from ..modeladmin import CrfModelAdminMixin
 
 
 @admin.register(DmFollowup, site=meta_subject_admin)

@@ -19,27 +19,53 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
 
     fieldsets = [
         (None, {"fields": ("subject_visit", "report_datetime")}),
-        ("Fasting", {"fields": ["fasting"]}),
-        ("Result", {"fields": ["assay_datetime", "glucose_value", "glucose_units"]}),
+        (
+            "Fasting",
+            {
+                "fields": (
+                    "fasting",
+                    "fasting_duration_str",
+                )
+            },
+        ),
+        (
+            "Blood Glucose",
+            {
+                "fields": (
+                    "fbg_performed",
+                    "fbg_not_performed_reason",
+                    "fbg_datetime",
+                    "fbg_value",
+                    "fbg_units",
+                )
+            },
+        ),
+        (
+            "Confirmation appointment",
+            {
+                "description": (
+                    "If blood glucose value is >= 7.0 mmol/L, schedule an "
+                    "appointment within 1 week to confirm"
+                ),
+                "fields": ("repeat_fbg_date",),
+            },
+        ),
     ]
 
     radio_fields = {
         "fasting": admin.VERTICAL,
-        "glucose_units": admin.VERTICAL,
+        "fbg_units": admin.VERTICAL,
+        "fbg_performed": admin.VERTICAL,
     }
 
     @admin.display(description="FBG", ordering="fbg_value")
     def fbg(self, obj=None):
         return obj.fbg_value
 
-    @admin.display(description="OGTT", ordering="ogtt_value")
-    def ogtt(self, obj=None):
-        return obj.ogtt_value
-
     def get_list_display(self, request) -> tuple[str, ...]:
         list_display = super().get_list_display(request)
         list_display = list(list_display)
-        list_display.insert(3, "ogtt")
+        # list_display.insert(3, "ogtt")
         list_display.insert(3, "fbg")
         list_display = tuple(list_display)
         return list_display

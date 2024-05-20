@@ -4,7 +4,7 @@ from django.test import TestCase, tag
 from edc_action_item.models import ActionItem
 from edc_appointment.constants import COMPLETE_APPT
 from edc_appointment.models import Appointment
-from edc_constants.constants import CLOSED, FEMALE, NEW, NO, PATIENT
+from edc_constants.constants import CLOSED, FEMALE, NEW, NO, PATIENT, YES
 from edc_pharmacy.constants import IN_PROGRESS_APPT
 from edc_utils import get_utcnow
 from edc_visit_schedule.constants import MONTH1, OFFSCHEDULE_ACTION
@@ -18,8 +18,8 @@ from meta_prn.constants import (
 from meta_prn.models import DmReferral, OnScheduleDmReferral
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_subject.constants import DM_FOLLOWUP_ACTION
-from meta_subject.models import DmFollowup, SubjectVisit
-from meta_visit_schedule.constants import SCHEDULE_DM_REFERRAL
+from meta_subject.models import DmDiagnosis, DmFollowup, SubjectVisit
+from meta_visit_schedule.constants import DM_BASELINE, DM_FOLLOWUP, SCHEDULE_DM_REFERRAL
 
 
 @tag("1")
@@ -122,16 +122,18 @@ class TestDmReferral(MetaTestCaseMixin, TestCase):
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         subject_visit = self.get_next_subject_visit(subject_visit)
         self.assertEqual(subject_visit.visit_code, MONTH1)
+        referral_datetime = subject_visit.report_datetime
         DmReferral.objects.create(
             subject_identifier=subject_visit.subject_identifier,
-            report_datetime=get_utcnow(),
-            referral_date=get_utcnow(),
+            report_datetime=referral_datetime,
+            referral_date=referral_datetime.date(),
         )
 
-        # Add DM Followup
+        # Add DM Baseline
         appointment = Appointment.objects.get(
             subject_identifier=subject_visit.subject_identifier,
             schedule_name=SCHEDULE_DM_REFERRAL,
+            visit_code=DM_BASELINE,
         )
         appointment.appt_status = IN_PROGRESS_APPT
         appointment.save()
@@ -139,15 +141,42 @@ class TestDmReferral(MetaTestCaseMixin, TestCase):
         subject_visit = SubjectVisit.objects.create(
             appointment=appointment,
             subject_identifier=subject_visit.subject_identifier,
+            report_datetime=appointment.appt_datetime,
+            reason=SCHEDULED,
+            info_source=PATIENT,
+        )
+
+        DmDiagnosis.objects.create(
+            subject_visit=subject_visit,
             report_datetime=get_utcnow(),
+            dx_date=referral_datetime.date(),
+            dx_initiated_by="fbg_confirmed",
+            dx_tmg=YES,
+            dx_tmg_date=referral_datetime.date(),
+        )
+
+        # Add DM Followup
+        followup_datetime = referral_datetime + relativedelta(months=6)
+        appointment = Appointment.objects.get(
+            subject_identifier=subject_visit.subject_identifier,
+            schedule_name=SCHEDULE_DM_REFERRAL,
+            visit_code=DM_FOLLOWUP,
+        )
+        appointment.appt_status = IN_PROGRESS_APPT
+        appointment.save()
+
+        subject_visit = SubjectVisit.objects.create(
+            appointment=appointment,
+            subject_identifier=subject_visit.subject_identifier,
+            report_datetime=appointment.appt_datetime,
             reason=SCHEDULED,
             info_source=PATIENT,
         )
 
         dm_followup = DmFollowup.objects.create(
             subject_visit=subject_visit,
-            report_datetime=get_utcnow(),
-            referral_date=get_utcnow() - relativedelta(days=1),
+            report_datetime=followup_datetime,
+            referral_date=referral_datetime.date(),
             attended=NO,
             on_dm_medications=NO,
         )

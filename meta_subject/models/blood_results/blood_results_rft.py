@@ -1,4 +1,5 @@
 from django.db import models
+from edc_crf.model_mixins import CrfStatusModelMixin
 from edc_egfr.model_mixins import EgfrModelMixin
 from edc_lab.model_mixins import CrfWithRequisitionModelMixin, requisition_fk_options
 from edc_lab_panel.panels import rft_panel
@@ -22,6 +23,7 @@ class BloodResultsRft(
     UricAcidModelMixin,
     CrfWithRequisitionModelMixin,
     BloodResultsModelMixin,
+    CrfStatusModelMixin,
     BaseUuidModel,
 ):
     action_name = BLOOD_RESULTS_RFT_ACTION

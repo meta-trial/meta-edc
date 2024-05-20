@@ -42,6 +42,20 @@ class HealthEconomicsRuleGroup(CrfRuleGroup):
 
 
 @register()
+class HealthEconomicsUpdateRuleGroup(CrfRuleGroup):
+    hecon = CrfRule(
+        predicate=pc.health_economics_update_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["healtheconomicsupdate"],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"
+
+
+@register()
 class HbA1cCrfRuleGroup(CrfRuleGroup):
     hba1c = CrfRule(
         predicate=pc.hba1c_crf_required,

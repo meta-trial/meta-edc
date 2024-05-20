@@ -11,6 +11,7 @@ from .models import (
     BirthOutcomes,
     Delivery,
     FollowupExamination,
+    HealthEconomicsUpdate,
     MedicationAdherence,
     SubjectRequisition,
     SubjectVisit,
@@ -102,4 +103,9 @@ birthoutcomes = Recipe(
     birth_order=1,
     birth_outcome=LIVE_AT_TERM,
     birth_weight=320,
+)
+
+healtheconomicsupdate = Recipe(
+    HealthEconomicsUpdate,
+    report_datetime=get_utcnow(),
 )

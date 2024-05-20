@@ -3,8 +3,8 @@ from edc_action_item.forms import ActionItemCrfFormMixin
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_model_fields.widgets import SliderWidget
 
-from ..form_validators import DmFollowupFormValidator
-from ..models import DmFollowup
+from ...form_validators import DmFollowupFormValidator
+from ...models import DmFollowup
 
 
 class DmFollowupForm(CrfModelFormMixin, ActionItemCrfFormMixin, forms.ModelForm):

@@ -86,6 +86,7 @@ crfs_3m = CrfCollection(
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
     Crf(show_order=470, model="meta_subject.mnsi", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate"),
     name="3m",
 )
 
@@ -102,6 +103,7 @@ crfs_6m = CrfCollection(
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
     Crf(show_order=470, model="meta_subject.mnsi", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="6m",
 )
 
@@ -114,6 +116,7 @@ crfs_9m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="9m",
 )
 
@@ -130,6 +133,7 @@ crfs_12m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="12m",
 )
 
@@ -142,6 +146,7 @@ crfs_15m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="15m",
 )
 
@@ -155,6 +160,7 @@ crfs_18m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="18m",
 )
 
@@ -167,6 +173,7 @@ crfs_21m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="21m",
 )
 
@@ -183,6 +190,7 @@ crfs_24m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="24m",
 )
 
@@ -195,6 +203,7 @@ crfs_27m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="27m",
 )
 
@@ -210,6 +219,7 @@ crfs_30m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="30m",
 )
 
@@ -222,6 +232,7 @@ crfs_33m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="33m",
 )
 
@@ -238,5 +249,6 @@ crfs_36m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="36m",
 )
