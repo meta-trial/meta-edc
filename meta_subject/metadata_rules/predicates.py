@@ -173,6 +173,28 @@ class Predicates(PersistantSingletonMixin):
                 required = True
         return required
 
+    def health_economics_update_required(self, visit, **kwargs) -> bool:
+        """Returns true if `healtheconomicsupdate` was not completed at
+        month 3 or ever.
+
+        `healtheconomicsupdate` is a singleton CRF.
+        """
+        required = False
+        model_cls = django_apps.get_model(f"{self.app_label}.healtheconomicsupdate")
+        try:
+            obj = model_cls.objects.get(
+                subject_visit__subject_identifier=visit.subject_identifier,
+            )
+        except ObjectDoesNotExist:
+            obj = None
+        if (
+            not obj
+            and visit.appointment.visit_code_sequence == 0
+            and visit.appointment.visit_code not in [DAY1, WEEK2, MONTH1]
+        ):
+            required = True
+        return required
+
     def mnsi_required(self, visit, **kwargs) -> bool:
         """Returns True if MNSI assessment was not performed at the
         1M, 3M or 6M visits.

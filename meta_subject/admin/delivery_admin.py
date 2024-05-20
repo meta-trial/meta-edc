@@ -109,7 +109,6 @@ class DeliveryAdmin(
     search_fields = (
         "subject_visit__subject_identifier",
         "action_identifier",
-        "tracking_identifier",
     )
 
     @admin.display

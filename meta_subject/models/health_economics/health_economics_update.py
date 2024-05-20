@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.translation import gettext as _
 from edc_constants.choices import YES_NO
 from edc_constants.constants import NOT_APPLICABLE
+from edc_crf.model_mixins import SingletonCrfModelMixin
 from edc_he.choices import RELATIONSHIP_CHOICES, STATUS
 from edc_he.model_mixins import HouseholdModelMixin, income_model_mixin_factory
 from edc_model.models import BaseUuidModel
@@ -21,6 +22,7 @@ class HealthEconomicsUpdate(
             ),
         }
     ),
+    SingletonCrfModelMixin,
     CrfModelMixin,
     BaseUuidModel,
 ):

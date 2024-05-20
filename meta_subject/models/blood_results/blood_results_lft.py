@@ -1,4 +1,5 @@
 from django.db import models
+from edc_crf.model_mixins import CrfStatusModelMixin
 from edc_lab.model_mixins import CrfWithRequisitionModelMixin, requisition_fk_options
 from edc_lab_panel.panels import lft_panel
 from edc_lab_results import BLOOD_RESULTS_LFT_ACTION
@@ -26,6 +27,7 @@ class BloodResultsLft(
     GgtModelMixin,
     CrfWithRequisitionModelMixin,
     BloodResultsModelMixin,
+    CrfStatusModelMixin,
     BaseUuidModel,
 ):
     action_name = BLOOD_RESULTS_LFT_ACTION

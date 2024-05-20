@@ -1,70 +1,59 @@
-from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from edc_constants.choices import FASTING_CHOICES
-from edc_constants.constants import EQ, FASTING
-from edc_glucose.constants import GLUCOSE_HIGH_READING
-from edc_lab.choices import RESULT_QUANTIFIER
-from edc_lab_panel.model_mixin_factory import reportable_result_model_mixin_factory
-from edc_model.models import BaseUuidModel
-from edc_model.validators import datetime_not_future
-from edc_reportable import (
-    MILLIGRAMS_PER_DECILITER,
-    MILLIMOLES_PER_LITER,
-    MILLIMOLES_PER_LITER_DISPLAY,
+from edc_constants.choices import YES_NO
+from edc_constants.constants import NO
+from edc_glucose.model_mixins import (
+    fasting_model_mixin_factory,
+    fbg_model_mixin_factory,
 )
+from edc_model.models import BaseUuidModel
 
 from ..model_mixins import CrfModelMixin
 
 
-class GlucoseModelMixin(
-    reportable_result_model_mixin_factory(
-        utest_id="glucose",
-        verbose_name="Glucose",
-        units_choices=(
-            (MILLIGRAMS_PER_DECILITER, MILLIGRAMS_PER_DECILITER),
-            (MILLIMOLES_PER_LITER, MILLIMOLES_PER_LITER_DISPLAY),
-        ),
-        decimal_places=2,
-        validators=[MinValueValidator(1.00), MaxValueValidator(GLUCOSE_HIGH_READING)],
-        exclude_attrs_for_reportable=True,
-    ),
-    models.Model,
-):
-    fasting = models.CharField(
-        verbose_name="Was this fasting or non-fasting?",
-        max_length=25,
-        choices=FASTING_CHOICES,
-        null=True,
-        blank=False,
-    )
-
-    glucose_quantifier = models.CharField(
-        max_length=10,
-        choices=RESULT_QUANTIFIER,
-        default=EQ,
-    )
-
-    def get_summary_options(self) -> dict:
-        opts = super().get_summary_options()  # noqa
-        fasting = True if self.fasting == FASTING else False
-        opts.update(fasting=fasting)
-        return opts
-
-    class Meta:
-        abstract = True
-
-
 class GlucoseFbg(
     CrfModelMixin,
-    GlucoseModelMixin,
+    fasting_model_mixin_factory(
+        None,
+        fasting=models.CharField(
+            verbose_name="Has the participant fasted?",
+            max_length=15,
+            choices=YES_NO,
+            null=True,
+            blank=False,
+            help_text="As reported by patient",
+        ),
+    ),
+    fbg_model_mixin_factory("fbg"),
     BaseUuidModel,
 ):
 
-    assay_datetime = models.DateTimeField(
-        verbose_name="Result date and time",
-        validators=[datetime_not_future],
+    fbg_performed = models.CharField(
+        verbose_name="Was the FBG test performed?",
+        max_length=15,
+        choices=YES_NO,
+    )
+
+    fbg_not_performed_reason = models.CharField(
+        verbose_name="If NO, provide reason",
+        max_length=150,
         null=True,
         blank=True,
+    )
+
+    fasting_duration_estimated = models.CharField(
+        max_length=15,
+        default=NO,
+        editable=False,
+        help_text=(
+            "Set to YES for existing values before duration "
+            "question was added to the form, otherwise NO"
+        ),
+    )
+
+    repeat_fbg_date = models.DateField(
+        null=True,
+        blank=True,
+        help_text="Date should be within 1 week of report date",
     )
 
     class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):

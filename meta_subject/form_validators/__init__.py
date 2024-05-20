@@ -1,5 +1,6 @@
 from .birth_outcomes_form_validator import BirthOutcomesFormValidator
 from .delivery_form_validator import DeliveryFormValidator
+from .dm_diagnosis_form_validator import DmDiagnosisFormValidator
 from .dm_followup_form_validator import DmFollowupFormValidator
 from .egfr_drop_notification_form_validator import EgfrDropNotificationFormValidator
 from .followup_examination_form_validator import FollowupExaminationFormValidator

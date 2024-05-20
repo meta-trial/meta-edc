@@ -32,7 +32,7 @@ class GlucoseAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
             },
         ),
         (
-            "FBG",
+            "Blood Glucose",
             {
                 "fields": (
                     "fbg_performed",

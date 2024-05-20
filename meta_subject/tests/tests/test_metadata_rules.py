@@ -1,5 +1,5 @@
 from dateutil.relativedelta import relativedelta
-from django.test import TestCase
+from django.test import TestCase, tag
 from edc_appointment.models import Appointment
 from edc_constants.constants import FEMALE, MALE, YES
 from edc_utils import get_utcnow
@@ -10,7 +10,7 @@ from meta_consent.models import SubjectConsent
 from meta_screening.models import SubjectScreening
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_subject.forms import FollowupExaminationForm
-from meta_visit_schedule.constants import DELIVERY, SCHEDULE_PREGNANCY
+from meta_visit_schedule.constants import DELIVERY, MONTH3, SCHEDULE_PREGNANCY
 
 
 class TestMetadataRules(MetaTestCaseMixin, TestCase):
@@ -101,5 +101,35 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
         )
         self.assertEqual(
             ["meta_subject.delivery"],
+            [obj.model for obj in self.get_crf_metadata(subject_visit)],
+        )
+
+    @tag("4")
+    def test_health_economics_update_required(self):
+        """Assert healtheconomicsupdate is required starting w/1030"""
+        self.subject_visit = self.get_subject_visit(gender=FEMALE)
+        subject_visit = self.get_next_subject_visit(self.subject_visit)
+        subject_visit = self.get_next_subject_visit(subject_visit)
+        subject_visit = self.get_next_subject_visit(subject_visit)
+        self.assertEqual(subject_visit.visit_code, MONTH3)
+        self.assertIn(
+            "meta_subject.healtheconomicsupdate",
+            [obj.model for obj in self.get_crf_metadata(subject_visit)],
+        )
+
+        subject_visit = self.get_next_subject_visit(subject_visit)
+        self.assertIn(
+            "meta_subject.healtheconomicsupdate",
+            [obj.model for obj in self.get_crf_metadata(subject_visit)],
+        )
+        make_recipe(
+            "meta_subject.healtheconomicsupdate",
+            subject_visit=subject_visit,
+            report_datetime=subject_visit.report_datetime,
+        )
+
+        subject_visit = self.get_next_subject_visit(subject_visit)
+        self.assertNotIn(
+            "meta_subject.healtheconomicsupdate",
             [obj.model for obj in self.get_crf_metadata(subject_visit)],
         )
