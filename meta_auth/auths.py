@@ -26,7 +26,14 @@ from edc_screening.auth_objects import SCREENING, SCREENING_SUPER, SCREENING_VIE
 from edc_subject_dashboard.auths import SUBJECT_VIEW
 from edc_unblinding.auth_objects import UNBLINDING_REQUESTORS
 
-from .auth_objects import clinic_codenames, screening_codenames
+from .auth_objects import (
+    META_REPORTS,
+    clinic_codenames,
+    reports_codenames,
+    screening_codenames,
+)
+
+site_auths.add_group(*reports_codenames, name=META_REPORTS, view_only=True)
 
 # update edc_auth default groups
 site_auths.update_group(*clinic_codenames, name=AUDITOR, view_only=True)
@@ -42,6 +49,7 @@ site_auths.update_role(
     MNSI,
     QOL,
     PHARMACY_PRESCRIBER,
+    META_REPORTS,
     name=CLINICIAN_ROLE,
 )
 site_auths.update_role(
@@ -49,10 +57,11 @@ site_auths.update_role(
     QOL_SUPER,
     UNBLINDING_REQUESTORS,
     PHARMACY_PRESCRIBER,
+    META_REPORTS,
     name=CLINICIAN_SUPER_ROLE,
 )
 site_auths.update_role(MNSI, QOL, name=NURSE_ROLE)
-site_auths.update_role(MNSI_VIEW, QOL_VIEW, name=AUDITOR_ROLE)
+site_auths.update_role(MNSI_VIEW, QOL_VIEW, META_REPORTS, name=AUDITOR_ROLE)
 site_auths.update_role(
     ACTION_ITEM_EXPORT,
     APPOINTMENT_EXPORT,
@@ -61,7 +70,7 @@ site_auths.update_role(
 )
 site_auths.update_role(RANDO_UNBLINDED, PII, name=PHARMACIST_ROLE)
 site_auths.update_role(RANDO_BLINDED, PII, name=SITE_PHARMACIST_ROLE)
-site_auths.update_role(SUBJECT_VIEW, SCREENING_VIEW, name=DATA_MANAGER_ROLE)
+site_auths.update_role(SUBJECT_VIEW, SCREENING_VIEW, META_REPORTS, name=DATA_MANAGER_ROLE)
 site_auths.update_role(
     SUBJECT_VIEW, SCREENING_VIEW, ACTION_ITEM, UNBLINDING_REQUESTORS, name=TMG_ROLE
 )

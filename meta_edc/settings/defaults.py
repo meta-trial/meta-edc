@@ -157,6 +157,7 @@ INSTALLED_APPS = [
     "meta_dashboard.apps.AppConfig",
     "meta_labs.apps.AppConfig",
     "meta_subject.apps.AppConfig",
+    "meta_reports.apps.AppConfig",
     "meta_visit_schedule.apps.AppConfig",
     "meta_ae.apps.AppConfig",
     "meta_auth.apps.AppConfig",

@@ -1,3 +1,4 @@
+from .appointment_admin import AppointmentAdmin
 from .autocomplete_admin import ArvRegimensAdmin
 from .birth_outcome_admin import BirthOutcomesAdmin
 from .blood_results import (
