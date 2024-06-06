@@ -4,11 +4,11 @@ from edc_model_admin.mixins import TemplatesModelAdminMixin
 from edc_sites.admin import SiteModelAdminMixin
 
 from ...admin_site import meta_reports_admin
-from ...models import UnattendedTwoInRow
+from ...models import UnattendedThreeInRow2
 
 
-@admin.register(UnattendedTwoInRow, site=meta_reports_admin)
-class UnattendedTwoInRowAdmin(
+@admin.register(UnattendedThreeInRow2, site=meta_reports_admin)
+class UnattendedThreeInRow2Admin(
     SiteModelAdminMixin, ModelAdminDashboardMixin, TemplatesModelAdminMixin, admin.ModelAdmin
 ):
     list_display = [
@@ -16,12 +16,14 @@ class UnattendedTwoInRowAdmin(
         "subject_identifier",
         "first",
         "second",
+        "third",
         "interval_days",
         "from_now_days",
         "site",
+        "missed_count",
         "created",
     ]
 
-    list_filter = ["first", "second"]
+    list_filter = ["missed_count", "first", "second", "third"]
 
-    search_fields = ["subject_identifier", "first", "second"]
+    search_fields = ["subject_identifier", "first", "second", "third"]

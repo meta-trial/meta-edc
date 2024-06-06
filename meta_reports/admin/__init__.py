@@ -1,1 +1,5 @@
-from .db_views import UnattendedThreeInRowAdmin, UnattendedTwoInRowAdmin
+from .db_views import (
+    UnattendedThreeInRow2Admin,
+    UnattendedThreeInRowAdmin,
+    UnattendedTwoInRowAdmin,
+)

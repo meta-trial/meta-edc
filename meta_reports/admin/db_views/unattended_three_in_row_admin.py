@@ -20,6 +20,9 @@ class UnattendedThreeInRowAdmin(
         "interval_days",
         "from_now_days",
         "site",
+        "created",
     ]
 
     list_filter = ["first", "second", "third"]
+
+    search_fields = ["subject_identifier", "first", "second", "third"]

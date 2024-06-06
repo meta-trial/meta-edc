@@ -1,1 +1,1 @@
-from .unmanaged import UnattendedThreeInRow, UnattendedTwoInRow
+from .unmanaged import UnattendedThreeInRow, UnattendedThreeInRow2, UnattendedTwoInRow
