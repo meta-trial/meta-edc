@@ -26,5 +26,5 @@ class UnattendedThreeInRow2(models.Model):
     class Meta:
         managed = False
         db_table = "unattended_three_in_row2_view"
-        verbose_name = "Unattended: Three in a row (with missed)"
-        verbose_name_plural = "Unattended: Three in a row (with missed)"
+        verbose_name = "R110: Unattended appointments: Three in a row (with missed)"
+        verbose_name_plural = "R110: Unattended appointments: Three in a row (with missed)"

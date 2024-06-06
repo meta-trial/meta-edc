@@ -11,6 +11,7 @@ from ...models import UnattendedThreeInRow2
 class UnattendedThreeInRow2Admin(
     SiteModelAdminMixin, ModelAdminDashboardMixin, TemplatesModelAdminMixin, admin.ModelAdmin
 ):
+    ordering = ["site", "subject_identifier"]
     list_display = [
         "dashboard",
         "subject_identifier",

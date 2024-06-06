@@ -24,5 +24,5 @@ class UnattendedTwoInRow(models.Model):
     class Meta:
         managed = False
         db_table = "unattended_two_in_row_view"
-        verbose_name = "Unattended: Two in a row"
-        verbose_name_plural = "Unattended: Two in a row"
+        verbose_name = "R120: Unattended appointments: Two in a row"
+        verbose_name_plural = "R120: Unattended appointments: Two in a row"
