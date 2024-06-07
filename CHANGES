@@ -1,6 +1,19 @@
 Changes
 -------
 
+0.3.16
+------
+- add Meta Reports section with unmanaged models for
+  DB VIEWS looking at sequentially missed and
+  unattended appointments.
+- add visits to main META visit schedule up to 48M
+- update/correct metadata rule to reflect when required:
+  "Glucose FBG/OGTT": MONTH12, MONTH24, MONTH36, MONTH48
+  "Glucose FBG Only": MONTH6, MONTH18, MONTH30, MONTH42
+  "Glucose FBG Only" rule applies for visits after
+  4MAR2024.
+- bump edc==0.5.91
+
 0.3.15
 ------
 - add 'Account Management' link to home page ListGroup
