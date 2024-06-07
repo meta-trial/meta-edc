@@ -20,6 +20,10 @@ from ...constants import (
     MONTH30,
     MONTH33,
     MONTH36,
+    MONTH39,
+    MONTH42,
+    MONTH45,
+    MONTH48,
     SCHEDULE,
     WEEK2,
 )
@@ -37,6 +41,10 @@ from .crfs import (
     crfs_30m,
     crfs_33m,
     crfs_36m,
+    crfs_39m,
+    crfs_42m,
+    crfs_45m,
+    crfs_48m,
     crfs_d1,
     crfs_missed,
 )
@@ -57,6 +65,10 @@ from .requisitions import (
     requisitions_30m,
     requisitions_33m,
     requisitions_36m,
+    requisitions_39m,
+    requisitions_42m,
+    requisitions_45m,
+    requisitions_48m,
     requisitions_d1,
 )
 from .requisitions import requisitions_prn as default_requisitions_prn
@@ -280,6 +292,53 @@ visit36 = Visit(
     facility_name=FIVE_DAY_CLINIC,
 )
 
+visit39 = Visit(
+    code=MONTH39,
+    title="Month 39",
+    timepoint=15,
+    rbase=relativedelta(months=39),
+    rlower=relativedelta(months=1),
+    rupper=relativedelta(months=2),
+    requisitions=requisitions_39m,
+    crfs=crfs_39m,
+    facility_name=FIVE_DAY_CLINIC,
+)
+
+visit42 = Visit(
+    code=MONTH42,
+    title="Month 42",
+    timepoint=16,
+    rbase=relativedelta(months=42),
+    rlower=relativedelta(months=1),
+    rupper=relativedelta(months=2),
+    requisitions=requisitions_42m,
+    crfs=crfs_42m,
+    facility_name=FIVE_DAY_CLINIC,
+)
+
+visit45 = Visit(
+    code=MONTH45,
+    title="Month 45",
+    timepoint=17,
+    rbase=relativedelta(months=45),
+    rlower=relativedelta(months=1),
+    rupper=relativedelta(months=2),
+    requisitions=requisitions_45m,
+    crfs=crfs_45m,
+    facility_name=FIVE_DAY_CLINIC,
+)
+
+visit48 = Visit(
+    code=MONTH48,
+    title="Month 48",
+    timepoint=18,
+    rbase=relativedelta(months=48),
+    rlower=relativedelta(months=1),
+    rupper=relativedelta(months=3),
+    requisitions=requisitions_48m,
+    crfs=crfs_48m,
+    facility_name=FIVE_DAY_CLINIC,
+)
 
 visits = [
     visit000,
@@ -297,6 +356,10 @@ visits = [
     visit30,
     visit33,
     visit36,
+    visit39,
+    visit42,
+    visit45,
+    visit48,
 ]
 for visit in visits:
     schedule.add_visit(visit=visit)

@@ -52,6 +52,10 @@ class TestVisitSchedule(TestCase):
                     "1300",
                     "1330",
                     "1360",
+                    "1390",
+                    "1420",
+                    "1450",
+                    "1480",
                 ],
                 [visit for visit in schedule.visits],
             )

@@ -12,13 +12,17 @@ from edc_visit_schedule.constants import (
     MONTH1,
     MONTH3,
     MONTH6,
+    MONTH12,
     MONTH18,
     MONTH24,
     MONTH30,
     MONTH36,
+    MONTH48,
     WEEK2,
 )
 from edc_visit_schedule.utils import is_baseline
+
+from meta_visit_schedule.constants import MONTH42
 
 
 def hba1c_crf_required_at_baseline(visit):
@@ -67,8 +71,14 @@ class Predicates(PersistantSingletonMixin):
 
     @staticmethod
     def glucose_required(visit, **kwargs):
-        if visit.report_datetime >= datetime(2023, 11, 24, tzinfo=ZoneInfo("UTC")):
-            if visit.visit_code in [MONTH6, MONTH18, MONTH24, MONTH30, MONTH36]:
+        if visit.visit_code in [MONTH12, MONTH24, MONTH36, MONTH48]:
+            return True
+        return False
+
+    @staticmethod
+    def glucose_fbg_required(visit, **kwargs):
+        if visit.report_datetime >= datetime(2024, 3, 4, tzinfo=ZoneInfo("UTC")):
+            if visit.visit_code in [MONTH6, MONTH18, MONTH30, MONTH42]:
                 return True
         return False
 

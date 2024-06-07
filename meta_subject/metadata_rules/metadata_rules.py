@@ -22,6 +22,13 @@ class GlucoseRuleGroup(CrfRuleGroup):
         target_models=["glucose"],
     )
 
+    glucose_fbg = CrfRule(
+        predicate=pc.glucose_fbg_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["glucosefbg"],
+    )
+
     class Meta:
         app_label = "meta_subject"
         source_model = "meta_subject.subjectvisit"

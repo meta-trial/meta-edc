@@ -89,3 +89,15 @@ requisitions_36m = RequisitionCollection(
     Requisition(show_order=60, panel=fbc_panel, required=True, additional=False),
     name="requisitions_month36",
 )
+
+requisitions_39m = RequisitionCollection(name="requisitions_month39")
+requisitions_42m = RequisitionCollection(name="requisitions_month42")
+requisitions_45m = RequisitionCollection(name="requisitions_month45")
+
+requisitions_48m = RequisitionCollection(
+    Requisition(show_order=30, panel=rft_panel, required=True, additional=False),
+    Requisition(show_order=40, panel=lft_panel, required=True, additional=False),
+    Requisition(show_order=50, panel=lipids_panel, required=True, additional=False),
+    Requisition(show_order=60, panel=fbc_panel, required=True, additional=False),
+    name="requisitions_month48",
+)

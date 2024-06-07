@@ -252,3 +252,59 @@ crfs_36m = CrfCollection(
     Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="36m",
 )
+
+crfs_39m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=155, model="meta_subject.glucose", required=False),
+    Crf(show_order=200, model="meta_subject.glucosefbg"),
+    Crf(show_order=300, model="meta_subject.studymedication"),
+    Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
+    Crf(show_order=465, model="meta_subject.sf12", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
+    name="39m",
+)
+
+crfs_42m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=155, model="meta_subject.glucose", required=False),
+    Crf(show_order=200, model="meta_subject.glucosefbg"),
+    Crf(show_order=300, model="meta_subject.studymedication"),
+    Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
+    Crf(show_order=465, model="meta_subject.sf12", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
+    name="42m",
+)
+
+crfs_45m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=155, model="meta_subject.glucose", required=False),
+    Crf(show_order=200, model="meta_subject.glucosefbg"),
+    Crf(show_order=300, model="meta_subject.studymedication"),
+    Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
+    Crf(show_order=465, model="meta_subject.sf12", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
+    name="45m",
+)
+
+crfs_48m = CrfCollection(
+    Crf(show_order=100, model="meta_subject.followupvitals"),
+    Crf(show_order=150, model="meta_subject.followupexamination"),
+    Crf(show_order=200, model="meta_subject.glucose"),
+    Crf(show_order=210, model="meta_subject.bloodresultshba1c"),
+    Crf(show_order=220, model="meta_subject.bloodresultsrft"),
+    Crf(show_order=230, model="meta_subject.bloodresultslft"),
+    Crf(show_order=240, model="meta_subject.bloodresultsfbc"),
+    Crf(show_order=250, model="meta_subject.bloodresultslipid"),
+    Crf(show_order=300, model="meta_subject.studymedication"),
+    Crf(show_order=310, model="meta_subject.medicationadherence"),
+    Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
+    Crf(show_order=465, model="meta_subject.sf12", required=False),
+    Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
+    name="48m",
+)
