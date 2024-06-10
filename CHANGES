@@ -1,6 +1,12 @@
 Changes
 -------
 
+0.3.17
+------
+- updated edc version provides additional listfilters for
+  appointment model changelist.
+- bump edc==0.5.92
+
 0.3.16
 ------
 - add Meta Reports section with unmanaged models for
