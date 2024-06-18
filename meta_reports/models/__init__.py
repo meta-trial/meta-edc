@@ -1,1 +1,6 @@
-from .unmanaged import UnattendedThreeInRow, UnattendedThreeInRow2, UnattendedTwoInRow
+from .unmanaged import (
+    PatientHistoryMissingBaselineCd4,
+    UnattendedThreeInRow,
+    UnattendedThreeInRow2,
+    UnattendedTwoInRow,
+)

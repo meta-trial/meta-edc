@@ -3,11 +3,14 @@ from edc_auth.get_app_codenames import get_app_codenames
 
 META_REPORTS = "META_REPORTS"
 
+
 clinic_codenames = get_app_codenames(
     "meta_prn", "meta_subject", "meta_consent", list_app="meta_lists"
 )
 
-reports_codenames = get_app_codenames("meta_reports")
+
+reports_codenames = [c for c in get_app_codenames("meta_reports")]
+
 
 add_perms = []
 if not settings.LIVE_SYSTEM:

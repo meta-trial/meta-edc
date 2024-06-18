@@ -151,6 +151,7 @@ INSTALLED_APPS = [
     "edc_unblinding.apps.AppConfig",
     "edc_form_describer.apps.AppConfig",
     "edc_dx.apps.AppConfig",
+    "edc_qareports.apps.AppConfig",
     "meta_consent.apps.AppConfig",
     "meta_data_manager.apps.AppConfig",
     "meta_lists.apps.AppConfig",
