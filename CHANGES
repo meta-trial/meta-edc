@@ -1,6 +1,11 @@
 Changes
 -------
 
+0.3.18
+------
+- add edc-qareports as a dependency and use in meta_reports
+- bump edc==0.5.93
+
 0.3.17
 ------
 - updated edc version provides additional listfilters for
