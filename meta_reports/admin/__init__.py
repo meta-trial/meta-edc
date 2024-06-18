@@ -1,4 +1,5 @@
-from .db_views import (
+from .unmanaged import (
+    PatientHistoryMissingBaselineCd4Admin,
     UnattendedThreeInRow2Admin,
     UnattendedThreeInRowAdmin,
     UnattendedTwoInRowAdmin,

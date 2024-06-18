@@ -35,6 +35,7 @@ class PhysicalExam(
         validators=[MinValueValidator(50.0), MaxValueValidator(175.0)],
         help_text="in centimeters",
         null=True,
+        blank=True,
     )
 
     jaundice = models.CharField(verbose_name="Jaundice?", max_length=15, choices=YES_NO)

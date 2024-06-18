@@ -1,13 +1,8 @@
-from django.contrib.sites.models import Site
 from django.db import models
-from django.db.models import PROTECT
+from edc_qareports.models import QaReportModelMixin
 
 
-class UnattendedThreeInRow2(models.Model):
-
-    subject_identifier = models.CharField(max_length=25)
-
-    site = models.ForeignKey(Site, on_delete=PROTECT)
+class UnattendedThreeInRow2(QaReportModelMixin, models.Model):
 
     first = models.CharField(max_length=25)
 
@@ -20,8 +15,6 @@ class UnattendedThreeInRow2(models.Model):
     from_now_days = models.IntegerField()
 
     missed_count = models.IntegerField()
-
-    created = models.DateTimeField()
 
     class Meta:
         managed = False

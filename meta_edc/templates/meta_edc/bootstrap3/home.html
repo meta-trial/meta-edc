@@ -56,6 +56,9 @@ a { cursor: pointer; }
       {% if perms.edc_data_manager.nav_data_manager_section %}
         <a href="{% url 'edc_data_manager:home_url' %}" class="list-group-item"><i class="fas fa-database fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Data Management</a>
       {% endif %}
+      {% if perms.edc_qareports.nav_qareports_section %}
+        <a href="{% url 'meta_reports:home_url' %}" class="list-group-item"><i class="fa-solid fa-stroopwafel fa-lg fa-fw"></i></i>&nbsp;&nbsp;&nbsp;QA Reports</a>
+      {% endif %}
       {% if perms.edc_navbar.nav_pharmacy_section %}
         <a href="{% url edc_randomization_url_name %}" class="list-group-item"><i class="fas fa-medkit fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Pharmacy</a>
       {% endif %}

@@ -1,13 +1,8 @@
-from django.contrib.sites.models import Site
 from django.db import models
-from django.db.models import PROTECT
+from edc_qareports.models import QaReportModelMixin
 
 
-class UnattendedTwoInRow(models.Model):
-
-    subject_identifier = models.CharField(max_length=25)
-
-    site = models.ForeignKey(Site, on_delete=PROTECT)
+class UnattendedTwoInRow(QaReportModelMixin, models.Model):
 
     appt_datetime = models.DateTimeField()
 
@@ -18,8 +13,6 @@ class UnattendedTwoInRow(models.Model):
     interval_days = models.IntegerField()
 
     from_now_days = models.IntegerField()
-
-    created = models.DateTimeField()
 
     class Meta:
         managed = False
