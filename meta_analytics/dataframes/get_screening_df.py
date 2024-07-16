@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 from django_pandas.io import read_frame
 
@@ -5,48 +6,43 @@ from meta_screening.models import SubjectScreening
 from meta_subject.models import PhysicalExam, SubjectVisit
 
 
-def get_df(df=None, glucose_tested_only: bool | None = None) -> pd.DataFrame:
-    """ "Returns a DF of 5618 records"""
-    glucose_tested_only = True if glucose_tested_only is None else False
-    if not df:
+def get_screening_df(df: pd.DataFrame | None = None) -> pd.DataFrame:
+    df = pd.DataFrame() if not hasattr(df, "empty") else df
+    if df.empty:
         qs_screening = SubjectScreening.objects.all()
         df = read_frame(qs_screening)
+        df = df.drop(df[df["hiv_pos"] == "No"].index)
+        # df = df.drop(df[df["meta_phase_two"] == "Yes"].index)
 
     # convert all to float
     cols = [
-        "fbg_value",
-        "fbg2_value",
-        "ogtt_value",
-        "ogtt2_value",
-        "converted_fbg_value",
-        "converted_fbg2_value",
-        "converted_ogtt_value",
-        "converted_ogtt2_value",
-        "sys_blood_pressure_avg",
-        "dia_blood_pressure_avg",
-        "waist_circumference",
+        "age_in_years",
         "calculated_bmi_value",
+        "converted_fbg2_value",
+        "converted_fbg_value",
+        "converted_ogtt2_value",
+        "converted_ogtt_value",
+        "dia_blood_pressure_avg",
+        "fbg2_value",
+        "fbg_value",
+        "hba1c_value",
+        "ogtt2_value",
+        "ogtt_value",
+        "sys_blood_pressure_avg",
+        "waist_circumference",
     ]
     df[cols] = df[cols].apply(pd.to_numeric)
 
     # condition to include any glucose test
-    cond_glu = (
-        (df["fbg_value"].notna())
-        | (df["ogtt_value"].notna())
-        | (df["fbg2_value"].notna())
-        | (df["ogtt2_value"].notna())
-    )
 
     # has_dm fillna with unk
     df["has_dm"] = df["has_dm"].apply(lambda x: "unk" if not x else x)
+
+    na = "Not applicable, subject is not eligible based on the criteria above"
+    df["already_fasted"] = df["already_fasted"].apply(lambda x: "N/A" if x == na else x)
+
     # create a column that summarizes lives_nearby and staying_nearby_12
     df["in_catchment"] = (df["lives_nearby"] == "Yes") & (df["staying_nearby_12"] == "Yes")
-
-    # create fbg column
-    df["fbg"] = df["converted_fbg_value"]
-    df.loc[df["fbg"].notna() & df["converted_fbg2_value"].notna(), "fbg"] = df[
-        "converted_fbg2_value"
-    ]
 
     # create ogtt column
     df["ogtt"] = df["converted_ogtt_value"]
@@ -54,18 +50,31 @@ def get_df(df=None, glucose_tested_only: bool | None = None) -> pd.DataFrame:
         "converted_ogtt2_value"
     ]
 
-    # bmi
+    # create fbg column
+    df["fbg"] = df["converted_fbg_value"]
+    df.loc[df["fbg"].notna() & df["converted_fbg2_value"].notna(), "fbg"] = df[
+        "converted_fbg2_value"
+    ]
 
+    # fasting columns
+    df["fasting_fbg_hrs"] = np.nan
+    df["fasting_fbg_hrs"] = df["fasting_duration_delta"].apply(
+        lambda x: x.total_seconds() / 3600
+    )
+    df.loc[df["fbg"].notna() & df["converted_fbg2_value"].notna(), "fasting_fbg_hrs"] = df[
+        "repeat_fasting_duration_delta"
+    ].apply(lambda x: x.total_seconds() / 3600)
+    df["fasting_ogtt_hrs"] = np.nan
+    df["fasting_ogtt_hrs"] = df["fasting_duration_delta"].apply(
+        lambda x: x.total_seconds() / 3600
+    )
+    df.loc[df["ogtt"].notna() & df["converted_ogtt2_value"].notna(), "fasting_ogtt_hrs"] = df[
+        "repeat_fasting_duration_delta"
+    ].apply(lambda x: x.total_seconds() / 3600)
+
+    # bmi
     # subject SR9E8B4D has eligible part two == No but subject has a glucose value
     df.loc[(df["screening_identifier"] == "SR9E8B4D"), "eligible_part_two"] = "Yes"
-
-    if glucose_tested_only:
-        # condition where subject is eligible P1/P2 and has any type of glucose test
-        cond = (
-            (df["eligible_part_one"] == "Yes") & (df["eligible_part_two"] == "Yes") & cond_glu
-        )
-        # filter dataframe
-        df = df[cond]
 
     # merge with physical exam to get waist circumference if taken at baseline
     subject_identifiers = list(df["subject_identifier"])

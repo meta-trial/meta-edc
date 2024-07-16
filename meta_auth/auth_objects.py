@@ -2,6 +2,7 @@ from django.conf import settings
 from edc_auth.get_app_codenames import get_app_codenames
 
 META_REPORTS = "META_REPORTS"
+META_REPORTS_AUDIT = "META_REPORTS_AUDIT"
 
 
 clinic_codenames = get_app_codenames(
