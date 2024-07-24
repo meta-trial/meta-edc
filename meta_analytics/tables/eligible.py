@@ -1,7 +1,7 @@
 import pandas as pd
-from edc_pdutils.analysis.constants import N_ONLY, N_WITH_COL_PROP, N_WITH_ROW_PROP
-from edc_pdutils.analysis.row import RowDefinition, RowDefinitions
-from edc_pdutils.analysis.table import Table
+from edc_analytics.constants import N_ONLY, N_WITH_COL_PROP, N_WITH_ROW_PROP
+from edc_analytics.row import RowDefinition, RowDefinitions
+from edc_analytics.table import Table
 
 
 class EligibleP12Table(Table):

@@ -1,0 +1,15 @@
+endpoint_columns = [
+    "subject_identifier",
+    "baseline_datetime",
+    "visit_datetime",
+    "interval_in_days",
+    "visit_code",
+    "fbg_value",
+    "ogtt_value",
+    "fbg_datetime",
+    "endpoint_label",
+    "endpoint_type",
+    "endpoint",
+    "offstudy_datetime",
+    "offstudy_reason",
+]

@@ -2,7 +2,7 @@ from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
-from edc_pdutils.analysis.custom_tables import (
+from edc_analytics.custom_tables import (
     AgeTable,
     ArtTable,
     BmiTable,
