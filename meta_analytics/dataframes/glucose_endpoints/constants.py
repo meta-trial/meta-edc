@@ -7,6 +7,7 @@ endpoint_columns = [
     "fbg_value",
     "ogtt_value",
     "fbg_datetime",
+    "fasting",
     "endpoint_label",
     "endpoint_type",
     "endpoint",

@@ -38,14 +38,18 @@ def get_empty_endpoint_df() -> pd.DataFrame:
     ].apply(
         pd.to_numeric
     )
-    endpoint_df[["baseline_datetime", "visit_datetime"]] = endpoint_df[
-        ["baseline_datetime", "visit_datetime"]
-    ].apply(pd.to_datetime)
+    endpoint_df[
+        ["baseline_datetime", "visit_datetime", "fbg_datetime", "offstudy_datetime"]
+    ] = endpoint_df[
+        ["baseline_datetime", "visit_datetime", "fbg_datetime", "offstudy_datetime"]
+    ].apply(
+        pd.to_datetime
+    )
     endpoint_df["visit_code"] = endpoint_df["visit_code"].astype(float)
     return endpoint_df
 
 
-def get_unique_visit_codes(source_df) -> pd.DataFrame:
+def get_unique_visit_codes(source_df: pd.DataFrame) -> pd.DataFrame:
     codes = source_df[source_df["visit_code"] % 1 == 0]["visit_code"].value_counts().to_frame()
     codes = codes.reset_index()
     codes["visit_code"] = codes["visit_code"].astype(float)

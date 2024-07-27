@@ -1,12 +1,9 @@
 import numpy as np
 import pandas as pd
 from django_pandas.io import read_frame
+from edc_pdutils.dataframes import get_eos, get_subject_consent, get_subject_visit
 
 from meta_subject.models import Glucose, GlucoseFbg
-
-from .get_eos import get_eos
-from .get_subject_consent import get_subject_consent
-from .get_subject_visit import get_subject_visit
 
 
 def get_glucose_df() -> pd.DataFrame:
@@ -105,9 +102,9 @@ def get_glucose_df() -> pd.DataFrame:
     cols = [col for col in list(df.columns) if col.endswith("_3")]
     df.drop(columns=cols, inplace=True)
 
-    df_subject_visit = get_subject_visit()
-    df_consent = get_subject_consent()
-    df_eos = get_eos()
+    df_subject_visit = get_subject_visit("meta_subject.subjectvisit")
+    df_consent = get_subject_consent("meta_consent.subjectconsent")
+    df_eos = get_eos("meta_prn.endofstudy")
 
     df = pd.merge(df_subject_visit, df, on="subject_visit_id", how="left")
     df = pd.merge(df, df_consent, on="subject_identifier", how="left")
