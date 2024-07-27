@@ -10,7 +10,13 @@ from edc_pdutils.dataframes import (
 )
 from edc_utils import get_utcnow
 
-from .constants import CASE_EOS, endpoint_cases, endpoint_columns
+from .constants import (
+    CASE_EOS,
+    CASE_FBG_ONLY,
+    CASE_OGTT,
+    endpoint_cases,
+    endpoint_columns,
+)
 from .endpoint_by_date import EndpointByDate
 from .utils import (
     get_empty_endpoint_df,
@@ -26,8 +32,9 @@ class GlucoseEndpointsByDate:
     ogtt_threshhold = 11.1
     endpoint_cls = EndpointByDate
 
-    def __init__(self, include_fbg_only: bool | None = None):
-        self.include_fbg_only = include_fbg_only
+    def __init__(self, case_list: list[int] | None = None):
+        self.case_list = case_list or [CASE_OGTT, 2, 3, CASE_EOS]
+        self.endpoint_cases = {k: v for k, v in endpoint_cases.items() if k in self.case_list}
         self.endpoint_only_df = None
         self.fbg_only_df = get_crf(model="meta_subject.glucosefbg")
         self.fbg_only_df["source"] = "meta_subject.glucosefbg"
@@ -162,7 +169,7 @@ class GlucoseEndpointsByDate:
                 self.append_subject_to_endpoint_df(subject_df)
                 self.remove_subject_from_working_df(row)
 
-        if self.include_fbg_only:
+        if CASE_FBG_ONLY in self.endpoint_cases:
             # go back and rerun for case 5
             for index, row in self.subject_identifiers_df.iterrows():
                 subject_df = self.get_subject_df(row["subject_identifier"])
@@ -185,8 +192,8 @@ class GlucoseEndpointsByDate:
         "Case 1: flag and remove all OGTT that met threshold"
         subjects_df = self.working_df.loc[self.subjects_by_ogtt_only].copy()
         subjects_df["endpoint"] = 1
-        subjects_df["endpoint_label"] = endpoint_cases[1]
-        subjects_df["endpoint_type"] = 1
+        subjects_df["endpoint_label"] = self.endpoint_cases[CASE_OGTT]
+        subjects_df["endpoint_type"] = CASE_OGTT
         subjects_df["interval_in_days"] = np.nan
         subjects_df = subjects_df.reset_index(drop=True)
         self.append_subject_to_endpoint_df(subjects_df[endpoint_columns])
@@ -261,8 +268,8 @@ class GlucoseEndpointsByDate:
             self.working_df["offstudy_reason"] == "Patient developed diabetes"
         ].copy()
         df_eos["endpoint"] = 1
-        df_eos["endpoint_label"] = endpoint_cases[7]
-        df_eos["endpoint_type"] = 7
+        df_eos["endpoint_label"] = self.endpoint_cases[CASE_EOS]
+        df_eos["endpoint_type"] = CASE_EOS
         df_eos["interval_in_days"] = np.nan
         df_eos.reset_index(drop=True, inplace=True)
         self.append_subject_to_endpoint_df(df_eos[endpoint_columns])
@@ -346,11 +353,9 @@ class GlucoseEndpointsByDate:
         df_counts.reset_index(inplace=True)
 
         sums = {
-            "endpoint_type": [np.nan, np.nan, np.nan],
-            "endpoint_label": ["Total 1,2,3", "Total 1,2,3,7", "Total"],
+            "endpoint_type": [np.nan],
+            "endpoint_label": ["Total"],
             "count": [
-                df_counts[df_counts["endpoint_type"].isin([1, 2, 3])]["count"].sum(),
-                df_counts[df_counts["endpoint_type"].isin([1, 2, 3, CASE_EOS])]["count"].sum(),
                 df_counts["count"].sum(),
             ],
         }

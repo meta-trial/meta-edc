@@ -9,6 +9,10 @@ class EndpointTdeltaError(Exception):
     pass
 
 
+class InvalidCaseList(Exception):
+    pass
+
+
 class EndpointByDate:
     """Given all timepoints for a subject, flag the first timepoint
     where the protocol endpoint is reached.
@@ -36,6 +40,8 @@ class EndpointByDate:
         It looks for two consecutive fasted threshold FBG readings.
     """
 
+    valid_case_list = [2, 3, 4]
+
     def __init__(
         self,
         subject_df: pd.DataFrame = None,
@@ -50,6 +56,9 @@ class EndpointByDate:
         self.fbg_threshhold = fbg_threshhold
         self.ogtt_threshhold = ogtt_threshhold
         self.case_list = case_list or [2, 3]
+        if [x for x in self.case_list if x not in self.valid_case_list]:
+            raise InvalidCaseList(f"Expected any of {self.valid_case_list}. Got {case_list}.")
+        self.endpoint_cases = {k: v for k, v in endpoint_cases.items() if k in self.case_list}
         self.evaluate()
 
     def evaluate(self):
@@ -84,7 +93,7 @@ class EndpointByDate:
         ] = case
         self.subject_df.loc[
             self.subject_df["fbg_datetime"] == fbg_datetime, "endpoint_label"
-        ] = endpoint_cases[case]
+        ] = self.endpoint_cases[case]
 
     def fasting(self, index) -> bool:
         return self.get("fasting", index) == YES and self.get_next("fasting", index) == YES
