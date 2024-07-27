@@ -2,18 +2,39 @@ import numpy as np
 import pandas as pd
 from edc_constants.constants import YES
 
+from .constants import endpoint_cases
+
 
 class EndpointTdeltaError(Exception):
     pass
 
 
 class EndpointByDate:
+    """Given all timepoints for a subject, flag the first timepoint
+    where the protocol endpoint is reached.
 
-    cases = {
-        1: "FBG >= 7 x 2, second OGTT<=11.1",
-        2: "FBG >= 7 x 2, first OGTT<=11.1",
-        5: "FBG >= 7 x 2, OGTT not considered (allow missed)",
-    }
+    IMPORTANT: Remove case one before passing to this class
+        * case 1. any OGTT >= 11.1
+
+    Evaluation is done in order
+
+    Order of protocol endpoint evaluation:
+      * case 2. FBG >= 7 x 2, first OGTT<=11.1
+      * case 3.  FBG >= 7 x 2, second OGTT<=11.1
+
+    Additional criteria considered:
+      1. any threshhold FBG must be taken while fasted (fasting=YES)
+      2. threshhold FBG readings must be consecutive (no
+         readings below threshold in the sequence regardless
+         of fasting)
+      3. at least 7 days between threshhold FBG readings.
+      4. at least one of the two threshold FBG readings must be taken
+         with an OGTT at the same timepoint.
+
+    Note:
+        case 4 is not a protocol endpoint. It considers only FBG and fasting.
+        It looks for two consecutive fasted threshold FBG readings.
+    """
 
     def __init__(
         self,
@@ -28,16 +49,16 @@ class EndpointByDate:
         self.subject_df = self.subject_df.reset_index(drop=True)
         self.fbg_threshhold = fbg_threshhold
         self.ogtt_threshhold = ogtt_threshhold
-        self.case_list = case_list or [1, 2]
+        self.case_list = case_list or [2, 3]
         self.evaluate()
 
     def evaluate(self):
         for index, _ in self.subject_df.iterrows():
-            if 1 in self.case_list and self.case_one(index):
+            if 2 in self.case_list and self.case_two(index):
                 break
-            elif 2 in self.case_list and self.case_two(index):
+            elif 3 in self.case_list and self.case_three(index):
                 break
-            elif 5 in self.case_list and self.case_five(index):
+            elif 4 in self.case_list and self.case_four(index):
                 break
 
     def endpoint_reached(self, index: int, case: int, next_is_endpoint: bool | None = None):
@@ -63,31 +84,10 @@ class EndpointByDate:
         ] = case
         self.subject_df.loc[
             self.subject_df["fbg_datetime"] == fbg_datetime, "endpoint_label"
-        ] = self.cases[case]
+        ] = endpoint_cases[case]
 
     def fasting(self, index) -> bool:
         return self.get("fasting", index) == YES and self.get_next("fasting", index) == YES
-
-    def case_one(self, index: int):
-        """FBG >= 7 x 2, second OGTT<=11.1.
-
-        Second FBG must be done with corresponding OGTT.
-        """
-        reached = (
-            self.get_next("fbg_datetime", index)
-            and self.get("fbg_value", index)
-            and self.get_next("fbg_value", index)
-            and self.get_next("ogtt_value", index)
-            and self.get("fbg_value", index) >= self.fbg_threshhold
-            and self.get_next("fbg_value", index) >= self.fbg_threshhold
-            and self.get_next("ogtt_value", index) < self.ogtt_threshhold
-            and self.fasting(index)
-            and (self.get_next("fbg_datetime", index) - self.get("fbg_datetime", index)).days
-            >= 7
-        )
-        if reached:
-            self.endpoint_reached(index, case=1, next_is_endpoint=True)
-        return reached
 
     def case_two(self, index: int):
         """FBG >= 7 x 2, first OGTT<=11.1.
@@ -110,8 +110,29 @@ class EndpointByDate:
             self.endpoint_reached(index, case=2, next_is_endpoint=True)
         return reached
 
-    def case_five(self, index: int):
-        """FBG >= 7 x 2, OGTT not considered (allow missed)
+    def case_three(self, index: int):
+        """FBG >= 7 x 2, second OGTT<=11.1.
+
+        Second FBG must be done with corresponding OGTT.
+        """
+        reached = (
+            self.get_next("fbg_datetime", index)
+            and self.get("fbg_value", index)
+            and self.get_next("fbg_value", index)
+            and self.get_next("ogtt_value", index)
+            and self.get("fbg_value", index) >= self.fbg_threshhold
+            and self.get_next("fbg_value", index) >= self.fbg_threshhold
+            and self.get_next("ogtt_value", index) < self.ogtt_threshhold
+            and self.fasting(index)
+            and (self.get_next("fbg_datetime", index) - self.get("fbg_datetime", index)).days
+            >= 7
+        )
+        if reached:
+            self.endpoint_reached(index, case=3, next_is_endpoint=True)
+        return reached
+
+    def case_four(self, index: int):
+        """FBG >= 7 x 2, OGTT not considered
 
         This is not a protocol endpoint.
         """
@@ -125,7 +146,7 @@ class EndpointByDate:
             and self.fasting(index)
         )
         if reached:
-            self.endpoint_reached(index, case=5, next_is_endpoint=True)
+            self.endpoint_reached(index, case=4, next_is_endpoint=True)
         return reached
 
     def sequential_assessments_in_days(self, index) -> int:
