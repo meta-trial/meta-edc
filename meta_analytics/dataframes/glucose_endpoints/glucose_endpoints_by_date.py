@@ -8,6 +8,7 @@ from edc_pdutils.dataframes import (
     get_subject_consent,
     get_subject_visit,
 )
+from edc_utils import get_utcnow
 
 from ...constants import EOS_DM_MET, OGTT_THRESHOLD_MET
 from .constants import endpoint_columns
@@ -65,6 +66,8 @@ class GlucoseEndpointsByDate:
             [col for col in keep_cols if not col.startswith("ogtt")]
         ]
         self.df = self.df[keep_cols]
+        self.df.reset_index(drop=True)
+        self.df = self.df.copy()
 
         # normalize dates
         for col in ["fbg_datetime", "report_datetime"]:
@@ -144,7 +147,7 @@ class GlucoseEndpointsByDate:
         self.df = self.df.reset_index(drop=True)
         self.pre_filter_df()
         self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
-        self.df.reset_index(drop=True, inplace=True)
+        self.df = self.df.reset_index(drop=True)
         self.visit_codes = get_unique_visit_codes(self.df)
         self.subject_identifiers_df = get_unique_subject_identifiers(self.df)
         self.working_df = self.df.copy()
@@ -186,7 +189,7 @@ class GlucoseEndpointsByDate:
         subjects_df["endpoint_label"] = OGTT_THRESHOLD_MET
         subjects_df["endpoint_type"] = 6
         subjects_df["interval_in_days"] = np.nan
-        subjects_df.reset_index(drop=True, inplace=True)
+        subjects_df = subjects_df.reset_index(drop=True)
         self.append_subject_to_endpoint_df(subjects_df[endpoint_columns])
         self.working_df = self.working_df.drop(
             index=self.working_df.loc[
@@ -278,26 +281,25 @@ class GlucoseEndpointsByDate:
         ).dt.days
 
         print(f"Before dedup = {len(self.endpoint_df)}")
-        df = self.endpoint_df.copy()
-        df1 = df[(df["endpoint_type"] == 7) & (df["endpoint"] == 1)]
-        df1 = (
-            df1.sort_values(["subject_identifier", "fbg_datetime"])
-            .reset_index(drop=True)
-            .set_index(["subject_identifier"])
-        )
-        df1 = df1[~df1.index.duplicated(keep="last")]
-        df1.reset_index(drop=False, inplace=True)
 
-        df2 = df[(df["endpoint_type"] != 7) & (df["endpoint"] == 1)]
-        df2 = (
-            df2.sort_values(["subject_identifier", "fbg_datetime"])
-            .reset_index(drop=True)
-            .set_index(["subject_identifier"])
-        )
+        df1 = self.endpoint_df.copy()
+        df1 = df1[(df1["endpoint_type"] == 7) & (df1["endpoint"] == 1)]
+        df1 = df1.sort_values(["subject_identifier", "fbg_datetime"])
+        df1 = df1.reset_index(drop=True)
+        df1 = df1.set_index(["subject_identifier"])
+        df1 = df1[~df1.index.duplicated(keep="last")]
+        df1 = df1.reset_index(drop=False)
+
+        df2 = self.endpoint_df.copy()
+        df2 = df2[(df2["endpoint_type"] != 7) & (df2["endpoint"] == 1)]
+        df2 = df2.sort_values(["subject_identifier", "fbg_datetime"])
+        df2 = df2.reset_index(drop=True)
+        df2 = df2.set_index(["subject_identifier"])
         df2 = df2[~df2.index.duplicated(keep="first")]
-        df2.reset_index(drop=False, inplace=True)
+        df2 = df2.reset_index(drop=False)
+
         self.endpoint_only_df = pd.concat([df1, df2])
-        self.endpoint_only_df.reset_index(drop=True, inplace=True)
+        self.endpoint_only_df = self.endpoint_only_df.reset_index(drop=True)
         print(f"After dedup = {len(self.endpoint_df)}")
 
         self.df = pd.merge(
@@ -307,8 +309,8 @@ class GlucoseEndpointsByDate:
             how="left",
             suffixes=("", "_y"),
         )
-        self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
-        self.df.reset_index(drop=True, inplace=True)
+        self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
+        self.df = self.df.reset_index(drop=True)
 
     def summarize(
         self,
@@ -357,34 +359,34 @@ class GlucoseEndpointsByDate:
 
     def to_model(self, model: str | None = None):
         df = self.endpoint_only_df
-        model_cls = django_apps.get_model(model or "meta_reports.endpoints")
+        model = model or "meta_reports.endpoints"
+        now = get_utcnow()
+        model_cls = django_apps.get_model(model)
         model_cls.objects.all().delete()
-        model_cls.objects.bulk_create(
-            [
-                model_cls(
-                    subject_identifier=row["subject_identifier"],
-                    site_id=row["site"],
-                    baseline_datetime=(
-                        None if pd.isna(row["baseline_datetime"]) else row["baseline_datetime"]
-                    ),
-                    visit_code=None if pd.isna(row["visit_code"]) else row["visit_code"],
-                    fbg_value=(None if pd.isna(row["fbg_value"]) else row["fbg_value"]),
-                    ogtt_value=None if pd.isna(row["ogtt_value"]) else row["ogtt_value"],
-                    fbg_datetime=(
-                        None if pd.isna(row["fbg_datetime"]) else row["fbg_datetime"]
-                    ),
-                    fasting=(None if pd.isna(row["fasting"]) else row["fasting"]),
-                    endpoint_label=(
-                        None if pd.isna(row["endpoint_label"]) else row["endpoint_label"]
-                    ),
-                    offstudy_datetime=(
-                        None if pd.isna(row["offstudy_datetime"]) else row["offstudy_datetime"]
-                    ),
-                    offstudy_reason=(
-                        None if pd.isna(row["offstudy_reason"]) else row["offstudy_reason"]
-                    ),
-                    report_model=row["report_model"],
-                )
-                for _, row in df.iterrows()
-            ]
-        )
+        data = [
+            model_cls(
+                subject_identifier=row["subject_identifier"],
+                site_id=row["site"],
+                baseline_datetime=(
+                    None if pd.isna(row["baseline_datetime"]) else row["baseline_datetime"]
+                ),
+                visit_code=None if pd.isna(row["visit_code"]) else row["visit_code"],
+                fbg_value=(None if pd.isna(row["fbg_value"]) else row["fbg_value"]),
+                ogtt_value=None if pd.isna(row["ogtt_value"]) else row["ogtt_value"],
+                fbg_datetime=(None if pd.isna(row["fbg_datetime"]) else row["fbg_datetime"]),
+                fasting=(None if pd.isna(row["fasting"]) else row["fasting"]),
+                endpoint_label=(
+                    None if pd.isna(row["endpoint_label"]) else row["endpoint_label"]
+                ),
+                offstudy_datetime=(
+                    None if pd.isna(row["offstudy_datetime"]) else row["offstudy_datetime"]
+                ),
+                offstudy_reason=(
+                    None if pd.isna(row["offstudy_reason"]) else row["offstudy_reason"]
+                ),
+                report_model=model,
+                created=now,
+            )
+            for _, row in df.iterrows()
+        ]
+        model_cls.objects.bulk_create(data)

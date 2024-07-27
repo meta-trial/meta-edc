@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.db.models import QuerySet
 from edc_model_admin.dashboard import ModelAdminDashboardMixin
 from edc_model_admin.mixins import TemplatesModelAdminMixin
 from edc_qareports.admin import QaReportWithNoteModelAdminMixin
@@ -14,8 +13,8 @@ from ..models import Endpoints
 
 def generate_table(modeladmin, request, queryset):
     cls = GlucoseEndpointsByDate()
-    df = cls.endpoint_only_df
-    df["report_model"] = "meta_subject.endpoints"
+    cls.run()
+    cls.to_model()
 
 
 generate_table.short_description = "Regenerate report data"
@@ -31,19 +30,19 @@ class EndpointAdmin(
 ):
     actions = [generate_table]
     qa_report_list_display_insert_pos = 2
-    ordering = ["site", "subject_identifier"]
+    ordering = ["-fbg_datetime"]
     list_display = [
         "dashboard",
         "subject",
-        "visit_code",
-        "fbg_datetime",
-        "fasting",
-        "fbg_value",
-        "ogtt_value",
-        "endpoint_label",
+        "visit",
+        "fbg_date",
+        "fast",
+        "fbg",
+        "ogtt",
+        "endpoint",
+        "last_updated",
         "offstudy_datetime",
         "offstudy_reason",
-        "created",
     ]
 
     list_filter = [
@@ -53,9 +52,34 @@ class EndpointAdmin(
 
     search_fields = ["subject_identifier"]
 
-    def get_queryset(self, request) -> QuerySet:
-        qs = super().get_queryset(request)
-        cls = GlucoseEndpointsByDate()
-        df = cls.endpoint_only_df
-        df["report_model"] = "meta_subject.endpoints"
-        return qs
+    @admin.display(description="subject", ordering="subject_identifier")
+    def subject(self, obj=None):
+        return obj.subject_identifier
+
+    @admin.display(description="visit", ordering="visit_code")
+    def visit(self, obj=None):
+        return obj.visit_code
+
+    @admin.display(description="FBG DATE", ordering="fbg_datetime")
+    def fbg_date(self, obj=None):
+        return obj.fbg_datetime.date() if obj.fbg_datetime else None
+
+    @admin.display(description="FAST", ordering="fasting")
+    def fast(self, obj=None):
+        return obj.fasting
+
+    @admin.display(description="FBG", ordering="fbg_value")
+    def fbg(self, obj=None):
+        return obj.fbg_value
+
+    @admin.display(description="OGTT", ordering="ogtt_value")
+    def ogtt(self, obj=None):
+        return obj.ogtt_value
+
+    @admin.display(description="endpoint", ordering="endpoint_label")
+    def endpoint(self, obj=None):
+        return obj.endpoint_label
+
+    @admin.display(description="last_updated", ordering="created")
+    def last_updated(self, obj=None):
+        return obj.created

@@ -25,7 +25,7 @@ class EndpointByDate:
         self.row = None
         self.index = None
         self.subject_df = subject_df[subject_df["fbg_value"].notna()]
-        self.subject_df.reset_index(drop=True)
+        self.subject_df = self.subject_df.reset_index(drop=True)
         self.fbg_threshhold = fbg_threshhold
         self.ogtt_threshhold = ogtt_threshhold
         self.case_list = case_list or [1, 2]

@@ -1,5 +1,6 @@
 endpoint_columns = [
     "subject_identifier",
+    "site",
     "baseline_datetime",
     "visit_datetime",
     "interval_in_days",
