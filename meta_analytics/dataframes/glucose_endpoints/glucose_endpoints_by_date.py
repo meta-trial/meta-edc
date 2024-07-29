@@ -42,18 +42,15 @@ class GlucoseEndpointsByDate:
             columns={"fbg_fasting": "fasting", "subject_visit": "subject_visit_id"},
             inplace=True,
         )
-        self.fbg_only_df.loc[(self.fbg_only_df["fasting"] == "fasting"), "fasting"] = "Yes"
-        self.fbg_only_df.loc[(self.fbg_only_df["fasting"] == "non_fasting"), "fasting"] = "No"
+        self.fbg_only_df.loc[(self.fbg_only_df["fasting"] == "fasting"), "fasting"] = YES
+        self.fbg_only_df.loc[(self.fbg_only_df["fasting"] == "non_fasting"), "fasting"] = NO
 
         self.df = get_crf(model="meta_subject.glucose")
         self.df["source"] = "meta_subject.glucose"
 
         for dftmp in [self.fbg_only_df, self.df]:
-            dftmp["fasting_hrs"] = np.nan
-            dftmp["fasting_hrs"] = dftmp["fasting_duration_delta"].apply(
-                lambda x: x.total_seconds() / 3600
-            )
-            dftmp["fasting_hrs"] = dftmp["fasting_hrs"].apply(lambda x: 8.05 if not x else x)
+            dftmp.loc[(dftmp["fasting"] == NO), "fasting_duration_delta"] = np.nan
+            dftmp["fasting_hrs"] = dftmp["fasting_duration_delta"].dt.total_seconds() / 3600
 
         keep_cols = [
             "subject_visit_id",
@@ -151,7 +148,15 @@ class GlucoseEndpointsByDate:
 
         self.df = self.df.sort_values(by=["subject_identifier", "visit_code"])
         self.df = self.df.reset_index(drop=True)
-        self.pre_filter_df()
+
+        self.df = self.df[
+            self.df["offstudy_reason"]
+            != (
+                "Patient fulfilled late exclusion criteria (due to abnormal blood "
+                "values or raised blood pressure at enrolment"
+            )
+        ]
+
         self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
         self.df = self.df.reset_index(drop=True)
         self.visit_codes = get_unique_visit_codes(self.df)
@@ -181,16 +186,12 @@ class GlucoseEndpointsByDate:
         self.post_check_endpoint()
         self.merge_with_final_endpoints()
 
-    def pre_filter_df(self):
-        offstudy_reason = (
-            "Patient fulfilled late exclusion criteria (due to abnormal blood "
-            "values or raised blood pressure at enrolment"
-        )
-        self.df = self.df[self.df["offstudy_reason"] != offstudy_reason]
-
     def pre_check_endpoint(self):
         "Case 1: flag and remove all OGTT that met threshold"
-        subjects_df = self.working_df.loc[self.subjects_by_ogtt_only].copy()
+        subjects_df = self.working_df.loc[
+            (self.working_df["ogtt_value"] >= self.ogtt_threshhold)
+            & (self.working_df["fbg_value"].notna())
+        ].copy()
         subjects_df["endpoint"] = 1
         subjects_df["endpoint_label"] = self.endpoint_cases[CASE_OGTT]
         subjects_df["endpoint_type"] = CASE_OGTT
@@ -203,23 +204,15 @@ class GlucoseEndpointsByDate:
             ].index
         )
 
-    def subjects_by_ogtt_only(self, df):
-        """Condition for subjects with any non-null fbg and an ogtt
-        that meets the threshold.
-        """
-        return (df["ogtt_value"] >= self.ogtt_threshhold) & (df["fbg_value"].notna())
-
     def append_subject_to_endpoint_df(self, subject_df: pd.DataFrame) -> None:
         if self.endpoint_df.empty:
             self.endpoint_df = subject_df.copy()
-        elif subject_df.empty:
-            pass
         else:
             self.endpoint_df = pd.concat([self.endpoint_df, subject_df])
             self.endpoint_df = self.endpoint_df.sort_values(
                 by=["subject_identifier", "visit_code"]
             )
-            self.endpoint_df.reset_index(drop=True, inplace=True)
+            self.endpoint_df = self.endpoint_df.reset_index(drop=True)
 
     def remove_subject_from_working_df(self, row: pd.Series) -> None:
         self.working_df = self.working_df.drop(
@@ -227,7 +220,7 @@ class GlucoseEndpointsByDate:
                 self.working_df["subject_identifier"] == row["subject_identifier"]
             ].index
         )
-        self.working_df.reset_index(drop=True, inplace=True)
+        self.working_df = self.working_df.reset_index(drop=True)
 
     def get_subject_df(self, subject_identifier: str) -> pd.DataFrame:
         subject_df = self.working_df.loc[
@@ -238,6 +231,7 @@ class GlucoseEndpointsByDate:
         subject_df["endpoint_label"] = None
         subject_df["endpoint"] = 0
         subject_df = subject_df.sort_values(["subject_identifier", "fbg_datetime"])
+        subject_df = subject_df.reset_index(drop=True)
         subject_df = subject_df[endpoint_columns]
         subject_df = subject_df.merge(
             self.visit_codes,
@@ -247,8 +241,8 @@ class GlucoseEndpointsByDate:
             suffixes=["", "2"],
         )
         subject_df["subject_identifier"] = subject_identifier
-        subject_df.drop(columns=["count"], inplace=True)
-        subject_df.reset_index(drop=True, inplace=True)
+        subject_df = subject_df.drop(columns=["count"])
+        subject_df = subject_df.reset_index(drop=True)
         return subject_df
 
     def check_endpoint_by_fbg_for_subject(

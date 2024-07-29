@@ -95,9 +95,6 @@ class EndpointByDate:
             self.subject_df["fbg_datetime"] == fbg_datetime, "endpoint_label"
         ] = self.endpoint_cases[case]
 
-    def fasting(self, index) -> bool:
-        return self.get("fasting", index) == YES and self.get_next("fasting", index) == YES
-
     def case_two(self, index: int):
         """FBG >= 7 x 2, first OGTT<=11.1.
 
@@ -157,6 +154,9 @@ class EndpointByDate:
         if reached:
             self.endpoint_reached(index, case=4, next_is_endpoint=True)
         return reached
+
+    def fasting(self, index) -> bool:
+        return self.get("fasting", index) == YES and self.get_next("fasting", index) == YES
 
     def sequential_assessments_in_days(self, index) -> int:
         if not self.get_next("fbg_value", index):
