@@ -22,6 +22,6 @@ class Endpoints(QaReportModelMixin, models.Model):
 
     offstudy_reason = models.CharField(max_length=250, null=True)
 
-    class Meta:
+    class Meta(QaReportModelMixin.Meta):
         verbose_name = "Endpoints (DM)"
         verbose_name_plural = "Endpoints (DM)"

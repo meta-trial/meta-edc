@@ -1,8 +1,12 @@
+from typing import Type
+
 from django.contrib import admin
+from django.contrib.admin import SimpleListFilter
 from edc_model_admin.dashboard import ModelAdminDashboardMixin
 from edc_model_admin.mixins import TemplatesModelAdminMixin
 from edc_qareports.admin import QaReportWithNoteModelAdminMixin
 from edc_sites.admin import SiteModelAdminMixin
+from edc_sites.admin.list_filters import SiteListFilter
 from edc_visit_schedule.admin import ScheduleStatusListFilter
 
 from meta_analytics.dataframes import GlucoseEndpointsByDate
@@ -48,9 +52,15 @@ class EndpointAdmin(
     list_filter = [
         "endpoint_label",
         ScheduleStatusListFilter,
+        SiteListFilter,
     ]
 
     search_fields = ["subject_identifier"]
+
+    def get_list_filter(self, request) -> tuple[str | Type[SimpleListFilter], ...]:
+        list_filter = super().get_list_filter(request)
+        list_filter = list_filter + (SiteListFilter,)
+        return list_filter
 
     @admin.display(description="subject", ordering="subject_identifier")
     def subject(self, obj=None):

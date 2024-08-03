@@ -4,6 +4,8 @@ from typing import Type
 
 from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
+from django_audit_fields import audit_fieldset_tuple
+from edc_crf.fieldset import crf_status_fieldset
 from edc_model_admin.history import SimpleHistoryAdmin
 
 from ..admin_site import meta_subject_admin
@@ -50,6 +52,8 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
                 "fields": ("repeat_fbg_date",),
             },
         ),
+        crf_status_fieldset,
+        audit_fieldset_tuple,
     ]
 
     radio_fields = {

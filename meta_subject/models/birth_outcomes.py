@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import PROTECT, Index
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
+from edc_crf.model_mixins import CrfStatusModelMixin
 from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_offstudy.model_mixins import OffstudyCrfModelMixin
 from edc_sites.managers import CurrentSiteManager
@@ -35,7 +36,11 @@ class Manager(models.Manager):
 
 
 class BirthOutcomes(
-    SiteModelMixin, RequiresConsentFieldsModelMixin, OffstudyCrfModelMixin, BaseUuidModel
+    CrfStatusModelMixin,
+    SiteModelMixin,
+    RequiresConsentFieldsModelMixin,
+    OffstudyCrfModelMixin,
+    BaseUuidModel,
 ):
     """A user model to capture birth outcomes.
 
