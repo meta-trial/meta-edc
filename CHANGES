@@ -1,6 +1,15 @@
 Changes
 -------
 
+0.3.19
+------
+- update for changes in edc-qareports, use django_db_views for
+  unmanaged SQL views
+- add Endpoints (DM) report
+- fix error in screening dataframe prep column waist circumference
+- bump edc==0.5.99
+- Django 5.1
+
 0.3.18
 ------
 - add edc-qareports as a dependency and use in meta_reports

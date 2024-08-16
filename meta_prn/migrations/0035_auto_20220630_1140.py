@@ -18,70 +18,73 @@ def create_missing_offschedule(apps, schema_editor):
     subject_schedule_history_model_cls = apps.get_model(
         "edc_visit_schedule.subjectschedulehistory"
     )
-    action_type = action_type_model_cls.objects.get(name=OFFSCHEDULE_ACTION)
+    try:
+        action_type = action_type_model_cls.objects.get(name=OFFSCHEDULE_ACTION)
+    except ObjectDoesNotExist:
+        pass
+    else:
+        # update subject_schedule_history
+        subject_schedule_history_model_cls.objects.filter(
+            offschedule_model="meta_prn.endofstudy"
+        ).update(offschedule_model="meta_prn.offschedule")
 
-    # update subject_schedule_history
-    subject_schedule_history_model_cls.objects.filter(
-        offschedule_model="meta_prn.endofstudy"
-    ).update(offschedule_model="meta_prn.offschedule")
+        sql = (
+            "Select eos.id, eos.subject_identifier from meta_prn_endofstudy as eos "
+            "left join meta_prn_offschedule as off on eos.subject_identifier = off.subject_identifier "
+            "where off.id is null"
+        )
+        qs = eos_model_cls.objects.raw(sql)
 
-    sql = (
-        "Select eos.id, eos.subject_identifier from meta_prn_endofstudy as eos "
-        "left join meta_prn_offschedule as off on eos.subject_identifier = off.subject_identifier "
-        "where off.id is null"
-    )
-    qs = eos_model_cls.objects.raw(sql)
+        qs = [obj for obj in qs]
+        total = len(qs)
 
-    qs = [obj for obj in qs]
-    total = len(qs)
-
-    # create missing offschedule model instances
-    for eos in tqdm(qs, total=total):
-        # create action items model instances
-        tracking_identifier = uuid4().hex
-        try:
-            action_item = action_item_model_cls.objects.get(
-                subject_identifier=eos.subject_identifier, action_type=action_type
-            )
-        except ObjectDoesNotExist:
-            action_item = action_item_model_cls(
-                action_identifier=uuid4().hex.upper(),
-                subject_identifier=eos.subject_identifier,
-                action_type=action_type,
-                report_datetime=eos.offschedule_datetime,
-                priority=HIGH_PRIORITY,
-                status=NEW,
-                auto_created=True,
-                reference_model="meta_prn.offschedule",
-            )
+        # create missing offschedule model instances
+        for eos in tqdm(qs, total=total):
+            # create action items model instances
+            tracking_identifier = uuid4().hex
+            try:
+                action_item = action_item_model_cls.objects.get(
+                    subject_identifier=eos.subject_identifier, action_type=action_type
+                )
+            except ObjectDoesNotExist:
+                action_item = action_item_model_cls(
+                    action_identifier=uuid4().hex.upper(),
+                    subject_identifier=eos.subject_identifier,
+                    action_type=action_type,
+                    report_datetime=eos.offschedule_datetime,
+                    priority=HIGH_PRIORITY,
+                    status=NEW,
+                    auto_created=True,
+                    reference_model="meta_prn.offschedule",
+                )
+                action_item.save()
+                action_item.refresh_from_db()
+                if not action_item.action_identifier:
+                    raise ValueError("Action identifier cannot be null")
+            action_item.status = NEW
             action_item.save()
             action_item.refresh_from_db()
-            if not action_item.action_identifier:
-                raise ValueError("Action identifier cannot be null")
-        action_item.status = NEW
-        action_item.save()
-        action_item.refresh_from_db()
-        offschedule = offschedule_model_cls(
-            subject_identifier=eos.subject_identifier,
-            action_identifier=action_item.action_identifier,
-            tracking_identifier=tracking_identifier,
-            action_item=action_item,
-            report_datetime=eos.offschedule_datetime,
-            offschedule_datetime=eos.offschedule_datetime,
-            site_id=eos.site.id,
-        )
-        action_item.status = CLOSED
-        action_item.save()
-        offschedule.save()
-        eos.parent_action_item = action_item
-        eos.action_item.status = NEW
-        eos.action_item.save()
-        eos.action_item.refresh_from_db()
-        eos.refresh_from_db()
-        eos.save()
+            offschedule = offschedule_model_cls(
+                subject_identifier=eos.subject_identifier,
+                action_identifier=action_item.action_identifier,
+                tracking_identifier=tracking_identifier,
+                action_item=action_item,
+                report_datetime=eos.offschedule_datetime,
+                offschedule_datetime=eos.offschedule_datetime,
+                site_id=eos.site.id,
+            )
+            action_item.status = CLOSED
+            action_item.save()
+            offschedule.save()
+            eos.parent_action_item = action_item
+            eos.action_item.status = NEW
+            eos.action_item.save()
+            eos.action_item.refresh_from_db()
+            eos.refresh_from_db()
+            eos.save()
 
-    for obj in eos_model_cls.objects.all():
-        obj.save()
+        for obj in eos_model_cls.objects.all():
+            obj.save()
 
 
 class Migration(migrations.Migration):

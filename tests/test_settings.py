@@ -14,19 +14,22 @@ from meta_edc.meta_version import PHASE_THREE
 
 LANG_INFO = dict(locale.LANG_INFO, **EXTRA_LANG_INFO)
 locale.LANG_INFO = LANG_INFO
-LANGUAGE_LIST = ["sw", "en-gb", "en", "mas"]
+
+
+def get_languages():
+    return [(code, LANG_INFO[code]["name"]) for code in ["sw", "en-gb", "en", "mas"]]
+
 
 app_name = "meta_edc"
 base_dir = Path(__file__).parent.parent
-
 project_settings = DefaultTestSettings(
     calling_file=__file__,
     META_PHASE=PHASE_THREE,
     BASE_DIR=base_dir,
     APP_NAME=app_name,
-    ETC_DIR=base_dir / "etc",
+    ETC_DIR=base_dir / "tests" / "etc",
     DJANGO_CRYPTO_FIELDS_KEY_PATH=base_dir / "tests" / "etc",
-    GIT_DIR=base_dir.parent,
+    GIT_DIR=base_dir,
     HOLIDAY_FILE=base_dir / "tests" / "holidays.csv",
     EDC_RANDOMIZATION_LIST_PATH=base_dir / "tests" / "etc",
     SITE_ID=SiteID(default=10),
@@ -61,7 +64,7 @@ project_settings = DefaultTestSettings(
         2025, 12, 31, 23, 59, 59, tzinfo=ZoneInfo("UTC")
     ),
     LANGUAGE_CODE="en",
-    LANGUAGES=[(code, LANG_INFO[code]["name"]) for code in LANGUAGE_LIST],
+    LANGUAGES=get_languages(),
     DASHBOARD_BASE_TEMPLATES=dict(
         edc_base_template="edc_dashboard/base.html",
         listboard_base_template="meta_edc/base.html",
@@ -97,6 +100,7 @@ project_settings = DefaultTestSettings(
         "django_revision.apps.AppConfig",
         # "debug_toolbar",
         "django_extensions",
+        "django_db_views",
         "logentry_admin",
         "simple_history",
         "storages",
@@ -148,6 +152,7 @@ project_settings = DefaultTestSettings(
         "edc_refusal.apps.AppConfig",
         "edc_mnsi.apps.AppConfig",
         "edc_unblinding.apps.AppConfig",
+        "edc_qareports.apps.AppConfig",
         "edc_qol.apps.AppConfig",
         "edc_dx_review.apps.AppConfig",
         "edc_dx.apps.AppConfig",
@@ -164,9 +169,11 @@ project_settings = DefaultTestSettings(
         "meta_export.apps.AppConfig",
         "meta_sites.apps.AppConfig",
         "meta_screening.apps.AppConfig",
+        "meta_reports.apps.AppConfig",
         "meta_edc.apps.AppConfig",
         "edc_appconfig.apps.AppConfig",
     ],
+    EDC_SITES_CREATE_DEFAULT=False,
     add_dashboard_middleware=True,
     add_lab_dashboard_middleware=True,
     add_adverse_event_dashboard_middleware=True,

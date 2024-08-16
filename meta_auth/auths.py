@@ -20,7 +20,7 @@ from edc_pharmacy.auth_objects import (
     PHARMACY_PRESCRIBER,
     SITE_PHARMACIST_ROLE,
 )
-from edc_qareports.auth_objects import QA_REPORTS_ROLE
+from edc_qareports.auth_objects import QA_REPORTS_AUDIT_ROLE, QA_REPORTS_ROLE
 from edc_qol.auth_objects import QOL, QOL_SUPER, QOL_VIEW
 from edc_randomization.auth_objects import RANDO_BLINDED, RANDO_UNBLINDED
 from edc_screening.auth_objects import SCREENING, SCREENING_SUPER, SCREENING_VIEW
@@ -29,12 +29,14 @@ from edc_unblinding.auth_objects import UNBLINDING_REQUESTORS
 
 from .auth_objects import (
     META_REPORTS,
+    META_REPORTS_AUDIT,
     clinic_codenames,
     reports_codenames,
     screening_codenames,
 )
 
 site_auths.add_group(*reports_codenames, name=META_REPORTS)
+site_auths.add_group(*reports_codenames, name=META_REPORTS_AUDIT, view_only=True)
 
 # update edc_auth default groups
 site_auths.update_group(*clinic_codenames, name=AUDITOR, view_only=True)
@@ -74,3 +76,4 @@ site_auths.update_role(
     SUBJECT_VIEW, SCREENING_VIEW, ACTION_ITEM, UNBLINDING_REQUESTORS, name=TMG_ROLE
 )
 site_auths.update_role(META_REPORTS, name=QA_REPORTS_ROLE)
+site_auths.update_role(META_REPORTS_AUDIT, name=QA_REPORTS_AUDIT_ROLE)

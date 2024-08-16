@@ -1,5 +1,5 @@
 from django.db import models
-from edc_qareports.models import QaReportModelMixin
+from edc_qareports.model_mixins import QaReportModelMixin, qa_reports_permissions
 
 
 class UnattendedThreeInRow(QaReportModelMixin, models.Model):
@@ -21,3 +21,4 @@ class UnattendedThreeInRow(QaReportModelMixin, models.Model):
         db_table = "unattended_three_in_row_view"
         verbose_name = "R100: Unattended appointments: Three in a row"
         verbose_name_plural = "R100: Unattended appointments: Three in a row"
+        default_permissions = qa_reports_permissions

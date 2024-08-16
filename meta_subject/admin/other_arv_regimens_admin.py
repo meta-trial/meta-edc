@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
+from edc_crf.fieldset import crf_status_fieldset
 from edc_model_admin.history import SimpleHistoryAdmin
 from edc_model_admin.mixins import TabularInlineMixin
 
@@ -43,6 +44,7 @@ class OtherArvRegimensAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
 
     fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime", "has_other_regimens")}),
+        crf_status_fieldset,
         audit_fieldset_tuple,
     )
 

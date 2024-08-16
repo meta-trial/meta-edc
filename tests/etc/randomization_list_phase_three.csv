@@ -7,7 +7,7 @@ sid,assignment,site_name,gender
 1006,active,hindu_mandal,M
 1007,placebo,hindu_mandal,M
 1008,active,hindu_mandal,F
-1009,placebo,hindu_mandal ,F
+1009,placebo,hindu_mandal,F
 1010,active,hindu_mandal,M
 1011,placebo, hindu_mandal,F
 1012,active,hindu_mandal,M
@@ -87,9 +87,9 @@ sid,assignment,site_name,gender
 1086,active,hindu_mandal,M
 1087,placebo,hindu_mandal,M
 1088,active,hindu_mandal,F
-1089,placebo,hindu_mandal ,F
+1089,placebo,hindu_mandal,F
 1090,active,hindu_mandal,F
-1091,placebo, hindu_mandal,M
+1091,placebo,hindu_mandal,M
 1092,active,hindu_mandal,M
 1093,active,hindu_mandal,M
 1094,placebo,hindu_mandal,M
