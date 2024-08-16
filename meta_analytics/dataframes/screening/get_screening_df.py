@@ -97,9 +97,9 @@ def get_screening_df(df: pd.DataFrame | None = None) -> pd.DataFrame:
     df_physical_exam = df_physical_exam[
         ["subject_identifier", "visit_code", "visit_code_sequence", "waist_circumference"]
     ]
-    df_physical_exam[["waist_circumference"]] = df[["waist_circumference"]].apply(
-        pd.to_numeric
-    )
+    df_physical_exam[["waist_circumference"]] = df_physical_exam[
+        ["waist_circumference"]
+    ].apply(pd.to_numeric)
     # rename column to waist_circumference_baseline
     df_physical_exam["waist_circumference_baseline"] = df_physical_exam["waist_circumference"]
     df_physical_exam.drop(columns=["waist_circumference"])
