@@ -5,10 +5,10 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: |
-      ${{ matrix.codebase }},|
-      ${{ matrix.database-engine }},|
-      Dj ${{ matrix.django-version }},|
+    name: >
+      ${{ matrix.codebase }},
+      ${{ matrix.database-engine }},
+      Dj ${{ matrix.django-version }},
       Py ${{ matrix.python-version }}
     runs-on: ubuntu-latest
 
