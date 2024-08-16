@@ -1,6 +1,10 @@
 Changes
 -------
 
+0.3.20
+------
+- bump edc 0.6.0, django-crypto-fields 0.4.2, Django 5.1
+
 0.3.19
 ------
 - update for changes in edc-qareports, use django_db_views for
