@@ -5,15 +5,20 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: ${{ matrix.codebase }} / Dj ${{ matrix.django-version }} / Py ${{ matrix.python-version }}
+    name: |
+      ${{ matrix.codebase }},|
+      ${{ matrix.database-engine }},|
+      Dj ${{ matrix.django-version }},|
+      Py ${{ matrix.python-version }}
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
         codebase: ['Prod', 'Dev']
-        django-version: ['4.2', '5.0', 'dev']
+        django-version: ['4.2', '5.1', 'dev']
         python-version: ['3.12']
+        database-engine: ["mysql", "postgres"]
         exclude:
           - codebase: 'Prod'
             django-version: 'dev'
@@ -27,7 +32,17 @@ jobs:
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
     steps:
       - name: Install pycups and words dependency
         run: |
