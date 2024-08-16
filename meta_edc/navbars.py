@@ -5,7 +5,6 @@ from edc_adverse_event.navbars import ae_navbar_item, tmg_navbar_item
 from edc_data_manager.navbar_item import dm_navbar_item
 from edc_lab_dashboard.navbars import navbar as lab_navbar
 from edc_navbar import Navbar, site_navbars
-from edc_qareports.navbar_item import qa_navbar_item
 from edc_review_dashboard.navbars import navbar as review_navbar
 
 from meta_dashboard.navbars import navbar as meta_dashboard_navbar
@@ -33,6 +32,5 @@ for navbar_item in review_navbar.navbar_items:
 navbar.register(tmg_navbar_item)
 navbar.register(ae_navbar_item)
 navbar.register(dm_navbar_item)
-navbar.register(qa_navbar_item)
 
 site_navbars.register(navbar)

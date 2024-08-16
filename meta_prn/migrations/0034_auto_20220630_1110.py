@@ -37,9 +37,9 @@ def update_for_protocol_incident(apps, schema_editor):
         ).update(action_type=action_type)
 
         # update crf metadata if there is any
-        action_item_model_cls.objects.filter(
-            reference_model="meta_prn.protocoldeviationviolation"
-        ).update(reference_model="meta_prn.protocolincident")
+        # action_item_model_cls.objects.filter(
+        #     reference_model="meta_prn.protocoldeviationviolation"
+        # ).update(reference_model="meta_prn.protocolincident")
 
 
 class Migration(migrations.Migration):
