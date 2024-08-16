@@ -87,6 +87,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         import_module("edc_consent.auths")
         import_module("edc_dashboard.auths")
         import_module("edc_data_manager.auths")
+        import_module("edc_qareports.auths")
         import_module("edc_export.auths")
         import_module("edc_lab.auths")
         import_module("edc_lab_dashboard.auths")
