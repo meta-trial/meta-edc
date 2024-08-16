@@ -49,8 +49,13 @@ class GlucoseEndpointsByDate:
         self.df["source"] = "meta_subject.glucose"
 
         for dftmp in [self.fbg_only_df, self.df]:
-            dftmp.loc[(dftmp["fasting"] == NO), "fasting_duration_delta"] = np.nan
-            dftmp["fasting_hrs"] = dftmp["fasting_duration_delta"].dt.total_seconds() / 3600
+            dftmp.loc[(dftmp["fasting"] == NO), "fasting_duration_delta"] = pd.NaT
+            if dftmp.empty:
+                dftmp["fasting_hrs"] = np.nan
+            else:
+                dftmp["fasting_hrs"] = (
+                    dftmp["fasting_duration_delta"].dt.total_seconds() / 3600
+                )
 
         keep_cols = [
             "subject_visit_id",
@@ -74,9 +79,14 @@ class GlucoseEndpointsByDate:
 
         # normalize dates
         for col in ["fbg_datetime", "report_datetime"]:
-            self.fbg_only_df[col] = self.fbg_only_df[col].dt.floor("d")
-            self.df[col] = self.df[col].dt.floor("d")
-        self.df["ogtt_datetime"] = self.df["ogtt_datetime"].dt.floor("d")
+            if not self.fbg_only_df[col].empty:
+                self.fbg_only_df[col] = self.fbg_only_df[col].dt.floor("d")
+            if not self.df[col].empty:
+                self.df[col] = self.df[col].dt.floor("d")
+        if not self.df["ogtt_datetime"].empty:
+            self.df["ogtt_datetime"] = self.df["ogtt_datetime"].dt.floor("d")
+        else:
+            self.df["ogtt_datetime"] = pd.NaT
 
         # same shape but fbg_only_df ogtt columns are null
         self.df = pd.merge(
@@ -92,18 +102,15 @@ class GlucoseEndpointsByDate:
         self.df_merged = self.df.copy()
 
         # right_only
-        cols = [
-            "fasting",
-            "fasting_hrs",
-            "fbg_units",
-            "source",
-            "report_datetime",
-        ]
-        for col in cols:
+        cols = {
+            "fasting": None,
+            "fasting_hrs": np.nan,
+            "fbg_units": None,
+            "source": None,
+            "report_datetime": pd.NaT,
+        }
+        for col, null_value in cols.items():
             self.df.loc[self.df["_merge"] == "right_only", col] = self.df[f"{col}2"]
-
-        # cols = [col for col in self.df.columns if col.endswith("2")]
-        # self.df.drop(columns=cols)
 
         df_subject_visit = get_subject_visit("meta_subject.subjectvisit")
         visit_cols = [
@@ -133,12 +140,23 @@ class GlucoseEndpointsByDate:
         self.df["visit_days"] = (
             self.df["baseline_datetime"].rsub(self.df["visit_datetime"]).dt.days
         )
-        self.df["fgb_days"] = (
-            self.df["baseline_datetime"].rsub(self.df["fbg_datetime"]).dt.days
-        )
-        self.df["ogtt_days"] = (
-            self.df["baseline_datetime"].rsub(self.df["ogtt_datetime"]).dt.days
-        )
+        if not self.df.loc[self.df["fbg_datetime"].notna()].empty:
+            self.df["fgb_days"] = (
+                self.df.loc[self.df["fbg_datetime"].notna()]["baseline_datetime"]
+                .rsub(self.df["fbg_datetime"])
+                .dt.days
+            )
+        else:
+            self.df["fgb_days"] = np.nan
+        if not self.df.loc[self.df["ogtt_datetime"].notna()].empty:
+            self.df["ogtt_days"] = (
+                self.df.loc[self.df["ogtt_datetime"].notna()]["baseline_datetime"]
+                .rsub(self.df["ogtt_datetime"])
+                .dt.days
+            )
+        else:
+            self.df["ogtt_days"] = np.nan
+
         self.df["visit_days"] = pd.to_numeric(self.df["visit_days"], downcast="integer")
         self.df["fgb_days"] = pd.to_numeric(self.df["fgb_days"], downcast="integer")
         self.df["ogtt_days"] = pd.to_numeric(self.df["ogtt_days"], downcast="integer")
