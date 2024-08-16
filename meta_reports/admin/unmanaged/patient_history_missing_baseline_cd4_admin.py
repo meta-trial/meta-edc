@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from edc_appointment.models import Appointment
 from edc_model_admin.dashboard import ModelAdminDashboardMixin
 from edc_model_admin.mixins import TemplatesModelAdminMixin
-from edc_qareports.admin import QaReportWithNoteModelAdminMixin
+from edc_qareports.modeladmin_mixins import QaReportModelAdminMixin
 from edc_sites.admin import SiteModelAdminMixin
 from edc_visit_schedule.admin import ScheduleStatusListFilter
 from edc_visit_schedule.constants import DAY1
@@ -17,7 +17,7 @@ from ...models import PatientHistoryMissingBaselineCd4
 
 @admin.register(PatientHistoryMissingBaselineCd4, site=meta_reports_admin)
 class PatientHistoryMissingBaselineCd4Admin(
-    QaReportWithNoteModelAdminMixin,
+    QaReportModelAdminMixin,
     SiteModelAdminMixin,
     ModelAdminDashboardMixin,
     TemplatesModelAdminMixin,

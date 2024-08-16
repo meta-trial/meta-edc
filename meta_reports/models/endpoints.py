@@ -1,5 +1,5 @@
 from django.db import models
-from edc_qareports.models import QaReportModelMixin
+from edc_qareports.model_mixins import QaReportModelMixin, qa_reports_permissions
 
 
 class Endpoints(QaReportModelMixin, models.Model):
@@ -25,3 +25,4 @@ class Endpoints(QaReportModelMixin, models.Model):
     class Meta(QaReportModelMixin.Meta):
         verbose_name = "Endpoints (DM)"
         verbose_name_plural = "Endpoints (DM)"
+        default_permissions = qa_reports_permissions

@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
 from edc_model_admin.dashboard import ModelAdminDashboardMixin
 from edc_model_admin.mixins import TemplatesModelAdminMixin
-from edc_qareports.admin import QaReportWithNoteModelAdminMixin
+from edc_qareports.modeladmin_mixins import QaReportModelAdminMixin
 from edc_sites.admin import SiteModelAdminMixin
 from edc_sites.admin.list_filters import SiteListFilter
 from edc_visit_schedule.admin import ScheduleStatusListFilter
@@ -26,7 +26,7 @@ generate_table.short_description = "Regenerate report data"
 
 @admin.register(Endpoints, site=meta_reports_admin)
 class EndpointAdmin(
-    QaReportWithNoteModelAdminMixin,
+    QaReportModelAdminMixin,
     SiteModelAdminMixin,
     ModelAdminDashboardMixin,
     TemplatesModelAdminMixin,

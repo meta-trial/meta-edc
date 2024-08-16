@@ -1,0 +1,14 @@
+The models in this folder represent VIEWS in the DB. Since the VIEWS
+ are created separately, the model classes are "unmanaged". Unmanaged
+ models do not trigger migrations that change the schema. However,
+ a change to any of these model classes will trigger a migration, but
+ the migration does to change the schema.
+
+ Each model class has a corresponding SQL file. A migration has been
+ created to run the ``CREATE VIEW`` commands using the
+ ``migrations.RunSQL`` method.
+
+ If you change the ``CREATE VIEW`` command, you have to generate a
+ new empty migration which calls ``migrations.RunSQL`` to re-run the
+ modified ``CREATE VIEW`` SQL command.
+ (remember to ``DROP VIEW`` first.)

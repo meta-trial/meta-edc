@@ -12,6 +12,17 @@ from multisite import SiteID
 
 from meta_edc.meta_version import PHASE_THREE
 
+
+class DisableMigrations(dict):
+    except_apps = {"sites", "edc_sites", "edc_qareports", "meta_reports"}
+
+    def __contains__(self, item):
+        return item not in self.except_apps
+
+    def __getitem__(self, item):
+        return super().__getitem__(item) if item in self.except_apps else None
+
+
 LANG_INFO = dict(locale.LANG_INFO, **EXTRA_LANG_INFO)
 locale.LANG_INFO = LANG_INFO
 LANGUAGE_LIST = ["sw", "en-gb", "en", "mas"]
@@ -97,6 +108,7 @@ project_settings = DefaultTestSettings(
         "django_revision.apps.AppConfig",
         # "debug_toolbar",
         "django_extensions",
+        "django_db_views",
         "logentry_admin",
         "simple_history",
         "storages",
@@ -148,6 +160,7 @@ project_settings = DefaultTestSettings(
         "edc_refusal.apps.AppConfig",
         "edc_mnsi.apps.AppConfig",
         "edc_unblinding.apps.AppConfig",
+        "edc_qareports.apps.AppConfig",
         "edc_qol.apps.AppConfig",
         "edc_dx_review.apps.AppConfig",
         "edc_dx.apps.AppConfig",
@@ -164,9 +177,12 @@ project_settings = DefaultTestSettings(
         "meta_export.apps.AppConfig",
         "meta_sites.apps.AppConfig",
         "meta_screening.apps.AppConfig",
+        "meta_reports.apps.AppConfig",
         "meta_edc.apps.AppConfig",
         "edc_appconfig.apps.AppConfig",
     ],
+    MIGRATION_MODULES=DisableMigrations(),
+    EDC_SITES_CREATE_DEFAULT=False,
     add_dashboard_middleware=True,
     add_lab_dashboard_middleware=True,
     add_adverse_event_dashboard_middleware=True,
