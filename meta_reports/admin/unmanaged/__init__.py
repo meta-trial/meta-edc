@@ -1,3 +1,4 @@
+from .missing_screening_ogtt_admin import MissingScreeningOgttAdmin
 from .patient_history_missing_baseline_cd4_admin import (
     PatientHistoryMissingBaselineCd4Admin,
 )

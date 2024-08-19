@@ -1,27 +1,35 @@
 from typing import Type
 
+from django.conf import settings
 from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
+from django.db.models import QuerySet
+from django.template.loader import render_to_string
 from edc_model_admin.dashboard import ModelAdminDashboardMixin
-from edc_model_admin.mixins import TemplatesModelAdminMixin
+from edc_model_admin.mixins import (
+    ModelAdminFormInstructionsMixin,
+    TemplatesModelAdminMixin,
+)
 from edc_qareports.modeladmin_mixins import QaReportModelAdminMixin
 from edc_sites.admin import SiteModelAdminMixin
 from edc_sites.admin.list_filters import SiteListFilter
 from edc_visit_schedule.admin import ScheduleStatusListFilter
 
-from meta_analytics.dataframes import GlucoseEndpointsByDate
-
 from ..admin_site import meta_reports_admin
 from ..models import Endpoints
+from ..tasks import update_unmanaged_table
 
 
-def generate_table(modeladmin, request, queryset):
-    cls = GlucoseEndpointsByDate()
-    cls.run()
-    cls.to_model()
+def update_unmanaged_table_action(modeladmin, request, queryset):
+    subject_identifiers = []
+    if queryset.count() != modeladmin.model.objects.count():
+        subject_identifiers = [o.subject_identifier for o in queryset]
+    if settings.CELERY_ENABLED:
+        return update_unmanaged_table.delay(subject_identifiers)
+    return update_unmanaged_table(subject_identifiers)
 
 
-generate_table.short_description = "Regenerate report data"
+update_unmanaged_table_action.short_description = "Regenerate report for selected subjects"
 
 
 @admin.register(Endpoints, site=meta_reports_admin)
@@ -29,10 +37,13 @@ class EndpointAdmin(
     QaReportModelAdminMixin,
     SiteModelAdminMixin,
     ModelAdminDashboardMixin,
+    ModelAdminFormInstructionsMixin,
     TemplatesModelAdminMixin,
     admin.ModelAdmin,
 ):
-    actions = [generate_table]
+
+    change_list_note = render_to_string("meta_reports/endpoints_changelist_note.html")
+    actions = [update_unmanaged_table_action]
     qa_report_list_display_insert_pos = 2
     ordering = ["-fbg_datetime"]
     list_display = [
@@ -56,6 +67,11 @@ class EndpointAdmin(
     ]
 
     search_fields = ["subject_identifier"]
+
+    def get_queryset(self, request) -> QuerySet:
+        qs = super().get_queryset(request)
+        qs = qs.filter(offstudy_datetime__isnull=True)
+        return qs
 
     def get_list_filter(self, request) -> tuple[str | Type[SimpleListFilter], ...]:
         list_filter = super().get_list_filter(request)

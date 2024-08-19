@@ -32,11 +32,15 @@ class GlucoseEndpointsByDate:
     ogtt_threshhold = 11.1
     endpoint_cls = EndpointByDate
 
-    def __init__(self, case_list: list[int] | None = None):
+    def __init__(
+        self, subject_identifiers: list[str] | None = None, case_list: list[int] | None = None
+    ):
         self.case_list = case_list or [CASE_OGTT, 2, 3, CASE_EOS]
         self.endpoint_cases = {k: v for k, v in endpoint_cases.items() if k in self.case_list}
         self.endpoint_only_df = None
-        self.fbg_only_df = get_crf(model="meta_subject.glucosefbg")
+        self.fbg_only_df = get_crf(
+            model="meta_subject.glucosefbg", subject_identifiers=subject_identifiers
+        )
         self.fbg_only_df["source"] = "meta_subject.glucosefbg"
         self.fbg_only_df.rename(
             columns={"fbg_fasting": "fasting", "subject_visit": "subject_visit_id"},
@@ -45,7 +49,9 @@ class GlucoseEndpointsByDate:
         self.fbg_only_df.loc[(self.fbg_only_df["fasting"] == "fasting"), "fasting"] = YES
         self.fbg_only_df.loc[(self.fbg_only_df["fasting"] == "non_fasting"), "fasting"] = NO
 
-        self.df = get_crf(model="meta_subject.glucose")
+        self.df = get_crf(
+            model="meta_subject.glucose", subject_identifiers=subject_identifiers
+        )
         self.df["source"] = "meta_subject.glucose"
 
         for dftmp in [self.fbg_only_df, self.df]:
@@ -112,7 +118,9 @@ class GlucoseEndpointsByDate:
         for col, null_value in cols.items():
             self.df.loc[self.df["_merge"] == "right_only", col] = self.df[f"{col}2"]
 
-        df_subject_visit = get_subject_visit("meta_subject.subjectvisit")
+        df_subject_visit = get_subject_visit(
+            "meta_subject.subjectvisit", subject_identifiers=subject_identifiers
+        )
         visit_cols = [
             "subject_visit_id",
             "subject_identifier",
@@ -127,12 +135,14 @@ class GlucoseEndpointsByDate:
         self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
         self.df.reset_index(drop=True, inplace=True)
 
-        df_consent = get_subject_consent("meta_consent.subjectconsent")
+        df_consent = get_subject_consent(
+            "meta_consent.subjectconsent", subject_identifiers=subject_identifiers
+        )
         self.df = pd.merge(self.df, df_consent, on="subject_identifier", how="left")
         self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
         self.df.reset_index(drop=True, inplace=True)
 
-        df_eos = get_eos("meta_prn.endofstudy")
+        df_eos = get_eos("meta_prn.endofstudy", subject_identifiers=subject_identifiers)
         self.df = pd.merge(self.df, df_eos, on="subject_identifier", how="left")
         self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
         self.df.reset_index(drop=True, inplace=True)
@@ -298,7 +308,7 @@ class GlucoseEndpointsByDate:
             self.endpoint_df["fbg_datetime"] - self.endpoint_df["baseline_datetime"]
         ).dt.days
 
-        print(f"Before dedup = {len(self.endpoint_df)}")
+        # print(f"Before dedup = {len(self.endpoint_df)}")
 
         df1 = self.endpoint_df.copy()
         df1 = df1[(df1["endpoint_type"] == CASE_EOS) & (df1["endpoint"] == 1)]
@@ -318,7 +328,7 @@ class GlucoseEndpointsByDate:
 
         self.endpoint_only_df = pd.concat([df1, df2])
         self.endpoint_only_df = self.endpoint_only_df.reset_index(drop=True)
-        print(f"After dedup = {len(self.endpoint_df)}")
+        # print(f"After dedup = {len(self.endpoint_df)}")
 
         self.df = pd.merge(
             self.df,
@@ -375,12 +385,15 @@ class GlucoseEndpointsByDate:
         df_counts = pd.concat([df_counts, sums_df], ignore_index=True)
         return df_counts
 
-    def to_model(self, model: str | None = None):
+    def to_model(self, model: str | None = None, subject_identifiers: list[str] | None = None):
         df = self.endpoint_only_df
         model = model or "meta_reports.endpoints"
         now = get_utcnow()
         model_cls = django_apps.get_model(model)
-        model_cls.objects.all().delete()
+        if subject_identifiers:
+            model_cls.objects.filter(subject_identifier__in=subject_identifiers).delete()
+        else:
+            model_cls.objects.all().delete()
         data = [
             model_cls(
                 subject_identifier=row["subject_identifier"],
@@ -407,4 +420,4 @@ class GlucoseEndpointsByDate:
             )
             for _, row in df.iterrows()
         ]
-        model_cls.objects.bulk_create(data)
+        return len(model_cls.objects.bulk_create(data))
