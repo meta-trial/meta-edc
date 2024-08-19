@@ -530,7 +530,7 @@ if CELERY_ENABLED:
         CELERY_BROKER_URL = f"redis://:{env.str('DJANGO_REDIS_PASSWORD')}@127.0.0.1:6379/0"
     else:
         CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
-    CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers.DatabaseScheduler"
+    # CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers.DatabaseScheduler"
 
 
 if "test" in sys.argv:
