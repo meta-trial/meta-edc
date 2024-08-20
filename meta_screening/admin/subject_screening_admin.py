@@ -79,6 +79,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "hospital_identifier",
         "initials",
         "reasons_ineligible",
+        "id",
     )
 
     readonly_fields = (

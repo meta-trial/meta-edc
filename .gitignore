@@ -1,3 +1,4 @@
+celerybeat*
 get_data*
 static/
 *.env

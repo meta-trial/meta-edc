@@ -2,6 +2,7 @@ import os
 import sys
 from importlib.metadata import version
 from pathlib import Path
+from urllib.parse import quote
 
 import django
 import environ
@@ -91,6 +92,8 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "multisite.apps.AppConfig",
     "defender",
+    # "django_celery_beat",
+    # "django_celery_results",
     "django_db_views",
     "fontawesomefree",
     "django_crypto_fields.apps.AppConfig",
@@ -521,36 +524,16 @@ else:
     STATIC_ROOT = env.str("DJANGO_STATIC_ROOT")
 
 # CELERY
-# see docs on setting up the broker
 CELERY_ENABLED = env("CELERY_ENABLED")
 if CELERY_ENABLED:
-    CELERY_BROKER_USER = env.str("CELERY_BROKER_USER")
-    CELERY_BROKER_PASSWORD = env.str("CELERY_BROKER_PASSWORD")
-    CELERY_BROKER_HOST = env.str("CELERY_BROKER_HOST")
-    CELERY_BROKER_PORT = env.str("CELERY_BROKER_PORT")
-    if DEBUG:
-        CELERY_BROKER_VHOST = f"{APP_NAME}_debug"
-    elif LIVE_SYSTEM:
-        CELERY_BROKER_VHOST = f"{APP_NAME}_production"
-    else:
-        CELERY_BROKER_VHOST = f"{APP_NAME}_uat"
+    CELERY_CACHE_BACKEND = "default"
+    if env.str("DJANGO_REDIS_PASSWORD"):
         CELERY_BROKER_URL = (
-            f"amqp://{CELERY_BROKER_USER}:{CELERY_BROKER_PASSWORD}@"
-            f"{CELERY_BROKER_HOST}:{CELERY_BROKER_PORT}/{CELERY_BROKER_VHOST}"
+            f"redis://:{quote(env.str('DJANGO_REDIS_PASSWORD'), safe='')}@127.0.0.1:6379/0"
         )
-        DJANGO_CELERY_RESULTS_TASK_ID_MAX_LENGTH = 191
-        CELERY_RESULT_BACKEND = "django-db"
-        #     CELERY_QUEUES = (
-        #         Queue('high', Exchange('high'), routing_key='high'),
-        #         Queue('normal', Exchange('normal'), routing_key='normal'),
-        #         Queue('low', Exchange('low'), routing_key='low'),
-        #     )
-        #     CELERY_DEFAULT_QUEUE = 'normal'
-        #     CELERY_DEFAULT_EXCHANGE = 'normal'
-        #     CELERY_DEFAULT_ROUTING_KEY = 'normal'
-        #     CELERY_ROUTES = {
-        #         'edc_data_manager.tasks.*': {'queue': 'normal'},
-        #     }
+    else:
+        CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
+    # CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers.DatabaseScheduler"
 
 
 if "test" in sys.argv:
