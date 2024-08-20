@@ -6,10 +6,9 @@ from celery import Celery
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "meta_edc.settings.uat")
 
 # config celery
-# remeber to include additional apps with tasks
+# remember to include additional apps with tasks
 app = Celery("meta_edc", include=["meta_reports"])
 app.config_from_object("django.conf:settings", namespace="CELERY")
-app.conf.broker_connection_retry_on_startup = True
 app.autodiscover_tasks()
 
 

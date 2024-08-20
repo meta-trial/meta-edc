@@ -529,7 +529,7 @@ if CELERY_ENABLED:
     CELERY_CACHE_BACKEND = "default"
     if env.str("DJANGO_REDIS_PASSWORD"):
         CELERY_BROKER_URL = (
-            f"redis://:{quote(env.str('DJANGO_REDIS_PASSWORD'))}@127.0.0.1:6379/0"
+            f"redis://:{quote(env.str('DJANGO_REDIS_PASSWORD'), safe='')}@127.0.0.1:6379/0"
         )
     else:
         CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
