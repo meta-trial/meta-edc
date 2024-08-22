@@ -1,6 +1,15 @@
 Changes
 -------
 
+0.3.24
+------
+- add glucose summary
+- simplify DM referral baseline form
+
+0.3.23
+------
+- add report for missing OGTT at screening
+
 0.3.21
 ------
 - bump edc 0.6.0, django-crypto-fields 0.4.2, Django 5.1
