@@ -18,7 +18,7 @@ from meta_prn.constants import (
 from meta_prn.models import DmReferral, OnScheduleDmReferral
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_subject.constants import DM_FOLLOWUP_ACTION
-from meta_subject.models import DmDiagnosis, DmFollowup, SubjectVisit
+from meta_subject.models import DmEndpoint, DmFollowup, SubjectVisit
 from meta_visit_schedule.constants import DM_BASELINE, DM_FOLLOWUP, SCHEDULE_DM_REFERRAL
 
 
@@ -146,7 +146,7 @@ class TestDmReferral(MetaTestCaseMixin, TestCase):
             info_source=PATIENT,
         )
 
-        DmDiagnosis.objects.create(
+        DmEndpoint.objects.create(
             subject_visit=subject_visit,
             report_datetime=get_utcnow(),
             dx_date=referral_datetime.date(),

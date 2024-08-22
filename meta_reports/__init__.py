@@ -1,1 +1,1 @@
-from .tasks import update_unmanaged_table
+from .tasks import update_endpoints_table

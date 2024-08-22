@@ -11,7 +11,7 @@ from .complications import Complications
 from .complications_glycemia import ComplicationsGlycemia
 from .concomitant_medication import ConcomitantMedication
 from .delivery import Delivery
-from .diabetes import DmDiagnosis, DmDxResult, DmFollowup
+from .diabetes import DmEndpoint, DmFollowup
 from .diet_and_lifestyle import DietAndLifestyle
 from .egfr_drop_notification import EgfrDropNotification
 from .eq5d3l import Eq5d3l

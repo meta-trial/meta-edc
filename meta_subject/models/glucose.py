@@ -31,7 +31,10 @@ class Glucose(
     ogtt_model_mixin_factory("ogtt"),
     BaseUuidModel,
 ):
-    """A user model to capture FBG/RBG and OGTT"""
+    """A user model to capture both FBG/RBG and OGTT
+
+    See also GlucoseFbg.
+    """
 
     fbg_performed = models.CharField(
         verbose_name="Was the FBG test performed?",

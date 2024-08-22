@@ -5,6 +5,7 @@ from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
 from django.db.models import QuerySet
 from django.template.loader import render_to_string
+from django.urls import reverse
 from edc_model_admin.dashboard import ModelAdminDashboardMixin
 from edc_model_admin.mixins import (
     ModelAdminFormInstructionsMixin,
@@ -17,19 +18,19 @@ from edc_visit_schedule.admin import ScheduleStatusListFilter
 
 from ..admin_site import meta_reports_admin
 from ..models import Endpoints
-from ..tasks import update_unmanaged_table
+from ..tasks import update_endpoints_table
 
 
-def update_unmanaged_table_action(modeladmin, request, queryset):
+def update_endpoints_table_action(modeladmin, request, queryset):
     subject_identifiers = []
     if queryset.count() != modeladmin.model.objects.count():
         subject_identifiers = [o.subject_identifier for o in queryset]
     if settings.CELERY_ENABLED:
-        return update_unmanaged_table.delay(subject_identifiers)
-    return update_unmanaged_table(subject_identifiers)
+        return update_endpoints_table.delay(subject_identifiers)
+    return update_endpoints_table(subject_identifiers)
 
 
-update_unmanaged_table_action.short_description = "Regenerate report for selected subjects"
+update_endpoints_table_action.short_description = "Regenerate report for selected subjects"
 
 
 @admin.register(Endpoints, site=meta_reports_admin)
@@ -43,7 +44,7 @@ class EndpointAdmin(
 ):
 
     change_list_note = render_to_string("meta_reports/endpoints_changelist_note.html")
-    actions = [update_unmanaged_table_action]
+    actions = [update_endpoints_table_action]
     qa_report_list_display_insert_pos = 2
     ordering = ["-fbg_datetime"]
     list_display = [
@@ -104,7 +105,16 @@ class EndpointAdmin(
 
     @admin.display(description="endpoint", ordering="endpoint_label")
     def endpoint(self, obj=None):
-        return obj.endpoint_label
+        url = reverse("meta_reports_admin:meta_reports_glucosesummary_changelist")
+        return render_to_string(
+            "meta_reports/columns/subject_identifier_column.html",
+            {
+                "subject_identifier": obj.subject_identifier,
+                "url": url,
+                "label": obj.endpoint_label,
+            },
+        )
+        return
 
     @admin.display(description="last_updated", ordering="created")
     def last_updated(self, obj=None):

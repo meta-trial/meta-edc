@@ -1,4 +1,5 @@
 from .dbviews import (
+    GlucoseSummary,
     MissingScreeningOgtt,
     PatientHistoryMissingBaselineCd4,
     UnattendedThreeInRow,

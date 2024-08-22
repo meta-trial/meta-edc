@@ -2,6 +2,9 @@ import os
 import sys
 from importlib.metadata import PackageNotFoundError, version
 
+# celery_app loads settings before Django, so ensure
+# it will load the correct settings module coming from
+# systemd service
 if "meta_edc.celery.live:app" in sys.argv:
     from .celery.live import app as celery_app
 elif "meta_edc.celery.uat:app" in sys.argv:

@@ -3,6 +3,9 @@ from edc_qareports.model_mixins import QaReportModelMixin, qa_reports_permission
 
 
 class Endpoints(QaReportModelMixin, models.Model):
+    """A QA report model updated using an admin
+    action or manually.
+    """
 
     visit_code = models.IntegerField(null=True)
 

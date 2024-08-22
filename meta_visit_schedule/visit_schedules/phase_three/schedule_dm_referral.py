@@ -11,7 +11,7 @@ from .crfs import crfs_prn
 from .crfs import crfs_prn as default_crfs_prn
 
 crfs_baseline = CrfCollection(
-    Crf(show_order=100, model="meta_subject.dmdiagnosis"),
+    Crf(show_order=100, model="meta_subject.dmendpoint"),
     name="dmbaseline",
 )
 crfs_6m = CrfCollection(
