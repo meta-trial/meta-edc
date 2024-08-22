@@ -1,6 +1,13 @@
 Changes
 -------
 
+0.3.26
+------
+- add signal to recalculate Endpoint record if either model
+  GlucoseFBG or  Glucose is saved.
+- queue message on subject dashboard if subject reaches the protocol
+  glucose / DM endpoint.
+
 0.3.25
 ------
 - refactor GlucoseEndpointsByDate

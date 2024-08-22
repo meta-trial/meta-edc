@@ -436,14 +436,14 @@ class GlucoseEndpointsByDate:
         self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
         self.df = self.df.reset_index(drop=True)
 
-    def to_model(self, model: str | None = None, subject_identifiers: list[str] | None = None):
+    def to_model(self):
         """Write endpoint_only_df to the Endpoints model"""
         df = self.endpoint_only_df
-        model = model or "meta_reports.endpoints"
+        model = "meta_reports.endpoints"
         now = get_utcnow()
         model_cls = django_apps.get_model(model)
-        if subject_identifiers:
-            model_cls.objects.filter(subject_identifier__in=subject_identifiers).delete()
+        if self.subject_identifiers:
+            model_cls.objects.filter(subject_identifier__in=self.subject_identifiers).delete()
         else:
             model_cls.objects.all().delete()
         created = 0
