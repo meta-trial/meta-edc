@@ -11,6 +11,7 @@ from meta_edc.meta_version import get_meta_version
 from meta_pharmacy.constants import METFORMIN
 from meta_visit_schedule.constants import SCHEDULE_PREGNANCY
 
+from . import Glucose, GlucoseFbg
 from .delivery import Delivery
 from .study_medication import StudyMedication
 from .subject_visit import SubjectVisit
@@ -105,3 +106,21 @@ def update_schedule_on_delivery_post_save(sender, instance, raw, **kwargs):
                 subject_identifier=instance.subject_identifier,
                 offschedule_datetime=offschedule_datetime,
             )
+
+
+@receiver(
+    post_save,
+    weak=False,
+    dispatch_uid="update_glucose_endpoints_for_subject_on_post_save",
+)
+def update_glucose_endpoints_for_subject_on_post_save(
+    sender, instance, raw, update_fields, **kwargs
+):
+    if not raw and not update_fields and sender in [Glucose, GlucoseFbg]:
+        from meta_analytics.dataframes import GlucoseEndpointsByDate
+
+        cls = GlucoseEndpointsByDate(
+            subject_identifiers=[instance.subject_visit.subject_identifier]
+        )
+        cls.run()
+        cls.to_model()

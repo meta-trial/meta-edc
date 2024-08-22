@@ -9,4 +9,4 @@ def update_endpoints_table(subject_identifiers: list[str] | None = None):
         subject_identifiers = []
     cls = GlucoseEndpointsByDate(subject_identifiers=subject_identifiers)
     cls.run()
-    return cls.to_model(subject_identifiers=subject_identifiers)
+    return cls.to_model()

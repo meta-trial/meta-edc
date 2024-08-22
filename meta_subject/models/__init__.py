@@ -36,6 +36,7 @@ from .pregnancy_update import PregnancyUpdate
 from .sf12 import Sf12
 from .signals import (
     study_medication_on_pre_save,
+    update_glucose_endpoints_for_subject_on_post_save,
     update_pregnancy_notification_on_delivery_post_save,
     update_schedule_on_delivery_post_save,
 )
