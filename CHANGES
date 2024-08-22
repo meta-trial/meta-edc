@@ -1,6 +1,14 @@
 Changes
 -------
 
+0.3.25
+------
+- refactor GlucoseEndpointsByDate
+- add Endpoints report for ALL endpoints, not just those still
+  on study
+- improve navigation between endpoint reports and glucose summary
+
+
 0.3.24
 ------
 - add glucose summary
