@@ -7,3 +7,4 @@ from .dbviews import (
     UnattendedTwoInRow,
 )
 from .endpoints import Endpoints
+from .endpoints_proxy import EndpointsProxy

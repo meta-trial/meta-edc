@@ -15,11 +15,15 @@ class GlucoseSummary(QaReportModelMixin, DBView):
 
     ogtt_datetime = models.DateTimeField(null=True)
 
+    fasted = models.CharField(max_length=15, null=True)
+
     visit_code = models.CharField(max_length=25)
 
     visit_code_sequence = models.IntegerField()
 
     appointment_id = models.UUIDField(null=True)
+
+    offstudy_datetime = models.DateTimeField(null=True)
 
     view_definition = get_view_definition()
 

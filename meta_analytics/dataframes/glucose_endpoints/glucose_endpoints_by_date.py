@@ -2,19 +2,14 @@ import numpy as np
 import pandas as pd
 from django.apps import apps as django_apps
 from edc_constants.constants import NO, YES
-from edc_pdutils.dataframes import (
-    get_crf,
-    get_eos,
-    get_subject_consent,
-    get_subject_visit,
-)
+from edc_pdutils.dataframes import get_crf, get_eos, get_subject_consent
 from edc_utils import get_utcnow
-
-from meta_reports.models import Endpoints
 
 from .constants import (
     CASE_EOS,
     CASE_FBG_ONLY,
+    CASE_FBGS_WITH_FIRST_OGTT,
+    CASE_FBGS_WITH_SECOND_OGTT,
     CASE_OGTT,
     endpoint_cases,
     endpoint_columns,
@@ -28,13 +23,31 @@ from .utils import (
 )
 
 
+def normalize_date_columns(df: pd.DataFrame, cols: list[str] = None) -> pd.DataFrame:
+    """Normalize date columns by flooring"""
+    for col in cols:
+        if not df[col].empty:
+            df[col] = df[col].dt.floor("d")
+        else:
+            df[col] = pd.NaT
+    return df
+
+
+def calculate_fasting_hrs(df: pd.DataFrame):
+    df.loc[(df["fasting"] == NO), "fasting_duration_delta"] = pd.NaT
+    if df.empty:
+        df["fasting_hrs"] = np.nan
+    else:
+        df["fasting_hrs"] = df["fasting_duration_delta"].dt.total_seconds() / 3600
+    return df
+
+
 class GlucoseEndpointsByDate:
 
     fbg_threshhold = 7.0
     ogtt_threshhold = 11.1
     endpoint_cls = EndpointByDate
     keep_cols = [
-        "subject_visit_id",
         "fasting",
         "fasting_hrs",
         "fbg_value",
@@ -45,9 +58,6 @@ class GlucoseEndpointsByDate:
         "ogtt_datetime",
         "source",
         "report_datetime",
-    ]
-
-    visit_cols = [
         "subject_visit_id",
         "subject_identifier",
         "visit_code",
@@ -59,45 +69,31 @@ class GlucoseEndpointsByDate:
     def __init__(
         self, subject_identifiers: list[str] | None = None, case_list: list[int] | None = None
     ):
-        self.subject_identifiers = subject_identifiers or []
-        if len(self.subject_identifiers) == Endpoints.objects.all().count():
-            self.subject_identifiers = []
-        self.case_list = case_list or [CASE_OGTT, 2, 3, CASE_EOS]
-        self.endpoint_cases = {k: v for k, v in endpoint_cases.items() if k in self.case_list}
+        self._glucose_fbg_df = pd.DataFrame()
+        self._glucose_fbg_ogtt_df = pd.DataFrame()
         self.endpoint_only_df = pd.DataFrame()
 
-        self.fbg_only_df = self.get_fbg_only_df()
-
-        self.df = get_crf(
-            model="meta_subject.glucose",
-            subject_identifiers=self.subject_identifiers,
-        )
-        self.df["source"] = "meta_subject.glucose"
-
-        self.calculate_fasting_hrs()
-
-        self.fbg_only_df = self.fbg_only_df[
-            [col for col in self.keep_cols if not col.startswith("ogtt")]
+        self.subject_identifiers = subject_identifiers or []
+        self.case_list = case_list or [
+            CASE_OGTT,
+            CASE_FBGS_WITH_FIRST_OGTT,
+            CASE_FBGS_WITH_SECOND_OGTT,
+            CASE_EOS,
         ]
-        self.df = self.df[self.keep_cols]
-        self.df.reset_index(drop=True)
-        self.df = self.df.copy()
+        self.endpoint_cases = {k: v for k, v in endpoint_cases.items() if k in self.case_list}
 
-        self.normalize_dates()
-
-        # same shape but fbg_only_df ogtt columns are null
+        # merge two model DFs
         self.df = pd.merge(
-            self.df,
-            self.fbg_only_df,
+            self.glucose_fbg_ogtt_df,
+            self.glucose_fbg_df,
             on=["subject_visit_id", "fbg_datetime", "fbg_value"],
             how="outer",
             indicator=True,
             suffixes=("", "2"),
         )
-        self.df.reset_index(drop=True, inplace=True)
-        self.df_merged = self.df.copy()
+        self.df = self.df.reset_index(drop=True)
 
-        # right_only
+        # pivot right_only cols
         cols = {
             "fasting": None,
             "fasting_hrs": np.nan,
@@ -107,77 +103,25 @@ class GlucoseEndpointsByDate:
         }
         for col, null_value in cols.items():
             self.df.loc[self.df["_merge"] == "right_only", col] = self.df[f"{col}2"]
-
-        df_subject_visit = get_subject_visit(
-            "meta_subject.subjectvisit", subject_identifiers=subject_identifiers
-        )
-        self.df = pd.merge(
-            df_subject_visit[self.visit_cols], self.df, on="subject_visit_id", how="left"
-        )
-        self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
-        self.df.reset_index(drop=True, inplace=True)
-
-        df_consent = get_subject_consent(
-            "meta_consent.subjectconsent", subject_identifiers=subject_identifiers
-        )
-        self.df = pd.merge(self.df, df_consent, on="subject_identifier", how="left")
-        self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
-        self.df.reset_index(drop=True, inplace=True)
-
-        df_eos = get_eos("meta_prn.endofstudy", subject_identifiers=subject_identifiers)
-        self.df = pd.merge(self.df, df_eos, on="subject_identifier", how="left")
-        self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
-        self.df.reset_index(drop=True, inplace=True)
-
-        if not self.df.loc[self.df["visit_datetime"].notna()].empty:
-            self.df["visit_days"] = (
-                self.df["baseline_datetime"].rsub(self.df["visit_datetime"]).dt.days
-            )
-        if not self.df.loc[self.df["fbg_datetime"].notna()].empty:
-            self.df["fgb_days"] = (
-                self.df.loc[self.df["fbg_datetime"].notna()]["baseline_datetime"]
-                .rsub(self.df["fbg_datetime"])
-                .dt.days
-            )
-        else:
-            self.df["fgb_days"] = np.nan
-        if not self.df.loc[self.df["ogtt_datetime"].notna()].empty:
-            self.df["ogtt_days"] = (
-                self.df.loc[self.df["ogtt_datetime"].notna()]["baseline_datetime"]
-                .rsub(self.df["ogtt_datetime"])
-                .dt.days
-            )
-        else:
-            self.df["ogtt_days"] = np.nan
-
-        if self.df.empty:
-            self.df["visit_days"] = np.nan
-            self.df["fgb_days"] = np.nan
-            self.df["ogtt_days"] = np.nan
-            self.df["test"] = np.nan
-        else:
-            self.df["visit_days"] = pd.to_numeric(self.df["visit_days"], downcast="integer")
-            self.df["fgb_days"] = pd.to_numeric(self.df["fgb_days"], downcast="integer")
-            self.df["ogtt_days"] = pd.to_numeric(self.df["ogtt_days"], downcast="integer")
-
-            # label rows by type of glu tests (ones with value)
-            self.df["test"] = self.df.apply(get_test_string, axis=1)
-
-        self.df = self.df.sort_values(by=["subject_identifier", "visit_code"])
+        cols = [col for col in self.df.columns if col.endswith("2")]
+        cols.append("_merge")
+        self.df = self.df.drop(columns=cols)
         self.df = self.df.reset_index(drop=True)
 
-        self.df = self.df[
-            self.df["offstudy_reason"]
-            != (
-                "Patient fulfilled late exclusion criteria (due to abnormal blood "
-                "values or raised blood pressure at enrolment"
-            )
-        ]
+        self.merge_with_consent()
+        self.merge_with_eos()
+        self.add_calculated_days_from_baseline_to_event_columns()
 
-        self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
+        # label rows by type of glu tests (ones with value)
+        self.df["test"] = self.df.apply(get_test_string, axis=1)
         self.df = self.df.reset_index(drop=True)
-        self.visit_codes = get_unique_visit_codes(self.df)
+
+        self.visit_codes_df = get_unique_visit_codes(self.df)
         self.subject_identifiers_df = get_unique_subject_identifiers(self.df)
+
+        self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
+        self.df = self.df.reset_index(drop=True)
+
         self.working_df = self.df.copy()
         self.working_df["endpoint"] = 0
         self.endpoint_df = get_empty_endpoint_df()
@@ -186,16 +130,19 @@ class GlucoseEndpointsByDate:
         self.pre_check_endpoint()
         for index, row in self.subject_identifiers_df.iterrows():
             subject_df = self.get_subject_df(row["subject_identifier"])
-            subject_df = self.check_endpoint_by_fbg_for_subject(subject_df, case_list=[2, 3])
+            subject_df = self.check_endpoint_by_fbg_for_subject(
+                subject_df, case_list=[CASE_FBGS_WITH_FIRST_OGTT, CASE_FBGS_WITH_SECOND_OGTT]
+            )
             if len(subject_df.loc[subject_df["endpoint"] == 1]) == 1:
                 self.append_subject_to_endpoint_df(subject_df)
                 self.remove_subject_from_working_df(row)
 
         if CASE_FBG_ONLY in self.endpoint_cases:
-            # go back and rerun for case 5
             for index, row in self.subject_identifiers_df.iterrows():
                 subject_df = self.get_subject_df(row["subject_identifier"])
-                subject_df = self.check_endpoint_by_fbg_for_subject(subject_df, case_list=[4])
+                subject_df = self.check_endpoint_by_fbg_for_subject(
+                    subject_df, case_list=[CASE_FBG_ONLY]
+                )
                 if len(subject_df.loc[subject_df["endpoint"] == 1]) == 1:
                     self.append_subject_to_endpoint_df(subject_df)
                     self.remove_subject_from_working_df(row)
@@ -203,60 +150,161 @@ class GlucoseEndpointsByDate:
         self.post_check_endpoint()
         self.merge_with_final_endpoints()
 
+    @property
+    def glucose_fbg_df(self) -> pd.DataFrame:
+        """Returns a prepared Dataframe of CRF
+        meta_subject.glucosefbg.
+
+        Note: meta_subject.glucosefbg has only FBG measures.
+        """
+        if self._glucose_fbg_df.empty:
+            df = get_crf(
+                model="meta_subject.glucosefbg",
+                subject_identifiers=self.subject_identifiers,
+                subject_visit_model="meta_subject.subjectvisit",
+            )
+            df["source"] = "meta_subject.glucosefbg"
+            df.rename(columns={"fbg_fasting": "fasting"}, inplace=True)
+            df.loc[(df["fasting"] == "fasting"), "fasting"] = YES
+            df.loc[(df["fasting"] == "non_fasting"), "fasting"] = NO
+            df = calculate_fasting_hrs(df)
+            df = df[[col for col in self.keep_cols if not col.startswith("ogtt")]]
+            df = df.reset_index(drop=True)
+            df = normalize_date_columns(
+                df, cols=["fbg_datetime", "report_datetime", "visit_datetime"]
+            )
+            self._glucose_fbg_df = df
+        return self._glucose_fbg_df
+
+    @property
+    def glucose_fbg_ogtt_df(self):
+        """Returns a prepared Dataframe of CRF meta_subject.glucose.
+
+        Note: meta_subject.glucose has FBG and OGTT measures.
+        """
+        if self._glucose_fbg_ogtt_df.empty:
+            df = get_crf(
+                model="meta_subject.glucose",
+                subject_identifiers=self.subject_identifiers,
+                subject_visit_model="meta_subject.subjectvisit",
+            )
+            df["source"] = "meta_subject.glucose"
+            df = calculate_fasting_hrs(df)
+            df = df[self.keep_cols]
+            df = df.reset_index(drop=True)
+            df = normalize_date_columns(
+                df, cols=["fbg_datetime", "ogtt_datetime", "report_datetime", "visit_datetime"]
+            )
+            self._glucose_fbg_ogtt_df = df
+        return self._glucose_fbg_ogtt_df
+
+    def merge_with_consent(self):
+        """Merge in consent DF."""
+        df_consent = get_subject_consent("meta_consent.subjectconsent")
+        self.df = pd.merge(self.df, df_consent, on="subject_identifier", how="left")
+        self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
+        self.df = self.df.reset_index(drop=True)
+
+    def merge_with_eos(self):
+        """Merge in EoS DF.
+
+        Drops patients who were taken off study by late exclusion.
+        """
+        df_eos = get_eos("meta_prn.endofstudy")
+        df_eos = df_eos[
+            df_eos["offstudy_reason"]
+            != (
+                "Patient fulfilled late exclusion criteria (due to abnormal blood "
+                "values or raised blood pressure at enrolment"
+            )
+        ]
+        self.df = pd.merge(self.df, df_eos, on="subject_identifier", how="left")
+        self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
+        self.df = self.df.reset_index(drop=True)
+
+    def add_calculated_days_from_baseline_to_event_columns(self):
+        """Add columns that calculate number of days from
+        baseline to visit, fbg, and ogtt.
+        """
+        self.df["visit_days"] = np.nan
+        self.df["fbg_days"] = np.nan
+        self.df["ogtt_days"] = np.nan
+        self.df["test"] = np.nan
+        self.df["visit_days"] = (
+            self.df["visit_datetime"] - self.df["baseline_datetime"]
+        ).dt.days
+        if not self.df["fbg_datetime"].empty:
+            self.df["fbg_days"] = (
+                self.df["fbg_datetime"] - self.df["baseline_datetime"]
+            ).dt.days
+        if not self.df["ogtt_datetime"].empty:
+            self.df["ogtt_days"] = (
+                self.df["ogtt_datetime"] - self.df["baseline_datetime"]
+            ).dt.days
+        self.df["visit_days"] = pd.to_numeric(self.df["visit_days"], downcast="integer")
+        self.df["fbg_days"] = pd.to_numeric(self.df["fbg_days"], downcast="integer")
+        self.df["ogtt_days"] = pd.to_numeric(self.df["ogtt_days"], downcast="integer")
+        self.df = self.df.reset_index(drop=True)
+
     def pre_check_endpoint(self):
-        "Case 1: flag and remove all OGTT that met threshold"
-        subjects_df = self.working_df.loc[
+        """Flag subjects that met endpoint by hitting the OGTT
+        threshold.
+
+        Add them to the endpoint_df and remove them from the
+        working_df.
+
+        Subject must have fasted at the timepoint.
+
+        The OGTT must have an FBG measure at the same timepoint.
+        The value of the FBG is not considered.
+
+        Most of these where taken off study for the OGTT. We are
+        using the OGTT as the reason/date instead of the offstudy
+        reason/date.
+
+        See `merge_with_final_endpoints` where we pick the date of
+        the first OGTT.
+        """
+        subject_endpoint_df = self.working_df.loc[
             (self.working_df["ogtt_value"] >= self.ogtt_threshhold)
+            & (self.working_df["fasting"] == YES)
             & (self.working_df["fbg_value"].notna())
         ].copy()
-        subjects_df["endpoint"] = 1
-        subjects_df["endpoint_label"] = self.endpoint_cases[CASE_OGTT]
-        subjects_df["endpoint_type"] = CASE_OGTT
-        subjects_df["interval_in_days"] = np.nan
-        subjects_df = subjects_df.reset_index(drop=True)
-        self.append_subject_to_endpoint_df(subjects_df[endpoint_columns])
-        self.working_df = self.working_df.drop(
-            index=self.working_df.loc[
-                self.working_df["subject_identifier"].isin(subjects_df["subject_identifier"])
-            ].index
-        )
+        if not subject_endpoint_df.empty:
+            # flag the selected endpoint rows as endpoints
+            subject_endpoint_df["endpoint"] = 1
+            subject_endpoint_df["endpoint_label"] = self.endpoint_cases[CASE_OGTT]
+            subject_endpoint_df["endpoint_type"] = CASE_OGTT
+            subject_endpoint_df["interval_in_days"] = np.nan
 
-    def get_fbg_only_df(self) -> pd.DataFrame:
-        fbg_only_df = get_crf(
-            model="meta_subject.glucosefbg", subject_identifiers=self.subject_identifiers
-        )
-        fbg_only_df["source"] = "meta_subject.glucosefbg"
-        fbg_only_df.rename(
-            columns={"fbg_fasting": "fasting", "subject_visit": "subject_visit_id"},
-            inplace=True,
-        )
-        fbg_only_df.loc[(fbg_only_df["fasting"] == "fasting"), "fasting"] = YES
-        fbg_only_df.loc[(fbg_only_df["fasting"] == "non_fasting"), "fasting"] = NO
-        return fbg_only_df
-
-    def normalize_dates(self):
-        """Normalize dates"""
-        for col in ["fbg_datetime", "report_datetime"]:
-            if not self.fbg_only_df[col].empty:
-                self.fbg_only_df[col] = self.fbg_only_df[col].dt.floor("d")
-            if not self.df[col].empty:
-                self.df[col] = self.df[col].dt.floor("d")
-        if not self.df["ogtt_datetime"].empty:
-            self.df["ogtt_datetime"] = self.df["ogtt_datetime"].dt.floor("d")
-        else:
-            self.df["ogtt_datetime"] = pd.NaT
-
-    def calculate_fasting_hrs(self):
-        for dftmp in [self.fbg_only_df, self.df]:
-            dftmp.loc[(dftmp["fasting"] == NO), "fasting_duration_delta"] = pd.NaT
-            if dftmp.empty:
-                dftmp["fasting_hrs"] = np.nan
-            else:
-                dftmp["fasting_hrs"] = (
-                    dftmp["fasting_duration_delta"].dt.total_seconds() / 3600
+            # add back the others rows for these subjects
+            subjects_df = self.working_df.loc[
+                (
+                    self.working_df["subject_identifier"].isin(
+                        subject_endpoint_df["subject_identifier"]
+                    )
+                    & ~(
+                        self.working_df["fbg_datetime"].isin(
+                            subject_endpoint_df["fbg_datetime"]
+                        )
+                    )
                 )
+            ].copy()
+            subjects_df = subjects_df.reset_index(drop=True)
+            subjects_df["endpoint"] = np.nan
+            subjects_df["endpoint_label"] = None
+            subjects_df["endpoint_type"] = None
+            subjects_df["interval_in_days"] = np.nan
+            subjects_df = pd.concat([subjects_df, subject_endpoint_df])
+            subjects_df = subjects_df.reset_index(drop=True)
+
+            self.append_subject_to_endpoint_df(subjects_df[endpoint_columns])
+            self.remove_subjects_from_working_df(subjects_df)
 
     def append_subject_to_endpoint_df(self, subject_df: pd.DataFrame) -> None:
+        """Appends all rows of a subject, or subjects, to the
+        Endpoints DF.
+        """
         if self.endpoint_df.empty:
             self.endpoint_df = subject_df.copy()
         else:
@@ -267,9 +315,23 @@ class GlucoseEndpointsByDate:
             self.endpoint_df = self.endpoint_df.reset_index(drop=True)
 
     def remove_subject_from_working_df(self, row: pd.Series) -> None:
+        """Removes one subject from the working DF given a Series with
+        value `subject_identifier`.
+        """
         self.working_df = self.working_df.drop(
             index=self.working_df[
                 self.working_df["subject_identifier"] == row["subject_identifier"]
+            ].index
+        )
+        self.working_df = self.working_df.reset_index(drop=True)
+
+    def remove_subjects_from_working_df(self, rows: pd.DataFrame) -> None:
+        """Removes subjects from the working DF given a DF with
+        column `subject_identifier`.
+        """
+        self.working_df = self.working_df.drop(
+            index=self.working_df.loc[
+                self.working_df["subject_identifier"].isin(rows["subject_identifier"])
             ].index
         )
         self.working_df = self.working_df.reset_index(drop=True)
@@ -286,7 +348,7 @@ class GlucoseEndpointsByDate:
         subject_df = subject_df.reset_index(drop=True)
         subject_df = subject_df[endpoint_columns]
         subject_df = subject_df.merge(
-            self.visit_codes,
+            self.visit_codes_df,
             on="visit_code",
             how="outer",
             indicator=False,
@@ -317,7 +379,7 @@ class GlucoseEndpointsByDate:
         df_eos["endpoint_label"] = self.endpoint_cases[CASE_EOS]
         df_eos["endpoint_type"] = CASE_EOS
         df_eos["interval_in_days"] = np.nan
-        df_eos.reset_index(drop=True, inplace=True)
+        df_eos = df_eos.reset_index(drop=True)
         self.append_subject_to_endpoint_df(df_eos[endpoint_columns])
         self.working_df = self.working_df.drop(
             index=self.working_df.loc[
@@ -326,7 +388,7 @@ class GlucoseEndpointsByDate:
         )
 
     def merge_with_final_endpoints(self):
-        # merge endpoint_df with original df
+        """Merge endpoint_df with original df"""
         if self.endpoint_df.empty:
             self.df = self.df[~(self.df["subject_identifier"].isin(self.subject_identifiers))]
         else:
@@ -335,27 +397,34 @@ class GlucoseEndpointsByDate:
                 self.endpoint_df["fbg_datetime"] - self.endpoint_df["baseline_datetime"]
             ).dt.days
 
-            # print(f"Before dedup = {len(self.endpoint_df)}")
-
+            # Create DF of subjects taken offstudy (EOS) where endpoint==1.
+            # Keep the last record for the subject by fbg_datetime.
             df1 = self.endpoint_df.copy()
-            df1 = df1[(df1["endpoint_type"] == CASE_EOS) & (df1["endpoint"] == 1)]
+            df1 = df1[
+                (df1["endpoint_type"].isin([CASE_EOS, CASE_OGTT])) & (df1["endpoint"] == 1)
+            ]
             df1 = df1.sort_values(["subject_identifier", "fbg_datetime"])
             df1 = df1.reset_index(drop=True)
             df1 = df1.set_index(["subject_identifier"])
             df1 = df1[~df1.index.duplicated(keep="last")]
             df1 = df1.reset_index(drop=False)
 
+            # Create DF of subjects still on-study where endpoint==1.
+            # Keep the first record for the subject by fbg_datetime.
             df2 = self.endpoint_df.copy()
-            df2 = df2[(df2["endpoint_type"] != CASE_EOS) & (df2["endpoint"] == 1)]
+            df2 = df2[
+                ~(df2["endpoint_type"].isin([CASE_EOS, CASE_OGTT])) & (df2["endpoint"] == 1)
+            ]
             df2 = df2.sort_values(["subject_identifier", "fbg_datetime"])
             df2 = df2.reset_index(drop=True)
             df2 = df2.set_index(["subject_identifier"])
             df2 = df2[~df2.index.duplicated(keep="first")]
             df2 = df2.reset_index(drop=False)
 
+            # create new DF with ONE row per subject for those that reached
+            # the endpoint (endpoint=1) by merging two DFs above.
             self.endpoint_only_df = pd.concat([df1, df2])
             self.endpoint_only_df = self.endpoint_only_df.reset_index(drop=True)
-            # print(f"After dedup = {len(self.endpoint_df)}")
 
             self.df = pd.merge(
                 self.df,
@@ -367,52 +436,8 @@ class GlucoseEndpointsByDate:
         self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
         self.df = self.df.reset_index(drop=True)
 
-    def summarize(
-        self,
-        fasting: str | list | None = None,
-        interval_in_days_min: int | None = None,
-    ):
-        days_min = interval_in_days_min or 7
-
-        fasting = fasting or [YES, NO, pd.NA]
-        fasting = fasting if type(fasting) in [list, tuple] else [fasting]
-
-        endpoint_df = self.endpoint_df.copy()
-
-        # endpoint by eos with dm subjects
-        df7 = endpoint_df[
-            (endpoint_df["endpoint_type"] == CASE_EOS) & (endpoint_df["endpoint"] == 1)
-        ]
-        df7.reset_index(drop=True, inplace=True)
-        # endpoint by glucose subjects
-        df = endpoint_df[
-            (endpoint_df["endpoint_type"] != CASE_EOS)
-            & (endpoint_df["endpoint"] == 1)
-            & (endpoint_df["fasting"].isin(fasting))
-            & (
-                (endpoint_df["interval_in_days"] >= days_min)
-                | (endpoint_df["interval_in_days"].isna())
-            )
-        ]
-        df.reset_index(drop=True, inplace=True)
-        df = pd.concat([df, df7])
-        df.reset_index(drop=True, inplace=True)
-        df_counts = df[["endpoint_type", "endpoint_label"]].value_counts().to_frame()
-        df_counts.sort_values(by=["endpoint_type"], inplace=True)
-        df_counts.reset_index(inplace=True)
-
-        sums = {
-            "endpoint_type": [np.nan],
-            "endpoint_label": ["Total"],
-            "count": [
-                df_counts["count"].sum(),
-            ],
-        }
-        sums_df = pd.DataFrame.from_dict(sums)
-        df_counts = pd.concat([df_counts, sums_df], ignore_index=True)
-        return df_counts
-
     def to_model(self, model: str | None = None, subject_identifiers: list[str] | None = None):
+        """Write endpoint_only_df to the Endpoints model"""
         df = self.endpoint_only_df
         model = model or "meta_reports.endpoints"
         now = get_utcnow()
