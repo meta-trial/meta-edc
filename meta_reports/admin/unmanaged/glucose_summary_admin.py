@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
 from django.urls import reverse
 from edc_constants.constants import YES
@@ -10,7 +11,7 @@ from edc_sites.admin import SiteModelAdminMixin
 from edc_visit_schedule.admin import ScheduleStatusListFilter
 
 from ...admin_site import meta_reports_admin
-from ...models import Endpoints, GlucoseSummary
+from ...models import Endpoints, EndpointsProxy, GlucoseSummary
 from ..list_filters import EndpointListFilter
 
 
@@ -29,15 +30,18 @@ class GlucoseSummaryAdmin(
         "subject_identifier_link",
         "site",
         "visit",
-        "fbg_datetime",
+        "fasted",
+        "fbg_date",
         "fbg_value",
         "ogtt_value",
-        "ogtt_datetime",
+        "ogtt_date",
         "endpoint",
+        "offstudy_date",
     ]
 
     list_filter = [
         ScheduleStatusListFilter,
+        "fasted",
         FbgListFilter,
         OgttListFilter,
         "fbg_datetime",
@@ -53,20 +57,38 @@ class GlucoseSummaryAdmin(
 
     @admin.display(description="Endpoint")
     def endpoint(self, obj=None):
-        if Endpoints.objects.filter(subject_identifier=obj.subject_identifier).exists():
-            url = reverse("meta_reports_admin:meta_reports_endpoints_changelist")
-            return render_to_string(
+        try:
+            endpoint_obj = Endpoints.objects.get(subject_identifier=obj.subject_identifier)
+        except ObjectDoesNotExist:
+            value = None
+        else:
+            if endpoint_obj.offstudy_datetime:
+                url = reverse("meta_reports_admin:meta_reports_endpointsproxy_changelist")
+                title = f"Go to {EndpointsProxy._meta.verbose_name}"
+            else:
+                url = reverse("meta_reports_admin:meta_reports_endpoints_changelist")
+                title = f"Go to {Endpoints._meta.verbose_name}"
+            value = render_to_string(
                 "meta_reports/columns/subject_identifier_column.html",
-                {"subject_identifier": obj.subject_identifier, "url": url, "label": YES},
+                {
+                    "subject_identifier": obj.subject_identifier,
+                    "url": url,
+                    "label": YES,
+                    "title": title,
+                },
             )
-        return None
+        return value
 
     @admin.display(description="Subject Idenfifier", ordering="subject_identifier")
     def subject_identifier_link(self, obj=None):
         url = reverse("meta_reports_admin:meta_reports_glucosesummary_changelist")
         return render_to_string(
             "meta_reports/columns/subject_identifier_column.html",
-            {"subject_identifier": obj.subject_identifier, "url": url},
+            {
+                "subject_identifier": obj.subject_identifier,
+                "url": url,
+                "title": "Click to filter for this subject only",
+            },
         )
 
     def get_subject_dashboard_url_kwargs(self, obj) -> dict:
@@ -74,3 +96,21 @@ class GlucoseSummaryAdmin(
             subject_identifier=obj.subject_identifier,
             appointment=obj.appointment_id,
         )
+
+    @admin.display(description="Fbg date", ordering="fbg_datetime")
+    def fbg_date(self, obj):
+        if obj.fbg_datetime:
+            return obj.fbg_datetime.date()
+        return None
+
+    @admin.display(description="OGTT date", ordering="ogtt_datetime")
+    def ogtt_date(self, obj):
+        if obj.ogtt_datetime:
+            return obj.ogtt_datetime.date()
+        return None
+
+    @admin.display(description="Offstudy date", ordering="offstudy_datetime")
+    def offstudy_date(self, obj):
+        if obj.offstudy_datetime:
+            return obj.offstudy_datetime.date()
+        return None

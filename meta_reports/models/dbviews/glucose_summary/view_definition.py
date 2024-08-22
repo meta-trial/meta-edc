@@ -1,30 +1,40 @@
 mysql_view: str = """ # noqa
 select *, uuid() as id, now() as created, 'meta_reports.glucose_summary_view' as report_model
 from (
-    select subject_identifier, fbg_value, fbg_datetime, null as 'ogtt_value', null as 'ogtt_datetime',
-    fbg.site_id, v.visit_code, v.visit_code_sequence, v.appointment_id
+    select v.subject_identifier, fbg_value, fbg_datetime, null as 'ogtt_value', null as 'ogtt_datetime',
+    case when fasting="fasting" then "Yes" when fasting="non_fasting" then "No" else fasting end as 'fasted',
+    fbg.site_id, v.visit_code, v.visit_code_sequence, v.appointment_id, eos.offstudy_datetime
     from meta_subject_glucosefbg as fbg
     left join meta_subject_subjectvisit as v on v.id=fbg.subject_visit_id
+    left join meta_prn_endofstudy as eos on v.subject_identifier=eos.subject_identifier
     UNION
-    select subject_identifier, fbg_value, fbg_datetime, ogtt_value, ogtt_datetime,
-    fbg.site_id, v.visit_code, v.visit_code_sequence, v.appointment_id
+    select v.subject_identifier, fbg_value, fbg_datetime, ogtt_value, ogtt_datetime,
+    case when fasting="fasting" then "Yes" when fasting="non_fasting" then "No" else fasting end as 'fasted',
+    fbg.site_id, v.visit_code, v.visit_code_sequence, v.appointment_id, eos.offstudy_datetime
     from meta_subject_glucose as fbg
-    left join meta_subject_subjectvisit as v on v.id=fbg.subject_visit_id) as A
+    left join meta_subject_subjectvisit as v on v.id=fbg.subject_visit_id
+    left join meta_prn_endofstudy as eos on v.subject_identifier=eos.subject_identifier
+) as A
 order by subject_identifier, fbg_datetime;
 """
 
 pg_view: str = """ # noqa
 select *, get_random_uuid() as id, now() as created, 'meta_reports.glucose_summary_view' as report_model
 from (
-    select subject_identifier, fbg_value, fbg_datetime, null as ogtt_value, null as ogtt_datetime,
-    fbg.site_id, v.visit_code, v.visit_code_sequence, v.appointment_id
+    select v.subject_identifier, fbg_value, fbg_datetime, null as ogtt_value, null as ogtt_datetime,
+    case when fasting="fasting" then "Yes" when fasting="non_fasting" then "No" else fasting end as fasted,
+    fbg.site_id, v.visit_code, v.visit_code_sequence, v.appointment_id, eos.offstudy_datetime
     from meta_subject_glucosefbg as fbg
     left join meta_subject_subjectvisit as v on v.id=fbg.subject_visit_id
+    left join meta_prn_endofstudy as eos on v.subject_identifier=eos.subject_identifier
     UNION
-    select subject_identifier, fbg_value, fbg_datetime, ogtt_value, ogtt_datetime,
-    fbg.site_id, v.visit_code, v.visit_code_sequence, v.appointment_id
+    select v.subject_identifier, fbg_value, fbg_datetime, ogtt_value, ogtt_datetime,
+    case when fasting="fasting" then "Yes" when fasting="non_fasting" then "No" else fasting end as fasted,
+    fbg.site_id, v.visit_code, v.visit_code_sequence, v.appointment_id, eos.offstudy_datetime
     from meta_subject_glucose as fbg
-    left join meta_subject_subjectvisit as v on v.id=fbg.subject_visit_id) as A
+    left join meta_subject_subjectvisit as v on v.id=fbg.subject_visit_id
+    left join meta_prn_endofstudy as eos on v.subject_identifier=eos.subject_identifier
+) as A
 order by subject_identifier, fbg_datetime;
 """
 
@@ -37,15 +47,20 @@ SELECT *, lower(
     hex(randomblob(6))
   ) as id, datetime() as `created`, 'meta_reports.glucose_summary_view' as report_model
 from (
-    select subject_identifier, fbg_value, fbg_datetime, null as ogtt_value, null as ogtt_datetime,
-    fbg.site_id, v.visit_code, v.visit_code_sequence, v.appointment_id
+    select v.subject_identifier, fbg_value, fbg_datetime, null as ogtt_value, null as ogtt_datetime,
+    case when fasting="fasting" then "Yes" when fasting="non_fasting" then "No" else fasting end as fasted,
+    fbg.site_id, v.visit_code, v.visit_code_sequence, v.appointment_id, eos.offstudy_datetime
     from meta_subject_glucosefbg as fbg
     left join meta_subject_subjectvisit as v on v.id=fbg.subject_visit_id
+    left join meta_prn_endofstudy as eos on v.subject_identifier=eos.subject_identifier
     UNION
-    select subject_identifier, fbg_value, fbg_datetime, ogtt_value, ogtt_datetime,
-    fbg.site_id, v.visit_code, v.visit_code_sequence, v.appointment_id
+    select v.subject_identifier, fbg_value, fbg_datetime, ogtt_value, ogtt_datetime,
+    case when fasting="fasting" then "Yes" when fasting="non_fasting" then "No" else fasting end as fasted,
+    fbg.site_id, v.visit_code, v.visit_code_sequence, v.appointment_id, eos.offstudy_datetime
     from meta_subject_glucose as fbg
-    left join meta_subject_subjectvisit as v on v.id=fbg.subject_visit_id) as A
+    left join meta_subject_subjectvisit as v on v.id=fbg.subject_visit_id
+    left join meta_prn_endofstudy as eos on v.subject_identifier=eos.subject_identifier
+    ) as A
 order by subject_identifier, fbg_datetime;
 """
 

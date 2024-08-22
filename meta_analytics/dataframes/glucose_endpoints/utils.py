@@ -49,18 +49,17 @@ def get_empty_endpoint_df() -> pd.DataFrame:
     return endpoint_df
 
 
-def get_unique_visit_codes(source_df: pd.DataFrame) -> pd.DataFrame:
-    codes = source_df[source_df["visit_code"] % 1 == 0]["visit_code"].value_counts().to_frame()
-    codes = codes.reset_index()
-    codes["visit_code"] = codes["visit_code"].astype(float)
-    codes = codes.sort_values(["visit_code"])
-    # visit_codes = visit_codes[visit_codes["visit_code"] > self.after_visit_code]
-    codes = codes.reset_index(drop=True)
-    return codes
+def get_unique_visit_codes(df: pd.DataFrame) -> pd.DataFrame:
+    stats_df = df[df["visit_code"] % 1 == 0]["visit_code"].value_counts().to_frame()
+    stats_df = stats_df.reset_index()
+    stats_df["visit_code"] = stats_df["visit_code"].astype(float)
+    stats_df = stats_df.sort_values(["visit_code"])
+    stats_df = stats_df.reset_index(drop=True)
+    return stats_df
 
 
-def get_unique_subject_identifiers(source_df) -> pd.DataFrame:
-    df = pd.DataFrame(source_df["subject_identifier"].unique(), columns=["subject_identifier"])
-    df = df.sort_values(["subject_identifier"])
-    df = df.reset_index()
-    return df
+def get_unique_subject_identifiers(df: pd.DataFrame) -> pd.DataFrame:
+    values_df = pd.DataFrame(df["subject_identifier"].unique(), columns=["subject_identifier"])
+    values_df = values_df.sort_values(["subject_identifier"])
+    values_df = values_df.reset_index()
+    return values_df

@@ -1,4 +1,5 @@
-from .endpoints_admin import EndpointAdmin
+from .endpoints_admin import EndpointsAdmin
+from .endpoints_all_admin import EndpointsAllAdmin
 from .unmanaged import (
     GlucoseSummaryAdmin,
     MissingScreeningOgttAdmin,

@@ -1,0 +1,12 @@
+Endpoints report shows subjects who have reached the protocol endpoint.
+<BR>
+<i>This report INCLUDES subjects who are no longer on-study. See also the <a href="{% url 'meta_reports_admin:meta_reports_endpoints_changelist' %}">Endpoints (DM)</a> report.</i>
+<BR>
+Pay attention to the "LAST_UPDATED" column. This tells you the last time the report was updated per subject.
+<BR>
+<BR>
+Unlike other reports, this report does not automatically update, but you can update it :
+<UL>
+    <LI>Place a check mark next to one or more subjects and select 'Regenerate selected report data' from the Action menu.</LI>
+    <li>If you select more than 5 subjects, records for ALL subjects will be refreshed.</li>
+</UL>
