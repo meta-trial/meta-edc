@@ -47,6 +47,15 @@ class GlucoseEndpointsByDate:
         "report_datetime",
     ]
 
+    visit_cols = [
+        "subject_visit_id",
+        "subject_identifier",
+        "visit_code",
+        "visit_datetime",
+        "site",
+        "baseline_datetime",
+    ]
+
     def __init__(
         self, subject_identifiers: list[str] | None = None, case_list: list[int] | None = None
     ):
@@ -56,6 +65,7 @@ class GlucoseEndpointsByDate:
         self.case_list = case_list or [CASE_OGTT, 2, 3, CASE_EOS]
         self.endpoint_cases = {k: v for k, v in endpoint_cases.items() if k in self.case_list}
         self.endpoint_only_df = pd.DataFrame()
+
         self.fbg_only_df = self.get_fbg_only_df()
 
         self.df = get_crf(
@@ -101,16 +111,8 @@ class GlucoseEndpointsByDate:
         df_subject_visit = get_subject_visit(
             "meta_subject.subjectvisit", subject_identifiers=subject_identifiers
         )
-        visit_cols = [
-            "subject_visit_id",
-            "subject_identifier",
-            "visit_code",
-            "visit_datetime",
-            "site",
-            "baseline_datetime",
-        ]
         self.df = pd.merge(
-            df_subject_visit[visit_cols], self.df, on="subject_visit_id", how="left"
+            df_subject_visit[self.visit_cols], self.df, on="subject_visit_id", how="left"
         )
         self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
         self.df.reset_index(drop=True, inplace=True)
