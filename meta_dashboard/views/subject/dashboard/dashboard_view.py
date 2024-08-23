@@ -17,6 +17,7 @@ class DashboardView(SubjectDashboardView):
     history_button_label = _("Audit")
 
     def get_context_data(self, **kwargs) -> dict[str, Any]:
+        """Add message if subject reaches DM Endpoint."""
         context = super().get_context_data(**kwargs)
         try:
             Endpoints.objects.get(subject_identifier=self.subject_identifier)
