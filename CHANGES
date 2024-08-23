@@ -1,12 +1,17 @@
 Changes
 -------
 
+0.3.27
+------
+- bump edc 0.6.5
+
 0.3.26
 ------
 - add signal to recalculate Endpoint record if either model
   GlucoseFBG or  Glucose is saved.
 - queue message on subject dashboard if subject reaches the protocol
   glucose / DM endpoint.
+- bump edc 0.6.4
 
 0.3.25
 ------
@@ -14,7 +19,7 @@ Changes
 - add Endpoints report for ALL endpoints, not just those still
   on study
 - improve navigation between endpoint reports and glucose summary
-
+- bump edc 0.6.3
 
 0.3.24
 ------
