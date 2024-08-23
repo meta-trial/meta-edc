@@ -7,8 +7,6 @@ from .view_definition import get_view_definition
 
 class MissingScreeningOgtt(QaReportModelMixin, DBView):
 
-    screening_identifier = models.CharField(max_length=25)
-
     screening_datetime = models.DateTimeField(null=True)
 
     fbg_datetime = models.DateTimeField(null=True)
