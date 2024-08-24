@@ -3,6 +3,7 @@ from .dbviews import (
     GlucoseSummary,
     MissingOgttNote,
     MissingScreeningOgtt,
+    OnStudyMissingValues,
     PatientHistoryMissingBaselineCd4,
     UnattendedThreeInRow,
     UnattendedThreeInRow2,

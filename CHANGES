@@ -1,6 +1,13 @@
 Changes
 -------
 
+0.3.28
+------
+- refactor view_definitions to use sql generators from
+  edc-qareports
+- add OnStudyMissingValues report to META Reports
+- bump edc 0.6.6
+
 0.3.27
 ------
 - bump edc 0.6.5
