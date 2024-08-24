@@ -44,7 +44,7 @@ class ArvHistoryModelMixin(models.Model):
         ArvRegimens,
         on_delete=models.PROTECT,
         related_name="current_arv_regimen",
-        verbose_name=("Which antiretroviral therapy regimen is the patient currently on?"),
+        verbose_name="Which antiretroviral therapy regimen is the patient currently on?",
         null=True,
         blank=False,
     )
@@ -69,7 +69,7 @@ class ArvHistoryModelMixin(models.Model):
         ArvRegimens,
         on_delete=models.PROTECT,
         related_name="previous_arv_regimen",
-        verbose_name=("Which antiretroviral therapy regimen was the patient previously on?"),
+        verbose_name="Which antiretroviral therapy regimen was the patient previously on?",
         null=True,
         blank=True,
     )
@@ -77,7 +77,7 @@ class ArvHistoryModelMixin(models.Model):
     other_previous_arv_regimen = OtherCharField(null=True, blank=True)
 
     on_oi_prophylaxis = models.CharField(
-        verbose_name=("Is the patient on any prophylaxis against opportunistic infections?"),
+        verbose_name="Is the patient on any prophylaxis against opportunistic infections?",
         max_length=15,
         choices=YES_NO,
     )
