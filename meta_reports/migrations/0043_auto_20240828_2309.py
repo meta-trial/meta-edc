@@ -9,6 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ("meta_reports", "0042_onstudymissinglabvalues"),
+        ("meta_subject", "0213_rename_bloodresultslipid_bloodresultslipids_and_more"),
     ]
 
     operations = [
