@@ -1,6 +1,10 @@
 Changes
 -------
 
+0.3.31
+------
+- bump edc 0.6.9
+
 0.3.30
 ------
 - migrate to update old fasting responses. Change fasting -> YES
