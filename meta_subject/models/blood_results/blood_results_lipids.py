@@ -2,7 +2,7 @@ from django.db import models
 from edc_crf.model_mixins import CrfStatusModelMixin
 from edc_lab.model_mixins import CrfWithRequisitionModelMixin, requisition_fk_options
 from edc_lab_panel.panels import lipids_panel
-from edc_lab_results import BLOOD_RESULTS_LIPID_ACTION
+from edc_lab_results import BLOOD_RESULTS_LIPIDS_ACTION
 from edc_lab_results.model_mixins import (
     BloodResultsModelMixin,
     CholModelMixin,
@@ -15,7 +15,7 @@ from edc_model.models import BaseUuidModel
 from ...model_mixins import CrfWithActionModelMixin
 
 
-class BloodResultsLipid(
+class BloodResultsLipids(
     CrfWithActionModelMixin,
     HdlModelMixin,
     LdlModelMixin,
@@ -26,7 +26,7 @@ class BloodResultsLipid(
     CrfStatusModelMixin,
     BaseUuidModel,
 ):
-    action_name = BLOOD_RESULTS_LIPID_ACTION
+    action_name = BLOOD_RESULTS_LIPIDS_ACTION
     tracking_identifier_prefix = "LP"
     lab_panel = lipids_panel
 

@@ -4,7 +4,7 @@ from .blood_results import (
     BloodResultsHba1c,
     BloodResultsIns,
     BloodResultsLft,
-    BloodResultsLipid,
+    BloodResultsLipids,
     BloodResultsRft,
 )
 from .complications import Complications

@@ -8,7 +8,7 @@ from edc_lab_results.action_items import (
     BloodResultsFbcAction,
     BloodResultsHba1cAction,
     BloodResultsLftAction,
-    BloodResultsLipidAction,
+    BloodResultsLipidsAction,
 )
 from edc_lab_results.action_items import (
     BloodResultsRftAction as BaseBloodResultsRftAction,
@@ -175,7 +175,7 @@ class DmFollowAction(ActionWithNotification):
 def register_actions():
     for action_item_cls in [
         BloodResultsFbcAction,
-        BloodResultsLipidAction,
+        BloodResultsLipidsAction,
         BloodResultsLftAction,
         BloodResultsRftAction,
         BloodResultsHba1cAction,

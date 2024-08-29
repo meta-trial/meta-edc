@@ -3,6 +3,7 @@ from .birth_outcome_admin import BirthOutcomesAdmin
 from .blood_results import (
     BloodResultsFbcAdmin,
     BloodResultsLftAdmin,
+    BloodResultsLipidsAdmin,
     BloodResultsRftAdmin,
 )
 from .complications_admin import ComplicationsAdmin

@@ -6,7 +6,7 @@ from .qa_cases import qa_cases
 def get_view_definition() -> dict:
     subquery = " UNION ".join([qa_case.sql for qa_case in qa_cases])
     sql_view = SqlViewGenerator(
-        report_model="onstudy_missing_values_view",
+        report_model="onstudy_missing_lab_values_view",
         ordering=["subject_identifier", "site_id"],
     )
 

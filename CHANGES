@@ -1,6 +1,14 @@
 Changes
 -------
 
+0.3.30
+------
+- migrate to update old fasting responses. Change fasting -> YES
+  non_fasting -> NO.
+- add additional Crf and Requisition cases to META REPORTS
+    Missing values for on-study patient
+    Missing Lab values for on-study patient
+
 0.3.29
 ------
 - refactor view_definitions to use sql generators from

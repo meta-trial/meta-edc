@@ -7,10 +7,7 @@ from django.db.models import QuerySet
 from django.template.loader import render_to_string
 from django.urls import reverse
 from edc_model_admin.dashboard import ModelAdminDashboardMixin
-from edc_model_admin.mixins import (
-    ModelAdminFormInstructionsMixin,
-    TemplatesModelAdminMixin,
-)
+from edc_model_admin.mixins import TemplatesModelAdminMixin
 from edc_qareports.modeladmin_mixins import QaReportModelAdminMixin
 from edc_sites.admin import SiteModelAdminMixin
 from edc_sites.admin.list_filters import SiteListFilter
@@ -35,7 +32,6 @@ class EndpointsModelAdminMixin(
     QaReportModelAdminMixin,
     SiteModelAdminMixin,
     ModelAdminDashboardMixin,
-    ModelAdminFormInstructionsMixin,
     TemplatesModelAdminMixin,
 ):
     queryset_filter: dict | None = None
