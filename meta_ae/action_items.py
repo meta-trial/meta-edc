@@ -11,11 +11,11 @@ from edc_adverse_event.constants import (
     DEATH_REPORT_TMG_ACTION,
 )
 from edc_constants.constants import CLOSED, DEAD, HIGH_PRIORITY, NO, YES
-from edc_lab_results import BLOOD_RESULTS_LIPID_ACTION
 from edc_lab_results.constants import (
     BLOOD_RESULTS_FBC_ACTION,
     BLOOD_RESULTS_GLU_ACTION,
     BLOOD_RESULTS_LFT_ACTION,
+    BLOOD_RESULTS_LIPIDS_ACTION,
     BLOOD_RESULTS_RFT_ACTION,
 )
 from edc_ltfu.constants import LOST_TO_FOLLOWUP
@@ -85,7 +85,7 @@ class AeInitialAction(ActionWithNotification):
     display_name = "Submit AE Initial Report"
     notification_display_name = "AE Initial Report"
     parent_action_names = [
-        BLOOD_RESULTS_LIPID_ACTION,
+        BLOOD_RESULTS_LIPIDS_ACTION,
         BLOOD_RESULTS_GLU_ACTION,
         BLOOD_RESULTS_LFT_ACTION,
         BLOOD_RESULTS_RFT_ACTION,

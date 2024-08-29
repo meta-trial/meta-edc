@@ -3,6 +3,7 @@ from .missing_screening_ogtt_admin import (
     MissingOgttNoteModelAdmin,
     MissingScreeningOgttAdmin,
 )
+from .on_study_missing_lab_values_admin import OnStudyMissingLabValuesAdmin
 from .on_study_missing_values_admin import OnStudyMissingValuesAdmin
 from .patient_history_missing_baseline_cd4_admin import (
     PatientHistoryMissingBaselineCd4Admin,

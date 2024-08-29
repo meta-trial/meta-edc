@@ -4,7 +4,7 @@ from .blood_results import (
     BloodResultsHba1cForm,
     BloodResultsInsForm,
     BloodResultsLftForm,
-    BloodResultsLipidForm,
+    BloodResultsLipidsForm,
     BloodResultsRftForm,
 )
 from .complications_glycemia_form import ComplicationsGlycemiaForm
