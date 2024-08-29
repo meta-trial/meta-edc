@@ -36,7 +36,7 @@ class EndpointsModelAdminMixin(
 ):
     queryset_filter: dict | None = None
     actions = [update_endpoints_table_action]
-    qa_report_list_display_insert_pos = 2
+    qa_report_list_display_insert_pos = 3
     ordering = ["-fbg_datetime"]
     list_display = [
         "dashboard",
