@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from edc_constants.constants import YES
 
-from .constants import endpoint_cases
+from ..constants import endpoint_cases
 
 
 class EndpointTdeltaError(Exception):
@@ -23,8 +23,8 @@ class EndpointByDate:
     Evaluation is done in order
 
     Order of protocol endpoint evaluation:
-      * case 2. FBG >= 7 x 2, first OGTT<=11.1
-      * case 3.  FBG >= 7 x 2, second OGTT<=11.1
+      * case 2. FBG >= 7 x 2, first OGTT<11.1
+      * case 3.  FBG >= 7 x 2, second OGTT<11.1
 
     Additional criteria considered:
       1. any threshhold FBG must be taken while fasted (fasting=YES)
@@ -96,7 +96,7 @@ class EndpointByDate:
         ] = self.endpoint_cases[case]
 
     def case_two(self, index: int):
-        """FBG >= 7 x 2, first OGTT<=11.1.
+        """FBG >= 7 x 2, first OGTT<11.1.
 
         First FBG must be done with corresponding OGTT.
         """
@@ -104,11 +104,14 @@ class EndpointByDate:
             self.get_next("fbg_datetime", index)
             and self.get("fbg_value", index)
             and self.get("ogtt_value", index)
+            and self.get("fasting", index)
             and self.get_next("fbg_value", index)
+            and self.get_next("fasting", index)
             and self.get("fbg_value", index) >= self.fbg_threshhold
             and self.get("ogtt_value", index) < self.ogtt_threshhold
+            and self.get("fasting", index) == YES
             and self.get_next("fbg_value", index) >= self.fbg_threshhold
-            and self.fasting(index)
+            and self.get_next("fasting", index) == YES
             and (self.get_next("fbg_datetime", index) - self.get("fbg_datetime", index)).days
             >= 7
         )
@@ -117,19 +120,22 @@ class EndpointByDate:
         return reached
 
     def case_three(self, index: int):
-        """FBG >= 7 x 2, second OGTT<=11.1.
+        """FBG >= 7 x 2, second OGTT<11.1.
 
         Second FBG must be done with corresponding OGTT.
         """
         reached = (
             self.get_next("fbg_datetime", index)
             and self.get("fbg_value", index)
+            and self.get("fasting", index)
             and self.get_next("fbg_value", index)
             and self.get_next("ogtt_value", index)
+            and self.get_next("fasting", index)
             and self.get("fbg_value", index) >= self.fbg_threshhold
+            and self.get("fasting", index) == YES
             and self.get_next("fbg_value", index) >= self.fbg_threshhold
             and self.get_next("ogtt_value", index) < self.ogtt_threshhold
-            and self.fasting(index)
+            and self.get_next("fasting", index) == YES
             and (self.get_next("fbg_datetime", index) - self.get("fbg_datetime", index)).days
             >= 7
         )
@@ -143,20 +149,23 @@ class EndpointByDate:
         This is not a protocol endpoint.
         """
         reached = (
-            self.get_next("fbg_datetime", index)
-            and self.get("fbg_value", index)
+            self.get("fbg_value", index)
+            and self.get("fbg_datetime", index)
+            and self.get("fasting", index)
             and self.get_next("fbg_value", index)
             and self.get_next("ogtt_value", index)
+            and self.get_next("fbg_datetime", index)
+            and self.get_next("fasting", index)
             and self.get("fbg_value", index) >= self.fbg_threshhold
+            and self.get("fasting", index) == YES
             and self.get_next("fbg_value", index) >= self.fbg_threshhold
-            and self.fasting(index)
+            and self.get_next("fasting", index) == YES
+            and (self.get_next("fbg_datetime", index) - self.get("fbg_datetime", index)).days
+            >= 7
         )
         if reached:
             self.endpoint_reached(index, case=4, next_is_endpoint=True)
         return reached
-
-    def fasting(self, index) -> bool:
-        return self.get("fasting", index) == YES and self.get_next("fasting", index) == YES
 
     def sequential_assessments_in_days(self, index) -> int:
         if not self.get_next("fbg_value", index):
