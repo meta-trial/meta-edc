@@ -1,6 +1,10 @@
 Changes
 -------
 
+0.3.33
+------
+- fix issues with endpoint report / generate_endpoints command
+
 0.3.32
 ------
 - bump edc 0.6.10
