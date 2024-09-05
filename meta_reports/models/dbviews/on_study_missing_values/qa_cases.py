@@ -12,7 +12,6 @@ qa_cases = [
         label="No VL value or VL date",
         dbtable="meta_subject_patienthistory",
         label_lower="meta_subject.patienthistory",
-        fld_name="viral_load_date",
         where="crf.viral_load is null or crf.viral_load_date is null",
     ),
     CrfCase(

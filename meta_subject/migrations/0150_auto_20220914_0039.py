@@ -5,18 +5,22 @@ from tqdm import tqdm
 
 def update_rs_missing_ethnicity(apps, schema_editor):
     register_subject_model_cls = apps.get_model("edc_registration.registeredsubject")
-    subject_screening_model_cls = apps.get_model("meta_screening.subjectscreening")
     subject_consent_model_cls = apps.get_model("meta_consent.subjectconsent")
-    total = subject_consent_model_cls.objects.all().count()
-    for subject_consent in tqdm(subject_consent_model_cls.objects.all(), total=total):
-        subject_screening = subject_screening_model_cls.objects.get(
-            subject_identifier=subject_consent.subject_identifier
-        )
-        register_subject = register_subject_model_cls.objects.get(
-            subject_identifier=subject_consent.subject_identifier
-        )
-        register_subject.ethnicity = subject_screening.ethnicity
-        register_subject.save(update_fields=["ethnicity"])
+    try:
+        subject_screening_model_cls = apps.get_model("meta_screening.subjectscreening")
+    except LookupError:
+        pass
+    else:
+        total = subject_consent_model_cls.objects.all().count()
+        for subject_consent in tqdm(subject_consent_model_cls.objects.all(), total=total):
+            subject_screening = subject_screening_model_cls.objects.get(
+                subject_identifier=subject_consent.subject_identifier
+            )
+            register_subject = register_subject_model_cls.objects.get(
+                subject_identifier=subject_consent.subject_identifier
+            )
+            register_subject.ethnicity = subject_screening.ethnicity
+            register_subject.save(update_fields=["ethnicity"])
 
 
 class Migration(migrations.Migration):

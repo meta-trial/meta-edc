@@ -1,3 +1,4 @@
+pg.load
 celerybeat*
 get_data*
 static/

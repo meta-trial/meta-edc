@@ -4,11 +4,11 @@ from django.db import migrations
 
 
 def update_egfr_drop_action(apps, schema_editor):
-    action_item_model_cls = apps.get_model("edc_action_item.actionitem")
+    # action_item_model_cls = apps.get_model("edc_action_item.actionitem")
     crf_metadata_model_cls = apps.get_model("edc_metadata.crfmetadata")
-    action_item_model_cls.objects.filter(
-        reference_model="meta_subject.egfrnotification"
-    ).update(reference_model="meta_subject.egfrdropnotification")
+    # action_item_model_cls.objects.filter(
+    #     reference_model="meta_subject.egfrnotification"
+    # ).update(reference_model="meta_subject.egfrdropnotification")
     crf_metadata_model_cls.objects.filter(model="meta_subject.egfrnotification").update(
         model="meta_subject.egfrdropnotification"
     )
