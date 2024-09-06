@@ -35,8 +35,8 @@ exclude_lines = [
 legacy_tox_ini = """
 [tox]
 envlist =
-    py{312}-dj{50}-edc{prod},
-    py{312}-dj{50,dev}-edc{dev},
+    py{312}-dj{42,51}-edc{prod,dev},
+    py{312}-dj{dev}-edc{dev},
     lint
 
 isolated_build = true
@@ -48,7 +48,7 @@ python =
 [gh-actions:env]
 DJANGO =
     4.2: dj42
-    5.0: dj50, lint
+    5.1: dj51, lint
     dev: djdev
 EDC_CODEBASE =
     Prod: edcprod, lint
@@ -60,7 +60,7 @@ deps =
     -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/test_utils.txt
     -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/third_party_dev.txt
     dj42: Django>=4.2,<5.0
-    dj50: Django>=5.0,<6.0
+    dj51: Django>=5.1,<5.2
     djdev: https://github.com/django/django/tarball/main
 
 commands =
@@ -69,7 +69,7 @@ commands =
     edcdev: pip install -U -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/edc.txt
     edcdev: pip install -U git+https://github.com/intecomm-trial/intecomm-form-validators.git@develop
     pip freeze
-    coverage run runtests.py
+    coverage run -a runtests.py
     coverage report
 
 [testenv:lint]
