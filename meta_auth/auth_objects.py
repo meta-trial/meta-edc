@@ -11,8 +11,11 @@ clinic_codenames = get_app_codenames(
 )
 
 reports_codenames = get_app_codenames("meta_reports")
+reports_codenames.remove("meta_reports.view_impsubstitutions")
 
 meta_pharmacy_codenames = get_app_codenames("meta_pharmacy")
+meta_pharmacy_codenames.append("meta_reports.view_impsubstitutions")
+meta_pharmacy_codenames.append("meta_reports.viewallsites_impsubstitutions")
 excluded_meta_pharmacy_codenames = [
     "meta_pharmacy.add_rx",
     "meta_pharmacy.change_rx",
