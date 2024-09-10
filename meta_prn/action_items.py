@@ -27,6 +27,7 @@ from .constants import (
     OFFSCHEDULE_PREGNANCY_ACTION,
     OFFSTUDY_MEDICATION_ACTION,
     PREGNANCY_NOTIFICATION_ACTION,
+    REFERRAL,
     UNBLINDING_REQUEST_ACTION,
     UNBLINDING_REVIEW_ACTION,
 )
@@ -136,7 +137,7 @@ class DmReferralAction(ActionWithNotification):
     name = DM_REFFERAL_ACTION
     display_name = "Diabetes referral"
     notification_display_name = "Diabetes referral"
-    parent_action_names = None
+    parent_action_names = [OFFSTUDY_MEDICATION_ACTION]
     reference_model = "meta_prn.dmreferral"
     show_link_to_changelist = True
     show_link_to_add = True
@@ -181,6 +182,13 @@ class OffStudyMedicationAction(ActionWithNotification):
     admin_site_name = "meta_prn_admin"
     priority = HIGH_PRIORITY
     singleton = True
+
+    def get_next_actions(self):
+        if self.reference_obj.reason == REFERRAL:
+            next_actions = [DM_REFFERAL_ACTION]
+        else:
+            next_actions = [END_OF_STUDY_ACTION]
+        return next_actions
 
 
 class UnblindingRequestAction(ActionWithNotification):

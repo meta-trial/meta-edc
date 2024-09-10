@@ -28,15 +28,18 @@ from edc_subject_dashboard.auths import SUBJECT_VIEW
 from edc_unblinding.auth_objects import UNBLINDING_REQUESTORS
 
 from .auth_objects import (
+    META_PHARMACIST,
     META_REPORTS,
     META_REPORTS_AUDIT,
     clinic_codenames,
+    meta_pharmacy_codenames,
     reports_codenames,
     screening_codenames,
 )
 
 site_auths.add_group(*reports_codenames, name=META_REPORTS)
 site_auths.add_group(*reports_codenames, name=META_REPORTS_AUDIT, view_only=True)
+site_auths.add_group(*meta_pharmacy_codenames, name=META_PHARMACIST)
 
 # update edc_auth default groups
 site_auths.update_group(*clinic_codenames, name=AUDITOR, view_only=True)
@@ -69,8 +72,8 @@ site_auths.update_role(
     DATA_MANAGER_EXPORT,
     name=DATA_EXPORTER_ROLE,
 )
-site_auths.update_role(RANDO_UNBLINDED, PII, name=PHARMACIST_ROLE)
-site_auths.update_role(RANDO_BLINDED, PII, name=SITE_PHARMACIST_ROLE)
+site_auths.update_role(RANDO_UNBLINDED, PII, META_PHARMACIST, name=PHARMACIST_ROLE)
+site_auths.update_role(RANDO_BLINDED, PII, META_PHARMACIST, name=SITE_PHARMACIST_ROLE)
 site_auths.update_role(SUBJECT_VIEW, SCREENING_VIEW, name=DATA_MANAGER_ROLE)
 site_auths.update_role(
     SUBJECT_VIEW, SCREENING_VIEW, ACTION_ITEM, UNBLINDING_REQUESTORS, name=TMG_ROLE

@@ -1,5 +1,5 @@
 from django.test import TestCase
-from edc_sites import InvalidSiteError
+from edc_sites.exceptions import InvalidSiteError
 from edc_sites.site import sites
 
 

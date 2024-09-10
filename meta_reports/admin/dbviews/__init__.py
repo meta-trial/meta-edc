@@ -1,4 +1,5 @@
 from .glucose_summary_admin import GlucoseSummaryAdmin
+from .imp_substitutions_admin import ImpSubstitutionsAdmin
 from .missing_screening_ogtt_admin import (
     MissingOgttNoteModelAdmin,
     MissingScreeningOgttAdmin,
