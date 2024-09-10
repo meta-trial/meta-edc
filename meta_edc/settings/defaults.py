@@ -188,6 +188,7 @@ MIDDLEWARE = [
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.auth.middleware.LoginRequiredMiddleware",
     "defender.middleware.FailedLoginMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -412,6 +413,9 @@ EDC_RANDOMIZATION_SKIP_VERIFY_CHECKS = True
 
 # edc-sites
 EDC_SITES_MODULE_NAME = env.str("EDC_SITES_MODULE_NAME")
+
+# meta_pharmacy
+META_PHARMACY_RX_SUBSTITUTION_FILE = env.str("META_PHARMACY_RX_SUBSTITUTION_FILE")
 
 # django-multisite
 CACHE_MULTISITE_KEY_PREFIX = "meta4"

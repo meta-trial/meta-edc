@@ -3,6 +3,7 @@ from edc_auth.get_app_codenames import get_app_codenames
 
 META_REPORTS = "META_REPORTS"
 META_REPORTS_AUDIT = "META_REPORTS_AUDIT"
+META_PHARMACIST = "META_PHARMACIST"
 
 
 clinic_codenames = get_app_codenames(
@@ -10,6 +11,20 @@ clinic_codenames = get_app_codenames(
 )
 
 reports_codenames = get_app_codenames("meta_reports")
+reports_codenames.remove("meta_reports.view_impsubstitutions")
+
+meta_pharmacy_codenames = get_app_codenames("meta_pharmacy")
+meta_pharmacy_codenames.append("meta_reports.view_impsubstitutions")
+meta_pharmacy_codenames.append("meta_reports.viewallsites_impsubstitutions")
+excluded_meta_pharmacy_codenames = [
+    "meta_pharmacy.add_rx",
+    "meta_pharmacy.change_rx",
+    "meta_pharmacy.delete_rx",
+]
+
+meta_pharmacy_codenames = [
+    c for c in meta_pharmacy_codenames if c not in excluded_meta_pharmacy_codenames
+]
 
 add_perms = []
 if not settings.LIVE_SYSTEM:

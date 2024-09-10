@@ -15,6 +15,9 @@ def post_migrate_populate_pharmacy_models(sender=None, **kwargs):  # noqa
 class AppConfig(DjangoAppConfig):
     name = "meta_pharmacy"
     verbose_name = "META Pharmacy"
+    include_in_administration_section = True
+    has_exportable_data = True
+    default_auto_field = "django.db.models.BigAutoField"
 
     def ready(self):
         post_migrate.connect(post_migrate_populate_pharmacy_models, sender=self)

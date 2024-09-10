@@ -6,7 +6,10 @@ META Edc
 
 Metformin treatment in Africa- META
 
-https://www.lstmed.ac.uk/research/departments/international-public-health/respond-africa/meta
+* https://www.ucl.ac.uk/global-health/research/z-research/respond-africa/metformin-treatment-africa-meta
+* https://www.inteafrica.org/related-projects/meta-trial/
+* https://www.lstmed.ac.uk/research/departments/international-public-health/respond-africa/meta
+* http://www.isrctn.com/ISRCTN76157257
 
 py 3.12 / DJ 5.1 / edc 0.6.0 (META3)
 

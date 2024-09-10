@@ -1,6 +1,11 @@
 Changes
 -------
 
+0.3.34
+------
+- add IMP Substitutions model and report
+- bump edc 0.6.11
+
 0.3.33
 ------
 - fix issues with endpoint report / generate_endpoints command

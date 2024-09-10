@@ -9,6 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ("meta_reports", "0016_missingscreeningogtt"),
+        ("meta_screening", "0067_alter_historicalscreeningpartone_report_datetime_and_more"),
     ]
 
     operations = [

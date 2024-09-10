@@ -62,6 +62,7 @@ urlpatterns = [
     *paths_for_urlpatterns("meta_consent"),
     *paths_for_urlpatterns("meta_export"),
     *paths_for_urlpatterns("meta_lists"),
+    *paths_for_urlpatterns("meta_pharmacy"),
     *paths_for_urlpatterns("meta_prn"),
     *paths_for_urlpatterns("meta_screening"),
     *paths_for_urlpatterns("meta_subject"),
