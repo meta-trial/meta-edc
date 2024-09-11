@@ -41,7 +41,7 @@ class Substitutions(NonUniqueSubjectIdentifierFieldMixin, SiteModelMixin, BaseUu
     values are sequential and not designed for human transcription.
     """
 
-    report_datetime = models.DateTimeField()
+    report_datetime = models.DateTimeField(null=True, blank=False)
 
     row_index = models.IntegerField(null=True)
 

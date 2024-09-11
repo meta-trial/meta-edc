@@ -19,6 +19,8 @@ class ImpSubstitutions(QaReportModelMixin, DBView):
         max_length=15, choices=YES_NO_NOT_EVALUATED, default=NOT_EVALUATED
     )
 
+    report_datetime = models.DateTimeField(null=True)
+
     allocated_datetime = models.DateTimeField(null=True)
 
     user_created = models.CharField(max_length=25)
