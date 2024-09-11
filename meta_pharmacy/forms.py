@@ -7,6 +7,8 @@ from edc_offstudy.modelform_mixins import OffstudyNonCrfModelFormMixin
 from edc_prn.modelform_mixins import PrnFormValidatorMixin
 from edc_sites.forms import SiteModelFormMixin
 
+from meta_rando.models import RandomizationList
+
 from .models import Rx, Substitutions
 
 
@@ -41,11 +43,11 @@ class SubstitutionsForm(
                     )
         if self.cleaned_data.get("dispensed_sid"):
             try:
-                Rx.objects.get(
-                    rando_sid=self.cleaned_data.get("dispensed_sid"),
+                RandomizationList.objects.get(
+                    sid=self.cleaned_data.get("dispensed_sid"),
                 )
             except ObjectDoesNotExist:
-                raise forms.ValidationError({"dispensed_sid": "Unknown SID for this trial"})
+                raise forms.ValidationError({"dispensed_sid": "Invalid SID for this trial"})
 
     class Meta:
         model = Substitutions
