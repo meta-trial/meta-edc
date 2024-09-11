@@ -2,6 +2,7 @@ from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
+from edc_model_admin.list_filters import ReportDateListFilter
 from edc_pharmacy.admin.list_filters import MedicationsListFilter
 from edc_sites.admin import SiteModelAdminMixin
 
@@ -51,14 +52,20 @@ class SubstitutionsAdmin(
         "dispensed_sid",
         "arm_match",
         "subject_identifier",
-        "report_datetime",
+        "report_date",
     )
 
     radio_fields = {"arm_match": admin.VERTICAL}
 
-    list_filter = ("arm_match", "report_datetime")
+    list_filter = ("arm_match", ReportDateListFilter)
 
     search_fields = ["subject_identifier", "sid", "dispensed_sid"]
+
+    @admin.display(description="Report date", ordering="report_datetime")
+    def report_date(self, obj) -> str | None:
+        if obj.report_datetime:
+            return obj.report_datetime.date()
+        return None
 
 
 @admin.register(Rx, site=meta_pharmacy_admin)

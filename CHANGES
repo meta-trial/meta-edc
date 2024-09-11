@@ -1,6 +1,10 @@
 Changes
 -------
 
+0.3.35
+------
+- add report_datetime to IMP Substitutions changelists
+
 0.3.34
 ------
 - add IMP Substitutions model and report

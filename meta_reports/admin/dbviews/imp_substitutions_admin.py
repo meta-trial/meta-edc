@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from edc_appointment.models import Appointment
 from edc_model_admin.dashboard import ModelAdminDashboardMixin
+from edc_model_admin.list_filters import ReportDateListFilter
 from edc_model_admin.mixins import TemplatesModelAdminMixin
 from edc_qareports.modeladmin_mixins import QaReportModelAdminMixin
 from edc_sites.admin import SiteModelAdminMixin
@@ -31,6 +32,7 @@ class ImpSubstitutionsAdmin(
         "subject",
         "sid",
         "dispensed_sid",
+        "report_date",
         "arm_match",
         "allocated_date",
         "user_created",
@@ -38,7 +40,12 @@ class ImpSubstitutionsAdmin(
         "modified",
     ]
 
-    list_filter = ["arm_match", ScheduleStatusListFilter, "allocated_datetime"]
+    list_filter = [
+        "arm_match",
+        ScheduleStatusListFilter,
+        ReportDateListFilter,
+        "allocated_datetime",
+    ]
 
     search_fields = ["subject_identifier", "sid", "dispensed_sid"]
 
@@ -86,3 +93,9 @@ class ImpSubstitutionsAdmin(
             context=dict(title=title, url=url, label=label),
         )
         return crf_button
+
+    @admin.display(description="Report date", ordering="report_datetime")
+    def report_date(self, obj) -> str | None:
+        if obj.report_datetime:
+            return obj.report_datetime.date()
+        return None
