@@ -11,7 +11,7 @@ class Endpoints(QaReportModelMixin, models.Model):
 
     fasting = models.CharField(max_length=10, null=True)
 
-    fbg_datetime = models.DateTimeField(null=True)
+    fbg_date = models.DateField(null=True)
 
     fbg_value = models.FloatField(null=True)
 
@@ -19,9 +19,9 @@ class Endpoints(QaReportModelMixin, models.Model):
 
     endpoint_label = models.CharField(max_length=250, null=True)
 
-    baseline_datetime = models.DateTimeField(null=True)
+    baseline_date = models.DateField(null=True)
 
-    offstudy_datetime = models.DateTimeField(null=True)
+    offstudy_date = models.DateField(null=True)
 
     offstudy_reason = models.CharField(max_length=250, null=True)
 

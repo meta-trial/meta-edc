@@ -96,21 +96,42 @@ class GlucoseEndpointsByDate:
         self.endpoint_cases = {k: v for k, v in endpoint_cases.items() if k in self.case_list}
 
         # merge two model DFs
-        self.df = self.glucose_fbg_ogtt_df.merge(
-            self.glucose_fbg_df,
-            on=["subject_visit_id"],
-            how="outer",
-            indicator=True,
-            suffixes=("", "_y"),
-        )
+        if self.glucose_fbg_ogtt_df.empty:
+            self.df = self.glucose_fbg_df.copy()
+            self.df[["ogtt_value", "ogtt_units"]] = np.nan
+            self.df[["ogtt_datetime"]] = pd.NaT
+        elif self.glucose_fbg_df.empty:
+            self.df = self.glucose_fbg_ogtt_df.copy()
+        else:
+            self.df = self.glucose_fbg_ogtt_df.merge(
+                self.glucose_fbg_df,
+                on=["subject_visit_id"],
+                how="outer",
+                indicator=True,
+                suffixes=("", "_y"),
+            )
         # cast as ...
         for col in ["fasting_hrs", "fbg_value"]:
             self.df[col] = self.df[col].astype("float64")
-            self.df[f"{col}_y"] = self.df[f"{col}_y"].astype("float64")
+            if f"{col}_y" in self.df.columns:
+                self.df[f"{col}_y"] = self.df[f"{col}_y"].astype("float64")
         for col in ["fasting", "fbg_units", "source"]:
             self.df[col] = self.df[col].astype("object")
-            self.df[f"{col}_y"] = self.df[f"{col}_y"].astype("object")
+            if f"{col}_y" in self.df.columns:
+                self.df[f"{col}_y"] = self.df[f"{col}_y"].astype("object")
+        self.df = self.df.drop(
+            columns=[col for col in self.df.columns if col.endswith("_y") or col == "_merge"]
+        )
+        self.df = self.df.reset_index(drop=True)
 
+        # merge w/ subject_visit
+        subject_visit_df = get_subject_visit(
+            "meta_subject.subjectvisit", subject_identifiers=self.subject_identifiers
+        )
+        self.df = subject_visit_df.merge(
+            self.df, on=["subject_visit_id"], how="left", suffixes=("", "_y")
+        )
+        self.df = self.df[[col for col in self.keep_cols]]
         self.df = self.df.reset_index(drop=True)
 
         # pivot right_only cols
@@ -124,7 +145,7 @@ class GlucoseEndpointsByDate:
             "report_datetime",
         ]
         for col in cols:
-            if not self.df[f"{col}_y"].isnull().all():
+            if f"{col}_y" in self.df.columns and not self.df[f"{col}_y"].isnull().all():
                 self.df.loc[
                     (self.df["_merge"].isin(["both", "right_only"])) & (self.df[col].isna()),
                     col,
@@ -136,9 +157,9 @@ class GlucoseEndpointsByDate:
             self.df.loc[(self.df["fbg_datetime"].isna()), "fbg_datetime"] = self.df[
                 "visit_datetime"
             ]
-        cols = [col for col in self.df.columns if col.endswith("_y")]
-        cols.append("_merge")
-        self.df = self.df.drop(columns=cols)
+        self.df = self.df.drop(
+            columns=[col for col in self.df.columns if col.endswith("_y") or col == "_merge"]
+        )
         self.df = self.df.reset_index(drop=True)
 
         self.merge_with_consent()
@@ -195,21 +216,14 @@ class GlucoseEndpointsByDate:
             df = get_crf(
                 model="meta_subject.glucosefbg",
                 subject_identifiers=self.subject_identifiers,
-                subject_visit_model="meta_subject.subjectvisit",
-            )
-            # merge w/ subject_visit
-            subject_visit_df = get_subject_visit(
-                "meta_subject.subjectvisit", subject_identifiers=self.subject_identifiers
-            )
-            df = subject_visit_df.merge(
-                df, on=["subject_visit_id"], how="left", suffixes=("", "_y")
+                # subject_visit_model="meta_subject.subjectvisit",
             )
             df["source"] = "meta_subject.glucosefbg"
             df.rename(columns={"fbg_fasting": "fasting"}, inplace=True)
             df.loc[(df["fasting"] == "fasting"), "fasting"] = YES
             df.loc[(df["fasting"] == "non_fasting"), "fasting"] = NO
             df = calculate_fasting_hrs(df)
-            df = df[[col for col in self.keep_cols if not col.startswith("ogtt")]]
+            # df = df[[col for col in self.keep_cols if not col.startswith("ogtt")]]
             df = df.reset_index(drop=True)
             self._glucose_fbg_df = df
         return self._glucose_fbg_df
@@ -224,18 +238,11 @@ class GlucoseEndpointsByDate:
             df = get_crf(
                 model="meta_subject.glucose",
                 subject_identifiers=self.subject_identifiers,
-                subject_visit_model="meta_subject.subjectvisit",
+                # subject_visit_model="meta_subject.subjectvisit",
             )
             df["source"] = "meta_subject.glucose"
-            # merge w/ subject_visit
-            subject_visit_df = get_subject_visit(
-                "meta_subject.subjectvisit", subject_identifiers=self.subject_identifiers
-            )
-            df = subject_visit_df.merge(
-                df, on=["subject_visit_id"], how="left", suffixes=("", "_y")
-            )
             df = calculate_fasting_hrs(df)
-            df = df[self.keep_cols]
+            # df = df[self.keep_cols]
             df = df.reset_index(drop=True)
             self._glucose_fbg_ogtt_df = df
         return self._glucose_fbg_ogtt_df
@@ -279,14 +286,13 @@ class GlucoseEndpointsByDate:
         self.df["ogtt_days"] = np.nan
         self.df["test"] = np.nan
         self.df["visit_days"] = (
-            self.df["visit_datetime"].dt.tz_localize(None)
-            - self.df["baseline_datetime"].dt.tz_localize(None)
+            self.df["visit_datetime"] - self.df["baseline_datetime"]
         ).dt.days
-        if not self.df["fbg_datetime"].empty:
+        if not self.df["fbg_datetime"].isnull().all():
             self.df["fbg_days"] = (
-                self.df["fbg_datetime"] - self.df["baseline_datetime"].dt.tz_localize(None)
+                self.df["fbg_datetime"] - self.df["baseline_datetime"]
             ).dt.days
-        if not self.df["ogtt_datetime"].empty:
+        if not self.df["ogtt_datetime"].isnull().all():
             self.df["ogtt_days"] = (
                 self.df["ogtt_datetime"] - self.df["baseline_datetime"]
             ).dt.days
@@ -499,20 +505,18 @@ class GlucoseEndpointsByDate:
                 model_cls(
                     subject_identifier=row["subject_identifier"],
                     site_id=row["site_id"],
-                    baseline_datetime=(
+                    baseline_date=(
                         None if pd.isna(row["baseline_datetime"]) else row["baseline_datetime"]
                     ),
                     visit_code=None if pd.isna(row["visit_code"]) else row["visit_code"],
                     fbg_value=(None if pd.isna(row["fbg_value"]) else row["fbg_value"]),
                     ogtt_value=None if pd.isna(row["ogtt_value"]) else row["ogtt_value"],
-                    fbg_datetime=(
-                        None if pd.isna(row["fbg_datetime"]) else row["fbg_datetime"]
-                    ),
+                    fbg_date=(None if pd.isna(row["fbg_datetime"]) else row["fbg_datetime"]),
                     fasting=(None if pd.isna(row["fasting"]) else row["fasting"]),
                     endpoint_label=(
                         None if pd.isna(row["endpoint_label"]) else row["endpoint_label"]
                     ),
-                    offstudy_datetime=(
+                    offstudy_date=(
                         None if pd.isna(row["offstudy_datetime"]) else row["offstudy_datetime"]
                     ),
                     offstudy_reason=(
