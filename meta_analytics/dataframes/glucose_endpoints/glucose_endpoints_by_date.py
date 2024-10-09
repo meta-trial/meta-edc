@@ -49,7 +49,8 @@ class GlucoseEndpointsByDate:
         cls.endpoint_only_df.endpoint_type.value_counts()
         cls.endpoint_only_df.endpoint_label.value_counts()
 
-        result_df = g.endpoint_only_df.endpoint_label.value_counts().to_frame().reset_index()
+        # subjects who reached endpoint with total
+        result_df = cls.endpoint_only_df.endpoint_label.value_counts().to_frame().reset_index()
         result_df.columns = ["endpoint_label", "total"]
         result_df.loc[-1] = ["total", result_df.total.sum()]
         result_df = result_df.reset_index(drop=True)
@@ -203,12 +204,6 @@ class GlucoseEndpointsByDate:
             df = subject_visit_df.merge(
                 df, on=["subject_visit_id"], how="left", suffixes=("", "_y")
             )
-            df["baseline_datetime"] = df["baseline_datetime"].dt.tz_localize(None)
-            df["visit_datetime"] = df["visit_datetime"].dt.tz_localize(None)
-            df["fbg_datetime"] = df["fbg_datetime"].apply(pd.to_datetime).dt.tz_localize(None)
-            df["report_datetime"] = (
-                df["report_datetime"].apply(pd.to_datetime).dt.tz_localize(None)
-            )
             df["source"] = "meta_subject.glucosefbg"
             df.rename(columns={"fbg_fasting": "fasting"}, inplace=True)
             df.loc[(df["fasting"] == "fasting"), "fasting"] = YES
@@ -238,15 +233,6 @@ class GlucoseEndpointsByDate:
             )
             df = subject_visit_df.merge(
                 df, on=["subject_visit_id"], how="left", suffixes=("", "_y")
-            )
-            df["baseline_datetime"] = df["baseline_datetime"].dt.tz_localize(None)
-            df["visit_datetime"] = df["visit_datetime"].dt.tz_localize(None)
-            df["fbg_datetime"] = df["fbg_datetime"].apply(pd.to_datetime).dt.tz_localize(None)
-            df["ogtt_datetime"] = (
-                df["ogtt_datetime"].apply(pd.to_datetime).dt.tz_localize(None)
-            )
-            df["report_datetime"] = (
-                df["report_datetime"].apply(pd.to_datetime).dt.tz_localize(None)
             )
             df = calculate_fasting_hrs(df)
             df = df[self.keep_cols]
