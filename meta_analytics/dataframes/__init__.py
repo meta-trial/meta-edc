@@ -7,6 +7,7 @@ from .constants import (
     endpoint_cases,
     endpoint_columns,
 )
+from .get_eos_df import get_eos_df
 from .glucose_endpoints import EndpointByDate, GlucoseEndpointsByDate
 from .screening import get_glucose_tested_only_df, get_screening_df
 from .utils import (

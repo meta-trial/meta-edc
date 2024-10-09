@@ -1,6 +1,3 @@
-from datetime import datetime
-from pathlib import Path
-
 import pandas as pd
 from edc_analytics.custom_tables import (
     AgeTable,
@@ -15,31 +12,10 @@ from edc_analytics.custom_tables import (
     OgttTable,
     WaistCircumferenceTable,
 )
+from edc_analytics.data import Data
 
-from meta_analytics.dataframes import get_glucose_tested_only_df, get_screening_df
-from meta_analytics.tables import EligibleP12Table, HasDmTable
-
-
-class Data:
-    def __init__(self, label: str, table_df: pd.DataFrame, data_df: pd.DataFrame):
-        self.label = label
-        self.table_df = table_df
-        self.data_df = data_df
-
-    def __repr__(self):
-        return f"{self.label} obs={len(self.data_df)}"
-
-    def to_csv(
-        self, folder: str | None = None, filename: str | None = None, cols: int | None = None
-    ):
-        folder = folder or "/Users/erikvw/Documents/ucl/protocols/meta3/reports/"
-        cols = cols or 5
-        datestamp = datetime.now().strftime("%Y%m%d%H%M")
-        filename = filename or f"meta3_table_{self.label}_{datestamp}.csv"
-        path = Path(folder) / filename
-        self.table_df.iloc[:, :cols].to_csv(
-            path_or_buf=path, encoding="utf-8", index=0, sep="|"
-        )
+from .dataframes import get_glucose_tested_only_df, get_screening_df
+from .tables import EligibleP12Table, HasDmTable
 
 
 def get_tables() -> dict[str, Data]:
@@ -101,5 +77,5 @@ def get_tables() -> dict[str, Data]:
         ]:
             tbl = tbl_cls(main_df=df)
             dfs.append(tbl.table_df)
-        results.update({key: Data(key, pd.concat(list(dfs)), df)})
+        results.update({key: Data(key, pd.concat(list(dfs)), df, "meta3")})
     return results

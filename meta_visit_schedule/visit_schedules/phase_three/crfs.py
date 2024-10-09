@@ -8,6 +8,7 @@ crfs_prn = CrfCollection(
     Crf(show_order=245, model="meta_subject.bloodresultsrft"),
     Crf(show_order=255, model="meta_subject.bloodresultslft"),
     Crf(show_order=265, model="meta_subject.bloodresultslipids"),
+    Crf(show_order=268, model="meta_subject.bloodresultsins"),
     Crf(show_order=275, model="meta_subject.hepatitistest"),
     Crf(show_order=285, model="meta_subject.malariatest"),
     Crf(show_order=295, model="meta_subject.urinedipsticktest"),

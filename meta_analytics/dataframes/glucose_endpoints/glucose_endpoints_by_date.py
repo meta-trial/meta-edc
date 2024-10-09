@@ -28,26 +28,33 @@ from ..utils import (
 from .endpoint_by_date import EndpointByDate
 
 
-def normalize_date_columns(df: pd.DataFrame, cols: list[str] = None) -> pd.DataFrame:
-    """Normalize date columns by flooring"""
-    for col in cols:
-        if not df[col].empty:
-            df[col] = df[col].dt.floor("d")
-        else:
-            df[col] = pd.NaT
-    return df
-
-
 def calculate_fasting_hrs(df: pd.DataFrame):
     df.loc[(df["fasting"] == NO), "fasting_duration_delta"] = pd.NaT
     if df.empty:
         df["fasting_hrs"] = np.nan
     else:
-        df["fasting_hrs"] = df["fasting_duration_delta"].dt.total_seconds() / 3600
+        df["fasting_hrs"] = df["fasting_duration_delta"].apply(
+            lambda s: np.nan if pd.isna(s) else s.total_seconds() / 3600
+        )
     return df
 
 
 class GlucoseEndpointsByDate:
+    """
+    Usage:
+        cls = GlucoseEndpointsByDate()
+        cls.run()
+
+        # subjects who reached endpoint
+        cls.endpoint_only_df.endpoint_type.value_counts()
+        cls.endpoint_only_df.endpoint_label.value_counts()
+
+        result_df = g.endpoint_only_df.endpoint_label.value_counts().to_frame().reset_index()
+        result_df.columns = ["endpoint_label", "total"]
+        result_df.loc[-1] = ["total", result_df.total.sum()]
+        result_df = result_df.reset_index(drop=True)
+        result_df
+    """
 
     fbg_threshhold = 7.0
     ogtt_threshhold = 11.1
@@ -67,7 +74,7 @@ class GlucoseEndpointsByDate:
         "subject_identifier",
         "visit_code",
         "visit_datetime",
-        "site",
+        "site_id",
         "baseline_datetime",
     ]
 
@@ -95,26 +102,39 @@ class GlucoseEndpointsByDate:
             indicator=True,
             suffixes=("", "_y"),
         )
+        # cast as ...
+        for col in ["fasting_hrs", "fbg_value"]:
+            self.df[col] = self.df[col].astype("float64")
+            self.df[f"{col}_y"] = self.df[f"{col}_y"].astype("float64")
+        for col in ["fasting", "fbg_units", "source"]:
+            self.df[col] = self.df[col].astype("object")
+            self.df[f"{col}_y"] = self.df[f"{col}_y"].astype("object")
+
         self.df = self.df.reset_index(drop=True)
 
         # pivot right_only cols
-        cols = {
-            "fasting": None,
-            "fasting_hrs": np.nan,
-            "fbg_value": None,
-            "fbg_units": None,
-            "fbg_datetime": None,
-            "source": None,
-            "report_datetime": pd.NaT,
-        }
-        for col, null_value in cols.items():
-            self.df.loc[
-                (self.df["_merge"].isin(["both", "right_only"])) & (self.df[col].isna()), col
-            ] = self.df[f"{col}_y"]
-        # if fbg_datetime still null, use visit datetime to sort order
-        self.df.loc[(self.df["fbg_datetime"].isna()), "fbg_datetime"] = self.df[
-            "visit_datetime"
+        cols = [
+            "fasting",
+            "fasting_hrs",
+            "fbg_value",
+            "fbg_units",
+            "fbg_datetime",
+            "source",
+            "report_datetime",
         ]
+        for col in cols:
+            if not self.df[f"{col}_y"].isnull().all():
+                self.df.loc[
+                    (self.df["_merge"].isin(["both", "right_only"])) & (self.df[col].isna()),
+                    col,
+                ] = self.df[f"{col}_y"]
+        # if fbg_datetime still null, use visit datetime
+        if self.df["fbg_datetime"].isnull().all():
+            self["fbg_datetime"] = self.df["visit_datetime"]
+        else:
+            self.df.loc[(self.df["fbg_datetime"].isna()), "fbg_datetime"] = self.df[
+                "visit_datetime"
+            ]
         cols = [col for col in self.df.columns if col.endswith("_y")]
         cols.append("_merge")
         self.df = self.df.drop(columns=cols)
@@ -122,6 +142,7 @@ class GlucoseEndpointsByDate:
 
         self.merge_with_consent()
         self.merge_with_eos()
+
         self.add_calculated_days_from_baseline_to_event_columns()
 
         # label rows by type of glu tests (ones with value)
@@ -176,9 +197,17 @@ class GlucoseEndpointsByDate:
                 subject_visit_model="meta_subject.subjectvisit",
             )
             # merge w/ subject_visit
-            subject_visit_df = get_subject_visit("meta_subject.subjectvisit")
+            subject_visit_df = get_subject_visit(
+                "meta_subject.subjectvisit", subject_identifiers=self.subject_identifiers
+            )
             df = subject_visit_df.merge(
                 df, on=["subject_visit_id"], how="left", suffixes=("", "_y")
+            )
+            df["baseline_datetime"] = df["baseline_datetime"].dt.tz_localize(None)
+            df["visit_datetime"] = df["visit_datetime"].dt.tz_localize(None)
+            df["fbg_datetime"] = df["fbg_datetime"].apply(pd.to_datetime).dt.tz_localize(None)
+            df["report_datetime"] = (
+                df["report_datetime"].apply(pd.to_datetime).dt.tz_localize(None)
             )
             df["source"] = "meta_subject.glucosefbg"
             df.rename(columns={"fbg_fasting": "fasting"}, inplace=True)
@@ -187,9 +216,6 @@ class GlucoseEndpointsByDate:
             df = calculate_fasting_hrs(df)
             df = df[[col for col in self.keep_cols if not col.startswith("ogtt")]]
             df = df.reset_index(drop=True)
-            df = normalize_date_columns(
-                df, cols=["fbg_datetime", "report_datetime", "visit_datetime"]
-            )
             self._glucose_fbg_df = df
         return self._glucose_fbg_df
 
@@ -207,23 +233,35 @@ class GlucoseEndpointsByDate:
             )
             df["source"] = "meta_subject.glucose"
             # merge w/ subject_visit
-            subject_visit_df = get_subject_visit("meta_subject.subjectvisit")
+            subject_visit_df = get_subject_visit(
+                "meta_subject.subjectvisit", subject_identifiers=self.subject_identifiers
+            )
             df = subject_visit_df.merge(
                 df, on=["subject_visit_id"], how="left", suffixes=("", "_y")
+            )
+            df["baseline_datetime"] = df["baseline_datetime"].dt.tz_localize(None)
+            df["visit_datetime"] = df["visit_datetime"].dt.tz_localize(None)
+            df["fbg_datetime"] = df["fbg_datetime"].apply(pd.to_datetime).dt.tz_localize(None)
+            df["ogtt_datetime"] = (
+                df["ogtt_datetime"].apply(pd.to_datetime).dt.tz_localize(None)
+            )
+            df["report_datetime"] = (
+                df["report_datetime"].apply(pd.to_datetime).dt.tz_localize(None)
             )
             df = calculate_fasting_hrs(df)
             df = df[self.keep_cols]
             df = df.reset_index(drop=True)
-            df = normalize_date_columns(
-                df, cols=["fbg_datetime", "ogtt_datetime", "report_datetime", "visit_datetime"]
-            )
             self._glucose_fbg_ogtt_df = df
         return self._glucose_fbg_ogtt_df
 
     def merge_with_consent(self):
         """Merge in consent DF."""
-        df_consent = get_subject_consent("meta_consent.subjectconsent")
-        self.df = pd.merge(self.df, df_consent, on="subject_identifier", how="left")
+        df_consent = get_subject_consent(
+            "meta_consent.subjectconsent", subject_identifiers=self.subject_identifiers
+        )
+        self.df = pd.merge(
+            self.df, df_consent, on="subject_identifier", how="left", suffixes=("", "_y")
+        )
         self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
         self.df = self.df.reset_index(drop=True)
 
@@ -232,7 +270,7 @@ class GlucoseEndpointsByDate:
 
         Drops patients who were taken off study by late exclusion.
         """
-        df_eos = get_eos("meta_prn.endofstudy")
+        df_eos = get_eos("meta_prn.endofstudy", subject_identifiers=self.subject_identifiers)
         df_eos = df_eos[
             df_eos["offstudy_reason"]
             != (
@@ -240,7 +278,9 @@ class GlucoseEndpointsByDate:
                 "values or raised blood pressure at enrolment"
             )
         ]
-        self.df = pd.merge(self.df, df_eos, on="subject_identifier", how="left")
+        self.df = pd.merge(
+            self.df, df_eos, on="subject_identifier", how="left", suffixes=("", "_y")
+        )
         self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
         self.df = self.df.reset_index(drop=True)
 
@@ -253,11 +293,12 @@ class GlucoseEndpointsByDate:
         self.df["ogtt_days"] = np.nan
         self.df["test"] = np.nan
         self.df["visit_days"] = (
-            self.df["visit_datetime"] - self.df["baseline_datetime"]
+            self.df["visit_datetime"].dt.tz_localize(None)
+            - self.df["baseline_datetime"].dt.tz_localize(None)
         ).dt.days
         if not self.df["fbg_datetime"].empty:
             self.df["fbg_days"] = (
-                self.df["fbg_datetime"] - self.df["baseline_datetime"]
+                self.df["fbg_datetime"] - self.df["baseline_datetime"].dt.tz_localize(None)
             ).dt.days
         if not self.df["ogtt_datetime"].empty:
             self.df["ogtt_days"] = (
@@ -375,16 +416,6 @@ class GlucoseEndpointsByDate:
         subject_df = subject_df[endpoint_columns]
         subject_df = subject_df.sort_values(["subject_identifier", "fbg_datetime"])
         subject_df = subject_df.reset_index(drop=True)
-        # subject_df = subject_df.merge(
-        #     self.visit_codes_df,
-        #     on="visit_code",
-        #     how="outer",
-        #     indicator=False,
-        #     suffixes=["", "2"],
-        # )
-        # subject_df["subject_identifier"] = subject_identifier
-        # subject_df = subject_df.drop(columns=["count"])
-        # subject_df = subject_df.reset_index(drop=True)
         return subject_df
 
     def check_endpoint_by_fbg_for_subject(
@@ -476,10 +507,12 @@ class GlucoseEndpointsByDate:
             model_cls.objects.all().delete()
         created = 0
         if not df.empty:
+            df["fbg_datetime"] = df["fbg_datetime"].dt.tz_localize("UTC")
+            df["baseline_datetime"] = df["baseline_datetime"].dt.tz_localize("UTC")
             data = [
                 model_cls(
                     subject_identifier=row["subject_identifier"],
-                    site_id=row["site"],
+                    site_id=row["site_id"],
                     baseline_datetime=(
                         None if pd.isna(row["baseline_datetime"]) else row["baseline_datetime"]
                     ),
