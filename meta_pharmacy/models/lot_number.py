@@ -1,11 +1,14 @@
 from django.db import models
 from edc_model.models import BaseUuidModel
+from edc_pharmacy.models import Medication
 from edc_randomization.constants import ACTIVE, PLACEBO
 
 
 class LotNumber(BaseUuidModel):
 
     lot_no = models.CharField(max_length=25, unique=True)
+
+    medication = models.ForeignKey(Medication, on_delete=models.PROTECT)
 
     allocation = models.CharField(
         max_length=25, choices=((ACTIVE, "Active"), (PLACEBO, "Placebo"))
