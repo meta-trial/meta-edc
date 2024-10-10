@@ -1,6 +1,10 @@
 Changes
 -------
 
+0.3.38
+------
+- fix Endpoint admins to reference fbg_date not fbg_datetime
+
 0.3.37
 ------
 - change Endpoint model datetime fields to date
