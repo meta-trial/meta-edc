@@ -79,9 +79,9 @@ class EndpointsModelAdminMixin(
     def visit(self, obj=None):
         return obj.visit_code
 
-    @admin.display(description="FBG DATE", ordering="fbg_date")
-    def fbg_date(self, obj=None):
-        return obj.fbg_datetime.date() if obj.fbg_datetime else None
+    # @admin.display(description="FBG DATE", ordering="fbg_date")
+    # def fbg_date(self, obj=None):
+    #     return obj.fbg_datetime.date() if obj.fbg_datetime else None
 
     @admin.display(description="FAST", ordering="fasting")
     def fast(self, obj=None):
