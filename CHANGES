@@ -1,6 +1,18 @@
 Changes
 -------
 
+0.3.37
+------
+- change Endpoint model datetime fields to date
+- fix datatype issues with glucose_endpoints dataframe
+- ensure glucose_endpoints dataframe generates for a
+  single patient with only OGTT, only FBG or both.
+- add insulin CRF to PRN forms
+
+0.3.36
+------
+- add form to Substitutions that validates against rando list
+
 0.3.35
 ------
 - add report_datetime to IMP Substitutions changelists

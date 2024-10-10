@@ -8,7 +8,9 @@ class LotNumber(BaseUuidModel):
 
     lot_no = models.CharField(max_length=25, unique=True)
 
-    medication = models.ForeignKey(Medication, on_delete=models.PROTECT)
+    medication = models.ForeignKey(
+        Medication, on_delete=models.PROTECT, null=True, blank=False
+    )
 
     allocation = models.CharField(
         max_length=25, choices=((ACTIVE, "Active"), (PLACEBO, "Placebo"))
