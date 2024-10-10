@@ -8,7 +8,7 @@ OGTT_THRESHOLD_MET = "OGTT >= 11.1"
 
 endpoint_columns = [
     "subject_identifier",
-    "site",
+    "site_id",
     "baseline_datetime",
     "visit_datetime",
     "interval_in_days",

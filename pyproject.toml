@@ -1,5 +1,34 @@
+[project]
+name = "meta-edc"
+dynamic = ["version"]
+description = "META Trial EDC (http://www.isrctn.com/ISRCTN76157257)"
+readme = "README.rst"
+dependencies = [
+  "edc==0.6.14",
+  "edc-microscopy",
+  "beautifulsoup4",
+  "celery[redis]",
+  "pylabels2",
+  ]
+requires-python = '>=3.12'
+keywords = ["django", "clinicedc", "META EDC", "EDC", "clinical trials"]
+authors = [{name="Blair Bonnett"}]
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 5.1",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+]
+license = {file = "LICENSE"}
+
+
 [build-system]
-requires = ["setuptools>=60", "setuptools-scm>=8.0"]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
 version_file="_version.py"
@@ -47,7 +76,6 @@ python =
 
 [gh-actions:env]
 DJANGO =
-    4.2: dj42
     5.1: dj51, lint
     dev: djdev
 EDC_CODEBASE =
@@ -59,7 +87,6 @@ deps =
     -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/tox.txt
     -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/test_utils.txt
     -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/third_party_dev.txt
-    dj42: Django>=4.2,<5.0
     dj51: Django>=5.1,<5.2
     djdev: https://github.com/django/django/tarball/main
 

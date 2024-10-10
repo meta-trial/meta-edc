@@ -5,31 +5,17 @@ from edc_constants.choices import YES_NO_NOT_EVALUATED
 from edc_constants.constants import NO, NOT_EVALUATED, YES
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierFieldMixin
 from edc_model.models import BaseUuidModel, HistoricalRecords
-from edc_pharmacy.models import Rx as BaseRx
 from edc_sites.managers import CurrentSiteManager
 from edc_sites.model_mixins import SiteModelMixin
 
 from meta_pharmacy.constants import MISSING_SUBJECT_IDENTIFIER
 from meta_rando.models import RandomizationList
 
+from .rx import Rx
+
 
 class MyManager(models.Manager):
     use_in_migrations = True
-
-
-class Rx(BaseRx):
-    """A proxy model of edc_pharmacy.Rx.
-
-    For autocomplete only.
-    """
-
-    def save(self, *args, **kwargs):
-        raise NotImplementedError(
-            "This proxy model may not be saved. Permissions should be view only"
-        )
-
-    class Meta:
-        proxy = True
 
 
 class Substitutions(NonUniqueSubjectIdentifierFieldMixin, SiteModelMixin, BaseUuidModel):

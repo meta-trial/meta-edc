@@ -16,7 +16,9 @@ class ImpSubstitutions(QaReportModelMixin, DBView):
     dispensed_sid = models.IntegerField(verbose_name="Dispensed SID", null=True)
 
     arm_match = models.CharField(
-        max_length=15, choices=YES_NO_NOT_EVALUATED, default=NOT_EVALUATED
+        max_length=15,
+        choices=YES_NO_NOT_EVALUATED,
+        default=NOT_EVALUATED,
     )
 
     report_datetime = models.DateTimeField(null=True)

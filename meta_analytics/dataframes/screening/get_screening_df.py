@@ -9,13 +9,33 @@ from meta_subject.models import PhysicalExam, SubjectVisit
 def get_screening_df(df: pd.DataFrame | None = None) -> pd.DataFrame:
     df = pd.DataFrame() if not hasattr(df, "empty") else df
     if df.empty:
-        qs_screening = SubjectScreening.objects.all()
-        df = read_frame(qs_screening)
-        df = df.drop(df[df["hiv_pos"] == "No"].index)
-        # df = df.drop(df[df["meta_phase_two"] == "Yes"].index)
+        cols = [
+            f.name
+            for f in SubjectScreening._meta.get_fields()
+            if f.name
+            not in [
+                "contact_number",
+                "initials",
+                "hospital_identifier",
+                "modified",
+                "user_created",
+                "user_modified",
+                "hostname_created",
+                "hostname_modified",
+                "device_created",
+                "device_modified",
+                "locale_created",
+                "locale_modified",
+                "slug",
+            ]
+        ]
+        qs_screening = SubjectScreening.objects.values(*cols).all()
+        df = read_frame(qs_screening, verbose=False)
+        df = df.drop(df[df["hiv_pos"] == "No"].index)  # removes 2 rows
+        df = df.reset_index(drop=True)
 
     # convert all to float
-    cols = [
+    num_cols = [
         "age_in_years",
         "calculated_bmi_value",
         "converted_fbg2_value",
@@ -31,7 +51,23 @@ def get_screening_df(df: pd.DataFrame | None = None) -> pd.DataFrame:
         "sys_blood_pressure_avg",
         "waist_circumference",
     ]
-    df[cols] = df[cols].apply(pd.to_numeric)
+    df[num_cols] = df[num_cols].apply(pd.to_numeric)
+
+    df["reasons_ineligible_part_one"] = df["reasons_ineligible_part_one"].apply(
+        lambda x: None if x == "" else x
+    )
+    df["reasons_ineligible_part_two"] = df["reasons_ineligible_part_two"].apply(
+        lambda x: None if x == "" else x
+    )
+    df["reasons_ineligible_part_two"] = df["reasons_ineligible_part_two"].str.replace(
+        "Has Dm", "Diabetes"
+    )
+    df["reasons_ineligible_part_two"] = df["reasons_ineligible_part_two"].str.replace(
+        "On Dm Medication", "taking anti-diabetic medications"
+    )
+    df["reasons_ineligible_part_three"] = df["reasons_ineligible_part_three"].apply(
+        lambda x: None if x == "" else x
+    )
 
     # condition to include any glucose test
 

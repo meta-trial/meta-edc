@@ -37,7 +37,7 @@ class EndpointsModelAdminMixin(
     queryset_filter: dict | None = None
     actions = [update_endpoints_table_action]
     qa_report_list_display_insert_pos = 3
-    ordering = ["-fbg_datetime"]
+    ordering = ["-fbg_date"]
     list_display = [
         "dashboard",
         "subject",
@@ -48,7 +48,7 @@ class EndpointsModelAdminMixin(
         "ogtt",
         "endpoint",
         "last_updated",
-        "offstudy_datetime",
+        "offstudy_date",
         "offstudy_reason",
     ]
 
@@ -79,7 +79,7 @@ class EndpointsModelAdminMixin(
     def visit(self, obj=None):
         return obj.visit_code
 
-    @admin.display(description="FBG DATE", ordering="fbg_datetime")
+    @admin.display(description="FBG DATE", ordering="fbg_date")
     def fbg_date(self, obj=None):
         return obj.fbg_datetime.date() if obj.fbg_datetime else None
 
