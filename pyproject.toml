@@ -64,15 +64,16 @@ exclude_lines = [
 legacy_tox_ini = """
 [tox]
 envlist =
-    py{312}-dj{42,51}-edc{prod,dev},
-    py{312}-dj{dev}-edc{dev},
+    py{312,313}-dj{51}-edc{prod,dev},
+    py{313}-dj{dev}-edc{dev},
     lint
 
 isolated_build = true
 
 [gh-actions]
 python =
-    3.12: py312, lint
+    3.12: py312
+    3.13: py313, lint
 
 [gh-actions:env]
 DJANGO =
@@ -94,7 +95,6 @@ commands =
     pip install -U pip
     pip --version
     edcdev: pip install -U -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/edc.txt
-    edcdev: pip install -U git+https://github.com/intecomm-trial/intecomm-form-validators.git@develop
     pip freeze
     coverage run -a runtests.py
     coverage report

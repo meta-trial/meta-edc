@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         codebase: ['Prod', 'Dev']
-        python-version: ['3.12']
+        python-version: ['3.12', '3.13']
         django-version: ['5.1', 'dev']
         database-engine: ["mysql", "postgres"]
         exclude:
