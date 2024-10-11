@@ -22,6 +22,8 @@ jobs:
         exclude:
           - codebase: 'Prod'
             django-version: 'dev'
+          - python-version: '3.12'
+            django-version: 'dev'
 
     services:
       mysql:
