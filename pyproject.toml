@@ -9,6 +9,7 @@ dependencies = [
   "beautifulsoup4",
   "celery[redis]",
   "pylabels2",
+  "django-labels",
   ]
 requires-python = '>=3.12'
 keywords = ["django", "clinicedc", "META EDC", "EDC", "clinical trials"]
