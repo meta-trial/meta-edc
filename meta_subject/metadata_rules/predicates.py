@@ -210,29 +210,36 @@ class Predicates(PersistantSingletonMixin):
         1M, 3M or 6M visits.
         """
         required = True
-        if (
-            visit.appointment.visit_code in [MONTH1, MONTH3, MONTH6]
-        ) and visit.appointment.visit_code_sequence == 0:
-            model_cls = django_apps.get_model(f"{self.app_label}.mnsi")
-            objs = model_cls.objects.filter(
-                subject_visit__subject_identifier=visit.subject_identifier,
-                subject_visit__visit_code__in=[MONTH1, MONTH3, MONTH6],
-                subject_visit__visit_code_sequence=0,
-            )
-            for obj in objs:
-                if obj.mnsi_performed == YES:
-                    required = False
-                    break
+        if visit.visit_code_sequence == 0 and visit.visit_code in [MONTH36, MONTH48]:
+            pass
+        else:
+            if (
+                visit.appointment.visit_code in [MONTH1, MONTH3, MONTH6]
+            ) and visit.appointment.visit_code_sequence == 0:
+                model_cls = django_apps.get_model(f"{self.app_label}.mnsi")
+                objs = model_cls.objects.filter(
+                    subject_visit__subject_identifier=visit.subject_identifier,
+                    subject_visit__visit_code__in=[MONTH1, MONTH3, MONTH6],
+                    subject_visit__visit_code_sequence=0,
+                )
+                for obj in objs:
+                    if obj.mnsi_performed == YES:
+                        required = False
+                        break
         return required
 
     def sf12_required(self, visit, **kwargs):
         model = f"{self.app_label}.sf12"
+        if visit.visit_code_sequence == 0 and visit.visit_code in [MONTH36, MONTH48]:
+            return True
         return self.persistant_singleton_required(
             visit, model=model, exclude_visit_codes=[DAY1]
         )
 
     def eq5d3l_required(self, visit, **kwargs):
         model = f"{self.app_label}.eq5d3l"
+        if visit.visit_code_sequence == 0 and visit.visit_code in [MONTH36, MONTH48]:
+            return True
         return self.persistant_singleton_required(
             visit, model=model, exclude_visit_codes=[DAY1]
         )
