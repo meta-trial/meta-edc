@@ -21,7 +21,7 @@ class LotNumber(BaseUuidModel):
     qty = models.IntegerField(null=True)
 
     def __str__(self):
-        return f"{self.medication}: {self.lot_no}"
+        return f"{self.medication}-{self.assignment[0].upper()}: {self.lot_no}"
 
     class Meta(BaseUuidModel.Meta):
         verbose_name = "Lot Number"

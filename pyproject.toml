@@ -8,7 +8,6 @@ dependencies = [
   "edc-microscopy",
   "beautifulsoup4",
   "celery[redis]",
-  "pylabels2",
   "django-labels",
   ]
 requires-python = '>=3.12'
