@@ -12,13 +12,16 @@ class LotNumber(BaseUuidModel):
         Medication, on_delete=models.PROTECT, null=True, blank=False
     )
 
-    allocation = models.CharField(
+    assignment = models.CharField(
         max_length=25, choices=((ACTIVE, "Active"), (PLACEBO, "Placebo"))
     )
 
     expiration_date = models.DateField()
 
     qty = models.IntegerField(null=True)
+
+    def __str__(self):
+        return f"{self.medication}: {self.lot_no}"
 
     class Meta(BaseUuidModel.Meta):
         verbose_name = "Lot Number"

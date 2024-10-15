@@ -1,16 +1,36 @@
 from django.contrib import admin
 from django_audit_fields import audit_fieldset_tuple
-from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
+from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
+from edc_model_admin.mixins import (
+    ModelAdminFormAutoNumberMixin,
+    ModelAdminFormInstructionsMixin,
+    ModelAdminInstitutionMixin,
+    ModelAdminNextUrlRedirectMixin,
+    ModelAdminRedirectOnDeleteMixin,
+    TemplatesModelAdminMixin,
+)
 
 from ..admin_site import meta_pharmacy_admin
 from ..models import LotNumber
+from .actions import prepare_label_data
 
 
 @admin.register(LotNumber, site=meta_pharmacy_admin)
-class LotNumberAdmin(ModelAdminSubjectDashboardMixin, admin.ModelAdmin):
+class LotNumberAdmin(
+    TemplatesModelAdminMixin,
+    ModelAdminNextUrlRedirectMixin,  # add
+    ModelAdminFormInstructionsMixin,  # add
+    ModelAdminFormAutoNumberMixin,
+    ModelAdminRevisionMixin,  # add
+    ModelAdminInstitutionMixin,  # add
+    ModelAdminRedirectOnDeleteMixin,
+    admin.ModelAdmin,
+):
     """Admin class for proxy model of edc_pharmacy.Rx"""
 
     show_object_tools = True
+
+    actions = [prepare_label_data]
 
     # form = LotNumberForm
 
@@ -19,9 +39,10 @@ class LotNumberAdmin(ModelAdminSubjectDashboardMixin, admin.ModelAdmin):
             None,
             {
                 "fields": (
+                    "medication",
                     "lot_no",
                     "expiration_date",
-                    "allocation",
+                    "assignment",
                     "qty",
                 )
             },
@@ -30,13 +51,15 @@ class LotNumberAdmin(ModelAdminSubjectDashboardMixin, admin.ModelAdmin):
     )
 
     list_display = (
+        "medication",
         "lot_no",
         "expiration_date",
+        "assignment",
     )
 
-    radio_fields = {"allocation": admin.VERTICAL}
+    radio_fields = {"assignment": admin.VERTICAL}
 
-    list_filter = ("allocation",)
+    list_filter = ("assignment",)
 
     search_fields = [
         "lot_no",

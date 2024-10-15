@@ -9,7 +9,7 @@ from edc_sites.forms import SiteModelFormMixin
 
 from meta_rando.models import RandomizationList
 
-from .models import Rx, Substitutions
+from ..models import Rx, Substitutions
 
 
 class SubstitutionsFormValidator(PrnFormValidatorMixin, FormValidator):
@@ -51,17 +51,4 @@ class SubstitutionsForm(
 
     class Meta:
         model = Substitutions
-        fields = "__all__"
-
-
-class RxForm(forms.ModelForm):
-
-    subject_identifier = forms.CharField(
-        label="Subject Identifier",
-        required=False,
-        widget=forms.TextInput(attrs={"readonly": "readonly"}),
-    )
-
-    class Meta:
-        model = Rx
         fields = "__all__"

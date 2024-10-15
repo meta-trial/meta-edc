@@ -14,6 +14,7 @@ reports_codenames = get_app_codenames("meta_reports")
 reports_codenames.remove("meta_reports.view_impsubstitutions")
 
 meta_pharmacy_codenames = get_app_codenames("meta_pharmacy")
+meta_pharmacy_codenames.extend(get_app_codenames("django_labels"))
 meta_pharmacy_codenames.append("meta_reports.view_impsubstitutions")
 meta_pharmacy_codenames.append("meta_reports.viewallsites_impsubstitutions")
 excluded_meta_pharmacy_codenames = [
