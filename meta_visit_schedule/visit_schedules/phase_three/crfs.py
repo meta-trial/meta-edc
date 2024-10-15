@@ -9,9 +9,9 @@ crfs_prn = CrfCollection(
     Crf(show_order=255, model="meta_subject.bloodresultslft"),
     Crf(show_order=265, model="meta_subject.bloodresultslipids"),
     Crf(show_order=268, model="meta_subject.bloodresultsins"),
-    Crf(show_order=460, model="meta_subject.eq5d3l"),
-    Crf(show_order=465, model="meta_subject.sf12"),
-    Crf(show_order=470, model="meta_subject.mnsi"),
+    Crf(show_order=461, model="meta_subject.eq5d3l"),
+    Crf(show_order=466, model="meta_subject.sf12"),
+    Crf(show_order=471, model="meta_subject.mnsi"),
     Crf(show_order=275, model="meta_subject.hepatitistest"),
     Crf(show_order=285, model="meta_subject.malariatest"),
     Crf(show_order=295, model="meta_subject.urinedipsticktest"),
@@ -60,8 +60,8 @@ crfs_w2 = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l"),
     Crf(show_order=465, model="meta_subject.sf12"),
-    Crf(show_order=468, model="meta_subject.mnsi", required=False),
-    Crf(show_order=470, model="meta_subject.healtheconomicssimple"),
+    Crf(show_order=470, model="meta_subject.mnsi", required=False),
+    Crf(show_order=480, model="meta_subject.healtheconomicssimple"),
     name="week2",
 )
 
@@ -72,10 +72,10 @@ crfs_1m = CrfCollection(
     Crf(show_order=200, model="meta_subject.glucosefbg"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
-    Crf(show_order=450, model="meta_subject.healtheconomicssimple", required=False),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
     Crf(show_order=470, model="meta_subject.mnsi"),
+    Crf(show_order=480, model="meta_subject.healtheconomicssimple", required=False),
     name="1m",
 )
 
