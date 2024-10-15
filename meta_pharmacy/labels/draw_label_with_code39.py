@@ -1,25 +1,11 @@
-import random
-import string
-
 from reportlab.graphics.barcode.widgets import BarcodeStandard39
 from reportlab.graphics.charts.textlabels import Label as RlLabel
 from reportlab.graphics.shapes import Drawing, String
 
-
-class LabelData:
-
-    def __init__(self):
-        self.gender = random.choice(["M", "F"])  # nosec B311
-        self.subject_identifier = "999-99-9999-9"  # nosec B311
-        self.reference = "".join(
-            random.choices(string.ascii_letters.upper() + "23456789", k=6)  # nosec B311
-        )
-        self.sid = "12345"
-        self.site_name = "AMANA"
-        self.pills_per_bottle = 128
+from .label_data import LabelData
 
 
-def draw_label(
+def draw_label_with_code39(
     label: Drawing,
     width: int | float,
     height: int | float,

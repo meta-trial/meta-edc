@@ -18,7 +18,7 @@ from meta_consent.models import SubjectConsent
 from meta_rando.models import RandomizationList
 
 from ..labels import LabelData as LabelDataCls
-from ..labels import draw_label
+from ..labels import draw_label_with_code39
 from ..models import LabelData
 
 random.seed(7825541)
@@ -34,7 +34,7 @@ def print_test_label_sheet(modeladmin, request, queryset):
     else:
         obj = queryset.first()
         specs = Specification(**obj.as_dict)
-        sheet = Sheet(specs, draw_label, border=obj.border)
+        sheet = Sheet(specs, draw_label_with_code39, border=obj.border)
         sheet.add_labels([LabelDataCls() for i in range(0, obj.rows * obj.columns)])
         buffer = sheet.save_to_buffer()
 
@@ -45,7 +45,7 @@ def print_label_sheet(modeladmin, request, queryset):
     label_data = [obj for obj in queryset]
     obj = LabelSpecification.objects.get(name="meta3")
     specs = Specification(**obj.as_dict)
-    sheet = Sheet(specs, draw_label, border=obj.border)
+    sheet = Sheet(specs, draw_label_with_code39, border=obj.border)
     sheet.add_labels(label_data)
     buffer = sheet.save_to_buffer()
     now = get_utcnow()
