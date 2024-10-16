@@ -102,7 +102,7 @@ INSTALLED_APPS = [
     "logentry_admin",
     "simple_history",
     "storages",
-    "django_labels",
+    "django_pylabels",
     "edc_sites.apps.AppConfig",
     "edc_action_item.apps.AppConfig",
     "edc_appointment.apps.AppConfig",

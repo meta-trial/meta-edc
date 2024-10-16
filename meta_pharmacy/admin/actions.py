@@ -7,8 +7,8 @@ from django.http import FileResponse
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext as _
-from django_labels.models import LabelSpecification
 from django_pandas.io import read_frame
+from django_pylabels.models import LabelSpecification
 from edc_pdutils.dataframes import get_subject_visit
 from edc_sites.site import sites
 from edc_utils import get_utcnow

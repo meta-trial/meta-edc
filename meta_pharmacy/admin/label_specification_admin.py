@@ -1,6 +1,6 @@
 from django.contrib import admin
-from django_labels.actions import copy_label_specification, export_to_csv
-from django_labels.models import LabelSpecification
+from django_pylabels.actions import copy_label_specification, export_to_csv
+from django_pylabels.models import LabelSpecification
 from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
 from edc_model_admin.mixins import (
     ModelAdminFormAutoNumberMixin,
