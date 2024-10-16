@@ -60,7 +60,6 @@ crfs_w2 = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l"),
     Crf(show_order=465, model="meta_subject.sf12"),
-    Crf(show_order=470, model="meta_subject.mnsi", required=False),
     Crf(show_order=480, model="meta_subject.healtheconomicssimple"),
     name="week2",
 )
@@ -121,7 +120,6 @@ crfs_9m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
-    Crf(show_order=470, model="meta_subject.mnsi", required=False),
     Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="9m",
 )
@@ -139,7 +137,6 @@ crfs_12m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
-    Crf(show_order=470, model="meta_subject.mnsi", required=False),
     Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="12m",
 )
@@ -153,7 +150,6 @@ crfs_15m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
-    Crf(show_order=470, model="meta_subject.mnsi", required=False),
     Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="15m",
 )
@@ -168,7 +164,6 @@ crfs_18m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
-    Crf(show_order=470, model="meta_subject.mnsi", required=False),
     Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="18m",
 )
@@ -182,7 +177,6 @@ crfs_21m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
-    Crf(show_order=470, model="meta_subject.mnsi", required=False),
     Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="21m",
 )
@@ -200,7 +194,7 @@ crfs_24m = CrfCollection(
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
     Crf(show_order=465, model="meta_subject.sf12", required=False),
-    Crf(show_order=470, model="meta_subject.mnsi", required=False),
+    Crf(show_order=470, model="meta_subject.mnsi"),
     Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     name="24m",
 )

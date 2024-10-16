@@ -22,7 +22,7 @@ from edc_visit_schedule.constants import (
 )
 from edc_visit_schedule.utils import is_baseline
 
-from meta_visit_schedule.constants import MONTH42
+from meta_visit_schedule.constants import MONTH39, MONTH42, MONTH45
 
 
 def hba1c_crf_required_at_baseline(visit):
@@ -206,26 +206,46 @@ class Predicates(PersistantSingletonMixin):
         return required
 
     def mnsi_required(self, visit, **kwargs) -> bool:
-        """Returns True if MNSI assessment was not performed at the
-        1M, 3M or 6M visits.
+        """Returns True if:
+        - MNSI assessment not performed in the 1, 3 or 6M visits
+        - MNSI assessment not performed in the 36, 39, 42, 45M visits
+        - MNSI assessment not performed in the 48M visit
         """
+        model_cls = django_apps.get_model(f"{self.app_label}.mnsi")
         required = True
-        if visit.visit_code_sequence == 0 and visit.visit_code in [MONTH36, MONTH48]:
-            pass
-        else:
-            if (
-                visit.appointment.visit_code in [MONTH1, MONTH3, MONTH6]
-            ) and visit.appointment.visit_code_sequence == 0:
-                model_cls = django_apps.get_model(f"{self.app_label}.mnsi")
-                objs = model_cls.objects.filter(
-                    subject_visit__subject_identifier=visit.subject_identifier,
-                    subject_visit__visit_code__in=[MONTH1, MONTH3, MONTH6],
-                    subject_visit__visit_code_sequence=0,
-                )
-                for obj in objs:
-                    if obj.mnsi_performed == YES:
-                        required = False
-                        break
+        if visit.visit_code_sequence != 0:
+            required = False
+        elif visit.visit_code not in [
+            MONTH1,
+            MONTH3,
+            MONTH6,
+            MONTH36,
+            MONTH39,
+            MONTH42,
+            MONTH45,
+            MONTH48,
+        ]:
+            required = False
+        elif visit.visit_code in [MONTH1, MONTH3, MONTH6]:
+            objs = model_cls.objects.filter(
+                subject_visit__subject_identifier=visit.subject_identifier,
+                subject_visit__visit_code__in=[MONTH1, MONTH3, MONTH6],
+                subject_visit__visit_code_sequence=0,
+            )
+            for obj in objs:
+                if obj.mnsi_performed == YES:
+                    required = False
+                    break
+        elif visit.visit_code in [MONTH36, MONTH39, MONTH42, MONTH45]:
+            objs = model_cls.objects.filter(
+                subject_visit__subject_identifier=visit.subject_identifier,
+                subject_visit__visit_code__in=[MONTH36, MONTH39, MONTH42, MONTH45],
+                subject_visit__visit_code_sequence=0,
+            )
+            for obj in objs:
+                if obj.mnsi_performed == YES:
+                    required = False
+                    break
         return required
 
     def sf12_required(self, visit, **kwargs):

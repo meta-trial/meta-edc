@@ -3,15 +3,31 @@ from zoneinfo import ZoneInfo
 
 import time_machine
 from dateutil.relativedelta import relativedelta
-from django.test import TestCase
+from django.test import TestCase, tag
 from edc_constants.constants import NO, YES
 from edc_utils import get_utcnow
 from model_bakery import baker
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
-from meta_visit_schedule.constants import MONTH1, MONTH3, MONTH6, MONTH9, MONTH12, WEEK2
+from meta_visit_schedule.constants import (
+    MONTH1,
+    MONTH3,
+    MONTH6,
+    MONTH9,
+    MONTH12,
+    MONTH15,
+    MONTH18,
+    MONTH21,
+    MONTH24,
+    MONTH27,
+    MONTH30,
+    MONTH36,
+    MONTH48,
+    WEEK2,
+)
 
 
+@tag("mnsi")
 @time_machine.travel(datetime(2022, 6, 11, 8, 00, tzinfo=ZoneInfo("UTC")))
 class TestMnsiRequired(MetaTestCaseMixin, TestCase):
     def setUp(self):
@@ -32,6 +48,14 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
             subject_consent=self.subject_consent,
             appt_datetime=six_months_ago,
         )
+
+    def get_visit(self, visit_code: str, latest_visit):
+        subject_visit = latest_visit
+        while subject_visit.visit_code != visit_code:
+            subject_visit = self.get_next_subject_visit(subject_visit)
+        self.assertEqual(subject_visit.visit_code, visit_code)
+        self.assertEqual(subject_visit.visit_code_sequence, 0)
+        return subject_visit
 
     def get_week2_visit(self):
         return self.get_subject_visit(
@@ -81,6 +105,10 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
             mnsi_performed=mnsi_performed,
         )
         visit_mnsi.save()
+
+    def test_mnsi_not_required_at_baseline(self):
+        crfs = self.get_crf_metadata(self.subject_visit)
+        self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
     def test_mnsi_not_required_at_2w(self):
         crfs = self.get_crf_metadata(self.get_week2_visit())
@@ -248,3 +276,94 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
         )
         crfs = self.get_crf_metadata(month12_visit)
         self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
+
+    def test_mnsi_not_required_between_9m_and_33m(self):
+        subject_visit = self.get_visit(visit_code=MONTH6, latest_visit=self.subject_visit)
+        for visit_code in [
+            MONTH9,
+            MONTH12,
+            MONTH15,
+            MONTH18,
+            MONTH21,
+            MONTH24,
+            MONTH27,
+            MONTH30,
+        ]:
+            with self.subTest(visit_code=visit_code):
+                subject_visit = self.get_visit(
+                    visit_code=visit_code, latest_visit=subject_visit
+                )
+                self.assertEqual(subject_visit.visit_code, visit_code)
+                self.assertEqual(subject_visit.visit_code_sequence, 0)
+                crfs = self.get_crf_metadata(subject_visit)
+                self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
+
+    def test_mnsi_required_between_36m_and_45m(self):
+        month1_visit = self.get_visit(visit_code=MONTH1, latest_visit=self.subject_visit)
+        self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=YES)
+
+        month36_visit = self.get_visit(visit_code=MONTH36, latest_visit=month1_visit)
+        crfs = self.get_crf_metadata(month36_visit)
+        self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
+        self.set_mnsi_status(subject_visit=month36_visit, mnsi_performed=NO)
+
+        month39_visit = self.get_next_subject_visit(month36_visit)
+        crfs = self.get_crf_metadata(month39_visit)
+        self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
+        self.set_mnsi_status(subject_visit=month39_visit, mnsi_performed=NO)
+
+        month42_visit = self.get_next_subject_visit(month39_visit)
+        crfs = self.get_crf_metadata(month42_visit)
+        self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
+        self.set_mnsi_status(subject_visit=month42_visit, mnsi_performed=NO)
+
+        month45_visit = self.get_next_subject_visit(month42_visit)
+        crfs = self.get_crf_metadata(month45_visit)
+        self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
+        self.set_mnsi_status(subject_visit=month45_visit, mnsi_performed=NO)
+
+    def test_mnsi_only_required_once_between_36m_and_45m(self):
+        month1_visit = self.get_visit(visit_code=MONTH1, latest_visit=self.subject_visit)
+        self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=YES)
+
+        month36_visit = self.get_visit(visit_code=MONTH36, latest_visit=month1_visit)
+        crfs = self.get_crf_metadata(month36_visit)
+        self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
+        self.set_mnsi_status(subject_visit=month36_visit, mnsi_performed=NO)
+
+        month39_visit = self.get_next_subject_visit(month36_visit)
+        crfs = self.get_crf_metadata(month39_visit)
+        self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
+        self.set_mnsi_status(subject_visit=month39_visit, mnsi_performed=NO)
+
+        month42_visit = self.get_next_subject_visit(month39_visit)
+        crfs = self.get_crf_metadata(month42_visit)
+        self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
+        self.set_mnsi_status(subject_visit=month42_visit, mnsi_performed=YES)
+
+        month45_visit = self.get_next_subject_visit(month42_visit)
+        crfs = self.get_crf_metadata(month45_visit)
+        self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
+
+    def test_mnsi_required_at_48m(self):
+        month1_visit = self.get_visit(visit_code=MONTH1, latest_visit=self.subject_visit)
+        crfs = self.get_crf_metadata(month1_visit)
+        self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
+        self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=YES)
+
+        month3_visit = self.get_next_subject_visit(month1_visit)
+        crfs = self.get_crf_metadata(month3_visit)
+        self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
+
+        month36_visit = self.get_visit(visit_code=MONTH36, latest_visit=month3_visit)
+        crfs = self.get_crf_metadata(month36_visit)
+        self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
+        self.set_mnsi_status(subject_visit=month36_visit, mnsi_performed=YES)
+
+        month39_visit = self.get_next_subject_visit(month36_visit)
+        crfs = self.get_crf_metadata(month39_visit)
+        self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
+
+        month48_visit = self.get_visit(visit_code=MONTH48, latest_visit=month39_visit)
+        crfs = self.get_crf_metadata(month48_visit)
+        self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
