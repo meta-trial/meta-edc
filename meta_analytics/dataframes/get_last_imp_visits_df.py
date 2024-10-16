@@ -1,11 +1,8 @@
 import pandas as pd
+from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
 from django_pandas.io import read_frame
 from edc_pdutils.dataframes import get_appointments, get_crf
-
-from meta_pharmacy.models import LotNumber
-from meta_prn.models import OffSchedule
-from meta_rando.models import RandomizationList
 
 
 class InvalidLotNumber(Exception):
@@ -28,8 +25,9 @@ def get_last_imp_visits_df(
     """
     lot_obj = None
     if lot_no:
+        lot_number_model_cls = django_apps.get_model("meta_pharmacy.lotnumber")
         try:
-            lot_obj = LotNumber.objects.get(lot_no=lot_no)
+            lot_obj = lot_number_model_cls.objects.get(lot_no=lot_no)
         except ObjectDoesNotExist:
             raise ObjectDoesNotExist("The lot number given is invalid")
 
@@ -49,10 +47,11 @@ def get_last_imp_visits_df(
 
     # merge with OffSchedule
     opts = {} if not site_id else dict(site_id=site_id)
+    offschedule_model_cls = django_apps.get_model("meta_prn.offschedule")
     df_off = read_frame(
-        OffSchedule.objects.values("subject_identifier", "offschedule_datetime").filter(
-            **opts
-        ),
+        offschedule_model_cls.objects.values(
+            "subject_identifier", "offschedule_datetime"
+        ).filter(**opts),
         verbose=False,
     )
     df_off["offschedule_datetime"] = df_off["offschedule_datetime"].dt.tz_localize(None)
@@ -67,7 +66,8 @@ def get_last_imp_visits_df(
     # merge with RandomizationList if lot_obj
     # note: slow to decrypt assignment
     if lot_obj:
-        qs = RandomizationList.objects.values("subject_identifier", "assignment").filter(
+        rando_model_cls = django_apps.get_model("meta_rando.randomizationlist")
+        qs = rando_model_cls.objects.values("subject_identifier", "assignment").filter(
             assignment=lot_obj.assignment
         )
         df_rando = read_frame(qs, verbose=False)
