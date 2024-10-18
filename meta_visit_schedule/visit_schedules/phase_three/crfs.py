@@ -7,6 +7,7 @@ crfs_prn = CrfCollection(
     Crf(show_order=235, model="meta_subject.bloodresultshba1c"),
     Crf(show_order=245, model="meta_subject.bloodresultsrft"),
     Crf(show_order=255, model="meta_subject.bloodresultslft"),
+    Crf(show_order=258, model="meta_subject.bloodresultsfbc"),
     Crf(show_order=265, model="meta_subject.bloodresultslipids"),
     Crf(show_order=268, model="meta_subject.bloodresultsins"),
     Crf(show_order=461, model="meta_subject.eq5d3l"),
@@ -248,6 +249,11 @@ crfs_36m = CrfCollection(
     Crf(show_order=230, model="meta_subject.bloodresultslft"),
     Crf(show_order=240, model="meta_subject.bloodresultsfbc"),
     Crf(show_order=250, model="meta_subject.bloodresultslipids"),
+    Crf(
+        show_order=268, model="meta_subject.bloodresultsins", required=False
+    ),  # TODO: if done at baseline
+    Crf(show_order=360, model="meta_subject.malariatest"),
+    Crf(show_order=370, model="meta_subject.urinedipsticktest"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l"),
@@ -306,6 +312,11 @@ crfs_48m = CrfCollection(
     Crf(show_order=230, model="meta_subject.bloodresultslft"),
     Crf(show_order=240, model="meta_subject.bloodresultsfbc"),
     Crf(show_order=250, model="meta_subject.bloodresultslipids"),
+    Crf(
+        show_order=268, model="meta_subject.bloodresultsins", required=False
+    ),  # TODO: if done at baseline
+    Crf(show_order=360, model="meta_subject.malariatest"),
+    Crf(show_order=370, model="meta_subject.urinedipsticktest"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l"),
