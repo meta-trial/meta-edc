@@ -92,6 +92,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "multisite.apps.AppConfig",
     "defender",
+    "sequences.apps.SequencesConfig",
     # "django_celery_beat",
     # "django_celery_results",
     "django_db_views",

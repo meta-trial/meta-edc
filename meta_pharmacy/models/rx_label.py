@@ -1,8 +1,8 @@
 from django.db import models
 from edc_identifier.simple_identifier import SimpleUniqueIdentifier
 from edc_model.models import BaseUuidModel
+from edc_pharmacy.models import Lot
 
-from .lot_number import LotNumber
 from .rx import Rx
 
 
@@ -12,14 +12,13 @@ class LabelIdentifier(SimpleUniqueIdentifier):
     template = "{random_string}"
 
 
-class Label(BaseUuidModel):
+class RxLabel(BaseUuidModel):
 
     identifier_cls = LabelIdentifier
-    identifier_field_name: str = "rx_label_reference"
 
     rx = models.ForeignKey(Rx, on_delete=models.PROTECT)
-    lot_no = models.ForeignKey(LotNumber, on_delete=models.PROTECT)
-    rx_label_reference = models.CharField(max_length=15, unique=True)
+    lot = models.ForeignKey(Lot, on_delete=models.PROTECT)
+    label_identifier = models.CharField(max_length=15, unique=True)
 
     printed_datetime = models.DateTimeField(null=True)
     printed = models.BooleanField(default=False)
@@ -27,23 +26,13 @@ class Label(BaseUuidModel):
     scanned_datetime = models.DateTimeField(null=True)
 
     def __str__(self):
-        return self.rx_label_reference
+        return self.label_identifier
 
     def save(self, *args, **kwargs):
-        """Label referenceis always allocated."""
+        """Label reference is always allocated."""
         if not self.id:
-            setattr(
-                self,
-                self.identifier_field_name,
-                self.identifier_cls().identifier,
-            )
-        super().save(*args, **kwargs)  # type:ignore
-
-    @property
-    def human_readable_identifier(self):
-        """Returns a humanized screening identifier."""
-        x = self.screening_identifier
-        return f"{x[0:4]}-{x[4:]}"
+            self.label_identifier = self.identifier_cls().identifier
+        super().save(*args, **kwargs)
 
     class Meta(BaseUuidModel.Meta):
         verbose_name = "Label"

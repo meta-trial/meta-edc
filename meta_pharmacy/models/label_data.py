@@ -5,14 +5,11 @@ from django.db import models
 from edc_model.models import BaseUuidModel
 from edc_sites.model_mixins import SiteModelMixin
 
-from meta_pharmacy.models import LabelBatch
-
 random.seed(237548)
 
 
 class LabelData(SiteModelMixin, BaseUuidModel):
 
-    label_batch = models.ForeignKey(LabelBatch, on_delete=models.PROTECT)
     subject_identifier = models.CharField(max_length=15, null=True)
     sid = models.IntegerField(null=True, help_text="Pharmacy reference")
     reference = models.CharField(
