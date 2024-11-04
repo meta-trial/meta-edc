@@ -22,7 +22,7 @@ urlpatterns = [
     path("accounts/", include("edc_auth.urls_for_accounts", namespace="auth")),
     path("administration/", AdministrationView.as_view(), name="administration_url"),
     path("subject/", include("meta_dashboard.urls")),
-    path("labels/", include("django_pylabels.urls")),
+    *paths_for_urlpatterns("edc_pylabels"),
     *paths_for_urlpatterns("edc_auth"),
     *paths_for_urlpatterns("edc_action_item"),
     *paths_for_urlpatterns("edc_adverse_event"),
