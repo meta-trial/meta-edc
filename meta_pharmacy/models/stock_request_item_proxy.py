@@ -1,10 +1,10 @@
 from django.contrib.sites.models import Site
 from edc_constants.constants import FEMALE
 from edc_pharmacy.models import Container, ContainerType
-from edc_pharmacy.models import RequestItem as BaseRequestItem
+from edc_pharmacy.models import StockRequestItem as BaseStockRequestItem
 
 
-class RequestItem(BaseRequestItem):
+class StockRequestItem(BaseStockRequestItem):
 
     @property
     def test_data(self):
@@ -19,5 +19,5 @@ class RequestItem(BaseRequestItem):
 
     class Meta:
         proxy = True
-        verbose_name = "Request item"
-        verbose_name_plural = "Request items"
+        verbose_name = "Stock Request item"
+        verbose_name_plural = "Stock Request items"
