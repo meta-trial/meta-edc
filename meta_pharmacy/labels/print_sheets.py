@@ -7,9 +7,7 @@ from reportlab.graphics.barcode.widgets import BarcodeStandard39
 from reportlab.graphics.charts.textlabels import Label as RlLabel
 from reportlab.graphics.shapes import String
 
-from meta_pharmacy.models import LabelData
-
-# from meta_pharmacy.models import StockTransferRequest
+from ..models import LabelData
 
 
 class Label:

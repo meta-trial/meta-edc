@@ -295,7 +295,7 @@ class Migration(migrations.Migration):
                         null=True,
                         on_delete=django.db.models.deletion.DO_NOTHING,
                         related_name="+",
-                        to="edc_pharmacy.subject",
+                        to="edc_pharmacy.registeredsubjectproxy",
                         verbose_name="Subject Identifier",
                     ),
                 ),

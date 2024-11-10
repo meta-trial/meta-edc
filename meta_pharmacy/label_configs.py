@@ -1,18 +1,31 @@
-from edc_pharmacy.labels import draw_stock_label_code39
+from edc_pharmacy.labels import (
+    draw_bulk_stock_label_code128,
+    draw_patient_stock_label_code128,
+    draw_vertical_barcode_only_code128,
+)
 from edc_pylabels.site_label_configs import site_label_configs
 
-from .labels import draw_label_for_subject_with_code39, draw_label_with_code39_test_data
+from .labels import draw_label_with_test_data
+
+# create a label class to pass instead of a model
 
 site_label_configs.register(
-    "meta3_label_config",
-    draw_label_for_subject_with_code39,
-    "edc_pharmacy.stockrequestitem",
-    test_data_func=draw_label_with_code39_test_data,
+    "vertical_stock_barcode_128",
+    draw_vertical_barcode_only_code128,
+    "edc_pharmacy.stock",
+    test_data_func=draw_label_with_test_data,
 )
 
 site_label_configs.register(
-    "stock_label_config",
-    draw_stock_label_code39,
+    "bulk_stock_barcode_128",
+    draw_bulk_stock_label_code128,
     "edc_pharmacy.stock",
-    test_data_func=draw_label_with_code39_test_data,
+    test_data_func=draw_label_with_test_data,
+)
+
+site_label_configs.register(
+    "patient_barcode_128",
+    draw_patient_stock_label_code128,
+    "edc_pharmacy.stock",
+    test_data_func=draw_label_with_test_data,
 )
