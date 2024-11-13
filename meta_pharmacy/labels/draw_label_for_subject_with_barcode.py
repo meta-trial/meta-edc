@@ -1,7 +1,8 @@
-from edc_pharmacy.models import Rx, Stock
+from edc_pharmacy.models import Stock
 from edc_pharmacy.utils import format_qty
 from edc_sites.site import sites as site_sites
-from reportlab.graphics.shapes import Drawing, String
+from reportlab.graphics.shapes import Drawing, Group, String
+from reportlab.pdfbase.pdfmetrics import stringWidth
 
 
 def draw_label_for_subject_with_barcode(
@@ -16,31 +17,42 @@ def draw_label_for_subject_with_barcode(
     instance `obj`
     """
     try:
-        rx = Rx.objects.get(registered_subject__subject_identifier=obj.subject_identifier)
-    except Rx.DoesNotExist:
-        site = "Amana Hospital"
-    else:
-        site = site_sites.get(rx.site.id).name
-
-    br = barcode_cls(**barcode_opts)
-    br.value = obj.code
-    br.x = width - 110
-    br.y = 30
-    label.add(br)
-    label.add(String(15, height - 20, "META III Study", fontSize=12))
-    label.add(String(width - 100, height - 36, site.title(), fontSize=12))
-
-    label.add(
-        String(
-            width - 100,
-            height - 20,
-            f"{obj.subject_identifier or "999-99-99999-9"}",
-            fontSize=12,
+        single_site = site_sites.get(
+            obj.allocation.stock_request_item.stock_request.location.site.id
         )
-    )
-    label.add(String(15, height - 40, "Dawa kwa ajili ya utafiti", fontSize=10))
-    label.add(String(15, height - 52, "wa META III.", fontSize=10))
-    label.add(String(15, height - 64, "Meza vidonge vinne usiku tu.", fontSize=10))
-    qty = format_qty(obj.container.qty, obj.container)
-    label.add(String(15, height - 88, f"{qty} tabs", fontSize=10))
+    except AttributeError:
+        label.add(String(15, height - 20, "Error: Unable to generate label", fontSize=10))
+        label.add(String(15, height - 40, str(obj.code), fontSize=10))
+        label.add(String(15, height - 60, str(obj.location), fontSize=10))
+    else:
+        br = barcode_cls(**barcode_opts)
+        br.value = obj.code
+        br.x = width - 110
+        br.y = 40
+        label.add(br)
+
+        label.add(String(15, height - 35, single_site.title, fontSize=10))
+
+        label.add(String(15, height - 20, "META III Study", fontSize=12))
+        label.add(String(15, height - 55, "Dawa kwa ajili ya utafiti", fontSize=10))
+        label.add(String(15, height - 67, "wa META III.", fontSize=10))
+        label.add(String(15, height - 79, "Meza vidonge vinne usiku tu.", fontSize=10))
+
+        text_group = Group()
+        subject_identifier = (
+            obj.allocation.registered_subject.subject_identifier or "999-99-99999-9"
+        )
+        text_width = stringWidth(subject_identifier, "Helvetica", 12)
+        text_string = String(
+            width - text_width - 10, height - 20, subject_identifier, fontSize=12
+        )
+        text_group.add(text_string)
+
+        qty_text = f"{format_qty(obj.container.qty, obj.container)} tabs"
+        text_width = stringWidth(qty_text, "Helvetica", 10)
+        text_string = String(width - text_width - 10, height - 95, qty_text, fontSize=10)
+        text_group.add(text_string)
+
+        label.add(text_group)
+
     return label
