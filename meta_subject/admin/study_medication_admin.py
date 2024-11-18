@@ -64,6 +64,16 @@ class StudyMedicationAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
                 ),
             },
         ),
+        (
+            "Dispensed medication",
+            {
+                "description": (
+                    "Type in the stock code on the medication "
+                    "bottle or bottles. Separate by comma."
+                ),
+                "fields": ("stock_codes",),
+            },
+        ),
         crf_status_fieldset,
         audit_fieldset_tuple,
     )

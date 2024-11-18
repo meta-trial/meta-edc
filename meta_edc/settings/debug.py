@@ -32,3 +32,7 @@ EDC_MODEL_ADMIN_CSS_THEME = "edc_purple"
 if os.path.exists(BASE_DIR) and not os.path.exists(KEY_PATH):  # noqa
     os.makedirs(KEY_PATH)  # noqa
     AUTO_CREATE_KEYS = True
+
+# if debugging, run `export DJANGO_DEBUG=True` before running runserver
+# CELERY_TASK_ALWAYS_EAGER = os.getenv("DJANGO_DEBUG", "False") == "True"
+# CELERY_TASK_EAGER_PROPAGATES = CELERY_TASK_ALWAYS_EAGER
