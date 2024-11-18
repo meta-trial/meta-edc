@@ -25,6 +25,10 @@ def update_initial_pharmacy_data():
 
 
 def update_assignment():
+    """For a trial with just active and placebo.
+
+    Better to get these labels from edc_randomizer.
+    """
     for assignment in ["placebo", "active"]:
         try:
             Assignment.objects.get(name=assignment)
@@ -33,6 +37,10 @@ def update_assignment():
 
 
 def update_container():
+    """Here we order a number of tablets. The manufacturer sends
+    the order in large containers, barrels of about 30K tablets
+    per barrel. We repack/decant into bottles of 128 tablets
+    """
     tablet_type = ContainerType.objects.get(name="tablet")
     bottle_type = ContainerType.objects.get(name="bottle")
     units = ContainerUnits.objects.get(name="tablet")
@@ -75,12 +83,20 @@ def update_container():
 
 
 def update_location():
+    """Base the locations on the sites in the trial plus
+    a "central" pharmacy"""
     for obj in Location.objects.exclude(name="central"):
         obj.site_id = Site.objects.get(name=obj.name).id
         obj.save(update_fields=["site_id"])
 
 
 def update_product():
+    """Define the product, in this case just two; active and placebo.
+
+    Formulation is defined before running this script.
+
+    In this case the formulation is just the study drug/IMP.
+    """
     formulation = Formulation.objects.get()
     active = Assignment.objects.get(name="active")
     placebo = Assignment.objects.get(name="placebo")
@@ -95,6 +111,7 @@ def update_product():
 
 
 def update_supplier():
+    """In this case MERCK"""
     try:
         Supplier.objects.get(name="merck")
     except ObjectDoesNotExist:
@@ -102,6 +119,17 @@ def update_supplier():
 
 
 def update_labels():
+    """The default label spec is a 2 x 6 label sheet
+
+    Add "label congigs" as registered in the "site_label_configs"
+    global. In this case there are three labels:
+    * a bulk label for the barrels
+    * a generic vertical label for decanted stock (bottles of 128)
+    * a patient label for allocated stock (bottles of 128)
+
+    The patient label will be placed over the generic vertical label
+    once the stock item is allocated to a subject.
+    """
     try:
         default = LabelSpecification.objects.get(name="default")
     except ObjectDoesNotExist:
