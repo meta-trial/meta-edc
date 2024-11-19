@@ -56,7 +56,7 @@ def update_container():
         ),
         "bottle30k": dict(
             name="bottle30k",
-            display_name="Bottle 30K",
+            display_name="Barrel 30K",
             container_type=bottle_type,
             units=units,
             qty=30000,
@@ -133,7 +133,8 @@ def update_labels():
     try:
         default = LabelSpecification.objects.get(name="default")
     except ObjectDoesNotExist:
-        default = LabelSpecification().save()
+        LabelSpecification().save()
+        default = LabelSpecification.objects.get(name="default")
 
     for name, label_config in site_label_configs.registry.items():
         LabelConfiguration.objects.create(name=name, label_specification=default)
