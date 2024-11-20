@@ -20,7 +20,6 @@ from edc_pharmacy.auth_objects import (
     PHARMACY_PRESCRIBER,
     SITE_PHARMACIST_ROLE,
 )
-from edc_pylabels.auth_objects import PYLABELS
 from edc_qareports.auth_objects import QA_REPORTS_AUDIT_ROLE, QA_REPORTS_ROLE
 from edc_qol.auth_objects import QOL, QOL_SUPER, QOL_VIEW
 from edc_randomization.auth_objects import RANDO_BLINDED, RANDO_UNBLINDED
@@ -73,10 +72,8 @@ site_auths.update_role(
     DATA_MANAGER_EXPORT,
     name=DATA_EXPORTER_ROLE,
 )
-site_auths.update_role(RANDO_UNBLINDED, PII, META_PHARMACIST, PYLABELS, name=PHARMACIST_ROLE)
-site_auths.update_role(
-    RANDO_BLINDED, PII, META_PHARMACIST, PYLABELS, name=SITE_PHARMACIST_ROLE
-)
+site_auths.update_role(RANDO_UNBLINDED, PII, META_PHARMACIST, name=PHARMACIST_ROLE)
+site_auths.update_role(RANDO_BLINDED, PII, META_PHARMACIST, name=SITE_PHARMACIST_ROLE)
 site_auths.update_role(SUBJECT_VIEW, SCREENING_VIEW, name=DATA_MANAGER_ROLE)
 site_auths.update_role(
     SUBJECT_VIEW, SCREENING_VIEW, ACTION_ITEM, UNBLINDING_REQUESTORS, name=TMG_ROLE

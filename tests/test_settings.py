@@ -105,6 +105,7 @@ project_settings = DefaultTestSettings(
         "logentry_admin",
         "simple_history",
         "storages",
+        "edc_pylabels.apps.AppConfig",
         "edc_sites.apps.AppConfig",
         "edc_action_item.apps.AppConfig",
         "edc_adherence.apps.AppConfig",
