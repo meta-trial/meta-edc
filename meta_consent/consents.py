@@ -12,6 +12,12 @@ consent_v1 = ConsentDefinition(
     age_is_adult=18,
     age_max=110,
     gender=[MALE, FEMALE],
+    screening_model=[
+        "meta_screening.subjectscreening",
+        "meta_screening.screeningpartone",
+        "meta_screening.screeningparttwo",
+        "meta_screening.screeningpartthree",
+    ],
 )
 
 site_consents.register(consent_v1)
