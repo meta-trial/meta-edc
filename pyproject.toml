@@ -8,11 +8,11 @@ dependencies = [
   "edc-microscopy",
   "beautifulsoup4",
   "celery[redis]",
-  "pylabels2",
+  "django-pylabels",
   ]
 requires-python = '>=3.12'
 keywords = ["django", "clinicedc", "META EDC", "EDC", "clinical trials"]
-authors = [{name="Blair Bonnett"}]
+authors = [{name="Erik van Widenfelt", email="ew2789@gmail.com"}, {name="Jonathan Willitts", email="j.willitts@ucl.ac.uk"}]
 classifiers = [
     "Environment :: Web Environment",
     "Framework :: Django",
@@ -31,7 +31,7 @@ requires = ["setuptools>=64", "setuptools_scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
-version_file="_version.py"
+version_file = "_version.py"
 
 [tool.black]
 line-length = 95
@@ -64,15 +64,16 @@ exclude_lines = [
 legacy_tox_ini = """
 [tox]
 envlist =
-    py{312}-dj{42,51}-edc{prod,dev},
-    py{312}-dj{dev}-edc{dev},
+    py{312,313}-dj{51}-edc{prod,dev},
+    py{313}-dj{dev}-edc{dev},
     lint
 
 isolated_build = true
 
 [gh-actions]
 python =
-    3.12: py312, lint
+    3.12: py312
+    3.13: py313, lint
 
 [gh-actions:env]
 DJANGO =
@@ -92,9 +93,9 @@ deps =
 
 commands =
     pip install -U pip
+    python --version
     pip --version
     edcdev: pip install -U -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/edc.txt
-    edcdev: pip install -U git+https://github.com/intecomm-trial/intecomm-form-validators.git@develop
     pip freeze
     coverage run -a runtests.py
     coverage report

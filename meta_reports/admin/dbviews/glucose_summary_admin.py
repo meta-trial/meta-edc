@@ -62,7 +62,7 @@ class GlucoseSummaryAdmin(
         except ObjectDoesNotExist:
             value = None
         else:
-            if endpoint_obj.offstudy_datetime:
+            if endpoint_obj.offstudy_date:
                 url = reverse("meta_reports_admin:meta_reports_endpointsproxy_changelist")
                 title = f"Go to {EndpointsProxy._meta.verbose_name}"
             else:

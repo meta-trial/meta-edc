@@ -1,6 +1,7 @@
 from edc_adverse_event.navbars import ae_navbar_item, tmg_navbar_item
 from edc_data_manager.navbar_item import dm_navbar_item
 from edc_navbar import Navbar, NavbarItem, site_navbars
+from edc_pharmacy.navbars import pharmacy_navbar_item
 from edc_review_dashboard.navbars import navbar_item as review_navbar_item
 
 no_url_namespace = False  # True if settings.APP_NAME == "meta_dashboard" else False
@@ -33,6 +34,7 @@ navbar.register(
 )
 
 
+navbar.register(pharmacy_navbar_item)
 navbar.register(review_navbar_item)
 navbar.register(tmg_navbar_item)
 navbar.register(ae_navbar_item)

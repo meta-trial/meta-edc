@@ -7,23 +7,34 @@ from reportlab.graphics.barcode.widgets import BarcodeStandard39
 from reportlab.graphics.charts.textlabels import Label as RlLabel
 from reportlab.graphics.shapes import String
 
-from meta_pharmacy.models import Label
+from ..models import LabelData
 
 
-class LabelData:
+class Label:
+    """
+    this should be based on a generated dataset using the stock transfer
+    request data.
 
-    def __init__(self, label: Label):
-        self.label = label
-        self.gender = label.rx.registered_subject.gender
-        self.site_id = label.rx.site_id
-        self.subject_identifier = label.rx.subject_identifier
-        self.reference = label.rx_label_reference
-        self.sid = label.rx.rando_sid
+    maybe include a printout for the site to review the IN-STOCK vs ORDER
+    status for each subject in a stock transfer request
+
+    subject1 IN-STOCK
+    subject2 ORDER
+    subject3 ORDER
+    """
+
+    def __init__(self, obj: LabelData):
+        self.label = obj
+        self.gender = obj.gender
+        self.site_id = obj.site_id
+        self.subject_identifier = obj.subject_identifier
+        self.reference = obj.reference
+        self.sid = obj.sid
         self.site_name = sites.get(self.site_id).title
 
 
-def draw_label(label, width, height, data: Label):
-    data = LabelData(data)
+def draw_label(label, width, height, data: LabelData):
+    data = Label(data)
     br = BarcodeStandard39(
         humanReadable=True, checksum=False, barHeight=30, barWidth=0.7, gap=1.7
     )

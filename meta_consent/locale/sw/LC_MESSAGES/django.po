@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-07 09:43-0500\n"
+"POT-Creation-Date: 2024-11-19 23:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,53 +18,53 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/subject_consent_admin.py:74
+#: meta_consent/admin/modeladmin_mixins.py:68
 msgid "The following questions are directed to the interviewer."
 msgstr ""
 
-#: admin/subject_consent_admin.py:124
+#: meta_consent/admin/modeladmin_mixins.py:118
 msgid "Create missing METFORMIN prescription"
 msgstr ""
 
-#: admin/subject_consent_admin.py:146
+#: meta_consent/admin/modeladmin_mixins.py:140
 #, python-format
 msgid ""
 "Created %(created)s/%(total)s missing %(display_name)s prescriptions. Got "
 "%(exist)s/%(total)s prescriptions already exist"
 msgstr ""
 
-#: forms/subject_consent_form.py:18
+#: meta_consent/form_validators/subject_consent_form_validator.py:14
 msgid "Expected 'hospital number'."
 msgstr ""
 
-#: forms/subject_consent_form.py:26
+#: meta_consent/form_validators/subject_consent_form_validator.py:22
 msgid "The hospital identifier does not match that reported at screening."
 msgstr ""
 
-#: forms/subject_consent_form.py:54
+#: meta_consent/forms/subject_consent_form.py:13
 msgid ""
 "Use Country ID Number, Passport number, driver's license number or Country "
 "ID receipt number"
 msgstr ""
 
-#: forms/subject_consent_form.py:60
+#: meta_consent/forms/subject_consent_form.py:19
 msgid ""
 "Required only if participant is illiterate. Format is 'LASTNAME, FIRSTNAME'. "
 "All uppercase separated by a comma."
 msgstr ""
 
-#: forms/subject_consent_form.py:65
+#: meta_consent/forms/subject_consent_form.py:24
 msgid "(read-only)"
 msgstr ""
 
-#: models/subject_consent.py:63
+#: meta_consent/models/subject_consent.py:54
 msgid "Screening identifier"
 msgstr ""
 
-#: models/subject_consent.py:67
+#: meta_consent/models/subject_consent.py:58
 msgid "Screening datetime"
 msgstr ""
 
-#: models/subject_consent.py:72
+#: meta_consent/models/subject_consent.py:63
 msgid "from screening"
 msgstr ""

@@ -4,6 +4,7 @@ if __name__ == "__main__":
     func_main2(
         "tests.test_settings",
         "tests",
+        "meta_pharmacy",
         "meta_ae.tests",
         "meta_consent.tests",
         "meta_dashboard.tests",

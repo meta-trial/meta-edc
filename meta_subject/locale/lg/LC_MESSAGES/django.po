@@ -1,0 +1,470 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-19 23:35+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: meta_subject/admin/health_economics/health_economics_update_admin.py:18
+msgid ""
+"We want to learn about the household and we use these\n"
+"        questions to get an understanding of wealth and opportunities\n"
+"        in the community. A person or persons (people/ members) who share\n"
+"        the same kitchen (pot), live together, and run the household\n"
+"        expenditure from the same income is known as a 'household'. "
+"Household\n"
+"        members should be identified on the basis that they shared a place "
+"of\n"
+"        living together most of time for the past one year. When it is\n"
+"        difficult to demarcate 'most of the time', living together for the\n"
+"        past six months or more should be used to find out whether or not\n"
+"        the person is a household member. For polygamous households, the\n"
+"        household head should think about all the households and respond\n"
+"        with respect to all households."
+msgstr ""
+
+#: meta_subject/admin/health_economics/health_economics_update_admin.py:58
+msgid ""
+"Before asking about household income, we would first liketo know about the "
+"number of rooms in the home and number of beds. "
+msgstr ""
+
+#: meta_subject/admin/health_economics/health_economics_update_admin.py:72
+msgid ""
+"Now, I will ask about income for the household from paid workor other "
+"sources. Please think of the total income for the household, including "
+"income from all household members as defined above. I know it may be "
+"difficult to estimate, but please do try to give amounts as accurately as "
+"possible. Please note that all information will be kept strictly "
+"confidential. This information is important to assess overall health and "
+"well-being of people in your household, compared to other similar households."
+msgstr ""
+
+#: meta_subject/choices.py:39 meta_subject/choices.py:48
+msgid "Working"
+msgstr ""
+
+#: meta_subject/choices.py:40 meta_subject/choices.py:49
+msgid "Studying"
+msgstr ""
+
+#: meta_subject/choices.py:41 meta_subject/choices.py:50
+msgid "Caring for children"
+msgstr ""
+
+#: meta_subject/choices.py:42
+msgid "Other, please specify"
+msgstr ""
+
+#: meta_subject/choices.py:47 meta_subject/choices.py:59
+#: meta_subject/choices.py:66 meta_subject/choices.py:81
+#: meta_subject/choices.py:88 meta_subject/choices.py:118
+#: meta_subject/choices.py:140 meta_subject/choices.py:167
+#: meta_subject/choices.py:175 meta_subject/choices.py:220
+msgid "Not applicable"
+msgstr ""
+
+#: meta_subject/choices.py:51
+msgid "House maintenance"
+msgstr ""
+
+#: meta_subject/choices.py:52
+msgid "Nothing"
+msgstr ""
+
+#: meta_subject/choices.py:53 meta_subject/choices.py:210
+msgid "Other, specify"
+msgstr ""
+
+#: meta_subject/choices.py:57
+msgid "Study participant"
+msgstr ""
+
+#: meta_subject/choices.py:58 meta_subject/choices.py:133
+#: meta_subject/choices.py:219
+msgid "Other"
+msgstr ""
+
+#: meta_subject/choices.py:63
+msgid "At home"
+msgstr ""
+
+#: meta_subject/choices.py:64
+msgid "Hospital / Clinic"
+msgstr ""
+
+#: meta_subject/choices.py:65
+msgid "Other location, specify"
+msgstr ""
+
+#: meta_subject/choices.py:70
+msgid "Excellent"
+msgstr ""
+
+#: meta_subject/choices.py:71
+msgid "Very good"
+msgstr ""
+
+#: meta_subject/choices.py:72
+msgid "Good"
+msgstr ""
+
+#: meta_subject/choices.py:73
+msgid "Fair"
+msgstr ""
+
+#: meta_subject/choices.py:74
+msgid "Poor"
+msgstr ""
+
+#: meta_subject/choices.py:80
+msgid "Other, specify below ..."
+msgstr ""
+
+#: meta_subject/choices.py:86
+msgid "No. A repeat FBG will be scheduled"
+msgstr ""
+
+#: meta_subject/choices.py:92 meta_subject/choices.py:146
+msgid "All of the time"
+msgstr ""
+
+#: meta_subject/choices.py:93 meta_subject/choices.py:147
+msgid "Most of the time"
+msgstr ""
+
+#: meta_subject/choices.py:94
+msgid "A good bit of the time"
+msgstr ""
+
+#: meta_subject/choices.py:95 meta_subject/choices.py:148
+msgid "Some of the time"
+msgstr ""
+
+#: meta_subject/choices.py:96 meta_subject/choices.py:149
+msgid "A little of the time"
+msgstr ""
+
+#: meta_subject/choices.py:97 meta_subject/choices.py:150
+msgid "None of the time"
+msgstr ""
+
+#: meta_subject/choices.py:102
+msgid "Live birth at term"
+msgstr ""
+
+#: meta_subject/choices.py:103
+msgid "Live birth preterm"
+msgstr ""
+
+#: meta_subject/choices.py:104
+msgid "Stillbirth"
+msgstr ""
+
+#: meta_subject/choices.py:105
+msgid "Miscarriage"
+msgstr ""
+
+#: meta_subject/choices.py:109
+msgid "Study appointment"
+msgstr ""
+
+#: meta_subject/choices.py:110
+msgid "Other routine appointment"
+msgstr ""
+
+#: meta_subject/choices.py:111
+msgid "Unschedule visit"
+msgstr ""
+
+#: meta_subject/choices.py:112
+msgid "Other reason, specify below ..."
+msgstr ""
+
+#: meta_subject/choices.py:116 meta_subject/choices.py:117
+#, python-format
+msgid "Grade %(num)s"
+msgstr ""
+
+#: meta_subject/choices.py:122
+msgid "YES, limited a lot"
+msgstr ""
+
+#: meta_subject/choices.py:123
+msgid "YES, limited a little"
+msgstr ""
+
+#: meta_subject/choices.py:124
+msgid "NO, not at all limited"
+msgstr ""
+
+#: meta_subject/choices.py:128
+msgid "Hospital notes"
+msgstr ""
+
+#: meta_subject/choices.py:129
+msgid "Outpatient cards"
+msgstr ""
+
+#: meta_subject/choices.py:130
+msgid "Patient"
+msgstr ""
+
+#: meta_subject/choices.py:131
+msgid "Collateral History from relative/guardian"
+msgstr ""
+
+#: meta_subject/choices.py:132
+msgid "Not applicable (if missed)"
+msgstr ""
+
+#: meta_subject/choices.py:139
+msgid "Hospital / Clinic records"
+msgstr ""
+
+#: meta_subject/choices.py:154
+msgid "No retinopathy"
+msgstr ""
+
+#: meta_subject/choices.py:155
+msgid "Background retinopathy"
+msgstr ""
+
+#: meta_subject/choices.py:156
+msgid "Pre-proliferative retinopathy"
+msgstr ""
+
+#: meta_subject/choices.py:157
+msgid "Proliferative retinopathy"
+msgstr ""
+
+#: meta_subject/choices.py:158
+msgid "Maculopathy"
+msgstr ""
+
+#: meta_subject/choices.py:159 meta_subject/choices.py:181
+#: meta_subject/choices.py:188 meta_subject/choices.py:242
+msgid "Exam not performed"
+msgstr ""
+
+#: meta_subject/choices.py:163
+msgid "No complications"
+msgstr ""
+
+#: meta_subject/choices.py:164
+msgid "Complications with full recovery"
+msgstr ""
+
+#: meta_subject/choices.py:165
+msgid "Complications with ongoing recovery"
+msgstr ""
+
+#: meta_subject/choices.py:166
+msgid "Maternal mortality"
+msgstr ""
+
+#: meta_subject/choices.py:171
+msgid "Own cash"
+msgstr ""
+
+#: meta_subject/choices.py:172
+msgid "Insurance"
+msgstr ""
+
+#: meta_subject/choices.py:173
+msgid "Relative of others paying"
+msgstr ""
+
+#: meta_subject/choices.py:174
+msgid "Free drugs from the pharmacy"
+msgstr ""
+
+#: meta_subject/choices.py:179 meta_subject/choices.py:185
+msgid "Present"
+msgstr ""
+
+#: meta_subject/choices.py:180 meta_subject/choices.py:187
+msgid "Absent"
+msgstr ""
+
+#: meta_subject/choices.py:186
+msgid "Present with reinforcement"
+msgstr ""
+
+#: meta_subject/choices.py:193
+msgid "New"
+msgstr ""
+
+#: meta_subject/choices.py:194
+msgid "Open. Some information is still pending."
+msgstr ""
+
+#: meta_subject/choices.py:195
+msgid "Closed. This report is complete"
+msgstr ""
+
+#: meta_subject/choices.py:200
+msgid "Bus"
+msgstr ""
+
+#: meta_subject/choices.py:201
+msgid "Train"
+msgstr ""
+
+#: meta_subject/choices.py:202
+msgid "Ambulance"
+msgstr ""
+
+#: meta_subject/choices.py:203
+msgid "Private taxi"
+msgstr ""
+
+#: meta_subject/choices.py:204
+msgid "Own bicycle"
+msgstr ""
+
+#: meta_subject/choices.py:205
+msgid "Hired motorbike"
+msgstr ""
+
+#: meta_subject/choices.py:206
+msgid "Own car"
+msgstr ""
+
+#: meta_subject/choices.py:207
+msgid "Own motorbike"
+msgstr ""
+
+#: meta_subject/choices.py:208
+msgid "Hired bicycle"
+msgstr ""
+
+#: meta_subject/choices.py:209
+msgid "Foot"
+msgstr ""
+
+#: meta_subject/choices.py:215
+msgid "Patient unwell (outpatient)"
+msgstr ""
+
+#: meta_subject/choices.py:216
+msgid "Patient hospitalised"
+msgstr ""
+
+#: meta_subject/choices.py:217
+msgid "Routine appointment (non-study)"
+msgstr ""
+
+#: meta_subject/choices.py:218
+msgid "Recurrence of symptoms"
+msgstr ""
+
+#: meta_subject/choices.py:224
+msgid "Scheduled visit"
+msgstr ""
+
+#: meta_subject/choices.py:225
+msgid "Unscheduled visit"
+msgstr ""
+
+#: meta_subject/choices.py:226
+msgid "Missed visit"
+msgstr ""
+
+#: meta_subject/choices.py:229
+msgid "Estimated"
+msgstr ""
+
+#: meta_subject/choices.py:229
+msgid "Measured"
+msgstr ""
+
+#: meta_subject/choices.py:232
+msgid "Not at all"
+msgstr ""
+
+#: meta_subject/choices.py:233
+msgid "A little bit"
+msgstr ""
+
+#: meta_subject/choices.py:234
+msgid "Moderately"
+msgstr ""
+
+#: meta_subject/choices.py:235
+msgid "Quite a bit"
+msgstr ""
+
+#: meta_subject/choices.py:236
+msgid "Extremely"
+msgstr ""
+
+#: meta_subject/models/health_economics/health_economics_update.py:20
+msgid ""
+"Thinking over the last 12 months, can you tell me what the average earnings "
+"of the household have been?"
+msgstr ""
+
+#: meta_subject/models/health_economics/health_economics_update.py:36
+msgid "Are you the household head?"
+msgstr ""
+
+#: meta_subject/models/health_economics/health_economics_update.py:40
+msgid ""
+"By head of the household we mean the main decision maker in the household. "
+"The head can be either male or female. If two people are equal decision-"
+"makers, take the older person."
+msgstr ""
+
+#: meta_subject/models/health_economics/health_economics_update.py:48
+msgid "If No, what is your relationship to the household head?"
+msgstr ""
+
+#: meta_subject/models/health_economics/health_economics_update.py:52
+msgid "Not applicable if patient is head of household"
+msgstr ""
+
+#: meta_subject/models/health_economics/health_economics_update.py:56
+msgid "If OTHER relationship, specify ..."
+msgstr ""
+
+#: meta_subject/models/health_economics/health_economics_update.py:61
+msgid ""
+"How many rooms does your dwelling have in total, without counting the "
+"bathrooms/ toilets or hallways/passageways?"
+msgstr ""
+
+#: meta_subject/models/health_economics/health_economics_update.py:68
+msgid "How many rooms are used for sleeping in your dwelling?"
+msgstr ""
+
+#: meta_subject/models/health_economics/health_economics_update.py:73
+msgid "How many beds does your dwelling have in total?"
+msgstr ""
+
+#: meta_subject/models/health_economics/health_economics_update.py:79
+msgid ""
+"Outside of this household, how many other people depend on this household's "
+"income?"
+msgstr ""
+
+#: meta_subject/models/health_economics/health_economics_update.py:84
+msgid ""
+"Insert '0' if no dependents other than the members in the household roster"
+msgstr ""
+
+#: meta_subject/models/health_economics/health_economics_update.py:89
+msgid "Would you say your household's financial situation is?"
+msgstr ""

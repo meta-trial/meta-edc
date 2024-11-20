@@ -1,0 +1,69 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-19 23:35+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: meta_consent/admin/modeladmin_mixins.py:68
+msgid "The following questions are directed to the interviewer."
+msgstr ""
+
+#: meta_consent/admin/modeladmin_mixins.py:118
+msgid "Create missing METFORMIN prescription"
+msgstr ""
+
+#: meta_consent/admin/modeladmin_mixins.py:140
+#, python-format
+msgid ""
+"Created %(created)s/%(total)s missing %(display_name)s prescriptions. Got "
+"%(exist)s/%(total)s prescriptions already exist"
+msgstr ""
+
+#: meta_consent/form_validators/subject_consent_form_validator.py:14
+msgid "Expected 'hospital number'."
+msgstr ""
+
+#: meta_consent/form_validators/subject_consent_form_validator.py:22
+msgid "The hospital identifier does not match that reported at screening."
+msgstr ""
+
+#: meta_consent/forms/subject_consent_form.py:13
+msgid ""
+"Use Country ID Number, Passport number, driver's license number or Country "
+"ID receipt number"
+msgstr ""
+
+#: meta_consent/forms/subject_consent_form.py:19
+msgid ""
+"Required only if participant is illiterate. Format is 'LASTNAME, FIRSTNAME'. "
+"All uppercase separated by a comma."
+msgstr ""
+
+#: meta_consent/forms/subject_consent_form.py:24
+msgid "(read-only)"
+msgstr ""
+
+#: meta_consent/models/subject_consent.py:54
+msgid "Screening identifier"
+msgstr ""
+
+#: meta_consent/models/subject_consent.py:58
+msgid "Screening datetime"
+msgstr ""
+
+#: meta_consent/models/subject_consent.py:63
+msgid "from screening"
+msgstr ""

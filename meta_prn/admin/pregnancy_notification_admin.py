@@ -57,11 +57,15 @@ class PregnancyNotificationAdmin(
             "subject_identifier",
             "dashboard",
             "edd",
-            "may_contact",
+            "contact_agreed",
         )
         return custom_fields + tuple(f for f in list_display if f not in custom_fields)
 
     def get_list_filter(self, request) -> Tuple[str, ...]:
-        list_filter = super().get_list_display(request)
+        list_filter = super().get_list_filter(request)
         custom_fields = ("edd", "may_contact")
         return custom_fields + tuple(f for f in list_filter if f not in custom_fields)
+
+    @admin.display(description="May contact?", ordering="may_contact")
+    def contact_agreed(self, obj):
+        return obj.may_contact
