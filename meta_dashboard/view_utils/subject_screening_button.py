@@ -5,10 +5,10 @@ from typing import Type
 
 from django.utils.translation import gettext as _
 from edc_constants.constants import TBD, YES
-from edc_subject_dashboard.view_utils import ADD, CHANGE, VIEW
-from edc_subject_dashboard.view_utils.subject_screening_button import (
+from edc_subject_dashboard.view_utils import (
     SubjectScreeningButton as BaseSubjectScreeningButton,
 )
+from edc_view_utils import ADD, CHANGE, VIEW
 
 from meta_screening.models import ScreeningPartOne, ScreeningPartThree, ScreeningPartTwo
 

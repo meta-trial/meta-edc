@@ -34,19 +34,17 @@ env = environ.Env(
     EDC_SITES_DOMAIN_SUFFIX="meta4.clinicedc.org",
 )
 
-BASE_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
-ENV_DIR = str(Path(os.path.dirname(os.path.abspath(__file__))).parent.parent)
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+ENV_DIR = Path(__file__).resolve().parent.parent.parent
 
 # copy your .env file from .envs/ to BASE_DIR
 if "test" in sys.argv:
-    env.read_env(os.path.join(ENV_DIR, ".env-tests"))
-    print(f"Reading env from {os.path.join(BASE_DIR, '.env-tests')}")
+    env.read_env(ENV_DIR / ".env-tests")
+    print(f"Reading env from {(BASE_DIR /'.env-tests')}")  # noqa
 else:
-    if not os.path.exists(os.path.join(ENV_DIR, ".env")):
-        raise FileExistsError(
-            f"Environment file does not exist. Got `{os.path.join(ENV_DIR, '.env')}`"
-        )
-    env.read_env(os.path.join(ENV_DIR, ".env"))
+    if not (ENV_DIR / ".env").exists():
+        raise FileExistsError(f"Environment file does not exist. Got `{(ENV_DIR / '.env')}`")
+    env.read_env(ENV_DIR / ".env")
 
 
 LOGGING_ENABLED = env("DJANGO_LOGGING_ENABLED")
@@ -67,7 +65,7 @@ LIVE_SYSTEM = env.str("DJANGO_LIVE_SYSTEM")
 
 ETC_DIR = env.str("DJANGO_ETC_FOLDER")
 
-TEST_DIR = os.path.join(BASE_DIR, APP_NAME, "tests")
+TEST_DIR = BASE_DIR / APP_NAME / "tests"
 
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS")
 
@@ -238,7 +236,7 @@ if env("DATABASE_SQLITE_ENABLED"):
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+            "NAME": BASE_DIR / "db.sqlite3",
         }
     }
 
@@ -310,6 +308,11 @@ LANGUAGE_CODE = "en-gb"
 LANGUAGE_LIST = ["sw", "en-gb", "en", "mas"]
 LANGUAGES = [(code, LANG_INFO[code]["name"]) for code in LANGUAGE_LIST]
 
+# LOCALE_PATHS = [
+#     base_dir / "locale",
+#     base_dir.parent / "edc-pharmacy" / "edc_pharmacy" / "locale",
+# ]
+
 TIME_ZONE = env.str("DJANGO_TIME_ZONE")
 DATE_INPUT_FORMATS = ["%Y-%m-%d", "%d/%m/%Y"]
 DATETIME_INPUT_FORMATS = [
@@ -352,8 +355,8 @@ if not DEBUG:
     SECURE_BROWSER_XSS_FILTER = True
 
 # edc_lab and label
-LABEL_TEMPLATE_FOLDER = env.str("DJANGO_LABEL_TEMPLATE_FOLDER") or os.path.join(
-    BASE_DIR, "label_templates", "2.25x1.25in"
+LABEL_TEMPLATE_FOLDER = env.str("DJANGO_LABEL_TEMPLATE_FOLDER") or (
+    BASE_DIR / "label_templates" / "2.25x1.25in"
 )
 CUPS_SERVERS = env.dict("DJANGO_CUPS_SERVERS")
 
@@ -461,7 +464,7 @@ GIT_DIR = BASE_DIR
 KEY_PATH = env.str("DJANGO_KEY_FOLDER")
 AUTO_CREATE_KEYS = env("DJANGO_AUTO_CREATE_KEYS")
 
-EXPORT_FOLDER = env.str("DJANGO_EXPORT_FOLDER") or os.path.expanduser("~/")
+EXPORT_FOLDER = env.str("DJANGO_EXPORT_FOLDER") or Path("~/").expanduser()
 
 # django_simple_history
 SIMPLE_HISTORY_ENFORCE_HISTORY_MODEL_PERMISSIONS = True
@@ -523,7 +526,7 @@ if env("AWS_ENABLED"):
     STATIC_ROOT = ""
 elif DEBUG:
     STATIC_URL = env.str("DJANGO_STATIC_URL")
-    STATIC_ROOT = os.path.expanduser("~/source/edc_source/meta-edc/static/")
+    STATIC_ROOT = Path("~/source/edc_source/meta-edc/static/").expanduser()
 else:
     # run collectstatic, check nginx LOCATION
     STATIC_URL = env.str("DJANGO_STATIC_URL")

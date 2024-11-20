@@ -1,0 +1,44 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-19 23:35+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: meta_pharmacy/admin/actions.py:35
+msgid "Select one and only one existing label specification"
+msgstr ""
+
+#: meta_reports/admin/dbviews/imp_substitutions_admin.py:67
+#: meta_reports/admin/dbviews/patient_history_missing_baseline_cd4_admin.py:57
+msgid "Go to subject's dashboard@1000"
+msgstr ""
+
+#: meta_reports/admin/dbviews/imp_substitutions_admin.py:89
+#, python-brace-format
+msgid "View {crf_model_cls._meta.verbose_name}"
+msgstr ""
+
+#: meta_reports/admin/dbviews/imp_substitutions_admin.py:90
+msgid "View"
+msgstr ""
+
+#: meta_reports/admin/dbviews/missing_screening_ogtt_admin/unmanaged_model_admin.py:71
+msgid "Go to subject screening"
+msgstr ""
+
+#: meta_screening/admin/subject_screening_admin.py:197
+msgid "Go to subject dashboard"
+msgstr ""
