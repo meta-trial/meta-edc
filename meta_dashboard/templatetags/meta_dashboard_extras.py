@@ -9,7 +9,7 @@ from edc_dashboard.url_names import url_names
 from edc_dashboard.utils import get_bootstrap_version
 
 from meta_consent.models import SubjectConsent
-from meta_dashboard.view_utils.subject_screening_button import (
+from meta_dashboard.view_utils import (
     SubjectScreeningPartOneButton,
     SubjectScreeningPartThreeButton,
     SubjectScreeningPartTwoButton,
