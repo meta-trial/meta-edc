@@ -36,3 +36,7 @@ if os.path.exists(BASE_DIR) and not os.path.exists(KEY_PATH):  # noqa
 # if debugging, run `export DJANGO_DEBUG=True` before running runserver
 # CELERY_TASK_ALWAYS_EAGER = os.getenv("DJANGO_DEBUG", "False") == "True"
 # CELERY_TASK_EAGER_PROPAGATES = CELERY_TASK_ALWAYS_EAGER
+
+EDC_PDF_REPORTS_WATERMARK_WORD = "SAMPLE"
+EDC_PDF_REPORTS_WATERMARK_FONT = ("Helvetica", 100)
+EDC_PHARMACY_LABEL_WATERMARK_WORD = "DO NOT USE"
