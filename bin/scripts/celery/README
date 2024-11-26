@@ -1,0 +1,2 @@
+systemd config is preferrable, but these scripts work as an alternative. Just make sure workers are stopped when you
+expect them to be stop.
