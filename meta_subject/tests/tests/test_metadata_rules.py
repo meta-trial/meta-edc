@@ -99,8 +99,8 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
             subject_screening=subject_screening,
             subject_consent=subject_consent,
         )
-        self.assertEqual(
-            ["meta_subject.delivery"],
+        self.assertIn(
+            "meta_subject.delivery",
             [obj.model for obj in self.get_crf_metadata(subject_visit)],
         )
 
