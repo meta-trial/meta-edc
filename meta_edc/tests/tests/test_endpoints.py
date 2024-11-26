@@ -85,6 +85,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         import_module("edc_adverse_event.auths")
         import_module("edc_appointment.auths")
         import_module("edc_consent.auths")
+        import_module("edc_pylabels.auths")
         import_module("edc_dashboard.auths")
         import_module("edc_data_manager.auths")
         import_module("edc_qareports.auths")

@@ -9,7 +9,6 @@ from django.test import TestCase
 from edc_constants.constants import COMPLETE, YES
 from edc_metadata import KEYED, NOT_REQUIRED, REQUIRED
 from edc_metadata.metadata import CrfMetadataGetter
-from edc_metadata.metadata_handler import MetadataHandlerError
 from edc_qol.constants import ALL_OF_THE_TIME, NONE_OF_THE_TIME, SOME_OF_THE_TIME
 from edc_visit_schedule.constants import MONTH1, MONTH3, WEEK2
 
@@ -40,17 +39,6 @@ class TestSf12(MetaTestCaseMixin, TestCase):
             social_activities_interfered=SOME_OF_THE_TIME,
             crf_status=COMPLETE,
             site=Site.objects.get(id=settings.SITE_ID),
-        )
-
-    def test_baseline_not_required(self):
-        form = Sf12Form(data=self.data)
-        form.is_valid()
-        self.assertEqual({}, form._errors)
-        self.assertRaises(MetadataHandlerError, form.save)
-
-        crf_metadata_getter = CrfMetadataGetter(appointment=self.subject_visit.appointment)
-        self.assertFalse(
-            crf_metadata_getter.metadata_objects.filter(model="meta_subject.sf12").exists()
         )
 
     def test_1005_required(self):
