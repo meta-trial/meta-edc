@@ -6,7 +6,6 @@ from celery import Celery
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "meta_edc.settings.debug")
 
 # config celery
-# app = Celery("meta_edc", include=["meta_reports", "edc_pharmacy"])
 app = Celery("meta_edc")
 app.config_from_object("django.conf:settings", namespace="CELERY")
 app.autodiscover_tasks()
