@@ -1,6 +1,15 @@
 Changes
 -------
 
+0.3.42
+-----
+- edc 0.6.17
+
+0.3.41
+------
+- add revised pharmacy module
+- edc 0.6.16
+
 0.3.38
 ------
 - fix Endpoint admins to reference fbg_date not fbg_datetime
