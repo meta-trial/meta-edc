@@ -1,6 +1,10 @@
 Changes
 -------
 
+0.3.43
+------
+- watermark settings for labels and reports from env
+
 0.3.42
 -----
 - edc 0.6.17
