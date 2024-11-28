@@ -1,6 +1,10 @@
 Changes
 -------
 
+0.3.44
+------
+- bump edc 0.6.18
+
 0.3.43
 ------
 - watermark settings for labels and reports from env
