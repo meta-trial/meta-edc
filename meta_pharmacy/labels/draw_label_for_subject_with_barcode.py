@@ -1,3 +1,4 @@
+from edc_pharmacy.labels import draw_label_watermark
 from edc_pharmacy.models import Stock
 from edc_pharmacy.utils import format_qty
 from edc_sites.site import sites as site_sites
@@ -25,6 +26,9 @@ def draw_label_for_subject_with_barcode(
         label.add(String(15, height - 40, str(obj.code), fontSize=10))
         label.add(String(15, height - 60, str(obj.location), fontSize=10))
     else:
+
+        draw_label_watermark(label, width, height, fontSize=18)
+
         br = barcode_cls(**barcode_opts)
         br.value = obj.code
         br.x = width - 110
