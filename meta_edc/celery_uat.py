@@ -11,7 +11,8 @@ app.config_from_object("django.conf:settings", namespace="CELERY")
 app.autodiscover_tasks()
 
 app.conf.task_routes = {
-    "*": {"queue": "uat_queue"},
+    "edc_pharmacy.*": {"queue": "uat_queue"},
+    "meta_reports.*": {"queue": "uat_queue"},
 }
 
 
