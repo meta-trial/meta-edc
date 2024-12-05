@@ -1,6 +1,14 @@
 Changes
 -------
 
+unreleased
+------
+- updates to forms reference document
+    - standardise new line insertion
+    - fix trailing/end-of-file whitespace
+    - fix docstring insertion
+    - regenerate document
+
 0.3.46
 ------
 - bump edc 0.6.19
