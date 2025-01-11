@@ -2,6 +2,7 @@ from django.core.exceptions import ValidationError
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from edc_action_item import ActionItemDeleteError, delete_action_item
+from edc_appointment.utils import refresh_appointments
 from edc_constants.constants import YES
 from edc_pharmacy.exceptions import PrescriptionAlreadyExists
 from edc_pharmacy.prescribe import create_prescription
@@ -11,10 +12,12 @@ from edc_visit_schedule.site_visit_schedules import site_visit_schedules
 from meta_edc.meta_version import get_meta_version
 from meta_screening.models import SubjectScreening
 from meta_subject.models import SubjectVisit
+from meta_visit_schedule.constants import SCHEDULE, VISIT_SCHEDULE
 
 from ..action_items import ReconsentAction
 from .subject_consent import SubjectConsent
 from .subject_consent_v1 import SubjectConsentV1
+from .subject_consent_v1_ext import SubjectConsentV1Ext
 
 
 @receiver(
@@ -81,6 +84,21 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
                 )
             except ActionItemDeleteError:
                 pass
+
+
+@receiver(
+    post_save,
+    weak=False,
+    sender=SubjectConsentV1Ext,
+    dispatch_uid="subject_consent_v1_ext_on_post_save",
+)
+def subject_consent_v1_ext_on_post_save(sender, instance, raw, created, **kwargs):
+    if not raw:
+        refresh_appointments(
+            subject_identifier=instance.subject_identifier,
+            visit_schedule_name=VISIT_SCHEDULE,
+            schedule_name=SCHEDULE,
+        )
 
 
 @receiver(

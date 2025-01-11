@@ -149,6 +149,7 @@ def get_screening_df(df: pd.DataFrame | None = None) -> pd.DataFrame:
         on="subject_identifier",
         how="left",
     )
+    df.reset_index(drop=True, inplace=True)
     # set waist_circumference=waist_circumference_baseline
     # if `waist_circumference` is none and `waist_circumference_baseline` is not
     df.loc[

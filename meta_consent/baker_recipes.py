@@ -35,6 +35,7 @@ opts = dict(
 )
 subjectconsent = Recipe(SubjectConsent, **opts)
 subjectconsentv1 = Recipe(SubjectConsentV1, **opts)
+# subjectconsentv1ext = Recipe(SubjectConsentV1Ext, **opts)
 
 subjectreconsent = Recipe(
     SubjectReconsent,

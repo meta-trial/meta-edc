@@ -101,7 +101,7 @@ class Visit(BaseVisit):
 # schedule for new participants
 schedule = Schedule(
     name=SCHEDULE,
-    verbose_name="Day 1 to Month 12 Follow-up",
+    verbose_name="Day 1 to Month 36/48 Follow-up",
     onschedule_model="meta_prn.onschedule",
     offschedule_model="meta_prn.offschedule",
     consent_definitions=[consent_v1],
@@ -286,7 +286,7 @@ visit36 = Visit(
     timepoint=14,
     rbase=relativedelta(months=36),
     rlower=relativedelta(months=1),
-    rupper=relativedelta(months=1),
+    rupper=relativedelta(months=2),
     requisitions=requisitions_36m,
     crfs=crfs_36m,
     facility_name=FIVE_DAY_CLINIC,

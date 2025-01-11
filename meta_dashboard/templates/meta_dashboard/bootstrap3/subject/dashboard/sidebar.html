@@ -1,0 +1,24 @@
+{% extends 'edc_subject_dashboard/bootstrap3/dashboard/sidebar.html' %}
+{% load edc_subject_dashboard_extras %}
+
+{% block consents %}
+    {{ block.super }}
+    {% if subject_consent_v1_ext %}
+      <table class="table table-condensed">
+        <thead></thead>
+        <tbody>
+          <tr>
+            <td class="{% if subject_consent_v1_ext %}default{% else %}warning{% endif %}">
+            {% render_subject_consent_dashboard_button subject_consent_v1_ext appointment %}
+            </td>
+            <td class="{% if subject_consent_v1_ext %}default{% else %}warning{% endif %}">
+                <span class="h6">{{ subject_consent_v1_ext.verbose_name|title }}&nbsp;<span class="text {% if subject_consent_v1_ext.agrees_to_extension == YES %}text-success{% else %}text-danger{% endif %}">{{ subject_consent_v1_ext.agrees_to_extension }}</span>
+                <span class="text text-muted">{{ subject_consent_v1_ext.report_datetime|date:"SHORT_DATE_FORMAT"}}</span>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    {% endif %}
+
+{% endblock consents %}
