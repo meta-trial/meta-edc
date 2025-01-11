@@ -13,6 +13,7 @@ def update_action_item(apps, schema_editor):
                 ConsentV1ExtensionAction(
                     subject_identifier=obj.subject_identifier,
                     skip_get_current_site=True,
+                    site_id=obj.site_id,
                 )
         except IntegrityError:
             pass
