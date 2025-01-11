@@ -6,7 +6,6 @@ from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, override_settings
 from edc_constants.constants import NO, YES
-from edc_metadata.tests.constants import test_datetime
 from edc_utils import get_utcnow
 from model_bakery import baker
 
@@ -32,6 +31,8 @@ from meta_visit_schedule.constants import (
     MONTH48,
     WEEK2,
 )
+
+test_datetime = datetime(2019, 6, 11, 8, 00, tzinfo=ZoneInfo("UTC"))
 
 
 @override_settings(
