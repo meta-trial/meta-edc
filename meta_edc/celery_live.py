@@ -10,9 +10,7 @@ app = Celery("meta_edc")
 app.config_from_object("django.conf:settings", namespace="CELERY")
 app.autodiscover_tasks()
 
-app.conf.task_routes = {
-    "*": {"queue": "live_queue"},
-}
+# app.conf.task_routes = {"*": {"queue": "live_queue"}}
 
 
 @app.task(bind=True)

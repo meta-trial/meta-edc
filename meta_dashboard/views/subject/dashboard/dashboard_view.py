@@ -1,5 +1,6 @@
 from typing import Any
 
+from django.apps import apps as django_apps
 from django.core.checks import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse
@@ -19,6 +20,7 @@ class DashboardView(SubjectDashboardView):
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         """Add message if subject reaches DM Endpoint."""
         context = super().get_context_data(**kwargs)
+        context.update(subject_consent_v1_ext=self.subject_consent_v1_ext)
         try:
             Endpoints.objects.get(subject_identifier=self.subject_identifier)
         except ObjectDoesNotExist:
@@ -34,3 +36,12 @@ class DashboardView(SubjectDashboardView):
             )
             self.message_user(message, level=messages.WARNING)
         return context
+
+    @property
+    def subject_consent_v1_ext(self):
+        model_cls = django_apps.get_model("meta_consent.subjectconsentv1ext")
+        try:
+            obj = model_cls.objects.get(subject_identifier=self.subject_identifier)
+        except ObjectDoesNotExist:
+            obj = None
+        return obj

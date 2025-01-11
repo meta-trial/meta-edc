@@ -1,6 +1,6 @@
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
-from django.test import TestCase, tag
+from django.test import TestCase
 from edc_action_item.models import ActionItem
 from edc_appointment.constants import COMPLETE_APPT
 from edc_appointment.models import Appointment
@@ -22,7 +22,6 @@ from meta_subject.models import DmEndpoint, DmFollowup, SubjectVisit
 from meta_visit_schedule.constants import DM_BASELINE, DM_FOLLOWUP, SCHEDULE_DM_REFERRAL
 
 
-@tag("1")
 class TestDmReferral(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()
@@ -49,7 +48,6 @@ class TestDmReferral(MetaTestCaseMixin, TestCase):
         except ObjectDoesNotExist:
             self.fail("OnScheduleDmReferral unexpectedly does not exist")
 
-    @tag("1")
     def test_dm_referral_action_creates_offschedule_action(self):
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         subject_visit = self.get_next_subject_visit(subject_visit)
@@ -117,7 +115,6 @@ class TestDmReferral(MetaTestCaseMixin, TestCase):
         except ObjectDoesNotExist:
             self.fail(f"{DM_FOLLOWUP_ACTION} Action item unexpectedly does not exist")
 
-    @tag("1")
     def test_dm_referral2(self):
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         subject_visit = self.get_next_subject_visit(subject_visit)

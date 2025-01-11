@@ -17,10 +17,12 @@ class GlucoseTable(Table):
         super().__init__(colname="", main_df=main_df, title="Glucose (enrolled)")
 
     def build_table_df(self) -> None:
+        super().build_table_df()
         df = self.main_df
         s = df.groupby("subject_identifier")[["age_in_years", "gender"]].value_counts()
         df_tmp = s.to_frame()
         df_tmp = df_tmp.reset_index()
         gender_tbl = GenderTable(main_df=df_tmp).table_df
         age_tbl = AgeTable(main_df=df_tmp).table_df
-        return pd.concat([gender_tbl, age_tbl])
+        self.table_df = pd.concat([self.table_df, gender_tbl, age_tbl])
+        self.table_df.reset_index(drop=True, inplace=True)

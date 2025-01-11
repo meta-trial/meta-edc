@@ -19,6 +19,7 @@ from edc_sites.utils import add_or_update_django_sites
 from edc_visit_tracking.constants import SCHEDULED
 from model_bakery import baker
 
+from meta_consent.models import SubjectConsent, SubjectConsentV1Ext
 from meta_edc.meta_version import PHASE_THREE
 from meta_pharmacy.prepare_meta_pharmacy import prepare_meta_pharmacy
 from meta_sites.sites import domain_suffix
@@ -141,6 +142,20 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin):
             dob=dob or (now.date() - relativedelta(years=subject_screening.age_in_years)),
             site=Site.objects.get(id=site_id or settings.SITE_ID),
             consent_datetime=consent_datetime or subject_screening.report_datetime,
+        )
+
+    @staticmethod
+    def get_subject_consent_extended(
+        subject_consent: SubjectConsent,
+        consent_datetime: datetime = None,
+    ):
+        return SubjectConsentV1Ext.objects.create(
+            subject_consent=subject_consent,
+            report_datetime=consent_datetime,
+            agrees_to_extension=YES,
+            user_created="erikvw",
+            user_modified="erikvw",
+            site=subject_consent.site,
         )
 
     def get_subject_visit(

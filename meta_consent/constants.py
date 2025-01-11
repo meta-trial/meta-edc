@@ -1,1 +1,2 @@
 RECONSENT_ACTION = "reconsent"
+CONSENT_V1_EXTENSION_ACTION = "consent_v1_ext"

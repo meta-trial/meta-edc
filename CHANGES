@@ -1,8 +1,14 @@
 Changes
 -------
 
-unreleased
+0.3.47
 ------
+- bump edc 0.6.22
+- protocol amnendment to extend followup from 36->48m
+    - add consent definition extension (v1.1)
+    - add SubjectConsentV1Ext
+    - require consent extension to followup passed
+      36m
 - updates to forms reference document
     - standardise new line insertion
     - fix trailing/end-of-file whitespace
