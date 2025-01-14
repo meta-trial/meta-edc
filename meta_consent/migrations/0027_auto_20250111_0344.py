@@ -2,12 +2,14 @@
 
 from django.db import IntegrityError, migrations, transaction
 from edc_registration.models import RegisteredSubject
+from tqdm import tqdm
 
 from meta_consent.action_items import ConsentV1ExtensionAction
 
 
 def update_action_item(apps, schema_editor):
-    for obj in RegisteredSubject.objects.filter(site_id=40):
+    total = RegisteredSubject.objects.all().count()
+    for obj in tqdm(RegisteredSubject.objects.all(), total=total):
         try:
             with transaction.atomic():
                 ConsentV1ExtensionAction(
