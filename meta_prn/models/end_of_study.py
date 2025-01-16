@@ -26,11 +26,11 @@ from edc_transfer.constants import TRANSFERRED
 from meta_lists.models import OffstudyReasons
 
 from ..choices import CLINICAL_WITHDRAWAL_REASONS, TOXICITY_WITHDRAWAL_REASONS
+from ..constants import CLINICAL_WITHDRAWAL, COMPLETED_FOLLOWUP_48
 
 # TODO: confirm all appointments are either new, incomplete or done
 # TODO: take off study meds but coninue followup (WITHDRAWAL)
 # TODO: follow on new schedule, if permanently off drug (Single 36m visit)
-from ..constants import CLINICAL_WITHDRAWAL
 
 
 class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidModel):
@@ -52,24 +52,28 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
         null=True,
         limit_choices_to={
             "name__in": [
-                CLINICAL_WITHDRAWAL,
                 COMPLETED_FOLLOWUP,
-                DEAD,
-                DELIVERY,
+                COMPLETED_FOLLOWUP_48,
                 DIABETES,
-                LATE_EXCLUSION,
-                LOST_TO_FOLLOWUP,
-                OTHER,
+                DELIVERY,
                 PREGNANCY,
+                CLINICAL_WITHDRAWAL,
+                DEAD,
+                LOST_TO_FOLLOWUP,
                 TOXICITY,
                 TRANSFERRED,
                 WITHDRAWAL,
+                LATE_EXCLUSION,
+                OTHER,
             ]
         },
     )
 
     other_offstudy_reason = models.TextField(
-        verbose_name="If OTHER, please specify", max_length=500, blank=True, null=True
+        verbose_name="If OTHER, please specify",
+        max_length=500,
+        blank=True,
+        null=True,
     )
 
     # TODO: 6m off drug and duration ?? See SOP
@@ -95,8 +99,9 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
         blank=True,
         null=True,
         help_text=(
-            "A UPT CRF must be on file and participant not on the delivery schedule. "
-            "Use UPT date or, if UPT not needed, use report date on last UPT CRF."
+            "A UPT CRF must be on file and participant not on the "
+            "delivery schedule. Use UPT date or, if UPT not needed, "
+            "use report date on last UPT CRF."
         ),
     )
 

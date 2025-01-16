@@ -12,6 +12,7 @@ from edc_sites.admin import SiteModelAdminMixin
 
 from meta_ae.models import DeathReport
 from meta_consent.models import SubjectConsent
+from meta_lists.models import OffstudyReasons
 
 from ..admin_site import meta_prn_admin
 from ..forms import EndOfStudyForm
@@ -110,6 +111,11 @@ class EndOfStudyAdmin(
         "clinical_withdrawal_reason": admin.VERTICAL,
         "toxicity_withdrawal_reason": admin.VERTICAL,
     }
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "offstudy_reason":
+            kwargs["queryset"] = OffstudyReasons.objects.order_by("display_index")
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
     def get_list_display(self, request) -> Tuple[str, ...]:
         list_display = super().get_list_display(request)

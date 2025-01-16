@@ -19,11 +19,13 @@ from edc_offstudy.utils import OffstudyError
 from edc_prn.modelform_mixins import PrnFormValidatorMixin
 from edc_transfer.constants import TRANSFERRED
 from edc_utils import formatted_date
-from edc_visit_schedule.constants import MONTH36
+from edc_visit_schedule.constants import MONTH36, MONTH48
+from edc_visit_schedule.site_visit_schedules import site_visit_schedules
 from edc_visit_schedule.utils import off_all_schedules_or_raise
 
 from ..constants import (
     CLINICAL_WITHDRAWAL,
+    COMPLETED_FOLLOWUP_48,
     INVESTIGATOR_DECISION,
     OFFSTUDY_MEDICATION_ACTION,
 )
@@ -44,6 +46,7 @@ class EndOfStudyFormValidator(
         self.validate_offstudy_datetime_against_last_seen_date()
 
         self.validate_completed_36m()
+        self.validate_completed_48m()
 
         self.required_if(DEAD, field="offstudy_reason", field_required="death_date")
         self.validate_death_report_if_deceased()
@@ -106,6 +109,41 @@ class EndOfStudyFormValidator(
             except ObjectDoesNotExist:
                 self.raise_validation_error(
                     {"offstudy_reason": "Invalid. 36 month visit has not been submitted."},
+                    INVALID_ERROR,
+                )
+            schedule = site_visit_schedules.get_visit_schedule(
+                visit_schedule_name="visit_schedule"
+            ).schedules.get("schedule")
+            if subject_visit_model_cls.objects.filter(
+                subject_identifier=self.subject_identifier,
+                visit_code_sequence=0,
+                appointment__timepoint__gt=schedule.visits.get(MONTH36).timepoint,
+                appointment__schedule_name=schedule.name,
+            ):
+                self.raise_validation_error(
+                    {
+                        "offstudy_reason": (
+                            "Invalid. Participant has attended visits past 36 months."
+                        )
+                    },
+                    INVALID_ERROR,
+                )
+
+    def validate_completed_48m(self):
+        if (
+            self.cleaned_data.get("offstudy_reason")
+            and self.cleaned_data.get("offstudy_reason").name == COMPLETED_FOLLOWUP_48
+        ):
+            subject_visit_model_cls = django_apps.get_model("meta_subject.subjectvisit")
+            try:
+                subject_visit_model_cls.objects.get(
+                    subject_identifier=self.subject_identifier,
+                    visit_code=MONTH48,
+                    visit_code_sequence=0,
+                )
+            except ObjectDoesNotExist:
+                self.raise_validation_error(
+                    {"offstudy_reason": "Invalid. 48 month visit has not been submitted."},
                     INVALID_ERROR,
                 )
 
