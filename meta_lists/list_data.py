@@ -12,7 +12,11 @@ from edc_ltfu.constants import LOST_TO_FOLLOWUP
 from edc_offstudy.constants import COMPLETED_FOLLOWUP, WITHDRAWAL
 from edc_transfer.constants import TRANSFERRED
 
-from meta_prn.constants import CLINICAL_WITHDRAWAL, LATE_EXCLUSION
+from meta_prn.constants import (
+    CLINICAL_WITHDRAWAL,
+    COMPLETED_FOLLOWUP_48,
+    LATE_EXCLUSION,
+)
 
 list_data = {
     "meta_lists.dmmedications": [
@@ -197,6 +201,7 @@ list_data = {
     ],
     "meta_lists.offstudyreasons": [
         (COMPLETED_FOLLOWUP, "Patient completed 36 months of follow-up"),
+        (COMPLETED_FOLLOWUP_48, "Patient completed 48 months of follow-up"),
         (DELIVERY, "Delivered / Completed followup from pregnancy"),
         (PREGNANCY, "Pregnancy, declined further followup"),
         (DIABETES, "Patient developed diabetes"),

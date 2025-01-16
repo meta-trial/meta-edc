@@ -90,7 +90,7 @@ class EndOfStudyAction(ActionWithNotification):
     display_name = "Submit End of Study Report"
     notification_display_name = "End of Study Report"
     parent_action_names = [
-        # OFFSCHEDULE_ACTION,
+        OFFSCHEDULE_ACTION,
         OFFSTUDY_MEDICATION_ACTION,
         OFFSCHEDULE_PREGNANCY_ACTION,
         OFFSCHEDULE_DM_REFERRAL_ACTION,

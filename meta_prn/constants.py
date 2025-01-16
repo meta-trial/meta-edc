@@ -1,5 +1,6 @@
 CLINICAL_WITHDRAWAL = "clinical_withdrawal"
 CLINICIAN = "clinician"
+COMPLETED_FOLLOWUP_48 = "completed_followup_48"
 DEATH_REPORT_ACTION = "submit_death_report"
 DEVIATION = "protocol_deviation"
 DM_REFFERAL_ACTION = "dm_refferal_action"

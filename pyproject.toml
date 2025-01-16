@@ -4,7 +4,7 @@ dynamic = ["version"]
 description = "META Trial EDC (http://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 dependencies = [
-  "edc==0.6.24",
+  "edc==0.6.25",
   "edc-microscopy",
   "beautifulsoup4",
   "celery[redis]",
