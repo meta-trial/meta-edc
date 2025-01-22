@@ -43,6 +43,7 @@ class OffscheduleAction(ActionWithNotification):
         DEATH_REPORT_ACTION,
         LTFU_ACTION,
         BLOOD_RESULTS_RFT_ACTION,
+        SUBJECT_TRANSFER_ACTION,
     ]
     reference_model = "meta_prn.offschedule"
     show_link_to_changelist = True
@@ -72,9 +73,31 @@ class OffschedulePregnancyAction(ActionWithNotification):
         UNBLINDING_REVIEW_ACTION,
         DEATH_REPORT_ACTION,
         LTFU_ACTION,
+        SUBJECT_TRANSFER_ACTION,
         DELIVERY_ACTION,
     ]
     reference_model = "meta_prn.offschedulepregnancy"
+    show_link_to_changelist = True
+    admin_site_name = "meta_prn_admin"
+    priority = HIGH_PRIORITY
+    singleton = True
+
+    def get_next_actions(self):
+        next_actions = [END_OF_STUDY_ACTION]
+        return next_actions
+
+
+class OffscheduleDmReferralAction(ActionWithNotification):
+    name = OFFSCHEDULE_DM_REFERRAL_ACTION
+    display_name = "Submit Off-Schedule (Diabetes Referral)"
+    notification_display_name = "Off-Schedule (Diabetes Referral)"
+    parent_action_names = [
+        DM_FOLLOWUP_ACTION,
+        DEATH_REPORT_ACTION,
+        LTFU_ACTION,
+        SUBJECT_TRANSFER_ACTION,
+    ]
+    reference_model = "meta_prn.offscheduledmreferral"
     show_link_to_changelist = True
     admin_site_name = "meta_prn_admin"
     priority = HIGH_PRIORITY
@@ -147,22 +170,6 @@ class DmReferralAction(ActionWithNotification):
 
     def get_next_actions(self):
         next_actions = [DM_FOLLOWUP_ACTION]
-        return next_actions
-
-
-class OffscheduleDmReferralAction(ActionWithNotification):
-    name = OFFSCHEDULE_DM_REFERRAL_ACTION
-    display_name = "Submit Off-Schedule (Diabetes Referral)"
-    notification_display_name = "Off-Schedule (Diabetes Referral)"
-    parent_action_names = [DM_FOLLOWUP_ACTION]
-    reference_model = "meta_prn.offscheduledmreferral"
-    show_link_to_changelist = True
-    admin_site_name = "meta_prn_admin"
-    priority = HIGH_PRIORITY
-    singleton = True
-
-    def get_next_actions(self):
-        next_actions = [END_OF_STUDY_ACTION]
         return next_actions
 
 
