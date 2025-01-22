@@ -72,7 +72,7 @@ class BirthOutcomesAdmin(
         url = reverse("meta_subject_admin:meta_subject_delivery_changelist")
         url = f"{url}?q={obj.subject_identifier}"
         context = dict(title="Delivery", url=url, label="Delivery")
-        return render_to_string("dashboard_button.html", context=context)
+        return render_to_string("edc_subject_dashboard/dashboard_button.html", context=context)
 
     def get_subject_dashboard_url_kwargs(self, obj):
         return dict(subject_identifier=obj.subject_identifier)

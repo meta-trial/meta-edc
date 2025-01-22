@@ -55,4 +55,4 @@ class PatientHistoryMissingBaselineCd4Admin(
             pass
         url = reverse(self.get_subject_dashboard_url_name(obj=obj), kwargs=kwargs)
         context = dict(title=_("Go to subject's dashboard@1000"), url=url, label=label)
-        return render_to_string("dashboard_button.html", context=context)
+        return render_to_string("edc_subject_dashboard/dashboard_button.html", context=context)

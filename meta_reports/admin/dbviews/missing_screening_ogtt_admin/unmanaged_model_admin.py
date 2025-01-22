@@ -69,7 +69,7 @@ class MissingScreeningOgttAdmin(
                 args=(obj.original_id,),
             )
         context = dict(title=_("Go to subject screening"), url=url, label=label)
-        return render_to_string("dashboard_button.html", context=context)
+        return render_to_string("edc_subject_dashboard/dashboard_button.html", context=context)
 
     @admin.display(description="Screen date", ordering="screening_datetime")
     def screening_date(self, obj):

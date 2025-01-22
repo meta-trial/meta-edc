@@ -3,6 +3,7 @@ from django.template.loader import render_to_string
 from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
 from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_constants.constants import YES
@@ -160,7 +161,10 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         ]
         if obj.repeat_glucose_opinion == YES:
             data.append(f"Contact #: {obj.contact_number or '--'}")
-        return format_html("<BR>".join(data))
+        return format_html(
+            "{}",
+            mark_safe("<BR>".join(data)),  # nosec B703, B308
+        )
 
     def reasons(self, obj=None):
         if not obj.reasons_ineligible:
@@ -177,8 +181,14 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
             url=f"{screening_listboard_url}?q={obj.screening_identifier}",
             label="Screening",
         )
-        button = render_to_string("dashboard_button.html", context=context)
-        return format_html(button + "<BR>" + eligibility.eligibility_status(add_urls=True))
+        button = render_to_string(
+            "edc_subject_dashboard/dashboard_button.html", context=context
+        )
+        return format_html(
+            "{button}<BR>{status}",
+            button=button,
+            status=eligibility.eligibility_status(add_urls=True),
+        )
 
     def dashboard(self, obj=None, label=None):
         try:

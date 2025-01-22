@@ -1,6 +1,8 @@
 from typing import Tuple
 
 from django.contrib import admin
+from django.template.loader import render_to_string
+from django.utils.safestring import mark_safe
 from django_audit_fields import audit_fieldset_tuple
 from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
@@ -9,7 +11,7 @@ from edc_sites.admin import SiteModelAdminMixin
 
 from ..admin_site import meta_prn_admin
 from ..forms import OffSchedulePregnancyForm
-from ..models import OffSchedulePregnancy
+from ..models import EndOfStudy, OffSchedulePregnancy
 
 
 @admin.register(OffSchedulePregnancy, site=meta_prn_admin)
@@ -20,6 +22,13 @@ class OffSchedulePregnancyAdmin(
     SimpleHistoryAdmin,
 ):
     instructions = None
+
+    additional_instructions = mark_safe(
+        render_to_string(
+            "meta_prn/offschedule/additional_instructions.html",
+            context=dict(verbose_name=EndOfStudy._meta.verbose_name),
+        )
+    )  # nosec B703, B308
 
     form = OffSchedulePregnancyForm
 

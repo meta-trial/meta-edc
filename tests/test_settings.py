@@ -74,7 +74,6 @@ project_settings = DefaultTestSettings(
         subject_dashboard_template="meta_dashboard/subject/dashboard.html",
         subject_review_listboard_template="edc_review_dashboard/subject_review_listboard.html",
     ),
-    EDC_BOOTSTRAP=3,
     EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
     EMAIL_CONTACTS={
         "ae_reports": "someone@example.com",

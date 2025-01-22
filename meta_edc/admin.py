@@ -1,13 +1,12 @@
 from django.contrib.admin import AdminSite as DjangoAdminSite
-from edc_dashboard.utils import get_bootstrap_version
 
 from .apps import AppConfig
 
 
 class AdminSite(DjangoAdminSite):
     app_index_template = "edc_model_admin/admin/app_index.html"
-    login_template = f"edc_auth/bootstrap{get_bootstrap_version()}/login.html"
-    logout_template = f"edc_auth/bootstrap{get_bootstrap_version()}/login.html"
+    login_template = "edc_auth/login.html"
+    logout_template = "edc_auth/login.html"
     enable_nav_sidebar = False  # DJ 3.1
     final_catch_all_view = True  # DJ 3.2
     site_title = AppConfig.verbose_name

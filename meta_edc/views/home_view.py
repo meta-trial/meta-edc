@@ -2,7 +2,6 @@ from typing import Any
 
 from django.conf import settings
 from django.views.generic import TemplateView
-from edc_dashboard.utils import get_bootstrap_version
 from edc_dashboard.view_mixins import EdcViewMixin
 from edc_navbar import NavbarViewMixin
 from edc_randomization.site_randomizers import site_randomizers
@@ -11,7 +10,7 @@ from meta_edc.meta_version import get_meta_version
 
 
 class HomeView(EdcViewMixin, NavbarViewMixin, TemplateView):
-    template_name = f"meta_edc/bootstrap{get_bootstrap_version()}/home.html"
+    template_name = "meta_edc/home.html"
     navbar_name = settings.APP_NAME
     navbar_selected_item = "home"
 

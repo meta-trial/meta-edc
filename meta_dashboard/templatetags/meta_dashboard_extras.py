@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 from django import template
 from edc_constants.constants import TBD
 from edc_dashboard.url_names import url_names
-from edc_dashboard.utils import get_bootstrap_version
 
 from meta_consent.models import SubjectConsent
 from meta_dashboard.view_utils import (
@@ -29,9 +28,7 @@ if TYPE_CHECKING:
 register = template.Library()
 
 
-@register.inclusion_tag(
-    f"meta_dashboard/bootstrap{get_bootstrap_version()}/" f"buttons/eligibility_button.html"
-)
+@register.inclusion_tag("meta_dashboard/buttons/eligibility_button.html")
 def eligibility_button(subject_screening: SubjectScreening):
     comment = []
     tooltip = None
@@ -52,7 +49,7 @@ def eligibility_button(subject_screening: SubjectScreening):
 
 
 @register.inclusion_tag(
-    f"meta_dashboard/bootstrap{get_bootstrap_version()}/buttons/add_consent_button.html",
+    "meta_dashboard/buttons/add_consent_button.html",
     takes_context=True,
 )
 def render_consent_button(context, subject_screening: SubjectScreening):
@@ -77,9 +74,7 @@ def refusal_button(context, subject_refusal):
     )
 
 
-@register.inclusion_tag(
-    f"edc_listboard/bootstrap{get_bootstrap_version()}/buttons/dashboard_button.html"
-)
+@register.inclusion_tag("edc_listboard/buttons/dashboard_button.html")
 def render_dashboard_button(subject_consent: SubjectConsent):
     subject_dashboard_url = url_names.get("subject_dashboard_url")
     return dict(
@@ -89,7 +84,7 @@ def render_dashboard_button(subject_consent: SubjectConsent):
 
 
 @register.inclusion_tag(
-    f"edc_subject_dashboard/bootstrap{get_bootstrap_version()}/buttons/forms_button.html",
+    "edc_subject_dashboard/buttons/forms_button.html",
     takes_context=True,
 )
 def render_screening_part_one_button(context, subject_screening: ScreeningPartOne) -> dict:
@@ -102,7 +97,7 @@ def render_screening_part_one_button(context, subject_screening: ScreeningPartOn
 
 
 @register.inclusion_tag(
-    f"edc_subject_dashboard/bootstrap{get_bootstrap_version()}/buttons/forms_button.html",
+    "edc_subject_dashboard/buttons/forms_button.html",
     takes_context=True,
 )
 def render_screening_part_two_button(context, subject_screening: ScreeningPartTwo) -> dict:
@@ -115,7 +110,7 @@ def render_screening_part_two_button(context, subject_screening: ScreeningPartTw
 
 
 @register.inclusion_tag(
-    f"edc_subject_dashboard/bootstrap{get_bootstrap_version()}/buttons/forms_button.html",
+    "edc_subject_dashboard/buttons/forms_button.html",
     takes_context=True,
 )
 def render_screening_part_three_button(context, subject_screening: ScreeningPartThree) -> dict:

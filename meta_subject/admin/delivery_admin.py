@@ -116,4 +116,4 @@ class DeliveryAdmin(
         url = reverse("meta_subject_admin:meta_subject_birthoutcomes_changelist")
         url = f"{url}?q={obj.subject_identifier}"
         context = dict(title="Outcomes", url=url, label="Outcomes")
-        return render_to_string("dashboard_button.html", context=context)
+        return render_to_string("edc_subject_dashboard/dashboard_button.html", context=context)
