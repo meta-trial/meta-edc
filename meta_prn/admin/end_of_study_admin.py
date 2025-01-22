@@ -2,7 +2,9 @@ from typing import Tuple
 
 from dateutil.relativedelta import relativedelta
 from django.contrib import admin
+from django.template.loader import render_to_string
 from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
 from edc_constants.constants import OTHER
@@ -27,12 +29,16 @@ class EndOfStudyAdmin(
     SimpleHistoryAdmin,
 ):
     additional_instructions = format_html(
-        "Note: if the patient is <i>deceased</i>, complete form "
-        "`{}` before completing this form. "
-        "<BR>If the patient is </i>lost to follow up</i>, complete form "
-        "`{}` before completing this form.",
-        DeathReport._meta.verbose_name,
-        LossToFollowup._meta.verbose_name,
+        "{html}",
+        html=mark_safe(
+            render_to_string(
+                "meta_prn/eos/additional_instructions.html",
+                context=dict(
+                    death_report=DeathReport._meta.verbose_name,
+                    ltfu=LossToFollowup._meta.verbose_name,
+                ),
+            )
+        ),  # nosec #B703 # B308
     )
 
     form = EndOfStudyForm

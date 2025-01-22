@@ -1,7 +1,8 @@
 from typing import Tuple
 
 from django.contrib import admin
-from django.utils.html import format_html
+from django.template.loader import render_to_string
+from django.utils.safestring import mark_safe
 from django_audit_fields import audit_fieldset_tuple
 from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
@@ -24,11 +25,12 @@ class OffScheduleDmReferralAdmin(
 
     form = OffScheduleDmReferralForm
 
-    additional_instructions = format_html(
-        '<span style="color:orange;font-weight:bold">Note:</span> Detailed '
-        "information about study termination will be asked for on the "
-        f"<b>{EndOfStudy._meta.verbose_name}</b> form"
-    )
+    additional_instructions = mark_safe(
+        render_to_string(
+            "meta_prn/offschedule/additional_instructions.html",
+            context=dict(verbose_name=EndOfStudy._meta.verbose_name),
+        )
+    )  # nosec B703, B308
 
     fieldsets = (
         (None, {"fields": ("subject_identifier", "offschedule_datetime")}),

@@ -6,6 +6,7 @@ from django.template.loader import render_to_string
 from django.urls.base import reverse
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
+from django.utils.translation import gettext as _
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_action_item import action_fieldset_tuple
 from edc_action_item.modeladmin_mixins import ActionItemModelAdminMixin
@@ -96,8 +97,8 @@ class AeReviewModelAdminMixin(
         if follow_up_reports:
             return format_html(
                 "{}. See {}",
-                mark_safe(obj.get_outcome_display()),  # nosec B703, B308
-                mark_safe(follow_up_reports),  # nosec B703, B308
+                mark_safe(_(obj.get_outcome_display())),  # nosec B703, B308
+                mark_safe(_(follow_up_reports)),  # nosec B703, B308
             )
         return obj.get_outcome_display()
 
@@ -111,8 +112,9 @@ class AeReviewModelAdminMixin(
             namespace = self.admin_site.name
             url = reverse(f"{namespace}:{url_name}_changelist")
             return format_html(
-                '<a data-toggle="tooltip" title="go to ae initial report" '
+                '<a data-toggle="tooltip" title="{title}" '
                 'href="{url}?q={action_identifier}">{identifier}</a>',
+                title=_("go to ae initial report"),
                 url=mark_safe(url),  # nosec B703, B308
                 action_identifier=mark_safe(  # nosec B703, B308
                     obj.ae_initial.action_identifier

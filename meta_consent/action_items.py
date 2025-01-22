@@ -31,6 +31,7 @@ class ConsentV1ExtensionAction(Action):
     show_on_dashboard = True
     show_link_to_changelist = True
     admin_site_name = "meta_consent_admin"
+    show_link_to_add = True
     create_by_user = True
     singleton = True
     instructions = "Participant must complete as soon as able. "

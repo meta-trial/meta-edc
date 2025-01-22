@@ -2,6 +2,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 from edc_crf.crf_form_validator import CrfFormValidator
 from edc_form_validators import INVALID_ERROR
 
@@ -28,7 +29,8 @@ class DmEndpointFormValidator(CrfFormValidator):
             self.raise_validation_error(
                 {
                     "__all__": format_html(
-                        f"Subject has not reached the protocol endpoint. See {link}"
+                        "Subject has not reached the protocol endpoint. See {link}",
+                        link=mark_safe(link),  # nosec B703, B308
                     )
                 },
                 INVALID_ERROR,

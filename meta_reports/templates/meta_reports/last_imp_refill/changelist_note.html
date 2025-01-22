@@ -1,0 +1,13 @@
+{% load i18n %}
+{% trans "This report fetches the most recent Study Medication report where IMP was refilled and adds the subject's next visit. Subjects taken 'Off Schedule' are not included in this report. To update ALL rows in this report, tick at least one row and select 'Update report' action below." %}
+<BR><BR>
+{% trans "This report has additional search features for numeric columns" %}:
+<code>days_since</code>, <code>days_until</code>, <code>imp_visit_code</code> {% trans "and" %} <code>next_visit_code</code>.
+<BR><BR>
+{%  trans "For example, type" %}
+<code>days_until>=25</code>
+{%  trans "in the search below to show rows for subjects who have an appointment 25 or more days from the date this report was created. You might also try typing" %}
+<code>days_since>365</code> or <code>days_until<0</code>.
+<BR><BR>
+{%  trans "This also works" %}:
+<code>next_visit_code>=1060</code>.

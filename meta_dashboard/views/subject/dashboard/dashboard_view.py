@@ -5,6 +5,7 @@ from django.core.checks import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse
 from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from edc_subject_dashboard.views import SubjectDashboardView
 
@@ -28,11 +29,11 @@ class DashboardView(SubjectDashboardView):
         else:
             url = reverse("meta_reports_admin:meta_reports_glucosesummary_changelist")
             url = f"{url}?q={self.subject_identifier}"
-            message = _(
-                format_html(
-                    f"Subject has reached the protocol endpoint. "
-                    f'See <A href="{url}">{GlucoseSummary._meta.verbose_name}</A>'
-                )
+            message = format_html(
+                '{text} <A href="{url}">{verbose_name}</A>',
+                text=_("Subject has reached the protocol endpoint. See "),
+                url=mark_safe(url),  # nosec B703, B308
+                verbose_name=GlucoseSummary._meta.verbose_name,
             )
             self.message_user(message, level=messages.WARNING)
         return context

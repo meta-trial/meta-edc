@@ -195,15 +195,22 @@ class MetaEligibility:
                 args=(self.part_three.model_obj.id,),
             )
             status_str = format_html(
-                f'<A href="{url_p1}">P1: {self.part_one.eligible.upper()}</A><BR>'
-                f'<A href="{url_p2}">P2: {self.part_two.eligible.upper()}</A><BR>'
-                f'<A href="{url_p3}">P3: {self.part_three.eligible.upper()}</A><BR>'
+                '<A href="{url_p1}">P1: {p1_eligible}</A>'
+                '<BR><A href="{url_p2}">P2: {p2_eligible}</A>'
+                '<BR><A href="{url_p3}">P3: {p3_eligible}</A><BR>',
+                url_p1=url_p1,
+                p1_eligible=self.part_one.eligible.upper(),
+                url_p2=url_p2,
+                p2_eligible=self.part_two.eligible.upper(),
+                url_p3=url_p3,
+                p3_eligible=self.part_three.eligible.upper(),
             )
         else:
-            status_str = (
-                f"P1: {self.part_one.eligible.upper()}<BR>"
-                f"P2: {self.part_two.eligible.upper()}<BR>"
-                f"P3: {self.part_three.eligible.upper()}<BR>"
+            status_str = format_html(
+                "P1: {p1_eligible}<BR>" "P2: {p2_eligible}<BR>" "P3: {p3_eligible}<BR>",
+                p1_eligible=self.part_one.eligible.upper(),
+                p2_eligible=self.part_two.eligible.upper(),
+                p3_eligible=self.part_three.eligible.upper(),
             )
         display_label = self.display_label
         if "PENDING" in display_label:

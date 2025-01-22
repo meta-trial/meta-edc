@@ -5,6 +5,7 @@ from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse
 from django.utils.html import format_html
+from django.utils.translation import gettext as _
 from edc_action_item.models import ActionType
 from edc_adverse_event.form_validator_mixins import (
     RequiresDeathReportFormValidatorMixin,
@@ -262,10 +263,15 @@ class EndOfStudyFormValidator(
 
             self.raise_validation_error(
                 format_html(
-                    "Participant is reported to be on study medication. Complete "
-                    f'<a href="{url}?{query_string}" title="Add new form">'
-                    f"{off_study_medication_model_cls._meta.verbose_name}</A> "
-                    "PRN action and try again."
+                    _(
+                        "Participant is reported to be on study medication. Complete "
+                        '<a href="{url}?{query_string}" title="Add new form">'
+                        "{verbose_name}</A> "
+                        "PRN action and try again."
+                    ),
+                    url=url,
+                    query_string=query_string,
+                    verbose_name=off_study_medication_model_cls._meta.verbose_name,
                 ),
                 INVALID_ERROR,
             )

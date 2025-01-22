@@ -1,6 +1,8 @@
 from django.apps import apps as django_apps
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
+from django.utils.html import format_html
 from django.utils.safestring import mark_safe
+from django.utils.translation import gettext as _
 from edc_action_item import ActionWithNotification, site_action_items
 from edc_adverse_event.constants import (
     AE_FOLLOWUP_ACTION,
@@ -39,10 +41,13 @@ class AeFollowupAction(ActionWithNotification):
     create_by_user = False
     show_link_to_changelist = True
     admin_site_name = "meta_ae_admin"
-    instructions = mark_safe(  # nosec B308, B703
-        "Upon submission the TMG group will be notified "
-        f'by email at <a href="mailto:{get_email_contacts("tmg") or "#"}">'
-        f'{get_email_contacts("tmg") or "unknown"}</a>'
+    instructions = format_html(
+        _(
+            "Upon submission the TMG group will be notified "
+            'by email at <a href="mailto:{email1}">{email2}</a>'
+        ),
+        email1=get_email_contacts("tmg") or "#",
+        email2=get_email_contacts("tmg") or "unknown",
     )
     priority = HIGH_PRIORITY
 

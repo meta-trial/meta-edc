@@ -1,6 +1,6 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 from edc_action_item.models import ActionItem
 from edc_adherence.choices import MISSED_PILLS
 from edc_constants.choices import YES_NO, YES_NO_NA
@@ -186,10 +186,10 @@ class DmFollowup(CrfWithActionModelMixin, BaseUuidModel):
     )
 
     visual_score_confirmed = models.IntegerField(
-        verbose_name=format_html(
+        verbose_name=mark_safe(
             "<B><font color='orange'>Interviewer</font></B>: "
             "please transcribe the score indicated from above."
-        ),
+        ),  # nosec B308
         validators=[MinValueValidator(0), MaxValueValidator(100)],
         help_text="%",
         null=True,

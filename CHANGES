@@ -1,6 +1,12 @@
 Changes
 -------
 
+1.0.0
+-----
+- bump edc 1.0.0
+- fix issue with consent v1 action items raises duplicate identifier for some
+  instances. Add new migration to create missing action items.
+
 0.3.50
 ------
 - bump edc 0.6.24

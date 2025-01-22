@@ -2,7 +2,8 @@ from django.contrib import admin, messages
 from django.core.exceptions import FieldDoesNotExist
 from django.db import models
 from django.db.models import QuerySet
-from django.utils.html import format_html
+from django.template.loader import render_to_string
+from django.utils.safestring import mark_safe
 from edc_model_admin.dashboard import ModelAdminDashboardMixin
 from edc_model_admin.list_filters import PastDateListFilter
 from edc_model_admin.mixins import TemplatesModelAdminMixin
@@ -70,24 +71,9 @@ class LastImpRefillAdmin(
 
     change_list_title = "List of most recent IMP refills per subject"
 
-    change_list_note = format_html(
-        """
-        This report fetches the most recent Study Medication report where IMP was
-        refilled and adds the subject's next visit. Subjects taken "Off Schedule"
-        are not included in this report. To update ALL rows in this report, tick
-        at least one row and select 'Update report' action below.
-        <BR><BR>
-        This report has additional search features for numeric columns:
-        <code>days_since</code>, <code>days_until</code>, <code>imp_visit_code</code>
-        and <code>next_visit_code</code>.
-        <BR><BR>For example, type <code>days_until>=25</code> in the search below
-        to show rows for subjects who have an appointment 25 or more days from the
-        date this report was created. You might also try typing
-        <code>days_since>365</code> or <code>days_until<0</code>.
-        <BR><BR>
-        This also works: <code>next_visit_code>=1060</code>.
-        """
-    )
+    change_list_note = mark_safe(
+        render_to_string("meta_reports/last_imp_refill/changelist_note.html")
+    )  # nosec B308, B703
 
     actions = [update_report, export_to_csv]
 
