@@ -1,3 +1,4 @@
+import pandas as pd
 from django.contrib import admin, messages
 from django.core.exceptions import FieldDoesNotExist
 from django.db import models
@@ -42,14 +43,24 @@ def update_report(modeladmin, request, queryset):
             modeladmin.model(
                 subject_identifier=row["subject_identifier"],
                 site_id=row["site_id"],
-                imp_visit_date=row["imp_visit_date"],
+                imp_visit_date=(
+                    None if pd.isna(row["imp_visit_date"]) else row["imp_visit_date"]
+                ),
                 imp_visit_code=row["imp_visit_code"],
-                next_appt_date=row["next_appt_datetime"],
-                next_visit_code=row["next_visit_code"],
+                next_appt_date=(
+                    None if pd.isna(row["next_appt_datetime"]) else row["next_appt_datetime"]
+                ),
+                next_visit_code=(
+                    None if pd.isna(row["next_visit_code"]) else row["next_visit_code"]
+                ),
                 days_since=row["days_since"].days,
-                days_until=row["days_until"].days,
-                visit_code=str(int(row["imp_visit_code"])),
-                visit_code_sequence=row["imp_visit_code"] % 1,
+                days_until=None if pd.isna(row["days_until"]) else row["days_until"].days,
+                visit_code=(
+                    None if pd.isna(row["imp_visit_code"]) else str(int(row["imp_visit_code"]))
+                ),
+                visit_code_sequence=(
+                    None if pd.isna(row["imp_visit_code"]) else row["imp_visit_code"] % 1
+                ),
                 report_model=modeladmin.model._meta.label_lower,
                 created=now,
             )
