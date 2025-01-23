@@ -1,6 +1,11 @@
 Changes
 -------
 
+1.0.1
+-----
+- add subject transfer action to parent list of offschedule actions.
+  Fixes exception raised when taking a transferred subject off schedule.
+
 1.0.0
 -----
 - bump edc 1.0.0
