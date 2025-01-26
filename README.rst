@@ -11,7 +11,7 @@ Metformin treatment in Africa- META
 * https://www.lstmed.ac.uk/research/departments/international-public-health/respond-africa/meta
 * http://www.isrctn.com/ISRCTN76157257
 
-py 3.12 / DJ 5.1 / edc 0.6.0 (META3)
+py 3.12 / DJ 5.1.5 / edc 1.0.3 (META3)
 
 This codebase is used for two randomized clinical trials:
 
