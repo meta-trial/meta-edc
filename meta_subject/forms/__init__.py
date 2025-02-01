@@ -22,6 +22,7 @@ from .hepatitis_test_form import HepatitisTestForm
 from .malaria_test_form import MalariaTestForm
 from .medication_adherence_form import MedicationAdherenceForm
 from .mnsi_form import MnsiForm
+from .next_appointment_form import NextAppointmentForm
 from .other_arv_regimens_detail_form import OtherArvRegimensDetailForm
 from .other_arv_regimens_form import OtherArvRegimensForm
 from .patient_history_form import PatientHistoryForm

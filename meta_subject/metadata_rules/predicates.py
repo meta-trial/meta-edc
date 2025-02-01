@@ -3,6 +3,7 @@ from zoneinfo import ZoneInfo
 
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
+from edc_appointment.constants import NEW_APPT
 from edc_constants.constants import YES
 from edc_lab_panel.panels import hba1c_panel, insulin_panel
 from edc_metadata.metadata_rules import PersistantSingletonMixin
@@ -68,6 +69,12 @@ def hba1c_requisition_required_at_baseline(visit):
 
 class Predicates(PersistantSingletonMixin):
     app_label = "meta_subject"
+
+    @staticmethod
+    def next_appt_required(visit, **kwargs):
+        if visit.appointment.next and visit.appointment.next.appt_status == NEW_APPT:
+            return True
+        return False
 
     @staticmethod
     def glucose_required(visit, **kwargs):
