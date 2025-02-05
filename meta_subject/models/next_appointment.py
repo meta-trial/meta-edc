@@ -9,6 +9,7 @@ __all__ = ["NextAppointment"]
 
 
 class NextAppointment(NextAppointmentCrfModelMixin, CrfModelMixin, BaseUuidModel):
+
     class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Next Appointment"
         verbose_name_plural = "Next Appointments"

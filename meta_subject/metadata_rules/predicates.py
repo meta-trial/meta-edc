@@ -220,7 +220,10 @@ class Predicates(PersistantSingletonMixin):
         """
         model_cls = django_apps.get_model(f"{self.app_label}.mnsi")
         required = True
-        if visit.visit_code_sequence != 0:
+
+        if self.offschedule_today(visit):
+            return True
+        elif visit.visit_code_sequence != 0:
             required = False
         elif visit.visit_code not in [
             MONTH1,
@@ -257,7 +260,9 @@ class Predicates(PersistantSingletonMixin):
 
     def sf12_required(self, visit, **kwargs):
         model = f"{self.app_label}.sf12"
-        if visit.visit_code_sequence == 0 and visit.visit_code in [MONTH36, MONTH48]:
+        if self.offschedule_today(visit):
+            return True
+        elif visit.visit_code_sequence == 0 and visit.visit_code in [MONTH36, MONTH48]:
             return True
         return self.persistant_singleton_required(
             visit, model=model, exclude_visit_codes=[DAY1]
@@ -265,8 +270,22 @@ class Predicates(PersistantSingletonMixin):
 
     def eq5d3l_required(self, visit, **kwargs):
         model = f"{self.app_label}.eq5d3l"
-        if visit.visit_code_sequence == 0 and visit.visit_code in [MONTH36, MONTH48]:
+        if self.offschedule_today(visit):
+            return True
+        elif visit.visit_code_sequence == 0 and visit.visit_code in [MONTH36, MONTH48]:
             return True
         return self.persistant_singleton_required(
             visit, model=model, exclude_visit_codes=[DAY1]
         )
+
+    def offschedule_today(self, visit):
+        try:
+            obj = django_apps.get_model(f"{self.app_label}.nextappointment").objects.get(
+                subject_visit=visit
+            )
+        except ObjectDoesNotExist:
+            pass
+        else:
+            if obj.offschedule_today == YES:
+                return True
+        return False

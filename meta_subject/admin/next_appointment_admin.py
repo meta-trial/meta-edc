@@ -18,10 +18,3 @@ class NextAppointmentAdmin(
 ):
 
     form = NextAppointmentForm
-
-    # fieldsets = (
-    #     (
-    #         None,
-    #         {"fields": ("subject_visit", "report_datetime")},
-    #     ),
-    # )
