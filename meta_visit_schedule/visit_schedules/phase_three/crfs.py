@@ -199,7 +199,7 @@ crfs_24m = CrfCollection(
     Crf(show_order=220, model="meta_subject.bloodresultsrft"),
     Crf(show_order=230, model="meta_subject.bloodresultslft"),
     Crf(show_order=240, model="meta_subject.bloodresultsfbc"),
-    Crf(show_order=250, model="meta_subject.bloodresultslipids"),
+    # Crf(show_order=250, model="meta_subject.bloodresultslipids"),
     Crf(show_order=300, model="meta_subject.studymedication"),
     Crf(show_order=310, model="meta_subject.medicationadherence"),
     Crf(show_order=460, model="meta_subject.eq5d3l", required=False),
