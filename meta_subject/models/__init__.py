@@ -1,6 +1,7 @@
 from .birth_outcomes import BirthOutcomes
 from .blood_results import (
     BloodResultsFbc,
+    BloodResultsGluDummy,
     BloodResultsHba1c,
     BloodResultsIns,
     BloodResultsLft,
