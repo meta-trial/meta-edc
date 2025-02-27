@@ -116,6 +116,5 @@ commands =
     python --version
     pip --version
     pip freeze
-    pre-commit autoupdate
     pre-commit run --all-files
 """
