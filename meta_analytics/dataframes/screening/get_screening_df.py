@@ -110,7 +110,8 @@ def get_screening_df(df: pd.DataFrame | None = None) -> pd.DataFrame:
 
     # bmi
     # subject SR9E8B4D has eligible part two == No but subject has a glucose value
-    df.loc[(df["screening_identifier"] == "SR9E8B4D"), "eligible_part_two"] = "Yes"
+    # NOTE: update 10-02-2025: subject is not eligible by congestive_heart_failure
+    # df.loc[(df["screening_identifier"] == "SR9E8B4D"), "eligible_part_two"] = "Yes"
 
     # merge with physical exam to get waist circumference if taken at baseline
     subject_identifiers = list(df["subject_identifier"])
