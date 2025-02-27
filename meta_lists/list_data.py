@@ -1,4 +1,5 @@
 from edc_constants.constants import (
+    CLINIC,
     DEAD,
     DELIVERY,
     DIABETES,
@@ -235,5 +236,8 @@ list_data = {
         ("drug_supply", "Due to drug supply "),
         ("stigma", "Concerned about stigma"),
         (OTHER, "Other reason (specify below)"),
+    ],
+    "edc_facility.healthfacilitytypes": [
+        (CLINIC, "META Study Clinic"),
     ],
 }

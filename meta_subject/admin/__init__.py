@@ -22,6 +22,7 @@ from .hepatitis_test_admin import HepatitisTestAdmin
 from .malaria_test_admin import MalariaTestAdmin
 from .medication_adherence_admin import MedicationAdherenceAdmin
 from .mnsi_admin import MnsiAdmin
+from .next_appointment_admin import NextAppointmentAdmin
 from .other_arv_regimens_admin import OtherArvRegimensAdmin
 from .patient_history_admin import PatientHistoryAdmin
 from .physical_exam_admin import PhysicalExamAdmin

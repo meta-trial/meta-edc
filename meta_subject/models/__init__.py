@@ -1,6 +1,7 @@
 from .birth_outcomes import BirthOutcomes
 from .blood_results import (
     BloodResultsFbc,
+    BloodResultsGluDummy,
     BloodResultsHba1c,
     BloodResultsIns,
     BloodResultsLft,
@@ -28,6 +29,7 @@ from .hepatitis_test import HepatitisTest
 from .malaria_test import MalariaTest
 from .medication_adherence import MedicationAdherence
 from .mnsi import Mnsi
+from .next_appointment import NextAppointment
 from .other_arv_regimens import OtherArvRegimens
 from .other_arv_regimens_detail import OtherArvRegimensDetail
 from .patient_history import PatientHistory

@@ -4,8 +4,11 @@ from edc_action_item.site_action_items import AlreadyRegistered
 from edc_adverse_event.constants import AE_INITIAL_ACTION
 from edc_constants.constants import HIGH_PRIORITY, NEW, NONE, POS, YES
 from edc_egfr.constants import EGFR_DROP_NOTIFICATION_ACTION
+from edc_lab_results.action_items import BloodResultsFbcAction
 from edc_lab_results.action_items import (
-    BloodResultsFbcAction,
+    BloodResultsGluAction as BaseBloodResultsGluAction,
+)
+from edc_lab_results.action_items import (
     BloodResultsHba1cAction,
     BloodResultsLftAction,
     BloodResultsLipidsAction,
@@ -120,6 +123,10 @@ class BloodResultsRftAction(BaseBloodResultsRftAction):
         if self.reference_obj.egfr_value is not None and self.reference_obj.egfr_value < 45.0:
             next_actions.append(OFFSCHEDULE_ACTION)
         return next_actions
+
+
+class BloodResultsGluAction(BaseBloodResultsGluAction):
+    reference_model = "meta_subject.bloodresultsgludummy"
 
 
 class DeliveryAction(ActionWithNotification):

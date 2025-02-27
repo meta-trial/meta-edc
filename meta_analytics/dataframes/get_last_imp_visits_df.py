@@ -37,11 +37,14 @@ def get_last_imp_visits_df(
     df_meds = (
         df_meds[(df_meds.refill == "Yes") & (site_cond(df_meds, site_id))]
         .groupby(by=["subject_identifier", "site_id"])
-        .agg({"last_visit_code": "max", "last_visit_datetime": "max"})
+        .agg({"endline_visit_code": "max", "endline_visit_datetime": "max"})
         .reset_index()
     )
     df_meds = df_meds.rename(
-        columns={"last_visit_code": "imp_visit_code", "last_visit_datetime": "imp_visit_date"}
+        columns={
+            "endline_visit_code": "imp_visit_code",
+            "endline_visit_datetime": "imp_visit_date",
+        }
     )
     df_meds.reset_index()
 

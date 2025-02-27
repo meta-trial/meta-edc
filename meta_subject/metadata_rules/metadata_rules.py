@@ -160,3 +160,17 @@ class Eq53dlRuleGroup(CrfRuleGroup):
     class Meta:
         app_label = "meta_subject"
         source_model = "meta_subject.subjectvisit"
+
+
+@register()
+class NextAppointmentRuleGroup(CrfRuleGroup):
+    next_appt = CrfRule(
+        predicate=pc.next_appt_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["nextappointment"],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"
