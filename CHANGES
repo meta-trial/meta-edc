@@ -1,6 +1,10 @@
 Changes
 -------
 
+1.0.6
+-----
+- bump edc=1.0.9
+
 1.0.5
 -----
 - bump edc-pharmacy, edc=1.0.7
