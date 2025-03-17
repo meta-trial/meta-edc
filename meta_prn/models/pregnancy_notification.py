@@ -24,8 +24,6 @@ class PregnancyNotification(
 ):
     action_name = PREGNANCY_NOTIFICATION_ACTION
 
-    tracking_identifier_prefix = "PN"
-
     report_datetime = models.DateTimeField(
         verbose_name="Report Date and Time", default=get_utcnow
     )

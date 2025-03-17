@@ -18,7 +18,6 @@ class BloodResultsHba1c(
     BaseUuidModel,
 ):
     action_name = BLOOD_RESULTS_HBA1C_ACTION
-    tracking_identifier_prefix = "HA"
     lab_panel = hba1c_panel
 
     requisition = models.ForeignKey(

@@ -36,8 +36,6 @@ from ..constants import CLINICAL_WITHDRAWAL, COMPLETED_FOLLOWUP_48
 class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidModel):
     action_name = END_OF_STUDY_ACTION
 
-    tracking_identifier_prefix = "ST"
-
     last_seen_date = models.DateField(
         verbose_name="Date patient was last seen",
         validators=[date_not_future],
