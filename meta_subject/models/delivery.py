@@ -38,8 +38,6 @@ class Delivery(
 
     action_name = DELIVERY_ACTION
 
-    tracking_identifier_prefix = "DL"
-
     report_datetime = models.DateTimeField(
         verbose_name="Report Date and Time", default=get_utcnow
     )

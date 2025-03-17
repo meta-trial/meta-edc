@@ -31,7 +31,6 @@ class BloodResultsLft(
     BaseUuidModel,
 ):
     action_name = BLOOD_RESULTS_LFT_ACTION
-    tracking_identifier_prefix = "LF"
     lab_panel = lft_panel
 
     requisition = models.ForeignKey(

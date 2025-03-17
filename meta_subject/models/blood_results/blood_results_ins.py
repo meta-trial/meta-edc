@@ -18,7 +18,6 @@ class BloodResultsIns(
     BaseUuidModel,
 ):
     action_name = BLOOD_RESULTS_INSULIN_ACTION
-    tracking_identifier_prefix = "IN"
     lab_panel = insulin_panel
 
     requisition = models.ForeignKey(
