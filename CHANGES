@@ -1,6 +1,14 @@
 Changes
 -------
 
+1.0.5
+-----
+- bump edc-pharmacy, edc=1.0.7
+- add django-admin-rangefilter as requirement
+
+1.0.4
+-----
+
 1.0.3
 -----
 - edc 1.0.2
