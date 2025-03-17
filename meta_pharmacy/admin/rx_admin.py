@@ -50,6 +50,7 @@ class RxAdmin(ModelAdminSubjectDashboardMixin, admin.ModelAdmin):
         "rx_date",
         "weight_in_kgs",
         "rx_name",
+        "rx_expiration_date",
     )
 
     list_filter = ("report_datetime", MedicationsListFilter, "site")

@@ -94,6 +94,7 @@ INSTALLED_APPS = [
     # "django_celery_results",
     "django_db_views",
     "fontawesomefree",
+    "rangefilter",
     "django_crypto_fields.apps.AppConfig",
     "django_revision.apps.AppConfig",
     # "django_extensions",
