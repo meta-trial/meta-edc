@@ -38,16 +38,18 @@ class StudyMedicationFormValidator(BaseStudyMedicationFormValidator):
 
     def validate_stock_codes_are_dispensed(self):
         if self.cleaned_data.get("stock_codes"):
-            pattern = re.compile("^([A-Z0-9]{6})(,[A-Z0-9]{6})*$")
+            # pattern = re.compile("^([A-Z0-9]{6})(,[A-Z0-9]{6})*$")
+            pattern = re.compile("^([A-Z0-9]{6})(\r\n[A-Z0-9]{6})*$")
             if not pattern.match(self.cleaned_data.get("stock_codes")):
                 raise forms.ValidationError(
                     {
                         "stock_codes": (
-                            "Invalid format. Enter one or more valid codes separated by comma"
+                            "Invalid format. Enter one or more valid codes. "
+                            "One code per line only. No commas, spaces, etc"
                         )
                     }
                 )
-            for stock_code in self.cleaned_data.get("stock_codes").split(","):
+            for stock_code in self.cleaned_data.get("stock_codes").split("\r\n"):
                 try:
                     Stock.objects.get(
                         code=stock_code,
