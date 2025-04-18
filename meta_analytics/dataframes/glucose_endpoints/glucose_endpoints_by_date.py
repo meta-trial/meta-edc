@@ -1,13 +1,8 @@
 import numpy as np
 import pandas as pd
 from django.apps import apps as django_apps
-from edc_constants.constants import NO, YES
-from edc_pdutils.dataframes import (
-    get_crf,
-    get_eos,
-    get_subject_consent,
-    get_subject_visit,
-)
+from edc_constants.constants import YES
+from edc_pdutils.dataframes import get_eos, get_subject_consent, get_subject_visit
 from edc_utils import get_utcnow
 
 from ..constants import (
@@ -19,6 +14,8 @@ from ..constants import (
     endpoint_cases,
     endpoint_columns,
 )
+from ..get_glucose_fbg_df import get_glucose_fbg_df
+from ..get_glucose_fbg_ogtt_df import get_glucose_fbg_ogtt_df
 from ..utils import (
     get_empty_endpoint_df,
     get_test_string,
@@ -26,17 +23,6 @@ from ..utils import (
     get_unique_visit_codes,
 )
 from .endpoint_by_date import EndpointByDate
-
-
-def calculate_fasting_hrs(df: pd.DataFrame):
-    df.loc[(df["fasting"] == NO), "fasting_duration_delta"] = pd.NaT
-    if df.empty:
-        df["fasting_hrs"] = np.nan
-    else:
-        df["fasting_hrs"] = df["fasting_duration_delta"].apply(
-            lambda s: np.nan if pd.isna(s) else s.total_seconds() / 3600
-        )
-    return df
 
 
 class GlucoseEndpointsByDate:
@@ -213,19 +199,7 @@ class GlucoseEndpointsByDate:
         Note: meta_subject.glucosefbg has only FBG measures.
         """
         if self._glucose_fbg_df.empty:
-            df = get_crf(
-                model="meta_subject.glucosefbg",
-                subject_identifiers=self.subject_identifiers,
-                # subject_visit_model="meta_subject.subjectvisit",
-            )
-            df["source"] = "meta_subject.glucosefbg"
-            df.rename(columns={"fbg_fasting": "fasting"}, inplace=True)
-            df.loc[(df["fasting"] == "fasting"), "fasting"] = YES
-            df.loc[(df["fasting"] == "non_fasting"), "fasting"] = NO
-            df = calculate_fasting_hrs(df)
-            # df = df[[col for col in self.keep_cols if not col.startswith("ogtt")]]
-            df = df.reset_index(drop=True)
-            self._glucose_fbg_df = df
+            self._glucose_fbg_df = get_glucose_fbg_df(self.subject_identifiers)
         return self._glucose_fbg_df
 
     @property
@@ -235,16 +209,7 @@ class GlucoseEndpointsByDate:
         Note: meta_subject.glucose has FBG and OGTT measures.
         """
         if self._glucose_fbg_ogtt_df.empty:
-            df = get_crf(
-                model="meta_subject.glucose",
-                subject_identifiers=self.subject_identifiers,
-                # subject_visit_model="meta_subject.subjectvisit",
-            )
-            df["source"] = "meta_subject.glucose"
-            df = calculate_fasting_hrs(df)
-            # df = df[self.keep_cols]
-            df = df.reset_index(drop=True)
-            self._glucose_fbg_ogtt_df = df
+            self._glucose_fbg_ogtt_df = get_glucose_fbg_ogtt_df(self.subject_identifiers)
         return self._glucose_fbg_ogtt_df
 
     def merge_with_consent(self):
