@@ -43,10 +43,18 @@ def df_as_great_table(
     )
 
 
-def df_as_great_table2(df_table: pd.DataFrame, title=None, subtitle=None):
+def df_as_great_table2(
+    df_table: pd.DataFrame,
+    title=None,
+    subtitle=None,
+    rowname_col: str | None = None,
+    groupname_col: str | None = None,
+):
     """Used by monitoring report"""
+    rowname_col = rowname_col or "label"
+    groupname_col = groupname_col or "visit_code"
     return (
-        GT(df_table, rowname_col="label", groupname_col="visit_code")
+        GT(df_table, rowname_col=rowname_col, groupname_col=groupname_col)
         .tab_header(title=html(f'<div class="table-header">{title}</div>'), subtitle=subtitle)
         .cols_align(align="left", columns=[0, 1])
         .cols_align(align="right", columns=list(range(2, len(df_table.columns))))
@@ -55,7 +63,6 @@ def df_as_great_table2(df_table: pd.DataFrame, title=None, subtitle=None):
         .opt_vertical_padding(scale=1.2)
         .opt_horizontal_padding(scale=1.0)
         .tab_options(
-            # container_width=2480,
             table_width="100%",
             stub_background_color="snow",
             row_group_border_bottom_style="hidden",
