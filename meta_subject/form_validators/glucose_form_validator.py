@@ -5,6 +5,8 @@ from edc_crf.crf_form_validator import CrfFormValidator
 from edc_form_validators import INVALID_ERROR
 from edc_glucose.form_validators import FbgOgttFormValidatorMixin
 
+from meta_reports.models import GlucoseSummary
+
 from ..constants import AMENDMENT_DATE
 
 
@@ -79,5 +81,18 @@ class GlucoseFormValidator(FbgOgttFormValidatorMixin, CrfFormValidator):
         elif self.cleaned_data.get("fbg_value") >= Decimal("7.0") and self.cleaned_data.get(
             "ogtt_value"
         ) < Decimal("11.1"):
-            value = PENDING
+            # is there a previous FBG>=7.0 in sequence or do you need to repeat?
+            previous_obj = (
+                GlucoseSummary.objects.filter(
+                    subject_identifier=self.subject_identifier,
+                    fbg_datetime__lt=self.cleaned_data.get("fbg_datetime"),
+                )
+                .order_by("fbg_datetime")
+                .last()
+            )
+            if previous_obj and previous_obj.fbg_value >= Decimal("7.0"):
+                value = YES
+            else:
+                # you need to schedule a repeat
+                value = PENDING
         return value

@@ -9,13 +9,23 @@ class GlucoseSummary(QaReportModelMixin, DBView):
 
     fbg_value = models.DecimalField(max_digits=8, decimal_places=2, null=True)
 
+    fbg_units = models.CharField(max_length=15, null=True)
+
     fbg_datetime = models.DateTimeField(null=True)
 
     ogtt_value = models.DecimalField(max_digits=8, decimal_places=2, null=True)
 
+    ogtt_units = models.CharField(max_length=15, null=True)
+
     ogtt_datetime = models.DateTimeField(null=True)
 
     fasted = models.CharField(max_length=15, null=True)
+
+    fasting_duration_delta = models.DurationField(
+        verbose_name="Fasting duration (hrs)", null=True
+    )
+
+    report_datetime = models.DateTimeField(null=True)
 
     visit_code = models.CharField(max_length=25)
 
@@ -25,11 +35,13 @@ class GlucoseSummary(QaReportModelMixin, DBView):
 
     offstudy_datetime = models.DateTimeField(null=True)
 
+    source = models.CharField(max_length=35, null=True)
+
     view_definition = get_view_definition()
 
     class Meta:
         managed = False
-        db_table = "glucose_summary_view"
+        db_table = "meta_reports_glucosesummaryview"
         verbose_name = "Glucose Summary"
         verbose_name_plural = "Glucose Summary"
         default_permissions = qa_reports_permissions

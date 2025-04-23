@@ -16,7 +16,7 @@ endpoint_columns = [
     "fbg_value",
     "ogtt_value",
     "fbg_datetime",
-    "fasting",
+    "fasted",
     "endpoint_label",
     "endpoint_type",
     "endpoint",
