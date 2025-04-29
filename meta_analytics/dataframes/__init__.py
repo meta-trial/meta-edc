@@ -8,6 +8,7 @@ from .constants import (
     endpoint_columns,
 )
 from .get_eos_df import get_eos_df
+from .get_glucose_df import get_glucose_df
 from .get_glucose_fbg_df import get_glucose_fbg_df
 from .get_glucose_fbg_ogtt_df import get_glucose_fbg_ogtt_df
 from .get_last_imp_visits_df import get_last_imp_visits_df
