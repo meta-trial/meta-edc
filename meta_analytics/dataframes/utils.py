@@ -1,4 +1,6 @@
+import numpy as np
 import pandas as pd
+from edc_constants.constants import NO
 
 from .constants import endpoint_columns
 
@@ -59,7 +61,19 @@ def get_unique_visit_codes(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def get_unique_subject_identifiers(df: pd.DataFrame) -> pd.DataFrame:
-    values_df = pd.DataFrame(df["subject_identifier"].unique(), columns=["subject_identifier"])
-    values_df = values_df.sort_values(["subject_identifier"])
-    values_df = values_df.reset_index()
-    return values_df
+    return (
+        pd.DataFrame(df["subject_identifier"].unique(), columns=["subject_identifier"])
+        .sort_values(["subject_identifier"])
+        .reset_index()
+    )
+
+
+def calculate_fasting_hrs(df: pd.DataFrame) -> pd.DataFrame:
+    df.loc[(df["fasting"] == NO), "fasting_duration_delta"] = pd.NaT
+    if df.empty:
+        df["fasting_hrs"] = np.nan
+    else:
+        df["fasting_hrs"] = df["fasting_duration_delta"].apply(
+            lambda s: np.nan if pd.isna(s) else s.total_seconds() / 3600
+        )
+    return df
