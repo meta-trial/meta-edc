@@ -1,6 +1,5 @@
 from edc_adverse_event.constants import NOT_RELATED
-from edc_constants.constants import NO, NOT_APPLICABLE, YES
-from edc_reportable.constants import GRADE4
+from edc_constants.constants import GRADE4, NO, NOT_APPLICABLE, YES
 from edc_utils.date import get_utcnow
 from model_bakery.recipe import Recipe
 

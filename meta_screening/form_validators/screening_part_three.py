@@ -12,6 +12,8 @@ from edc_glucose.form_validators import (
 )
 from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
 from edc_prn.modelform_mixins import PrnFormValidatorMixin
+
+# from edc_reportable.forms import WeightHeightBmiFormValidatorMixin
 from edc_utils import formatted_datetime
 from edc_utils.date import to_local, to_utc
 from edc_vitals.form_validators import (

@@ -2,7 +2,7 @@ from django.apps import apps as django_apps
 from edc_action_item import Action, ActionWithNotification, site_action_items
 from edc_action_item.site_action_items import AlreadyRegistered
 from edc_adverse_event.constants import AE_INITIAL_ACTION
-from edc_constants.constants import HIGH_PRIORITY, NEW, NONE, POS, YES
+from edc_constants.constants import GRADE3, GRADE4, HIGH_PRIORITY, NEW, NONE, POS, YES
 from edc_egfr.constants import EGFR_DROP_NOTIFICATION_ACTION
 from edc_lab_results.action_items import BloodResultsFbcAction
 from edc_lab_results.action_items import (
@@ -17,7 +17,6 @@ from edc_lab_results.action_items import (
     BloodResultsRftAction as BaseBloodResultsRftAction,
 )
 from edc_ltfu.constants import LTFU_ACTION
-from edc_reportable import GRADE3, GRADE4
 from edc_visit_schedule.constants import OFFSCHEDULE_ACTION
 from edc_visit_schedule.utils import is_baseline
 from edc_visit_tracking.constants import MISSED_VISIT

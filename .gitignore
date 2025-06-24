@@ -7,7 +7,7 @@ __pycache__
 repo.sh
 _version.py
 log/
-*.ipynb
+# *.ipynb
 .etc/
 .pydevproject
 .project

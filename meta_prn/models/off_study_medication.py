@@ -3,6 +3,7 @@ from edc_action_item.models import ActionModelMixin
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierFieldMixin
 from edc_model.models import BaseUuidModel
 from edc_pharmacy.models import Medication
+from edc_prn.models import SingletonPrnModelMixin
 from edc_sites.model_mixins import SiteModelMixin
 from edc_utils import get_utcnow
 
@@ -16,6 +17,7 @@ class OffStudyMedication(
     NonUniqueSubjectIdentifierFieldMixin,
     SiteModelMixin,
     ActionModelMixin,
+    SingletonPrnModelMixin,
     BaseUuidModel,
 ):
     action_name = OFFSTUDY_MEDICATION_ACTION

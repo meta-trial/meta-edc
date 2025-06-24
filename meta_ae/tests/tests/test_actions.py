@@ -7,8 +7,7 @@ from edc_adverse_event.constants import (
     DEATH_REPORT_ACTION,
     DEATH_REPORT_TMG_ACTION,
 )
-from edc_constants.constants import CLOSED, NEW
-from edc_reportable.constants import GRADE4, GRADE5
+from edc_constants.constants import CLOSED, GRADE4, GRADE5, NEW
 from model_bakery import baker
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin

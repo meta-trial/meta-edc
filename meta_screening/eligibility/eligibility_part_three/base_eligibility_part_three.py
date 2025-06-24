@@ -1,15 +1,12 @@
 from edc_constants.constants import NEG, NO, NOT_APPLICABLE
 from edc_egfr import EgfrCkdEpi
 from edc_egfr.calculators import EgfrCalculatorError
-from edc_reportable import (
-    MICROMOLES_PER_LITER,
-    MILLIMOLES_PER_LITER,
-    ConversionNotHandled,
-    calculate_bmi,
-    convert_units,
-)
+from edc_reportable.exceptions import ConversionNotHandled
+from edc_reportable.units import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
+from edc_reportable.utils import convert_units
 from edc_screening.fc import FC
 from edc_screening.screening_eligibility import ScreeningEligibility
+from edc_vitals.calculators import calculate_bmi
 
 
 class BaseEligibilityPartThree(ScreeningEligibility):
@@ -84,7 +81,8 @@ class BaseEligibilityPartThree(ScreeningEligibility):
     def converted_creatinine_value(self):
         try:
             value = convert_units(
-                self.creatinine_value,
+                label="creatinine",
+                value=self.creatinine_value,
                 units_from=self.creatinine_units,
                 units_to=MICROMOLES_PER_LITER,
             )
@@ -98,7 +96,8 @@ class BaseEligibilityPartThree(ScreeningEligibility):
     def converted_fbg_value(self):
         try:
             value = convert_units(
-                self.fbg_value,
+                label="glucose",
+                value=self.fbg_value,
                 units_from=self.fbg_units,
                 units_to=MILLIMOLES_PER_LITER,
             )
@@ -110,7 +109,8 @@ class BaseEligibilityPartThree(ScreeningEligibility):
     def converted_fbg2_value(self):
         try:
             value = convert_units(
-                self.fbg2_value,
+                label="glucose",
+                value=self.fbg2_value,
                 units_from=self.fbg2_units,
                 units_to=MILLIMOLES_PER_LITER,
             )
@@ -122,7 +122,8 @@ class BaseEligibilityPartThree(ScreeningEligibility):
     def converted_ogtt_value(self):
         try:
             value = convert_units(
-                self.ogtt_value,
+                label="glucose",
+                value=self.ogtt_value,
                 units_from=self.ogtt_units,
                 units_to=MILLIMOLES_PER_LITER,
             )
@@ -134,7 +135,8 @@ class BaseEligibilityPartThree(ScreeningEligibility):
     def converted_ogtt2_value(self):
         try:
             value = convert_units(
-                self.ogtt2_value,
+                label="glucose",
+                value=self.ogtt2_value,
                 units_from=self.ogtt2_units,
                 units_to=MILLIMOLES_PER_LITER,
             )
