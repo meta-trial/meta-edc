@@ -79,69 +79,79 @@ class BaseEligibilityPartThree(ScreeningEligibility):
 
     @property
     def converted_creatinine_value(self):
-        try:
-            value = convert_units(
-                label="creatinine",
-                value=self.creatinine_value,
-                units_from=self.creatinine_units,
-                units_to=MICROMOLES_PER_LITER,
-            )
-        except ConversionNotHandled as e:
-            raise ConversionNotHandled(f"Creatinine. {e}")
+        value = None
+        if self.creatinine_value and self.creatinine_units:
+            try:
+                value = convert_units(
+                    label="creatinine",
+                    value=self.creatinine_value,
+                    units_from=self.creatinine_units,
+                    units_to=MICROMOLES_PER_LITER,
+                )
+            except ConversionNotHandled as e:
+                raise ConversionNotHandled(f"Creatinine. {e}")
         if value and float(value) > 999999.9999:
             raise ConversionNotHandled("Creatinine value is absurd.")
         return value
 
     @property
     def converted_fbg_value(self):
-        try:
-            value = convert_units(
-                label="glucose",
-                value=self.fbg_value,
-                units_from=self.fbg_units,
-                units_to=MILLIMOLES_PER_LITER,
-            )
-        except ConversionNotHandled as e:
-            raise ConversionNotHandled(f"FBG. {e}")
+        value = None
+        if self.fbg_value and self.fbg_units:
+            try:
+                value = convert_units(
+                    label="glucose",
+                    value=self.fbg_value,
+                    units_from=self.fbg_units,
+                    units_to=MILLIMOLES_PER_LITER,
+                )
+            except ConversionNotHandled as e:
+                raise ConversionNotHandled(f"FBG. {e}")
         return value
 
     @property
     def converted_fbg2_value(self):
-        try:
-            value = convert_units(
-                label="glucose",
-                value=self.fbg2_value,
-                units_from=self.fbg2_units,
-                units_to=MILLIMOLES_PER_LITER,
-            )
-        except ConversionNotHandled as e:
-            raise ConversionNotHandled(f"FBG2. {e}")
+        value = None
+        if self.fbg2_value and self.fbg2_units:
+            try:
+                value = convert_units(
+                    label="glucose",
+                    value=self.fbg2_value,
+                    units_from=self.fbg2_units,
+                    units_to=MILLIMOLES_PER_LITER,
+                )
+            except ConversionNotHandled as e:
+                raise ConversionNotHandled(f"FBG2. {e}")
         return value
 
     @property
     def converted_ogtt_value(self):
-        try:
-            value = convert_units(
-                label="glucose",
-                value=self.ogtt_value,
-                units_from=self.ogtt_units,
-                units_to=MILLIMOLES_PER_LITER,
-            )
-        except ConversionNotHandled as e:
-            raise ConversionNotHandled(f"OGTT. {e}")
+        value = None
+        if self.ogtt_value and self.ogtt_units:
+            try:
+                value = convert_units(
+                    label="glucose",
+                    value=self.ogtt_value,
+                    units_from=self.ogtt_units,
+                    units_to=MILLIMOLES_PER_LITER,
+                )
+            except ConversionNotHandled as e:
+                raise ConversionNotHandled(f"OGTT. {e}")
         return value
 
     @property
     def converted_ogtt2_value(self):
-        try:
-            value = convert_units(
-                label="glucose",
-                value=self.ogtt2_value,
-                units_from=self.ogtt2_units,
-                units_to=MILLIMOLES_PER_LITER,
-            )
-        except ConversionNotHandled as e:
-            raise ConversionNotHandled(f"OGTT2. {e}")
+        value = None
+        if self.ogtt2_value and self.ogtt2_units:
+            try:
+                value = convert_units(
+                    label="glucose",
+                    value=self.ogtt2_value,
+                    units_from=self.ogtt2_units,
+                    units_to=MILLIMOLES_PER_LITER,
+                )
+            except ConversionNotHandled as e:
+                raise ConversionNotHandled(f"OGTT2. {e}")
         return value
 
     def set_eligible_model_field(self):

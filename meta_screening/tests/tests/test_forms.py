@@ -3,7 +3,8 @@ from random import choices
 
 from dateutil.relativedelta import relativedelta
 from django.test import TestCase
-from edc_constants.constants import FEMALE, MALE, NO, NOT_APPLICABLE, POS, YES
+from edc_constants.constants import BLACK, FEMALE, MALE, NO, NOT_APPLICABLE, POS, YES
+from edc_reportable import MILLIGRAMS_PER_DECILITER
 from edc_utils.date import get_utcnow
 
 from meta_screening.forms import (
@@ -394,4 +395,10 @@ class TestForms(ScreeningTestMixin, TestCase):
     def test_screening_creatinine(self):
         instance = self.complete_part_one(hospital_identifier="9678281237")
         _, instance = self.complete_part_two(instance=instance)
-        self.complete_part_three(instance=instance, verbose=True, creatinine=9000.0)
+        self.complete_part_three(
+            instance=instance,
+            verbose=True,
+            ethnicity=BLACK,
+            creatinine_value=1.5,
+            creatinine_units=MILLIGRAMS_PER_DECILITER,
+        )

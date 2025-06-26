@@ -12,8 +12,6 @@ from edc_glucose.form_validators import (
 )
 from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
 from edc_prn.modelform_mixins import PrnFormValidatorMixin
-
-# from edc_reportable.forms import WeightHeightBmiFormValidatorMixin
 from edc_utils import formatted_datetime
 from edc_utils.date import to_local, to_utc
 from edc_vitals.form_validators import (
@@ -76,7 +74,12 @@ class ScreeningPartThreeFormValidator(
         self.validate_creatinine_required_fields()
         self.required_if(YES, field="hba1c_performed", field_required="hba1c_datetime")
         self.required_if(YES, field="hba1c_performed", field_required="hba1c_value")
-        self.validate_egfr()
+        self.validate_egfr(
+            gender=self.instance.gender,
+            age_in_years=self.instance.age_in_years,
+            weight_in_kgs=self.cleaned_data.get("weight"),
+            ethnicity=self.instance.ethnicity,
+        )
         self.validate_suitability_for_study()
 
     @property
