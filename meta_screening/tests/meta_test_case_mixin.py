@@ -14,6 +14,7 @@ from edc_list_data.site_list_data import site_list_data
 from edc_metadata import REQUIRED
 from edc_metadata.models import CrfMetadata
 from edc_randomization.site_randomizers import site_randomizers
+from edc_reportable.utils import load_reference_ranges
 from edc_sites.site import sites
 from edc_sites.utils import add_or_update_django_sites
 from edc_visit_tracking.constants import SCHEDULED
@@ -21,6 +22,7 @@ from model_bakery import baker
 
 from meta_consent.models import SubjectConsent, SubjectConsentV1Ext
 from meta_edc.meta_version import PHASE_THREE
+from meta_labs.reportables import reference_range_options
 from meta_pharmacy.prepare_meta_pharmacy import prepare_meta_pharmacy
 from meta_sites.sites import domain_suffix
 from meta_subject.models import SubjectVisit
@@ -53,6 +55,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin):
 
     @classmethod
     def setUpTestData(cls):
+        load_reference_ranges(**reference_range_options)
         import_holidays(test=True)
         add_or_update_django_sites(single_sites=sites.get_by_country("tanzania", aslist=True))
         if cls.import_randomization_list:

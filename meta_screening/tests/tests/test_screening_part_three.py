@@ -4,11 +4,8 @@ from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 from django.test import TestCase
 from edc_constants.constants import FEMALE, NO, NOT_APPLICABLE, POS, TBD, YES
-from edc_reportable import (
-    MICROMOLES_PER_LITER,
-    MILLIMOLES_PER_LITER,
-    ConversionNotHandled,
-)
+from edc_reportable import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
+from edc_reportable.utils import convert_units
 from edc_utils.date import get_utcnow
 
 from meta_screening.constants import (
@@ -292,20 +289,20 @@ class TestScreeningPartThree(TestCase):
         obj.ogtt_value = 3.0
         obj.ogtt_units = MICROMOLES_PER_LITER
         obj.ogtt_datetime = get_utcnow()
-        try:
-            obj.save()
-        except ConversionNotHandled:
-            pass
-        else:
-            self.fail("ConversionNotHandled unexpectedly not raised.")
+        obj.save()
 
         obj.refresh_from_db()
+        obj.ogtt_value = convert_units(
+            label="glucose",
+            value=3.0,
+            units_from=MICROMOLES_PER_LITER,
+            units_to=MILLIMOLES_PER_LITER,
+        )
         obj.ogtt_units = MILLIMOLES_PER_LITER
         obj.save()
 
-        self.assertIn(ineligible_reason, obj.reasons_ineligible_part_three)
-        self.assertEqual(obj.eligible_part_three, TBD)
-        self.assertFalse(obj.eligible)
+        self.assertEqual(obj.eligible_part_three, YES)
+        self.assertTrue(obj.eligible)
         self.assertFalse(obj.consented)
 
         obj.ogtt_base_datetime = get_utcnow()

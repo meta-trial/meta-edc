@@ -4,26 +4,26 @@ dynamic = ["version"]
 description = "META Trial EDC (http://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 dependencies = [
-  "edc==1.0.9",
-  "edc-microscopy",
-  "beautifulsoup4",
-  "celery[redis]",
-  "django-pylabels",
-  ]
+    "edc==1.1.0",
+    "edc-microscopy",
+    "beautifulsoup4",
+    "celery[redis]",
+    "django-pylabels",
+]
 requires-python = '>=3.12'
 keywords = ["django", "clinicedc", "META EDC", "EDC", "clinical trials"]
-authors = [{name="Erik van Widenfelt", email="ew2789@gmail.com"}, {name="Jonathan Willitts", email="j.willitts@ucl.ac.uk"}]
+authors = [{ name = "Erik van Widenfelt", email = "ew2789@gmail.com" }, { name = "Jonathan Willitts", email = "j.willitts@ucl.ac.uk" }]
 classifiers = [
     "Environment :: Web Environment",
     "Framework :: Django",
-    "Framework :: Django :: 5.1",
+    "Framework :: Django :: 5.2",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
 ]
-license = {file = "LICENSE"}
+license = { file = "LICENSE" }
 
 
 [build-system]
@@ -56,15 +56,15 @@ show_missing = true
 skip_covered = true
 omit = ["requirements.txt"]
 exclude_lines = [
-  "pragma: no cover",
-  "if TYPE_CHECKING:",
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
 ]
 
 [tool.tox]
 legacy_tox_ini = """
 [tox]
 envlist =
-    py{312,313}-dj{51}-edc{prod,dev},
+    py{312,313}-dj{52}-edc{prod,dev},
     py{313}-dj{dev}-edc{dev},
     lint
     pre-commit
@@ -78,7 +78,7 @@ python =
 
 [gh-actions:env]
 DJANGO =
-    5.1: dj51, lint, pre-commit
+    5.2: dj52, lint, pre-commit
     dev: djdev
 EDC_CODEBASE =
     Prod: edcprod, lint, pre-commit
@@ -88,7 +88,7 @@ EDC_CODEBASE =
 deps =
     -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/tox.txt
     -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/test_utils.txt
-    dj51: Django>=5.1,<5.2
+    dj52: Django>=5.2,<5.3
     djdev: https://github.com/django/django/tarball/main
 
 commands =

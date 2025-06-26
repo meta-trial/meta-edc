@@ -3,6 +3,8 @@ from edc_constants.constants import (
     ABSENT,
     CLOSED,
     DEAD,
+    GRADE3,
+    GRADE4,
     NEW,
     NO,
     NO_EXAM,
@@ -15,7 +17,6 @@ from edc_constants.constants import (
     PRESENT_WITH_REINFORCEMENT,
     YES,
 )
-from edc_reportable.constants import GRADE3, GRADE4
 from edc_visit_tracking.constants import MISSED_VISIT, SCHEDULED, UNSCHEDULED
 
 from meta_ae.choices import INFORMANT_RELATIONSHIP

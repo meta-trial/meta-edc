@@ -32,6 +32,8 @@ from ..constants import CLINICAL_WITHDRAWAL, COMPLETED_FOLLOWUP_48
 # TODO: take off study meds but coninue followup (WITHDRAWAL)
 # TODO: follow on new schedule, if permanently off drug (Single 36m visit)
 
+# TODO: add label for "End of followup as per protocol FEB2026"
+
 
 class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidModel):
     action_name = END_OF_STUDY_ACTION
