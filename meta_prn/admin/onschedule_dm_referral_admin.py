@@ -29,11 +29,11 @@ class OnScheduleDmReferralAdmin(
         custom_fields = ("onschedule_datetime",)
         return custom_fields + tuple(f for f in list_filter if f not in custom_fields)
 
-    def get_readonly_fields(self, request, obj=None) -> Tuple[str, ...]:
-        return (
-            "subject_identifier",
-            "onschedule_datetime",
-        )
+    # def get_readonly_fields(self, request, obj=None) -> Tuple[str, ...]:
+    #     return (
+    #         "subject_identifier",
+    #         "onschedule_datetime",
+    #     )
 
     def get_search_fields(self, request) -> Tuple[str, ...]:
         return tuple(set(super().get_search_fields(request) + ("subject_identifier",)))

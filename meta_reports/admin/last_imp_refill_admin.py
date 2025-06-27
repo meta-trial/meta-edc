@@ -13,6 +13,7 @@ from edc_qareports.modeladmin_mixins import QaReportModelAdminMixin
 from edc_sites.admin import SiteModelAdminMixin
 from edc_sites.admin.list_filters import SiteListFilter
 from edc_utils import get_utcnow
+from rangefilter.filters import DateRangeFilterBuilder
 
 from meta_analytics.dataframes import get_last_imp_visits_df
 
@@ -101,8 +102,8 @@ class LastImpRefillAdmin(
     ]
 
     list_filter = [
-        ImpVisitDateListFilter,
-        NextApptDateListFilter,
+        ("imp_visit_date", DateRangeFilterBuilder()),
+        ("next_appt_date", DateRangeFilterBuilder()),
         "imp_visit_code",
         "next_visit_code",
         SiteListFilter,

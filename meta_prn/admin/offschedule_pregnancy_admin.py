@@ -48,6 +48,6 @@ class OffSchedulePregnancyAdmin(
         custom_fields = ("offschedule_datetime",)
         return custom_fields + tuple(f for f in list_filter if f not in custom_fields)
 
-    def get_readonly_fields(self, request, obj=None) -> Tuple[str, ...]:
-        custom_fields = ("subject_identifier", "offschedule_datetime")
-        return tuple(set(super().get_readonly_fields(request, obj=obj) + custom_fields))
+    # def get_readonly_fields(self, request, obj=None) -> Tuple[str, ...]:
+    #     custom_fields = ("subject_identifier", "offschedule_datetime")
+    #     return tuple(set(super().get_readonly_fields(request, obj=obj) + custom_fields))

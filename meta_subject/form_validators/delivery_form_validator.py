@@ -10,6 +10,7 @@ from meta_prn.models import PregnancyNotification
 
 
 class DeliveryFormValidator(CrfFormValidator):
+
     def clean(self):
         try:
             pregnancy_notification = PregnancyNotification.objects.get(

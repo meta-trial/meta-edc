@@ -1,5 +1,4 @@
-
-
+pip install -U pdfkit great_tables scipy django_pandas dj_notebook
 
 import pandas as pd
 import numpy as np

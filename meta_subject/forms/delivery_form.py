@@ -7,6 +7,8 @@ from ..models import Delivery
 
 
 class DeliveryForm(CrfModelFormMixin, ActionItemCrfFormMixin, forms.ModelForm):
+    report_datetime_allowance = 364
+
     form_validator_cls = DeliveryFormValidator
 
     class Meta(ActionItemCrfFormMixin.Meta):
