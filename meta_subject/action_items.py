@@ -135,7 +135,7 @@ class DeliveryAction(ActionWithNotification):
     parent_action_names = [PREGNANCY_NOTIFICATION_ACTION]
     reference_model = "meta_subject.delivery"
     show_link_to_changelist = True
-    show_link_to_add = True
+    show_link_to_add = False
     admin_site_name = "meta_subject_admin"
     priority = HIGH_PRIORITY
 

@@ -1,6 +1,11 @@
 Changes
 -------
 
+1.1.0
+-----
+- fix end of study issues related to delivery, transfers
+- bump edc==1.1.1
+
 1.0.6
 -----
 - bump edc=1.0.9
