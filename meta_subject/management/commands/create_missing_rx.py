@@ -27,7 +27,7 @@ def create_missing_rx():
                 subject_identifier=subject_consent.subject_identifier,
                 report_datetime=subject_consent.consent_datetime,
                 randomizer_name=get_meta_version(),
-                medications=[METFORMIN],
+                medication_names=[METFORMIN],
                 site=subject_consent.site,
             )
         except PrescriptionAlreadyExists:

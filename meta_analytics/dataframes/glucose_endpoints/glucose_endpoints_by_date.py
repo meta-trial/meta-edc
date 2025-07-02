@@ -304,6 +304,14 @@ class GlucoseEndpointsByDate:
         model_cls = django_apps.get_model(model)
         if self.subject_identifiers:
             model_cls.objects.filter(subject_identifier__in=self.subject_identifiers).delete()
+            df = (
+                self.endpoint_only_df[
+                    self.endpoint_only_df["subject_identifier"].isin(self.subject_identifiers)
+                ]
+                .copy()
+                .sort_values(by=["subject_identifier"])
+                .reset_index(drop=True)
+            )
         else:
             model_cls.objects.all().delete()
         created = 0

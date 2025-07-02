@@ -4,14 +4,13 @@ dynamic = ["version"]
 description = "META Trial EDC (http://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 dependencies = [
-    "edc==1.1.1",
-    "edc-microscopy",
+    "edc==1.1.2",
     "beautifulsoup4",
     "celery[redis]",
     "django-pylabels",
 ]
 requires-python = '>=3.12'
-keywords = ["django", "clinicedc", "META EDC", "EDC", "clinical trials"]
+keywords = ["django", "clinicedc", "META EDC", "EDC", "clinical trials", "META Trial"]
 authors = [{ name = "Erik van Widenfelt", email = "ew2789@gmail.com" }, { name = "Jonathan Willitts", email = "j.willitts@ucl.ac.uk" }]
 classifiers = [
     "Environment :: Web Environment",
@@ -21,6 +20,7 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
 ]
 license = { file = "LICENSE" }

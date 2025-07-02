@@ -21,13 +21,12 @@ class TestStudyMedication(MetaTestCaseMixin, TestCase):
         )
 
     def test_rx_exists(self):
-        medication = Medication.objects.get(name=METFORMIN)
         self.assertRaises(
             PrescriptionAlreadyExists,
             create_prescription,
             subject_identifier=self.registered_subject.subject_identifier,
             report_datetime=self.registered_subject.registration_datetime,
-            medications=[medication],
+            medication_names=[METFORMIN],
             site=self.registered_subject.site,
         )
 
