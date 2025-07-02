@@ -25,7 +25,7 @@ class Command(BaseCommand):
                     subject_identifier=instance.subject_identifier,
                     report_datetime=instance.consent_datetime,
                     randomizer_name=get_meta_version(),
-                    medications=[medication],
+                    medication_names=[medication.name],
                     site_id=instance.site.id,
                 )
             except PrescriptionAlreadyExists:

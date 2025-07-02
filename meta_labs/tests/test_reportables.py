@@ -33,5 +33,5 @@ class TestReportables(TestCase):
             GradingData.objects.filter(
                 reference_range_collection=reference_range_collection
             ).count(),
-            172,
+            174,
         )

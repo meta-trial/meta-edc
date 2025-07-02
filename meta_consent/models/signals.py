@@ -66,7 +66,7 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
                     create_prescription(
                         subject_identifier=instance.subject_identifier,
                         report_datetime=instance.consent_datetime,
-                        medications=[instance.study_medication_name],
+                        medication_names=[instance.study_medication_name],
                         randomizer_name=get_meta_version(),
                         site=instance.site,
                     )

@@ -25,6 +25,9 @@ class Endpoints(QaReportModelMixin, models.Model):
 
     offstudy_reason = models.CharField(max_length=250, null=True)
 
+    def __str__(self):
+        return f"{self.subject_identifier} {self.visit_code} {self.endpoint_label}"
+
     class Meta(QaReportModelMixin.Meta):
         verbose_name = "Endpoints (DM)"
         verbose_name_plural = "Endpoints (DM)"

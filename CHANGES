@@ -1,8 +1,17 @@
 Changes
 -------
 
-1.1.0
+1.1.2
 -----
+- fix issue where endpoint table keeps old records
+- bump edc==1.1.2
+    - fixes reported issues:
+        - cannot save HE baseline form
+        - pharmacy issues
+        - cannot open dashboards with missing metadata
+
+1.1.0 - 1.1.1
+-------------
 - fix end of study issues related to delivery, transfers
 - bump edc==1.1.1
 

@@ -32,7 +32,7 @@ def func(apps, schema_editor):
                 subject_identifier=subject_consent.subject_identifier,
                 report_datetime=subject_consent.consent_datetime,
                 randomizer_name=get_meta_version(),
-                medications=[METFORMIN],
+                medication_names=[METFORMIN],
                 site_id=site.id,
             )
         for obj in apps.get_model("edc_pharmacy.rx")._default_manager.all():
