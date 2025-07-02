@@ -86,6 +86,6 @@ jobs:
           EDC_CODEBASE: ${{ matrix.codebase }}
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
         with:
           name: Python ${{ matrix.python-version }}
