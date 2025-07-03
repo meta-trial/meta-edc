@@ -1,6 +1,11 @@
 Changes
 -------
 
+1.1.4
+-----
+- catch OffScheduleError in end of study form validator and raise
+  as ValidationError (meta-prn)
+
 1.1.3
 -----
 - bump edc==1.1.3
