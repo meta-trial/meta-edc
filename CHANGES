@@ -1,6 +1,10 @@
 Changes
 -------
 
+1.1.7
+-----
+- bump edc==1.1.6
+
 1.1.6
 -----
 - add dummy reportables (meta-labs)
