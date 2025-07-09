@@ -1,10 +1,16 @@
 Changes
 -------
 
+1.1.6
+-----
+- add dummy reportables (meta-labs)
+- bump edc==1.1.5
+
 1.1.4
 -----
 - catch OffScheduleError in end of study form validator and raise
   as ValidationError (meta-prn)
+- bump edc==1.1.4
 
 1.1.3
 -----

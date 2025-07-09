@@ -4,7 +4,7 @@ dynamic = ["version"]
 description = "META Trial EDC (http://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 dependencies = [
-    "edc==1.1.4",
+    "edc==1.1.5",
     "beautifulsoup4",
     "celery[redis]",
     "django-pylabels",
