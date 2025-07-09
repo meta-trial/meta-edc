@@ -36,6 +36,7 @@ class FollowupExaminationAdmin(
     ActionItemModelAdminMixin,
     SimpleHistoryAdmin,
 ):
+
     form = FollowupExaminationForm
 
     autocomplete_fields = ["art_new_regimen"]

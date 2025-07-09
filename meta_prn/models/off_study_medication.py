@@ -1,6 +1,6 @@
 from django.db import models
 from edc_action_item.models import ActionModelMixin
-from edc_identifier.model_mixins import NonUniqueSubjectIdentifierFieldMixin
+from edc_identifier.model_mixins import UniqueSubjectIdentifierFieldMixin
 from edc_model.models import BaseUuidModel
 from edc_pharmacy.models import Medication
 from edc_prn.models import SingletonPrnModelMixin
@@ -14,7 +14,7 @@ from ..constants import OFFSTUDY_MEDICATION_ACTION
 
 
 class OffStudyMedication(
-    NonUniqueSubjectIdentifierFieldMixin,
+    UniqueSubjectIdentifierFieldMixin,
     SiteModelMixin,
     ActionModelMixin,
     SingletonPrnModelMixin,

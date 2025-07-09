@@ -34,8 +34,8 @@ def get_part_one_eligible_options():
         ethnicity=BLACK,
         gender=FEMALE,
         hiv_pos=YES,
-        hospital_identifier="".join(map(str, sample(range(0, 10), 10))),
-        initials=f"{choice(ascii_uppercase)}{choice(ascii_uppercase)}",
+        hospital_identifier="".join(map(str, sample(range(0, 10), 10))),  # nosec B311
+        initials=f"{choice(ascii_uppercase)}{choice(ascii_uppercase)}",  # nosec B311
         lives_nearby=YES,
         on_rx_stable=YES,
         pregnant=NOT_APPLICABLE,
