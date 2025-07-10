@@ -1,6 +1,7 @@
 import re
 
 from django import forms
+from django.core.exceptions import ObjectDoesNotExist
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import INVALID_ERROR
 from edc_pharmacy.form_validators import (
@@ -53,12 +54,12 @@ class StudyMedicationFormValidator(BaseStudyMedicationFormValidator):
                 try:
                     Stock.objects.get(
                         code=stock_code,
-                        dispensed=True,
+                        dispenseitem__isnull=False,
                         allocation__registered_subject__subject_identifier=(
                             self.subject_identifier
                         ),
                     )
-                except Stock.DoesNotExist:
+                except ObjectDoesNotExist:
                     raise forms.ValidationError(
                         {
                             "stock_codes": (
