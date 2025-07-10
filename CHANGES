@@ -1,6 +1,14 @@
 Changes
 -------
 
+1.1.8
+-----
+- add waist circumference to followupvitals and require
+  at 36/48m
+- update edc-pharmacy to resolve dispense error that manifests
+  in the study medication form
+- bump edc==1.1.7
+
 1.1.7
 -----
 - bump edc==1.1.6

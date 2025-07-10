@@ -16,25 +16,50 @@ class FollowupVitalsAdmin(CrfModelAdminMixin, FormLabelModelAdminMixin, SimpleHi
     form = FollowupVitalsForm
 
     additional_instructions = [
-        "If participant is pregnant, complete the action linked CRF `Pregnancy notification`."
+        "If participant is pregnant, complete the action "
+        "linked CRF `Pregnancy notification`."
     ]
 
     fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime")}),
         (
-            "Vitals",
+            "Weight",
+            {
+                "fields": ("weight",),
+            },
+        ),
+        (
+            "Waist circumference",
+            {
+                "description": (
+                    "REQUIRED at 36 and 48 months. If not measured "
+                    "at 36 and 48 months, provide the reason."
+                ),
+                "fields": (
+                    "waist_circumference_measured",
+                    "waist_circumference",
+                    "waist_circumference_comment",
+                ),
+            },
+        ),
+        (
+            "BP and heart rate",
             {
                 "description": (
                     "To be completed by the research nurse. <BR>"
                     "Refer to SOP for blood pressure measurement procedure."
                 ),
                 "fields": (
-                    "weight",
                     *get_blood_pressure_fields(),
                     "heart_rate",
                     *get_respiratory_o2_fields(),
-                    "temperature",
                 ),
+            },
+        ),
+        (
+            "Temperature",
+            {
+                "fields": ("temperature",),
             },
         ),
         crf_status_fieldset,
@@ -44,5 +69,6 @@ class FollowupVitalsAdmin(CrfModelAdminMixin, FormLabelModelAdminMixin, SimpleHi
     filter_horizontal = ()
 
     radio_fields = {
+        "waist_circumference_measured": admin.VERTICAL,
         "severe_htn": admin.VERTICAL,
     }
