@@ -1,17 +1,28 @@
 [project]
 name = "meta-edc"
 dynamic = ["version"]
-description = "META Trial EDC (http://www.isrctn.com/ISRCTN76157257)"
+description = "META Trial EDC (https://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 dependencies = [
-    "edc==1.1.7",
+    "edc==1.2.0",
     "beautifulsoup4",
     "celery[redis]",
     "django-pylabels",
 ]
 requires-python = '>=3.12'
-keywords = ["django", "clinicedc", "META EDC", "EDC", "clinical trials", "META Trial"]
-authors = [{ name = "Erik van Widenfelt", email = "ew2789@gmail.com" }, { name = "Jonathan Willitts", email = "j.willitts@ucl.ac.uk" }]
+keywords = [
+    "django",
+    "clinicedc",
+    "META EDC",
+    "EDC",
+    "clinical trials",
+    "META Trial",
+    "ISRCTN76157257",
+]
+authors = [
+    { name = "Erik van Widenfelt", email = "ew2789@gmail.com" },
+    { name = "Jonathan Willitts", email = "j.willitts@ucl.ac.uk" }
+]
 classifiers = [
     "Environment :: Web Environment",
     "Framework :: Django",
@@ -25,6 +36,15 @@ classifiers = [
 ]
 license = { file = "LICENSE" }
 
+[project.optional-dependencies]
+tests = [
+    "edc-test-settings",
+    "edc_test_utils",
+    "model_bakery",
+    "time_machine",
+    "faker",
+    "django_webtest",
+]
 
 [build-system]
 requires = ["setuptools>=64", "setuptools_scm>=8"]
@@ -54,7 +74,7 @@ source = ["meta_edc"]
 [tool.coverage.report]
 show_missing = true
 skip_covered = true
-omit = ["requirements.txt"]
+omit = ["TODO.txt"]
 exclude_lines = [
     "pragma: no cover",
     "if TYPE_CHECKING:",

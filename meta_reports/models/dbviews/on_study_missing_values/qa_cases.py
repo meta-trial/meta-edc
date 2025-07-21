@@ -1,6 +1,8 @@
 from edc_constants.constants import OTHER, YES
 from edc_qareports.sql_generator import CrfCase
 
+from meta_visit_schedule.constants import MONTH36, MONTH48
+
 qa_cases = [
     CrfCase(
         label="No HIV Diagnosis date",
@@ -49,6 +51,22 @@ qa_cases = [
         where=(
             "(crf.fbg_value is not null and crf.ogtt_value is null) "
             f"and ogtt_performed='{YES}'"
+        ),
+    ),
+    CrfCase(
+        label="Weight",
+        dbtable="meta_subject_followupvitals",
+        label_lower="meta_subject.followupvitals",
+        where="(crf.weight is null and v.visit_code_sequence==0)",
+    ),
+    CrfCase(
+        label="Waist circumference 36/48m",
+        dbtable="meta_subject_followupvitals",
+        label_lower="meta_subject.followupvitals",
+        where=(
+            f"(crf.waist_circumference_measured=='{YES}' and crf.waist_circumference "
+            "is null) or (crf.waist_circumference is null and v.visit_code in "
+            f"['{MONTH36}','{MONTH48}'] and v.visit_code_sequence==0)"
         ),
     ),
 ]
