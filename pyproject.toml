@@ -32,9 +32,9 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
 ]
-license = { file = "LICENSE" }
+license = "GPL-3.0-or-later"
+license-files = ["LICEN[CS]E*"]
 
 [project.optional-dependencies]
 tests = [
@@ -52,6 +52,29 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
 version_file = "_version.py"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"meta_*" = ["templates/**/*", "locale/*/LC_MESSAGES/*.mo", "/static/*"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = [
+    "meta_*",
+]
+exclude = [
+    "examples*",
+    "tools*",
+    "docs*",
+    "bin*",
+    "image*",
+    "tests*",
+    "meta_*/tests/*",
+    "meta_*/notebooks*",
+]
+namespaces = false  # true by default
 
 [tool.black]
 line-length = 95

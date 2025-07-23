@@ -2,6 +2,8 @@ include AUTHORS CHANGES LICENSE
 include MANIFEST.in
 include *.rst
 include *.txt
-include */locale/*/LC_MESSAGES/*.mo
-recursive-include meta_edc/templates *
+recursive-include meta_*/templates *.*
+recursive-include meta_*/static *.*
+recursive-include meta_*/locale/*/LC_MESSAGES *.*
 recursive-include label_templates *
+recursive-exclude meta_analytics/notebooks *.ipynb
