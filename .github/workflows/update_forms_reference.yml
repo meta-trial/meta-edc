@@ -45,13 +45,6 @@ jobs:
       - name: Install Python with the version in .python-version
         run: uv python install
 
-      - name: Wait for MySQL to be ready
-        run: |
-          until mysqladmin ping -h mysql -uroot -pmysql --silent; do
-            echo "Waiting for MySQL..."
-            sleep 5
-          done
-
       - name: Install the project
         run: uv sync --all-extras --all-groups
 
