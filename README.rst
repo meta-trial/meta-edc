@@ -1,17 +1,16 @@
-|pypi| |actions| |codecov| |downloads|
+|pypi| |actions| |codecov| |downloads| |clinicedc|
 
+META EDC
+========
 
-META Edc
---------
-
-Metformin treatment in Africa- META
+Metformin treatment in Africa - META
 
 * https://www.ucl.ac.uk/global-health/research/z-research/respond-africa/metformin-treatment-africa-meta
 * https://www.inteafrica.org/related-projects/meta-trial/
 * https://www.lstmed.ac.uk/research/departments/international-public-health/respond-africa/meta
 * http://www.isrctn.com/ISRCTN76157257
 
-py 3.12 / DJ 5.1.5 / edc 1.0.3 (META3)
+py 3.12+ / DJ 5.2 using the `Clinic EDC <https://github.com/clinicedc/edc>`_ framework
 
 This codebase is used for two randomized clinical trials:
 
@@ -45,7 +44,87 @@ See also https://github.com/clinicedc/edc
 
 |django|
 
-To setup a demo system, see https://github.com/meta-trial/meta3-sample
+Installation
+------------
+
+As of version 1.1.10, we are building and deploying with `uv <https://docs.astral.sh/uv>`_.
+
+Here we assume you have your DB setup and already have your ``.env`` file.
+
+First-time install
+++++++++++++++++++
+
+Assuming you are logged into the account ``myaccount``:
+
+.. code-block:: bash
+
+    mkdir -p ~/.etc/meta && \
+    mkdir ~/edc && \
+    cd ~/edc && \
+    uv venv && \
+    uv pip install -U meta-edc==1.1.10 && \
+    wget https://raw.githubusercontent.com/meta-trial/meta-edc/1.1.10/manage.py && \
+    uv pip freeze | grep meta-edc
+
+Copy your ``.env`` file to ``~/.etc``.
+
+Place this at or near the end of your ``.bashrc``:
+
+.. code-block:: bash
+
+    # >>> EDC using uv >>>
+    export DJANGO_SETTINGS_MODULE=meta_edc.settings.uat
+    export META_PHASE=3
+    export DJANGO_BASE_DIR=/home/myaccount/edc
+    export DJANGO_ENV_DIR=/home/myaccount/.etc/
+    cd ~/edc
+    source .venv/bin/activate
+    export PATH="/home/myaccount/edc:$PATH"
+    # <<< EDC using uv <<<
+
+Source ``.bashrc`` and run ``manage.py check``.
+
+.. code-block:: bash
+
+    source ~/.bashrc && \
+    cd ~/edc && \
+    python manage.py check
+
+If all is OK, run ``migrate``:
+
+    Explicitly specify the settings file when using ``migrate``.
+
+    * live: ``--settings=meta_edc.settings.live``
+    * uat: ``--settings=meta_edc.settings.uat``
+    * debug:  ``--settings=meta_edc.settings.debug``
+
+
+.. code-block:: bash
+
+    cd ~/edc && \
+    python manage.py migrate --settings=meta_edc.settings.live
+
+Update an existing install
+++++++++++++++++++++++++++
+
+From the above example:
+
+.. code-block:: bash
+
+    cd ~/edc && \
+    uv venv --clear && \
+    uv pip install -U meta-edc==1.1.10 && \
+    wget -O manage.py https://raw.githubusercontent.com/meta-trial/meta-edc/1.1.10/manage.py && \
+    uv pip freeze | grep meta-edc && \
+    python manage.py check
+
+If all is OK, run ``migrate``
+
+.. code-block:: bash
+
+    cd ~/edc && \
+    python manage.py migrate --settings=meta_edc.settings.live
+
 
 
 .. |pypi| image:: https://img.shields.io/pypi/v/meta-edc.svg
@@ -63,3 +142,7 @@ To setup a demo system, see https://github.com/meta-trial/meta3-sample
 .. |django| image:: https://www.djangoproject.com/m/img/badges/djangomade124x25.gif
    :target: http://www.djangoproject.com/
    :alt: Made with Django
+
+.. |clinicedc| image:: https://img.shields.io/badge/framework-Clinic_EDC-green
+   :alt:Made with clinicedc
+   :target: https://github.com/clinicedc

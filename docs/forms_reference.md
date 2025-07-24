@@ -1,4 +1,4 @@
-# Forms Reference
+# META_SUBJECT Forms Reference v1.1.9
 ## Table of contents
 
 
@@ -16,6 +16,7 @@
 11. <a href="#user-content-malaria-test">Malaria Test</a>
 12. <a href="#user-content-urine-dipstick-test">Urine Dipstick Test</a>
 13. <a href="#user-content-study-medication">Study Medication</a>
+14. <a href="#user-content-next-appointment">Next Appointment</a>
 
 <a href="#user-content-1005">**1005.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals">Clinic Follow Up: Vitals</a>
@@ -27,6 +28,7 @@
 7. <a href="#user-content-euroqol-eq-5d-3l-instrument">Euroqol Eq-5D-3L Instrument</a>
 8. <a href="#user-content-sf-12-health-survey">Sf-12 Health Survey</a>
 9. <a href="#user-content-health-economics-m3">Health Economics (M3)</a>
+10. <a href="#user-content-next-appointment-1">Next Appointment</a>
 
 <a href="#user-content-1010">**1010.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-1">Clinic Follow Up: Vitals</a>
@@ -39,6 +41,7 @@
 8. <a href="#user-content-sf-12-health-survey-1">Sf-12 Health Survey</a>
 9. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi">Michigan Neuropathy Screening Instrument (Mnsi)</a>
 10. <a href="#user-content-health-economics-m3-1">Health Economics (M3)</a>
+11. <a href="#user-content-next-appointment-2">Next Appointment</a>
 
 <a href="#user-content-1030">**1030.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-2">Clinic Follow Up: Vitals</a>
@@ -53,6 +56,7 @@
 10. <a href="#user-content-sf-12-health-survey-2">Sf-12 Health Survey</a>
 11. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-1">Michigan Neuropathy Screening Instrument (Mnsi)</a>
 12. <a href="#user-content-health-economics-baseline">Health Economics: Baseline</a>
+13. <a href="#user-content-next-appointment-3">Next Appointment</a>
 
 <a href="#user-content-1060">**1060.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-3">Clinic Follow Up: Vitals</a>
@@ -68,6 +72,7 @@
 11. <a href="#user-content-sf-12-health-survey-3">Sf-12 Health Survey</a>
 12. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-2">Michigan Neuropathy Screening Instrument (Mnsi)</a>
 13. <a href="#user-content-health-economics-baseline-1">Health Economics: Baseline</a>
+14. <a href="#user-content-next-appointment-4">Next Appointment</a>
 
 <a href="#user-content-1090">**1090.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-4">Clinic Follow Up: Vitals</a>
@@ -79,6 +84,7 @@
 7. <a href="#user-content-euroqol-eq-5d-3l-instrument-4">Euroqol Eq-5D-3L Instrument</a>
 8. <a href="#user-content-sf-12-health-survey-4">Sf-12 Health Survey</a>
 9. <a href="#user-content-health-economics-baseline-2">Health Economics: Baseline</a>
+10. <a href="#user-content-next-appointment-5">Next Appointment</a>
 
 <a href="#user-content-1120">**1120.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-5">Clinic Follow Up: Vitals</a>
@@ -94,6 +100,7 @@
 11. <a href="#user-content-euroqol-eq-5d-3l-instrument-5">Euroqol Eq-5D-3L Instrument</a>
 12. <a href="#user-content-sf-12-health-survey-5">Sf-12 Health Survey</a>
 13. <a href="#user-content-health-economics-baseline-3">Health Economics: Baseline</a>
+14. <a href="#user-content-next-appointment-6">Next Appointment</a>
 
 <a href="#user-content-1150">**1150.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-6">Clinic Follow Up: Vitals</a>
@@ -105,6 +112,7 @@
 7. <a href="#user-content-euroqol-eq-5d-3l-instrument-6">Euroqol Eq-5D-3L Instrument</a>
 8. <a href="#user-content-sf-12-health-survey-6">Sf-12 Health Survey</a>
 9. <a href="#user-content-health-economics-baseline-4">Health Economics: Baseline</a>
+10. <a href="#user-content-next-appointment-7">Next Appointment</a>
 
 <a href="#user-content-1180">**1180.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-7">Clinic Follow Up: Vitals</a>
@@ -117,6 +125,7 @@
 8. <a href="#user-content-euroqol-eq-5d-3l-instrument-7">Euroqol Eq-5D-3L Instrument</a>
 9. <a href="#user-content-sf-12-health-survey-7">Sf-12 Health Survey</a>
 10. <a href="#user-content-health-economics-baseline-5">Health Economics: Baseline</a>
+11. <a href="#user-content-next-appointment-8">Next Appointment</a>
 
 <a href="#user-content-1210">**1210.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-8">Clinic Follow Up: Vitals</a>
@@ -128,6 +137,7 @@
 7. <a href="#user-content-euroqol-eq-5d-3l-instrument-8">Euroqol Eq-5D-3L Instrument</a>
 8. <a href="#user-content-sf-12-health-survey-8">Sf-12 Health Survey</a>
 9. <a href="#user-content-health-economics-baseline-6">Health Economics: Baseline</a>
+10. <a href="#user-content-next-appointment-9">Next Appointment</a>
 
 <a href="#user-content-1240">**1240.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-9">Clinic Follow Up: Vitals</a>
@@ -137,13 +147,13 @@
 5. <a href="#user-content-blood-result-rft-4">Blood Result: Rft</a>
 6. <a href="#user-content-blood-result-lft-4">Blood Result: Lft</a>
 7. <a href="#user-content-blood-result-fbc-4">Blood Result: Fbc</a>
-8. <a href="#user-content-blood-result-lipids-2">Blood Result: Lipids</a>
-9. <a href="#user-content-study-medication-10">Study Medication</a>
-10. <a href="#user-content-medication-adherence-9">Medication Adherence</a>
-11. <a href="#user-content-euroqol-eq-5d-3l-instrument-9">Euroqol Eq-5D-3L Instrument</a>
-12. <a href="#user-content-sf-12-health-survey-9">Sf-12 Health Survey</a>
-13. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-3">Michigan Neuropathy Screening Instrument (Mnsi)</a>
-14. <a href="#user-content-health-economics-baseline-7">Health Economics: Baseline</a>
+8. <a href="#user-content-study-medication-10">Study Medication</a>
+9. <a href="#user-content-medication-adherence-9">Medication Adherence</a>
+10. <a href="#user-content-euroqol-eq-5d-3l-instrument-9">Euroqol Eq-5D-3L Instrument</a>
+11. <a href="#user-content-sf-12-health-survey-9">Sf-12 Health Survey</a>
+12. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-3">Michigan Neuropathy Screening Instrument (Mnsi)</a>
+13. <a href="#user-content-health-economics-baseline-7">Health Economics: Baseline</a>
+14. <a href="#user-content-next-appointment-10">Next Appointment</a>
 
 <a href="#user-content-1270">**1270.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-10">Clinic Follow Up: Vitals</a>
@@ -155,6 +165,7 @@
 7. <a href="#user-content-sf-12-health-survey-10">Sf-12 Health Survey</a>
 8. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-4">Michigan Neuropathy Screening Instrument (Mnsi)</a>
 9. <a href="#user-content-health-economics-baseline-8">Health Economics: Baseline</a>
+10. <a href="#user-content-next-appointment-11">Next Appointment</a>
 
 <a href="#user-content-1300">**1300.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-11">Clinic Follow Up: Vitals</a>
@@ -167,6 +178,7 @@
 8. <a href="#user-content-sf-12-health-survey-11">Sf-12 Health Survey</a>
 9. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-5">Michigan Neuropathy Screening Instrument (Mnsi)</a>
 10. <a href="#user-content-health-economics-baseline-9">Health Economics: Baseline</a>
+11. <a href="#user-content-next-appointment-12">Next Appointment</a>
 
 <a href="#user-content-1330">**1330.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-12">Clinic Follow Up: Vitals</a>
@@ -178,6 +190,7 @@
 7. <a href="#user-content-sf-12-health-survey-12">Sf-12 Health Survey</a>
 8. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-6">Michigan Neuropathy Screening Instrument (Mnsi)</a>
 9. <a href="#user-content-health-economics-baseline-10">Health Economics: Baseline</a>
+10. <a href="#user-content-next-appointment-13">Next Appointment</a>
 
 <a href="#user-content-1360">**1360.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-13">Clinic Follow Up: Vitals</a>
@@ -187,13 +200,14 @@
 5. <a href="#user-content-blood-result-rft-5">Blood Result: Rft</a>
 6. <a href="#user-content-blood-result-lft-5">Blood Result: Lft</a>
 7. <a href="#user-content-blood-result-fbc-5">Blood Result: Fbc</a>
-8. <a href="#user-content-blood-result-lipids-3">Blood Result: Lipids</a>
+8. <a href="#user-content-blood-result-lipids-2">Blood Result: Lipids</a>
 9. <a href="#user-content-study-medication-14">Study Medication</a>
 10. <a href="#user-content-medication-adherence-13">Medication Adherence</a>
 11. <a href="#user-content-euroqol-eq-5d-3l-instrument-13">Euroqol Eq-5D-3L Instrument</a>
 12. <a href="#user-content-sf-12-health-survey-13">Sf-12 Health Survey</a>
 13. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-7">Michigan Neuropathy Screening Instrument (Mnsi)</a>
 14. <a href="#user-content-health-economics-baseline-11">Health Economics: Baseline</a>
+15. <a href="#user-content-next-appointment-14">Next Appointment</a>
 
 <a href="#user-content-1390">**1390.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-14">Clinic Follow Up: Vitals</a>
@@ -205,6 +219,7 @@
 7. <a href="#user-content-sf-12-health-survey-14">Sf-12 Health Survey</a>
 8. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-8">Michigan Neuropathy Screening Instrument (Mnsi)</a>
 9. <a href="#user-content-health-economics-baseline-12">Health Economics: Baseline</a>
+10. <a href="#user-content-next-appointment-15">Next Appointment</a>
 
 <a href="#user-content-1420">**1420.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-15">Clinic Follow Up: Vitals</a>
@@ -217,6 +232,7 @@
 8. <a href="#user-content-sf-12-health-survey-15">Sf-12 Health Survey</a>
 9. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-9">Michigan Neuropathy Screening Instrument (Mnsi)</a>
 10. <a href="#user-content-health-economics-baseline-13">Health Economics: Baseline</a>
+11. <a href="#user-content-next-appointment-16">Next Appointment</a>
 
 <a href="#user-content-1450">**1450.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-16">Clinic Follow Up: Vitals</a>
@@ -228,6 +244,7 @@
 7. <a href="#user-content-sf-12-health-survey-16">Sf-12 Health Survey</a>
 8. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-10">Michigan Neuropathy Screening Instrument (Mnsi)</a>
 9. <a href="#user-content-health-economics-baseline-14">Health Economics: Baseline</a>
+10. <a href="#user-content-next-appointment-17">Next Appointment</a>
 
 <a href="#user-content-1480">**1480.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-17">Clinic Follow Up: Vitals</a>
@@ -237,13 +254,14 @@
 5. <a href="#user-content-blood-result-rft-6">Blood Result: Rft</a>
 6. <a href="#user-content-blood-result-lft-6">Blood Result: Lft</a>
 7. <a href="#user-content-blood-result-fbc-6">Blood Result: Fbc</a>
-8. <a href="#user-content-blood-result-lipids-4">Blood Result: Lipids</a>
+8. <a href="#user-content-blood-result-lipids-3">Blood Result: Lipids</a>
 9. <a href="#user-content-study-medication-18">Study Medication</a>
 10. <a href="#user-content-medication-adherence-17">Medication Adherence</a>
 11. <a href="#user-content-euroqol-eq-5d-3l-instrument-17">Euroqol Eq-5D-3L Instrument</a>
 12. <a href="#user-content-sf-12-health-survey-17">Sf-12 Health Survey</a>
 13. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-11">Michigan Neuropathy Screening Instrument (Mnsi)</a>
 14. <a href="#user-content-health-economics-baseline-15">Health Economics: Baseline</a>
+15. <a href="#user-content-next-appointment-18">Next Appointment</a>
 
 <a href="#user-content-3000">**3000.**</a>
 1. <a href="#user-content-diabetes-endpoint">Diabetes Endpoint</a>
@@ -1193,15 +1211,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**11.0.** summary
+**11.0.** reportable summary
 - db_table: meta_subject_bloodresultsins
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**12.0.** abnormal summary
+- db_table: meta_subject_bloodresultsins
+- column: abnormal_summary
+- type: TextField
+---
+
+**13.0.** errors
+- db_table: meta_subject_bloodresultsins
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**12.0.** action identifier
+**14.0.** action identifier
 - db_table: meta_subject_bloodresultsins
 - column: action_identifier
 - type: CharField
@@ -1209,19 +1239,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**13.0.** action item
+**15.0.** action item
 - db_table: meta_subject_bloodresultsins
 - column: action_item
 - type: ForeignKey
 ---
 
-**14.0.** parent action item
+**16.0.** parent action item
 - db_table: meta_subject_bloodresultsins
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**15.0.** related action item
+**17.0.** related action item
 - db_table: meta_subject_bloodresultsins
 - column: related_action_item
 - type: ForeignKey
@@ -1337,15 +1367,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**11.0.** summary
+**11.0.** reportable summary
 - db_table: meta_subject_bloodresultshba1c
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**12.0.** abnormal summary
+- db_table: meta_subject_bloodresultshba1c
+- column: abnormal_summary
+- type: TextField
+---
+
+**13.0.** errors
+- db_table: meta_subject_bloodresultshba1c
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**12.0.** action identifier
+**14.0.** action identifier
 - db_table: meta_subject_bloodresultshba1c
 - column: action_identifier
 - type: CharField
@@ -1353,19 +1395,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**13.0.** action item
+**15.0.** action item
 - db_table: meta_subject_bloodresultshba1c
 - column: action_item
 - type: ForeignKey
 ---
 
-**14.0.** parent action item
+**16.0.** parent action item
 - db_table: meta_subject_bloodresultshba1c
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**15.0.** related action item
+**17.0.** related action item
 - db_table: meta_subject_bloodresultshba1c
 - column: related_action_item
 - type: ForeignKey
@@ -1612,15 +1654,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**25.0.** summary
+**25.0.** reportable summary
 - db_table: meta_subject_bloodresultsrft
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**26.0.** abnormal summary
+- db_table: meta_subject_bloodresultsrft
+- column: abnormal_summary
+- type: TextField
+---
+
+**27.0.** errors
+- db_table: meta_subject_bloodresultsrft
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**26.0.** action identifier
+**28.0.** action identifier
 - db_table: meta_subject_bloodresultsrft
 - column: action_identifier
 - type: CharField
@@ -1628,19 +1682,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**27.0.** action item
+**29.0.** action item
 - db_table: meta_subject_bloodresultsrft
 - column: action_item
 - type: ForeignKey
 ---
 
-**28.0.** parent action item
+**30.0.** parent action item
 - db_table: meta_subject_bloodresultsrft
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**29.0.** related action item
+**31.0.** related action item
 - db_table: meta_subject_bloodresultsrft
 - column: related_action_item
 - type: ForeignKey
@@ -1963,15 +2017,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**31.0.** summary
+**31.0.** reportable summary
 - db_table: meta_subject_bloodresultslft
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**32.0.** abnormal summary
+- db_table: meta_subject_bloodresultslft
+- column: abnormal_summary
+- type: TextField
+---
+
+**33.0.** errors
+- db_table: meta_subject_bloodresultslft
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**32.0.** action identifier
+**34.0.** action identifier
 - db_table: meta_subject_bloodresultslft
 - column: action_identifier
 - type: CharField
@@ -1979,19 +2045,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**33.0.** action item
+**35.0.** action item
 - db_table: meta_subject_bloodresultslft
 - column: action_item
 - type: ForeignKey
 ---
 
-**34.0.** parent action item
+**36.0.** parent action item
 - db_table: meta_subject_bloodresultslft
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**35.0.** related action item
+**37.0.** related action item
 - db_table: meta_subject_bloodresultslft
 - column: related_action_item
 - type: ForeignKey
@@ -2398,15 +2464,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**39.0.** summary
+**39.0.** reportable summary
 - db_table: meta_subject_bloodresultsfbc
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**40.0.** abnormal summary
+- db_table: meta_subject_bloodresultsfbc
+- column: abnormal_summary
+- type: TextField
+---
+
+**41.0.** errors
+- db_table: meta_subject_bloodresultsfbc
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**40.0.** action identifier
+**42.0.** action identifier
 - db_table: meta_subject_bloodresultsfbc
 - column: action_identifier
 - type: CharField
@@ -2414,19 +2492,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**41.0.** action item
+**43.0.** action item
 - db_table: meta_subject_bloodresultsfbc
 - column: action_item
 - type: ForeignKey
 ---
 
-**42.0.** parent action item
+**44.0.** parent action item
 - db_table: meta_subject_bloodresultsfbc
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**43.0.** related action item
+**45.0.** related action item
 - db_table: meta_subject_bloodresultsfbc
 - column: related_action_item
 - type: ForeignKey
@@ -2666,15 +2744,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**23.0.** summary
+**23.0.** reportable summary
 - db_table: meta_subject_bloodresultslipids
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**24.0.** abnormal summary
+- db_table: meta_subject_bloodresultslipids
+- column: abnormal_summary
+- type: TextField
+---
+
+**25.0.** errors
+- db_table: meta_subject_bloodresultslipids
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**24.0.** action identifier
+**26.0.** action identifier
 - db_table: meta_subject_bloodresultslipids
 - column: action_identifier
 - type: CharField
@@ -2682,19 +2772,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**25.0.** action item
+**27.0.** action item
 - db_table: meta_subject_bloodresultslipids
 - column: action_item
 - type: ForeignKey
 ---
 
-**26.0.** parent action item
+**28.0.** parent action item
 - db_table: meta_subject_bloodresultslipids
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**27.0.** related action item
+**29.0.** related action item
 - db_table: meta_subject_bloodresultslipids
 - column: related_action_item
 - type: ForeignKey
@@ -2971,12 +3061,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -2997,6 +3086,92 @@ A user model to capture both FBG/RBG and OGTT
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_studymedication
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
 - column: crf_status_comments
 - type: TextField
 ---
@@ -3039,7 +3214,7 @@ A user model to capture both FBG/RBG and OGTT
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -3049,7 +3224,39 @@ A user model to capture both FBG/RBG and OGTT
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -3057,7 +3264,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -3065,7 +3272,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -3073,7 +3280,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -3081,7 +3288,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -3093,7 +3300,7 @@ A user model to capture both FBG/RBG and OGTT
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -3101,7 +3308,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -3109,7 +3316,9 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -3119,7 +3328,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -3131,7 +3340,7 @@ A user model to capture both FBG/RBG and OGTT
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -3979,12 +4188,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -4599,6 +4807,92 @@ A user model to capture both FBG/RBG and OGTT
 ---
 
 
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Requisitions
 
 ### 1010
@@ -4628,7 +4922,7 @@ A user model to capture both FBG/RBG and OGTT
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -4638,7 +4932,39 @@ A user model to capture both FBG/RBG and OGTT
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -4646,7 +4972,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -4654,7 +4980,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -4662,7 +4988,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -4670,7 +4996,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -4682,7 +5008,7 @@ A user model to capture both FBG/RBG and OGTT
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -4690,7 +5016,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -4698,7 +5024,9 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -4708,7 +5036,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -4720,7 +5048,7 @@ A user model to capture both FBG/RBG and OGTT
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -5568,12 +5896,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -6262,9 +6589,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -6362,9 +6687,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -6634,6 +6957,92 @@ A user model to capture both FBG/RBG and OGTT
 ---
 
 
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Requisitions
 
 ### 1030
@@ -6663,7 +7072,7 @@ A user model to capture both FBG/RBG and OGTT
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -6673,7 +7082,39 @@ A user model to capture both FBG/RBG and OGTT
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -6681,7 +7122,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -6689,7 +7130,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -6697,7 +7138,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -6705,7 +7146,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -6717,7 +7158,7 @@ A user model to capture both FBG/RBG and OGTT
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -6725,7 +7166,7 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -6733,7 +7174,9 @@ A user model to capture both FBG/RBG and OGTT
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -6743,7 +7186,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -6755,7 +7198,7 @@ A user model to capture both FBG/RBG and OGTT
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -7756,15 +8199,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**25.0.** summary
+**25.0.** reportable summary
 - db_table: meta_subject_bloodresultsrft
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**26.0.** abnormal summary
+- db_table: meta_subject_bloodresultsrft
+- column: abnormal_summary
+- type: TextField
+---
+
+**27.0.** errors
+- db_table: meta_subject_bloodresultsrft
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**26.0.** action identifier
+**28.0.** action identifier
 - db_table: meta_subject_bloodresultsrft
 - column: action_identifier
 - type: CharField
@@ -7772,19 +8227,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**27.0.** action item
+**29.0.** action item
 - db_table: meta_subject_bloodresultsrft
 - column: action_item
 - type: ForeignKey
 ---
 
-**28.0.** parent action item
+**30.0.** parent action item
 - db_table: meta_subject_bloodresultsrft
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**29.0.** related action item
+**31.0.** related action item
 - db_table: meta_subject_bloodresultsrft
 - column: related_action_item
 - type: ForeignKey
@@ -8107,15 +8562,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**31.0.** summary
+**31.0.** reportable summary
 - db_table: meta_subject_bloodresultslft
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**32.0.** abnormal summary
+- db_table: meta_subject_bloodresultslft
+- column: abnormal_summary
+- type: TextField
+---
+
+**33.0.** errors
+- db_table: meta_subject_bloodresultslft
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**32.0.** action identifier
+**34.0.** action identifier
 - db_table: meta_subject_bloodresultslft
 - column: action_identifier
 - type: CharField
@@ -8123,19 +8590,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**33.0.** action item
+**35.0.** action item
 - db_table: meta_subject_bloodresultslft
 - column: action_item
 - type: ForeignKey
 ---
 
-**34.0.** parent action item
+**36.0.** parent action item
 - db_table: meta_subject_bloodresultslft
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**35.0.** related action item
+**37.0.** related action item
 - db_table: meta_subject_bloodresultslft
 - column: related_action_item
 - type: ForeignKey
@@ -8229,12 +8696,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -8923,9 +9389,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -9023,9 +9487,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -9339,6 +9801,92 @@ A user model to learn about the household, wealth and
 ---
 
 
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Requisitions
 
 * chemistry_rft
@@ -9372,7 +9920,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -9382,7 +9930,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -9390,7 +9970,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -9398,7 +9978,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -9406,7 +9986,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -9414,7 +9994,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -9426,7 +10006,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -9434,7 +10014,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -9442,7 +10022,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -9452,7 +10034,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -9464,7 +10046,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -10465,15 +11047,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**25.0.** summary
+**25.0.** reportable summary
 - db_table: meta_subject_bloodresultsrft
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**26.0.** abnormal summary
+- db_table: meta_subject_bloodresultsrft
+- column: abnormal_summary
+- type: TextField
+---
+
+**27.0.** errors
+- db_table: meta_subject_bloodresultsrft
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**26.0.** action identifier
+**28.0.** action identifier
 - db_table: meta_subject_bloodresultsrft
 - column: action_identifier
 - type: CharField
@@ -10481,19 +11075,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**27.0.** action item
+**29.0.** action item
 - db_table: meta_subject_bloodresultsrft
 - column: action_item
 - type: ForeignKey
 ---
 
-**28.0.** parent action item
+**30.0.** parent action item
 - db_table: meta_subject_bloodresultsrft
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**29.0.** related action item
+**31.0.** related action item
 - db_table: meta_subject_bloodresultsrft
 - column: related_action_item
 - type: ForeignKey
@@ -10816,15 +11410,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**31.0.** summary
+**31.0.** reportable summary
 - db_table: meta_subject_bloodresultslft
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**32.0.** abnormal summary
+- db_table: meta_subject_bloodresultslft
+- column: abnormal_summary
+- type: TextField
+---
+
+**33.0.** errors
+- db_table: meta_subject_bloodresultslft
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**32.0.** action identifier
+**34.0.** action identifier
 - db_table: meta_subject_bloodresultslft
 - column: action_identifier
 - type: CharField
@@ -10832,19 +11438,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**33.0.** action item
+**35.0.** action item
 - db_table: meta_subject_bloodresultslft
 - column: action_item
 - type: ForeignKey
 ---
 
-**34.0.** parent action item
+**36.0.** parent action item
 - db_table: meta_subject_bloodresultslft
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**35.0.** related action item
+**37.0.** related action item
 - db_table: meta_subject_bloodresultslft
 - column: related_action_item
 - type: ForeignKey
@@ -11251,15 +11857,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**39.0.** summary
+**39.0.** reportable summary
 - db_table: meta_subject_bloodresultsfbc
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**40.0.** abnormal summary
+- db_table: meta_subject_bloodresultsfbc
+- column: abnormal_summary
+- type: TextField
+---
+
+**41.0.** errors
+- db_table: meta_subject_bloodresultsfbc
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**40.0.** action identifier
+**42.0.** action identifier
 - db_table: meta_subject_bloodresultsfbc
 - column: action_identifier
 - type: CharField
@@ -11267,19 +11885,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**41.0.** action item
+**43.0.** action item
 - db_table: meta_subject_bloodresultsfbc
 - column: action_item
 - type: ForeignKey
 ---
 
-**42.0.** parent action item
+**44.0.** parent action item
 - db_table: meta_subject_bloodresultsfbc
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**43.0.** related action item
+**45.0.** related action item
 - db_table: meta_subject_bloodresultsfbc
 - column: related_action_item
 - type: ForeignKey
@@ -11373,12 +11991,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -12067,9 +12684,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -12167,9 +12782,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -12483,6 +13096,92 @@ A user model to learn about the household, wealth and
 ---
 
 
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Requisitions
 
 * chemistry_rft
@@ -12516,7 +13215,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -12526,7 +13225,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -12534,7 +13265,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -12542,7 +13273,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -12550,7 +13281,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -12558,7 +13289,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -12570,7 +13301,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -12578,7 +13309,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -12586,7 +13317,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -12596,7 +13329,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -12608,7 +13341,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -13456,12 +14189,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -14120,6 +14852,92 @@ A user model to learn about the household, wealth and
 ---
 
 
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Requisitions
 
 ### 1120
@@ -14149,7 +14967,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -14159,7 +14977,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -14167,7 +15017,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -14175,7 +15025,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -14183,7 +15033,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -14191,7 +15041,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -14203,7 +15053,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -14211,7 +15061,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -14219,7 +15069,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -14229,7 +15081,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -14241,7 +15093,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -14984,15 +15836,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**11.0.** summary
+**11.0.** reportable summary
 - db_table: meta_subject_bloodresultshba1c
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**12.0.** abnormal summary
+- db_table: meta_subject_bloodresultshba1c
+- column: abnormal_summary
+- type: TextField
+---
+
+**13.0.** errors
+- db_table: meta_subject_bloodresultshba1c
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**12.0.** action identifier
+**14.0.** action identifier
 - db_table: meta_subject_bloodresultshba1c
 - column: action_identifier
 - type: CharField
@@ -15000,19 +15864,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**13.0.** action item
+**15.0.** action item
 - db_table: meta_subject_bloodresultshba1c
 - column: action_item
 - type: ForeignKey
 ---
 
-**14.0.** parent action item
+**16.0.** parent action item
 - db_table: meta_subject_bloodresultshba1c
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**15.0.** related action item
+**17.0.** related action item
 - db_table: meta_subject_bloodresultshba1c
 - column: related_action_item
 - type: ForeignKey
@@ -15259,15 +16123,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**25.0.** summary
+**25.0.** reportable summary
 - db_table: meta_subject_bloodresultsrft
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**26.0.** abnormal summary
+- db_table: meta_subject_bloodresultsrft
+- column: abnormal_summary
+- type: TextField
+---
+
+**27.0.** errors
+- db_table: meta_subject_bloodresultsrft
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**26.0.** action identifier
+**28.0.** action identifier
 - db_table: meta_subject_bloodresultsrft
 - column: action_identifier
 - type: CharField
@@ -15275,19 +16151,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**27.0.** action item
+**29.0.** action item
 - db_table: meta_subject_bloodresultsrft
 - column: action_item
 - type: ForeignKey
 ---
 
-**28.0.** parent action item
+**30.0.** parent action item
 - db_table: meta_subject_bloodresultsrft
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**29.0.** related action item
+**31.0.** related action item
 - db_table: meta_subject_bloodresultsrft
 - column: related_action_item
 - type: ForeignKey
@@ -15610,15 +16486,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**31.0.** summary
+**31.0.** reportable summary
 - db_table: meta_subject_bloodresultslft
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**32.0.** abnormal summary
+- db_table: meta_subject_bloodresultslft
+- column: abnormal_summary
+- type: TextField
+---
+
+**33.0.** errors
+- db_table: meta_subject_bloodresultslft
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**32.0.** action identifier
+**34.0.** action identifier
 - db_table: meta_subject_bloodresultslft
 - column: action_identifier
 - type: CharField
@@ -15626,19 +16514,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**33.0.** action item
+**35.0.** action item
 - db_table: meta_subject_bloodresultslft
 - column: action_item
 - type: ForeignKey
 ---
 
-**34.0.** parent action item
+**36.0.** parent action item
 - db_table: meta_subject_bloodresultslft
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**35.0.** related action item
+**37.0.** related action item
 - db_table: meta_subject_bloodresultslft
 - column: related_action_item
 - type: ForeignKey
@@ -16045,15 +16933,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**39.0.** summary
+**39.0.** reportable summary
 - db_table: meta_subject_bloodresultsfbc
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**40.0.** abnormal summary
+- db_table: meta_subject_bloodresultsfbc
+- column: abnormal_summary
+- type: TextField
+---
+
+**41.0.** errors
+- db_table: meta_subject_bloodresultsfbc
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**40.0.** action identifier
+**42.0.** action identifier
 - db_table: meta_subject_bloodresultsfbc
 - column: action_identifier
 - type: CharField
@@ -16061,19 +16961,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**41.0.** action item
+**43.0.** action item
 - db_table: meta_subject_bloodresultsfbc
 - column: action_item
 - type: ForeignKey
 ---
 
-**42.0.** parent action item
+**44.0.** parent action item
 - db_table: meta_subject_bloodresultsfbc
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**43.0.** related action item
+**45.0.** related action item
 - db_table: meta_subject_bloodresultsfbc
 - column: related_action_item
 - type: ForeignKey
@@ -16313,15 +17213,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**23.0.** summary
+**23.0.** reportable summary
 - db_table: meta_subject_bloodresultslipids
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**24.0.** abnormal summary
+- db_table: meta_subject_bloodresultslipids
+- column: abnormal_summary
+- type: TextField
+---
+
+**25.0.** errors
+- db_table: meta_subject_bloodresultslipids
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**24.0.** action identifier
+**26.0.** action identifier
 - db_table: meta_subject_bloodresultslipids
 - column: action_identifier
 - type: CharField
@@ -16329,19 +17241,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**25.0.** action item
+**27.0.** action item
 - db_table: meta_subject_bloodresultslipids
 - column: action_item
 - type: ForeignKey
 ---
 
-**26.0.** parent action item
+**28.0.** parent action item
 - db_table: meta_subject_bloodresultslipids
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**27.0.** related action item
+**29.0.** related action item
 - db_table: meta_subject_bloodresultslipids
 - column: related_action_item
 - type: ForeignKey
@@ -16435,12 +17347,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -17094,6 +18005,92 @@ A user model to learn about the household, wealth and
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_healtheconomicsupdate
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
 - column: crf_status_comments
 - type: TextField
 ---
@@ -17136,7 +18133,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -17146,7 +18143,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -17154,7 +18183,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -17162,7 +18191,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -17170,7 +18199,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -17178,7 +18207,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -17190,7 +18219,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -17198,7 +18227,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -17206,7 +18235,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -17216,7 +18247,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -17228,7 +18259,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -18076,12 +19107,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -18740,6 +19770,92 @@ A user model to learn about the household, wealth and
 ---
 
 
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Requisitions
 
 ### 1180
@@ -18769,7 +19885,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -18779,7 +19895,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -18787,7 +19935,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -18795,7 +19943,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -18803,7 +19951,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -18811,7 +19959,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -18823,7 +19971,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -18831,7 +19979,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -18839,7 +19987,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -18849,7 +19999,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -18861,7 +20011,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -20022,15 +21172,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**39.0.** summary
+**39.0.** reportable summary
 - db_table: meta_subject_bloodresultsfbc
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**40.0.** abnormal summary
+- db_table: meta_subject_bloodresultsfbc
+- column: abnormal_summary
+- type: TextField
+---
+
+**41.0.** errors
+- db_table: meta_subject_bloodresultsfbc
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**40.0.** action identifier
+**42.0.** action identifier
 - db_table: meta_subject_bloodresultsfbc
 - column: action_identifier
 - type: CharField
@@ -20038,19 +21200,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**41.0.** action item
+**43.0.** action item
 - db_table: meta_subject_bloodresultsfbc
 - column: action_item
 - type: ForeignKey
 ---
 
-**42.0.** parent action item
+**44.0.** parent action item
 - db_table: meta_subject_bloodresultsfbc
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**43.0.** related action item
+**45.0.** related action item
 - db_table: meta_subject_bloodresultsfbc
 - column: related_action_item
 - type: ForeignKey
@@ -20144,12 +21306,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -20808,6 +21969,92 @@ A user model to learn about the household, wealth and
 ---
 
 
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Requisitions
 
 * fbc
@@ -20839,7 +22086,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -20849,7 +22096,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -20857,7 +22136,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -20865,7 +22144,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -20873,7 +22152,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -20881,7 +22160,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -20893,7 +22172,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -20901,7 +22180,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -20909,7 +22188,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -20919,7 +22200,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -20931,7 +22212,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -21779,12 +23060,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -22443,6 +23723,92 @@ A user model to learn about the household, wealth and
 ---
 
 
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Requisitions
 
 ### 1240
@@ -22472,7 +23838,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -22482,7 +23848,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -22490,7 +23888,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -22498,7 +23896,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -22506,7 +23904,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -22514,7 +23912,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -22526,7 +23924,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -22534,7 +23932,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -22542,7 +23940,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -22552,7 +23952,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -22564,7 +23964,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -23307,15 +24707,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**11.0.** summary
+**11.0.** reportable summary
 - db_table: meta_subject_bloodresultshba1c
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**12.0.** abnormal summary
+- db_table: meta_subject_bloodresultshba1c
+- column: abnormal_summary
+- type: TextField
+---
+
+**13.0.** errors
+- db_table: meta_subject_bloodresultshba1c
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**12.0.** action identifier
+**14.0.** action identifier
 - db_table: meta_subject_bloodresultshba1c
 - column: action_identifier
 - type: CharField
@@ -23323,19 +24735,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**13.0.** action item
+**15.0.** action item
 - db_table: meta_subject_bloodresultshba1c
 - column: action_item
 - type: ForeignKey
 ---
 
-**14.0.** parent action item
+**16.0.** parent action item
 - db_table: meta_subject_bloodresultshba1c
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**15.0.** related action item
+**17.0.** related action item
 - db_table: meta_subject_bloodresultshba1c
 - column: related_action_item
 - type: ForeignKey
@@ -23582,15 +24994,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**25.0.** summary
+**25.0.** reportable summary
 - db_table: meta_subject_bloodresultsrft
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**26.0.** abnormal summary
+- db_table: meta_subject_bloodresultsrft
+- column: abnormal_summary
+- type: TextField
+---
+
+**27.0.** errors
+- db_table: meta_subject_bloodresultsrft
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**26.0.** action identifier
+**28.0.** action identifier
 - db_table: meta_subject_bloodresultsrft
 - column: action_identifier
 - type: CharField
@@ -23598,19 +25022,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**27.0.** action item
+**29.0.** action item
 - db_table: meta_subject_bloodresultsrft
 - column: action_item
 - type: ForeignKey
 ---
 
-**28.0.** parent action item
+**30.0.** parent action item
 - db_table: meta_subject_bloodresultsrft
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**29.0.** related action item
+**31.0.** related action item
 - db_table: meta_subject_bloodresultsrft
 - column: related_action_item
 - type: ForeignKey
@@ -23933,15 +25357,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**31.0.** summary
+**31.0.** reportable summary
 - db_table: meta_subject_bloodresultslft
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**32.0.** abnormal summary
+- db_table: meta_subject_bloodresultslft
+- column: abnormal_summary
+- type: TextField
+---
+
+**33.0.** errors
+- db_table: meta_subject_bloodresultslft
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**32.0.** action identifier
+**34.0.** action identifier
 - db_table: meta_subject_bloodresultslft
 - column: action_identifier
 - type: CharField
@@ -23949,19 +25385,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**33.0.** action item
+**35.0.** action item
 - db_table: meta_subject_bloodresultslft
 - column: action_item
 - type: ForeignKey
 ---
 
-**34.0.** parent action item
+**36.0.** parent action item
 - db_table: meta_subject_bloodresultslft
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**35.0.** related action item
+**37.0.** related action item
 - db_table: meta_subject_bloodresultslft
 - column: related_action_item
 - type: ForeignKey
@@ -24368,15 +25804,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**39.0.** summary
+**39.0.** reportable summary
 - db_table: meta_subject_bloodresultsfbc
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**40.0.** abnormal summary
+- db_table: meta_subject_bloodresultsfbc
+- column: abnormal_summary
+- type: TextField
+---
+
+**41.0.** errors
+- db_table: meta_subject_bloodresultsfbc
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**40.0.** action identifier
+**42.0.** action identifier
 - db_table: meta_subject_bloodresultsfbc
 - column: action_identifier
 - type: CharField
@@ -24384,288 +25832,20 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**41.0.** action item
+**43.0.** action item
 - db_table: meta_subject_bloodresultsfbc
 - column: action_item
 - type: ForeignKey
 ---
 
-**42.0.** parent action item
+**44.0.** parent action item
 - db_table: meta_subject_bloodresultsfbc
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**43.0.** related action item
+**45.0.** related action item
 - db_table: meta_subject_bloodresultsfbc
-- column: related_action_item
-- type: ForeignKey
----
-
-
-#### Blood Result: Lipids
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_bloodresultslipids
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_bloodresultslipids
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Requisition and Result Date**
-
-**3.0.** Requisition
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Start typing the requisition identifier or select one from this visit*
-- db_table: meta_subject_bloodresultslipids
-- column: requisition
-- type: ForeignKey
----
-
-**4.0.** Result assay date and time
-- db_table: meta_subject_bloodresultslipids
-- column: assay_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: LDL**
-
-**5.0.** LDL
-- db_table: meta_subject_bloodresultslipids
-- column: ldl_value
-- type: DecimalField
----
-
-**6.0.** units
-- db_table: meta_subject_bloodresultslipids
-- column: ldl_units
-- type: CharField
-- length: 15
-- responses:
-  - `mmol/L`: *mmol/L*
----
-
-**7.0.** abnormal
-- db_table: meta_subject_bloodresultslipids
-- column: ldl_abnormal
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**8.0.** reportable
-- db_table: meta_subject_bloodresultslipids
-- column: ldl_reportable
-- type: CharField
-- length: 25
-- responses:
-  - `N/A`: *Not applicable*
-  - `3`: *Yes, grade 3*
-  - `4`: *Yes, grade 4*
-  - `No`: *Not reportable*
-  - `Already reported`: *Already reported*
-  - `present_at_baseline`: *Present at baseline*
----
-
-**Section: HDL**
-
-**9.0.** HDL
-- db_table: meta_subject_bloodresultslipids
-- column: hdl_value
-- type: DecimalField
----
-
-**10.0.** units
-- db_table: meta_subject_bloodresultslipids
-- column: hdl_units
-- type: CharField
-- length: 15
-- responses:
-  - `mmol/L`: *mmol/L*
----
-
-**11.0.** abnormal
-- db_table: meta_subject_bloodresultslipids
-- column: hdl_abnormal
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**12.0.** reportable
-- db_table: meta_subject_bloodresultslipids
-- column: hdl_reportable
-- type: CharField
-- length: 25
-- responses:
-  - `N/A`: *Not applicable*
-  - `3`: *Yes, grade 3*
-  - `4`: *Yes, grade 4*
-  - `No`: *Not reportable*
-  - `Already reported`: *Already reported*
-  - `present_at_baseline`: *Present at baseline*
----
-
-**Section: TRIG**
-
-**13.0.** Triglycerides
-- db_table: meta_subject_bloodresultslipids
-- column: trig_value
-- type: DecimalField
----
-
-**14.0.** units
-- db_table: meta_subject_bloodresultslipids
-- column: trig_units
-- type: CharField
-- length: 15
-- responses:
-  - `mmol/L`: *mmol/L*
----
-
-**15.0.** abnormal
-- db_table: meta_subject_bloodresultslipids
-- column: trig_abnormal
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**16.0.** reportable
-- db_table: meta_subject_bloodresultslipids
-- column: trig_reportable
-- type: CharField
-- length: 25
-- responses:
-  - `N/A`: *Not applicable*
-  - `3`: *Yes, grade 3*
-  - `4`: *Yes, grade 4*
-  - `No`: *Not reportable*
-  - `Already reported`: *Already reported*
-  - `present_at_baseline`: *Present at baseline*
----
-
-**Section: CHOL**
-
-**17.0.** Total Cholesterol
-- db_table: meta_subject_bloodresultslipids
-- column: chol_value
-- type: DecimalField
----
-
-**18.0.** units
-- db_table: meta_subject_bloodresultslipids
-- column: chol_units
-- type: CharField
-- length: 15
-- responses:
-  - `mmol/L`: *mmol/L*
----
-
-**19.0.** abnormal
-- db_table: meta_subject_bloodresultslipids
-- column: chol_abnormal
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**20.0.** reportable
-- db_table: meta_subject_bloodresultslipids
-- column: chol_reportable
-- type: CharField
-- length: 25
-- responses:
-  - `N/A`: *Not applicable*
-  - `3`: *Yes, grade 3*
-  - `4`: *Yes, grade 4*
-  - `No`: *Not reportable*
-  - `Already reported`: *Already reported*
-  - `present_at_baseline`: *Present at baseline*
----
-
-**Section: Conclusion**
-
-**21.0.** Are any of the above results abnormal?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Abnormal results present at baseline or continuing from baseline not included.*
-- db_table: meta_subject_bloodresultslipids
-- column: results_abnormal
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**22.0.** If any results are abnormal, are results within grade 3 or above?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If YES, this value will open Adverse Event Form. Grade 3 and 4 results present at baseline or continuing from baseline not included*
-- db_table: meta_subject_bloodresultslipids
-- column: results_reportable
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Summary**
-
-**23.0.** summary
-- db_table: meta_subject_bloodresultslipids
-- column: summary
-- type: TextField
----
-
-**Section: Action**
-
-**24.0.** action identifier
-- db_table: meta_subject_bloodresultslipids
-- column: action_identifier
-- type: CharField
-- length: 50
-- responses: *free text*
----
-
-**25.0.** action item
-- db_table: meta_subject_bloodresultslipids
-- column: action_item
-- type: ForeignKey
----
-
-**26.0.** parent action item
-- db_table: meta_subject_bloodresultslipids
-- column: parent_action_item
-- type: ForeignKey
----
-
-**27.0.** related action item
-- db_table: meta_subject_bloodresultslipids
 - column: related_action_item
 - type: ForeignKey
 ---
@@ -24758,12 +25938,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -25452,9 +26631,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -25552,9 +26729,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -25863,6 +27038,92 @@ A user model to learn about the household, wealth and
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_healtheconomicsupdate
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
 - column: crf_status_comments
 - type: TextField
 ---
@@ -25905,7 +27166,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -25915,7 +27176,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -25923,7 +27216,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -25931,7 +27224,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -25939,7 +27232,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -25947,7 +27240,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -25959,7 +27252,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -25967,7 +27260,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -25975,7 +27268,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -25985,7 +27280,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -25997,7 +27292,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -26718,12 +28013,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -27412,9 +28706,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -27512,9 +28804,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -27828,6 +29118,92 @@ A user model to learn about the household, wealth and
 ---
 
 
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Requisitions
 
 ### 1300
@@ -27857,7 +29233,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -27867,7 +29243,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -27875,7 +29283,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -27883,7 +29291,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -27891,7 +29299,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -27899,7 +29307,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -27911,7 +29319,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -27919,7 +29327,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -27927,7 +29335,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -27937,7 +29347,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -27949,7 +29359,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -28797,12 +30207,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -29491,9 +30900,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -29591,9 +30998,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -29907,6 +31312,92 @@ A user model to learn about the household, wealth and
 ---
 
 
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Requisitions
 
 * chemistry_rft
@@ -29942,7 +31433,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -29952,7 +31443,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -29960,7 +31483,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -29968,7 +31491,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -29976,7 +31499,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -29984,7 +31507,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -29996,7 +31519,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -30004,7 +31527,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -30012,7 +31535,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -30022,7 +31547,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -30034,7 +31559,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -30755,12 +32280,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -31449,9 +32973,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -31549,9 +33071,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -31865,6 +33385,92 @@ A user model to learn about the household, wealth and
 ---
 
 
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Requisitions
 
 ### 1360
@@ -31894,7 +33500,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -31904,7 +33510,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -31912,7 +33550,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -31920,7 +33558,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -31928,7 +33566,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -31936,7 +33574,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -31948,7 +33586,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -31956,7 +33594,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -31964,7 +33602,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -31974,7 +33614,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -31986,7 +33626,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -32729,15 +34369,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**11.0.** summary
+**11.0.** reportable summary
 - db_table: meta_subject_bloodresultshba1c
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**12.0.** abnormal summary
+- db_table: meta_subject_bloodresultshba1c
+- column: abnormal_summary
+- type: TextField
+---
+
+**13.0.** errors
+- db_table: meta_subject_bloodresultshba1c
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**12.0.** action identifier
+**14.0.** action identifier
 - db_table: meta_subject_bloodresultshba1c
 - column: action_identifier
 - type: CharField
@@ -32745,19 +34397,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**13.0.** action item
+**15.0.** action item
 - db_table: meta_subject_bloodresultshba1c
 - column: action_item
 - type: ForeignKey
 ---
 
-**14.0.** parent action item
+**16.0.** parent action item
 - db_table: meta_subject_bloodresultshba1c
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**15.0.** related action item
+**17.0.** related action item
 - db_table: meta_subject_bloodresultshba1c
 - column: related_action_item
 - type: ForeignKey
@@ -33004,15 +34656,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**25.0.** summary
+**25.0.** reportable summary
 - db_table: meta_subject_bloodresultsrft
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**26.0.** abnormal summary
+- db_table: meta_subject_bloodresultsrft
+- column: abnormal_summary
+- type: TextField
+---
+
+**27.0.** errors
+- db_table: meta_subject_bloodresultsrft
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**26.0.** action identifier
+**28.0.** action identifier
 - db_table: meta_subject_bloodresultsrft
 - column: action_identifier
 - type: CharField
@@ -33020,19 +34684,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**27.0.** action item
+**29.0.** action item
 - db_table: meta_subject_bloodresultsrft
 - column: action_item
 - type: ForeignKey
 ---
 
-**28.0.** parent action item
+**30.0.** parent action item
 - db_table: meta_subject_bloodresultsrft
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**29.0.** related action item
+**31.0.** related action item
 - db_table: meta_subject_bloodresultsrft
 - column: related_action_item
 - type: ForeignKey
@@ -33355,15 +35019,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**31.0.** summary
+**31.0.** reportable summary
 - db_table: meta_subject_bloodresultslft
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**32.0.** abnormal summary
+- db_table: meta_subject_bloodresultslft
+- column: abnormal_summary
+- type: TextField
+---
+
+**33.0.** errors
+- db_table: meta_subject_bloodresultslft
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**32.0.** action identifier
+**34.0.** action identifier
 - db_table: meta_subject_bloodresultslft
 - column: action_identifier
 - type: CharField
@@ -33371,19 +35047,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**33.0.** action item
+**35.0.** action item
 - db_table: meta_subject_bloodresultslft
 - column: action_item
 - type: ForeignKey
 ---
 
-**34.0.** parent action item
+**36.0.** parent action item
 - db_table: meta_subject_bloodresultslft
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**35.0.** related action item
+**37.0.** related action item
 - db_table: meta_subject_bloodresultslft
 - column: related_action_item
 - type: ForeignKey
@@ -33790,15 +35466,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**39.0.** summary
+**39.0.** reportable summary
 - db_table: meta_subject_bloodresultsfbc
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**40.0.** abnormal summary
+- db_table: meta_subject_bloodresultsfbc
+- column: abnormal_summary
+- type: TextField
+---
+
+**41.0.** errors
+- db_table: meta_subject_bloodresultsfbc
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**40.0.** action identifier
+**42.0.** action identifier
 - db_table: meta_subject_bloodresultsfbc
 - column: action_identifier
 - type: CharField
@@ -33806,19 +35494,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**41.0.** action item
+**43.0.** action item
 - db_table: meta_subject_bloodresultsfbc
 - column: action_item
 - type: ForeignKey
 ---
 
-**42.0.** parent action item
+**44.0.** parent action item
 - db_table: meta_subject_bloodresultsfbc
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**43.0.** related action item
+**45.0.** related action item
 - db_table: meta_subject_bloodresultsfbc
 - column: related_action_item
 - type: ForeignKey
@@ -34058,15 +35746,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**23.0.** summary
+**23.0.** reportable summary
 - db_table: meta_subject_bloodresultslipids
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**24.0.** abnormal summary
+- db_table: meta_subject_bloodresultslipids
+- column: abnormal_summary
+- type: TextField
+---
+
+**25.0.** errors
+- db_table: meta_subject_bloodresultslipids
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**24.0.** action identifier
+**26.0.** action identifier
 - db_table: meta_subject_bloodresultslipids
 - column: action_identifier
 - type: CharField
@@ -34074,19 +35774,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**25.0.** action item
+**27.0.** action item
 - db_table: meta_subject_bloodresultslipids
 - column: action_item
 - type: ForeignKey
 ---
 
-**26.0.** parent action item
+**28.0.** parent action item
 - db_table: meta_subject_bloodresultslipids
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**27.0.** related action item
+**29.0.** related action item
 - db_table: meta_subject_bloodresultslipids
 - column: related_action_item
 - type: ForeignKey
@@ -34180,12 +35880,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -34874,9 +36573,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -34974,9 +36671,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -35285,6 +36980,92 @@ A user model to learn about the household, wealth and
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_healtheconomicsupdate
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
 - column: crf_status_comments
 - type: TextField
 ---
@@ -35327,7 +37108,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -35337,7 +37118,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -35345,7 +37158,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -35353,7 +37166,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -35361,7 +37174,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -35369,7 +37182,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -35381,7 +37194,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -35389,7 +37202,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -35397,7 +37210,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -35407,7 +37222,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -35419,7 +37234,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -36140,12 +37955,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -36834,9 +38648,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -36934,9 +38746,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -37250,6 +39060,92 @@ A user model to learn about the household, wealth and
 ---
 
 
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Requisitions
 
 ### 1420
@@ -37279,7 +39175,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -37289,7 +39185,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -37297,7 +39225,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -37305,7 +39233,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -37313,7 +39241,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -37321,7 +39249,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -37333,7 +39261,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -37341,7 +39269,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -37349,7 +39277,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -37359,7 +39289,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -37371,7 +39301,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -38219,12 +40149,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -38913,9 +40842,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -39013,9 +40940,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -39329,6 +41254,92 @@ A user model to learn about the household, wealth and
 ---
 
 
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Requisitions
 
 ### 1450
@@ -39358,7 +41369,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -39368,7 +41379,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -39376,7 +41419,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -39384,7 +41427,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -39392,7 +41435,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -39400,7 +41443,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -39412,7 +41455,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -39420,7 +41463,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -39428,7 +41471,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -39438,7 +41483,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -39450,7 +41495,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -40171,12 +42216,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -40865,9 +42909,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -40965,9 +43007,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -41281,6 +43321,92 @@ A user model to learn about the household, wealth and
 ---
 
 
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Requisitions
 
 ### 1480
@@ -41310,7 +43436,7 @@ A user model to learn about the household, wealth and
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Vitals**
+**Section: Weight**
 
 **3.0.** Weight:
 
@@ -41320,7 +43446,39 @@ A user model to learn about the household, wealth and
 - type: DecimalField
 ---
 
-**4.0.** Blood pressure: systolic (first reading)
+**Section: Waist circumference**
+
+**4.0.** Was the patient's waist circumference measured today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Waist circumference may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_measured
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**5.0.** Waist circumference
+
+&nbsp;&nbsp;&nbsp;&nbsp; *in centimeters*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference
+- type: DecimalField
+---
+
+**6.0.** If waist circumference not measured, please explain ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A reason not measured may be provided at anytime but is required at 36 and 48 months*
+- db_table: meta_subject_followupvitals
+- column: waist_circumference_comment
+- type: TextField
+---
+
+**Section: BP and heart rate**
+
+**7.0.** Blood pressure: systolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -41328,7 +43486,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**5.0.** Blood pressure: diastolic (first reading)
+**8.0.** Blood pressure: diastolic (first reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -41336,7 +43494,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**6.0.** Blood pressure: systolic (second reading)
+**9.0.** Blood pressure: systolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in mm. format SYS, e.g. 120*
 - db_table: meta_subject_followupvitals
@@ -41344,7 +43502,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**7.0.** Blood pressure: diastolic (second reading)
+**10.0.** Blood pressure: diastolic (second reading)
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in Hg. format DIA, e.g. 80*
 - db_table: meta_subject_followupvitals
@@ -41352,7 +43510,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**8.0.** Does the patient have severe hypertension?
+**11.0.** Does the patient have severe hypertension?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Based on the above readings. Severe HTN is any BP reading > 180/110mmHg*
 - db_table: meta_subject_followupvitals
@@ -41364,7 +43522,7 @@ A user model to learn about the household, wealth and
   - `No`: *No*
 ---
 
-**9.0.** Heart rate:
+**12.0.** Heart rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *BPM*
 - db_table: meta_subject_followupvitals
@@ -41372,7 +43530,7 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**10.0.** Respiratory rate:
+**13.0.** Respiratory rate:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *breaths/min*
 - db_table: meta_subject_followupvitals
@@ -41380,7 +43538,9 @@ A user model to learn about the household, wealth and
 - type: IntegerField
 ---
 
-**11.0.** Temperature:
+**Section: Temperature**
+
+**14.0.** Temperature:
 
 &nbsp;&nbsp;&nbsp;&nbsp; *in degrees Celcius*
 - db_table: meta_subject_followupvitals
@@ -41390,7 +43550,7 @@ A user model to learn about the household, wealth and
 
 **Section: CRF Status**
 
-**12.0.** CRF status
+**15.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_followupvitals
@@ -41402,7 +43562,7 @@ A user model to learn about the household, wealth and
   - `COMPLETE`: *Complete*
 ---
 
-**13.0.** Any comments related to status of this CRF
+**16.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_followupvitals
@@ -42145,15 +44305,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**11.0.** summary
+**11.0.** reportable summary
 - db_table: meta_subject_bloodresultshba1c
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**12.0.** abnormal summary
+- db_table: meta_subject_bloodresultshba1c
+- column: abnormal_summary
+- type: TextField
+---
+
+**13.0.** errors
+- db_table: meta_subject_bloodresultshba1c
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**12.0.** action identifier
+**14.0.** action identifier
 - db_table: meta_subject_bloodresultshba1c
 - column: action_identifier
 - type: CharField
@@ -42161,19 +44333,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**13.0.** action item
+**15.0.** action item
 - db_table: meta_subject_bloodresultshba1c
 - column: action_item
 - type: ForeignKey
 ---
 
-**14.0.** parent action item
+**16.0.** parent action item
 - db_table: meta_subject_bloodresultshba1c
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**15.0.** related action item
+**17.0.** related action item
 - db_table: meta_subject_bloodresultshba1c
 - column: related_action_item
 - type: ForeignKey
@@ -42420,15 +44592,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**25.0.** summary
+**25.0.** reportable summary
 - db_table: meta_subject_bloodresultsrft
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**26.0.** abnormal summary
+- db_table: meta_subject_bloodresultsrft
+- column: abnormal_summary
+- type: TextField
+---
+
+**27.0.** errors
+- db_table: meta_subject_bloodresultsrft
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**26.0.** action identifier
+**28.0.** action identifier
 - db_table: meta_subject_bloodresultsrft
 - column: action_identifier
 - type: CharField
@@ -42436,19 +44620,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**27.0.** action item
+**29.0.** action item
 - db_table: meta_subject_bloodresultsrft
 - column: action_item
 - type: ForeignKey
 ---
 
-**28.0.** parent action item
+**30.0.** parent action item
 - db_table: meta_subject_bloodresultsrft
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**29.0.** related action item
+**31.0.** related action item
 - db_table: meta_subject_bloodresultsrft
 - column: related_action_item
 - type: ForeignKey
@@ -42771,15 +44955,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**31.0.** summary
+**31.0.** reportable summary
 - db_table: meta_subject_bloodresultslft
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**32.0.** abnormal summary
+- db_table: meta_subject_bloodresultslft
+- column: abnormal_summary
+- type: TextField
+---
+
+**33.0.** errors
+- db_table: meta_subject_bloodresultslft
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**32.0.** action identifier
+**34.0.** action identifier
 - db_table: meta_subject_bloodresultslft
 - column: action_identifier
 - type: CharField
@@ -42787,19 +44983,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**33.0.** action item
+**35.0.** action item
 - db_table: meta_subject_bloodresultslft
 - column: action_item
 - type: ForeignKey
 ---
 
-**34.0.** parent action item
+**36.0.** parent action item
 - db_table: meta_subject_bloodresultslft
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**35.0.** related action item
+**37.0.** related action item
 - db_table: meta_subject_bloodresultslft
 - column: related_action_item
 - type: ForeignKey
@@ -43206,15 +45402,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**39.0.** summary
+**39.0.** reportable summary
 - db_table: meta_subject_bloodresultsfbc
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**40.0.** abnormal summary
+- db_table: meta_subject_bloodresultsfbc
+- column: abnormal_summary
+- type: TextField
+---
+
+**41.0.** errors
+- db_table: meta_subject_bloodresultsfbc
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**40.0.** action identifier
+**42.0.** action identifier
 - db_table: meta_subject_bloodresultsfbc
 - column: action_identifier
 - type: CharField
@@ -43222,19 +45430,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**41.0.** action item
+**43.0.** action item
 - db_table: meta_subject_bloodresultsfbc
 - column: action_item
 - type: ForeignKey
 ---
 
-**42.0.** parent action item
+**44.0.** parent action item
 - db_table: meta_subject_bloodresultsfbc
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**43.0.** related action item
+**45.0.** related action item
 - db_table: meta_subject_bloodresultsfbc
 - column: related_action_item
 - type: ForeignKey
@@ -43474,15 +45682,27 @@ A user model to capture both FBG/RBG and OGTT
 
 **Section: Summary**
 
-**23.0.** summary
+**23.0.** reportable summary
 - db_table: meta_subject_bloodresultslipids
-- column: summary
+- column: reportable_summary
+- type: TextField
+---
+
+**24.0.** abnormal summary
+- db_table: meta_subject_bloodresultslipids
+- column: abnormal_summary
+- type: TextField
+---
+
+**25.0.** errors
+- db_table: meta_subject_bloodresultslipids
+- column: errors
 - type: TextField
 ---
 
 **Section: Action**
 
-**24.0.** action identifier
+**26.0.** action identifier
 - db_table: meta_subject_bloodresultslipids
 - column: action_identifier
 - type: CharField
@@ -43490,19 +45710,19 @@ A user model to capture both FBG/RBG and OGTT
 - responses: *free text*
 ---
 
-**25.0.** action item
+**27.0.** action item
 - db_table: meta_subject_bloodresultslipids
 - column: action_item
 - type: ForeignKey
 ---
 
-**26.0.** parent action item
+**28.0.** parent action item
 - db_table: meta_subject_bloodresultslipids
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**27.0.** related action item
+**29.0.** related action item
 - db_table: meta_subject_bloodresultslipids
 - column: related_action_item
 - type: ForeignKey
@@ -43596,12 +45816,11 @@ A user model to capture both FBG/RBG and OGTT
 
 **10.0.** stock codes
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes seperated by comma, no spaces*
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
 - db_table: meta_subject_studymedication
 - column: stock_codes
-- type: CharField
+- type: TextField
 - length: 30
-- responses: *free text*
 ---
 
 **Section: CRF Status**
@@ -44290,9 +46509,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -44390,9 +46607,7 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
-  - `deformities`: *Deformities*
   - `callous_formation`: *Callous formation*
-  - `dry_skin_callus`: *Dry skin, callus*
   - `deformity_amputation`: *Deformity – amputation*
   - `deformity_flat_feet`: *Deformity – flat feet*
   - `deformity_halux_valgus`: *Deformity – halux valgus*
@@ -44701,6 +46916,92 @@ A user model to learn about the household, wealth and
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_healtheconomicsupdate
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Next Appointment
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_nextappointment
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_nextappointment
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Appointment**
+
+**3.0.** Is the subject going off schedule today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If going off schedule today, additional CRFs will be added for today.*
+- db_table: meta_subject_nextappointment
+- column: offschedule_today
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Next scheduled routine/facility appointment
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Should fall on an valid clinic day for this facility*
+- db_table: meta_subject_nextappointment
+- column: appt_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Appointment (Details)**
+
+**5.0.** Which study visit code is closest to this appointment date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Click SAVE to let the EDC suggest. Once selected, interim appointments will be flagged as not required/missed.*
+- db_table: meta_subject_nextappointment
+- column: visitschedule
+- type: ForeignKey
+- length: 15
+---
+
+**6.0.** health facility
+- db_table: meta_subject_nextappointment
+- column: health_facility
+- type: ForeignKey
+---
+
+**Section: CRF status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_nextappointment
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_nextappointment
 - column: crf_status_comments
 - type: TextField
 ---
@@ -45341,4 +47642,4 @@ A user model to capture delivery and birth outcomes.
 
 
 
-*Rendered on 2024-12-05 14:44*
+* Version v1.1.9 * Rendered on 2025-07-25 02:47*
