@@ -9,16 +9,15 @@ an .env file.
         --settings=tests.form_describer_settings
 """
 
-import os
 import sys
 from importlib.metadata import version
 from pathlib import Path
 
-from edc_test_settings.default_test_settings import DefaultTestSettings
+from edc_test_settings.default_test_settings import (
+    DefaultTestSettings as BaseDefaultTestSettings,
+)
 
 from .get_test_setting_opts import get_test_setting_opts
-
-# from tests.test_setting_options import get_test_setting_opts
 
 app_name = "meta_edc"
 base_dir = Path(__file__).parent.parent.parent
@@ -37,18 +36,24 @@ opts.update(
     ],
     DJANGO_REVISION_IGNORE_WORKING_DIR=True,
     REVISION=version(app_name),
-    DATABASES={
-        "default": {
-            "ENGINE": "django.db.backends.mysql",
-            "NAME": os.getenv("DB_NAME", "mysql"),
-            "USER": os.getenv("DB_USER", "root"),
-            "PASSWORD": os.getenv("DB_PASSWORD", "mysql"),
-            "HOST": os.getenv("DB_HOST", "mysql"),
-            "PORT": os.getenv("DB_PORT", "3306"),
-        }
-    },
 )
-project_settings = DefaultTestSettings(**opts).settings
+
+
+class DefaultTestSettings(BaseDefaultTestSettings):
+    def mysql_databases_setting(client: bool | None = None) -> dict:
+        return {
+            "default": {
+                "ENGINE": "django.db.backends.mysql",
+                "NAME": "mysql",
+                "USER": "root",
+                "PASSWORD": "mysql",
+                "HOST": "127.0.0.1",
+                "PORT": 3306,
+            }
+        }
+
+
+project_settings = DefaultTestSettings(**opts, selected_database="mysql").settings
 
 for k, v in project_settings.items():
     setattr(sys.modules[__name__], k, v)
