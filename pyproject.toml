@@ -1,15 +1,8 @@
 [project]
 name = "meta-edc"
-dynamic = ["version"]
+version = "1.1.9"
 description = "META Trial EDC (https://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
-dependencies = [
-    "edc==1.2.0",
-    "beautifulsoup4",
-    "celery[redis]",
-    "django-pylabels",
-]
-requires-python = '>=3.12'
 keywords = [
     "django",
     "clinicedc",
@@ -35,46 +28,56 @@ classifiers = [
 ]
 license = "GPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
+requires-python = '>=3.12'
+dependencies = [
+    "beautifulsoup4>=4.13.4",
+    "celery[redis]>=5.5.3",
+    "django-pylabels>=1.0.1",
+    "edc>=1.2.0",
+]
 
-[project.optional-dependencies]
-tests = [
-    "edc-test-settings",
-    "edc_test_utils",
-    "model_bakery",
-    "time_machine",
-    "faker",
-    "django_webtest",
+[dependency-groups]
+test = [
+    "django-webtest>=1.9.13",
+    "edc-test-settings>=1.1.2",
+    "edc-test-utils>=1.0.0",
+    "faker>=37.4.2",
+    "model-bakery>=1.20.5",
+    "time-machine>=2.16.0",
 ]
 
 [build-system]
-requires = ["setuptools>=64", "setuptools_scm>=8"]
-build-backend = "setuptools.build_meta"
+requires = ["uv_build>=0.8.2,<0.9.0"]
+build-backend = "uv_build"
 
-[tool.setuptools_scm]
-version_file = "_version.py"
-
-[tool.setuptools]
-include-package-data = true
-
-[tool.setuptools.package-data]
-"meta_*" = ["templates/**/*", "locale/*/LC_MESSAGES/*.mo", "/static/*"]
-
-[tool.setuptools.packages.find]
-where = ["."]
-include = [
-    "meta_*",
+[tool.uv.build-backend]
+module-root = ""
+module-name = [
+    "meta_ae",
+    "meta_analytics",
+    "meta_auth",
+    "meta_consent",
+    "meta_dashboard",
+    "meta_data_manager",
+    "meta_edc",
+    "meta_export",
+    "meta_labs",
+    "meta_lists",
+    "meta_pharmacy",
+    "meta_prn",
+    "meta_rando",
+    "meta_reports",
+    "meta_screening",
+    "meta_sites",
+    "meta_subject",
+    "meta_visit_schedule",
 ]
-exclude = [
-    "examples*",
-    "tools*",
-    "docs*",
-    "bin*",
-    "image*",
-    "tests*",
-    "meta_*/tests/*",
-    "meta_*/notebooks*",
-]
-namespaces = false  # true by default
+source-include = ["meta_*/templates/**", "meta_*/locale/**", "locale/**"]
+source-exclude = ["meta_*/tests/**", "meta_*/notebooks/**", "tests/**"]
+namespace = false
+
+#[tool.uv]
+#cache-keys = [{ file = "pyproject.toml" }, { git = true }]
 
 [tool.black]
 line-length = 95

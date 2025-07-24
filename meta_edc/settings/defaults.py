@@ -32,9 +32,18 @@ env = environ.Env(
     TWILIO_ENABLED=(bool, False),
     EDC_SITES_DOMAIN_SUFFIX="meta4.clinicedc.org",
 )
+if os.getenv("DJANGO_BASE_DIR"):
+    # for deployed systems where meta-edc is pip installed.
+    # same dir as manage.py
+    BASE_DIR = Path(os.getenv("DJANGO_BASE_DIR"))
+else:
+    # when running from a repo
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
-ENV_DIR = Path(__file__).resolve().parent.parent.parent
+if os.getenv("DJANGO_ENV_DIR"):
+    ENV_DIR = Path(os.getenv("DJANGO_ENV_DIR"))
+else:
+    ENV_DIR = Path(__file__).resolve().parent.parent.parent
 
 # copy your .env file from .envs/ to BASE_DIR
 if "test" in sys.argv:
@@ -59,6 +68,12 @@ DEBUG = env("DJANGO_DEBUG")
 SECRET_KEY = env.str("DJANGO_SECRET_KEY")
 
 APP_NAME = env.str("DJANGO_APP_NAME")
+
+DJANGO_REVISION_IGNORE_WORKING_DIR = env.str("DJANGO_REVISION_IGNORE_WORKING_DIR")
+if DJANGO_REVISION_IGNORE_WORKING_DIR:
+    # get the version from the package and not a git tag
+    # this overrides django_revision
+    REVISION = version(APP_NAME)
 
 LIVE_SYSTEM = env.str("DJANGO_LIVE_SYSTEM")
 
