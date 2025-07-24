@@ -12,30 +12,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Install pycups and words dependency
         run: |
           sudo sed -i 's/azure\.//' /etc/apt/sources.list
           sudo apt-get -y update
           sudo apt-get install libcups2-dev wamerican
 
-      - name: Checkout code
-        uses: actions/checkout@v3
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.13'
 
-      - name: Install uv, activate environment and install deps
+      - name: Install uv, activate environment
         uses: astral-sh/setup-uv@v6
         with:
           activate-environment: true
+          enable-cache: true
 
       - name: Install Python with the version in .python-version
         run: uv python install
 
       - name: Install the project
-        run: uv sync --all-extras
+        run: uv sync --all-extras --dev
 
       - name: Run management command
         env:
