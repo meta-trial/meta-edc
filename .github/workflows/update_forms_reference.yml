@@ -48,7 +48,7 @@ jobs:
       - name: Install the project
         run: uv sync --all-extras --all-groups
 
-      - name: Run management command
+      - name: Run migrations
         env:
           DJANGO_SETTINGS_MODULE: meta_edc.settings.form_describer_settings
           DATABASE_HOST: mysql
@@ -58,6 +58,16 @@ jobs:
           DATABASE_PASSWORD: mysql
         run: |
           python manage.py migrate --settings=meta_edc.settings.form_describer_settings
+
+      - name: Run management command
+        env:
+          DJANGO_SETTINGS_MODULE: meta_edc.settings.form_describer_settings
+          DATABASE_HOST: mysql
+          DATABASE_PORT: 3306
+          DATABASE_NAME: mysql
+          DATABASE_USER: root
+          DATABASE_PASSWORD: mysql
+        run: |
           python manage.py make_forms_reference \
               --app_label meta_subject \
               --admin_site meta_subject_admin \
