@@ -1,6 +1,12 @@
 Changes
 -------
 
+1.1.9
+-----
+- fix qareports note_model_admin
+- switch to pyproject.toml for packaging
+- bump edc=1.2.0
+
 1.1.8
 -----
 - add waist circumference to followupvitals and require

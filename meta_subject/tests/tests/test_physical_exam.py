@@ -28,6 +28,7 @@ class TestPhysicalExam(MetaTestCaseMixin, TestCase):
             "respiratory_rate": 30,
             "sys_blood_pressure": 80,
             "temperature": 37,
+            "waist_circumference_measured": YES,
             "waist_circumference": 100,
             "weight": 65,
             "crf_status": COMPLETE,

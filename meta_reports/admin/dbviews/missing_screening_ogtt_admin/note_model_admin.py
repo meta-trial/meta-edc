@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django_audit_fields import audit_fieldset_tuple
-from edc_qareports.modeladmin_mixins import NoteModelAdminMixin
+from edc_model_admin.mixins import TemplatesModelAdminMixin
+from edc_sites.admin import SiteModelAdminMixin
 
 from ....admin_site import meta_reports_admin
 from ....forms import MissingOgttNoteForm
@@ -9,7 +10,9 @@ from ....models import MissingOgttNote
 
 @admin.register(MissingOgttNote, site=meta_reports_admin)
 class MissingOgttNoteModelAdmin(
-    NoteModelAdminMixin,
+    # NoteModelAdminMixin,
+    SiteModelAdminMixin,
+    TemplatesModelAdminMixin,
     admin.ModelAdmin,
 ):
     """A modeladmin class for the Note model."""
@@ -51,3 +54,28 @@ class MissingOgttNoteModelAdmin(
         "result_status": admin.VERTICAL,
         "fasting": admin.VERTICAL,
     }
+
+    list_display = [
+        # "dashboard",
+        "subject_identifier",
+        "note",
+        # "report",
+        "status",
+        # "report_note",
+        "report_datetime",
+    ]
+
+    # radio_fields = {"status": admin.VERTICAL}
+
+    list_filter = [
+        "report_datetime",
+        "status",
+        "report_model",
+        "user_created",
+        "user_modified",
+    ]
+
+    search_fields = ["subject_identifier", "name"]
+
+    def get_view_only_site_ids_for_user(self, request) -> list[int]:
+        return [s.id for s in request.user.userprofile.sites.all() if s.id != request.site.id]

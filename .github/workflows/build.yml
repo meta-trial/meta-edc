@@ -17,7 +17,7 @@ jobs:
       matrix:
         codebase: ['Prod', 'Dev']
         python-version: ['3.12', '3.13']
-        django-version: ['5.1', 'dev']
+        django-version: ['5.2', 'dev']
         database-engine: ["mysql", "postgres"]
         exclude:
           - codebase: 'Prod'
@@ -86,6 +86,6 @@ jobs:
           EDC_CODEBASE: ${{ matrix.codebase }}
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
         with:
           name: Python ${{ matrix.python-version }}

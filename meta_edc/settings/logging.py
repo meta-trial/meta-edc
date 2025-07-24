@@ -12,12 +12,17 @@ LOG_FOLDER = env.str("DJANGO_LOG_FOLDER")
 LOGGING_FILE_LEVEL = env.str("DJANGO_LOGGING_FILE_LEVEL")
 LOGGING_SYSLOG_LEVEL = env.str("DJANGO_LOGGING_SYSLOG_LEVEL")
 
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "filters": {
         "require_debug_false": {"()": "django.utils.log.RequireDebugFalse"},
         "require_debug_true": {"()": "django.utils.log.RequireDebugTrue"},
+        "ignore_specific_ip": {
+            "()": "edc_utils.logging_filters.IgnoreSpecificIPDisallowedHost",
+            "ip_to_ignore": "178.128.175.239",
+        },
     },
     "formatters": {
         "verbose": {
