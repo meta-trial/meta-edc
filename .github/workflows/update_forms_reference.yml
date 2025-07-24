@@ -17,7 +17,7 @@ jobs:
           sudo sed -i 's/azure\.//' /etc/apt/sources.list
           sudo apt-get -y update
           sudo apt-get install libcups2-dev wamerican
-      
+
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -41,8 +41,8 @@ jobs:
         env:
           DJANGO_SETTINGS_MODULE: meta_edc.settings.debug
         run: |
-          python manage.py make_forms_reference
-            --app_label meta_subject
-            --admin_site meta_subject_admin
-            --visit_schedule visit_schedule
-
+          python manage.py make_forms_reference \
+              --app_label meta_subject \
+              --admin_site meta_subject_admin \
+              --visit_schedule visit_schedule \
+              --settings=tests.form_describer_settings

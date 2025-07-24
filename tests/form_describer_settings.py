@@ -1,0 +1,37 @@
+#!/usr/bin/env python
+""" So `make_forms_reference` can be run in gh-actions without
+an .env file.
+
+    python manage.py make_forms_reference \
+        --app-label meta_subject \
+        --admin-site meta_subject_admin \
+        --visit-schedule visit_schedule \
+        --settings=tests.form_describer_settings
+"""
+
+import sys
+from pathlib import Path
+
+from edc_test_settings.default_test_settings import DefaultTestSettings
+
+from .test_setting_options import get_test_setting_opts
+
+app_name = "meta_edc"
+base_dir = Path(__file__).parent.parent
+opts = get_test_setting_opts(app_name, base_dir)
+opts.update(
+    # hack for forms-reference in gh-actions
+    DJANGO_CRYPTO_FIELDS_TEST_MODULE="--settings=tests.form_describer_settings",
+    # hack for forms-reference in gh-actions
+    SILENCED_SYSTEM_CHECKS=[
+        "edc_sites.E001",
+        "edc_sites.E002",
+        "sites.E101",
+        "edc_navbar.E002",
+        "edc_navbar.E003",
+    ],
+)
+project_settings = DefaultTestSettings(**opts).settings
+
+for k, v in project_settings.items():
+    setattr(sys.modules[__name__], k, v)
