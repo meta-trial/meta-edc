@@ -20,12 +20,16 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Install uv based on the version defined in pyproject.toml
+      - name: Install uv, activate environment and install deps
         uses: astral-sh/setup-uv@v6
         with:
           activate-environment: true
-      - run: |
-          uv pip install .
+
+      - name: Install Python with the version in .python-version
+        run: uv python install
+
+      - name: Install the project
+        run: uv sync
 
       - name: Run management command
         env:
@@ -35,3 +39,4 @@ jobs:
             --app_label meta_subject
             --admin_site meta_subject_admin
             --visit_schedule visit_schedule
+
