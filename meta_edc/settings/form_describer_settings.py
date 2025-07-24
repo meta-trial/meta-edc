@@ -13,9 +13,7 @@ import sys
 from importlib.metadata import version
 from pathlib import Path
 
-from edc_test_settings.default_test_settings import (
-    DefaultTestSettings as BaseDefaultTestSettings,
-)
+from edc_test_settings.default_test_settings import DefaultTestSettings
 
 from .get_test_setting_opts import get_test_setting_opts
 
@@ -39,22 +37,7 @@ opts.update(
 )
 
 
-class DefaultTestSettings(BaseDefaultTestSettings):
-    @staticmethod
-    def mysql_databases_setting(client: bool | None = None) -> dict:
-        return {
-            "default": {
-                "ENGINE": "django.db.backends.mysql",
-                "NAME": "mysql",
-                "USER": "root",
-                "PASSWORD": "mysql",
-                "HOST": "127.0.0.1",
-                "PORT": 3306,
-            }
-        }
-
-
-project_settings = DefaultTestSettings(**opts, selected_database="mysql").settings
+project_settings = DefaultTestSettings(**opts, selected_database="sqlite").settings
 
 for k, v in project_settings.items():
     setattr(sys.modules[__name__], k, v)
