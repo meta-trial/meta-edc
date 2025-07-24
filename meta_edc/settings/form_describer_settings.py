@@ -9,6 +9,7 @@ an .env file.
         --settings=tests.form_describer_settings
 """
 
+import os
 import sys
 from importlib.metadata import version
 from pathlib import Path
@@ -36,16 +37,16 @@ opts.update(
     ],
     DJANGO_REVISION_IGNORE_WORKING_DIR=True,
     REVISION=version(app_name),
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.getenv('DB_NAME', 'mysql'),
-            'USER': os.getenv('DB_USER', 'root'),
-            'PASSWORD': os.getenv('DB_PASSWORD', 'mysql'),
-            'HOST': os.getenv('DB_HOST', 'mysql'),
-            'PORT': os.getenv('DB_PORT', '3306'),
+    DATABASES={
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.getenv("DB_NAME", "mysql"),
+            "USER": os.getenv("DB_USER", "root"),
+            "PASSWORD": os.getenv("DB_PASSWORD", "mysql"),
+            "HOST": os.getenv("DB_HOST", "mysql"),
+            "PORT": os.getenv("DB_PORT", "3306"),
         }
-    }
+    },
 )
 project_settings = DefaultTestSettings(**opts).settings
 
