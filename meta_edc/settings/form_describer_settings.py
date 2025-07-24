@@ -14,7 +14,9 @@ from pathlib import Path
 
 from edc_test_settings.default_test_settings import DefaultTestSettings
 
-from .test_setting_options import get_test_setting_opts
+from tests.test_setting_options import get_test_setting_opts
+
+# from tests.test_setting_options import get_test_setting_opts
 
 app_name = "meta_edc"
 base_dir = Path(__file__).parent.parent
