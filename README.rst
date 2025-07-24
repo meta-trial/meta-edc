@@ -2,7 +2,7 @@
 
 
 META Edc
---------
+========
 
 Metformin treatment in Africa- META
 
@@ -11,7 +11,7 @@ Metformin treatment in Africa- META
 * https://www.lstmed.ac.uk/research/departments/international-public-health/respond-africa/meta
 * http://www.isrctn.com/ISRCTN76157257
 
-py 3.12 / DJ 5.1.5 / edc 1.0.3 (META3)
+py 3.12+ / DJ 5.2
 
 This codebase is used for two randomized clinical trials:
 
@@ -44,6 +44,85 @@ ____
 See also https://github.com/clinicedc/edc
 
 |django|
+
+Installation
+------------
+
+As of version 1.1.10, we are building and deploying with `uv <https://docs.astral.sh/uv>`_.
+
+Assuming you are logged into the account ``myaccount``, have your DB setup and have an ``.env`` file:
+
+.. code-block:: bash
+
+    mkdir -p ~/.etc/meta && \
+    mkdir ~/edc && \
+    cd ~/edc && \
+    uv venv && \
+    uv pip install -U meta-edc==1.1.10 && \
+    wget https://raw.githubusercontent.com/meta-trial/meta-edc/1.1.10/manage.py && \
+    uv pip freeze | grep meta-edc
+
+Copy your ``.env`` file to ``~/.etc``.
+
+Update your .bashrc. Place this at or near the end:
+
+.. code-block:: bash
+
+    # >>> EDC using uv >>>
+    export DJANGO_SETTINGS_MODULE=meta_edc.settings.uat
+    export META_PHASE=3
+    export DJANGO_BASE_DIR=/home/myaccount/edc
+    export DJANGO_ENV_DIR=/home/myaccount/.etc/
+    cd ~/edc
+    source .venv/bin/activate
+    export PATH="/home/myaccount/edc:$PATH"
+    # <<< EDC using uv <<<
+
+Source bashrc and run ``manage.py check``.
+
+.. code-block:: bash
+
+    source ~/.bashrc && \
+    cd ~/edc && \
+    python manage.py check
+
+If all OK, migrate:
+
+.. note::
+    When running migrate you need to explicitly specify the settings file.
+
+    live: ``--settings=meta_edc.settings.live``
+
+    uat: ``--settings=meta_edc.settings.uat``
+
+    debug:  ``--settings=meta_edc.settings.debug``
+
+
+.. code-block:: bash
+
+    cd ~/edc && \
+    python manage.py migrate --settings=meta_edc.settings.live
+
+Update
+------
+From the above example:
+
+.. code-block:: bash
+
+    cd ~/edc && \
+    uv venv --clear && \
+    uv pip install -U meta-edc==1.1.10 && \
+    wget https://raw.githubusercontent.com/meta-trial/meta-edc/1.1.10/manage.py && \
+    uv pip freeze | grep meta-edc && \
+    python manage.py check
+
+If all OK, migrate
+
+.. code-block:: bash
+
+    cd ~/edc && \
+    python manage.py migrate --settings=meta_edc.settings.live
+
 
 To setup a demo system, see https://github.com/meta-trial/meta3-sample
 
