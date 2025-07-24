@@ -92,14 +92,11 @@ Source ``.bashrc`` and run ``manage.py check``.
 
 If all is OK, run ``migrate``:
 
-.. note::
-    When running migrate you need to explicitly specify the settings file.
+    Explicitly specify the settings file when using ``migrate``.
 
-    live: ``--settings=meta_edc.settings.live``
-
-    uat: ``--settings=meta_edc.settings.uat``
-
-    debug:  ``--settings=meta_edc.settings.debug``
+    * live: ``--settings=meta_edc.settings.live``
+    * uat: ``--settings=meta_edc.settings.uat``
+    * debug:  ``--settings=meta_edc.settings.debug``
 
 
 .. code-block:: bash
