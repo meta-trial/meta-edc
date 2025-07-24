@@ -40,6 +40,7 @@ opts.update(
 
 
 class DefaultTestSettings(BaseDefaultTestSettings):
+    @staticmethod
     def mysql_databases_setting(client: bool | None = None) -> dict:
         return {
             "default": {
