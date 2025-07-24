@@ -57,6 +57,7 @@ jobs:
           DATABASE_USER: root
           DATABASE_PASSWORD: mysql
         run: |
+          python manage.py migrate --settings=meta_edc.settings.form_describer_settings
           python manage.py make_forms_reference \
               --app_label meta_subject \
               --admin_site meta_subject_admin \
