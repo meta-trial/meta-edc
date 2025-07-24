@@ -1,0 +1,38 @@
+---
+
+name: update_forms_reference.yml
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  run-command:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
+      - name: Install uv based on the version defined in pyproject.toml
+        uses: astral-sh/setup-uv@v6
+        with:
+          version-file: "pyproject.toml"
+          activate-environment: true
+      - run: |
+          uv pip install .
+
+      - name: Run management command
+        env:
+          DJANGO_SETTINGS_MODULE: meta_edc.settings.debug
+        run: |
+          python manage.py make_forms_reference
+            --app_label meta_subject
+            --admin_site meta_subject_admin
+            --visit_schedule visit_schedule

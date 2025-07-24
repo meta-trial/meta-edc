@@ -114,7 +114,7 @@ From the above example:
     cd ~/edc && \
     uv venv --clear && \
     uv pip install -U meta-edc==1.1.10 && \
-    wget https://raw.githubusercontent.com/meta-trial/meta-edc/1.1.10/manage.py && \
+    wget -O manage.py https://raw.githubusercontent.com/meta-trial/meta-edc/1.1.10/manage.py && \
     uv pip freeze | grep meta-edc && \
     python manage.py check
 
