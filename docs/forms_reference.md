@@ -495,6 +495,33 @@
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** If other, please specify ...
@@ -619,6 +646,10 @@
 - column: oi_prophylaxis
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `tmp_smx`: *TMP/SMX*
+  - `fluconazole`: *Fluconazole*
+  - `isoniazid`: *Isoniazid*
+  - `OTHER`: *Other, specify*
 ---
 
 **20.0.** If other, please specify ...
@@ -657,6 +688,28 @@
 - column: htn_treatment
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `amlodipine`: *Amlodipine*
+  - `atenolol`: *Atenolol*
+  - `bendroflumethiazide`: *Bendroflumethiazide*
+  - `bisoprolol`: *Bisoprolol*
+  - `captopril`: *Captopril*
+  - `diltiazem`: *Diltiazem*
+  - `enalapril`: *Enalapril*
+  - `eplerenone`: *Eplerenone*
+  - `furosemide`: *Furosemide*
+  - `hydralazine`: *Hydralazine*
+  - `hydrochlothiazide`: *Hydrochlothiazide*
+  - `indapamide`: *Indapamide*
+  - `losartan`: *Losartan*
+  - `metoprolol`: *Metoprolol*
+  - `nifedipine`: *Nifedipine*
+  - `perindopril`: *Perindopril*
+  - `propanolol`: *Propanolol*
+  - `spironolactone`: *Spironolactone*
+  - `telmisartan`: *Telmisartan*
+  - `torsemide`: *Torsemide*
+  - `verapamil`: *Verapamil*
+  - `OTHER`: *Other, specify*
 ---
 
 **24.0.** If other medication(s), please specify ...
@@ -743,6 +796,11 @@
 - column: dm_symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `frequent_urination`: *Wanting to urinate more often than usual*
+  - `excessive_thirst`: *Wanting to drink water more than usual*
+  - `excessive_eating`: *Wanting to eat food more than usual*
+  - `OTHER`: *Other, specify*
+  - `none`: *No symptoms to report*
 ---
 
 **33.0.** If other symptom in the <u>past year</u>, please specify ...
@@ -1001,7 +1059,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -3325,6 +3383,33 @@ A user model to capture both FBG/RBG and OGTT
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -3340,6 +3425,33 @@ A user model to capture both FBG/RBG and OGTT
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -3355,6 +3467,33 @@ A user model to capture both FBG/RBG and OGTT
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -3793,7 +3932,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -4168,6 +4307,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -4944,6 +5091,33 @@ A user model to capture both FBG/RBG and OGTT
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -4959,6 +5133,33 @@ A user model to capture both FBG/RBG and OGTT
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -4974,6 +5175,33 @@ A user model to capture both FBG/RBG and OGTT
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -5412,7 +5640,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -5787,6 +6015,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -6353,6 +6589,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -6438,6 +6687,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -6979,6 +7241,33 @@ A user model to capture both FBG/RBG and OGTT
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -6994,6 +7283,33 @@ A user model to capture both FBG/RBG and OGTT
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -7009,6 +7325,33 @@ A user model to capture both FBG/RBG and OGTT
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -7447,7 +7790,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -8472,6 +8815,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -9038,6 +9389,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -9123,6 +9487,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -9712,6 +10089,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -9727,6 +10131,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -9742,6 +10173,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -10180,7 +10638,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -11652,6 +12110,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -12218,6 +12684,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -12303,6 +12782,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -12892,6 +13384,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -12907,6 +13426,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -12922,6 +13468,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -13360,7 +13933,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -13735,6 +14308,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -14555,6 +15136,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -14570,6 +15178,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -14585,6 +15220,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -15023,7 +15685,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -16804,6 +17466,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -17632,6 +18302,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -17647,6 +18344,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -17662,6 +18386,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -18100,7 +18851,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -18475,6 +19226,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -19295,6 +20054,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -19310,6 +20096,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -19325,6 +20138,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -19763,7 +20603,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -20585,6 +21425,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -21407,6 +22255,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -21422,6 +22297,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -21437,6 +22339,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -21875,7 +22804,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -22250,6 +23179,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -23070,6 +24007,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -23085,6 +24049,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -23100,6 +24091,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -23538,7 +24556,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -25039,6 +26057,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -25605,6 +26631,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -25690,6 +26729,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -26283,6 +27335,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -26298,6 +27377,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -26313,6 +27419,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -26751,7 +27884,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -26999,6 +28132,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -27565,6 +28706,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -27650,6 +28804,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -28235,6 +29402,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -28250,6 +29444,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -28265,6 +29486,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -28703,7 +29951,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -29078,6 +30326,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -29644,6 +30900,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -29729,6 +30998,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -30320,6 +31602,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -30335,6 +31644,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -30350,6 +31686,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -30788,7 +32151,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -31036,6 +32399,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -31602,6 +32973,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -31687,6 +33071,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -32272,6 +33669,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -32287,6 +33711,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -32302,6 +33753,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -32740,7 +34218,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -34521,6 +35999,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -35087,6 +36573,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -35172,6 +36671,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -35765,6 +37277,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -35780,6 +37319,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -35795,6 +37361,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -36233,7 +37826,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -36481,6 +38074,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -37047,6 +38648,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -37132,6 +38746,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -37717,6 +39344,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -37732,6 +39386,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -37747,6 +39428,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -38185,7 +39893,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -38560,6 +40268,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -39126,6 +40842,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -39211,6 +40940,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -39796,6 +41538,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -39811,6 +41580,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -39826,6 +41622,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -40264,7 +42087,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -40512,6 +42335,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -41078,6 +42909,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -41163,6 +43007,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -41748,6 +43605,33 @@ A user model to learn about the household, wealth and
 - column: symptoms
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **4.0.** Please provide details on any of the symptoms above.
@@ -41763,6 +43647,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g3
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **6.0.** Please provide details on any of the Grade 3 symptoms above.
@@ -41778,6 +43689,33 @@ A user model to learn about the household, wealth and
 - column: symptoms_g4
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `none`: *--No symptoms to report*
+  - `abdominal_pain_general`: *Abdominal pain (General)*
+  - `abdominal_pain_right_upper_quad`: *Abdominal pain (Right upper quadrant)*
+  - `blurred_vision`: *Blurred vision*
+  - `diarrhoea`: *Diarrhoea*
+  - `dizziness`: *Dizziness*
+  - `fatigue`: *Fatigue*
+  - `flatulence`: *Flatulence (gas)*
+  - `headaches`: *Headaches*
+  - `increased_appetite`: *Increased appetite*
+  - `joint_pain`: *Joint pain*
+  - `loss_of_appetite`: *Loss of appetite*
+  - `muscle_cramping`: *Muscle cramping*
+  - `muscle_pain`: *Muscle pain*
+  - `nausea`: *Nausea*
+  - `pain_feet_or_lower_limbs`: *Pain in feet/lower limbs*
+  - `pounding_heartbeat`: *Fast or pounding heartbeat*
+  - `rash`: *Rash*
+  - `shakiness`: *Shakiness*
+  - `shallow_breathing`: *Fast or shallow breathing*
+  - `skin_itching`: *Skin itching*
+  - `sweating`: *Sweating*
+  - `swelling_feet_or_lower_limbs`: *Swelling of feet/lower limbs*
+  - `unusual_sleepiness`: *Unusual sleepiness*
+  - `vomiting`: *Vomiting*
+  - `weakness`: *Weakness*
+  - `OTHER`: *Other, specify*
 ---
 
 **8.0.** Please provide details on any of the Grade 4 symptoms above.
@@ -42216,7 +44154,7 @@ A user model to capture both FBG/RBG and OGTT
 
 **16.0.** Has the participant reached a study endpoint today?
 
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 11/24/2023 and both the FBG and OGTT were performed*
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
 - db_table: meta_subject_glucose
 - column: endpoint_today
 - type: CharField
@@ -43997,6 +45935,14 @@ A user model to capture both FBG/RBG and OGTT
 - column: missed_pill_reason
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
 ---
 
 **10.0.** If other, please specify ...
@@ -44563,6 +46509,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_right_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **21.1.** If other abnormality observed on RIGHT foot, please specify ...
@@ -44648,6 +46607,19 @@ A user model to capture both FBG/RBG and OGTT
 - column: abnormal_obs_left_foot
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `callous_formation`: *Callous formation*
+  - `deformity_amputation`: *Deformity – amputation*
+  - `deformity_flat_feet`: *Deformity – flat feet*
+  - `deformity_halux_valgus`: *Deformity – halux valgus*
+  - `deformity_hammer_toes`: *Deformity – hammer toes*
+  - `deformity_joint_subluxation`: *Deformity – joint subluxation*
+  - `deformity_medial_convexity`: *Deformity – medial convexity (Charcot foot)*
+  - `deformity_overlapping_toes`: *Deformity – overlapping toes*
+  - `deformity_prominent_metatarsal_heads`: *Deformity – prominent metatarsal heads*
+  - `dry_skin`: *Dry skin*
+  - `infection`: *Infection*
+  - `fissure`: *Fissure*
+  - `OTHER`: *Other abnormality, please specify*
 ---
 
 **27.1.** If other abnormality observed on LEFT foot, please specify ...
@@ -45175,6 +47147,15 @@ A user model to enrolled patient onto the DM Referral
 - column: missed_referral_reasons
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `distance`: *Distance to the clinic*
+  - `travel_costs`: *Cost of travel to the clinic*
+  - `unable_to_pay_meds`: *Cannot pay for the medication*
+  - `dont_want_more_meds`: *I do not want to take more medication*
+  - `want_diet_lifestyle_only`: *I planned on doing diet and lifestyle changes only*
+  - `traditional_healer`: *Visited a traditional healer*
+  - `not_sick`: *I thought I was well and had no diabetes*
+  - `dont_like_clinic`: *Do not like the service at the clinic*
+  - `OTHER`: *Other, please specify*
 ---
 
 **7.0.** If other 'reason for not seeking further care', please specify ...
@@ -45198,6 +47179,10 @@ A user model to enrolled patient onto the DM Referral
 - column: healthcare_workers
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `nurse`: *Nurse*
+  - `Doctor`: *Doctor*
+  - `community_hcw`: *Community healthcare worker*
+  - `OTHER`: *Other, please specify*
 ---
 
 **10.0.** If other 'healthcare worker', please specify ...
@@ -45227,6 +47212,10 @@ A user model to enrolled patient onto the DM Referral
 - column: investigations
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `blood_glucose`: *Blood sugar test*
+  - `other_tests`: *Other blood tests*
+  - `physical_exam`: *Physical examination*
+  - `OTHER`: *Other, please specify*
 ---
 
 **13.0.** If other 'investigations', please specify ...
@@ -45243,6 +47232,10 @@ A user model to enrolled patient onto the DM Referral
 - column: complications_checks
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `foot`: *Foot check*
+  - `eye_disease`: *Diabetic eye disease*
+  - `kidney_disease`: *Kidney disease*
+  - `heart_disease`: *Heart disease*
 ---
 
 **Section: Diabetes treatment**
@@ -45263,6 +47256,9 @@ A user model to enrolled patient onto the DM Referral
 - column: dm_treatments
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `diet_lifestyle`: *Diet and lifestyle*
+  - `drugs`: *Oral drugs*
+  - `insulin`: *Insulin injections*
 ---
 
 **17.0.** Are you currently taking any drug therapy for diabetes?
@@ -45288,6 +47284,16 @@ A user model to enrolled patient onto the DM Referral
 - column: dm_medications
 - type: ManyToManyField
 - responses: *Select all that apply*
+  - `metformin`: *Metformin*
+  - `glibenclamide`: *Glibenclamide*
+  - `gliclazide`: *Gliclazide*
+  - `pioglitazone`: *Pioglitazone*
+  - `sitagliptin`: *Sitagliptin*
+  - `Vildagliptin`: *vildagliptin*
+  - `dapagliflozin`: *Dapagliflozin*
+  - `epagliflozin`: *Epagliflozin*
+  - `insulin`: *Insulin*
+  - `OTHER`: *Other, please specify*
 ---
 
 **20.0.** If other 'drug treatments', please specify ...
@@ -45636,4 +47642,4 @@ A user model to capture delivery and birth outcomes.
 
 
 
-*Rendered on 2025-07-24 20:20*
+*Rendered on 2025-07-25 02:21*
