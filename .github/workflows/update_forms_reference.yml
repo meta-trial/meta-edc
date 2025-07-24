@@ -8,7 +8,7 @@ on:
       - develop
 
 jobs:
-  run-command:
+  update_forms_reference:
     runs-on: ubuntu-latest
 
     services:
