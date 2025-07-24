@@ -47,7 +47,7 @@ jobs:
 
       - name: Wait for MySQL to be ready
         run: |
-          until mysqladmin ping -h 127.0.0.1 -uroot -pmysql --silent; do
+          until mysqladmin ping -h mysql -uroot -pmysql --silent; do
             echo "Waiting for MySQL..."
             sleep 5
           done
@@ -58,7 +58,7 @@ jobs:
       - name: Run management command
         env:
           DJANGO_SETTINGS_MODULE: meta_edc.settings.form_describer_settings
-          DB_HOST: 127.0.0.1
+          DB_HOST: mysql
           DB_PORT: 3306
           DB_NAME: mysql
           DB_USER: root
