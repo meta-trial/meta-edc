@@ -50,10 +50,10 @@ jobs:
 
       - name: Run management command
         env:
-          DJANGO_SETTINGS_MODULE: meta_edc.settings.debug
+          DJANGO_SETTINGS_MODULE: meta_edc.settings.form_describer_settings
         run: |
           python manage.py make_forms_reference \
               --app_label meta_subject \
               --admin_site meta_subject_admin \
               --visit_schedule visit_schedule \
-              --settings=tests.form_describer_settings
+              --settings=meta_edc.settings.form_describer_settings

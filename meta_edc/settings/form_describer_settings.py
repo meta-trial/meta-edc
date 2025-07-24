@@ -10,20 +10,22 @@ an .env file.
 """
 
 import sys
+from importlib.metadata import version
 from pathlib import Path
 
 from edc_test_settings.default_test_settings import DefaultTestSettings
 
-from tests.test_setting_options import get_test_setting_opts
+from .get_test_setting_opts import get_test_setting_opts
 
 # from tests.test_setting_options import get_test_setting_opts
 
 app_name = "meta_edc"
-base_dir = Path(__file__).parent.parent
+base_dir = Path(__file__).parent.parent.parent
 opts = get_test_setting_opts(app_name, base_dir)
 opts.update(
     # hack for forms-reference in gh-actions
-    DJANGO_CRYPTO_FIELDS_TEST_MODULE="--settings=tests.form_describer_settings",
+    DJANGO_CRYPTO_FIELDS_KEY_PATH=base_dir / "tests" / "etc",
+    DJANGO_CRYPTO_FIELDS_TEST_MODULE="--settings=meta_edc.settings.form_describer_settings",
     # hack for forms-reference in gh-actions
     SILENCED_SYSTEM_CHECKS=[
         "edc_sites.E001",
@@ -32,6 +34,8 @@ opts.update(
         "edc_navbar.E002",
         "edc_navbar.E003",
     ],
+    DJANGO_REVISION_IGNORE_WORKING_DIR=True,
+    REVISION=version(app_name),
 )
 project_settings = DefaultTestSettings(**opts).settings
 
