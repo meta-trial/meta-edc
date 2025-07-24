@@ -1,17 +1,16 @@
-|pypi| |actions| |codecov| |downloads|
+|pypi| |actions| |codecov| |downloads| |clinicedc|
 
-
-META Edc
+META EDC
 ========
 
-Metformin treatment in Africa- META
+Metformin treatment in Africa - META
 
 * https://www.ucl.ac.uk/global-health/research/z-research/respond-africa/metformin-treatment-africa-meta
 * https://www.inteafrica.org/related-projects/meta-trial/
 * https://www.lstmed.ac.uk/research/departments/international-public-health/respond-africa/meta
 * http://www.isrctn.com/ISRCTN76157257
 
-py 3.12+ / DJ 5.2
+py 3.12+ / DJ 5.2 using the `Clinic EDC <https://github.com/clinicedc/edc>`_ framework
 
 This codebase is used for two randomized clinical trials:
 
@@ -50,7 +49,12 @@ Installation
 
 As of version 1.1.10, we are building and deploying with `uv <https://docs.astral.sh/uv>`_.
 
-Assuming you are logged into the account ``myaccount``, have your DB setup and have an ``.env`` file:
+Here we assume you have your DB setup and already have your ``.env`` file.
+
+First-time install
+++++++++++++++++++
+
+Assuming you are logged into the account ``myaccount``:
 
 .. code-block:: bash
 
@@ -64,7 +68,7 @@ Assuming you are logged into the account ``myaccount``, have your DB setup and h
 
 Copy your ``.env`` file to ``~/.etc``.
 
-Update your .bashrc. Place this at or near the end:
+Place this at or near the end of your ``.bashrc``:
 
 .. code-block:: bash
 
@@ -78,7 +82,7 @@ Update your .bashrc. Place this at or near the end:
     export PATH="/home/myaccount/edc:$PATH"
     # <<< EDC using uv <<<
 
-Source bashrc and run ``manage.py check``.
+Source ``.bashrc`` and run ``manage.py check``.
 
 .. code-block:: bash
 
@@ -86,7 +90,7 @@ Source bashrc and run ``manage.py check``.
     cd ~/edc && \
     python manage.py check
 
-If all OK, migrate:
+If all is OK, run ``migrate``:
 
 .. note::
     When running migrate you need to explicitly specify the settings file.
@@ -103,8 +107,9 @@ If all OK, migrate:
     cd ~/edc && \
     python manage.py migrate --settings=meta_edc.settings.live
 
-Update
-------
+Update an existing install
+++++++++++++++++++++++++++
+
 From the above example:
 
 .. code-block:: bash
@@ -116,15 +121,13 @@ From the above example:
     uv pip freeze | grep meta-edc && \
     python manage.py check
 
-If all OK, migrate
+If all is OK, run ``migrate``
 
 .. code-block:: bash
 
     cd ~/edc && \
     python manage.py migrate --settings=meta_edc.settings.live
 
-
-To setup a demo system, see https://github.com/meta-trial/meta3-sample
 
 
 .. |pypi| image:: https://img.shields.io/pypi/v/meta-edc.svg
@@ -142,3 +145,7 @@ To setup a demo system, see https://github.com/meta-trial/meta3-sample
 .. |django| image:: https://www.djangoproject.com/m/img/badges/djangomade124x25.gif
    :target: http://www.djangoproject.com/
    :alt: Made with Django
+
+.. |clinicedc| image:: https://img.shields.io/badge/framework-Clinic_EDC-green
+   :alt:Made with clinicedc
+   :target: https://github.com/clinicedc
