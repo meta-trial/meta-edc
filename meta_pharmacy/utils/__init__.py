@@ -1,1 +1,0 @@
-from .update_initial_pharmacy_data import update_initial_pharmacy_data

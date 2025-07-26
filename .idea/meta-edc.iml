@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="django" name="Django">
+      <configuration>
+        <option name="rootFolder" value="$MODULE_DIR$" />
+        <option name="settingsModule" value="meta_edc/settings/debug.py" />
+        <option name="manageScript" value="$MODULE_DIR$/manage.py" />
+        <option name="environment" value="&lt;map/&gt;" />
+        <option name="doNotUseTestRunner" value="false" />
+        <option name="trackFilePattern" value="migrations" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../meta-notebooks" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/django-audit-fields" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/django-crypto-fields" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/django-logentry-admin" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/django-multisite2" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/django-pylabels" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/django-revision" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-action-item" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-adherence" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-adverse-event" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-analytics" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-appconfig" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-appointment" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-auth" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-call-manager" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-consent" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-constants" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-crf" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-csf" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-dashboard" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-data-manager" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-device" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-document-status" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-dx" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-dx-review" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-egfr" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-export" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-facility" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-fieldsets" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-form-describer" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-form-label" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-form-runners" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-form-validators" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-glucose" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-he" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-identifier" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-lab" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-lab-dashboard" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-lab-panel" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-lab-results" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-label" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-list-data" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-listboard" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-locator" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-ltfu" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-metadata" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-microbiology" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-microscopy" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-mnsi" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-model" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-model-admin" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-model-fields" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-model-form" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-model-to-dataframe" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-navbar" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-next-appointment" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-notification" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-offstudy" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-pdf-reports" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-pdutils" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-pharmacy" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-pharmacy-dashboard" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-phq9" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-pregnancy-utils" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-prn" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-protocol" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-protocol-incident" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-pylabels" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-qareports" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-qol" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-randomization" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-refusal" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-registration" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-reportable" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-review-dashboard" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-rx" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-screening" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-search" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-sites" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-stata" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-subject-dashboard" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-test-settings" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-test-utils" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-timepoint" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-transfer" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-unblinding" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-utils" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-view-utils" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-visit-schedule" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-visit-tracking" />
+    <content url="file://$MODULE_DIR$/../../../edc_source/edc-vitals" />
+    <orderEntry type="jdk" jdkName="Python 3.13 virtualenv at ~/source/clinicedc_repos/meta_trial/meta-edc/.venv" jdkType="Python SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="TemplatesService">
+    <option name="TEMPLATE_CONFIGURATION" value="Django" />
+  </component>
+</module>
