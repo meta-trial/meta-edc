@@ -28,7 +28,7 @@ classifiers = [
 ]
 license = "GPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
-requires-python = '>=3.12'
+requires-python = '>=3.12,<3.14'
 dependencies = [
     "clinicedc>=2.0.13",
     "edc-he>=1.1.0",
@@ -36,6 +36,7 @@ dependencies = [
     "edc-mnsi>=1.1.3",
     "edc-phq9>=1.0.1",
     "edc-qol>=1.1.2",
+    "psycopg2>=2.9.10",
 ]
 
 [build-system]
