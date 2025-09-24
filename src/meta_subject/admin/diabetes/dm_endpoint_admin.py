@@ -30,6 +30,6 @@ class DmEndpointAdmin(
         audit_fieldset_tuple,
     )
 
-    list_filter = ["endpoint_reached"]
+    list_filter = ("endpoint_reached",)
 
-    radio_fields = {"endpoint_reached": admin.VERTICAL}
+    radio_fields = {"endpoint_reached": admin.VERTICAL}  # noqa: RUF012

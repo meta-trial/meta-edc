@@ -52,7 +52,7 @@ class Delivery(
 
     info_not_available_reason = models.TextField(
         verbose_name="If the report was not available, please explain?",
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -110,7 +110,7 @@ class Delivery(
             "please give name of the facility"
         ),
         max_length=150,
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -160,4 +160,4 @@ class Delivery(
     class Meta(CrfWithActionModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Delivery"
         verbose_name_plural = "Delivery"
-        unique_together = ["subject_visit", "delivery_datetime"]
+        unique_together = ("subject_visit", "delivery_datetime")

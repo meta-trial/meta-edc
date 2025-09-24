@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
-from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
+from edc_action_item.fieldsets import action_fieldset_tuple
+from edc_action_item.modeladmin_mixins import ActionItemModelAdminMixin
 from edc_adherence.model_admin_mixin import get_visual_score_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
 from edc_form_label.form_label_modeladmin_mixin import FormLabelModelAdminMixin
@@ -86,7 +87,7 @@ class DmFollowupAdmin(
         "missed_referral_reasons",
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "attended": admin.VERTICAL,
         "investigations_performed": admin.VERTICAL,
         "on_dm_medications": admin.VERTICAL,

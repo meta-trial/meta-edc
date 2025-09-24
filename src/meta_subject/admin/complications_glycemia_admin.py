@@ -98,7 +98,7 @@ class ComplicationsGlycemiaAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "at_reflex": admin.VERTICAL,
         "cataracts": admin.VERTICAL,
         "dns_burning": admin.VERTICAL,

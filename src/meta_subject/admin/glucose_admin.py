@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Type
-
 from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
 from django.template.loader import render_to_string
@@ -72,7 +70,7 @@ class GlucoseAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "fasting": admin.VERTICAL,
         "fbg_units": admin.VERTICAL,
         "fbg_performed": admin.VERTICAL,
@@ -89,7 +87,7 @@ class GlucoseAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         list_display = tuple(list_display)
         return list_display
 
-    def get_list_filter(self, request) -> tuple[str | Type[SimpleListFilter], ...]:
+    def get_list_filter(self, request) -> tuple[str | type[SimpleListFilter], ...]:
         list_filter = super().get_list_filter(request)
         list_filter = list(list_filter)
         list_filter.insert(2, OgttListFilter)

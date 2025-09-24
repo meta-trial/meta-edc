@@ -8,7 +8,6 @@ from ..models import MissingOgttNote
 
 
 class MissingOgttNoteFormValidator(OgttFormValidatorMixin, FormValidator):
-
     def clean(self):
         self.applicable_if(YES, field="result_status", field_applicable="fasting")
         self.required_if(YES, NO, field="fasting", field_required="ogtt_base_datetime")
@@ -26,8 +25,8 @@ class MissingOgttNoteForm(FormValidatorMixin, forms.ModelForm):
     class Meta:
         model = MissingOgttNote
         fields = "__all__"
-        help_text = {"subject_identifier": "(read-only)", "name": "(read-only)"}
-        widgets = {
+        help_text = {"subject_identifier": "(read-only)", "name": "(read-only)"}  # noqa: RUF012
+        widgets = {  # noqa: RUF012
             "report_model": forms.TextInput(attrs={"readonly": "readonly"}),
             "subject_identifier": forms.TextInput(attrs={"readonly": "readonly"}),
         }

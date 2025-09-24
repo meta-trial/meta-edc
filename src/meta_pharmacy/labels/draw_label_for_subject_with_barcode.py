@@ -6,7 +6,7 @@ from reportlab.graphics.shapes import Drawing, Group, String
 from reportlab.pdfbase.pdfmetrics import stringWidth
 
 
-def draw_label_for_subject_with_barcode(
+def draw_label_for_subject_with_barcode(  # noqa: PLR0913
     barcode_cls,
     barcode_opts: dict,
     label: Drawing,
@@ -26,7 +26,6 @@ def draw_label_for_subject_with_barcode(
         label.add(String(15, height - 40, str(obj.code), fontSize=10))
         label.add(String(15, height - 60, str(obj.location), fontSize=10))
     else:
-
         draw_label_watermark(label, width, height, fontSize=18)
 
         br = barcode_cls(**barcode_opts)

@@ -4,7 +4,7 @@ from django.test.client import RequestFactory
 from edc_adverse_event.models import AeClassification
 from model_bakery import baker
 
-from meta_reports.ae_report import AeReport
+from meta_ae.pdf_reports import AePdfReport
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 
 
@@ -26,7 +26,7 @@ class TestReports(MetaTestCaseMixin, TestCase):
             ae_classification=ae_classification,
         )
 
-        report = AeReport(
+        report = AePdfReport(
             ae_initial=ae_initial,
             subject_identifier=ae_initial.subject_identifier,
             user=request.user,

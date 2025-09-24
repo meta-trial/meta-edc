@@ -1,12 +1,11 @@
-from typing import Tuple
-
 from dateutil.relativedelta import relativedelta
 from django.contrib import admin
 from django.template.loader import render_to_string
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django_audit_fields.admin import audit_fieldset_tuple
-from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
+from edc_action_item.fieldsets import action_fieldset_tuple
+from edc_action_item.modeladmin_mixins import ActionItemModelAdminMixin
 from edc_constants.constants import OTHER
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
@@ -30,7 +29,7 @@ class EndOfStudyAdmin(
 ):
     additional_instructions = format_html(
         "{html}",
-        html=mark_safe(
+        html=mark_safe(  # noqa: S308
             render_to_string(
                 "meta_prn/eos/additional_instructions.html",
                 context=dict(
@@ -123,7 +122,7 @@ class EndOfStudyAdmin(
             kwargs["queryset"] = OffstudyReasons.objects.order_by("display_index")
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
-    def get_list_display(self, request) -> Tuple[str, ...]:
+    def get_list_display(self, request) -> tuple[str, ...]:
         list_display = super().get_list_display(request)
         custom_fields = (
             "subject_identifier",
@@ -137,12 +136,12 @@ class EndOfStudyAdmin(
             f for f in list_display if f not in custom_fields + ("__str__",)
         )
 
-    def get_list_filter(self, request) -> Tuple[str, ...]:
+    def get_list_filter(self, request) -> tuple[str, ...]:
         list_filter = super().get_list_filter(request)
         custom_fields = ("offstudy_reason", "last_seen_date")
         return custom_fields + tuple(f for f in list_filter if f not in custom_fields)
 
-    def get_search_fields(self, request) -> Tuple[str, ...]:
+    def get_search_fields(self, request) -> tuple[str, ...]:
         search_fields = super().get_search_fields(request)
         custom_fields = ("subject_identifier",)
         return tuple(set(custom_fields + search_fields))

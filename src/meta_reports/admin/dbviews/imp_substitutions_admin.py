@@ -1,3 +1,5 @@
+import contextlib
+
 from django.apps import apps as django_apps
 from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
@@ -25,8 +27,8 @@ class ImpSubstitutionsAdmin(
     TemplatesModelAdminMixin,
     admin.ModelAdmin,
 ):
-    ordering = ["site", "subject_identifier"]
-    list_display = [
+    ordering = ("site", "subject_identifier")
+    list_display = (
         "dashboard",
         "render_button",
         "subject",
@@ -38,20 +40,20 @@ class ImpSubstitutionsAdmin(
         "user_created",
         "user_modified",
         "modified",
-    ]
+    )
 
-    list_filter = [
+    list_filter = (
         "arm_match",
         ScheduleStatusListFilter,
         ReportDateListFilter,
         "allocated_datetime",
-    ]
+    )
 
     search_fields = ["subject_identifier", "sid", "dispensed_sid"]
 
     def dashboard(self, obj=None, label=None) -> str:
         kwargs = self.get_subject_dashboard_url_kwargs(obj)
-        try:
+        with contextlib.suppress(ObjectDoesNotExist):
             kwargs.update(
                 appointment=str(
                     Appointment.objects.get(
@@ -61,8 +63,6 @@ class ImpSubstitutionsAdmin(
                     ).id
                 )
             )
-        except ObjectDoesNotExist:
-            pass
         url = reverse(self.get_subject_dashboard_url_name(obj=obj), kwargs=kwargs)
         context = dict(title=_("Go to subject's dashboard@1000"), url=url, label=label)
         return render_to_string("edc_subject_dashboard/dashboard_button.html", context=context)
@@ -86,13 +86,14 @@ class ImpSubstitutionsAdmin(
             f"{url}?next={self.admin_site.name}:"
             f"{self.model._meta.label_lower.replace('.', '_')}_changelist"
         )
-        title = _(f"View {crf_model_cls._meta.verbose_name}")
+        title = _("View %(verbose_name)s").format(
+            verbose_name=crf_model_cls._meta.verbose_name
+        )
         label = _("View")
-        crf_button = render_to_string(
+        return render_to_string(
             "edc_qareports/columns/change_button.html",
             context=dict(title=title, url=url, label=label),
         )
-        return crf_button
 
     @admin.display(description="Report date", ordering="report_datetime")
     def report_date(self, obj) -> str | None:

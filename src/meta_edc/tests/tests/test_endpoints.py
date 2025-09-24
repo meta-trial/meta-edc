@@ -7,6 +7,7 @@ from zoneinfo import ZoneInfo
 
 import time_machine
 from bs4 import BeautifulSoup
+from clinicedc_tests.utils import login
 from dateutil.relativedelta import relativedelta
 from django.apps import apps as django_apps
 from django.conf import settings
@@ -15,6 +16,7 @@ from django.contrib.sites.models import Site
 from django.test.utils import override_settings, tag
 from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
+from django.utils import timezone
 from django_extensions.management.color import color_style
 from django_webtest import WebTest
 from edc_adverse_event.constants import AE_ROLE, TMG_ROLE
@@ -31,8 +33,6 @@ from edc_lab.auth_objects import LAB_TECHNICIAN_ROLE
 from edc_randomization.admin import register_admin
 from edc_randomization.site_randomizers import site_randomizers
 from edc_sites.utils import add_or_update_django_sites
-from edc_test_utils.webtest import login
-from edc_utils import get_utcnow
 from model_bakery import baker
 from webtest.app import AppError
 
@@ -228,7 +228,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         register_admin()
 
         part_one_data = deepcopy(get_part_one_eligible_options())
-        part_one_data["report_datetime"] = get_utcnow()
+        part_one_data["report_datetime"] = timezone.now()
         part_one_data.update(
             dict(
                 report_datetime_0=part_one_data["report_datetime"].strftime("%Y-%m-%d"),
@@ -250,10 +250,10 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         traveller.start()
         part_two_data = deepcopy(
             get_part_two_eligible_options(
-                report_datetime=get_utcnow() + relativedelta(minutes=1)
+                report_datetime=timezone.now() + relativedelta(minutes=1)
             )
         )
-        part_two_data["appt_datetime"] = get_utcnow() + relativedelta(days=10)
+        part_two_data["appt_datetime"] = timezone.now() + relativedelta(days=10)
         part_two_data.update(
             dict(
                 part_two_report_datetime_0=part_two_data["part_two_report_datetime"].strftime(
@@ -279,7 +279,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         traveller = time_machine.travel(part_two_data["appt_datetime"])
         traveller.start()
         part_three_data = deepcopy(
-            get_part_three_eligible_options(report_datetime=get_utcnow())
+            get_part_three_eligible_options(report_datetime=timezone.now())
         )
 
         traveller = time_machine.travel(part_two_data.get("part_three_report_datetime"))
@@ -505,14 +505,13 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn(" Start ", subject_dashboard_page)
         subject_visit_page = subject_dashboard_page.click(
             linkid=(
-                f"start_btn_{appointments[0].visit_code}_"
-                f"{appointments[0].visit_code_sequence}"
+                f"start_btn_{appointments[0].visit_code}_{appointments[0].visit_code_sequence}"
             )
         )
         subject_visit_page.form["info_source"] = "patient"
         subject_dashboard_page = subject_visit_page.form.submit()
 
-        url = f"/subject/subject_dashboard/{subject_identifier}/" f"{str(appointments[0].pk)}/"
+        url = f"/subject/subject_dashboard/{subject_identifier}/{appointments[0].pk!s}/"
         self.assertEqual(subject_dashboard_page.status_code, 302)
         self.assertEqual(subject_dashboard_page.url, url)
 

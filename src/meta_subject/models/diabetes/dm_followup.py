@@ -22,7 +22,6 @@ from ...model_mixins import CrfWithActionModelMixin
 
 
 class DmFollowup(CrfWithActionModelMixin, BaseUuidModel):
-
     action_name = DM_FOLLOWUP_ACTION
 
     referral_date = models.DateField(
@@ -63,7 +62,7 @@ class DmFollowup(CrfWithActionModelMixin, BaseUuidModel):
     facility_attended = models.CharField(
         verbose_name="If 'Yes', please give the name of the facility you attended",
         max_length=50,
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -181,7 +180,7 @@ class DmFollowup(CrfWithActionModelMixin, BaseUuidModel):
         verbose_name="Visual score",
         max_length=3,
         help_text="%",
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -200,7 +199,7 @@ class DmFollowup(CrfWithActionModelMixin, BaseUuidModel):
         verbose_name="When was the last time you missed your study pill?",
         max_length=25,
         choices=MISSED_PILLS,
-        null=True,
+        default="",
         blank=True,
     )
 

@@ -28,11 +28,13 @@ def get_fieldsets():
         },
     )
 
-    fieldsets = (fieldset,) + get_mnsi_fieldsets()
-    fieldsets += (crf_status_fieldset_tuple,)
-    fieldsets += (calculated_values_fieldset,)
-    fieldsets += (audit_fieldset_tuple,)
-    return fieldsets
+    return (
+        fieldset,
+        *get_mnsi_fieldsets(),
+        crf_status_fieldset_tuple,
+        calculated_values_fieldset,
+        audit_fieldset_tuple,
+    )
 
 
 edc_mnsi_admin.unregister(DefaultMnsi)

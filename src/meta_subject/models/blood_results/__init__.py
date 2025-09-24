@@ -8,11 +8,11 @@ from .blood_results_rft import BloodResultsRft
 
 __all__ = [
     "BloodResultsFbc",
-    "BloodResultsLft",
     "BloodResultsGluDummy",
     "BloodResultsHba1c",
+    "BloodResultsIns",
+    "BloodResultsLft",
     "BloodResultsLipids",
     "BloodResultsRft",
-    "BloodResultsIns",
 ]
 

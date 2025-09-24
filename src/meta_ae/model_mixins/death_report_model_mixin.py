@@ -20,7 +20,7 @@ class DeathReportModelMixin(models.Model):
             "If death occurred at hospital / clinic, please give name of the facility"
         ),
         max_length=150,
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -46,14 +46,14 @@ class DeathReportModelMixin(models.Model):
         related_name="secondary_cause_of_death",
         verbose_name="Secondary cause of death",
         help_text=(
-            "Secondary cause of death in the opinion of the " "local study doctor and local PI"
+            "Secondary cause of death in the opinion of the local study doctor and local PI"
         ),
     )
 
     secondary_cause_of_death_other = models.CharField(
         max_length=100,
         blank=True,
-        null=True,
+        default="",
         verbose_name='If "Other" above, please specify',
     )
 

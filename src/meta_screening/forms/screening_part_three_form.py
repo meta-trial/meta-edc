@@ -18,9 +18,11 @@ class ScreeningPartThreeForm(AlreadyConsentedFormMixin, FormValidatorMixin, form
     def clean(self):
         cleaned_data = super().clean()
 
-        if cleaned_data.get("creatinine_value"):
-            if float(cleaned_data.get("creatinine_value")) > GLUCOSE_HIGH_READING:
-                raise forms.ValidationError({"creatinine_value": "Value is absurd."})
+        if (
+            cleaned_data.get("creatinine_value")
+            and float(cleaned_data.get("creatinine_value")) > GLUCOSE_HIGH_READING
+        ):
+            raise forms.ValidationError({"creatinine_value": "Value is absurd."})
         return cleaned_data
 
     class Meta:

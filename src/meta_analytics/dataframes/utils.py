@@ -37,16 +37,12 @@ def get_empty_endpoint_df() -> pd.DataFrame:
             "endpoint",
             "endpoint_type",
         ]
-    ].apply(
-        pd.to_numeric
-    )
+    ].apply(pd.to_numeric)
     endpoint_df[
         ["baseline_datetime", "visit_datetime", "fbg_datetime", "offstudy_datetime"]
     ] = endpoint_df[
         ["baseline_datetime", "visit_datetime", "fbg_datetime", "offstudy_datetime"]
-    ].apply(
-        pd.to_datetime
-    )
+    ].apply(pd.to_datetime)
     endpoint_df["visit_code"] = endpoint_df["visit_code"].astype(float)
     return endpoint_df
 
@@ -56,8 +52,7 @@ def get_unique_visit_codes(df: pd.DataFrame) -> pd.DataFrame:
     stats_df = stats_df.reset_index()
     stats_df["visit_code"] = stats_df["visit_code"].astype(float)
     stats_df = stats_df.sort_values(["visit_code"])
-    stats_df = stats_df.reset_index(drop=True)
-    return stats_df
+    return stats_df.reset_index(drop=True)
 
 
 def get_unique_subject_identifiers(df: pd.DataFrame) -> pd.DataFrame:

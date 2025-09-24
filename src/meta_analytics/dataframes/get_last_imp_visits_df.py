@@ -5,12 +5,12 @@ from django_pandas.io import read_frame
 from edc_pdutils.dataframes import get_appointments, get_crf
 
 
-class InvalidLotNumber(Exception):
+class InvalidLotNumber(Exception):  # noqa: N818
     pass
 
 
 def site_cond(df, site_id):
-    return (0 == 0) if not site_id else df.site_id == site_id
+    return (0 == 0) if not site_id else df.site_id == site_id  # noqa: PLR0133
 
 
 def get_last_imp_visits_df(
@@ -28,8 +28,8 @@ def get_last_imp_visits_df(
         lot_number_model_cls = django_apps.get_model("meta_pharmacy.lotnumber")
         try:
             lot_obj = lot_number_model_cls.objects.get(lot_no=lot_no)
-        except ObjectDoesNotExist:
-            raise ObjectDoesNotExist("The lot number given is invalid")
+        except ObjectDoesNotExist as e:
+            raise ObjectDoesNotExist("The lot number given is invalid") from e
 
     df_meds = get_crf(
         "meta_subject.studymedication", subject_visit_model="meta_subject.subjectvisit"
@@ -100,5 +100,4 @@ def get_last_imp_visits_df(
     # calculate days since the IMP visit
     df_final["days_since"] = pd.to_datetime("today").normalize() - df_final.imp_visit_date
     df_final["days_until"] = df_final.next_appt_datetime - pd.to_datetime("today").normalize()
-    df_final = df_final.reset_index()
-    return df_final
+    return df_final.reset_index()

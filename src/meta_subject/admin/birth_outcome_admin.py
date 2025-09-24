@@ -1,5 +1,3 @@
-from typing import Tuple
-
 from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
@@ -47,11 +45,11 @@ class BirthOutcomesAdmin(
         "birth_outcome",
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "birth_outcome": admin.VERTICAL,
     }
 
-    def get_list_filter(self, request) -> Tuple[str, ...]:
+    def get_list_filter(self, request) -> tuple[str, ...]:
         fields = super().get_list_filter(request)
         custom_fields = (
             "birth_order",
@@ -59,7 +57,7 @@ class BirthOutcomesAdmin(
         )
         return custom_fields + fields
 
-    def get_search_fields(self, request) -> Tuple[str, ...]:
+    def get_search_fields(self, request) -> tuple[str, ...]:
         fields = super().get_search_fields(request)
         custom_fields = (
             "delivery__subject_visit__subject_identifier",
@@ -92,7 +90,5 @@ class BirthOutcomesAdmin(
                 if callable(super().view_on_site):
                     url = super().view_on_site(obj)
                 else:
-                    raise NoReverseMatch(
-                        f"{e}. See subject_dashboard_url_name for {repr(self)}."
-                    )
+                    raise NoReverseMatch(f"{e}. See subject_dashboard_url_name for {self!r}.")
         return url

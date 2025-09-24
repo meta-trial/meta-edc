@@ -23,15 +23,15 @@ class SubjectReconsentForm(
                 subject_identifier=cleaned_data.get("subject_identifier"),
                 identity=cleaned_data.get("identity"),
             )
-        except ObjectDoesNotExist:
-            raise forms.ValidationError({"identity": "Identity number does not match."})
+        except ObjectDoesNotExist as e:
+            raise forms.ValidationError({"identity": "Identity number does not match."}) from e
         return cleaned_data
 
     class Meta:
         model = SubjectReconsent
         fields = "__all__"
-        help_text = {"action_identifier": "(read-only)", "subject_identifier": "(read-only)"}
-        widgets = {
+        help_text = {"action_identifier": "(read-only)", "subject_identifier": "(read-only)"}  # noqa: RUF012
+        widgets = {  # noqa: RUF012
             "action_identifier": forms.TextInput(attrs={"readonly": "readonly"}),
             "subject_identifier": forms.TextInput(attrs={"readonly": "readonly"}),
         }

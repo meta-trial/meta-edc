@@ -7,4 +7,4 @@ try:
 except importlib.metadata.PackageNotFoundError:
     __version__ = "unknown"
 
-__all__ = ["celery_app", "__version__"]
+__all__ = ["__version__", "celery_app"]

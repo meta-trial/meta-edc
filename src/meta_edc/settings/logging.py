@@ -1,14 +1,14 @@
 # see http://www.simonkrueger.com/2015/05/27/logging-django-apps-to-syslog.html
-import os
+from pathlib import Path
 
 import environ
 
-__all__ = ["LOG_FOLDER", "LOGGING_FILE_LEVEL", "LOGGING_SYSLOG_LEVEL", "LOGGING"]
+__all__ = ["LOGGING", "LOGGING_FILE_LEVEL", "LOGGING_SYSLOG_LEVEL", "LOG_FOLDER"]
 
 env = environ.Env()
 env.read_env(".env")
 
-LOG_FOLDER = env.str("DJANGO_LOG_FOLDER")
+LOG_FOLDER = Path(env.str("DJANGO_LOG_FOLDER"))
 LOGGING_FILE_LEVEL = env.str("DJANGO_LOGGING_FILE_LEVEL")
 LOGGING_SYSLOG_LEVEL = env.str("DJANGO_LOGGING_SYSLOG_LEVEL")
 
@@ -41,7 +41,7 @@ LOGGING = {
         "file": {
             "level": LOGGING_FILE_LEVEL,
             "class": "logging.FileHandler",
-            "filename": os.path.join(LOG_FOLDER, "edc.log"),
+            "filename": LOG_FOLDER / "edc.log",
             "formatter": "verbose",
         },
         "syslog": {

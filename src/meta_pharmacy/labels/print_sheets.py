@@ -1,4 +1,4 @@
-import os.path
+import sys
 from pathlib import Path
 
 from edc_sites.site import sites
@@ -81,7 +81,7 @@ def print_sheets(labels: list[Label], path: Path | None = None, verbose: bool | 
     )
 
     if not path:
-        path = Path(os.path.dirname(__file__))
+        path = Path(__file__).resolve()
     path = str(path / "meta_labels.pdf")
     sheet = Sheet(specs, draw_label, border=True)
 
@@ -89,9 +89,7 @@ def print_sheets(labels: list[Label], path: Path | None = None, verbose: bool | 
 
     # Save the file and we are done.
     sheet.save(path)
-    msg = "{0:d} label(s) output on {1:d} page(s) to {2}.".format(
-        sheet.label_count, sheet.page_count, path
-    )
+    msg = f"{sheet.label_count:d} label(s) output on {sheet.page_count:d} page(s) to {path}.\n"
     if verbose:
-        print(msg)
+        sys.stdout.write(msg)
     return msg

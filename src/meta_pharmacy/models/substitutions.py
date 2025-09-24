@@ -42,7 +42,7 @@ class Substitutions(NonUniqueSubjectIdentifierFieldMixin, SiteModelMixin, BaseUu
     updated_visit_no = models.IntegerField("Visit Number", null=True, blank=True)
 
     updated_subject_identifier = models.CharField(
-        max_length=50, verbose_name="Taken from subject", null=True, blank=True
+        max_length=50, verbose_name="Taken from subject", default="", blank=True
     )
 
     arm_match = models.CharField(
@@ -82,7 +82,7 @@ class Substitutions(NonUniqueSubjectIdentifierFieldMixin, SiteModelMixin, BaseUu
     class Meta(SiteModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name_plural = "IMP Substitutions"
         verbose_name = "IMP Substitution"
-        indexes = [
+        indexes = (
             Index(fields=["sid", "dispensed_sid", "subject_identifier"]),
             Index(fields=["row_index"]),
-        ]
+        )

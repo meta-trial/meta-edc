@@ -8,7 +8,7 @@ import django.db.models.deletion
 import django_audit_fields.fields.hostname_modification_field
 import django_audit_fields.fields.userfield
 import django_audit_fields.fields.uuid_auto_field
-import django_audit_fields.models.audit_model_mixin
+import django.utils.timezone
 import django_revision.revision_field
 import edc_crf.model_mixins.crf_status_model_mixin
 import edc_model.validators.date
@@ -21,7 +21,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_subject", "0171_alter_glucose_endpoint_today_and_more"),
         ("sites", "0002_alter_domain_unique"),

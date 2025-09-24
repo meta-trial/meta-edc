@@ -1,7 +1,9 @@
+import contextlib
+
 from django.core.exceptions import ValidationError
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
-from edc_action_item import ActionItemDeleteError, delete_action_item
+from edc_action_item.delete_action_item import ActionItemDeleteError, delete_action_item
 from edc_appointment.utils import refresh_appointments
 from edc_constants.constants import YES
 from edc_pharmacy.exceptions import PrescriptionAlreadyExists
@@ -26,10 +28,11 @@ from .subject_consent_v1_ext import SubjectConsentV1Ext
     sender=SubjectConsentV1,
     dispatch_uid="subject_consent_on_post_save",
 )
-def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
+def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):  # noqa: ARG001
     """Creates an onschedule instance for this consented subject, if
     it does not exist.
     """
+
     if not raw:
         if not created:
             _, schedule = site_visit_schedules.get_by_onschedule_model("meta_prn.onschedule")
@@ -62,7 +65,7 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
                     onschedule_datetime=instance.consent_datetime,
                 )
                 # All refills are created against this prescription
-                try:
+                with contextlib.suppress(PrescriptionAlreadyExists):
                     create_prescription(
                         subject_identifier=instance.subject_identifier,
                         report_datetime=instance.consent_datetime,
@@ -70,20 +73,16 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
                         randomizer_name=get_meta_version(),
                         site=instance.site,
                     )
-                except PrescriptionAlreadyExists:
-                    pass
 
         # create / delete action for reconsent
         if instance.completed_by_next_of_kin == YES:
             ReconsentAction(subject_identifier=instance.subject_identifier)
         else:
-            try:
+            with contextlib.suppress(ActionItemDeleteError):
                 delete_action_item(
                     action_cls=ReconsentAction,
                     subject_identifier=instance.subject_identifier,
                 )
-            except ActionItemDeleteError:
-                pass
 
 
 @receiver(
@@ -92,7 +91,7 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):
     sender=SubjectConsentV1Ext,
     dispatch_uid="subject_consent_v1_ext_on_post_save",
 )
-def subject_consent_v1_ext_on_post_save(sender, instance, raw, created, **kwargs):
+def subject_consent_v1_ext_on_post_save(sender, instance, raw, created, **kwargs):  # noqa: ARG001
     if not raw:
         refresh_appointments(
             subject_identifier=instance.subject_identifier,
@@ -106,7 +105,7 @@ def subject_consent_v1_ext_on_post_save(sender, instance, raw, created, **kwargs
     weak=False,
     dispatch_uid="subject_consent_on_post_delete",
 )
-def subject_consent_on_post_delete(sender, instance, using, **kwargs):
+def subject_consent_on_post_delete(sender, instance, using, **kwargs):  # noqa: ARG001
     """Updates/Resets subject screening."""
     # don't allow if subject visits exist. This should be caught
     # in the ModelAdmin delete view

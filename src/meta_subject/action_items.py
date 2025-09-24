@@ -1,17 +1,18 @@
 from django.apps import apps as django_apps
-from edc_action_item import Action, ActionWithNotification, site_action_items
-from edc_action_item.site_action_items import AlreadyRegistered
+from edc_action_item.action import Action
+from edc_action_item.action_with_notification import ActionWithNotification
+from edc_action_item.site_action_items import AlreadyRegistered, site_action_items
 from edc_adverse_event.constants import AE_INITIAL_ACTION
 from edc_constants.constants import GRADE3, GRADE4, HIGH_PRIORITY, NEW, NONE, POS, YES
 from edc_egfr.constants import EGFR_DROP_NOTIFICATION_ACTION
-from edc_lab_results.action_items import BloodResultsFbcAction
 from edc_lab_results.action_items import (
-    BloodResultsGluAction as BaseBloodResultsGluAction,
-)
-from edc_lab_results.action_items import (
+    BloodResultsFbcAction,
     BloodResultsHba1cAction,
     BloodResultsLftAction,
     BloodResultsLipidsAction,
+)
+from edc_lab_results.action_items import (
+    BloodResultsGluAction as BaseBloodResultsGluAction,
 )
 from edc_lab_results.action_items import (
     BloodResultsRftAction as BaseBloodResultsRftAction,
@@ -90,8 +91,7 @@ class FollowupExaminationAction(Action):
             self.reference_obj.symptoms_g3.exclude(name=NONE).count() > 0
             or self.reference_obj.symptoms_g4.exclude(name=NONE).count() > 0
             or self.reference_obj.any_other_problems_sae_grade in [GRADE3, GRADE4]
-            or self.reference_obj.lactic_acidosis == YES
-            or self.reference_obj.hepatomegaly == YES
+            or YES in (self.reference_obj.lactic_acidosis, self.reference_obj.hepatomegaly)
         ) and not is_baseline(instance=self.reference_obj.subject_visit):
             next_actions.append(AE_INITIAL_ACTION)
         return next_actions
@@ -132,7 +132,7 @@ class DeliveryAction(ActionWithNotification):
     name = DELIVERY_ACTION
     display_name = "Submit Delivery Form"
     notification_display_name = "Delivery Form"
-    parent_action_names = [PREGNANCY_NOTIFICATION_ACTION]
+    parent_action_names = (PREGNANCY_NOTIFICATION_ACTION,)
     reference_model = "meta_subject.delivery"
     show_link_to_changelist = True
     show_link_to_add = False
@@ -140,15 +140,14 @@ class DeliveryAction(ActionWithNotification):
     priority = HIGH_PRIORITY
 
     def get_next_actions(self):
-        next_actions = [OFFSCHEDULE_PREGNANCY_ACTION]
-        return next_actions
+        return [OFFSCHEDULE_PREGNANCY_ACTION]
 
 
 class EgfrDropNotificationAction(ActionWithNotification):
     name = EGFR_DROP_NOTIFICATION_ACTION
     display_name = "eGFR drop warning"
     notification_display_name = "eGFR drop warning"
-    parent_action_names = []
+    parent_action_names = ()
     reference_model = "meta_subject.egfrdropnotification"
     show_link_to_changelist = True
     show_link_to_add = True
@@ -163,7 +162,7 @@ class DmFollowAction(ActionWithNotification):
     name = DM_FOLLOWUP_ACTION
     display_name = "Diabetes Followup"
     notification_display_name = "Diabetes Followup"
-    parent_action_names = [DM_REFFERAL_ACTION]
+    parent_action_names = (DM_REFFERAL_ACTION,)
     reference_model = "meta_subject.dmfollowup"
     show_link_to_changelist = True
     show_link_to_add = False
@@ -174,8 +173,7 @@ class DmFollowAction(ActionWithNotification):
     priority = HIGH_PRIORITY
 
     def get_next_actions(self):
-        next_actions = [OFFSCHEDULE_DM_REFERRAL_ACTION]
-        return next_actions
+        return [OFFSCHEDULE_DM_REFERRAL_ACTION]
 
 
 def register_actions():

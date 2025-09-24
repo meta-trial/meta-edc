@@ -52,7 +52,7 @@ class PhysicalExamAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "abdominal_tenderness": admin.VERTICAL,
         "enlarged_liver": admin.VERTICAL,
         "irregular_heartbeat": admin.VERTICAL,

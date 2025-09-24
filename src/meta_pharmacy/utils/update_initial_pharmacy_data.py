@@ -136,7 +136,7 @@ def update_labels():
         LabelSpecification().save()
         default = LabelSpecification.objects.get(name="default")
 
-    for name, label_config in site_label_configs.registry.items():
+    for name in site_label_configs.registry:
         LabelConfiguration.objects.create(name=name, label_specification=default)
     for label_configuration in LabelConfiguration.objects.filter(name__contains="patient"):
         label_configuration.requires_allocation = True

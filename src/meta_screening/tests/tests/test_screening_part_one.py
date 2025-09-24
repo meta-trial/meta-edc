@@ -2,7 +2,7 @@ from copy import deepcopy
 
 from django.db.utils import IntegrityError
 from django.test import TestCase
-from edc_constants.constants import FEMALE, NO, TBD, YES
+from edc_constants.constants import FEMALE, NO, NULL_STRING, TBD, YES
 
 from meta_edc.meta_version import PHASE_THREE, get_meta_version
 from meta_screening.eligibility import EligibilityPartOne
@@ -20,7 +20,9 @@ class TestSubjectScreeningPartOneModel(TestCase):
         self.assertEqual(eligibility.eligible, YES)
         self.assertDictEqual(eligibility.reasons_ineligible, {})
         # model attrs
-        self.assertIsNone(getattr(model_obj, EligibilityPartOne.reasons_ineligible_fld_name))
+        self.assertEqual(
+            getattr(model_obj, EligibilityPartOne.reasons_ineligible_fld_name), NULL_STRING
+        )
         self.assertEqual(
             getattr(model_obj, EligibilityPartOne.eligible_fld_name),
             EligibilityPartOne.is_eligible_value,
@@ -65,7 +67,7 @@ class TestSubjectScreeningPartOneModel(TestCase):
         obj = ScreeningPartOne(**opts)
         obj.save()
         self.assertEqual(obj.eligible_part_one, YES)
-        self.assertIsNone(obj.reasons_ineligible_part_one)
+        self.assertEqual(obj.reasons_ineligible_part_one, NULL_STRING)
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
         self.assertIsNotNone(obj.screening_identifier)
@@ -87,7 +89,7 @@ class TestSubjectScreeningPartOneModel(TestCase):
         obj = ScreeningPartOne(**part_one_eligible_options)
         EligibilityPartOne(model_obj=obj)
         obj.save()
-        self.assertIsNone(obj.reasons_ineligible_part_one)
+        self.assertEqual(obj.reasons_ineligible_part_one, NULL_STRING)
         self.assertEqual(obj.eligible_part_one, YES)
 
     def test_ineligible(self):
@@ -98,11 +100,11 @@ class TestSubjectScreeningPartOneModel(TestCase):
             staying_nearby = "staying_nearby_6"
         part_one_eligible_options.update({staying_nearby: NO})
         obj = ScreeningPartOne(**part_one_eligible_options)
-        self.assertIsNone(obj.reasons_ineligible_part_one)
+        self.assertEqual(obj.reasons_ineligible_part_one, NULL_STRING)
         obj.save()
         self.assertIn("Unable/Unwilling to stay nearby for", obj.reasons_ineligible_part_one)
         self.assertEqual(obj.eligible_part_one, NO)
         setattr(obj, staying_nearby, YES)
         obj.save()
         self.assertEqual(obj.eligible_part_one, YES)
-        self.assertIsNone(obj.reasons_ineligible_part_one)
+        self.assertEqual(obj.reasons_ineligible_part_one, NULL_STRING)

@@ -8,11 +8,11 @@ from ..model_mixins import CrfModelMixin
 class DietAndLifestyle(CrfModelMixin, BaseUuidModel):
     diet_and_lifestyle = models.CharField(
         verbose_name=(
-            "Has the participant received the META3 " "approved diet and lifetsyle counseling?"
+            "Has the participant received the META3 approved diet and lifetsyle counseling?"
         ),
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
         help_text="This response is not criteria for eligibility",
     )

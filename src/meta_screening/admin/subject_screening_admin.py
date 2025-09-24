@@ -97,7 +97,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "inclusion_d",
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "acute_condition": admin.VERTICAL,
         "acute_metabolic_acidosis": admin.VERTICAL,
         "advised_to_fast": admin.VERTICAL,
@@ -145,11 +145,11 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         "vl_undetectable": admin.VERTICAL,
     }
 
-    def post_url_on_delete_kwargs(self, request, obj):
+    def post_url_on_delete_kwargs(self, request, obj):  # noqa: ARG002
         return {}
 
     # TODO: this is a hack!
-    def get_post_url_on_delete_name(self, request) -> str:
+    def get_post_url_on_delete_name(self, request) -> str:  # noqa: ARG002
         return url_names.get(self.post_url_on_delete_name)
 
     @staticmethod
@@ -163,7 +163,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
             data.append(f"Contact #: {obj.contact_number or '--'}")
         return format_html(
             "{}",
-            mark_safe("<BR>".join(data)),  # nosec B703, B308
+            mark_safe("<BR>".join(data)),  # noqa: S308
         )
 
     def reasons(self, obj=None):

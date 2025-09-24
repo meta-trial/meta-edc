@@ -12,6 +12,7 @@ from edc_constants.constants import (
     FEMALE,
     NO,
     NOT_APPLICABLE,
+    NULL_STRING,
     RANDOM_SAMPLING,
     YES,
 )
@@ -54,7 +55,7 @@ def get_part_one_eligible_options():
     return options
 
 
-def get_part_two_eligible_options(report_datetime: datetime = None) -> dict:
+def get_part_two_eligible_options(report_datetime: datetime | None = None) -> dict:
     options = dict(
         acute_condition=NO,
         acute_metabolic_acidosis=NO,
@@ -73,8 +74,8 @@ def get_part_two_eligible_options(report_datetime: datetime = None) -> dict:
         agree_to_p3=YES,
         p3_ltfu=NOT_APPLICABLE,
         p3_ltfu_date=None,
-        p3_ltfu_comment=None,
-        contact_number=None,
+        p3_ltfu_comment=NULL_STRING,
+        contact_number=NULL_STRING,
     )
     if fld := [f for f in part_two_fields if f not in options]:
         raise TypeError(
@@ -83,7 +84,7 @@ def get_part_two_eligible_options(report_datetime: datetime = None) -> dict:
     return options
 
 
-def get_part_three_eligible_options(report_datetime: datetime = None):
+def get_part_three_eligible_options(report_datetime: datetime | None = None):
     options = dict(
         creatinine_performed=YES,
         creatinine_units=MICROMOLES_PER_LITER,
@@ -107,7 +108,7 @@ def get_part_three_eligible_options(report_datetime: datetime = None):
         repeat_glucose_opinion=NO,
         ogtt2_performed=NOT_APPLICABLE,
         part_three_report_datetime=report_datetime or now,
-        reasons_unsuitable=None,
+        reasons_unsuitable=NULL_STRING,
         sys_blood_pressure=120,
         sys_blood_pressure_one=120,
         sys_blood_pressure_two=120,

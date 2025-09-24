@@ -1,5 +1,5 @@
 from django.contrib import admin
-from edc_adverse_event.modeladmin_mixins import AeSusarModelAdminMixin
+from edc_adverse_event.modeladmin_mixins.ae_susar_admin_mixin import AeSusarModelAdminMixin
 from edc_model_admin.history import SimpleHistoryAdmin
 from edc_sites.admin import SiteModelAdminMixin
 

@@ -35,8 +35,7 @@ def get_tables() -> dict[str, Data]:
             & (df_not_tested["eligible_part_two"] == "Yes")
         )
     ]
-    df_not_tested.drop(df_not_eligible_p1p2.index, inplace=True)
-    df_not_tested.drop(df_fbg.index, inplace=True)
+    df_not_tested = df_not_tested.drop(df_not_eligible_p1p2.index).drop(df_fbg.index)
 
     df_stats = pd.DataFrame(
         {

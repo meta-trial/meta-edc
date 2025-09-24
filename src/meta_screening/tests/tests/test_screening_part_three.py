@@ -3,10 +3,10 @@ from decimal import Decimal
 
 from dateutil.relativedelta import relativedelta
 from django.test import TestCase
-from edc_constants.constants import FEMALE, NO, NOT_APPLICABLE, POS, TBD, YES
+from django.utils import timezone
+from edc_constants.constants import FEMALE, NO, NOT_APPLICABLE, NULL_STRING, POS, TBD, YES
 from edc_reportable import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
 from edc_reportable.utils import convert_units
-from edc_utils.date import get_utcnow
 
 from meta_screening.constants import (
     EGFR_LT_45,
@@ -43,11 +43,11 @@ class TestScreeningPartThree(TestCase):
 
         # assert eligible for part one criteria
         self.assertEqual(obj.eligible_part_one, YES)
-        self.assertIsNone(obj.reasons_ineligible_part_one)
+        self.assertEqual(obj.reasons_ineligible_part_one, NULL_STRING)
 
         # assert eligible for part two criteria
         self.assertEqual(obj.eligible_part_two, YES)
-        self.assertIsNone(obj.reasons_ineligible_part_two)
+        self.assertEqual(obj.reasons_ineligible_part_two, NULL_STRING)
 
         # assert eligiblility to be determined for part three
         self.assertEqual(obj.eligible_part_three, TBD)
@@ -76,7 +76,7 @@ class TestScreeningPartThree(TestCase):
         for k, v in part_three_eligible_options.items():
             setattr(obj, k, v)
         obj.save()
-        self.assertIsNone(obj.reasons_ineligible_part_three)
+        self.assertEqual(obj.reasons_ineligible_part_three, NULL_STRING)
         self.assertEqual(obj.eligible_part_three, YES)
 
     def test_eligible_datetime_does_not_change_on_resave(self):
@@ -101,7 +101,7 @@ class TestScreeningPartThree(TestCase):
 
         self.assertEqual(obj.converted_ogtt_value, obj.ogtt_value)
 
-        self.assertIsNone(obj.reasons_ineligible_part_three)
+        self.assertEqual(obj.reasons_ineligible_part_three, NULL_STRING)
         self.assertEqual(obj.eligible_part_three, YES)
         obj.severe_htn = YES
         obj.save()
@@ -111,7 +111,7 @@ class TestScreeningPartThree(TestCase):
         obj.severe_htn = NO
         obj.save()
         obj.refresh_from_db()
-        self.assertIsNone(obj.reasons_ineligible_part_three)
+        self.assertEqual(obj.reasons_ineligible_part_three, NULL_STRING)
         self.assertEqual(obj.eligible_part_three, YES)
 
     def test_eligible2_phase_three_missing_ogtt(self):
@@ -158,7 +158,7 @@ class TestScreeningPartThree(TestCase):
         self.assertEqual(obj.converted_ogtt_value, obj.ogtt_value)
         self.assertEqual(obj.converted_ogtt2_value, obj.ogtt2_value)
 
-    def test_eligible2_phase_three_by_repeat_ogtt(self):
+    def test_eligible2_phase_three_by_repeat_ogtt(self):  # noqa: PLR0915
         obj = self.get_screening_part_three_obj()
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())
 
@@ -168,7 +168,7 @@ class TestScreeningPartThree(TestCase):
         obj.refresh_from_db()
 
         # eligible by single OGTT
-        self.assertIsNone(obj.reasons_ineligible_part_three)
+        self.assertEqual(obj.reasons_ineligible_part_three, NULL_STRING)
         self.assertEqual(obj.eligible_part_three, YES)
 
         # repeat OGTT, result in range
@@ -195,7 +195,7 @@ class TestScreeningPartThree(TestCase):
 
         self.assertEqual(obj.converted_ogtt_value, obj.ogtt_value)
         self.assertEqual(obj.converted_ogtt2_value, obj.ogtt2_value)
-        self.assertIsNone(obj.reasons_ineligible_part_three)
+        self.assertEqual(obj.reasons_ineligible_part_three, NULL_STRING)
         self.assertEqual(obj.eligible_part_three, YES)
 
         # repeat OGTT, result too low
@@ -207,7 +207,7 @@ class TestScreeningPartThree(TestCase):
         self.assertEqual(obj.converted_ogtt2_value, obj.ogtt2_value)
         # still eligible because the FBG qualifies
         self.assertEqual(obj.eligible_part_three, YES)
-        self.assertIsNone(obj.reasons_ineligible_part_three)
+        self.assertEqual(obj.reasons_ineligible_part_three, NULL_STRING)
 
         # repeat FBG, result too low
         obj.fbg2_value = Decimal("5.5000")
@@ -232,12 +232,12 @@ class TestScreeningPartThree(TestCase):
         self.assertEqual(obj.converted_ogtt_value, obj.ogtt_value)
         self.assertEqual(obj.converted_ogtt2_value, obj.ogtt2_value)
         self.assertEqual(obj.eligible_part_three, YES)
-        self.assertIsNone(obj.reasons_ineligible_part_three)
+        self.assertEqual(obj.reasons_ineligible_part_three, NULL_STRING)
 
-    def _test_eligible2(self, obj, incomplete_reason: str, ineligible_reason: str):
-        self.assertIsNone(obj.reasons_ineligible_part_one)
+    def _test_eligible2(self, obj, incomplete_reason: str, ineligible_reason: str):  # noqa: ARG002, PLR0915
+        self.assertEqual(obj.reasons_ineligible_part_one, NULL_STRING)
         self.assertEqual(obj.eligible_part_one, YES)
-        self.assertIsNone(obj.reasons_ineligible_part_two)
+        self.assertEqual(obj.reasons_ineligible_part_two, NULL_STRING)
         self.assertEqual(obj.eligible_part_two, YES)
 
         self.assertEqual(obj.reasons_ineligible_part_three, incomplete_reason)
@@ -277,7 +277,7 @@ class TestScreeningPartThree(TestCase):
         obj.fasting_duration_str = "8h"
         obj.fbg_value = 6.9
         obj.fbg_units = MILLIMOLES_PER_LITER
-        obj.fbg_datetime = get_utcnow()
+        obj.fbg_datetime = timezone.now()
         obj.save()
 
         self.assertEqual(obj.reasons_ineligible_part_three, incomplete_reason)
@@ -285,10 +285,10 @@ class TestScreeningPartThree(TestCase):
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
 
-        obj.ogtt_base_datetime = get_utcnow()
+        obj.ogtt_base_datetime = timezone.now()
         obj.ogtt_value = 3.0
         obj.ogtt_units = MICROMOLES_PER_LITER
-        obj.ogtt_datetime = get_utcnow()
+        obj.ogtt_datetime = timezone.now()
         obj.save()
 
         obj.refresh_from_db()
@@ -305,10 +305,10 @@ class TestScreeningPartThree(TestCase):
         self.assertTrue(obj.eligible)
         self.assertFalse(obj.consented)
 
-        obj.ogtt_base_datetime = get_utcnow()
+        obj.ogtt_base_datetime = timezone.now()
         obj.ogtt_value = 7.8
         obj.ogtt_units = MILLIMOLES_PER_LITER
-        obj.ogtt_datetime = get_utcnow()
+        obj.ogtt_datetime = timezone.now()
         obj.save()
 
         self.assertFalse(obj.reasons_ineligible_part_three)
@@ -338,7 +338,7 @@ class TestScreeningPartThree(TestCase):
         obj.fbg_value = fbg_value
         obj.ogtt_value = ogtt_value
 
-        obj.part_three_report_datetime = get_utcnow()
+        obj.part_three_report_datetime = timezone.now()
         obj.weight = 65
         obj.height = 110
         obj.hba1c_performed = YES
@@ -347,10 +347,10 @@ class TestScreeningPartThree(TestCase):
         obj.fasting = YES
         obj.fasting_duration_str = "8h"
         obj.fbg_units = MILLIMOLES_PER_LITER
-        obj.fbg_datetime = get_utcnow()
-        obj.ogtt_base_datetime = get_utcnow()
+        obj.fbg_datetime = timezone.now()
+        obj.ogtt_base_datetime = timezone.now()
         obj.ogtt_units = MILLIMOLES_PER_LITER
-        obj.ogtt_datetime = get_utcnow()
+        obj.ogtt_datetime = timezone.now()
         obj.severe_htn = NO
         obj.save()
         return obj
@@ -379,12 +379,12 @@ class TestScreeningPartThree(TestCase):
         obj.hba1c_performed = YES
         obj.hba1c_value = 7.0
         obj.height = 110
-        obj.fbg_datetime = get_utcnow()
+        obj.fbg_datetime = timezone.now()
         obj.fbg_units = MILLIMOLES_PER_LITER
-        obj.ogtt_base_datetime = get_utcnow()
-        obj.ogtt_datetime = get_utcnow()
+        obj.ogtt_base_datetime = timezone.now()
+        obj.ogtt_datetime = timezone.now()
         obj.ogtt_units = MILLIMOLES_PER_LITER
-        obj.part_three_report_datetime = get_utcnow()
+        obj.part_three_report_datetime = timezone.now()
         obj.severe_htn = NO
         obj.weight = 65
         obj.save()
@@ -422,7 +422,7 @@ class TestScreeningPartThree(TestCase):
         model_obj.urine_bhcg_value = NOT_APPLICABLE
         model_obj.urine_bhcg_date = None
         model_obj.save()
-        self.assertIsNone(model_obj.reasons_ineligible_part_three)
+        self.assertEqual(model_obj.reasons_ineligible_part_three, NULL_STRING)
         self.assertEqual(model_obj.eligible_part_three, YES)
 
         model_obj.urine_bhcg_performed = YES

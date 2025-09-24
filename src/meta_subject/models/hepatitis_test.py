@@ -20,7 +20,7 @@ class HepatitisTest(CrfModelMixin, BaseUuidModel):
         verbose_name=mark_safe("<u>HbSAg</u>"),  # nosec B308
         max_length=15,
         choices=POS_NEG,
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -43,7 +43,7 @@ class HepatitisTest(CrfModelMixin, BaseUuidModel):
         verbose_name=mark_safe("<u>HCV</u>"),  # nosec B308
         max_length=15,
         choices=POS_NEG,
-        null=True,
+        default="",
         blank=True,
     )
 

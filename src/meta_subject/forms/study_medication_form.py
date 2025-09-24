@@ -28,14 +28,17 @@ class StudyMedicationFormValidator(BaseStudyMedicationFormValidator):
         except AttributeError:
             self.raise_validation_error("Subject visit is required", INVALID_ERROR)
         else:
-            if subject_visit.visit_code == DAY1 and subject_visit.visit_code_sequence == 0:
-                if (
+            if (
+                subject_visit.visit_code == DAY1
+                and subject_visit.visit_code_sequence == 0
+                and (
                     self.cleaned_data.get("dosage_guideline")
                     and self.cleaned_data.get("dosage_guideline").dose != 1000
-                ):
-                    raise forms.ValidationError(
-                        {"dosage_guideline": "Invalid. Expected 1000mg/day at baseline"}
-                    )
+                )
+            ):
+                raise forms.ValidationError(
+                    {"dosage_guideline": "Invalid. Expected 1000mg/day at baseline"}
+                )
 
     def validate_stock_codes_are_dispensed(self):
         if self.cleaned_data.get("stock_codes"):
@@ -59,7 +62,7 @@ class StudyMedicationFormValidator(BaseStudyMedicationFormValidator):
                             self.subject_identifier
                         ),
                     )
-                except ObjectDoesNotExist:
+                except ObjectDoesNotExist as e:
                     raise forms.ValidationError(
                         {
                             "stock_codes": (
@@ -68,7 +71,7 @@ class StudyMedicationFormValidator(BaseStudyMedicationFormValidator):
                                 "Please check the bottle or check with your pharmacist."
                             )
                         }
-                    )
+                    ) from e
 
 
 class StudyMedicationForm(CrfModelFormMixin, forms.ModelForm):

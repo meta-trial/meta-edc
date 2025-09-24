@@ -45,7 +45,7 @@ class OtherArvRegimensDetail(CrfInlineModelMixin, BaseUuidModel):
         blank=True,
     )
 
-    notes = models.CharField(verbose_name="Notes", max_length=100, null=True, blank=True)
+    notes = models.CharField(verbose_name="Notes", max_length=100, default="", blank=True)
 
     objects = InlineModelManager()
     on_site = CurrentSiteManager()

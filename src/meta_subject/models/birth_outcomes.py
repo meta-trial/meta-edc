@@ -15,7 +15,7 @@ from .delivery import Delivery
 class Manager(models.Manager):
     use_in_migrations = True
 
-    def get_by_natural_key(
+    def get_by_natural_key(  # noqa: PLR0913
         self,
         birth_order,
         subject_identifier,
@@ -97,5 +97,5 @@ class BirthOutcomes(
     class Meta(BaseUuidModel.Meta):
         verbose_name = "Birth Outcomes"
         verbose_name_plural = "Birth Outcomes"
-        indexes = [Index(fields=["delivery", "birth_order"])]
-        unique_together = ["delivery", "birth_order"]
+        indexes = (Index(fields=["delivery", "birth_order"]),)
+        unique_together = ("delivery", "birth_order")

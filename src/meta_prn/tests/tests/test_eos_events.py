@@ -1,10 +1,10 @@
 from django.test import TestCase
+from django.utils import timezone
 from edc_action_item.models import ActionItem
 from edc_constants.constants import FEMALE, NEW, PATIENT, YES
 from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_pharmacy.models import Medication
 from edc_transfer.constants import SUBJECT_TRANSFER_ACTION, TRANSFERRED
-from edc_utils import get_utcnow
 from edc_visit_schedule.constants import OFFSCHEDULE_ACTION
 
 from meta_lists.models import OffstudyReasons, TransferReasons
@@ -67,8 +67,8 @@ class TestEosEvents(MetaTestCaseMixin, TestCase):
 
         offstudy_rx = OffStudyMedication.objects.create(
             subject_identifier=self.subject_consent.subject_identifier,
-            stop_date=get_utcnow().date(),
-            last_dose_date=get_utcnow().date(),
+            stop_date=timezone.now().date(),
+            last_dose_date=timezone.now().date(),
             reason=PATIENT,
         )
         offstudy_rx.medications.add(Medication.objects.get(name=METFORMIN))
@@ -81,7 +81,7 @@ class TestEosEvents(MetaTestCaseMixin, TestCase):
 
         EndOfStudy.objects.create(
             subject_identifier=self.subject_consent.subject_identifier,
-            last_seen_date=get_utcnow().date(),
+            last_seen_date=timezone.now().date(),
             offstudy_reason=OffstudyReasons.objects.get(name=TRANSFERRED),
         )
 
@@ -92,7 +92,6 @@ class TestEosEvents(MetaTestCaseMixin, TestCase):
         self.assertEqual(action_types, [])
 
     def test_transfer_to_offschedule_raises(self):
-
         OffscheduleAction(
             subject_identifier=self.subject_consent.subject_identifier,
             skip_get_current_site=True,
@@ -109,8 +108,8 @@ class TestEosEvents(MetaTestCaseMixin, TestCase):
 
         offstudy_rx = OffStudyMedication.objects.create(
             subject_identifier=self.subject_consent.subject_identifier,
-            stop_date=get_utcnow().date(),
-            last_dose_date=get_utcnow().date(),
+            stop_date=timezone.now().date(),
+            last_dose_date=timezone.now().date(),
             reason=PATIENT,
         )
         offstudy_rx.medications.add(Medication.objects.get(name=METFORMIN))
@@ -123,7 +122,7 @@ class TestEosEvents(MetaTestCaseMixin, TestCase):
 
         EndOfStudy.objects.create(
             subject_identifier=self.subject_consent.subject_identifier,
-            last_seen_date=get_utcnow().date(),
+            last_seen_date=timezone.now().date(),
             offstudy_reason=OffstudyReasons.objects.get(name=TRANSFERRED),
         )
 

@@ -12,10 +12,6 @@ class SubjectScreeningForm(
 ):
     form_validator_cls = SubjectScreeningFormValidator
 
-    def clean(self):
-        cleaned_data = super().clean()
-        return cleaned_data
-
     class Meta:
         model = SubjectScreening
         fields = "__all__"

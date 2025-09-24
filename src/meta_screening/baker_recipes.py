@@ -1,8 +1,8 @@
 from dateutil.relativedelta import relativedelta
 from django.contrib.sites.models import Site
-from edc_constants.constants import BLACK, FEMALE, NO, NOT_APPLICABLE, YES
+from django.utils import timezone
+from edc_constants.constants import BLACK, FEMALE, NO, NOT_APPLICABLE, NULL_STRING, YES
 from edc_reportable.units import MILLIGRAMS_PER_DECILITER, MILLIMOLES_PER_LITER
-from edc_utils import get_utcnow
 from faker import Faker
 from model_bakery.recipe import Recipe
 
@@ -13,11 +13,11 @@ fake = Faker()
 
 subjectscreening = Recipe(
     SubjectScreening,
-    report_datetime=get_utcnow() - relativedelta(days=1),
+    report_datetime=timezone.now() - relativedelta(days=1),
     screening_consent=YES,
     hospital_identifier="111",
     initials="ZZ",
-    subject_identifier=None,
+    subject_identifier=NULL_STRING,
     gender=FEMALE,
     age_in_years=40,
     ethnicity=BLACK,
@@ -29,7 +29,7 @@ subjectscreening = Recipe(
     staying_nearby_12=YES,
     pregnant=NO,
     site=Site.objects.get_current(),
-    part_two_report_datetime=get_utcnow() - relativedelta(days=1),
+    part_two_report_datetime=timezone.now() - relativedelta(days=1),
     congestive_heart_failure=NO,
     liver_disease=NO,
     alcoholism=NO,
@@ -39,8 +39,8 @@ subjectscreening = Recipe(
     acute_condition=NO,
     metformin_sensitivity=NO,
     advised_to_fast=YES,
-    appt_datetime=get_utcnow() + relativedelta(days=1),
-    part_three_report_datetime=get_utcnow(),
+    appt_datetime=timezone.now() + relativedelta(days=1),
+    part_three_report_datetime=timezone.now(),
     weight=65,
     height=120,
     fasting=YES,
@@ -51,8 +51,8 @@ subjectscreening = Recipe(
     creatinine_units=MILLIGRAMS_PER_DECILITER,
     fbg_value=6.9,
     fbg_units=MILLIMOLES_PER_LITER,
-    fbg_datetime=get_utcnow(),
-    ogtt_base_datetime=get_utcnow(),
+    fbg_datetime=timezone.now(),
+    ogtt_base_datetime=timezone.now(),
     unsuitable_for_study=NO,
     unsuitable_agreed=NOT_APPLICABLE,
     vl_undetectable=YES,

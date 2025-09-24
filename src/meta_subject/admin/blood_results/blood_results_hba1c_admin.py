@@ -1,5 +1,5 @@
 from django.contrib import admin
-from edc_action_item import action_fieldset_tuple
+from edc_action_item.fieldsets import action_fieldset_tuple
 from edc_lab_panel.panels import hba1c_panel
 from edc_lab_results.admin import BloodResultsModelAdminMixin
 from edc_lab_results.fieldsets import BloodResultFieldset

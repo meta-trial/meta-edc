@@ -40,12 +40,12 @@ class FollowupExamination(CrfWithActionModelMixin, BaseUuidModel):
         related_name="symptoms_g3",
         verbose_name="For these symptoms, were any grade 3 events",
         help_text=(
-            "Refer to DAIDS toxicity table. " "Please complete Serious Adverse Event form"
+            "Refer to DAIDS toxicity table. Please complete Serious Adverse Event form"
         ),
     )
     symptoms_g3_detail = models.TextField(
         verbose_name="Please provide details on any of the Grade 3 symptoms above.",
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -55,19 +55,19 @@ class FollowupExamination(CrfWithActionModelMixin, BaseUuidModel):
         related_name="symptoms_g4",
         verbose_name="For these symptoms, were any grade 4 events",
         help_text=(
-            "Refer to DAIDS toxicity table. " "Please complete Serious Adverse Event form"
+            "Refer to DAIDS toxicity table. Please complete Serious Adverse Event form"
         ),
     )
     symptoms_g4_detail = models.TextField(
         verbose_name="Please provide details on any of the Grade 4 symptoms above.",
-        null=True,
+        default="",
         blank=True,
     )
 
     # 4c
     symptoms_detail = models.TextField(
         verbose_name="Please provide details on any of the symptoms above.",
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -89,7 +89,7 @@ class FollowupExamination(CrfWithActionModelMixin, BaseUuidModel):
             "If the participant was given a referral letter or "
             "discharge summary record details here"
         ),
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -124,9 +124,9 @@ class FollowupExamination(CrfWithActionModelMixin, BaseUuidModel):
     # 5d
     prescribed_medication_detail = models.TextField(
         verbose_name=(
-            "If YES, prescribed any other medication, " "please provide details of this visit"
+            "If YES, prescribed any other medication, please provide details of this visit"
         ),
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -145,7 +145,7 @@ class FollowupExamination(CrfWithActionModelMixin, BaseUuidModel):
     # 6a
     any_other_problems_detail = models.TextField(
         verbose_name="If YES, please provide details of the event",
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -176,7 +176,7 @@ class FollowupExamination(CrfWithActionModelMixin, BaseUuidModel):
 
     # 7b
     art_change_reason = models.TextField(
-        verbose_name="If YES, please provide reason for change", null=True, blank=True
+        verbose_name="If YES, please provide reason for change", default="", blank=True
     )
 
     # 7c
@@ -241,7 +241,7 @@ class FollowupExamination(CrfWithActionModelMixin, BaseUuidModel):
 
     referral_reason = models.TextField(
         verbose_name="If YES, where are they being referred to",
-        null=True,
+        default="",
         blank=True,
         help_text=(
             "Note: remind participant that admission or discharge information "

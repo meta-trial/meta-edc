@@ -53,7 +53,7 @@ class TestActions(MetaTestCaseMixin, TestCase):
             self.assertEqual(action_item.status, NEW)
 
     @override_settings(EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=False)
-    def test_ae_initial_G4_creates_ae_tmg_action(self):
+    def test_ae_initial_G4_creates_ae_tmg_action(self):  # noqa: N802
         subject_screening = self.get_subject_screening()
         subject_consent = self.get_subject_consent(subject_screening)
         baker.make_recipe(
@@ -70,7 +70,7 @@ class TestActions(MetaTestCaseMixin, TestCase):
         except ObjectDoesNotExist:
             self.fail("ObjectDoesNotExist unexpectedly raised.")
 
-    def test_ae_initial_G5_creates_death_report_action(self):
+    def test_ae_initial_G5_creates_death_report_action(self):  # noqa: N802
         subject_screening = self.get_subject_screening()
         subject_consent = self.get_subject_consent(subject_screening)
         baker.make_recipe(

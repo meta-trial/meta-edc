@@ -1,5 +1,3 @@
-from typing import Tuple
-
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_sites.admin import SiteModelAdminMixin
@@ -21,12 +19,12 @@ from .fieldsets import (
 from .subject_screening_admin import SubjectScreeningAdmin
 
 
-def get_fieldsets() -> Tuple[
-    Tuple[str, dict],
-    Tuple[str, dict],
-    Tuple[str, dict],
-    Tuple[str, dict],
-    Tuple[str, dict],
+def get_fieldsets() -> tuple[
+    tuple[str, dict],
+    tuple[str, dict],
+    tuple[str, dict],
+    tuple[str, dict],
+    tuple[str, dict],
 ]:
     return (
         get_part_one_fieldset(collapse=True),
@@ -39,12 +37,11 @@ def get_fieldsets() -> Tuple[
 
 @admin.register(ScreeningPartTwo, site=meta_screening_admin)
 class ScreeningPartTwoAdmin(SiteModelAdminMixin, SubjectScreeningAdmin):
-
     form = ScreeningPartTwoForm
 
     fieldsets = get_fieldsets()
 
-    readonly_fields: Tuple[str, ...] = (
+    readonly_fields: tuple[str, ...] = (
         *part_one_fields,
         *part_three_fields,
         *calculated_fields,

@@ -23,7 +23,7 @@ class PregnancyUpdate(CrfModelMixin, BaseUuidModel):
         help_text="If yes, please specify below",
     )
 
-    comment = models.TextField(verbose_name="Comment / Updates", null=True)
+    comment = models.TextField(verbose_name="Comment / Updates", default="")
 
     class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Pregnancy Update"

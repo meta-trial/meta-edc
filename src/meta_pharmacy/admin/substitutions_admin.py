@@ -54,11 +54,11 @@ class SubstitutionsAdmin(
         "report_date",
     )
 
-    radio_fields = {"arm_match": admin.VERTICAL}
+    radio_fields = {"arm_match": admin.VERTICAL}  # noqa: RUF012
 
     list_filter = ("arm_match", ReportDateListFilter)
 
-    search_fields = ["subject_identifier", "sid", "dispensed_sid"]
+    search_fields = ("subject_identifier", "sid", "dispensed_sid")
 
     @admin.display(description="Report date", ordering="report_datetime")
     def report_date(self, obj) -> str | None:

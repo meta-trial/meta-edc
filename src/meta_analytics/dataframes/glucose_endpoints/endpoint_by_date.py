@@ -11,7 +11,7 @@ class EndpointTdeltaError(Exception):
     pass
 
 
-class InvalidCaseList(Exception):
+class InvalidCaseList(Exception):  # noqa: N818
     pass
 
 
@@ -68,42 +68,36 @@ class CaseData:
 
     def case_two(self) -> bool:
         """ "FBG >= 7 x 2, first OGTT<=11.1"""
-        if (
+        return bool(
             self.fbg_value >= self.fbg_threshold
             and self.next_fbg_value >= self.fbg_threshold
             and 0.0 < self.ogtt_value < self.ogtt_threshold
             and self.fasted == YES
             and self.next_fasted == YES
             and (self.next_fbg_datetime.date() - self.fbg_datetime.date()).days > 6
-        ):
-            return True
-        return False
+        )
 
     def case_three(self) -> bool:
         """ "FBG >= 7 x 2, second OGTT<=11.1"""
-        if (
+        return bool(
             self.fbg_value >= self.fbg_threshold
             and self.next_fbg_value >= self.fbg_threshold
             and 0.0 < self.next_ogtt_value < self.ogtt_threshold
             and self.fasted == YES
             and self.next_fasted == YES
             and (self.next_fbg_datetime.date() - self.fbg_datetime.date()).days > 6
-        ):
-            return True
-        return False
+        )
 
     def case_two_reversed(self) -> bool:
         """Same as case 2, but with the previous FBG reading."""
-        if (
+        return bool(
             self.fbg_value >= self.fbg_threshold
             and self.previous_fbg_value >= self.fbg_threshold
             and 0.0 < self.previous_ogtt_value < self.ogtt_threshold
             and self.fasted == YES
             and self.previous_fasted == YES
             and (self.fbg_datetime.date() - self.previous_fbg_datetime.date()).days > 6
-        ):
-            return True
-        return False
+        )
 
 
 class EndpointByDate:
@@ -132,8 +126,8 @@ class EndpointByDate:
     def __init__(
         self,
         subject_df: pd.DataFrame = None,
-        fbg_threshhold: float = None,
-        ogtt_threshhold: float = None,
+        fbg_threshhold: float | None = None,
+        ogtt_threshhold: float | None = None,
     ):
         self.row = None
         self.index = None
@@ -148,16 +142,15 @@ class EndpointByDate:
             if case_data.case_two():
                 self.endpoint_reached(index, case=2, fbg_datetime=case_data.next_fbg_datetime)
                 break
-            elif case_data.case_three():
+            if case_data.case_three():
                 self.endpoint_reached(index, case=3, fbg_datetime=case_data.next_fbg_datetime)
                 break
-            elif case_data.case_two_reversed():
+            if case_data.case_two_reversed():
                 self.endpoint_reached(index, case=2, fbg_datetime=case_data.fbg_datetime)
                 break
-            else:
-                pass
+            pass
 
-    def endpoint_reached(self, index: int, case: int, fbg_datetime: pd.Timestamp):
+    def endpoint_reached(self, index: int, case: int, fbg_datetime: pd.Timestamp):  # noqa: ARG002
         """Update the subject_df"""
         self.subject_df.loc[self.subject_df["fbg_datetime"] == fbg_datetime, "endpoint"] = 1
         self.subject_df["interval_in_days"] = np.nan

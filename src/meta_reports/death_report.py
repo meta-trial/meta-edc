@@ -24,7 +24,7 @@ class DeathPdfReport(MetaCrfPdfReport):
         super().__init__(**kwargs)
         self.death_report = death_report
 
-    def get_report_story(self, **kwargs):
+    def get_report_story(self, **kwargs):  # noqa: ARG002
         story = []
 
         self.draw_demographics(story)

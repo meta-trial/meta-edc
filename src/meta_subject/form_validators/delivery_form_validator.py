@@ -10,16 +10,15 @@ from meta_prn.models import PregnancyNotification
 
 
 class DeliveryFormValidator(CrfFormValidator):
-
     def clean(self):
         try:
             pregnancy_notification = PregnancyNotification.objects.get(
                 subject_identifier=self.cleaned_data.get("subject_visit").subject_identifier
             )
-        except ObjectDoesNotExist:
+        except ObjectDoesNotExist as e:
             raise forms.ValidationError(
                 f"{PregnancyNotification._meta.verbose_name} not found."
-            )
+            ) from e
 
         self.required_if(
             NO, field="info_available", field_required="info_not_available_reason"

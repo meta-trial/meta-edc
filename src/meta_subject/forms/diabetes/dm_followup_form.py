@@ -17,8 +17,8 @@ class DmFollowupForm(CrfModelFormMixin, ActionItemCrfFormMixin, forms.ModelForm)
     class Meta:
         model = DmFollowup
         fields = "__all__"
-        help_text = {"action_identifier": "(read-only)"}
-        widgets = {
+        help_text = {"action_identifier": "(read-only)"}  # noqa: RUF012
+        widgets = {  # noqa: RUF012
             "action_identifier": forms.TextInput(
                 attrs={"required": False, "readonly": "readonly"}
             ),

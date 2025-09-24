@@ -31,7 +31,7 @@ class UrinePregnancyAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "performed": admin.VERTICAL,
         "bhcg_value": admin.VERTICAL,
     }

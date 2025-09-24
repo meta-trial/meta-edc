@@ -39,14 +39,14 @@ def create_missing_rx_refills():
     print_messages(messages)
 
 
-def save_or_raise(obj, messages: list[str] = None):
+def save_or_raise(obj, messages: list[str] | None = None):
     try:
         obj.save()
     except NextStudyMedicationError as e:
         messages.append(f"NextStudyMedicationError: {e}")
     except ObjectDoesNotExist as e:
         messages.append(
-            f"ObjectDoesNotExist: {obj.subject_identifier}, {obj.related_visit}, {str(e)}"
+            f"ObjectDoesNotExist: {obj.subject_identifier}, {obj.related_visit}, {e!s}"
         )
     except StudyMedicationError as e:
         messages.append(f"StudyMedicationError: {e}")
@@ -65,5 +65,5 @@ def print_messages(messages: list[str]):
 
 
 class Command(BaseCommand):
-    def handle(self, *args, **options):
+    def handle(self, *args, **options):  # noqa: ARG002
         create_missing_rx_refills()

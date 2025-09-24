@@ -31,9 +31,8 @@ def get_eos_df() -> pd.DataFrame:
     df_visit_grp["followup_days"] = (
         df_visit_grp["visit_datetime"] - df_visit_grp["baseline_datetime"]
     ).dt.days
-    df_eos = df_eos.merge(
+    return df_eos.merge(
         df_visit_grp[["subject_identifier", "followup_days"]],
         on="subject_identifier",
         how="left",
     ).reset_index(drop=True)
-    return df_eos

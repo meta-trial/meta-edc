@@ -53,7 +53,7 @@ class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, BaseUuidModel):
         verbose_name="Has the patient been diagnosed with dyslipidaemia?",
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
     )
 
@@ -77,7 +77,7 @@ class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, BaseUuidModel):
     other_dyslipidaemia_rx = models.CharField(
         verbose_name="What medication is the patient currently taking for dyslipidaemia?",
         max_length=50,
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -85,14 +85,14 @@ class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, BaseUuidModel):
     concomitant_conditions = models.TextField(
         verbose_name="Does the patient have any other conditions not mentioned above?",
         max_length=250,
-        null=True,
+        default="",
         blank=True,
     )
     # PHASE_THREE_ONLY
     concomitant_medications = models.TextField(
         verbose_name="Is the patient taking any concomitant medications?",
         max_length=250,
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -129,13 +129,12 @@ class PatientHistory(ArvHistoryModelMixin, CrfModelMixin, BaseUuidModel):
         verbose_name=mark_safe(  # nosec B308
             "If other symptom in the <u>past year</u>, please specify ..."
         ),
-        null=True,
         blank=True,
     )
 
     dm_in_family = models.CharField(
         verbose_name=(
-            "Has anyone in your immediate family " "ever been diagnosed with diabetes?"
+            "Has anyone in your immediate family ever been diagnosed with diabetes?"
         ),
         max_length=15,
         choices=YES_NO,

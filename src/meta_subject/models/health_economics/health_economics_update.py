@@ -5,7 +5,8 @@ from edc_constants.choices import YES_NO
 from edc_constants.constants import NOT_APPLICABLE
 from edc_crf.model_mixins import SingletonCrfModelMixin
 from edc_he.choices import RELATIONSHIP_CHOICES, STATUS
-from edc_he.model_mixins import HouseholdModelMixin, income_model_mixin_factory
+from edc_he.model_mixin_factories import income_model_mixin_factory
+from edc_he.model_mixins import HouseholdModelMixin
 from edc_model.models import BaseUuidModel
 from edc_model_fields.fields import OtherCharField
 

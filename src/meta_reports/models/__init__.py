@@ -16,6 +16,7 @@ from .endpoints_proxy import EndpointsProxy
 from .last_imp_refill import LastImpRefill
 
 __all__ = [
+    "NOTE_STATUSES",
     "Endpoints",
     "EndpointsProxy",
     "GlucoseSummary",
@@ -23,7 +24,6 @@ __all__ = [
     "LastImpRefill",
     "MissingOgttNote",
     "MissingScreeningOgtt",
-    "NOTE_STATUSES",
     "OnStudyMissingLabValues",
     "OnStudyMissingValues",
     "PatientHistoryMissingBaselineCd4",

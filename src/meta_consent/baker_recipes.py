@@ -1,7 +1,7 @@
 from dateutil.relativedelta import relativedelta
 from django.contrib.sites.models import Site
-from edc_constants.constants import NO, YES
-from edc_utils import get_utcnow
+from django.utils import timezone
+from edc_constants.constants import NO, NULL_STRING, YES
 from faker import Faker
 from model_bakery.recipe import Recipe, seq
 
@@ -13,10 +13,10 @@ opts = dict(
     assessment_score=YES,
     confirm_identity=seq("12315678"),
     consent_copy=YES,
-    consent_datetime=get_utcnow(),
+    consent_datetime=timezone.now(),
     consent_reviewed=YES,
     consent_signature=YES,
-    dob=get_utcnow() - relativedelta(years=25),
+    dob=timezone.now() - relativedelta(years=25),
     first_name=fake.first_name,
     gender="M",
     identity=seq("12315678"),
@@ -26,16 +26,15 @@ opts = dict(
     is_incarcerated=NO,
     is_literate=YES,
     last_name=fake.last_name,
-    screening_identifier=None,
+    screening_identifier=NULL_STRING,
     study_questions=YES,
     site=Site.objects.get_current(),
-    subject_identifier=None,
+    subject_identifier=NULL_STRING,
     user_created="erikvw",
     user_modified="erikvw",
 )
 subjectconsent = Recipe(SubjectConsent, **opts)
 subjectconsentv1 = Recipe(SubjectConsentV1, **opts)
-# subjectconsentv1ext = Recipe(SubjectConsentV1Ext, **opts)
 
 subjectreconsent = Recipe(
     SubjectReconsent,
@@ -44,7 +43,7 @@ subjectreconsent = Recipe(
     assessment_score=YES,
     study_questions=YES,
     consent_copy=YES,
-    action_identifier=None,
+    action_identifier=NULL_STRING,
     user_created="erikvw",
     user_modified="erikvw",
 )

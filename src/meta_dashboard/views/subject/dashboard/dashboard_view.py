@@ -32,7 +32,7 @@ class DashboardView(SubjectDashboardView):
             message = format_html(
                 '{text} <A href="{url}">{verbose_name}</A>',
                 text=_("Subject has reached the protocol endpoint. See "),
-                url=mark_safe(url),  # nosec B703, B308
+                url=mark_safe(url),  # noqa: S308
                 verbose_name=GlucoseSummary._meta.verbose_name,
             )
             self.message_user(message, level=messages.WARNING)

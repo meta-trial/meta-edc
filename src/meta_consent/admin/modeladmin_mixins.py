@@ -21,14 +21,13 @@ from ..models import SubjectConsent
 
 
 class SubjectConsentModelAdminMixin:
-
     form = SubjectConsentForm
 
-    actions = [
+    actions = (
         flag_as_verified_against_paper,
         unflag_as_verified_against_paper,
         "create_missing_metformin_rx",
-    ]
+    )
 
     fieldsets = (
         (
@@ -73,7 +72,7 @@ class SubjectConsentModelAdminMixin:
 
     search_fields = ("subject_identifier", "screening_identifier", "identity")
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "gender": admin.VERTICAL,
         "assessment_score": admin.VERTICAL,
         "consent_copy": admin.VERTICAL,

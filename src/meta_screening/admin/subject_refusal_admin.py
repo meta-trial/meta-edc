@@ -17,7 +17,7 @@ class SubjectRefusalAdmin(
 ):
     form = SubjectRefusalForm
 
-    autocomplete_fields = ["subject_screening"]
+    autocomplete_fields = ("subject_screening",)
 
     post_url_on_delete_name = "screening_listboard_url"
     subject_listboard_url_name = "screening_listboard_url"
@@ -54,7 +54,7 @@ class SubjectRefusalAdmin(
         "subject_screening__initials",
     )
 
-    radio_fields = {"reason": admin.VERTICAL}
+    radio_fields = {"reason": admin.VERTICAL}  # noqa: RUF012
 
     def get_subject_dashboard_url_kwargs(self, obj):
         return dict(screening_identifier=obj.screening_identifier)
@@ -69,5 +69,7 @@ class SubjectRefusalAdmin(
             if callable(super().view_on_site):
                 url = super().view_on_site(obj)
             else:
-                raise NoReverseMatch(f"{e}. See subject_dashboard_url_name for {repr(self)}.")
+                raise NoReverseMatch(
+                    f"{e}. See subject_dashboard_url_name for {self!r}."
+                ) from e
         return url

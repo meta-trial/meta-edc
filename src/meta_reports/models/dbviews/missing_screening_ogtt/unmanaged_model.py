@@ -6,7 +6,6 @@ from .view_definition import get_view_definition
 
 
 class MissingScreeningOgtt(QaReportModelMixin, DBView):
-
     screening_datetime = models.DateTimeField(null=True)
 
     fbg_datetime = models.DateTimeField(null=True)
@@ -23,9 +22,11 @@ class MissingScreeningOgtt(QaReportModelMixin, DBView):
 
     ogtt2_datetime = models.DateTimeField(null=True)
 
-    repeated = models.CharField(null=True, max_length=25, help_text="repeat_glucose_performed")
+    repeated = models.CharField(
+        default="", max_length=25, help_text="repeat_glucose_performed"
+    )
 
-    p3_ltfu = models.CharField(null=True, max_length=25)
+    p3_ltfu = models.CharField(default="", max_length=25)
 
     consented = models.BooleanField(null=True)
 

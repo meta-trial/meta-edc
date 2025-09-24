@@ -16,7 +16,7 @@ class SubjectScreeningEligibilityError(Exception):
     pass
 
 
-def get_eligible_as_word(
+def get_eligible_as_word(  # noqa: PLR0913
     obj=None,
     eligible_part_one=None,
     eligible_part_two=None,
@@ -90,8 +90,8 @@ class MetaEligibility:
 
     """
 
-    eligibility_values = [YES, NO, TBD]
-    default_options = dict(
+    eligibility_values = (YES, NO, TBD)
+    default_options = dict(  # noqa: RUF012
         eligible_value_default=TBD,
         eligible_values_list=[YES, NO, TBD],
         is_eligible_value=YES,
@@ -99,8 +99,8 @@ class MetaEligibility:
 
     def __init__(
         self,
-        model_obj: models.Model = None,
-        defaults: dict = None,
+        model_obj: models.Model | None = None,
+        defaults: dict | None = None,
         update_model=None,
     ):
         self.part_one = None
@@ -162,7 +162,7 @@ class MetaEligibility:
     @property
     def is_eligible(self: Any) -> bool:
         """Returns True if eligible else False"""
-        return True if self.eligible == YES else False
+        return self.eligible == YES
 
     def check_eligibility_values_or_raise(self: Any):
         for response in [
@@ -207,7 +207,7 @@ class MetaEligibility:
             )
         else:
             status_str = format_html(
-                "P1: {p1_eligible}<BR>" "P2: {p2_eligible}<BR>" "P3: {p3_eligible}<BR>",
+                "P1: {p1_eligible}<BR>P2: {p2_eligible}<BR>P3: {p3_eligible}<BR>",
                 p1_eligible=self.part_one.eligible.upper(),
                 p2_eligible=self.part_two.eligible.upper(),
                 p3_eligible=self.part_three.eligible.upper(),

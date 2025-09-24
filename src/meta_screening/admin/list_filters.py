@@ -11,13 +11,13 @@ class EligibilityPending(admin.SimpleListFilter):
 
     parameter_name = "eligibility_pending"
 
-    def lookups(self, request, model_admin):
+    def lookups(self, request, model_admin):  # noqa: ARG002
         return (
             (PENDING, "Pending"),
             (PENDING_REPEAT, "Pending repeat GLU"),
         )
 
-    def queryset(self, request, queryset):
+    def queryset(self, request, queryset):  # noqa: ARG002
         if self.value() == PENDING_REPEAT:
             return queryset.filter(
                 eligible_part_one=YES,
@@ -35,6 +35,7 @@ class EligibilityPending(admin.SimpleListFilter):
                 p3_ltfu=NOT_APPLICABLE,
                 part_three_report_datetime__isnull=True,
             )
+        return queryset
 
 
 class P3LtfuListFilter(admin.SimpleListFilter):
@@ -42,13 +43,13 @@ class P3LtfuListFilter(admin.SimpleListFilter):
 
     parameter_name = "p3_ltfu_custom"
 
-    def lookups(self, request, model_admin):
+    def lookups(self, request, model_admin):  # noqa: ARG002
         return (
             (YES, "Yes"),
             (NO, "No, lost contact"),
         )
 
-    def queryset(self, request, queryset):
+    def queryset(self, request, queryset):  # noqa: ARG002
         if self.value() == YES:
             return queryset.filter(
                 eligible_part_one=YES,
@@ -69,6 +70,7 @@ class P3LtfuListFilter(admin.SimpleListFilter):
                 | Q(eligible_part_two=TBD)
                 | Q(eligible_part_three=TBD)
             )
+        return queryset
 
 
 class P3ApptListFilter(AppointmentListFilter):

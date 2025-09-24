@@ -29,8 +29,8 @@ class SubstitutionsForm(
         if self.cleaned_data.get("sid"):
             try:
                 obj = Rx.objects.get(rando_sid=self.cleaned_data.get("sid"))
-            except ObjectDoesNotExist:
-                raise forms.ValidationError({"sid": "Unknown SID for this trial"})
+            except ObjectDoesNotExist as e:
+                raise forms.ValidationError({"sid": "Unknown SID for this trial"}) from e
             else:
                 if obj.site.id != self.site.id:
                     raise forms.ValidationError(
@@ -46,8 +46,10 @@ class SubstitutionsForm(
                 RandomizationList.objects.get(
                     sid=self.cleaned_data.get("dispensed_sid"),
                 )
-            except ObjectDoesNotExist:
-                raise forms.ValidationError({"dispensed_sid": "Invalid SID for this trial"})
+            except ObjectDoesNotExist as e:
+                raise forms.ValidationError(
+                    {"dispensed_sid": "Invalid SID for this trial"}
+                ) from e
 
     class Meta:
         model = Substitutions

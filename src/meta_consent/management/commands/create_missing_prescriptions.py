@@ -1,3 +1,5 @@
+import sys
+
 from django.core.management.base import BaseCommand, CommandError
 from edc_pharmacy.exceptions import PrescriptionAlreadyExists
 from edc_pharmacy.models import Medication, Rx
@@ -12,7 +14,7 @@ from meta_pharmacy.constants import METFORMIN
 class Command(BaseCommand):
     help = "Create missing prescriptions"
 
-    def handle(self, *args, **options):
+    def handle(self, *args, **options):  # noqa: ARG002
         medication = Medication.objects.get(name=METFORMIN)
         subject_identifiers = Rx.objects.values_list("subject_identifier", flat=True).all()
         subject_consents_wo_rx = SubjectConsent.objects.exclude(
@@ -31,4 +33,4 @@ class Command(BaseCommand):
             except PrescriptionAlreadyExists:
                 pass
             except CommandError as e:
-                print(f"Failed for {instance.subject_identifier}. Got {e}")
+                sys.stdout.write(f"Failed for {instance.subject_identifier}. Got {e}\n")

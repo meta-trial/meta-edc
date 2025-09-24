@@ -65,7 +65,7 @@ class DeathReportAdmin(SiteModelAdminMixin, DeathReportModelAdminMixin, SimpleHi
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "cause_of_death": admin.VERTICAL,
         "death_as_inpatient": admin.VERTICAL,
         "death_location": admin.VERTICAL,

@@ -64,7 +64,7 @@ def render_consent_button(context, subject_screening: SubjectScreening):
     )
 
 
-def refusal_button(context, subject_refusal):
+def refusal_button(context, subject_refusal):  # noqa: ARG001
     title = ["Capture subject's primary reason for not joining."]
 
     return dict(

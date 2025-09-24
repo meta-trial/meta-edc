@@ -46,7 +46,7 @@ class OgttListFilter(SimpleListFilter):
     parameter_name = "ogtt_value"
     model_cls = Glucose
 
-    def lookups(self, request, model_admin):
+    def lookups(self, request, model_admin):  # noqa: ARG002
         return (
             (NORMAL, "Normal"),
             (HIGH, "High"),

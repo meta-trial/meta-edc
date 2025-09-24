@@ -11,7 +11,6 @@ from meta_prn.models import DmReferral
 
 class DmFollowupFormValidator(CrfFormValidator):
     def clean(self):
-
         # referral_date must be before report datetime
         if (
             self.report_datetime
@@ -228,8 +227,10 @@ class DmFollowupFormValidator(CrfFormValidator):
             and self.cleaned_data.get("on_dm_medications") == YES
         ):
             confirmed = self.cleaned_data.get("visual_score_confirmed")
-            if confirmed is not None:
-                if int(self.cleaned_data.get("visual_score_slider", "0")) != confirmed:
-                    raise forms.ValidationError(
-                        {"visual_score_confirmed": "Does not match visual score above."}
-                    )
+            if (
+                confirmed is not None
+                and int(self.cleaned_data.get("visual_score_slider", "0")) != confirmed
+            ):
+                raise forms.ValidationError(
+                    {"visual_score_confirmed": "Does not match visual score above."}
+                )

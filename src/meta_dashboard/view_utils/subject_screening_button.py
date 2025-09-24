@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Type
 
 from django.utils.translation import gettext as _
 from edc_constants.constants import TBD, YES
@@ -14,8 +13,8 @@ from meta_screening.models import ScreeningPartOne, ScreeningPartThree, Screenin
 
 __all__ = [
     "SubjectScreeningPartOneButton",
-    "SubjectScreeningPartTwoButton",
     "SubjectScreeningPartThreeButton",
+    "SubjectScreeningPartTwoButton",
 ]
 
 
@@ -38,17 +37,13 @@ class SubjectScreeningButton(BaseSubjectScreeningButton):
 
     @property
     def title(self) -> str:
-        if self.perms.view_only or self.model_obj.consented:
-            title = _("View")
-        else:
-            title = _("Edit")
-        return title
+        return _("View") if self.perms.view_only or self.model_obj.consented else _("Edit")
 
 
 @dataclass
 class SubjectScreeningPartOneButton(SubjectScreeningButton):
     model_obj: ScreeningPartOne = None
-    model_cls: Type[ScreeningPartOne] = field(default=ScreeningPartOne)
+    model_cls: type[ScreeningPartOne] = field(default=ScreeningPartOne)
 
     @property
     def label(self) -> str:
@@ -58,7 +53,7 @@ class SubjectScreeningPartOneButton(SubjectScreeningButton):
 @dataclass
 class SubjectScreeningPartTwoButton(SubjectScreeningButton):
     model_obj: ScreeningPartTwo = None
-    model_cls: Type[ScreeningPartTwo] = field(default=ScreeningPartTwo)
+    model_cls: type[ScreeningPartTwo] = field(default=ScreeningPartTwo)
 
     @property
     def label(self) -> str:
@@ -76,9 +71,8 @@ class SubjectScreeningPartTwoButton(SubjectScreeningButton):
             self._action = VIEW
             if self.model_obj.eligible_part_two == TBD:
                 self._action = ADD
-            elif self.model_obj:
-                if self.perms.change:
-                    self._action = CHANGE
+            elif self.model_obj and self.perms.change:
+                self._action = CHANGE
         return self._action
 
     @property
@@ -91,7 +85,7 @@ class SubjectScreeningPartTwoButton(SubjectScreeningButton):
 @dataclass
 class SubjectScreeningPartThreeButton(SubjectScreeningButton):
     model_obj: ScreeningPartThree = None
-    model_cls: Type[ScreeningPartThree] = field(default=ScreeningPartThree)
+    model_cls: type[ScreeningPartThree] = field(default=ScreeningPartThree)
 
     @property
     def label(self) -> str:
@@ -109,9 +103,8 @@ class SubjectScreeningPartThreeButton(SubjectScreeningButton):
             self._action = VIEW
             if self.model_obj.eligible_part_three == TBD:
                 self._action = ADD
-            elif self.model_obj:
-                if self.perms.change:
-                    self._action = CHANGE
+            elif self.model_obj and self.perms.change:
+                self._action = CHANGE
         return self._action
 
     @property

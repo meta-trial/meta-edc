@@ -1,4 +1,3 @@
-from typing import Tuple
 
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
@@ -35,7 +34,7 @@ class ScreeningPartOneAdmin(SiteModelAdminMixin, SubjectScreeningAdmin):
 
     fieldsets = get_fieldsets()
 
-    readonly_fields: Tuple[str, ...] = (
+    readonly_fields: tuple[str, ...] = (
         *part_two_fields,
         *part_three_fields,
         *calculated_fields,

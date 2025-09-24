@@ -25,12 +25,10 @@ class PartOneFieldsModelMixin(models.Model):
     )
 
     meta_phase_two = models.CharField(
-        verbose_name=mark_safe(
-            "Was the subject enrolled in the <u>META Phase 2</u> trial?"
-        ),  # nosec B308
+        verbose_name=mark_safe("Was the subject enrolled in the <u>META Phase 2</u> trial?"),  # nosec B308
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
     )
 
@@ -80,7 +78,7 @@ class PartOneFieldsModelMixin(models.Model):
         ),
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
         help_text="META PHASE_TWO ONLY",
         editable=False,
@@ -93,7 +91,7 @@ class PartOneFieldsModelMixin(models.Model):
         ),  # nosec B308
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
     )
 
@@ -102,9 +100,7 @@ class PartOneFieldsModelMixin(models.Model):
     )
 
     continue_part_two = models.CharField(
-        verbose_name=mark_safe(
-            "Continue with <U>part two</U> of the screening process?"
-        ),  # nosec B308
+        verbose_name=mark_safe("Continue with <U>part two</U> of the screening process?"),  # nosec B308
         max_length=15,
         choices=YESDEFAULT_NO,
         default=YES,

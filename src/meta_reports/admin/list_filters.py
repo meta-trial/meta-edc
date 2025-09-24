@@ -8,13 +8,13 @@ class EndpointListFilter(SimpleListFilter):
     title = "Endpoint"
     parameter_name = "endpoint"
 
-    def lookups(self, request, model_admin):
+    def lookups(self, request, model_admin):  # noqa: ARG002
         return (
             (YES, YES),
             (NO, NO),
         )
 
-    def queryset(self, request, queryset):
+    def queryset(self, request, queryset):  # noqa: ARG002
         if self.value() == YES:
             return queryset.filter(
                 subject_identifier__in=Endpoints.objects.values_list(

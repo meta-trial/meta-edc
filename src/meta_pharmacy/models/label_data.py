@@ -9,14 +9,13 @@ random.seed(237548)
 
 
 class LabelData(SiteModelMixin, BaseUuidModel):
-
-    subject_identifier = models.CharField(max_length=15, null=True)
+    subject_identifier = models.CharField(max_length=15, default="")
     sid = models.IntegerField(null=True, help_text="Pharmacy reference")
     reference = models.CharField(
-        max_length=10, null=True, unique=True, help_text="Bottle reference"
+        max_length=10, default="", unique=True, help_text="Bottle reference"
     )
-    site_name = models.CharField(max_length=15, null=True)
-    gender = models.CharField(max_length=5, null=True)
+    site_name = models.CharField(max_length=15, default="")
+    gender = models.CharField(max_length=5, default="")
     pills_per_bottle = models.IntegerField(null=True, default=128)
 
     printed_datetime = models.DateTimeField(null=True)

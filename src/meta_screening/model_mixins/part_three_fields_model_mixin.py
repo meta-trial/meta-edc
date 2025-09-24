@@ -3,7 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from edc_constants.choices import NO, YES_NO, YES_NO_PENDING_NA_GLUCOSE_SCREENING
 from edc_constants.constants import NOT_APPLICABLE
-from edc_glucose.model_mixins import (
+from edc_glucose.model_mixin_factories import (
     fasting_model_mixin_factory,
     fbg_model_mixin_factory,
     ogtt_model_mixin_factory,
@@ -94,14 +94,13 @@ class PartThreeFieldsModelMixin(
 ):
     repeat_glucose_opinion = models.CharField(
         verbose_name=(
-            "In opinion of the clinician, " "should the glucose measurements be repeated?"
+            "In opinion of the clinician, should the glucose measurements be repeated?"
         ),
         max_length=15,
         choices=YES_NO,
         default=NO,
         help_text=(
-            "If repeated, must be at least 3 days "
-            "after the first glucose measures (FBG, OGTT)"
+            "If repeated, must be at least 3 days after the first glucose measures (FBG, OGTT)"
         ),
     )
 
@@ -124,7 +123,7 @@ class PartThreeFieldsModelMixin(
         verbose_name="Units (creatinine)",
         max_length=15,
         choices=SERUM_CREATININE_UNITS,
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -180,5 +179,5 @@ class PartThreeFieldsModelMixin(
     def p3_repeat_appt(self):
         return self.repeat_appt_datetime
 
-    class Meta:
+    class Meta:  # noqa: DJ012
         abstract = True

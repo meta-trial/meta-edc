@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Black">
+    <option name="cmdArguments" value="--line-length=95" />
     <option name="enabledOnSave" value="true" />
     <option name="pathToExecutable" value="/usr/local/bin/black" />
-    <option name="sdkName" value="Python 3.13 virtualenv at ~/source/clinicedc_repos/meta_trial/meta-edc/.venv" />
+    <option name="sdkName" value="uv (meta-edc) (4)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13 virtualenv at ~/source/clinicedc_repos/meta_trial/meta-edc/.venv" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="uv (meta-edc) (5)" project-jdk-type="Python SDK" />
 </project>

@@ -9,7 +9,7 @@ from meta_pharmacy.constants import METFORMIN
 
 
 @admin.action(permissions=["view"], description="Create missing METFORMIN prescription")
-def create_missing_metformin_rx(modeladmin, request, queryset):
+def create_missing_metformin_rx(modeladmin, request, queryset):  # noqa: ARG001
     medication = Medication.objects.get(name=METFORMIN)
     total = queryset.count()
     subject_identifiers = queryset.values_list("subject_identifier", flat=True)

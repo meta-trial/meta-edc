@@ -25,7 +25,9 @@ def get_glucose_df() -> pd.DataFrame:
         ["ogtt_value", "ogtt_units", "ogtt_datetime"],
     ] = [np.nan, None, pd.NaT]
     df_glucose_fbg["source"] = "meta_subject.glucosefbg"
-    df_glucose_fbg = pd.merge(
+    df_glucose_fbg = df_glucose_fbg[
+        [col for col in df_glucose_fbg.columns if "site_id" not in col]
+    ].merge(
         subject_visit_df[
             [
                 "subject_identifier",
@@ -36,7 +38,6 @@ def get_glucose_df() -> pd.DataFrame:
                 "subject_visit_id",
             ]
         ],
-        df_glucose_fbg[[col for col in df_glucose_fbg.columns if "site_id" not in col]],
         on="subject_visit_id",
         how="left",
     )
@@ -50,7 +51,7 @@ def get_glucose_df() -> pd.DataFrame:
     )
     df_glucose["source"] = "meta_subject.glucose"
 
-    df_glucose = pd.merge(
+    df_glucose = df_glucose.merge(
         subject_visit_df[
             [
                 "subject_identifier",
@@ -85,8 +86,7 @@ def get_glucose_df() -> pd.DataFrame:
         "revision",
         "report_datetime",
     ]
-    df = pd.merge(
-        df_glucose[keep_cols],
+    df = df_glucose[keep_cols].merge(
         df_glucose_fbg[keep_cols],
         on="subject_visit_id",
         how="outer",
@@ -136,7 +136,7 @@ def get_glucose_df() -> pd.DataFrame:
     df["fgb_days"] = pd.to_numeric(df["fgb_days"], downcast="integer")
     df["ogtt_days"] = pd.to_numeric(df["ogtt_days"], downcast="integer")
 
-    df = (
+    return (
         df.query(
             "offstudy_reason != 'Patient fulfilled late exclusion criteria "
             "(due to abnormal blood values or raised blood pressure at enrolment'"
@@ -146,4 +146,3 @@ def get_glucose_df() -> pd.DataFrame:
         .sort_values(by=["subject_identifier", "visit_code"])
         .reset_index(drop=True)
     )
-    return df

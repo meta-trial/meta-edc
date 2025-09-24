@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 from django.apps import apps as django_apps
+from django.utils import timezone
 from edc_constants.constants import YES
-from edc_utils import get_utcnow
 
 from ..constants import (
     CASE_EOS,
@@ -42,7 +42,7 @@ class GlucoseEndpointsByDate:
     fbg_threshhold = 7.0
     ogtt_threshhold = 11.1
     endpoint_cls = EndpointByDate
-    keep_cols = [
+    keep_cols = [  # noqa: RUF012
         "fasted",
         "fasting_hrs",
         "fbg_value",
@@ -64,7 +64,6 @@ class GlucoseEndpointsByDate:
     def __init__(
         self, subject_identifiers: list[str] | None = None, case_list: list[int] | None = None
     ):
-
         self._glucose_fbg_df = pd.DataFrame()
         self._glucose_fbg_ogtt_df = pd.DataFrame()
         self.endpoint_only_df = pd.DataFrame()
@@ -93,7 +92,7 @@ class GlucoseEndpointsByDate:
     def run(self):
         self.process_by_ogtt_only()
         subject_identifiers_df = get_unique_subject_identifiers(self.df)
-        for index, row in subject_identifiers_df.iterrows():
+        for _, row in subject_identifiers_df.iterrows():
             subject_df = self.get_subject_df(row["subject_identifier"])
             subject_df = self.endpoint_cls(
                 subject_df=subject_df,
@@ -215,11 +214,12 @@ class GlucoseEndpointsByDate:
             [col for col in subject_df if "value" in col]
         ].fillna(0.0)
 
-        subject_df = subject_df.reset_index(drop=True)
-        return subject_df
+        return subject_df.reset_index(drop=True)
 
     def check_endpoint_by_fbg_for_subject(
-        self, subject_df: pd.DataFrame, case_list: list[int] | None = None
+        self,
+        subject_df: pd.DataFrame,
+        case_list: list[int] | None = None,  # noqa: ARG002
     ) -> pd.DataFrame:
         endpoint = self.endpoint_cls(
             subject_df=subject_df,
@@ -286,8 +286,7 @@ class GlucoseEndpointsByDate:
             self.endpoint_only_df = pd.concat([df1, df2])
             self.endpoint_only_df = self.endpoint_only_df.reset_index(drop=True)
 
-            self.df = pd.merge(
-                self.df,
+            self.df = self.df.merge(
                 self.endpoint_only_df[["subject_identifier", "visit_code", "endpoint"]],
                 on=["subject_identifier", "visit_code"],
                 how="left",
@@ -300,7 +299,7 @@ class GlucoseEndpointsByDate:
         """Write endpoint_only_df to the Endpoints model"""
         df = self.endpoint_only_df
         model = "meta_reports.endpoints"
-        now = get_utcnow()
+        now = timezone.now()
         model_cls = django_apps.get_model(model)
         if self.subject_identifiers:
             model_cls.objects.filter(subject_identifier__in=self.subject_identifiers).delete()

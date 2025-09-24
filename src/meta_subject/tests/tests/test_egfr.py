@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import contextlib
 from copy import deepcopy
 from datetime import datetime
 from decimal import Decimal
@@ -10,8 +11,8 @@ from django import forms
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.test import TestCase
-from edc_action_item import site_action_items
 from edc_action_item.models import ActionItem
+from edc_action_item.site_action_items import site_action_items
 from edc_constants.constants import BLACK, MALE
 from edc_egfr.calculators import egfr_percent_change
 from edc_lab.models import Panel
@@ -70,10 +71,8 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
             report_datetime=get_utcnow(),
         )
         form = BloodResultsRftFormValidator(cleaned_data=data, model=BloodResultsRft)
-        try:
+        with contextlib.suppress(forms.ValidationError):
             form.validate()
-        except forms.ValidationError:
-            pass
         self.assertEqual({}, form._errors)
 
     def test_egfr_drop(self):
@@ -208,7 +207,7 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
         self.assertEqual(round_half_away_from_zero(obj_1000.egfr_value, 3), Decimal("49.019"))
         self.assertEqual(round_half_away_from_zero(obj_1000.egfr_value, 2), Decimal("49.02"))
         self.assertEqual(round_half_away_from_zero(obj_1000.egfr_value, 1), Decimal("49.0"))
-        self.assertEqual(round_half_away_from_zero(obj_1000.egfr_value), Decimal("49"))
+        self.assertEqual(round_half_away_from_zero(obj_1000.egfr_value), Decimal(49))
 
         subject_visit = self.get_next_subject_visit(subject_visit)
         subject_visit.refresh_from_db()
@@ -231,4 +230,4 @@ class TestEgfr(MetaTestCaseMixin, TestCase):
         self.assertEqual(round_half_away_from_zero(obj_2000.egfr_value, 3), Decimal("49.492"))
         self.assertEqual(round_half_away_from_zero(obj_2000.egfr_value, 2), Decimal("49.49"))
         self.assertEqual(round_half_away_from_zero(obj_2000.egfr_value, 1), Decimal("49.5"))
-        self.assertEqual(round_half_away_from_zero(obj_2000.egfr_value), Decimal("49"))
+        self.assertEqual(round_half_away_from_zero(obj_2000.egfr_value), Decimal(49))

@@ -67,12 +67,12 @@ class SubjectReconsent(
             self.get_subject_consent(
                 screening_identifier=subject_screening.screening_identifier
             )
-        except ObjectDoesNotExist:
-            raise ValidationError("Previous consent does not exist.")
+        except ObjectDoesNotExist as e:
+            raise ValidationError("Previous consent does not exist.") from e
         super().save(*args, **kwargs)
 
     def natural_key(self):
-        return (self.subject_identifier, self.version)
+        return self.subject_identifier, self.version
 
     def get_subject_consent(self, screening_identifier=None):
         """Returns the first subject consent model instance."""

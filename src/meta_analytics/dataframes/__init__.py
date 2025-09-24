@@ -21,7 +21,6 @@ from .utils import (
     get_unique_visit_codes,
 )
 
-
 __all__ = [
     "CASE_EOS",
     "CASE_FBGS_WITH_FIRST_OGTT",

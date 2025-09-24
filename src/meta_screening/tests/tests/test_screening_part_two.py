@@ -2,7 +2,7 @@ from copy import deepcopy
 
 from dateutil.relativedelta import relativedelta
 from django.test import TestCase
-from edc_constants.constants import NO, NOT_APPLICABLE, TBD, YES
+from edc_constants.constants import NO, NOT_APPLICABLE, NULL_STRING, TBD, YES
 from edc_utils.date import get_utcnow
 
 from meta_pharmacy.constants import METFORMIN
@@ -17,7 +17,9 @@ class TestScreeningPartTwo(TestCase):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         model_obj = ScreeningPartOne(**part_one_eligible_options)
         model_obj.save()
-        self.assertIsNone(getattr(model_obj, EligibilityPartOne.reasons_ineligible_fld_name))
+        self.assertEqual(
+            getattr(model_obj, EligibilityPartOne.reasons_ineligible_fld_name), NULL_STRING
+        )
         self.assertEqual(
             getattr(model_obj, EligibilityPartOne.eligible_fld_name),
             EligibilityPartOne.is_eligible_value,
@@ -42,7 +44,7 @@ class TestScreeningPartTwo(TestCase):
     def _test_eligible(self):
         obj = ScreeningPartTwo.objects.get(screening_identifier=self.screening_identifier)
         self.assertEqual(obj.eligible_part_one, YES)
-        self.assertIsNone(obj.reasons_ineligible_part_one)
+        self.assertEqual(obj.reasons_ineligible_part_one, NULL_STRING)
 
         part_two_eligible_options = deepcopy(get_part_two_eligible_options())
 
@@ -51,8 +53,8 @@ class TestScreeningPartTwo(TestCase):
 
         obj.advised_to_fast = NOT_APPLICABLE
         obj.appt_datetime = None
-        obj.acute_condition = None
-        obj.metformin_sensitivity = None
+        obj.acute_condition = NULL_STRING
+        obj.metformin_sensitivity = NULL_STRING
         obj.save()
         obj.refresh_from_db()
 
@@ -67,7 +69,7 @@ class TestScreeningPartTwo(TestCase):
         obj.metformin_sensitivity = YES
         obj.save()
 
-        self.assertIn(METFORMIN, (obj.reasons_ineligible_part_two or "").lower())
+        self.assertIn(METFORMIN, (obj.reasons_ineligible_part_two or NULL_STRING).lower())
         self.assertEqual(obj.eligible_part_two, NO)
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)
@@ -78,7 +80,7 @@ class TestScreeningPartTwo(TestCase):
         obj.appt_datetime = get_utcnow() + relativedelta(days=1)
         obj.save()
 
-        self.assertIsNone(obj.reasons_ineligible_part_two)
+        self.assertEqual(obj.reasons_ineligible_part_two, NULL_STRING)
         self.assertEqual(obj.eligible_part_two, YES)
         self.assertFalse(obj.eligible)
         self.assertFalse(obj.consented)

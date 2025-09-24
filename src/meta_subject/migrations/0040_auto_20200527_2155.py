@@ -9,7 +9,7 @@ import django.db.models.deletion
 import django_audit_fields.fields.hostname_modification_field
 import django_audit_fields.fields.userfield
 import django_audit_fields.fields.uuid_auto_field
-import django_audit_fields.models.audit_model_mixin
+import django.utils.timezone
 import django_revision.revision_field
 import edc_model.models.fields.other_charfield
 import edc_model.validators.date

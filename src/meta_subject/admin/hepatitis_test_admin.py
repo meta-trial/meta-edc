@@ -47,7 +47,7 @@ class HepatitisTestAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "hbsag_performed": admin.VERTICAL,
         "hbsag": admin.VERTICAL,
         "hcv_performed": admin.VERTICAL,

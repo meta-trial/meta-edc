@@ -72,7 +72,7 @@ def get_screening_df(df: pd.DataFrame | None = None) -> pd.DataFrame:
     # condition to include any glucose test
 
     # has_dm fillna with unk
-    df["has_dm"] = df["has_dm"].apply(lambda x: "unk" if not x else x)
+    df["has_dm"] = df["has_dm"].apply(lambda x: x if x else "unk")
 
     na = "Not applicable, subject is not eligible based on the criteria above"
     df["already_fasted"] = df["already_fasted"].apply(lambda x: "N/A" if x == na else x)
@@ -117,13 +117,13 @@ def get_screening_df(df: pd.DataFrame | None = None) -> pd.DataFrame:
     subject_identifiers = list(df["subject_identifier"])
     qs_subject_visit = SubjectVisit.objects.filter(subject_identifier__in=subject_identifiers)
     df_subject_visit = read_frame(qs_subject_visit)
-    df_subject_visit.rename(columns={"id": "subject_visit"}, inplace=True)
+    df_subject_visit = df_subject_visit.rename(columns={"id": "subject_visit"})
     qs_physical_exam = PhysicalExam.objects.filter(
         subject_visit__subject_identifier__in=subject_identifiers
     )
     df_physical_exam = read_frame(qs_physical_exam)
     # merge w/ subject visit to get subject_identifier
-    df_physical_exam = pd.merge(
+    df_physical_exam = df_physical_exam.merge(
         df_physical_exam,
         df_subject_visit[
             ["subject_visit", "subject_identifier", "visit_code", "visit_code_sequence"]
@@ -144,13 +144,11 @@ def get_screening_df(df: pd.DataFrame | None = None) -> pd.DataFrame:
         ["waist_circumference_baseline"]
     ].apply(pd.to_numeric)
     # merge on subject_identifier with main DF
-    df = pd.merge(
-        df,
+    df = df.merge(
         df_physical_exam[["subject_identifier", "waist_circumference_baseline"]],
         on="subject_identifier",
         how="left",
-    )
-    df.reset_index(drop=True, inplace=True)
+    ).reset_index(drop=True)
     # set waist_circumference=waist_circumference_baseline
     # if `waist_circumference` is none and `waist_circumference_baseline` is not
     df.loc[
@@ -159,6 +157,4 @@ def get_screening_df(df: pd.DataFrame | None = None) -> pd.DataFrame:
     ] = df["waist_circumference_baseline"]
 
     # drop waist_circumference_baseline
-    df.drop(columns=["waist_circumference_baseline"], inplace=True)
-
-    return df
+    return df.drop(columns=["waist_circumference_baseline"])

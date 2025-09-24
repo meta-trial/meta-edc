@@ -17,8 +17,8 @@ class UnattendedTwoInRowAdmin(
     TemplatesModelAdminMixin,
     admin.ModelAdmin,
 ):
-    ordering = ["site", "subject_identifier"]
-    list_display = [
+    ordering = ("site", "subject_identifier")
+    list_display = (
         "dashboard",
         "subject_identifier",
         "first_value",
@@ -27,8 +27,8 @@ class UnattendedTwoInRowAdmin(
         "from_now_days",
         "site",
         "created",
-    ]
+    )
 
-    list_filter = [ScheduleStatusListFilter, "first_value", "second_value"]
+    list_filter = (ScheduleStatusListFilter, "first_value", "second_value")
 
-    search_fields = ["subject_identifier", "first_value", "second_value"]
+    search_fields = ("subject_identifier", "first_value", "second_value")

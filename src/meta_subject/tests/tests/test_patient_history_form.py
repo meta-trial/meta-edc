@@ -4,6 +4,7 @@ from django.test import TestCase
 from edc_constants.constants import COMPLETE, NO, NONE, NOT_APPLICABLE, YES
 from edc_list_data import PreloadData
 
+from meta_lists.list_data import list_data
 from meta_lists.models import (
     ArvRegimens,
     BaselineSymptoms,
@@ -65,8 +66,6 @@ class BaseTestPatientHistory(MetaTestCaseMixin, TestCase):
 
 class TestPatientHistoryPhaseThree(BaseTestPatientHistory):
     def test_ok_phase_three(self):
-        from meta_lists.list_data import list_data
-
         PreloadData(list_data=list_data)
         data = {k: v for k, v in self.get_options().items()}
         form = PatientHistoryForm(data=data)

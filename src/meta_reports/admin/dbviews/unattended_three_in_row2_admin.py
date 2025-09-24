@@ -17,9 +17,9 @@ class UnattendedThreeInRow2Admin(
     TemplatesModelAdminMixin,
     admin.ModelAdmin,
 ):
-    ordering = ["site", "subject_identifier"]
+    ordering = ("site", "subject_identifier")
 
-    list_display = [
+    list_display = (
         "dashboard",
         "subject",
         "first_value",
@@ -30,17 +30,17 @@ class UnattendedThreeInRow2Admin(
         "site",
         "missed_count",
         "created",
-    ]
+    )
 
-    list_filter = [
+    list_filter = (
         "missed_count",
         ScheduleStatusListFilter,
         "first_value",
         "second_value",
         "third_value",
-    ]
+    )
 
-    search_fields = ["id", "subject_identifier", "first_value", "second_value", "third_value"]
+    search_fields = ("id", "subject_identifier", "first_value", "second_value", "third_value")
 
     @admin.display(description="Subject", ordering="subject_identifier")
     def subject(self, obj):

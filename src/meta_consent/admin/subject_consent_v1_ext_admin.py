@@ -60,7 +60,7 @@ class SubjectConsentV1ExtAdmin(
         AgreesListFilter,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "agrees_to_extension": admin.VERTICAL,
         "consent_reviewed": admin.VERTICAL,
         "study_questions": admin.VERTICAL,
@@ -69,7 +69,7 @@ class SubjectConsentV1ExtAdmin(
         "consent_copy": admin.VERTICAL,
     }
 
-    def get_readonly_fields(self, request, obj=None) -> tuple[str, ...]:
+    def get_readonly_fields(self, request, obj=None) -> tuple[str, ...]:  # noqa: ARG002
         if obj:
             return ("subject_consent",)
         return ()

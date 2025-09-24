@@ -12,7 +12,6 @@ from ..models import SubjectConsentV1Ext
 class SubjectConsentV1ExtForm(
     SiteModelFormMixin, ReviewFieldsModelFormMixin, FormValidatorMixin, forms.ModelForm
 ):
-
     def clean(self):
         cleaned_data = super().clean()
         start_datetime = to_local(consent_v1_ext.start)
@@ -29,14 +28,14 @@ class SubjectConsentV1ExtForm(
             raise forms.ValidationError({"agrees_to_extension": "Invalid option"})
         return cleaned_data
 
-    widgets = {
+    widgets = {  # noqa: RUF012
         "subject_identifier": forms.TextInput(attrs={"readonly": "readonly"}),
     }
 
     class Meta:
         model = SubjectConsentV1Ext
         fields = "__all__"
-        labels = {
+        labels = {  # noqa: RUF012
             "study_questions": (
                 "I have answered all questions the participant had about the "
                 "follow-up extension"

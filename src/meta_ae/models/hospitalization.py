@@ -15,7 +15,7 @@ class Hospitalization(
         verbose_name = "Hospitalization"
         verbose_name_plural = "Hospitalization"
         indexes = (
-            HospitalizationModelMixin.Meta.indexes
-            + BaseUuidModel.Meta.indexes
-            + [models.Index(fields=["subject_identifier", "site"])]
+            *HospitalizationModelMixin.Meta.indexes,
+            *BaseUuidModel.Meta.indexes,
+            models.Index(fields=["subject_identifier", "site"]),
         )

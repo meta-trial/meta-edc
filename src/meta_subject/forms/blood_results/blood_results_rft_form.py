@@ -30,7 +30,6 @@ class BloodResultsRftFormValidator(
         if self.cleaned_data.get("creatinine_value") and self.cleaned_data.get(
             "creatinine_units"
         ):
-
             if is_baseline(self.related_visit):
                 baseline_egfr_value = None
             else:
@@ -83,7 +82,7 @@ class BloodResultsRftForm(ActionItemCrfFormMixin, CrfModelFormMixin, forms.Model
     class Meta(ActionItemCrfFormMixin.Meta):
         model = BloodResultsRft
         fields = "__all__"
-        help_texts = {
+        help_texts = {  # noqa: RUF012
             "action_identifier": "(read-only)",
             "egfr_value": mark_safe(  # nosec B308
                 "Calculated using 2009 CKD-EPI Creatinine. "

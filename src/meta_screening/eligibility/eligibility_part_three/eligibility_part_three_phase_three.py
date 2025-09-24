@@ -52,20 +52,19 @@ class EligibilityPartThreePhaseThree(BaseEligibilityPartThree):
         ):
             self.eligible = TBD
             self.reasons_ineligible.update(fbg_ogtt_incomplete=FBG_OGTT_INCOMPLETE)
-        else:
-            if self.ogtt_category == PRE_DM:
-                self.eligible = YES
-            elif self.ogtt_category == DM:
-                self.eligible = NO
-                self.reasons_ineligible.update(hi_ogtt=HI_OGTT)
-            elif self.fbg_category == PRE_DM and self.ogtt_category == NORMAL:
-                self.eligible = YES
-            elif self.fbg_category == NORMAL and self.ogtt_category == NORMAL:
-                self.eligible = NO
-                self.reasons_ineligible.update(normal_fbg_ogtt=NORMAL_FBG_OGTT)
-            elif self.fbg_category == DM and self.ogtt_category == NORMAL:
-                self.eligible = NO
-                self.reasons_ineligible.update(hi_fbg=HI_FBG)
+        elif self.ogtt_category == PRE_DM:
+            self.eligible = YES
+        elif self.ogtt_category == DM:
+            self.eligible = NO
+            self.reasons_ineligible.update(hi_ogtt=HI_OGTT)
+        elif self.fbg_category == PRE_DM and self.ogtt_category == NORMAL:
+            self.eligible = YES
+        elif self.fbg_category == NORMAL and self.ogtt_category == NORMAL:
+            self.eligible = NO
+            self.reasons_ineligible.update(normal_fbg_ogtt=NORMAL_FBG_OGTT)
+        elif self.fbg_category == DM and self.ogtt_category == NORMAL:
+            self.eligible = NO
+            self.reasons_ineligible.update(hi_fbg=HI_FBG)
         if self.calculated_egfr_value and self.calculated_egfr_value < 45.0:
             self.reasons_ineligible.update(egfr_low=EGFR_LT_45)
             self.eligible = NO

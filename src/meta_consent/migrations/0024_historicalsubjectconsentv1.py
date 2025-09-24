@@ -8,7 +8,7 @@ import django.db.models.deletion
 import django_audit_fields.fields.hostname_modification_field
 import django_audit_fields.fields.userfield
 import django_audit_fields.fields.uuid_auto_field
-import django_audit_fields.models.audit_model_mixin
+import django.utils.timezone
 import django_crypto_fields.fields.encrypted_char_field
 import django_crypto_fields.fields.encrypted_text_field
 import django_crypto_fields.fields.firstname_field
@@ -24,7 +24,6 @@ import uuid
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("sites", "0002_alter_domain_unique"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
@@ -48,15 +47,11 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "created",
-                    models.DateTimeField(
-                        blank=True, default=django_audit_fields.models.audit_model_mixin.utcnow
-                    ),
+                    models.DateTimeField(blank=True, default=django.utils.timezone.now),
                 ),
                 (
                     "modified",
-                    models.DateTimeField(
-                        blank=True, default=django_audit_fields.models.audit_model_mixin.utcnow
-                    ),
+                    models.DateTimeField(blank=True, default=django.utils.timezone.now),
                 ),
                 (
                     "user_created",

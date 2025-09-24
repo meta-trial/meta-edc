@@ -20,7 +20,7 @@ def get_weight_for_timepoint(subject_identifier=None, reference_dt=None):
 
 
 class MetaCrfPdfReport(CrfPdfReport):
-    logo_data = {
+    logo_data = {  # noqa: RUF012
         "app_label": "meta_edc",
         "filename": "meta_logo.png",
         "first_page": (4.0 * cm, 0.83 * cm),
@@ -34,7 +34,7 @@ class MetaCrfPdfReport(CrfPdfReport):
             subject_identifier=self.subject_identifier
         ).get_drug_assignment_display()
 
-    def draw_demographics(self, story, **kwargs):
+    def draw_demographics(self, story, **kwargs):  # noqa: ARG002
         model_obj = getattr(self, self.model_attr)
         weight = get_weight_for_timepoint(
             subject_identifier=self.subject_identifier,

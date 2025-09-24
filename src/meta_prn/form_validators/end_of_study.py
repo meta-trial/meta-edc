@@ -192,7 +192,7 @@ class EndOfStudyFormValidator(
                 if (obj.bhcg_date or obj.report_datetime.date()) != self.cleaned_data.get(
                     "pregnancy_date"
                 ):
-                    dt = formatted_date((obj.bhcg_date or obj.report_datetime.date()))
+                    dt = formatted_date(obj.bhcg_date or obj.report_datetime.date())
                     self.raise_validation_error(
                         {
                             "pregnancy_date": (
@@ -229,7 +229,7 @@ class EndOfStudyFormValidator(
                     obj.delivery_datetime.date() or obj.report_datetime.date()
                 ) != self.cleaned_data.get("delivery_date"):
                     dt = formatted_date(
-                        (obj.delivery_datetime.date() or obj.report_datetime.date())
+                        obj.delivery_datetime.date() or obj.report_datetime.date()
                     )
                     self.raise_validation_error(
                         {

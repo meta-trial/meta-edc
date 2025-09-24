@@ -6,10 +6,10 @@ from .blood_results_lipids_admin import BloodResultsLipidsAdmin
 from .blood_results_rft_admin import BloodResultsRftAdmin
 
 __all__ = [
-    "BloodResultsLipidsAdmin",
     "BloodResultsFbcAdmin",
+    "BloodResultsHba1cAdmin",
     "BloodResultsInsAdmin",
     "BloodResultsLftAdmin",
+    "BloodResultsLipidsAdmin",
     "BloodResultsRftAdmin",
-    "BloodResultsHba1cAdmin",
 ]

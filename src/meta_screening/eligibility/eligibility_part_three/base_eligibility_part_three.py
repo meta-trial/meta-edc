@@ -1,3 +1,5 @@
+import contextlib
+
 from edc_constants.constants import NEG, NO, NOT_APPLICABLE
 from edc_egfr import EgfrCkdEpi
 from edc_egfr.calculators import EgfrCalculatorError
@@ -37,7 +39,7 @@ class BaseEligibilityPartThree(ScreeningEligibility):
     def assess_eligibility(self) -> None:
         if self.weight and self.height:
             self.bmi = calculate_bmi(weight_kg=self.weight, height_cm=self.height)
-        try:
+        with contextlib.suppress(EgfrCalculatorError):
             self.calculated_egfr_value = EgfrCkdEpi(
                 gender=self.model_obj.gender,
                 age_in_years=self.model_obj.age_in_years,
@@ -45,8 +47,6 @@ class BaseEligibilityPartThree(ScreeningEligibility):
                 creatinine_value=self.model_obj.creatinine_value,
                 creatinine_units=self.model_obj.creatinine_units,
             ).value
-        except EgfrCalculatorError:
-            pass
 
     def set_fld_attrs_on_model(self) -> None:
         self.model_obj.converted_creatinine_value = self.converted_creatinine_value
@@ -89,7 +89,7 @@ class BaseEligibilityPartThree(ScreeningEligibility):
                     units_to=MICROMOLES_PER_LITER,
                 )
             except ConversionNotHandled as e:
-                raise ConversionNotHandled(f"Creatinine. {e}")
+                raise ConversionNotHandled(f"Creatinine. {e}") from e
         if value and float(value) > 999999.9999:
             raise ConversionNotHandled("Creatinine value is absurd.")
         return value
@@ -106,7 +106,7 @@ class BaseEligibilityPartThree(ScreeningEligibility):
                     units_to=MILLIMOLES_PER_LITER,
                 )
             except ConversionNotHandled as e:
-                raise ConversionNotHandled(f"FBG. {e}")
+                raise ConversionNotHandled(f"FBG. {e}") from e
         return value
 
     @property
@@ -121,7 +121,7 @@ class BaseEligibilityPartThree(ScreeningEligibility):
                     units_to=MILLIMOLES_PER_LITER,
                 )
             except ConversionNotHandled as e:
-                raise ConversionNotHandled(f"FBG2. {e}")
+                raise ConversionNotHandled(f"FBG2. {e}") from e
         return value
 
     @property
@@ -136,7 +136,7 @@ class BaseEligibilityPartThree(ScreeningEligibility):
                     units_to=MILLIMOLES_PER_LITER,
                 )
             except ConversionNotHandled as e:
-                raise ConversionNotHandled(f"OGTT. {e}")
+                raise ConversionNotHandled(f"OGTT. {e}") from e
         return value
 
     @property
@@ -151,7 +151,7 @@ class BaseEligibilityPartThree(ScreeningEligibility):
                     units_to=MILLIMOLES_PER_LITER,
                 )
             except ConversionNotHandled as e:
-                raise ConversionNotHandled(f"OGTT2. {e}")
+                raise ConversionNotHandled(f"OGTT2. {e}") from e
         return value
 
     def set_eligible_model_field(self):

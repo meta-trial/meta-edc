@@ -28,6 +28,6 @@ class PregnancyUpdateAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "contact": admin.VERTICAL,
     }

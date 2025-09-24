@@ -18,17 +18,16 @@ class NextAppointmentCrfFormValidator(
 
 
 class NextAppointmentForm(CrfModelFormMixin, forms.ModelForm):
-
     form_validator_cls = NextAppointmentCrfFormValidator
 
     class Meta:
         model = NextAppointment
         fields = "__all__"
-        labels = {
+        labels = {  # noqa: RUF012
             "appt_date": "Next scheduled appointment date",
             "visitschedule": "Next scheduled appointment",
         }
-        help_texts = {
+        help_texts = {  # noqa: RUF012
             "appt_date": (
                 "Default recommended. If changed, should be within "
                 "the window period of the next appointment"

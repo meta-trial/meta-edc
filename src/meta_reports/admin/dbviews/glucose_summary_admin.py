@@ -23,9 +23,9 @@ class GlucoseSummaryAdmin(
     TemplatesModelAdminMixin,
     admin.ModelAdmin,
 ):
-    ordering = ["site", "subject_identifier", "fbg_datetime"]
+    ordering = ("site", "subject_identifier", "fbg_datetime")
     include_note_column = False
-    list_display = [
+    list_display = (
         "dashboard",
         "subject_identifier_link",
         "site",
@@ -37,9 +37,9 @@ class GlucoseSummaryAdmin(
         "ogtt_date",
         "endpoint",
         "offstudy_date",
-    ]
+    )
 
-    list_filter = [
+    list_filter = (
         ScheduleStatusListFilter,
         "fasted",
         FbgListFilter,
@@ -47,9 +47,9 @@ class GlucoseSummaryAdmin(
         "fbg_datetime",
         "ogtt_datetime",
         EndpointListFilter,
-    ]
+    )
 
-    search_fields = ["subject_identifier"]
+    search_fields = ("subject_identifier",)
 
     @admin.display(description="visit", ordering="visit_code")
     def visit(self, obj=None):

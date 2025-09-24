@@ -10,7 +10,6 @@ from ....models import MissingOgttNote
 
 @admin.register(MissingOgttNote, site=meta_reports_admin)
 class MissingOgttNoteModelAdmin(
-    # NoteModelAdminMixin,
     SiteModelAdminMixin,
     TemplatesModelAdminMixin,
     admin.ModelAdmin,
@@ -49,33 +48,30 @@ class MissingOgttNoteModelAdmin(
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "ogtt_units": admin.VERTICAL,
         "result_status": admin.VERTICAL,
         "fasting": admin.VERTICAL,
     }
 
-    list_display = [
-        # "dashboard",
+    list_display = (
         "subject_identifier",
         "note",
-        # "report",
         "status",
-        # "report_note",
         "report_datetime",
-    ]
+    )
 
     # radio_fields = {"status": admin.VERTICAL}
 
-    list_filter = [
+    list_filter = (
         "report_datetime",
         "status",
         "report_model",
         "user_created",
         "user_modified",
-    ]
+    )
 
-    search_fields = ["subject_identifier", "name"]
+    search_fields = ("subject_identifier", "name")
 
     def get_view_only_site_ids_for_user(self, request) -> list[int]:
         return [s.id for s in request.user.userprofile.sites.all() if s.id != request.site.id]

@@ -11,7 +11,7 @@ from ..constants import (
 )
 
 
-class OffSchedule(SiteModelMixin, ActionModelMixin, OffScheduleModelMixin, BaseUuidModel):
+class OffSchedule(SiteModelMixin, OffScheduleModelMixin, ActionModelMixin, BaseUuidModel):
     action_name = OFFSCHEDULE_ACTION
     offschedule_compare_dates_as_datetimes = False
 
@@ -21,7 +21,7 @@ class OffSchedule(SiteModelMixin, ActionModelMixin, OffScheduleModelMixin, BaseU
 
 
 class OffSchedulePregnancy(
-    SiteModelMixin, ActionModelMixin, OffScheduleModelMixin, BaseUuidModel
+    SiteModelMixin, OffScheduleModelMixin, ActionModelMixin, BaseUuidModel
 ):
     action_name = OFFSCHEDULE_PREGNANCY_ACTION
 
@@ -31,7 +31,7 @@ class OffSchedulePregnancy(
 
 
 class OffSchedulePostnatal(
-    SiteModelMixin, ActionModelMixin, OffScheduleModelMixin, BaseUuidModel
+    SiteModelMixin, OffScheduleModelMixin, ActionModelMixin, BaseUuidModel
 ):
     action_name = OFFSCHEDULE_POSTNATAL_ACTION
 
@@ -41,7 +41,7 @@ class OffSchedulePostnatal(
 
 
 class OffScheduleDmReferral(
-    SiteModelMixin, ActionModelMixin, OffScheduleModelMixin, BaseUuidModel
+    SiteModelMixin, OffScheduleModelMixin, ActionModelMixin, BaseUuidModel
 ):
     action_name = OFFSCHEDULE_DM_REFERRAL_ACTION
 

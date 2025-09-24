@@ -486,7 +486,7 @@ if TWILIO_ENABLED:
     TWILIO_SENDER = env.str("TWILIO_SENDER")
 
 # django_revision
-GIT_DIR = BASE_DIR
+GIT_DIR = BASE_DIR.parent
 
 # django_crypto_fields
 KEY_PATH = env.str("DJANGO_KEY_FOLDER")

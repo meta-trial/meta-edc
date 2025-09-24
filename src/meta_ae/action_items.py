@@ -3,7 +3,8 @@ from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext as _
-from edc_action_item import ActionWithNotification, site_action_items
+from edc_action_item.action_with_notification import ActionWithNotification
+from edc_action_item.site_action_items import site_action_items
 from edc_adverse_event.constants import (
     AE_FOLLOWUP_ACTION,
     AE_INITIAL_ACTION,

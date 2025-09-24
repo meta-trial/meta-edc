@@ -1,12 +1,12 @@
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase
+from django.utils import timezone
 from edc_action_item.models import ActionItem
 from edc_appointment.constants import COMPLETE_APPT
 from edc_appointment.models import Appointment
 from edc_constants.constants import CLOSED, FEMALE, NEW, NO, PATIENT, YES
 from edc_pharmacy.constants import IN_PROGRESS_APPT
-from edc_utils import get_utcnow
 from edc_visit_schedule.constants import MONTH1, OFFSCHEDULE_ACTION
 from edc_visit_tracking.constants import SCHEDULED
 
@@ -33,8 +33,8 @@ class TestDmReferral(MetaTestCaseMixin, TestCase):
         self.assertEqual(subject_visit.visit_code, MONTH1)
         dm_referral = DmReferral.objects.create(
             subject_identifier=subject_visit.subject_identifier,
-            report_datetime=get_utcnow(),
-            referral_date=get_utcnow(),
+            report_datetime=timezone.now(),
+            referral_date=timezone.now(),
         )
         self.assertIsNotNone(dm_referral.report_datetime)
         self.assertIsNotNone(dm_referral.referral_date)
@@ -54,8 +54,8 @@ class TestDmReferral(MetaTestCaseMixin, TestCase):
         self.assertEqual(subject_visit.visit_code, MONTH1)
         dm_referral = DmReferral.objects.create(
             subject_identifier=subject_visit.subject_identifier,
-            report_datetime=get_utcnow(),
-            referral_date=get_utcnow(),
+            report_datetime=timezone.now(),
+            referral_date=timezone.now(),
         )
         self.assertIsNotNone(dm_referral.report_datetime)
         self.assertIsNotNone(dm_referral.referral_date)
@@ -76,8 +76,8 @@ class TestDmReferral(MetaTestCaseMixin, TestCase):
         self.assertEqual(subject_visit.visit_code, MONTH1)
         dm_referral = DmReferral.objects.create(
             subject_identifier=subject_visit.subject_identifier,
-            report_datetime=get_utcnow(),
-            referral_date=get_utcnow(),
+            report_datetime=timezone.now(),
+            referral_date=timezone.now(),
         )
         self.assertIsNotNone(dm_referral.report_datetime)
         self.assertIsNotNone(dm_referral.referral_date)
@@ -99,8 +99,8 @@ class TestDmReferral(MetaTestCaseMixin, TestCase):
         self.assertEqual(subject_visit.visit_code, MONTH1)
         dm_referral = DmReferral.objects.create(
             subject_identifier=subject_visit.subject_identifier,
-            report_datetime=get_utcnow(),
-            referral_date=get_utcnow(),
+            report_datetime=timezone.now(),
+            referral_date=timezone.now(),
         )
         self.assertIsNotNone(dm_referral.report_datetime)
         self.assertIsNotNone(dm_referral.referral_date)
@@ -145,7 +145,7 @@ class TestDmReferral(MetaTestCaseMixin, TestCase):
 
         DmEndpoint.objects.create(
             subject_visit=subject_visit,
-            report_datetime=get_utcnow(),
+            report_datetime=timezone.now(),
             dx_date=referral_datetime.date(),
             dx_initiated_by="fbg_confirmed",
             dx_tmg=YES,

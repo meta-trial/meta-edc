@@ -1,8 +1,10 @@
+import sys
+
 from multisite import SiteID
 
 from .defaults import *  # noqa
 
-print(f"Settings file {__file__}")
+sys.stdout.write(f"Settings file {__file__}\n")
 
 SITE_ID = SiteID(default=1)
 EDC_SITES_UAT_DOMAIN = True

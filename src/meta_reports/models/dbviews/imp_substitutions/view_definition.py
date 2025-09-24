@@ -9,7 +9,7 @@ def get_view_definition() -> dict:
         from meta_pharmacy_substitutions as s left join meta_rando_randomizationlist as r
         on r.subject_identifier=s.subject_identifier
         order by s.subject_identifier
-        """  # noqa
+        """
     sql_view = SqlViewGenerator(
         report_model="meta_reports.imp_subjectitutions_view",
         ordering=["subject_identifier", "site_id"],

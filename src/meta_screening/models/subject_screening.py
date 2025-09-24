@@ -10,8 +10,6 @@ from edc_screening.screening_identifier import (
 )
 from edc_utils import get_utcnow
 
-from meta_consent.consents import consent_v1
-
 from ..model_mixins import (
     CalculatedModelMixin,
     EligibilityModelMixin,
@@ -39,7 +37,7 @@ class SubjectScreening(
     BaseUuidModel,
 ):
     identifier_cls = ScreeningIdentifier
-    consent_definitions = [consent_v1]
+    # consent_definitions = [consent_v1]
 
     contact_number = EncryptedCharField(
         validators=[RegexValidator(r"^[0-9\-\(\)\ ]+$", message="Enter a valid number")],

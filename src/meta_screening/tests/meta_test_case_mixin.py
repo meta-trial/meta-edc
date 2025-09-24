@@ -7,8 +7,8 @@ from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.sites.models import Site
 from edc_appointment.constants import IN_PROGRESS_APPT, INCOMPLETE_APPT
-from edc_appointment.tests.test_case_mixins import AppointmentTestCaseMixin
-from edc_constants.constants import YES
+from edc_appointment.tests.utils import get_appointment
+from edc_constants.constants import NULL_STRING, YES
 from edc_facility.import_holidays import import_holidays
 from edc_list_data.site_list_data import site_list_data
 from edc_metadata import REQUIRED
@@ -42,12 +42,12 @@ from .options import (
 )
 
 
-class MetaTestCaseMixin(AppointmentTestCaseMixin):
+class MetaTestCaseMixin:
     fqdn = domain_suffix
 
     default_sites = sites.get_by_country("tanzania", aslist=True)
 
-    site_names = [s.name for s in default_sites]
+    site_names = [s.name for s in default_sites]  # noqa: RUF012
 
     import_randomization_list = True
 
@@ -93,7 +93,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin):
             **part_one_eligible_options,
         )
         screening_identifier = part_one.screening_identifier
-        self.assertEqual(part_one.reasons_ineligible_part_one, None)
+        self.assertEqual(part_one.reasons_ineligible_part_one, NULL_STRING)
         self.assertEqual(part_one.eligible_part_one, YES)
 
         screening_part_two = ScreeningPartTwo.objects.get(
@@ -102,7 +102,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin):
         for k, v in part_two_eligible_options.items():
             setattr(screening_part_two, k, v)
         screening_part_two.save()
-        self.assertEqual(screening_part_two.reasons_ineligible_part_two, None)
+        self.assertEqual(screening_part_two.reasons_ineligible_part_two, NULL_STRING)
         self.assertEqual(screening_part_two.eligible_part_two, YES)
 
         screening_part_three = ScreeningPartThree.objects.get(
@@ -111,7 +111,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin):
         for k, v in part_three_eligible_options.items():
             setattr(screening_part_three, k, v)
         screening_part_three.save()
-        self.assertEqual(screening_part_three.reasons_ineligible_part_three, None)
+        self.assertEqual(screening_part_three.reasons_ineligible_part_three, NULL_STRING)
         self.assertEqual(screening_part_three.eligible_part_three, YES)
 
         subject_screening = SubjectScreening.objects.get(
@@ -131,9 +131,9 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin):
     @staticmethod
     def get_subject_consent(
         subject_screening: SubjectScreening,
-        consent_datetime: datetime = None,
-        dob: date = None,
-        site_id: int = None,
+        consent_datetime: datetime | None = None,
+        dob: date | None = None,
+        site_id: int | None = None,
     ):
         return baker.make_recipe(
             "meta_consent.subjectconsentv1",
@@ -150,7 +150,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin):
     @staticmethod
     def get_subject_consent_extended(
         subject_consent: SubjectConsent,
-        consent_datetime: datetime = None,
+        consent_datetime: datetime | None = None,
     ):
         return SubjectConsentV1Ext.objects.create(
             subject_consent=subject_consent,
@@ -161,7 +161,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin):
             site=subject_consent.site,
         )
 
-    def get_subject_visit(
+    def get_subject_visit(  # noqa: PLR0913
         self,
         visit_code: str | None = None,
         visit_code_sequence: int | None = None,
@@ -194,7 +194,7 @@ class MetaTestCaseMixin(AppointmentTestCaseMixin):
         )
         if appt_datetime:
             options.update(appt_datetime=appt_datetime)
-        appointment = self.get_appointment(**options)
+        appointment = get_appointment(**options)
         subject_visit = SubjectVisit(
             appointment=appointment,
             reason=SCHEDULED,

@@ -32,7 +32,7 @@ class UrineDipstickTestAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "performed": admin.VERTICAL,
         "ketones": admin.VERTICAL,
         "protein": admin.VERTICAL,

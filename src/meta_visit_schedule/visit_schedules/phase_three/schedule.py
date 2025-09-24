@@ -47,10 +47,10 @@ from .crfs import (
     crfs_48m,
     crfs_d1,
     crfs_missed,
+    crfs_w2,
 )
 from .crfs import crfs_prn as default_crfs_prn
 from .crfs import crfs_unscheduled as default_crfs_unscheduled
-from .crfs import crfs_w2
 from .requisitions import (
     requisitions_1m,
     requisitions_3m,
@@ -70,10 +70,10 @@ from .requisitions import (
     requisitions_45m,
     requisitions_48m,
     requisitions_d1,
+    requisitions_w2,
 )
 from .requisitions import requisitions_prn as default_requisitions_prn
 from .requisitions import requisitions_unscheduled as default_requisitions_unscheduled
-from .requisitions import requisitions_w2
 
 
 class Visit(BaseVisit):

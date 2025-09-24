@@ -10,8 +10,8 @@ from .health_economics_form_validator import HealthEconomicsFormValidator
 __all__ = [
     "BirthOutcomesFormValidator",
     "DeliveryFormValidator",
-    "DmFollowupFormValidator",
     "DmEndpointFormValidator",
+    "DmFollowupFormValidator",
     "EgfrDropNotificationFormValidator",
     "FollowupExaminationFormValidator",
     "GlucoseFormValidator",

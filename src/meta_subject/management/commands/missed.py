@@ -46,21 +46,21 @@ def get_missed_visit_codes(subject_identifier: str) -> list[str]:
     """Return visit codes from SubjectVisitMissed
     reports for this subject.
     """
-    codes = []
-    for missed_obj in SubjectVisitMissed.objects.filter(
-        subject_visit__subject_identifier=subject_identifier
-    ).order_by("report_datetime"):
-        codes.append(missed_obj.subject_visit.visit_code)
-    return codes
+    return [
+        missed_obj.subject_visit.visit_code
+        for missed_obj in SubjectVisitMissed.objects.filter(
+            subject_visit__subject_identifier=subject_identifier
+        ).order_by("report_datetime")
+    ]
 
 
 def get_missed_visit_codes_from_subject_visit(subject_identifier: str) -> list[str]:
-    codes = []
-    for missed_obj in SubjectVisit.objects.filter(
-        subject_identifier=subject_identifier, reason=MISSED_VISIT
-    ).order_by("report_datetime"):
-        codes.append(missed_obj.visit_code)
-    return codes
+    return [
+        missed_obj.visit_code
+        for missed_obj in SubjectVisit.objects.filter(
+            subject_identifier=subject_identifier, reason=MISSED_VISIT
+        ).order_by("report_datetime")
+    ]
 
 
 def run():
@@ -70,9 +70,8 @@ def run():
         RegisteredSubject.objects.all().order_by("subject_identifier"), total=total
     ):
         missed_visit_codes = get_missed_visit_codes(obj.subject_identifier)
-        if len(missed_visit_codes) > 2:
-            if is_sublist(missed_visit_codes, visit_codes):
-                result.update({obj.subject_identifier: missed_visit_codes})
+        if len(missed_visit_codes) > 2 and is_sublist(missed_visit_codes, visit_codes):
+            result.update({obj.subject_identifier: missed_visit_codes})
     return result
 
 
@@ -83,9 +82,8 @@ def run2():
         RegisteredSubject.objects.all().order_by("subject_identifier"), total=total
     ):
         missed_visit_codes = get_missed_visit_codes_from_subject_visit(obj.subject_identifier)
-        if len(missed_visit_codes) > 2:
-            if is_sublist(missed_visit_codes, visit_codes):
-                result.update({obj.subject_identifier: missed_visit_codes})
+        if len(missed_visit_codes) > 2 and is_sublist(missed_visit_codes, visit_codes):
+            result.update({obj.subject_identifier: missed_visit_codes})
     return result
 
 
@@ -102,9 +100,8 @@ def new_appointments():
             timepoint_datetime__lte=get_utcnow(),
         ).order_by("timepoint_datetime"):
             codes.append(appointment.visit_code)
-            if len(codes) >= 2:
-                if is_sublist(codes, visit_codes):
-                    result.update({obj.subject_identifier: codes})
+            if len(codes) >= 2 and is_sublist(codes, visit_codes):
+                result.update({obj.subject_identifier: codes})
     return result
 
 
@@ -133,7 +130,7 @@ def new_appointments_within(months: int):
 class Result:
     """Used with run3."""
 
-    def __init__(
+    def __init__(  # noqa: PLR0913
         self,
         subject_identifier: str,
         sid: str,
@@ -166,7 +163,7 @@ class Result:
         self.visit_codes = codes
 
     def __str__(self):
-        return self.subject_identifier, self.visit_codes
+        return f"{self.subject_identifier} {self.visit_codes}"
 
     def formatted(self) -> str:
         """Copy/paste output into text file"""

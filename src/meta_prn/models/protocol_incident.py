@@ -29,7 +29,7 @@ class ProtocolIncident(
     action_required_old = models.CharField(max_length=45, choices=ACTION_REQUIRED, null=True)
 
     def natural_key(self):
-        return (self.action_identifier,)  # noqa
+        return (self.action_identifier,)
 
     class Meta(ProtocolIncidentModelMixin.Meta, BaseUuidModel.Meta):
         pass

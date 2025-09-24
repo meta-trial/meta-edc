@@ -3,9 +3,9 @@ from zoneinfo import ZoneInfo
 from dateutil.relativedelta import relativedelta
 from django import forms
 from django.test import TestCase
+from django.utils import timezone
 from edc_consent.constants import HOSPITAL_NUMBER
 from edc_constants.constants import FEMALE
-from edc_utils.date import get_utcnow
 
 from meta_consent.form_validators import SubjectConsentFormValidator
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
@@ -14,15 +14,15 @@ from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 class TestFormValidators(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()
-        self.eligibility_datetime = get_utcnow() - relativedelta(days=1)  # yesterday
+        self.eligibility_datetime = timezone.now() - relativedelta(days=1)  # yesterday
         self.subject_screening = self.get_subject_screening(
-            report_datetime=get_utcnow(), eligibility_datetime=self.eligibility_datetime
+            report_datetime=timezone.now(), eligibility_datetime=self.eligibility_datetime
         )
         self.screening_identifier = self.subject_screening.screening_identifier
 
     @staticmethod
     def get_now():
-        return get_utcnow().astimezone(ZoneInfo("Africa/Dar_es_Salaam"))
+        return timezone.now().astimezone(ZoneInfo("Africa/Dar_es_Salaam"))
 
     def test_ok(self):
         consent_datetime = self.get_now()

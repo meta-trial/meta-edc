@@ -70,13 +70,11 @@ class GlucoseFormValidator(FbgOgttFormValidatorMixin, CrfFormValidator):
 
     def is_endpoint(self):
         value = NO
-        if self.cleaned_data.get("fbg_value") >= Decimal("7.0") and self.cleaned_data.get(
+        if (self.cleaned_data.get("fbg_value") >= Decimal("7.0") and self.cleaned_data.get(
             "ogtt_value"
-        ) >= Decimal("11.1"):
-            value = YES
-        elif self.cleaned_data.get("fbg_value") < Decimal("7.0") and self.cleaned_data.get(
+        ) >= Decimal("11.1")) or (self.cleaned_data.get("fbg_value") < Decimal("7.0") and self.cleaned_data.get(
             "ogtt_value"
-        ) >= Decimal("11.1"):
+        ) >= Decimal("11.1")):
             value = YES
         elif self.cleaned_data.get("fbg_value") >= Decimal("7.0") and self.cleaned_data.get(
             "ogtt_value"

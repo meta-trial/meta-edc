@@ -14,8 +14,8 @@ from .modeladmin import CrfModelAdminMixin
 class PatientHistoryAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     form = PatientHistoryForm
 
-    autocomplete_fields = ["current_arv_regimen", "previous_arv_regimen"]
-    fieldsets = [
+    autocomplete_fields = ("current_arv_regimen", "previous_arv_regimen")
+    fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime")}),
         ("Part 1: Symptoms", {"fields": ("symptoms", "other_symptoms")}),
         get_hiv_fieldset(part="2"),
@@ -23,9 +23,9 @@ class PatientHistoryAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         get_other_history_fieldset(part="4"),
         crf_status_fieldset,
         audit_fieldset_tuple,
-    ]
+    )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "current_arv_regimen": admin.VERTICAL,
         "current_smoker": admin.VERTICAL,
         "dm_in_family": admin.VERTICAL,

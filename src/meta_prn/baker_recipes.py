@@ -1,6 +1,6 @@
 from dateutil.relativedelta import relativedelta
+from django.utils import timezone
 from edc_constants.constants import YES
-from edc_utils import get_utcnow
 from faker import Faker
 from model_bakery.recipe import Recipe
 
@@ -14,15 +14,15 @@ pregnancynotification = Recipe(
     # site=None,
     action_identifier=None,
     subject_identifier=None,
-    report_datetime=get_utcnow(),
+    report_datetime=timezone.now(),
     bhcg_confirmed=YES,
     unconfirmed_details=None,
-    edd=get_utcnow() + relativedelta(months=6),
+    edd=timezone.now() + relativedelta(months=6),
 )
 
 dmreferral = Recipe(
     DmReferral,
     action_identifier=None,
     subject_identifier=None,
-    report_datetime=get_utcnow(),
+    report_datetime=timezone.now(),
 )

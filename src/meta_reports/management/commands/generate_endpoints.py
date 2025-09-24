@@ -1,13 +1,14 @@
+import sys
+
 from django.core.management import BaseCommand
 
 from meta_analytics.dataframes import GlucoseEndpointsByDate
 
 
 class Command(BaseCommand):
-
-    def handle(self, *args, **options):
-        print("Generating endpoints...")
+    def handle(self, *args, **options):  # noqa: ARG002
+        sys.stdout.write("Generating endpoints...\n")
         cls = GlucoseEndpointsByDate()
         cls.run()
         cls.to_model()
-        print("Generating endpoints... done.")
+        sys.stdout.write("Generating endpoints... done.\n")

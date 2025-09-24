@@ -1,5 +1,3 @@
-from typing import Type
-
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
@@ -35,10 +33,10 @@ class EndpointsModelAdminMixin(
     TemplatesModelAdminMixin,
 ):
     queryset_filter: dict | None = None
-    actions = [update_endpoints_table_action]
+    actions = (update_endpoints_table_action,)
     qa_report_list_display_insert_pos = 3
-    ordering = ["-fbg_date"]
-    list_display = [
+    ordering = ("-fbg_date",)
+    list_display = (
         "dashboard",
         "subject",
         "visit",
@@ -50,15 +48,15 @@ class EndpointsModelAdminMixin(
         "last_updated",
         "offstudy_date",
         "offstudy_reason",
-    ]
+    )
 
-    list_filter = [
+    list_filter = (
         "endpoint_label",
         ScheduleStatusListFilter,
         SiteListFilter,
-    ]
+    )
 
-    search_fields = ["subject_identifier"]
+    search_fields = ("subject_identifier",)
 
     def get_queryset(self, request) -> QuerySet:
         qs = super().get_queryset(request)
@@ -66,10 +64,9 @@ class EndpointsModelAdminMixin(
             qs = qs.filter(**self.queryset_filter)
         return qs
 
-    def get_list_filter(self, request) -> tuple[str | Type[SimpleListFilter], ...]:
+    def get_list_filter(self, request) -> tuple[str | type[SimpleListFilter], ...]:
         list_filter = super().get_list_filter(request)
-        list_filter = list_filter + (SiteListFilter,)
-        return list_filter
+        return *list_filter, SiteListFilter
 
     @admin.display(description="subject", ordering="subject_identifier")
     def subject(self, obj=None):
@@ -78,10 +75,6 @@ class EndpointsModelAdminMixin(
     @admin.display(description="visit", ordering="visit_code")
     def visit(self, obj=None):
         return obj.visit_code
-
-    # @admin.display(description="FBG DATE", ordering="fbg_date")
-    # def fbg_date(self, obj=None):
-    #     return obj.fbg_datetime.date() if obj.fbg_datetime else None
 
     @admin.display(description="FAST", ordering="fasting")
     def fast(self, obj=None):

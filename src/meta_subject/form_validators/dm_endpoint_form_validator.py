@@ -30,7 +30,7 @@ class DmEndpointFormValidator(CrfFormValidator):
                 {
                     "__all__": format_html(
                         "Subject has not reached the protocol endpoint. See {link}",
-                        link=mark_safe(link),  # nosec B703, B308
+                        link=mark_safe(link),  # noqa: S308
                     )
                 },
                 INVALID_ERROR,

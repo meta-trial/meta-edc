@@ -44,25 +44,25 @@ class AeReviewModelMixin(models.Model):
         verbose_name="Relationship to study drug:",
         max_length=25,
         choices=STUDY_DRUG_RELATIONSHIP,
-        null=True,
+        default="",
     )
 
     ae_expected = models.CharField(
         verbose_name="Based on the protocol, do you believe this event is expected?",
         max_length=25,
         choices=YES_NO,
-        null=True,
+        default="",
     )
 
     ae_action_required = models.CharField(
         verbose_name="If unexpected, do you believe further action is required?",
         max_length=25,
         choices=YES_NO,
-        null=True,
+        default="",
     )
 
     investigator_comments = models.TextField(
-        blank=True, null=True, verbose_name="This Clinical Reviewer's comments:"
+        blank=True, default="", verbose_name="This Clinical Reviewer's comments:"
     )
 
     original_report_agreed = models.CharField(
@@ -70,11 +70,11 @@ class AeReviewModelMixin(models.Model):
         max_length=15,
         choices=YES_NO,
         blank=False,
-        null=True,
+        default="",
         help_text="If No, explain in the narrative below",
     )
 
-    narrative = models.TextField(verbose_name="Narrative", blank=True, null=True)
+    narrative = models.TextField(verbose_name="Narrative", blank=True, default="")
 
     officials_notified = models.DateTimeField(
         blank=True,

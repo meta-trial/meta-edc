@@ -22,4 +22,4 @@ class SliderWidget(Input):
         return context
 
     class Media:
-        css = {"all": ("meta_subject/slider.css",)}
+        css = {"all": ("meta_subject/slider.css",)}  # noqa: RUF012

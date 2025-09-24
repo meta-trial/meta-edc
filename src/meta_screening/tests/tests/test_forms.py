@@ -3,9 +3,9 @@ from random import choices
 
 from dateutil.relativedelta import relativedelta
 from django.test import TestCase
+from django.utils import timezone
 from edc_constants.constants import BLACK, FEMALE, MALE, NO, NOT_APPLICABLE, POS, YES
 from edc_reportable import MILLIGRAMS_PER_DECILITER
-from edc_utils.date import get_utcnow
 
 from meta_screening.forms import (
     ScreeningPartOneForm,
@@ -30,7 +30,7 @@ class ScreeningTestMixin:
     def complete_part_one(self, hospital_identifier=None, **options):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         hospital_identifier = hospital_identifier or "".join(
-            [str(x) for x in choices(range(10), k=9)]  # nosec B311
+            [str(x) for x in choices(range(10), k=9)]  # nosec B311  # noqa: S311
         )
         data = {k: v for k, v in part_one_eligible_options.items()}
         data.update(hospital_identifier=hospital_identifier)
@@ -211,7 +211,7 @@ class TestForms(ScreeningTestMixin, TestCase):
             + relativedelta(days=1),
             urine_bhcg_value=POS,
             urine_bhcg_performed=YES,
-            urine_bhcg_date=get_utcnow().date(),
+            urine_bhcg_date=timezone.now().date(),
         )
         part_three_form = ScreeningPartThreeForm(data=data, instance=instance)
         part_three_form.is_valid()
@@ -237,7 +237,7 @@ class TestForms(ScreeningTestMixin, TestCase):
         data = dict(
             urine_bhcg_performed=NOT_APPLICABLE,
             urine_bhcg_value=NOT_APPLICABLE,
-            urine_bhcg_date=get_utcnow().date(),
+            urine_bhcg_date=timezone.now().date(),
         )
         part_three_form = ScreeningPartThreeForm(data=data, instance=instance)
         part_three_form.is_valid()
@@ -328,7 +328,7 @@ class TestForms(ScreeningTestMixin, TestCase):
         data.update(
             dict(
                 instance=instance,
-                urine_bhcg_date=get_utcnow().date(),
+                urine_bhcg_date=timezone.now().date(),
                 urine_bhcg_performed=NO,
             )
         )
@@ -346,7 +346,7 @@ class TestForms(ScreeningTestMixin, TestCase):
             dict(
                 instance=instance,
                 urine_bhcg_value=POS,
-                urine_bhcg_date=get_utcnow().date(),
+                urine_bhcg_date=timezone.now().date(),
                 urine_bhcg_performed=YES,
             )
         )

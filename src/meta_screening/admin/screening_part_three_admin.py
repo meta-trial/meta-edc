@@ -1,5 +1,4 @@
 from copy import deepcopy
-from typing import Tuple
 
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
@@ -30,7 +29,7 @@ from .list_filters import EligibilityPending, P3ApptListFilter, P3LtfuListFilter
 from .subject_screening_admin import SubjectScreeningAdmin
 
 
-def get_part_two_fieldset_without_contact_number() -> Tuple[str, dict]:
+def get_part_two_fieldset_without_contact_number() -> tuple[str, dict]:
     """Remove contact number from the part 2 fields"""
     part_two_name, part_two_dct = get_part_two_fieldset(collapse=True)
     part_two_dct = deepcopy(part_two_dct)
@@ -76,7 +75,7 @@ class ScreeningPartThreeAdmin(SiteModelAdminMixin, SubjectScreeningAdmin):
         "refused",
     )
 
-    readonly_fields: Tuple[str, ...] = (
+    readonly_fields: tuple[str, ...] = (
         *part_one_fields,
         *(f for f in part_two_fields if f != "contact_number"),
         *calculated_fields,

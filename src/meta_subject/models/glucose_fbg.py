@@ -1,7 +1,7 @@
 from django.db import models
 from edc_constants.choices import YES_NO
 from edc_constants.constants import NO
-from edc_glucose.model_mixins import (
+from edc_glucose.model_mixin_factories import (
     fasting_model_mixin_factory,
     fbg_model_mixin_factory,
 )
@@ -26,7 +26,6 @@ class GlucoseFbg(
     fbg_model_mixin_factory("fbg"),
     BaseUuidModel,
 ):
-
     fbg_performed = models.CharField(
         verbose_name="Was the FBG test performed?",
         max_length=15,
@@ -36,7 +35,7 @@ class GlucoseFbg(
     fbg_not_performed_reason = models.CharField(
         verbose_name="If NO, provide reason",
         max_length=150,
-        null=True,
+        default="",
         blank=True,
     )
 

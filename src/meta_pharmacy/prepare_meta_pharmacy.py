@@ -9,7 +9,7 @@ style = color_style()
 
 
 def prepare_meta_pharmacy():
-    from django.apps import apps as django_apps
+    from django.apps import apps as django_apps  # noqa: PLC0415
 
     sys.stdout.write(style.MIGRATE_HEADING("Populating static pharmacy models for META3:\n"))
 

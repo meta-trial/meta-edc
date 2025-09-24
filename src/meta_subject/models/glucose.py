@@ -1,7 +1,7 @@
 from django.db import models
 from edc_constants.choices import YES_NO
 from edc_constants.constants import NOT_APPLICABLE
-from edc_glucose.model_mixins import (
+from edc_glucose.model_mixin_factories import (
     fasting_model_mixin_factory,
     fbg_model_mixin_factory,
     ogtt_model_mixin_factory,
@@ -22,7 +22,7 @@ class Glucose(
             verbose_name="Has the participant fasted?",
             max_length=15,
             choices=YES_NO,
-            null=True,
+            default="",
             blank=False,
             help_text="As reported by patient",
         ),
@@ -43,7 +43,7 @@ class Glucose(
     )
 
     fbg_not_performed_reason = models.CharField(
-        verbose_name="If NO, provide reason", max_length=150, null=True, blank=True
+        verbose_name="If NO, provide reason", max_length=150, default="", blank=True
     )
 
     ogtt_performed = models.CharField(
@@ -53,7 +53,7 @@ class Glucose(
     )
 
     ogtt_not_performed_reason = models.CharField(
-        verbose_name="If NO, provide reason", max_length=150, null=True, blank=True
+        verbose_name="If NO, provide reason", max_length=150, default="", blank=True
     )
 
     endpoint_today = models.CharField(

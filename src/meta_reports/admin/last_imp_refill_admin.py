@@ -35,7 +35,7 @@ class NextApptDateListFilter(PastDateListFilter):
     field_name = "next_appt_date"
 
 
-def update_report(modeladmin, request, queryset):
+def update_report(modeladmin, request, queryset):  # noqa: ARG001
     now = get_utcnow()
     modeladmin.model.objects.all().delete()
     df = get_last_imp_visits_df()
@@ -68,7 +68,7 @@ def update_report(modeladmin, request, queryset):
             for _, row in df.iterrows()
         ]
         created = len(modeladmin.model.objects.bulk_create(data))
-        messages.success(request, "{} records were successfully created.".format(created))
+        messages.success(request, f"{created} records were successfully created.")
 
 
 @admin.register(LastImpRefill, site=meta_reports_admin)
@@ -83,13 +83,13 @@ class LastImpRefillAdmin(
 
     change_list_title = "List of most recent IMP refills per subject"
 
-    change_list_note = mark_safe(
+    change_list_note = mark_safe(  # noqa: S308
         render_to_string("meta_reports/last_imp_refill/changelist_note.html")
     )  # nosec B308, B703
 
-    actions = [update_report, export_to_csv]
+    actions = (update_report, export_to_csv)
 
-    list_display = [
+    list_display = (
         "dashboard",
         "subject_identifier",
         "imp_visit_code",
@@ -99,17 +99,17 @@ class LastImpRefillAdmin(
         "next_appt_date",
         "days_until",
         "created",
-    ]
+    )
 
-    list_filter = [
+    list_filter = (
         ("imp_visit_date", DateRangeFilterBuilder()),
         ("next_appt_date", DateRangeFilterBuilder()),
         "imp_visit_code",
         "next_visit_code",
         SiteListFilter,
-    ]
+    )
 
-    search_fields = ["subject_identifier"]
+    search_fields = ("subject_identifier",)
 
     def get_queryset(self, request) -> QuerySet:
         qs = super().get_queryset(request)

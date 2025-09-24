@@ -1,5 +1,5 @@
-from edc_constants.constants import NO, NOT_APPLICABLE, PATIENT, POS, YES
-from edc_utils import get_utcnow
+from django.utils import timezone
+from edc_constants.constants import NO, NOT_APPLICABLE, NULL_STRING, PATIENT, POS, YES
 from edc_visit_tracking.constants import SCHEDULED
 from faker import Faker
 from model_bakery.recipe import Recipe
@@ -26,22 +26,22 @@ subjectrequisition = Recipe(SubjectRequisition)
 
 medicationadherence = Recipe(
     MedicationAdherence,
-    report_datetime=get_utcnow(),
+    report_datetime=timezone.now(),
     visual_score_slider=90,
     visual_score_confirmed=90,
     last_missed_pill=NO,
     pill_count_performed=YES,
     pill_count=3,
     missed_pill_reason=[],
-    other_missed_pill_reason=None,
+    other_missed_pill_reason=NULL_STRING,
 )
 
 urinepregnancy = Recipe(
     UrinePregnancy,
-    action_identifier=None,
-    report_datetime=get_utcnow(),
+    action_identifier=NULL_STRING,
+    report_datetime=timezone.now(),
     performed=YES,
-    not_performed_reason=None,
+    not_performed_reason=NULL_STRING,
     bhcg_value=POS,
     notified=False,
     notified_datetime=None,
@@ -79,16 +79,16 @@ followupexamination = Recipe(
 delivery = Recipe(
     Delivery,
     # site=None,
-    action_identifier=None,
-    report_datetime=get_utcnow(),
+    action_identifier=NULL_STRING,
+    report_datetime=timezone.now(),
     info_available=YES,
     info_source=PATIENT,
     informant_relation=NOT_APPLICABLE,
-    informant_relation_other=None,
-    delivery_datetime=get_utcnow(),
+    informant_relation_other=NULL_STRING,
+    delivery_datetime=timezone.now(),
     delivery_time_estimated=NO,
     delivery_location=HOSPITAL_CLINIC,
-    delivery_location_other=None,
+    delivery_location_other=NULL_STRING,
     delivery_location_name="Big hospital",
     delivery_ga=40,
     gm_treated=NO,
@@ -98,8 +98,8 @@ delivery = Recipe(
 birthoutcomes = Recipe(
     BirthOutcomes,
     delivery=None,
-    action_identifier=None,
-    report_datetime=get_utcnow(),
+    action_identifier=NULL_STRING,
+    report_datetime=timezone.now(),
     birth_order=1,
     birth_outcome=LIVE_AT_TERM,
     birth_weight=320,
@@ -107,5 +107,5 @@ birthoutcomes = Recipe(
 
 healtheconomicsupdate = Recipe(
     HealthEconomicsUpdate,
-    report_datetime=get_utcnow(),
+    report_datetime=timezone.now(),
 )

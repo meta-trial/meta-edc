@@ -12,10 +12,6 @@ class SubjectRefusalForm(
 ):
     form_validator_cls = SubjectRefusalFormValidator
 
-    def clean(self):
-        cleaned_data = super().clean()
-        return cleaned_data
-
     class Meta:
         model = SubjectRefusal
         fields = "__all__"

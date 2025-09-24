@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Type
-
 from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
 from django_audit_fields import audit_fieldset_tuple
@@ -74,7 +72,7 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         list_display = tuple(list_display)
         return list_display
 
-    def get_list_filter(self, request) -> tuple[str | Type[SimpleListFilter], ...]:
+    def get_list_filter(self, request) -> tuple[str | type[SimpleListFilter], ...]:
         list_filter = super().get_list_filter(request)
         list_filter = list(list_filter)
         list_filter.insert(2, GlucoseListFilter)

@@ -1,5 +1,3 @@
-from typing import Tuple
-
 from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
@@ -8,7 +6,7 @@ from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext as _
 from django_audit_fields.admin import audit_fieldset_tuple
-from edc_action_item import action_fieldset_tuple
+from edc_action_item.fieldsets import action_fieldset_tuple
 from edc_action_item.modeladmin_mixins import ActionItemModelAdminMixin
 from edc_adverse_event.forms import AeFollowupForm
 from edc_adverse_event.modeladmin_mixins import (
@@ -51,13 +49,13 @@ class AeReviewModelAdminMixin(
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "outcome": admin.VERTICAL,
         "followup": admin.VERTICAL,
         "ae_grade": admin.VERTICAL,
     }
 
-    list_display: Tuple[str, ...] = (
+    list_display: tuple[str, ...] = (
         "identifier",
         "dashboard",
         "description",
@@ -66,9 +64,9 @@ class AeReviewModelAdminMixin(
         "user",
     )
 
-    list_filter: Tuple[str, ...] = ("ae_grade", "followup", "outcome_date", "report_datetime")
+    list_filter: tuple[str, ...] = ("ae_grade", "followup", "outcome_date", "report_datetime")
 
-    search_fields: Tuple[str, ...] = (
+    search_fields: tuple[str, ...] = (
         "action_identifier",
         "ae_initial__subject_identifier",
         "ae_initial__action_identifier",
@@ -96,8 +94,8 @@ class AeReviewModelAdminMixin(
         if follow_up_reports:
             return format_html(
                 "{}. See {}",
-                mark_safe(_(obj.get_outcome_display())),  # nosec B703, B308
-                mark_safe(_(follow_up_reports)),  # nosec B703, B308
+                mark_safe(_(obj.get_outcome_display())),  # noqa: S308
+                mark_safe(_(follow_up_reports)),  # noqa: S308
             )
         return obj.get_outcome_display()
 
@@ -114,10 +112,10 @@ class AeReviewModelAdminMixin(
                 '<a data-toggle="tooltip" title="{title}" '
                 'href="{url}?q={action_identifier}">{identifier}</a>',
                 title=_("go to ae initial report"),
-                url=mark_safe(url),  # nosec B703, B308
-                action_identifier=mark_safe(  # nosec B703, B308
+                url=mark_safe(url),  # noqa: S308
+                action_identifier=mark_safe(  # noqa: S308
                     obj.ae_initial.action_identifier
                 ),
-                identifier=mark_safe(obj.ae_initial.identifier),  # nosec B703, B308
+                identifier=mark_safe(obj.ae_initial.identifier),  # noqa: S308
             )
         return None

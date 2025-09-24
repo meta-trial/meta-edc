@@ -1,5 +1,5 @@
 from django.apps import apps as django_apps
-from edc_utils import get_utcnow
+from django.utils import timezone
 
 
 def draw_label_with_test_data() -> dict:
@@ -18,7 +18,7 @@ def draw_label_with_test_data() -> dict:
         code="A9B8C7",
         location=location_model_cls.objects.filter(site__isnull=False).first(),
         container=container,
-        lot=lot_model_cls(lot_no="999999999", expiration_date=get_utcnow().date()),
+        lot=lot_model_cls(lot_no="999999999", expiration_date=timezone.now().date()),
         receive_item=receive_item_model_cls(
             receive=receive_model_cls(receive_identifier="99999999"),
             receive_item_identifier="99999999",

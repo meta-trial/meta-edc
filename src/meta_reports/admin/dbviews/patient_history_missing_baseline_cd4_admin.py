@@ -1,3 +1,5 @@
+import contextlib
+
 from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
@@ -23,8 +25,8 @@ class PatientHistoryMissingBaselineCd4Admin(
     TemplatesModelAdminMixin,
     admin.ModelAdmin,
 ):
-    ordering = ["site", "subject_identifier"]
-    list_display = [
+    ordering = ("site", "subject_identifier")
+    list_display = (
         "dashboard",
         "subject_identifier",
         "cd4",
@@ -33,15 +35,15 @@ class PatientHistoryMissingBaselineCd4Admin(
         "user_created",
         "user_modified",
         "modified",
-    ]
+    )
 
-    list_filter = [ScheduleStatusListFilter]
+    list_filter = (ScheduleStatusListFilter,)
 
-    search_fields = ["subject_identifier"]
+    search_fields = ("subject_identifier",)
 
     def dashboard(self, obj=None, label=None) -> str:
         kwargs = self.get_subject_dashboard_url_kwargs(obj)
-        try:
+        with contextlib.suppress(ObjectDoesNotExist):
             kwargs.update(
                 appointment=str(
                     Appointment.objects.get(
@@ -51,8 +53,6 @@ class PatientHistoryMissingBaselineCd4Admin(
                     ).id
                 )
             )
-        except ObjectDoesNotExist:
-            pass
         url = reverse(self.get_subject_dashboard_url_name(obj=obj), kwargs=kwargs)
         context = dict(title=_("Go to subject's dashboard@1000"), url=url, label=label)
         return render_to_string("edc_subject_dashboard/dashboard_button.html", context=context)

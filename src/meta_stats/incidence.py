@@ -8,7 +8,7 @@ def get_sequential_fgb():
 
     for rs in RegisteredSubject.objects.all().order_by("subject_identifier"):
         values = []
-        for index, glucose in enumerate(
+        for _, glucose in enumerate(
             Glucose.objects.filter(
                 subject_visit__subject_identifier=rs.subject_identifier
             ).order_by("report_datetime")

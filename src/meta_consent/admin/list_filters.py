@@ -7,10 +7,10 @@ class AgreesListFilter(SimpleListFilter):
     title = "Agrees"
     parameter_name = "agrees"
 
-    def lookups(self, request, model_admin):
+    def lookups(self, request, model_admin):  # noqa: ARG002
         return YES_NO_NA
 
-    def queryset(self, request, queryset):
+    def queryset(self, request, queryset):  # noqa: ARG002
         qs = None
         if self.value():
             if self.value() == YES:

@@ -40,7 +40,7 @@ class PartTwoFieldsModelMixin(models.Model):
         ),
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
     )
 
@@ -48,7 +48,7 @@ class PartTwoFieldsModelMixin(models.Model):
         verbose_name="Is there clinical evidence of liver disease",
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
         help_text=(
             "Evidence of chronic liver disease: Jaundice, pruritus, "
@@ -62,7 +62,7 @@ class PartTwoFieldsModelMixin(models.Model):
         ),
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
         help_text=(
             "Evidence of alcoholism or acute alcohol intoxication: "
@@ -77,7 +77,7 @@ class PartTwoFieldsModelMixin(models.Model):
         ),
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
         help_text="lactic acidosis and/or diabetic ketoacidosis",
     )
@@ -88,7 +88,7 @@ class PartTwoFieldsModelMixin(models.Model):
         ),
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
     )
 
@@ -98,7 +98,7 @@ class PartTwoFieldsModelMixin(models.Model):
         ),
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
         help_text=(
             "Including: decompensated heart failure, respiratory failure, "
@@ -113,7 +113,7 @@ class PartTwoFieldsModelMixin(models.Model):
         ),
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
     )
 
@@ -124,7 +124,7 @@ class PartTwoFieldsModelMixin(models.Model):
         ),
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
         help_text=(
             "For example: Magnesium stearate, sodium carboxymethylcellulose, hypromellose"
@@ -135,7 +135,7 @@ class PartTwoFieldsModelMixin(models.Model):
         verbose_name="Is the patient known to have diabetes?",
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
     )
 
@@ -143,7 +143,7 @@ class PartTwoFieldsModelMixin(models.Model):
         verbose_name="Is the patient known to be taking anti-diabetic medications?",
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
     )
 
@@ -191,9 +191,9 @@ class PartTwoFieldsModelMixin(models.Model):
         choices=YES_PENDING_NA,
         default=NOT_APPLICABLE,
         help_text=(
-            "Only applicable if the patient missed the appointment for the second stage "
-            "of screening (P3), several attempts have been made to contact the patient, "
-            "and the patient has not started P3. See above"
+            "Only applicable if the patient missed the appointment for the second "
+            "stage of screening (P3), several attempts have been made to contact the "
+            "patient, and the patient has not started P3. See above"
         ),
     )
 
@@ -201,12 +201,14 @@ class PartTwoFieldsModelMixin(models.Model):
         verbose_name="Date decision made",
         null=True,
         blank=True,
-        help_text="Must be after the appointment date for the second stage of screening (P3)",
+        help_text=(
+            "Must be after the appointment date for the second stage of screening (P3)"
+        ),
     )
 
     p3_ltfu_comment = models.TextField(
         verbose_name="Provide any additional comments on this decision (or leave blank)",
-        null=True,
+        default="",
         blank=True,
     )
 
@@ -214,5 +216,5 @@ class PartTwoFieldsModelMixin(models.Model):
     def p3_appt(self):
         return self.appt_datetime
 
-    class Meta:
+    class Meta:  # noqa: DJ012
         abstract = True

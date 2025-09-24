@@ -31,4 +31,4 @@ class HealthEconomicsSimpleAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         audit_fieldset_tuple,
     )
 
-    radio_fields = {**education_radio_fields}
+    radio_fields = {**education_radio_fields}  # noqa: RUF012

@@ -58,7 +58,7 @@ class SubjectRefusal(NonUniqueSubjectIdentifierModelMixin, SiteModelMixin, BaseU
         return (self.subject_identifier,)
 
     def get_search_slug_fields(self):
-        return ["screening_identifier", "subject_identifier"]
+        return "screening_identifier", "subject_identifier"
 
     class Meta:
         verbose_name = "Subject Refusal"

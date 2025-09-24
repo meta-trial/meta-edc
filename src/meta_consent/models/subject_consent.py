@@ -62,7 +62,7 @@ class SubjectConsent(
         max_length=15,
         help_text=_("from screening"),
         editable=False,
-        null=True,
+        default="",
     )
 
     completed_by_next_of_kin = models.CharField(

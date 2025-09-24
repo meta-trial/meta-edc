@@ -32,9 +32,9 @@ class MissingScreeningOgttAdmin(
     note_template = "edc_qareports/columns/notes_column.html"
     include_note_column = True
 
-    ordering = ["site", "subject_identifier"]
+    ordering = ("site", "subject_identifier")
 
-    list_display = [
+    list_display = (
         "dashboard",
         "subject_identifier",
         "site",
@@ -49,17 +49,17 @@ class MissingScreeningOgttAdmin(
         "fbg2_datetime",
         "ogtt2_datetime",
         "consented",
-    ]
+    )
 
-    list_filter = [
+    list_filter = (
         ScheduleStatusListFilter,
         "screening_datetime",
         "fbg_datetime",
         "repeated",
         "p3_ltfu",
-    ]
+    )
 
-    search_fields = ["subject_identifier"]
+    search_fields = ("subject_identifier",)
 
     def dashboard(self, obj=None, label=None) -> str:
         url = self.get_subject_dashboard_url(obj=obj)

@@ -21,7 +21,7 @@ class IcpReferralManager(models.Manager):
 
 
 class IcpReferral(SiteModelMixin, BaseUuidModel):
-    """ "Not used"""
+    """Not used"""
 
     subject_screening = models.OneToOneField(
         SubjectScreening, null=True, on_delete=models.PROTECT
@@ -91,7 +91,7 @@ class IcpReferral(SiteModelMixin, BaseUuidModel):
 
     referred_datetime = models.DateTimeField(null=True, help_text="Date and time of referral")
 
-    referral_reasons = models.TextField(null=True)
+    referral_reasons = models.TextField(default="")
 
     objects = IcpReferralManager()
 
@@ -102,17 +102,17 @@ class IcpReferral(SiteModelMixin, BaseUuidModel):
     def save(self, *args, **kwargs):
         try:
             SubjectScreening.objects.get(screening_identifier=self.screening_identifier)
-        except ObjectDoesNotExist:
+        except ObjectDoesNotExist as e:
             raise IcpReferralError(
                 f"Invalid META screening identifier. Got {self.screening_identifier}"
-            )
+            ) from e
         super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.screening_identifier} {self.gender} {self.age_in_years}"
 
     def natural_key(self):
-        return (self.screening_identifier,)  # noqa
+        return (self.screening_identifier,)
 
     class Meta:
         pass

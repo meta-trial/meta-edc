@@ -16,7 +16,7 @@ class DmEndpoint(CrfModelMixin, BaseUuidModel):
         verbose_name="Was the patient referred because the diabetes endpoint was reached?",
         max_length=15,
         choices=YES_NO,
-        null=True,
+        default="",
         blank=False,
         help_text="If YES, the EDC will check for the patient on the Endpoints report.",
     )
@@ -32,7 +32,7 @@ class DmEndpoint(CrfModelMixin, BaseUuidModel):
     )
 
     # retired
-    dx_initiated_by_other = OtherCharField(null=True, blank=True)
+    dx_initiated_by_other = OtherCharField(blank=True)
 
     # retired
     dx_tmg = models.CharField(
@@ -50,11 +50,11 @@ class DmEndpoint(CrfModelMixin, BaseUuidModel):
     # retired
     dx_no_tmg_reason = models.TextField(
         verbose_name="If NO, please explain why this case was not discussed with the TMG",
-        null=True,
+        default="",
         blank=True,
     )
 
-    comments = models.TextField(verbose_name="Any other comments", null=True, blank=True)
+    comments = models.TextField(verbose_name="Any other comments", default="", blank=True)
 
     class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Diabetes endpoint"

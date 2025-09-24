@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
-from edc_action_item import ActionItemModelAdminMixin, action_fieldset_tuple
+from edc_action_item.fieldsets import action_fieldset_tuple
+from edc_action_item.modeladmin_mixins import ActionItemModelAdminMixin
 from edc_constants.constants import NONE, YES
 from edc_crf.fieldset import crf_status_fieldset
 from edc_form_label.form_label_modeladmin_mixin import FormLabelModelAdminMixin
@@ -16,17 +17,18 @@ class GradedEventFilter(admin.SimpleListFilter):
     title = "Graded events"
     parameter_name = "grade"
 
-    def lookups(self, request, model_admin):
+    def lookups(self, request, model_admin):  # noqa: ARG002
         return (
             ("g3", "Grade 3"),
             ("g4", "Grade 4"),
         )
 
-    def queryset(self, request, queryset):
+    def queryset(self, request, queryset):  # noqa: ARG002
         if self.value() == "g3":
             return queryset.exclude(symptoms_g3__name=NONE)
         if self.value() == "g4":
             return queryset.exclude(symptoms_g4__name=NONE)
+        return queryset
 
 
 @admin.register(FollowupExamination, site=meta_subject_admin)
@@ -36,14 +38,13 @@ class FollowupExaminationAdmin(
     ActionItemModelAdminMixin,
     SimpleHistoryAdmin,
 ):
-
     form = FollowupExaminationForm
 
-    autocomplete_fields = ["art_new_regimen"]
+    autocomplete_fields = ("art_new_regimen",)
 
-    additional_instructions = [
-        "If participant is pregnant, complete the action linked CRF `Pregnancy notification`."
-    ]
+    additional_instructions = (
+        "If participant is pregnant, complete the action linked CRF `Pregnancy notification`.",
+    )
 
     fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime")}),
@@ -128,7 +129,7 @@ class FollowupExaminationAdmin(
 
     # readonly_fields = action_fields
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "abdominal_tenderness": admin.VERTICAL,
         "admitted_hospital": admin.VERTICAL,
         "any_other_problems": admin.VERTICAL,

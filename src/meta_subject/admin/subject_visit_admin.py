@@ -39,7 +39,7 @@ class SubjectVisitAdmin(
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "reason": admin.VERTICAL,
         "reason_unscheduled": admin.VERTICAL,
         "info_source": admin.VERTICAL,

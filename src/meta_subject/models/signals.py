@@ -1,3 +1,5 @@
+import contextlib
+
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.signals import post_save, pre_save
@@ -23,7 +25,7 @@ from .subject_visit import SubjectVisit
     sender=StudyMedication,
     dispatch_uid="study_medication_on_pre_save",
 )
-def study_medication_on_pre_save(sender, instance, raw, **kwargs):
+def study_medication_on_pre_save(sender, instance, raw, **kwargs):  # noqa: ARG001
     """Create a prescription if one does not exist
 
     All refills are created against the prescription
@@ -35,7 +37,7 @@ def study_medication_on_pre_save(sender, instance, raw, **kwargs):
         subject_consent = get_consent_model_cls().objects.get(
             subject_identifier=instance.subject_visit.subject_identifier,
         )
-        try:
+        with contextlib.suppress(PrescriptionAlreadyExists):
             create_prescription(
                 subject_identifier=subject_consent.subject_identifier,
                 report_datetime=subject_consent.consent_datetime,
@@ -43,8 +45,6 @@ def study_medication_on_pre_save(sender, instance, raw, **kwargs):
                 medication_names=[METFORMIN],
                 site=subject_consent.site,
             )
-        except PrescriptionAlreadyExists:
-            pass
 
 
 @receiver(
@@ -53,7 +53,7 @@ def study_medication_on_pre_save(sender, instance, raw, **kwargs):
     sender=Delivery,
     dispatch_uid="update_pregnancy_notification_on_delivery_post_save",
 )
-def update_pregnancy_notification_on_delivery_post_save(sender, instance, raw, **kwargs):
+def update_pregnancy_notification_on_delivery_post_save(sender, instance, raw, **kwargs):  # noqa: ARG001
     """Updates PregnancyNotification model instance when the delivery form is submitted.
 
     Sets delivered=True and delivery_datetime
@@ -73,7 +73,7 @@ def update_pregnancy_notification_on_delivery_post_save(sender, instance, raw, *
     sender=Delivery,
     dispatch_uid="update_schedule_on_delivery_post_save",
 )
-def update_schedule_on_delivery_post_save(sender, instance, raw, **kwargs):
+def update_schedule_on_delivery_post_save(sender, instance, raw, **kwargs):  # noqa: ARG001
     """Takes a participant off the SCHEDULE_PREGNANCY schedule when
     delivery model is submitted.
 
@@ -97,10 +97,8 @@ def update_schedule_on_delivery_post_save(sender, instance, raw, **kwargs):
             delivery = Delivery.objects.get(
                 subject_visit__subject_identifier=instance.subject_identifier,
             )
-            offschedule_datetime = (
-                delivery.delivery_datetime
-                if delivery.delivery_datetime > last_subject_visit.report_datetime
-                else last_subject_visit.report_datetime
+            offschedule_datetime = max(
+                last_subject_visit.report_datetime, delivery.delivery_datetime
             )
             offschedule_model_cls.objects.create(
                 subject_identifier=instance.subject_identifier,
@@ -114,10 +112,14 @@ def update_schedule_on_delivery_post_save(sender, instance, raw, **kwargs):
     dispatch_uid="update_glucose_endpoints_for_subject_on_post_save",
 )
 def update_glucose_endpoints_for_subject_on_post_save(
-    sender, instance, raw, update_fields, **kwargs
+    sender,
+    instance,
+    raw,
+    update_fields,
+    **kwargs,  # noqa: ARG001
 ):
     if not raw and not update_fields and sender in [Glucose, GlucoseFbg]:
-        from meta_analytics.dataframes import GlucoseEndpointsByDate
+        from meta_analytics.dataframes import GlucoseEndpointsByDate  # noqa: PLC0415
 
         cls = GlucoseEndpointsByDate(
             subject_identifiers=[instance.subject_visit.subject_identifier]

@@ -12,11 +12,7 @@ class ScreeningPartTwoForm(AlreadyConsentedFormMixin, FormValidatorMixin, forms.
 
     AUTO_NUMBER_START = 17
 
-    def clean(self):
-        cleaned_data = super().clean()
-        return cleaned_data
-
     class Meta:
         model = ScreeningPartTwo
         fields = part_two_fields
-        help_texts = {"contact_number": "(Encryption: RSA local)"}
+        help_texts = {"contact_number": "(Encryption: RSA local)"}  # noqa: RUF012

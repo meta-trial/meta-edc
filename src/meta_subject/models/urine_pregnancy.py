@@ -17,7 +17,7 @@ class UrinePregnancy(CrfWithActionModelMixin, edc_models.BaseUuidModel):
     )
 
     not_performed_reason = models.CharField(
-        verbose_name="If NO, provide reason", max_length=150, null=True, blank=True
+        verbose_name="If NO, provide reason", max_length=150, default="", blank=True
     )
 
     assay_date = models.DateField(verbose_name="Urine βhCG date", blank=True, null=True)

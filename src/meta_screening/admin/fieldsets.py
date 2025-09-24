@@ -1,4 +1,3 @@
-from typing import Tuple
 
 from django.utils.safestring import mark_safe
 
@@ -20,7 +19,7 @@ from ..forms.field_lists import (
 )
 
 
-def get_part_one_fieldset(collapse=None) -> Tuple[str, dict]:
+def get_part_one_fieldset(collapse=None) -> tuple[str, dict]:
     dct = {
         "description": mark_safe(  # nosec B308
             "To be completed by the <u>study clinician</u> or the "
@@ -33,7 +32,7 @@ def get_part_one_fieldset(collapse=None) -> Tuple[str, dict]:
     return "Part 1", dct
 
 
-def get_part_two_fieldset(collapse=None) -> Tuple[str, dict]:
+def get_part_two_fieldset(collapse=None) -> tuple[str, dict]:
     dct = {
         "description": mark_safe(  # nosec B308
             "To be completed by the <u>study clinician</u> or the "
@@ -48,7 +47,7 @@ def get_part_two_fieldset(collapse=None) -> Tuple[str, dict]:
 
 def get_part_three_fieldset(
     collapse=None,
-) -> Tuple[str, dict]:
+) -> tuple[str, dict]:
     dct = {
         "description": mark_safe(  # nosec B308
             "To be completed by the <u>study clinician</u>"
@@ -67,7 +66,7 @@ def get_part_three_glucose_fieldset(collapse=None):
     return "Part 3c:  Glucose Measurements (FBG / OGTT)", dct
 
 
-def get_part_three_repeat_glucose_fieldset(collapse=None) -> Tuple[str, dict]:
+def get_part_three_repeat_glucose_fieldset(collapse=None) -> tuple[str, dict]:
     fields = [
         "repeat_glucose_performed",
         "repeat_fasting",
@@ -87,47 +86,47 @@ def get_part_three_repeat_glucose_fieldset(collapse=None) -> Tuple[str, dict]:
     return "Part 3d: Repeat Glucose Measurements (FBG / OGTT)", dct
 
 
-def get_part_three_other_fieldset(collapse=None) -> Tuple[str, dict]:
+def get_part_three_other_fieldset(collapse=None) -> tuple[str, dict]:
     dct = {"fields": part_three_other_fields}
     if collapse:
         dct.update(classes=("collapse",))
     return "Part 3e: Creatinine / HbA1c", dct
 
 
-def get_part_three_creatinine_fieldset(collapse=None) -> Tuple[str, dict]:
+def get_part_three_creatinine_fieldset(collapse=None) -> tuple[str, dict]:
     dct = {"fields": part_three_creatinine_fields}
     if collapse:
         dct.update(classes=("collapse",))
     return "Part 3e: Creatinine", dct
 
 
-def get_part_three_hba1c_fieldset(collapse=None) -> Tuple[str, dict]:
+def get_part_three_hba1c_fieldset(collapse=None) -> tuple[str, dict]:
     dct = {"fields": part_three_hba1c_fields}
     if collapse:
         dct.update(classes=("collapse",))
     return "Part 3f: HbA1c", dct
 
 
-def get_part_three_report_datetime_fieldset() -> Tuple[str, dict]:
+def get_part_three_report_datetime_fieldset() -> tuple[str, dict]:
     dct = {"fields": ["part_three_report_datetime"]}
     return "Part 3", dct
 
 
-def get_part_three_vitals_fieldset(collapse=None) -> Tuple[str, dict]:
+def get_part_three_vitals_fieldset(collapse=None) -> tuple[str, dict]:
     dct = {"fields": part_three_vitals_fields}
     if collapse:
         dct.update(classes=("collapse",))
     return "Part 3a: Vitals", dct
 
 
-def get_part_three_pregnancy_fieldset(collapse=None) -> Tuple[str, dict]:
+def get_part_three_pregnancy_fieldset(collapse=None) -> tuple[str, dict]:
     dct = {"fields": part_three_pregnancy_fields}
     if collapse:
         dct.update(classes=("collapse",))
     return "Part 3b: Pregnancy", dct
 
 
-def get_p3_screening_appt_update_fields(collapse=None) -> Tuple[str, dict]:
+def get_p3_screening_appt_update_fields(collapse=None) -> tuple[str, dict]:
     dct = {
         "description": mark_safe(  # nosec B308
             '<span style="color:orange;font-weight:bold">IMPORTANT:</span>'
@@ -144,14 +143,14 @@ def get_p3_screening_appt_update_fields(collapse=None) -> Tuple[str, dict]:
     return "Part 3 screening appointment update", dct
 
 
-comments_fieldset: Tuple[str, dict] = (
+comments_fieldset: tuple[str, dict] = (
     "Additional Comments",
     {
         "fields": (*part_three_comment_fields,),
     },
 )
 
-calculated_values_fieldset: Tuple[str, dict] = (
+calculated_values_fieldset: tuple[str, dict] = (
     "Calculated values",
     {
         "classes": ("collapse",),

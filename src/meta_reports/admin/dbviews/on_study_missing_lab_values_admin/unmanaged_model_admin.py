@@ -7,7 +7,4 @@ from ....models import OnStudyMissingLabValues
 
 @admin.register(OnStudyMissingLabValues, site=meta_reports_admin)
 class OnStudyMissingLabValuesAdmin(OnStudyMissingValuesModelAdminMixin, admin.ModelAdmin):
-
     include_note_column: bool = True
-
-    instructions = ["ello"]

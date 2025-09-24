@@ -17,9 +17,9 @@ class ScreeningPartOneForm(
         model = ScreeningPartOne
         fields = part_one_fields
 
-        labels = {
+        labels = {  # noqa: RUF012
             "site": "Which study site is this?",
         }
-        help_texts = {
+        help_texts = {  # noqa: RUF012
             "site": "This question is asked to confirm you are logged in to the correct site.",
         }

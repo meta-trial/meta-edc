@@ -25,7 +25,7 @@ class PhysicalExam(
     )
 
     irregular_heartbeat_description = models.TextField(
-        "If the heartbeat is <u>irregular</u>, please describe", null=True, blank=True
+        "If the heartbeat is <u>irregular</u>, please describe", default="", blank=True
     )
 
     waist_circumference = models.DecimalField(
@@ -50,7 +50,7 @@ class PhysicalExam(
 
     abdominal_tenderness_description = models.TextField(
         verbose_name="If YES, abdominal tenderness, please describe",
-        null=True,
+        default="",
         blank=True,
     )
 

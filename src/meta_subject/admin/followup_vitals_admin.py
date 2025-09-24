@@ -15,10 +15,9 @@ from .modeladmin import CrfModelAdminMixin
 class FollowupVitalsAdmin(CrfModelAdminMixin, FormLabelModelAdminMixin, SimpleHistoryAdmin):
     form = FollowupVitalsForm
 
-    additional_instructions = [
-        "If participant is pregnant, complete the action "
-        "linked CRF `Pregnancy notification`."
-    ]
+    additional_instructions = (
+        "If participant is pregnant, complete the action linked CRF `Pregnancy notification`."
+    )
 
     fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime")}),
@@ -68,7 +67,7 @@ class FollowupVitalsAdmin(CrfModelAdminMixin, FormLabelModelAdminMixin, SimpleHi
 
     filter_horizontal = ()
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "waist_circumference_measured": admin.VERTICAL,
         "severe_htn": admin.VERTICAL,
     }

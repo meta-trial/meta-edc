@@ -31,7 +31,7 @@ class SubjectRequisitionAdmin(RequisitionAdminMixin, CrfModelAdminMixin, SimpleH
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "is_drawn": admin.VERTICAL,
         "reason_not_drawn": admin.VERTICAL,
         "item_type": admin.VERTICAL,

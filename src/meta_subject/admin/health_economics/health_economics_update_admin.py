@@ -92,7 +92,7 @@ class HealthEconomicsUpdateAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "hoh": admin.VERTICAL,
         "relationship_to_hoh": admin.VERTICAL,
         "avg_income": admin.VERTICAL,

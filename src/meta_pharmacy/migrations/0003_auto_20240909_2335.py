@@ -5,6 +5,8 @@ import pandas as pd
 from django.apps import apps as django_apps
 from django.conf import settings
 from django.db import migrations
+from django.utils import timezone
+
 from edc_utils import get_utcnow
 from tqdm import tqdm
 
@@ -29,7 +31,7 @@ def populate_substitutions(apps, schema_editor):
     df["sid"] = df["sid"].apply(pd.to_numeric, errors="coerce")
     df["dispensed_sid"] = df["dispensed_sid"].apply(pd.to_numeric, errors="coerce")
     df["site_id"] = df["site_id"].apply(pd.to_numeric, errors="coerce")
-    now = get_utcnow()
+    now = timezone.now()
     model_cls = django_apps.get_model("meta_pharmacy.substitutions")
     df_error = df[df["dispensed_sid"].isna()]
     df_error = df_error.reset_index()
@@ -56,7 +58,6 @@ def populate_substitutions(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("meta_pharmacy", "0002_initial"),
     ]

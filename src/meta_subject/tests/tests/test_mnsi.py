@@ -4,9 +4,9 @@ from zoneinfo import ZoneInfo
 import time_machine
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
-from django.test import TestCase, override_settings
+from django.test import TestCase, override_settings, tag
+from django.utils import timezone
 from edc_constants.constants import NO, YES
-from edc_utils import get_utcnow
 from model_bakery import baker
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
@@ -44,7 +44,7 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
         super().setUp()
         traveller = time_machine.travel(test_datetime)
         traveller.start()
-        self.baseline_datetime = get_utcnow()
+        self.baseline_datetime = timezone.now()
 
         self.subject_screening = self.get_subject_screening(
             report_datetime=self.baseline_datetime,
@@ -267,10 +267,13 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
                 crfs = self.get_crf_metadata(subject_visit)
                 self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
+    @tag("87")
     def test_mnsi_required_between_36m_and_45m(self):
         traveller = time_machine.travel(datetime(2024, 12, 17, tzinfo=ZoneInfo("UTC")))
         traveller.start()
-        self.get_subject_consent_extended(self.subject_consent, consent_datetime=get_utcnow())
+        self.get_subject_consent_extended(
+            self.subject_consent, consent_datetime=timezone.now()
+        )
         traveller.stop()
 
         month1_visit = self.get_visit(visit_code=MONTH1)
@@ -286,10 +289,13 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
                 self.set_mnsi_status(subject_visit=subject_visit, mnsi_performed=NO)
         traveller.stop()
 
+    @tag("meta1")
     def test_mnsi_only_required_once_between_36m_and_45m(self):
         traveller = time_machine.travel(datetime(2024, 12, 17, tzinfo=ZoneInfo("UTC")))
         traveller.start()
-        self.get_subject_consent_extended(self.subject_consent, consent_datetime=get_utcnow())
+        self.get_subject_consent_extended(
+            self.subject_consent, consent_datetime=timezone.now()
+        )
         month1_visit = self.get_visit(visit_code=MONTH1)
         self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=YES)
 
@@ -316,7 +322,9 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
     def test_mnsi_required_at_48m(self):
         traveller = time_machine.travel(datetime(2024, 12, 16, tzinfo=ZoneInfo("UTC")))
         traveller.start()
-        self.get_subject_consent_extended(self.subject_consent, consent_datetime=get_utcnow())
+        self.get_subject_consent_extended(
+            self.subject_consent, consent_datetime=timezone.now()
+        )
         month1_visit = self.get_visit(visit_code=MONTH1)
         crfs = self.get_crf_metadata(month1_visit)
         self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])

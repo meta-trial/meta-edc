@@ -6,8 +6,7 @@ from edc_visit_schedule.visit import Crf, CrfCollection, Visit
 from meta_consent.consents import consent_v1
 
 from ...constants import DM_BASELINE, DM_FOLLOWUP, SCHEDULE_DM_REFERRAL
-from .crfs import crfs_missed
-from .crfs import crfs_prn
+from .crfs import crfs_missed, crfs_prn
 from .crfs import crfs_prn as default_crfs_prn
 
 crfs_baseline = CrfCollection(

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from edc_action_item import ActionItemModelAdminMixin
+from edc_action_item.modeladmin_mixins import ActionItemModelAdminMixin
 from edc_egfr.admin import EgfrDropNotificationAdminMixin
 from edc_model_admin.history import SimpleHistoryAdmin
 

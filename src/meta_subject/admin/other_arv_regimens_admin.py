@@ -15,7 +15,7 @@ class OtherArvRegimensInlineAdmin(TabularInlineMixin, admin.TabularInline):
     form = OtherArvRegimensDetailForm
     extra = 1
     view_on_site = False
-    autocomplete_fields = ["arv_regimen"]
+    autocomplete_fields = ("arv_regimen",)
 
     fieldsets = (
         (
@@ -40,7 +40,7 @@ class OtherArvRegimensInlineAdmin(TabularInlineMixin, admin.TabularInline):
 class OtherArvRegimensAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     form = OtherArvRegimensForm
 
-    inlines = [OtherArvRegimensInlineAdmin]
+    inlines = (OtherArvRegimensInlineAdmin,)
 
     fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime", "has_other_regimens")}),
@@ -48,6 +48,6 @@ class OtherArvRegimensAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "has_other_regimens": admin.VERTICAL,
     }

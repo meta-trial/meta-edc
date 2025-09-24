@@ -19,9 +19,8 @@ def get_glucose_fbg_df(subject_identifiers: list[str] | None = None) -> pd.DataF
         subject_visit_model="meta_subject.subjectvisit",
     )
     df["source"] = "meta_subject.glucosefbg"
-    df.rename(columns={"fbg_fasting": "fasting"}, inplace=True)
+    df = df.rename(columns={"fbg_fasting": "fasting"})
     df.loc[(df["fasting"] == "fasting"), "fasting"] = YES
     df.loc[(df["fasting"] == "non_fasting"), "fasting"] = NO
     df = calculate_fasting_hrs(df)
-    df = df.reset_index(drop=True)
-    return df
+    return df.reset_index(drop=True)

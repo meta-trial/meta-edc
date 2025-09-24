@@ -39,5 +39,5 @@ def create_missing_rx():
 
 
 class Command(BaseCommand):
-    def handle(self, *args, **options):
+    def handle(self, *args, **options):  # noqa: ARG002
         create_missing_rx()

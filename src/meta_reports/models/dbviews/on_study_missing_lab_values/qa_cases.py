@@ -1,8 +1,10 @@
+import contextlib
+
 from edc_lab_panel.constants import FBC, LFT, LIPIDS, RFT
 from edc_lab_panel.panels import fbc_panel, lft_panel, lipids_panel, rft_panel
 from edc_qareports.sql_generator import CrfCase, RequisitionCase
 
-qa_cases = [
+qa_cases: list[RequisitionCase | CrfCase] = [
     RequisitionCase(
         label="FBC requisitioned but not entered",
         dbtable="meta_subject_bloodresultsfbc",
@@ -32,10 +34,8 @@ qa_cases = [
 panels = {FBC: fbc_panel, RFT: rft_panel, LFT: lft_panel, LIPIDS: lipids_panel}
 for abbrev, panel in panels.items():
     for utest_id in panel.utest_ids:
-        try:
-            utest_id, _ = utest_id
-        except ValueError:
-            pass
+        with contextlib.suppress(ValueError):
+            utest_id, _ = utest_id  # noqa: PLW2901
         qa_cases.append(
             CrfCase(
                 label=f"{abbrev.upper()}: missing {utest_id} value/units",
@@ -45,9 +45,11 @@ for abbrev, panel in panels.items():
             )
         )
 
-    CrfCase(
-        label="No UREA value",
-        dbtable="meta_subject_bloodresultsrft",
-        label_lower="meta_subject.bloodresultsrft",
-        where="crf.urea_value is null or crf.urea_units is null",
-    ),
+    (
+        CrfCase(
+            label="No UREA value",
+            dbtable="meta_subject_bloodresultsrft",
+            label_lower="meta_subject.bloodresultsrft",
+            where="crf.urea_value is null or crf.urea_units is null",
+        ),
+    )

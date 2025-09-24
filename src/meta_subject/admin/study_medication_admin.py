@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from decimal import Decimal
-from typing import Type
 
 from django.contrib import admin, messages
 from django.contrib.admin import SimpleListFilter
@@ -30,15 +29,14 @@ from .modeladmin import CrfModelAdminMixin
 
 @admin.register(StudyMedication, site=meta_subject_admin)
 class StudyMedicationAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
-
-    actions = ["create_or_update_rx_refills"]
+    actions = ("create_or_update_rx_refills",)
 
     form = StudyMedicationForm
 
-    autocomplete_fields = [
+    autocomplete_fields = (
         "dosage_guideline",
         "formulation",
-    ]
+    )
 
     fieldsets = (
         (
@@ -78,20 +76,19 @@ class StudyMedicationAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "formulation": admin.VERTICAL,
         "refill": admin.VERTICAL,
         "refill_to_next_visit": admin.VERTICAL,
     }
 
-    def get_list_filter(self, request) -> tuple[str | Type[SimpleListFilter], ...]:
+    def get_list_filter(self, request) -> tuple[str | type[SimpleListFilter], ...]:
         list_filter = super().get_list_filter(request)
         list_filter = list(list_filter)
         list_filter.insert(4, "dosage_guideline")
         list_filter.insert(4, RefillEndDateListFilter)
         list_filter.insert(4, RefillStartDateListFilter)
-        list_filter = tuple(list_filter)
-        return list_filter
+        return tuple(list_filter)
 
     def get_list_display(self, request) -> tuple[str, ...]:
         list_display = super().get_list_display(request)
@@ -100,8 +97,7 @@ class StudyMedicationAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         list_display.insert(4, "refill_end_date")
         list_display.insert(4, "refill_start_date")
         list_display.insert(4, "dosage_guideline")
-        list_display = tuple(list_display)
-        return list_display
+        return tuple(list_display)
 
     @admin.display(description="days", ordering="number_of_days")
     def refill_days(self, obj):
@@ -156,10 +152,7 @@ class StudyMedicationAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
             messages.add_message(
                 request,
                 ERROR,
-                (
-                    f"ObjectDoesNotExist: {obj.subject_identifier}, "
-                    f"{obj.related_visit}, {str(e)}"
-                ),
+                (f"ObjectDoesNotExist: {obj.subject_identifier}, {obj.related_visit}, {e!s}"),
             )
             errors += 1
         except StudyMedicationError as e:

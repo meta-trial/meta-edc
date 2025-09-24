@@ -16,5 +16,4 @@ def get_glucose_tested_only_df(df: pd.DataFrame | None = None):
         | (df["ogtt2_value"].notna())
     )
     cond = (df["eligible_part_one"] == "Yes") & (df["eligible_part_two"] == "Yes") & cond_glu
-    df = df[cond]
-    return df
+    return df[cond]

@@ -5,7 +5,7 @@ from meta_reports.ae_report import AePdfReport
 
 
 class CustomAeReport(AePdfReport):
-    logo_data = {
+    logo_data = {  # noqa: RUF012
         "app_label": "meta_edc",
         "filename": "meta_logo.png",
         "first_page": (4.0 * cm, 0.83 * cm),

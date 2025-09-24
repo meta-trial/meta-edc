@@ -1,8 +1,6 @@
-from typing import Tuple
-
 from django.contrib import admin, messages
 from django.core.exceptions import MultipleObjectsReturned
-from edc_action_item import action_fieldset_tuple
+from edc_action_item.fieldsets import action_fieldset_tuple
 from edc_egfr.egfr import Egfr
 from edc_lab_results.admin import BloodResultsModelAdminMixin
 from edc_lab_results.fieldsets import (
@@ -28,7 +26,7 @@ class BloodResultsRftAdmin(
     BloodResultsModelAdminMixin, CrfModelAdminMixin, SimpleHistoryAdmin
 ):
     form = BloodResultsRftForm
-    actions = ["create_or_update_egfr_notification", "recalculate_egfr"]
+    actions = ("create_or_update_egfr_notification", "recalculate_egfr")
     fieldsets = (
         *BloodResultFieldset(
             BloodResultsRft.lab_panel,
@@ -42,7 +40,7 @@ class BloodResultsRftAdmin(
         ).fieldsets,
     )
 
-    def get_readonly_fields(self, request, obj=None) -> Tuple[str, ...]:
+    def get_readonly_fields(self, request, obj=None) -> tuple[str, ...]:  # noqa: ARG002
         readonly_fields = super().get_readonly_fields(request)
         custom_fields = (
             "egfr_value",

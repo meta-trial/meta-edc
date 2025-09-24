@@ -35,7 +35,7 @@ class VitalsFieldsModelMixin(models.Model):
             "A reason not measured may be provided at anytime "
             "but is required at 36 and 48 months"
         ),
-        null=True,
+        default="",
         blank=True,
     )
 

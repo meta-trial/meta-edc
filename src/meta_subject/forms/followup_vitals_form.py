@@ -9,7 +9,6 @@ from ..models import FollowupVitals
 
 class FollowupVitalsFormValidator(CrfFormValidator):
     def clean(self):
-
         self.required_if(
             YES, field="waist_circumference_measured", field_required="waist_circumference"
         )
@@ -17,13 +16,9 @@ class FollowupVitalsFormValidator(CrfFormValidator):
         visit_code = (
             f"{self.related_visit.visit_code}.{self.related_visit.visit_code_sequence}"
         )
-        require_waist_circumference_comment = (
-            True
-            if (
-                visit_code in [f"{MONTH36}.0", f"{MONTH48}.0"]
-                or self.cleaned_data.get("waist_circumference_measured") == YES
-            )
-            else False
+        require_waist_circumference_comment = bool(
+            visit_code in [f"{MONTH36}.0", f"{MONTH48}.0"]
+            or self.cleaned_data.get("waist_circumference_measured") == YES
         )
 
         if (

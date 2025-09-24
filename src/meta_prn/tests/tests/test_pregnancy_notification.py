@@ -1,9 +1,9 @@
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase
+from django.utils import timezone
 from edc_appointment.models import Appointment
 from edc_constants.constants import FEMALE, NO, YES
-from edc_utils import get_utcnow
 from edc_visit_schedule.constants import MONTH1
 from model_bakery.baker import make_recipe
 
@@ -25,8 +25,8 @@ class TestPregnancyNotification(MetaTestCaseMixin, TestCase):
         urine_pregnancy = make_recipe(
             "meta_subject.urinepregnancy",
             subject_visit=subject_visit,
-            report_datetime=get_utcnow(),
-            assay_date=get_utcnow().date(),
+            report_datetime=timezone.now(),
+            assay_date=timezone.now().date(),
         )
 
         self.assertFalse(urine_pregnancy.notified)
@@ -34,7 +34,7 @@ class TestPregnancyNotification(MetaTestCaseMixin, TestCase):
         make_recipe(
             "meta_prn.pregnancynotification",
             subject_identifier=subject_visit.subject_identifier,
-            report_datetime=get_utcnow(),
+            report_datetime=timezone.now(),
         )
         urine_pregnancy.refresh_from_db()
         self.assertTrue(urine_pregnancy.notified)
@@ -47,7 +47,7 @@ class TestPregnancyNotification(MetaTestCaseMixin, TestCase):
         make_recipe(
             "meta_prn.pregnancynotification",
             subject_identifier=subject_visit.subject_identifier,
-            report_datetime=get_utcnow(),
+            report_datetime=timezone.now(),
             bhcg_confirmed=NO,
             unconfirmed_details="blah blah",
         )
@@ -60,7 +60,7 @@ class TestPregnancyNotification(MetaTestCaseMixin, TestCase):
             make_recipe(
                 "meta_prn.pregnancynotification",
                 subject_identifier=subject_visit.subject_identifier,
-                report_datetime=get_utcnow(),
+                report_datetime=timezone.now(),
                 bhcg_confirmed=YES,
                 unconfirmed_details="blah blah",
             )
