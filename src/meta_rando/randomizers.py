@@ -30,7 +30,7 @@ class RandomizerPhaseThree(Randomizer):
     model = "meta_rando.randomizationlist"
     filename = "randomization_list_phase_three.csv"
     importer_cls = RandomizationListImporterPhaseThree
-    extra_csv_fieldnames = ["gender"]
+    extra_csv_fieldnames = ("gender",)
 
     def __init__(self, gender=None, **kwargs):
         self.gender = gender

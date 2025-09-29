@@ -43,7 +43,7 @@ class AeFollowupAction(ActionWithNotification):
     name = AE_FOLLOWUP_ACTION
     display_name = "Submit AE Followup Report"
     notification_display_name = "AE Followup Report"
-    parent_action_names = [AE_INITIAL_ACTION, AE_FOLLOWUP_ACTION]
+    parent_action_names = (AE_INITIAL_ACTION, AE_FOLLOWUP_ACTION)
     reference_model = "meta_ae.aefollowup"
     related_reference_model = "meta_ae.aeinitial"
     related_reference_fk_attr = "ae_initial"
@@ -61,7 +61,7 @@ class AeFollowupAction(ActionWithNotification):
     priority = HIGH_PRIORITY
 
     def get_next_actions(self):
-        next_actions = []
+        next_actions = ()
 
         # add AE followup to next_actions if followup.
         next_actions = self.append_to_next_if_required(
@@ -98,14 +98,14 @@ class AeInitialAction(ActionWithNotification):
     name = AE_INITIAL_ACTION
     display_name = "Submit AE Initial Report"
     notification_display_name = "AE Initial Report"
-    parent_action_names = [
+    parent_action_names = (
         BLOOD_RESULTS_LIPIDS_ACTION,
         BLOOD_RESULTS_GLU_ACTION,
         BLOOD_RESULTS_LFT_ACTION,
         BLOOD_RESULTS_RFT_ACTION,
         BLOOD_RESULTS_FBC_ACTION,
         FOLLOWUP_EXAMINATION_ACTION,
-    ]
+    )
     reference_model = "meta_ae.aeinitial"
     show_link_to_changelist = True
     show_link_to_add = True
@@ -118,7 +118,7 @@ class AeInitialAction(ActionWithNotification):
 
         1. Add death report action if death
         """
-        next_actions = []
+        next_actions = ()
         deceased = (
             self.reference_obj.ae_grade == GRADE5 or self.reference_obj.sae_reason.name == DEAD
         )
@@ -156,20 +156,18 @@ class AeInitialAction(ActionWithNotification):
             required=self.reference_obj.ae_grade == GRADE4,
         )
         # add next AeTmgAction if G3 and is an SAE
-        next_actions = self.append_to_next_if_required(
+        return self.append_to_next_if_required(
             next_actions=next_actions,
             action_name=AE_TMG_ACTION,
             required=(self.reference_obj.ae_grade == GRADE3 and self.reference_obj.sae == YES),
         )
-
-        return next_actions
 
 
 class AeSusarAction(ActionWithNotification):
     name = AE_SUSAR_ACTION
     display_name = "Submit AE SUSAR Report"
     notification_display_name = "AE SUSAR Report"
-    parent_action_names = [AE_INITIAL_ACTION]
+    parent_action_names = (AE_INITIAL_ACTION,)
     reference_model = "meta_ae.aesusar"
     related_reference_model = "meta_ae.aeinitial"
     related_reference_fk_attr = "ae_initial"
@@ -184,7 +182,7 @@ class AeTmgAction(ActionWithNotification):
     name = AE_TMG_ACTION
     display_name = "TMG AE Report pending"
     notification_display_name = "TMG AE Report"
-    parent_action_names = [AE_INITIAL_ACTION, AE_FOLLOWUP_ACTION, AE_TMG_ACTION]
+    parent_action_names = (AE_INITIAL_ACTION, AE_FOLLOWUP_ACTION, AE_TMG_ACTION)
     reference_model = "meta_ae.aetmg"
     related_reference_model = "meta_ae.aeinitial"
     related_reference_fk_attr = "ae_initial"
@@ -204,13 +202,13 @@ class DeathReportAction(PregnancyActionItemMixin, ActionWithNotification):
     display_name = "Submit Death Report"
     notification_display_name = "Death Report"
     reference_model = "meta_ae.deathreport"
-    parent_action_names = [AE_INITIAL_ACTION, AE_FOLLOWUP_ACTION]
+    parent_action_names = (AE_INITIAL_ACTION, AE_FOLLOWUP_ACTION)
     show_link_to_changelist = True
     show_link_to_add = True
     admin_site_name = "meta_ae_admin"
     priority = HIGH_PRIORITY
     singleton = True
-    dirty_fields = ["cause_of_death"]
+    dirty_fields = ("cause_of_death",)
 
     def get_next_actions(self):
         """Adds 1 DEATHReportTMG if not yet created and
@@ -242,7 +240,7 @@ class DeathReportTmgAction(ActionWithNotification):
     name = DEATH_REPORT_TMG_ACTION
     display_name = "TMG Death Report pending"
     notification_display_name = "TMG Death Report"
-    parent_action_names = [DEATH_REPORT_ACTION, DEATH_REPORT_TMG_ACTION]
+    parent_action_names = (DEATH_REPORT_ACTION, DEATH_REPORT_TMG_ACTION)
     reference_model = "meta_ae.deathreporttmg"
     related_reference_model = "meta_ae.deathreport"
     related_reference_fk_attr = "death_report"
@@ -301,12 +299,11 @@ class DeathReportTmgAction(ActionWithNotification):
                 )
                 .count()
                 < 2
+            ) and (
+                self.reference_obj.cause_of_death
+                != self.related_action_item.reference_obj.cause_of_death
             ):
-                if (
-                    self.reference_obj.cause_of_death
-                    != self.related_action_item.reference_obj.cause_of_death
-                ):
-                    next_actions = ["self"]
+                next_actions = ["self"]
         return next_actions
 
 

@@ -16,7 +16,7 @@ class TestRandomizers(MetaTestCaseMixin, TestCase):
         RandomizerPhaseThree.import_list(sid_count_for_tests=10)
         obj = RandomizerPhaseThree.model_cls().objects.all().order_by("sid")[0]
         self.assertEqual(
-            [1001, "active", "hindu_mandal", "F"],
+            [1121, "active", "amana", "M"],
             [obj.sid, obj.assignment, obj.site_name, obj.gender],
         )
 
@@ -29,7 +29,7 @@ class TestRandomizers(MetaTestCaseMixin, TestCase):
         self.subject_visit = self.get_subject_visit(gender=FEMALE)
         try:
             RegisteredSubject.objects.get(
-                sid=1001,
+                sid=1122,
                 subject_identifier=self.subject_visit.subject_identifier,
                 gender=FEMALE,
             )
@@ -39,7 +39,7 @@ class TestRandomizers(MetaTestCaseMixin, TestCase):
         self.subject_visit = self.get_subject_visit(gender=MALE)
         try:
             RegisteredSubject.objects.get(
-                sid=1003,
+                sid=1121,
                 subject_identifier=self.subject_visit.subject_identifier,
                 gender=MALE,
             )
@@ -49,7 +49,7 @@ class TestRandomizers(MetaTestCaseMixin, TestCase):
         self.subject_visit = self.get_subject_visit(gender=FEMALE)
         try:
             RegisteredSubject.objects.get(
-                sid=1002,
+                sid=1123,
                 subject_identifier=self.subject_visit.subject_identifier,
                 gender=FEMALE,
             )

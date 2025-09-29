@@ -27,7 +27,7 @@ def get_test_setting_opts(app_name: str, base_dir: Path):
         GIT_DIR=base_dir,
         HOLIDAY_FILE=base_dir / "tests" / "holidays.csv",
         EDC_RANDOMIZATION_LIST_PATH=base_dir / "tests" / "etc",
-        SITE_ID=SiteID(default=10),
+        SITE_ID=SiteID(default=20),
         EDC_SITES_DOMAIN_SUFFIX="meta3.clinicedc.org",
         EDC_EGFR_DROP_NOTIFICATION_MODEL="meta_subject.egfrdropnotification",
         EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=False,

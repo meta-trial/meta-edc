@@ -42,7 +42,7 @@ class SubjectScreeningButton(BaseSubjectScreeningButton):
 
 @dataclass
 class SubjectScreeningPartOneButton(SubjectScreeningButton):
-    model_obj: ScreeningPartOne = None
+    model_obj: ScreeningPartOne | None = None
     model_cls: type[ScreeningPartOne] = field(default=ScreeningPartOne)
 
     @property
@@ -52,7 +52,7 @@ class SubjectScreeningPartOneButton(SubjectScreeningButton):
 
 @dataclass
 class SubjectScreeningPartTwoButton(SubjectScreeningButton):
-    model_obj: ScreeningPartTwo = None
+    model_obj: ScreeningPartTwo | None = None
     model_cls: type[ScreeningPartTwo] = field(default=ScreeningPartTwo)
 
     @property
@@ -84,7 +84,7 @@ class SubjectScreeningPartTwoButton(SubjectScreeningButton):
 
 @dataclass
 class SubjectScreeningPartThreeButton(SubjectScreeningButton):
-    model_obj: ScreeningPartThree = None
+    model_obj: ScreeningPartThree | None = None
     model_cls: type[ScreeningPartThree] = field(default=ScreeningPartThree)
 
     @property

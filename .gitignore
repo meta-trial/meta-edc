@@ -1,3 +1,5 @@
+.idea/
+.venv/
 pg.load
 celerybeat*
 get_data*
