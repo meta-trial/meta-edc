@@ -460,7 +460,7 @@ wheels = [
 
 [[package]]
 name = "clinicedc"
-version = "2.0.25"
+version = "2.0.26"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "argon2-cffi" },
@@ -502,9 +502,9 @@ dependencies = [
     { name = "tqdm" },
     { name = "twilio" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/14/eb/fb48c5d47e0ef797bddc769d33de4a2a23de0ef8d61513330aefa2975500/clinicedc-2.0.25.tar.gz", hash = "sha256:4a52585e77d14b9e61635b9749df83896568fabd4aa0e6b68c98fb433d0ec251", size = 1277638, upload-time = "2025-09-29T04:47:42.074Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/65/2a/102507c15b741267b14f9dda80e98722004d180bec8c4759e43404346ef6/clinicedc-2.0.26.tar.gz", hash = "sha256:ee257b2222f60dc8a8ada4c7f5fa2f10ef12a438f7baa4237b33b22f2acebec6", size = 1278024, upload-time = "2025-09-29T21:23:23.076Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/03/8c/f4a107b9122c5baa88bdeb6586fa21edcafbce100fef9fdea274aa8b7de3/clinicedc-2.0.25-py3-none-any.whl", hash = "sha256:9b9bff39f11a2e8ce8a0fc1872667a708f5a729e19c78a8137322fc1bb10b86c", size = 2639715, upload-time = "2025-09-29T04:47:39.428Z" },
+    { url = "https://files.pythonhosted.org/packages/43/dd/9b1e69fa96685fa6037e19dcc78376c22a92dd85f68a6acebb166bd770e8/clinicedc-2.0.26-py3-none-any.whl", hash = "sha256:a607b9d9116b11497fc390c9424bc3b1f0124d34e31c75967a83ef9a5c6a1fd4", size = 2640234, upload-time = "2025-09-29T21:23:21.153Z" },
 ]
 
 [[package]]
@@ -2050,7 +2050,7 @@ test = [
 
 [package.metadata]
 requires-dist = [
-    { name = "clinicedc", specifier = ">=2.0.25" },
+    { name = "clinicedc", specifier = ">=2.0.26" },
     { name = "edc-he", specifier = ">=1.1.0" },
     { name = "edc-microscopy", specifier = ">=1.1.1" },
     { name = "edc-mnsi", specifier = ">=1.1.3" },
