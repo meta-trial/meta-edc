@@ -1,4 +1,5 @@
 import os
+import sys
 
 from celery import Celery
 
@@ -15,4 +16,4 @@ app.autodiscover_tasks()
 
 @app.task(bind=True)
 def debug_task(self):
-    print(f"Request: {self.request!r}")
+    sys.stdout.write(f"Request: {self.request!r}\n")

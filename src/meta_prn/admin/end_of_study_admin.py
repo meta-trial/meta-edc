@@ -111,7 +111,7 @@ class EndOfStudyAdmin(
         audit_fieldset_tuple,
     )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "offstudy_reason": admin.VERTICAL,
         "clinical_withdrawal_reason": admin.VERTICAL,
         "toxicity_withdrawal_reason": admin.VERTICAL,
@@ -133,7 +133,7 @@ class EndOfStudyAdmin(
             "reason",
         )
         return custom_fields + tuple(
-            f for f in list_display if f not in custom_fields + ("__str__",)
+            f for f in list_display if f not in (*custom_fields, "__str__")
         )
 
     def get_list_filter(self, request) -> tuple[str, ...]:

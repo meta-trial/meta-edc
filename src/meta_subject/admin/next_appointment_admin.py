@@ -16,5 +16,4 @@ __all__ = ["NextAppointmentAdmin"]
 class NextAppointmentAdmin(
     CrfModelAdminMixin, NextAppointmentCrfModelAdminMixin, SimpleHistoryAdmin
 ):
-
     form = NextAppointmentForm

@@ -1,4 +1,0 @@
-[run]
-include = meta_*
-omit = meta_*/tests/*,meta_*/migrations/*
-branch = 1

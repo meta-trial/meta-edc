@@ -38,13 +38,13 @@ class OffscheduleAction(ActionWithNotification):
     name = OFFSCHEDULE_ACTION
     display_name = "Submit Off-Schedule"
     notification_display_name = "Off-Schedule"
-    parent_action_names = [
+    parent_action_names = (
         UNBLINDING_REVIEW_ACTION,
         DEATH_REPORT_ACTION,
         LTFU_ACTION,
         BLOOD_RESULTS_RFT_ACTION,
         SUBJECT_TRANSFER_ACTION,
-    ]
+    )
     reference_model = "meta_prn.offschedule"
     show_link_to_changelist = True
     admin_site_name = "meta_prn_admin"
@@ -69,13 +69,13 @@ class OffschedulePregnancyAction(ActionWithNotification):
     name = OFFSCHEDULE_PREGNANCY_ACTION
     display_name = "Submit Off-Schedule (Pregnancy)"
     notification_display_name = "Off-Schedule (Pregnancy)"
-    parent_action_names = [
+    parent_action_names = (
         UNBLINDING_REVIEW_ACTION,
         DEATH_REPORT_ACTION,
         LTFU_ACTION,
         SUBJECT_TRANSFER_ACTION,
         DELIVERY_ACTION,
-    ]
+    )
     reference_model = "meta_prn.offschedulepregnancy"
     show_link_to_changelist = True
     admin_site_name = "meta_prn_admin"
@@ -83,20 +83,19 @@ class OffschedulePregnancyAction(ActionWithNotification):
     singleton = True
 
     def get_next_actions(self):
-        next_actions = [END_OF_STUDY_ACTION]
-        return next_actions
+        return [END_OF_STUDY_ACTION]
 
 
 class OffscheduleDmReferralAction(ActionWithNotification):
     name = OFFSCHEDULE_DM_REFERRAL_ACTION
     display_name = "Submit Off-Schedule (Diabetes Referral)"
     notification_display_name = "Off-Schedule (Diabetes Referral)"
-    parent_action_names = [
+    parent_action_names = (
         DM_FOLLOWUP_ACTION,
         DEATH_REPORT_ACTION,
         LTFU_ACTION,
         SUBJECT_TRANSFER_ACTION,
-    ]
+    )
     reference_model = "meta_prn.offscheduledmreferral"
     show_link_to_changelist = True
     admin_site_name = "meta_prn_admin"
@@ -104,20 +103,19 @@ class OffscheduleDmReferralAction(ActionWithNotification):
     singleton = True
 
     def get_next_actions(self):
-        next_actions = [END_OF_STUDY_ACTION]
-        return next_actions
+        return [END_OF_STUDY_ACTION]
 
 
 class EndOfStudyAction(ActionWithNotification):
     name = END_OF_STUDY_ACTION
     display_name = "Submit End of Study Report"
     notification_display_name = "End of Study Report"
-    parent_action_names = [
+    parent_action_names = (
         OFFSCHEDULE_ACTION,
         OFFSTUDY_MEDICATION_ACTION,
         OFFSCHEDULE_PREGNANCY_ACTION,
         OFFSCHEDULE_DM_REFERRAL_ACTION,
-    ]
+    )
     reference_model = "meta_prn.endofstudy"
     show_link_to_changelist = True
     admin_site_name = "meta_prn_admin"
@@ -129,7 +127,7 @@ class LossToFollowupAction(PregnancyActionItemMixin, ActionWithNotification):
     name = LTFU_ACTION
     display_name = "Submit Loss to Follow Up Report"
     notification_display_name = " Loss to Follow Up Report"
-    parent_action_names = [MISSED_VISIT_ACTION]
+    parent_action_names = (MISSED_VISIT_ACTION,)
     reference_model = "meta_prn.losstofollowup"
     show_link_to_changelist = True
     show_link_to_add = True
@@ -138,15 +136,14 @@ class LossToFollowupAction(PregnancyActionItemMixin, ActionWithNotification):
     singleton = True
 
     def get_next_actions(self):
-        next_actions = [self.get_next_offschedule_action(), OFFSTUDY_MEDICATION_ACTION]
-        return next_actions
+        return [self.get_next_offschedule_action(), OFFSTUDY_MEDICATION_ACTION]
 
 
 class PregnancyNotificationAction(ActionWithNotification):
     name = PREGNANCY_NOTIFICATION_ACTION
     display_name = "Submit Pregnancy Notification"
     notification_display_name = "Pregnancy Notification"
-    parent_action_names = [URINE_PREGNANCY_ACTION]
+    parent_action_names = (URINE_PREGNANCY_ACTION,)
     reference_model = "meta_prn.pregnancynotification"
     show_link_to_changelist = True
     show_link_to_add = True
@@ -160,7 +157,7 @@ class DmReferralAction(ActionWithNotification):
     name = DM_REFFERAL_ACTION
     display_name = "Diabetes referral"
     notification_display_name = "Diabetes referral"
-    parent_action_names = [OFFSTUDY_MEDICATION_ACTION]
+    parent_action_names = (OFFSTUDY_MEDICATION_ACTION,)
     reference_model = "meta_prn.dmreferral"
     show_link_to_changelist = True
     show_link_to_add = True
@@ -169,20 +166,19 @@ class DmReferralAction(ActionWithNotification):
     singleton = True
 
     def get_next_actions(self):
-        next_actions = [DM_FOLLOWUP_ACTION]
-        return next_actions
+        return [DM_FOLLOWUP_ACTION]
 
 
 class OffStudyMedicationAction(ActionWithNotification):
     name = OFFSTUDY_MEDICATION_ACTION
     display_name = "Withdrawal Study Medication"
     notification_display_name = "Withdrawal Study Medication"
-    parent_action_names = [
+    parent_action_names = (
         OFFSCHEDULE_ACTION,
         LTFU_ACTION,
         SUBJECT_TRANSFER_ACTION,
         DEATH_REPORT_ACTION,
-    ]
+    )
     reference_model = "meta_prn.offstudymedication"
     show_link_to_changelist = True
     show_link_to_add = True
@@ -202,7 +198,7 @@ class UnblindingRequestAction(ActionWithNotification):
     name = UNBLINDING_REQUEST_ACTION
     display_name = "Unblinding request"
     notification_display_name = " Unblinding request"
-    parent_action_names = []
+    parent_action_names = ()
     reference_model = "edc_unblinding.unblindingrequest"
     show_link_to_changelist = True
     show_link_to_add = True
@@ -210,20 +206,18 @@ class UnblindingRequestAction(ActionWithNotification):
     priority = HIGH_PRIORITY
 
     def get_next_actions(self):
-        next_actions = []
-        next_actions = self.append_to_next_if_required(
-            next_actions=next_actions,
+        return self.append_to_next_if_required(
+            next_actions=[],
             action_name=UNBLINDING_REVIEW_ACTION,
             required=self.reference_obj.approved == TBD,
         )
-        return next_actions
 
 
 class UnblindingReviewAction(PregnancyActionItemMixin, ActionWithNotification):
     name = UNBLINDING_REVIEW_ACTION
     display_name = "Unblinding review pending"
     notification_display_name = " Unblinding review needed"
-    parent_action_names = [UNBLINDING_REQUEST_ACTION]
+    parent_action_names = (UNBLINDING_REQUEST_ACTION,)
     reference_model = "edc_unblinding.unblindingreview"
     show_link_to_changelist = True
     admin_site_name = "edc_unblinding_admin"
@@ -235,13 +229,11 @@ class UnblindingReviewAction(PregnancyActionItemMixin, ActionWithNotification):
     )
 
     def get_next_actions(self):
-        next_actions = []
-        next_actions = self.append_to_next_if_required(
-            next_actions=next_actions,
+        return self.append_to_next_if_required(
+            next_actions=[],
             action_name=self.get_next_offschedule_action(),
             required=self.reference_obj.approved == YES,
         )
-        return next_actions
 
 
 class SubjectTransferAction(PregnancyActionItemMixin, BaseSubjectTransferAction):

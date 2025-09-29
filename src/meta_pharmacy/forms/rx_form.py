@@ -4,7 +4,6 @@ from ..models import Rx
 
 
 class RxForm(forms.ModelForm):
-
     subject_identifier = forms.CharField(
         label="Subject Identifier",
         required=False,

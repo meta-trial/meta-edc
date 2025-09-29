@@ -8,7 +8,6 @@ from .view_definition import get_view_definition
 
 
 class ImpSubstitutions(QaReportModelMixin, DBView):
-
     original_id = models.UUIDField(null=True)
 
     sid = models.IntegerField(verbose_name="Original SID", null=True)

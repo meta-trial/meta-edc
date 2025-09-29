@@ -9,7 +9,7 @@ from ...models import BloodResultsHba1c
 
 
 class BloodResultsHba1cFormValidator(BloodResultsFormValidatorMixin, CrfFormValidator):
-    panels = [hba1c_poc_panel, hba1c_panel]
+    panels = (hba1c_poc_panel, hba1c_panel)
 
 
 class BloodResultsHba1cForm(ActionItemCrfFormMixin, CrfModelFormMixin, forms.ModelForm):

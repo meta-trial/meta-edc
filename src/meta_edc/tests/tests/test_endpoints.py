@@ -63,7 +63,7 @@ screening_listboard_url = f"{app_prefix}_dashboard:screening_listboard_url"
 class AdminSiteTest(MetaTestCaseMixin, WebTest):
     sid_count = 5
 
-    menu_labels = [
+    menu_labels = (
         "Screening",
         "Subjects",
         "Specimens",
@@ -75,7 +75,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         "Synchronization",
         "Switch sites",
         "Log out",
-    ]
+    )
 
     @classmethod
     def setUpTestData(cls):
@@ -325,13 +325,13 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         response = add_screening_page.forms.get("screeningpartone_form").submit()
         self.assertIn("Please correct the errors below", response)
         # submit completed form
-        for field, _ in add_screening_page.forms.get("screeningpartone_form").fields.items():
+        for field in add_screening_page.forms.get("screeningpartone_form").fields:
             try:
                 add_screening_page.forms.get("screeningpartone_form")[field] = part_one_data[
                     field
                 ]
             except KeyError as e:
-                print(f"{field}. Got {e}.")
+                sys.stdout.write(f"{field}. Got {e}.\n")
         page = add_screening_page.forms.get("screeningpartone_form").submit()
         soup = BeautifulSoup(page.content, "html.parser")
         errorlist = soup.find_all("ul", "errorlist")
@@ -356,15 +356,13 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self, home_page, add_screening_part_two, screening_identifier, part_two_data
     ):
         # submit completed form
-        for field, _ in add_screening_part_two.forms.get(
-            "screeningparttwo_form"
-        ).fields.items():
+        for field in add_screening_part_two.forms.get("screeningparttwo_form").fields:
             try:
                 add_screening_part_two.forms.get("screeningparttwo_form")[field] = (
                     part_two_data[field]
                 )
             except KeyError:
-                print(field)
+                sys.stdout.write(f"{field}\n")
         page = add_screening_part_two.forms.get("screeningparttwo_form").submit()
         soup = BeautifulSoup(page.content, "html.parser")
         errorlist = soup.find_all("ul", "errorlist")
@@ -384,15 +382,13 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self, home_page, add_screening_part_three, screening_identifier, part_three_data
     ):
         # submit completed form
-        for field, _ in add_screening_part_three.forms.get(
-            "screeningpartthree_form"
-        ).fields.items():
+        for field in add_screening_part_three.forms.get("screeningpartthree_form").fields:
             try:
                 add_screening_part_three.forms.get("screeningpartthree_form")[field] = (
                     part_three_data[field]
                 )
             except KeyError:
-                print(field)
+                sys.stdout.write(f"{field}\n")
         page = add_screening_part_three.forms.get("screeningpartthree_form").submit()
         soup = BeautifulSoup(page.content, "html.parser")
         errorlist = soup.find_all("ul", "errorlist")
@@ -406,7 +402,7 @@ class AdminSiteTest(MetaTestCaseMixin, WebTest):
         self.assertIn("Consent", screening_listboard_page)
         return screening_listboard_page, screening_identifier
 
-    def get_subject_screening(self, **kwargs):
+    def get_subject_screening(self, **kwargs):  # noqa: ARG002
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())
         part_two_eligible_options = deepcopy(get_part_two_eligible_options())
         part_three_eligible_options = deepcopy(get_part_three_eligible_options())

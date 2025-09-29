@@ -6,6 +6,7 @@ from edc_constants.constants import (
     DELIVERY,
     DIABETES,
     NOT_APPLICABLE,
+    NULL_STRING,
     OTHER,
     PREGNANCY,
     TOXICITY,
@@ -73,7 +74,7 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
         verbose_name="If OTHER, please specify",
         max_length=500,
         blank=True,
-        null=True,
+        default=NULL_STRING,
     )
 
     # TODO: 6m off drug and duration ?? See SOP
@@ -118,8 +119,7 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
 
     clinical_withdrawal_reason = models.CharField(
         verbose_name=(
-            "If the patient was withdrawn on CLINICAL grounds, "
-            "please specify PRIMARY reason"
+            "If the patient was withdrawn on CLINICAL grounds, please specify PRIMARY reason"
         ),
         max_length=25,
         choices=CLINICAL_WITHDRAWAL_REASONS,
@@ -130,14 +130,14 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
         verbose_name="If withdrawn for 'other' condition, please explain",
         max_length=500,
         blank=True,
-        null=True,
+        default=NULL_STRING,
     )
 
     clinical_withdrawal_investigator_decision = models.TextField(
         verbose_name="If withdrawl was an 'investigator decision', please explain ...",
         max_length=500,
         blank=True,
-        null=True,
+        default=NULL_STRING,
     )
 
     toxicity_withdrawal_reason = models.CharField(
@@ -151,7 +151,7 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
         verbose_name="If 'other toxicity', please specify ...",
         max_length=500,
         blank=True,
-        null=True,
+        default=NULL_STRING,
     )
 
     transfer_date = models.DateField(
@@ -173,7 +173,7 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
         verbose_name="Please provide further details if possible",
         max_length=500,
         blank=True,
-        null=True,
+        default=NULL_STRING,
     )
 
     class Meta(OffstudyModelMixin.Meta):

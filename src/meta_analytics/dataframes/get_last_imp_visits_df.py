@@ -62,8 +62,8 @@ def get_last_imp_visits_df(
     df_off = df_off.set_index("subject_identifier")
 
     df_meds = df_meds.set_index("subject_identifier")
-    df_final = pd.merge(
-        df_meds, df_off, left_index=True, right_index=True, how="outer"
+    df_final = df_meds.merge(
+        df_off, left_index=True, right_index=True, how="outer"
     ).reset_index()
 
     # merge with RandomizationList if lot_obj

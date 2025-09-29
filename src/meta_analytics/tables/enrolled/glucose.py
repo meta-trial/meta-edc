@@ -24,5 +24,4 @@ class GlucoseTable(Table):
         df_tmp = df_tmp.reset_index()
         gender_tbl = GenderTable(main_df=df_tmp).table_df
         age_tbl = AgeTable(main_df=df_tmp).table_df
-        self.table_df = pd.concat([self.table_df, gender_tbl, age_tbl])
-        self.table_df.reset_index(drop=True, inplace=True)
+        self.table_df = pd.concat([self.table_df, gender_tbl, age_tbl]).reset_index(drop=True)

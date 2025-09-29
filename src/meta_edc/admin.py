@@ -18,7 +18,7 @@ class AdminSite(DjangoAdminSite):
     index_title = "Site administration"
     site_url = "/administration/"
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs):  # noqa: ARG002
         super().__init__(name="meta_edc")
 
 

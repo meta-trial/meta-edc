@@ -1,4 +1,3 @@
-
 part_one_fields: tuple[str, ...] = (
     "report_datetime",
     "screening_consent",

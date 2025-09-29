@@ -8,7 +8,6 @@ class SubjectTransfer(
     SubjectTransferModelMixin,
     BaseUuidModel,
 ):
-
     transfer_reason = models.ManyToManyField(
         f"{settings.LIST_MODEL_APP_LABEL}.transferreasons",
         verbose_name="Reason for transfer",

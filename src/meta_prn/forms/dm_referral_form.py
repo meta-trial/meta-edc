@@ -24,17 +24,11 @@ class DmReferralForm(
 ):
     form_validator_cls = DmReferralFormValidator
 
-    # subject_identifier = forms.CharField(
-    #     label="Subject Identifier",
-    #     required=False,
-    #     widget=forms.TextInput(attrs={"readonly": "readonly"}),
-    # )
-
     class Meta:
         model = DmReferral
         fields = "__all__"
-        help_text = {"subject_identifier": "(read-only)", "action_identifier": "(read-only)"}
-        widgets = {
+        help_text = {"subject_identifier": "(read-only)", "action_identifier": "(read-only)"}  # noqa: RUF012
+        widgets = {  # noqa: RUF012
             "subject_identifier": forms.TextInput(attrs={"readonly": "readonly"}),
             "action_identifier": forms.TextInput(attrs={"readonly": "readonly"}),
         }

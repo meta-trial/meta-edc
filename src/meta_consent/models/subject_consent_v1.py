@@ -5,7 +5,6 @@ from .subject_consent import SubjectConsent
 
 
 class SubjectConsentV1(SubjectConsent):
-
     objects = ConsentObjectsByCdefManager()
     on_site = CurrentSiteByCdefManager()
     history = HistoricalRecords()

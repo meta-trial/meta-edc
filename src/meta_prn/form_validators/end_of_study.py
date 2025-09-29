@@ -286,16 +286,17 @@ class EndOfStudyFormValidator(
             self.raise_validation_error(str(e), INVALID_ERROR)
 
     def validate_offstudy_datetime_against_last_seen_date(self):
-        if self.cleaned_data.get("offstudy_datetime") and self.cleaned_data.get(
-            "last_seen_date"
-        ):
-            if (
+        if (
+            self.cleaned_data.get("offstudy_datetime")
+            and self.cleaned_data.get("last_seen_date")
+            and (
                 self.cleaned_data.get("last_seen_date")
                 > self.cleaned_data.get("offstudy_datetime").date()
-            ):
-                raise forms.ValidationError(
-                    {"last_seen_date": "Invalid. May not be after termination date"}
-                )
+            )
+        ):
+            raise forms.ValidationError(
+                {"last_seen_date": "Invalid. May not be after termination date"}
+            )
 
     def validate_transfer(self):
         if (

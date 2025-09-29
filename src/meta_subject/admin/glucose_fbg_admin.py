@@ -17,7 +17,7 @@ from .modeladmin import CrfModelAdminMixin
 class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     form = GlucoseFbgForm
 
-    fieldsets = [
+    fieldsets = (
         (None, {"fields": ("subject_visit", "report_datetime")}),
         (
             "Fasting",
@@ -52,9 +52,9 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         ),
         crf_status_fieldset,
         audit_fieldset_tuple,
-    ]
+    )
 
-    radio_fields = {
+    radio_fields = {  # noqa: RUF012
         "fasting": admin.VERTICAL,
         "fbg_units": admin.VERTICAL,
         "fbg_performed": admin.VERTICAL,
@@ -69,12 +69,10 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         list_display = list(list_display)
         # list_display.insert(3, "ogtt")
         list_display.insert(3, "fbg")
-        list_display = tuple(list_display)
-        return list_display
+        return tuple(list_display)
 
     def get_list_filter(self, request) -> tuple[str | type[SimpleListFilter], ...]:
         list_filter = super().get_list_filter(request)
         list_filter = list(list_filter)
         list_filter.insert(2, GlucoseListFilter)
-        list_filter = tuple(list_filter)
-        return list_filter
+        return tuple(list_filter)

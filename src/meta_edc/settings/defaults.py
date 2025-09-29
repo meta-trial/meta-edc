@@ -2,7 +2,7 @@ import os
 import sys
 from importlib.metadata import version
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, urljoin
 
 import django
 import environ
@@ -48,7 +48,7 @@ else:
 # copy your .env file from .envs/ to BASE_DIR
 if "test" in sys.argv:
     env.read_env(ENV_DIR / ".env-tests")
-    print(f"Reading env from {(BASE_DIR /'.env-tests')}")  # noqa
+    print(f"Reading env from {(BASE_DIR / '.env-tests')}")  # noqa
 else:
     if not (ENV_DIR / ".env").exists():
         raise FileExistsError(f"Environment file does not exist. Got `{(ENV_DIR / '.env')}`")
@@ -550,7 +550,7 @@ if env("AWS_ENABLED"):
     AWS_LOCATION = env.str("AWS_LOCATION")
     AWS_IS_GZIPPED = True
     STORAGES = {"staticfiles": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"}}
-    STATIC_URL = f"{os.path.join(AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)}/"
+    STATIC_URL = urljoin(AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
     STATIC_ROOT = ""
 elif DEBUG:
     STATIC_URL = env.str("DJANGO_STATIC_URL")

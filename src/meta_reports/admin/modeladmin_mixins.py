@@ -14,7 +14,7 @@ from edc_visit_schedule.admin import ScheduleStatusListFilter
 from ..tasks import update_endpoints_table
 
 
-def update_endpoints_table_action(modeladmin, request, queryset):
+def update_endpoints_table_action(modeladmin, request, queryset):  # noqa: ARG001
     subject_identifiers = []
     if queryset.count() != modeladmin.model.objects.count():
         subject_identifiers = [o.subject_identifier for o in queryset]

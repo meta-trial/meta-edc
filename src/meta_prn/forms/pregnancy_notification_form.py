@@ -47,23 +47,21 @@ class PregnancyNotificationFormValidator(PrnFormValidatorMixin, FormValidator):
             self.instance.id is None
             and self.cleaned_data.get("bhcg_confirmed") == YES
             and self.cleaned_data.get("bhcg_date")
+            and not UrinePregnancy.objects.filter(
+                subject_visit__subject_identifier=self.subject_identifier,
+                notified=False,
+                assay_date=self.cleaned_data.get("bhcg_date"),
+            )
+            .exclude(subject_visit__visit_code=DAY1, subject_visit__visit_code_sequence=0)
+            .exists()
         ):
-            if (
-                not UrinePregnancy.objects.filter(
-                    subject_visit__subject_identifier=self.subject_identifier,
-                    notified=False,
-                    assay_date=self.cleaned_data.get("bhcg_date"),
-                )
-                .exclude(subject_visit__visit_code=DAY1, subject_visit__visit_code_sequence=0)
-                .exists()
-            ):
-                self.raise_validation_error(
-                    "Invalid. A positive Urine βhCG cannot be found. "
-                    "Ensure the UPT has been entered, the date matches, and the "
-                    "UPT is not a baseline UPT. "
-                    f"See also PRN CRF {UrinePregnancy._meta.verbose_name}",
-                    INVALID_ERROR,
-                )
+            self.raise_validation_error(
+                "Invalid. A positive Urine βhCG cannot be found. "
+                "Ensure the UPT has been entered, the date matches, and the "
+                "UPT is not a baseline UPT. "
+                f"See also PRN CRF {UrinePregnancy._meta.verbose_name}",
+                INVALID_ERROR,
+            )
 
     def validate_edd(self):
         if (

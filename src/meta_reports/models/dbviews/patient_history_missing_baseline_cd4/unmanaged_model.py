@@ -6,7 +6,6 @@ from .view_definition import get_view_definition
 
 
 class PatientHistoryMissingBaselineCd4(QaReportModelMixin, DBView):
-
     visit_code = models.CharField(max_length=25)
 
     visit_code_sequence = models.IntegerField()

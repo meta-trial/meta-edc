@@ -24,7 +24,7 @@ from .pregnancy_notification import PregnancyNotification
     sender=PregnancyNotification,
     dispatch_uid="update_schedule_on_pregnancy_notification_post_save",
 )
-def update_schedule_on_pregnancy_notification_post_save(sender, instance, raw, **kwargs):
+def update_schedule_on_pregnancy_notification_post_save(sender, instance, raw, **kwargs):  # noqa: ARG001
     if not raw:
         try:
             OffSchedule.objects.get(subject_identifier=instance.subject_identifier)
@@ -58,18 +58,20 @@ def update_schedule_on_pregnancy_notification_post_save(sender, instance, raw, *
     dispatch_uid="update_urine_pregnancy_on_pregnancy_notification_on_post_save",
 )
 def update_urine_pregnancy_on_pregnancy_notification_on_post_save(
-    sender, instance, raw, **kwargs
+    sender,  # noqa: ARG001
+    instance,
+    raw,
+    **kwargs,  # noqa: ARG001
 ):
-    if not raw:
-        if instance.bhcg_confirmed == YES:
-            UrinePregnancy.objects.filter(
-                subject_visit__subject_identifier=instance.subject_identifier,
-                notified=False,
-                assay_date__lte=instance.report_datetime.date(),
-            ).update(
-                notified_datetime=instance.report_datetime,
-                notified=True,
-            )
+    if not raw and instance.bhcg_confirmed == YES:
+        UrinePregnancy.objects.filter(
+            subject_visit__subject_identifier=instance.subject_identifier,
+            notified=False,
+            assay_date__lte=instance.report_datetime.date(),
+        ).update(
+            notified_datetime=instance.report_datetime,
+            notified=True,
+        )
 
 
 @receiver(
@@ -78,7 +80,7 @@ def update_urine_pregnancy_on_pregnancy_notification_on_post_save(
     sender=DmReferral,
     dispatch_uid="update_schedule_on_dm_referral_post_save",
 )
-def update_schedule_on_dm_referral_post_save(sender, instance, raw, **kwargs):
+def update_schedule_on_dm_referral_post_save(sender, instance, raw, **kwargs):  # noqa: ARG001
     if not raw:
         try:
             OffScheduleDmReferral.objects.get(subject_identifier=instance.subject_identifier)

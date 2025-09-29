@@ -10,7 +10,7 @@ from edc_utils.paths_for_urlpatterns import paths_for_urlpatterns
 from .views import HomeView
 
 
-def trigger_error(request):
+def trigger_error(request):  # noqa: ARG001
     division_by_zero = 1 / 0  # noqa
 
 

@@ -66,7 +66,7 @@ class BirthOutcomesAdmin(
         return tuple(set(fields + custom_fields))
 
     @admin.display
-    def delivery_report(self, obj=None, label=None):
+    def delivery_report(self, obj=None, label=None):  # noqa: ARG002
         url = reverse("meta_subject_admin:meta_subject_delivery_changelist")
         url = f"{url}?q={obj.subject_identifier}"
         context = dict(title="Delivery", url=url, label="Delivery")
@@ -90,5 +90,7 @@ class BirthOutcomesAdmin(
                 if callable(super().view_on_site):
                     url = super().view_on_site(obj)
                 else:
-                    raise NoReverseMatch(f"{e}. See subject_dashboard_url_name for {self!r}.")
+                    raise NoReverseMatch(
+                        f"{e}. See subject_dashboard_url_name for {self!r}."
+                    ) from e
         return url

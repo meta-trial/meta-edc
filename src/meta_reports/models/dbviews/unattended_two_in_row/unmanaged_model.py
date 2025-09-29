@@ -6,7 +6,6 @@ from .view_definition import get_view_definition
 
 
 class UnattendedTwoInRow(QaReportModelMixin, DBView):
-
     appt_datetime = models.DateTimeField()
 
     first_value = models.CharField(verbose_name="First", max_length=25)

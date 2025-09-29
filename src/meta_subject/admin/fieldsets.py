@@ -1,5 +1,5 @@
 def get_htn_fieldset(part=None):
-    fields = [
+    fields = (
         "htn_diagnosis",
         "on_htn_treatment",
         "htn_treatment",
@@ -9,11 +9,11 @@ def get_htn_fieldset(part=None):
         "dyslipidaemia_rx",
         "concomitant_conditions",
         "concomitant_medications",
-    ]
+    )
 
     return (
         f"Part {part}: Hypertension",
-        {"fields": tuple(fields)},
+        {"fields": fields},
     )
 
 
@@ -22,7 +22,7 @@ def get_hiv_fieldset(part=None):
     if part:
         title = f"Part {part}: {title}"
     # TODO: previous_arv_regimen_start_date is PHASE 3 only
-    fields = [
+    fields = (
         "hiv_diagnosis_date",
         "arv_initiation_date",
         "viral_load",
@@ -39,7 +39,7 @@ def get_hiv_fieldset(part=None):
         "on_oi_prophylaxis",
         "oi_prophylaxis",
         "other_oi_prophylaxis",
-    ]
+    )
     return (
         title,
         {"fields": fields},

@@ -84,13 +84,11 @@ class GlucoseAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         list_display = list(list_display)
         list_display.insert(3, "ogtt_value")
         list_display.insert(3, "fbg_value")
-        list_display = tuple(list_display)
-        return list_display
+        return tuple(list_display)
 
     def get_list_filter(self, request) -> tuple[str | type[SimpleListFilter], ...]:
         list_filter = super().get_list_filter(request)
         list_filter = list(list_filter)
         list_filter.insert(2, OgttListFilter)
         list_filter.insert(2, FbgListFilter)
-        list_filter = tuple(list_filter)
-        return list_filter
+        return tuple(list_filter)

@@ -1,5 +1,6 @@
 from django.db import models
 from edc_action_item.models import ActionItem, ActionModelMixin
+from edc_constants.constants import NULL_STRING
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierFieldMixin
 from edc_model.models import BaseUuidModel
 from edc_protocol_incident.constants import PROTOCOL_INCIDENT_ACTION
@@ -26,7 +27,9 @@ class ProtocolIncident(
         related_name="meta_prn_action_item",
     )
 
-    action_required_old = models.CharField(max_length=45, choices=ACTION_REQUIRED, null=True)
+    action_required_old = models.CharField(
+        max_length=45, choices=ACTION_REQUIRED, default=NULL_STRING
+    )
 
     def natural_key(self):
         return (self.action_identifier,)

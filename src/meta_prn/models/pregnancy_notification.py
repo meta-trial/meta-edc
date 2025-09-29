@@ -1,7 +1,7 @@
 from django.db import models
 from edc_action_item.models import ActionModelMixin
 from edc_constants.choices import YES_NO, YES_NO_UNSURE
-from edc_constants.constants import YES
+from edc_constants.constants import NULL_STRING, YES
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierFieldMixin
 from edc_model.models import BaseUuidModel
 from edc_sites.model_mixins import SiteModelMixin
@@ -44,7 +44,7 @@ class PregnancyNotification(
 
     unconfirmed_details = models.TextField(
         verbose_name="If no, please provide details",
-        null=True,
+        default=NULL_STRING,
         blank=True,
     )
 
@@ -97,4 +97,4 @@ class PregnancyNotification(
     class Meta(BaseUuidModel.Meta):
         verbose_name = "Pregnancy Notification"
         verbose_name_plural = "Pregnancy Notifications"
-        unique_together = ["subject_identifier", "edd"]
+        unique_together = ("subject_identifier", "edd")

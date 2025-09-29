@@ -49,7 +49,7 @@ class ImpSubstitutionsAdmin(
         "allocated_datetime",
     )
 
-    search_fields = ["subject_identifier", "sid", "dispensed_sid"]
+    search_fields = ("subject_identifier", "sid", "dispensed_sid")
 
     def dashboard(self, obj=None, label=None) -> str:
         kwargs = self.get_subject_dashboard_url_kwargs(obj)

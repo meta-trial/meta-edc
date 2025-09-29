@@ -12,19 +12,21 @@ from meta_dashboard.navbars import navbar as meta_dashboard_navbar
 
 navbar = Navbar(name=settings.APP_NAME)
 
-navbar_item = copy([item for item in lab_navbar.navbar_items if item.name == "specimens"][0])
+navbar_item = copy(next(item for item in lab_navbar.navbar_items if item.name == "specimens"))
 navbar_item.active = False
 navbar_item.label = "Specimens"
 navbar.register(navbar_item)
 
 navbar.register(
-    [item for item in meta_dashboard_navbar.navbar_items if item.name == "screened_subject"][0]
+    next(
+        item for item in meta_dashboard_navbar.navbar_items if item.name == "screened_subject"
+    )
 )
 
 navbar.register(
-    [item for item in meta_dashboard_navbar.navbar_items if item.name == "consented_subject"][
-        0
-    ]
+    next(
+        item for item in meta_dashboard_navbar.navbar_items if item.name == "consented_subject"
+    )
 )
 
 for navbar_item in review_navbar.navbar_items:

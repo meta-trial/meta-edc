@@ -13,14 +13,14 @@ class GlucoseListFilter(SimpleListFilter):
     parameter_name = "glucose_value"
     model_cls = GlucoseFbg
 
-    def lookups(self, request, model_admin):
+    def lookups(self, request, model_admin):  # noqa: ARG002
         return (
             (NORMAL, "Normal"),
             (HIGH, "High"),
             (VERY_HIGH, "Very high"),
         )
 
-    def queryset(self, request, queryset):
+    def queryset(self, request, queryset):  # noqa: ARG002
         qs = None
         if self.value():
             if self.value() == NORMAL:
@@ -52,7 +52,7 @@ class OgttListFilter(SimpleListFilter):
             (HIGH, "High"),
         )
 
-    def queryset(self, request, queryset):
+    def queryset(self, request, queryset):  # noqa: ARG002
         qs = None
         if self.value():
             if self.value() == NORMAL:

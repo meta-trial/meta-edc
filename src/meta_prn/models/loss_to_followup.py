@@ -1,7 +1,7 @@
 from django.db import models
 from edc_action_item.models.action_model_mixin import ActionModelMixin
 from edc_constants.choices import YES_NO
-from edc_constants.constants import OTHER
+from edc_constants.constants import NULL_STRING, OTHER
 from edc_identifier.model_mixins import UniqueSubjectIdentifierFieldMixin
 from edc_ltfu.constants import LTFU_ACTION
 from edc_model.models import BaseUuidModel, OtherCharField
@@ -48,7 +48,7 @@ class LossToFollowup(
 
     home_visit_detail = models.TextField(
         verbose_name="If YES, provide any further details of the home visit",
-        null=True,
+        default=NULL_STRING,
         blank=False,
     )
 
@@ -64,13 +64,13 @@ class LossToFollowup(
         verbose_name=(
             "Please give details of the circumstances that have led to this decision."
         ),
-        null=True,
+        default=NULL_STRING,
         blank=False,
     )
 
     class Meta(BaseUuidModel.Meta):
         verbose_name = "Loss to Follow Up"
         verbose_name_plural = "Loss to Follow Up"
-        indexes = [
-            models.Index(fields=["subject_identifier", "action_identifier", "site", "id"])
-        ]
+        indexes = models.Index(
+            fields=("subject_identifier", "action_identifier", "site", "id")
+        )

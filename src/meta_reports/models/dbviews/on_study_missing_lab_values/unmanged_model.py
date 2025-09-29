@@ -9,7 +9,6 @@ from .view_definition import get_view_definition
 
 
 class OnStudyMissingLabValues(OnStudyMissingValuesModelMixin, QaReportModelMixin, DBView):
-
     view_definition = get_view_definition()
 
     class Meta:

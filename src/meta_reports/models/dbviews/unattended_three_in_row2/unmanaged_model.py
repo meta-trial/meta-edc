@@ -6,7 +6,6 @@ from .view_definition import get_view_definition
 
 
 class UnattendedThreeInRow2(QaReportModelMixin, DBView):
-
     first_value = models.CharField(verbose_name="First", max_length=25)
 
     second_value = models.CharField(verbose_name="Second", max_length=25)

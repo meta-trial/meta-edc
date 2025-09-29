@@ -28,4 +28,4 @@ class EndOfStudyForm(
     class Meta:
         model = EndOfStudy
         fields = "__all__"
-        labels = {"offstudy_datetime": "Date patient terminated from study:"}
+        labels = {"offstudy_datetime": "Date patient terminated from study:"}  # noqa: RUF012

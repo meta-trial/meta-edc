@@ -13,7 +13,6 @@ class LabelIdentifier(SimpleUniqueIdentifier):
 
 
 class RxLabel(BaseUuidModel):
-
     identifier_cls = LabelIdentifier
 
     rx = models.ForeignKey(Rx, on_delete=models.PROTECT)

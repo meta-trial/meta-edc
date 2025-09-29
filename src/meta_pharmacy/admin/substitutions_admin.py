@@ -20,7 +20,7 @@ class SubstitutionsAdmin(
 
     form = SubstitutionsForm
 
-    autocomplete_fields = ["rx"]
+    autocomplete_fields = ("rx",)
 
     add_instructions = "This form is used to record any substitions made for IMP refills"
 
