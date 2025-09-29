@@ -18,7 +18,7 @@ def print_table(data, module_name):
         rows[model_name] = sorted(rows[model_name], key=itemgetter(0))
 
     for table_name, field_pair in rows.items():
-        print("")
+        print()
         print(f"Table: {module_name}_{table_name}")
         print(row_sep)
         print(f"| {'OLD NAME'.ljust(justify)} | {'NEW NAME'.ljust(justify)} |")
@@ -47,7 +47,7 @@ def print_field_summary(fields):
     keys = sorted(deepcopy(fields), key=itemgetter(0))
     for k in keys:
         sorted_fields.update({k: fields[k]})
-    print("")
+    print()
     print(row_sep)
     print(f"| {'OLD NAME'.ljust(justify)} | {'NEW NAME'.ljust(justify)} |")
     print(row_sep)
@@ -875,9 +875,6 @@ meta_subject_data = [
         old_name="ogtt_two_hr_units",
         new_name="ogtt_units",
     ),
-    #
-    #
-    #
     dict(
         model_name="bloodresultsfbc",
         old_name="fbc_requisition",

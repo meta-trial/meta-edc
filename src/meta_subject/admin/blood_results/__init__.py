@@ -1,0 +1,15 @@
+from .blood_results_fbc_admin import BloodResultsFbcAdmin
+from .blood_results_hba1c_admin import BloodResultsHba1cAdmin
+from .blood_results_ins_admin import BloodResultsInsAdmin
+from .blood_results_lft_admin import BloodResultsLftAdmin
+from .blood_results_lipids_admin import BloodResultsLipidsAdmin
+from .blood_results_rft_admin import BloodResultsRftAdmin
+
+__all__ = [
+    "BloodResultsFbcAdmin",
+    "BloodResultsHba1cAdmin",
+    "BloodResultsInsAdmin",
+    "BloodResultsLftAdmin",
+    "BloodResultsLipidsAdmin",
+    "BloodResultsRftAdmin",
+]

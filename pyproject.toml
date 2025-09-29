@@ -1,6 +1,6 @@
 [project]
 name = "meta-edc"
-version = "1.1.11"
+version = "1.1.17"
 description = "META Trial EDC (https://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 keywords = [
@@ -28,22 +28,14 @@ classifiers = [
 ]
 license = "GPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
-requires-python = '>=3.12'
+requires-python = '>=3.12,<3.14'
 dependencies = [
-    "beautifulsoup4>=4.13.4",
-    "celery[redis]>=5.5.3",
-    "django-pylabels>=1.0.1",
-    "edc>=1.2.0",
-]
-
-[dependency-groups]
-test = [
-    "django-webtest>=1.9.13",
-    "edc-test-settings>=1.1.2",
-    "edc-test-utils>=1.0.0",
-    "faker>=37.4.2",
-    "model-bakery>=1.20.5",
-    "time-machine>=2.16.0",
+    "clinicedc>=2.0.26",
+    "edc-he>=1.2.0",
+    "edc-microscopy>=1.2.0",
+    "edc-mnsi>=1.2.0",
+    "edc-phq9>=1.1.0",
+    "edc-qol>=1.2.0",
 ]
 
 [build-system]
@@ -51,7 +43,7 @@ requires = ["uv_build>=0.8.2,<0.9.0"]
 build-backend = "uv_build"
 
 [tool.uv.build-backend]
-module-root = ""
+module-root = "src"
 module-name = [
     "meta_ae",
     "meta_analytics",
@@ -76,18 +68,63 @@ source-include = ["meta_*/templates/**", "meta_*/locale/**", "locale/**"]
 source-exclude = ["meta_*/tests/**", "meta_*/notebooks/**", "tests/**"]
 namespace = false
 
-#[tool.uv]
-#cache-keys = [{ file = "pyproject.toml" }, { git = true }]
-
-[tool.black]
+[tool.ruff]
 line-length = 95
-target-version = ["py312"]
-extend-exclude = '''^(.*\/)*\b(migrations)\b($|\/.*$)'''
+indent-width = 4
+target-version = "py312"
+exclude = [
+    "migrations",
+    ".tox",
+    ".venv",
+    "src/meta_analytics/notebooks/",
+    "docs/updates/0.1.65/update_1_65_renamed_fields.py",
+    "docs/conf.py"
+]
 
-[tool.isort]
-profile = "black"
-py_version = "312"
-skip = [".tox", ".eggs", "migrations", "_version.py"]
+[tool.ruff.lint]
+select = [
+    "A",
+    "ARG",
+    "B",
+    "C90",
+    "COM",
+    "DJ",
+    "DTZ",
+    "E",
+    "F",
+    "FA",
+    "FURB",
+    "I",
+    "INT",
+    "N",
+    "PD",
+    "PERF",
+    "PL",
+    "PLR",
+    "PTH",
+    "RET",
+    "RUF",
+    "S",
+    "SIM",
+    "T20",
+    "TRY",
+    "UP",
+    "W",
+    # "FIX",
+]
+ignore = ["DJ008", "DJ007", "DJ006", "COM812", "PLC0206", "PLR2004", "TRY003"]
+
+[tool.ruff.lint.per-file-ignores]
+    "__init__.py" = ["F401"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 12
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
 
 [tool.coverage.run]
 parallel = false
@@ -100,67 +137,62 @@ source = ["meta_edc"]
 [tool.coverage.report]
 show_missing = true
 skip_covered = true
-omit = ["TODO.txt"]
+omit = ["*.txt", "*/migrations/*"]
 exclude_lines = [
     "pragma: no cover",
     "if TYPE_CHECKING:",
 ]
 
-[tool.tox]
-legacy_tox_ini = """
-[tox]
-envlist =
-    py{312,313}-dj{52}-edc{prod,dev},
-    py{313}-dj{dev}-edc{dev},
-    lint
-    pre-commit
+[dependency-groups]
+lint = [
+    "ruff>=0.12.5",
+]
 
-isolated_build = true
+test = [
+    "clinicedc-tests>=0.1.6",
+    "coverage>=7.10.7",
+    "django-webtest>=1.9.13",
+    "edc-test-settings>=1.1.2",
+    "faker>=37.4.2",
+    "model-bakery>=1.20.5",
+    "time-machine>=2.16.0",
+]
+notebook = [
+    "dj-notebook>=0.7.0",
+    "great-tables>=0.18.0",
+    "matplotlib>=3.10.3",
+    "matplotlib-venn>=1.1.2",
+    "numpy>=2.3.2",
+    "pandas>=2.3.1",
+    "pdfkit>=1.0.0",
+    "scikit-learn>=1.7.1",
+    "scipy>=1.16.0",
+    "selenium>=4.34.2",
+    "tabulate>=0.9.0",
+]
 
-[gh-actions]
-python =
-    3.12: py312, lint, pre-commit
-    3.13: py313
+develop = [
+    'django>=5.2.4,<5.3',
+    "clinicedc>=2.0.10",
+    "time-machine>=2.16.0",
+    'edc-test-settings',
+    "django-redis>=6.0.0",
+    "ipython>=9.4.0",
+]
 
-[gh-actions:env]
-DJANGO =
-    5.2: dj52, lint, pre-commit
-    dev: djdev
-EDC_CODEBASE =
-    Prod: edcprod, lint, pre-commit
-    Dev: edcdev
-
-[testenv]
-deps =
-    -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/tox.txt
-    -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/test_utils.txt
-    dj52: Django>=5.2,<5.3
-    djdev: https://github.com/django/django/tarball/main
-
-commands =
-    pip install -U pip
-    python --version
-    pip --version
-    edcdev: pip install -U -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/edc.txt
-    pip freeze
-    coverage run -a runtests.py
-    coverage report
-
-[testenv:lint]
-deps = -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/lint.txt
-commands =
-    python --version
-    pip --version
-    pip freeze
-    isort --profile=black --check --diff .
-    black --check --diff .
-    flake8 .
-
-[testenv:pre-commit]
-deps = pre-commit
-commands =
-    python --version
-    pip --version
-    pip freeze
-    pre-commit run --all-files
-"""
+[tool.uv.sources]
+meta-edc = { workspace = true }
+clinicedc = { path = "../clinicedc", editable = true }
+edc-test-settings = { path = "../edc-test-settings", editable = true }
+django-audit-fields = { path = "../django-audit-fields", editable = true }
+django-crypto-fields = { path = "../django-crypto-fields", editable = true }
+django-logentry-admin = { path = "../django-logentry-admin", editable = true }
+django-multisite2 = { path = "../django-multisite2", editable = true }
+django-revision = { path = "../django-revision", editable = true }
+django-simple-history = { path = "../django-simple-history", editable = true }
+edc-microscopy = { path = "../edc-microscopy", editable = true }
+edc-mnsi = { path = "../edc-mnsi", editable = true }
+edc-next-appointment = { path = "../edc-next-appointment", editable = true }
+edc-phq9 = { path = "../edc-phq9", editable = true }
+edc-qol = { path = "../edc-qol", editable = true }
+edc-he = { path = "../edc-he", editable = true }
