@@ -13,7 +13,7 @@ from model_bakery import baker
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 
 
-@override_settings(SITE_ID=20)
+@override_settings(SITE_ID=10)
 class TestActions(MetaTestCaseMixin, TestCase):
     def test_ae_initial_creates_action(self):
         subject_screening = self.get_subject_screening()

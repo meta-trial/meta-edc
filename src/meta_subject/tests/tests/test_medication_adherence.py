@@ -2,7 +2,7 @@ from copy import deepcopy
 
 from django.conf import settings
 from django.contrib.sites.models import Site
-from django.test import TestCase
+from django.test import override_settings, TestCase
 from edc_constants.constants import COMPLETE, NEVER, NO, YES
 from model_bakery.baker import make_recipe
 
@@ -10,6 +10,7 @@ from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_subject.forms import MedicationAdherenceForm
 
 
+@override_settings(SITE_ID=10)
 class TestMedicationAdherence(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()

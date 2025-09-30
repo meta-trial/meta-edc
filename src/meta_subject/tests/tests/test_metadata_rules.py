@@ -1,5 +1,5 @@
 from dateutil.relativedelta import relativedelta
-from django.test import TestCase, tag
+from django.test import override_settings, TestCase, tag
 from edc_appointment.models import Appointment
 from edc_constants.constants import FEMALE, MALE, YES
 from edc_utils import get_utcnow
@@ -13,6 +13,7 @@ from meta_subject.forms import FollowupExaminationForm
 from meta_visit_schedule.constants import DELIVERY, MONTH3, SCHEDULE_PREGNANCY
 
 
+@override_settings(SITE_ID=10)
 class TestMetadataRules(MetaTestCaseMixin, TestCase):
     def test_ok(self):
         self.subject_visit = self.get_subject_visit(gender=FEMALE)

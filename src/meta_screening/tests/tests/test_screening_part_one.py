@@ -1,7 +1,7 @@
 from copy import deepcopy
 
 from django.db.utils import IntegrityError
-from django.test import TestCase
+from django.test import override_settings, TestCase
 from edc_constants.constants import FEMALE, NO, NULL_STRING, TBD, YES
 
 from meta_edc.meta_version import PHASE_THREE, get_meta_version
@@ -11,6 +11,7 @@ from meta_screening.models import ScreeningPartOne
 from ..options import get_part_one_eligible_options
 
 
+@override_settings(SITE_ID=10)
 class TestSubjectScreeningPartOneModel(TestCase):
     def test_eligibility_cls_eligible_yes(self):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())

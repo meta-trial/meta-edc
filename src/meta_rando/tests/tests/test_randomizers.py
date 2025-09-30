@@ -16,7 +16,7 @@ class TestRandomizers(MetaTestCaseMixin, TestCase):
         RandomizerPhaseThree.import_list(sid_count_for_tests=10)
         obj = RandomizerPhaseThree.model_cls().objects.all().order_by("sid")[0]
         self.assertEqual(
-            [1121, "active", "amana", "M"],
+            [1001, "active", "hindu_mandal", "F"],
             [obj.sid, obj.assignment, obj.site_name, obj.gender],
         )
 

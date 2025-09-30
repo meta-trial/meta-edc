@@ -4,7 +4,7 @@ from zoneinfo import ZoneInfo
 import time_machine
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ValidationError
-from django.test import TestCase
+from django.test import override_settings, TestCase
 from edc_appointment.exceptions import AppointmentWindowError
 from edc_constants.constants import CLINIC
 from edc_facility.models import HealthFacilityTypes
@@ -19,6 +19,7 @@ from meta_screening.tests.options import now
 from meta_subject.models import NextAppointment
 
 
+@override_settings(SITE_ID=10)
 @time_machine.travel(datetime(2019, 6, 11, 8, 00, tzinfo=ZoneInfo("UTC")))
 class TestNextAppointment(MetaTestCaseMixin, TestCase):
     def setUp(self):

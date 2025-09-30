@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import override_settings, TestCase
 from django.utils import timezone
 from edc_action_item.models import ActionItem
 from edc_constants.constants import FEMALE, NEW, PATIENT, YES
@@ -15,6 +15,7 @@ from meta_prn.models import EndOfStudy, OffSchedule, OffStudyMedication, Subject
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 
 
+@override_settings(SITE_ID=10)
 class TestEosEvents(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()

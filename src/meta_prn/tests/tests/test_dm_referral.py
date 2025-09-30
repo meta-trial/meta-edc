@@ -1,6 +1,6 @@
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
-from django.test import TestCase
+from django.test import override_settings, TestCase
 from django.utils import timezone
 from edc_action_item.models import ActionItem
 from edc_appointment.constants import COMPLETE_APPT
@@ -22,6 +22,7 @@ from meta_subject.models import DmEndpoint, DmFollowup, SubjectVisit
 from meta_visit_schedule.constants import DM_BASELINE, DM_FOLLOWUP, SCHEDULE_DM_REFERRAL
 
 
+@override_settings(SITE_ID=10)
 class TestDmReferral(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()

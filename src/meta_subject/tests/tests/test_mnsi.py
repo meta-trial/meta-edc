@@ -38,6 +38,7 @@ test_datetime = datetime(2019, 6, 11, 8, 00, tzinfo=ZoneInfo("UTC"))
 @override_settings(
     EDC_PROTOCOL_STUDY_OPEN_DATETIME=test_datetime - relativedelta(years=3),
     EDC_PROTOCOL_STUDY_CLOSE_DATETIME=test_datetime + relativedelta(years=3),
+    SITE_ID=10,
 )
 class TestMnsiRequired(MetaTestCaseMixin, TestCase):
     def setUp(self):
