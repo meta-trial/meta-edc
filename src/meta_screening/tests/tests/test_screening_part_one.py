@@ -1,7 +1,7 @@
 from copy import deepcopy
 
 from django.db.utils import IntegrityError
-from django.test import override_settings, TestCase
+from django.test import TestCase, override_settings
 from edc_constants.constants import FEMALE, NO, NULL_STRING, TBD, YES
 
 from meta_edc.meta_version import PHASE_THREE, get_meta_version

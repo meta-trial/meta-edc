@@ -2,7 +2,7 @@ from copy import deepcopy
 from random import choices
 
 from dateutil.relativedelta import relativedelta
-from django.test import override_settings, TestCase
+from django.test import TestCase, override_settings
 from django.utils import timezone
 from edc_constants.constants import BLACK, FEMALE, MALE, NO, NOT_APPLICABLE, POS, YES
 from edc_reportable import MILLIGRAMS_PER_DECILITER

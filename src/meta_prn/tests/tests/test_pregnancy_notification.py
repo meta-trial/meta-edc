@@ -1,6 +1,6 @@
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
-from django.test import override_settings, TestCase
+from django.test import TestCase, override_settings
 from django.utils import timezone
 from edc_appointment.models import Appointment
 from edc_constants.constants import FEMALE, NO, YES

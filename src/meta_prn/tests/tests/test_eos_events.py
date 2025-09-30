@@ -1,4 +1,4 @@
-from django.test import override_settings, TestCase
+from django.test import TestCase, override_settings
 from django.utils import timezone
 from edc_action_item.models import ActionItem
 from edc_constants.constants import FEMALE, NEW, PATIENT, YES

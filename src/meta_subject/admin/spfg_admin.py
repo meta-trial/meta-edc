@@ -14,7 +14,7 @@ from .modeladmin import CrfModelAdminMixin
 class SpfqAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     additional_instructions = mark_safe(
         "The Study Participant Feedback Questionnaire Toolkit (SPFQ) is a set of three "
-        "brief validated patient questionnaires designed to capture patients’ experiences "
+        "brief validated patient questionnaires designed to capture patients' experiences "
         "at the beginning, during, and end of each clinical study, independent of disease "
         "and treatment.<BR>"
         "<B><font color='orange'>Interviewer to read</font></B>: Thank you for your "

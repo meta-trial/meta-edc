@@ -1,5 +1,5 @@
 from django.apps import apps as django_apps
-from django.test import override_settings, TestCase
+from django.test import TestCase, override_settings
 from edc_sites.managers import CurrentSiteManager
 
 

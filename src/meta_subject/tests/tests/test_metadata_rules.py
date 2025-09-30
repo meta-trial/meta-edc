@@ -1,5 +1,5 @@
 from dateutil.relativedelta import relativedelta
-from django.test import override_settings, TestCase, tag
+from django.test import TestCase, override_settings, tag
 from edc_appointment.models import Appointment
 from edc_constants.constants import FEMALE, MALE, YES
 from edc_utils import get_utcnow

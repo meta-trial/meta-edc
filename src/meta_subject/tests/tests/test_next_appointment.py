@@ -4,7 +4,7 @@ from zoneinfo import ZoneInfo
 import time_machine
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ValidationError
-from django.test import override_settings, TestCase
+from django.test import TestCase, override_settings
 from edc_appointment.exceptions import AppointmentWindowError
 from edc_constants.constants import CLINIC
 from edc_facility.models import HealthFacilityTypes

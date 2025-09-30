@@ -2,7 +2,7 @@ from copy import deepcopy
 
 from django.conf import settings
 from django.contrib.sites.models import Site
-from django.test import override_settings, TestCase
+from django.test import TestCase, override_settings
 from edc_constants.constants import COMPLETE, NO, YES
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin

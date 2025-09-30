@@ -1,5 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
-from django.test import override_settings, TestCase
+from django.test import TestCase, override_settings
 from edc_action_item.models import ActionItem
 from edc_appointment.models import Appointment
 from edc_constants.constants import FEMALE

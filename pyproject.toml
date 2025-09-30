@@ -30,7 +30,7 @@ license = "GPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
 requires-python = '>=3.12,<3.14'
 dependencies = [
-    "clinicedc>=2.0.27",
+    "clinicedc>=2.0.28",
     "edc-he>=1.2.0",
     "edc-microscopy>=1.2.0",
     "edc-mnsi>=1.2.0",
@@ -173,7 +173,7 @@ notebook = [
 
 develop = [
     'django>=5.2.4,<5.3',
-    "clinicedc>=2.0.27",
+    "clinicedc>=2.0.28",
     "time-machine>=2.16.0",
     'edc-test-settings',
     "django-redis>=6.0.0",
