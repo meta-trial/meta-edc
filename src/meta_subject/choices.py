@@ -26,14 +26,28 @@ from .constants import (
     ALL_OF_THE_TIME,
     APPT,
     APPT_OTHER,
+    EXTREME,
     GOOD_BIT_OF_THE_TIME,
+    HIGHLY,
     LITTLE_OF_THE_TIME,
     LIVE_AT_TERM,
     LIVE_PRETERM,
+    MODERATE,
+    MODERATELY,
     MOST_OF_THE_TIME,
+    MUCH_LESS_EXPECTED,
+    MUCH_MORE_EXPECTED,
     NO_COMPLICATIONS,
     NONE_OF_THE_TIME,
+    NOT_AT_ALL,
+    SAME_AS_EXPECTED,
+    SEVERE,
+    SLIGHT,
+    SLIGHTLY,
     SOME_OF_THE_TIME,
+    SOMEWHAT_LESS_EXPECTED,
+    SOMEWHAT_MORE_EXPECTED,
+    VERY_HIGHLY,
 )
 
 ACTIVITY_CHOICES = (
@@ -241,4 +255,27 @@ YES_NO_NO_EXAM = (
     (YES, _(YES)),
     (NO, _(NO)),
     (NO_EXAM, _("Exam not performed")),
+)
+
+NOT_AT_ALL_TO_SEVERE_CHOICE = (
+    (NOT_AT_ALL, _("Not at all")),
+    (SLIGHT, _("Slight")),
+    (MODERATE, _("Moderate")),
+    (EXTREME, _("Extreme")),
+    (SEVERE, _("Severe")),
+)
+
+NOT_AT_ALL_TO_HIGHLY_CHOICE = (
+    (NOT_AT_ALL, _("Not at all")),
+    (SLIGHTLY, _("Slightly")),
+    (MODERATELY, _("Moderately")),
+    (HIGHLY, _("Highly")),
+    (VERY_HIGHLY, _("Very highly")),
+)
+LESS_EXPECTED_TO_MORE_EXPECTED_CHOICE = (
+    (MUCH_LESS_EXPECTED, _("Much less than expected")),
+    (SOMEWHAT_LESS_EXPECTED, _("Somewhat less than expected")),
+    (SAME_AS_EXPECTED, _("Same as expected")),
+    (SOMEWHAT_MORE_EXPECTED, _("Somewhat more than expected")),
+    (MUCH_MORE_EXPECTED, _("Much more than expected")),
 )
