@@ -6,11 +6,11 @@ model_data = {
             "address": "NIMR Tanzania",
             "postal_code": "-",
             "city": "Dar es Salaam",
-            "state": None,
+            "state": "",
             "country": "Tanzania",
             "telephone": "+255763244779",
             "mobile": "+255763244779",
-            "fax": None,
+            "fax": "",
             "email": "sokoinele@yahoo.co.uk",
         }
     ]

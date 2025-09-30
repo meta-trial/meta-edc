@@ -28,6 +28,7 @@ from .patient_history_admin import PatientHistoryAdmin
 from .physical_exam_admin import PhysicalExamAdmin
 from .pregnancy_update_admin import PregnancyUpdateAdmin
 from .sf12_admin import Sf12Admin
+from .spfg_admin import SpfqAdmin
 from .study_medication_admin import StudyMedicationAdmin
 from .subject_requisition_admin import SubjectRequisitionAdmin
 from .subject_visit_admin import SubjectVisitAdmin
@@ -66,6 +67,7 @@ __all__ = [
     "PhysicalExamAdmin",
     "PregnancyUpdateAdmin",
     "Sf12Admin",
+    "SpfqAdmin",
     "StudyMedicationAdmin",
     "SubjectRequisitionAdmin",
     "SubjectVisitAdmin",
