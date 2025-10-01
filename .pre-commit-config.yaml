@@ -25,6 +25,7 @@ repos:
     rev: v6.2.5
     hooks:
       - id: rstcheck
+        additional_dependencies: ['rstcheck[sphinx,toml]']
 
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.37.1

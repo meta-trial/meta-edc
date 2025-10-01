@@ -4,12 +4,12 @@ from django_audit_fields import audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
 
-from ..admin_site import meta_consent_admin
+from ..admin_site import meta_spfq_admin
 from ..forms import SubjectConsentSpfqForm
 from ..models import SubjectConsentSpfq
 
 
-@admin.register(SubjectConsentSpfq, site=meta_consent_admin)
+@admin.register(SubjectConsentSpfq, site=meta_spfq_admin)
 class SubjectConsentSpfqAdmin(
     ModelAdminSubjectDashboardMixin,
     SimpleHistoryAdmin,

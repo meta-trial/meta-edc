@@ -5,7 +5,7 @@ from zoneinfo import ZoneInfo
 import time_machine
 from django.conf import settings
 from django.contrib.sites.models import Site
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from edc_constants.constants import COMPLETE, YES
 from edc_metadata import KEYED, NOT_REQUIRED, REQUIRED
 from edc_metadata.metadata import CrfMetadataGetter
@@ -17,6 +17,7 @@ from meta_screening.tests.options import now
 from meta_subject.forms import Sf12Form
 
 
+@override_settings(SITE_ID=10)
 @time_machine.travel(datetime(2019, 6, 11, 8, 00, tzinfo=ZoneInfo("UTC")))
 class TestSf12(MetaTestCaseMixin, TestCase):
     def setUp(self):

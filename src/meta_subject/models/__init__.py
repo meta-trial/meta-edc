@@ -42,7 +42,6 @@ from .signals import (
     update_pregnancy_notification_on_delivery_post_save,
     update_schedule_on_delivery_post_save,
 )
-from .spfq import Spfq
 from .study_medication import StudyMedication
 from .subject_requisition import SubjectRequisition
 from .subject_visit import SubjectVisit
@@ -86,7 +85,6 @@ __all__ = [
     "PhysicalExam",
     "PregnancyUpdate",
     "Sf12",
-    "Spfq",
     "StudyMedication",
     "SubjectRequisition",
     "SubjectVisit",

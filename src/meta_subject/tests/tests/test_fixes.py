@@ -1,7 +1,7 @@
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.sites.models import Site
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from edc_constants.constants import COMPLETE, NO, YES
 from edc_utils import get_utcnow
 
@@ -10,6 +10,7 @@ from meta_screening.tests.options import now
 from meta_subject.forms import PhysicalExamForm
 
 
+@override_settings(SITE_ID=10)
 class TestFixes(MetaTestCaseMixin, TestCase):
     def test_crf_ok_despite_mismatch_between_screening_age_and_calculated_consent_age(self):
         screening_datetime = get_utcnow()

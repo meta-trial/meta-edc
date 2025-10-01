@@ -11,23 +11,21 @@ from edc_consent.field_mixins import (
 from edc_consent.managers import ConsentObjectsManager
 from edc_constants.choices import GENDER
 from edc_constants.constants import NULL_STRING
+from edc_identifier.model_mixins import UniqueSubjectIdentifierFieldMixin
 from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_sites.model_mixins import SiteModelMixin
 
-from .model_mixins import SearchSlugModelMixin
+from meta_subject.model_mixins import SearchSlugModelMixin
 
 
 class SubjectConsentSpfq(
+    UniqueSubjectIdentifierFieldMixin,
     SiteModelMixin,
     ReviewFieldsMixin,
     SearchSlugModelMixin,
     BaseUuidModel,
 ):
     """A model completed by the user that captures the ICF for SPFQ."""
-
-    subject_identifier = models.CharField(
-        verbose_name=_("Subject identifier"), max_length=50, unique=True
-    )
 
     initials = EncryptedCharField(
         validators=[
@@ -98,6 +96,6 @@ class SubjectConsentSpfq(
     def natural_key(self):
         return self.subject_identifier, self.version
 
-    class Meta(BaseUuidModel.Meta):
+    class Meta(SiteModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Subject Consent for SPFQ"
         verbose_name_plural = "Subject Consents for SPFQ"

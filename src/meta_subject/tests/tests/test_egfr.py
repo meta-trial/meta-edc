@@ -10,7 +10,7 @@ import time_machine
 from django import forms
 from django.conf import settings
 from django.contrib.sites.models import Site
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from edc_action_item.models import ActionItem
 from edc_action_item.site_action_items import site_action_items
 from edc_constants.constants import BLACK, MALE
@@ -35,6 +35,7 @@ from meta_subject.models import (
 )
 
 
+@override_settings(SITE_ID=10)
 @time_machine.travel(datetime(2019, 6, 11, 8, 00, tzinfo=ZoneInfo("UTC")))
 class TestEgfr(MetaTestCaseMixin, TestCase):
     def setUp(self):

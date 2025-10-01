@@ -1,6 +1,6 @@
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.utils import timezone
 from edc_appointment.models import Appointment
 from edc_constants.constants import FEMALE, NO, YES
@@ -13,6 +13,7 @@ from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_visit_schedule.constants import SCHEDULE, SCHEDULE_PREGNANCY
 
 
+@override_settings(SITE_ID=10)
 class TestPregnancyNotification(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()

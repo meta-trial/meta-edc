@@ -51,7 +51,7 @@ class MetaTestCaseMixin:
 
     import_randomization_list = True
 
-    sid_count_for_tests = 5
+    sid_count_for_tests = 10
 
     @classmethod
     def setUpTestData(cls):
@@ -61,7 +61,7 @@ class MetaTestCaseMixin:
         if cls.import_randomization_list:
             randomizer_cls = site_randomizers.get(PHASE_THREE)
             randomizer_cls.import_list(
-                verbose=False, sid_count_for_tests=cls.sid_count_for_tests
+                verbose=False, sid_count_for_tests=cls.sid_count_for_tests, skip_verify=True
             )
         site_list_data.initialize()
         site_list_data.autodiscover()

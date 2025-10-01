@@ -2,7 +2,7 @@ from copy import deepcopy
 from decimal import Decimal
 
 from dateutil.relativedelta import relativedelta
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.utils import timezone
 from edc_constants.constants import FEMALE, NO, NOT_APPLICABLE, NULL_STRING, POS, TBD, YES
 from edc_reportable import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
@@ -24,6 +24,7 @@ from ..options import (
 )
 
 
+@override_settings(SITE_ID=10)
 class TestScreeningPartThree(TestCase):
     def setUp(self):
         """Complete parts one and two first ..."""

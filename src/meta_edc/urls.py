@@ -69,6 +69,7 @@ urlpatterns = [
     *paths_for_urlpatterns("meta_screening"),
     *paths_for_urlpatterns("meta_subject"),
     *paths_for_urlpatterns("meta_reports"),
+    *paths_for_urlpatterns("meta_spfq"),
 ]
 
 if settings.DEFENDER_ENABLED:

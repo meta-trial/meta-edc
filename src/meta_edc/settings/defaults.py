@@ -38,7 +38,7 @@ if os.getenv("DJANGO_BASE_DIR"):
     BASE_DIR = Path(os.getenv("DJANGO_BASE_DIR"))
 else:
     # when running from a repo
-    BASE_DIR = Path(__file__).resolve().parent.parent.parent
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
 
 if os.getenv("DJANGO_ENV_DIR"):
     ENV_DIR = Path(os.getenv("DJANGO_ENV_DIR"))
@@ -53,6 +53,15 @@ else:
     if not (ENV_DIR / ".env").exists():
         raise FileExistsError(f"Environment file does not exist. Got `{(ENV_DIR / '.env')}`")
     env.read_env(ENV_DIR / ".env")
+
+# django_revision
+GIT_DIR = Path(env.str("EDC_REVISION_GIT_DIR", default=BASE_DIR))
+
+# django_crypto_fields
+KEY_PATH = env.str("DJANGO_KEY_FOLDER")
+AUTO_CREATE_KEYS = env("DJANGO_AUTO_CREATE_KEYS")
+
+EXPORT_FOLDER = env.str("DJANGO_EXPORT_FOLDER") or Path("~/").expanduser()
 
 
 LOGGING_ENABLED = env("DJANGO_LOGGING_ENABLED")
@@ -188,6 +197,7 @@ INSTALLED_APPS = [
     "meta_pharmacy.apps.AppConfig",
     "meta_screening.apps.AppConfig",
     "meta_sites.apps.AppConfig",
+    "meta_spfq.apps.AppConfig",
     "meta_edc.apps.AppConfig",
     "edc_appconfig.apps.AppConfig",
 ]
@@ -485,15 +495,6 @@ if TWILIO_ENABLED:
     TWILIO_AUTH_TOKEN = env.str("TWILIO_AUTH_TOKEN")
     TWILIO_SENDER = env.str("TWILIO_SENDER")
 
-# django_revision
-GIT_DIR = BASE_DIR.parent
-
-# django_crypto_fields
-KEY_PATH = env.str("DJANGO_KEY_FOLDER")
-AUTO_CREATE_KEYS = env("DJANGO_AUTO_CREATE_KEYS")
-
-EXPORT_FOLDER = env.str("DJANGO_EXPORT_FOLDER") or Path("~/").expanduser()
-
 # django_simple_history
 SIMPLE_HISTORY_ENFORCE_HISTORY_MODEL_PERMISSIONS = True
 
@@ -592,3 +593,6 @@ if "test" in sys.argv:
     MIGRATION_MODULES = DisableMigrations()
     PASSWORD_HASHERS = ("django.contrib.auth.hashers.MD5PasswordHasher",)
     DEFAULT_FILE_STORAGE = "inmemorystorage.InMemoryStorage"
+
+
+META_SPFQ_LIST_FILENAME = env.str("META_SPFQ_LIST_FILENAME")

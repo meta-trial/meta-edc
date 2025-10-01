@@ -5,8 +5,7 @@ from edc_form_validators import FormValidatorMixin
 from edc_registration.models import RegisteredSubject
 from edc_sites.modelform_mixins import SiteModelFormMixin
 
-from meta_consent.models import SubjectConsentSpfq
-from meta_rando.models import SpfqList
+from ..models import SpfqList, SubjectConsentSpfq
 
 
 class SubjectConsentSpfqForm(
@@ -50,6 +49,5 @@ class SubjectConsentSpfqForm(
         model = SubjectConsentSpfq
         fields = "__all__"
         widgets = {  # noqa: RUF012
-            "action_identifier": forms.TextInput(attrs={"readonly": "readonly"}),
             "subject_identifier": forms.TextInput(attrs={"readonly": "readonly"}),
         }

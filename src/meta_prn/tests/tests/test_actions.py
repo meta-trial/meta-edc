@@ -1,5 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from edc_action_item.models import ActionItem
 from edc_appointment.models import Appointment
 from edc_constants.constants import FEMALE
@@ -12,6 +12,7 @@ from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_visit_schedule.constants import DELIVERY
 
 
+@override_settings(SITE_ID=10)
 class TestMetadataRules(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()

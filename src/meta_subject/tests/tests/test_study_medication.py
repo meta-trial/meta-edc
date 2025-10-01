@@ -1,6 +1,6 @@
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from edc_constants.constants import YES
 from edc_pharmacy.exceptions import PrescriptionAlreadyExists, StudyMedicationError
 from edc_pharmacy.models import DosageGuideline, Formulation, Medication, RxRefill
@@ -12,6 +12,7 @@ from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_subject.models import StudyMedication
 
 
+@override_settings(SITE_ID=10)
 class TestStudyMedication(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()

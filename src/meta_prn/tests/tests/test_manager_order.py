@@ -1,8 +1,9 @@
 from django.apps import apps as django_apps
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from edc_sites.managers import CurrentSiteManager
 
 
+@override_settings(SITE_ID=10)
 class TestManagers(TestCase):
     def test_models(self):
         app_config = django_apps.get_app_config("meta_prn")
