@@ -2,21 +2,24 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django_audit_fields import audit_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
+from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
 
-from ..admin_site import meta_subject_admin
+from ..admin_site import meta_spfq_admin
 from ..forms import SpfqForm
 from ..models import Spfq
-from .modeladmin import CrfModelAdminMixin
 
 
-@admin.register(Spfq, site=meta_subject_admin)
-class SpfqAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
+@admin.register(Spfq, site=meta_spfq_admin)
+class SpfqAdmin(
+    ModelAdminSubjectDashboardMixin,
+    SimpleHistoryAdmin,
+):
     additional_instructions = mark_safe(
         "The Study Participant Feedback Questionnaire Toolkit (SPFQ) is a set of three "
-        "brief validated patient questionnaires designed to capture patients' experiences "
+        "brief validated patient questionnaires designed to capture participants' experiences "
         "at the beginning, during, and end of each clinical study, independent of disease "
-        "and treatment.<BR>"
+        "and treatment.<BR><BR>"
         "<B><font color='orange'>Interviewer to read</font></B>: Thank you for your "
         "participation. Your experiences in this trial are important to us and we "
         "would like to hear about them. Your answers will help us improve future trials. "
@@ -27,7 +30,7 @@ class SpfqAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     form = SpfqForm
 
     fieldsets = (
-        (None, {"fields": ("subject_visit", "report_datetime")}),
+        (None, {"fields": ("subject_identifier", "report_datetime")}),
         (
             "Section A: Your experience before you started the study",
             {

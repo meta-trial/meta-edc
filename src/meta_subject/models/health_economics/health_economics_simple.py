@@ -1,12 +1,12 @@
 from django.db import models
 from edc_constants.choices import MARITAL_STATUS
-from edc_he.model_mixins import HealthEconomicsEducationModelMixin
+from edc_he.model_mixins import EducationModelMixin
 from edc_model.models import BaseUuidModel
 
 from ...model_mixins import CrfModelMixin
 
 
-class HealthEconomicsSimple(HealthEconomicsEducationModelMixin, CrfModelMixin, BaseUuidModel):
+class HealthEconomicsSimple(EducationModelMixin, CrfModelMixin, BaseUuidModel):
     occupation = models.CharField(
         verbose_name="What is your occupation/profession?", max_length=50
     )

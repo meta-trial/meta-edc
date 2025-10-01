@@ -29,7 +29,6 @@ from .patient_history_form import PatientHistoryForm
 from .physical_exam_form import PhysicalExamForm
 from .pregnancy_update_form import PregnancyUpdateForm
 from .sf12_form import Sf12Form
-from .spfq_form import SpfqForm
 from .study_medication_form import StudyMedicationForm
 from .subject_requisition_form import SubjectRequisitionForm
 from .subject_visit_form import SubjectVisitForm
@@ -70,7 +69,6 @@ __all__ = [
     "PhysicalExamForm",
     "PregnancyUpdateForm",
     "Sf12Form",
-    "SpfqForm",
     "StudyMedicationForm",
     "SubjectRequisitionForm",
     "SubjectVisitForm",

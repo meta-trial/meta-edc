@@ -1,16 +1,25 @@
 from django.db import models
+from django.utils import timezone
 from edc_constants.choices import DIFFICULT_TO_EASY_CHOICE, DISAGREE_TO_AGREE_CHOICE, YES_NO
+from edc_crf.model_mixins import CrfStatusModelMixin
+from edc_identifier.model_mixins import (
+    UniqueSubjectIdentifierFieldMixin,
+)
 from edc_model.models import BaseUuidModel
+from edc_sites.model_mixins import SiteModelMixin
 
 from ..choices import (
     LESS_EXPECTED_TO_MORE_EXPECTED_CHOICE,
     NOT_AT_ALL_TO_HIGHLY_CHOICE,
     NOT_AT_ALL_TO_SEVERE_CHOICE,
 )
-from ..model_mixins import CrfModelMixin
 
 
-class Spfq(CrfModelMixin, BaseUuidModel):
+class Spfq(
+    UniqueSubjectIdentifierFieldMixin, CrfStatusModelMixin, SiteModelMixin, BaseUuidModel
+):
+    report_datetime = models.DateTimeField(default=timezone.now)
+
     a01 = models.CharField(
         verbose_name="I understood the treatment process in this trial",
         max_length=25,
@@ -185,6 +194,6 @@ class Spfq(CrfModelMixin, BaseUuidModel):
         choices=LESS_EXPECTED_TO_MORE_EXPECTED_CHOICE,
     )
 
-    class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
+    class Meta(SiteModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Feedback Questionnaire (SPFQ)"
         verbose_name_plural = "Feedback Questionnaires (SPFQ)"

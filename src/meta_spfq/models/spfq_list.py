@@ -21,6 +21,6 @@ class SpfqList(SiteModelMixin, UniqueSubjectIdentifierFieldMixin, BaseUuidModel)
 
     date_generated = models.DateTimeField()
 
-    class Meta(BaseUuidModel.Meta):
+    class Meta(SiteModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "SPFQ List"
         verbose_name_plural = "SPFQ List"

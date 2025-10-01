@@ -4,10 +4,7 @@ from edc_crf.crf_form_validator import CrfFormValidator
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_registration.models import RegisteredSubject
 
-from meta_consent.models import SubjectConsentSpfq
-from meta_rando.models import SpfqList
-
-from ..models import Spfq
+from ..models import Spfq, SpfqList, SubjectConsentSpfq
 
 
 class SpfqFormValidator(CrfFormValidator):
