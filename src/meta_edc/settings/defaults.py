@@ -593,3 +593,6 @@ if "test" in sys.argv:
     MIGRATION_MODULES = DisableMigrations()
     PASSWORD_HASHERS = ("django.contrib.auth.hashers.MD5PasswordHasher",)
     DEFAULT_FILE_STORAGE = "inmemorystorage.InMemoryStorage"
+
+
+META_SPFQ_LIST_FILENAME = env.str("META_SPFQ_LIST_FILENAME")

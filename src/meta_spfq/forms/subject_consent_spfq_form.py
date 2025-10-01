@@ -49,6 +49,5 @@ class SubjectConsentSpfqForm(
         model = SubjectConsentSpfq
         fields = "__all__"
         widgets = {  # noqa: RUF012
-            "action_identifier": forms.TextInput(attrs={"readonly": "readonly"}),
             "subject_identifier": forms.TextInput(attrs={"readonly": "readonly"}),
         }

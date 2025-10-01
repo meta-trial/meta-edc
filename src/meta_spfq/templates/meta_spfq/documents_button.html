@@ -1,0 +1,13 @@
+{{ block.super }}
+
+{% comment %}Button to add a subject consent{% endcomment %}
+<div style="display: flex; gap: 10px;">
+{% if not refusal_obj %}
+    <a id="subjectconsentspfq_{{ subject_identifier }}" style="white-space: nowrap;background-color:{{ color }}"  role="button" title="{{ title }}"  class="button" data-toggle="tooltip"  data-placement="right" href="{{ url }}?next={{ next }}">{{ title }}</a>
+{% endif %}
+{% if consent_obj %}
+    <a id="spfq_{{ subject_identifier }}" style="white-space: nowrap;background-color:{{ spfq_color }}"  role="button" title="{{ spfq_title }}"  class="button" data-toggle="tooltip"  data-placement="right" href="{{ spfq_url }}?next={{ next }}">{{ spfq_title }}</a>
+{% else %}
+    <a id="spfq_refusal_{{ subject_identifier }}" style="white-space: nowrap;background-color:{{ refusal_color }}"  role="button" title="{{ refusal_title }}"  class="button" data-toggle="tooltip"  data-placement="right" href="{{ refusal_url }}?next={{ next }}">{{ refusal_title }}</a>
+{% endif %}
+</div>

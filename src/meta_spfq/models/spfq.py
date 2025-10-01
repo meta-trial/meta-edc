@@ -1,3 +1,4 @@
+from django.contrib.sites.managers import CurrentSiteManager
 from django.db import models
 from django.utils import timezone
 from edc_constants.choices import DIFFICULT_TO_EASY_CHOICE, DISAGREE_TO_AGREE_CHOICE, YES_NO
@@ -5,7 +6,7 @@ from edc_crf.model_mixins import CrfStatusModelMixin
 from edc_identifier.model_mixins import (
     UniqueSubjectIdentifierFieldMixin,
 )
-from edc_model.models import BaseUuidModel
+from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_sites.model_mixins import SiteModelMixin
 
 from ..choices import (
@@ -13,6 +14,13 @@ from ..choices import (
     NOT_AT_ALL_TO_HIGHLY_CHOICE,
     NOT_AT_ALL_TO_SEVERE_CHOICE,
 )
+
+
+class Manager(models.Manager):
+    use_in_migrations = True
+
+    def get_by_natural_key(self, subject_identifier):
+        return self.get(subject_identifier=subject_identifier)
 
 
 class Spfq(
@@ -193,6 +201,16 @@ class Spfq(
         max_length=25,
         choices=LESS_EXPECTED_TO_MORE_EXPECTED_CHOICE,
     )
+
+    def __str__(self):
+        return self.subject_identifier
+
+    def natural_key(self):
+        return (self.subject_identifier,)
+
+    objects = Manager()
+    on_site = CurrentSiteManager()
+    history = HistoricalRecords()
 
     class Meta(SiteModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "Feedback Questionnaire (SPFQ)"

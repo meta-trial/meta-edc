@@ -2,7 +2,10 @@ from django.utils.translation import gettext as _
 
 from .constants import (
     EXTREME,
+    GTE_35__LTE_49,
+    GTE_50,
     HIGHLY,
+    LT_35,
     MODERATE,
     MODERATELY,
     MUCH_LESS_EXPECTED,
@@ -39,3 +42,5 @@ LESS_EXPECTED_TO_MORE_EXPECTED_CHOICE = (
     (SOMEWHAT_MORE_EXPECTED, _("Somewhat more than expected")),
     (MUCH_MORE_EXPECTED, _("Much more than expected")),
 )
+
+WEIGHT_BIN_CHOICES = ((LT_35, "<35"), (GTE_35__LTE_49, "35-49"), (GTE_50, ">=50"))

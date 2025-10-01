@@ -4,6 +4,7 @@ from django_audit_fields import audit_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
+from edc_sites.admin import SiteModelAdminMixin
 
 from ..admin_site import meta_spfq_admin
 from ..forms import SpfqForm
@@ -13,8 +14,11 @@ from ..models import Spfq
 @admin.register(Spfq, site=meta_spfq_admin)
 class SpfqAdmin(
     ModelAdminSubjectDashboardMixin,
+    SiteModelAdminMixin,
     SimpleHistoryAdmin,
 ):
+    ordering = ("-created",)
+
     additional_instructions = mark_safe(
         "The Study Participant Feedback Questionnaire Toolkit (SPFQ) is a set of three "
         "brief validated patient questionnaires designed to capture participants' experiences "
@@ -104,3 +108,7 @@ class SpfqAdmin(
         "c09": admin.VERTICAL,
         "c10": admin.VERTICAL,
     }
+
+    list_display = ("subject_identifier", "dashboard", "report_datetime")
+
+    search_fields = ("subject_identifier",)
