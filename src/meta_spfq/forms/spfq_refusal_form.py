@@ -1,7 +1,6 @@
 from django import forms
 from django.core.exceptions import ObjectDoesNotExist
 from edc_constants.constants import NO, YES
-from edc_crf.crf_form_validator import CrfFormValidator
 from edc_form_validators import FormValidator, FormValidatorMixin
 from edc_model_form.mixins import BaseModelFormMixin
 from edc_prn.modelform_mixins import PrnSingletonModelFormMixin

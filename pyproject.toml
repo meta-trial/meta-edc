@@ -79,7 +79,8 @@ exclude = [
     ".venv",
     "src/meta_analytics/notebooks/",
     "docs/updates/0.1.65/update_1_65_renamed_fields.py",
-    "docs/conf.py"
+    "docs/conf.py",
+    "src/meta_spfq/notebooks/"
 ]
 
 [tool.ruff.lint]
@@ -149,6 +150,12 @@ lint = [
     "ruff>=0.12.5",
 ]
 
+docs = [
+    "furo>=2025.7.19",
+    "sphinx>=8.2.3",
+    "sphinx-design>=0.6.1",
+    "sphinx-inline-tabs>=2023.4.21",
+]
 test = [
     "clinicedc-tests>=0.1.6",
     "coverage>=7.10.7",
