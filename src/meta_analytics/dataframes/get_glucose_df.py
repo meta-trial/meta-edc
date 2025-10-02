@@ -51,8 +51,7 @@ def get_glucose_df() -> pd.DataFrame:
     )
     df_glucose["source"] = "meta_subject.glucose"
 
-    df_glucose = df_glucose.merge(
-        subject_visit_df[
+    df_glucose = subject_visit_df[
             [
                 "subject_identifier",
                 "site_id",
@@ -61,7 +60,7 @@ def get_glucose_df() -> pd.DataFrame:
                 "baseline_datetime",
                 "subject_visit_id",
             ]
-        ],
+        ].merge(
         df_glucose[[col for col in df_glucose.columns if "site_id" not in col]],
         on="subject_visit_id",
         how="left",
