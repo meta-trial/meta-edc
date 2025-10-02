@@ -1,4 +1,5 @@
 from django.db import models
+from edc_constants.constants import NULL_STRING
 from edc_qareports.model_mixins import QaReportModelMixin, qa_reports_permissions
 
 
@@ -9,7 +10,7 @@ class Endpoints(QaReportModelMixin, models.Model):
 
     visit_code = models.IntegerField(null=True)
 
-    fasting = models.CharField(max_length=10, default="")
+    fasting = models.CharField(max_length=10, default=NULL_STRING)
 
     fbg_date = models.DateField(null=True)
 
@@ -17,13 +18,13 @@ class Endpoints(QaReportModelMixin, models.Model):
 
     ogtt_value = models.FloatField(null=True)
 
-    endpoint_label = models.CharField(max_length=250, default="")
+    endpoint_label = models.CharField(max_length=250, default=NULL_STRING)
 
     baseline_date = models.DateField(null=True)
 
     offstudy_date = models.DateField(null=True)
 
-    offstudy_reason = models.CharField(max_length=250, default="")
+    offstudy_reason = models.CharField(max_length=250, default=NULL_STRING)
 
     def __str__(self):
         return f"{self.subject_identifier} {self.visit_code} {self.endpoint_label}"

@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from django.apps import apps as django_apps
 from django.utils import timezone
-from edc_constants.constants import YES
+from edc_constants.constants import NULL_STRING, YES
 
 from ..constants import (
     CASE_EOS,
@@ -328,15 +328,19 @@ class GlucoseEndpointsByDate:
                     fbg_value=(None if pd.isna(row["fbg_value"]) else row["fbg_value"]),
                     ogtt_value=None if pd.isna(row["ogtt_value"]) else row["ogtt_value"],
                     fbg_date=(None if pd.isna(row["fbg_datetime"]) else row["fbg_datetime"]),
-                    fasting=(None if pd.isna(row["fasted"]) else row["fasted"]),
+                    fasting=(NULL_STRING if pd.isna(row["fasted"]) else row["fasted"]),
                     endpoint_label=(
-                        None if pd.isna(row["endpoint_label"]) else row["endpoint_label"]
+                        NULL_STRING
+                        if pd.isna(row["endpoint_label"])
+                        else row["endpoint_label"]
                     ),
                     offstudy_date=(
                         None if pd.isna(row["offstudy_datetime"]) else row["offstudy_datetime"]
                     ),
                     offstudy_reason=(
-                        None if pd.isna(row["offstudy_reason"]) else row["offstudy_reason"]
+                        NULL_STRING
+                        if pd.isna(row["offstudy_reason"])
+                        else row["offstudy_reason"]
                     ),
                     report_model=model,
                     created=now,
