@@ -35,7 +35,7 @@ dependencies = [
     "edc-microscopy>=1.2.0",
     "edc-mnsi>=1.2.0",
     "edc-phq9>=1.1.0",
-    "edc-qol>=1.2.0",
+    "edc-qol>=1.2.1",
     "notebook>=7.4.7",
 ]
 
