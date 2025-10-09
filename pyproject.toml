@@ -30,7 +30,7 @@ license = "GPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
 requires-python = '>=3.12,<3.14'
 dependencies = [
-    "clinicedc>=2.0.38",
+    "clinicedc>=2.0.39",
     "edc-he>=1.2.0",
     "edc-microscopy>=1.2.0",
     "edc-mnsi>=1.2.0",
@@ -156,7 +156,7 @@ docs = [
     "sphinx-inline-tabs>=2023.4.21",
 ]
 test = [
-    "clinicedc>=2.0.32",
+    "clinicedc>=2.0.39",
     "clinicedc-tests>=0.1.6",
     "coverage>=7.10.7",
     "django-webtest>=1.9.13",
@@ -180,7 +180,7 @@ notebook = [
 ]
 develop = [
     'django>=5.2.4,<5.3',
-    "clinicedc>=2.0.32",
+    "clinicedc>=2.0.39",
     "time-machine>=2.16.0",
     'edc-test-settings',
     "django-redis>=6.0.0",
@@ -191,15 +191,8 @@ develop = [
 meta-edc = { workspace = true }
 clinicedc = { path = "../clinicedc", editable = true }
 edc-test-settings = { path = "../edc-test-settings", editable = true }
-django-audit-fields = { path = "../django-audit-fields", editable = true }
-django-crypto-fields = { path = "../django-crypto-fields", editable = true }
-django-logentry-admin = { path = "../django-logentry-admin", editable = true }
-django-multisite2 = { path = "../django-multisite2", editable = true }
-django-revision = { path = "../django-revision", editable = true }
-django-simple-history = { path = "../django-simple-history", editable = true }
 edc-microscopy = { path = "../edc-microscopy", editable = true }
 edc-mnsi = { path = "../edc-mnsi", editable = true }
-edc-next-appointment = { path = "../edc-next-appointment", editable = true }
 edc-phq9 = { path = "../edc-phq9", editable = true }
 edc-qol = { path = "../edc-qol", editable = true }
 edc-he = { path = "../edc-he", editable = true }
