@@ -1,6 +1,11 @@
 Changes
 -------
 
+1.2.4
+-----
+- version skips due to multiple patches to get to this
+- release on clinicedc
+
 1.1.9
 -----
 - fix qareports note_model_admin
