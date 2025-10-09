@@ -599,3 +599,5 @@ if "test" in sys.argv:
 
 
 META_SPFQ_LIST_FILENAME = env.str("META_SPFQ_LIST_FILENAME")
+# edc_pdf_reports
+EDC_PDF_REPORTS_DRAW_LOGO = False
