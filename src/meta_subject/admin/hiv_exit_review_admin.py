@@ -18,7 +18,17 @@ class HivExitReviewAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     form = HivExitReviewForm
 
     fieldsets = (
-        (None, {"fields": ("subject_visit", "report_datetime")}),
+        (
+            None,
+            {
+                "fields": (
+                    "subject_visit",
+                    "report_datetime",
+                    "available",
+                    "not_available_reason",
+                )
+            },
+        ),
         (
             "HIV and ARVs",
             {
@@ -33,6 +43,7 @@ class HivExitReviewAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
                 )
             },
         ),
+        ("Comment", {"fields": ("comment",)}),
         crf_status_fieldset,
         audit_fieldset_tuple,
     )

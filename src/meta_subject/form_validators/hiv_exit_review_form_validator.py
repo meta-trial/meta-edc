@@ -1,9 +1,10 @@
-from edc_constants.constants import OTHER
+from edc_constants.constants import NO, OTHER
 from edc_crf.crf_form_validator import CrfFormValidator
 
 
 class HivExitReviewFormValidator(CrfFormValidator):
     def clean(self):
+        self.required_if(NO, field="available", field_required="not_available_reason")
         self.required_if_not_none(
             "viral_load", "viral_load_date", field_required_evaluate_as_int=True
         )
