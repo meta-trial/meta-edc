@@ -6,9 +6,11 @@ from edc_constants.constants import NULL_STRING, YES
 
 from ..constants import (
     CASE_EOS,
+    CASE_FBG_ONLY,
     CASE_FBGS_WITH_FIRST_OGTT,
     CASE_FBGS_WITH_SECOND_OGTT,
     CASE_OGTT,
+    FBG_BEYOND_THRESHOLD,
     endpoint_cases,
     endpoint_columns,
 )
@@ -40,6 +42,7 @@ class GlucoseEndpointsByDate:
     """
 
     fbg_threshhold = 7.0
+    fbg_beyond_threshold = FBG_BEYOND_THRESHOLD
     ogtt_threshhold = 11.1
     endpoint_cls = EndpointByDate
     keep_cols = [  # noqa: RUF012
@@ -77,13 +80,15 @@ class GlucoseEndpointsByDate:
         ]
         self.endpoint_cases = {k: v for k, v in endpoint_cases.items() if k in self.case_list}
 
-        self.df = get_glucose_df().copy()
+        self.df = get_glucose_df(subject_identifiers=self.subject_identifiers).copy()
 
         # label rows by type of glu tests (ones with value)
         self.df["test"] = self.df.apply(get_test_string, axis=1)
 
-        self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"]).reset_index(
-            drop=True
+        self.df = (
+            self.df.query("not (fbg_value.isna() and ogtt_value.isna())")
+            .sort_values(by=["subject_identifier", "fbg_datetime"])
+            .reset_index(drop=True)
         )
         self.working_df = self.df.copy()
         self.working_df["endpoint"] = 0
@@ -91,11 +96,11 @@ class GlucoseEndpointsByDate:
 
     def run(self):
         self.process_by_ogtt_only()
+        # self.process_by_fbg_only()
         subject_identifiers_df = get_unique_subject_identifiers(self.df)
         for _, row in subject_identifiers_df.iterrows():
-            subject_df = self.get_subject_df(row["subject_identifier"])
             subject_df = self.endpoint_cls(
-                subject_df=subject_df,
+                subject_df=self.get_subject_df(row["subject_identifier"]),
                 fbg_threshhold=self.fbg_threshhold,
                 ogtt_threshhold=self.ogtt_threshhold,
             ).subject_df
@@ -104,6 +109,53 @@ class GlucoseEndpointsByDate:
                 self.remove_subject_from_working_df(row)
         self.post_check_endpoint()
         self.merge_with_final_endpoints()
+
+    def process_by_fbg_only(self):
+        """Flag subjects that met endpoint by hitting the absurd FBG
+
+        Not used yet. Waiting for confirmation from Anu.
+        """
+        subject_endpoint_df = self.working_df.loc[
+            (self.working_df["fbg_value"] >= self.fbg_beyond_threshold)
+            # & (self.working_df["fasted"] == YES)
+        ].copy()
+
+        subject_endpoint_df = (
+            subject_endpoint_df.sort_values(by=["subject_identifier", "fbg_datetime"])
+            .reset_index(drop=True)
+            .drop_duplicates(subset=["subject_identifier"], keep="first")
+            .reset_index(drop=True)
+        )
+        if not subject_endpoint_df.empty:
+            # flag the selected endpoint rows as endpoints
+            subject_endpoint_df["endpoint"] = 1
+            subject_endpoint_df["endpoint_label"] = self.endpoint_cases[CASE_OGTT]
+            subject_endpoint_df["endpoint_type"] = CASE_FBG_ONLY
+            subject_endpoint_df["interval_in_days"] = np.nan
+
+            # add back the others rows for these subjects
+            subjects_df = self.working_df.loc[
+                (
+                    self.working_df["subject_identifier"].isin(
+                        subject_endpoint_df["subject_identifier"]
+                    )
+                    & ~(
+                        self.working_df["fbg_datetime"].isin(
+                            subject_endpoint_df["fbg_datetime"]
+                        )
+                    )
+                )
+            ].copy()
+            subjects_df = subjects_df.reset_index(drop=True)
+            subjects_df["endpoint"] = np.nan
+            subjects_df["endpoint_label"] = None
+            subjects_df["endpoint_type"] = None
+            subjects_df["interval_in_days"] = np.nan
+            subjects_df = pd.concat([subjects_df, subject_endpoint_df])
+            subjects_df = subjects_df.reset_index(drop=True)
+
+            self.append_subject_to_endpoint_df(subjects_df[endpoint_columns])
+            self.remove_subjects_from_working_df(subjects_df)
 
     def process_by_ogtt_only(self):
         """Flag subjects that met endpoint by hitting the OGTT
@@ -126,7 +178,7 @@ class GlucoseEndpointsByDate:
         """
         subject_endpoint_df = self.working_df.loc[
             (self.working_df["ogtt_value"] >= self.ogtt_threshhold)
-            & (self.working_df["ogtt_value"] < 9999.99)
+            & (self.working_df["ogtt_value"] <= 9999.99)
             & (self.working_df["fasted"] == YES)
             & (self.working_df["fbg_value"].notna())
         ].copy()
@@ -292,8 +344,9 @@ class GlucoseEndpointsByDate:
                 how="left",
                 suffixes=("", "_y"),
             )
-        self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"])
-        self.df = self.df.reset_index(drop=True)
+        self.df = self.df.sort_values(by=["subject_identifier", "fbg_datetime"]).reset_index(
+            drop=True
+        )
 
     def to_model(self):
         """Write endpoint_only_df to the Endpoints model"""

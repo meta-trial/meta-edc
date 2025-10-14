@@ -26,6 +26,7 @@ from .health_economics import (
     HealthEconomicsUpdate,
 )
 from .hepatitis_test import HepatitisTest
+from .hiv_exit_review import HivExitReview
 from .malaria_test import MalariaTest
 from .medication_adherence import MedicationAdherence
 from .mnsi import Mnsi
@@ -75,6 +76,7 @@ __all__ = [
     "HealthEconomicsSimple",
     "HealthEconomicsUpdate",
     "HepatitisTest",
+    "HivExitReview",
     "MalariaTest",
     "MedicationAdherence",
     "Mnsi",

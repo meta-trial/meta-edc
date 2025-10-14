@@ -19,6 +19,7 @@ from .glucose_fbg_form import GlucoseFbgForm
 from .glucose_form import GlucoseForm
 from .health_economics import HealthEconomicsSimpleForm, HealthEconomicsUpdateForm
 from .hepatitis_test_form import HepatitisTestForm
+from .hiv_exit_review_form import HivExitReviewForm
 from .malaria_test_form import MalariaTestForm
 from .medication_adherence_form import MedicationAdherenceForm
 from .mnsi_form import MnsiForm
@@ -59,6 +60,7 @@ __all__ = [
     "HealthEconomicsSimpleForm",
     "HealthEconomicsUpdateForm",
     "HepatitisTestForm",
+    "HivExitReviewForm",
     "MalariaTestForm",
     "MedicationAdherenceForm",
     "MnsiForm",
