@@ -11,7 +11,6 @@ class SubjectListboardView(BaseSubjectListboardView):
         kwargs.update(meta_version=get_meta_version())
         return super().get_context_data(**kwargs)
 
-    def get_search_fields(self) -> list[str]:
+    def get_search_fields(self) -> tuple[str, ...]:
         fields = super().get_search_fields()
-        fields.append("identity__exact")
-        return fields
+        return *fields, "identity__exact"

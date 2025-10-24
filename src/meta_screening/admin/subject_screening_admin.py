@@ -31,7 +31,8 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
     form = SubjectScreeningForm
     list_per_page = 15
     post_url_on_delete_name = "screening_listboard_url"
-    subject_listboard_url_name = "screening_listboard_url"
+    subject_listboard_url_name = "screening_listboard_url"  # :FIXME is this ok?
+    screening_listboard_url_name = "screening_listboard_url"
 
     additional_instructions = (
         "Patients must meet ALL of the inclusion criteria and NONE of the "
@@ -174,7 +175,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
     def eligibility_status(self, obj=None):
         eligibility = MetaEligibility(obj, update_model=False)
         screening_listboard_url = reverse(
-            url_names.get(self.subject_listboard_url_name), args=(obj.screening_identifier,)
+            url_names.get(self.screening_listboard_url_name), args=(obj.screening_identifier,)
         )
         context = dict(
             title="Go to screening listboard",
@@ -197,7 +198,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
                 kwargs=self.get_subject_dashboard_url_kwargs(obj),
             )
         except NoReverseMatch:
-            url = reverse(url_names.get("screening_listboard_url"), kwargs={})
+            url = reverse(self.get_screening_listboard_url_name(), kwargs={})
             context = dict(
                 title="Go to screening listboard",
                 url=f"{url}?q={obj.screening_identifier}",

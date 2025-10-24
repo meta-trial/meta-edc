@@ -30,7 +30,7 @@ license = "GPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
 requires-python = '>=3.12,<3.14'
 dependencies = [
-    "clinicedc>=2.0.39",
+    "clinicedc>=2.0.40",
     "edc-he>=1.2.0",
     "edc-microscopy>=1.2.0",
     "edc-mnsi>=1.2.0",
@@ -73,7 +73,7 @@ namespace = false
 line-length = 95
 indent-width = 4
 target-version = "py312"
-exclude = [
+extend-exclude = [
     "migrations",
     ".tox",
     ".venv",
@@ -156,7 +156,7 @@ docs = [
     "sphinx-inline-tabs>=2023.4.21",
 ]
 test = [
-    "clinicedc>=2.0.39",
+    "clinicedc>=2.0.40",
     "clinicedc-tests>=0.1.6",
     "coverage>=7.10.7",
     "django-webtest>=1.9.13",
@@ -180,7 +180,7 @@ notebook = [
 ]
 develop = [
     'django>=5.2.4,<5.3',
-    "clinicedc>=2.0.39",
+    "clinicedc>=2.0.40",
     "time-machine>=2.16.0",
     'edc-test-settings',
     "django-redis>=6.0.0",
