@@ -47,3 +47,9 @@ class HivExitReviewAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         crf_status_fieldset,
         audit_fieldset_tuple,
     )
+
+    list_filter = ("available",)
+
+    radio_fields = {  # noqa: RUF012
+        "available": admin.VERTICAL,
+    }
