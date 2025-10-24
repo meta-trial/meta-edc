@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
+from django.template.loader import render_to_string
 from django_audit_fields import audit_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
 from edc_model_admin.history import SimpleHistoryAdmin
@@ -41,10 +42,20 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
             },
         ),
         (
+            "Endpoint review",
+            {
+                "description": render_to_string(
+                    "meta_subject/endpoint_review_instructions.html", context={}
+                ),
+                "fields": ("endpoint_today",),
+            },
+        ),
+        (
             "Confirmation appointment",
             {
                 "description": (
-                    "If blood glucose value is >= 7.0 mmol/L, schedule an "
+                    "If patient has not reached the endpoint and the blood glucose "
+                    "value is >= 7.0 mmol/L, schedule an "
                     "appointment within 1 week to confirm"
                 ),
                 "fields": ("repeat_fbg_date",),

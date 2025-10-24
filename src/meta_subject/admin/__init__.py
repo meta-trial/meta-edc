@@ -19,6 +19,7 @@ from .glucose_admin import GlucoseAdmin
 from .glucose_fbg_admin import GlucoseFbgAdmin
 from .health_economics import HealthEconomicsSimpleAdmin, HealthEconomicsUpdateAdmin
 from .hepatitis_test_admin import HepatitisTestAdmin
+from .hiv_exit_review_admin import HivExitReviewAdmin
 from .malaria_test_admin import MalariaTestAdmin
 from .medication_adherence_admin import MedicationAdherenceAdmin
 from .mnsi_admin import MnsiAdmin
@@ -57,6 +58,7 @@ __all__ = [
     "HealthEconomicsSimpleAdmin",
     "HealthEconomicsUpdateAdmin",
     "HepatitisTestAdmin",
+    "HivExitReviewAdmin",
     "MalariaTestAdmin",
     "MedicationAdherenceAdmin",
     "MnsiAdmin",

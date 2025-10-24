@@ -7,13 +7,23 @@ from edc_pdutils.dataframes import get_eos, get_subject_consent, get_subject_vis
 from meta_subject.models import Glucose, GlucoseFbg
 
 
-def get_glucose_df() -> pd.DataFrame:
+def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame:
     subject_visit_df = (
-        get_subject_visit("meta_subject.subjectvisit")
+        get_subject_visit("meta_subject.subjectvisit", subject_identifiers)
         .rename(columns={"id": "subject_visit_id"})
         .query("appt_timing!=@MISSED_APPT")
     )
-    df_glucose_fbg = read_frame(GlucoseFbg.objects.all(), verbose=False).rename(
+    if subject_identifiers:
+        df_glucose_fbg = read_frame(
+            GlucoseFbg.objects.filter(
+                subject_visit__subject_identifier__in=subject_identifiers
+            ),
+            verbose=False,
+        )
+    else:
+        df_glucose_fbg = read_frame(GlucoseFbg.objects.all(), verbose=False)
+
+    df_glucose_fbg = df_glucose_fbg.rename(
         columns={"fasting": "fasted", "subject_visit": "subject_visit_id"},
     )
     df_glucose_fbg["fasting_hrs"] = np.nan

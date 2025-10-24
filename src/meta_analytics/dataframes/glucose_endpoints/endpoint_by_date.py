@@ -67,9 +67,11 @@ class CaseData:
             self.previous_fasted = self.df.loc[self.index - 1, "fasted"]
 
     def case_two(self) -> bool:
-        """ "FBG >= 7 x 2, first OGTT<=11.1"""
+        """FBG >= 7 x 2, first OGTT<=11.1"""
         return bool(
-            self.fbg_value >= self.fbg_threshold
+            pd.notna(self.next_fbg_datetime)
+            and pd.notna(self.fbg_datetime)
+            and self.fbg_value >= self.fbg_threshold
             and self.next_fbg_value >= self.fbg_threshold
             and 0.0 < self.ogtt_value < self.ogtt_threshold
             and self.fasted == YES
@@ -78,9 +80,11 @@ class CaseData:
         )
 
     def case_three(self) -> bool:
-        """ "FBG >= 7 x 2, second OGTT<=11.1"""
+        """FBG >= 7 x 2, second OGTT<=11.1"""
         return bool(
-            self.fbg_value >= self.fbg_threshold
+            pd.notna(self.next_fbg_datetime)
+            and pd.notna(self.fbg_datetime)
+            and self.fbg_value >= self.fbg_threshold
             and self.next_fbg_value >= self.fbg_threshold
             and 0.0 < self.next_ogtt_value < self.ogtt_threshold
             and self.fasted == YES
@@ -91,13 +95,28 @@ class CaseData:
     def case_two_reversed(self) -> bool:
         """Same as case 2, but with the previous FBG reading."""
         return bool(
-            self.fbg_value >= self.fbg_threshold
+            pd.notna(self.next_fbg_datetime)
+            and pd.notna(self.fbg_datetime)
+            and self.fbg_value >= self.fbg_threshold
             and self.previous_fbg_value >= self.fbg_threshold
             and 0.0 < self.previous_ogtt_value < self.ogtt_threshold
             and self.fasted == YES
             and self.previous_fasted == YES
             and (self.fbg_datetime.date() - self.previous_fbg_datetime.date()).days > 6
         )
+
+    # def case_four(self) -> bool:
+    #     """FBG >= 20.0"""
+    #     return bool(
+    #         pd.notna(self.next_fbg_datetime)
+    #         and pd.notna(self.fbg_datetime)
+    #         and self.fbg_value >= self.fbg_threshold
+    #         and self.next_fbg_value >= self.fbg_threshold
+    #         and 0.0 < self.next_ogtt_value < self.ogtt_threshold
+    #         and self.fasted == YES
+    #         and self.next_fasted == YES
+    #         and (self.next_fbg_datetime.date() - self.fbg_datetime.date()).days > 6
+    #     )
 
 
 class EndpointByDate:
@@ -112,6 +131,9 @@ class EndpointByDate:
     Order of protocol endpoint evaluation:
       * case 2. FBG >= 7 x 2, first OGTT<11.1
       * case 3.  FBG >= 7 x 2, second OGTT<11.1
+
+    If the endpoint is reached by FBG+OGTT, the date of endpoint is
+    always the date of the second measurement.
 
     Additional criteria considered:
       1. any threshhold FBG must be taken while fasted (fasted=YES)

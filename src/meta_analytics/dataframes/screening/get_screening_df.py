@@ -124,16 +124,12 @@ def get_screening_df(df: pd.DataFrame | None = None) -> pd.DataFrame:
     df_physical_exam = read_frame(qs_physical_exam)
     # merge w/ subject visit to get subject_identifier
     df_physical_exam = df_physical_exam.merge(
-        df_physical_exam,
         df_subject_visit[
             ["subject_visit", "subject_identifier", "visit_code", "visit_code_sequence"]
         ],
         on="subject_visit",
         how="left",
-    )
-    df_physical_exam = df_physical_exam[
-        ["subject_identifier", "visit_code", "visit_code_sequence", "waist_circumference"]
-    ]
+    )[["subject_identifier", "visit_code", "visit_code_sequence", "waist_circumference"]]
     df_physical_exam[["waist_circumference"]] = df_physical_exam[
         ["waist_circumference"]
     ].apply(pd.to_numeric)

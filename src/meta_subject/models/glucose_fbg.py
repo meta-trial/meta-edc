@@ -1,12 +1,15 @@
 from django.db import models
 from edc_constants.choices import YES_NO
-from edc_constants.constants import NO
+from edc_constants.constants import NO, NOT_APPLICABLE
 from edc_glucose.model_mixin_factories import (
     fasting_model_mixin_factory,
     fbg_model_mixin_factory,
 )
 from edc_model.models import BaseUuidModel
+from edc_utils import formatted_date
 
+from ..choices import ENDPOINT_CHOICES
+from ..constants import AMENDMENT_DATE
 from ..model_mixins import CrfModelMixin
 
 
@@ -46,6 +49,17 @@ class GlucoseFbg(
         help_text=(
             "Set to YES for existing values before duration "
             "question was added to the form, otherwise NO"
+        ),
+    )
+
+    endpoint_today = models.CharField(
+        verbose_name="Has the participant reached a study endpoint today?",
+        max_length=25,
+        choices=ENDPOINT_CHOICES,
+        default=NOT_APPLICABLE,
+        help_text=(
+            f"Response is applicable if reporting after {formatted_date(AMENDMENT_DATE)} "
+            "and both the FBG and OGTT were performed"
         ),
     )
 
