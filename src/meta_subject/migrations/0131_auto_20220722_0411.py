@@ -2,7 +2,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import migrations
 from edc_action_item.identifiers import ActionIdentifier
-from edc_constants.constants import CLOSED, HIGH_PRIORITY
+from clinicedc_constants import CLOSED, HIGH_PRIORITY
 from tqdm import tqdm
 
 from meta_subject.constants import MISSED_VISIT_ACTION

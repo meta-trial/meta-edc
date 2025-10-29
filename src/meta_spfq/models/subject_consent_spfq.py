@@ -1,3 +1,4 @@
+from clinicedc_constants import NULL_STRING
 from django.conf import settings
 from django.contrib.sites.managers import CurrentSiteManager
 from django.core.validators import RegexValidator
@@ -10,7 +11,6 @@ from edc_consent.field_mixins import (
 )
 from edc_consent.managers import ConsentObjectsManager
 from edc_constants.choices import GENDER
-from edc_constants.constants import NULL_STRING
 from edc_identifier.model_mixins import UniqueSubjectIdentifierFieldMixin
 from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_sites.model_mixins import SiteModelMixin

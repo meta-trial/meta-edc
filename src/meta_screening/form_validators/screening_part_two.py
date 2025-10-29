@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from datetime import datetime
 
+from clinicedc_constants import NO, YES
 from django import forms
-from edc_constants.constants import NO, YES
 from edc_form_validators import INVALID_ERROR, FormValidator
 from edc_prn.modelform_mixins import PrnFormValidatorMixin
 from edc_utils import formatted_datetime, get_utcnow, to_utc

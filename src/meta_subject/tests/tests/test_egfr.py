@@ -7,18 +7,17 @@ from decimal import Decimal
 from zoneinfo import ZoneInfo
 
 import time_machine
+from clinicedc_constants import BLACK, MALE, MICROMOLES_PER_LITER, MILLIGRAMS_PER_DECILITER
+from clinicedc_utils import egfr_percent_change
 from django import forms
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.test import TestCase, override_settings
 from edc_action_item.models import ActionItem
 from edc_action_item.site_action_items import site_action_items
-from edc_constants.constants import BLACK, MALE
-from edc_egfr.calculators import egfr_percent_change
 from edc_lab.models import Panel
 from edc_lab_results import BLOOD_RESULTS_EGFR_ACTION, BLOOD_RESULTS_RFT_ACTION
 from edc_registration import get_registered_subject_model_cls
-from edc_reportable import MICROMOLES_PER_LITER, MILLIGRAMS_PER_DECILITER
 from edc_utils import age, get_utcnow
 from edc_utils.round_up import round_half_away_from_zero
 from edc_visit_schedule.constants import OFFSCHEDULE_ACTION

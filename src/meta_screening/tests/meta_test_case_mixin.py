@@ -3,12 +3,12 @@ from __future__ import annotations
 from copy import deepcopy
 from datetime import date, datetime
 
+from clinicedc_constants import NULL_STRING, YES
 from clinicedc_tests.utils import get_appointment
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.sites.models import Site
 from edc_appointment.constants import IN_PROGRESS_APPT, INCOMPLETE_APPT
-from edc_constants.constants import NULL_STRING, YES
 from edc_facility.import_holidays import import_holidays
 from edc_list_data.site_list_data import site_list_data
 from edc_metadata import REQUIRED

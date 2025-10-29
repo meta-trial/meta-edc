@@ -1,12 +1,12 @@
 # TODO: urine_bhcg form (probably not necessary)
 # TODO: if pos, take of study drug and estimate
 #  delivery date for the pregnancy outcomes form. See Form 25/26
+from clinicedc_constants import NOT_APPLICABLE, PATIENT, YES
 from django.apps import apps as django_apps
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django_crypto_fields.fields import EncryptedTextField
 from edc_constants.choices import YES_NO, YES_NO_NA
-from edc_constants.constants import NOT_APPLICABLE, PATIENT, YES
 from edc_model.models import BaseUuidModel
 from edc_model.validators import datetime_not_future
 from edc_model_fields.fields import OtherCharField

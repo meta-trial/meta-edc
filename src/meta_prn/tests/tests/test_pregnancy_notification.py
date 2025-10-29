@@ -1,9 +1,9 @@
+from clinicedc_constants import FEMALE, NO, YES
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, override_settings
 from django.utils import timezone
 from edc_appointment.models import Appointment
-from edc_constants.constants import FEMALE, NO, YES
 from edc_visit_schedule.constants import MONTH1
 from model_bakery.baker import make_recipe
 

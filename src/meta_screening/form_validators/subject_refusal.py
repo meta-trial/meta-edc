@@ -1,4 +1,4 @@
-from edc_constants.constants import OTHER
+from clinicedc_constants import OTHER
 from edc_form_validators import FormValidator
 from edc_prn.modelform_mixins import PrnFormValidatorMixin
 

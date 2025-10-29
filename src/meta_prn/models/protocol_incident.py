@@ -1,6 +1,6 @@
+from clinicedc_constants import NULL_STRING
 from django.db import models
 from edc_action_item.models import ActionItem, ActionModelMixin
-from edc_constants.constants import NULL_STRING
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierFieldMixin
 from edc_model.models import BaseUuidModel
 from edc_protocol_incident.constants import PROTOCOL_INCIDENT_ACTION

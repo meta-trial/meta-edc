@@ -1,11 +1,10 @@
 from decimal import Decimal
 
-from edc_constants.constants import NO, PENDING, YES
+from clinicedc_constants import MILLIMOLES_PER_LITER, NO, PENDING, YES
+from clinicedc_utils import convert_units
 from edc_crf.crf_form_validator import CrfFormValidator
 from edc_form_validators import INVALID_ERROR
 from edc_glucose.utils import validate_glucose_as_millimoles_per_liter
-from edc_reportable import MILLIMOLES_PER_LITER
-from edc_reportable.utils import convert_units
 
 from meta_reports.models import GlucoseSummary
 

@@ -3,8 +3,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from bs4 import BeautifulSoup
+from clinicedc_constants import TBD
 from django import template
-from edc_constants.constants import TBD
 from edc_dashboard.url_names import url_names
 
 from meta_consent.models import SubjectConsent

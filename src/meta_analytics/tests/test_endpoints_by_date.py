@@ -3,7 +3,7 @@
 # from dateutil.relativedelta import relativedelta
 # from django.test import TestCase
 # from django.utils import timezone
-# from edc_constants.constants import YES
+# from clinicedc_constants import YES
 #
 # from meta_analytics.dataframes import EndpointByDate
 #

@@ -1,3 +1,4 @@
+from clinicedc_constants import NO, NOT_APPLICABLE
 from django.apps import apps as django_apps
 from django.contrib.sites.managers import CurrentSiteManager
 from django.db import models
@@ -13,7 +14,6 @@ from edc_consent.field_mixins import (
 from edc_consent.managers import ConsentObjectsManager
 from edc_consent.model_mixins import ConsentModelMixin
 from edc_constants.choices import YES_NO
-from edc_constants.constants import NO, NOT_APPLICABLE
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 from edc_identifier.subject_identifier import SubjectIdentifier as BaseSubjectIdentifier
 from edc_model.models import BaseUuidModel, HistoricalRecords

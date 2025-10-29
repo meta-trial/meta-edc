@@ -1,8 +1,8 @@
 from urllib.parse import parse_qs, urlsplit
 
+from clinicedc_constants import YES
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
-from edc_constants.constants import YES
 from edc_lab.admin import (
     RequisitionAdminMixin,
     requisition_fieldset,

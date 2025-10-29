@@ -1,15 +1,15 @@
-from edc_constants.constants import (
+from clinicedc_constants import (
     CLINIC,
     DEAD,
     DELIVERY,
     DIABETES,
+    LTFU,
     NONE,
     OTHER,
     PREGNANCY,
     TOXICITY,
     UNKNOWN,
 )
-from edc_ltfu.constants import LOST_TO_FOLLOWUP
 from edc_offstudy.constants import COMPLETED_FOLLOWUP, WITHDRAWAL
 from edc_transfer.constants import TRANSFERRED
 
@@ -216,7 +216,7 @@ list_data = {
             "intercurrent_illness",
             "Intercurrent illness which prevents further treatment",  # see limit_choices_to
         ),
-        (LOST_TO_FOLLOWUP, "Patient lost to follow-up"),
+        (LTFU, "Patient lost to follow-up"),
         (DEAD, "Patient reported/known to have died"),
         (WITHDRAWAL, "Patient withdrew consent to participate further"),
         (

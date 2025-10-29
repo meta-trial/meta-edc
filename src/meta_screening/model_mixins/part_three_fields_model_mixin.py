@@ -1,8 +1,8 @@
+from clinicedc_constants import NOT_APPLICABLE
 from django.contrib import admin
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from edc_constants.choices import NO, YES_NO, YES_NO_PENDING_NA_GLUCOSE_SCREENING
-from edc_constants.constants import NOT_APPLICABLE
 from edc_glucose.model_mixin_factories import (
     fasting_model_mixin_factory,
     fbg_model_mixin_factory,

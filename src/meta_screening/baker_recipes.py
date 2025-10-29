@@ -1,8 +1,16 @@
+from clinicedc_constants import (
+    BLACK,
+    FEMALE,
+    MILLIGRAMS_PER_DECILITER,
+    MILLIMOLES_PER_LITER,
+    NO,
+    NOT_APPLICABLE,
+    NULL_STRING,
+    YES,
+)
 from dateutil.relativedelta import relativedelta
 from django.contrib.sites.models import Site
 from django.utils import timezone
-from edc_constants.constants import BLACK, FEMALE, NO, NOT_APPLICABLE, NULL_STRING, YES
-from edc_reportable.units import MILLIGRAMS_PER_DECILITER, MILLIMOLES_PER_LITER
 from faker import Faker
 from model_bakery.recipe import Recipe
 

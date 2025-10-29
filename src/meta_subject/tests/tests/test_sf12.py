@@ -3,10 +3,10 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 import time_machine
+from clinicedc_constants import COMPLETE, YES
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.test import TestCase, override_settings
-from edc_constants.constants import COMPLETE, YES
 from edc_metadata import KEYED, NOT_REQUIRED, REQUIRED
 from edc_metadata.metadata import CrfMetadataGetter
 from edc_qol.constants import ALL_OF_THE_TIME, NONE_OF_THE_TIME, SOME_OF_THE_TIME

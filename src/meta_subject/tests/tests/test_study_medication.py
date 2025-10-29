@@ -1,7 +1,7 @@
+from clinicedc_constants import YES
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, override_settings
-from edc_constants.constants import YES
 from edc_pharmacy.exceptions import PrescriptionAlreadyExists, StudyMedicationError
 from edc_pharmacy.models import DosageGuideline, Formulation, Medication, RxRefill
 from edc_pharmacy.prescribe import create_prescription

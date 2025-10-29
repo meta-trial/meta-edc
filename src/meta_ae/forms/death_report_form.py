@@ -1,7 +1,7 @@
+from clinicedc_constants import OTHER
 from django import forms
 from edc_adverse_event.form_validator_mixins import DeathReportFormValidatorMixin
 from edc_adverse_event.modelform_mixins import DeathReportModelFormMixin
-from edc_constants.constants import OTHER
 from edc_form_validators import FormValidator
 
 from ..constants import HOSPITAL_CLINIC

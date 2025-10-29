@@ -1,4 +1,4 @@
-from edc_constants.constants import OTHER, UNKNOWN
+from clinicedc_constants import OTHER, UNKNOWN
 
 from .constants import HOSPITAL_CLINIC
 

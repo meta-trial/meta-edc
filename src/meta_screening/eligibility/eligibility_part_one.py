@@ -1,4 +1,4 @@
-from edc_constants.constants import FEMALE, MALE, NO, NOT_APPLICABLE, YES
+from clinicedc_constants import FEMALE, MALE, NO, NOT_APPLICABLE, YES
 from edc_screening.fc import FC
 from edc_screening.screening_eligibility import ScreeningEligibility
 

@@ -1,4 +1,4 @@
-from edc_constants.constants import OTHER, YES
+from clinicedc_constants import OTHER, YES
 from edc_qareports.sql_generator import CrfCase
 
 from meta_visit_schedule.constants import MONTH36, MONTH48

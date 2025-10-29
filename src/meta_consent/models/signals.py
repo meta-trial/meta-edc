@@ -1,10 +1,10 @@
 import contextlib
 
+from clinicedc_constants import YES
 from django.core.exceptions import ValidationError
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from edc_action_item.delete_action_item import ActionItemDeleteError, delete_action_item
-from edc_constants.constants import YES
 from edc_pharmacy.exceptions import PrescriptionAlreadyExists
 from edc_pharmacy.prescribe import create_prescription
 from edc_randomization.site_randomizers import site_randomizers

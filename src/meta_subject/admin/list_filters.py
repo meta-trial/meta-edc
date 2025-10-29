@@ -1,6 +1,6 @@
+from clinicedc_constants import HIGH, NORMAL
 from django.contrib.admin import SimpleListFilter
 from django.db.models import Q
-from edc_constants.constants import HIGH, NORMAL
 from edc_model_admin.list_filters import FutureDateListFilter, PastDateListFilter
 
 from meta_subject.models import Glucose, GlucoseFbg

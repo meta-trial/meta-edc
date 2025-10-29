@@ -1,6 +1,6 @@
+from clinicedc_constants import FEMALE, MALE
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, override_settings
-from edc_constants.constants import FEMALE, MALE
 from edc_randomization.site_randomizers import site_randomizers
 from edc_registration.models import RegisteredSubject
 

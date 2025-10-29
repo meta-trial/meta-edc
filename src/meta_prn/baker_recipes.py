@@ -1,6 +1,6 @@
+from clinicedc_constants import NULL_STRING, YES
 from dateutil.relativedelta import relativedelta
 from django.utils import timezone
-from edc_constants.constants import NULL_STRING, YES
 from faker import Faker
 from model_bakery.recipe import Recipe
 

@@ -1,11 +1,18 @@
 import contextlib
 
-from edc_constants.constants import NEG, NO, NOT_APPLICABLE
-from edc_egfr import EgfrCkdEpi
-from edc_egfr.calculators import EgfrCalculatorError
-from edc_reportable.exceptions import ConversionNotHandled
-from edc_reportable.units import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
-from edc_reportable.utils import convert_units
+from clinicedc_constants import (
+    MICROMOLES_PER_LITER,
+    MILLIMOLES_PER_LITER,
+    NEG,
+    NO,
+    NOT_APPLICABLE,
+)
+from clinicedc_utils import (
+    ConversionNotHandled,
+    EgfrCalculatorError,
+    EgfrCkdEpi2009,
+    convert_units,
+)
 from edc_screening.fc import FC
 from edc_screening.screening_eligibility import ScreeningEligibility
 from edc_vitals.calculators import calculate_bmi
@@ -40,7 +47,7 @@ class BaseEligibilityPartThree(ScreeningEligibility):
         if self.weight and self.height:
             self.bmi = calculate_bmi(weight_kg=self.weight, height_cm=self.height)
         with contextlib.suppress(EgfrCalculatorError):
-            self.calculated_egfr_value = EgfrCkdEpi(
+            self.calculated_egfr_value = EgfrCkdEpi2009(
                 gender=self.model_obj.gender,
                 age_in_years=self.model_obj.age_in_years,
                 ethnicity=self.model_obj.gender,

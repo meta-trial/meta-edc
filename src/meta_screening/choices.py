@@ -1,4 +1,4 @@
-from edc_constants.constants import BLACK, NO, NOT_APPLICABLE, OTHER, PENDING, YES
+from clinicedc_constants import BLACK, NO, NOT_APPLICABLE, OTHER, PENDING, YES
 
 ETHNICITY = ((BLACK, "Black"), (OTHER, "Other"))
 

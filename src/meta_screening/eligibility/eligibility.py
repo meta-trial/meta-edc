@@ -1,9 +1,9 @@
 from typing import Any
 
+from clinicedc_constants import NO, TBD, YES
 from django.db import models
 from django.urls import reverse
 from django.utils.html import format_html
-from edc_constants.constants import NO, TBD, YES
 from edc_utils import get_utcnow
 
 from ..constants import EGFR_NOT_CALCULATED

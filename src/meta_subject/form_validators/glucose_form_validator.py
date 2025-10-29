@@ -1,4 +1,4 @@
-from edc_constants.constants import PENDING
+from clinicedc_constants import PENDING
 from edc_crf.crf_form_validator import CrfFormValidator
 from edc_glucose.form_validators import FbgOgttFormValidatorMixin
 

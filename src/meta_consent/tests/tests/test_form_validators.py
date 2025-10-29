@@ -1,11 +1,11 @@
 from zoneinfo import ZoneInfo
 
+from clinicedc_constants import FEMALE
 from dateutil.relativedelta import relativedelta
 from django import forms
 from django.test import TestCase
 from django.utils import timezone
 from edc_consent.constants import HOSPITAL_NUMBER
-from edc_constants.constants import FEMALE
 
 from meta_consent.form_validators import SubjectConsentFormValidator
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin

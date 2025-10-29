@@ -1,4 +1,4 @@
-from edc_constants.constants import NO, OTHER
+from clinicedc_constants import NO, OTHER
 from edc_crf.crf_form_validator import CrfFormValidator
 
 

@@ -1,4 +1,4 @@
-from edc_constants.constants import CLOSED, NEW, OPEN
+from clinicedc_constants import CLOSED, NEW, OPEN
 from edc_crf.crf_form_validator import CrfFormValidator
 from edc_form_validators import INVALID_ERROR
 

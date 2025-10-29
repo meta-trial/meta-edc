@@ -1,8 +1,8 @@
+from clinicedc_constants import COMPLETE, NO, YES
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.test import TestCase, override_settings
-from edc_constants.constants import COMPLETE, NO, YES
 from edc_utils import get_utcnow
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin

@@ -1,5 +1,5 @@
+from clinicedc_constants import NO, YES
 from django import forms
-from edc_constants.constants import NO, YES
 from edc_form_validators import FormValidator, FormValidatorMixin
 from edc_glucose.form_validators import OgttFormValidatorMixin
 from edc_glucose.utils import validate_glucose_as_millimoles_per_liter

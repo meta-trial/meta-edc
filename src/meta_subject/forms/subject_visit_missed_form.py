@@ -1,5 +1,5 @@
+from clinicedc_constants import NO, NOT_APPLICABLE, OTHER, YES
 from django import forms
-from edc_constants.constants import NO, NOT_APPLICABLE, OTHER, YES
 from edc_crf.crf_form_validator import CrfFormValidator
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import INVALID_ERROR

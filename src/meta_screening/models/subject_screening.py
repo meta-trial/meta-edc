@@ -1,8 +1,8 @@
+from clinicedc_constants import PENDING, QUESTION_RETIRED
 from django.contrib.sites.models import Site
 from django.core.validators import RegexValidator
 from django.db import models
 from django_crypto_fields.fields import EncryptedCharField
-from edc_constants.constants import PENDING, QUESTION_RETIRED
 from edc_model.models import BaseUuidModel
 from edc_screening.model_mixins import ScreeningModelMixin
 from edc_screening.screening_identifier import (

@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from edc_constants.constants import NO
+from clinicedc_constants import NO
 
 from .constants import endpoint_columns
 

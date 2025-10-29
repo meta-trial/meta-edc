@@ -2,9 +2,9 @@ import csv
 import sys
 from pathlib import Path
 
+from clinicedc_constants import FEMALE, MALE
 from django.apps import apps as django_apps
 from django.conf import settings
-from edc_constants.constants import FEMALE, MALE
 from tqdm import tqdm
 
 from .constants import GTE_35__LTE_49, GTE_50, LT_35

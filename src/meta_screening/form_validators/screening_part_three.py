@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from datetime import datetime
 
+from clinicedc_constants import NO, YES
 from django import forms
-from edc_constants.constants import NO, YES
 from edc_egfr.form_validator_mixins import EgfrCkdEpiFormValidatorMixin
 from edc_form_validators import INVALID_ERROR, FormValidator
 from edc_glucose.form_validators import (
@@ -77,7 +77,6 @@ class ScreeningPartThreeFormValidator(
         self.validate_egfr(
             gender=self.instance.gender,
             age_in_years=self.instance.age_in_years,
-            weight_in_kgs=self.cleaned_data.get("weight"),
             ethnicity=self.instance.ethnicity,
         )
         self.validate_suitability_for_study()

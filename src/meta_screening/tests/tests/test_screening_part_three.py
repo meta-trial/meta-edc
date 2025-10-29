@@ -1,12 +1,21 @@
 from copy import deepcopy
 from decimal import Decimal
 
+from clinicedc_constants import (
+    FEMALE,
+    MICROMOLES_PER_LITER,
+    MILLIMOLES_PER_LITER,
+    NO,
+    NOT_APPLICABLE,
+    NULL_STRING,
+    POS,
+    TBD,
+    YES,
+)
+from clinicedc_utils import convert_units
 from dateutil.relativedelta import relativedelta
 from django.test import TestCase, override_settings
 from django.utils import timezone
-from edc_constants.constants import FEMALE, NO, NOT_APPLICABLE, NULL_STRING, POS, TBD, YES
-from edc_reportable import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
-from edc_reportable.utils import convert_units
 
 from meta_screening.constants import (
     EGFR_LT_45,

@@ -1,4 +1,4 @@
-from edc_constants.constants import NO, OTHER, YES
+from clinicedc_constants import NO, OTHER, YES
 
 
 class ArvHistoryFormValidatorMixin:

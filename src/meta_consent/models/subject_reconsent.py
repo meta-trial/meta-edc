@@ -1,3 +1,4 @@
+from clinicedc_constants import ABNORMAL
 from django.apps import apps as django_apps
 from django.contrib.sites.managers import CurrentSiteManager
 from django.contrib.sites.models import Site
@@ -6,7 +7,6 @@ from django.db import models
 from django_crypto_fields.fields.identity_field import IdentityField
 from edc_action_item.models import ActionModelMixin
 from edc_consent.field_mixins import ReviewFieldsMixin
-from edc_constants.constants import ABNORMAL
 from edc_identifier.managers import SubjectIdentifierManager
 from edc_identifier.model_mixins import UniqueSubjectIdentifierModelMixin
 from edc_model.models import BaseUuidModel

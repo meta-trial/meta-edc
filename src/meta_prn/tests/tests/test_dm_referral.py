@@ -1,3 +1,4 @@
+from clinicedc_constants import CLOSED, FEMALE, NEW, NO, PATIENT, YES
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, override_settings
@@ -5,7 +6,6 @@ from django.utils import timezone
 from edc_action_item.models import ActionItem
 from edc_appointment.constants import COMPLETE_APPT
 from edc_appointment.models import Appointment
-from edc_constants.constants import CLOSED, FEMALE, NEW, NO, PATIENT, YES
 from edc_pharmacy.constants import IN_PROGRESS_APPT
 from edc_visit_schedule.constants import MONTH1, OFFSCHEDULE_ACTION
 from edc_visit_tracking.constants import SCHEDULED

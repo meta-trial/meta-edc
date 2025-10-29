@@ -1,10 +1,10 @@
+from clinicedc_constants import NOT_APPLICABLE, NULL_STRING
 from django.contrib.sites.managers import CurrentSiteManager
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext as _
 from edc_constants.choices import YES_NO, YES_NO_NA
-from edc_constants.constants import NOT_APPLICABLE, NULL_STRING
 from edc_crf.model_mixins import CrfStatusModelMixin
 from edc_identifier.model_mixins import (
     UniqueSubjectIdentifierFieldMixin,

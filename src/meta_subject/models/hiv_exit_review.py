@@ -1,6 +1,6 @@
+from clinicedc_constants import NULL_STRING, YES
 from django.db import models
 from edc_constants.choices import YES_NO
-from edc_constants.constants import NULL_STRING, YES
 from edc_crf.model_mixins import SingletonCrfModelMixin
 from edc_model.models import BaseUuidModel
 

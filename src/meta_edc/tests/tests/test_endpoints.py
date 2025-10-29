@@ -7,6 +7,7 @@ from zoneinfo import ZoneInfo
 
 import time_machine
 from bs4 import BeautifulSoup
+from clinicedc_constants import YES
 from clinicedc_tests.utils import login
 from dateutil.relativedelta import relativedelta
 from django.apps import apps as django_apps
@@ -19,14 +20,12 @@ from django.urls.exceptions import NoReverseMatch
 from django.utils import timezone
 from django_extensions.management.color import color_style
 from django_webtest import WebTest
-from edc_adverse_event.constants import AE_ROLE, TMG_ROLE
 from edc_appointment.constants import IN_PROGRESS_APPT, SCHEDULED_APPT
 from edc_appointment.models import Appointment
 from edc_auth.auth_updater import AuthUpdater
-from edc_auth.constants import AUDITOR_ROLE, CLINICIAN_ROLE, STAFF_ROLE
+from edc_auth.constants import AE_ROLE, AUDITOR_ROLE, CLINICIAN_ROLE, STAFF_ROLE, TMG_ROLE
 from edc_auth.site_auths import site_auths
 from edc_consent.site_consents import site_consents
-from edc_constants.constants import YES
 from edc_dashboard.url_names import url_names
 from edc_export.constants import DATA_EXPORTER_ROLE
 from edc_lab.auth_objects import LAB_TECHNICIAN_ROLE

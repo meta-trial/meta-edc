@@ -4,19 +4,20 @@ from secrets import choice
 from string import ascii_uppercase
 from zoneinfo import ZoneInfo
 
-from dateutil.relativedelta import relativedelta
-from django.conf import settings
-from django.contrib.sites.models import Site
-from edc_constants.constants import (
+from clinicedc_constants import (
     BLACK,
     FEMALE,
+    MICROMOLES_PER_LITER,
+    MILLIMOLES_PER_LITER,
     NO,
     NOT_APPLICABLE,
     NULL_STRING,
     RANDOM_SAMPLING,
     YES,
 )
-from edc_reportable.units import MICROMOLES_PER_LITER, MILLIMOLES_PER_LITER
+from dateutil.relativedelta import relativedelta
+from django.conf import settings
+from django.contrib.sites.models import Site
 from faker import Faker
 
 from meta_edc.meta_version import get_meta_version

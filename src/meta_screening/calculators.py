@@ -1,4 +1,4 @@
-from edc_constants.constants import NO, TBD, YES
+from clinicedc_constants import NO, TBD, YES
 
 
 def calculate_inclusion_field_values_phase_two(obj):

@@ -1,5 +1,5 @@
 import pandas as pd
-from edc_constants.constants import NO, YES
+from clinicedc_constants import NO, YES
 from edc_pdutils.dataframes import get_crf
 
 from meta_analytics.dataframes.utils import calculate_fasting_hrs

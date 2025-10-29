@@ -1,5 +1,5 @@
+from clinicedc_constants import NONE, OTHER, YES
 from django import forms
-from edc_constants.constants import NONE, OTHER, YES
 from edc_crf.crf_form_validator import CrfFormValidator
 
 

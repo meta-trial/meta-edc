@@ -2,7 +2,7 @@
 
 from django.db import migrations
 from django.db.models import F
-from edc_reportable import PERCENT
+from clinicedc_constants import PERCENT
 
 
 def update_new_egfr_drop_field(apps, schema_editor):
