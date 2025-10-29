@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from edc_constants.constants import NO, PENDING, YES
+from clinicedc_constants import NO, PENDING, YES
 from edc_form_validators import INVALID_ERROR
 
 from meta_reports.models import GlucoseSummary

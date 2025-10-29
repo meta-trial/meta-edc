@@ -1,3 +1,4 @@
+from clinicedc_constants import YES
 from django.contrib import admin
 from django.template.loader import render_to_string
 from django.urls.base import reverse
@@ -6,7 +7,6 @@ from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from django_audit_fields.admin import audit_fieldset_tuple
-from edc_constants.constants import YES
 from edc_dashboard.url_names import url_names
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin

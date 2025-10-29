@@ -1,5 +1,4 @@
-from django.utils.translation import gettext_lazy as _
-from edc_constants.constants import (
+from clinicedc_constants import (
     ABSENT,
     CLOSED,
     DEAD,
@@ -17,6 +16,7 @@ from edc_constants.constants import (
     PRESENT_WITH_REINFORCEMENT,
     YES,
 )
+from django.utils.translation import gettext_lazy as _
 from edc_visit_tracking.constants import MISSED_VISIT, SCHEDULED, UNSCHEDULED
 
 from meta_ae.choices import INFORMANT_RELATIONSHIP

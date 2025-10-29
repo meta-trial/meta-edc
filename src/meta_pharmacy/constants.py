@@ -1,4 +1,4 @@
-from edc_constants.constants import OK
+from clinicedc_constants import OK
 
 METFORMIN = "metformin"
 REVIEW = "REVIEW"

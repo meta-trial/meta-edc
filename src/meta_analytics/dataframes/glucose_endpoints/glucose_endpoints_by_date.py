@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
+from clinicedc_constants import NULL_STRING, YES
 from django.apps import apps as django_apps
 from django.utils import timezone
-from edc_constants.constants import NULL_STRING, YES
 
 from ..constants import (
     CASE_EOS,

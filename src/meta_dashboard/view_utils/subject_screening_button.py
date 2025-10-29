@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
+from clinicedc_constants import TBD, YES
 from django.utils.translation import gettext as _
-from edc_constants.constants import TBD, YES
 from edc_subject_dashboard.view_utils import (
     SubjectScreeningButton as BaseSubjectScreeningButton,
 )

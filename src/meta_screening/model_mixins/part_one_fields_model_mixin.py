@@ -1,8 +1,8 @@
+from clinicedc_constants import YES
 from django.db import models
 from django.utils.safestring import mark_safe
 from django_crypto_fields.fields import EncryptedCharField
 from edc_constants.choices import SELECTION_METHOD, YES_NO, YES_NO_NA, YESDEFAULT_NO
-from edc_constants.constants import YES
 
 from ..choices import ETHNICITY
 from ..constants import PREG_YES_NO_NA

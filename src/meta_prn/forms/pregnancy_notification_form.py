@@ -1,8 +1,8 @@
+from clinicedc_constants import FEMALE, NO, YES
 from dateutil.relativedelta import relativedelta
 from django import forms
 from django.core.exceptions import ObjectDoesNotExist
 from edc_action_item.forms.action_item_form_mixin import ActionItemFormMixin
-from edc_constants.constants import FEMALE, NO, YES
 from edc_form_validators import INVALID_ERROR
 from edc_form_validators.form_validator import FormValidator
 from edc_form_validators.form_validator_mixins import FormValidatorMixin

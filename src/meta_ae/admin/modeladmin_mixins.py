@@ -1,3 +1,4 @@
+from clinicedc_constants import NO, NOT_APPLICABLE, YES
 from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
@@ -17,7 +18,6 @@ from edc_adverse_event.templatetags.edc_adverse_event_extras import (
     format_ae_followup_description,
     select_description_template,
 )
-from edc_constants.constants import NO, NOT_APPLICABLE, YES
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 
 

@@ -1,8 +1,8 @@
+from clinicedc_constants import NO, NOT_EVALUATED, YES
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.db.models import Index
 from edc_constants.choices import YES_NO_NOT_EVALUATED
-from edc_constants.constants import NO, NOT_EVALUATED, YES
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierFieldMixin
 from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_sites.managers import CurrentSiteManager

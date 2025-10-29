@@ -1,4 +1,4 @@
-from edc_constants.constants import CLOSED, OTHER, YES
+from clinicedc_constants import CLOSED, OTHER, YES
 from edc_form_validators import FormValidator
 from edc_prn.modelform_mixins import PrnFormValidatorMixin
 

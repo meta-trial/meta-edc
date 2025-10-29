@@ -1,6 +1,6 @@
+from clinicedc_constants import NOT_APPLICABLE
 from django import forms
 from edc_consent.modelform_mixins import ReviewFieldsModelFormMixin
-from edc_constants.constants import NOT_APPLICABLE
 from edc_form_validators import FormValidatorMixin
 from edc_sites.forms import SiteModelFormMixin
 from edc_utils.date import to_local

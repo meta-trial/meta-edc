@@ -1,10 +1,10 @@
+from clinicedc_constants import NOT_APPLICABLE, QUESTION_RETIRED
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.safestring import mark_safe
 from edc_action_item.models import ActionItem
 from edc_adherence.choices import MISSED_PILLS
 from edc_constants.choices import YES_NO, YES_NO_NA
-from edc_constants.constants import NOT_APPLICABLE, QUESTION_RETIRED
 from edc_model.models import BaseUuidModel
 from edc_model_fields.fields import OtherCharField
 

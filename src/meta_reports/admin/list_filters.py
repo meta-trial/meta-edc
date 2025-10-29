@@ -1,5 +1,5 @@
+from clinicedc_constants import NO, YES
 from django.contrib.admin import SimpleListFilter
-from edc_constants.constants import NO, YES
 
 from meta_reports.models import Endpoints
 

@@ -1,8 +1,8 @@
+from clinicedc_constants import YES
 from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
 from django.urls import reverse
-from edc_constants.constants import YES
 from edc_glucose.list_filters import FbgListFilter, OgttListFilter
 from edc_model_admin.dashboard import ModelAdminDashboardMixin
 from edc_model_admin.mixins import TemplatesModelAdminMixin

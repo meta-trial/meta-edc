@@ -1,6 +1,6 @@
+from clinicedc_constants import NO, NOT_APPLICABLE, YES
 from django.contrib.admin import SimpleListFilter
 from edc_constants.choices import YES_NO_NA
-from edc_constants.constants import NO, NOT_APPLICABLE, YES
 
 
 class AgreesListFilter(SimpleListFilter):

@@ -1,4 +1,4 @@
-from edc_constants.constants import NOT_APPLICABLE, OTHER, PATIENT, PREGNANCY, UNKNOWN
+from clinicedc_constants import NOT_APPLICABLE, OTHER, PATIENT, PREGNANCY, UNKNOWN
 
 from .constants import CLINICIAN, INVESTIGATOR, REFERRAL, SAE
 

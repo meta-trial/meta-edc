@@ -2,11 +2,11 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 import time_machine
+from clinicedc_constants import CLINIC
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ValidationError
 from django.test import TestCase, override_settings
 from edc_appointment.exceptions import AppointmentWindowError
-from edc_constants.constants import CLINIC
 from edc_facility.models import HealthFacilityTypes
 from edc_facility.utils import get_health_facility_model, get_health_facility_model_cls
 from edc_metadata.metadata_handler import MetadataHandlerError

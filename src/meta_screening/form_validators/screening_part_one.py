@@ -1,5 +1,5 @@
+from clinicedc_constants import MALE, YES
 from django import forms
-from edc_constants.constants import MALE, YES
 from edc_form_validators import FormValidator
 from edc_prn.modelform_mixins import PrnFormValidatorMixin
 

@@ -1,6 +1,6 @@
+from clinicedc_constants import NO, NOT_APPLICABLE
 from django.db import models
 from edc_constants.choices import YES_NO
-from edc_constants.constants import NO, NOT_APPLICABLE
 from edc_glucose.model_mixin_factories import (
     fasting_model_mixin_factory,
     fbg_model_mixin_factory,

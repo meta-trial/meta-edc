@@ -1,5 +1,5 @@
+from clinicedc_constants import FEMALE
 from django.test import TestCase
-from edc_constants.constants import FEMALE
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 

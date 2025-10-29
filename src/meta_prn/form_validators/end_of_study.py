@@ -1,5 +1,6 @@
 from urllib import parse
 
+from clinicedc_constants import DEAD, DELIVERY, LTFU, PREGNANCY, TOXICITY
 from django import forms
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
@@ -11,9 +12,7 @@ from edc_adverse_event.form_validator_mixins import (
     RequiresDeathReportFormValidatorMixin,
 )
 from edc_consent.constants import CONSENT_WITHDRAWAL
-from edc_constants.constants import DEAD, DELIVERY, PREGNANCY, TOXICITY
 from edc_form_validators import INVALID_ERROR, FormValidator
-from edc_ltfu.constants import LTFU
 from edc_ltfu.modelform_mixins import RequiresLtfuFormValidatorMixin
 from edc_offstudy.constants import COMPLETED_FOLLOWUP
 from edc_offstudy.utils import OffstudyError

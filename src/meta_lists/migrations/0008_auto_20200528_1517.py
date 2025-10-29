@@ -2,7 +2,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import migrations
 from django.db.migrations import RunPython
-from edc_ltfu.constants import LOST_TO_FOLLOWUP
+from clinicedc_constants import LTFU
 
 
 def update_ltfu(apps, schema_editor):
@@ -12,7 +12,7 @@ def update_ltfu(apps, schema_editor):
     except ObjectDoesNotExist:
         pass
     else:
-        obj.name = LOST_TO_FOLLOWUP
+        obj.name = LTFU
         obj.save_base(update_fields=["name"])
 
 

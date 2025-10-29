@@ -1,3 +1,14 @@
+from clinicedc_constants import (
+    CLOSED,
+    DEAD,
+    GRADE3,
+    GRADE4,
+    GRADE5,
+    HIGH_PRIORITY,
+    LTFU,
+    NO,
+    YES,
+)
 from django.apps import apps as django_apps
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from django.utils.html import format_html
@@ -13,16 +24,6 @@ from edc_adverse_event.constants import (
     DEATH_REPORT_ACTION,
     DEATH_REPORT_TMG_ACTION,
 )
-from edc_constants.constants import (
-    CLOSED,
-    DEAD,
-    GRADE3,
-    GRADE4,
-    GRADE5,
-    HIGH_PRIORITY,
-    NO,
-    YES,
-)
 from edc_lab_results.constants import (
     BLOOD_RESULTS_FBC_ACTION,
     BLOOD_RESULTS_GLU_ACTION,
@@ -30,7 +31,6 @@ from edc_lab_results.constants import (
     BLOOD_RESULTS_LIPIDS_ACTION,
     BLOOD_RESULTS_RFT_ACTION,
 )
-from edc_ltfu.constants import LOST_TO_FOLLOWUP
 from edc_notification.utils import get_email_contacts
 from edc_visit_schedule.utils import get_offschedule_models
 
@@ -80,7 +80,7 @@ class AeFollowupAction(ActionWithNotification):
         )
 
         # add Study termination to next_actions if LTFU
-        if self.reference_obj.outcome == LOST_TO_FOLLOWUP:
+        if self.reference_obj.outcome == LTFU:
             for offschedule_model in get_offschedule_models(
                 subject_identifier=self.subject_identifier,
                 report_datetime=self.reference_obj.report_datetime,

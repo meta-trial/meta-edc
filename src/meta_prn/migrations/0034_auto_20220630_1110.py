@@ -2,7 +2,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import migrations
 from django.db.models.signals import post_save, pre_save
-from edc_constants.constants import HIGH
+from clinicedc_constants import HIGH
 from edc_protocol_incident.constants import PROTOCOL_INCIDENT_ACTION
 from edc_utils import DisableSignals
 

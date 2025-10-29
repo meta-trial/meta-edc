@@ -1,7 +1,7 @@
+from clinicedc_constants import MILLIMOLES_PER_LITER, TBD
 from django.db import models
 from edc_constants.choices import YES_NO_TBD
-from edc_constants.constants import TBD
-from edc_reportable.units import MICROMOLES_PER_LITER_DISPLAY, MILLIMOLES_PER_LITER
+from edc_reportable.units import MICROMOLES_PER_LITER_DISPLAY
 
 
 class CalculatedModelMixin(models.Model):

@@ -2,7 +2,7 @@
 
 from django.db import migrations
 from django.db.migrations import RunPython
-from edc_constants.constants import NO, YES
+from clinicedc_constants import NO, YES
 
 
 def update_old_fasting_choices(apps, schema_editor):

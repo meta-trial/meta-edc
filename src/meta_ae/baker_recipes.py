@@ -1,6 +1,5 @@
+from clinicedc_constants import GRADE4, NO, NOT_APPLICABLE, NOT_RELATED, YES
 from django.utils import timezone
-from edc_adverse_event.constants import NOT_RELATED
-from edc_constants.constants import GRADE4, NO, NOT_APPLICABLE, YES
 from model_bakery.recipe import Recipe
 
 from meta_ae.models.ae_followup import AeFollowup

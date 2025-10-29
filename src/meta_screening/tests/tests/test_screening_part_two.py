@@ -1,8 +1,8 @@
 from copy import deepcopy
 
+from clinicedc_constants import NO, NOT_APPLICABLE, NULL_STRING, TBD, YES
 from dateutil.relativedelta import relativedelta
 from django.test import TestCase
-from edc_constants.constants import NO, NOT_APPLICABLE, NULL_STRING, TBD, YES
 from edc_utils.date import get_utcnow
 
 from meta_pharmacy.constants import METFORMIN

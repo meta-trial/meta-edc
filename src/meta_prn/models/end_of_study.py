@@ -1,17 +1,17 @@
-from django.db import models
-from edc_action_item.models import ActionModelMixin
-from edc_constants.choices import YES_NO_NA
-from edc_constants.constants import (
+from clinicedc_constants import (
     DEAD,
     DELIVERY,
     DIABETES,
+    LTFU,
     NOT_APPLICABLE,
     NULL_STRING,
     OTHER,
     PREGNANCY,
     TOXICITY,
 )
-from edc_ltfu.constants import LOST_TO_FOLLOWUP
+from django.db import models
+from edc_action_item.models import ActionModelMixin
+from edc_constants.choices import YES_NO_NA
 from edc_model.models import BaseUuidModel
 from edc_model.validators import date_not_future
 from edc_offstudy.constants import (
@@ -60,7 +60,7 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
                 PREGNANCY,
                 CLINICAL_WITHDRAWAL,
                 DEAD,
-                LOST_TO_FOLLOWUP,
+                LTFU,
                 TOXICITY,
                 TRANSFERRED,
                 WITHDRAWAL,

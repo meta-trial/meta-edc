@@ -1,7 +1,7 @@
+from clinicedc_constants import FEMALE, MALE, YES
 from dateutil.relativedelta import relativedelta
 from django.test import TestCase, override_settings, tag
 from edc_appointment.models import Appointment
-from edc_constants.constants import FEMALE, MALE, YES
 from edc_utils import get_utcnow
 from edc_visit_schedule.constants import MONTH1
 from model_bakery.baker import make_recipe

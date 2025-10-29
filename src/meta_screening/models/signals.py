@@ -1,6 +1,6 @@
+from clinicedc_constants import NOT_APPLICABLE, NULL_STRING
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from edc_constants.constants import NOT_APPLICABLE, NULL_STRING
 
 from .proxy_models import ScreeningPartThree
 

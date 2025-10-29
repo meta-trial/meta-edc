@@ -1,8 +1,8 @@
+from clinicedc_constants import COPIES_PER_MILLILITER, NULL_STRING
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from edc_constants.constants import NULL_STRING
 from edc_model.models import OtherCharField
-from edc_reportable import CELLS_PER_MILLIMETER_CUBED_DISPLAY, COPIES_PER_MILLILITER
+from edc_reportable.units import CELLS_PER_MILLIMETER_CUBED_DISPLAY
 
 from meta_lists.models import ArvRegimens
 

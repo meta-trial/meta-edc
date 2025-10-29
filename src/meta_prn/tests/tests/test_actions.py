@@ -1,8 +1,8 @@
+from clinicedc_constants import FEMALE
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, override_settings
 from edc_action_item.models import ActionItem
 from edc_appointment.models import Appointment
-from edc_constants.constants import FEMALE
 from edc_utils import get_utcnow
 from edc_visit_schedule.constants import MONTH1
 from model_bakery.baker import make_recipe

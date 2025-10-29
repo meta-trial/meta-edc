@@ -1,11 +1,19 @@
 from copy import deepcopy
 from random import choices
 
+from clinicedc_constants import (
+    BLACK,
+    FEMALE,
+    MALE,
+    MILLIGRAMS_PER_DECILITER,
+    NO,
+    NOT_APPLICABLE,
+    POS,
+    YES,
+)
 from dateutil.relativedelta import relativedelta
 from django.test import TestCase, override_settings
 from django.utils import timezone
-from edc_constants.constants import BLACK, FEMALE, MALE, NO, NOT_APPLICABLE, POS, YES
-from edc_reportable import MILLIGRAMS_PER_DECILITER
 
 from meta_screening.forms import (
     ScreeningPartOneForm,

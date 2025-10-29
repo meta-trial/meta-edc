@@ -1,11 +1,11 @@
 from textwrap import wrap
 
 import arrow
+from clinicedc_constants import OTHER, YES
 from django import template
 from django.conf import settings
 from django.utils.safestring import mark_safe
 from edc_adverse_event.utils import get_adverse_event_app_label
-from edc_constants.constants import OTHER, YES
 
 register = template.Library()
 

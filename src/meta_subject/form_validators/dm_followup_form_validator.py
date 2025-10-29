@@ -1,6 +1,6 @@
+from clinicedc_constants import NO, OTHER, YES
 from django import forms
 from django.core.exceptions import ObjectDoesNotExist
-from edc_constants.constants import NO, OTHER, YES
 from edc_crf.crf_form_validator import CrfFormValidator
 from edc_form_validators import INVALID_ERROR
 from edc_utils import formatted_date

@@ -2,11 +2,11 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 import time_machine
+from clinicedc_constants import NO, YES
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, override_settings, tag
 from django.utils import timezone
-from edc_constants.constants import NO, YES
 from model_bakery import baker
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin

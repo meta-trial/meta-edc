@@ -1,9 +1,9 @@
 from copy import deepcopy
 
+from clinicedc_constants import COMPLETE, NEVER, NO, YES
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.test import TestCase, override_settings
-from edc_constants.constants import COMPLETE, NEVER, NO, YES
 from model_bakery.baker import make_recipe
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin

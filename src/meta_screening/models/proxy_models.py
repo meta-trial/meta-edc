@@ -1,4 +1,4 @@
-from edc_constants.constants import NO, TBD, YES
+from clinicedc_constants import NO, TBD, YES
 
 from meta_consent.consents import consent_v1
 

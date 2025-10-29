@@ -1,9 +1,9 @@
+from clinicedc_constants import GRADE3, GRADE4, HIGH_PRIORITY, NEW, NONE, POS, YES
 from django.apps import apps as django_apps
 from edc_action_item.action import Action
 from edc_action_item.action_with_notification import ActionWithNotification
 from edc_action_item.site_action_items import AlreadyRegistered, site_action_items
 from edc_adverse_event.constants import AE_INITIAL_ACTION
-from edc_constants.constants import GRADE3, GRADE4, HIGH_PRIORITY, NEW, NONE, POS, YES
 from edc_egfr.constants import EGFR_DROP_NOTIFICATION_ACTION
 from edc_lab_results.action_items import (
     BloodResultsFbcAction,

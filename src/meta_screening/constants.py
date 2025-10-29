@@ -1,4 +1,4 @@
-from edc_constants.constants import NO, NOT_APPLICABLE, YES
+from clinicedc_constants import NO, NOT_APPLICABLE, YES
 
 BMI_FBG_OGTT_INCOMPLETE = "BMI/FBG/OGTT incomplete"
 BMI_FBG_OGTT = "BMI/FBG/OGTT"

@@ -1,6 +1,6 @@
+from clinicedc_constants import QUESTION_RETIRED
 from django.db import models
 from edc_constants.choices import YES_NO, YES_NO_RETIRED
-from edc_constants.constants import QUESTION_RETIRED
 from edc_model.models import BaseUuidModel
 from edc_model_fields.fields import OtherCharField
 

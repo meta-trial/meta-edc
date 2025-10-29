@@ -1,7 +1,7 @@
+from clinicedc_constants import NO, NOT_APPLICABLE, PENDING, TBD, YES
 from django.contrib import admin
 from django.db.models import Q
 from edc_appointment.admin import AppointmentListFilter
-from edc_constants.constants import NO, NOT_APPLICABLE, PENDING, TBD, YES
 
 from ..constants import PENDING_REPEAT
 

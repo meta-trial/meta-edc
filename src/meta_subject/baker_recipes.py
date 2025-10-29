@@ -1,5 +1,5 @@
+from clinicedc_constants import NO, NOT_APPLICABLE, NULL_STRING, PATIENT, POS, YES
 from django.utils import timezone
-from edc_constants.constants import NO, NOT_APPLICABLE, NULL_STRING, PATIENT, POS, YES
 from edc_visit_tracking.constants import SCHEDULED
 from faker import Faker
 from model_bakery.recipe import Recipe

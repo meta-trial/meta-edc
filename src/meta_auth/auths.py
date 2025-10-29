@@ -1,5 +1,4 @@
 from edc_action_item.auth_objects import ACTION_ITEM, ACTION_ITEM_EXPORT
-from edc_adverse_event.constants import TMG_ROLE
 from edc_appointment.auth_objects import APPOINTMENT_EXPORT
 from edc_auth.constants import (
     AUDITOR,
@@ -10,6 +9,7 @@ from edc_auth.constants import (
     CLINICIAN_SUPER_ROLE,
     NURSE_ROLE,
     PII,
+    TMG_ROLE,
 )
 from edc_auth.site_auths import site_auths
 from edc_data_manager.auth_objects import DATA_MANAGER_EXPORT, DATA_MANAGER_ROLE

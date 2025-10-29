@@ -1,7 +1,7 @@
+from clinicedc_constants import FEMALE, NEW, PATIENT, YES
 from django.test import TestCase, override_settings
 from django.utils import timezone
 from edc_action_item.models import ActionItem
-from edc_constants.constants import FEMALE, NEW, PATIENT, YES
 from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_pharmacy.models import Medication
 from edc_transfer.constants import SUBJECT_TRANSFER_ACTION, TRANSFERRED

@@ -1,8 +1,8 @@
 from textwrap import fill
 
 import inflect
+from clinicedc_constants import OTHER, TUBERCULOSIS
 from django.contrib.auth import get_user_model
-from edc_constants.constants import OTHER, TUBERCULOSIS
 from reportlab.lib import colors
 from reportlab.lib.units import cm
 from reportlab.platypus.flowables import Spacer

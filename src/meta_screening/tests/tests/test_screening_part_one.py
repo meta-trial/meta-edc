@@ -1,8 +1,8 @@
 from copy import deepcopy
 
+from clinicedc_constants import FEMALE, NO, NULL_STRING, TBD, YES
 from django.db.utils import IntegrityError
 from django.test import TestCase, override_settings
-from edc_constants.constants import FEMALE, NO, NULL_STRING, TBD, YES
 
 from meta_edc.meta_version import PHASE_THREE, get_meta_version
 from meta_screening.eligibility import EligibilityPartOne
