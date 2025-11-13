@@ -52,7 +52,16 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
         how="left",
     )
 
-    df_glucose = read_frame(Glucose.objects.all(), verbose=False).rename(
+    if subject_identifiers:
+        df_glucose = read_frame(
+            Glucose.objects.filter(subject_visit__subject_identifier__in=subject_identifiers),
+            verbose=False,
+        ).rename(columns={"subject_visit": "subject_visit_id", "fasting": "fasted"})
+    else:
+        df_glucose = read_frame(Glucose.objects.all(), verbose=False).rename(
+            columns={"subject_visit": "subject_visit_id", "fasting": "fasted"}
+        )
+    df_glucose = df_glucose.rename(
         columns={"subject_visit": "subject_visit_id", "fasting": "fasted"}
     )
     df_glucose["fasting_hrs"] = np.nan

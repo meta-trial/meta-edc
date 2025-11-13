@@ -8,7 +8,6 @@ from django.utils.safestring import mark_safe
 from edc_model_admin.dashboard import ModelAdminDashboardMixin
 from edc_model_admin.list_filters import PastDateListFilter
 from edc_model_admin.mixins import TemplatesModelAdminMixin
-from edc_pdutils.actions import export_to_csv
 from edc_qareports.modeladmin_mixins import QaReportModelAdminMixin
 from edc_sites.admin import SiteModelAdminMixin
 from edc_sites.admin.list_filters import SiteListFilter
@@ -87,7 +86,7 @@ class LastImpRefillAdmin(
         render_to_string("meta_reports/last_imp_refill/changelist_note.html")
     )  # nosec B308, B703
 
-    actions = (update_report, export_to_csv)
+    actions = (update_report,)
 
     list_display = (
         "dashboard",
