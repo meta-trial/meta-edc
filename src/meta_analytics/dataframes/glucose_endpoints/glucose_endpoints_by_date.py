@@ -6,7 +6,7 @@ from django.utils import timezone
 
 from ..constants import (
     CASE_EOS,
-    CASE_FBG_ONLY,
+    CASE_FBG_VERY_HIGH,
     CASE_FBGS_WITH_FIRST_OGTT,
     CASE_FBGS_WITH_SECOND_OGTT,
     CASE_OGTT,
@@ -76,6 +76,7 @@ class GlucoseEndpointsByDate:
             CASE_OGTT,
             CASE_FBGS_WITH_FIRST_OGTT,
             CASE_FBGS_WITH_SECOND_OGTT,
+            CASE_FBG_VERY_HIGH,
             CASE_EOS,
         ]
         self.endpoint_cases = {k: v for k, v in endpoint_cases.items() if k in self.case_list}
@@ -96,7 +97,7 @@ class GlucoseEndpointsByDate:
 
     def run(self):
         self.process_by_ogtt_only()
-        # self.process_by_fbg_only()
+        self.process_by_fbg_only()
         subject_identifiers_df = get_unique_subject_identifiers(self.df)
         for _, row in subject_identifiers_df.iterrows():
             subject_df = self.endpoint_cls(
@@ -111,10 +112,7 @@ class GlucoseEndpointsByDate:
         self.merge_with_final_endpoints()
 
     def process_by_fbg_only(self):
-        """Flag subjects that met endpoint by hitting the absurd FBG
-
-        Not used yet. Waiting for confirmation from Anu.
-        """
+        """Flag subjects that meta endpoint by hitting the absurd FBG"""
         subject_endpoint_df = self.working_df.loc[
             (self.working_df["fbg_value"] >= self.fbg_beyond_threshold)
             # & (self.working_df["fasted"] == YES)
@@ -129,8 +127,8 @@ class GlucoseEndpointsByDate:
         if not subject_endpoint_df.empty:
             # flag the selected endpoint rows as endpoints
             subject_endpoint_df["endpoint"] = 1
-            subject_endpoint_df["endpoint_label"] = self.endpoint_cases[CASE_OGTT]
-            subject_endpoint_df["endpoint_type"] = CASE_FBG_ONLY
+            subject_endpoint_df["endpoint_label"] = self.endpoint_cases[CASE_FBG_VERY_HIGH]
+            subject_endpoint_df["endpoint_type"] = CASE_FBG_VERY_HIGH
             subject_endpoint_df["interval_in_days"] = np.nan
 
             # add back the others rows for these subjects
@@ -356,14 +354,19 @@ class GlucoseEndpointsByDate:
         model_cls = django_apps.get_model(model)
         if self.subject_identifiers:
             model_cls.objects.filter(subject_identifier__in=self.subject_identifiers).delete()
-            df = (
-                self.endpoint_only_df[
-                    self.endpoint_only_df["subject_identifier"].isin(self.subject_identifiers)
-                ]
-                .copy()
-                .sort_values(by=["subject_identifier"])
-                .reset_index(drop=True)
-            )
+            if self.endpoint_only_df.empty:
+                df = pd.DataFrame()
+            else:
+                df = (
+                    self.endpoint_only_df[
+                        self.endpoint_only_df["subject_identifier"].isin(
+                            self.subject_identifiers
+                        )
+                    ]
+                    .copy()
+                    .sort_values(by=["subject_identifier"])
+                    .reset_index(drop=True)
+                )
         else:
             model_cls.objects.all().delete()
         created = 0
