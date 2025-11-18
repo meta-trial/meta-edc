@@ -69,6 +69,7 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         "fasting": admin.VERTICAL,
         "fbg_units": admin.VERTICAL,
         "fbg_performed": admin.VERTICAL,
+        "endpoint_today": admin.VERTICAL,
     }
 
     @admin.display(description="FBG", ordering="fbg_value")
