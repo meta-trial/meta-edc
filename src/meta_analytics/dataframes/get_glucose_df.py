@@ -52,6 +52,9 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
         how="left",
     )
 
+    for col in [c for c in df_glucose_fbg.columns if "datetime" in c]:
+        df_glucose_fbg[col] = pd.to_datetime(df_glucose_fbg[col])
+
     if subject_identifiers:
         df_glucose = read_frame(
             Glucose.objects.filter(subject_visit__subject_identifier__in=subject_identifiers),
@@ -69,6 +72,9 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
         lambda x: x.total_seconds() / 3600
     )
     df_glucose["source"] = "meta_subject.glucose"
+
+    for col in [c for c in df_glucose.columns if "datetime" in c]:
+        df_glucose[col] = pd.to_datetime(df_glucose[col])
 
     df_glucose = subject_visit_df[
         [
@@ -108,7 +114,6 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
         df_glucose_fbg[keep_cols],
         on="subject_visit_id",
         how="outer",
-        # indicator=True,
         suffixes=("", "_2"),
     )
 
@@ -129,7 +134,7 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
 
     # reconcile all to single column
     for col in ["fasted", "fbg_value", "ogtt_value", "fbg_datetime", "ogtt_datetime"]:
-        df.loc[(df[col].isna()) & (df[f"{col}_2"].notna()), col] = df[f"{col}_2"]
+        df[col] = df[col].fillna(df[f"{col}_2"])
 
     df_consent = get_subject_consent("meta_consent.subjectconsent")
     df_eos = get_eos("meta_prn.endofstudy")
