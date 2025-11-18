@@ -11,9 +11,7 @@ from edc_utils import age
 from edc_visit_schedule.utils import is_baseline
 from edc_vitals.form_validators import BmiFormValidatorMixin
 
-from meta_visit_schedule.constants import DAY1
-
-from ...models import BloodResultsRft, FollowupVitals, PhysicalExam, SubjectVisit
+from ...models import BloodResultsRft, FollowupVitals, PhysicalExam
 
 
 class BloodResultsRftFormValidator(
@@ -30,28 +28,13 @@ class BloodResultsRftFormValidator(
         if self.cleaned_data.get("creatinine_value") and self.cleaned_data.get(
             "creatinine_units"
         ):
-            if is_baseline(self.related_visit):
-                baseline_egfr_value = None
-            else:
-                baseline_visit = SubjectVisit.objects.get(
-                    subject_identifier=self.related_visit.subject_identifier,
-                    visit_code=DAY1,
-                    visit_code_sequence=0,
-                )
-                baseline_egfr_value = BloodResultsRft.objects.get(
-                    subject_visit=baseline_visit
-                ).egfr_value
             rs = RegisteredSubject.objects.get(
                 subject_identifier=self.related_visit.subject_identifier
             )
             age_in_years = age(rs.dob, self.report_datetime).years
 
             self.validate_egfr(
-                gender=rs.gender,
-                age_in_years=age_in_years,
-                ethnicity=rs.ethnicity,
-                weight_in_kgs=self.get_weight_in_kgs(),
-                baseline_egfr_value=baseline_egfr_value,
+                gender=rs.gender, age_in_years=age_in_years, ethnicity=rs.ethnicity
             )
 
     def get_weight_in_kgs(self) -> float | None:
