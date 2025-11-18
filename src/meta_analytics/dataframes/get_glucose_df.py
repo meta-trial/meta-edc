@@ -6,6 +6,8 @@ from edc_pdutils.dataframes import get_eos, get_subject_consent, get_subject_vis
 
 from meta_subject.models import Glucose, GlucoseFbg
 
+pd.set_option("future.no_silent_downcasting", True)
+
 
 def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame:
     subject_visit_df = (
@@ -132,6 +134,13 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
             f"ogtt_units{suffix}",
         ] = "mmol/L (millimoles/L)"
 
+    for col in [c for c in df.columns if "datetime" in c]:
+        df[col] = pd.to_datetime(df[col])
+
+    df[[col for col in df.columns if "datetime" in col]] = df[
+        [col for col in df.columns if "datetime" in col]
+    ].apply(lambda x: x.dt.tz_localize(None) if x.dtype == "datetime64[ns, UTC]" else x)
+
     # reconcile all to single column
     for col in ["fasted", "fbg_value", "ogtt_value", "fbg_datetime", "ogtt_datetime"]:
         df[col] = df[col].fillna(df[f"{col}_2"])
@@ -147,10 +156,6 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
         on="subject_identifier",
         how="left",
     )
-
-    df[[col for col in df.columns if "datetime" in col]] = df[
-        [col for col in df.columns if "datetime" in col]
-    ].apply(lambda x: x.dt.tz_localize(None) if x.dtype == "datetime64[ns, UTC]" else x)
 
     df["visit_days"] = df["baseline_datetime"].rsub(df["visit_datetime"]).dt.days
     df["fgb_days"] = df["baseline_datetime"].rsub(df["fbg_datetime"]).dt.days
