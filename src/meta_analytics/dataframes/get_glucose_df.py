@@ -114,7 +114,6 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
         df_glucose_fbg[keep_cols],
         on="subject_visit_id",
         how="outer",
-        # indicator=True,
         suffixes=("", "_2"),
     )
 
