@@ -1,6 +1,6 @@
 [project]
 name = "meta-edc"
-version = "1.4.1"
+version = "1.5.0"
 description = "META Trial EDC (https://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 keywords = [
@@ -30,12 +30,13 @@ license = "GPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
 requires-python = '>=3.12,<3.14'
 dependencies = [
-    "clinicedc>=2.2.2",
+    "clinicedc==2.2.5",
     "edc-he>=1.5.2",
     "edc-microscopy>=1.4.2",
     "edc-mnsi>=1.4.0",
     "edc-phq9>=1.3.1",
     "edc-qol>=1.4.0",
+    "notebook>=7.4.7",
 ]
 
 [build-system]
@@ -154,28 +155,29 @@ docs = [
     "sphinx-design>=0.6.1",
     "sphinx-inline-tabs>=2023.4.21",
 ]
-notebook = [
-    "notebook>=7.4.7",
+dev = [
+    "clinicedc-tests>=1.1.0",
+    "clinicedc-utils>=0.4.0",
     "dj-notebook>=0.7.0",
+    "django-webtest>=1.9.14",
+    "edc-test-settings>=2.0.0",
     "great-tables>=0.18.0",
-    "matplotlib>=3.10.3",
+    "ipython>=9.7.0",
     "matplotlib-venn>=1.1.2",
+    "matplotlib>=3.10.3",
+    "notebook>=7.4.7",
     "numpy>=2.3.2",
     "pandas>=2.3.1",
     "pdfkit>=1.0.0",
+    "remote-read-sql>=1.2.3",
     "scikit-learn>=1.7.1",
     "scipy>=1.16.0",
     "seaborn>=0.13.2",
     "selenium>=4.34.2",
     "statsmodels>=0.14.5",
     "tabulate>=0.9.0",
-    "remote-read-sql>=1.2.3",
-    "clinicedc-utils>=0.4.0",
-]
-dev = [
-    "clinicedc-tests>=1.0.0",
-    "django-webtest>=1.9.14",
-    "ipython>=9.7.0",
+    "tox>=4.32.0",
+    "tox-uv>=1.29.0",
 ]
 
 [tool.uv.sources]
