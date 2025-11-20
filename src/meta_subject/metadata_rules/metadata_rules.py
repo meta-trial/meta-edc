@@ -174,3 +174,17 @@ class NextAppointmentRuleGroup(CrfRuleGroup):
     class Meta:
         app_label = "meta_subject"
         source_model = "meta_subject.subjectvisit"
+
+
+@register()
+class HivExitReviewRuleGroup(CrfRuleGroup):
+    hiv_exit_review = CrfRule(
+        predicate=pc.hiv_exit_review_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["hivexitreview"],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"

@@ -282,3 +282,6 @@ class Predicates(PersistantSingletonMixin):
             if obj.offschedule_today == YES:
                 return True
         return False
+
+    def hiv_exit_review_required(self, visit, **kwargs) -> bool:  # noqa: ARG002
+        return self.offschedule_today(visit) or visit.visit_code in [MONTH48]
