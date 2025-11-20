@@ -82,21 +82,6 @@ def subject_consent_on_post_save(sender, instance, raw, created, **kwargs):  # n
                 )
 
 
-# @receiver(
-#     post_save,
-#     weak=False,
-#     sender=SubjectConsentV1Ext,
-#     dispatch_uid="subject_consent_v1_ext_on_post_save",
-# )
-# def subject_consent_v1_ext_on_post_save(sender, instance, raw, created, **kwargs):
-#     if not raw:
-#         refresh_appointments(
-#             subject_identifier=instance.subject_identifier,
-#             visit_schedule_name=VISIT_SCHEDULE,
-#             schedule_name=SCHEDULE,
-#         )
-
-
 @receiver(
     post_delete,
     weak=False,
