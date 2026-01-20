@@ -347,3 +347,5 @@ crfs_48m = CrfCollection(
     Crf(show_order=600, model="meta_subject.nextappointment", required=False),
     name="48m",
 )
+
+crfs_endline = CrfCollection(Crf(show_order=200, model="meta_subject.glucose"))

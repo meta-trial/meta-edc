@@ -30,6 +30,7 @@ license = "GPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
 requires-python = '>=3.12,<3.14'
 dependencies = [
+    "celery>=5.6.2",
     "clinicedc==2.2.7",
     "edc-he>=1.5.2",
     "edc-microscopy>=1.4.2",
@@ -72,7 +73,7 @@ namespace = false
 [tool.ruff]
 line-length = 95
 indent-width = 4
-target-version = "py312"
+target-version = "py313"
 extend-exclude = [
     "migrations",
     ".tox",
@@ -117,7 +118,7 @@ select = [
 ignore = ["DJ008", "DJ007", "DJ006", "COM812", "PLC0206", "PLR2004", "TRY003"]
 
 [tool.ruff.lint.per-file-ignores]
-    "__init__.py" = ["F401"]
+"__init__.py" = ["F401"]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 12
@@ -139,7 +140,10 @@ source = ["meta_edc"]
 [tool.coverage.report]
 show_missing = true
 skip_covered = true
-omit = ["*.txt", "*/migrations/*"]
+omit = [
+    "*.txt",
+    "*/migrations/*",
+]
 exclude_lines = [
     "pragma: no cover",
     "if TYPE_CHECKING:",
@@ -170,14 +174,16 @@ dev = [
     "pandas>=2.3.1",
     "pdfkit>=1.0.0",
     "remote-read-sql>=1.2.3",
+    "ruff>=0.14.10",
     "scikit-learn>=1.7.1",
+    "scipy-stubs~=1.16.3",
     "scipy>=1.16.0",
     "seaborn>=0.13.2",
     "selenium>=4.34.2",
     "statsmodels>=0.14.5",
     "tabulate>=0.9.0",
-    "tox>=4.32.0",
     "tox-uv>=1.29.0",
+    "tox>=4.32.0",
 ]
 
 [tool.uv.sources]
