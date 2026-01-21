@@ -32,7 +32,7 @@ license-files = ["LICEN[CS]E*"]
 requires-python = '>=3.12,<3.14'
 dependencies = [
     "celery>=5.6.2",
-    "clinicedc==2.3.1",
+    "clinicedc==2.3.2",
     "edc-he>=1.5.2",
     "edc-microscopy>=1.4.2",
     "edc-mnsi>=1.4.0",

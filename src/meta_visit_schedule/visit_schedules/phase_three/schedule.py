@@ -24,7 +24,6 @@ from ...constants import (
     MONTH42,
     MONTH45,
     MONTH48,
-    MONTH_ENDLINE,
     SCHEDULE,
     WEEK2,
 )
@@ -47,7 +46,6 @@ from .crfs import (
     crfs_45m,
     crfs_48m,
     crfs_d1,
-    crfs_endline,
     crfs_missed,
     crfs_w2,
 )
@@ -289,6 +287,7 @@ visit36 = Visit(
     rbase=relativedelta(months=36),
     rlower=relativedelta(months=1),
     rupper=relativedelta(months=2),
+    rupper_extended=relativedelta(months=24),
     requisitions=requisitions_36m,
     crfs=crfs_36m,
     facility_name=FIVE_DAY_CLINIC,
@@ -337,20 +336,9 @@ visit48 = Visit(
     rbase=relativedelta(months=48),
     rlower=relativedelta(months=1),
     rupper=relativedelta(months=3),
+    rupper_extended=relativedelta(months=24),
     requisitions=requisitions_48m,
     crfs=crfs_48m,
-    facility_name=FIVE_DAY_CLINIC,
-)
-
-visit_endline = Visit(
-    code=MONTH_ENDLINE,
-    title="Endline/Closeout",
-    timepoint=19,
-    rbase=relativedelta(months=55),
-    rlower=relativedelta(months=1),
-    rupper=relativedelta(months=3),
-    requisitions=None,
-    crfs=crfs_endline,
     facility_name=FIVE_DAY_CLINIC,
 )
 
@@ -374,7 +362,6 @@ visits = [
     visit42,
     visit45,
     visit48,
-    visit_endline,
 ]
 for visit in visits:
     schedule.add_visit(visit=visit)
