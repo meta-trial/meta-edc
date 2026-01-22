@@ -145,6 +145,9 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
     for col in ["fasted", "fbg_value", "ogtt_value", "fbg_datetime", "ogtt_datetime"]:
         df[col] = df[col].fillna(df[f"{col}_2"])
 
+    for col in [c for c in df.columns if "datetime" in c]:
+        df[col] = pd.to_datetime(df[col], errors="coerce")
+
     df_consent = get_subject_consent("meta_consent.subjectconsent")
     df_eos = get_eos("meta_prn.endofstudy")
     df = df.merge(
@@ -156,7 +159,6 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
         on="subject_identifier",
         how="left",
     )
-
     df["visit_days"] = df["baseline_datetime"].rsub(df["visit_datetime"]).dt.days
     df["fgb_days"] = df["baseline_datetime"].rsub(df["fbg_datetime"]).dt.days
     df["ogtt_days"] = df["baseline_datetime"].rsub(df["ogtt_datetime"]).dt.days

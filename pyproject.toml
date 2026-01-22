@@ -1,6 +1,6 @@
 [project]
 name = "meta-edc"
-version = "1.6.2"
+version = "1.6.3"
 description = "META Trial EDC (https://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 keywords = [
@@ -31,6 +31,7 @@ license = "GPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
 requires-python = '>=3.12,<3.14'
 dependencies = [
+    "django==5.2.10",
     "celery>=5.6.2",
     "clinicedc==2.3.4",
     "edc-he>=1.5.2",
