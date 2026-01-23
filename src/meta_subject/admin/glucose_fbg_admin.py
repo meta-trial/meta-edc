@@ -84,6 +84,7 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     def get_list_display(self, request) -> tuple[str, ...]:
         list_display = super().get_list_display(request)
         list_display = list(list_display)
+        list_display.insert(3, "fbg_diagnostic_device")
         list_display.insert(3, "fbg")
         list_display = [f for f in list_display if f != "__str__"]
         return tuple(list_display)
