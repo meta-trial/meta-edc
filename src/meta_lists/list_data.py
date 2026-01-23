@@ -240,4 +240,9 @@ list_data = {
     "edc_facility.healthfacilitytypes": [
         (CLINIC, "META Study Clinic"),
     ],
+    "meta_lists.diagnosticdevices": [
+        ("hemocue", "Hemocue"),
+        ("accuchek", "Accu-Chek"),
+        (OTHER, "Other not listed"),
+    ],
 }

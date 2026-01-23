@@ -38,6 +38,7 @@ class GlucoseAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
                     "fbg_datetime",
                     "fbg_value",
                     "fbg_units",
+                    "diagnostic_device",
                 )
             },
         ),
@@ -77,18 +78,29 @@ class GlucoseAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         "ogtt_performed": admin.VERTICAL,
         "ogtt_units": admin.VERTICAL,
         "endpoint_today": admin.VERTICAL,
+        "diagnostic_device": admin.VERTICAL,
     }
 
     def get_list_display(self, request) -> tuple[str, ...]:
         list_display = super().get_list_display(request)
         list_display = list(list_display)
-        list_display.insert(3, "ogtt_value")
+        list_display.insert(3, "ogtt")
         list_display.insert(3, "fbg_value")
+        list_display = [f for f in list_display if f != "__str__"]
         return tuple(list_display)
 
     def get_list_filter(self, request) -> tuple[str | type[SimpleListFilter], ...]:
         list_filter = super().get_list_filter(request)
         list_filter = list(list_filter)
+        list_filter.insert(2, "diagnostic_device")
         list_filter.insert(2, OgttListFilter)
         list_filter.insert(2, FbgListFilter)
         return tuple(list_filter)
+
+    @admin.display(description="FBG", ordering="fbg_value")
+    def fbg(self, obj):
+        return obj.fbg_value
+
+    @admin.display(description="OGTT", ordering="ogtt_value")
+    def ogtt(self, obj):
+        return obj.ogtt_value

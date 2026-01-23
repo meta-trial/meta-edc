@@ -7,6 +7,7 @@ from .models import (
     BaselineSymptoms,
     Complications,
     DiabetesSymptoms,
+    DiagnosticDevices,
     DmMedications,
     DmTreatments,
     HealthcareWorkers,
@@ -81,4 +82,9 @@ class InvestigationsAdmin(ListModelAdminMixin, admin.ModelAdmin):
 
 @admin.register(HealthcareWorkers, site=meta_lists_admin)
 class HealthcareWorkersAdmin(ListModelAdminMixin, admin.ModelAdmin):
+    pass
+
+
+@admin.register(DiagnosticDevices, site=meta_lists_admin)
+class DiagnosticDevicesAdmin(ListModelAdminMixin, admin.ModelAdmin):
     pass
