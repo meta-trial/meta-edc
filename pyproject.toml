@@ -1,6 +1,6 @@
 [project]
 name = "meta-edc"
-version = "1.6.5"
+version = "1.6.6"
 description = "META Trial EDC (https://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 keywords = [
