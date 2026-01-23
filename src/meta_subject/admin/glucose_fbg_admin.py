@@ -38,6 +38,7 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
                     "fbg_datetime",
                     "fbg_value",
                     "fbg_units",
+                    "diagnostic_device",
                 )
             },
         ),
@@ -70,6 +71,7 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         "fbg_units": admin.VERTICAL,
         "fbg_performed": admin.VERTICAL,
         "endpoint_today": admin.VERTICAL,
+        "diagnostic_device": admin.VERTICAL,
     }
 
     @admin.display(description="FBG", ordering="fbg_value")
@@ -79,8 +81,8 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     def get_list_display(self, request) -> tuple[str, ...]:
         list_display = super().get_list_display(request)
         list_display = list(list_display)
-        # list_display.insert(3, "ogtt")
         list_display.insert(3, "fbg")
+        list_display = [f for f in list_display if f != "__str__"]
         return tuple(list_display)
 
     def get_list_filter(self, request) -> tuple[str | type[SimpleListFilter], ...]:

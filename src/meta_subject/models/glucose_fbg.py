@@ -1,4 +1,4 @@
-from clinicedc_constants import NO, NOT_APPLICABLE
+from clinicedc_constants import NO, NOT_APPLICABLE, OTHER
 from django.db import models
 from edc_constants.choices import YES_NO
 from edc_glucose.model_mixin_factories import (
@@ -7,6 +7,8 @@ from edc_glucose.model_mixin_factories import (
 )
 from edc_model.models import BaseUuidModel
 from edc_utils import formatted_date
+
+from meta_lists.models import DiagnosticDevices
 
 from ..choices import ENDPOINT_CHOICES
 from ..constants import AMENDMENT_DATE
@@ -67,6 +69,14 @@ class GlucoseFbg(
         null=True,
         blank=True,
         help_text="Date should be within 1 week of report date",
+    )
+
+    diagnostic_device = models.ForeignKey(
+        DiagnosticDevices,
+        on_delete=models.PROTECT,
+        null=True,
+        blank=False,
+        limit_choices_to={"name__in": ["accuchek", "hemocue", OTHER]},
     )
 
     class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):

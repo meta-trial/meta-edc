@@ -101,3 +101,9 @@ class MissedReferralReasons(ListModelMixin):
     class Meta(ListModelMixin.Meta):
         verbose_name = "Missed Referral Reasons"
         verbose_name_plural = "Missed Referral Reasons"
+
+
+class DiagnosticDevices(ListModelMixin):
+    class Meta(ListModelMixin.Meta):
+        verbose_name = "Diagnostic device"
+        verbose_name_plural = "Diagnostic devices"
