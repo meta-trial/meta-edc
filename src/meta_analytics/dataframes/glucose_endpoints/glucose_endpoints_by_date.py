@@ -371,8 +371,14 @@ class GlucoseEndpointsByDate:
             model_cls.objects.all().delete()
         created = 0
         if not df.empty:
-            df["fbg_datetime"] = df["fbg_datetime"].dt.tz_localize("UTC")
-            df["baseline_datetime"] = df["baseline_datetime"].dt.tz_localize("UTC")
+            if not df["fbg_datetime"].dt.tz:
+                df["fbg_datetime"] = df["fbg_datetime"].dt.tz_localize("UTC")
+            else:
+                df["fbg_datetime"] = df["fbg_datetime"].dt.tz_convert("UTC")
+            if not df["baseline_datetime"].dt.tz:
+                df["baseline_datetime"] = df["baseline_datetime"].dt.tz_localize("UTC")
+            else:
+                df["baseline_datetime"] = df["baseline_datetime"].dt.tz_convert("UTC")
             data = [
                 model_cls(
                     subject_identifier=row["subject_identifier"],

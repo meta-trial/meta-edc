@@ -84,7 +84,7 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     def get_list_display(self, request) -> tuple[str, ...]:
         list_display = super().get_list_display(request)
         list_display = list(list_display)
-        list_display.insert(3, "fbg_diagnostic_device")
+        list_display.insert(3, "fbg_dx_device")
         list_display.insert(3, "fbg")
         list_display = [f for f in list_display if f != "__str__"]
         return tuple(list_display)
@@ -92,6 +92,7 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     def get_list_filter(self, request) -> tuple[str | type[SimpleListFilter], ...]:
         list_filter = super().get_list_filter(request)
         list_filter = list(list_filter)
+        list_filter.insert(2, "fbg_diagnostic_device")
         list_filter.insert(2, GlucoseListFilter)
         return tuple(list_filter)
 
@@ -104,3 +105,9 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         else:
             initial_data["fbg_diagnostic_device"] = obj.id
         return initial_data
+
+    @admin.display(description="Device", ordering="fbg_diagnostic_device")
+    def fbg_dx_device(self, obj=None):
+        if obj:
+            return obj.fbg_diagnostic_device
+        return None
