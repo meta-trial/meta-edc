@@ -9,6 +9,7 @@ from edc_glucose.model_mixin_factories import (
 from edc_model.models import BaseUuidModel
 from edc_utils import formatted_date
 
+from meta_lists.constants import ACCUCHEK, HEMACUE
 from meta_lists.models import DiagnosticDevices
 
 from ..choices import ENDPOINT_CHOICES
@@ -48,12 +49,13 @@ class Glucose(
         verbose_name="If NO, provide reason", max_length=150, default="", blank=True
     )
 
-    diagnostic_device = models.ForeignKey(
+    fbg_diagnostic_device = models.ForeignKey(
         DiagnosticDevices,
         on_delete=models.PROTECT,
         null=True,
         blank=False,
-        limit_choices_to={"name__in": ["accuchek", "hemocue", OTHER]},
+        limit_choices_to={"name__in": [ACCUCHEK, HEMACUE, OTHER, NOT_APPLICABLE]},
+        related_name="fbg_diagnostic_device",
     )
 
     ogtt_performed = models.CharField(
@@ -64,6 +66,15 @@ class Glucose(
 
     ogtt_not_performed_reason = models.CharField(
         verbose_name="If NO, provide reason", max_length=150, default="", blank=True
+    )
+
+    ogtt_diagnostic_device = models.ForeignKey(
+        DiagnosticDevices,
+        on_delete=models.PROTECT,
+        null=True,
+        blank=False,
+        limit_choices_to={"name__in": [ACCUCHEK, HEMACUE, OTHER, NOT_APPLICABLE]},
+        related_name="ogtt_diagnostic_device",
     )
 
     endpoint_today = models.CharField(

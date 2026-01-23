@@ -7,6 +7,9 @@ from django_audit_fields import audit_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
 from edc_model_admin.history import SimpleHistoryAdmin
 
+from meta_lists.constants import HEMACUE
+from meta_lists.models import DiagnosticDevices
+
 from ..admin_site import meta_subject_admin
 from ..forms import GlucoseFbgForm
 from ..models import GlucoseFbg
@@ -36,9 +39,9 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
                     "fbg_performed",
                     "fbg_not_performed_reason",
                     "fbg_datetime",
+                    "fbg_diagnostic_device",
                     "fbg_value",
                     "fbg_units",
-                    "diagnostic_device",
                 )
             },
         ),
@@ -71,7 +74,7 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         "fbg_units": admin.VERTICAL,
         "fbg_performed": admin.VERTICAL,
         "endpoint_today": admin.VERTICAL,
-        "diagnostic_device": admin.VERTICAL,
+        "fbg_diagnostic_device": admin.VERTICAL,
     }
 
     @admin.display(description="FBG", ordering="fbg_value")
@@ -90,3 +93,13 @@ class GlucoseFbgAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
         list_filter = list(list_filter)
         list_filter.insert(2, GlucoseListFilter)
         return tuple(list_filter)
+
+    def get_changeform_initial_data(self, request) -> dict:
+        initial_data = super().get_changeform_initial_data(request)
+        try:
+            obj = DiagnosticDevices.objects.get(name=HEMACUE)
+        except DiagnosticDevices.DoesNotExist:
+            pass
+        else:
+            initial_data["fbg_diagnostic_device"] = obj.id
+        return initial_data

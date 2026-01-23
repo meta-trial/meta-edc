@@ -25,13 +25,21 @@ class GlucoseFbgFormValidator(
                 {"fbg_datetime": "Invalid. Must be on or after report date above"},
                 INVALID_ERROR,
             )
+        self.applicable_if(
+            YES, field="fbg_performed", field_applicable="fbg_diagnostic_device"
+        )
         self.required_if(YES, field="fbg_performed", field_required="fbg_value")
 
         self.applicable_if(YES, field="fbg_performed", field_applicable="fbg_units")
 
         # endpoint
-        self.applicable_if(YES, field="fbg_performed", field_applicable="endpoint_today")
-        self.validate_endpoint_fields()
+        self.applicable_if(
+            YES,
+            field="fbg_performed",
+            field_applicable="endpoint_today",
+            not_applicable_msg="This field is not applicable. Not performed",
+        )
+        self.validate_endpoint_fields(performed=self.cleaned_data.get("fbg_value") is not None)
 
         # repeat_fbg_date
         self.required_if(PENDING, field="endpoint_today", field_required="repeat_fbg_date")

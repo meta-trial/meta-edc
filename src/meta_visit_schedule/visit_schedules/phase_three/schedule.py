@@ -291,6 +291,7 @@ visit36 = Visit(
     requisitions=requisitions_36m,
     crfs=crfs_36m,
     facility_name=FIVE_DAY_CLINIC,
+    allow_unscheduled_extended=True,
 )
 
 visit39 = Visit(
@@ -340,6 +341,7 @@ visit48 = Visit(
     requisitions=requisitions_48m,
     crfs=crfs_48m,
     facility_name=FIVE_DAY_CLINIC,
+    allow_unscheduled_extended=True,
 )
 
 visits = [

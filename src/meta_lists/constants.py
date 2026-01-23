@@ -1,0 +1,2 @@
+HEMACUE = "hemocue"
+ACCUCHEK = "accuchek"
