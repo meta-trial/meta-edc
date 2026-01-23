@@ -8,6 +8,7 @@ from edc_glucose.model_mixin_factories import (
 from edc_model.models import BaseUuidModel
 from edc_utils import formatted_date
 
+from meta_lists.constants import ACCUCHEK, HEMACUE
 from meta_lists.models import DiagnosticDevices
 
 from ..choices import ENDPOINT_CHOICES
@@ -71,12 +72,12 @@ class GlucoseFbg(
         help_text="Date should be within 1 week of report date",
     )
 
-    diagnostic_device = models.ForeignKey(
+    fbg_diagnostic_device = models.ForeignKey(
         DiagnosticDevices,
         on_delete=models.PROTECT,
         null=True,
         blank=False,
-        limit_choices_to={"name__in": ["accuchek", "hemocue", OTHER]},
+        limit_choices_to={"name__in": [ACCUCHEK, HEMACUE, OTHER, NOT_APPLICABLE]},
     )
 
     class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):

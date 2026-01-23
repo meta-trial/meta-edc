@@ -5,6 +5,7 @@ from clinicedc_constants import (
     DIABETES,
     LTFU,
     NONE,
+    NOT_APPLICABLE,
     OTHER,
     PREGNANCY,
     TOXICITY,
@@ -13,6 +14,7 @@ from clinicedc_constants import (
 from edc_offstudy.constants import COMPLETED_FOLLOWUP, WITHDRAWAL
 from edc_transfer.constants import TRANSFERRED
 
+from meta_lists.constants import ACCUCHEK, HEMACUE
 from meta_prn.constants import (
     CLINICAL_WITHDRAWAL,
     COMPLETED_FOLLOWUP_48,
@@ -241,8 +243,9 @@ list_data = {
         (CLINIC, "META Study Clinic"),
     ],
     "meta_lists.diagnosticdevices": [
-        ("hemocue", "Hemocue"),
-        ("accuchek", "Accu-Chek"),
+        (HEMACUE, "Hemocue"),
+        (ACCUCHEK, "Accu-chek"),
         (OTHER, "Other not listed"),
+        (NOT_APPLICABLE, "Not applicable"),
     ],
 }

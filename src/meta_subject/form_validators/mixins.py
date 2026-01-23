@@ -7,33 +7,34 @@ from meta_reports.models import GlucoseSummary
 
 
 class EndpointValidatorMixin:
-    def validate_endpoint_fields(self):
-        is_endpoint = self.is_endpoint()
-        if is_endpoint == YES and self.cleaned_data.get("endpoint_today") != YES:
-            self.raise_validation_error(
-                {
-                    "endpoint_today": (
-                        "Participant has reached a study endpoint today. Expected YES"
-                    )
-                },
-                INVALID_ERROR,
-            )
-        elif is_endpoint == PENDING and self.cleaned_data.get("endpoint_today") != PENDING:
-            self.raise_validation_error(
-                {
-                    "endpoint_today": (
-                        "Participant has not reached a study endpoint today. "
-                        "Expected to repeat FBG"
-                    )
-                },
-                INVALID_ERROR,
-            )
+    def validate_endpoint_fields(self, performed: bool):
+        if performed:
+            is_endpoint = self.is_endpoint()
+            if is_endpoint == YES and self.cleaned_data.get("endpoint_today") != YES:
+                self.raise_validation_error(
+                    {
+                        "endpoint_today": (
+                            "Participant has reached a study endpoint today. Expected YES"
+                        )
+                    },
+                    INVALID_ERROR,
+                )
+            elif is_endpoint == PENDING and self.cleaned_data.get("endpoint_today") != PENDING:
+                self.raise_validation_error(
+                    {
+                        "endpoint_today": (
+                            "Participant has not reached a study endpoint today. "
+                            "Expected to repeat FBG"
+                        )
+                    },
+                    INVALID_ERROR,
+                )
 
-        elif is_endpoint == NO and self.cleaned_data.get("endpoint_today") != NO:
-            self.raise_validation_error(
-                {"endpoint_today": "Participant has not reached a study endpoint today"},
-                INVALID_ERROR,
-            )
+            elif is_endpoint == NO and self.cleaned_data.get("endpoint_today") != NO:
+                self.raise_validation_error(
+                    {"endpoint_today": "Participant has not reached a study endpoint today"},
+                    INVALID_ERROR,
+                )
 
     def is_endpoint(self):
         value = NO

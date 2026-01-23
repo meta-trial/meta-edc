@@ -62,8 +62,8 @@ Assuming you are logged into the account ``myaccount``:
     mkdir ~/edc && \
     cd ~/edc && \
     uv venv && \
-    uv pip install -U meta-edc==1.6.4 && \
-    wget https://raw.githubusercontent.com/meta-trial/meta-edc/1.6.4/manage.py && \
+    uv pip install -U meta-edc==1.6.5 && \
+    wget https://raw.githubusercontent.com/meta-trial/meta-edc/1.6.5/manage.py && \
     uv pip freeze | grep meta-edc
 
 Copy your ``.env`` file to ``~/.etc``.
@@ -113,7 +113,7 @@ From the above example:
 
     cd ~/edc && \
     uv venv --clear && \
-    uv pip install -U meta-edc==1.6.4 && \
+    uv pip install -U meta-edc==1.6.5 && \
     wget -O manage.py https://raw.githubusercontent.com/meta-trial/meta-edc/1.1.10/manage.py && \
     uv pip freeze | grep meta-edc && \
     python manage.py check
