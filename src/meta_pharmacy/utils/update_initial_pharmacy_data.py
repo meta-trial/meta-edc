@@ -52,7 +52,7 @@ def update_container():
             units=units,
             qty=1,
             may_order_as=True,
-            max_per_subject=0,
+            max_items_per_subject=0,
         ),
         "bottle30k": dict(
             name="bottle30k",
@@ -61,7 +61,7 @@ def update_container():
             units=units,
             qty=30000,
             may_receive_as=True,
-            max_per_subject=0,
+            max_items_per_subject=0,
         ),
         "bottle128": dict(
             name="bottle128",
@@ -69,7 +69,7 @@ def update_container():
             container_type=bottle_type,
             units=units,
             qty=128,
-            max_per_subject=3,
+            max_items_per_subject=3,
             may_repack_as=True,
             may_request_as=True,
             may_dispense_as=True,

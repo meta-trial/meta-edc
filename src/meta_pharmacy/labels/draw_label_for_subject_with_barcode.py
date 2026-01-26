@@ -51,7 +51,7 @@ def draw_label_for_subject_with_barcode(  # noqa: PLR0913
         )
         text_group.add(text_string)
 
-        qty_text = f"{format_qty(obj.container.qty, obj.container)} tabs"
+        qty_text = f"{format_qty(obj.container_unit_qty, obj.container)} tabs"
         text_width = stringWidth(qty_text, "Helvetica", 10)
         text_string = String(width - text_width - 10, height - 95, qty_text, fontSize=10)
         text_group.add(text_string)
