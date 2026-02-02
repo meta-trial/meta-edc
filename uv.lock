@@ -557,7 +557,7 @@ wheels = [
 
 [[package]]
 name = "clinicedc"
-version = "2.4.8"
+version = "2.4.9"
 source = { editable = "../clinicedc" }
 dependencies = [
     { name = "argon2-cffi" },
@@ -2291,7 +2291,7 @@ wheels = [
 
 [[package]]
 name = "meta-edc"
-version = "1.6.16"
+version = "1.6.17"
 source = { editable = "." }
 dependencies = [
     { name = "celery" },
