@@ -558,7 +558,7 @@ wheels = [
 [[package]]
 name = "clinicedc"
 version = "2.4.9"
-source = { registry = "https://pypi.org/simple" }
+source = { editable = "../clinicedc" }
 dependencies = [
     { name = "argon2-cffi" },
     { name = "arrow" },
@@ -602,19 +602,84 @@ dependencies = [
     { name = "tqdm" },
     { name = "twilio" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/9f/10/f65f569bcc4eb860084f9c1337c8b27fed4dfb318c1e1a9ad97712a6ff28/clinicedc-2.4.9.tar.gz", hash = "sha256:909e6daa04ced45e6e92c480cd51304330e72c5311e8ff8db4b0e0b594f7e596", size = 1267384, upload-time = "2026-02-02T14:07:21.285Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/11/a9/d290b226580bee079e59fad538ee6861363f73a562171b4b0d2e0472835e/clinicedc-2.4.9-py3-none-any.whl", hash = "sha256:e5ef8893f3ff45617d414f3c78b002914066d60f700386cff0eb4ac4bc8c0d30", size = 2640595, upload-time = "2026-02-02T14:07:19.523Z" },
+
+[package.metadata]
+requires-dist = [
+    { name = "argon2-cffi", specifier = ">=25.1.0" },
+    { name = "arrow", specifier = ">=1.3.0" },
+    { name = "beautifulsoup4", specifier = ">=4.13.5" },
+    { name = "boto3", specifier = ">=1.39.16" },
+    { name = "celery", specifier = ">=5.5.3" },
+    { name = "clinicedc-constants", editable = "../clinicedc-constants" },
+    { name = "clinicedc-utils", editable = "../clinicedc-utils" },
+    { name = "cryptography", specifier = ">=45.0.7" },
+    { name = "django", specifier = ">=5.2.10" },
+    { name = "django-admin-rangefilter", specifier = ">=0.13.3" },
+    { name = "django-audit-fields", specifier = ">=2.0.6" },
+    { name = "django-crypto-fields", specifier = ">=1.2.0" },
+    { name = "django-db-views", specifier = ">=0.1.11" },
+    { name = "django-defender", specifier = ">=0.9.8" },
+    { name = "django-environ", specifier = ">=0.12.0" },
+    { name = "django-logentry-admin", specifier = ">=1.1.0" },
+    { name = "django-multisite2", specifier = ">=2.1.0" },
+    { name = "django-pandas", specifier = ">=0.6.7" },
+    { name = "django-pylabels", specifier = ">=1.0.1" },
+    { name = "django-redis", specifier = ">=6.0.0" },
+    { name = "django-revision", specifier = ">=2.1.0" },
+    { name = "django-sequences", specifier = ">=3.0" },
+    { name = "django-simple-history", specifier = ">=3.10.1" },
+    { name = "django-storages", specifier = ">=1.14.6" },
+    { name = "djangorestframework", specifier = ">=3.16.0" },
+    { name = "fontawesomefree", specifier = ">=6.6.0" },
+    { name = "gunicorn", specifier = ">=23.0.0" },
+    { name = "inflect", specifier = ">=7.5.0" },
+    { name = "mempass", specifier = ">=0.1.2" },
+    { name = "mysqlclient", specifier = ">=2.2.7" },
+    { name = "psycopg2", specifier = ">=2.9.10" },
+    { name = "pycups", specifier = ">=2.0.4" },
+    { name = "pypdf", specifier = ">=5.9.0" },
+    { name = "python-dateutil", specifier = ">=2.9.0.post0" },
+    { name = "python-memcached", specifier = ">=1.62" },
+    { name = "reportlab", specifier = ">=4.4.3" },
+    { name = "sqlalchemy", specifier = ">=2.0.42" },
+    { name = "sqlglot", specifier = ">=27.8.0" },
+    { name = "tabulate", specifier = ">=0.9.0" },
+    { name = "tqdm", specifier = ">=4.67.1" },
+    { name = "twilio", specifier = ">=9.7.0" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "clinicedc-tests", editable = "../clinicedc-tests" },
+    { name = "django-webtest", specifier = ">=1.9.14" },
+    { name = "ruff", specifier = ">=0.14.9" },
+]
+docs = [
+    { name = "furo", specifier = ">=2025.7.19" },
+    { name = "sphinx", specifier = ">=8.2.3" },
+    { name = "sphinx-design", specifier = ">=0.6.1" },
+    { name = "sphinx-inline-tabs", specifier = ">=2023.4.21" },
+    { name = "sphinx-rtd-theme", specifier = ">=3.0.2" },
+]
+lint = [{ name = "ruff", specifier = ">=0.13.2" }]
+notebook = [
+    { name = "dj-notebook", specifier = ">=0.7.0" },
+    { name = "great-tables", specifier = ">=0.18.0" },
+    { name = "matplotlib", specifier = ">=3.10.3" },
+    { name = "matplotlib-venn", specifier = ">=1.1.2" },
+    { name = "numpy", specifier = ">=2.3.2" },
+    { name = "pandas", specifier = ">=2.3.1" },
+    { name = "pdfkit", specifier = ">=1.0.0" },
+    { name = "scikit-learn", specifier = ">=1.7.1" },
+    { name = "scipy", specifier = ">=1.16.0" },
+    { name = "selenium", specifier = ">=4.34.2" },
+    { name = "tabulate", specifier = ">=0.9.0" },
 ]
 
 [[package]]
 name = "clinicedc-constants"
 version = "1.3.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/ee/8d/74a9223fafd8d225ecb5182023b7a2591666259fca2a9f7dda35c85ef87b/clinicedc_constants-1.3.0.tar.gz", hash = "sha256:0361a771bfa8680c8e288cc9046523b36aba8e729768547dc8c3951b7922d9cb", size = 6575, upload-time = "2026-01-20T02:29:48.003Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/17/34/65d27c639900d71242ec252143af8253847676b7b286b55ad4862bc78259/clinicedc_constants-1.3.0-py3-none-any.whl", hash = "sha256:6d49ba0eae6056fa83cb164fed9d53de353969ef734518ad8c03348272619b14", size = 8419, upload-time = "2026-01-20T02:29:47.207Z" },
-]
+source = { editable = "../clinicedc-constants" }
 
 [[package]]
 name = "clinicedc-tests"
@@ -637,7 +702,7 @@ wheels = [
 [[package]]
 name = "clinicedc-utils"
 version = "1.0.2"
-source = { registry = "https://pypi.org/simple" }
+source = { editable = "../clinicedc-utils" }
 dependencies = [
     { name = "clinicedc-constants" },
     { name = "pandas" },
@@ -645,9 +710,14 @@ dependencies = [
     { name = "sqlalchemy" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/78/7f/c2147ddeaa5de2c804fc46e840e133e7d9200b3b680072c116215434c8f1/clinicedc_utils-1.0.2.tar.gz", hash = "sha256:2447ad546945c2e1d2a5efc365a4568550b66ea51c4a71f05e55344e8931f733", size = 8879, upload-time = "2025-11-13T05:29:32.998Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/14/c1/cb07248cd9f0de68821f6581c25f290a3650c0e8465600b0f14b33e3341d/clinicedc_utils-1.0.2-py3-none-any.whl", hash = "sha256:6d0bfc1cd4dd6da9490d807106e2905506ace60289e06bf52f79123ed9bb9513", size = 20540, upload-time = "2025-11-13T05:29:31.658Z" },
+
+[package.metadata]
+requires-dist = [
+    { name = "clinicedc-constants", specifier = ">=1.0.1" },
+    { name = "pandas", specifier = ">=2.3.3" },
+    { name = "remote-read-sql", specifier = ">=1.2.3" },
+    { name = "sqlalchemy", specifier = ">=2.0.44" },
+    { name = "tqdm", specifier = ">=4.67.1" },
 ]
 
 [[package]]
@@ -1156,50 +1226,112 @@ wheels = [
 [[package]]
 name = "edc-he"
 version = "1.5.4"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/03/ea/5ba49521434678bd583569cdcb785357c5a482b65bd5f6fdb1dbd93cb44b/edc_he-1.5.4.tar.gz", hash = "sha256:737e0b556310ae5fae2e9b4eed183daab719b79d53739bf9bb08143cba17f5af", size = 78099, upload-time = "2026-01-23T22:42:06.114Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/75/ee/98d247d48ad29466af8c8a5ab355e7ffeb09b2607fff6f48528ccb250aee/edc_he-1.5.4-py3-none-any.whl", hash = "sha256:8223eda14b963303f79dae59c11ba4d3cd266da912495579c010bd3a8cba99b7", size = 115865, upload-time = "2026-01-23T22:42:07.127Z" },
+source = { editable = "../edc-he" }
+
+[package.metadata]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "clinicedc", editable = "../clinicedc" },
+    { name = "clinicedc-tests", editable = "../clinicedc-tests" },
 ]
+docs = [
+    { name = "furo", specifier = ">=2025.7.19" },
+    { name = "sphinx", specifier = ">=8.2.3" },
+    { name = "sphinx-design", specifier = ">=0.6.1" },
+    { name = "sphinx-inline-tabs", specifier = ">=2023.4.21" },
+]
+lint = [{ name = "ruff", specifier = ">=0.12.5" }]
 
 [[package]]
 name = "edc-microscopy"
 version = "1.4.2"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/9f/24/6543388a334f93b08c7b9ffb47cbfd587aebda56f3ac3c87e824fbf8ff68/edc_microscopy-1.4.2.tar.gz", hash = "sha256:378965dc3140d1f59d52fdc63c6f9558208ff560a9d57ab9956989dc064e02aa", size = 16345, upload-time = "2025-11-12T12:48:09.026Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/bf/e0/38862e90bf5701c745fcac396e2df1b0e3088610382d20fd75324c82df73/edc_microscopy-1.4.2-py3-none-any.whl", hash = "sha256:b84a876ec99e36ddab8233437e81b70106f980dd03c7a2702adf7bca6a456d4b", size = 19246, upload-time = "2025-11-12T12:48:07.27Z" },
+source = { editable = "../edc-microscopy" }
+
+[package.metadata]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "clinicedc", editable = "../clinicedc" },
+    { name = "clinicedc-tests", editable = "../clinicedc-tests" },
 ]
+docs = [
+    { name = "furo", specifier = ">=2025.7.19" },
+    { name = "sphinx", specifier = ">=8.2.3" },
+    { name = "sphinx-design", specifier = ">=0.6.1" },
+    { name = "sphinx-inline-tabs", specifier = ">=2023.4.21" },
+]
+lint = [{ name = "ruff", specifier = ">=0.12.5" }]
 
 [[package]]
 name = "edc-mnsi"
 version = "1.4.0"
-source = { registry = "https://pypi.org/simple" }
+source = { editable = "../edc-mnsi" }
 dependencies = [
     { name = "clinicedc" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e0/fb/cc1717d0a730a3c6d608245db12706de0e46f4a64fdebf648494fb57985a/edc_mnsi-1.4.0.tar.gz", hash = "sha256:eb51cf1812436ccde2afdffa7b099a8a2a372fd581b3b891f1af722e4a0506ff", size = 28698, upload-time = "2025-11-08T16:25:35.201Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/c1/1c/a36865cc4b902bc083996d454a224bf31916cca4208a7c243836ed55c962/edc_mnsi-1.4.0-py3-none-any.whl", hash = "sha256:19b56247e1bca4bec08855bbf40abbfbe5510a7304e702d1bb8606969f477e04", size = 38579, upload-time = "2025-11-08T16:25:33.958Z" },
+
+[package.metadata]
+requires-dist = [{ name = "clinicedc", editable = "../clinicedc" }]
+
+[package.metadata.requires-dev]
+develop = [{ name = "edc-test-settings", editable = "../edc-test-settings" }]
+docs = [
+    { name = "furo", specifier = ">=2025.7.19" },
+    { name = "sphinx", specifier = ">=8.2.3" },
+    { name = "sphinx-design", specifier = ">=0.6.1" },
+    { name = "sphinx-inline-tabs", specifier = ">=2023.4.21" },
+]
+lint = [{ name = "ruff", specifier = ">=0.12.5" }]
+test = [
+    { name = "clinicedc-tests", editable = "../clinicedc-tests" },
+    { name = "coverage", specifier = ">=7.10.1" },
+    { name = "edc-test-settings", editable = "../edc-test-settings" },
+    { name = "faker", specifier = ">=37.4.2" },
+    { name = "model-bakery", specifier = ">=1.20.5" },
+    { name = "time-machine", specifier = ">=2.16.0" },
+    { name = "tox-uv", specifier = ">=1.26.2" },
 ]
 
 [[package]]
 name = "edc-phq9"
 version = "1.3.1"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/5c/25/97e0a98344f5d272551c60ec8362c4c86fd72dc8d0b061606928cd885b5e/edc_phq9-1.3.1.tar.gz", hash = "sha256:9f590e76ed678fb065f0979b27d9e0d312871ef747a9cb1f07d9e788bef4efdb", size = 17695, upload-time = "2025-11-12T12:46:08.416Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/63/f6/1af88cd8c202a6ed7ae59b84ea3c851f643d8edf313fd3203799fbd3fa1b/edc_phq9-1.3.1-py3-none-any.whl", hash = "sha256:70a0cc19c257db790a400853ffc1125a8598576b86f724502175f3959cab3447", size = 20395, upload-time = "2025-11-12T12:46:07.526Z" },
+source = { editable = "../edc-phq9" }
+
+[package.metadata]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "clinicedc", editable = "../clinicedc" },
+    { name = "clinicedc-tests", editable = "../clinicedc-tests" },
 ]
+docs = [
+    { name = "furo", specifier = ">=2025.7.19" },
+    { name = "sphinx", specifier = ">=8.2.3" },
+    { name = "sphinx-design", specifier = ">=0.6.1" },
+    { name = "sphinx-inline-tabs", specifier = ">=2023.4.21" },
+]
+lint = [{ name = "ruff", specifier = ">=0.12.5" }]
 
 [[package]]
 name = "edc-qol"
 version = "1.4.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/3d/8b/33903c39e7f952d6a791bd7aca6f7f6bb4b6cceb012e6ee1bc8c495dac3a/edc_qol-1.4.0.tar.gz", hash = "sha256:5b6d79db073d650af977298064b81d78d72c67de53513cb5c56c756d81bb2925", size = 34828, upload-time = "2025-11-12T04:58:14.955Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/01/ec/dbd7cf60c5f16451a498da8256e3cf92d73dd1d12b467affa44bbc1beba4/edc_qol-1.4.0-py3-none-any.whl", hash = "sha256:d5b97d48f72d542dd11a24aea8b730a739102afe0edc19a5e656047b5dc8b1ee", size = 55671, upload-time = "2025-11-12T04:58:13.673Z" },
+source = { editable = "../edc-qol" }
+
+[package.metadata]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "clinicedc", editable = "../clinicedc" },
+    { name = "clinicedc-tests", specifier = ">=1.0.0" },
 ]
+docs = [
+    { name = "furo", specifier = ">=2025.7.19" },
+    { name = "sphinx", specifier = ">=8.2.3" },
+    { name = "sphinx-design", specifier = ">=0.6.1" },
+    { name = "sphinx-inline-tabs", specifier = ">=2023.4.21" },
+]
+lint = [{ name = "ruff", specifier = ">=0.12.5" }]
 
 [[package]]
 name = "edc-test-settings"
@@ -2159,7 +2291,7 @@ wheels = [
 
 [[package]]
 name = "meta-edc"
-version = "1.6.16"
+version = "1.6.17"
 source = { editable = "." }
 dependencies = [
     { name = "celery" },
@@ -2213,20 +2345,20 @@ lint = [
 [package.metadata]
 requires-dist = [
     { name = "celery", specifier = ">=5.6.2" },
-    { name = "clinicedc", specifier = "==2.4.9" },
+    { name = "clinicedc", editable = "../clinicedc" },
     { name = "django", specifier = "==5.2.10" },
-    { name = "edc-he", specifier = ">=1.5.2" },
-    { name = "edc-microscopy", specifier = ">=1.4.2" },
-    { name = "edc-mnsi", specifier = ">=1.4.0" },
-    { name = "edc-phq9", specifier = ">=1.3.1" },
-    { name = "edc-qol", specifier = ">=1.4.0" },
+    { name = "edc-he", editable = "../edc-he" },
+    { name = "edc-microscopy", editable = "../edc-microscopy" },
+    { name = "edc-mnsi", editable = "../edc-mnsi" },
+    { name = "edc-phq9", editable = "../edc-phq9" },
+    { name = "edc-qol", editable = "../edc-qol" },
     { name = "notebook", specifier = ">=7.4.7" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "clinicedc-tests", specifier = ">=1.1.0" },
-    { name = "clinicedc-utils", specifier = ">=0.4.0" },
+    { name = "clinicedc-utils", editable = "../clinicedc-utils" },
     { name = "dj-notebook", specifier = ">=0.7.0" },
     { name = "django-webtest", specifier = ">=1.9.14" },
     { name = "edc-test-settings", specifier = ">=2.0.0" },
@@ -2238,7 +2370,7 @@ dev = [
     { name = "numpy", specifier = ">=2.3.2" },
     { name = "pandas", specifier = ">=2.3.1" },
     { name = "pdfkit", specifier = ">=1.0.0" },
-    { name = "remote-read-sql", specifier = ">=1.2.3" },
+    { name = "remote-read-sql", editable = "../remote-read-sql" },
     { name = "ruff", specifier = ">=0.14.10" },
     { name = "scikit-learn", specifier = ">=1.7.1" },
     { name = "scipy", specifier = ">=1.16.0" },
@@ -2648,7 +2780,7 @@ name = "pexpect"
 version = "4.9.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "ptyprocess" },
+    { name = "ptyprocess", marker = "sys_platform != 'emscripten' and sys_platform != 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/42/92/cc564bf6381ff43ce1f4d06852fc19a2f11d180f23dc32d9588bee2f149d/pexpect-4.9.0.tar.gz", hash = "sha256:ee7d41123f3c9911050ea2c2dac107568dc43b2d3b0c7557a33212c398ead30f", size = 166450, upload-time = "2023-11-25T09:07:26.339Z" }
 wheels = [
@@ -3116,7 +3248,7 @@ wheels = [
 [[package]]
 name = "remote-read-sql"
 version = "1.3.0"
-source = { registry = "https://pypi.org/simple" }
+source = { editable = "../remote-read-sql" }
 dependencies = [
     { name = "mysqlclient" },
     { name = "pandas" },
@@ -3126,9 +3258,24 @@ dependencies = [
     { name = "sqlglot" },
     { name = "sshtunnel" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/25/75/a693f804b3f2d0f006356681bfc70a0e6ca3c7279b82f5dfb07be16fd286/remote_read_sql-1.3.0.tar.gz", hash = "sha256:f3976c088d1488648e8a9e61e1145419d353dfbe8ddd84d5a40f19f9ac394c0c", size = 5392, upload-time = "2025-11-07T13:45:14.204Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/14/00/359b197289d74a1fc5321ec4f2bb80448445bdc742204fa9997e7ea65da5/remote_read_sql-1.3.0-py3-none-any.whl", hash = "sha256:af57a459ebab90aa2d983fb1cbb0696b7dc0f64e8d31d4580a82922c8e501fa3", size = 7552, upload-time = "2025-11-07T13:45:13.326Z" },
+
+[package.metadata]
+requires-dist = [
+    { name = "mysqlclient", specifier = ">=2.2.7" },
+    { name = "pandas", specifier = ">=2.3.3" },
+    { name = "paramiko", specifier = "==2.9.3" },
+    { name = "python-dotenv", specifier = ">=1.1.1" },
+    { name = "sqlalchemy", specifier = ">=2.0.44" },
+    { name = "sqlglot", specifier = ">=27.28.1" },
+    { name = "sshtunnel", specifier = ">=0.4.0" },
+]
+
+[package.metadata.requires-dev]
+docs = [
+    { name = "furo", specifier = ">=2025.7.19" },
+    { name = "sphinx", specifier = ">=8.2.3" },
+    { name = "sphinx-design", specifier = ">=0.6.1" },
+    { name = "sphinx-inline-tabs", specifier = ">=2023.4.21" },
 ]
 
 [[package]]
