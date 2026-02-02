@@ -1,9 +1,9 @@
 from textwrap import wrap
 
-import arrow
 from clinicedc_constants import OTHER, YES
 from django import template
 from django.conf import settings
+from django.utils import timezone
 from django.utils.safestring import mark_safe
 from edc_adverse_event.utils import get_adverse_event_app_label
 
@@ -19,7 +19,7 @@ format_ae_description_template_name = (
 def format_ae_description(context, ae_initial, wrap_length):
     formatted_sae_reason = "<BR>".join(wrap(ae_initial.sae_reason.name, wrap_length or 35))
     formatted_ae_description = "<BR>".join(wrap(ae_initial.ae_description, wrap_length or 35))
-    context["utc_date"] = arrow.now().date()
+    context["utc_date"] = timezone.now().date()
     context["SHORT_DATE_FORMAT"] = settings.SHORT_DATE_FORMAT
     context["OTHER"] = OTHER
     context["YES"] = YES
