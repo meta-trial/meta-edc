@@ -1,6 +1,6 @@
 [project]
 name = "meta-edc"
-version = "1.6.18"
+version = "1.6.19"
 description = "META Trial EDC (https://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 keywords = [
@@ -33,13 +33,14 @@ requires-python = '>=3.12,<3.14'
 dependencies = [
     "django==5.2.10",
     "celery>=5.6.2",
-    "clinicedc==2.4.10",
+    "clinicedc==2.4.13",
     "edc-he>=1.5.2",
     "edc-microscopy>=1.4.2",
     "edc-mnsi>=1.4.0",
     "edc-phq9>=1.3.1",
     "edc-qol>=1.4.0",
     "notebook>=7.4.7",
+    "django-import-export>=4.4.0",
 ]
 
 [build-system]
@@ -80,10 +81,9 @@ extend-exclude = [
     "migrations",
     ".tox",
     ".venv",
-    "src/meta_analytics/notebooks/*",
+    "*.ipynb",
     "docs/updates/0.1.65/update_1_65_renamed_fields.py",
     "docs/conf.py",
-    "src/meta_spfq/notebooks/"
 ]
 
 [tool.ruff.lint]
@@ -130,6 +130,7 @@ quote-style = "double"
 indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
+exclude = ["*.ipynb"]
 
 [tool.coverage.run]
 parallel = false

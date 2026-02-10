@@ -116,6 +116,7 @@ INSTALLED_APPS = [
     "sequences.apps.SequencesConfig",
     # "django_celery_beat",
     # "django_celery_results",
+    "import_export",
     "django_db_views",
     "fontawesomefree",
     "rangefilter",
