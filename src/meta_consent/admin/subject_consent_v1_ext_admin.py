@@ -69,6 +69,11 @@ class SubjectConsentV1ExtAdmin(
         "consent_copy": admin.VERTICAL,
     }
 
+    search_fields = (
+        "id",
+        "subject_identifier",
+    )
+
     def get_readonly_fields(self, request, obj=None) -> tuple[str, ...]:  # noqa: ARG002
         if obj:
             return ("subject_consent",)

@@ -1,5 +1,5 @@
 from clinicedc_constants import FEMALE, NEW, PATIENT, YES
-from django.test import TestCase, override_settings
+from django.test import TestCase, override_settings, tag
 from django.utils import timezone
 from edc_action_item.models import ActionItem
 from edc_offstudy.constants import END_OF_STUDY_ACTION
@@ -10,9 +10,10 @@ from edc_visit_schedule.constants import OFFSCHEDULE_ACTION
 from meta_lists.models import OffstudyReasons, TransferReasons
 from meta_pharmacy.constants import METFORMIN
 from meta_prn.action_items import OffscheduleAction, SubjectTransferAction
-from meta_prn.constants import OFFSTUDY_MEDICATION_ACTION
+from meta_prn.constants import COMPLETED_FOLLOWUP_48, OFFSTUDY_MEDICATION_ACTION
 from meta_prn.models import EndOfStudy, OffSchedule, OffStudyMedication, SubjectTransfer
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
+from meta_visit_schedule.constants import MONTH36
 
 
 @override_settings(SITE_ID=10)
@@ -132,3 +133,32 @@ class TestEosEvents(MetaTestCaseMixin, TestCase):
             for obj in ActionItem.objects.filter(status=NEW).order_by("action_type__name")
         ]
         self.assertEqual(action_types, [])
+
+    @tag("M1")
+    def test_ok(self):
+        subject_visit = self.subject_visit
+        while True:
+            if subject_visit.visit_code == MONTH36:
+                break
+            subject_visit = self.get_next_subject_visit(subject_visit)
+        OffscheduleAction(
+            subject_identifier=self.subject_consent.subject_identifier,
+            skip_get_current_site=True,
+            site_id=self.subject_consent.site_id,
+        )
+
+        OffSchedule.objects.create(subject_identifier=self.subject_consent.subject_identifier)
+
+        offstudy_rx = OffStudyMedication.objects.create(
+            subject_identifier=self.subject_consent.subject_identifier,
+            stop_date=timezone.now().date(),
+            last_dose_date=timezone.now().date(),
+            reason=PATIENT,
+        )
+        offstudy_rx.medications.add(Medication.objects.get(name=METFORMIN))
+
+        EndOfStudy.objects.create(
+            subject_identifier=self.subject_consent.subject_identifier,
+            last_seen_date=timezone.now().date(),
+            offstudy_reason=OffstudyReasons.objects.get(name=COMPLETED_FOLLOWUP_48),
+        )

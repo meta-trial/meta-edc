@@ -188,3 +188,27 @@ class HivExitReviewRuleGroup(CrfRuleGroup):
     class Meta:
         app_label = "meta_subject"
         source_model = "meta_subject.subjectvisit"
+
+
+@register()
+class LastVisitRuleGroup(CrfRuleGroup):
+    last_visit = CrfRule(
+        predicate=pc.last_visit_crfs_required,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=[
+            "glucose",
+            "bloodresultshba1c",
+            "bloodresultsrft",
+            "bloodresultslft",
+            "bloodresultsfbc",
+            "bloodresultslipids",
+            "eq5d3l",
+            "mnsi",
+            "sf12",
+        ],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"

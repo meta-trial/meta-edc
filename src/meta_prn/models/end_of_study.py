@@ -27,7 +27,12 @@ from edc_transfer.constants import TRANSFERRED
 from meta_lists.models import OffstudyReasons
 
 from ..choices import CLINICAL_WITHDRAWAL_REASONS, TOXICITY_WITHDRAWAL_REASONS
-from ..constants import CLINICAL_WITHDRAWAL, COMPLETED_FOLLOWUP_48
+from ..constants import (
+    CLINICAL_WITHDRAWAL,
+    COMPLETED_FOLLOWUP_48,
+    COMPLETED_FOLLOWUP_LT_36,
+    COMPLETED_FOLLOWUP_LT_48,
+)
 
 # TODO: confirm all appointments are either new, incomplete or done
 # TODO: take off study meds but coninue followup (WITHDRAWAL)
@@ -54,6 +59,8 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
         limit_choices_to={
             "name__in": [
                 COMPLETED_FOLLOWUP,
+                COMPLETED_FOLLOWUP_LT_36,
+                COMPLETED_FOLLOWUP_LT_48,
                 COMPLETED_FOLLOWUP_48,
                 DIABETES,
                 DELIVERY,

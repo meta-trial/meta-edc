@@ -58,10 +58,16 @@ class EndOfStudyAdmin(
         [
             "Off-study reason",
             {
+                "description": (
+                    "As of 1 MARCH 2026, all subjects should be taken off study on the "
+                    "first available visit. If there are no other reasons for taking the "
+                    "subject off-study, such as death, LTFU, etc, select one of the four "
+                    "'completed followup' options based on the subject's last visit."
+                ),
                 "fields": (
                     "offstudy_reason",
                     "other_offstudy_reason",
-                )
+                ),
             },
         ],
         [

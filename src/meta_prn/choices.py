@@ -1,4 +1,5 @@
 from clinicedc_constants import NOT_APPLICABLE, OTHER, PATIENT, PREGNANCY, UNKNOWN
+from edc_offstudy.constants import COMPLETED_FOLLOWUP
 
 from .constants import CLINICIAN, INVESTIGATOR, REFERRAL, SAE
 
@@ -90,6 +91,7 @@ ACTION_REQUIRED = (
 REASON_STUDY_TERMINATED = ()
 
 WITHDRAWAL_STUDY_MEDICATION_REASONS = (
+    (COMPLETED_FOLLOWUP, "Completed study follow up"),
     (PREGNANCY, "Pregnancy"),
     (SAE, "Participant is experiencing a serious adverse event"),
     (

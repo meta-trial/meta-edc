@@ -18,6 +18,8 @@ from meta_lists.constants import ACCUCHEK, HEMACUE
 from meta_prn.constants import (
     CLINICAL_WITHDRAWAL,
     COMPLETED_FOLLOWUP_48,
+    COMPLETED_FOLLOWUP_LT_36,
+    COMPLETED_FOLLOWUP_LT_48,
     LATE_EXCLUSION,
 )
 
@@ -175,11 +177,13 @@ list_data = {
         ("ABC_3TC_ATV_r", "ABC + 3TC + ATV/r"),
         ("ABC_3TC_LPV_r", "ABC + 3TC + LPV/r"),
         ("AZT_3TC_ATV_r", "AZT + 3TC + ATV/r"),
+        ("ABC_3TC_DTG", "ABC + 3TC + DTG"),
         ("AZT_3TC_EFV", "AZT + 3TC + EFV"),
         ("AZT_3TC_LPV_r", "AZT + 3TC + LPV/r"),
         ("AZT_3TC_NVP", "AZT + 3TC + NVP"),
         ("D4T_3TC_NVP", "D4T + 3TC + NVP"),
         ("DTG_ABC/3TC_ATV_r", "DTG + (ABC/3TC) + ATV/r"),
+        ("TAF_LD", "TAF-LD"),
         ("TDF_3TC_ATV_r", "TDF + 3TC + ATV/r"),
         ("TDF_3TC_DTG", "TDF + 3TC + DTG"),
         ("TDF_3TC_EFV", "TDF + 3TC + EFV"),
@@ -203,8 +207,13 @@ list_data = {
         (OTHER, "Other reason (specify below)"),
     ],
     "meta_lists.offstudyreasons": [
-        (COMPLETED_FOLLOWUP, "Patient completed 36 months of follow-up"),
-        (COMPLETED_FOLLOWUP_48, "Patient completed 48 months of follow-up"),
+        (COMPLETED_FOLLOWUP_LT_36, "Patient completed followup (less than 36 months)"),
+        (COMPLETED_FOLLOWUP, "Patient completed followup (36 months)"),
+        (
+            COMPLETED_FOLLOWUP_LT_48,
+            "Patient completed followup (less than 48 months)",
+        ),
+        (COMPLETED_FOLLOWUP_48, "Patient completed followup (48 months)"),
         (DELIVERY, "Delivered / Completed followup from pregnancy"),
         (PREGNANCY, "Pregnancy, declined further followup"),
         (DIABETES, "Patient developed diabetes"),

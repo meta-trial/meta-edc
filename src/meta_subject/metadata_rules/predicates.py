@@ -72,7 +72,11 @@ class Predicates(PersistantSingletonMixin):
 
     @staticmethod
     def next_appt_required(visit, **kwargs):  # noqa: ARG004
-        return visit.appointment.next and visit.appointment.next.appt_status == NEW_APPT
+        return (
+            visit.appointment.next
+            and visit.appointment.next.appt_status == NEW_APPT
+            and visit.report_datetime < datetime(2026, 3, 1, 0, 0, tzinfo=ZoneInfo("UTC"))
+        )
 
     @staticmethod
     def glucose_required(visit, **kwargs):  # noqa: ARG004
@@ -284,4 +288,9 @@ class Predicates(PersistantSingletonMixin):
         return False
 
     def hiv_exit_review_required(self, visit, **kwargs) -> bool:  # noqa: ARG002
-        return self.offschedule_today(visit) or visit.visit_code in [MONTH48]
+        return self.offschedule_today(visit) or visit.report_datetime >= datetime(
+            2026, 3, 1, 0, 0, tzinfo=ZoneInfo("UTC")
+        )
+
+    def last_visit_crfs_required(self, visit, **kwargs) -> bool:  # noqa: ARG002
+        return visit.report_datetime >= datetime(2026, 3, 1, 0, 0, tzinfo=ZoneInfo("UTC"))
