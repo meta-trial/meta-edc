@@ -11,6 +11,7 @@ from edc_sites.admin import SiteModelAdminMixin
 from ..admin_site import meta_prn_admin
 from ..forms import OffScheduleForm
 from ..models import EndOfStudy, OffSchedule
+from .list_filters import EosListFilter
 
 
 @admin.register(OffSchedule, site=meta_prn_admin)
@@ -38,9 +39,11 @@ class OffScheduleAdmin(
     def get_list_display(self, request) -> tuple[str, ...]:
         list_display = super().get_list_display(request)
         custom_fields = ("subject_identifier", "dashboard", "offschedule_datetime")
-        return custom_fields + tuple(f for f in list_display if f not in custom_fields)
+        return custom_fields + tuple(
+            f for f in list_display if f not in custom_fields and f != "__str__"
+        )
 
     def get_list_filter(self, request) -> tuple[str, ...]:
         list_filter = super().get_list_filter(request)
-        custom_fields = ("offschedule_datetime",)
+        custom_fields = ("offschedule_datetime", EosListFilter)
         return custom_fields + tuple(f for f in list_filter if f not in custom_fields)

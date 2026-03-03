@@ -9,7 +9,12 @@ from meta_lists.models import ArvRegimens
 from ..model_mixins import ArvReviewModelMixin, CrfModelMixin
 
 
-class HivExitReview(SingletonCrfModelMixin, ArvReviewModelMixin, CrfModelMixin, BaseUuidModel):
+class HivExitReview(
+    SingletonCrfModelMixin,
+    ArvReviewModelMixin,
+    CrfModelMixin,
+    BaseUuidModel,
+):
     available = models.CharField(
         verbose_name="Are HIV test result and treatment information available?",
         max_length=25,

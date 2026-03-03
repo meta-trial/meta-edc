@@ -1,4 +1,6 @@
+from datetime import datetime
 from urllib import parse
+from zoneinfo import ZoneInfo
 
 from clinicedc_constants import DEAD, DELIVERY, LTFU, PREGNANCY, TOXICITY
 from django import forms
@@ -27,6 +29,8 @@ from edc_visit_schedule.utils import off_all_schedules_or_raise
 from ..constants import (
     CLINICAL_WITHDRAWAL,
     COMPLETED_FOLLOWUP_48,
+    COMPLETED_FOLLOWUP_LT_36,
+    COMPLETED_FOLLOWUP_LT_48,
     INVESTIGATOR_DECISION,
     OFFSTUDY_MEDICATION_ACTION,
 )
@@ -41,12 +45,17 @@ class EndOfStudyFormValidator(
     death_report_model = "meta_ae.deathreport"
     ltfu_model = None
 
+    # take all subjects off study after this date regardless of timepoint
+    take_all_off_datetime = datetime(2026, 3, 1, 0, 0, 0, tzinfo=ZoneInfo("UTC"))
+
     def clean(self):
         self.confirm_off_all_schedules()
         self.validate_study_medication_status()
         self.validate_offstudy_datetime_against_last_seen_date()
 
+        self.validate_completed_lt_36m()
         self.validate_completed_36m()
+        self.validate_completed_lt_48m()
         self.validate_completed_48m()
 
         self.required_if(DEAD, field="offstudy_reason", field_required="death_date")
@@ -94,6 +103,69 @@ class EndOfStudyFormValidator(
             field="offstudy_reason",
             field_required="consent_withdrawal_reason",
         )
+
+    def validate_completed_lt_36m(self):
+        if (
+            self.cleaned_data.get("offstudy_reason")
+            and self.cleaned_data.get("offstudy_reason").name == COMPLETED_FOLLOWUP_LT_36
+        ):
+            if self.cleaned_data.get("offstudy_datetime") < self.take_all_off_datetime:
+                self.raise_validation_error(
+                    {"offstudy_reason": "Invalid. Option not available before 1 March 2026."},
+                    INVALID_ERROR,
+                )
+            subject_visit_model_cls = django_apps.get_model("meta_subject.subjectvisit")
+            try:
+                subject_visit_model_cls.objects.get(
+                    subject_identifier=self.subject_identifier,
+                    visit_code=MONTH36,
+                    visit_code_sequence=0,
+                )
+            except ObjectDoesNotExist:
+                pass
+            else:
+                self.raise_validation_error(
+                    {"offstudy_reason": "Invalid. 36 month visit has been submitted."},
+                    INVALID_ERROR,
+                )
+
+    def validate_completed_lt_48m(self):
+        if (
+            self.cleaned_data.get("offstudy_reason")
+            and self.cleaned_data.get("offstudy_reason").name == COMPLETED_FOLLOWUP_LT_48
+        ):
+            if self.cleaned_data.get("offstudy_datetime") < self.take_all_off_datetime:
+                self.raise_validation_error(
+                    {"offstudy_reason": "Invalid. Option not available before 1 March 2026."},
+                    INVALID_ERROR,
+                )
+            subject_visit_model_cls = django_apps.get_model("meta_subject.subjectvisit")
+            try:
+                subject_visit_model_cls.objects.get(
+                    subject_identifier=self.subject_identifier,
+                    visit_code=MONTH36,
+                    visit_code_sequence=0,
+                )
+            except ObjectDoesNotExist:
+                self.raise_validation_error(
+                    {"offstudy_reason": "Invalid. 36 month visit has not been submitted."},
+                    INVALID_ERROR,
+                )
+
+            else:
+                try:
+                    subject_visit_model_cls.objects.get(
+                        subject_identifier=self.subject_identifier,
+                        visit_code=MONTH48,
+                        visit_code_sequence=0,
+                    )
+                except ObjectDoesNotExist:
+                    pass
+                else:
+                    self.raise_validation_error(
+                        {"offstudy_reason": "Invalid. 48 month visit has been submitted."},
+                        INVALID_ERROR,
+                    )
 
     def validate_completed_36m(self):
         if (

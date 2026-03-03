@@ -336,7 +336,7 @@ visit48 = Visit(
     timepoint=18,
     rbase=relativedelta(months=48),
     rlower=relativedelta(months=1),
-    rupper=relativedelta(months=3),
+    rupper=relativedelta(months=12),
     rupper_extended=relativedelta(months=24),
     requisitions=requisitions_48m,
     crfs=crfs_48m,
