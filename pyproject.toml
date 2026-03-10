@@ -81,7 +81,8 @@ extend-exclude = [
     "migrations",
     ".tox",
     ".venv",
-    "*.ipynb",
+    ".ipynb",
+    "src/meta_analytics/notebooks",
     "docs/updates/0.1.65/update_1_65_renamed_fields.py",
     "docs/conf.py",
 ]

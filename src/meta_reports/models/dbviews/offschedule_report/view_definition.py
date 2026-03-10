@@ -2,11 +2,40 @@ from edc_qareports.sql_generator import SqlViewGenerator
 
 
 def get_view_definition() -> dict:
+    """List subjects missing an Off Schedule instance.
+
+    Incldue data fields on the last appointment"""
     subquery = """
-    select subject_identifier, site_id, visit_schedule_name, schedule_name, onschedule_model,
-    onschedule_model as source, onschedule_datetime, offschedule_model
-    from edc_visit_schedule_subjectschedulehistory where offschedule_datetime is null
-    """
+               select history.subject_identifier,
+                      history.site_id,
+                      history.visit_schedule_name,
+                      history.schedule_name,
+                      history.onschedule_model,
+                      onschedule_model                    as source,
+                      history.onschedule_datetime,
+                      history.offschedule_model,
+                      appt.visit_code,
+                      appt.visit_code_sequence,
+                      appt.appt_datetime,
+                      appt.appt_status,
+                      datediff(appt.appt_datetime, now()) as days
+               from edc_visit_schedule_subjectschedulehistory as history
+                        left join (select *
+                                   from (select subject_identifier,
+                                                visit_code,
+                                                visit_code_sequence,
+                                                appt_status,
+                                                appt_datetime,
+                                                ROW_NUMBER() OVER (
+                                                    PARTITION BY subject_identifier
+                                                    ORDER BY appt_datetime DESC
+                                                ) as row_num
+                                         from edc_appointment_appointment) as A
+                                   where row_num = 1) as appt
+                                  on history.subject_identifier = appt.subject_identifier
+               where history.offschedule_datetime is null
+               order by history.subject_identifier; \
+               """
     sql_view = SqlViewGenerator(
         report_model="meta_reports_offschedulereportview",
         ordering=["subject_identifier", "site_id"],
