@@ -5,6 +5,7 @@ from edc_model_admin.dashboard import ModelAdminDashboardMixin
 from edc_model_admin.mixins import TemplatesModelAdminMixin
 from edc_qareports.modeladmin_mixins import QaReportModelAdminMixin
 from edc_sites.admin import SiteModelAdminMixin
+from rangefilter.filters import DateRangeFilterBuilder
 
 from ...admin_site import meta_reports_admin
 from ...models import OffscheduleReport
@@ -25,12 +26,18 @@ class OffScheduleReportAdmin(
         "subject_identifier_link",
         "site",
         "schedule_name",
-        "onschedule_datetime",
+        "onschedule_date",
+        "visit_code",
+        "appt_date",
+        "days",
+        "appt_status",
         "source",
     )
 
     list_filter = (
-        "onschedule_datetime",
+        "appt_status",
+        ("onschedule_datetime", DateRangeFilterBuilder()),
+        ("appt_datetime", DateRangeFilterBuilder()),
         "source",
         "schedule_name",
     )
@@ -53,3 +60,15 @@ class OffScheduleReportAdmin(
         return dict(
             subject_identifier=obj.subject_identifier,
         )
+
+    @admin.display(description="Appt date", ordering="appt_datetime")
+    def appt_date(self, obj):
+        if obj and obj.appt_datetime:
+            return obj.appt_datetime.date()
+        return None
+
+    @admin.display(description="Onschedule date", ordering="onschedule_datetime")
+    def onschedule_date(self, obj):
+        if obj and obj.onschedule_datetime:
+            return obj.onschedule_datetime.date()
+        return None
