@@ -28,3 +28,22 @@ class EndpointListFilter(SimpleListFilter):
                 )
             )
         return queryset
+
+
+class IsOffScheduleListFilter(SimpleListFilter):
+    title = "Offschedule"
+    parameter_name = "offschedule"
+
+    def lookups(self, request, model_admin):  # noqa: ARG002
+        return (
+            (YES, YES),
+            (NO, NO),
+        )
+
+    def queryset(self, request, queryset):  # noqa: ARG002
+        if self.value() == YES:
+            return queryset.filter(offschedule_datetime__isnull=False)
+
+        if self.value() == YES:
+            return queryset.filter(offschedule_datetime__isnull=True)
+        return queryset

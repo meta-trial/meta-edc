@@ -9,6 +9,7 @@ from rangefilter.filters import DateRangeFilterBuilder
 
 from ...admin_site import meta_reports_admin
 from ...models import HivExitReviewReport
+from ..list_filters import IsOffScheduleListFilter
 
 
 @admin.register(HivExitReviewReport, site=meta_reports_admin)
@@ -21,9 +22,16 @@ class HivExitReviewReportAdmin(
 ):
     ordering = ("site", "subject_identifier", "offschedule_datetime")
     include_note_column = False
+
+    change_list_note = (
+        "View subjects without an HIV Exit Review form. "
+        "Visit is the next or last visit. Hospital identifier is not searchable."
+    )
+
     list_display = (
         "dashboard",
         "subject_identifier_link",
+        "hospital_identifier",
         "site",
         "offschedule_date",
         "visit_code",
@@ -34,10 +42,11 @@ class HivExitReviewReportAdmin(
     )
 
     list_filter = (
-        "hiv_exit_data",
         "appt_status",
         ("offschedule_datetime", DateRangeFilterBuilder()),
         ("appt_datetime", DateRangeFilterBuilder()),
+        IsOffScheduleListFilter,
+        "visit_code",
         "source",
     )
 
