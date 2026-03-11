@@ -1,5 +1,6 @@
 from .eos_report import EosReport
 from .glucose_summary import GlucoseSummary
+from .hiv_exit_review import HivExitReviewReport
 from .imp_substitutions import ImpSubstitutions
 from .missing_screening_ogtt import NOTE_STATUSES, MissingOgttNote, MissingScreeningOgtt
 from .offschedule_report import OffscheduleReport
@@ -14,6 +15,7 @@ __all__ = [
     "NOTE_STATUSES",
     "EosReport",
     "GlucoseSummary",
+    "HivExitReviewReport",
     "ImpSubstitutions",
     "MissingOgttNote",
     "MissingScreeningOgtt",

@@ -2,23 +2,21 @@ from edc_qareports.sql_generator import SqlViewGenerator
 
 
 def get_view_definition() -> dict:
-    """List subjects missing an Off Schedule instance.
+    """List subjects with or without an hiv exit review.
 
     Incldue data fields on the last appointment"""
     subquery = """
                select history.subject_identifier,
                       history.site_id,
-                      history.visit_schedule_name,
-                      history.schedule_name,
-                      history.onschedule_model,
-                      onschedule_model                    as source,
-                      history.onschedule_datetime,
-                      history.offschedule_model,
+                      history.offschedule_datetime,
+                      hiv.available                       as hiv_exit_data,
+                      hiv.report_datetime                 as hiv_exit_datetime,
                       appt.visit_code,
                       appt.visit_code_sequence,
                       appt.appt_datetime,
                       appt.appt_status,
-                      datediff(appt.appt_datetime, now()) as days
+                      datediff(appt.appt_datetime, now()) as days,
+                      onschedule_model                    as source
                from edc_visit_schedule_subjectschedulehistory as history
                         left join (select *
                                    from (select subject_identifier,
@@ -34,11 +32,13 @@ def get_view_definition() -> dict:
                                          where appt_datetime < date("2026-06-01")) as A
                                    where row_num = 1) as appt
                                   on history.subject_identifier = appt.subject_identifier
-               where history.offschedule_datetime is null
-               order by history.subject_identifier; \
+                        left join meta_subject_hivexitreview as hiv
+                                  on hiv.singleton_field = history.subject_identifier
+               where history.schedule_name='schedule' and hiv.available is null
+               order by history.subject_identifier;
                """
     sql_view = SqlViewGenerator(
-        report_model="meta_reports_offschedulereportview",
+        report_model="meta_reports_hivexitreviewreportview",
         ordering=["subject_identifier", "site_id"],
     )
     return {

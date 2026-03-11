@@ -1,6 +1,7 @@
 from .dbviews import (
     EosReportAdmin,
     GlucoseSummaryAdmin,
+    HivExitReviewReportAdmin,
     ImpSubstitutionsAdmin,
     MissingOgttNoteModelAdmin,
     MissingScreeningOgttAdmin,
