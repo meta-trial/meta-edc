@@ -1,5 +1,6 @@
 from .eos_report_admin import EosReportAdmin
 from .glucose_summary_admin import GlucoseSummaryAdmin
+from .hiv_exit_review_report_admin import HivExitReviewReportAdmin
 from .imp_substitutions_admin import ImpSubstitutionsAdmin
 from .missing_screening_ogtt_admin import (
     MissingOgttNoteModelAdmin,
@@ -18,6 +19,7 @@ from .unattended_two_in_row_admin import UnattendedTwoInRowAdmin
 __all__ = [
     "EosReportAdmin",
     "GlucoseSummaryAdmin",
+    "HivExitReviewReportAdmin",
     "ImpSubstitutionsAdmin",
     "MissingOgttNoteModelAdmin",
     "MissingScreeningOgttAdmin",

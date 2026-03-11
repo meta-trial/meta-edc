@@ -8,25 +8,24 @@ from edc_sites.admin import SiteModelAdminMixin
 from rangefilter.filters import DateRangeFilterBuilder
 
 from ...admin_site import meta_reports_admin
-from ...models import OffscheduleReport
+from ...models import HivExitReviewReport
 
 
-@admin.register(OffscheduleReport, site=meta_reports_admin)
-class OffScheduleReportAdmin(
+@admin.register(HivExitReviewReport, site=meta_reports_admin)
+class HivExitReviewReportAdmin(
     QaReportModelAdminMixin,
     SiteModelAdminMixin,
     ModelAdminDashboardMixin,
     TemplatesModelAdminMixin,
     admin.ModelAdmin,
 ):
-    ordering = ("site", "subject_identifier", "onschedule_datetime")
+    ordering = ("site", "subject_identifier", "offschedule_datetime")
     include_note_column = False
     list_display = (
         "dashboard",
         "subject_identifier_link",
         "site",
-        "schedule_name",
-        "onschedule_date",
+        "offschedule_date",
         "visit_code",
         "appt_date",
         "days",
@@ -35,11 +34,11 @@ class OffScheduleReportAdmin(
     )
 
     list_filter = (
+        "hiv_exit_data",
         "appt_status",
-        ("onschedule_datetime", DateRangeFilterBuilder()),
+        ("offschedule_datetime", DateRangeFilterBuilder()),
         ("appt_datetime", DateRangeFilterBuilder()),
         "source",
-        "schedule_name",
     )
 
     search_fields = ("subject_identifier",)
@@ -67,8 +66,8 @@ class OffScheduleReportAdmin(
             return obj.appt_datetime.date()
         return None
 
-    @admin.display(description="Onschedule date", ordering="onschedule_datetime")
-    def onschedule_date(self, obj):
-        if obj and obj.onschedule_datetime:
-            return obj.onschedule_datetime.date()
+    @admin.display(description="Offschedule date", ordering="offschedule_datetime")
+    def offschedule_date(self, obj):
+        if obj and obj.offschedule_datetime:
+            return obj.offschedule_datetime.date()
         return None

@@ -7,16 +7,14 @@ from edc_qareports.model_mixins import QaReportModelMixin, qa_reports_permission
 from .view_definition import get_view_definition
 
 
-class OffscheduleReport(QaReportModelMixin, DBView):
+class HivExitReviewReport(QaReportModelMixin, DBView):
     source = models.CharField(max_length=35, default=NULL_STRING)
 
-    visit_schedule_name = models.CharField(max_length=150, default=NULL_STRING)
+    offschedule_datetime = models.DateTimeField(null=True)
 
-    schedule_name = models.CharField(max_length=150, default=NULL_STRING)
+    hiv_exit_data = models.CharField(max_length=15, default=NULL_STRING)
 
-    onschedule_model = models.CharField(max_length=150, default=NULL_STRING)
-
-    onschedule_datetime = models.DateTimeField(null=True)
+    hiv_exit_datetime = models.DateTimeField(null=True)
 
     visit_code = models.CharField(max_length=15, default=NULL_STRING)
 
@@ -34,7 +32,7 @@ class OffscheduleReport(QaReportModelMixin, DBView):
 
     class Meta:
         managed = False
-        db_table = "meta_reports_offschedulereportview"
-        verbose_name = "Subjects awaiting `Off Schedule` report"
-        verbose_name_plural = "Subjects awaiting `Off Schedule` report"
+        db_table = "meta_reports_hivexitreviewreportview"
+        verbose_name = "HIV Exit Review report"
+        verbose_name_plural = "HIV Exit Review report"
         default_permissions = qa_reports_permissions

@@ -30,7 +30,8 @@ def get_view_definition() -> dict:
                                                     PARTITION BY subject_identifier
                                                     ORDER BY appt_datetime DESC
                                                 ) as row_num
-                                         from edc_appointment_appointment) as A
+                                         from edc_appointment_appointment
+                                         where appt_datetime < date("2026-06-01")) as A
                                    where row_num = 1) as appt
                                   on history.subject_identifier = appt.subject_identifier
                where history.offschedule_datetime is null
