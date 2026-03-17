@@ -98,6 +98,10 @@ def get_last_imp_visits_df(
     df_final = df_final.drop(columns=["offschedule_datetime"])
 
     # calculate days since the IMP visit
-    df_final["days_since"] = pd.to_datetime("today").normalize() - df_final.imp_visit_date
-    df_final["days_until"] = df_final.next_appt_datetime - pd.to_datetime("today").normalize()
+    df_final["days_since"] = (
+        pd.to_datetime("today").normalize().tz_localize("utc") - df_final.imp_visit_date
+    )
+    df_final["days_until"] = df_final.next_appt_datetime - pd.to_datetime(
+        "today"
+    ).normalize().tz_localize("utc")
     return df_final.reset_index()

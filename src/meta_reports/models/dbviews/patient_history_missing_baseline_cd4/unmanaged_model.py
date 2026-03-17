@@ -24,7 +24,7 @@ class PatientHistoryMissingBaselineCd4(QaReportModelMixin, DBView):
 
     class Meta:
         managed = False
-        db_table = "patient_history_missing_baseline_cd4_view"
+        db_table = "meta_reports_patienthistorymissingbaselinecd4view"
         verbose_name = "Patient History: Missing Baseline Cd4"
         verbose_name_plural = "Missing Baseline Cd4"
         default_permissions = qa_reports_permissions

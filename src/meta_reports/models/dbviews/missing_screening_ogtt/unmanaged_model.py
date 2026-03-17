@@ -36,7 +36,7 @@ class MissingScreeningOgtt(QaReportModelMixin, DBView):
 
     class Meta:
         managed = False
-        db_table = "missing_screening_ogtt_view"
+        db_table = "meta_reports_missingscreeningogttview"
         verbose_name = "Screening: Missing OGTT"
         verbose_name_plural = "Screening: Missing OGTT"
         default_permissions = qa_reports_permissions

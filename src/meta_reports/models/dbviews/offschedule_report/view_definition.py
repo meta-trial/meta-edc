@@ -38,7 +38,7 @@ def get_view_definition() -> dict:
                order by history.subject_identifier; \
                """
     sql_view = SqlViewGenerator(
-        report_model="meta_reports_offschedulereportview",
+        report_model="meta_reports.offschedulereportview",
         ordering=["subject_identifier", "site_id"],
     )
     return {

@@ -13,7 +13,7 @@ class OnStudyMissingValues(OnStudyMissingValuesModelMixin, QaReportModelMixin, D
 
     class Meta:
         managed = False
-        db_table = "onstudy_missing_values_view"
+        db_table = "meta_reports_onstudymissingvaluesview"
         verbose_name = "Missing values for on-study patient"
         verbose_name_plural = "Missing values for on-study patients"
         default_permissions = qa_reports_permissions

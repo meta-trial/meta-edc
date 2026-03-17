@@ -3,15 +3,26 @@ from edc_qareports.sql_generator import SqlViewGenerator
 
 def get_view_definition() -> dict:
     subquery = """
-        select s.subject_identifier, s.sid, s.dispensed_sid, arm_match,
-        s.report_datetime, r.allocated_datetime,
-        s.site_id, s.user_created, s.user_modified, s.modified, s.id as original_id
-        from meta_pharmacy_substitutions as s left join meta_rando_randomizationlist as r
-        on r.subject_identifier=s.subject_identifier
-        order by s.subject_identifier
-        """
+               select s.subject_identifier,
+                      s.sid,
+                      s.dispensed_sid,
+                      arm_match,
+                      s.report_datetime,
+                      r.allocated_datetime,
+                      s.site_id,
+                      s.user_created,
+                      s.user_modified,
+                      s.modified,
+                      s.id                   as original_id,
+                      CAST(NULL AS CHAR(15)) AS `visit_code`,
+                      CAST(NULL AS UNSIGNED) AS `visit_code_sequence`
+               from meta_pharmacy_substitutions as s
+                        left join meta_rando_randomizationlist as r
+                                  on r.subject_identifier = s.subject_identifier
+               order by s.subject_identifier \
+               """
     sql_view = SqlViewGenerator(
-        report_model="meta_reports.imp_subjectitutions_view",
+        report_model="meta_report.impsubstitutionsview",
         ordering=["subject_identifier", "site_id"],
     )
     return {
