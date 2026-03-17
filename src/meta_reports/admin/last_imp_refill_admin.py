@@ -1,5 +1,7 @@
 import pandas as pd
+from clinicedc_constants import NO, YES
 from django.contrib import admin, messages
+from django.contrib.admin import SimpleListFilter
 from django.core.exceptions import FieldDoesNotExist
 from django.db import models
 from django.db.models import QuerySet
@@ -32,6 +34,26 @@ class NextApptDateListFilter(PastDateListFilter):
 
     parameter_name = "next_appt_date"
     field_name = "next_appt_date"
+
+
+class HasNextApptListFilter(SimpleListFilter):
+    title = "Has next appt"
+    parameter_name = "has_next_appt"
+
+    def lookups(self, request, model_admin):  # noqa: ARG002
+        return (
+            (YES, YES),
+            (NO, NO),
+        )
+
+    def queryset(self, request, queryset):  # noqa: ARG002
+        qs = None
+        if self.value():
+            if self.value() == YES:
+                qs = queryset.filter(next_visit_code__isnull=False)
+            elif self.value() == NO:
+                qs = queryset.filter(next_visit_code__isnull=True)
+        return qs
 
 
 def update_report(modeladmin, request, queryset):  # noqa: ARG001
@@ -103,6 +125,7 @@ class LastImpRefillAdmin(
     list_filter = (
         ("imp_visit_date", DateRangeFilterBuilder()),
         ("next_appt_date", DateRangeFilterBuilder()),
+        HasNextApptListFilter,
         "imp_visit_code",
         "next_visit_code",
         SiteListFilter,

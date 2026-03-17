@@ -1,8 +1,11 @@
+import contextlib
+
 from clinicedc_constants import YES
 from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
 from django.urls import reverse
+from django.utils.html import format_html
 from edc_glucose.list_filters import FbgListFilter, OgttListFilter
 from edc_model_admin.dashboard import ModelAdminDashboardMixin
 from edc_model_admin.mixins import TemplatesModelAdminMixin
@@ -53,15 +56,29 @@ class GlucoseSummaryAdmin(
 
     @admin.display(description="visit", ordering="visit_code")
     def visit(self, obj=None):
+        if self.get_endpoint(obj=obj):
+            return format_html(
+                '<span style="background-color: #FFDDDD;">{}.{}</span>',
+                obj.visit_code,
+                obj.visit_code_sequence,
+            )
         return f"{obj.visit_code}.{obj.visit_code_sequence}"
+
+    @staticmethod
+    def get_endpoint(obj=None):
+        endpoint_obj = None
+        if obj:
+            with contextlib.suppress(ObjectDoesNotExist):
+                endpoint_obj = Endpoints.objects.get(
+                    subject_identifier=obj.subject_identifier,
+                    visit_code=obj.visit_code,
+                )
+        return endpoint_obj
 
     @admin.display(description="Endpoint")
     def endpoint(self, obj=None):
-        try:
-            endpoint_obj = Endpoints.objects.get(subject_identifier=obj.subject_identifier)
-        except ObjectDoesNotExist:
-            value = None
-        else:
+        value = None
+        if endpoint_obj := self.get_endpoint(obj=obj):
             if endpoint_obj.offstudy_date:
                 url = reverse("meta_reports_admin:meta_reports_endpointsproxy_changelist")
                 title = f"Go to {EndpointsProxy._meta.verbose_name}"

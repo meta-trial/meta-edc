@@ -22,7 +22,7 @@ class UnattendedThreeInRow(QaReportModelMixin, DBView):
 
     class Meta:
         managed = False
-        db_table = "unattended_three_in_row_view"
+        db_table = "meta_reports_unattendedthreeinrowview"
         verbose_name = "R100: Unattended appointments: Three in a row"
         verbose_name_plural = "R100: Unattended appointments: Three in a row"
         default_permissions = qa_reports_permissions

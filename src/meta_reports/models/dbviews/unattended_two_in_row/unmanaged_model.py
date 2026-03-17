@@ -20,7 +20,7 @@ class UnattendedTwoInRow(QaReportModelMixin, DBView):
 
     class Meta:
         managed = False
-        db_table = "unattended_two_in_row_view"
+        db_table = "meta_reports_unattendedtwoinrowview"
         verbose_name = "R120: Unattended appointments: Two in a row"
         verbose_name_plural = "R120: Unattended appointments: Two in a row"
         default_permissions = qa_reports_permissions

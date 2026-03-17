@@ -34,7 +34,7 @@ class ImpSubstitutions(QaReportModelMixin, DBView):
 
     class Meta:
         managed = False
-        db_table = "imp_subjectitutions_view"
+        db_table = "meta_report_impsubstitutionsview"
         verbose_name = "IMP Substitutions"
         verbose_name_plural = "IMP Substitutions"
         default_permissions = qa_reports_permissions
