@@ -23,8 +23,8 @@ def update_endpoints_table_action(modeladmin, request, queryset):  # noqa: ARG00
     if queryset.count() != modeladmin.model.objects.count():
         subject_identifiers = [o.subject_identifier for o in queryset]
     if settings.CELERY_ENABLED:
-        return update_endpoints_table.delay(subject_identifiers, min_fasted_hrs=8.0)
-    return update_endpoints_table(subject_identifiers, min_fasted_hrs=8.0)
+        return update_endpoints_table.delay(subject_identifiers)
+    return update_endpoints_table(subject_identifiers)
 
 
 update_endpoints_table_action.short_description = "Regenerate report for selected subjects"
