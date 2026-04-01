@@ -1,10 +1,10 @@
 import numpy as np
 import pandas as pd
+from clinicedc_constants import YES
 from django_pandas.io import read_frame
-from edc_appointment.constants import MISSED_APPT  # noqa
 from edc_pdutils.dataframes import get_eos, get_subject_consent, get_subject_visit
 
-from meta_subject.models import Glucose, GlucoseFbg
+from meta_subject.models import Glucose, GlucoseFbg, GlucoseOgtt
 
 pd.set_option("future.no_silent_downcasting", True)
 
@@ -15,15 +15,131 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
         .rename(columns={"id": "subject_visit_id"})
         .query("appt_timing!=@MISSED_APPT")
     )
+
+    df = get_glucose_fbg_ogtt_df(subject_identifiers, subject_visit_df)
+
+    df_glucose_fbg = get_glucose_fbg_df(subject_identifiers, subject_visit_df)
+
+    df_glucose_ogtt = get_glucose_ogtt_df(subject_identifiers, subject_visit_df)
+
+    df = merge_with(df, df_glucose_fbg)
+
+    df = merge_with(df, df_glucose_ogtt)
+
+    # more than one OGTT or FBG reported in a single timepoint?
+
+    df_consent = get_subject_consent("meta_consent.subjectconsent")
+    df_eos = get_eos("meta_prn.endofstudy")
+    df = df.merge(
+        df_consent[["subject_identifier", "gender", "consent_datetime", "dob"]],
+        on="subject_identifier",
+        how="left",
+    ).merge(
+        df_eos[["subject_identifier", "offstudy_datetime", "offstudy_reason"]],
+        on="subject_identifier",
+        how="left",
+    )
+    df["visit_days"] = df["baseline_datetime"].rsub(df["visit_datetime"]).dt.days
+    df["fgb_days"] = df["baseline_datetime"].rsub(df["fbg_datetime"]).dt.days
+    df["ogtt_days"] = df["baseline_datetime"].rsub(df["ogtt_datetime"]).dt.days
+    df["visit_days"] = pd.to_numeric(df["visit_days"], downcast="integer")
+    df["fgb_days"] = pd.to_numeric(df["fgb_days"], downcast="integer")
+    df["ogtt_days"] = pd.to_numeric(df["ogtt_days"], downcast="integer")
+    return (
+        df.query(
+            "offstudy_reason != 'Patient fulfilled late exclusion criteria "
+            "(due to abnormal blood values or raised blood pressure at enrolment'"
+        )
+        .copy()
+        .drop(columns=[col for col in df.columns if "_2" in col])
+        .rename(columns={"fasting_hrs": "fasted_hrs"})
+        .sort_values(by=["subject_identifier", "visit_code"])
+        .reset_index(drop=True)
+    )
+
+
+def merge_with(df, df_glucose_fbg_or_ogtt):
+    keep_cols = [
+        "subject_identifier",
+        "site_id",
+        "visit_code",
+        "visit_datetime",
+        "baseline_datetime",
+        "subject_visit_id",
+        "fasted",
+        "fasting_hrs",
+        "fbg_value",
+        "fbg_units",
+        "fbg_datetime",
+        "ogtt_value",
+        "ogtt_units",
+        "ogtt_datetime",
+        "source",
+        "revision",
+        "report_datetime",
+    ]
+    df = df[keep_cols].merge(
+        df_glucose_fbg_or_ogtt[keep_cols],
+        on="subject_visit_id",
+        how="outer",
+        suffixes=("", "_2"),
+    )
+
+    for suffix in ["", "_2"]:
+        # convert to numeric
+        df[[f"fasting_hrs{suffix}", f"fbg_value{suffix}", f"ogtt_value{suffix}"]] = df[
+            [f"fasting_hrs{suffix}", f"fbg_value{suffix}", f"ogtt_value{suffix}"]
+        ].apply(pd.to_numeric)
+        # update missing units
+        df.loc[
+            (df[f"fbg_units{suffix}"] != "mmol/L (millimoles/L)")
+            & (df[f"fbg_value{suffix}"] >= 0),
+            f"fbg_units{suffix}",
+        ] = "mmol/L (millimoles/L)"
+        # update missing units
+        df.loc[
+            (df[f"ogtt_units{suffix}"] != "mmol/L (millimoles/L)")
+            & (df[f"ogtt_value{suffix}"] >= 0),
+            f"ogtt_units{suffix}",
+        ] = "mmol/L (millimoles/L)"
+
+    # convert to datetime
+    for col in [c for c in df.columns if "datetime" in c]:
+        df[col] = pd.to_datetime(df[col])
+
+    df[[col for col in df.columns if "datetime" in col]] = df[
+        [col for col in df.columns if "datetime" in col]
+    ].apply(lambda x: x.dt.tz_localize(None) if x.dtype == "datetime64[ns, UTC]" else x)
+
+    # reconcile all to single column
+    for col in [
+        "fasted",
+        "fasting_hrs",
+        "fbg_value",
+        "ogtt_value",
+        "fbg_datetime",
+        "ogtt_datetime",
+    ]:
+        df[col] = df[col].fillna(df[f"{col}_2"])
+
+    for col in [c for c in df.columns if "datetime" in c]:
+        df[col] = pd.to_datetime(df[col], errors="coerce")
+    return df
+
+
+def get_glucose_fbg_df(subject_identifiers, subject_visit_df) -> pd.DataFrame:
+    """Return a prepared dataframe of model GlucoseFbg which has
+    only FBG results
+    """
     if subject_identifiers:
         df_glucose_fbg = read_frame(
             GlucoseFbg.objects.filter(
-                subject_visit__subject_identifier__in=subject_identifiers
+                subject_visit__subject_identifier__in=subject_identifiers, fasting=YES
             ),
             verbose=False,
         )
     else:
-        df_glucose_fbg = read_frame(GlucoseFbg.objects.all(), verbose=False)
+        df_glucose_fbg = read_frame(GlucoseFbg.objects.filter(fasting=YES), verbose=False)
 
     df_glucose_fbg = df_glucose_fbg.rename(
         columns={"fasting": "fasted", "subject_visit": "subject_visit_id"},
@@ -56,14 +172,70 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
 
     for col in [c for c in df_glucose_fbg.columns if "datetime" in c]:
         df_glucose_fbg[col] = pd.to_datetime(df_glucose_fbg[col])
+    return df_glucose_fbg
 
+
+def get_glucose_ogtt_df(subject_identifiers, subject_visit_df) -> pd.DataFrame:
+    """Return a prepared dataframe of model GlucoseOgtt which has
+    only OGTT results
+    """
+    if subject_identifiers:
+        df_glucose_ogtt = read_frame(
+            GlucoseOgtt.objects.filter(
+                subject_visit__subject_identifier__in=subject_identifiers, fasting=YES
+            ),
+            verbose=False,
+        )
+    else:
+        df_glucose_ogtt = read_frame(GlucoseOgtt.objects.filter(fasting=YES), verbose=False)
+
+    df_glucose_ogtt = df_glucose_ogtt.rename(
+        columns={"fasting": "fasted", "subject_visit": "subject_visit_id"},
+    )
+    df_glucose_ogtt["fasting_hrs"] = np.nan
+    df_glucose_ogtt["fasting_hrs"] = df_glucose_ogtt["fasting_duration_delta"].apply(
+        lambda x: x.total_seconds() / 3600
+    )
+    df_glucose_ogtt.loc[
+        :,
+        ["fbg_value", "fbg_units", "fbg_datetime"],
+    ] = [np.nan, None, pd.NaT]
+    df_glucose_ogtt["source"] = "meta_subject.glucoseogtt"
+    df_glucose_ogtt = df_glucose_ogtt[
+        [col for col in df_glucose_ogtt.columns if "site_id" not in col]
+    ].merge(
+        subject_visit_df[
+            [
+                "subject_identifier",
+                "site_id",
+                "visit_code",
+                "visit_datetime",
+                "baseline_datetime",
+                "subject_visit_id",
+            ]
+        ],
+        on="subject_visit_id",
+        how="left",
+    )
+
+    for col in [c for c in df_glucose_ogtt.columns if "datetime" in c]:
+        df_glucose_ogtt[col] = pd.to_datetime(df_glucose_ogtt[col])
+    return df_glucose_ogtt
+
+
+def get_glucose_fbg_ogtt_df(subject_identifiers, subject_visit_df) -> pd.DataFrame:
+    """Return a prepared dataframe of model Glucose which has results
+    for FBG and OGTT
+    """
     if subject_identifiers:
         df_glucose = read_frame(
-            Glucose.objects.filter(subject_visit__subject_identifier__in=subject_identifiers),
+            Glucose.objects.filter(
+                subject_visit__subject_identifier__in=subject_identifiers, fasting=YES
+            ),
             verbose=False,
         ).rename(columns={"subject_visit": "subject_visit_id", "fasting": "fasted"})
     else:
-        df_glucose = read_frame(Glucose.objects.all(), verbose=False).rename(
+        df_glucose = read_frame(Glucose.objects.filter(fasting=YES), verbose=False).rename(
             columns={"subject_visit": "subject_visit_id", "fasting": "fasted"}
         )
     df_glucose = df_glucose.rename(
@@ -78,7 +250,7 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
     for col in [c for c in df_glucose.columns if "datetime" in c]:
         df_glucose[col] = pd.to_datetime(df_glucose[col])
 
-    df_glucose = subject_visit_df[
+    return subject_visit_df[
         [
             "subject_identifier",
             "site_id",
@@ -91,88 +263,4 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
         df_glucose[[col for col in df_glucose.columns if "site_id" not in col]],
         on="subject_visit_id",
         how="left",
-    )
-
-    keep_cols = [
-        "subject_identifier",
-        "site_id",
-        "visit_code",
-        "visit_datetime",
-        "baseline_datetime",
-        "subject_visit_id",
-        "fasted",
-        "fasting_hrs",
-        "fbg_value",
-        "fbg_units",
-        "fbg_datetime",
-        "ogtt_value",
-        "ogtt_units",
-        "ogtt_datetime",
-        "source",
-        "revision",
-        "report_datetime",
-    ]
-    df = df_glucose[keep_cols].merge(
-        df_glucose_fbg[keep_cols],
-        on="subject_visit_id",
-        how="outer",
-        suffixes=("", "_2"),
-    )
-
-    for suffix in ["", "_2"]:
-        df[[f"fasting_hrs{suffix}", f"fbg_value{suffix}", f"ogtt_value{suffix}"]] = df[
-            [f"fasting_hrs{suffix}", f"fbg_value{suffix}", f"ogtt_value{suffix}"]
-        ].apply(pd.to_numeric)
-        df.loc[
-            (df[f"fbg_units{suffix}"] != "mmol/L (millimoles/L)")
-            & (df[f"fbg_value{suffix}"] >= 0),
-            f"fbg_units{suffix}",
-        ] = "mmol/L (millimoles/L)"
-        df.loc[
-            (df[f"ogtt_units{suffix}"] != "mmol/L (millimoles/L)")
-            & (df[f"ogtt_value{suffix}"] >= 0),
-            f"ogtt_units{suffix}",
-        ] = "mmol/L (millimoles/L)"
-
-    for col in [c for c in df.columns if "datetime" in c]:
-        df[col] = pd.to_datetime(df[col])
-
-    df[[col for col in df.columns if "datetime" in col]] = df[
-        [col for col in df.columns if "datetime" in col]
-    ].apply(lambda x: x.dt.tz_localize(None) if x.dtype == "datetime64[ns, UTC]" else x)
-
-    # reconcile all to single column
-    for col in ["fasted", "fbg_value", "ogtt_value", "fbg_datetime", "ogtt_datetime"]:
-        df[col] = df[col].fillna(df[f"{col}_2"])
-
-    for col in [c for c in df.columns if "datetime" in c]:
-        df[col] = pd.to_datetime(df[col], errors="coerce")
-
-    df_consent = get_subject_consent("meta_consent.subjectconsent")
-    df_eos = get_eos("meta_prn.endofstudy")
-    df = df.merge(
-        df_consent[["subject_identifier", "gender", "consent_datetime", "dob"]],
-        on="subject_identifier",
-        how="left",
-    ).merge(
-        df_eos[["subject_identifier", "offstudy_datetime", "offstudy_reason"]],
-        on="subject_identifier",
-        how="left",
-    )
-    df["visit_days"] = df["baseline_datetime"].rsub(df["visit_datetime"]).dt.days
-    df["fgb_days"] = df["baseline_datetime"].rsub(df["fbg_datetime"]).dt.days
-    df["ogtt_days"] = df["baseline_datetime"].rsub(df["ogtt_datetime"]).dt.days
-    df["visit_days"] = pd.to_numeric(df["visit_days"], downcast="integer")
-    df["fgb_days"] = pd.to_numeric(df["fgb_days"], downcast="integer")
-    df["ogtt_days"] = pd.to_numeric(df["ogtt_days"], downcast="integer")
-
-    return (
-        df.query(
-            "offstudy_reason != 'Patient fulfilled late exclusion criteria "
-            "(due to abnormal blood values or raised blood pressure at enrolment'"
-        )
-        .copy()
-        .drop(columns=[col for col in df.columns if "_2" in col])
-        .sort_values(by=["subject_identifier", "visit_code"])
-        .reset_index(drop=True)
     )

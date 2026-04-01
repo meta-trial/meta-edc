@@ -1,4 +1,4 @@
-from clinicedc_constants import NO, NOT_APPLICABLE, OTHER
+from clinicedc_constants import NO, NOT_APPLICABLE, NULL_STRING, OTHER
 from django.db import models
 from edc_constants.choices import YES_NO
 from edc_glucose.model_mixin_factories import (
@@ -80,6 +80,13 @@ class GlucoseFbg(
         limit_choices_to={"name__in": [ACCUCHEK, HEMACUE, OTHER, NOT_APPLICABLE]},
     )
 
+    comment = models.TextField(
+        verbose_name="Any other comment?",
+        max_length=500,
+        blank=True,
+        default=NULL_STRING,
+    )
+
     class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
-        verbose_name = "Glucose (FBG)"
-        verbose_name_plural = "Glucose (FBG)"
+        verbose_name = "Glucose (FBG only)"
+        verbose_name_plural = "Glucose (FBG only)"

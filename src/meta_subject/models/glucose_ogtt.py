@@ -3,7 +3,6 @@ from django.db import models
 from edc_constants.choices import YES_NO
 from edc_glucose.model_mixin_factories import (
     fasting_model_mixin_factory,
-    fbg_model_mixin_factory,
     ogtt_model_mixin_factory,
 )
 from edc_model.models import BaseUuidModel
@@ -17,7 +16,7 @@ from ..constants import AMENDMENT_DATE
 from ..model_mixins import CrfModelMixin
 
 
-class Glucose(
+class GlucoseOgtt(
     CrfModelMixin,
     fasting_model_mixin_factory(
         None,
@@ -30,33 +29,13 @@ class Glucose(
             help_text="As reported by patient",
         ),
     ),
-    fbg_model_mixin_factory("fbg"),
     ogtt_model_mixin_factory("ogtt"),
     BaseUuidModel,
 ):
-    """A user model to capture both FBG/RBG and OGTT
+    """A user model to capture both OGTT
 
-    See also GlucoseFbg.
+    See also Glucose and GlucoseFbg.
     """
-
-    fbg_performed = models.CharField(
-        verbose_name="Was the FBG test performed?",
-        max_length=15,
-        choices=YES_NO,
-    )
-
-    fbg_not_performed_reason = models.CharField(
-        verbose_name="If NO, provide reason", max_length=150, default="", blank=True
-    )
-
-    fbg_diagnostic_device = models.ForeignKey(
-        DiagnosticDevices,
-        on_delete=models.PROTECT,
-        null=True,
-        blank=False,
-        limit_choices_to={"name__in": [ACCUCHEK, HEMACUE, OTHER, NOT_APPLICABLE]},
-        related_name="fbg_diagnostic_device",
-    )
 
     ogtt_performed = models.CharField(
         verbose_name="Was the OGTT test performed?",
@@ -74,7 +53,7 @@ class Glucose(
         null=True,
         blank=False,
         limit_choices_to={"name__in": [ACCUCHEK, HEMACUE, OTHER, NOT_APPLICABLE]},
-        related_name="ogtt_diagnostic_device",
+        related_name="ogtt_only_diagnostic_device",
     )
 
     endpoint_today = models.CharField(
@@ -88,12 +67,6 @@ class Glucose(
         ),
     )
 
-    repeat_fbg_date = models.DateField(
-        "If required, date particpant to repeat FBG",
-        null=True,
-        blank=True,
-    )
-
     comment = models.TextField(
         verbose_name="Any other comment?",
         max_length=500,
@@ -102,5 +75,5 @@ class Glucose(
     )
 
     class Meta(CrfModelMixin.Meta, BaseUuidModel.Meta):
-        verbose_name = "Glucose (FBG/RBG, OGTT)"
-        verbose_name_plural = "Glucose (FBG/RBG, OGTT)"
+        verbose_name = "Glucose (OGTT only)"
+        verbose_name_plural = "Glucose (OGTT only)"

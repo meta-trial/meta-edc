@@ -8,10 +8,11 @@ def get_view_definition() -> dict:
                       appt_datetime,
                       `first_value`,
                       `second_value`,
-                      datediff(`second_date`, `first_date`)      as interval_days,
-                      datediff(now(), `first_date`)              as from_now_days,
+                      datediff(`second_date`, `first_date`)         as interval_days,
+                      datediff(now(), `first_date`)                 as from_now_days,
                       CONCAT_WS("-", `first_value`, `second_value`) AS `visit_code`,
-                      CAST(NULL AS UNSIGNED)                     AS `visit_code_sequence`
+                      CAST(NULL AS UNSIGNED)                        AS `visit_code_sequence`,
+                      ""                                            as label
                from (select subject_identifier,
                             site_id,
                             appt_datetime,
@@ -26,7 +27,7 @@ def get_view_definition() -> dict:
                  and `third_value` is null"""  # noqa
 
     sql_view = SqlViewGenerator(
-        report_model="meta_reports.unattendedtwoinrowview",
+        report_model="meta_reports.unattendedtwoinrow",
         ordering=["site_id", "~from_now_days"],
     )
     return {

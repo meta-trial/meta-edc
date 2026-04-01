@@ -6,6 +6,7 @@ from .egfr_drop_notification_form_validator import EgfrDropNotificationFormValid
 from .followup_examination_form_validator import FollowupExaminationFormValidator
 from .glucose_fbg_form_validator import GlucoseFbgFormValidator
 from .glucose_form_validator import GlucoseFormValidator
+from .glucose_ogtt_form_validator import GlucoseOgttFormValidator
 from .health_economics_form_validator import HealthEconomicsFormValidator
 from .hiv_exit_review_form_validator import HivExitReviewFormValidator
 
@@ -18,6 +19,7 @@ __all__ = [
     "FollowupExaminationFormValidator",
     "GlucoseFbgFormValidator",
     "GlucoseFormValidator",
+    "GlucoseOgttFormValidator",
     "HealthEconomicsFormValidator",
     "HivExitReviewFormValidator",
 ]

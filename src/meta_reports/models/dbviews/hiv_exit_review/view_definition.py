@@ -17,7 +17,8 @@ def get_view_definition() -> dict:
                       appt.appt_datetime,
                       appt.appt_status,
                       datediff(appt.appt_datetime, now()) as days,
-                      'hivexitreview'                    as source
+                      'hivexitreview'                     as source,
+                      ""                                  as label
                from edc_visit_schedule_subjectschedulehistory as history
                         left join (select *
                                    from (select subject_identifier,
@@ -41,7 +42,7 @@ def get_view_definition() -> dict:
                order by history.subject_identifier;
                """
     sql_view = SqlViewGenerator(
-        report_model="meta_reports.hivexitreviewreportview",
+        report_model="meta_reports.hivexitreviewreport",
         ordering=["subject_identifier", "site_id"],
     )
     return {

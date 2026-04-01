@@ -22,7 +22,7 @@ def get_empty_endpoint_df() -> pd.DataFrame:
     endpoint_df[
         [
             "visit_code",
-            "interval_in_days",
+            "days_to_events",
             "fbg_value",
             "ogtt_value",
             "endpoint",
@@ -31,7 +31,7 @@ def get_empty_endpoint_df() -> pd.DataFrame:
     ] = endpoint_df[
         [
             "visit_code",
-            "interval_in_days",
+            "days_to_events",
             "fbg_value",
             "ogtt_value",
             "endpoint",

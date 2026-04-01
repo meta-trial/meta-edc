@@ -290,7 +290,7 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
                 self.set_mnsi_status(subject_visit=subject_visit, mnsi_performed=NO)
         traveller.stop()
 
-    @tag("meta1")
+    @tag("mnsi")
     def test_mnsi_only_required_once_between_36m_and_45m(self):
         traveller = time_machine.travel(datetime(2024, 12, 17, tzinfo=ZoneInfo("UTC")))
         traveller.start()

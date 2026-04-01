@@ -3,11 +3,10 @@ from celery import shared_task
 
 @shared_task
 def update_endpoints_table(subject_identifiers: list[str] | None = None):
-    from meta_analytics.dataframes import GlucoseEndpointsByDate  # noqa: PLC0415
+    from meta_analytics.dataframes import GlucoseEndpointsByDate2  # noqa: PLC0415
 
     if len(subject_identifiers) > 5:
-        cls = GlucoseEndpointsByDate()
+        cls = GlucoseEndpointsByDate2(verbose=False)
     else:
-        cls = GlucoseEndpointsByDate(subject_identifiers=subject_identifiers)
-    cls.run()
+        cls = GlucoseEndpointsByDate2(subject_identifiers=subject_identifiers, verbose=False)
     return cls.to_model()

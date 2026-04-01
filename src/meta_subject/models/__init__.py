@@ -20,6 +20,7 @@ from .followup_examination import FollowupExamination
 from .followup_vitals import FollowupVitals
 from .glucose import Glucose
 from .glucose_fbg import GlucoseFbg
+from .glucose_ogtt import GlucoseOgtt
 from .health_economics import (
     HealthEconomics,
     HealthEconomicsSimple,

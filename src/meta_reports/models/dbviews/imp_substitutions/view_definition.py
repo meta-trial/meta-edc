@@ -15,14 +15,15 @@ def get_view_definition() -> dict:
                       s.modified,
                       s.id                   as original_id,
                       CAST(NULL AS CHAR(15)) AS `visit_code`,
-                      CAST(NULL AS UNSIGNED) AS `visit_code_sequence`
+                      CAST(NULL AS UNSIGNED) AS `visit_code_sequence`,
+                      ""                     as label
                from meta_pharmacy_substitutions as s
                         left join meta_rando_randomizationlist as r
                                   on r.subject_identifier = s.subject_identifier
                order by s.subject_identifier \
                """
     sql_view = SqlViewGenerator(
-        report_model="meta_report.impsubstitutionsview",
+        report_model="meta_report.impsubstitutions",
         ordering=["subject_identifier", "site_id"],
     )
     return {

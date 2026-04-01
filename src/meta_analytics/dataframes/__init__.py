@@ -12,7 +12,7 @@ from .get_glucose_df import get_glucose_df
 from .get_glucose_fbg_df import get_glucose_fbg_df
 from .get_glucose_fbg_ogtt_df import get_glucose_fbg_ogtt_df
 from .get_last_imp_visits_df import get_last_imp_visits_df
-from .glucose_endpoints import EndpointByDate, GlucoseEndpointsByDate
+from .glucose_endpoints import EndpointByDate, GlucoseEndpointsByDate, GlucoseEndpointsByDate2
 from .screening import get_glucose_tested_only_df, get_screening_df
 from .utils import (
     get_empty_endpoint_df,
@@ -29,6 +29,7 @@ __all__ = [
     "CASE_OGTT",
     "EndpointByDate",
     "GlucoseEndpointsByDate",
+    "GlucoseEndpointsByDate2",
     "endpoint_cases",
     "endpoint_columns",
     "get_empty_endpoint_df",

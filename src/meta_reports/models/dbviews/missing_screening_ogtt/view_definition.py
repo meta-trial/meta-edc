@@ -18,14 +18,15 @@ def get_view_definition() -> dict:
                          screening_identifier     as `subject_identifier`,
                          id                       as `original_id`,
                          CAST(NULL AS CHAR(15))   AS `visit_code`,
-                         CAST(NULL AS UNSIGNED)   AS `visit_code_sequence`
+                         CAST(NULL AS UNSIGNED)   AS `visit_code_sequence`,
+                         ""                       as label
                   from meta_screening_subjectscreening
                   where converted_fbg_value is not null
                     and converted_ogtt_value is null
                     and unsuitable_agreed != "Yes" \
                """
     sql_view = SqlViewGenerator(
-        report_model="meta_reports.missingscreeningogttview",
+        report_model="meta_reports.missingscreeningogtt",
         ordering=["subject_identifier", "site_id"],
     )
     return {
