@@ -1,6 +1,6 @@
 from clinicedc_constants import NULL_STRING, YES
 from django.db import models
-from edc_constants.choices import YES_NO
+from edc_constants.choices import YES_NO_PENDING
 from edc_crf.model_mixins import SingletonCrfModelMixin
 from edc_model.models import BaseUuidModel
 
@@ -19,7 +19,7 @@ class HivExitReview(
         verbose_name="Are HIV test result and treatment information available?",
         max_length=25,
         default=YES,
-        choices=YES_NO,
+        choices=YES_NO_PENDING,
     )
 
     not_available_reason = models.TextField(

@@ -17,6 +17,7 @@ from .followup_examination_form import FollowupExaminationForm
 from .followup_vitals_form import FollowupVitalsForm
 from .glucose_fbg_form import GlucoseFbgForm
 from .glucose_form import GlucoseForm
+from .glucose_ogtt_form import GlucoseOgttForm
 from .health_economics import HealthEconomicsSimpleForm, HealthEconomicsUpdateForm
 from .hepatitis_test_form import HepatitisTestForm
 from .hiv_exit_review_form import HivExitReviewForm
@@ -57,6 +58,7 @@ __all__ = [
     "FollowupVitalsForm",
     "GlucoseFbgForm",
     "GlucoseForm",
+    "GlucoseOgttForm",
     "HealthEconomicsSimpleForm",
     "HealthEconomicsUpdateForm",
     "HepatitisTestForm",

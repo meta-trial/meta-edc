@@ -12,7 +12,8 @@ def get_view_definition() -> dict:
                       datediff(`third_date`, `first_date`) as `interval_days`,
                       datediff(now(), `first_date`)        as `from_now_days`,
                       CAST(NULL AS CHAR(15))               AS `visit_code`,
-                      CAST(NULL AS UNSIGNED)               AS `visit_code_sequence`
+                      CAST(NULL AS UNSIGNED)               AS `visit_code_sequence`,
+                      ""                                   as label
                from (select subject_identifier,
                             site_id,
                             appt_datetime,
@@ -27,7 +28,7 @@ def get_view_definition() -> dict:
                  and `third_value` is not null \
                """  # noqa
     sql_view = SqlViewGenerator(
-        report_model="meta_reports.unattendedthreeinrowview",
+        report_model="meta_reports.unattendedthreeinrow",
         ordering=["subject_identifier", "site_id"],
     )
     return {

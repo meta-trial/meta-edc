@@ -1,13 +1,43 @@
+from clinicedc_constants import NO, YES
 from django.contrib import admin
+from django.contrib.admin import SimpleListFilter
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
 from django.urls import reverse
+from edc_data_manager.auth_objects import DATA_MANAGER_ROLE
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
 from edc_sites.admin import SiteModelAdminMixin
+from edc_sites.admin.list_filters import SitesForDataManagerListFilter
 
 from ..admin_site import meta_spfq_admin
 from ..models import Spfq, SpfqList, SpfqRefusal, SubjectConsentSpfq
+
+
+class CompletedSpfqListFilter(SimpleListFilter):
+    title = "Completed SPQF"
+    parameter_name = "completed_spqf"
+
+    def lookups(self, request, model_admin):  # noqa: ARG002
+        return (
+            (YES, YES),
+            (NO, NO),
+        )
+
+    def queryset(self, request, queryset):  # noqa: ARG002
+        if self.value() == YES:
+            return queryset.filter(
+                subject_identifier__in=Spfq.objects.values_list(
+                    "subject_identifier", flat=True
+                )
+            )
+        if self.value() == NO:
+            return queryset.exclude(
+                subject_identifier__in=Spfq.objects.values_list(
+                    "subject_identifier", flat=True
+                )
+            )
+        return queryset
 
 
 @admin.register(SpfqList, site=meta_spfq_admin)
@@ -32,7 +62,7 @@ class SpfqListAdmin(
         "filename",
     )
 
-    # list_filter = ("site",)
+    list_filter = (CompletedSpfqListFilter, SitesForDataManagerListFilter)
 
     search_fields = ("subject_identifier",)
 
@@ -113,7 +143,10 @@ class SpfqListAdmin(
             url=url,
             subject_identifier=obj.subject_identifier,
             title=title,
-            next=f"meta_spfq_admin:meta_spfq_spfqlist_changelist,subject_identifier&subject_identifier={obj.subject_identifier}",
+            next=(
+                "meta_spfq_admin:meta_spfq_spfqlist_changelist,"
+                f"subject_identifier&subject_identifier={obj.subject_identifier}"
+            ),
             color=color,
             consent_obj=consent_obj,
             spfq_obj=spfq_obj,
@@ -126,3 +159,10 @@ class SpfqListAdmin(
             refusal_color=refusal_color,
         )
         return render_to_string("meta_spfq/documents_button.html", context=context)
+
+    def get_view_only_site_ids_for_user(self, request) -> list[int]:
+        if request.user.userprofile.roles.filter(name=DATA_MANAGER_ROLE).exists():
+            return [
+                s.id for s in request.user.userprofile.sites.all() if s.id != request.site.id
+            ]
+        return super().get_view_only_site_ids_for_user(request)

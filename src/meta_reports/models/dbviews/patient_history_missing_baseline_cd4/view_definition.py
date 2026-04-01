@@ -11,14 +11,15 @@ def get_view_definition() -> dict:
                       crf.site_id,
                       crf.user_created,
                       crf.user_modified,
-                      crf.modified
+                      crf.modified,
+                      "" as label
                from meta_subject_patienthistory as crf
                         left join meta_subject_subjectvisit as v on crf.subject_visit_id = v.id
                where cd4 is null
                   or cd4_date is null \
                """
     sql_view = SqlViewGenerator(
-        report_model="meta_reports.patienthistorymissingbaselinecd4view",
+        report_model="meta_reports.patienthistorymissingbaselinecd4",
         ordering=["subject_identifier", "site_id"],
     )
     return {

@@ -25,6 +25,10 @@ from .endpoint_by_date import EndpointByDate
 
 class GlucoseEndpointsByDate:
     """
+    Superceded by GlucoseEndpointsByDate2
+
+    This was the original code up to 31 March 2026.
+
     Usage:
         cls = GlucoseEndpointsByDate()
         cls.run()
@@ -65,11 +69,17 @@ class GlucoseEndpointsByDate:
     ]
 
     def __init__(
-        self, subject_identifiers: list[str] | None = None, case_list: list[int] | None = None
+        self,
+        subject_identifiers: list[str] | None = None,
+        case_list: list[int] | None = None,
+        min_fasted_hrs: float | None = None,
+        drop_from_working: bool | None = None,
     ):
         self._glucose_fbg_df = pd.DataFrame()
         self._glucose_fbg_ogtt_df = pd.DataFrame()
+        self._glucose_ogtt_df = pd.DataFrame()
         self.endpoint_only_df = pd.DataFrame()
+        self.drop_from_working = drop_from_working
 
         self.subject_identifiers = subject_identifiers or []
         self.case_list = case_list or [
@@ -79,9 +89,11 @@ class GlucoseEndpointsByDate:
             CASE_FBG_VERY_HIGH,
             CASE_EOS,
         ]
+        self.min_fasted_hrs = min_fasted_hrs or 8.0
         self.endpoint_cases = {k: v for k, v in endpoint_cases.items() if k in self.case_list}
 
         self.df = get_glucose_df(subject_identifiers=self.subject_identifiers).copy()
+        self.df.loc[self.df.fasted_hrs.isna(), "fasted_hrs"] = self.min_fasted_hrs
 
         # label rows by type of glu tests (ones with value)
         self.df["test"] = self.df.apply(get_test_string, axis=1)
@@ -104,6 +116,7 @@ class GlucoseEndpointsByDate:
                 subject_df=self.get_subject_df(row["subject_identifier"]),
                 fbg_threshhold=self.fbg_threshhold,
                 ogtt_threshhold=self.ogtt_threshhold,
+                min_fasted_hrs=self.min_fasted_hrs,
             ).subject_df
             if len(subject_df.loc[subject_df["endpoint"] == 1]) == 1:
                 self.append_subject_to_endpoint_df(subject_df)
@@ -129,7 +142,7 @@ class GlucoseEndpointsByDate:
             subject_endpoint_df["endpoint"] = 1
             subject_endpoint_df["endpoint_label"] = self.endpoint_cases[CASE_FBG_VERY_HIGH]
             subject_endpoint_df["endpoint_type"] = CASE_FBG_VERY_HIGH
-            subject_endpoint_df["interval_in_days"] = np.nan
+            subject_endpoint_df["days_to_events"] = np.nan
 
             # add back the others rows for these subjects
             subjects_df = self.working_df.loc[
@@ -148,7 +161,7 @@ class GlucoseEndpointsByDate:
             subjects_df["endpoint"] = np.nan
             subjects_df["endpoint_label"] = None
             subjects_df["endpoint_type"] = None
-            subjects_df["interval_in_days"] = np.nan
+            subjects_df["days_to_events"] = np.nan
             subjects_df = pd.concat([subjects_df, subject_endpoint_df])
             subjects_df = subjects_df.reset_index(drop=True)
 
@@ -178,6 +191,7 @@ class GlucoseEndpointsByDate:
             (self.working_df["ogtt_value"] >= self.ogtt_threshhold)
             & (self.working_df["ogtt_value"] <= 9999.99)
             & (self.working_df["fasted"] == YES)
+            & (self.working_df["fasted_hrs"] >= self.min_fasted_hrs)
             & (self.working_df["fbg_value"].notna())
         ].copy()
 
@@ -192,7 +206,7 @@ class GlucoseEndpointsByDate:
             subject_endpoint_df["endpoint"] = 1
             subject_endpoint_df["endpoint_label"] = self.endpoint_cases[CASE_OGTT]
             subject_endpoint_df["endpoint_type"] = CASE_OGTT
-            subject_endpoint_df["interval_in_days"] = np.nan
+            subject_endpoint_df["days_to_events"] = np.nan
 
             # add back the others rows for these subjects
             subjects_df = self.working_df.loc[
@@ -211,7 +225,7 @@ class GlucoseEndpointsByDate:
             subjects_df["endpoint"] = np.nan
             subjects_df["endpoint_label"] = None
             subjects_df["endpoint_type"] = None
-            subjects_df["interval_in_days"] = np.nan
+            subjects_df["days_to_events"] = np.nan
             subjects_df = pd.concat([subjects_df, subject_endpoint_df])
             subjects_df = subjects_df.reset_index(drop=True)
 
@@ -244,17 +258,18 @@ class GlucoseEndpointsByDate:
         """Removes subjects from the working DF given a DF with
         column `subject_identifier`.
         """
-        self.working_df = self.working_df.drop(
-            index=self.working_df.loc[
-                self.working_df["subject_identifier"].isin(rows["subject_identifier"])
-            ].index
-        ).reset_index(drop=True)
+        if self.drop_from_working:
+            self.working_df = self.working_df.drop(
+                index=self.working_df.loc[
+                    self.working_df["subject_identifier"].isin(rows["subject_identifier"])
+                ].index
+            ).reset_index(drop=True)
 
     def get_subject_df(self, subject_identifier: str) -> pd.DataFrame:
         subject_df = self.working_df.loc[
             self.working_df["subject_identifier"] == subject_identifier
         ].copy()
-        subject_df["interval_in_days"] = np.nan
+        subject_df["days_to_events"] = np.nan
         subject_df["endpoint_type"] = None
         subject_df["endpoint_label"] = None
         subject_df["endpoint"] = 0
@@ -263,7 +278,6 @@ class GlucoseEndpointsByDate:
         subject_df[[col for col in subject_df if "value" in col]] = subject_df[
             [col for col in subject_df if "value" in col]
         ].fillna(0.0)
-
         return subject_df.reset_index(drop=True)
 
     def check_endpoint_by_fbg_for_subject(
@@ -288,7 +302,7 @@ class GlucoseEndpointsByDate:
         df_eos["endpoint"] = 1
         df_eos["endpoint_label"] = self.endpoint_cases[CASE_EOS]
         df_eos["endpoint_type"] = CASE_EOS
-        df_eos["interval_in_days"] = np.nan
+        df_eos["days_to_events"] = np.nan
         df_eos = df_eos.reset_index(drop=True)
         self.append_subject_to_endpoint_df(df_eos[endpoint_columns])
         self.working_df = self.working_df.drop(
@@ -391,6 +405,7 @@ class GlucoseEndpointsByDate:
                     ogtt_value=None if pd.isna(row["ogtt_value"]) else row["ogtt_value"],
                     fbg_date=(None if pd.isna(row["fbg_datetime"]) else row["fbg_datetime"]),
                     fasting=(NULL_STRING if pd.isna(row["fasted"]) else row["fasted"]),
+                    fasted_hrs=(None if pd.isna(row["fasted_hrs"]) else row["fasted_hrs"]),
                     endpoint_label=(
                         NULL_STRING
                         if pd.isna(row["endpoint_label"])

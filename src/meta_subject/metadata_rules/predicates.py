@@ -23,7 +23,7 @@ from edc_visit_schedule.constants import (
 )
 from edc_visit_schedule.utils import is_baseline
 
-from meta_visit_schedule.constants import MONTH39, MONTH42, MONTH45
+from meta_visit_schedule.constants import MONTH39, MONTH42, MONTH45, SCHEDULE
 
 
 def hba1c_crf_required_at_baseline(visit):
@@ -288,9 +288,12 @@ class Predicates(PersistantSingletonMixin):
         return False
 
     def hiv_exit_review_required(self, visit, **kwargs) -> bool:  # noqa: ARG002
-        return self.offschedule_today(visit) or visit.report_datetime >= datetime(
-            2026, 3, 1, 0, 0, tzinfo=ZoneInfo("UTC")
+        return visit.schedule_name == SCHEDULE and (
+            self.offschedule_today(visit)
+            or visit.report_datetime >= datetime(2026, 3, 1, 0, 0, tzinfo=ZoneInfo("UTC"))
         )
 
     def last_visit_crfs_required(self, visit, **kwargs) -> bool:  # noqa: ARG002
-        return visit.report_datetime >= datetime(2026, 3, 1, 0, 0, tzinfo=ZoneInfo("UTC"))
+        return visit.schedule_name == SCHEDULE and visit.report_datetime >= datetime(
+            2026, 3, 1, 0, 0, tzinfo=ZoneInfo("UTC")
+        )

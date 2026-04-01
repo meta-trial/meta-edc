@@ -14,7 +14,8 @@ def get_view_definition() -> dict:
                                   `third_status`,
                                   sum(missed)                          as missed_count,
                                   CAST(NULL AS CHAR(15))               AS `visit_code`,
-                                  CAST(NULL AS UNSIGNED)               AS `visit_code_sequence`
+                                  CAST(NULL AS UNSIGNED)               AS `visit_code_sequence`,
+                                  ""                                   as label
                   from (select subject_identifier,
                                site_id,
                                appt_datetime,
@@ -42,7 +43,7 @@ order by subject_identifier, appt_datetime)"""  # noqa
 
     sql_view = SqlViewGenerator(
         with_stmt=with_stmt,
-        report_model="meta_reports.unattendedthreeinrow2view",
+        report_model="meta_reports.unattendedthreeinrow2",
         ordering=["subject_identifier", "site_id"],
     )
 

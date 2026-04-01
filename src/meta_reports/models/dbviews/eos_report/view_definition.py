@@ -4,7 +4,8 @@ from edc_qareports.sql_generator import SqlViewGenerator
 def get_view_definition() -> dict:
     subquery = """select off.*,
                          CAST(NULL AS CHAR(15)) AS `visit_code`,
-                         CAST(NULL AS UNSIGNED) AS `visit_code_sequence`
+                         CAST(NULL AS UNSIGNED) AS `visit_code_sequence`,
+                         ""                     as label
                   from (select subject_identifier,
                                report_datetime,
                                offschedule_datetime,
@@ -38,7 +39,7 @@ def get_view_definition() -> dict:
                """
 
     sql_view = SqlViewGenerator(
-        report_model="meta_reports.eosreportview",
+        report_model="meta_reports.eosreport",
         ordering=["subject_identifier", "site_id"],
     )
     return {

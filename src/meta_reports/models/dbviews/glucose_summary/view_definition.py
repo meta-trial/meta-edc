@@ -21,9 +21,35 @@ def get_view_definition() -> dict:
                       v.appointment_id,
                       eos.offstudy_datetime,
                       fasting_duration_delta,
-                      "meta_subject.glucosefbg" as source
+                      "meta_subject.glucosefbg" as source,
+                      ""                        as label
                from meta_subject_glucosefbg as fbg
                         left join meta_subject_subjectvisit as v on v.id = fbg.subject_visit_id
+                        left join meta_prn_endofstudy as eos
+                                  on v.subject_identifier = eos.subject_identifier
+               UNION
+               select v.subject_identifier,
+                      null                      as `fbg_value`,
+                      null                      as `fbg_units`,
+                      null                      as `fbg_datetime`,
+                      ogtt_value,
+                      ogtt_units,
+                      ogtt_datetime,
+                      case
+                          when fasting = "fasting" then "Yes"
+                          when fasting = "non_fasting" then "No"
+                          else fasting end      as `fasted`,
+                      ogtt.site_id,
+                      v.visit_code,
+                      v.visit_code_sequence,
+                      v.report_datetime,
+                      v.appointment_id,
+                      eos.offstudy_datetime,
+                      fasting_duration_delta,
+                      "meta_subject.glucosefbg" as source,
+                      ""                        as label
+               from meta_subject_glucoseogtt as ogtt
+                        left join meta_subject_subjectvisit as v on v.id = ogtt.subject_visit_id
                         left join meta_prn_endofstudy as eos
                                   on v.subject_identifier = eos.subject_identifier
                UNION
@@ -45,14 +71,15 @@ def get_view_definition() -> dict:
                       v.appointment_id,
                       eos.offstudy_datetime,
                       fasting_duration_delta,
-                      "meta_subject.glucose" as source
+                      "meta_subject.glucose" as source,
+                      ""                     as label
                from meta_subject_glucose as fbg
                         left join meta_subject_subjectvisit as v on v.id = fbg.subject_visit_id
                         left join meta_prn_endofstudy as eos
                                   on v.subject_identifier = eos.subject_identifier \
                """
     sql_view = SqlViewGenerator(
-        report_model="meta_reports.glucosesummaryview",
+        report_model="meta_reports.glucosesummary",
         ordering=["subject_identifier", "site_id"],
     )
     return {

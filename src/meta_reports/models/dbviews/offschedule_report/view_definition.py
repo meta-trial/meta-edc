@@ -18,7 +18,8 @@ def get_view_definition() -> dict:
                       appt.visit_code_sequence,
                       appt.appt_datetime,
                       appt.appt_status,
-                      datediff(appt.appt_datetime, now()) as days
+                      datediff(appt.appt_datetime, now()) as days,
+                      ""                                  as label
                from edc_visit_schedule_subjectschedulehistory as history
                         left join (select *
                                    from (select subject_identifier,
@@ -31,14 +32,14 @@ def get_view_definition() -> dict:
                                                     ORDER BY appt_datetime DESC
                                                 ) as row_num
                                          from edc_appointment_appointment
-                                         where appt_datetime < date("2026-06-01")) as A
-                                   where row_num = 1) as appt
-                                  on history.subject_identifier = appt.subject_identifier
+                                         where appt_datetime < date ("2026-06-01")) as A
+               where row_num = 1) as appt
+               on history.subject_identifier = appt.subject_identifier
                where history.offschedule_datetime is null
                order by history.subject_identifier; \
                """
     sql_view = SqlViewGenerator(
-        report_model="meta_reports.offschedulereportview",
+        report_model="meta_reports.offschedulereport",
         ordering=["subject_identifier", "site_id"],
     )
     return {

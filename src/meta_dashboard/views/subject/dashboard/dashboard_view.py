@@ -21,11 +21,7 @@ class DashboardView(SubjectDashboardView):
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         """Add message if subject reaches DM Endpoint."""
         kwargs.update(subject_consent_v1_ext=self.subject_consent_v1_ext)
-        try:
-            Endpoints.objects.get(subject_identifier=self.subject_identifier)
-        except ObjectDoesNotExist:
-            pass
-        else:
+        if Endpoints.objects.filter(subject_identifier=self.subject_identifier).exists():
             url = reverse("meta_reports_admin:meta_reports_glucosesummary_changelist")
             url = mark_safe(f"{url}?q={self.subject_identifier}")  # noqa: S308
             message = format_html(
