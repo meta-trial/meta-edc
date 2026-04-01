@@ -69,7 +69,7 @@ class EndpointsModelAdminMixin(
             qs.count() == 0
             or (timezone.now() - qs.aggregate(Min("created")).get("created__min")).days > 0
         ):
-            update_endpoints_table([], min_fasted_hrs=8.0)
+            update_endpoints_table()
             messages.add_message(request, INFO, "Endpoint data has just been updated.")
         if self.queryset_filter:
             qs = qs.filter(**self.queryset_filter)
