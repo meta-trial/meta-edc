@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from clinicedc_constants import YES
 from django_pandas.io import read_frame
+from edc_appointment.constants import MISSED_APPT  # noqa
 from edc_pdutils.dataframes import get_eos, get_subject_consent, get_subject_visit
 
 from meta_subject.models import Glucose, GlucoseFbg, GlucoseOgtt
