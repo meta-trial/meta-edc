@@ -197,7 +197,7 @@ meta-edc = { workspace = true }
 clinicedc = { path = "../clinicedc", editable = true }
 clinicedc-utils = { path = "../clinicedc-utils", editable = true }
 remote-read-sql = { path = "../remote-read-sql", editable = true }
-# edc-test-settings = { path = "../edc-test-settings", editable = true }
+edc-test-settings = { path = "../edc-test-settings", editable = true }
 edc-microscopy = { path = "../edc-microscopy", editable = true }
 edc-mnsi = { path = "../edc-mnsi", editable = true }
 edc-phq9 = { path = "../edc-phq9", editable = true }
