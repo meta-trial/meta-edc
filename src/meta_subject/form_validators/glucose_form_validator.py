@@ -18,15 +18,12 @@ class GlucoseFormValidator(
         has_results = (
             self.cleaned_data.get("fbg_value") is not None
             and self.cleaned_data.get("ogtt_value") is not None
-            and self.cleaned_data.get("report_datetime").date() >= AMENDMENT_DATE
         )
-        self.applicable_if_true(has_results, field_applicable="endpoint_today")
-        if has_results:
-            self.validate_endpoint_fields(
-                performed=bool(
-                    self.cleaned_data.get("fbg_value") is not None
-                    or self.cleaned_data.get("ogtt_value") is not None
-                )
-            )
+        after_amendment = self.cleaned_data.get("report_datetime").date() >= AMENDMENT_DATE
+        self.applicable_if_true(
+            has_results and after_amendment, field_applicable="endpoint_today"
+        )
+        if has_results and after_amendment:
+            self.validate_endpoint_fields(performed=True)
         self.required_if(PENDING, field="endpoint_today", field_required="repeat_fbg_date")
         self.validate_repeat_fbg_date()
