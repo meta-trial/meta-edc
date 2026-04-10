@@ -1,3 +1,6 @@
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
 from edc_lab_panel.panels import hba1c_poc_panel, insulin_panel
 from edc_metadata import NOT_REQUIRED, REQUIRED
 from edc_metadata.metadata_rules import (
@@ -7,6 +10,8 @@ from edc_metadata.metadata_rules import (
     RequisitionRuleGroup,
     register,
 )
+
+from meta_visit_schedule.constants import SCHEDULE, VISIT_SCHEDULE
 
 from .predicates import Predicates
 
@@ -207,6 +212,8 @@ class LastVisitRuleGroup(CrfRuleGroup):
             "mnsi",
             "sf12",
         ],
+        run_only_after_datetime=datetime(2026, 3, 1, 0, 0, tzinfo=ZoneInfo("UTC")),
+        run_only_for_visit_schedules=[f"{VISIT_SCHEDULE}.{SCHEDULE}"],
     )
 
     class Meta:

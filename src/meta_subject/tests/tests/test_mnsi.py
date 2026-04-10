@@ -5,7 +5,7 @@ import time_machine
 from clinicedc_constants import NO, YES
 from dateutil.relativedelta import relativedelta
 from django.core.exceptions import ObjectDoesNotExist
-from django.test import TestCase, override_settings, tag
+from django.test import TestCase, override_settings
 from django.utils import timezone
 from model_bakery import baker
 
@@ -268,7 +268,6 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
                 crfs = self.get_crf_metadata(subject_visit)
                 self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
-    @tag("87")
     def test_mnsi_required_between_36m_and_45m(self):
         traveller = time_machine.travel(datetime(2024, 12, 17, tzinfo=ZoneInfo("UTC")))
         traveller.start()
@@ -290,7 +289,6 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
                 self.set_mnsi_status(subject_visit=subject_visit, mnsi_performed=NO)
         traveller.stop()
 
-    @tag("mnsi")
     def test_mnsi_only_required_once_between_36m_and_45m(self):
         traveller = time_machine.travel(datetime(2024, 12, 17, tzinfo=ZoneInfo("UTC")))
         traveller.start()
