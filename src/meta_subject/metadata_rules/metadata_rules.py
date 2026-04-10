@@ -11,6 +11,8 @@ from edc_metadata.metadata_rules import (
     register,
 )
 
+from meta_visit_schedule.constants import SCHEDULE, VISIT_SCHEDULE
+
 from .predicates import Predicates
 
 pc = Predicates()
@@ -211,6 +213,7 @@ class LastVisitRuleGroup(CrfRuleGroup):
             "sf12",
         ],
         run_only_after_datetime=datetime(2026, 3, 1, 0, 0, tzinfo=ZoneInfo("UTC")),
+        run_only_for_visit_schedules=[f"{VISIT_SCHEDULE}.{SCHEDULE}"],
     )
 
     class Meta:

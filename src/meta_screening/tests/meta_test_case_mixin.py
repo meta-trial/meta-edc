@@ -211,18 +211,20 @@ class MetaTestCaseMixin:
         appointment.save()
         appointment.refresh_from_db()
         next_appointment = appointment.next_by_timepoint
-        next_appointment.appt_status = IN_PROGRESS_APPT
-        next_appointment.save()
-        subject_visit = SubjectVisit(
-            appointment=next_appointment,
-            reason=SCHEDULED,
-            report_datetime=next_appointment.appt_datetime,
-            visit_code=next_appointment.visit_code,
-            visit_code_sequence=next_appointment.visit_code_sequence,
-        )
-        subject_visit.save()
-        subject_visit.refresh_from_db()
-        return subject_visit
+        if next_appointment:
+            next_appointment.appt_status = IN_PROGRESS_APPT
+            next_appointment.save()
+            subject_visit = SubjectVisit(
+                appointment=next_appointment,
+                reason=SCHEDULED,
+                report_datetime=next_appointment.appt_datetime,
+                visit_code=next_appointment.visit_code,
+                visit_code_sequence=next_appointment.visit_code_sequence,
+            )
+            subject_visit.save()
+            subject_visit.refresh_from_db()
+            return subject_visit
+        return None
 
     @staticmethod
     def get_crf_metadata(subject_visit):
