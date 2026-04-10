@@ -53,3 +53,7 @@ class HivExitReviewAdmin(CrfModelAdminMixin, SimpleHistoryAdmin):
     radio_fields = {  # noqa: RUF012
         "available": admin.VERTICAL,
     }
+
+    def get_list_filter(self, request):
+        list_filter = super().get_list_filter(request)
+        return "available", "current_arv_regimen", *list_filter
