@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
 from django.urls import reverse
+from django.utils.safestring import mark_safe
 from django_audit_fields import audit_fieldset_tuple
 from edc_data_manager.auth_objects import DATA_MANAGER_ROLE
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
@@ -21,7 +22,9 @@ class SpfqForWithdrawalAdmin(
 ):
     ordering = ("subject_identifier",)
 
-    additional_instructions = ()
+    additional_instructions = mark_safe(  # noqa: S308
+        render_to_string("meta_spfq/spfq_for_withdrawal_instructions.html")
+    )
 
     fieldsets = (
         (
