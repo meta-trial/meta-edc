@@ -4,7 +4,7 @@ from edc_form_validators import FormValidator, FormValidatorMixin
 from edc_model_form.mixins import BaseModelFormMixin
 from edc_prn.modelform_mixins import PrnSingletonModelFormMixin
 
-from ..models import SpfqRefusal
+from ..models import SpfqForWithdrawal
 from .modelform_mixins import SpfqRefusalFormMixin
 
 
@@ -16,7 +16,7 @@ class SpfqRefusalFormValidator(FormValidator):
         self.required_if(NO, field="contact_made", field_required="contact_attempts_explained")
 
 
-class SpfqRefusalForm(
+class SpfqForWithdrawalRefusalForm(
     SpfqRefusalFormMixin,
     PrnSingletonModelFormMixin,
     BaseModelFormMixin,
@@ -28,17 +28,14 @@ class SpfqRefusalForm(
 
     def clean(self):
         cleaned_data: dict | None = super().clean()
-
         self.check_registered_subject(cleaned_data)
-        self.check_spfq_list(cleaned_data)
         self.check_subject_consent(cleaned_data)
-
         if cleaned_data.get("contact_attempted") == NOT_APPLICABLE:
             raise forms.ValidationError("Invalid. Select YES or NO")
         return cleaned_data
 
     class Meta:
-        model = SpfqRefusal
+        model = SpfqForWithdrawal
         fields = "__all__"
         widgets = {  # noqa: RUF012
             "subject_identifier": forms.TextInput(attrs={"readonly": "readonly"}),

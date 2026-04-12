@@ -1,0 +1,21 @@
+<a href="#" onclick="document.getElementById('spfqWithdrawalInstructionsModal').style.display='flex'; return false;">
+    View topic guide for withdrawals
+</a>
+
+<div id="spfqWithdrawalInstructionsModal"
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
+    <div style="background:white; width:90%; max-width:800px; max-height:90vh;
+                overflow-y:auto; padding:20px; border-radius:4px;">
+        <button onclick="document.getElementById('spfqWithdrawalInstructionsModal').style.display='none';"
+                style="float:right;">&times; Close</button>
+        <iframe src="{% url 'meta_spfq:spfq_for_withdrawal_topic_guide' %}" style="width:100%; height:500px; border:none;"></iframe>
+    </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var modal = document.getElementById("spfqWithdrawalInstructionsModal");
+    if (modal) { document.body.appendChild(modal); }
+  });
+</script>
