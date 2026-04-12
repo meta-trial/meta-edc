@@ -2,14 +2,12 @@ from dateutil.relativedelta import relativedelta
 from django.contrib.sites.managers import CurrentSiteManager
 from django.db import models
 from django.utils import timezone
-from django.utils.translation import gettext_lazy as _
 from django_crypto_fields.fields import EncryptedCharField
-from edc_consent.field_mixins import ReviewFieldsMixin
-from edc_constants.choices import GENDER, YES_NO
+from edc_constants.choices import GENDER
+from edc_identifier.model_mixins import UniqueSubjectIdentifierFieldMixin
 from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_sites.model_mixins import SiteModelMixin
 
-from .model_mixins import SpfqRefusalModelMixin
 from .registered_subject_proxy import RegisteredSubjectProxy
 
 
@@ -20,22 +18,16 @@ class Manager(models.Manager):
         return self.get(subject_identifier=subject_identifier)
 
 
-class SpfqForWithdrawal(
-    ReviewFieldsMixin, SpfqRefusalModelMixin, SiteModelMixin, BaseUuidModel
-):
-    report_datetime = models.DateTimeField(blank=True, default=timezone.now)
-
-    agreed_to_consented = models.CharField(max_length=10, choices=YES_NO)
-
-    consent_datetime = models.DateTimeField(
-        verbose_name=_("Consent datetime"), default=timezone.now
-    )
-
-    upload = models.FileField(upload_to="meta_spfq/")
-
+class SpfqForWithdrawal(UniqueSubjectIdentifierFieldMixin, SiteModelMixin, BaseUuidModel):
     registered_subject = models.ForeignKey(
         RegisteredSubjectProxy, on_delete=models.PROTECT, null=True, blank=False
     )
+
+    subject_identifier = models.CharField(max_length=50, null=True, editable=False)  # noqa: DJ001
+
+    report_datetime = models.DateTimeField(blank=True, default=timezone.now)
+
+    upload = models.FileField(upload_to="meta_spfq/")
 
     initials = EncryptedCharField(null=True, editable=False)
     age_in_years = models.IntegerField(null=True, editable=False)
@@ -51,6 +43,7 @@ class SpfqForWithdrawal(
         return str(self.registered_subject)
 
     def save(self, *args, **kwargs):
+        self.subject_identifier = self.registered_subject.subject_identifier
         self.gender = self.registered_subject.gender
         self.initials = self.registered_subject.initials
         self.age_in_years = abs(
@@ -61,12 +54,6 @@ class SpfqForWithdrawal(
 
     def natural_key(self):
         return (self.registered_subject.subject_identifier,)
-
-    @property
-    def subject_identifier(self):
-        if self.registered_subject:
-            return self.registered_subject.subject_identifier
-        return None
 
     class Meta(SiteModelMixin.Meta, BaseUuidModel.Meta):
         verbose_name = "SPFQ for withdrawal"

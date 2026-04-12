@@ -3,15 +3,15 @@ from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
 
 from ..admin_site import meta_spfq_admin
-from ..forms import SubjectConsentSpfqForm
-from ..models import SubjectConsentSpfq
+from ..forms import SubjectConsentSpfqForWithdrawalForm
+from ..models import SubjectConsentSpfqForWithdrawal
 from .modeladmin_mixins import SpfqConsentModelAdminMixin
 
 
-@admin.register(SubjectConsentSpfq, site=meta_spfq_admin)
-class SubjectConsentSpfqAdmin(
+@admin.register(SubjectConsentSpfqForWithdrawal, site=meta_spfq_admin)
+class SubjectConsentSpfqForWithdrawalAdmin(
     SpfqConsentModelAdminMixin,
     ModelAdminSubjectDashboardMixin,
     SimpleHistoryAdmin,
 ):
-    form = SubjectConsentSpfqForm
+    form = SubjectConsentSpfqForWithdrawalForm

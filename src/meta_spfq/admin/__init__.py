@@ -6,3 +6,4 @@ from .spfq_for_withdrawal_admin import SpfqForWithdrawalAdmin
 from .spfq_for_withdrawal_list_admin import SpfqForWithdrawalListAdmin
 from .spfq_list_admin import SpfqListAdmin
 from .subject_consent_spfq_admin import SubjectConsentSpfqAdmin
+from .subject_consent_spfq_for_withdrawal_admin import SubjectConsentSpfqForWithdrawalAdmin

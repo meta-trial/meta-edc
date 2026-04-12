@@ -27,7 +27,7 @@ class SpfqForWithdrawalAdmin(
     SimpleHistoryAdmin,
 ):
     show_object_tools: bool = True
-    autocomplete_fields = ("registered_subject",)
+    # autocomplete_fields = ("registered_subject",)
     ordering = ("registered_subject__subject_identifier",)
     form = SpfqForWithdrawalForm
     fieldsets = (
@@ -37,41 +37,12 @@ class SpfqForWithdrawalAdmin(
                 "fields": [
                     "registered_subject",
                     "report_datetime",
-                    "agreed_to_consented",
-                ]
-            },
-        ),
-        (
-            "Consent",
-            {
-                "fields": [
-                    "consent_datetime",
-                    "consent_reviewed",
-                    "study_questions",
-                    "assessment_score",
-                    "consent_signature",
-                    "consent_copy",
-                ]
-            },
-        ),
-        (
-            "Refusal",
-            {
-                "fields": [
-                    "contact_attempted",
-                    "contact_attempts_count",
-                    "contact_made",
-                    "contact_attempts_explained",
                 ]
             },
         ),
         (
             "Transcript",
-            {
-                "fields": [
-                    "upload",
-                ]
-            },
+            {"description": "See link to topic guide above", "fields": ("upload",)},
         ),
         audit_fieldset_tuple,
     )
@@ -92,12 +63,7 @@ class SpfqForWithdrawalAdmin(
     readonly_fields = ("site",)
 
     radio_fields = {  # noqa: RUF012
-        "gender": admin.VERTICAL,
-        "assessment_score": admin.VERTICAL,
-        "consent_copy": admin.VERTICAL,
-        "consent_reviewed": admin.VERTICAL,
-        "consent_signature": admin.VERTICAL,
-        "study_questions": admin.VERTICAL,
+        "gender": admin.VERTICAL
     }
 
     def get_add_instructions(
@@ -214,3 +180,10 @@ class SpfqForWithdrawalAdmin(
                 s.id for s in request.user.userprofile.sites.all() if s.id != request.site.id
             ]
         return super().get_view_only_site_ids_for_user(request)
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "registered_subject" and request.GET.get("registered_subject"):
+            kwargs["queryset"] = db_field.related_model.objects.filter(
+                pk=request.GET.get("registered_subject", 0)
+            )
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)

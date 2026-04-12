@@ -9,13 +9,18 @@ from edc_data_manager.auth_objects import DATA_MANAGER_ROLE
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
 from edc_offstudy.constants import WITHDRAWAL
+from edc_registration.models import RegisteredSubject
 from edc_sites.admin import SiteModelAdminMixin
 from edc_sites.admin.list_filters import SitesForDataManagerListFilter
 
 from meta_prn.models import EndOfStudy
 
 from ..admin_site import meta_spfq_admin
-from ..models import SpfqForWithdrawal, SpfqForWithdrawalList, SubjectConsentSpfq
+from ..models import (
+    SpfqForWithdrawal,
+    SpfqForWithdrawalList,
+    SubjectConsentSpfqForWithdrawal,
+)
 
 
 class CompletedSpfqListFilter(SimpleListFilter):
@@ -57,10 +62,9 @@ class SpfqForWithdrawalListAdmin(
         "subject_identifier",
         "dashboard",
         "consent_button",
-        "last_visit_code",
-        "last_appt_datetime",
         "gender",
         "age_in_years",
+        "uploaded_document",
     )
 
     list_filter = (CompletedSpfqListFilter, SitesForDataManagerListFilter)
@@ -71,8 +75,6 @@ class SpfqForWithdrawalListAdmin(
         "sid",
         "subject_identifier",
         "site",
-        "last_visit_code",
-        "last_appt_datetime",
         "gender",
         "age_in_years",
     )
@@ -92,6 +94,16 @@ class SpfqForWithdrawalListAdmin(
                 new_obj.save()
         return super().get_queryset(request)
 
+    @admin.display(description="Upload")
+    def uploaded_document(self, obj=None) -> str | None:
+        try:
+            spfq_for_withdrawal = SpfqForWithdrawal.objects.get(
+                registered_subject__subject_identifier=obj.subject_identifier
+            )
+        except ObjectDoesNotExist:
+            return None
+        return spfq_for_withdrawal.upload
+
     @admin.display(description="Documents")
     def consent_button(self, obj=None) -> str:
         consent_obj = None
@@ -104,16 +116,16 @@ class SpfqForWithdrawalListAdmin(
         refusal_title = ""
         refusal_color = ""
         try:
-            consent_obj = SubjectConsentSpfq.objects.get(
+            consent_obj = SubjectConsentSpfqForWithdrawal.objects.get(
                 subject_identifier=obj.subject_identifier
             )
         except ObjectDoesNotExist:
-            url = reverse("meta_spfq_admin:meta_spfq_subjectconsentspfq_add")
+            url = reverse("meta_spfq_admin:meta_spfq_subjectconsentspfqforwithdrawal_add")
             title = "Add Consent"
             color = "#ffc107"
         else:
             url = reverse(
-                "meta_spfq_admin:meta_spfq_subjectconsentspfq_change",
+                "meta_spfq_admin:meta_spfq_subjectconsentspfqforwithdrawal_change",
                 args=[consent_obj.id],
             )
             title = "Consented"
@@ -122,24 +134,24 @@ class SpfqForWithdrawalListAdmin(
         if consent_obj:
             try:
                 spfq_obj = SpfqForWithdrawal.objects.get(
-                    subject_identifier=obj.subject_identifier
+                    registered_subject__subject_identifier=obj.subject_identifier
                 )
             except ObjectDoesNotExist:
                 spfq_url = reverse("meta_spfq_admin:meta_spfq_spfqforwithdrawal_add")
                 spfq_url = f"{spfq_url}"
-                spfq_title = "Add SPFQ"
+                spfq_title = "Add SPFQ for withdrawal"
                 spfq_color = "#ffc107"
             else:
                 spfq_url = reverse(
                     "meta_spfq_admin:meta_spfq_spfqforwithdrawal_change",
                     args=[spfq_obj.id],
                 )
-                spfq_title = "SPFQ"
+                spfq_title = "SPFQ for withdrawal"
                 spfq_color = "#198754"
         else:
             try:
-                refusal_obj = SpfqForWithdrawalList.objects.get(
-                    subject_identifier=obj.subject_identifier
+                refusal_obj = SpfqForWithdrawal.objects.get(
+                    registered_subject__subject_identifier=obj.subject_identifier
                 )
             except ObjectDoesNotExist:
                 refusal_url = reverse("meta_spfq_admin:meta_spfq_spfqforwithdrawalrefusal_add")
@@ -154,14 +166,18 @@ class SpfqForWithdrawalListAdmin(
                 refusal_title = "Refused"
                 refusal_color = "#dc3545"
 
+        rs_obj = RegisteredSubject.objects.get(subject_identifier=obj.subject_identifier)
+        next_querystring = (
+            "meta_spfq_admin:meta_spfq_spfqforwithdrawallist_changelist,"
+            f"subject_identifier,registered_subject"
+            f"&subject_identifier={obj.subject_identifier}"
+            f"&registered_subject={rs_obj.id}"
+        )
         context = dict(
             url=url,
             subject_identifier=obj.subject_identifier,
             title=title,
-            next=(
-                "meta_spfq_admin:meta_spfq_spfqforwithdrawal_changelist,"
-                f"subject_identifier&subject_identifier={obj.subject_identifier}"
-            ),
+            next=next_querystring,
             color=color,
             consent_obj=consent_obj,
             spfq_obj=spfq_obj,
