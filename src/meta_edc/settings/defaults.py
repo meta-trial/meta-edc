@@ -539,6 +539,10 @@ EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
 )
 EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
 
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
+}
 # static / AWS
 if env("AWS_ENABLED"):
     # see
@@ -554,10 +558,7 @@ if env("AWS_ENABLED"):
     AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
     AWS_LOCATION = env.str("AWS_LOCATION")
     AWS_IS_GZIPPED = True
-    STORAGES = {
-        "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
-        "staticfiles": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"},
-    }
+    STORAGES["staticfiles"] = {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"}
     STATIC_URL = urljoin(AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION) + "/"
     STATIC_ROOT = ""
 elif DEBUG:
@@ -567,7 +568,6 @@ else:
     # run collectstatic, check nginx LOCATION
     STATIC_URL = env.str("DJANGO_STATIC_URL")
     STATIC_ROOT = env.str("DJANGO_STATIC_ROOT")
-    STORAGES = {"default": {"BACKEND": "django.core.files.storage.FileSystemStorage"}}
 
 # CELERY
 CELERY_ENABLED = env("CELERY_ENABLED")
