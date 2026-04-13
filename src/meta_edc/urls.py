@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
 from django.urls.conf import include, path, re_path
 from django.views.defaults import page_not_found, server_error  # noqa
@@ -77,6 +78,8 @@ if settings.DEFENDER_ENABLED:
     urlpatterns.append(
         path("defender/", include("defender.urls")),  # defender admin
     )
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += [
     # path("__debug__/", include("debug_toolbar.urls")),
