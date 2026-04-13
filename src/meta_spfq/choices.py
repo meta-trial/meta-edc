@@ -17,6 +17,8 @@ from .constants import (
     SLIGHTLY,
     SOMEWHAT_LESS_EXPECTED,
     SOMEWHAT_MORE_EXPECTED,
+    SPFQ,
+    SPFQ_WITHDRAWAL,
     VERY_HIGHLY,
 )
 
@@ -44,3 +46,8 @@ LESS_EXPECTED_TO_MORE_EXPECTED_CHOICE = (
 )
 
 WEIGHT_BIN_CHOICES = ((LT_35, "<35"), (GTE_35__LTE_49, "35-49"), (GTE_50, ">=50"))
+
+CONSENT_TYPES = (
+    (SPFQ, "SPFQ Sub-study for on-study subjects"),
+    (SPFQ_WITHDRAWAL, "SPFQ Sub-study for subjects who have withdrawn"),
+)
