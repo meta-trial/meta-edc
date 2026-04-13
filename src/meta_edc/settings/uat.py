@@ -1,5 +1,4 @@
 import sys
-from pathlib import Path
 
 from multisite import SiteID
 
@@ -12,4 +11,3 @@ EDC_SITES_UAT_DOMAIN = True
 EDC_MODEL_ADMIN_CSS_THEME = "edc_purple"
 LIVE_SYSTEM = False
 EDC_CONSENT_BYPASS_CONSENT_DATETIME_VALIDATION = True
-MEDIA_ROOT = Path("~/media/").expanduser()

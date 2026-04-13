@@ -539,7 +539,11 @@ EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
 )
 EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
 
+# declare before STORAGES
+MEDIA_ROOT = env.str("DJANGO_MEDIA_ROOT", default=Path("~/media/").expanduser())
 MEDIA_URL = "/media/"
+
+# declare STORAGES, overwrite staticfiles if AWS
 STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
     "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
