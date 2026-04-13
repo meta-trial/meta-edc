@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.handlers.wsgi import WSGIRequest
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django_audit_fields import audit_fieldset_tuple
@@ -10,7 +11,13 @@ from edc_sites.admin import SiteModelAdminMixin
 from edc_sites.admin.list_filters import SitesForDataManagerListFilter
 
 from ..admin_site import meta_spfq_admin
-from ..models import Spfq, SpfqForWithdrawal, SpfqRefusal, SubjectConsentSpfq
+from ..forms import SpfqForWithdrawalForm
+from ..models import (
+    Spfq,
+    SpfqForWithdrawal,
+    SpfqRefusal,
+    SubjectConsentSpfq,
+)
 
 
 @admin.register(SpfqForWithdrawal, site=meta_spfq_admin)
@@ -19,34 +26,29 @@ class SpfqForWithdrawalAdmin(
     SiteModelAdminMixin,
     SimpleHistoryAdmin,
 ):
-    ordering = ("subject_identifier",)
-
-    additional_instructions = ()
-
+    show_object_tools: bool = True
+    # autocomplete_fields = ("registered_subject",)
+    ordering = ("registered_subject__subject_identifier",)
+    form = SpfqForWithdrawalForm
     fieldsets = (
         (
             "None",
             {
                 "fields": [
-                    "subject_identifier",
-                    "gender",
-                    "age_in_years",
+                    "registered_subject",
+                    "report_datetime",
                 ]
             },
         ),
         (
             "Transcript",
-            {
-                "fields": [
-                    "upload",
-                ]
-            },
+            {"description": "See link to topic guide above", "fields": ("upload",)},
         ),
         audit_fieldset_tuple,
     )
 
     list_display = (
-        "subject_identifier",
+        "registered_subject",
         "dashboard",
         "consent_button",
         "gender",
@@ -56,9 +58,38 @@ class SpfqForWithdrawalAdmin(
 
     list_filter = (SitesForDataManagerListFilter,)
 
-    search_fields = ("subject_identifier",)
+    search_fields = ("registered_subject__subject_identifier",)
 
     readonly_fields = ("site",)
+
+    radio_fields = {  # noqa: RUF012
+        "gender": admin.VERTICAL
+    }
+
+    def get_add_instructions(
+        self,
+        extra_context: dict | None,
+        request: WSGIRequest | None = None,
+    ):
+        extra_context = extra_context or {}
+        extra_context["instructions"] = self.instructions
+        extra_context["notification_instructions"] = self.get_notification_instructions(
+            request
+        )
+        extra_context.update(
+            {
+                "additional_instructions": render_to_string(
+                    "meta_spfq/spfq_for_withdrawal_modal.html",
+                    context={
+                        "topic_url": reverse("meta_spfq:spfq_for_withdrawal_topic_guide")
+                    },
+                )
+            }
+        )
+        return extra_context
+
+    def get_change_instructions(self, extra_context, request=None):
+        return self.get_add_instructions(extra_context, request)
 
     @admin.display(description="Documents")
     def consent_button(self, obj=None) -> str:
@@ -73,7 +104,7 @@ class SpfqForWithdrawalAdmin(
         refusal_color = ""
         try:
             consent_obj = SubjectConsentSpfq.objects.get(
-                subject_identifier=obj.subject_identifier
+                subject_identifier=obj.registered_subject.subject_identifier
             )
         except ObjectDoesNotExist:
             url = reverse("meta_spfq_admin:meta_spfq_subjectconsentspfq_add")
@@ -89,7 +120,9 @@ class SpfqForWithdrawalAdmin(
 
         if consent_obj:
             try:
-                spfq_obj = Spfq.objects.get(subject_identifier=obj.subject_identifier)
+                spfq_obj = Spfq.objects.get(
+                    subject_identifier=obj.registered_subject.subject_identifier
+                )
             except ObjectDoesNotExist:
                 spfq_url = reverse("meta_spfq_admin:meta_spfq_spfq_add")
                 spfq_url = f"{spfq_url}"
@@ -105,7 +138,7 @@ class SpfqForWithdrawalAdmin(
         else:
             try:
                 refusal_obj = SpfqRefusal.objects.get(
-                    subject_identifier=obj.subject_identifier
+                    subject_identifier=obj.registered_subject.subject_identifier
                 )
             except ObjectDoesNotExist:
                 refusal_url = reverse("meta_spfq_admin:meta_spfq_spfqrefusal_add")
@@ -122,11 +155,11 @@ class SpfqForWithdrawalAdmin(
 
         context = dict(
             url=url,
-            subject_identifier=obj.subject_identifier,
+            subject_identifier=obj.registered_subject.subject_identifier,
             title=title,
             next=(
                 "meta_spfq_admin:meta_spfq_spfqlist_changelist,"
-                f"subject_identifier&subject_identifier={obj.subject_identifier}"
+                f"subject_identifier&subject_identifier={obj.registered_subject.subject_identifier}"
             ),
             color=color,
             consent_obj=consent_obj,
@@ -147,3 +180,10 @@ class SpfqForWithdrawalAdmin(
                 s.id for s in request.user.userprofile.sites.all() if s.id != request.site.id
             ]
         return super().get_view_only_site_ids_for_user(request)
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "registered_subject" and request.GET.get("registered_subject"):
+            kwargs["queryset"] = db_field.related_model.objects.filter(
+                pk=request.GET.get("registered_subject", 0)
+            )
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)

@@ -35,16 +35,20 @@ class SubjectConsentSpfq(
             )
         ],
         default=NULL_STRING,
+        blank=False,
     )
 
     gender = models.CharField(
         verbose_name="Gender",
         choices=GENDER,
         max_length=1,
+        blank=False,
     )
 
     consent_datetime = models.DateTimeField(
-        verbose_name=_("Consent datetime"), default=timezone.now
+        verbose_name=_("Consent datetime"),
+        default=timezone.now,
+        blank=False,
     )
 
     report_datetime = models.DateTimeField(null=True, editable=False)
@@ -57,6 +61,7 @@ class SubjectConsentSpfq(
             "The language used for the consent process will "
             "also be used during data collection."
         ),
+        blank=False,
     )
 
     model_name = models.CharField(
