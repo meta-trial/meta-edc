@@ -539,6 +539,10 @@ EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
 )
 EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
 
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
+}
 # static / AWS
 if env("AWS_ENABLED"):
     # see
@@ -554,7 +558,7 @@ if env("AWS_ENABLED"):
     AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
     AWS_LOCATION = env.str("AWS_LOCATION")
     AWS_IS_GZIPPED = True
-    STORAGES = {"staticfiles": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"}}
+    STORAGES["staticfiles"] = {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"}
     STATIC_URL = urljoin(AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION) + "/"
     STATIC_ROOT = ""
 elif DEBUG:
