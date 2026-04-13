@@ -56,5 +56,5 @@ class SpfqForWithdrawal(UniqueSubjectIdentifierFieldMixin, SiteModelMixin, BaseU
         return (self.registered_subject.subject_identifier,)
 
     class Meta(SiteModelMixin.Meta, BaseUuidModel.Meta):
-        verbose_name = "SPFQ for withdrawal"
-        verbose_name_plural = "SPFQ for withdrawals"
+        verbose_name = "SPFQ for withdrawal transcript"
+        verbose_name_plural = "SPFQ for withdrawal transcripts"

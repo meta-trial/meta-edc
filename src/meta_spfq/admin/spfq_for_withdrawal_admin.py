@@ -32,7 +32,7 @@ class SpfqForWithdrawalAdmin(
     form = SpfqForWithdrawalForm
     fieldsets = (
         (
-            "None",
+            None,
             {
                 "fields": [
                     "registered_subject",
