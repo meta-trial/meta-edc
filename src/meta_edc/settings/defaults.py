@@ -539,6 +539,7 @@ EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
 )
 EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
 
+MEDIA_URL = "/media/"
 STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
     "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
