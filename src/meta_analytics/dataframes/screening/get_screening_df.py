@@ -72,7 +72,7 @@ def get_screening_df(df: pd.DataFrame | None = None) -> pd.DataFrame:
     # condition to include any glucose test
 
     # has_dm fillna with unk
-    df["has_dm"] = df["has_dm"].apply(lambda x: x if x else "unk")
+    df["has_dm"] = df["has_dm"].apply(lambda x: x or "unk")
 
     na = "Not applicable, subject is not eligible based on the criteria above"
     df["already_fasted"] = df["already_fasted"].apply(lambda x: "N/A" if x == na else x)
