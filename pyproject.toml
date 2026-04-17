@@ -31,16 +31,16 @@ license = "GPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
 requires-python = '>=3.12,<3.14'
 dependencies = [
-    "django==5.2.11",
+    "django==5.2.13",
     "celery>=5.6.2",
-    "clinicedc==2.8.2",
+    "clinicedc==2.9.1",
     "edc-he>=1.5.2",
     "edc-microscopy>=1.4.2",
     "edc-mnsi>=1.4.0",
     "edc-phq9>=1.3.1",
     "edc-qol>=1.4.0",
     "notebook>=7.4.7",
-    "django-import-export>=4.4.0",
+    "openpyxl>=3.1.5",
 ]
 
 [build-system]
