@@ -1,5 +1,5 @@
+from clinicedc_constants.choices import YES_NO
 from django.db import models
-from edc_constants.choices import YES_NO
 from edc_model.models import BaseUuidModel
 from edc_model.validators import date_not_future
 from edc_protocol.validators import date_not_before_study_start

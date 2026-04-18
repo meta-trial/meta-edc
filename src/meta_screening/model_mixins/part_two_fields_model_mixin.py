@@ -1,7 +1,7 @@
 from clinicedc_constants import NO, NOT_APPLICABLE
+from clinicedc_constants.choices import POS_NEG_NA, YES_NO, YES_NO_NA
 from django.contrib import admin
 from django.db import models
-from edc_constants.choices import POS_NEG_NA, YES_NO, YES_NO_NA
 
 from ..choices import YES_NO_NOT_ELIGIBLE, YES_PENDING_NA
 from ..constants import PREG_YES_NO_NA

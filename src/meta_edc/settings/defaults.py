@@ -6,8 +6,7 @@ from urllib.parse import quote, urljoin
 
 import django
 import environ
-from clinicedc_constants import COMPLETE
-from edc_constants.internationalization import EXTRA_LANG_INFO
+from clinicedc_constants import COMPLETE, EXTRA_LANG_INFO
 from edc_protocol_incident.constants import PROTOCOL_INCIDENT
 from edc_utils import get_datetime_from_env
 

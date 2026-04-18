@@ -1,5 +1,5 @@
+from clinicedc_constants.choices import POS_NEG_NA, YES_NO
 from django.db import models
-from edc_constants.choices import POS_NEG_NA, YES_NO
 from edc_model import models as edc_models
 
 from ..constants import URINE_PREGNANCY_ACTION

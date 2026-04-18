@@ -1,7 +1,7 @@
+from clinicedc_constants.choices import YES_NO
 from django.db import models
 from django_crypto_fields.fields import EncryptedTextField
 from edc_adverse_event.models import CauseOfDeath
-from edc_constants.choices import YES_NO
 from edc_model_fields.fields import OtherCharField
 
 from ..choices import DEATH_LOCATIONS, INFORMANT_RELATIONSHIP

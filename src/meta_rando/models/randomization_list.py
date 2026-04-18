@@ -1,5 +1,5 @@
+from clinicedc_constants.choices import GENDER
 from django.db import models
-from edc_constants.choices import GENDER
 from edc_model.models import BaseUuidModel
 from edc_randomization.model_mixins import RandomizationListModelMixin
 

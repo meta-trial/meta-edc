@@ -1,6 +1,6 @@
 from clinicedc_constants import TBD
+from clinicedc_constants.choices import YES_NO_TBD
 from django.db import models
-from edc_constants.choices import YES_NO_TBD
 from edc_screening.model_mixins import (
     EligibilityModelMixin as BaseEligibilityModelMixin,
 )

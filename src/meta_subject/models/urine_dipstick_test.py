@@ -1,6 +1,6 @@
 from clinicedc_constants import NOT_APPLICABLE
+from clinicedc_constants.choices import PRESENT_ABSENT_NA, YES_NO
 from django.db import models
-from edc_constants.choices import PRESENT_ABSENT_NA, YES_NO
 from edc_model import models as edc_models
 
 from ..model_mixins import CrfModelMixin

@@ -9,9 +9,9 @@ from clinicedc_constants import (
     PREGNANCY,
     TOXICITY,
 )
+from clinicedc_constants.choices import YES_NO_NA
 from django.db import models
 from edc_action_item.models import ActionModelMixin
-from edc_constants.choices import YES_NO_NA
 from edc_model.models import BaseUuidModel
 from edc_model.validators import date_not_future
 from edc_offstudy.constants import (

@@ -1,7 +1,7 @@
 from clinicedc_constants import NOT_APPLICABLE
+from clinicedc_constants.choices import YES_NO, YES_NO_NA
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from edc_constants.choices import YES_NO, YES_NO_NA
 from edc_model.models import BaseUuidModel
 
 from ...choices import (
