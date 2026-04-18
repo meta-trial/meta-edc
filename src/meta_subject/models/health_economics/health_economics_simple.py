@@ -1,5 +1,5 @@
+from clinicedc_constants.choices import MARITAL_STATUS
 from django.db import models
-from edc_constants.choices import MARITAL_STATUS
 from edc_he.model_mixins import EducationModelMixin
 from edc_model.models import BaseUuidModel
 

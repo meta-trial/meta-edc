@@ -1,5 +1,5 @@
+from clinicedc_constants.choices import YES_NO
 from django.db import models
-from edc_constants.choices import YES_NO
 from edc_model.models import BaseUuidModel
 
 from ..model_mixins import CrfModelMixin

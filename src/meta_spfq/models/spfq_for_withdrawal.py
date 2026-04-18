@@ -1,9 +1,9 @@
+from clinicedc_constants.choices import GENDER
 from dateutil.relativedelta import relativedelta
 from django.contrib.sites.managers import CurrentSiteManager
 from django.db import models
 from django.utils import timezone
 from django_crypto_fields.fields import EncryptedCharField
-from edc_constants.choices import GENDER
 from edc_identifier.model_mixins import UniqueSubjectIdentifierFieldMixin
 from edc_model.models import BaseUuidModel, HistoricalRecords
 from edc_sites.model_mixins import SiteModelMixin

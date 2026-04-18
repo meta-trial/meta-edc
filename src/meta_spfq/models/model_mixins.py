@@ -1,8 +1,8 @@
 from clinicedc_constants import NOT_APPLICABLE, NULL_STRING
+from clinicedc_constants.choices import YES_NO_NA
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import gettext as _
-from edc_constants.choices import YES_NO_NA
 
 
 class SpfqRefusalModelMixin(models.Model):

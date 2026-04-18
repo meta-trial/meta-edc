@@ -1,7 +1,7 @@
+from clinicedc_constants.choices import YES_NO
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.safestring import mark_safe
-from edc_constants.choices import YES_NO
 from edc_model.models import BaseUuidModel
 from edc_vitals.model_mixins import (
     BloodPressureModelMixin,

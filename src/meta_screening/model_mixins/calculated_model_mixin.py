@@ -1,6 +1,6 @@
 from clinicedc_constants import MILLIMOLES_PER_LITER, TBD
+from clinicedc_constants.choices import YES_NO_TBD
 from django.db import models
-from edc_constants.choices import YES_NO_TBD
 from edc_reportable.units import MICROMOLES_PER_LITER_DISPLAY
 
 

@@ -1,5 +1,5 @@
+from clinicedc_constants.choices import NORMAL_ABNORMAL, PRESENT_ABSENT, YES_NO
 from django.db import models
-from edc_constants.choices import NORMAL_ABNORMAL, PRESENT_ABSENT, YES_NO
 from edc_model import models as edc_models
 
 from ..choices import FUNDOSCOPY_CHOICES

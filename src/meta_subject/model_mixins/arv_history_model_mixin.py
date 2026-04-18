@@ -1,5 +1,5 @@
+from clinicedc_constants.choices import YES_NO
 from django.db import models
-from edc_constants.choices import YES_NO
 from edc_model.models import OtherCharField
 
 from meta_lists.models import ArvRegimens, OiProphylaxis
