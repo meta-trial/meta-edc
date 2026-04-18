@@ -1,7 +1,11 @@
+from clinicedc_constants.choices import (
+    DIFFICULT_TO_EASY_CHOICE,
+    DISAGREE_TO_AGREE_CHOICE,
+    YES_NO,
+)
 from django.contrib.sites.managers import CurrentSiteManager
 from django.db import models
 from django.utils import timezone
-from edc_constants.choices import DIFFICULT_TO_EASY_CHOICE, DISAGREE_TO_AGREE_CHOICE, YES_NO
 from edc_crf.model_mixins import CrfStatusModelMixin
 from edc_identifier.model_mixins import (
     UniqueSubjectIdentifierFieldMixin,

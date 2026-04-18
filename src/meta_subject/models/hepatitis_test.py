@@ -1,6 +1,6 @@
+from clinicedc_constants.choices import POS_NEG, YES_NO
 from django.db import models
 from django.utils.safestring import mark_safe
-from edc_constants.choices import POS_NEG, YES_NO
 from edc_model.models import BaseUuidModel
 from edc_model.validators import date_is_not_now, date_is_past
 

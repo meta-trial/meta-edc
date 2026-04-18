@@ -1,6 +1,6 @@
+from clinicedc_constants.choices import YES_NO
 from django.db import models
 from django.db.models import PROTECT
-from edc_constants.choices import YES_NO
 from edc_model.models import BaseUuidModel
 from edc_utils import get_utcnow
 

@@ -1,6 +1,6 @@
 from clinicedc_constants import NOT_APPLICABLE, NULL_STRING, OTHER
+from clinicedc_constants.choices import YES_NO
 from django.db import models
-from edc_constants.choices import YES_NO
 from edc_glucose.model_mixin_factories import (
     fasting_model_mixin_factory,
     ogtt_model_mixin_factory,

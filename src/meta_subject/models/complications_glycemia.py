@@ -1,5 +1,5 @@
+from clinicedc_constants.choices import NORMAL_ABNORMAL_NOEXAM
 from django.db import models
-from edc_constants.choices import NORMAL_ABNORMAL_NOEXAM
 from edc_model.models import BaseUuidModel
 
 from ..choices import (
