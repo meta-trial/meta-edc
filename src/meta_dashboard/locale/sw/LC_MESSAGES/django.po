@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-19 23:35+0300\n"
+"POT-Creation-Date: 2026-04-18 19:23-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: meta_dashboard/view_utils/subject_screening_button.py:42
+#: src/meta_dashboard/view_utils/subject_screening_button.py:40
 msgid "View"
 msgstr ""
 
-#: meta_dashboard/view_utils/subject_screening_button.py:44
+#: src/meta_dashboard/view_utils/subject_screening_button.py:40
 msgid "Edit"
 msgstr ""
 
-#: meta_dashboard/views/subject/dashboard/dashboard_view.py:17
+#: src/meta_dashboard/views/subject/dashboard/dashboard_view.py:19
 msgid "Audit"
+msgstr ""
+
+#: src/meta_dashboard/views/subject/dashboard/dashboard_view.py:29
+msgid "Subject has reached the protocol endpoint. See "
 msgstr ""
