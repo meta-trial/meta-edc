@@ -319,12 +319,8 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 # Internationalization
-# https://docs.djangoproject.com/en/1.11/topics/i18n/
-
 USE_I18N = True  # disable trans
-USE_L10N = True  # set to False so DATE formats below are used
 USE_TZ = True
-
 
 LANG_INFO = dict(django.conf.locale.LANG_INFO, **EXTRA_LANG_INFO)
 django.conf.locale.LANG_INFO = LANG_INFO
@@ -604,7 +600,6 @@ if "test" in sys.argv:
 
     MIGRATION_MODULES = DisableMigrations()
     PASSWORD_HASHERS = ("django.contrib.auth.hashers.MD5PasswordHasher",)
-    DEFAULT_FILE_STORAGE = "inmemorystorage.InMemoryStorage"
 
 
 META_SPFQ_LIST_FILENAME = env.str("META_SPFQ_LIST_FILENAME")
