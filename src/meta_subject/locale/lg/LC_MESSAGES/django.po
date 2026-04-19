@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-19 23:35+0300\n"
+"POT-Creation-Date: 2026-04-18 19:23-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: meta_subject/admin/health_economics/health_economics_update_admin.py:18
+#: src/meta_subject/admin/health_economics/health_economics_update_admin.py:18
 msgid ""
 "We want to learn about the household and we use these\n"
 "        questions to get an understanding of wealth and opportunities\n"
@@ -35,13 +35,13 @@ msgid ""
 "        with respect to all households."
 msgstr ""
 
-#: meta_subject/admin/health_economics/health_economics_update_admin.py:58
+#: src/meta_subject/admin/health_economics/health_economics_update_admin.py:58
 msgid ""
 "Before asking about household income, we would first liketo know about the "
 "number of rooms in the home and number of beds. "
 msgstr ""
 
-#: meta_subject/admin/health_economics/health_economics_update_admin.py:72
+#: src/meta_subject/admin/health_economics/health_economics_update_admin.py:72
 msgid ""
 "Now, I will ask about income for the household from paid workor other "
 "sources. Please think of the total income for the household, including "
@@ -52,419 +52,419 @@ msgid ""
 "well-being of people in your household, compared to other similar households."
 msgstr ""
 
-#: meta_subject/choices.py:39 meta_subject/choices.py:48
+#: src/meta_subject/choices.py:40 src/meta_subject/choices.py:49
 msgid "Working"
 msgstr ""
 
-#: meta_subject/choices.py:40 meta_subject/choices.py:49
+#: src/meta_subject/choices.py:41 src/meta_subject/choices.py:50
 msgid "Studying"
 msgstr ""
 
-#: meta_subject/choices.py:41 meta_subject/choices.py:50
+#: src/meta_subject/choices.py:42 src/meta_subject/choices.py:51
 msgid "Caring for children"
 msgstr ""
 
-#: meta_subject/choices.py:42
+#: src/meta_subject/choices.py:43
 msgid "Other, please specify"
 msgstr ""
 
-#: meta_subject/choices.py:47 meta_subject/choices.py:59
-#: meta_subject/choices.py:66 meta_subject/choices.py:81
-#: meta_subject/choices.py:88 meta_subject/choices.py:118
-#: meta_subject/choices.py:140 meta_subject/choices.py:167
-#: meta_subject/choices.py:175 meta_subject/choices.py:220
+#: src/meta_subject/choices.py:48 src/meta_subject/choices.py:60
+#: src/meta_subject/choices.py:67 src/meta_subject/choices.py:82
+#: src/meta_subject/choices.py:89 src/meta_subject/choices.py:119
+#: src/meta_subject/choices.py:141 src/meta_subject/choices.py:168
+#: src/meta_subject/choices.py:176 src/meta_subject/choices.py:221
 msgid "Not applicable"
 msgstr ""
 
-#: meta_subject/choices.py:51
+#: src/meta_subject/choices.py:52
 msgid "House maintenance"
 msgstr ""
 
-#: meta_subject/choices.py:52
+#: src/meta_subject/choices.py:53
 msgid "Nothing"
 msgstr ""
 
-#: meta_subject/choices.py:53 meta_subject/choices.py:210
+#: src/meta_subject/choices.py:54 src/meta_subject/choices.py:211
 msgid "Other, specify"
 msgstr ""
 
-#: meta_subject/choices.py:57
+#: src/meta_subject/choices.py:58
 msgid "Study participant"
 msgstr ""
 
-#: meta_subject/choices.py:58 meta_subject/choices.py:133
-#: meta_subject/choices.py:219
+#: src/meta_subject/choices.py:59 src/meta_subject/choices.py:134
+#: src/meta_subject/choices.py:220
 msgid "Other"
 msgstr ""
 
-#: meta_subject/choices.py:63
+#: src/meta_subject/choices.py:64
 msgid "At home"
 msgstr ""
 
-#: meta_subject/choices.py:64
+#: src/meta_subject/choices.py:65
 msgid "Hospital / Clinic"
 msgstr ""
 
-#: meta_subject/choices.py:65
+#: src/meta_subject/choices.py:66
 msgid "Other location, specify"
 msgstr ""
 
-#: meta_subject/choices.py:70
+#: src/meta_subject/choices.py:71
 msgid "Excellent"
 msgstr ""
 
-#: meta_subject/choices.py:71
+#: src/meta_subject/choices.py:72
 msgid "Very good"
 msgstr ""
 
-#: meta_subject/choices.py:72
+#: src/meta_subject/choices.py:73
 msgid "Good"
 msgstr ""
 
-#: meta_subject/choices.py:73
+#: src/meta_subject/choices.py:74
 msgid "Fair"
 msgstr ""
 
-#: meta_subject/choices.py:74
+#: src/meta_subject/choices.py:75
 msgid "Poor"
 msgstr ""
 
-#: meta_subject/choices.py:80
+#: src/meta_subject/choices.py:81
 msgid "Other, specify below ..."
 msgstr ""
 
-#: meta_subject/choices.py:86
+#: src/meta_subject/choices.py:87
 msgid "No. A repeat FBG will be scheduled"
 msgstr ""
 
-#: meta_subject/choices.py:92 meta_subject/choices.py:146
+#: src/meta_subject/choices.py:93 src/meta_subject/choices.py:147
 msgid "All of the time"
 msgstr ""
 
-#: meta_subject/choices.py:93 meta_subject/choices.py:147
+#: src/meta_subject/choices.py:94 src/meta_subject/choices.py:148
 msgid "Most of the time"
 msgstr ""
 
-#: meta_subject/choices.py:94
+#: src/meta_subject/choices.py:95
 msgid "A good bit of the time"
 msgstr ""
 
-#: meta_subject/choices.py:95 meta_subject/choices.py:148
+#: src/meta_subject/choices.py:96 src/meta_subject/choices.py:149
 msgid "Some of the time"
 msgstr ""
 
-#: meta_subject/choices.py:96 meta_subject/choices.py:149
+#: src/meta_subject/choices.py:97 src/meta_subject/choices.py:150
 msgid "A little of the time"
 msgstr ""
 
-#: meta_subject/choices.py:97 meta_subject/choices.py:150
+#: src/meta_subject/choices.py:98 src/meta_subject/choices.py:151
 msgid "None of the time"
 msgstr ""
 
-#: meta_subject/choices.py:102
+#: src/meta_subject/choices.py:103
 msgid "Live birth at term"
 msgstr ""
 
-#: meta_subject/choices.py:103
+#: src/meta_subject/choices.py:104
 msgid "Live birth preterm"
 msgstr ""
 
-#: meta_subject/choices.py:104
+#: src/meta_subject/choices.py:105
 msgid "Stillbirth"
 msgstr ""
 
-#: meta_subject/choices.py:105
+#: src/meta_subject/choices.py:106
 msgid "Miscarriage"
 msgstr ""
 
-#: meta_subject/choices.py:109
+#: src/meta_subject/choices.py:110
 msgid "Study appointment"
 msgstr ""
 
-#: meta_subject/choices.py:110
+#: src/meta_subject/choices.py:111
 msgid "Other routine appointment"
 msgstr ""
 
-#: meta_subject/choices.py:111
+#: src/meta_subject/choices.py:112
 msgid "Unschedule visit"
 msgstr ""
 
-#: meta_subject/choices.py:112
+#: src/meta_subject/choices.py:113
 msgid "Other reason, specify below ..."
 msgstr ""
 
-#: meta_subject/choices.py:116 meta_subject/choices.py:117
+#: src/meta_subject/choices.py:117 src/meta_subject/choices.py:118
 #, python-format
 msgid "Grade %(num)s"
 msgstr ""
 
-#: meta_subject/choices.py:122
+#: src/meta_subject/choices.py:123
 msgid "YES, limited a lot"
 msgstr ""
 
-#: meta_subject/choices.py:123
+#: src/meta_subject/choices.py:124
 msgid "YES, limited a little"
 msgstr ""
 
-#: meta_subject/choices.py:124
+#: src/meta_subject/choices.py:125
 msgid "NO, not at all limited"
 msgstr ""
 
-#: meta_subject/choices.py:128
+#: src/meta_subject/choices.py:129
 msgid "Hospital notes"
 msgstr ""
 
-#: meta_subject/choices.py:129
+#: src/meta_subject/choices.py:130
 msgid "Outpatient cards"
 msgstr ""
 
-#: meta_subject/choices.py:130
+#: src/meta_subject/choices.py:131
 msgid "Patient"
 msgstr ""
 
-#: meta_subject/choices.py:131
+#: src/meta_subject/choices.py:132
 msgid "Collateral History from relative/guardian"
 msgstr ""
 
-#: meta_subject/choices.py:132
+#: src/meta_subject/choices.py:133
 msgid "Not applicable (if missed)"
 msgstr ""
 
-#: meta_subject/choices.py:139
+#: src/meta_subject/choices.py:140
 msgid "Hospital / Clinic records"
 msgstr ""
 
-#: meta_subject/choices.py:154
+#: src/meta_subject/choices.py:155
 msgid "No retinopathy"
 msgstr ""
 
-#: meta_subject/choices.py:155
+#: src/meta_subject/choices.py:156
 msgid "Background retinopathy"
 msgstr ""
 
-#: meta_subject/choices.py:156
+#: src/meta_subject/choices.py:157
 msgid "Pre-proliferative retinopathy"
 msgstr ""
 
-#: meta_subject/choices.py:157
+#: src/meta_subject/choices.py:158
 msgid "Proliferative retinopathy"
 msgstr ""
 
-#: meta_subject/choices.py:158
+#: src/meta_subject/choices.py:159
 msgid "Maculopathy"
 msgstr ""
 
-#: meta_subject/choices.py:159 meta_subject/choices.py:181
-#: meta_subject/choices.py:188 meta_subject/choices.py:242
+#: src/meta_subject/choices.py:160 src/meta_subject/choices.py:182
+#: src/meta_subject/choices.py:189 src/meta_subject/choices.py:243
 msgid "Exam not performed"
 msgstr ""
 
-#: meta_subject/choices.py:163
+#: src/meta_subject/choices.py:164
 msgid "No complications"
 msgstr ""
 
-#: meta_subject/choices.py:164
+#: src/meta_subject/choices.py:165
 msgid "Complications with full recovery"
 msgstr ""
 
-#: meta_subject/choices.py:165
+#: src/meta_subject/choices.py:166
 msgid "Complications with ongoing recovery"
 msgstr ""
 
-#: meta_subject/choices.py:166
+#: src/meta_subject/choices.py:167
 msgid "Maternal mortality"
 msgstr ""
 
-#: meta_subject/choices.py:171
+#: src/meta_subject/choices.py:172
 msgid "Own cash"
 msgstr ""
 
-#: meta_subject/choices.py:172
+#: src/meta_subject/choices.py:173
 msgid "Insurance"
 msgstr ""
 
-#: meta_subject/choices.py:173
+#: src/meta_subject/choices.py:174
 msgid "Relative of others paying"
 msgstr ""
 
-#: meta_subject/choices.py:174
+#: src/meta_subject/choices.py:175
 msgid "Free drugs from the pharmacy"
 msgstr ""
 
-#: meta_subject/choices.py:179 meta_subject/choices.py:185
+#: src/meta_subject/choices.py:180 src/meta_subject/choices.py:186
 msgid "Present"
 msgstr ""
 
-#: meta_subject/choices.py:180 meta_subject/choices.py:187
+#: src/meta_subject/choices.py:181 src/meta_subject/choices.py:188
 msgid "Absent"
 msgstr ""
 
-#: meta_subject/choices.py:186
+#: src/meta_subject/choices.py:187
 msgid "Present with reinforcement"
 msgstr ""
 
-#: meta_subject/choices.py:193
+#: src/meta_subject/choices.py:194
 msgid "New"
 msgstr ""
 
-#: meta_subject/choices.py:194
+#: src/meta_subject/choices.py:195
 msgid "Open. Some information is still pending."
 msgstr ""
 
-#: meta_subject/choices.py:195
+#: src/meta_subject/choices.py:196
 msgid "Closed. This report is complete"
 msgstr ""
 
-#: meta_subject/choices.py:200
+#: src/meta_subject/choices.py:201
 msgid "Bus"
 msgstr ""
 
-#: meta_subject/choices.py:201
+#: src/meta_subject/choices.py:202
 msgid "Train"
 msgstr ""
 
-#: meta_subject/choices.py:202
+#: src/meta_subject/choices.py:203
 msgid "Ambulance"
 msgstr ""
 
-#: meta_subject/choices.py:203
+#: src/meta_subject/choices.py:204
 msgid "Private taxi"
 msgstr ""
 
-#: meta_subject/choices.py:204
+#: src/meta_subject/choices.py:205
 msgid "Own bicycle"
 msgstr ""
 
-#: meta_subject/choices.py:205
+#: src/meta_subject/choices.py:206
 msgid "Hired motorbike"
 msgstr ""
 
-#: meta_subject/choices.py:206
+#: src/meta_subject/choices.py:207
 msgid "Own car"
 msgstr ""
 
-#: meta_subject/choices.py:207
+#: src/meta_subject/choices.py:208
 msgid "Own motorbike"
 msgstr ""
 
-#: meta_subject/choices.py:208
+#: src/meta_subject/choices.py:209
 msgid "Hired bicycle"
 msgstr ""
 
-#: meta_subject/choices.py:209
+#: src/meta_subject/choices.py:210
 msgid "Foot"
 msgstr ""
 
-#: meta_subject/choices.py:215
+#: src/meta_subject/choices.py:216
 msgid "Patient unwell (outpatient)"
 msgstr ""
 
-#: meta_subject/choices.py:216
+#: src/meta_subject/choices.py:217
 msgid "Patient hospitalised"
 msgstr ""
 
-#: meta_subject/choices.py:217
+#: src/meta_subject/choices.py:218
 msgid "Routine appointment (non-study)"
 msgstr ""
 
-#: meta_subject/choices.py:218
+#: src/meta_subject/choices.py:219
 msgid "Recurrence of symptoms"
 msgstr ""
 
-#: meta_subject/choices.py:224
+#: src/meta_subject/choices.py:225
 msgid "Scheduled visit"
 msgstr ""
 
-#: meta_subject/choices.py:225
+#: src/meta_subject/choices.py:226
 msgid "Unscheduled visit"
 msgstr ""
 
-#: meta_subject/choices.py:226
+#: src/meta_subject/choices.py:227
 msgid "Missed visit"
 msgstr ""
 
-#: meta_subject/choices.py:229
+#: src/meta_subject/choices.py:230
 msgid "Estimated"
 msgstr ""
 
-#: meta_subject/choices.py:229
+#: src/meta_subject/choices.py:230
 msgid "Measured"
 msgstr ""
 
-#: meta_subject/choices.py:232
+#: src/meta_subject/choices.py:233
 msgid "Not at all"
 msgstr ""
 
-#: meta_subject/choices.py:233
+#: src/meta_subject/choices.py:234
 msgid "A little bit"
 msgstr ""
 
-#: meta_subject/choices.py:234
+#: src/meta_subject/choices.py:235
 msgid "Moderately"
 msgstr ""
 
-#: meta_subject/choices.py:235
+#: src/meta_subject/choices.py:236
 msgid "Quite a bit"
 msgstr ""
 
-#: meta_subject/choices.py:236
+#: src/meta_subject/choices.py:237
 msgid "Extremely"
 msgstr ""
 
-#: meta_subject/models/health_economics/health_economics_update.py:20
+#: src/meta_subject/models/health_economics/health_economics_update.py:21
 msgid ""
 "Thinking over the last 12 months, can you tell me what the average earnings "
 "of the household have been?"
 msgstr ""
 
-#: meta_subject/models/health_economics/health_economics_update.py:36
+#: src/meta_subject/models/health_economics/health_economics_update.py:37
 msgid "Are you the household head?"
 msgstr ""
 
-#: meta_subject/models/health_economics/health_economics_update.py:40
+#: src/meta_subject/models/health_economics/health_economics_update.py:41
 msgid ""
 "By head of the household we mean the main decision maker in the household. "
 "The head can be either male or female. If two people are equal decision-"
 "makers, take the older person."
 msgstr ""
 
-#: meta_subject/models/health_economics/health_economics_update.py:48
+#: src/meta_subject/models/health_economics/health_economics_update.py:49
 msgid "If No, what is your relationship to the household head?"
 msgstr ""
 
-#: meta_subject/models/health_economics/health_economics_update.py:52
+#: src/meta_subject/models/health_economics/health_economics_update.py:53
 msgid "Not applicable if patient is head of household"
 msgstr ""
 
-#: meta_subject/models/health_economics/health_economics_update.py:56
+#: src/meta_subject/models/health_economics/health_economics_update.py:57
 msgid "If OTHER relationship, specify ..."
 msgstr ""
 
-#: meta_subject/models/health_economics/health_economics_update.py:61
+#: src/meta_subject/models/health_economics/health_economics_update.py:62
 msgid ""
 "How many rooms does your dwelling have in total, without counting the "
 "bathrooms/ toilets or hallways/passageways?"
 msgstr ""
 
-#: meta_subject/models/health_economics/health_economics_update.py:68
+#: src/meta_subject/models/health_economics/health_economics_update.py:69
 msgid "How many rooms are used for sleeping in your dwelling?"
 msgstr ""
 
-#: meta_subject/models/health_economics/health_economics_update.py:73
+#: src/meta_subject/models/health_economics/health_economics_update.py:74
 msgid "How many beds does your dwelling have in total?"
 msgstr ""
 
-#: meta_subject/models/health_economics/health_economics_update.py:79
+#: src/meta_subject/models/health_economics/health_economics_update.py:80
 msgid ""
 "Outside of this household, how many other people depend on this household's "
 "income?"
 msgstr ""
 
-#: meta_subject/models/health_economics/health_economics_update.py:84
+#: src/meta_subject/models/health_economics/health_economics_update.py:85
 msgid ""
 "Insert '0' if no dependents other than the members in the household roster"
 msgstr ""
 
-#: meta_subject/models/health_economics/health_economics_update.py:89
+#: src/meta_subject/models/health_economics/health_economics_update.py:90
 msgid "Would you say your household's financial situation is?"
 msgstr ""

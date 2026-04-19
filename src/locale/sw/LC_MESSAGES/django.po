@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-19 23:35+0300\n"
+"POT-Creation-Date: 2026-04-18 19:23-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,207 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: meta_pharmacy/admin/actions.py:35
-msgid "Select one and only one existing label specification"
+
+#: src/meta_ae/action_items.py:55
+#, python-brace-format
+msgid ""
+"Upon submission the TMG group will be notified by email at <a href=\"mailto:"
+"{email1}\">{email2}</a>"
 msgstr ""
 
-#: meta_reports/admin/dbviews/imp_substitutions_admin.py:67
-#: meta_reports/admin/dbviews/patient_history_missing_baseline_cd4_admin.py:57
+#: src/meta_ae/admin/ae_initial_admin.py:20
+#, python-brace-format
+msgid ""
+"Complete the initial AE report and forward to the TMG. Email to <a "
+"href=\"mailto:{}\">{}</a>"
+msgstr ""
+
+#: src/meta_ae/admin/modeladmin_mixins.py:114
+msgid "go to ae initial report"
+msgstr ""
+
+#: src/meta_prn/form_validators/end_of_study.py:339
+#, python-brace-format
+msgid ""
+"Participant is reported to be on study medication. Complete <a href=\"{url}?"
+"{query_string}\" title=\"Add new form\">{verbose_name}</A> PRN action and "
+"try again."
+msgstr ""
+
+#: src/meta_prn/templates/meta_prn/eos/additional_instructions.html:3
+msgid "Note: If the patient is"
+msgstr ""
+
+#: src/meta_prn/templates/meta_prn/eos/additional_instructions.html:3
+msgid "deceased"
+msgstr ""
+
+#: src/meta_prn/templates/meta_prn/eos/additional_instructions.html:3
+msgid "complete form"
+msgstr ""
+
+#: src/meta_prn/templates/meta_prn/eos/additional_instructions.html:3
+msgid "before completing this form"
+msgstr ""
+
+#: src/meta_prn/templates/meta_prn/eos/additional_instructions.html:3
+msgid "If the patient is <i>lost to follow up</i>, complete form"
+msgstr ""
+
+#: src/meta_prn/templates/meta_prn/eos/additional_instructions.html:3
+msgid "before completing this form."
+msgstr ""
+
+#: src/meta_prn/templates/meta_prn/offschedule/additional_instructions.html:2
+msgid "Detailed information about study termination will be asked for on the"
+msgstr ""
+
+#: src/meta_prn/templates/meta_prn/offschedule/additional_instructions.html:2
+msgid "form"
+msgstr ""
+
+#: src/meta_reports/admin/dbviews/imp_substitutions_admin.py:67
+#: src/meta_reports/admin/dbviews/patient_history_missing_baseline_cd4_admin.py:57
 msgid "Go to subject's dashboard@1000"
 msgstr ""
 
-#: meta_reports/admin/dbviews/imp_substitutions_admin.py:89
-#, python-brace-format
-msgid "View {crf_model_cls._meta.verbose_name}"
+#: src/meta_reports/admin/dbviews/imp_substitutions_admin.py:89
+#, python-format
+msgid "View %(verbose_name)s"
 msgstr ""
 
-#: meta_reports/admin/dbviews/imp_substitutions_admin.py:90
+#: src/meta_reports/admin/dbviews/imp_substitutions_admin.py:92
 msgid "View"
 msgstr ""
 
-#: meta_reports/admin/dbviews/missing_screening_ogtt_admin/unmanaged_model_admin.py:71
+#: src/meta_reports/admin/dbviews/missing_screening_ogtt_admin/unmanaged_model_admin.py:71
 msgid "Go to subject screening"
 msgstr ""
 
-#: meta_screening/admin/subject_screening_admin.py:197
+#: src/meta_reports/templates/meta_reports/last_imp_refill/changelist_note.html:2
+msgid ""
+"This report fetches the most recent Study Medication report where IMP was "
+"refilled and adds the subject's next visit. Subjects taken 'Off Schedule' "
+"are not included in this report. To update ALL rows in this report, tick at "
+"least one row and select 'Update report' action below."
+msgstr ""
+
+#: src/meta_reports/templates/meta_reports/last_imp_refill/changelist_note.html:4
+msgid "This report has additional search features for numeric columns"
+msgstr ""
+
+#: src/meta_reports/templates/meta_reports/last_imp_refill/changelist_note.html:5
+msgid "and"
+msgstr ""
+
+#: src/meta_reports/templates/meta_reports/last_imp_refill/changelist_note.html:7
+msgid "For example, type"
+msgstr ""
+
+#: src/meta_reports/templates/meta_reports/last_imp_refill/changelist_note.html:9
+msgid ""
+"in the search below to show rows for subjects who have an appointment 25 or "
+"more days from the date this report was created. You might also try typing"
+msgstr ""
+
+#: src/meta_reports/templates/meta_reports/last_imp_refill/changelist_note.html:12
+msgid "This also works"
+msgstr ""
+
+#: src/meta_screening/admin/subject_screening_admin.py:208
 msgid "Go to subject dashboard"
+msgstr ""
+
+#: src/meta_spfq/admin/modeladmin_mixins.py:30
+msgid "The following questions are directed to the interviewer."
+msgstr ""
+
+#: src/meta_spfq/choices.py:26 src/meta_spfq/choices.py:34
+msgid "Not at all"
+msgstr ""
+
+#: src/meta_spfq/choices.py:27
+msgid "Slight"
+msgstr ""
+
+#: src/meta_spfq/choices.py:28
+msgid "Moderate"
+msgstr ""
+
+#: src/meta_spfq/choices.py:29
+msgid "Extreme"
+msgstr ""
+
+#: src/meta_spfq/choices.py:30
+msgid "Severe"
+msgstr ""
+
+#: src/meta_spfq/choices.py:35
+msgid "Slightly"
+msgstr ""
+
+#: src/meta_spfq/choices.py:36
+msgid "Moderately"
+msgstr ""
+
+#: src/meta_spfq/choices.py:37
+msgid "Highly"
+msgstr ""
+
+#: src/meta_spfq/choices.py:38
+msgid "Very highly"
+msgstr ""
+
+#: src/meta_spfq/choices.py:41
+msgid "Much less than expected"
+msgstr ""
+
+#: src/meta_spfq/choices.py:42
+msgid "Somewhat less than expected"
+msgstr ""
+
+#: src/meta_spfq/choices.py:43
+msgid "Same as expected"
+msgstr ""
+
+#: src/meta_spfq/choices.py:44
+msgid "Somewhat more than expected"
+msgstr ""
+
+#: src/meta_spfq/choices.py:45
+msgid "Much more than expected"
+msgstr ""
+
+#: src/meta_spfq/models/model_mixins.py:10
+msgid "Were any attempts made to contact the participant?"
+msgstr ""
+
+#: src/meta_spfq/models/model_mixins.py:16
+msgid "Number of attempts made to contact participant"
+msgstr ""
+
+#: src/meta_spfq/models/model_mixins.py:18
+msgid "Multiple attempts on the same day count as a single attempt."
+msgstr ""
+
+#: src/meta_spfq/models/model_mixins.py:24
+msgid "Was contact made with the participant?"
+msgstr ""
+
+#: src/meta_spfq/models/model_mixins.py:31
+msgid "If contact not made and less than 3 attempts, please explain"
+msgstr ""
+
+#: src/meta_spfq/models/subject_consent_spfq.py:49
+msgid "Consent datetime"
+msgstr ""
+
+#: src/meta_spfq/models/subject_consent_spfq.py:57
+msgid "Language of consent"
+msgstr ""
+
+#: src/meta_spfq/models/subject_consent_spfq.py:61
+msgid ""
+"The language used for the consent process will also be used during data "
+"collection."
 msgstr ""

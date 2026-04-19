@@ -1,6 +1,6 @@
 [project]
 name = "meta-edc"
-version = "1.12.0"
+version = "2.0.0"
 description = "META Trial EDC (https://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 keywords = [
@@ -26,19 +26,20 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
 license = "GPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
-requires-python = '>=3.12,<3.14'
+requires-python = '>=3.12,<3.15'
 dependencies = [
-    "django==5.2.13",
+    "Django>=5.2,<6.1",
     "celery>=5.6.2",
-    "clinicedc==2.9.4",
-    "edc-he>=1.5.5",
-    "edc-microscopy>=1.4.4",
-    "edc-mnsi>=1.4.1",
-    "edc-phq9>=1.4.1",
-    "edc-qol>=1.4.1",
+    "clinicedc==3.0.0",
+    "edc-he>=2.1.0",
+    "edc-microscopy>=2.0.0",
+    "edc-mnsi>=2.0.0",
+    "edc-phq9>=2.0.0",
+    "edc-qol>=2.0.0",
     "notebook>=7.4.7",
     "openpyxl>=3.1.5",
 ]
@@ -166,11 +167,10 @@ docs = [
     "sphinx-inline-tabs>=2023.4.21",
 ]
 dev = [
-    "clinicedc-tests>=1.1.0",
-    "clinicedc-utils>=0.4.0",
+    "clinicedc-tests>=1.2.2",
     "dj-notebook>=0.7.0",
     "django-webtest>=1.9.14",
-    "edc-test-settings>=2.0.0",
+    "edc-test-settings>=2.1.0",
     "great-tables>=0.18.0",
     "ipython>=9.7.0",
     "matplotlib-venn>=1.1.2",
@@ -180,7 +180,6 @@ dev = [
     "pandas>=2.3.1",
     "pdfkit>=1.0.0",
     "remote-read-sql>=1.2.3",
-    "ruff>=0.14.10",
     "scikit-learn>=1.7.1",
     "scipy-stubs~=1.16.3",
     "scipy>=1.16.0",
@@ -196,12 +195,11 @@ dev = [
 [tool.uv.sources]
 meta-edc = { workspace = true }
 clinicedc = { path = "../clinicedc", editable = true }
+clinicedc-constants = { path = "../clinicedc-constants", editable = true }
 clinicedc-utils = { path = "../clinicedc-utils", editable = true }
 remote-read-sql = { path = "../remote-read-sql", editable = true }
-edc-test-settings = { path = "../edc-test-settings", editable = true }
 edc-microscopy = { path = "../edc-microscopy", editable = true }
 edc-mnsi = { path = "../edc-mnsi", editable = true }
 edc-phq9 = { path = "../edc-phq9", editable = true }
 edc-qol = { path = "../edc-qol", editable = true }
 edc-he = { path = "../edc-he", editable = true }
-# django-revision = { path = "../django-revision", editable = true }
