@@ -34,7 +34,7 @@ requires-python = '>=3.12,<3.15'
 dependencies = [
     "Django>=5.2,<6.1",
     "celery>=5.6.2",
-    "clinicedc==3.0.0",
+    "clinicedc==3.1.0",
     "edc-he>=2.1.0",
     "edc-microscopy>=2.0.0",
     "edc-mnsi>=2.0.0",
