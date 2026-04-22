@@ -166,3 +166,6 @@ class SpfqListAdmin(
                 s.id for s in request.user.userprofile.sites.all() if s.id != request.site.id
             ]
         return super().get_view_only_site_ids_for_user(request)
+
+    def user_may_view_other_sites(self, request) -> bool:  # noqa: ARG002
+        return True
