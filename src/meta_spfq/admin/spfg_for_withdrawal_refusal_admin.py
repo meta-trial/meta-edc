@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import reverse
 from django_audit_fields import audit_fieldset_tuple
 from edc_crf.fieldset import crf_status_fieldset
+from edc_data_manager.auth_objects import DATA_MANAGER_ROLE
 
 from ..admin_site import meta_spfq_admin
 from ..forms import SpfqForWithdrawalRefusalForm
@@ -56,3 +57,13 @@ class SpfqForWithdrawalRefusalAdmin(SpfqRefusalAdmin):
 
     def get_post_url_on_delete(self, request, obj) -> str | None:  # noqa: ARG002
         return reverse("meta_spfq_admin:meta_spfq_spfqlist_changelist")
+
+    def get_view_only_site_ids_for_user(self, request) -> list[int]:
+        if request.user.userprofile.roles.filter(name=DATA_MANAGER_ROLE).exists():
+            return [
+                s.id for s in request.user.userprofile.sites.all() if s.id != request.site.id
+            ]
+        return super().get_view_only_site_ids_for_user(request)
+
+    def user_may_view_other_sites(self, request) -> bool:  # noqa: ARG002
+        return True

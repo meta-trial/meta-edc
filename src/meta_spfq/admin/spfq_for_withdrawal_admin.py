@@ -174,6 +174,13 @@ class SpfqForWithdrawalAdmin(
         )
         return render_to_string("meta_spfq/documents_button.html", context=context)
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "registered_subject" and request.GET.get("registered_subject"):
+            kwargs["queryset"] = db_field.related_model.objects.filter(
+                pk=request.GET.get("registered_subject", 0)
+            )
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
     def get_view_only_site_ids_for_user(self, request) -> list[int]:
         if request.user.userprofile.roles.filter(name=DATA_MANAGER_ROLE).exists():
             return [
@@ -181,9 +188,5 @@ class SpfqForWithdrawalAdmin(
             ]
         return super().get_view_only_site_ids_for_user(request)
 
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "registered_subject" and request.GET.get("registered_subject"):
-            kwargs["queryset"] = db_field.related_model.objects.filter(
-                pk=request.GET.get("registered_subject", 0)
-            )
-        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+    def user_may_view_other_sites(self, request) -> bool:  # noqa: ARG002
+        return True
