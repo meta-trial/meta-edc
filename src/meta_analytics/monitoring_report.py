@@ -1,4 +1,4 @@
-# ruff: noqa: PD008, PD010, PD015, PLR0913, PLR0915, C901, ARG001, F841, RET504
+# ruff: noqa: PD008, PD010, PD015, PLR0912, PLR0913, PLR0915, C901, ARG001, F841, RET504
 """Generate the META3 monitoring report (PDF).
 
 Ported from ``meta_analytics/notebooks/monitoring_report.ipynb``.
@@ -19,7 +19,6 @@ from zoneinfo import ZoneInfo
 
 import numpy as np
 import pandas as pd
-import pdfkit
 from clinicedc_constants import YES
 from django_pandas.io import read_frame
 from edc_appointment.analytics import get_appointment_df
@@ -35,6 +34,7 @@ from edc_pdutils.dataframes import get_subject_visit
 from edc_visit_schedule.models import SubjectScheduleHistory
 from great_tables import html, loc, md, style
 from scipy.stats import chi2
+from weasyprint import HTML
 
 from meta_analytics.dataframes import (
     GlucoseEndpointsByDate2,
@@ -1433,45 +1433,50 @@ def generate_monitoring_report(
 
     # --- assemble and render PDF --------------------------------------------
     raw_html = [f'<div class="page-break">{s}</div>' for s in html_data]
-    style_css = """
+    # WeasyPrint renders @page CSS for margins, running headers, and page
+    # numbers — so the old pdfkit header-center / footer-center options
+    # move into CSS here.
+    style_css = f"""
 <style>
-  .page-break {
+  @page {{
+    size: A4;
+    margin: 20mm 15mm 20mm 15mm;
+    @top-center {{
+      content: "{study_title}";
+      font-size: 6pt;
+      color: #444;
+    }}
+    @bottom-center {{
+      content: "Page " counter(page) " of " counter(pages);
+      font-size: 8pt;
+      color: #444;
+    }}
+  }}
+  body {{
+    font-family: sans-serif;
+  }}
+  .page-break {{
     page-break-inside: avoid;
-  }
-  .table-header {
+    break-inside: avoid;
+  }}
+  .table-header {{
     font-weight: bold;
     font-size: 18px;
     text-align: center;
     border-bottom: None;
-  }
+  }}
 </style>
 """
     raw_html_str = (
-        f'<!DOCTYPE html>\n<html lang="en">\n{style_css}\n<head>\n'
-        '<meta charset="utf-8"/>\n</head>\n<body>\n'
+        f'<!DOCTYPE html>\n<html lang="en">\n<head>\n'
+        '<meta charset="utf-8"/>\n'
+        f"{style_css}\n</head>\n<body>\n"
         + document_title
         + "".join(raw_html)
         + "\n</body>\n</html>\n"
     )
 
-    pdfkit.from_string(
-        raw_html_str,
-        str(output_path),
-        options={
-            "footer-center": "Page [page] of [topage]",
-            "footer-font-size": "8",
-            "footer-spacing": "5",
-            "encoding": "UTF-8",
-            "margin-top": "10mm",
-            "margin-right": "15mm",
-            "margin-bottom": "15mm",
-            "margin-left": "15mm",
-            "header-center": study_title,
-            "header-font-size": "6",
-            "header-spacing": "0",
-            "disable-javascript": None,
-            "no-outline": None,
-        },
-        verbose=verbose,
-    )
+    HTML(string=raw_html_str).write_pdf(str(output_path))
+    if verbose:
+        print(f"Wrote {output_path}")  # noqa: T201
     return output_path
