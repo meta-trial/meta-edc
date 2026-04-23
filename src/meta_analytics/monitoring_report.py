@@ -8,6 +8,25 @@ the full pipeline of ~15 tables and writes a PDF to the given path.
 
 The management command ``generate_monitoring_report`` is a thin wrapper
 around this function.
+
+WeasyPrint system library requirements
+--------------------------------------
+WeasyPrint (>=53) is a pure-Python renderer but links to system libraries
+via ctypes. Install them before running the report:
+
+Ubuntu / Debian (24.04 verified)::
+
+    sudo apt install -y libpango-1.0-0 libpangoft2-1.0-0
+
+macOS (Homebrew)::
+
+    brew install pango
+
+On Apple Silicon, if WeasyPrint cannot find the libs, export::
+
+    export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/lib:$DYLD_FALLBACK_LIBRARY_PATH
+
+Cairo and GDK-Pixbuf are *not* required by WeasyPrint 53+.
 """
 
 from __future__ import annotations
@@ -1433,37 +1452,31 @@ def generate_monitoring_report(
 
     # --- assemble and render PDF --------------------------------------------
     raw_html = [f'<div class="page-break">{s}</div>' for s in html_data]
-    # WeasyPrint renders @page CSS for margins, running headers, and page
-    # numbers — so the old pdfkit header-center / footer-center options
-    # move into CSS here.
+    # WeasyPrint uses @page rules for margins, headers and footers.
+    # Study title in @top-center (escape double quotes for CSS string).
+    study_title_css = study_title.replace('"', '\\"')
     style_css = f"""
 <style>
   @page {{
     size: A4;
-    margin: 20mm 15mm 20mm 15mm;
+    margin: 15mm 15mm 15mm 15mm;
     @top-center {{
-      content: "{study_title}";
-      font-size: 6pt;
-      color: #444;
+      content: "{study_title_css}";
+      font-size: 8pt;
     }}
     @bottom-center {{
       content: "Page " counter(page) " of " counter(pages);
       font-size: 8pt;
-      color: #444;
     }}
-  }}
-  body {{
-    font-family: sans-serif;
   }}
   .page-break {{
     page-break-inside: avoid;
-    break-inside: avoid;
   }}
   .table-header {{
     font-weight: bold;
     font-size: 18px;
     text-align: center;
-    border-bottom: None;
+    border-bottom: none;
   }}
 </style>
 """
@@ -1476,7 +1489,7 @@ def generate_monitoring_report(
         + "\n</body>\n</html>\n"
     )
 
+    # WeasyPrint has no "verbose" option; the flag is accepted for API parity.
+    _ = verbose
     HTML(string=raw_html_str).write_pdf(str(output_path))
-    if verbose:
-        print(f"Wrote {output_path}")  # noqa: T201
     return output_path

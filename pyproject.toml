@@ -35,15 +35,17 @@ dependencies = [
     "Django>=5.2,<6.1",
     "celery>=5.6.2",
     "clinicedc==3.1.5",
+    "django-pandas>=0.6.7",
     "edc-he>=2.1.0",
     "edc-microscopy>=2.0.0",
     "edc-mnsi>=2.0.0",
     "edc-phq9>=2.0.0",
     "edc-qol>=2.0.0",
     "great-tables>=0.21.0",
-    "notebook>=7.4.7",
+    "matplotlib>=3.10.8",
+    "numpy>=2.4.4",
     "openpyxl>=3.1.5",
-    "pdfkit>=1.0.0",
+    "pandas>=3.0.2",
     "scipy>=1.17.1",
     "weasyprint>=62.0",
 ]
@@ -81,7 +83,7 @@ namespace = false
 [tool.ruff]
 line-length = 95
 indent-width = 4
-target-version = "py313"
+target-version = "py312"
 extend-exclude = [
     "migrations",
     "*/view_definition.py",
@@ -143,10 +145,10 @@ exclude = ["*.ipynb"]
 [tool.coverage.run]
 parallel = false
 branch = true
-source = ["meta_edc"]
+source = ["src"]
 
 [tool.coverage.paths]
-source = ["meta_edc"]
+source = ["src"]
 
 [tool.coverage.report]
 show_missing = true
@@ -175,18 +177,12 @@ dev = [
     "dj-notebook>=0.7.0",
     "django-webtest>=1.9.14",
     "edc-test-settings>=2.1.0",
-    "great-tables>=0.18.0",
     "ipython>=9.7.0",
     "matplotlib-venn>=1.1.2",
-    "matplotlib>=3.10.3",
     "notebook>=7.4.7",
-    "numpy>=2.3.2",
-    "pandas>=2.3.1",
-    "pdfkit>=1.0.0",
     "remote-read-sql>=1.2.3",
     "scikit-learn>=1.7.1",
     "scipy-stubs~=1.16.3",
-    "scipy>=1.16.0",
     "seaborn>=0.13.2",
     "selenium>=4.34.2",
     "statsmodels>=0.14.5",
@@ -195,6 +191,9 @@ dev = [
     "tox>=4.32.0",
     "xlrd>=2.0.2",
 ]
+
+[tool.uv]
+override-dependencies = ["bleach>=6.0"]
 
 [tool.uv.sources]
 meta-edc = { workspace = true }
