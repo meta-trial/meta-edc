@@ -6,6 +6,7 @@ from django.utils import timezone
 from django_pandas.io import read_frame
 from tqdm import tqdm
 
+from meta_prn.constants import DIABETES_DISPLAY
 from meta_prn.models import DmReferral
 
 from ..constants import (
@@ -30,9 +31,9 @@ class GlucoseEndpointsByDate2:
     df = cls.endpoint_df.copy()
     """
 
-    fbg_threshhold = 7.0
+    fbg_threshold = 7.0
     fbg_beyond_threshold = FBG_BEYOND_THRESHOLD
-    ogtt_threshhold = 11.1
+    ogtt_threshold = 11.1
     min_fasted_hrs = 8.0
     endpoint_cls = EndpointByDate
 
@@ -62,7 +63,7 @@ class GlucoseEndpointsByDate2:
             )
             df_eos = self.eos_df.loc[
                 ~(
-                    self.working_df["subject_identifier"].isin(
+                    self.eos_df["subject_identifier"].isin(
                         self._endpoint_df.subject_identifier.unique()
                     )
                 )
@@ -136,7 +137,7 @@ class GlucoseEndpointsByDate2:
         """high OGTTs"""
         if self._high_ogtt_df.empty:
             high_ogtt_df = (
-                self.working_df.loc[self.working_df["ogtt_value"] >= self.ogtt_threshhold]
+                self.working_df.loc[self.working_df["ogtt_value"] >= self.ogtt_threshold]
                 .copy()
                 .sort_values(by=["subject_identifier", "ogtt_datetime"])
                 .reset_index(drop=True)
@@ -176,9 +177,9 @@ class GlucoseEndpointsByDate2:
         if self._other_endpoints_df.empty:
             subject_identifiers = self.working_df.subject_identifier.unique()
             total = len(subject_identifiers)
-            other_endpoints_df = pd.DataFrame()
+            frames = []
             for subject_identifier in tqdm(
-                self.working_df.subject_identifier.unique(),
+                subject_identifiers,
                 total=total,
                 disable=not self.verbose,
             ):
@@ -186,17 +187,15 @@ class GlucoseEndpointsByDate2:
                     self.working_df.loc[
                         self.working_df.subject_identifier == subject_identifier
                     ],
-                    fbg_threshhold=self.fbg_threshhold,
-                    ogtt_threshhold=self.ogtt_threshhold,
+                    fbg_threshold=self.fbg_threshold,
+                    ogtt_threshold=self.ogtt_threshold,
                     min_fasted_hrs=self.min_fasted_hrs,
                 )
                 endpoint_by_date.evaluate()
-                other_endpoints_df = pd.concat(
-                    [other_endpoints_df, endpoint_by_date.subject_df.copy()]
-                )
-
-            self._other_endpoints_df = other_endpoints_df.loc[
-                other_endpoints_df["endpoint"] == 1
+                frames.append(endpoint_by_date.subject_df.copy())
+            concactenated = pd.concat(frames, ignore_index=True)
+            self._other_endpoints_df = concactenated.loc[
+                concactenated["endpoint"] == 1
             ].sort_values(by=["subject_identifier", "visit_datetime"])
         return self._other_endpoints_df
 
@@ -204,7 +203,8 @@ class GlucoseEndpointsByDate2:
     def eos_df(self) -> pd.DataFrame:
         if self._eos_df.empty:
             df_eos = self.working_df.loc[
-                (self.working_df["offstudy_reason"] == "Patient developed diabetes")
+                (self.working_df["offstudy_reason"] == DIABETES_DISPLAY)
+                # & (self.working_df["referral_id"].isna())
             ].copy()
             df_eos["endpoint"] = 1
             df_eos["endpoint_label"] = endpoint_cases[CASE_EOS]
@@ -221,8 +221,11 @@ class GlucoseEndpointsByDate2:
     @property
     def dmreferral_df(self) -> pd.DataFrame:
         if self._dmreferral_df.empty:
+            subject_identifiers = self.working_df.subject_identifier.unique()
             self._dmreferral_df = read_frame(
-                DmReferral.objects.values("subject_identifier", "referral_date", "id").all()
+                DmReferral.objects.values("subject_identifier", "referral_date", "id").filter(
+                    subject_identifier__in=subject_identifiers
+                )
             ).rename(columns={"id": "referral_id"})
         return self._dmreferral_df
 

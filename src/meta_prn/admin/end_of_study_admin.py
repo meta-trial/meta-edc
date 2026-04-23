@@ -7,6 +7,7 @@ from django.utils.safestring import mark_safe
 from django_audit_fields.admin import audit_fieldset_tuple
 from edc_action_item.fieldsets import action_fieldset_tuple
 from edc_action_item.modeladmin_mixins import ActionItemModelAdminMixin
+from edc_data_manager.auth_objects import DATA_MANAGER_ROLE
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
 from edc_sites.admin import SiteModelAdminMixin
@@ -170,3 +171,13 @@ class EndOfStudyAdmin(
     def months(self, obj):
         subject_consent = SubjectConsent.objects.get(subject_identifier=obj.subject_identifier)
         return relativedelta(obj.offstudy_datetime, subject_consent.consent_datetime).months
+
+    def get_view_only_site_ids_for_user(self, request) -> list[int]:
+        if request.user.userprofile.roles.filter(name=DATA_MANAGER_ROLE).exists():
+            return [
+                s.id for s in request.user.userprofile.sites.all() if s.id != request.site.id
+            ]
+        return super().get_view_only_site_ids_for_user(request)
+
+    def user_may_view_other_sites(self, request) -> bool:  # noqa: ARG002
+        return True

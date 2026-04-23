@@ -29,6 +29,10 @@ class GlucoseSummaryAdmin(
     TemplatesModelAdminMixin,
     admin.ModelAdmin,
 ):
+    change_list_note = (
+        "If more than one FBG is submitted for a timepoint, the value from the "
+        "GlucoseFbg document is excluded."
+    )
     ordering = ("site", "subject_identifier", "fbg_datetime")
     include_note_column = False
     list_display = (
