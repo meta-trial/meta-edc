@@ -82,7 +82,7 @@ class Command(BaseCommand):
             "--verbose-pdf",
             dest="verbose_pdf",
             action="store_true",
-            help="Pass verbose=True to pdfkit and tqdm progress bars.",
+            help="Print progress messages and enable tqdm progress bars.",
         )
 
     def handle(self, *args, **options):  # noqa: ARG002

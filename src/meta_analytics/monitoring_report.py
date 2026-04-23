@@ -1,4 +1,4 @@
-# ruff: noqa: PD008, PD010, PD015, PLR0913, PLR0915, C901, ARG001, F841, RET504
+# ruff: noqa: PD008, PD010, PD015, PLR0912, PLR0913, PLR0915, C901, ARG001, F841, RET504
 """Generate the META3 monitoring report (PDF).
 
 Ported from ``meta_analytics/notebooks/monitoring_report.ipynb``.
