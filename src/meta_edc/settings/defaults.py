@@ -1,8 +1,10 @@
 import os
 import sys
+from datetime import datetime
 from importlib.metadata import version
 from pathlib import Path
 from urllib.parse import quote, urljoin
+from zoneinfo import ZoneInfo
 
 import django
 import environ
@@ -62,12 +64,12 @@ AUTO_CREATE_KEYS = env("DJANGO_AUTO_CREATE_KEYS")
 
 EXPORT_FOLDER = env.str("DJANGO_EXPORT_FOLDER") or Path("~/").expanduser()
 
-
 LOGGING_ENABLED = env("DJANGO_LOGGING_ENABLED")
 if LOGGING_ENABLED:
     from .logging import *  # noqa
 
 META_PHASE = 3
+END_OF_TRAIL_DATETIME = datetime(2026, 5, 31, 23, 59, tzinfo=ZoneInfo("UTC"))
 
 EDC_SITES_DOMAIN_SUFFIX = env.str("EDC_SITES_DOMAIN_SUFFIX")  # "meta4.clinicedc.org"
 
@@ -600,7 +602,6 @@ if "test" in sys.argv:
 
     MIGRATION_MODULES = DisableMigrations()
     PASSWORD_HASHERS = ("django.contrib.auth.hashers.MD5PasswordHasher",)
-
 
 META_SPFQ_LIST_FILENAME = env.str("META_SPFQ_LIST_FILENAME")
 # edc_pdf_reports
