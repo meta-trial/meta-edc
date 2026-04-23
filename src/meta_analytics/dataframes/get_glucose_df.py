@@ -19,13 +19,34 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
 
     df = get_glucose_fbg_ogtt_df(subject_identifiers, subject_visit_df)
 
+    # Glucose takes precedence: exclude GlucoseFbg rows whose fbg date is already
+    # present in a Glucose row for the same subject.
     df_glucose_fbg = get_glucose_fbg_df(subject_identifiers, subject_visit_df)
+    # Use string dates to avoid Python date-object / timezone-aware merge issues.
+    glucose_dates = (
+        df.loc[df["fbg_datetime"].notna(), ["subject_identifier", "fbg_datetime"]]
+        .assign(fbg_date=lambda x: pd.to_datetime(x["fbg_datetime"]).dt.strftime("%Y-%m-%d"))[
+            ["subject_identifier", "fbg_date"]
+        ]
+        .drop_duplicates()
+    )
+    df_glucose_fbg["fbg_date"] = pd.to_datetime(df_glucose_fbg["fbg_datetime"]).dt.strftime(
+        "%Y-%m-%d"
+    )
+    df_glucose_fbg = df_glucose_fbg.merge(
+        glucose_dates.assign(_drop=True),
+        on=["subject_identifier", "fbg_date"],
+        how="left",
+    )
+    df_glucose_fbg = df_glucose_fbg[df_glucose_fbg["_drop"].isna()].drop(
+        columns=["fbg_date", "_drop"]
+    )
 
     df_glucose_ogtt = get_glucose_ogtt_df(subject_identifiers, subject_visit_df)
 
-    df = merge_with(df, df_glucose_fbg)
-
+    # merge in with df
     df = merge_with(df, df_glucose_ogtt)
+    df = merge_with(df, df_glucose_fbg)
 
     # more than one OGTT or FBG reported in a single timepoint?
 

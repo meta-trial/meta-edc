@@ -19,11 +19,11 @@ class EndpointByDate:
     always the date of the second measurement.
 
     Additional criteria considered:
-      1. any threshhold FBG must be taken while fasted (fasted=YES)
-      2. threshhold FBG readings must be consecutive (no
+      1. any threshold FBG must be taken while fasted (fasted=YES)
+      2. threshold FBG readings must be consecutive (no
          readings below threshold in the sequence regardless
          of fasting)
-      3. at least 7 days between threshhold FBG readings.
+      3. at least 7 days between threshold FBG readings.
       4. at least one of the two threshold FBG readings must be taken
          with an OGTT at the same timepoint.
     """
@@ -31,8 +31,8 @@ class EndpointByDate:
     def __init__(
         self,
         subject_df: pd.DataFrame = None,
-        fbg_threshhold: float | None = None,
-        ogtt_threshhold: float | None = None,
+        fbg_threshold: float | None = None,
+        ogtt_threshold: float | None = None,
         min_fasted_hrs: float | None = None,
     ):
         self.row = None
@@ -40,8 +40,8 @@ class EndpointByDate:
         self.min_fasted_hrs = min_fasted_hrs
         self.subject_df = subject_df.sort_values(by=["visit_code"]).reset_index(drop=True)
         if not subject_df.empty:
-            self.fbg_threshhold = fbg_threshhold
-            self.ogtt_threshhold = ogtt_threshhold
+            self.fbg_threshold = fbg_threshold
+            self.ogtt_threshold = ogtt_threshold
             self.evaluate()
 
     def evaluate(self):

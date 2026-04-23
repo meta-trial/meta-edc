@@ -86,9 +86,9 @@ class CaseData:
             and self.fasted_hrs >= self.min_fasted_hrs
             and self.next_fasted == YES
             and self.next_fasted_hrs >= self.min_fasted_hrs
-            and self.fbg_datetime + self.confirmation_lower_bound
-            <= self.next_fbg_datetime
-            <= self.fbg_datetime + self.confirmation_upper_bound
+            and self.fbg_datetime.date() + self.confirmation_lower_bound
+            <= self.next_fbg_datetime.date()
+            <= self.fbg_datetime.date() + self.confirmation_upper_bound
         )
 
     def case_two_reversed(self) -> bool:
@@ -103,9 +103,9 @@ class CaseData:
             and self.fasted_hrs >= self.min_fasted_hrs
             and self.previous_fasted == YES
             and self.previous_fasted_hrs >= self.min_fasted_hrs
-            and self.previous_fbg_datetime + self.confirmation_lower_bound
-            <= self.fbg_datetime
-            <= self.previous_fbg_datetime + self.confirmation_upper_bound
+            and self.previous_fbg_datetime.date() + self.confirmation_lower_bound
+            <= self.fbg_datetime.date()
+            <= self.previous_fbg_datetime.date() + self.confirmation_upper_bound
         )
 
     # def case_four(self) -> bool:

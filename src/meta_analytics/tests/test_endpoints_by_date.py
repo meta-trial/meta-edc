@@ -88,7 +88,7 @@
 #
 #         endpoint_df = pd.DataFrame()
 #         for index, row in subject_df.iterrows():
-#             cls = EndpointByDate(subject_df, fbg_threshhold=7.0, ogtt_threshhold=11.1)
+#             cls = EndpointByDate(subject_df, fbg_threshold=7.0, ogtt_threshold=11.1)
 #             endpoint_df = append_to(cls.subject_df, endpoint_df)
 #
 #         endpoint_df
