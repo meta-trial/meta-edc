@@ -45,9 +45,9 @@ class GlucoseEndpointsByDate:
         result_df
     """
 
-    fbg_threshhold = 7.0
+    fbg_threshold = 7.0
     fbg_beyond_threshold = FBG_BEYOND_THRESHOLD
-    ogtt_threshhold = 11.1
+    ogtt_threshold = 11.1
     endpoint_cls = EndpointByDate
     keep_cols = [  # noqa: RUF012
         "fasted",
@@ -114,8 +114,8 @@ class GlucoseEndpointsByDate:
         for _, row in subject_identifiers_df.iterrows():
             subject_df = self.endpoint_cls(
                 subject_df=self.get_subject_df(row["subject_identifier"]),
-                fbg_threshhold=self.fbg_threshhold,
-                ogtt_threshhold=self.ogtt_threshhold,
+                fbg_threshold=self.fbg_threshold,
+                ogtt_threshold=self.ogtt_threshold,
                 min_fasted_hrs=self.min_fasted_hrs,
             ).subject_df
             if len(subject_df.loc[subject_df["endpoint"] == 1]) == 1:
@@ -188,7 +188,7 @@ class GlucoseEndpointsByDate:
         the first OGTT.
         """
         subject_endpoint_df = self.working_df.loc[
-            (self.working_df["ogtt_value"] >= self.ogtt_threshhold)
+            (self.working_df["ogtt_value"] >= self.ogtt_threshold)
             & (self.working_df["ogtt_value"] <= 9999.99)
             & (self.working_df["fasted"] == YES)
             & (self.working_df["fasted_hrs"] >= self.min_fasted_hrs)
@@ -287,8 +287,8 @@ class GlucoseEndpointsByDate:
     ) -> pd.DataFrame:
         endpoint = self.endpoint_cls(
             subject_df=subject_df,
-            fbg_threshhold=self.fbg_threshhold,
-            ogtt_threshhold=self.ogtt_threshhold,
+            fbg_threshold=self.fbg_threshold,
+            ogtt_threshold=self.ogtt_threshold,
         )
         return endpoint.subject_df
 

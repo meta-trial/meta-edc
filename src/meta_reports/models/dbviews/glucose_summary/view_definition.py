@@ -27,6 +27,13 @@ def get_view_definition() -> dict:
                         left join meta_subject_subjectvisit as v on v.id = fbg.subject_visit_id
                         left join meta_prn_endofstudy as eos
                                   on v.subject_identifier = eos.subject_identifier
+               where not exists (
+                   select 1
+                   from meta_subject_glucose g
+                   join meta_subject_subjectvisit gv on gv.id = g.subject_visit_id
+                   where gv.subject_identifier = v.subject_identifier
+                     and date(g.fbg_datetime) = date(fbg.fbg_datetime)
+               )
                UNION
                select v.subject_identifier,
                       null                      as `fbg_value`,
