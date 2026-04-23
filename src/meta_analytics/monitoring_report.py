@@ -8,6 +8,25 @@ the full pipeline of ~15 tables and writes a PDF to the given path.
 
 The management command ``generate_monitoring_report`` is a thin wrapper
 around this function.
+
+WeasyPrint system library requirements
+--------------------------------------
+WeasyPrint (>=53) is a pure-Python renderer but links to system libraries
+via ctypes. Install them before running the report:
+
+Ubuntu / Debian (24.04 verified)::
+
+    sudo apt install -y libpango-1.0-0 libpangoft2-1.0-0
+
+macOS (Homebrew)::
+
+    brew install pango
+
+On Apple Silicon, if WeasyPrint cannot find the libs, export::
+
+    export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/lib:$DYLD_FALLBACK_LIBRARY_PATH
+
+Cairo and GDK-Pixbuf are *not* required by WeasyPrint 53+.
 """
 
 from __future__ import annotations
@@ -19,7 +38,6 @@ from zoneinfo import ZoneInfo
 
 import numpy as np
 import pandas as pd
-import pdfkit
 from clinicedc_constants import YES
 from django_pandas.io import read_frame
 from edc_appointment.analytics import get_appointment_df
@@ -35,6 +53,7 @@ from edc_pdutils.dataframes import get_subject_visit
 from edc_visit_schedule.models import SubjectScheduleHistory
 from great_tables import html, loc, md, style
 from scipy.stats import chi2
+from weasyprint import HTML
 
 from meta_analytics.dataframes import (
     GlucoseEndpointsByDate2,
@@ -1433,45 +1452,44 @@ def generate_monitoring_report(
 
     # --- assemble and render PDF --------------------------------------------
     raw_html = [f'<div class="page-break">{s}</div>' for s in html_data]
-    style_css = """
+    # WeasyPrint uses @page rules for margins, headers and footers.
+    # Study title in @top-center (escape double quotes for CSS string).
+    study_title_css = study_title.replace('"', '\\"')
+    style_css = f"""
 <style>
-  .page-break {
+  @page {{
+    size: A4;
+    margin: 15mm 15mm 15mm 15mm;
+    @top-center {{
+      content: "{study_title_css}";
+      font-size: 8pt;
+    }}
+    @bottom-center {{
+      content: "Page " counter(page) " of " counter(pages);
+      font-size: 8pt;
+    }}
+  }}
+  .page-break {{
     page-break-inside: avoid;
-  }
-  .table-header {
+  }}
+  .table-header {{
     font-weight: bold;
     font-size: 18px;
     text-align: center;
-    border-bottom: None;
-  }
+    border-bottom: none;
+  }}
 </style>
 """
     raw_html_str = (
-        f'<!DOCTYPE html>\n<html lang="en">\n{style_css}\n<head>\n'
-        '<meta charset="utf-8"/>\n</head>\n<body>\n'
+        f'<!DOCTYPE html>\n<html lang="en">\n<head>\n'
+        '<meta charset="utf-8"/>\n'
+        f"{style_css}\n</head>\n<body>\n"
         + document_title
         + "".join(raw_html)
         + "\n</body>\n</html>\n"
     )
 
-    pdfkit.from_string(
-        raw_html_str,
-        str(output_path),
-        options={
-            "footer-center": "Page [page] of [topage]",
-            "footer-font-size": "8",
-            "footer-spacing": "5",
-            "encoding": "UTF-8",
-            "margin-top": "10mm",
-            "margin-right": "15mm",
-            "margin-bottom": "15mm",
-            "margin-left": "15mm",
-            "header-center": study_title,
-            "header-font-size": "6",
-            "header-spacing": "0",
-            "disable-javascript": None,
-            "no-outline": None,
-        },
-        verbose=verbose,
-    )
+    # WeasyPrint has no "verbose" option; the flag is accepted for API parity.
+    _ = verbose
+    HTML(string=raw_html_str).write_pdf(str(output_path))
     return output_path
