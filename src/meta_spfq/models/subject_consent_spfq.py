@@ -102,5 +102,5 @@ class SubjectConsentSpfq(
         return self.subject_identifier, self.version
 
     class Meta(SiteModelMixin.Meta, BaseUuidModel.Meta):
-        verbose_name = "Subject Consent for SPFQ"
-        verbose_name_plural = "Subject Consents for SPFQ"
+        verbose_name = "SPFQ: Consent for COMPLETED interview"
+        verbose_name_plural = "SPFQ: Consent for COMPLETED interview"

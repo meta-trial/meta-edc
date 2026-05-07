@@ -49,5 +49,5 @@ class SpfqForWithdrawalList(SiteModelMixin, UniqueSubjectIdentifierFieldMixin, B
         return super().save(*args, **kwargs)
 
     class Meta(SiteModelMixin.Meta, BaseUuidModel.Meta):
-        verbose_name = "SPFQ for withdrawal list"
-        verbose_name_plural = "SPFQ for withdrawal list"
+        verbose_name = "SPFQ: List of subjects who WITHDREW"
+        verbose_name_plural = "SPFQ: List of subjects who WITHDREW"
