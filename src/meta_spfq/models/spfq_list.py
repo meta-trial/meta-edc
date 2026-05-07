@@ -45,5 +45,5 @@ class SpfqList(SiteModelMixin, UniqueSubjectIdentifierFieldMixin, BaseUuidModel)
         return (self.subject_identifier,)
 
     class Meta(SiteModelMixin.Meta, BaseUuidModel.Meta):
-        verbose_name = "SPFQ List"
-        verbose_name_plural = "SPFQ List"
+        verbose_name = "SPFQ: List of subjects who COMPLETED"
+        verbose_name_plural = "SPFQ: List of subjects who COMPLETED"

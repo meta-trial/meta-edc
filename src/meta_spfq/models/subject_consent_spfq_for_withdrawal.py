@@ -8,5 +8,5 @@ class SubjectConsentSpfqForWithdrawal(SubjectConsentSpfq):
 
     class Meta:
         proxy = True
-        verbose_name = "Subject Consent SPFQ for Withdrawal"
-        verbose_name_plural = "Subject Consent SPFQ for Withdrawal"
+        verbose_name = "SPFQ: Consent for WITHDRAWAL interview"
+        verbose_name_plural = "SPFQ: Consent for WITHDRAWAL interview"
