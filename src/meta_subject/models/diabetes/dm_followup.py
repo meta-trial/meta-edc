@@ -2,7 +2,6 @@ from clinicedc_constants import NOT_APPLICABLE, QUESTION_RETIRED
 from clinicedc_constants.choices import YES_NO, YES_NO_NA
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.utils.safestring import mark_safe
 from edc_action_item.models import ActionItem
 from edc_adherence.choices import MISSED_PILLS
 from edc_model.models import BaseUuidModel
@@ -185,10 +184,7 @@ class DmFollowup(CrfWithActionModelMixin, BaseUuidModel):
     )
 
     visual_score_confirmed = models.IntegerField(
-        verbose_name=mark_safe(
-            "<B><font color='orange'>Interviewer</font></B>: "
-            "please transcribe the score indicated from above."
-        ),  # nosec B308
+        verbose_name="Interviewer: please transcribe the score indicated from above.",
         validators=[MinValueValidator(0), MaxValueValidator(100)],
         help_text="%",
         null=True,
@@ -196,7 +192,7 @@ class DmFollowup(CrfWithActionModelMixin, BaseUuidModel):
     )
 
     last_missed_pill = models.CharField(
-        verbose_name="When was the last time you missed your study pill?",
+        verbose_name="When was the last time you missed taking your pills?",
         max_length=25,
         choices=MISSED_PILLS,
         default="",
