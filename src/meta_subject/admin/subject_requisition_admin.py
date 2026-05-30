@@ -8,6 +8,7 @@ from edc_lab.admin import (
     requisition_fieldset,
     requisition_identifier_fieldset,
     requisition_status_fieldset,
+    requisition_vendor_fieldset,
     requisition_verify_fieldset,
 )
 from edc_model_admin.history import SimpleHistoryAdmin
@@ -28,6 +29,7 @@ class SubjectRequisitionAdmin(RequisitionAdminMixin, CrfModelAdminMixin, SimpleH
         requisition_status_fieldset,
         requisition_identifier_fieldset,
         requisition_verify_fieldset,
+        requisition_vendor_fieldset,
         audit_fieldset_tuple,
     )
 
@@ -35,6 +37,7 @@ class SubjectRequisitionAdmin(RequisitionAdminMixin, CrfModelAdminMixin, SimpleH
         "is_drawn": admin.VERTICAL,
         "reason_not_drawn": admin.VERTICAL,
         "item_type": admin.VERTICAL,
+        "clinic_verified": admin.VERTICAL,
     }
 
     def get_search_results(self, request, queryset, search_term):
