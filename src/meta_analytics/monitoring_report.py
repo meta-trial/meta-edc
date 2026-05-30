@@ -1,4 +1,4 @@
-# ruff: noqa: PD008, PD010, PD015, PLR0912, PLR0913, PLR0915, C901, ARG001, F841, RET504
+# ruff: noqa: PD008, PD010, PD015, PLR0913, PLR0915, C901, ARG001, F841, RET504
 """Generate the META3 monitoring report (PDF).
 
 Ported from ``meta_analytics/notebooks/monitoring_report.ipynb``.
@@ -63,6 +63,7 @@ from meta_analytics.dataframes import (
 )
 from meta_analytics.utils import df_as_great_table, df_as_great_table2
 from meta_consent.models import SubjectConsentV1Ext
+from meta_lists.models import OffstudyReasons
 from meta_visit_schedule.constants import (
     MONTH15,
     MONTH18,
@@ -1133,19 +1134,24 @@ def generate_monitoring_report(
     # --- Table 12a: End of Study --------------------------------------------
     df_eos = get_eos_df()
     df_eos_1691 = df_eos.copy()
+
     offstudy_reasons_map = {
-        "Delivered / Completed followup from pregnancy": "Pregnancy",
-        "Patient completed 48 months of follow-up": "Completed 48m",
-        "Patient completed 36 months of follow-up": "Completed 36m",
-        "Patient developed diabetes": "Developed diabetes",
-        "Other reason (specify below)": "Other",
-        LATE_EXCLUSION_REASON: "Late exclusion",
-        "Patient has been transferred to another health centre": "Transferred out",
-        "Patient is withdrawn on CLINICAL grounds ...": "Withdrawal: Clinical grounds",
-        "Patient lost to follow-up": "LTFU",
-        "Patient reported/known to have died": "Died",
-        "Patient withdrew consent to participate further": "Withdrawal: Consent",
+        o.display_name: o.display_name for o in OffstudyReasons.objects.all()
     }
+    # offstudy_reasons_map = {
+    #     "Delivered / Completed followup from pregnancy": "Pregnancy",
+    #     "Patient completed 48 months of follow-up": "Completed 48m",
+    #     "Patient completed 36 months of follow-up": "Completed 36m",
+    #     "Patient developed diabetes": "Developed diabetes",
+    #     "Other reason (specify below)": "Other",
+    #     LATE_EXCLUSION_REASON: "Late exclusion",
+    #     "Patient has been transferred to another health centre": "Transferred out",
+    #     "Patient is withdrawn on CLINICAL grounds ...": "Withdrawal: Clinical grounds",
+    #     "Patient lost to follow-up": "LTFU",
+    #     "Patient reported/known to have died": "Died",
+    #     "Patient withdrew consent to participate further": "Withdrawal: Consent",
+    # }
+
     df_eos["offstudy_reason"] = df_eos["offstudy_reason"].map(offstudy_reasons_map)
     df_eos["offstudy_reason"] = pd.Categorical(
         df_eos["offstudy_reason"],
