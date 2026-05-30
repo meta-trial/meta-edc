@@ -1330,9 +1330,7 @@ def generate_monitoring_report(
             style=[style.fill(color="lightgreen"), style.text(color="black")],
             locations=loc.body(columns=["total_off"], rows=list(range(0, 1))),
         )
-        .fmt_number(
-            columns=[c for c in df_status.columns if c not in ["schedule"]], decimals=0
-        )
+        .fmt_number(columns=[c for c in df_status.columns if c != "schedule"], decimals=0)
     )
     html_data.append(gt.as_raw_html())
 

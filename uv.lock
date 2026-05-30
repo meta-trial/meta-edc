@@ -710,7 +710,7 @@ wheels = [
 
 [[package]]
 name = "clinicedc"
-version = "3.1.5"
+version = "4.0.0"
 source = { editable = "../clinicedc" }
 dependencies = [
     { name = "argon2-cffi" },
@@ -1646,6 +1646,8 @@ dependencies = [
     { name = "clinicedc" },
     { name = "django" },
     { name = "djangorestframework" },
+    { name = "djangorestframework-stubs" },
+    { name = "ruff" },
     { name = "watchdog" },
 ]
 
@@ -1654,12 +1656,15 @@ requires-dist = [
     { name = "clinicedc", editable = "../clinicedc" },
     { name = "django", specifier = ">=5.2,<6.1" },
     { name = "djangorestframework", specifier = ">=3.16.0" },
+    { name = "djangorestframework-stubs", specifier = ">=3.17.0" },
+    { name = "ruff", specifier = ">=0.15.15" },
     { name = "watchdog", specifier = ">=6.0.0" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "clinicedc-tests", editable = "../clinicedc-tests" },
+    { name = "ruff", specifier = ">=0.15.15" },
     { name = "sphinx", specifier = ">=9.1.0" },
 ]
 
