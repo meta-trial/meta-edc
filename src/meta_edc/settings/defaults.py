@@ -123,7 +123,8 @@ INSTALLED_APPS = [
     "rangefilter",
     "django_crypto_fields.apps.AppConfig",
     "django_revision.apps.AppConfig",
-    # "django_extensions",
+    "rest_framework",
+    "rest_framework.authtoken",
     "logentry_admin",
     "simple_history",
     "storages",
@@ -140,6 +141,7 @@ INSTALLED_APPS = [
     "edc_he.apps.AppConfig",
     "edc_reportable.apps.AppConfig",
     "edc_lab.apps.AppConfig",
+    "edc_lab_results.apps.AppConfig",
     "edc_visit_schedule.apps.AppConfig",
     "edc_visit_tracking.apps.AppConfig",
     "edc_device.apps.AppConfig",
@@ -172,6 +174,7 @@ INSTALLED_APPS = [
     "edc_prn.apps.AppConfig",
     "edc_qareports.apps.AppConfig",
     "edc_qol.apps.AppConfig",
+    "edc_retinopathy.apps.AppConfig",
     "edc_randomization.apps.AppConfig",
     "edc_refusal.apps.AppConfig",
     "edc_registration.apps.AppConfig",
@@ -415,6 +418,39 @@ EDC_EXPORT_EXPORT_PII_USERS = env.list("EDC_EXPORT_EXPORT_PII_USERS")
 # edc_facility
 HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
 
+# edc-lab-results
+EDC_LAB_RESULTS_UPLOAD_DIR = "~/upload/edc_lab_results"
+
+EDC_LAB_RESULTS_PARSERS = {
+    "MNH": "parse_trial_labs.parsers.parse_mnh",
+}
+EDC_LAB_RESULTS_DEFAULT_MAPPINGS = {
+    "MNH": {
+        "WBC": "wbc",
+        "RBC": "rbc",
+        "HGB": "haemoglobin",
+        "HCT": "hct",
+        "MCV": "mcv",
+        "MCH": "mch",
+        "MCHC": "mchc",
+        "PLATELETS": "platelets",
+        "UREA NITROGEN": "urea",
+        "CREATININE": "creatinine",
+        "URIC ACID": "uric_acid",
+        "AST(SGOT)": "ast",
+        "ALT(SGPT)": "alt",
+        "ALKALINE PHOSPHATASE": "alp",
+        "AMYLASE": "amylase",
+        "GAMMA GT": "ggt",
+        "ALBUMIN": "albumin",
+        "CHOLESTEROL": "chol",
+        "HDL CHOLESTEROL": "hdl",
+        "LDL CHOL (CALC)": "ldl",
+        "TRIGLYCERIDES": "trig",
+        "INSULIN": "ins",
+    },
+}
+
 # edc-label
 EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK = env("EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK")
 
@@ -535,6 +571,13 @@ EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
     *env.list("EDC_PROTOCOL_STUDY_CLOSE_DATETIME")
 )
 EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
+
+# edc_retinopathy
+EDC_RETINOPATHY_STORAGE_DIR = "~/upload/edc_retinopathy"
+EDC_RETINOPATHY_MAX_FILE_SIZE_MB = 3  # default
+EDC_RETINOPATHY_SESSION_EXPIRE_MINUTES = 60  # default
+EDC_REGISTRATION_REGISTERED_SUBJECT_MODEL = "edc_registration.registeredsubject"
+EDC_RETINOPATHY_SESSION_REACTIVATION_HOURS = 2
 
 # declare before STORAGES
 MEDIA_ROOT = env.str("DJANGO_MEDIA_ROOT", default=Path("~/media/").expanduser())
