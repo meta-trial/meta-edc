@@ -154,6 +154,7 @@ INSTALLED_APPS = [
     "edc_form_runners.apps.AppConfig",
     "edc_form_validators.apps.AppConfig",
     "edc_lab_dashboard.apps.AppConfig",
+    "edc_lab_results.apps.AppConfig",
     "edc_label.apps.AppConfig",
     "edc_list_data.apps.AppConfig",
     "edc_listboard.apps.AppConfig",
