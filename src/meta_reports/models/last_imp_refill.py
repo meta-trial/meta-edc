@@ -24,8 +24,9 @@ class LastImpRefill(QaReportModelMixin, models.Model):
 
     objects = DataFrameManager()
 
-    def recreate_db_view(self, **kwargs):
-        raise NotImplementedError()
+    @classmethod
+    def recreate_db_view(cls, drop: bool | None = None, verbose: bool | None = None):
+        pass
 
     class Meta(QaReportModelMixin.Meta):  # noqa: DJ012
         verbose_name = "Last IMP Refill"
