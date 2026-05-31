@@ -1,4 +1,8 @@
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
 from dateutil.relativedelta import relativedelta
+from django.utils import timezone
 from edc_facility.constants import FIVE_DAY_CLINIC
 from edc_visit_schedule.schedule import Schedule
 from edc_visit_schedule.visit import Crf, CrfCollection, Visit
@@ -46,8 +50,16 @@ visit_3060 = Visit(
     title="Diabetes post-referral follow-up",
     timepoint=360,
     rbase=relativedelta(months=6),
-    rlower=relativedelta(months=3),
-    rupper=relativedelta(months=12),
+    rlower=(
+        relativedelta(months=6)
+        if timezone.now() > datetime(2026, 5, 1, tzinfo=ZoneInfo("UTC"))
+        else relativedelta(months=3)
+    ),
+    rupper=(
+        relativedelta(months=24)
+        if timezone.now() > datetime(2026, 5, 1, tzinfo=ZoneInfo("UTC"))
+        else relativedelta(months=12)
+    ),
     crfs=crfs_6m,
     crfs_prn=crfs_prn or default_crfs_prn,
     crfs_missed=crfs_missed,

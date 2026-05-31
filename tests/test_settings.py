@@ -2,6 +2,7 @@
 import sys
 from pathlib import Path
 
+# from clinicedc_tests.config import DefaultTestSettings
 from edc_test_settings.default_test_settings import DefaultTestSettings
 
 from .get_test_setting_opts import get_test_setting_opts

@@ -7,6 +7,7 @@ from django.views.generic import RedirectView
 from edc_dashboard.utils import get_index_page
 from edc_dashboard.views import AdministrationView
 from edc_pharmacy.admin_site import edc_pharmacy_history_admin
+from edc_retinopathy.api.urls import urlpatterns as retinopathy_urls
 from edc_utils.paths_for_urlpatterns import paths_for_urlpatterns
 
 from .views import HomeView
@@ -24,6 +25,8 @@ urlpatterns = [
     path("accounts/", include("edc_auth.urls_for_accounts", namespace="auth")),
     path("administration/", AdministrationView.as_view(), name="administration_url"),
     path("subject/", include("meta_dashboard.urls")),
+    path("api/", include(retinopathy_urls)),
+    *paths_for_urlpatterns("edc_retinopathy"),
     *paths_for_urlpatterns("edc_pylabels"),
     *paths_for_urlpatterns("edc_auth"),
     *paths_for_urlpatterns("edc_action_item"),
@@ -39,6 +42,7 @@ urlpatterns = [
     *paths_for_urlpatterns("edc_form_runners"),
     *paths_for_urlpatterns("edc_identifier"),
     *paths_for_urlpatterns("edc_lab"),
+    *paths_for_urlpatterns("edc_lab_results"),
     *paths_for_urlpatterns("edc_lab_dashboard"),
     *paths_for_urlpatterns("edc_label"),
     *paths_for_urlpatterns("edc_locator"),

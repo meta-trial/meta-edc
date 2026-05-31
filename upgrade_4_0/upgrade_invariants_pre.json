@@ -1,0 +1,20 @@
+{
+  "allocations": 12174,
+  "allocations_with_null_stock": 0,
+  "confirmation_at_location_items": 12048,
+  "dispense_items": 10215,
+  "qty_in_total": "16044.00",
+  "qty_out_total": "10217.00",
+  "stock_transfer_items": 12172,
+  "stocks_allocated": 1959,
+  "stocks_confirmed": 16023,
+  "stocks_confirmed_at_location": 12048,
+  "stocks_dispensed": 10215,
+  "stocks_in_transit": 12172,
+  "stocks_stored_at_location": 1764,
+  "stocks_total": 16044,
+  "storage_bin_items": 1764,
+  "subjects_with_allocations": 1380,
+  "unit_qty_in_total": "4450785.00",
+  "unit_qty_out_total": "3345024.00"
+}

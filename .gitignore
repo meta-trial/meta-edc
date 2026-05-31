@@ -1,6 +1,8 @@
+CLAUDE.md
 .claude
 .idea/
 .venv/
+homa2/
 pg.load
 celerybeat*
 get_data*

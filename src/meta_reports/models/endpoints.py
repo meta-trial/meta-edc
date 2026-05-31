@@ -35,6 +35,10 @@ class Endpoints(QaReportModelMixin, models.Model):
     def __str__(self):
         return f"{self.subject_identifier} {self.visit_code} {self.endpoint_label}"
 
+    @classmethod
+    def recreate_db_view(cls, drop: bool | None = None, verbose: bool | None = None):
+        pass
+
     class Meta(QaReportModelMixin.Meta):  # noqa: DJ012
         verbose_name = "Endpoints (DM)"
         verbose_name_plural = "Endpoints (DM)"

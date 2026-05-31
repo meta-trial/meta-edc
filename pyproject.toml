@@ -1,6 +1,6 @@
 [project]
 name = "meta-edc"
-version = "2.4.0"
+version = "3.0.0"
 description = "META Trial EDC (https://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 keywords = [
@@ -34,18 +34,23 @@ requires-python = '>=3.12,<3.15'
 dependencies = [
     "Django>=5.2,<6.1",
     "celery>=5.6.2",
-    "clinicedc==3.1.5",
+    "clinicedc>=4.0.0",
     "django-pandas>=0.6.7",
+    "djangorestframework-stubs>=3.17.0",
     "edc-he>=2.1.0",
     "edc-microscopy>=2.0.0",
     "edc-mnsi>=2.0.0",
     "edc-phq9>=2.0.0",
     "edc-qol>=2.0.0",
+    "edc-retinopathy>=0.1.0",
     "great-tables>=0.21.0",
     "matplotlib>=3.10.8",
     "numpy>=2.4.4",
     "openpyxl>=3.1.5",
     "pandas>=3.0.2",
+    "parse-trial-labs",
+    "pdfkit>=1.0.0",
+    "ruff>=0.15.11",
     "scipy>=1.17.1",
     "weasyprint>=62.0",
 ]
@@ -189,6 +194,7 @@ dev = [
     "tabulate>=0.9.0",
     "tox-uv>=1.29.0",
     "tox>=4.32.0",
+    "uv>=0.11.8",
     "xlrd>=2.0.2",
 ]
 
@@ -201,8 +207,11 @@ clinicedc = { path = "../clinicedc", editable = true }
 clinicedc-constants = { path = "../clinicedc-constants", editable = true }
 clinicedc-utils = { path = "../clinicedc-utils", editable = true }
 remote-read-sql = { path = "../remote-read-sql", editable = true }
+edc-retinopathy = { path = "../edc-retinopathy", editable = true }
 edc-microscopy = { path = "../edc-microscopy", editable = true }
 edc-mnsi = { path = "../edc-mnsi", editable = true }
 edc-phq9 = { path = "../edc-phq9", editable = true }
 edc-qol = { path = "../edc-qol", editable = true }
 edc-he = { path = "../edc-he", editable = true }
+parse-trial-labs = { path = "../parse-trial-labs", editable = true }
+fundus-camera-watchdog = { path = "../fundus-camera-watchdog", editable = true }

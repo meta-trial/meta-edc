@@ -1,6 +1,7 @@
 from django.contrib import admin, messages
 from django.core.exceptions import MultipleObjectsReturned
 from edc_action_item.fieldsets import action_fieldset_tuple
+from edc_crf.fieldset import crf_status_not_collapsed_fieldset
 from edc_egfr.egfr import Egfr
 from edc_lab_results.admin import BloodResultsModelAdminMixin
 from edc_lab_results.fieldsets import (
@@ -35,6 +36,7 @@ class BloodResultsRftAdmin(
                 (5, calculate_egfr_fieldset),
                 (6, calculate_egfr_drop_fieldset),
                 (-1, action_fieldset_tuple),
+                (-1, crf_status_not_collapsed_fieldset),
             ],
             excluded_utest_ids=["egfr", "egfr_drop"],
         ).fieldsets,

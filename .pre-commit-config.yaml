@@ -6,7 +6,7 @@ repos:
     rev: v5.0.0
     hooks:
       - id: check-added-large-files
-        args: ['--maxkb=1100']
+        args: ['--maxkb=1500']
       - id: check-docstring-first
       - id: check-executables-have-shebangs
       - id: check-merge-conflict

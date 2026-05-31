@@ -38,5 +38,5 @@ class SpfqRefusal(
         return (self.subject_identifier,)
 
     class Meta(SiteModelMixin.Meta, BaseUuidModel.Meta):
-        verbose_name = "SPFQ Refusal"
-        verbose_name_plural = "SPFQ Refusals"
+        verbose_name = "SPFQ: Refusal for COMPLETED questionnaire"
+        verbose_name_plural = "SPFQ: Refusal for COMPLETED questionnaire"

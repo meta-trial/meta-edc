@@ -2,8 +2,8 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from clinicedc_constants.internationalization import EXTRA_LANG_INFO
 from django.conf import locale
-from edc_constants.internationalization import EXTRA_LANG_INFO
 from multisite import SiteID
 
 from meta_edc.meta_version import PHASE_THREE
@@ -128,6 +128,7 @@ def get_test_setting_opts(app_name: str, base_dir: Path):
             "edc_reportable.apps.AppConfig",
             "edc_lab.apps.AppConfig",
             "edc_lab_dashboard.apps.AppConfig",
+            "edc_lab_results.apps.AppConfig",
             "edc_label.apps.AppConfig",
             "edc_listboard.apps.AppConfig",
             "edc_locator.apps.AppConfig",
@@ -138,6 +139,7 @@ def get_test_setting_opts(app_name: str, base_dir: Path):
             "edc_navbar.apps.AppConfig",
             "edc_notification.apps.AppConfig",
             "edc_offstudy.apps.AppConfig",
+            "edc_retinopathy.apps.AppConfig",
             "edc_visit_tracking.apps.AppConfig",
             "edc_visit_schedule.apps.AppConfig",
             "edc_pdutils.apps.AppConfig",

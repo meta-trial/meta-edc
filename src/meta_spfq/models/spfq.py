@@ -217,5 +217,5 @@ class Spfq(
     history = HistoricalRecords()
 
     class Meta(SiteModelMixin.Meta, BaseUuidModel.Meta):
-        verbose_name = "Feedback Questionnaire (SPFQ)"
-        verbose_name_plural = "Feedback Questionnaires (SPFQ)"
+        verbose_name = "SPFQ: Feedback Questionnaire for subjects who COMPLETED"
+        verbose_name_plural = "SPFQ: Feedback Questionnaires  for subjects who COMPLETED"
