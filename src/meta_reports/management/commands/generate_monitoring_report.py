@@ -93,22 +93,18 @@ class Command(BaseCommand):
         if not end_of_trial_date:
             end_of_trial_date = settings.END_OF_TRAIL_DATETIME
 
-        effective_cutoff = cutoff_date or datetime.now(tz=ZoneInfo("UTC")).replace(
-            hour=23, minute=59, second=0, microsecond=0
-        )
-        filename = f"monitoring_report_{effective_cutoff.strftime('%Y%m%d')}.pdf"
-
         output_raw = options["output"]
         if output_raw:
             output_path = Path(output_raw).expanduser()
             if output_path.is_dir() or output_raw.endswith(os.sep):
-                output_path = output_path / filename
+                pass
         elif os.environ.get("META_ANALYSIS_FOLDER"):
-            output_path = Path(os.environ["META_ANALYSIS_FOLDER"]).expanduser() / filename
+            output_path = Path(os.environ["META_ANALYSIS_FOLDER"]).expanduser()
         else:
-            output_path = Path.cwd() / filename
+            output_path = Path.cwd()
 
         self.stdout.write(f"Generating monitoring report -> {output_path}")
+        self.stdout.write(f"Generating endpoints csv -> {output_path}")
         result = generate_monitoring_report(
             output_path=output_path,
             cutoff_date=cutoff_date,
@@ -116,5 +112,6 @@ class Command(BaseCommand):
             end_of_trial_date=end_of_trial_date,
             verbose=options["verbose_pdf"],
         )
-        self.stdout.write(self.style.SUCCESS(f"Wrote {result}"))
+        self.stdout.write(self.style.SUCCESS(f"Wrote {result[0]}"))
+        self.stdout.write(self.style.SUCCESS(f"Wrote {result[1]}"))
         sys.stdout.flush()

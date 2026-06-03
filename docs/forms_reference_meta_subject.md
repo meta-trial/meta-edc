@@ -1,4 +1,4 @@
-# META_SUBJECT Forms Reference v2.4.0
+# META_SUBJECT Forms Reference v3.1.0
 ## Table of contents
 
 
@@ -6,73 +6,73 @@
 1. <a href="#user-content-physical-exam">Physical Exam</a>
 2. <a href="#user-content-patient-history">Patient History</a>
 3. <a href="#user-content-other-arv-regimens">Other Arv Regimens</a>
-4. <a href="#user-content-glucose-fbgrbg-ogtt">Glucose (Fbg/Rbg, Ogtt)</a>
-5. <a href="#user-content-glucose-ogtt-only">Glucose (Ogtt Only)</a>
-6. <a href="#user-content-blood-result-insulin">Blood Result: Insulin</a>
-7. <a href="#user-content-blood-result-hba1c">Blood Result: Hba1C</a>
-8. <a href="#user-content-blood-result-rft">Blood Result: Rft</a>
-9. <a href="#user-content-blood-result-lft">Blood Result: Lft</a>
-10. <a href="#user-content-blood-result-fbc">Blood Result: Fbc</a>
-11. <a href="#user-content-blood-result-lipids">Blood Result: Lipids</a>
-12. <a href="#user-content-malaria-test">Malaria Test</a>
-13. <a href="#user-content-urine-dipstick-test">Urine Dipstick Test</a>
-14. <a href="#user-content-study-medication">Study Medication</a>
+4. <a href="#user-content-blood-result-insulin">Blood Result: Insulin</a>
+5. <a href="#user-content-blood-result-hba1c">Blood Result: Hba1C</a>
+6. <a href="#user-content-blood-result-rft">Blood Result: Rft</a>
+7. <a href="#user-content-blood-result-lft">Blood Result: Lft</a>
+8. <a href="#user-content-blood-result-fbc">Blood Result: Fbc</a>
+9. <a href="#user-content-blood-result-lipids">Blood Result: Lipids</a>
+10. <a href="#user-content-malaria-test">Malaria Test</a>
+11. <a href="#user-content-urine-dipstick-test">Urine Dipstick Test</a>
+12. <a href="#user-content-study-medication">Study Medication</a>
+13. <a href="#user-content-glucose-fbgrbg-ogtt">Glucose (Fbg/Rbg, Ogtt)</a>
+14. <a href="#user-content-glucose-ogtt-only">Glucose (Ogtt Only)</a>
 15. <a href="#user-content-next-appointment">Next Appointment</a>
 
 <a href="#user-content-1005">**1005.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination">Clinic Follow Up: Examination</a>
-3. <a href="#user-content-glucose-fbgrbg-ogtt-1">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-fbg-only">Glucose (Fbg Only)</a>
-5. <a href="#user-content-glucose-ogtt-only-1">Glucose (Ogtt Only)</a>
-6. <a href="#user-content-study-medication-1">Study Medication</a>
-7. <a href="#user-content-medication-adherence">Medication Adherence</a>
-8. <a href="#user-content-euroqol-eq-5d-3l-instrument">Euroqol Eq-5D-3L Instrument</a>
-9. <a href="#user-content-sf-12-health-survey">Sf-12 Health Survey</a>
-10. <a href="#user-content-health-economics-m3">Health Economics (M3)</a>
+3. <a href="#user-content-glucose-fbg-only">Glucose (Fbg Only)</a>
+4. <a href="#user-content-study-medication-1">Study Medication</a>
+5. <a href="#user-content-medication-adherence">Medication Adherence</a>
+6. <a href="#user-content-euroqol-eq-5d-3l-instrument">Euroqol Eq-5D-3L Instrument</a>
+7. <a href="#user-content-sf-12-health-survey">Sf-12 Health Survey</a>
+8. <a href="#user-content-health-economics-m3">Health Economics (M3)</a>
+9. <a href="#user-content-glucose-fbgrbg-ogtt-1">Glucose (Fbg/Rbg, Ogtt)</a>
+10. <a href="#user-content-glucose-ogtt-only-1">Glucose (Ogtt Only)</a>
 11. <a href="#user-content-next-appointment-1">Next Appointment</a>
 
 <a href="#user-content-1010">**1010.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-1">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-1">Clinic Follow Up: Examination</a>
-3. <a href="#user-content-glucose-fbgrbg-ogtt-2">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-fbg-only-1">Glucose (Fbg Only)</a>
-5. <a href="#user-content-glucose-ogtt-only-2">Glucose (Ogtt Only)</a>
-6. <a href="#user-content-study-medication-2">Study Medication</a>
-7. <a href="#user-content-medication-adherence-1">Medication Adherence</a>
-8. <a href="#user-content-euroqol-eq-5d-3l-instrument-1">Euroqol Eq-5D-3L Instrument</a>
-9. <a href="#user-content-sf-12-health-survey-1">Sf-12 Health Survey</a>
-10. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi">Michigan Neuropathy Screening Instrument (Mnsi)</a>
+3. <a href="#user-content-glucose-fbg-only-1">Glucose (Fbg Only)</a>
+4. <a href="#user-content-study-medication-2">Study Medication</a>
+5. <a href="#user-content-medication-adherence-1">Medication Adherence</a>
+6. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi">Michigan Neuropathy Screening Instrument (Mnsi)</a>
+7. <a href="#user-content-glucose-fbgrbg-ogtt-2">Glucose (Fbg/Rbg, Ogtt)</a>
+8. <a href="#user-content-glucose-ogtt-only-2">Glucose (Ogtt Only)</a>
+9. <a href="#user-content-euroqol-eq-5d-3l-instrument-1">Euroqol Eq-5D-3L Instrument</a>
+10. <a href="#user-content-sf-12-health-survey-1">Sf-12 Health Survey</a>
 11. <a href="#user-content-health-economics-m3-1">Health Economics (M3)</a>
 12. <a href="#user-content-next-appointment-2">Next Appointment</a>
 
 <a href="#user-content-1030">**1030.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-2">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-2">Clinic Follow Up: Examination</a>
-3. <a href="#user-content-glucose-fbgrbg-ogtt-3">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-fbg-only-2">Glucose (Fbg Only)</a>
-5. <a href="#user-content-glucose-ogtt-only-3">Glucose (Ogtt Only)</a>
-6. <a href="#user-content-blood-result-rft-1">Blood Result: Rft</a>
-7. <a href="#user-content-blood-result-lft-1">Blood Result: Lft</a>
-8. <a href="#user-content-study-medication-3">Study Medication</a>
-9. <a href="#user-content-medication-adherence-2">Medication Adherence</a>
-10. <a href="#user-content-euroqol-eq-5d-3l-instrument-2">Euroqol Eq-5D-3L Instrument</a>
-11. <a href="#user-content-sf-12-health-survey-2">Sf-12 Health Survey</a>
-12. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-1">Michigan Neuropathy Screening Instrument (Mnsi)</a>
-13. <a href="#user-content-health-economics-baseline">Health Economics: Baseline</a>
+3. <a href="#user-content-glucose-fbg-only-2">Glucose (Fbg Only)</a>
+4. <a href="#user-content-blood-result-rft-1">Blood Result: Rft</a>
+5. <a href="#user-content-blood-result-lft-1">Blood Result: Lft</a>
+6. <a href="#user-content-study-medication-3">Study Medication</a>
+7. <a href="#user-content-medication-adherence-2">Medication Adherence</a>
+8. <a href="#user-content-health-economics-baseline">Health Economics: Baseline</a>
+9. <a href="#user-content-glucose-fbgrbg-ogtt-3">Glucose (Fbg/Rbg, Ogtt)</a>
+10. <a href="#user-content-glucose-ogtt-only-3">Glucose (Ogtt Only)</a>
+11. <a href="#user-content-euroqol-eq-5d-3l-instrument-2">Euroqol Eq-5D-3L Instrument</a>
+12. <a href="#user-content-sf-12-health-survey-2">Sf-12 Health Survey</a>
+13. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-1">Michigan Neuropathy Screening Instrument (Mnsi)</a>
 14. <a href="#user-content-next-appointment-3">Next Appointment</a>
 
 <a href="#user-content-1060">**1060.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-3">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-3">Clinic Follow Up: Examination</a>
-3. <a href="#user-content-glucose-fbgrbg-ogtt-4">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-fbg-only-3">Glucose (Fbg Only)</a>
-5. <a href="#user-content-glucose-ogtt-only-4">Glucose (Ogtt Only)</a>
-6. <a href="#user-content-blood-result-rft-2">Blood Result: Rft</a>
-7. <a href="#user-content-blood-result-lft-2">Blood Result: Lft</a>
-8. <a href="#user-content-blood-result-fbc-1">Blood Result: Fbc</a>
-9. <a href="#user-content-study-medication-4">Study Medication</a>
-10. <a href="#user-content-medication-adherence-3">Medication Adherence</a>
+3. <a href="#user-content-glucose-fbg-only-3">Glucose (Fbg Only)</a>
+4. <a href="#user-content-blood-result-rft-2">Blood Result: Rft</a>
+5. <a href="#user-content-blood-result-lft-2">Blood Result: Lft</a>
+6. <a href="#user-content-blood-result-fbc-1">Blood Result: Fbc</a>
+7. <a href="#user-content-study-medication-4">Study Medication</a>
+8. <a href="#user-content-medication-adherence-3">Medication Adherence</a>
+9. <a href="#user-content-glucose-fbgrbg-ogtt-4">Glucose (Fbg/Rbg, Ogtt)</a>
+10. <a href="#user-content-glucose-ogtt-only-4">Glucose (Ogtt Only)</a>
 11. <a href="#user-content-euroqol-eq-5d-3l-instrument-3">Euroqol Eq-5D-3L Instrument</a>
 12. <a href="#user-content-sf-12-health-survey-3">Sf-12 Health Survey</a>
 13. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-2">Michigan Neuropathy Screening Instrument (Mnsi)</a>
@@ -82,11 +82,11 @@
 <a href="#user-content-1090">**1090.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-4">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-4">Clinic Follow Up: Examination</a>
-3. <a href="#user-content-glucose-fbgrbg-ogtt-5">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-fbg-only-4">Glucose (Fbg Only)</a>
-5. <a href="#user-content-glucose-ogtt-only-5">Glucose (Ogtt Only)</a>
-6. <a href="#user-content-study-medication-5">Study Medication</a>
-7. <a href="#user-content-medication-adherence-4">Medication Adherence</a>
+3. <a href="#user-content-glucose-fbg-only-4">Glucose (Fbg Only)</a>
+4. <a href="#user-content-study-medication-5">Study Medication</a>
+5. <a href="#user-content-medication-adherence-4">Medication Adherence</a>
+6. <a href="#user-content-glucose-fbgrbg-ogtt-5">Glucose (Fbg/Rbg, Ogtt)</a>
+7. <a href="#user-content-glucose-ogtt-only-5">Glucose (Ogtt Only)</a>
 8. <a href="#user-content-euroqol-eq-5d-3l-instrument-4">Euroqol Eq-5D-3L Instrument</a>
 9. <a href="#user-content-sf-12-health-survey-4">Sf-12 Health Survey</a>
 10. <a href="#user-content-health-economics-baseline-2">Health Economics: Baseline</a>
@@ -96,14 +96,14 @@
 1. <a href="#user-content-clinic-follow-up-vitals-5">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-5">Clinic Follow Up: Examination</a>
 3. <a href="#user-content-glucose-fbgrbg-ogtt-6">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-ogtt-only-6">Glucose (Ogtt Only)</a>
-5. <a href="#user-content-blood-result-hba1c-1">Blood Result: Hba1C</a>
-6. <a href="#user-content-blood-result-rft-3">Blood Result: Rft</a>
-7. <a href="#user-content-blood-result-lft-3">Blood Result: Lft</a>
-8. <a href="#user-content-blood-result-fbc-2">Blood Result: Fbc</a>
-9. <a href="#user-content-blood-result-lipids-1">Blood Result: Lipids</a>
-10. <a href="#user-content-study-medication-6">Study Medication</a>
-11. <a href="#user-content-medication-adherence-5">Medication Adherence</a>
+4. <a href="#user-content-blood-result-hba1c-1">Blood Result: Hba1C</a>
+5. <a href="#user-content-blood-result-rft-3">Blood Result: Rft</a>
+6. <a href="#user-content-blood-result-lft-3">Blood Result: Lft</a>
+7. <a href="#user-content-blood-result-fbc-2">Blood Result: Fbc</a>
+8. <a href="#user-content-blood-result-lipids-1">Blood Result: Lipids</a>
+9. <a href="#user-content-study-medication-6">Study Medication</a>
+10. <a href="#user-content-medication-adherence-5">Medication Adherence</a>
+11. <a href="#user-content-glucose-ogtt-only-6">Glucose (Ogtt Only)</a>
 12. <a href="#user-content-hiv-exit-review">Hiv Exit Review</a>
 13. <a href="#user-content-euroqol-eq-5d-3l-instrument-5">Euroqol Eq-5D-3L Instrument</a>
 14. <a href="#user-content-sf-12-health-survey-5">Sf-12 Health Survey</a>
@@ -113,11 +113,11 @@
 <a href="#user-content-1150">**1150.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-6">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-6">Clinic Follow Up: Examination</a>
-3. <a href="#user-content-glucose-fbgrbg-ogtt-7">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-fbg-only-5">Glucose (Fbg Only)</a>
-5. <a href="#user-content-glucose-ogtt-only-7">Glucose (Ogtt Only)</a>
-6. <a href="#user-content-study-medication-7">Study Medication</a>
-7. <a href="#user-content-medication-adherence-6">Medication Adherence</a>
+3. <a href="#user-content-glucose-fbg-only-5">Glucose (Fbg Only)</a>
+4. <a href="#user-content-study-medication-7">Study Medication</a>
+5. <a href="#user-content-medication-adherence-6">Medication Adherence</a>
+6. <a href="#user-content-glucose-fbgrbg-ogtt-7">Glucose (Fbg/Rbg, Ogtt)</a>
+7. <a href="#user-content-glucose-ogtt-only-7">Glucose (Ogtt Only)</a>
 8. <a href="#user-content-hiv-exit-review-1">Hiv Exit Review</a>
 9. <a href="#user-content-euroqol-eq-5d-3l-instrument-6">Euroqol Eq-5D-3L Instrument</a>
 10. <a href="#user-content-sf-12-health-survey-6">Sf-12 Health Survey</a>
@@ -127,12 +127,12 @@
 <a href="#user-content-1180">**1180.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-7">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-7">Clinic Follow Up: Examination</a>
-3. <a href="#user-content-glucose-fbgrbg-ogtt-8">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-fbg-only-6">Glucose (Fbg Only)</a>
-5. <a href="#user-content-glucose-ogtt-only-8">Glucose (Ogtt Only)</a>
-6. <a href="#user-content-blood-result-fbc-3">Blood Result: Fbc</a>
-7. <a href="#user-content-study-medication-8">Study Medication</a>
-8. <a href="#user-content-medication-adherence-7">Medication Adherence</a>
+3. <a href="#user-content-glucose-fbg-only-6">Glucose (Fbg Only)</a>
+4. <a href="#user-content-blood-result-fbc-3">Blood Result: Fbc</a>
+5. <a href="#user-content-study-medication-8">Study Medication</a>
+6. <a href="#user-content-medication-adherence-7">Medication Adherence</a>
+7. <a href="#user-content-glucose-fbgrbg-ogtt-8">Glucose (Fbg/Rbg, Ogtt)</a>
+8. <a href="#user-content-glucose-ogtt-only-8">Glucose (Ogtt Only)</a>
 9. <a href="#user-content-hiv-exit-review-2">Hiv Exit Review</a>
 10. <a href="#user-content-euroqol-eq-5d-3l-instrument-7">Euroqol Eq-5D-3L Instrument</a>
 11. <a href="#user-content-sf-12-health-survey-7">Sf-12 Health Survey</a>
@@ -142,11 +142,11 @@
 <a href="#user-content-1210">**1210.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-8">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-8">Clinic Follow Up: Examination</a>
-3. <a href="#user-content-glucose-fbgrbg-ogtt-9">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-fbg-only-7">Glucose (Fbg Only)</a>
-5. <a href="#user-content-glucose-ogtt-only-9">Glucose (Ogtt Only)</a>
-6. <a href="#user-content-study-medication-9">Study Medication</a>
-7. <a href="#user-content-medication-adherence-8">Medication Adherence</a>
+3. <a href="#user-content-glucose-fbg-only-7">Glucose (Fbg Only)</a>
+4. <a href="#user-content-study-medication-9">Study Medication</a>
+5. <a href="#user-content-medication-adherence-8">Medication Adherence</a>
+6. <a href="#user-content-glucose-fbgrbg-ogtt-9">Glucose (Fbg/Rbg, Ogtt)</a>
+7. <a href="#user-content-glucose-ogtt-only-9">Glucose (Ogtt Only)</a>
 8. <a href="#user-content-hiv-exit-review-3">Hiv Exit Review</a>
 9. <a href="#user-content-euroqol-eq-5d-3l-instrument-8">Euroqol Eq-5D-3L Instrument</a>
 10. <a href="#user-content-sf-12-health-survey-8">Sf-12 Health Survey</a>
@@ -157,27 +157,27 @@
 1. <a href="#user-content-clinic-follow-up-vitals-9">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-9">Clinic Follow Up: Examination</a>
 3. <a href="#user-content-glucose-fbgrbg-ogtt-10">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-ogtt-only-10">Glucose (Ogtt Only)</a>
-5. <a href="#user-content-blood-result-hba1c-2">Blood Result: Hba1C</a>
-6. <a href="#user-content-blood-result-rft-4">Blood Result: Rft</a>
-7. <a href="#user-content-blood-result-lft-4">Blood Result: Lft</a>
-8. <a href="#user-content-blood-result-fbc-4">Blood Result: Fbc</a>
-9. <a href="#user-content-study-medication-10">Study Medication</a>
-10. <a href="#user-content-medication-adherence-9">Medication Adherence</a>
-11. <a href="#user-content-hiv-exit-review-4">Hiv Exit Review</a>
-12. <a href="#user-content-euroqol-eq-5d-3l-instrument-9">Euroqol Eq-5D-3L Instrument</a>
-13. <a href="#user-content-sf-12-health-survey-9">Sf-12 Health Survey</a>
-14. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-3">Michigan Neuropathy Screening Instrument (Mnsi)</a>
+4. <a href="#user-content-blood-result-hba1c-2">Blood Result: Hba1C</a>
+5. <a href="#user-content-blood-result-rft-4">Blood Result: Rft</a>
+6. <a href="#user-content-blood-result-lft-4">Blood Result: Lft</a>
+7. <a href="#user-content-blood-result-fbc-4">Blood Result: Fbc</a>
+8. <a href="#user-content-study-medication-10">Study Medication</a>
+9. <a href="#user-content-medication-adherence-9">Medication Adherence</a>
+10. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-3">Michigan Neuropathy Screening Instrument (Mnsi)</a>
+11. <a href="#user-content-glucose-ogtt-only-10">Glucose (Ogtt Only)</a>
+12. <a href="#user-content-hiv-exit-review-4">Hiv Exit Review</a>
+13. <a href="#user-content-euroqol-eq-5d-3l-instrument-9">Euroqol Eq-5D-3L Instrument</a>
+14. <a href="#user-content-sf-12-health-survey-9">Sf-12 Health Survey</a>
 15. <a href="#user-content-health-economics-baseline-7">Health Economics: Baseline</a>
 16. <a href="#user-content-next-appointment-10">Next Appointment</a>
 
 <a href="#user-content-1270">**1270.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-10">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-10">Clinic Follow Up: Examination</a>
-3. <a href="#user-content-glucose-fbgrbg-ogtt-11">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-ogtt-only-11">Glucose (Ogtt Only)</a>
-5. <a href="#user-content-study-medication-11">Study Medication</a>
-6. <a href="#user-content-medication-adherence-10">Medication Adherence</a>
+3. <a href="#user-content-study-medication-11">Study Medication</a>
+4. <a href="#user-content-medication-adherence-10">Medication Adherence</a>
+5. <a href="#user-content-glucose-fbgrbg-ogtt-11">Glucose (Fbg/Rbg, Ogtt)</a>
+6. <a href="#user-content-glucose-ogtt-only-11">Glucose (Ogtt Only)</a>
 7. <a href="#user-content-hiv-exit-review-5">Hiv Exit Review</a>
 8. <a href="#user-content-euroqol-eq-5d-3l-instrument-10">Euroqol Eq-5D-3L Instrument</a>
 9. <a href="#user-content-sf-12-health-survey-10">Sf-12 Health Survey</a>
@@ -188,11 +188,11 @@
 <a href="#user-content-1300">**1300.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-11">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-11">Clinic Follow Up: Examination</a>
-3. <a href="#user-content-glucose-fbgrbg-ogtt-12">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-fbg-only-8">Glucose (Fbg Only)</a>
-5. <a href="#user-content-glucose-ogtt-only-12">Glucose (Ogtt Only)</a>
-6. <a href="#user-content-study-medication-12">Study Medication</a>
-7. <a href="#user-content-medication-adherence-11">Medication Adherence</a>
+3. <a href="#user-content-glucose-fbg-only-8">Glucose (Fbg Only)</a>
+4. <a href="#user-content-study-medication-12">Study Medication</a>
+5. <a href="#user-content-medication-adherence-11">Medication Adherence</a>
+6. <a href="#user-content-glucose-fbgrbg-ogtt-12">Glucose (Fbg/Rbg, Ogtt)</a>
+7. <a href="#user-content-glucose-ogtt-only-12">Glucose (Ogtt Only)</a>
 8. <a href="#user-content-hiv-exit-review-6">Hiv Exit Review</a>
 9. <a href="#user-content-euroqol-eq-5d-3l-instrument-11">Euroqol Eq-5D-3L Instrument</a>
 10. <a href="#user-content-sf-12-health-survey-11">Sf-12 Health Survey</a>
@@ -203,10 +203,10 @@
 <a href="#user-content-1330">**1330.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-12">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-12">Clinic Follow Up: Examination</a>
-3. <a href="#user-content-glucose-fbgrbg-ogtt-13">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-ogtt-only-13">Glucose (Ogtt Only)</a>
-5. <a href="#user-content-study-medication-13">Study Medication</a>
-6. <a href="#user-content-medication-adherence-12">Medication Adherence</a>
+3. <a href="#user-content-study-medication-13">Study Medication</a>
+4. <a href="#user-content-medication-adherence-12">Medication Adherence</a>
+5. <a href="#user-content-glucose-fbgrbg-ogtt-13">Glucose (Fbg/Rbg, Ogtt)</a>
+6. <a href="#user-content-glucose-ogtt-only-13">Glucose (Ogtt Only)</a>
 7. <a href="#user-content-hiv-exit-review-7">Hiv Exit Review</a>
 8. <a href="#user-content-euroqol-eq-5d-3l-instrument-12">Euroqol Eq-5D-3L Instrument</a>
 9. <a href="#user-content-sf-12-health-survey-12">Sf-12 Health Survey</a>
@@ -218,28 +218,28 @@
 1. <a href="#user-content-clinic-follow-up-vitals-13">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-13">Clinic Follow Up: Examination</a>
 3. <a href="#user-content-glucose-fbgrbg-ogtt-14">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-ogtt-only-14">Glucose (Ogtt Only)</a>
-5. <a href="#user-content-blood-result-hba1c-3">Blood Result: Hba1C</a>
-6. <a href="#user-content-blood-result-rft-5">Blood Result: Rft</a>
-7. <a href="#user-content-blood-result-lft-5">Blood Result: Lft</a>
-8. <a href="#user-content-blood-result-fbc-5">Blood Result: Fbc</a>
-9. <a href="#user-content-blood-result-lipids-2">Blood Result: Lipids</a>
-10. <a href="#user-content-study-medication-14">Study Medication</a>
-11. <a href="#user-content-medication-adherence-13">Medication Adherence</a>
-12. <a href="#user-content-hiv-exit-review-8">Hiv Exit Review</a>
-13. <a href="#user-content-euroqol-eq-5d-3l-instrument-13">Euroqol Eq-5D-3L Instrument</a>
-14. <a href="#user-content-sf-12-health-survey-13">Sf-12 Health Survey</a>
-15. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-7">Michigan Neuropathy Screening Instrument (Mnsi)</a>
+4. <a href="#user-content-blood-result-hba1c-3">Blood Result: Hba1C</a>
+5. <a href="#user-content-blood-result-rft-5">Blood Result: Rft</a>
+6. <a href="#user-content-blood-result-lft-5">Blood Result: Lft</a>
+7. <a href="#user-content-blood-result-fbc-5">Blood Result: Fbc</a>
+8. <a href="#user-content-blood-result-lipids-2">Blood Result: Lipids</a>
+9. <a href="#user-content-study-medication-14">Study Medication</a>
+10. <a href="#user-content-medication-adherence-13">Medication Adherence</a>
+11. <a href="#user-content-euroqol-eq-5d-3l-instrument-13">Euroqol Eq-5D-3L Instrument</a>
+12. <a href="#user-content-sf-12-health-survey-13">Sf-12 Health Survey</a>
+13. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-7">Michigan Neuropathy Screening Instrument (Mnsi)</a>
+14. <a href="#user-content-glucose-ogtt-only-14">Glucose (Ogtt Only)</a>
+15. <a href="#user-content-hiv-exit-review-8">Hiv Exit Review</a>
 16. <a href="#user-content-health-economics-baseline-11">Health Economics: Baseline</a>
 17. <a href="#user-content-next-appointment-14">Next Appointment</a>
 
 <a href="#user-content-1390">**1390.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-14">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-14">Clinic Follow Up: Examination</a>
-3. <a href="#user-content-glucose-fbgrbg-ogtt-15">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-ogtt-only-15">Glucose (Ogtt Only)</a>
-5. <a href="#user-content-study-medication-15">Study Medication</a>
-6. <a href="#user-content-medication-adherence-14">Medication Adherence</a>
+3. <a href="#user-content-study-medication-15">Study Medication</a>
+4. <a href="#user-content-medication-adherence-14">Medication Adherence</a>
+5. <a href="#user-content-glucose-fbgrbg-ogtt-15">Glucose (Fbg/Rbg, Ogtt)</a>
+6. <a href="#user-content-glucose-ogtt-only-15">Glucose (Ogtt Only)</a>
 7. <a href="#user-content-hiv-exit-review-9">Hiv Exit Review</a>
 8. <a href="#user-content-euroqol-eq-5d-3l-instrument-14">Euroqol Eq-5D-3L Instrument</a>
 9. <a href="#user-content-sf-12-health-survey-14">Sf-12 Health Survey</a>
@@ -250,11 +250,11 @@
 <a href="#user-content-1420">**1420.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-15">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-15">Clinic Follow Up: Examination</a>
-3. <a href="#user-content-glucose-fbgrbg-ogtt-16">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-fbg-only-9">Glucose (Fbg Only)</a>
-5. <a href="#user-content-glucose-ogtt-only-16">Glucose (Ogtt Only)</a>
-6. <a href="#user-content-study-medication-16">Study Medication</a>
-7. <a href="#user-content-medication-adherence-15">Medication Adherence</a>
+3. <a href="#user-content-glucose-fbg-only-9">Glucose (Fbg Only)</a>
+4. <a href="#user-content-study-medication-16">Study Medication</a>
+5. <a href="#user-content-medication-adherence-15">Medication Adherence</a>
+6. <a href="#user-content-glucose-fbgrbg-ogtt-16">Glucose (Fbg/Rbg, Ogtt)</a>
+7. <a href="#user-content-glucose-ogtt-only-16">Glucose (Ogtt Only)</a>
 8. <a href="#user-content-hiv-exit-review-10">Hiv Exit Review</a>
 9. <a href="#user-content-euroqol-eq-5d-3l-instrument-15">Euroqol Eq-5D-3L Instrument</a>
 10. <a href="#user-content-sf-12-health-survey-15">Sf-12 Health Survey</a>
@@ -265,10 +265,10 @@
 <a href="#user-content-1450">**1450.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-16">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-16">Clinic Follow Up: Examination</a>
-3. <a href="#user-content-glucose-fbgrbg-ogtt-17">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-ogtt-only-17">Glucose (Ogtt Only)</a>
-5. <a href="#user-content-study-medication-17">Study Medication</a>
-6. <a href="#user-content-medication-adherence-16">Medication Adherence</a>
+3. <a href="#user-content-study-medication-17">Study Medication</a>
+4. <a href="#user-content-medication-adherence-16">Medication Adherence</a>
+5. <a href="#user-content-glucose-fbgrbg-ogtt-17">Glucose (Fbg/Rbg, Ogtt)</a>
+6. <a href="#user-content-glucose-ogtt-only-17">Glucose (Ogtt Only)</a>
 7. <a href="#user-content-hiv-exit-review-11">Hiv Exit Review</a>
 8. <a href="#user-content-euroqol-eq-5d-3l-instrument-16">Euroqol Eq-5D-3L Instrument</a>
 9. <a href="#user-content-sf-12-health-survey-16">Sf-12 Health Survey</a>
@@ -280,18 +280,18 @@
 1. <a href="#user-content-clinic-follow-up-vitals-17">Clinic Follow Up: Vitals</a>
 2. <a href="#user-content-clinic-follow-up-examination-17">Clinic Follow Up: Examination</a>
 3. <a href="#user-content-glucose-fbgrbg-ogtt-18">Glucose (Fbg/Rbg, Ogtt)</a>
-4. <a href="#user-content-glucose-ogtt-only-18">Glucose (Ogtt Only)</a>
-5. <a href="#user-content-blood-result-hba1c-4">Blood Result: Hba1C</a>
-6. <a href="#user-content-blood-result-rft-6">Blood Result: Rft</a>
-7. <a href="#user-content-blood-result-lft-6">Blood Result: Lft</a>
-8. <a href="#user-content-blood-result-fbc-6">Blood Result: Fbc</a>
-9. <a href="#user-content-blood-result-lipids-3">Blood Result: Lipids</a>
-10. <a href="#user-content-study-medication-18">Study Medication</a>
-11. <a href="#user-content-medication-adherence-17">Medication Adherence</a>
-12. <a href="#user-content-hiv-exit-review-12">Hiv Exit Review</a>
-13. <a href="#user-content-euroqol-eq-5d-3l-instrument-17">Euroqol Eq-5D-3L Instrument</a>
-14. <a href="#user-content-sf-12-health-survey-17">Sf-12 Health Survey</a>
-15. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-11">Michigan Neuropathy Screening Instrument (Mnsi)</a>
+4. <a href="#user-content-blood-result-hba1c-4">Blood Result: Hba1C</a>
+5. <a href="#user-content-blood-result-rft-6">Blood Result: Rft</a>
+6. <a href="#user-content-blood-result-lft-6">Blood Result: Lft</a>
+7. <a href="#user-content-blood-result-fbc-6">Blood Result: Fbc</a>
+8. <a href="#user-content-blood-result-lipids-3">Blood Result: Lipids</a>
+9. <a href="#user-content-study-medication-18">Study Medication</a>
+10. <a href="#user-content-medication-adherence-17">Medication Adherence</a>
+11. <a href="#user-content-hiv-exit-review-12">Hiv Exit Review</a>
+12. <a href="#user-content-euroqol-eq-5d-3l-instrument-17">Euroqol Eq-5D-3L Instrument</a>
+13. <a href="#user-content-sf-12-health-survey-17">Sf-12 Health Survey</a>
+14. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-11">Michigan Neuropathy Screening Instrument (Mnsi)</a>
+15. <a href="#user-content-glucose-ogtt-only-18">Glucose (Ogtt Only)</a>
 16. <a href="#user-content-health-economics-baseline-15">Health Economics: Baseline</a>
 17. <a href="#user-content-next-appointment-18">Next Appointment</a>
 
@@ -485,6 +485,7 @@
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -867,6 +868,7 @@
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -923,6 +925,7 @@
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -930,376 +933,6 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_otherarvregimens
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Fbg/Rbg, Ogtt)
-A user model to capture both FBG/RBG and OGTT
-
-See also GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucose
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucose
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucose
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucose
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: Blood Glucose**
-
-**5.0.** Was the FBG test performed?
-- db_table: meta_subject_glucose
-- column: fbg_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucose
-- column: fbg_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** FBG date/time measured
-- db_table: meta_subject_glucose
-- column: fbg_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** fbg diagnostic device
-- db_table: meta_subject_glucose
-- column: fbg_diagnostic_device
-- type: ForeignKey
----
-
-**9.0.** FBG level
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucose
-- column: fbg_value
-- type: DecimalField
----
-
-**10.0.** FBG units
-- db_table: meta_subject_glucose
-- column: fbg_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: OGTT**
-
-**11.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucose
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**12.0.** If NO, provide reason
-- db_table: meta_subject_glucose
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**13.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucose
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**14.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucose
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**15.0.** ogtt diagnostic device
-- db_table: meta_subject_glucose
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**16.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucose
-- column: ogtt_value
-- type: DecimalField
----
-
-**17.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucose
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**18.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucose
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**19.0.** If required, date particpant to repeat FBG
-- db_table: meta_subject_glucose
-- column: repeat_fbg_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**Section: CRF Status**
-
-**20.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucose
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**21.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Ogtt Only)
-A user model to capture both OGTT
-
-See also Glucose and GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucoseogtt
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucoseogtt
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucoseogtt
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucoseogtt
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: OGTT**
-
-**5.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** ogtt diagnostic device
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_value
-- type: DecimalField
----
-
-**11.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**12.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucoseogtt
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Comment (Optional)**
-
-**13.0.** Any other comment?
-- db_table: meta_subject_glucoseogtt
-- column: comment
-- type: TextField
-- length: 500
----
-
-**Section: CRF Status**
-
-**14.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucoseogtt
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**15.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
 ---
@@ -1461,6 +1094,29 @@ See also Glucose and GlucoseFbg.
 - type: ForeignKey
 ---
 
+**Section: CRF Status**
+
+**18.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsins
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**19.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsins
+- column: crf_status_comments
+- type: TextField
+---
+
 
 #### Blood Result: Hba1C
 *[missing model class docstring]*
@@ -1617,6 +1273,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultshba1c
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**18.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultshba1c
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**19.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultshba1c
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -1904,6 +1583,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultsrft
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**32.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**33.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -2267,6 +1969,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultslft
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**38.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**39.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -2716,6 +2441,29 @@ See also Glucose and GlucoseFbg.
 - type: ForeignKey
 ---
 
+**Section: CRF Status**
+
+**46.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsfbc
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**47.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsfbc
+- column: crf_status_comments
+- type: TextField
+---
+
 
 #### Blood Result: Lipids
 *[missing model class docstring]*
@@ -2996,6 +2744,29 @@ See also Glucose and GlucoseFbg.
 - type: ForeignKey
 ---
 
+**Section: CRF Status**
+
+**30.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultslipids
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**31.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultslipids
+- column: crf_status_comments
+- type: TextField
+---
+
 
 #### Malaria Test
 *[missing model class docstring]*
@@ -3071,6 +2842,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -3168,6 +2940,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -3285,6 +3058,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -3292,6 +3066,380 @@ See also Glucose and GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_studymedication
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Optional forms
+
+#### Glucose (Fbg/Rbg, Ogtt)
+A user model to capture both FBG/RBG and OGTT
+
+See also GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucose
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucose
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucose
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucose
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: Blood Glucose**
+
+**5.0.** Was the FBG test performed?
+- db_table: meta_subject_glucose
+- column: fbg_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucose
+- column: fbg_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** FBG date/time measured
+- db_table: meta_subject_glucose
+- column: fbg_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** fbg diagnostic device
+- db_table: meta_subject_glucose
+- column: fbg_diagnostic_device
+- type: ForeignKey
+---
+
+**9.0.** FBG level
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucose
+- column: fbg_value
+- type: DecimalField
+---
+
+**10.0.** FBG units
+- db_table: meta_subject_glucose
+- column: fbg_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: OGTT**
+
+**11.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucose
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**12.0.** If NO, provide reason
+- db_table: meta_subject_glucose
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**13.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucose
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**14.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucose
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**15.0.** ogtt diagnostic device
+- db_table: meta_subject_glucose
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**16.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucose
+- column: ogtt_value
+- type: DecimalField
+---
+
+**17.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucose
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**18.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucose
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**19.0.** If required, date particpant to repeat FBG
+- db_table: meta_subject_glucose
+- column: repeat_fbg_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: CRF Status**
+
+**20.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucose
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**21.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucose
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Glucose (Ogtt Only)
+A user model to capture both OGTT
+
+See also Glucose and GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucoseogtt
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucoseogtt
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucoseogtt
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucoseogtt
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: OGTT**
+
+**5.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** ogtt diagnostic device
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_value
+- type: DecimalField
+---
+
+**11.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**12.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucoseogtt
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Comment (Optional)**
+
+**13.0.** Any other comment?
+- db_table: meta_subject_glucoseogtt
+- column: comment
+- type: TextField
+- length: 500
+---
+
+**Section: CRF Status**
+
+**14.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**15.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
 ---
@@ -3371,6 +3519,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -3543,6 +3692,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -3942,6 +4092,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -3979,216 +4130,6 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_followupexamination
 - column: related_action_item
 - type: ForeignKey
----
-
-
-#### Glucose (Fbg/Rbg, Ogtt)
-A user model to capture both FBG/RBG and OGTT
-
-See also GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucose
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucose
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucose
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucose
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: Blood Glucose**
-
-**5.0.** Was the FBG test performed?
-- db_table: meta_subject_glucose
-- column: fbg_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucose
-- column: fbg_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** FBG date/time measured
-- db_table: meta_subject_glucose
-- column: fbg_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** fbg diagnostic device
-- db_table: meta_subject_glucose
-- column: fbg_diagnostic_device
-- type: ForeignKey
----
-
-**9.0.** FBG level
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucose
-- column: fbg_value
-- type: DecimalField
----
-
-**10.0.** FBG units
-- db_table: meta_subject_glucose
-- column: fbg_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: OGTT**
-
-**11.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucose
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**12.0.** If NO, provide reason
-- db_table: meta_subject_glucose
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**13.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucose
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**14.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucose
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**15.0.** ogtt diagnostic device
-- db_table: meta_subject_glucose
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**16.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucose
-- column: ogtt_value
-- type: DecimalField
----
-
-**17.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucose
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**18.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucose
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**19.0.** If required, date particpant to repeat FBG
-- db_table: meta_subject_glucose
-- column: repeat_fbg_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**Section: CRF Status**
-
-**20.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucose
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**21.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
 ---
 
 
@@ -4329,6 +4270,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -4336,166 +4278,6 @@ See also GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucosefbg
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Ogtt Only)
-A user model to capture both OGTT
-
-See also Glucose and GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucoseogtt
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucoseogtt
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucoseogtt
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucoseogtt
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: OGTT**
-
-**5.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** ogtt diagnostic device
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_value
-- type: DecimalField
----
-
-**11.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**12.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucoseogtt
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Comment (Optional)**
-
-**13.0.** Any other comment?
-- db_table: meta_subject_glucoseogtt
-- column: comment
-- type: TextField
-- length: 500
----
-
-**Section: CRF Status**
-
-**14.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucoseogtt
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**15.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
 ---
@@ -4606,6 +4388,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -4837,6 +4620,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -5040,6 +4824,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -5195,6 +4980,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -5202,6 +4988,380 @@ See also Glucose and GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_healtheconomicssimple
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Optional forms
+
+#### Glucose (Fbg/Rbg, Ogtt)
+A user model to capture both FBG/RBG and OGTT
+
+See also GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucose
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucose
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucose
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucose
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: Blood Glucose**
+
+**5.0.** Was the FBG test performed?
+- db_table: meta_subject_glucose
+- column: fbg_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucose
+- column: fbg_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** FBG date/time measured
+- db_table: meta_subject_glucose
+- column: fbg_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** fbg diagnostic device
+- db_table: meta_subject_glucose
+- column: fbg_diagnostic_device
+- type: ForeignKey
+---
+
+**9.0.** FBG level
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucose
+- column: fbg_value
+- type: DecimalField
+---
+
+**10.0.** FBG units
+- db_table: meta_subject_glucose
+- column: fbg_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: OGTT**
+
+**11.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucose
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**12.0.** If NO, provide reason
+- db_table: meta_subject_glucose
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**13.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucose
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**14.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucose
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**15.0.** ogtt diagnostic device
+- db_table: meta_subject_glucose
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**16.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucose
+- column: ogtt_value
+- type: DecimalField
+---
+
+**17.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucose
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**18.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucose
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**19.0.** If required, date particpant to repeat FBG
+- db_table: meta_subject_glucose
+- column: repeat_fbg_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: CRF Status**
+
+**20.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucose
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**21.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucose
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Glucose (Ogtt Only)
+A user model to capture both OGTT
+
+See also Glucose and GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucoseogtt
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucoseogtt
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucoseogtt
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucoseogtt
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: OGTT**
+
+**5.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** ogtt diagnostic device
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_value
+- type: DecimalField
+---
+
+**11.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**12.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucoseogtt
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Comment (Optional)**
+
+**13.0.** Any other comment?
+- db_table: meta_subject_glucoseogtt
+- column: comment
+- type: TextField
+- length: 500
+---
+
+**Section: CRF Status**
+
+**14.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**15.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
 ---
@@ -5281,6 +5441,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -5443,6 +5604,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -5842,6 +6004,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -5879,216 +6042,6 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_followupexamination
 - column: related_action_item
 - type: ForeignKey
----
-
-
-#### Glucose (Fbg/Rbg, Ogtt)
-A user model to capture both FBG/RBG and OGTT
-
-See also GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucose
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucose
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucose
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucose
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: Blood Glucose**
-
-**5.0.** Was the FBG test performed?
-- db_table: meta_subject_glucose
-- column: fbg_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucose
-- column: fbg_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** FBG date/time measured
-- db_table: meta_subject_glucose
-- column: fbg_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** fbg diagnostic device
-- db_table: meta_subject_glucose
-- column: fbg_diagnostic_device
-- type: ForeignKey
----
-
-**9.0.** FBG level
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucose
-- column: fbg_value
-- type: DecimalField
----
-
-**10.0.** FBG units
-- db_table: meta_subject_glucose
-- column: fbg_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: OGTT**
-
-**11.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucose
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**12.0.** If NO, provide reason
-- db_table: meta_subject_glucose
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**13.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucose
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**14.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucose
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**15.0.** ogtt diagnostic device
-- db_table: meta_subject_glucose
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**16.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucose
-- column: ogtt_value
-- type: DecimalField
----
-
-**17.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucose
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**18.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucose
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**19.0.** If required, date particpant to repeat FBG
-- db_table: meta_subject_glucose
-- column: repeat_fbg_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**Section: CRF Status**
-
-**20.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucose
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**21.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
 ---
 
 
@@ -6229,6 +6182,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -6236,166 +6190,6 @@ See also GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucosefbg
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Ogtt Only)
-A user model to capture both OGTT
-
-See also Glucose and GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucoseogtt
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucoseogtt
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucoseogtt
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucoseogtt
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: OGTT**
-
-**5.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** ogtt diagnostic device
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_value
-- type: DecimalField
----
-
-**11.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**12.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucoseogtt
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Comment (Optional)**
-
-**13.0.** Any other comment?
-- db_table: meta_subject_glucoseogtt
-- column: comment
-- type: TextField
-- length: 500
----
-
-**Section: CRF Status**
-
-**14.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucoseogtt
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**15.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
 ---
@@ -6506,6 +6300,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -6623,332 +6418,6 @@ See also Glucose and GlucoseFbg.
 - type: CharField
 - length: 150
 - responses: *free text*
----
-
-
-#### Euroqol Eq-5D-3L Instrument
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_eq5d3l
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_eq5d3l
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Describe your health TODAY ...**
-
-**3.0.** Mobility
-- db_table: meta_subject_eq5d3l
-- column: mobility
-- type: CharField
-- length: 45
-- responses:
-  - `no_problems_in_walking`: *I have no problems in walking about*
-  - `some_problems_in_walking`: *I have some problems in walking about*
-  - `confined_to_bed`: *I am confined to bed*
----
-
-**4.0.** Self-care
-- db_table: meta_subject_eq5d3l
-- column: self_care
-- type: CharField
-- length: 45
-- responses:
-  - `no_problems_with_self_care`: *I have no problems with self-care*
-  - `problems_washing_dressing_myself`: *I have some problems washing or dressing myself*
-  - `unable_to_wash_dress_myself`: *I am unable to wash or dress myself*
----
-
-**5.0.** Usual activities
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Example. work, study, housework, family or leisure activities*
-- db_table: meta_subject_eq5d3l
-- column: usual_activities
-- type: CharField
-- length: 45
-- responses:
-  - `no_problems_performing_usual_activities`: *I have no problems with performing my usual activities*
-  - `some_problems_performing_usual_activities`: *I have some problems with performing my usual activities*
-  - `unable_to_perform_usual_activities`: *I am unable to perform my usual activities*
----
-
-**6.0.** Pain / Discomfort
-- db_table: meta_subject_eq5d3l
-- column: pain_discomfort
-- type: CharField
-- length: 45
-- responses:
-  - `no_pain_discomfort`: *I have no pain or discomfort*
-  - `moderate_pain_discomfort`: *I have moderate pain or discomfort*
-  - `extreme_pain_discomfort`: *I have extreme pain or discomfort*
----
-
-**7.0.** Anxiety / Depression
-- db_table: meta_subject_eq5d3l
-- column: anxiety_depression
-- type: CharField
-- length: 45
-- responses:
-  - `not_anxious_depressed`: *I am not anxious or depressed*
-  - `moderately_anxious_depressed`: *I am moderately anxious or depressed*
-  - `extremely_anxious_depressed`: *I am extremely anxious or depressed*
----
-
-**Section: How is your health TODAY?**
-
-**8.0.** Visual score for how your health is TODAY
-- db_table: meta_subject_eq5d3l
-- column: health_today_score_slider
-- type: CharField
-- length: 3
-- responses: *free text*
----
-
-**9.0.** <B><font color='orange'>Interviewer</font></B>: please confirm the number on the scale indicated from above.
-
-&nbsp;&nbsp;&nbsp;&nbsp; *This scale is numbered from 0 to 100. 100 means the <U>best</U> health you can imagine0 means the <U>worst</U> health you can imagine.*
-- db_table: meta_subject_eq5d3l
-- column: health_today_score_confirmed
-- type: IntegerField
----
-
-**Section: CRF Status**
-
-**10.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_eq5d3l
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**11.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_eq5d3l
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Sf-12 Health Survey
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_sf12
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_sf12
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Part 1: General health**
-
-**3.0.** In general, would you say your health is:
-- db_table: meta_subject_sf12
-- column: general_health
-- type: CharField
-- length: 15
-- responses:
-  - `excellent`: *Excellent*
-  - `very_good`: *Very good*
-  - `good`: *Good*
-  - `fair`: *Fair*
-  - `poor`: *Poor*
----
-
-**Section: Part 2: Activities limited by health**
-
-**4.0.** <u>Moderate activities</u> such as moving a table, pushing a vacuum cleaner, bowling, or playing golf:
-- db_table: meta_subject_sf12
-- column: moderate_activities_now_limited
-- type: CharField
-- length: 20
-- responses:
-  - `limited_a_lot`: *YES, limited a lot*
-  - `limited_a_little`: *YES, limited a little*
-  - `not_limited_at_all`: *NO, not at all limited*
----
-
-**5.0.** Climbing <u>several</u> flights of stairs:
-- db_table: meta_subject_sf12
-- column: climbing_stairs_now_limited
-- type: CharField
-- length: 20
-- responses:
-  - `limited_a_lot`: *YES, limited a lot*
-  - `limited_a_little`: *YES, limited a little*
-  - `not_limited_at_all`: *NO, not at all limited*
----
-
-**Section: Part 3: Physical health problems (last 4 weeks)**
-
-**6.0.** <u>Accomplished less</u> than you would like:
-- db_table: meta_subject_sf12
-- column: accomplished_less_physical_health
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**7.0.** Were limited in the <u>kind</u> of work or other activities:
-- db_table: meta_subject_sf12
-- column: work_limited_physical_health
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**Section: Part 4: Emotional problems (last 4 weeks)**
-
-**8.0.** <u>Accomplished less</u> than you would like:
-- db_table: meta_subject_sf12
-- column: accomplished_less_emotional
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**9.0.** Did work or activities <u>less carefully than usual</u>:
-- db_table: meta_subject_sf12
-- column: work_less_carefully_emotional
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**Section: Part 5: Pain (last 4 weeks)**
-
-**10.0.** During the <u>past 4 weeks</u>, how much <u>did pain interfere</u> with your normal work (including work outside the home and housework)?
-- db_table: meta_subject_sf12
-- column: pain_interfere_work
-- type: CharField
-- length: 15
-- responses:
-  - `not_at_all`: *Not at all*
-  - `a_little_bit`: *A little bit*
-  - `moderately`: *Moderately*
-  - `quite_a-bit`: *Quite a bit*
-  - `extremely`: *Extremely*
----
-
-**Section: Part 6: Feeling (last 4 weeks)**
-
-**11.0.** Have you felt calm & peaceful?
-- db_table: meta_subject_sf12
-- column: felt_calm_peaceful
-- type: CharField
-- length: 25
-- responses:
-  - `all_of_the_time`: *All of the time*
-  - `most_of_the_time`: *Most of the time*
-  - `good_bit_of_the_time`: *A good bit of the time*
-  - `some_of_the_time`: *Some of the time*
-  - `little_of_the_time`: *A little of the time*
-  - `none_of_the_time`: *None of the time*
----
-
-**12.0.** Did you have a lot of energy?
-- db_table: meta_subject_sf12
-- column: felt_lot_energy
-- type: CharField
-- length: 25
-- responses:
-  - `all_of_the_time`: *All of the time*
-  - `most_of_the_time`: *Most of the time*
-  - `good_bit_of_the_time`: *A good bit of the time*
-  - `some_of_the_time`: *Some of the time*
-  - `little_of_the_time`: *A little of the time*
-  - `none_of_the_time`: *None of the time*
----
-
-**13.0.** Have you felt down-hearted and blue?
-- db_table: meta_subject_sf12
-- column: felt_down
-- type: CharField
-- length: 25
-- responses:
-  - `all_of_the_time`: *All of the time*
-  - `most_of_the_time`: *Most of the time*
-  - `good_bit_of_the_time`: *A good bit of the time*
-  - `some_of_the_time`: *Some of the time*
-  - `little_of_the_time`: *A little of the time*
-  - `none_of_the_time`: *None of the time*
----
-
-**Section: Part 7: Social activities (last 4 weeks)**
-
-**14.0.** During the <u>past 4 weeks</u>, how much of the time has your physical health or emotional problems interfered with your social activities (like visiting friends, relatives, etc.)?
-- db_table: meta_subject_sf12
-- column: social_activities_interfered
-- type: CharField
-- length: 25
-- responses:
-  - `all_of_the_time`: *All of the time*
-  - `most_of_the_time`: *Most of the time*
-  - `some_of_the_time`: *Some of the time*
-  - `little_of_the_time`: *A little of the time*
-  - `none_of_the_time`: *None of the time*
----
-
-**Section: CRF Status**
-
-**15.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_sf12
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**16.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_sf12
-- column: crf_status_comments
-- type: TextField
 ---
 
 
@@ -7368,6 +6837,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -7391,6 +6861,708 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_mnsi
 - column: calculated_physical_assessment_score
 - type: DecimalField
+---
+
+
+#### Optional forms
+
+#### Glucose (Fbg/Rbg, Ogtt)
+A user model to capture both FBG/RBG and OGTT
+
+See also GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucose
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucose
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucose
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucose
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: Blood Glucose**
+
+**5.0.** Was the FBG test performed?
+- db_table: meta_subject_glucose
+- column: fbg_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucose
+- column: fbg_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** FBG date/time measured
+- db_table: meta_subject_glucose
+- column: fbg_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** fbg diagnostic device
+- db_table: meta_subject_glucose
+- column: fbg_diagnostic_device
+- type: ForeignKey
+---
+
+**9.0.** FBG level
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucose
+- column: fbg_value
+- type: DecimalField
+---
+
+**10.0.** FBG units
+- db_table: meta_subject_glucose
+- column: fbg_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: OGTT**
+
+**11.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucose
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**12.0.** If NO, provide reason
+- db_table: meta_subject_glucose
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**13.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucose
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**14.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucose
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**15.0.** ogtt diagnostic device
+- db_table: meta_subject_glucose
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**16.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucose
+- column: ogtt_value
+- type: DecimalField
+---
+
+**17.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucose
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**18.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucose
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**19.0.** If required, date particpant to repeat FBG
+- db_table: meta_subject_glucose
+- column: repeat_fbg_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: CRF Status**
+
+**20.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucose
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**21.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucose
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Glucose (Ogtt Only)
+A user model to capture both OGTT
+
+See also Glucose and GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucoseogtt
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucoseogtt
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucoseogtt
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucoseogtt
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: OGTT**
+
+**5.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** ogtt diagnostic device
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_value
+- type: DecimalField
+---
+
+**11.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**12.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucoseogtt
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Comment (Optional)**
+
+**13.0.** Any other comment?
+- db_table: meta_subject_glucoseogtt
+- column: comment
+- type: TextField
+- length: 500
+---
+
+**Section: CRF Status**
+
+**14.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**15.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Euroqol Eq-5D-3L Instrument
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_eq5d3l
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_eq5d3l
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Describe your health TODAY ...**
+
+**3.0.** Mobility
+- db_table: meta_subject_eq5d3l
+- column: mobility
+- type: CharField
+- length: 45
+- responses:
+  - `no_problems_in_walking`: *I have no problems in walking about*
+  - `some_problems_in_walking`: *I have some problems in walking about*
+  - `confined_to_bed`: *I am confined to bed*
+---
+
+**4.0.** Self-care
+- db_table: meta_subject_eq5d3l
+- column: self_care
+- type: CharField
+- length: 45
+- responses:
+  - `no_problems_with_self_care`: *I have no problems with self-care*
+  - `problems_washing_dressing_myself`: *I have some problems washing or dressing myself*
+  - `unable_to_wash_dress_myself`: *I am unable to wash or dress myself*
+---
+
+**5.0.** Usual activities
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Example. work, study, housework, family or leisure activities*
+- db_table: meta_subject_eq5d3l
+- column: usual_activities
+- type: CharField
+- length: 45
+- responses:
+  - `no_problems_performing_usual_activities`: *I have no problems with performing my usual activities*
+  - `some_problems_performing_usual_activities`: *I have some problems with performing my usual activities*
+  - `unable_to_perform_usual_activities`: *I am unable to perform my usual activities*
+---
+
+**6.0.** Pain / Discomfort
+- db_table: meta_subject_eq5d3l
+- column: pain_discomfort
+- type: CharField
+- length: 45
+- responses:
+  - `no_pain_discomfort`: *I have no pain or discomfort*
+  - `moderate_pain_discomfort`: *I have moderate pain or discomfort*
+  - `extreme_pain_discomfort`: *I have extreme pain or discomfort*
+---
+
+**7.0.** Anxiety / Depression
+- db_table: meta_subject_eq5d3l
+- column: anxiety_depression
+- type: CharField
+- length: 45
+- responses:
+  - `not_anxious_depressed`: *I am not anxious or depressed*
+  - `moderately_anxious_depressed`: *I am moderately anxious or depressed*
+  - `extremely_anxious_depressed`: *I am extremely anxious or depressed*
+---
+
+**Section: How is your health TODAY?**
+
+**8.0.** Visual score for how your health is TODAY
+- db_table: meta_subject_eq5d3l
+- column: health_today_score_slider
+- type: CharField
+- length: 3
+- responses: *free text*
+---
+
+**9.0.** <B><font color='orange'>Interviewer</font></B>: please confirm the number on the scale indicated from above.
+
+&nbsp;&nbsp;&nbsp;&nbsp; *This scale is numbered from 0 to 100. 100 means the <U>best</U> health you can imagine0 means the <U>worst</U> health you can imagine.*
+- db_table: meta_subject_eq5d3l
+- column: health_today_score_confirmed
+- type: IntegerField
+---
+
+**Section: CRF Status**
+
+**10.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_eq5d3l
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**11.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_eq5d3l
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Sf-12 Health Survey
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_sf12
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_sf12
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Part 1: General health**
+
+**3.0.** In general, would you say your health is:
+- db_table: meta_subject_sf12
+- column: general_health
+- type: CharField
+- length: 15
+- responses:
+  - `excellent`: *Excellent*
+  - `very_good`: *Very good*
+  - `good`: *Good*
+  - `fair`: *Fair*
+  - `poor`: *Poor*
+---
+
+**Section: Part 2: Activities limited by health**
+
+**4.0.** <u>Moderate activities</u> such as moving a table, pushing a vacuum cleaner, bowling, or playing golf:
+- db_table: meta_subject_sf12
+- column: moderate_activities_now_limited
+- type: CharField
+- length: 20
+- responses:
+  - `limited_a_lot`: *YES, limited a lot*
+  - `limited_a_little`: *YES, limited a little*
+  - `not_limited_at_all`: *NO, not at all limited*
+---
+
+**5.0.** Climbing <u>several</u> flights of stairs:
+- db_table: meta_subject_sf12
+- column: climbing_stairs_now_limited
+- type: CharField
+- length: 20
+- responses:
+  - `limited_a_lot`: *YES, limited a lot*
+  - `limited_a_little`: *YES, limited a little*
+  - `not_limited_at_all`: *NO, not at all limited*
+---
+
+**Section: Part 3: Physical health problems (last 4 weeks)**
+
+**6.0.** <u>Accomplished less</u> than you would like:
+- db_table: meta_subject_sf12
+- column: accomplished_less_physical_health
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**7.0.** Were limited in the <u>kind</u> of work or other activities:
+- db_table: meta_subject_sf12
+- column: work_limited_physical_health
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**Section: Part 4: Emotional problems (last 4 weeks)**
+
+**8.0.** <u>Accomplished less</u> than you would like:
+- db_table: meta_subject_sf12
+- column: accomplished_less_emotional
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**9.0.** Did work or activities <u>less carefully than usual</u>:
+- db_table: meta_subject_sf12
+- column: work_less_carefully_emotional
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**Section: Part 5: Pain (last 4 weeks)**
+
+**10.0.** During the <u>past 4 weeks</u>, how much <u>did pain interfere</u> with your normal work (including work outside the home and housework)?
+- db_table: meta_subject_sf12
+- column: pain_interfere_work
+- type: CharField
+- length: 15
+- responses:
+  - `not_at_all`: *Not at all*
+  - `a_little_bit`: *A little bit*
+  - `moderately`: *Moderately*
+  - `quite_a-bit`: *Quite a bit*
+  - `extremely`: *Extremely*
+---
+
+**Section: Part 6: Feeling (last 4 weeks)**
+
+**11.0.** Have you felt calm & peaceful?
+- db_table: meta_subject_sf12
+- column: felt_calm_peaceful
+- type: CharField
+- length: 25
+- responses:
+  - `all_of_the_time`: *All of the time*
+  - `most_of_the_time`: *Most of the time*
+  - `good_bit_of_the_time`: *A good bit of the time*
+  - `some_of_the_time`: *Some of the time*
+  - `little_of_the_time`: *A little of the time*
+  - `none_of_the_time`: *None of the time*
+---
+
+**12.0.** Did you have a lot of energy?
+- db_table: meta_subject_sf12
+- column: felt_lot_energy
+- type: CharField
+- length: 25
+- responses:
+  - `all_of_the_time`: *All of the time*
+  - `most_of_the_time`: *Most of the time*
+  - `good_bit_of_the_time`: *A good bit of the time*
+  - `some_of_the_time`: *Some of the time*
+  - `little_of_the_time`: *A little of the time*
+  - `none_of_the_time`: *None of the time*
+---
+
+**13.0.** Have you felt down-hearted and blue?
+- db_table: meta_subject_sf12
+- column: felt_down
+- type: CharField
+- length: 25
+- responses:
+  - `all_of_the_time`: *All of the time*
+  - `most_of_the_time`: *Most of the time*
+  - `good_bit_of_the_time`: *A good bit of the time*
+  - `some_of_the_time`: *Some of the time*
+  - `little_of_the_time`: *A little of the time*
+  - `none_of_the_time`: *None of the time*
+---
+
+**Section: Part 7: Social activities (last 4 weeks)**
+
+**14.0.** During the <u>past 4 weeks</u>, how much of the time has your physical health or emotional problems interfered with your social activities (like visiting friends, relatives, etc.)?
+- db_table: meta_subject_sf12
+- column: social_activities_interfered
+- type: CharField
+- length: 25
+- responses:
+  - `all_of_the_time`: *All of the time*
+  - `most_of_the_time`: *Most of the time*
+  - `some_of_the_time`: *Some of the time*
+  - `little_of_the_time`: *A little of the time*
+  - `none_of_the_time`: *None of the time*
+---
+
+**Section: CRF Status**
+
+**15.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_sf12
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**16.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_sf12
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -7537,6 +7709,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -7623,6 +7796,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -7785,6 +7959,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -8184,6 +8359,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -8221,216 +8397,6 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_followupexamination
 - column: related_action_item
 - type: ForeignKey
----
-
-
-#### Glucose (Fbg/Rbg, Ogtt)
-A user model to capture both FBG/RBG and OGTT
-
-See also GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucose
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucose
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucose
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucose
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: Blood Glucose**
-
-**5.0.** Was the FBG test performed?
-- db_table: meta_subject_glucose
-- column: fbg_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucose
-- column: fbg_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** FBG date/time measured
-- db_table: meta_subject_glucose
-- column: fbg_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** fbg diagnostic device
-- db_table: meta_subject_glucose
-- column: fbg_diagnostic_device
-- type: ForeignKey
----
-
-**9.0.** FBG level
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucose
-- column: fbg_value
-- type: DecimalField
----
-
-**10.0.** FBG units
-- db_table: meta_subject_glucose
-- column: fbg_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: OGTT**
-
-**11.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucose
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**12.0.** If NO, provide reason
-- db_table: meta_subject_glucose
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**13.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucose
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**14.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucose
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**15.0.** ogtt diagnostic device
-- db_table: meta_subject_glucose
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**16.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucose
-- column: ogtt_value
-- type: DecimalField
----
-
-**17.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucose
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**18.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucose
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**19.0.** If required, date particpant to repeat FBG
-- db_table: meta_subject_glucose
-- column: repeat_fbg_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**Section: CRF Status**
-
-**20.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucose
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**21.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
 ---
 
 
@@ -8571,6 +8537,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -8578,166 +8545,6 @@ See also GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucosefbg
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Ogtt Only)
-A user model to capture both OGTT
-
-See also Glucose and GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucoseogtt
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucoseogtt
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucoseogtt
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucoseogtt
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: OGTT**
-
-**5.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** ogtt diagnostic device
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_value
-- type: DecimalField
----
-
-**11.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**12.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucoseogtt
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Comment (Optional)**
-
-**13.0.** Any other comment?
-- db_table: meta_subject_glucoseogtt
-- column: comment
-- type: TextField
-- length: 500
----
-
-**Section: CRF Status**
-
-**14.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucoseogtt
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**15.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
 ---
@@ -9027,6 +8834,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultsrft
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**32.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**33.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -9392,6 +9222,29 @@ See also Glucose and GlucoseFbg.
 - type: ForeignKey
 ---
 
+**Section: CRF Status**
+
+**38.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**39.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status_comments
+- type: TextField
+---
+
 
 #### Study Medication
 *[missing model class docstring]*
@@ -9498,6 +9351,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -9618,6 +9472,580 @@ See also Glucose and GlucoseFbg.
 ---
 
 
+#### Health Economics: Baseline
+A user model to learn about the household, wealth and
+opportunities in the community
+
+Introduced 22 FEB 2024
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+*Additional instructions*: We want to learn about the household and we use these
+        questions to get an understanding of wealth and opportunities
+        in the community. A person or persons (people/ members) who share
+        the same kitchen (pot), live together, and run the household
+        expenditure from the same income is known as a 'household'. Household
+        members should be identified on the basis that they shared a place of
+        living together most of time for the past one year. When it is
+        difficult to demarcate 'most of the time', living together for the
+        past six months or more should be used to find out whether or not
+        the person is a household member. For polygamous households, the
+        household head should think about all the households and respond
+        with respect to all households.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_healtheconomicsupdate
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_healtheconomicsupdate
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: A: Household and head of household**
+
+**3.0.** What is the total number of people who live in your household?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Persons*
+- db_table: meta_subject_healtheconomicsupdate
+- column: hh_count
+- type: IntegerField
+---
+
+**4.0.** What is the total number of people 14 years or under who live in your household?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Persons*
+- db_table: meta_subject_healtheconomicsupdate
+- column: hh_minors_count
+- type: IntegerField
+---
+
+**5.0.** Are you the household head?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *By head of the household we mean the main decision maker in the household. The head can be either male or female. If two people are equal decision-makers, take the older person.*
+- db_table: meta_subject_healtheconomicsupdate
+- column: hoh
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If No, what is your relationship to the household head?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Not applicable if patient is head of household*
+- db_table: meta_subject_healtheconomicsupdate
+- column: relationship_to_hoh
+- type: CharField
+- length: 25
+- responses:
+  - `WIFE_HUSBAND`: *Wife/Husband*
+  - `SON_DAUGHTER`: *Son/Daughter*
+  - `SON_DAUGHTERINLAW`: *Son/Daughter-in-law*
+  - `GRANDCHILD`: *Grandchild*
+  - `PARENT`: *Parent*
+  - `PARENTINLAW`: *Parent-in-law*
+  - `BROTHER_SISTER`: *Brother/Sister*
+  - `OTHER`: *Other, specify ...*
+  - `dont_know`: *Don't know*
+  - `N/A`: *Not applicable*
+---
+
+**6.1.** If OTHER relationship, specify ...
+- db_table: meta_subject_healtheconomicsupdate
+- column: relationship_to_hoh_other
+- metadata: None
+- type: CharField
+- length: 35
+- responses: *free text*
+---
+
+**Section: B: Rooms and beds in your household**
+
+**7.0.** How many rooms does your dwelling have in total, without counting the bathrooms/ toilets or hallways/passageways?
+- db_table: meta_subject_healtheconomicsupdate
+- column: rooms
+- type: IntegerField
+---
+
+**8.0.** How many rooms are used for sleeping in your dwelling?
+- db_table: meta_subject_healtheconomicsupdate
+- column: bedrooms
+- type: IntegerField
+---
+
+**9.0.** How many beds does your dwelling have in total?
+- db_table: meta_subject_healtheconomicsupdate
+- column: beds
+- type: IntegerField
+---
+
+**Section: C: Household income**
+
+**10.0.** Thinking over the last 12 months, can you tell me what the average earnings of the household have been?
+- db_table: meta_subject_healtheconomicsupdate
+- column: avg_income
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `dont_know`: *Don't know*
+  - `DWTA`: *Don't want to answer*
+---
+
+**11.0.** Over which <u>time period</u> are you able to estimate?
+- db_table: meta_subject_healtheconomicsupdate
+- column: avg_income_value_known
+- type: CharField
+- length: 15
+- responses:
+  - `weekly`: *as weekly income*
+  - `monthly`: *as monthly income*
+  - `yearly`: *as yearly income*
+  - `dont_know`: *Don't know*
+  - `DWTA`: *Don't want to answer*
+  - `N/A`: *Not applicable*
+---
+
+**12.0.** Estimated <u>total amount of income</u> from this source over the time period from above
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Use cash equivalent in local currency*
+- db_table: meta_subject_healtheconomicsupdate
+- column: avg_income_value
+- type: IntegerField
+---
+
+**13.0.** Outside of this household, how many other people depend on this household's income?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Insert '0' if no dependents other than the members in the household roster*
+- db_table: meta_subject_healtheconomicsupdate
+- column: external_dependents
+- type: IntegerField
+---
+
+**14.0.** Would you say your household's financial situation is?
+- db_table: meta_subject_healtheconomicsupdate
+- column: financial_status
+- type: CharField
+- length: 25
+- responses:
+  - `1`: *Very good*
+  - `2`: *Good*
+  - `3`: *Moderate*
+  - `4`: *Bad*
+  - `5`: *Very bad*
+  - `DWTA`: *Don't want to answer*
+---
+
+**Section: CRF Status**
+
+**15.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_healtheconomicsupdate
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**16.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_healtheconomicsupdate
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Optional forms
+
+#### Glucose (Fbg/Rbg, Ogtt)
+A user model to capture both FBG/RBG and OGTT
+
+See also GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucose
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucose
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucose
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucose
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: Blood Glucose**
+
+**5.0.** Was the FBG test performed?
+- db_table: meta_subject_glucose
+- column: fbg_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucose
+- column: fbg_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** FBG date/time measured
+- db_table: meta_subject_glucose
+- column: fbg_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** fbg diagnostic device
+- db_table: meta_subject_glucose
+- column: fbg_diagnostic_device
+- type: ForeignKey
+---
+
+**9.0.** FBG level
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucose
+- column: fbg_value
+- type: DecimalField
+---
+
+**10.0.** FBG units
+- db_table: meta_subject_glucose
+- column: fbg_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: OGTT**
+
+**11.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucose
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**12.0.** If NO, provide reason
+- db_table: meta_subject_glucose
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**13.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucose
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**14.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucose
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**15.0.** ogtt diagnostic device
+- db_table: meta_subject_glucose
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**16.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucose
+- column: ogtt_value
+- type: DecimalField
+---
+
+**17.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucose
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**18.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucose
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**19.0.** If required, date particpant to repeat FBG
+- db_table: meta_subject_glucose
+- column: repeat_fbg_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: CRF Status**
+
+**20.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucose
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**21.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucose
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Glucose (Ogtt Only)
+A user model to capture both OGTT
+
+See also Glucose and GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucoseogtt
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucoseogtt
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucoseogtt
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucoseogtt
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: OGTT**
+
+**5.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** ogtt diagnostic device
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_value
+- type: DecimalField
+---
+
+**11.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**12.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucoseogtt
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Comment (Optional)**
+
+**13.0.** Any other comment?
+- db_table: meta_subject_glucoseogtt
+- column: comment
+- type: TextField
+- length: 500
+---
+
+**Section: CRF Status**
+
+**14.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**15.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Euroqol Eq-5D-3L Instrument
 *[missing model class docstring]*
 
@@ -9729,6 +10157,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -9932,6 +10361,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -10360,6 +10790,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -10383,205 +10814,6 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_mnsi
 - column: calculated_physical_assessment_score
 - type: DecimalField
----
-
-
-#### Health Economics: Baseline
-A user model to learn about the household, wealth and
-opportunities in the community
-
-Introduced 22 FEB 2024
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-*Additional instructions*: We want to learn about the household and we use these
-        questions to get an understanding of wealth and opportunities
-        in the community. A person or persons (people/ members) who share
-        the same kitchen (pot), live together, and run the household
-        expenditure from the same income is known as a 'household'. Household
-        members should be identified on the basis that they shared a place of
-        living together most of time for the past one year. When it is
-        difficult to demarcate 'most of the time', living together for the
-        past six months or more should be used to find out whether or not
-        the person is a household member. For polygamous households, the
-        household head should think about all the households and respond
-        with respect to all households.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_healtheconomicsupdate
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_healtheconomicsupdate
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: A: Household and head of household**
-
-**3.0.** What is the total number of people who live in your household?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Persons*
-- db_table: meta_subject_healtheconomicsupdate
-- column: hh_count
-- type: IntegerField
----
-
-**4.0.** What is the total number of people 14 years or under who live in your household?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Persons*
-- db_table: meta_subject_healtheconomicsupdate
-- column: hh_minors_count
-- type: IntegerField
----
-
-**5.0.** Are you the household head?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *By head of the household we mean the main decision maker in the household. The head can be either male or female. If two people are equal decision-makers, take the older person.*
-- db_table: meta_subject_healtheconomicsupdate
-- column: hoh
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If No, what is your relationship to the household head?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Not applicable if patient is head of household*
-- db_table: meta_subject_healtheconomicsupdate
-- column: relationship_to_hoh
-- type: CharField
-- length: 25
-- responses:
-  - `WIFE_HUSBAND`: *Wife/Husband*
-  - `SON_DAUGHTER`: *Son/Daughter*
-  - `SON_DAUGHTERINLAW`: *Son/Daughter-in-law*
-  - `GRANDCHILD`: *Grandchild*
-  - `PARENT`: *Parent*
-  - `PARENTINLAW`: *Parent-in-law*
-  - `BROTHER_SISTER`: *Brother/Sister*
-  - `OTHER`: *Other, specify ...*
-  - `dont_know`: *Don't know*
-  - `N/A`: *Not applicable*
----
-
-**6.1.** If OTHER relationship, specify ...
-- db_table: meta_subject_healtheconomicsupdate
-- column: relationship_to_hoh_other
-- metadata: None
-- type: CharField
-- length: 35
-- responses: *free text*
----
-
-**Section: B: Rooms and beds in your household**
-
-**7.0.** How many rooms does your dwelling have in total, without counting the bathrooms/ toilets or hallways/passageways?
-- db_table: meta_subject_healtheconomicsupdate
-- column: rooms
-- type: IntegerField
----
-
-**8.0.** How many rooms are used for sleeping in your dwelling?
-- db_table: meta_subject_healtheconomicsupdate
-- column: bedrooms
-- type: IntegerField
----
-
-**9.0.** How many beds does your dwelling have in total?
-- db_table: meta_subject_healtheconomicsupdate
-- column: beds
-- type: IntegerField
----
-
-**Section: C: Household income**
-
-**10.0.** Thinking over the last 12 months, can you tell me what the average earnings of the household have been?
-- db_table: meta_subject_healtheconomicsupdate
-- column: avg_income
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
-  - `dont_know`: *Don't know*
-  - `DWTA`: *Don't want to answer*
----
-
-**11.0.** Over which <u>time period</u> are you able to estimate?
-- db_table: meta_subject_healtheconomicsupdate
-- column: avg_income_value_known
-- type: CharField
-- length: 15
-- responses:
-  - `weekly`: *as weekly income*
-  - `monthly`: *as monthly income*
-  - `yearly`: *as yearly income*
-  - `dont_know`: *Don't know*
-  - `DWTA`: *Don't want to answer*
-  - `N/A`: *Not applicable*
----
-
-**12.0.** Estimated <u>total amount of income</u> from this source over the time period from above
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Use cash equivalent in local currency*
-- db_table: meta_subject_healtheconomicsupdate
-- column: avg_income_value
-- type: IntegerField
----
-
-**13.0.** Outside of this household, how many other people depend on this household's income?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Insert '0' if no dependents other than the members in the household roster*
-- db_table: meta_subject_healtheconomicsupdate
-- column: external_dependents
-- type: IntegerField
----
-
-**14.0.** Would you say your household's financial situation is?
-- db_table: meta_subject_healtheconomicsupdate
-- column: financial_status
-- type: CharField
-- length: 25
-- responses:
-  - `1`: *Very good*
-  - `2`: *Good*
-  - `3`: *Moderate*
-  - `4`: *Bad*
-  - `5`: *Very bad*
-  - `DWTA`: *Don't want to answer*
----
-
-**Section: CRF Status**
-
-**15.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_healtheconomicsupdate
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**16.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_healtheconomicsupdate
-- column: crf_status_comments
-- type: TextField
 ---
 
 
@@ -10659,6 +10891,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -10827,6 +11060,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -11226,6 +11460,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -11263,216 +11498,6 @@ Introduced 22 FEB 2024
 - db_table: meta_subject_followupexamination
 - column: related_action_item
 - type: ForeignKey
----
-
-
-#### Glucose (Fbg/Rbg, Ogtt)
-A user model to capture both FBG/RBG and OGTT
-
-See also GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucose
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucose
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucose
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucose
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: Blood Glucose**
-
-**5.0.** Was the FBG test performed?
-- db_table: meta_subject_glucose
-- column: fbg_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucose
-- column: fbg_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** FBG date/time measured
-- db_table: meta_subject_glucose
-- column: fbg_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** fbg diagnostic device
-- db_table: meta_subject_glucose
-- column: fbg_diagnostic_device
-- type: ForeignKey
----
-
-**9.0.** FBG level
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucose
-- column: fbg_value
-- type: DecimalField
----
-
-**10.0.** FBG units
-- db_table: meta_subject_glucose
-- column: fbg_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: OGTT**
-
-**11.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucose
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**12.0.** If NO, provide reason
-- db_table: meta_subject_glucose
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**13.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucose
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**14.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucose
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**15.0.** ogtt diagnostic device
-- db_table: meta_subject_glucose
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**16.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucose
-- column: ogtt_value
-- type: DecimalField
----
-
-**17.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucose
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**18.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucose
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**19.0.** If required, date particpant to repeat FBG
-- db_table: meta_subject_glucose
-- column: repeat_fbg_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**Section: CRF Status**
-
-**20.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucose
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**21.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
 ---
 
 
@@ -11613,6 +11638,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -11620,166 +11646,6 @@ See also GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucosefbg
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Ogtt Only)
-A user model to capture both OGTT
-
-See also Glucose and GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucoseogtt
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucoseogtt
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucoseogtt
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucoseogtt
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: OGTT**
-
-**5.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** ogtt diagnostic device
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_value
-- type: DecimalField
----
-
-**11.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**12.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucoseogtt
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Comment (Optional)**
-
-**13.0.** Any other comment?
-- db_table: meta_subject_glucoseogtt
-- column: comment
-- type: TextField
-- length: 500
----
-
-**Section: CRF Status**
-
-**14.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucoseogtt
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**15.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
 ---
@@ -12069,6 +11935,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultsrft
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**32.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**33.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -12432,6 +12321,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultslft
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**38.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**39.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -12881,6 +12793,29 @@ See also Glucose and GlucoseFbg.
 - type: ForeignKey
 ---
 
+**Section: CRF Status**
+
+**46.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsfbc
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**47.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsfbc
+- column: crf_status_comments
+- type: TextField
+---
+
 
 #### Study Medication
 *[missing model class docstring]*
@@ -12987,6 +12922,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -13107,6 +13043,380 @@ See also Glucose and GlucoseFbg.
 ---
 
 
+#### Optional forms
+
+#### Glucose (Fbg/Rbg, Ogtt)
+A user model to capture both FBG/RBG and OGTT
+
+See also GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucose
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucose
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucose
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucose
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: Blood Glucose**
+
+**5.0.** Was the FBG test performed?
+- db_table: meta_subject_glucose
+- column: fbg_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucose
+- column: fbg_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** FBG date/time measured
+- db_table: meta_subject_glucose
+- column: fbg_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** fbg diagnostic device
+- db_table: meta_subject_glucose
+- column: fbg_diagnostic_device
+- type: ForeignKey
+---
+
+**9.0.** FBG level
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucose
+- column: fbg_value
+- type: DecimalField
+---
+
+**10.0.** FBG units
+- db_table: meta_subject_glucose
+- column: fbg_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: OGTT**
+
+**11.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucose
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**12.0.** If NO, provide reason
+- db_table: meta_subject_glucose
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**13.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucose
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**14.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucose
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**15.0.** ogtt diagnostic device
+- db_table: meta_subject_glucose
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**16.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucose
+- column: ogtt_value
+- type: DecimalField
+---
+
+**17.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucose
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**18.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucose
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**19.0.** If required, date particpant to repeat FBG
+- db_table: meta_subject_glucose
+- column: repeat_fbg_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: CRF Status**
+
+**20.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucose
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**21.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucose
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Glucose (Ogtt Only)
+A user model to capture both OGTT
+
+See also Glucose and GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucoseogtt
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucoseogtt
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucoseogtt
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucoseogtt
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: OGTT**
+
+**5.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** ogtt diagnostic device
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_value
+- type: DecimalField
+---
+
+**11.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**12.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucoseogtt
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Comment (Optional)**
+
+**13.0.** Any other comment?
+- db_table: meta_subject_glucoseogtt
+- column: comment
+- type: TextField
+- length: 500
+---
+
+**Section: CRF Status**
+
+**14.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**15.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Euroqol Eq-5D-3L Instrument
 *[missing model class docstring]*
 
@@ -13218,6 +13528,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -13421,6 +13732,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -13849,6 +14161,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -14062,6 +14375,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -14148,6 +14462,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -14316,6 +14631,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -14715,6 +15031,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -14754,6 +15071,384 @@ Introduced 22 FEB 2024
 - type: ForeignKey
 ---
 
+
+#### Glucose (Fbg Only)
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucosefbg
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucosefbg
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucosefbg
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucosefbg
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: Blood Glucose**
+
+**5.0.** Was the FBG test performed?
+- db_table: meta_subject_glucosefbg
+- column: fbg_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucosefbg
+- column: fbg_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** FBG date/time measured
+- db_table: meta_subject_glucosefbg
+- column: fbg_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** fbg diagnostic device
+- db_table: meta_subject_glucosefbg
+- column: fbg_diagnostic_device
+- type: ForeignKey
+---
+
+**9.0.** FBG level
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucosefbg
+- column: fbg_value
+- type: DecimalField
+---
+
+**10.0.** FBG units
+- db_table: meta_subject_glucosefbg
+- column: fbg_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**11.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucosefbg
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Confirmation appointment**
+
+**12.0.** repeat fbg date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Date should be within 1 week of report date*
+- db_table: meta_subject_glucosefbg
+- column: repeat_fbg_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: CRF Status**
+
+**13.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucosefbg
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**14.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucosefbg
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Study Medication
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_studymedication
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_studymedication
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Will the subject receive study medication for this visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
+- db_table: meta_subject_studymedication
+- column: refill
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**Section: Details**
+
+**4.0.** refill start datetime
+- db_table: meta_subject_studymedication
+- column: refill_start_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**5.0.** dosage guideline
+- db_table: meta_subject_studymedication
+- column: dosage_guideline
+- type: ForeignKey
+---
+
+**6.0.** formulation
+- db_table: meta_subject_studymedication
+- column: formulation
+- type: ForeignKey
+---
+
+**7.0.** Refill to the next scheduled visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
+- db_table: meta_subject_studymedication
+- column: refill_to_next_visit
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**8.0.** refill end datetime
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
+- db_table: meta_subject_studymedication
+- column: refill_end_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** special instructions
+- db_table: meta_subject_studymedication
+- column: special_instructions
+- type: TextField
+---
+
+**Section: Dispensed medication**
+
+**10.0.** stock codes
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
+- db_table: meta_subject_studymedication
+- column: stock_codes
+- type: TextField
+- length: 30
+---
+
+**Section: CRF Status**
+
+**11.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_studymedication
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**12.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_studymedication
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Medication Adherence
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_medicationadherence
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_medicationadherence
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Visual Score**
+
+**3.0.** Visual score
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_slider
+- type: CharField
+- length: 3
+- responses: *free text*
+---
+
+**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_confirmed
+- type: IntegerField
+---
+
+**Section: Pill Count**
+
+**5.0.** Was a pill count performed
+- db_table: meta_subject_medicationadherence
+- column: pill_count_performed
+- type: CharField
+- length: 5
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** Number of pills left in the bottle
+- db_table: meta_subject_medicationadherence
+- column: pill_count
+- type: IntegerField
+---
+
+**7.0.** If not performed, please explain ...
+- db_table: meta_subject_medicationadherence
+- column: pill_count_not_performed_reason
+- type: TextField
+---
+
+**Section: Missed Medications**
+
+**8.0.** When was the last time you missed your study pill?
+- db_table: meta_subject_medicationadherence
+- column: last_missed_pill
+- type: CharField
+- length: 25
+- responses:
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
+---
+
+**9.0.** Reasons for missing study pills
+- db_table: meta_subject_medicationadherence
+- column: missed_pill_reason
+- type: ManyToManyField
+- responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
+---
+
+**10.0.** If other, please specify ...
+- db_table: meta_subject_medicationadherence
+- column: other_missed_pill_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+
+#### Optional forms
 
 #### Glucose (Fbg/Rbg, Ogtt)
 A user model to capture both FBG/RBG and OGTT
@@ -14953,6 +15648,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -14960,155 +15656,6 @@ See also GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Fbg Only)
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucosefbg
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucosefbg
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucosefbg
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucosefbg
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: Blood Glucose**
-
-**5.0.** Was the FBG test performed?
-- db_table: meta_subject_glucosefbg
-- column: fbg_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucosefbg
-- column: fbg_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** FBG date/time measured
-- db_table: meta_subject_glucosefbg
-- column: fbg_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** fbg diagnostic device
-- db_table: meta_subject_glucosefbg
-- column: fbg_diagnostic_device
-- type: ForeignKey
----
-
-**9.0.** FBG level
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucosefbg
-- column: fbg_value
-- type: DecimalField
----
-
-**10.0.** FBG units
-- db_table: meta_subject_glucosefbg
-- column: fbg_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**11.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucosefbg
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Confirmation appointment**
-
-**12.0.** repeat fbg date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Date should be within 1 week of report date*
-- db_table: meta_subject_glucosefbg
-- column: repeat_fbg_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**Section: CRF Status**
-
-**13.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucosefbg
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**14.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucosefbg
 - column: crf_status_comments
 - type: TextField
 ---
@@ -15262,6 +15809,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -15271,231 +15819,6 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
----
-
-
-#### Study Medication
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_studymedication
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_studymedication
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**3.0.** Will the subject receive study medication for this visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
-- db_table: meta_subject_studymedication
-- column: refill
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**Section: Details**
-
-**4.0.** refill start datetime
-- db_table: meta_subject_studymedication
-- column: refill_start_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**5.0.** dosage guideline
-- db_table: meta_subject_studymedication
-- column: dosage_guideline
-- type: ForeignKey
----
-
-**6.0.** formulation
-- db_table: meta_subject_studymedication
-- column: formulation
-- type: ForeignKey
----
-
-**7.0.** Refill to the next scheduled visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
-- db_table: meta_subject_studymedication
-- column: refill_to_next_visit
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**8.0.** refill end datetime
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
-- db_table: meta_subject_studymedication
-- column: refill_end_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** special instructions
-- db_table: meta_subject_studymedication
-- column: special_instructions
-- type: TextField
----
-
-**Section: Dispensed medication**
-
-**10.0.** stock codes
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
-- db_table: meta_subject_studymedication
-- column: stock_codes
-- type: TextField
-- length: 30
----
-
-**Section: CRF Status**
-
-**11.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_studymedication
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**12.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_studymedication
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Medication Adherence
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_medicationadherence
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_medicationadherence
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Visual Score**
-
-**3.0.** Visual score
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_slider
-- type: CharField
-- length: 3
-- responses: *free text*
----
-
-**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_confirmed
-- type: IntegerField
----
-
-**Section: Pill Count**
-
-**5.0.** Was a pill count performed
-- db_table: meta_subject_medicationadherence
-- column: pill_count_performed
-- type: CharField
-- length: 5
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** Number of pills left in the bottle
-- db_table: meta_subject_medicationadherence
-- column: pill_count
-- type: IntegerField
----
-
-**7.0.** If not performed, please explain ...
-- db_table: meta_subject_medicationadherence
-- column: pill_count_not_performed_reason
-- type: TextField
----
-
-**Section: Missed Medications**
-
-**8.0.** When was the last time you missed your study pill?
-- db_table: meta_subject_medicationadherence
-- column: last_missed_pill
-- type: CharField
-- length: 25
-- responses:
-  - `today`: *today*
-  - `yesterday`: *yesterday*
-  - `earlier_this_week`: *earlier this week*
-  - `last_week`: *last week*
-  - `lt_month_ago`: *less than a month ago*
-  - `gt_month_ago`: *more than a month ago*
-  - `NEVER`: *have never missed taking my study pills*
----
-
-**9.0.** Reasons for missing study pills
-- db_table: meta_subject_medicationadherence
-- column: missed_pill_reason
-- type: ManyToManyField
-- responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills*
-  - `dont_like_taking`: *I don't like taking my pills*
-  - `make_me_ill`: *My pills sometimes make me feel sick*
-  - `misplaced_pills`: *I sometimes misplace my pills*
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
-  - `not_feeling_well`: *I have not been feeling well*
-  - `OTHER`: *Other, please specify ...*
----
-
-**10.0.** If other, please specify ...
-- db_table: meta_subject_medicationadherence
-- column: other_missed_pill_reason
-- type: CharField
-- length: 150
-- responses: *free text*
 ---
 
 
@@ -15610,6 +15933,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -15813,6 +16137,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -16012,6 +16337,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -16098,6 +16424,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -16260,6 +16587,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -16659,6 +16987,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -16897,6 +17226,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -16904,166 +17234,6 @@ See also GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Ogtt Only)
-A user model to capture both OGTT
-
-See also Glucose and GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucoseogtt
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucoseogtt
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucoseogtt
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucoseogtt
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: OGTT**
-
-**5.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** ogtt diagnostic device
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_value
-- type: DecimalField
----
-
-**11.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**12.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucoseogtt
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Comment (Optional)**
-
-**13.0.** Any other comment?
-- db_table: meta_subject_glucoseogtt
-- column: comment
-- type: TextField
-- length: 500
----
-
-**Section: CRF Status**
-
-**14.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucoseogtt
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**15.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
 ---
@@ -17224,6 +17394,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultshba1c
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**18.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultshba1c
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**19.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultshba1c
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -17511,6 +17704,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultsrft
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**32.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**33.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -17874,6 +18090,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultslft
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**38.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**39.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -18321,6 +18560,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultsfbc
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**46.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsfbc
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**47.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsfbc
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -18603,6 +18865,29 @@ See also Glucose and GlucoseFbg.
 - type: ForeignKey
 ---
 
+**Section: CRF Status**
+
+**30.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultslipids
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**31.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultslipids
+- column: crf_status_comments
+- type: TextField
+---
+
 
 #### Study Medication
 *[missing model class docstring]*
@@ -18709,6 +18994,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -18829,6 +19115,169 @@ See also Glucose and GlucoseFbg.
 ---
 
 
+#### Optional forms
+
+#### Glucose (Ogtt Only)
+A user model to capture both OGTT
+
+See also Glucose and GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucoseogtt
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucoseogtt
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucoseogtt
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucoseogtt
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: OGTT**
+
+**5.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** ogtt diagnostic device
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_value
+- type: DecimalField
+---
+
+**11.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**12.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucoseogtt
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Comment (Optional)**
+
+**13.0.** Any other comment?
+- db_table: meta_subject_glucoseogtt
+- column: comment
+- type: TextField
+- length: 500
+---
+
+**Section: CRF Status**
+
+**14.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**15.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Hiv Exit Review
 *[missing model class docstring]*
 
@@ -18943,6 +19392,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -19066,6 +19516,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -19269,6 +19720,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -19468,6 +19920,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -19554,6 +20007,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -19726,6 +20180,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -20125,6 +20580,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -20164,6 +20620,384 @@ Introduced 22 FEB 2024
 - type: ForeignKey
 ---
 
+
+#### Glucose (Fbg Only)
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucosefbg
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucosefbg
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucosefbg
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucosefbg
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: Blood Glucose**
+
+**5.0.** Was the FBG test performed?
+- db_table: meta_subject_glucosefbg
+- column: fbg_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucosefbg
+- column: fbg_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** FBG date/time measured
+- db_table: meta_subject_glucosefbg
+- column: fbg_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** fbg diagnostic device
+- db_table: meta_subject_glucosefbg
+- column: fbg_diagnostic_device
+- type: ForeignKey
+---
+
+**9.0.** FBG level
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucosefbg
+- column: fbg_value
+- type: DecimalField
+---
+
+**10.0.** FBG units
+- db_table: meta_subject_glucosefbg
+- column: fbg_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**11.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucosefbg
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Confirmation appointment**
+
+**12.0.** repeat fbg date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Date should be within 1 week of report date*
+- db_table: meta_subject_glucosefbg
+- column: repeat_fbg_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: CRF Status**
+
+**13.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucosefbg
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**14.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucosefbg
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Study Medication
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_studymedication
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_studymedication
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Will the subject receive study medication for this visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
+- db_table: meta_subject_studymedication
+- column: refill
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**Section: Details**
+
+**4.0.** refill start datetime
+- db_table: meta_subject_studymedication
+- column: refill_start_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**5.0.** dosage guideline
+- db_table: meta_subject_studymedication
+- column: dosage_guideline
+- type: ForeignKey
+---
+
+**6.0.** formulation
+- db_table: meta_subject_studymedication
+- column: formulation
+- type: ForeignKey
+---
+
+**7.0.** Refill to the next scheduled visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
+- db_table: meta_subject_studymedication
+- column: refill_to_next_visit
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**8.0.** refill end datetime
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
+- db_table: meta_subject_studymedication
+- column: refill_end_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** special instructions
+- db_table: meta_subject_studymedication
+- column: special_instructions
+- type: TextField
+---
+
+**Section: Dispensed medication**
+
+**10.0.** stock codes
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
+- db_table: meta_subject_studymedication
+- column: stock_codes
+- type: TextField
+- length: 30
+---
+
+**Section: CRF Status**
+
+**11.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_studymedication
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**12.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_studymedication
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Medication Adherence
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_medicationadherence
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_medicationadherence
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Visual Score**
+
+**3.0.** Visual score
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_slider
+- type: CharField
+- length: 3
+- responses: *free text*
+---
+
+**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_confirmed
+- type: IntegerField
+---
+
+**Section: Pill Count**
+
+**5.0.** Was a pill count performed
+- db_table: meta_subject_medicationadherence
+- column: pill_count_performed
+- type: CharField
+- length: 5
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** Number of pills left in the bottle
+- db_table: meta_subject_medicationadherence
+- column: pill_count
+- type: IntegerField
+---
+
+**7.0.** If not performed, please explain ...
+- db_table: meta_subject_medicationadherence
+- column: pill_count_not_performed_reason
+- type: TextField
+---
+
+**Section: Missed Medications**
+
+**8.0.** When was the last time you missed your study pill?
+- db_table: meta_subject_medicationadherence
+- column: last_missed_pill
+- type: CharField
+- length: 25
+- responses:
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
+---
+
+**9.0.** Reasons for missing study pills
+- db_table: meta_subject_medicationadherence
+- column: missed_pill_reason
+- type: ManyToManyField
+- responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
+---
+
+**10.0.** If other, please specify ...
+- db_table: meta_subject_medicationadherence
+- column: other_missed_pill_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+
+#### Optional forms
 
 #### Glucose (Fbg/Rbg, Ogtt)
 A user model to capture both FBG/RBG and OGTT
@@ -20363,6 +21197,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -20370,155 +21205,6 @@ See also GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Fbg Only)
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucosefbg
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucosefbg
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucosefbg
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucosefbg
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: Blood Glucose**
-
-**5.0.** Was the FBG test performed?
-- db_table: meta_subject_glucosefbg
-- column: fbg_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucosefbg
-- column: fbg_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** FBG date/time measured
-- db_table: meta_subject_glucosefbg
-- column: fbg_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** fbg diagnostic device
-- db_table: meta_subject_glucosefbg
-- column: fbg_diagnostic_device
-- type: ForeignKey
----
-
-**9.0.** FBG level
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucosefbg
-- column: fbg_value
-- type: DecimalField
----
-
-**10.0.** FBG units
-- db_table: meta_subject_glucosefbg
-- column: fbg_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**11.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucosefbg
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Confirmation appointment**
-
-**12.0.** repeat fbg date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Date should be within 1 week of report date*
-- db_table: meta_subject_glucosefbg
-- column: repeat_fbg_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**Section: CRF Status**
-
-**13.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucosefbg
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**14.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucosefbg
 - column: crf_status_comments
 - type: TextField
 ---
@@ -20672,6 +21358,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -20681,231 +21368,6 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
----
-
-
-#### Study Medication
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_studymedication
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_studymedication
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**3.0.** Will the subject receive study medication for this visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
-- db_table: meta_subject_studymedication
-- column: refill
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**Section: Details**
-
-**4.0.** refill start datetime
-- db_table: meta_subject_studymedication
-- column: refill_start_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**5.0.** dosage guideline
-- db_table: meta_subject_studymedication
-- column: dosage_guideline
-- type: ForeignKey
----
-
-**6.0.** formulation
-- db_table: meta_subject_studymedication
-- column: formulation
-- type: ForeignKey
----
-
-**7.0.** Refill to the next scheduled visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
-- db_table: meta_subject_studymedication
-- column: refill_to_next_visit
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**8.0.** refill end datetime
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
-- db_table: meta_subject_studymedication
-- column: refill_end_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** special instructions
-- db_table: meta_subject_studymedication
-- column: special_instructions
-- type: TextField
----
-
-**Section: Dispensed medication**
-
-**10.0.** stock codes
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
-- db_table: meta_subject_studymedication
-- column: stock_codes
-- type: TextField
-- length: 30
----
-
-**Section: CRF Status**
-
-**11.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_studymedication
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**12.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_studymedication
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Medication Adherence
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_medicationadherence
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_medicationadherence
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Visual Score**
-
-**3.0.** Visual score
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_slider
-- type: CharField
-- length: 3
-- responses: *free text*
----
-
-**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_confirmed
-- type: IntegerField
----
-
-**Section: Pill Count**
-
-**5.0.** Was a pill count performed
-- db_table: meta_subject_medicationadherence
-- column: pill_count_performed
-- type: CharField
-- length: 5
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** Number of pills left in the bottle
-- db_table: meta_subject_medicationadherence
-- column: pill_count
-- type: IntegerField
----
-
-**7.0.** If not performed, please explain ...
-- db_table: meta_subject_medicationadherence
-- column: pill_count_not_performed_reason
-- type: TextField
----
-
-**Section: Missed Medications**
-
-**8.0.** When was the last time you missed your study pill?
-- db_table: meta_subject_medicationadherence
-- column: last_missed_pill
-- type: CharField
-- length: 25
-- responses:
-  - `today`: *today*
-  - `yesterday`: *yesterday*
-  - `earlier_this_week`: *earlier this week*
-  - `last_week`: *last week*
-  - `lt_month_ago`: *less than a month ago*
-  - `gt_month_ago`: *more than a month ago*
-  - `NEVER`: *have never missed taking my study pills*
----
-
-**9.0.** Reasons for missing study pills
-- db_table: meta_subject_medicationadherence
-- column: missed_pill_reason
-- type: ManyToManyField
-- responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills*
-  - `dont_like_taking`: *I don't like taking my pills*
-  - `make_me_ill`: *My pills sometimes make me feel sick*
-  - `misplaced_pills`: *I sometimes misplace my pills*
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
-  - `not_feeling_well`: *I have not been feeling well*
-  - `OTHER`: *Other, please specify ...*
----
-
-**10.0.** If other, please specify ...
-- db_table: meta_subject_medicationadherence
-- column: other_missed_pill_reason
-- type: CharField
-- length: 150
-- responses: *free text*
 ---
 
 
@@ -21023,6 +21485,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -21146,6 +21609,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -21349,6 +21813,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -21548,6 +22013,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -21634,6 +22100,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -21796,6 +22263,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -22195,6 +22663,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -22232,216 +22701,6 @@ Introduced 22 FEB 2024
 - db_table: meta_subject_followupexamination
 - column: related_action_item
 - type: ForeignKey
----
-
-
-#### Glucose (Fbg/Rbg, Ogtt)
-A user model to capture both FBG/RBG and OGTT
-
-See also GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucose
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucose
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucose
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucose
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: Blood Glucose**
-
-**5.0.** Was the FBG test performed?
-- db_table: meta_subject_glucose
-- column: fbg_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucose
-- column: fbg_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** FBG date/time measured
-- db_table: meta_subject_glucose
-- column: fbg_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** fbg diagnostic device
-- db_table: meta_subject_glucose
-- column: fbg_diagnostic_device
-- type: ForeignKey
----
-
-**9.0.** FBG level
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucose
-- column: fbg_value
-- type: DecimalField
----
-
-**10.0.** FBG units
-- db_table: meta_subject_glucose
-- column: fbg_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: OGTT**
-
-**11.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucose
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**12.0.** If NO, provide reason
-- db_table: meta_subject_glucose
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**13.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucose
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**14.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucose
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**15.0.** ogtt diagnostic device
-- db_table: meta_subject_glucose
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**16.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucose
-- column: ogtt_value
-- type: DecimalField
----
-
-**17.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucose
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**18.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucose
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**19.0.** If required, date particpant to repeat FBG
-- db_table: meta_subject_glucose
-- column: repeat_fbg_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**Section: CRF Status**
-
-**20.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucose
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**21.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
 ---
 
 
@@ -22582,6 +22841,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -22589,166 +22849,6 @@ See also GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucosefbg
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Ogtt Only)
-A user model to capture both OGTT
-
-See also Glucose and GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucoseogtt
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucoseogtt
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucoseogtt
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucoseogtt
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: OGTT**
-
-**5.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** ogtt diagnostic device
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_value
-- type: DecimalField
----
-
-**11.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**12.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucoseogtt
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Comment (Optional)**
-
-**13.0.** Any other comment?
-- db_table: meta_subject_glucoseogtt
-- column: comment
-- type: TextField
-- length: 500
----
-
-**Section: CRF Status**
-
-**14.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucoseogtt
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**15.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
 ---
@@ -23200,6 +23300,29 @@ See also Glucose and GlucoseFbg.
 - type: ForeignKey
 ---
 
+**Section: CRF Status**
+
+**46.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsfbc
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**47.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsfbc
+- column: crf_status_comments
+- type: TextField
+---
+
 
 #### Study Medication
 *[missing model class docstring]*
@@ -23306,6 +23429,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -23426,6 +23550,380 @@ See also Glucose and GlucoseFbg.
 ---
 
 
+#### Optional forms
+
+#### Glucose (Fbg/Rbg, Ogtt)
+A user model to capture both FBG/RBG and OGTT
+
+See also GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucose
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucose
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucose
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucose
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: Blood Glucose**
+
+**5.0.** Was the FBG test performed?
+- db_table: meta_subject_glucose
+- column: fbg_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucose
+- column: fbg_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** FBG date/time measured
+- db_table: meta_subject_glucose
+- column: fbg_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** fbg diagnostic device
+- db_table: meta_subject_glucose
+- column: fbg_diagnostic_device
+- type: ForeignKey
+---
+
+**9.0.** FBG level
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucose
+- column: fbg_value
+- type: DecimalField
+---
+
+**10.0.** FBG units
+- db_table: meta_subject_glucose
+- column: fbg_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: OGTT**
+
+**11.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucose
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**12.0.** If NO, provide reason
+- db_table: meta_subject_glucose
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**13.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucose
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**14.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucose
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**15.0.** ogtt diagnostic device
+- db_table: meta_subject_glucose
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**16.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucose
+- column: ogtt_value
+- type: DecimalField
+---
+
+**17.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucose
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**18.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucose
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**19.0.** If required, date particpant to repeat FBG
+- db_table: meta_subject_glucose
+- column: repeat_fbg_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: CRF Status**
+
+**20.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucose
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**21.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucose
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Glucose (Ogtt Only)
+A user model to capture both OGTT
+
+See also Glucose and GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucoseogtt
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucoseogtt
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucoseogtt
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucoseogtt
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: OGTT**
+
+**5.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** ogtt diagnostic device
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_value
+- type: DecimalField
+---
+
+**11.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**12.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucoseogtt
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Comment (Optional)**
+
+**13.0.** Any other comment?
+- db_table: meta_subject_glucoseogtt
+- column: comment
+- type: TextField
+- length: 500
+---
+
+**Section: CRF Status**
+
+**14.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**15.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Hiv Exit Review
 *[missing model class docstring]*
 
@@ -23540,6 +24038,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -23663,6 +24162,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -23866,6 +24366,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -24065,6 +24566,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -24151,6 +24653,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -24317,6 +24820,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -24716,6 +25220,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -24755,6 +25260,384 @@ Introduced 22 FEB 2024
 - type: ForeignKey
 ---
 
+
+#### Glucose (Fbg Only)
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucosefbg
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucosefbg
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucosefbg
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucosefbg
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: Blood Glucose**
+
+**5.0.** Was the FBG test performed?
+- db_table: meta_subject_glucosefbg
+- column: fbg_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucosefbg
+- column: fbg_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** FBG date/time measured
+- db_table: meta_subject_glucosefbg
+- column: fbg_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** fbg diagnostic device
+- db_table: meta_subject_glucosefbg
+- column: fbg_diagnostic_device
+- type: ForeignKey
+---
+
+**9.0.** FBG level
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucosefbg
+- column: fbg_value
+- type: DecimalField
+---
+
+**10.0.** FBG units
+- db_table: meta_subject_glucosefbg
+- column: fbg_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**11.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucosefbg
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Confirmation appointment**
+
+**12.0.** repeat fbg date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Date should be within 1 week of report date*
+- db_table: meta_subject_glucosefbg
+- column: repeat_fbg_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: CRF Status**
+
+**13.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucosefbg
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**14.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucosefbg
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Study Medication
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_studymedication
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_studymedication
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Will the subject receive study medication for this visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
+- db_table: meta_subject_studymedication
+- column: refill
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**Section: Details**
+
+**4.0.** refill start datetime
+- db_table: meta_subject_studymedication
+- column: refill_start_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**5.0.** dosage guideline
+- db_table: meta_subject_studymedication
+- column: dosage_guideline
+- type: ForeignKey
+---
+
+**6.0.** formulation
+- db_table: meta_subject_studymedication
+- column: formulation
+- type: ForeignKey
+---
+
+**7.0.** Refill to the next scheduled visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
+- db_table: meta_subject_studymedication
+- column: refill_to_next_visit
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**8.0.** refill end datetime
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
+- db_table: meta_subject_studymedication
+- column: refill_end_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** special instructions
+- db_table: meta_subject_studymedication
+- column: special_instructions
+- type: TextField
+---
+
+**Section: Dispensed medication**
+
+**10.0.** stock codes
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
+- db_table: meta_subject_studymedication
+- column: stock_codes
+- type: TextField
+- length: 30
+---
+
+**Section: CRF Status**
+
+**11.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_studymedication
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**12.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_studymedication
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Medication Adherence
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_medicationadherence
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_medicationadherence
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Visual Score**
+
+**3.0.** Visual score
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_slider
+- type: CharField
+- length: 3
+- responses: *free text*
+---
+
+**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_confirmed
+- type: IntegerField
+---
+
+**Section: Pill Count**
+
+**5.0.** Was a pill count performed
+- db_table: meta_subject_medicationadherence
+- column: pill_count_performed
+- type: CharField
+- length: 5
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** Number of pills left in the bottle
+- db_table: meta_subject_medicationadherence
+- column: pill_count
+- type: IntegerField
+---
+
+**7.0.** If not performed, please explain ...
+- db_table: meta_subject_medicationadherence
+- column: pill_count_not_performed_reason
+- type: TextField
+---
+
+**Section: Missed Medications**
+
+**8.0.** When was the last time you missed your study pill?
+- db_table: meta_subject_medicationadherence
+- column: last_missed_pill
+- type: CharField
+- length: 25
+- responses:
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
+---
+
+**9.0.** Reasons for missing study pills
+- db_table: meta_subject_medicationadherence
+- column: missed_pill_reason
+- type: ManyToManyField
+- responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
+---
+
+**10.0.** If other, please specify ...
+- db_table: meta_subject_medicationadherence
+- column: other_missed_pill_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+
+#### Optional forms
 
 #### Glucose (Fbg/Rbg, Ogtt)
 A user model to capture both FBG/RBG and OGTT
@@ -24954,6 +25837,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -24961,155 +25845,6 @@ See also GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Fbg Only)
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucosefbg
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucosefbg
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucosefbg
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucosefbg
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: Blood Glucose**
-
-**5.0.** Was the FBG test performed?
-- db_table: meta_subject_glucosefbg
-- column: fbg_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucosefbg
-- column: fbg_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** FBG date/time measured
-- db_table: meta_subject_glucosefbg
-- column: fbg_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** fbg diagnostic device
-- db_table: meta_subject_glucosefbg
-- column: fbg_diagnostic_device
-- type: ForeignKey
----
-
-**9.0.** FBG level
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucosefbg
-- column: fbg_value
-- type: DecimalField
----
-
-**10.0.** FBG units
-- db_table: meta_subject_glucosefbg
-- column: fbg_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**11.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucosefbg
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Confirmation appointment**
-
-**12.0.** repeat fbg date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Date should be within 1 week of report date*
-- db_table: meta_subject_glucosefbg
-- column: repeat_fbg_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**Section: CRF Status**
-
-**13.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucosefbg
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**14.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucosefbg
 - column: crf_status_comments
 - type: TextField
 ---
@@ -25263,6 +25998,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -25272,231 +26008,6 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
----
-
-
-#### Study Medication
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_studymedication
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_studymedication
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**3.0.** Will the subject receive study medication for this visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
-- db_table: meta_subject_studymedication
-- column: refill
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**Section: Details**
-
-**4.0.** refill start datetime
-- db_table: meta_subject_studymedication
-- column: refill_start_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**5.0.** dosage guideline
-- db_table: meta_subject_studymedication
-- column: dosage_guideline
-- type: ForeignKey
----
-
-**6.0.** formulation
-- db_table: meta_subject_studymedication
-- column: formulation
-- type: ForeignKey
----
-
-**7.0.** Refill to the next scheduled visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
-- db_table: meta_subject_studymedication
-- column: refill_to_next_visit
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**8.0.** refill end datetime
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
-- db_table: meta_subject_studymedication
-- column: refill_end_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** special instructions
-- db_table: meta_subject_studymedication
-- column: special_instructions
-- type: TextField
----
-
-**Section: Dispensed medication**
-
-**10.0.** stock codes
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
-- db_table: meta_subject_studymedication
-- column: stock_codes
-- type: TextField
-- length: 30
----
-
-**Section: CRF Status**
-
-**11.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_studymedication
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**12.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_studymedication
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Medication Adherence
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_medicationadherence
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_medicationadherence
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Visual Score**
-
-**3.0.** Visual score
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_slider
-- type: CharField
-- length: 3
-- responses: *free text*
----
-
-**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_confirmed
-- type: IntegerField
----
-
-**Section: Pill Count**
-
-**5.0.** Was a pill count performed
-- db_table: meta_subject_medicationadherence
-- column: pill_count_performed
-- type: CharField
-- length: 5
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** Number of pills left in the bottle
-- db_table: meta_subject_medicationadherence
-- column: pill_count
-- type: IntegerField
----
-
-**7.0.** If not performed, please explain ...
-- db_table: meta_subject_medicationadherence
-- column: pill_count_not_performed_reason
-- type: TextField
----
-
-**Section: Missed Medications**
-
-**8.0.** When was the last time you missed your study pill?
-- db_table: meta_subject_medicationadherence
-- column: last_missed_pill
-- type: CharField
-- length: 25
-- responses:
-  - `today`: *today*
-  - `yesterday`: *yesterday*
-  - `earlier_this_week`: *earlier this week*
-  - `last_week`: *last week*
-  - `lt_month_ago`: *less than a month ago*
-  - `gt_month_ago`: *more than a month ago*
-  - `NEVER`: *have never missed taking my study pills*
----
-
-**9.0.** Reasons for missing study pills
-- db_table: meta_subject_medicationadherence
-- column: missed_pill_reason
-- type: ManyToManyField
-- responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills*
-  - `dont_like_taking`: *I don't like taking my pills*
-  - `make_me_ill`: *My pills sometimes make me feel sick*
-  - `misplaced_pills`: *I sometimes misplace my pills*
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
-  - `not_feeling_well`: *I have not been feeling well*
-  - `OTHER`: *Other, please specify ...*
----
-
-**10.0.** If other, please specify ...
-- db_table: meta_subject_medicationadherence
-- column: other_missed_pill_reason
-- type: CharField
-- length: 150
-- responses: *free text*
 ---
 
 
@@ -25614,6 +26125,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -25737,6 +26249,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -25940,6 +26453,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -26139,6 +26653,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -26225,6 +26740,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -26387,6 +26903,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -26786,6 +27303,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -27024,6 +27542,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -27031,166 +27550,6 @@ See also GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Ogtt Only)
-A user model to capture both OGTT
-
-See also Glucose and GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucoseogtt
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucoseogtt
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucoseogtt
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucoseogtt
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: OGTT**
-
-**5.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** ogtt diagnostic device
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_value
-- type: DecimalField
----
-
-**11.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**12.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucoseogtt
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Comment (Optional)**
-
-**13.0.** Any other comment?
-- db_table: meta_subject_glucoseogtt
-- column: comment
-- type: TextField
-- length: 500
----
-
-**Section: CRF Status**
-
-**14.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucoseogtt
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**15.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
 ---
@@ -27351,6 +27710,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultshba1c
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**18.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultshba1c
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**19.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultshba1c
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -27638,6 +28020,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultsrft
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**32.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**33.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -28003,6 +28408,29 @@ See also Glucose and GlucoseFbg.
 - type: ForeignKey
 ---
 
+**Section: CRF Status**
+
+**38.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**39.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status_comments
+- type: TextField
+---
+
 
 #### Blood Result: Fbc
 *[missing model class docstring]*
@@ -28450,6 +28878,29 @@ See also Glucose and GlucoseFbg.
 - type: ForeignKey
 ---
 
+**Section: CRF Status**
+
+**46.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsfbc
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**47.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsfbc
+- column: crf_status_comments
+- type: TextField
+---
+
 
 #### Study Medication
 *[missing model class docstring]*
@@ -28556,6 +29007,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -28673,458 +29125,6 @@ See also Glucose and GlucoseFbg.
 - type: CharField
 - length: 150
 - responses: *free text*
----
-
-
-#### Hiv Exit Review
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_hivexitreview
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_hivexitreview
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**3.0.** Are HIV test result and treatment information available?
-- db_table: meta_subject_hivexitreview
-- column: available
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
-  - `PENDING`: *Pending*
----
-
-**4.0.** If not available, please explain ...
-- db_table: meta_subject_hivexitreview
-- column: not_available_reason
-- type: TextField
----
-
-**Section: HIV and ARVs**
-
-**5.0.** Last viral load
-
-&nbsp;&nbsp;&nbsp;&nbsp; *copies/mL*
-- db_table: meta_subject_hivexitreview
-- column: viral_load
-- type: IntegerField
----
-
-**6.0.** Date of last viral load
-- db_table: meta_subject_hivexitreview
-- column: viral_load_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**7.0.** Last CD4
-
-&nbsp;&nbsp;&nbsp;&nbsp; *cells/mm<sup>3</sup>*
-- db_table: meta_subject_hivexitreview
-- column: cd4
-- type: IntegerField
----
-
-**8.0.** Date of last CD4
-- db_table: meta_subject_hivexitreview
-- column: cd4_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**9.0.** Which antiretroviral therapy regimen is the patient currently on?
-- db_table: meta_subject_hivexitreview
-- column: current_arv_regimen
-- type: ForeignKey
----
-
-**10.0.** If other, please specify ...
-- db_table: meta_subject_hivexitreview
-- column: other_current_arv_regimen
-- type: CharField
-- length: 35
-- responses: *free text*
----
-
-**11.0.** When did the patient start this current antiretroviral therapy regimen?
-- db_table: meta_subject_hivexitreview
-- column: current_arv_regimen_start_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**Section: Comment**
-
-**12.0.** Any other comment?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *May be left blank.*
-- db_table: meta_subject_hivexitreview
-- column: comment
-- type: TextField
----
-
-**Section: CRF Status**
-
-**13.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_hivexitreview
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**14.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_hivexitreview
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Euroqol Eq-5D-3L Instrument
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_eq5d3l
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_eq5d3l
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Describe your health TODAY ...**
-
-**3.0.** Mobility
-- db_table: meta_subject_eq5d3l
-- column: mobility
-- type: CharField
-- length: 45
-- responses:
-  - `no_problems_in_walking`: *I have no problems in walking about*
-  - `some_problems_in_walking`: *I have some problems in walking about*
-  - `confined_to_bed`: *I am confined to bed*
----
-
-**4.0.** Self-care
-- db_table: meta_subject_eq5d3l
-- column: self_care
-- type: CharField
-- length: 45
-- responses:
-  - `no_problems_with_self_care`: *I have no problems with self-care*
-  - `problems_washing_dressing_myself`: *I have some problems washing or dressing myself*
-  - `unable_to_wash_dress_myself`: *I am unable to wash or dress myself*
----
-
-**5.0.** Usual activities
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Example. work, study, housework, family or leisure activities*
-- db_table: meta_subject_eq5d3l
-- column: usual_activities
-- type: CharField
-- length: 45
-- responses:
-  - `no_problems_performing_usual_activities`: *I have no problems with performing my usual activities*
-  - `some_problems_performing_usual_activities`: *I have some problems with performing my usual activities*
-  - `unable_to_perform_usual_activities`: *I am unable to perform my usual activities*
----
-
-**6.0.** Pain / Discomfort
-- db_table: meta_subject_eq5d3l
-- column: pain_discomfort
-- type: CharField
-- length: 45
-- responses:
-  - `no_pain_discomfort`: *I have no pain or discomfort*
-  - `moderate_pain_discomfort`: *I have moderate pain or discomfort*
-  - `extreme_pain_discomfort`: *I have extreme pain or discomfort*
----
-
-**7.0.** Anxiety / Depression
-- db_table: meta_subject_eq5d3l
-- column: anxiety_depression
-- type: CharField
-- length: 45
-- responses:
-  - `not_anxious_depressed`: *I am not anxious or depressed*
-  - `moderately_anxious_depressed`: *I am moderately anxious or depressed*
-  - `extremely_anxious_depressed`: *I am extremely anxious or depressed*
----
-
-**Section: How is your health TODAY?**
-
-**8.0.** Visual score for how your health is TODAY
-- db_table: meta_subject_eq5d3l
-- column: health_today_score_slider
-- type: CharField
-- length: 3
-- responses: *free text*
----
-
-**9.0.** <B><font color='orange'>Interviewer</font></B>: please confirm the number on the scale indicated from above.
-
-&nbsp;&nbsp;&nbsp;&nbsp; *This scale is numbered from 0 to 100. 100 means the <U>best</U> health you can imagine0 means the <U>worst</U> health you can imagine.*
-- db_table: meta_subject_eq5d3l
-- column: health_today_score_confirmed
-- type: IntegerField
----
-
-**Section: CRF Status**
-
-**10.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_eq5d3l
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**11.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_eq5d3l
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Sf-12 Health Survey
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_sf12
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_sf12
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Part 1: General health**
-
-**3.0.** In general, would you say your health is:
-- db_table: meta_subject_sf12
-- column: general_health
-- type: CharField
-- length: 15
-- responses:
-  - `excellent`: *Excellent*
-  - `very_good`: *Very good*
-  - `good`: *Good*
-  - `fair`: *Fair*
-  - `poor`: *Poor*
----
-
-**Section: Part 2: Activities limited by health**
-
-**4.0.** <u>Moderate activities</u> such as moving a table, pushing a vacuum cleaner, bowling, or playing golf:
-- db_table: meta_subject_sf12
-- column: moderate_activities_now_limited
-- type: CharField
-- length: 20
-- responses:
-  - `limited_a_lot`: *YES, limited a lot*
-  - `limited_a_little`: *YES, limited a little*
-  - `not_limited_at_all`: *NO, not at all limited*
----
-
-**5.0.** Climbing <u>several</u> flights of stairs:
-- db_table: meta_subject_sf12
-- column: climbing_stairs_now_limited
-- type: CharField
-- length: 20
-- responses:
-  - `limited_a_lot`: *YES, limited a lot*
-  - `limited_a_little`: *YES, limited a little*
-  - `not_limited_at_all`: *NO, not at all limited*
----
-
-**Section: Part 3: Physical health problems (last 4 weeks)**
-
-**6.0.** <u>Accomplished less</u> than you would like:
-- db_table: meta_subject_sf12
-- column: accomplished_less_physical_health
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**7.0.** Were limited in the <u>kind</u> of work or other activities:
-- db_table: meta_subject_sf12
-- column: work_limited_physical_health
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**Section: Part 4: Emotional problems (last 4 weeks)**
-
-**8.0.** <u>Accomplished less</u> than you would like:
-- db_table: meta_subject_sf12
-- column: accomplished_less_emotional
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**9.0.** Did work or activities <u>less carefully than usual</u>:
-- db_table: meta_subject_sf12
-- column: work_less_carefully_emotional
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**Section: Part 5: Pain (last 4 weeks)**
-
-**10.0.** During the <u>past 4 weeks</u>, how much <u>did pain interfere</u> with your normal work (including work outside the home and housework)?
-- db_table: meta_subject_sf12
-- column: pain_interfere_work
-- type: CharField
-- length: 15
-- responses:
-  - `not_at_all`: *Not at all*
-  - `a_little_bit`: *A little bit*
-  - `moderately`: *Moderately*
-  - `quite_a-bit`: *Quite a bit*
-  - `extremely`: *Extremely*
----
-
-**Section: Part 6: Feeling (last 4 weeks)**
-
-**11.0.** Have you felt calm & peaceful?
-- db_table: meta_subject_sf12
-- column: felt_calm_peaceful
-- type: CharField
-- length: 25
-- responses:
-  - `all_of_the_time`: *All of the time*
-  - `most_of_the_time`: *Most of the time*
-  - `good_bit_of_the_time`: *A good bit of the time*
-  - `some_of_the_time`: *Some of the time*
-  - `little_of_the_time`: *A little of the time*
-  - `none_of_the_time`: *None of the time*
----
-
-**12.0.** Did you have a lot of energy?
-- db_table: meta_subject_sf12
-- column: felt_lot_energy
-- type: CharField
-- length: 25
-- responses:
-  - `all_of_the_time`: *All of the time*
-  - `most_of_the_time`: *Most of the time*
-  - `good_bit_of_the_time`: *A good bit of the time*
-  - `some_of_the_time`: *Some of the time*
-  - `little_of_the_time`: *A little of the time*
-  - `none_of_the_time`: *None of the time*
----
-
-**13.0.** Have you felt down-hearted and blue?
-- db_table: meta_subject_sf12
-- column: felt_down
-- type: CharField
-- length: 25
-- responses:
-  - `all_of_the_time`: *All of the time*
-  - `most_of_the_time`: *Most of the time*
-  - `good_bit_of_the_time`: *A good bit of the time*
-  - `some_of_the_time`: *Some of the time*
-  - `little_of_the_time`: *A little of the time*
-  - `none_of_the_time`: *None of the time*
----
-
-**Section: Part 7: Social activities (last 4 weeks)**
-
-**14.0.** During the <u>past 4 weeks</u>, how much of the time has your physical health or emotional problems interfered with your social activities (like visiting friends, relatives, etc.)?
-- db_table: meta_subject_sf12
-- column: social_activities_interfered
-- type: CharField
-- length: 25
-- responses:
-  - `all_of_the_time`: *All of the time*
-  - `most_of_the_time`: *Most of the time*
-  - `some_of_the_time`: *Some of the time*
-  - `little_of_the_time`: *A little of the time*
-  - `none_of_the_time`: *None of the time*
----
-
-**Section: CRF Status**
-
-**15.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_sf12
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**16.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_sf12
-- column: crf_status_comments
-- type: TextField
 ---
 
 
@@ -29544,6 +29544,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -29567,6 +29568,624 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_mnsi
 - column: calculated_physical_assessment_score
 - type: DecimalField
+---
+
+
+#### Optional forms
+
+#### Glucose (Ogtt Only)
+A user model to capture both OGTT
+
+See also Glucose and GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucoseogtt
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucoseogtt
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucoseogtt
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucoseogtt
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: OGTT**
+
+**5.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** ogtt diagnostic device
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_value
+- type: DecimalField
+---
+
+**11.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**12.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucoseogtt
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Comment (Optional)**
+
+**13.0.** Any other comment?
+- db_table: meta_subject_glucoseogtt
+- column: comment
+- type: TextField
+- length: 500
+---
+
+**Section: CRF Status**
+
+**14.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**15.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Hiv Exit Review
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_hivexitreview
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_hivexitreview
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Are HIV test result and treatment information available?
+- db_table: meta_subject_hivexitreview
+- column: available
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `PENDING`: *Pending*
+---
+
+**4.0.** If not available, please explain ...
+- db_table: meta_subject_hivexitreview
+- column: not_available_reason
+- type: TextField
+---
+
+**Section: HIV and ARVs**
+
+**5.0.** Last viral load
+
+&nbsp;&nbsp;&nbsp;&nbsp; *copies/mL*
+- db_table: meta_subject_hivexitreview
+- column: viral_load
+- type: IntegerField
+---
+
+**6.0.** Date of last viral load
+- db_table: meta_subject_hivexitreview
+- column: viral_load_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**7.0.** Last CD4
+
+&nbsp;&nbsp;&nbsp;&nbsp; *cells/mm<sup>3</sup>*
+- db_table: meta_subject_hivexitreview
+- column: cd4
+- type: IntegerField
+---
+
+**8.0.** Date of last CD4
+- db_table: meta_subject_hivexitreview
+- column: cd4_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**9.0.** Which antiretroviral therapy regimen is the patient currently on?
+- db_table: meta_subject_hivexitreview
+- column: current_arv_regimen
+- type: ForeignKey
+---
+
+**10.0.** If other, please specify ...
+- db_table: meta_subject_hivexitreview
+- column: other_current_arv_regimen
+- type: CharField
+- length: 35
+- responses: *free text*
+---
+
+**11.0.** When did the patient start this current antiretroviral therapy regimen?
+- db_table: meta_subject_hivexitreview
+- column: current_arv_regimen_start_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Comment**
+
+**12.0.** Any other comment?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *May be left blank.*
+- db_table: meta_subject_hivexitreview
+- column: comment
+- type: TextField
+---
+
+**Section: CRF Status**
+
+**13.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_hivexitreview
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**14.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_hivexitreview
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Euroqol Eq-5D-3L Instrument
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_eq5d3l
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_eq5d3l
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Describe your health TODAY ...**
+
+**3.0.** Mobility
+- db_table: meta_subject_eq5d3l
+- column: mobility
+- type: CharField
+- length: 45
+- responses:
+  - `no_problems_in_walking`: *I have no problems in walking about*
+  - `some_problems_in_walking`: *I have some problems in walking about*
+  - `confined_to_bed`: *I am confined to bed*
+---
+
+**4.0.** Self-care
+- db_table: meta_subject_eq5d3l
+- column: self_care
+- type: CharField
+- length: 45
+- responses:
+  - `no_problems_with_self_care`: *I have no problems with self-care*
+  - `problems_washing_dressing_myself`: *I have some problems washing or dressing myself*
+  - `unable_to_wash_dress_myself`: *I am unable to wash or dress myself*
+---
+
+**5.0.** Usual activities
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Example. work, study, housework, family or leisure activities*
+- db_table: meta_subject_eq5d3l
+- column: usual_activities
+- type: CharField
+- length: 45
+- responses:
+  - `no_problems_performing_usual_activities`: *I have no problems with performing my usual activities*
+  - `some_problems_performing_usual_activities`: *I have some problems with performing my usual activities*
+  - `unable_to_perform_usual_activities`: *I am unable to perform my usual activities*
+---
+
+**6.0.** Pain / Discomfort
+- db_table: meta_subject_eq5d3l
+- column: pain_discomfort
+- type: CharField
+- length: 45
+- responses:
+  - `no_pain_discomfort`: *I have no pain or discomfort*
+  - `moderate_pain_discomfort`: *I have moderate pain or discomfort*
+  - `extreme_pain_discomfort`: *I have extreme pain or discomfort*
+---
+
+**7.0.** Anxiety / Depression
+- db_table: meta_subject_eq5d3l
+- column: anxiety_depression
+- type: CharField
+- length: 45
+- responses:
+  - `not_anxious_depressed`: *I am not anxious or depressed*
+  - `moderately_anxious_depressed`: *I am moderately anxious or depressed*
+  - `extremely_anxious_depressed`: *I am extremely anxious or depressed*
+---
+
+**Section: How is your health TODAY?**
+
+**8.0.** Visual score for how your health is TODAY
+- db_table: meta_subject_eq5d3l
+- column: health_today_score_slider
+- type: CharField
+- length: 3
+- responses: *free text*
+---
+
+**9.0.** <B><font color='orange'>Interviewer</font></B>: please confirm the number on the scale indicated from above.
+
+&nbsp;&nbsp;&nbsp;&nbsp; *This scale is numbered from 0 to 100. 100 means the <U>best</U> health you can imagine0 means the <U>worst</U> health you can imagine.*
+- db_table: meta_subject_eq5d3l
+- column: health_today_score_confirmed
+- type: IntegerField
+---
+
+**Section: CRF Status**
+
+**10.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_eq5d3l
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**11.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_eq5d3l
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Sf-12 Health Survey
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_sf12
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_sf12
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Part 1: General health**
+
+**3.0.** In general, would you say your health is:
+- db_table: meta_subject_sf12
+- column: general_health
+- type: CharField
+- length: 15
+- responses:
+  - `excellent`: *Excellent*
+  - `very_good`: *Very good*
+  - `good`: *Good*
+  - `fair`: *Fair*
+  - `poor`: *Poor*
+---
+
+**Section: Part 2: Activities limited by health**
+
+**4.0.** <u>Moderate activities</u> such as moving a table, pushing a vacuum cleaner, bowling, or playing golf:
+- db_table: meta_subject_sf12
+- column: moderate_activities_now_limited
+- type: CharField
+- length: 20
+- responses:
+  - `limited_a_lot`: *YES, limited a lot*
+  - `limited_a_little`: *YES, limited a little*
+  - `not_limited_at_all`: *NO, not at all limited*
+---
+
+**5.0.** Climbing <u>several</u> flights of stairs:
+- db_table: meta_subject_sf12
+- column: climbing_stairs_now_limited
+- type: CharField
+- length: 20
+- responses:
+  - `limited_a_lot`: *YES, limited a lot*
+  - `limited_a_little`: *YES, limited a little*
+  - `not_limited_at_all`: *NO, not at all limited*
+---
+
+**Section: Part 3: Physical health problems (last 4 weeks)**
+
+**6.0.** <u>Accomplished less</u> than you would like:
+- db_table: meta_subject_sf12
+- column: accomplished_less_physical_health
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**7.0.** Were limited in the <u>kind</u> of work or other activities:
+- db_table: meta_subject_sf12
+- column: work_limited_physical_health
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**Section: Part 4: Emotional problems (last 4 weeks)**
+
+**8.0.** <u>Accomplished less</u> than you would like:
+- db_table: meta_subject_sf12
+- column: accomplished_less_emotional
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**9.0.** Did work or activities <u>less carefully than usual</u>:
+- db_table: meta_subject_sf12
+- column: work_less_carefully_emotional
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**Section: Part 5: Pain (last 4 weeks)**
+
+**10.0.** During the <u>past 4 weeks</u>, how much <u>did pain interfere</u> with your normal work (including work outside the home and housework)?
+- db_table: meta_subject_sf12
+- column: pain_interfere_work
+- type: CharField
+- length: 15
+- responses:
+  - `not_at_all`: *Not at all*
+  - `a_little_bit`: *A little bit*
+  - `moderately`: *Moderately*
+  - `quite_a-bit`: *Quite a bit*
+  - `extremely`: *Extremely*
+---
+
+**Section: Part 6: Feeling (last 4 weeks)**
+
+**11.0.** Have you felt calm & peaceful?
+- db_table: meta_subject_sf12
+- column: felt_calm_peaceful
+- type: CharField
+- length: 25
+- responses:
+  - `all_of_the_time`: *All of the time*
+  - `most_of_the_time`: *Most of the time*
+  - `good_bit_of_the_time`: *A good bit of the time*
+  - `some_of_the_time`: *Some of the time*
+  - `little_of_the_time`: *A little of the time*
+  - `none_of_the_time`: *None of the time*
+---
+
+**12.0.** Did you have a lot of energy?
+- db_table: meta_subject_sf12
+- column: felt_lot_energy
+- type: CharField
+- length: 25
+- responses:
+  - `all_of_the_time`: *All of the time*
+  - `most_of_the_time`: *Most of the time*
+  - `good_bit_of_the_time`: *A good bit of the time*
+  - `some_of_the_time`: *Some of the time*
+  - `little_of_the_time`: *A little of the time*
+  - `none_of_the_time`: *None of the time*
+---
+
+**13.0.** Have you felt down-hearted and blue?
+- db_table: meta_subject_sf12
+- column: felt_down
+- type: CharField
+- length: 25
+- responses:
+  - `all_of_the_time`: *All of the time*
+  - `most_of_the_time`: *Most of the time*
+  - `good_bit_of_the_time`: *A good bit of the time*
+  - `some_of_the_time`: *Some of the time*
+  - `little_of_the_time`: *A little of the time*
+  - `none_of_the_time`: *None of the time*
+---
+
+**Section: Part 7: Social activities (last 4 weeks)**
+
+**14.0.** During the <u>past 4 weeks</u>, how much of the time has your physical health or emotional problems interfered with your social activities (like visiting friends, relatives, etc.)?
+- db_table: meta_subject_sf12
+- column: social_activities_interfered
+- type: CharField
+- length: 25
+- responses:
+  - `all_of_the_time`: *All of the time*
+  - `most_of_the_time`: *Most of the time*
+  - `some_of_the_time`: *Some of the time*
+  - `little_of_the_time`: *A little of the time*
+  - `none_of_the_time`: *None of the time*
+---
+
+**Section: CRF Status**
+
+**15.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_sf12
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**16.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_sf12
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -29757,6 +30376,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -29843,6 +30463,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -30015,6 +30636,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -30414,6 +31036,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -30453,6 +31076,234 @@ Introduced 22 FEB 2024
 - type: ForeignKey
 ---
 
+
+#### Study Medication
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_studymedication
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_studymedication
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Will the subject receive study medication for this visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
+- db_table: meta_subject_studymedication
+- column: refill
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**Section: Details**
+
+**4.0.** refill start datetime
+- db_table: meta_subject_studymedication
+- column: refill_start_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**5.0.** dosage guideline
+- db_table: meta_subject_studymedication
+- column: dosage_guideline
+- type: ForeignKey
+---
+
+**6.0.** formulation
+- db_table: meta_subject_studymedication
+- column: formulation
+- type: ForeignKey
+---
+
+**7.0.** Refill to the next scheduled visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
+- db_table: meta_subject_studymedication
+- column: refill_to_next_visit
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**8.0.** refill end datetime
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
+- db_table: meta_subject_studymedication
+- column: refill_end_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** special instructions
+- db_table: meta_subject_studymedication
+- column: special_instructions
+- type: TextField
+---
+
+**Section: Dispensed medication**
+
+**10.0.** stock codes
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
+- db_table: meta_subject_studymedication
+- column: stock_codes
+- type: TextField
+- length: 30
+---
+
+**Section: CRF Status**
+
+**11.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_studymedication
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**12.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_studymedication
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Medication Adherence
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_medicationadherence
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_medicationadherence
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Visual Score**
+
+**3.0.** Visual score
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_slider
+- type: CharField
+- length: 3
+- responses: *free text*
+---
+
+**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_confirmed
+- type: IntegerField
+---
+
+**Section: Pill Count**
+
+**5.0.** Was a pill count performed
+- db_table: meta_subject_medicationadherence
+- column: pill_count_performed
+- type: CharField
+- length: 5
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** Number of pills left in the bottle
+- db_table: meta_subject_medicationadherence
+- column: pill_count
+- type: IntegerField
+---
+
+**7.0.** If not performed, please explain ...
+- db_table: meta_subject_medicationadherence
+- column: pill_count_not_performed_reason
+- type: TextField
+---
+
+**Section: Missed Medications**
+
+**8.0.** When was the last time you missed your study pill?
+- db_table: meta_subject_medicationadherence
+- column: last_missed_pill
+- type: CharField
+- length: 25
+- responses:
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
+---
+
+**9.0.** Reasons for missing study pills
+- db_table: meta_subject_medicationadherence
+- column: missed_pill_reason
+- type: ManyToManyField
+- responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
+---
+
+**10.0.** If other, please specify ...
+- db_table: meta_subject_medicationadherence
+- column: other_missed_pill_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+
+#### Optional forms
 
 #### Glucose (Fbg/Rbg, Ogtt)
 A user model to capture both FBG/RBG and OGTT
@@ -30652,6 +31503,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -30812,6 +31664,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -30821,231 +31674,6 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
----
-
-
-#### Study Medication
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_studymedication
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_studymedication
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**3.0.** Will the subject receive study medication for this visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
-- db_table: meta_subject_studymedication
-- column: refill
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**Section: Details**
-
-**4.0.** refill start datetime
-- db_table: meta_subject_studymedication
-- column: refill_start_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**5.0.** dosage guideline
-- db_table: meta_subject_studymedication
-- column: dosage_guideline
-- type: ForeignKey
----
-
-**6.0.** formulation
-- db_table: meta_subject_studymedication
-- column: formulation
-- type: ForeignKey
----
-
-**7.0.** Refill to the next scheduled visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
-- db_table: meta_subject_studymedication
-- column: refill_to_next_visit
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**8.0.** refill end datetime
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
-- db_table: meta_subject_studymedication
-- column: refill_end_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** special instructions
-- db_table: meta_subject_studymedication
-- column: special_instructions
-- type: TextField
----
-
-**Section: Dispensed medication**
-
-**10.0.** stock codes
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
-- db_table: meta_subject_studymedication
-- column: stock_codes
-- type: TextField
-- length: 30
----
-
-**Section: CRF Status**
-
-**11.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_studymedication
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**12.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_studymedication
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Medication Adherence
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_medicationadherence
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_medicationadherence
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Visual Score**
-
-**3.0.** Visual score
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_slider
-- type: CharField
-- length: 3
-- responses: *free text*
----
-
-**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_confirmed
-- type: IntegerField
----
-
-**Section: Pill Count**
-
-**5.0.** Was a pill count performed
-- db_table: meta_subject_medicationadherence
-- column: pill_count_performed
-- type: CharField
-- length: 5
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** Number of pills left in the bottle
-- db_table: meta_subject_medicationadherence
-- column: pill_count
-- type: IntegerField
----
-
-**7.0.** If not performed, please explain ...
-- db_table: meta_subject_medicationadherence
-- column: pill_count_not_performed_reason
-- type: TextField
----
-
-**Section: Missed Medications**
-
-**8.0.** When was the last time you missed your study pill?
-- db_table: meta_subject_medicationadherence
-- column: last_missed_pill
-- type: CharField
-- length: 25
-- responses:
-  - `today`: *today*
-  - `yesterday`: *yesterday*
-  - `earlier_this_week`: *earlier this week*
-  - `last_week`: *last week*
-  - `lt_month_ago`: *less than a month ago*
-  - `gt_month_ago`: *more than a month ago*
-  - `NEVER`: *have never missed taking my study pills*
----
-
-**9.0.** Reasons for missing study pills
-- db_table: meta_subject_medicationadherence
-- column: missed_pill_reason
-- type: ManyToManyField
-- responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills*
-  - `dont_like_taking`: *I don't like taking my pills*
-  - `make_me_ill`: *My pills sometimes make me feel sick*
-  - `misplaced_pills`: *I sometimes misplace my pills*
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
-  - `not_feeling_well`: *I have not been feeling well*
-  - `OTHER`: *Other, please specify ...*
----
-
-**10.0.** If other, please specify ...
-- db_table: meta_subject_medicationadherence
-- column: other_missed_pill_reason
-- type: CharField
-- length: 150
-- responses: *free text*
 ---
 
 
@@ -31163,6 +31791,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -31286,6 +31915,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -31489,6 +32119,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -31917,6 +32548,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -32130,6 +32762,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -32216,6 +32849,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -32378,6 +33012,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -32777,6 +33412,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -32816,6 +33452,384 @@ Introduced 22 FEB 2024
 - type: ForeignKey
 ---
 
+
+#### Glucose (Fbg Only)
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucosefbg
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucosefbg
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucosefbg
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucosefbg
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: Blood Glucose**
+
+**5.0.** Was the FBG test performed?
+- db_table: meta_subject_glucosefbg
+- column: fbg_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucosefbg
+- column: fbg_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** FBG date/time measured
+- db_table: meta_subject_glucosefbg
+- column: fbg_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** fbg diagnostic device
+- db_table: meta_subject_glucosefbg
+- column: fbg_diagnostic_device
+- type: ForeignKey
+---
+
+**9.0.** FBG level
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucosefbg
+- column: fbg_value
+- type: DecimalField
+---
+
+**10.0.** FBG units
+- db_table: meta_subject_glucosefbg
+- column: fbg_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**11.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucosefbg
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Confirmation appointment**
+
+**12.0.** repeat fbg date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Date should be within 1 week of report date*
+- db_table: meta_subject_glucosefbg
+- column: repeat_fbg_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: CRF Status**
+
+**13.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucosefbg
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**14.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucosefbg
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Study Medication
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_studymedication
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_studymedication
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Will the subject receive study medication for this visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
+- db_table: meta_subject_studymedication
+- column: refill
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**Section: Details**
+
+**4.0.** refill start datetime
+- db_table: meta_subject_studymedication
+- column: refill_start_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**5.0.** dosage guideline
+- db_table: meta_subject_studymedication
+- column: dosage_guideline
+- type: ForeignKey
+---
+
+**6.0.** formulation
+- db_table: meta_subject_studymedication
+- column: formulation
+- type: ForeignKey
+---
+
+**7.0.** Refill to the next scheduled visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
+- db_table: meta_subject_studymedication
+- column: refill_to_next_visit
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**8.0.** refill end datetime
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
+- db_table: meta_subject_studymedication
+- column: refill_end_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** special instructions
+- db_table: meta_subject_studymedication
+- column: special_instructions
+- type: TextField
+---
+
+**Section: Dispensed medication**
+
+**10.0.** stock codes
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
+- db_table: meta_subject_studymedication
+- column: stock_codes
+- type: TextField
+- length: 30
+---
+
+**Section: CRF Status**
+
+**11.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_studymedication
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**12.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_studymedication
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Medication Adherence
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_medicationadherence
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_medicationadherence
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Visual Score**
+
+**3.0.** Visual score
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_slider
+- type: CharField
+- length: 3
+- responses: *free text*
+---
+
+**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_confirmed
+- type: IntegerField
+---
+
+**Section: Pill Count**
+
+**5.0.** Was a pill count performed
+- db_table: meta_subject_medicationadherence
+- column: pill_count_performed
+- type: CharField
+- length: 5
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** Number of pills left in the bottle
+- db_table: meta_subject_medicationadherence
+- column: pill_count
+- type: IntegerField
+---
+
+**7.0.** If not performed, please explain ...
+- db_table: meta_subject_medicationadherence
+- column: pill_count_not_performed_reason
+- type: TextField
+---
+
+**Section: Missed Medications**
+
+**8.0.** When was the last time you missed your study pill?
+- db_table: meta_subject_medicationadherence
+- column: last_missed_pill
+- type: CharField
+- length: 25
+- responses:
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
+---
+
+**9.0.** Reasons for missing study pills
+- db_table: meta_subject_medicationadherence
+- column: missed_pill_reason
+- type: ManyToManyField
+- responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
+---
+
+**10.0.** If other, please specify ...
+- db_table: meta_subject_medicationadherence
+- column: other_missed_pill_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+
+#### Optional forms
 
 #### Glucose (Fbg/Rbg, Ogtt)
 A user model to capture both FBG/RBG and OGTT
@@ -33015,6 +34029,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -33022,155 +34037,6 @@ See also GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Fbg Only)
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucosefbg
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucosefbg
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucosefbg
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucosefbg
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: Blood Glucose**
-
-**5.0.** Was the FBG test performed?
-- db_table: meta_subject_glucosefbg
-- column: fbg_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucosefbg
-- column: fbg_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** FBG date/time measured
-- db_table: meta_subject_glucosefbg
-- column: fbg_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** fbg diagnostic device
-- db_table: meta_subject_glucosefbg
-- column: fbg_diagnostic_device
-- type: ForeignKey
----
-
-**9.0.** FBG level
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucosefbg
-- column: fbg_value
-- type: DecimalField
----
-
-**10.0.** FBG units
-- db_table: meta_subject_glucosefbg
-- column: fbg_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**11.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucosefbg
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Confirmation appointment**
-
-**12.0.** repeat fbg date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Date should be within 1 week of report date*
-- db_table: meta_subject_glucosefbg
-- column: repeat_fbg_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**Section: CRF Status**
-
-**13.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucosefbg
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**14.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucosefbg
 - column: crf_status_comments
 - type: TextField
 ---
@@ -33324,6 +34190,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -33333,231 +34200,6 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
----
-
-
-#### Study Medication
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_studymedication
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_studymedication
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**3.0.** Will the subject receive study medication for this visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
-- db_table: meta_subject_studymedication
-- column: refill
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**Section: Details**
-
-**4.0.** refill start datetime
-- db_table: meta_subject_studymedication
-- column: refill_start_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**5.0.** dosage guideline
-- db_table: meta_subject_studymedication
-- column: dosage_guideline
-- type: ForeignKey
----
-
-**6.0.** formulation
-- db_table: meta_subject_studymedication
-- column: formulation
-- type: ForeignKey
----
-
-**7.0.** Refill to the next scheduled visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
-- db_table: meta_subject_studymedication
-- column: refill_to_next_visit
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**8.0.** refill end datetime
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
-- db_table: meta_subject_studymedication
-- column: refill_end_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** special instructions
-- db_table: meta_subject_studymedication
-- column: special_instructions
-- type: TextField
----
-
-**Section: Dispensed medication**
-
-**10.0.** stock codes
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
-- db_table: meta_subject_studymedication
-- column: stock_codes
-- type: TextField
-- length: 30
----
-
-**Section: CRF Status**
-
-**11.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_studymedication
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**12.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_studymedication
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Medication Adherence
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_medicationadherence
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_medicationadherence
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Visual Score**
-
-**3.0.** Visual score
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_slider
-- type: CharField
-- length: 3
-- responses: *free text*
----
-
-**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_confirmed
-- type: IntegerField
----
-
-**Section: Pill Count**
-
-**5.0.** Was a pill count performed
-- db_table: meta_subject_medicationadherence
-- column: pill_count_performed
-- type: CharField
-- length: 5
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** Number of pills left in the bottle
-- db_table: meta_subject_medicationadherence
-- column: pill_count
-- type: IntegerField
----
-
-**7.0.** If not performed, please explain ...
-- db_table: meta_subject_medicationadherence
-- column: pill_count_not_performed_reason
-- type: TextField
----
-
-**Section: Missed Medications**
-
-**8.0.** When was the last time you missed your study pill?
-- db_table: meta_subject_medicationadherence
-- column: last_missed_pill
-- type: CharField
-- length: 25
-- responses:
-  - `today`: *today*
-  - `yesterday`: *yesterday*
-  - `earlier_this_week`: *earlier this week*
-  - `last_week`: *last week*
-  - `lt_month_ago`: *less than a month ago*
-  - `gt_month_ago`: *more than a month ago*
-  - `NEVER`: *have never missed taking my study pills*
----
-
-**9.0.** Reasons for missing study pills
-- db_table: meta_subject_medicationadherence
-- column: missed_pill_reason
-- type: ManyToManyField
-- responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills*
-  - `dont_like_taking`: *I don't like taking my pills*
-  - `make_me_ill`: *My pills sometimes make me feel sick*
-  - `misplaced_pills`: *I sometimes misplace my pills*
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
-  - `not_feeling_well`: *I have not been feeling well*
-  - `OTHER`: *Other, please specify ...*
----
-
-**10.0.** If other, please specify ...
-- db_table: meta_subject_medicationadherence
-- column: other_missed_pill_reason
-- type: CharField
-- length: 150
-- responses: *free text*
 ---
 
 
@@ -33675,6 +34317,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -33798,6 +34441,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -34001,6 +34645,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -34429,6 +35074,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -34642,6 +35288,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -34728,6 +35375,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -34898,6 +35546,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -35297,6 +35946,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -35336,6 +35986,234 @@ Introduced 22 FEB 2024
 - type: ForeignKey
 ---
 
+
+#### Study Medication
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_studymedication
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_studymedication
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Will the subject receive study medication for this visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
+- db_table: meta_subject_studymedication
+- column: refill
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**Section: Details**
+
+**4.0.** refill start datetime
+- db_table: meta_subject_studymedication
+- column: refill_start_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**5.0.** dosage guideline
+- db_table: meta_subject_studymedication
+- column: dosage_guideline
+- type: ForeignKey
+---
+
+**6.0.** formulation
+- db_table: meta_subject_studymedication
+- column: formulation
+- type: ForeignKey
+---
+
+**7.0.** Refill to the next scheduled visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
+- db_table: meta_subject_studymedication
+- column: refill_to_next_visit
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**8.0.** refill end datetime
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
+- db_table: meta_subject_studymedication
+- column: refill_end_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** special instructions
+- db_table: meta_subject_studymedication
+- column: special_instructions
+- type: TextField
+---
+
+**Section: Dispensed medication**
+
+**10.0.** stock codes
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
+- db_table: meta_subject_studymedication
+- column: stock_codes
+- type: TextField
+- length: 30
+---
+
+**Section: CRF Status**
+
+**11.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_studymedication
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**12.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_studymedication
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Medication Adherence
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_medicationadherence
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_medicationadherence
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Visual Score**
+
+**3.0.** Visual score
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_slider
+- type: CharField
+- length: 3
+- responses: *free text*
+---
+
+**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_confirmed
+- type: IntegerField
+---
+
+**Section: Pill Count**
+
+**5.0.** Was a pill count performed
+- db_table: meta_subject_medicationadherence
+- column: pill_count_performed
+- type: CharField
+- length: 5
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** Number of pills left in the bottle
+- db_table: meta_subject_medicationadherence
+- column: pill_count
+- type: IntegerField
+---
+
+**7.0.** If not performed, please explain ...
+- db_table: meta_subject_medicationadherence
+- column: pill_count_not_performed_reason
+- type: TextField
+---
+
+**Section: Missed Medications**
+
+**8.0.** When was the last time you missed your study pill?
+- db_table: meta_subject_medicationadherence
+- column: last_missed_pill
+- type: CharField
+- length: 25
+- responses:
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
+---
+
+**9.0.** Reasons for missing study pills
+- db_table: meta_subject_medicationadherence
+- column: missed_pill_reason
+- type: ManyToManyField
+- responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
+---
+
+**10.0.** If other, please specify ...
+- db_table: meta_subject_medicationadherence
+- column: other_missed_pill_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+
+#### Optional forms
 
 #### Glucose (Fbg/Rbg, Ogtt)
 A user model to capture both FBG/RBG and OGTT
@@ -35535,6 +36413,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -35695,6 +36574,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -35704,231 +36584,6 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
----
-
-
-#### Study Medication
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_studymedication
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_studymedication
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**3.0.** Will the subject receive study medication for this visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
-- db_table: meta_subject_studymedication
-- column: refill
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**Section: Details**
-
-**4.0.** refill start datetime
-- db_table: meta_subject_studymedication
-- column: refill_start_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**5.0.** dosage guideline
-- db_table: meta_subject_studymedication
-- column: dosage_guideline
-- type: ForeignKey
----
-
-**6.0.** formulation
-- db_table: meta_subject_studymedication
-- column: formulation
-- type: ForeignKey
----
-
-**7.0.** Refill to the next scheduled visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
-- db_table: meta_subject_studymedication
-- column: refill_to_next_visit
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**8.0.** refill end datetime
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
-- db_table: meta_subject_studymedication
-- column: refill_end_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** special instructions
-- db_table: meta_subject_studymedication
-- column: special_instructions
-- type: TextField
----
-
-**Section: Dispensed medication**
-
-**10.0.** stock codes
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
-- db_table: meta_subject_studymedication
-- column: stock_codes
-- type: TextField
-- length: 30
----
-
-**Section: CRF Status**
-
-**11.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_studymedication
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**12.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_studymedication
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Medication Adherence
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_medicationadherence
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_medicationadherence
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Visual Score**
-
-**3.0.** Visual score
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_slider
-- type: CharField
-- length: 3
-- responses: *free text*
----
-
-**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_confirmed
-- type: IntegerField
----
-
-**Section: Pill Count**
-
-**5.0.** Was a pill count performed
-- db_table: meta_subject_medicationadherence
-- column: pill_count_performed
-- type: CharField
-- length: 5
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** Number of pills left in the bottle
-- db_table: meta_subject_medicationadherence
-- column: pill_count
-- type: IntegerField
----
-
-**7.0.** If not performed, please explain ...
-- db_table: meta_subject_medicationadherence
-- column: pill_count_not_performed_reason
-- type: TextField
----
-
-**Section: Missed Medications**
-
-**8.0.** When was the last time you missed your study pill?
-- db_table: meta_subject_medicationadherence
-- column: last_missed_pill
-- type: CharField
-- length: 25
-- responses:
-  - `today`: *today*
-  - `yesterday`: *yesterday*
-  - `earlier_this_week`: *earlier this week*
-  - `last_week`: *last week*
-  - `lt_month_ago`: *less than a month ago*
-  - `gt_month_ago`: *more than a month ago*
-  - `NEVER`: *have never missed taking my study pills*
----
-
-**9.0.** Reasons for missing study pills
-- db_table: meta_subject_medicationadherence
-- column: missed_pill_reason
-- type: ManyToManyField
-- responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills*
-  - `dont_like_taking`: *I don't like taking my pills*
-  - `make_me_ill`: *My pills sometimes make me feel sick*
-  - `misplaced_pills`: *I sometimes misplace my pills*
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
-  - `not_feeling_well`: *I have not been feeling well*
-  - `OTHER`: *Other, please specify ...*
----
-
-**10.0.** If other, please specify ...
-- db_table: meta_subject_medicationadherence
-- column: other_missed_pill_reason
-- type: CharField
-- length: 150
-- responses: *free text*
 ---
 
 
@@ -36046,6 +36701,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -36169,6 +36825,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -36372,6 +37029,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -36800,6 +37458,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -37013,6 +37672,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -37099,6 +37759,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -37261,6 +37922,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -37660,6 +38322,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -37898,6 +38561,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -37905,166 +38569,6 @@ See also GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Ogtt Only)
-A user model to capture both OGTT
-
-See also Glucose and GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucoseogtt
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucoseogtt
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucoseogtt
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucoseogtt
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: OGTT**
-
-**5.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** ogtt diagnostic device
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_value
-- type: DecimalField
----
-
-**11.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**12.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucoseogtt
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Comment (Optional)**
-
-**13.0.** Any other comment?
-- db_table: meta_subject_glucoseogtt
-- column: comment
-- type: TextField
-- length: 500
----
-
-**Section: CRF Status**
-
-**14.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucoseogtt
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**15.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
 ---
@@ -38225,6 +38729,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultshba1c
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**18.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultshba1c
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**19.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultshba1c
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -38512,6 +39039,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultsrft
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**32.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**33.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -38875,6 +39425,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultslft
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**38.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**39.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -39324,6 +39897,29 @@ See also Glucose and GlucoseFbg.
 - type: ForeignKey
 ---
 
+**Section: CRF Status**
+
+**46.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsfbc
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**47.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsfbc
+- column: crf_status_comments
+- type: TextField
+---
+
 
 #### Blood Result: Lipids
 *[missing model class docstring]*
@@ -39604,6 +40200,29 @@ See also Glucose and GlucoseFbg.
 - type: ForeignKey
 ---
 
+**Section: CRF Status**
+
+**30.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultslipids
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**31.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultslipids
+- column: crf_status_comments
+- type: TextField
+---
+
 
 #### Study Medication
 *[missing model class docstring]*
@@ -39710,6 +40329,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -39830,132 +40450,6 @@ See also Glucose and GlucoseFbg.
 ---
 
 
-#### Hiv Exit Review
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_hivexitreview
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_hivexitreview
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**3.0.** Are HIV test result and treatment information available?
-- db_table: meta_subject_hivexitreview
-- column: available
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
-  - `PENDING`: *Pending*
----
-
-**4.0.** If not available, please explain ...
-- db_table: meta_subject_hivexitreview
-- column: not_available_reason
-- type: TextField
----
-
-**Section: HIV and ARVs**
-
-**5.0.** Last viral load
-
-&nbsp;&nbsp;&nbsp;&nbsp; *copies/mL*
-- db_table: meta_subject_hivexitreview
-- column: viral_load
-- type: IntegerField
----
-
-**6.0.** Date of last viral load
-- db_table: meta_subject_hivexitreview
-- column: viral_load_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**7.0.** Last CD4
-
-&nbsp;&nbsp;&nbsp;&nbsp; *cells/mm<sup>3</sup>*
-- db_table: meta_subject_hivexitreview
-- column: cd4
-- type: IntegerField
----
-
-**8.0.** Date of last CD4
-- db_table: meta_subject_hivexitreview
-- column: cd4_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**9.0.** Which antiretroviral therapy regimen is the patient currently on?
-- db_table: meta_subject_hivexitreview
-- column: current_arv_regimen
-- type: ForeignKey
----
-
-**10.0.** If other, please specify ...
-- db_table: meta_subject_hivexitreview
-- column: other_current_arv_regimen
-- type: CharField
-- length: 35
-- responses: *free text*
----
-
-**11.0.** When did the patient start this current antiretroviral therapy regimen?
-- db_table: meta_subject_hivexitreview
-- column: current_arv_regimen_start_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**Section: Comment**
-
-**12.0.** Any other comment?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *May be left blank.*
-- db_table: meta_subject_hivexitreview
-- column: comment
-- type: TextField
----
-
-**Section: CRF Status**
-
-**13.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_hivexitreview
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**14.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_hivexitreview
-- column: crf_status_comments
-- type: TextField
----
-
-
 #### Euroqol Eq-5D-3L Instrument
 *[missing model class docstring]*
 
@@ -40067,6 +40561,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -40270,6 +40765,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -40698,6 +41194,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -40721,6 +41218,296 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_mnsi
 - column: calculated_physical_assessment_score
 - type: DecimalField
+---
+
+
+#### Optional forms
+
+#### Glucose (Ogtt Only)
+A user model to capture both OGTT
+
+See also Glucose and GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucoseogtt
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucoseogtt
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucoseogtt
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucoseogtt
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: OGTT**
+
+**5.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** ogtt diagnostic device
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_value
+- type: DecimalField
+---
+
+**11.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**12.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucoseogtt
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Comment (Optional)**
+
+**13.0.** Any other comment?
+- db_table: meta_subject_glucoseogtt
+- column: comment
+- type: TextField
+- length: 500
+---
+
+**Section: CRF Status**
+
+**14.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**15.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Hiv Exit Review
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_hivexitreview
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_hivexitreview
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Are HIV test result and treatment information available?
+- db_table: meta_subject_hivexitreview
+- column: available
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `PENDING`: *Pending*
+---
+
+**4.0.** If not available, please explain ...
+- db_table: meta_subject_hivexitreview
+- column: not_available_reason
+- type: TextField
+---
+
+**Section: HIV and ARVs**
+
+**5.0.** Last viral load
+
+&nbsp;&nbsp;&nbsp;&nbsp; *copies/mL*
+- db_table: meta_subject_hivexitreview
+- column: viral_load
+- type: IntegerField
+---
+
+**6.0.** Date of last viral load
+- db_table: meta_subject_hivexitreview
+- column: viral_load_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**7.0.** Last CD4
+
+&nbsp;&nbsp;&nbsp;&nbsp; *cells/mm<sup>3</sup>*
+- db_table: meta_subject_hivexitreview
+- column: cd4
+- type: IntegerField
+---
+
+**8.0.** Date of last CD4
+- db_table: meta_subject_hivexitreview
+- column: cd4_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**9.0.** Which antiretroviral therapy regimen is the patient currently on?
+- db_table: meta_subject_hivexitreview
+- column: current_arv_regimen
+- type: ForeignKey
+---
+
+**10.0.** If other, please specify ...
+- db_table: meta_subject_hivexitreview
+- column: other_current_arv_regimen
+- type: CharField
+- length: 35
+- responses: *free text*
+---
+
+**11.0.** When did the patient start this current antiretroviral therapy regimen?
+- db_table: meta_subject_hivexitreview
+- column: current_arv_regimen_start_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: Comment**
+
+**12.0.** Any other comment?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *May be left blank.*
+- db_table: meta_subject_hivexitreview
+- column: comment
+- type: TextField
+---
+
+**Section: CRF Status**
+
+**13.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_hivexitreview
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**14.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_hivexitreview
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -40911,6 +41698,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -40997,6 +41785,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -41169,6 +41958,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -41568,6 +42358,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -41607,6 +42398,234 @@ Introduced 22 FEB 2024
 - type: ForeignKey
 ---
 
+
+#### Study Medication
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_studymedication
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_studymedication
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Will the subject receive study medication for this visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
+- db_table: meta_subject_studymedication
+- column: refill
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**Section: Details**
+
+**4.0.** refill start datetime
+- db_table: meta_subject_studymedication
+- column: refill_start_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**5.0.** dosage guideline
+- db_table: meta_subject_studymedication
+- column: dosage_guideline
+- type: ForeignKey
+---
+
+**6.0.** formulation
+- db_table: meta_subject_studymedication
+- column: formulation
+- type: ForeignKey
+---
+
+**7.0.** Refill to the next scheduled visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
+- db_table: meta_subject_studymedication
+- column: refill_to_next_visit
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**8.0.** refill end datetime
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
+- db_table: meta_subject_studymedication
+- column: refill_end_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** special instructions
+- db_table: meta_subject_studymedication
+- column: special_instructions
+- type: TextField
+---
+
+**Section: Dispensed medication**
+
+**10.0.** stock codes
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
+- db_table: meta_subject_studymedication
+- column: stock_codes
+- type: TextField
+- length: 30
+---
+
+**Section: CRF Status**
+
+**11.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_studymedication
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**12.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_studymedication
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Medication Adherence
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_medicationadherence
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_medicationadherence
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Visual Score**
+
+**3.0.** Visual score
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_slider
+- type: CharField
+- length: 3
+- responses: *free text*
+---
+
+**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_confirmed
+- type: IntegerField
+---
+
+**Section: Pill Count**
+
+**5.0.** Was a pill count performed
+- db_table: meta_subject_medicationadherence
+- column: pill_count_performed
+- type: CharField
+- length: 5
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** Number of pills left in the bottle
+- db_table: meta_subject_medicationadherence
+- column: pill_count
+- type: IntegerField
+---
+
+**7.0.** If not performed, please explain ...
+- db_table: meta_subject_medicationadherence
+- column: pill_count_not_performed_reason
+- type: TextField
+---
+
+**Section: Missed Medications**
+
+**8.0.** When was the last time you missed your study pill?
+- db_table: meta_subject_medicationadherence
+- column: last_missed_pill
+- type: CharField
+- length: 25
+- responses:
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
+---
+
+**9.0.** Reasons for missing study pills
+- db_table: meta_subject_medicationadherence
+- column: missed_pill_reason
+- type: ManyToManyField
+- responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
+---
+
+**10.0.** If other, please specify ...
+- db_table: meta_subject_medicationadherence
+- column: other_missed_pill_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+
+#### Optional forms
 
 #### Glucose (Fbg/Rbg, Ogtt)
 A user model to capture both FBG/RBG and OGTT
@@ -41806,6 +42825,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -41966,6 +42986,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -41975,231 +42996,6 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
----
-
-
-#### Study Medication
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_studymedication
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_studymedication
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**3.0.** Will the subject receive study medication for this visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
-- db_table: meta_subject_studymedication
-- column: refill
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**Section: Details**
-
-**4.0.** refill start datetime
-- db_table: meta_subject_studymedication
-- column: refill_start_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**5.0.** dosage guideline
-- db_table: meta_subject_studymedication
-- column: dosage_guideline
-- type: ForeignKey
----
-
-**6.0.** formulation
-- db_table: meta_subject_studymedication
-- column: formulation
-- type: ForeignKey
----
-
-**7.0.** Refill to the next scheduled visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
-- db_table: meta_subject_studymedication
-- column: refill_to_next_visit
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**8.0.** refill end datetime
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
-- db_table: meta_subject_studymedication
-- column: refill_end_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** special instructions
-- db_table: meta_subject_studymedication
-- column: special_instructions
-- type: TextField
----
-
-**Section: Dispensed medication**
-
-**10.0.** stock codes
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
-- db_table: meta_subject_studymedication
-- column: stock_codes
-- type: TextField
-- length: 30
----
-
-**Section: CRF Status**
-
-**11.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_studymedication
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**12.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_studymedication
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Medication Adherence
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_medicationadherence
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_medicationadherence
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Visual Score**
-
-**3.0.** Visual score
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_slider
-- type: CharField
-- length: 3
-- responses: *free text*
----
-
-**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_confirmed
-- type: IntegerField
----
-
-**Section: Pill Count**
-
-**5.0.** Was a pill count performed
-- db_table: meta_subject_medicationadherence
-- column: pill_count_performed
-- type: CharField
-- length: 5
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** Number of pills left in the bottle
-- db_table: meta_subject_medicationadherence
-- column: pill_count
-- type: IntegerField
----
-
-**7.0.** If not performed, please explain ...
-- db_table: meta_subject_medicationadherence
-- column: pill_count_not_performed_reason
-- type: TextField
----
-
-**Section: Missed Medications**
-
-**8.0.** When was the last time you missed your study pill?
-- db_table: meta_subject_medicationadherence
-- column: last_missed_pill
-- type: CharField
-- length: 25
-- responses:
-  - `today`: *today*
-  - `yesterday`: *yesterday*
-  - `earlier_this_week`: *earlier this week*
-  - `last_week`: *last week*
-  - `lt_month_ago`: *less than a month ago*
-  - `gt_month_ago`: *more than a month ago*
-  - `NEVER`: *have never missed taking my study pills*
----
-
-**9.0.** Reasons for missing study pills
-- db_table: meta_subject_medicationadherence
-- column: missed_pill_reason
-- type: ManyToManyField
-- responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills*
-  - `dont_like_taking`: *I don't like taking my pills*
-  - `make_me_ill`: *My pills sometimes make me feel sick*
-  - `misplaced_pills`: *I sometimes misplace my pills*
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
-  - `not_feeling_well`: *I have not been feeling well*
-  - `OTHER`: *Other, please specify ...*
----
-
-**10.0.** If other, please specify ...
-- db_table: meta_subject_medicationadherence
-- column: other_missed_pill_reason
-- type: CharField
-- length: 150
-- responses: *free text*
 ---
 
 
@@ -42317,6 +43113,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -42440,6 +43237,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -42643,6 +43441,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -43071,6 +43870,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -43284,6 +44084,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -43370,6 +44171,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -43532,6 +44334,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -43931,6 +44734,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -43970,6 +44774,384 @@ Introduced 22 FEB 2024
 - type: ForeignKey
 ---
 
+
+#### Glucose (Fbg Only)
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucosefbg
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucosefbg
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucosefbg
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucosefbg
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: Blood Glucose**
+
+**5.0.** Was the FBG test performed?
+- db_table: meta_subject_glucosefbg
+- column: fbg_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucosefbg
+- column: fbg_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** FBG date/time measured
+- db_table: meta_subject_glucosefbg
+- column: fbg_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** fbg diagnostic device
+- db_table: meta_subject_glucosefbg
+- column: fbg_diagnostic_device
+- type: ForeignKey
+---
+
+**9.0.** FBG level
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucosefbg
+- column: fbg_value
+- type: DecimalField
+---
+
+**10.0.** FBG units
+- db_table: meta_subject_glucosefbg
+- column: fbg_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**11.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucosefbg
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Confirmation appointment**
+
+**12.0.** repeat fbg date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Date should be within 1 week of report date*
+- db_table: meta_subject_glucosefbg
+- column: repeat_fbg_date
+- type: DateField
+- format: YYYY-MM-DD
+---
+
+**Section: CRF Status**
+
+**13.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucosefbg
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**14.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucosefbg
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Study Medication
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_studymedication
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_studymedication
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Will the subject receive study medication for this visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
+- db_table: meta_subject_studymedication
+- column: refill
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**Section: Details**
+
+**4.0.** refill start datetime
+- db_table: meta_subject_studymedication
+- column: refill_start_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**5.0.** dosage guideline
+- db_table: meta_subject_studymedication
+- column: dosage_guideline
+- type: ForeignKey
+---
+
+**6.0.** formulation
+- db_table: meta_subject_studymedication
+- column: formulation
+- type: ForeignKey
+---
+
+**7.0.** Refill to the next scheduled visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
+- db_table: meta_subject_studymedication
+- column: refill_to_next_visit
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**8.0.** refill end datetime
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
+- db_table: meta_subject_studymedication
+- column: refill_end_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** special instructions
+- db_table: meta_subject_studymedication
+- column: special_instructions
+- type: TextField
+---
+
+**Section: Dispensed medication**
+
+**10.0.** stock codes
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
+- db_table: meta_subject_studymedication
+- column: stock_codes
+- type: TextField
+- length: 30
+---
+
+**Section: CRF Status**
+
+**11.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_studymedication
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**12.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_studymedication
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Medication Adherence
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_medicationadherence
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_medicationadherence
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Visual Score**
+
+**3.0.** Visual score
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_slider
+- type: CharField
+- length: 3
+- responses: *free text*
+---
+
+**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_confirmed
+- type: IntegerField
+---
+
+**Section: Pill Count**
+
+**5.0.** Was a pill count performed
+- db_table: meta_subject_medicationadherence
+- column: pill_count_performed
+- type: CharField
+- length: 5
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** Number of pills left in the bottle
+- db_table: meta_subject_medicationadherence
+- column: pill_count
+- type: IntegerField
+---
+
+**7.0.** If not performed, please explain ...
+- db_table: meta_subject_medicationadherence
+- column: pill_count_not_performed_reason
+- type: TextField
+---
+
+**Section: Missed Medications**
+
+**8.0.** When was the last time you missed your study pill?
+- db_table: meta_subject_medicationadherence
+- column: last_missed_pill
+- type: CharField
+- length: 25
+- responses:
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
+---
+
+**9.0.** Reasons for missing study pills
+- db_table: meta_subject_medicationadherence
+- column: missed_pill_reason
+- type: ManyToManyField
+- responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
+---
+
+**10.0.** If other, please specify ...
+- db_table: meta_subject_medicationadherence
+- column: other_missed_pill_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+
+#### Optional forms
 
 #### Glucose (Fbg/Rbg, Ogtt)
 A user model to capture both FBG/RBG and OGTT
@@ -44169,6 +45351,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -44176,155 +45359,6 @@ See also GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Fbg Only)
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucosefbg
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucosefbg
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucosefbg
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucosefbg
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: Blood Glucose**
-
-**5.0.** Was the FBG test performed?
-- db_table: meta_subject_glucosefbg
-- column: fbg_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucosefbg
-- column: fbg_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** FBG date/time measured
-- db_table: meta_subject_glucosefbg
-- column: fbg_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** fbg diagnostic device
-- db_table: meta_subject_glucosefbg
-- column: fbg_diagnostic_device
-- type: ForeignKey
----
-
-**9.0.** FBG level
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucosefbg
-- column: fbg_value
-- type: DecimalField
----
-
-**10.0.** FBG units
-- db_table: meta_subject_glucosefbg
-- column: fbg_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**11.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucosefbg
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Confirmation appointment**
-
-**12.0.** repeat fbg date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Date should be within 1 week of report date*
-- db_table: meta_subject_glucosefbg
-- column: repeat_fbg_date
-- type: DateField
-- format: YYYY-MM-DD
----
-
-**Section: CRF Status**
-
-**13.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucosefbg
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**14.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucosefbg
 - column: crf_status_comments
 - type: TextField
 ---
@@ -44478,6 +45512,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -44487,231 +45522,6 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
----
-
-
-#### Study Medication
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_studymedication
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_studymedication
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**3.0.** Will the subject receive study medication for this visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
-- db_table: meta_subject_studymedication
-- column: refill
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**Section: Details**
-
-**4.0.** refill start datetime
-- db_table: meta_subject_studymedication
-- column: refill_start_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**5.0.** dosage guideline
-- db_table: meta_subject_studymedication
-- column: dosage_guideline
-- type: ForeignKey
----
-
-**6.0.** formulation
-- db_table: meta_subject_studymedication
-- column: formulation
-- type: ForeignKey
----
-
-**7.0.** Refill to the next scheduled visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
-- db_table: meta_subject_studymedication
-- column: refill_to_next_visit
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**8.0.** refill end datetime
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
-- db_table: meta_subject_studymedication
-- column: refill_end_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** special instructions
-- db_table: meta_subject_studymedication
-- column: special_instructions
-- type: TextField
----
-
-**Section: Dispensed medication**
-
-**10.0.** stock codes
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
-- db_table: meta_subject_studymedication
-- column: stock_codes
-- type: TextField
-- length: 30
----
-
-**Section: CRF Status**
-
-**11.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_studymedication
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**12.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_studymedication
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Medication Adherence
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_medicationadherence
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_medicationadherence
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Visual Score**
-
-**3.0.** Visual score
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_slider
-- type: CharField
-- length: 3
-- responses: *free text*
----
-
-**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_confirmed
-- type: IntegerField
----
-
-**Section: Pill Count**
-
-**5.0.** Was a pill count performed
-- db_table: meta_subject_medicationadherence
-- column: pill_count_performed
-- type: CharField
-- length: 5
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** Number of pills left in the bottle
-- db_table: meta_subject_medicationadherence
-- column: pill_count
-- type: IntegerField
----
-
-**7.0.** If not performed, please explain ...
-- db_table: meta_subject_medicationadherence
-- column: pill_count_not_performed_reason
-- type: TextField
----
-
-**Section: Missed Medications**
-
-**8.0.** When was the last time you missed your study pill?
-- db_table: meta_subject_medicationadherence
-- column: last_missed_pill
-- type: CharField
-- length: 25
-- responses:
-  - `today`: *today*
-  - `yesterday`: *yesterday*
-  - `earlier_this_week`: *earlier this week*
-  - `last_week`: *last week*
-  - `lt_month_ago`: *less than a month ago*
-  - `gt_month_ago`: *more than a month ago*
-  - `NEVER`: *have never missed taking my study pills*
----
-
-**9.0.** Reasons for missing study pills
-- db_table: meta_subject_medicationadherence
-- column: missed_pill_reason
-- type: ManyToManyField
-- responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills*
-  - `dont_like_taking`: *I don't like taking my pills*
-  - `make_me_ill`: *My pills sometimes make me feel sick*
-  - `misplaced_pills`: *I sometimes misplace my pills*
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
-  - `not_feeling_well`: *I have not been feeling well*
-  - `OTHER`: *Other, please specify ...*
----
-
-**10.0.** If other, please specify ...
-- db_table: meta_subject_medicationadherence
-- column: other_missed_pill_reason
-- type: CharField
-- length: 150
-- responses: *free text*
 ---
 
 
@@ -44829,6 +45639,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -44952,6 +45763,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -45155,6 +45967,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -45583,6 +46396,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -45796,6 +46610,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -45882,6 +46697,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -46044,6 +46860,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -46443,6 +47260,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -46482,6 +47300,234 @@ Introduced 22 FEB 2024
 - type: ForeignKey
 ---
 
+
+#### Study Medication
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_studymedication
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_studymedication
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Will the subject receive study medication for this visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
+- db_table: meta_subject_studymedication
+- column: refill
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**Section: Details**
+
+**4.0.** refill start datetime
+- db_table: meta_subject_studymedication
+- column: refill_start_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**5.0.** dosage guideline
+- db_table: meta_subject_studymedication
+- column: dosage_guideline
+- type: ForeignKey
+---
+
+**6.0.** formulation
+- db_table: meta_subject_studymedication
+- column: formulation
+- type: ForeignKey
+---
+
+**7.0.** Refill to the next scheduled visit
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
+- db_table: meta_subject_studymedication
+- column: refill_to_next_visit
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**8.0.** refill end datetime
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
+- db_table: meta_subject_studymedication
+- column: refill_end_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** special instructions
+- db_table: meta_subject_studymedication
+- column: special_instructions
+- type: TextField
+---
+
+**Section: Dispensed medication**
+
+**10.0.** stock codes
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
+- db_table: meta_subject_studymedication
+- column: stock_codes
+- type: TextField
+- length: 30
+---
+
+**Section: CRF Status**
+
+**11.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_studymedication
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**12.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_studymedication
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Medication Adherence
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_medicationadherence
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_medicationadherence
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Visual Score**
+
+**3.0.** Visual score
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_slider
+- type: CharField
+- length: 3
+- responses: *free text*
+---
+
+**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
+
+&nbsp;&nbsp;&nbsp;&nbsp; *%*
+- db_table: meta_subject_medicationadherence
+- column: visual_score_confirmed
+- type: IntegerField
+---
+
+**Section: Pill Count**
+
+**5.0.** Was a pill count performed
+- db_table: meta_subject_medicationadherence
+- column: pill_count_performed
+- type: CharField
+- length: 5
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** Number of pills left in the bottle
+- db_table: meta_subject_medicationadherence
+- column: pill_count
+- type: IntegerField
+---
+
+**7.0.** If not performed, please explain ...
+- db_table: meta_subject_medicationadherence
+- column: pill_count_not_performed_reason
+- type: TextField
+---
+
+**Section: Missed Medications**
+
+**8.0.** When was the last time you missed your study pill?
+- db_table: meta_subject_medicationadherence
+- column: last_missed_pill
+- type: CharField
+- length: 25
+- responses:
+  - `today`: *today*
+  - `yesterday`: *yesterday*
+  - `earlier_this_week`: *earlier this week*
+  - `last_week`: *last week*
+  - `lt_month_ago`: *less than a month ago*
+  - `gt_month_ago`: *more than a month ago*
+  - `NEVER`: *have never missed taking my study pills*
+---
+
+**9.0.** Reasons for missing study pills
+- db_table: meta_subject_medicationadherence
+- column: missed_pill_reason
+- type: ManyToManyField
+- responses: *Select all that apply*
+  - `forget_to_take`: *I sometimes forget to take my pills*
+  - `dont_like_taking`: *I don't like taking my pills*
+  - `make_me_ill`: *My pills sometimes make me feel sick*
+  - `misplaced_pills`: *I sometimes misplace my pills*
+  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
+  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
+  - `not_feeling_well`: *I have not been feeling well*
+  - `OTHER`: *Other, please specify ...*
+---
+
+**10.0.** If other, please specify ...
+- db_table: meta_subject_medicationadherence
+- column: other_missed_pill_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+
+#### Optional forms
 
 #### Glucose (Fbg/Rbg, Ogtt)
 A user model to capture both FBG/RBG and OGTT
@@ -46681,6 +47727,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -46841,6 +47888,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -46850,231 +47898,6 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
----
-
-
-#### Study Medication
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_studymedication
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_studymedication
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**3.0.** Will the subject receive study medication for this visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If NO, set refill_start_datetime equal to the refill_end_datetime*
-- db_table: meta_subject_studymedication
-- column: refill
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**Section: Details**
-
-**4.0.** refill start datetime
-- db_table: meta_subject_studymedication
-- column: refill_start_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**5.0.** dosage guideline
-- db_table: meta_subject_studymedication
-- column: dosage_guideline
-- type: ForeignKey
----
-
-**6.0.** formulation
-- db_table: meta_subject_studymedication
-- column: formulation
-- type: ForeignKey
----
-
-**7.0.** Refill to the next scheduled visit
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If YES, leave refill end date blank to auto-calculate*
-- db_table: meta_subject_studymedication
-- column: refill_to_next_visit
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**8.0.** refill end datetime
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Leave blank to auto-calculate if refilling to the next scheduled visit*
-- db_table: meta_subject_studymedication
-- column: refill_end_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** special instructions
-- db_table: meta_subject_studymedication
-- column: special_instructions
-- type: TextField
----
-
-**Section: Dispensed medication**
-
-**10.0.** stock codes
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Enter the medication bottle barcode or barcodes. Type one code per line*
-- db_table: meta_subject_studymedication
-- column: stock_codes
-- type: TextField
-- length: 30
----
-
-**Section: CRF Status**
-
-**11.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_studymedication
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**12.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_studymedication
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Medication Adherence
-*[missing model class docstring]*
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_medicationadherence
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_medicationadherence
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Visual Score**
-
-**3.0.** Visual score
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_slider
-- type: CharField
-- length: 3
-- responses: *free text*
----
-
-**4.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
-
-&nbsp;&nbsp;&nbsp;&nbsp; *%*
-- db_table: meta_subject_medicationadherence
-- column: visual_score_confirmed
-- type: IntegerField
----
-
-**Section: Pill Count**
-
-**5.0.** Was a pill count performed
-- db_table: meta_subject_medicationadherence
-- column: pill_count_performed
-- type: CharField
-- length: 5
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** Number of pills left in the bottle
-- db_table: meta_subject_medicationadherence
-- column: pill_count
-- type: IntegerField
----
-
-**7.0.** If not performed, please explain ...
-- db_table: meta_subject_medicationadherence
-- column: pill_count_not_performed_reason
-- type: TextField
----
-
-**Section: Missed Medications**
-
-**8.0.** When was the last time you missed your study pill?
-- db_table: meta_subject_medicationadherence
-- column: last_missed_pill
-- type: CharField
-- length: 25
-- responses:
-  - `today`: *today*
-  - `yesterday`: *yesterday*
-  - `earlier_this_week`: *earlier this week*
-  - `last_week`: *last week*
-  - `lt_month_ago`: *less than a month ago*
-  - `gt_month_ago`: *more than a month ago*
-  - `NEVER`: *have never missed taking my study pills*
----
-
-**9.0.** Reasons for missing study pills
-- db_table: meta_subject_medicationadherence
-- column: missed_pill_reason
-- type: ManyToManyField
-- responses: *Select all that apply*
-  - `forget_to_take`: *I sometimes forget to take my pills*
-  - `dont_like_taking`: *I don't like taking my pills*
-  - `make_me_ill`: *My pills sometimes make me feel sick*
-  - `misplaced_pills`: *I sometimes misplace my pills*
-  - `dont_believe_pills_help`: *I don't believe my pills are helping me*
-  - `dont_believe_pills_needed`: *I don't believe I need to take my pills*
-  - `not_feeling_well`: *I have not been feeling well*
-  - `OTHER`: *Other, please specify ...*
----
-
-**10.0.** If other, please specify ...
-- db_table: meta_subject_medicationadherence
-- column: other_missed_pill_reason
-- type: CharField
-- length: 150
-- responses: *free text*
 ---
 
 
@@ -47192,6 +48015,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -47315,6 +48139,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -47518,6 +48343,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -47946,6 +48772,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -48159,6 +48986,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -48245,6 +49073,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -48407,6 +49236,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -48806,6 +49636,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -49044,6 +49875,7 @@ See also GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -49051,166 +49883,6 @@ See also GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucose
-- column: crf_status_comments
-- type: TextField
----
-
-
-#### Glucose (Ogtt Only)
-A user model to capture both OGTT
-
-See also Glucose and GlucoseFbg.
-
-*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
-
-
-**Section: Main**
-
-**1.0.** subject visit
-- db_table: meta_subject_glucoseogtt
-- column: subject_visit
-- type: OneToOneField
----
-
-**2.0.** Report Date
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
-- db_table: meta_subject_glucoseogtt
-- column: report_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**Section: Fasting**
-
-**3.0.** Has the participant fasted?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
-- db_table: meta_subject_glucoseogtt
-- column: fasting
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**4.0.** How long have they fasted in hours and/or minutes?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
-- db_table: meta_subject_glucoseogtt
-- column: fasting_duration_str
-- type: CharField
-- length: 8
-- responses: *free text*
----
-
-**Section: OGTT**
-
-**5.0.** Was the OGTT test performed?
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_performed
-- type: CharField
-- length: 15
-- responses:
-  - `Yes`: *Yes*
-  - `No`: *No*
----
-
-**6.0.** If NO, provide reason
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_not_performed_reason
-- type: CharField
-- length: 150
-- responses: *free text*
----
-
-**7.0.** Date/time oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_base_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_datetime
-- type: DateTimeField
-- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
----
-
-**9.0.** ogtt diagnostic device
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_diagnostic_device
-- type: ForeignKey
----
-
-**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
-
-&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_value
-- type: DecimalField
----
-
-**11.0.** Units (Blood glucose 2hrs after...)
-- db_table: meta_subject_glucoseogtt
-- column: ogtt_units
-- type: CharField
-- length: 15
-- responses:
-  - `mg/dL`: *mg/dL*
-  - `mmol/L`: *mmol/L (millimoles/L)*
-  - `N/A`: *Not applicable*
----
-
-**Section: Endpoint review**
-
-**12.0.** Has the participant reached a study endpoint today?
-
-&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
-- db_table: meta_subject_glucoseogtt
-- column: endpoint_today
-- type: CharField
-- length: 25
-- responses:
-  - `Yes`: *Yes*
-  - `PENDING`: *No. A repeat FBG will be scheduled*
-  - `No`: *No*
-  - `N/A`: *Not applicable*
----
-
-**Section: Comment (Optional)**
-
-**13.0.** Any other comment?
-- db_table: meta_subject_glucoseogtt
-- column: comment
-- type: TextField
-- length: 500
----
-
-**Section: CRF Status**
-
-**14.0.** CRF status
-
-&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
-- db_table: meta_subject_glucoseogtt
-- column: crf_status
-- type: CharField
-- length: 25
-- responses:
-  - `INCOMPLETE`: *Incomplete (some data pending)*
-  - `COMPLETE`: *Complete*
----
-
-**15.0.** Any comments related to status of this CRF
-
-&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
-- db_table: meta_subject_glucoseogtt
 - column: crf_status_comments
 - type: TextField
 ---
@@ -49371,6 +50043,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultshba1c
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**18.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultshba1c
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**19.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultshba1c
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -49658,6 +50353,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultsrft
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**32.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**33.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -50021,6 +50739,29 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_bloodresultslft
 - column: related_action_item
 - type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**38.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**39.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -50470,6 +51211,29 @@ See also Glucose and GlucoseFbg.
 - type: ForeignKey
 ---
 
+**Section: CRF Status**
+
+**46.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsfbc
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**47.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsfbc
+- column: crf_status_comments
+- type: TextField
+---
+
 
 #### Blood Result: Lipids
 *[missing model class docstring]*
@@ -50750,6 +51514,29 @@ See also Glucose and GlucoseFbg.
 - type: ForeignKey
 ---
 
+**Section: CRF Status**
+
+**30.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultslipids
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**31.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultslipids
+- column: crf_status_comments
+- type: TextField
+---
+
 
 #### Study Medication
 *[missing model class docstring]*
@@ -50856,6 +51643,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -51090,6 +51878,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -51213,6 +52002,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -51416,6 +52206,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -51844,6 +52635,7 @@ See also Glucose and GlucoseFbg.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -51867,6 +52659,169 @@ See also Glucose and GlucoseFbg.
 - db_table: meta_subject_mnsi
 - column: calculated_physical_assessment_score
 - type: DecimalField
+---
+
+
+#### Optional forms
+
+#### Glucose (Ogtt Only)
+A user model to capture both OGTT
+
+See also Glucose and GlucoseFbg.
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_glucoseogtt
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_glucoseogtt
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Fasting**
+
+**3.0.** Has the participant fasted?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient*
+- db_table: meta_subject_glucoseogtt
+- column: fasting
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** How long have they fasted in hours and/or minutes?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *As reported by patient. Duration of fast. Format is `HHhMMm`. For example 1h23m, 12h7m, etc*
+- db_table: meta_subject_glucoseogtt
+- column: fasting_duration_str
+- type: CharField
+- length: 8
+- responses: *free text*
+---
+
+**Section: OGTT**
+
+**5.0.** Was the OGTT test performed?
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**6.0.** If NO, provide reason
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**7.0.** Date/time oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_base_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**8.0.** Date/time blood glucose measured 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *(2 hours after glucose solution given)*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**9.0.** ogtt diagnostic device
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_diagnostic_device
+- type: ForeignKey
+---
+
+**10.0.** Blood glucose measure 2hrs <u>after</u> oral glucose solution given
+
+&nbsp;&nbsp;&nbsp;&nbsp; *A `HIGH` reading may be entered as 9999.99*
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_value
+- type: DecimalField
+---
+
+**11.0.** Units (Blood glucose 2hrs after...)
+- db_table: meta_subject_glucoseogtt
+- column: ogtt_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Endpoint review**
+
+**12.0.** Has the participant reached a study endpoint today?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Response is applicable if reporting after 24/11/2023 and both the FBG and OGTT were performed*
+- db_table: meta_subject_glucoseogtt
+- column: endpoint_today
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `PENDING`: *No. A repeat FBG will be scheduled*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Comment (Optional)**
+
+**13.0.** Any other comment?
+- db_table: meta_subject_glucoseogtt
+- column: comment
+- type: TextField
+- length: 500
+---
+
+**Section: CRF Status**
+
+**14.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**15.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_glucoseogtt
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -52057,6 +53012,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -52143,6 +53099,7 @@ Introduced 22 FEB 2024
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -52222,6 +53179,7 @@ Schedule.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -52464,7 +53422,7 @@ Schedule.
   - `N/A`: *Not applicable*
 ---
 
-**22.0.** When was the last time you missed your study pill?
+**22.0.** When was the last time you missed taking your pills?
 - db_table: meta_subject_dmfollowup
 - column: last_missed_pill
 - type: CharField
@@ -52491,7 +53449,7 @@ Schedule.
 - responses: *free text*
 ---
 
-**24.0.** <B><font color='orange'>Interviewer</font></B>: please transcribe the score indicated from above.
+**24.0.** Interviewer: please transcribe the score indicated from above.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *%*
 - db_table: meta_subject_dmfollowup
@@ -52510,6 +53468,7 @@ Schedule.
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -52742,6 +53701,7 @@ See also in signals `update_pregnancy_notification_on_delivery_post_save`
 - length: 25
 - responses:
   - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
   - `COMPLETE`: *Complete*
 ---
 
@@ -52784,4 +53744,4 @@ See also in signals `update_pregnancy_notification_on_delivery_post_save`
 
 
 
-*Version v2.4.0* *Rendered on 2026-04-24 19:15*
+*Version v3.1.0* *Rendered on 2026-06-03 00:27*
