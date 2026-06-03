@@ -390,7 +390,7 @@ def _get_incidence_data(
 # ---------------------------------------------------------------------------
 # main entry point
 # ---------------------------------------------------------------------------
-def generate_monitoring_report(
+def generate_monitoring_report(  # noqa: PLR0912
     output_path: Path | str,
     *,
     cutoff_date: datetime | None = None,
@@ -398,7 +398,7 @@ def generate_monitoring_report(
     end_of_trial_date: datetime | None = None,
     study_title: str = STUDY_TITLE_DEFAULT,
     verbose: bool = False,
-) -> Path:
+) -> tuple[Path, Path]:
     """Build the monitoring report and write to ``output_path`` as a PDF.
 
     All dates default to sensible values if omitted:
@@ -412,10 +412,15 @@ def generate_monitoring_report(
     if cutoff_date is None:
         cutoff_date = now_utc.replace(hour=23, minute=59, second=0, microsecond=0)
     if end_of_trial_date is None:
-        end_of_trial_date = cutoff_date.replace(hour=0, minute=0, second=0, microsecond=0)
+        end_of_trial_date = datetime(
+            2026, 5, 31, hour=0, minute=0, second=0, microsecond=0, tzinfo=ZoneInfo("UTC")
+        )
+        # end_of_trial_date = cutoff_date.replace(hour=0, minute=0, second=0, microsecond=0)
 
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    pdf_filename = f"monitoring_report_{cutoff_date.strftime('%Y%m%d%H%M')}.pdf"
+    endpoint_csv_filename = f"endpoints_{cutoff_date.strftime('%Y%m%d%H%M')}.csv"
 
     html_data: list[str] = []
     document_title = (
@@ -458,7 +463,10 @@ def generate_monitoring_report(
     )
 
     cls = GlucoseEndpointsByDate2(verbose=verbose)
+
     df_endpoint = cls.endpoint_df.copy()
+    df_endpoint.to_csv(output_path / endpoint_csv_filename, index=False)
+
     df_glucose = get_glucose_df()
 
     enrolled_1691 = df_visit_1691.copy()
@@ -599,7 +607,8 @@ def generate_monitoring_report(
         )
         .tab_source_note(
             source_note=(
-                f"Scheduled appointment date is before {cutoff_date.strftime('%d %B %Y')}."
+                "Scheduled appointment date is on or "
+                f"before {cutoff_date.strftime('%d %B %Y')}."
             )
         )
     )
@@ -697,6 +706,8 @@ def generate_monitoring_report(
     )
     df_appt_pivot["total"] = df_appt_pivot.iloc[:, 1:].sum(axis=1)
     df_appt_pivot.columns.name = None
+    if df_appt_pivot.empty:
+        df_appt_pivot[["10", "20", "30", "40", "60", "total"]] = 0
     gt = df_as_great_table(df_appt_pivot, title="Table 1e: Future appointments")
     gt = (
         gt.cols_label({k: v for k, v in COLUMN_HEADERS.items() if k != "label"})
@@ -714,6 +725,8 @@ def generate_monitoring_report(
                 f"Scheduled appointment date is on or after "
                 f"{cutoff_date.strftime('%d %B %Y')} and before "
                 f"{end_of_trial_date.strftime('%d %B %Y')}."
+                if len(df_appt_pivot) > 0
+                else "There are no future scheduled appointments"
             )
         )
     )
@@ -879,7 +892,7 @@ def generate_monitoring_report(
         gt_local = df_as_great_table(df_t, title=title)
         note = None
         if visit_code is not None:
-            missing_ogtt = sorted(
+            missing_ogtt: list = sorted(
                 df_glucose.query(
                     "visit_code==@visit_code and ogtt_value.isna()"
                 ).subject_identifier.to_list()
@@ -1495,5 +1508,6 @@ def generate_monitoring_report(
 
     # WeasyPrint has no "verbose" option; the flag is accepted for API parity.
     _ = verbose
-    HTML(string=raw_html_str).write_pdf(str(output_path))
-    return output_path
+
+    HTML(string=raw_html_str).write_pdf(str(output_path / pdf_filename))
+    return (output_path / pdf_filename, output_path / endpoint_csv_filename)
