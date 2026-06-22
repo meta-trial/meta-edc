@@ -184,6 +184,7 @@ dev = [
     "edc-test-settings>=2.1.0",
     "ipython>=9.7.0",
     "matplotlib-venn>=1.1.2",
+    "mysql-connector-python>=9.7.0",
     "notebook>=7.4.7",
     "remote-read-sql>=1.4.0",
     "scikit-learn>=1.7.1",
@@ -196,6 +197,7 @@ dev = [
     "tox>=4.32.0",
     "uv>=0.11.8",
     "xlrd>=2.0.2",
+    "edc-cdisc>=0.1.1"
 ]
 
 [tool.uv]
@@ -215,3 +217,4 @@ edc-qol = { path = "../edc-qol", editable = true }
 edc-he = { path = "../edc-he", editable = true }
 parse-trial-labs = { path = "../parse-trial-labs", editable = true }
 fundus-camera-watchdog = { path = "../fundus-camera-watchdog", editable = true }
+edc-cdisc = { path = "../edc-cdisc", editable = true }

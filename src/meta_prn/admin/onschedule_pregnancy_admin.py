@@ -5,11 +5,11 @@ from edc_model_admin.history import SimpleHistoryAdmin
 from edc_sites.admin import SiteModelAdminMixin
 
 from ..admin_site import meta_prn_admin
-from ..models import OnSchedule
+from ..models import OnSchedulePregnancy
 
 
-@admin.register(OnSchedule, site=meta_prn_admin)
-class OnScheduleAdmin(
+@admin.register(OnSchedulePregnancy, site=meta_prn_admin)
+class OnSchedulePregnancyAdmin(
     SiteModelAdminMixin, ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin
 ):
     instructions = None
@@ -18,8 +18,6 @@ class OnScheduleAdmin(
         (None, {"fields": ("subject_identifier", "onschedule_datetime")}),
         audit_fieldset_tuple,
     )
-
-    # fields = ("subject_identifier", "onschedule_datetime")
 
     def get_list_display(self, request) -> tuple[str, ...]:
         list_display = super().get_list_display(request)
