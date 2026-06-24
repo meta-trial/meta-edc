@@ -41,7 +41,9 @@ else:
     # when running from a repo
     BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
 
-if os.getenv("DJANGO_ENV_DIR"):
+if os.getenv("META_ENV_DIR"):
+    ENV_DIR = Path(os.getenv("META_ENV_DIR")).expanduser()
+elif os.getenv("DJANGO_ENV_DIR"):
     ENV_DIR = Path(os.getenv("DJANGO_ENV_DIR"))
 else:
     ENV_DIR = Path(__file__).resolve().parent.parent.parent.parent
@@ -554,6 +556,9 @@ DATA_DICTIONARY_APP_LABELS = [
 
 # edc_form_runners
 EDC_FORM_RUNNERS_ENABLED = False
+
+# edc_lab_results
+GMAIL_ACCOUNTS_FILE = ENV_DIR / env.str("GMAIL_ACCOUNTS_FILE", default=".gmail_accounts.json")
 
 # edc_pdf_reports
 EDC_PDF_REPORTS_DRAW_LOGO = False

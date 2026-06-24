@@ -8,6 +8,7 @@ from .offschedule_postnatal_admin import OffSchedulePostnatalAdmin
 from .offschedule_pregnancy_admin import OffSchedulePregnancyAdmin
 from .onschedule_admin import OnScheduleAdmin
 from .onschedule_dm_referral_admin import OnScheduleDmReferralAdmin
+from .onschedule_pregnancy_admin import OnSchedulePregnancyAdmin
 from .pregnancy_notification_admin import PregnancyNotificationAdmin
 from .protocol_incident_admin import ProtocolIncidentAdmin
 from .subject_transfer_admin import SubjectTransferAdmin
@@ -23,6 +24,7 @@ __all__ = [
     "OffStudyMedicationAdmin",
     "OnScheduleAdmin",
     "OnScheduleDmReferralAdmin",
+    "OnSchedulePregnancyAdmin",
     "PregnancyNotificationAdmin",
     "ProtocolIncidentAdmin",
     "SubjectTransferAdmin",
