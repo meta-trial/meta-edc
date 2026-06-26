@@ -13,6 +13,12 @@ class HivExitReviewReport(QaReportModelMixin, DBView):
 
     hospital_identifier = EncryptedCharField(null=True)
 
+    initials = EncryptedCharField(null=True)
+
+    first_name = EncryptedCharField(null=True)
+
+    last_name = EncryptedCharField(null=True)
+
     offschedule_datetime = models.DateTimeField(null=True)
 
     hiv_exit_data = models.CharField(max_length=15, default=NULL_STRING)
