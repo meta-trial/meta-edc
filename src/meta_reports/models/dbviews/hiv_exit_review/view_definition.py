@@ -8,6 +8,9 @@ def get_view_definition() -> dict:
     subquery = """
                select history.subject_identifier,
                       scr.hospital_identifier,
+                      consent.initials,
+                      consent.first_name,
+                      consent.last_name,
                       history.site_id,
                       history.offschedule_datetime,
                       hiv.available                       as hiv_exit_data,
@@ -34,10 +37,12 @@ def get_view_definition() -> dict:
                                          where appt_datetime < date ("2026-06-01")) as A
                where row_num = 1) as appt
                on history.subject_identifier = appt.subject_identifier
-                   left join meta_subject_hivexitreview as hiv
+                left join meta_subject_hivexitreview as hiv
                    on hiv.singleton_field = history.subject_identifier
-                   left join meta_screening_subjectscreening as scr
+                left join meta_screening_subjectscreening as scr
                    on history.subject_identifier = scr.subject_identifier
+                left join meta_consent_subjectconsent as consent
+                   on history.subject_identifier = consent.subject_identifier
                where history.schedule_name='schedule' and hiv.available is null
                order by history.subject_identifier;
                """

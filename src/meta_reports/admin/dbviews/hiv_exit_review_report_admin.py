@@ -1,4 +1,5 @@
 from django.contrib import admin
+from edc_auth.constants import PII
 from edc_model_admin.dashboard import ModelAdminDashboardMixin
 from edc_model_admin.mixins import TemplatesModelAdminMixin
 from edc_qareports.modeladmin_mixins import QaReportModelAdminMixin
@@ -13,6 +14,7 @@ from ..list_filters import IsOffScheduleListFilter
 
 @admin.register(HivExitReviewReport, site=meta_reports_admin)
 class HivExitReviewReportAdmin(
+    # ExportMixin,
     QaReportModelAdminMixin,
     SiteModelAdminMixin,
     ModelAdminDashboardMixin,
@@ -33,6 +35,8 @@ class HivExitReviewReportAdmin(
     list_display = (
         "dashboard",
         "subject_identifier",
+        "initials",
+        "last_name",
         "hospital_identifier",
         "site",
         "offschedule_date",
@@ -73,6 +77,11 @@ class HivExitReviewReportAdmin(
             subject_identifier=obj.subject_identifier,
         )
 
+    @admin.display(description="Name")
+    def name(self, obj=None) -> str | None:
+        return f"{obj.last_name}, {obj.first_name}"
+        # return None
+
     @admin.display(description="Appt date", ordering="appt_datetime")
     def appt_date(self, obj):
         if obj and obj.appt_datetime:
@@ -84,3 +93,13 @@ class HivExitReviewReportAdmin(
         if obj and obj.offschedule_datetime:
             return obj.offschedule_datetime.date()
         return None
+
+    def get_list_display(self, request):
+        list_display = super().get_list_display(request)
+        if not request.user.groups.filter(name=PII).exists():
+            return [
+                s
+                for s in list_display
+                if s not in ["hospital_identifier", "initials", "last_name"]
+            ]
+        return list_display

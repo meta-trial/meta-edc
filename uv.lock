@@ -725,7 +725,7 @@ wheels = [
 
 [[package]]
 name = "clinicedc"
-version = "4.2.0"
+version = "4.2.5"
 source = { editable = "../clinicedc" }
 dependencies = [
     { name = "argon2-cffi" },
@@ -759,6 +759,7 @@ dependencies = [
     { name = "inflect" },
     { name = "mempass" },
     { name = "mysqlclient" },
+    { name = "openpyxl" },
     { name = "parse-trial-labs" },
     { name = "psycopg2" },
     { name = "pycups" },
@@ -806,6 +807,7 @@ requires-dist = [
     { name = "inflect", specifier = ">=7.5.0" },
     { name = "mempass", specifier = ">=0.1.2" },
     { name = "mysqlclient", specifier = ">=2.2.7" },
+    { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "parse-trial-labs", specifier = ">=0.4.0" },
     { name = "psycopg2", specifier = ">=2.9.10" },
     { name = "pycups", specifier = ">=2.0.4" },
@@ -1524,7 +1526,7 @@ wheels = [
 
 [[package]]
 name = "edc-cdisc"
-version = "0.2.0"
+version = "0.3.0"
 source = { editable = "../edc-cdisc" }
 dependencies = [
     { name = "clinicedc" },
