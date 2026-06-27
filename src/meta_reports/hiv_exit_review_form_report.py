@@ -26,18 +26,68 @@ from .models import HivExitReviewReport
 if TYPE_CHECKING:
     from django.db.models import QuerySet
 
-__all__ = ["generate_hiv_exit_review_forms"]
+__all__ = ["FontNotFoundError", "PageOverflowError", "generate_hiv_exit_review_forms"]
 
 # A blank line for a short, single-line hand-written answer.
 _LINE = '<span class="fill"></span>'
 
+# Bundled Liberation Sans (metric-compatible with Arial/Helvetica). Embedding the
+# font keeps the PDF identical on every platform; without it WeasyPrint falls back
+# to a system font (e.g. DejaVu Sans on Ubuntu) whose taller metrics overflow the
+# single page. See fonts/README.md.
+_FONT_DIR = Path(__file__).parent / "fonts"
+_FONT_FACES = (
+    ("normal", "normal", "LiberationSans-Regular.ttf"),
+    ("bold", "normal", "LiberationSans-Bold.ttf"),
+    ("normal", "italic", "LiberationSans-Italic.ttf"),
+    ("bold", "italic", "LiberationSans-BoldItalic.ttf"),
+)
+
+
+class FontNotFoundError(FileNotFoundError):
+    """A bundled font file is missing from the package."""
+
+
+class PageOverflowError(RuntimeError):
+    """A subject's form did not fit on a single page."""
+
+
+def _font_face_css() -> str:
+    """Build @font-face rules pointing at the bundled TTF files.
+
+    Raises FontNotFoundError if any face is missing, so a broken deploy fails
+    loudly instead of silently falling back to a system font.
+    """
+    rules = []
+    for weight, style, filename in _FONT_FACES:
+        path = _FONT_DIR / filename
+        if not path.is_file():
+            raise FontNotFoundError(
+                f"Bundled font {filename!r} not found at {path}. The "
+                "meta_reports/fonts/ directory must ship with the package."
+            )
+        rules.append(
+            "@font-face {"
+            "font-family: 'Liberation Sans';"
+            f"font-weight: {weight};"
+            f"font-style: {style};"
+            f"src: url('{path.as_uri()}');"
+            "}"
+        )
+    return "\n".join(rules)
+
 
 def _page_style() -> str:
-    return """
-<style>
+    return (
+        "<style>\n"
+        + _font_face_css()
+        + """
   @page {
     size: A4;
-    margin: 18mm 14mm 18mm 14mm;
+    /* Top/bottom 16mm keeps the header/footer (which sit in the margin band)
+       clear of the ~4-5mm non-printable border on laser printers, e.g. HP
+       LaserJet. The body still fits one page; enforced by the page-count guard. */
+    margin: 16mm 14mm 16mm 14mm;
     @top-center {
       content: "META Trial: CONFIDENTIAL";
       font-size: 8pt;
@@ -57,7 +107,7 @@ def _page_style() -> str:
     }
   }
   body {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
     font-size: 10pt;
     color: #000;
   }
@@ -163,7 +213,7 @@ def _page_style() -> str:
   table.signature {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 16px;
+    margin-top: 10px;
   }
   table.signature td {
     padding: 14px 8px 4px 8px;
@@ -178,7 +228,7 @@ def _page_style() -> str:
   }
   .office-use {
     border: 1.5px solid #000;
-    margin-top: 22px;
+    margin-top: 14px;
     padding: 6px 10px 12px 10px;
   }
   .office-use .office-title {
@@ -195,6 +245,7 @@ def _page_style() -> str:
   }
 </style>
 """
+    )
 
 
 def _header_box(obj: HivExitReviewReport) -> str:
@@ -359,6 +410,8 @@ def generate_hiv_exit_review_forms(
     :param password: if given, the PDF is AES-256 encrypted and requires this
         password to open. The form contains PII, so a password is recommended.
     :returns: the path to the written PDF.
+    :raises FontNotFoundError: if a bundled font face is missing.
+    :raises PageOverflowError: if any subject's form spills past one page.
     """
     output_path = Path(output_path).expanduser()
     if output_path.is_dir() or str(output_path).endswith("/"):
@@ -377,6 +430,17 @@ def generate_hiv_exit_review_forms(
         f"{_page_style()}\n</head>\n<body>\n{body}\n</body>\n</html>\n"
     )
     pdf_bytes = HTML(string=raw_html).write_pdf()
+
+    # Strict invariant: exactly one page per subject (one page when empty). If a
+    # form overflows, fail loudly rather than emit a 2-page-per-subject document.
+    expected_pages = max(len(pages), 1)
+    actual_pages = len(PdfReader(io.BytesIO(pdf_bytes)).pages)
+    if actual_pages != expected_pages:
+        raise PageOverflowError(
+            f"Rendered {actual_pages} page(s) for {expected_pages} subject(s); each "
+            "form must fit on exactly one page. A subject's content overflowed."
+        )
+
     if password:
         pdf_bytes = _encrypt(pdf_bytes, password)
     output_path.write_bytes(pdf_bytes)

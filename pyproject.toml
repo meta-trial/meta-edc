@@ -82,7 +82,7 @@ module-name = [
     "meta_subject",
     "meta_visit_schedule",
 ]
-source-include = ["meta_*/templates/**", "meta_*/locale/**", "locale/**"]
+source-include = ["meta_*/templates/**", "meta_*/locale/**", "meta_*/fonts/**", "locale/**"]
 source-exclude = ["meta_*/tests/**", "meta_*/notebooks/**", "tests/**"]
 namespace = false
 
