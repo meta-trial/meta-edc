@@ -4,11 +4,12 @@ from django_crypto_fields.fields import EncryptedCharField
 from django_db_views.db_view import DBView
 from edc_appointment.choices import APPT_STATUS
 from edc_qareports.model_mixins import QaReportModelMixin, qa_reports_permissions
+from edc_visit_schedule.model_mixins import VisitScheduleFieldsModelMixin
 
 from .view_definition import get_view_definition
 
 
-class HivExitReviewReport(QaReportModelMixin, DBView):
+class HivExitReviewReport(QaReportModelMixin, VisitScheduleFieldsModelMixin, DBView):
     source = models.CharField(max_length=35, default=NULL_STRING)
 
     hospital_identifier = EncryptedCharField(null=True)

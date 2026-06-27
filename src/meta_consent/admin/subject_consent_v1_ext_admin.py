@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.urls import reverse
+from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from django_audit_fields import audit_fieldset_tuple
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
@@ -50,7 +52,8 @@ class SubjectConsentV1ExtAdmin(
     )
 
     list_display = (
-        "subject_consent",
+        "edit",
+        "subject_identifier_link",
         "report_date",
         "agrees",
     )
@@ -73,6 +76,20 @@ class SubjectConsentV1ExtAdmin(
         "id",
         "subject_identifier",
     )
+
+    @admin.display(description="Edit/View")
+    def edit(self, obj) -> str:  # noqa: ARG002
+        return "Edit"
+
+    @admin.display(description="Subject ID")
+    def subject_identifier_link(self, obj) -> str:
+        url = reverse("meta_consent_admin:meta_consent_subjectconsentv1_changelist")
+        return format_html(
+            '<a title="Go to subject consent V1" href="{}?q={}">{}</a>',
+            url,
+            obj.subject_identifier,
+            obj.subject_identifier,
+        )
 
     def get_readonly_fields(self, request, obj=None) -> tuple[str, ...]:  # noqa: ARG002
         if obj:

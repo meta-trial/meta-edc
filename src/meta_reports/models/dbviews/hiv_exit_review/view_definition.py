@@ -13,6 +13,8 @@ def get_view_definition() -> dict:
                       consent.last_name,
                       history.site_id,
                       history.offschedule_datetime,
+                      history.visit_schedule_name,
+                      history.schedule_name,
                       hiv.available                       as hiv_exit_data,
                       hiv.report_datetime                 as hiv_exit_datetime,
                       appt.visit_code,
