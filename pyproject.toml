@@ -1,6 +1,6 @@
 [project]
 name = "meta-edc"
-version = "3.4.0"
+version = "3.4.1"
 description = "META Trial EDC (https://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 keywords = [
@@ -50,6 +50,7 @@ dependencies = [
     "pandas>=3.0.2",
     "parse-trial-labs>=0.4.1",
     "pdfkit>=1.0.0",
+    "pypdf>=5.0",
     "ruff>=0.15.11",
     "scipy>=1.17.1",
     "weasyprint>=62.0",

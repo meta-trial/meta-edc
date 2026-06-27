@@ -2904,7 +2904,7 @@ wheels = [
 
 [[package]]
 name = "meta-edc"
-version = "3.4.0"
+version = "3.4.1"
 source = { editable = "." }
 dependencies = [
     { name = "celery" },
@@ -2925,6 +2925,7 @@ dependencies = [
     { name = "pandas" },
     { name = "parse-trial-labs" },
     { name = "pdfkit" },
+    { name = "pypdf" },
     { name = "ruff" },
     { name = "scipy" },
     { name = "weasyprint" },
@@ -2983,6 +2984,7 @@ requires-dist = [
     { name = "pandas", specifier = ">=3.0.2" },
     { name = "parse-trial-labs", editable = "../parse-trial-labs" },
     { name = "pdfkit", specifier = ">=1.0.0" },
+    { name = "pypdf", specifier = ">=5.0" },
     { name = "ruff", specifier = ">=0.15.11" },
     { name = "scipy", specifier = ">=1.17.1" },
     { name = "weasyprint", specifier = ">=62.0" },
@@ -3613,7 +3615,7 @@ name = "pexpect"
 version = "4.9.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "ptyprocess", marker = "sys_platform != 'emscripten' and sys_platform != 'win32'" },
+    { name = "ptyprocess" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/42/92/cc564bf6381ff43ce1f4d06852fc19a2f11d180f23dc32d9588bee2f149d/pexpect-4.9.0.tar.gz", hash = "sha256:ee7d41123f3c9911050ea2c2dac107568dc43b2d3b0c7557a33212c398ead30f", size = 166450, upload-time = "2023-11-25T09:07:26.339Z" }
 wheels = [
