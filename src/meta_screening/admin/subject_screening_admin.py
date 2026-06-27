@@ -1,3 +1,6 @@
+import re
+from collections.abc import Callable
+
 from clinicedc_constants import YES
 from django.contrib import admin
 from django.template.loader import render_to_string
@@ -7,6 +10,7 @@ from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from django_audit_fields.admin import audit_fieldset_tuple
+from edc_auth.constants import PII
 from edc_dashboard.url_names import url_names
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
@@ -34,6 +38,15 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
     subject_listboard_url_name = "screening_listboard_url"  # :FIXME is this ok?
     screening_listboard_url_name = "screening_listboard_url"
 
+    change_list_note = format_html(
+        "If <strong>sensitive data</strong> is available and the user has permissions "
+        "to view, the <strong>sensitive data</strong> will only show for a search result "
+        "that is an exact match for a given <strong>Screening ID</strong>. "
+        "If multiple results appear, click on a <strong>Screening ID</strong> to "
+        "add it to the search filter.",
+        "",
+    )
+
     additional_instructions = (
         "Patients must meet ALL of the inclusion criteria and NONE of the "
         "exclusion criteria in order to proceed to the final screening stage"
@@ -46,18 +59,6 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         get_part_three_fieldset(),
         calculated_values_fieldset,
         audit_fieldset_tuple,
-    )
-
-    list_display = (
-        "screening_identifier",
-        "eligibility_status",
-        "demographics",
-        "reasons",
-        "report_datetime",
-        "p3_appt",
-        "p3_repeat_appt",
-        "user_created",
-        "created",
     )
 
     list_filter = (
@@ -153,18 +154,54 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
     def get_post_url_on_delete_name(self, request) -> str:  # noqa: ARG002
         return url_names.get(self.post_url_on_delete_name)
 
-    @staticmethod
-    def demographics(obj=None):
-        data = [
-            f"{obj.get_gender_display()} {obj.age_in_years}yrs",
-            f"Initials: {obj.initials.upper()}<BR>",
-            f"Hospital ID: {obj.hospital_identifier}",
-        ]
-        if obj.repeat_glucose_opinion == YES:
-            data.append(f"Contact #: {obj.contact_number or '--'}")
-        return format_html(
-            "{}",
-            mark_safe("<BR>".join(data)),  # noqa: S308
+    def get_list_display(self, request) -> tuple[str | Callable, ...]:
+        has_perms_for_pii = request.user.groups.filter(name=PII).exists()
+        MASK = "*****"  # noqa: N806
+        pattern = "S[A-Z0-9]{7}"
+        query = request.GET.get("q", "").strip()
+        search_active = re.match(pattern, query)
+
+        @admin.display(description="Edit/View")
+        def edit(obj) -> str:  # noqa: ARG001
+            return "Edit"
+
+        @admin.display(description="Screening ID")
+        def screening_identifier_link(obj) -> str:
+            return format_html(
+                '<A title="search on this screening ID" href="?q={}">{}</A>',
+                obj.screening_identifier,
+                obj.screening_identifier,
+            )
+
+        def demographics(obj=None):
+            initials = obj.initials.upper() if has_perms_for_pii else MASK
+            hospital_identifier = (
+                obj.hospital_identifier if has_perms_for_pii and search_active else MASK
+            )
+
+            data = [
+                f"{obj.get_gender_display()} {obj.age_in_years}yrs",
+                f"Initials: {initials}<BR>",
+                f"Hospital ID: {hospital_identifier}",
+            ]
+            if obj.repeat_glucose_opinion == YES:
+                data.append(f"Contact #: {obj.contact_number or '--'}")
+            return format_html(
+                "{}",
+                mark_safe("<BR>".join(data)),  # noqa: S308
+            )
+
+        return (
+            edit,
+            screening_identifier_link,
+            "eligibility_status",
+            demographics,
+            "reasons",
+            "report_datetime",
+            "p3_appt",
+            "p3_repeat_appt",
+            "user_created",
+            "created",
         )
 
     def reasons(self, obj=None):
@@ -188,7 +225,7 @@ class SubjectScreeningAdmin(ModelAdminSubjectDashboardMixin, SimpleHistoryAdmin)
         return format_html(
             "{button}<BR>{status}",
             button=button,
-            status=eligibility.eligibility_status(add_urls=True),
+            status=mark_safe(eligibility.eligibility_status(add_urls=True)),  # noqa: S308
         )
 
     def dashboard(self, obj=None, label=None):
