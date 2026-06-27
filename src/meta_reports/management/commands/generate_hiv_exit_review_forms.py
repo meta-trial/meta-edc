@@ -29,7 +29,11 @@ from pathlib import Path
 
 from django.core.management.base import BaseCommand, CommandError
 
-from meta_reports.hiv_exit_review_form_report import generate_hiv_exit_review_forms
+from meta_reports.hiv_exit_review_form_report import (
+    FontNotFoundError,
+    PageOverflowError,
+    generate_hiv_exit_review_forms,
+)
 from meta_reports.models import HivExitReviewReport
 
 
@@ -96,8 +100,23 @@ class Command(BaseCommand):
 
         count = queryset.count()
         self.stdout.write(f"Generating HIV Exit Review forms for {count} subject(s) ...")
-        written = generate_hiv_exit_review_forms(
-            output_path=output, queryset=queryset, password=password
-        )
+        try:
+            written = generate_hiv_exit_review_forms(
+                output_path=output, queryset=queryset, password=password
+            )
+        except FontNotFoundError as exc:
+            raise CommandError(
+                f"{exc}\n\nThe form embeds Liberation Sans for consistent, single-page "
+                "output. The font files ship under meta_reports/fonts/ — ensure they "
+                "were deployed with the package. As a fallback you can install the font "
+                "system-wide:\n    sudo apt-get install fonts-liberation"
+            ) from exc
+        except PageOverflowError as exc:
+            raise CommandError(
+                f"{exc}\n\nThis usually means a system font is being substituted for the "
+                "embedded one. Verify the bundled fonts under meta_reports/fonts/ are "
+                "present, or install them system-wide:\n"
+                "    sudo apt-get install fonts-liberation"
+            ) from exc
         self.stdout.write(self.style.SUCCESS(f"Wrote {written} (password-protected)"))
         sys.stdout.flush()
