@@ -3,6 +3,7 @@ from urllib.parse import parse_qs, urlsplit
 from clinicedc_constants import YES
 from django.contrib import admin
 from django_audit_fields.admin import audit_fieldset_tuple
+from edc_data_manager.auth_objects import DATA_MANAGER_ROLE
 from edc_lab.admin import (
     RequisitionAdminMixin,
     requisition_fieldset,
@@ -53,3 +54,10 @@ class SubjectRequisitionAdmin(RequisitionAdminMixin, CrfModelAdminMixin, SimpleH
             else:
                 queryset = queryset.filter(subject_visit=subject_visit, is_drawn=YES)
         return queryset, use_distinct
+
+    def get_view_only_site_ids_for_user(self, request) -> list[int]:
+        if request.user.userprofile.roles.filter(name=DATA_MANAGER_ROLE).exists():
+            return [
+                s.id for s in request.user.userprofile.sites.all() if s.id != request.site.id
+            ]
+        return super().get_view_only_site_ids_for_user(request)

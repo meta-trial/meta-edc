@@ -1,3 +1,4 @@
+import contextlib
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -5,7 +6,14 @@ from clinicedc_constants import YES
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
 from edc_appointment.constants import NEW_APPT
-from edc_lab_panel.panels import hba1c_panel, insulin_panel
+from edc_lab_panel.panels import (
+    fbc_panel,
+    hba1c_panel,
+    insulin_panel,
+    lft_panel,
+    lipids_panel,
+    rft_panel,
+)
 from edc_metadata.metadata_rules import PersistantSingletonMixin
 from edc_sites.site import sites
 from edc_visit_schedule.constants import (
@@ -84,9 +92,21 @@ class Predicates(PersistantSingletonMixin):
 
     @staticmethod
     def glucose_fbg_required(visit, **kwargs):  # noqa: ARG004
-        return visit.report_datetime >= datetime(
-            2024, 3, 4, tzinfo=ZoneInfo("UTC")
-        ) and visit.visit_code in [MONTH6, MONTH18, MONTH30, MONTH42]
+        """Return True if required.
+
+        Usually required along with FBG+OGTT. User has a choice to
+        fill one or the other. If FBG+OGTT is submitted where the
+        FBG value is not null, do not require this one.
+        """
+        fbg_obj = None
+        model_cls = django_apps.get_model("meta_subject.glucose")
+        with contextlib.suppress(ObjectDoesNotExist):
+            fbg_obj = model_cls.objects.get(subject_visit=visit, fbg_value__isnull=False)
+        return (
+            not fbg_obj
+            and visit.report_datetime >= datetime(2024, 3, 4, tzinfo=ZoneInfo("UTC"))
+            and visit.visit_code in [MONTH6, MONTH18, MONTH30, MONTH42]
+        )
 
     @staticmethod
     def pregnancy_notification_exists(visit, **kwargs):  # noqa: ARG004
@@ -288,12 +308,49 @@ class Predicates(PersistantSingletonMixin):
         return False
 
     def hiv_exit_review_required(self, visit, **kwargs) -> bool:  # noqa: ARG002
-        return visit.schedule_name == SCHEDULE and (
+        required = False
+        model = f"{self.app_label}.hivexitreview"
+        if visit.schedule_name == SCHEDULE and (
             self.offschedule_today(visit)
             or visit.report_datetime >= datetime(2026, 3, 1, 0, 0, tzinfo=ZoneInfo("UTC"))
-        )
+        ):
+            required = self.persistant_singleton_required(
+                visit, model=model, exclude_visit_codes=[DAY1]
+            )
+        return required
 
     def last_visit_crfs_required(self, visit, **kwargs) -> bool:  # noqa: ARG002
         return visit.schedule_name == SCHEDULE and visit.report_datetime >= datetime(
             2026, 3, 1, 0, 0, tzinfo=ZoneInfo("UTC")
         )
+
+    def bloodresultsrft(self, visit, **kwargs):  # noqa: ARG002
+        return (
+            django_apps.get_model(f"{self.app_label}.subjectrequisition")
+            .objects.filter(subject_visit=visit, panel__name=rft_panel.name)
+            .exists()
+        )
+
+    def bloodresultslft(self, visit, **kwargs):  # noqa: ARG002
+        return (
+            django_apps.get_model(f"{self.app_label}.subjectrequisition")
+            .objects.filter(subject_visit=visit, panel__name=lft_panel.name)
+            .exists()
+        )
+
+    def bloodresultsfbc(self, visit, **kwargs):  # noqa: ARG002
+        return (
+            django_apps.get_model(f"{self.app_label}.subjectrequisition")
+            .objects.filter(subject_visit=visit, panel__name=fbc_panel.name)
+            .exists()
+        )
+
+    def bloodresultslipids(self, visit, **kwargs):  # noqa: ARG002
+        return (
+            django_apps.get_model(f"{self.app_label}.subjectrequisition")
+            .objects.filter(subject_visit=visit, panel__name=lipids_panel.name)
+            .exists()
+        )
+
+    def bloodresultsfbc_month_30(self, visit, **kwargs):  # noqa: ARG002
+        return False

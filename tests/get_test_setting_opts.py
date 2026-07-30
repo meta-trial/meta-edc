@@ -129,6 +129,7 @@ def get_test_setting_opts(app_name: str, base_dir: Path):
             "edc_lab.apps.AppConfig",
             "edc_lab_dashboard.apps.AppConfig",
             "edc_lab_results.apps.AppConfig",
+            "edc_lab_results_import.apps.AppConfig",
             "edc_label.apps.AppConfig",
             "edc_listboard.apps.AppConfig",
             "edc_locator.apps.AppConfig",

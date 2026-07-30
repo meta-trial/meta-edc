@@ -34,7 +34,7 @@ requires-python = '>=3.12,<3.15'
 dependencies = [
     "Django>=5.2,<6.1",
     "celery>=5.6.2",
-    "clinicedc>=4.2.15",
+    "clinicedc>=4.3.1",
     "django-pandas>=0.6.7",
     "djangorestframework-stubs>=3.17.0",
     "edc-he>=2.1.0",
@@ -187,6 +187,7 @@ dev = [
     "matplotlib-venn>=1.1.2",
     "mysql-connector-python>=9.7.0",
     "notebook>=7.4.7",
+    "pyarrow>=25.0.0",
     "remote-read-sql>=1.4.0",
     "scikit-learn>=1.7.1",
     "scipy-stubs~=1.17.1.5",

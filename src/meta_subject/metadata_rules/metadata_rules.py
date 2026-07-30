@@ -1,6 +1,7 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+from django.conf import settings
 from edc_lab_panel.panels import hba1c_poc_panel, insulin_panel
 from edc_metadata import NOT_REQUIRED, REQUIRED
 from edc_metadata.metadata_rules import (
@@ -11,7 +12,7 @@ from edc_metadata.metadata_rules import (
     register,
 )
 
-from meta_visit_schedule.constants import SCHEDULE, VISIT_SCHEDULE
+from meta_visit_schedule.constants import MONTH30, SCHEDULE, VISIT_SCHEDULE
 
 from .predicates import Predicates
 
@@ -212,8 +213,86 @@ class LastVisitRuleGroup(CrfRuleGroup):
             "mnsi",
             "sf12",
         ],
-        run_only_after_datetime=datetime(2026, 3, 1, 0, 0, tzinfo=ZoneInfo("UTC")),
+        run_only_after_datetime=datetime(
+            2026, 3, 1, 0, 0, tzinfo=ZoneInfo(settings.TIME_ZONE)
+        ),
         run_only_for_visit_schedules=[f"{VISIT_SCHEDULE}.{SCHEDULE}"],
+    )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"
+
+
+@register()
+class BloodResultsRuleGroup(CrfRuleGroup):
+    """Require the bloodresult CRF if the corresponding requisition
+    was submitted.
+    """
+
+    rft = CrfRule(
+        predicate=pc.bloodresultsrft,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["bloodresultsrft"],
+    )
+
+    lft = CrfRule(
+        predicate=pc.bloodresultslft,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["bloodresultslft"],
+    )
+
+    fbc = CrfRule(
+        predicate=pc.bloodresultsfbc,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["bloodresultsfbc"],
+    )
+
+    lipids = CrfRule(
+        predicate=pc.bloodresultslipids,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["bloodresultslipids"],
+    )
+
+    # ins = CrfRule(
+    #     predicate=pc.bloodresultsins,
+    #     consequence=REQUIRED,
+    #     alternative=NOT_REQUIRED,
+    #     target_models=["bloodresultsins"],
+    # )
+    #
+    # hba1c = CrfRule(
+    #     predicate=pc.bloodresultshba1c,
+    #     consequence=REQUIRED,
+    #     alternative=NOT_REQUIRED,
+    #     target_models=["bloodresultshba1c"],
+    # )
+
+    class Meta:
+        app_label = "meta_subject"
+        source_model = "meta_subject.subjectvisit"
+
+
+@register()
+class BloodResultsFbcRuleGroup(CrfRuleGroup):
+    """FBC no longer required at 30M, 3 MARCH 2024 according to
+    ammendment.
+    """
+
+    ZoneInfo(settings.TIME_ZONE)
+    fbc = CrfRule(
+        predicate=pc.bloodresultsfbc_month_30,
+        consequence=REQUIRED,
+        alternative=NOT_REQUIRED,
+        target_models=["bloodresultsfbc"],
+        run_only_for_visit_codes=[MONTH30],
+        run_only_after_datetime=datetime(
+            2024, 3, 3, 0, 0, tzinfo=ZoneInfo(settings.TIME_ZONE)
+        ),
     )
 
     class Meta:

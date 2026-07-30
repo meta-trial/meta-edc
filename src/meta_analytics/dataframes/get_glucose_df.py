@@ -67,6 +67,12 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
     df["visit_days"] = pd.to_numeric(df["visit_days"], downcast="integer")
     df["fgb_days"] = pd.to_numeric(df["fgb_days"], downcast="integer")
     df["ogtt_days"] = pd.to_numeric(df["ogtt_days"], downcast="integer")
+
+    string_cols = [col for col in df.columns if df[col].dtype == "str"]
+    string_cols.extend(["subject_identifier", "subject_visit_id"])
+    for col in string_cols:
+        df[col] = df[col].astype("string").fillna(pd.NA)
+
     return (
         df.query(
             "offstudy_reason != 'Patient fulfilled late exclusion criteria "
