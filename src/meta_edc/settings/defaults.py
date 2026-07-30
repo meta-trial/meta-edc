@@ -36,7 +36,7 @@ env = environ.Env(
 if os.getenv("DJANGO_BASE_DIR"):
     # for deployed systems where meta-edc is pip installed.
     # same dir as manage.py
-    BASE_DIR = Path(os.getenv("DJANGO_BASE_DIR"))
+    BASE_DIR = Path(os.getenv("DJANGO_BASE_DIR")).expanduser()
 else:
     # when running from a repo
     BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
@@ -44,7 +44,7 @@ else:
 if os.getenv("META_ENV_DIR"):
     ENV_DIR = Path(os.getenv("META_ENV_DIR")).expanduser()
 elif os.getenv("DJANGO_ENV_DIR"):
-    ENV_DIR = Path(os.getenv("DJANGO_ENV_DIR"))
+    ENV_DIR = Path(os.getenv("DJANGO_ENV_DIR")).expanduser()
 else:
     ENV_DIR = Path(__file__).resolve().parent.parent.parent.parent
 
@@ -144,6 +144,7 @@ INSTALLED_APPS = [
     "edc_reportable.apps.AppConfig",
     "edc_lab.apps.AppConfig",
     "edc_lab_results.apps.AppConfig",
+    "edc_lab_results_import.apps.AppConfig",
     "edc_visit_schedule.apps.AppConfig",
     "edc_visit_tracking.apps.AppConfig",
     "edc_device.apps.AppConfig",
@@ -423,38 +424,14 @@ EDC_EXPORT_EXPORT_PII_USERS = env.list("EDC_EXPORT_EXPORT_PII_USERS")
 # edc_facility
 HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
 
-# edc-lab-results
+# edc-lab-results-import
+EDC_LAB_RESULTS_MAPPING_FILES = {"MNH": ENV_DIR / "mnh_result_mappings.json"}
+if DEBUG:
+    EDC_LAB_RESULTS_MAPPING_FILES = {
+        "MNH": Path("~/.clinicedc/meta_edc/mnh_result_mappings.json").expanduser()
+    }
+EDC_LAB_RESULTS_PARSERS = {"MNH": "parse_trial_labs.parsers.parse_mnh"}
 EDC_LAB_RESULTS_UPLOAD_DIR = "~/upload/edc_lab_results"
-
-EDC_LAB_RESULTS_PARSERS = {
-    "MNH": "parse_trial_labs.parsers.parse_mnh",
-}
-EDC_LAB_RESULTS_DEFAULT_MAPPINGS = {
-    "MNH": {
-        "WBC": "wbc",
-        "RBC": "rbc",
-        "HGB": "haemoglobin",
-        "HCT": "hct",
-        "MCV": "mcv",
-        "MCH": "mch",
-        "MCHC": "mchc",
-        "PLATELETS": "platelets",
-        "UREA NITROGEN": "urea",
-        "CREATININE": "creatinine",
-        "URIC ACID": "uric_acid",
-        "AST(SGOT)": "ast",
-        "ALT(SGPT)": "alt",
-        "ALKALINE PHOSPHATASE": "alp",
-        "AMYLASE": "amylase",
-        "GAMMA GT": "ggt",
-        "ALBUMIN": "albumin",
-        "CHOLESTEROL": "chol",
-        "HDL CHOLESTEROL": "hdl",
-        "LDL CHOL (CALC)": "ldl",
-        "TRIGLYCERIDES": "trig",
-        "INSULIN": "ins",
-    },
-}
 
 # edc-label
 EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK = env("EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK")

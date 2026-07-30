@@ -56,6 +56,7 @@ requisitions_12m = RequisitionCollection(
 
 requisitions_15m = RequisitionCollection(name="requisitions_month15")
 
+# TODO: FBC not required, 3 MARCH 2024 according to ammendment
 requisitions_18m = RequisitionCollection(
     Requisition(show_order=20, panel=fbc_panel, required=True, additional=False),
     name="requisitions_month18",
@@ -73,6 +74,7 @@ requisitions_24m = RequisitionCollection(
 
 requisitions_27m = RequisitionCollection(name="requisitions_month27")
 
+# TODO: FBC not required, 3 MARCH 2024 according to ammendment
 requisitions_30m = RequisitionCollection(
     Requisition(show_order=20, panel=rft_panel, required=True, additional=False),
     Requisition(show_order=30, panel=lft_panel, required=True, additional=False),

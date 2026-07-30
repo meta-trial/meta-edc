@@ -42,7 +42,7 @@ urlpatterns = [
     *paths_for_urlpatterns("edc_form_runners"),
     *paths_for_urlpatterns("edc_identifier"),
     *paths_for_urlpatterns("edc_lab"),
-    *paths_for_urlpatterns("edc_lab_results"),
+    *paths_for_urlpatterns("edc_lab_results_import"),
     *paths_for_urlpatterns("edc_lab_dashboard"),
     *paths_for_urlpatterns("edc_label"),
     *paths_for_urlpatterns("edc_locator"),

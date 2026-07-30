@@ -12,6 +12,7 @@ from edc_lab_results.model_mixins import (
     McvModelMixin,
     PlateletsModelMixin,
     RbcModelMixin,
+    RdwModelMixin,
     WbcModelMixin,
 )
 from edc_model.models import BaseUuidModel
@@ -28,6 +29,7 @@ class BloodResultsFbc(
     MchModelMixin,
     MchcModelMixin,
     McvModelMixin,
+    RdwModelMixin,
     BloodResultsModelMixin,
     CrfStatusModelMixin,
     BaseUuidModel,

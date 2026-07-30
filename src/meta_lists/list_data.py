@@ -14,7 +14,18 @@ from clinicedc_constants import (
 from edc_offstudy.constants import COMPLETED_FOLLOWUP, WITHDRAWAL
 from edc_transfer.constants import TRANSFERRED
 
-from meta_lists.constants import ACCUCHEK, HEMACUE
+from meta_lists.constants import (
+    ACCUCHEK,
+    CAREGIVING,
+    CHANGED_CLINIC,
+    CONSIDERING_CONSENT_WITHDRAWAL,
+    FAMILY_EMERGENCY,
+    HEMACUE,
+    IMP_COMPLAINTS,
+    LACK_OF_TRANSPORT,
+    TRAVELLING,
+    WORKING_SCHOOLING,
+)
 from meta_prn.constants import (
     CLINICAL_WITHDRAWAL,
     COMPLETED_FOLLOWUP_48,
@@ -199,11 +210,16 @@ list_data = {
     ],
     "meta_lists.subjectvisitmissedreasons": [
         ("forgot", "Forgot / Can't remember being told about appointment"),
-        ("family_emergency", "Family emergency (e.g. funeral) and was away"),
-        ("travelling", "Away travelling/visiting"),
-        ("working_schooling", "Away working/schooling"),
+        (FAMILY_EMERGENCY, "Family emergency (e.g. funeral) and was away"),
+        (TRAVELLING, "Away travelling/visiting"),
+        (WORKING_SCHOOLING, "Away working/schooling"),
         ("too_sick", "Too sick or weak to come to the centre"),
-        ("lack_of_transport", "Transportation difficulty"),
+        (LACK_OF_TRANSPORT, "Transportation difficulty"),
+        (CONSIDERING_CONSENT_WITHDRAWAL, "Wishes to withdraw consent"),
+        (TRANSFERRED, "Transferred out of catchment area / other clinic"),
+        (CHANGED_CLINIC, "Attending another clinic at MNH"),
+        (IMP_COMPLAINTS, "Complaints about IMP"),
+        (CAREGIVING, "Caring for a child, sibling or relation"),
         (OTHER, "Other reason (specify below)"),
     ],
     "meta_lists.offstudyreasons": [

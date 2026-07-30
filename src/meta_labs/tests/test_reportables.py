@@ -58,11 +58,11 @@ class TestReportables(TestCase):
             NormalData.objects.filter(
                 reference_range_collection=reference_range_collection
             ).count(),
-            88,
+            90,
         )
         self.assertEqual(
             GradingData.objects.filter(
                 reference_range_collection=reference_range_collection
             ).count(),
-            180,
+            182,
         )
