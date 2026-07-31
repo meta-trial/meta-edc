@@ -754,6 +754,7 @@ dependencies = [
     { name = "openpyxl" },
     { name = "parse-trial-labs" },
     { name = "psycopg2" },
+    { name = "pyarrow" },
     { name = "pycups" },
     { name = "pypdf" },
     { name = "python-dateutil" },
@@ -802,6 +803,7 @@ requires-dist = [
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "parse-trial-labs", specifier = ">=0.4.0" },
     { name = "psycopg2", specifier = ">=2.9.10" },
+    { name = "pyarrow", specifier = ">=25.0.0" },
     { name = "pycups", specifier = ">=2.0.4" },
     { name = "pypdf", specifier = ">=5.9.0" },
     { name = "python-dateutil", specifier = ">=2.9.0.post0" },
@@ -2916,8 +2918,7 @@ dependencies = [
     { name = "openpyxl" },
     { name = "pandas" },
     { name = "parse-trial-labs" },
-    { name = "pdfkit" },
-    { name = "pypdf" },
+    { name = "pyarrow" },
     { name = "ruff" },
     { name = "scipy" },
     { name = "weasyprint" },
@@ -2934,6 +2935,7 @@ dev = [
     { name = "matplotlib-venn" },
     { name = "mysql-connector-python" },
     { name = "notebook" },
+    { name = "pdfkit" },
     { name = "pyarrow" },
     { name = "remote-read-sql" },
     { name = "scikit-learn" },
@@ -2976,8 +2978,7 @@ requires-dist = [
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=3.0.2" },
     { name = "parse-trial-labs", editable = "../parse-trial-labs" },
-    { name = "pdfkit", specifier = ">=1.0.0" },
-    { name = "pypdf", specifier = ">=5.0" },
+    { name = "pyarrow", specifier = ">=25.0.0" },
     { name = "ruff", specifier = ">=0.15.11" },
     { name = "scipy", specifier = ">=1.17.1" },
     { name = "weasyprint", specifier = ">=62.0" },
@@ -2994,6 +2995,7 @@ dev = [
     { name = "matplotlib-venn", specifier = ">=1.1.2" },
     { name = "mysql-connector-python", specifier = ">=9.7.0" },
     { name = "notebook", specifier = ">=7.4.7" },
+    { name = "pdfkit", specifier = ">=1.0.0" },
     { name = "pyarrow", specifier = ">=25.0.0" },
     { name = "remote-read-sql", editable = "../remote-read-sql" },
     { name = "scikit-learn", specifier = ">=1.7.1" },
@@ -3512,7 +3514,7 @@ wheels = [
 
 [[package]]
 name = "parse-trial-labs"
-version = "0.4.2"
+version = "0.5.0"
 source = { editable = "../parse-trial-labs" }
 dependencies = [
     { name = "pandas" },
