@@ -1,6 +1,6 @@
 [project]
 name = "meta-edc"
-version = "3.6.0"
+version = "3.6.1"
 description = "META Trial EDC (https://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 keywords = [
@@ -34,7 +34,7 @@ requires-python = '>=3.12,<3.15'
 dependencies = [
     "Django>=5.2,<6.1",
     "celery>=5.6.2",
-    "clinicedc>=4.3.1",
+    "clinicedc>=4.3.2",
     "django-pandas>=0.6.7",
     "djangorestframework-stubs>=3.17.0",
     "edc-he>=2.1.0",
@@ -49,8 +49,6 @@ dependencies = [
     "openpyxl>=3.1.5",
     "pandas>=3.0.2",
     "parse-trial-labs>=0.4.1",
-    "pdfkit>=1.0.0",
-    "pypdf>=5.0",
     "ruff>=0.15.11",
     "scipy>=1.17.1",
     "weasyprint>=62.0",
@@ -187,6 +185,7 @@ dev = [
     "matplotlib-venn>=1.1.2",
     "mysql-connector-python>=9.7.0",
     "notebook>=7.4.7",
+    "pdfkit>=1.0.0",
     "pyarrow>=25.0.0",
     "remote-read-sql>=1.4.0",
     "scikit-learn>=1.7.1",
