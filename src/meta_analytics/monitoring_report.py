@@ -999,6 +999,16 @@ def generate_monitoring_report(  # noqa: PLR0912
         index="label", columns="site_id", values="endpoints"
     ).reset_index()
     df_endpoint_pivot.columns.name = ""
+    df_endpoint_pivot.columns = [
+        "label",
+        *[str(col) for col in df_endpoint_pivot.columns if col != "label"],
+    ]
+    for col in [
+        c
+        for c in ["label", "10", "20", "30", "40", "60"]
+        if str(c) not in df_endpoint_pivot.columns
+    ]:
+        df_endpoint_pivot[str(col)] = np.nan
     df_endpoint_pivot.columns = ["label", "10", "20", "30", "40", "60"]
     df_endpoint_pivot.loc[len(df_endpoint_pivot)] = (
         df_endpoint_pivot[["10", "20", "30", "40", "60"]].sum().to_dict()

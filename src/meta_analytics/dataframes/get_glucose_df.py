@@ -141,6 +141,7 @@ def merge_with(df, df_glucose_fbg_or_ogtt):
 
     # reconcile all to single column
     for col in [
+        "site_id",
         "fasted",
         "fasting_hrs",
         "fbg_value",
@@ -172,6 +173,7 @@ def get_glucose_fbg_df(subject_identifiers, subject_visit_df) -> pd.DataFrame:
     df_glucose_fbg = df_glucose_fbg.rename(
         columns={"fasting": "fasted", "subject_visit": "subject_visit_id"},
     )
+    df_glucose_fbg["subject_visit_id"] = df_glucose_fbg["subject_visit_id"].astype(str)
     df_glucose_fbg["fasting_hrs"] = np.nan
     df_glucose_fbg["fasting_hrs"] = df_glucose_fbg["fasting_duration_delta"].apply(
         lambda x: x.total_seconds() / 3600
@@ -220,6 +222,7 @@ def get_glucose_ogtt_df(subject_identifiers, subject_visit_df) -> pd.DataFrame:
     df_glucose_ogtt = df_glucose_ogtt.rename(
         columns={"fasting": "fasted", "subject_visit": "subject_visit_id"},
     )
+    df_glucose_ogtt["subject_visit_id"] = df_glucose_ogtt["subject_visit_id"].astype(str)
     df_glucose_ogtt["fasting_hrs"] = np.nan
     df_glucose_ogtt["fasting_hrs"] = df_glucose_ogtt["fasting_duration_delta"].apply(
         lambda x: x.total_seconds() / 3600
@@ -269,6 +272,7 @@ def get_glucose_fbg_ogtt_df(subject_identifiers, subject_visit_df) -> pd.DataFra
     df_glucose = df_glucose.rename(
         columns={"subject_visit": "subject_visit_id", "fasting": "fasted"}
     )
+    df_glucose["subject_visit_id"] = df_glucose["subject_visit_id"].astype(str)
     df_glucose["fasting_hrs"] = np.nan
     df_glucose["fasting_hrs"] = df_glucose["fasting_duration_delta"].apply(
         lambda x: x.total_seconds() / 3600
