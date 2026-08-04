@@ -4,6 +4,7 @@ from clinicedc_constants import (
     MICRO_IU_MILLILITER,
     MILLIGRAMS_PER_DECILITER,
     MILLIMOLES_PER_LITER,
+    TEN_X_9_PER_LITER,
 )
 from edc_reportable.adult_age_options import adult_age_options
 from edc_reportable.data import africa, daids_july_2017
@@ -39,6 +40,36 @@ normal_data.update(
             Formula(
                 "0<=x<=99999",
                 units=MICRO_IU_MILLILITER,
+                gender=[MALE, FEMALE],
+                **adult_age_options,
+            ),
+        ],
+        "trig": [
+            Formula(
+                "0.00<=x<=2.88",
+                units=MILLIMOLES_PER_LITER,
+                gender=[MALE, FEMALE],
+                **adult_age_options,
+            ),
+        ],
+        "urea": [
+            Formula(
+                "2.5<=x<=6.7",
+                units=MILLIMOLES_PER_LITER,
+                gender=[FEMALE],
+                **adult_age_options,
+            ),
+            Formula(
+                "3.2<=x<=7.4",
+                units=MILLIMOLES_PER_LITER,
+                gender=[MALE],
+                **adult_age_options,
+            ),
+        ],
+        "wbc": [
+            Formula(
+                "4.00<=x<=10.00",
+                units=TEN_X_9_PER_LITER,
                 gender=[MALE, FEMALE],
                 **adult_age_options,
             ),

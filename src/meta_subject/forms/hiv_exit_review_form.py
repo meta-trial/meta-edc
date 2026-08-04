@@ -5,7 +5,7 @@ from ..form_validators import HivExitReviewFormValidator
 from ..models import HivExitReview
 
 
-class HivExitReviewForm(CrfSingletonModelFormMixin, CrfModelFormMixin, forms.ModelForm):
+class HivExitReviewForm(CrfModelFormMixin, CrfSingletonModelFormMixin, forms.ModelForm):
     form_validator_cls = HivExitReviewFormValidator
 
     class Meta:
