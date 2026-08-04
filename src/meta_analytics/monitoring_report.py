@@ -405,17 +405,30 @@ def generate_monitoring_report(  # noqa: PLR0912
       - ``cutoff_date``: end of *today* (UTC)
       - ``data_download_date``: start of *today* (UTC)
       - ``end_of_trial_date``: ``cutoff_date`` + ~60 days
+
+    ``cutoff_date``, ``data_download_date``, and ``end_of_trial_date`` are
+    kept tz-naive (wall-clock UTC) to match the get_*_df() dataframes built
+    below, which are all localize=True (tz-naive) by convention. Any
+    tz-aware value passed in is converted to naive UTC.
     """
     now_utc = datetime.now(tz=ZoneInfo("UTC"))
     if data_download_date is None:
-        data_download_date = now_utc.replace(hour=0, minute=0, second=0, microsecond=0)
-    if cutoff_date is None:
-        cutoff_date = now_utc.replace(hour=23, minute=59, second=0, microsecond=0)
-    if end_of_trial_date is None:
-        end_of_trial_date = datetime(
-            2026, 5, 31, hour=0, minute=0, second=0, microsecond=0, tzinfo=ZoneInfo("UTC")
+        data_download_date = now_utc.replace(
+            hour=0, minute=0, second=0, microsecond=0, tzinfo=None
         )
+    elif data_download_date.tzinfo is not None:
+        data_download_date = data_download_date.astimezone(ZoneInfo("UTC")).replace(
+            tzinfo=None
+        )
+    if cutoff_date is None:
+        cutoff_date = now_utc.replace(hour=23, minute=59, second=0, microsecond=0, tzinfo=None)
+    elif cutoff_date.tzinfo is not None:
+        cutoff_date = cutoff_date.astimezone(ZoneInfo("UTC")).replace(tzinfo=None)
+    if end_of_trial_date is None:
+        end_of_trial_date = datetime(2026, 5, 31, hour=0, minute=0, second=0, microsecond=0)  # noqa: DTZ001
         # end_of_trial_date = cutoff_date.replace(hour=0, minute=0, second=0, microsecond=0)
+    elif end_of_trial_date.tzinfo is not None:
+        end_of_trial_date = end_of_trial_date.astimezone(ZoneInfo("UTC")).replace(tzinfo=None)
 
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)

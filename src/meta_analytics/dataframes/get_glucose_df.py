@@ -137,7 +137,7 @@ def merge_with(df, df_glucose_fbg_or_ogtt):
 
     df[[col for col in df.columns if "datetime" in col]] = df[
         [col for col in df.columns if "datetime" in col]
-    ].apply(lambda x: x.dt.tz_localize(None) if x.dtype == "datetime64[ns, UTC]" else x)
+    ].apply(lambda x: x.dt.tz_localize(None) if isinstance(x.dtype, pd.DatetimeTZDtype) else x)
 
     # reconcile all to single column
     for col in [
