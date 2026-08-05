@@ -276,23 +276,13 @@ class Predicates(PersistantSingletonMixin):
         return required
 
     def sf12_required(self, visit, **kwargs):  # noqa: ARG002
-        model = f"{self.app_label}.sf12"
-        if self.offschedule_today(visit) or (
-            visit.visit_code_sequence == 0 and visit.visit_code in [MONTH36, MONTH48]
-        ):
-            return True
-        return self.persistant_singleton_required(
-            visit, model=model, exclude_visit_codes=[DAY1]
+        return self.offschedule_today(visit) or (
+            visit.visit_code_sequence == 0 and visit.visit_code in [WEEK2, MONTH36, MONTH48]
         )
 
     def eq5d3l_required(self, visit, **kwargs):  # noqa: ARG002
-        model = f"{self.app_label}.eq5d3l"
-        if self.offschedule_today(visit) or (
-            visit.visit_code_sequence == 0 and visit.visit_code in [MONTH36, MONTH48]
-        ):
-            return True
-        return self.persistant_singleton_required(
-            visit, model=model, exclude_visit_codes=[DAY1]
+        return self.offschedule_today(visit) or (
+            visit.visit_code_sequence == 0 and visit.visit_code in [WEEK2, MONTH36, MONTH48]
         )
 
     def offschedule_today(self, visit):
