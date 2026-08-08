@@ -10,7 +10,7 @@ def get_eos_df() -> pd.DataFrame:
     df[(df.transfer_reason.notna())]
 
     """
-    df_eos = get_eos("meta_prn.endofstudy")
+    df_eos = get_eos("meta_prn.endofstudy", normalize=True)
     df_visit = get_subject_visit("meta_subject.subjectvisit")
     df_last_visit = (
         df_visit.groupby(["subject_identifier", "site_id"])

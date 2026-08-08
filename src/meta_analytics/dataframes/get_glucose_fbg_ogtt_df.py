@@ -15,6 +15,7 @@ def get_glucose_fbg_ogtt_df(subject_identifiers: list[str] | None = None) -> pd.
         model="meta_subject.glucose",
         subject_identifiers=subject_identifiers or [],
         subject_visit_model="meta_subject.subjectvisit",
+        normalize=True,
     )
     df["source"] = "meta_subject.glucose"
     df = calculate_fasting_hrs(df)

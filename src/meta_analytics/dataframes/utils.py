@@ -42,7 +42,7 @@ def get_empty_endpoint_df() -> pd.DataFrame:
         ["baseline_datetime", "visit_datetime", "fbg_datetime", "offstudy_datetime"]
     ] = endpoint_df[
         ["baseline_datetime", "visit_datetime", "fbg_datetime", "offstudy_datetime"]
-    ].apply(pd.to_datetime)
+    ].apply(pd.to_datetime, utc=True)
     endpoint_df["visit_code"] = endpoint_df["visit_code"].astype(float)
     return endpoint_df
 

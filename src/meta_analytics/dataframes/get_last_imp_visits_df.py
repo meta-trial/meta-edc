@@ -32,7 +32,9 @@ def get_last_imp_visits_df(
             raise ObjectDoesNotExist("The lot number given is invalid") from e
 
     df_meds = get_crf(
-        "meta_subject.studymedication", subject_visit_model="meta_subject.subjectvisit"
+        "meta_subject.studymedication",
+        subject_visit_model="meta_subject.subjectvisit",
+        normalize=True,
     )
     df_meds = (
         df_meds[(df_meds.refill == "Yes") & (site_cond(df_meds, site_id))]
@@ -57,7 +59,6 @@ def get_last_imp_visits_df(
         ).filter(**opts),
         verbose=False,
     )
-    df_off["offschedule_datetime"] = df_off["offschedule_datetime"].dt.tz_localize(None)
     df_off["offschedule_datetime"] = df_off["offschedule_datetime"].dt.normalize()
     df_off = df_off.set_index("subject_identifier")
 
@@ -99,9 +100,9 @@ def get_last_imp_visits_df(
 
     # calculate days since the IMP visit
     df_final["days_since"] = (
-        pd.to_datetime("today").normalize().tz_localize("utc") - df_final.imp_visit_date
+        pd.to_datetime("today", utc=True).normalize() - df_final.imp_visit_date
     )
-    df_final["days_until"] = df_final.next_appt_datetime - pd.to_datetime(
-        "today"
-    ).normalize().tz_localize("utc")
+    df_final["days_until"] = (
+        df_final.next_appt_datetime - pd.to_datetime("today", utc=True).normalize()
+    )
     return df_final.reset_index()

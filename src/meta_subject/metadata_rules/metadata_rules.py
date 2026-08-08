@@ -40,18 +40,20 @@ class GlucoseRuleGroup(CrfRuleGroup):
         source_model = "meta_subject.subjectvisit"
 
 
-@register()
-class HealthEconomicsRuleGroup(CrfRuleGroup):
-    hecon = CrfRule(
-        predicate=pc.health_economics_required,
-        consequence=REQUIRED,
-        alternative=NOT_REQUIRED,
-        target_models=["healtheconomicssimple"],
-    )
-
-    class Meta:
-        app_label = "meta_subject"
-        source_model = "meta_subject.subjectvisit"
+# removed after followup complete to reflect actual number
+# missing (e.g. no longer flagged as a persistent singleton)
+# @register()
+# class HealthEconomicsRuleGroup(CrfRuleGroup):
+#     hecon = CrfRule(
+#         predicate=pc.health_economics_required,
+#         consequence=REQUIRED,
+#         alternative=NOT_REQUIRED,
+#         target_models=["healtheconomicssimple"],
+#     )
+#
+#     class Meta:
+#         app_label = "meta_subject"
+#         source_model = "meta_subject.subjectvisit"
 
 
 @register()

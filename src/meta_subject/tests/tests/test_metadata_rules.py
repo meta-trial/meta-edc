@@ -1,6 +1,8 @@
+from unittest import skip
+
 from clinicedc_constants import FEMALE, MALE, YES
 from dateutil.relativedelta import relativedelta
-from django.test import TestCase, override_settings, tag
+from django.test import TestCase, override_settings
 from edc_appointment.models import Appointment
 from edc_utils import get_utcnow
 from edc_visit_schedule.constants import MONTH1
@@ -105,7 +107,7 @@ class TestMetadataRules(MetaTestCaseMixin, TestCase):
             [obj.model for obj in self.get_crf_metadata(subject_visit)],
         )
 
-    @tag("4")
+    @skip("skip after end of followup")
     def test_health_economics_update_required(self):
         """Assert healtheconomicsupdate is required starting w/1030"""
         self.subject_visit = self.get_subject_visit(gender=FEMALE)

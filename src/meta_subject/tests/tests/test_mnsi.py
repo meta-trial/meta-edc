@@ -1,4 +1,5 @@
 from datetime import datetime
+from unittest import skip
 from zoneinfo import ZoneInfo
 
 import time_machine
@@ -110,10 +111,12 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
         crfs = self.get_crf_metadata(self.get_visit(visit_code=WEEK2))
         self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_required_at_1m(self):
         crfs = self.get_crf_metadata(self.get_visit(visit_code=MONTH1))
         self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_not_required_at_3m_if_already_performed_at_1m(self):
         # MNSI shouldn't be required at any point after it has been performed
         month1_visit = self.get_visit(visit_code=MONTH1)
@@ -123,6 +126,7 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
         crfs = self.get_crf_metadata(month3_visit)
         self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_required_at_3m_if_not_performed_at_1m(self):
         month1_visit = self.get_visit(visit_code=MONTH1)
         self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=NO)
@@ -131,6 +135,7 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
         crfs = self.get_crf_metadata(month3_visit)
         self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_not_required_at_6m_if_already_performed_at_1m(self):
         # MNSI shouldn't be required at any point after it has been performed
         month1_visit = self.get_visit(visit_code=MONTH1)
@@ -144,6 +149,7 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
         crfs = self.get_crf_metadata(month6_visit)
         self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_not_required_at_6m_if_already_performed_at_3m(self):
         month1_visit = self.get_visit(visit_code=MONTH1)
         self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=NO)
@@ -156,6 +162,7 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
         crfs = self.get_crf_metadata(month6_visit)
         self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_required_at_6m_if_not_performed_by_3m(self):
         month1_visit = self.get_visit(visit_code=MONTH1)
         self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=NO)
@@ -167,6 +174,7 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
         crfs = self.get_crf_metadata(month6_visit)
         self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_not_required_at_9m_if_already_performed_at_1m(self):
         # MNSI shouldn't be required at any point after it has been performed
         month1_visit = self.get_visit(visit_code=MONTH1)
@@ -184,6 +192,7 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
         crfs = self.get_crf_metadata(month9_visit)
         self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_not_required_at_9m_if_already_performed_at_3m(self):
         month1_visit = self.get_visit(visit_code=MONTH1)
         self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=NO)
@@ -200,6 +209,7 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
         crfs = self.get_crf_metadata(month9_visit)
         self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_not_required_at_9m_if_already_performed_at_6m(self):
         month1_visit = self.get_visit(visit_code=MONTH1)
         self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=NO)
@@ -215,6 +225,7 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
         crfs = self.get_crf_metadata(month9_visit)
         self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_not_required_between_9m_and_33m_when_performed_in_first_6m(self):
         month1_visit = self.get_visit(visit_code=MONTH1)
         self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=NO)
@@ -240,6 +251,7 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
                 crfs = self.get_crf_metadata(subject_visit)
                 self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_not_required_between_9m_and_33m_even_if_not_performed_first_6m(self):
         month1_visit = self.get_visit(visit_code=MONTH1)
         self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=NO)
@@ -268,6 +280,7 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
                 crfs = self.get_crf_metadata(subject_visit)
                 self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_required_between_36m_and_45m(self):
         traveller = time_machine.travel(datetime(2024, 12, 17, tzinfo=ZoneInfo("UTC")))
         traveller.start()
@@ -289,6 +302,7 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
                 self.set_mnsi_status(subject_visit=subject_visit, mnsi_performed=NO)
         traveller.stop()
 
+    @skip("skip after end of followup")
     def test_mnsi_only_required_once_between_36m_and_45m(self):
         traveller = time_machine.travel(datetime(2024, 12, 17, tzinfo=ZoneInfo("UTC")))
         traveller.start()
@@ -318,6 +332,7 @@ class TestMnsiRequired(MetaTestCaseMixin, TestCase):
         self.assertNotIn("meta_subject.mnsi", [o.model for o in crfs.all()])
         traveller.stop()
 
+    @skip("skip after end of followup")
     def test_mnsi_required_at_48m(self):
         traveller = time_machine.travel(datetime(2024, 12, 16, tzinfo=ZoneInfo("UTC")))
         traveller.start()

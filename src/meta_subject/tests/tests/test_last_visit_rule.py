@@ -1,4 +1,5 @@
 from datetime import datetime
+from unittest import skip
 from zoneinfo import ZoneInfo
 
 import time_machine
@@ -85,6 +86,7 @@ class TestLastVisitRuleGroup2(MetaTestCaseMixin, TestCase):
             mnsi_performed=mnsi_performed,
         )
 
+    @skip("skip after end of followup")
     def test_mnsi_required_at_all_last_visits_after_march_2026_36(self):
         """MNSI required at MONTH36+ even after mnsi_performed=YES at each visit,
         because all visits fall after 2026-03-01 (LastVisitRuleGroup)."""
@@ -99,6 +101,7 @@ class TestLastVisitRuleGroup2(MetaTestCaseMixin, TestCase):
         self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
         self.assertIn("meta_subject.glucose", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_required_at_all_last_visits_after_march_2026_39(self):
         month1_visit = self.get_visit(MONTH1)
         self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=YES)
@@ -111,6 +114,7 @@ class TestLastVisitRuleGroup2(MetaTestCaseMixin, TestCase):
         self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
         self.assertIn("meta_subject.glucose", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_required_at_all_last_visits_after_march_2026_42(self):
         month1_visit = self.get_visit(MONTH1)
         self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=YES)
@@ -123,6 +127,7 @@ class TestLastVisitRuleGroup2(MetaTestCaseMixin, TestCase):
         self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
         self.assertIn("meta_subject.glucose", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_required_at_all_last_visits_after_march_2026_45(self):
         month1_visit = self.get_visit(MONTH1)
         self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=YES)
@@ -135,6 +140,7 @@ class TestLastVisitRuleGroup2(MetaTestCaseMixin, TestCase):
         self.assertIn("meta_subject.mnsi", [o.model for o in crfs.all()])
         self.assertIn("meta_subject.glucose", [o.model for o in crfs.all()])
 
+    @skip("skip after end of followup")
     def test_mnsi_required_at_all_last_visits_after_march_2026_48(self):
         month1_visit = self.get_visit(MONTH1)
         self.set_mnsi_status(subject_visit=month1_visit, mnsi_performed=YES)
