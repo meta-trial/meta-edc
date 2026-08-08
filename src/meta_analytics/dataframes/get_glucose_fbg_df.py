@@ -17,6 +17,7 @@ def get_glucose_fbg_df(subject_identifiers: list[str] | None = None) -> pd.DataF
         model="meta_subject.glucosefbg",
         subject_identifiers=subject_identifiers or [],
         subject_visit_model="meta_subject.subjectvisit",
+        normalize=True,
     )
     df["source"] = "meta_subject.glucosefbg"
     df = df.rename(columns={"fbg_fasting": "fasting"})

@@ -65,6 +65,9 @@ a { cursor: pointer; }
       {% if perms.edc_pharmacy.nav_pharmacy_section %}
         <a href="{% url 'edc_pharmacy:home_url' %}" class="list-group-item"><i class="fas fa-prescription fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Pharmacy</a>
       {% endif %}
+      {% if perms.edc_retinopathy %}
+        <a href="{% url 'edc_retinopathy:home_url' %}" class="list-group-item"><i class="fas fa-eye fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Retinopathy</a>
+      {% endif %}
       {% if perms.edc_export %}
         <a href="{% url 'edc_export:home_url' %}" class="list-group-item"><i class="fas fa-file-export fa-lg fa-fw"></i>&nbsp;&nbsp;&nbsp;Export data</a>
       {% endif %}

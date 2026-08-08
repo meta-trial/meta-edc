@@ -25,14 +25,16 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
     # Use string dates to avoid Python date-object / timezone-aware merge issues.
     glucose_dates = (
         df.loc[df["fbg_datetime"].notna(), ["subject_identifier", "fbg_datetime"]]
-        .assign(fbg_date=lambda x: pd.to_datetime(x["fbg_datetime"]).dt.strftime("%Y-%m-%d"))[
-            ["subject_identifier", "fbg_date"]
-        ]
+        .assign(
+            fbg_date=lambda x: pd.to_datetime(x["fbg_datetime"], utc=True).dt.strftime(
+                "%Y-%m-%d"
+            )
+        )[["subject_identifier", "fbg_date"]]
         .drop_duplicates()
     )
-    df_glucose_fbg["fbg_date"] = pd.to_datetime(df_glucose_fbg["fbg_datetime"]).dt.strftime(
-        "%Y-%m-%d"
-    )
+    df_glucose_fbg["fbg_date"] = pd.to_datetime(
+        df_glucose_fbg["fbg_datetime"], utc=True
+    ).dt.strftime("%Y-%m-%d")
     df_glucose_fbg = df_glucose_fbg.merge(
         glucose_dates.assign(_drop=True),
         on=["subject_identifier", "fbg_date"],
@@ -51,7 +53,7 @@ def get_glucose_df(subject_identifiers: list[str] | None = None) -> pd.DataFrame
     # more than one OGTT or FBG reported in a single timepoint?
 
     df_consent = get_subject_consent("meta_consent.subjectconsent")
-    df_eos = get_eos("meta_prn.endofstudy")
+    df_eos = get_eos("meta_prn.endofstudy", normalize=True)
     df = df.merge(
         df_consent[["subject_identifier", "gender", "consent_datetime", "dob"]],
         on="subject_identifier",
@@ -133,11 +135,13 @@ def merge_with(df, df_glucose_fbg_or_ogtt):
 
     # convert to datetime
     for col in [c for c in df.columns if "datetime" in c]:
-        df[col] = pd.to_datetime(df[col])
+        df[col] = pd.to_datetime(df[col], utc=True)
 
     df[[col for col in df.columns if "datetime" in col]] = df[
         [col for col in df.columns if "datetime" in col]
-    ].apply(lambda x: x.dt.tz_localize(None) if isinstance(x.dtype, pd.DatetimeTZDtype) else x)
+    ].apply(
+        lambda x: x.dt.tz_localize("UTC") if isinstance(x.dtype, pd.DatetimeTZDtype) else x
+    )
 
     # reconcile all to single column
     for col in [
@@ -152,7 +156,7 @@ def merge_with(df, df_glucose_fbg_or_ogtt):
         df[col] = df[col].fillna(df[f"{col}_2"])
 
     for col in [c for c in df.columns if "datetime" in c]:
-        df[col] = pd.to_datetime(df[col], errors="coerce")
+        df[col] = pd.to_datetime(df[col], errors="coerce", utc=True)
     return df
 
 
@@ -201,7 +205,7 @@ def get_glucose_fbg_df(subject_identifiers, subject_visit_df) -> pd.DataFrame:
     )
 
     for col in [c for c in df_glucose_fbg.columns if "datetime" in c]:
-        df_glucose_fbg[col] = pd.to_datetime(df_glucose_fbg[col])
+        df_glucose_fbg[col] = pd.to_datetime(df_glucose_fbg[col], utc=True)
     return df_glucose_fbg
 
 
@@ -250,7 +254,7 @@ def get_glucose_ogtt_df(subject_identifiers, subject_visit_df) -> pd.DataFrame:
     )
 
     for col in [c for c in df_glucose_ogtt.columns if "datetime" in c]:
-        df_glucose_ogtt[col] = pd.to_datetime(df_glucose_ogtt[col])
+        df_glucose_ogtt[col] = pd.to_datetime(df_glucose_ogtt[col], utc=True)
     return df_glucose_ogtt
 
 
@@ -280,7 +284,7 @@ def get_glucose_fbg_ogtt_df(subject_identifiers, subject_visit_df) -> pd.DataFra
     df_glucose["source"] = "meta_subject.glucose"
 
     for col in [c for c in df_glucose.columns if "datetime" in c]:
-        df_glucose[col] = pd.to_datetime(df_glucose[col])
+        df_glucose[col] = pd.to_datetime(df_glucose[col], utc=True)
 
     return subject_visit_df[
         [

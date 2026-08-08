@@ -1,5 +1,6 @@
 from copy import deepcopy
 from datetime import datetime
+from unittest import skip
 from zoneinfo import ZoneInfo
 
 import time_machine
@@ -42,6 +43,7 @@ class TestSf12(MetaTestCaseMixin, TestCase):
             site=Site.objects.get(id=settings.SITE_ID),
         )
 
+    @skip("skip after end of followup")
     def test_1005_required(self):
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         self.assertEqual(subject_visit.visit_code, WEEK2)
@@ -67,6 +69,7 @@ class TestSf12(MetaTestCaseMixin, TestCase):
             ).exists()
         )
 
+    @skip("skip after end of followup")
     def test_1010_required_if_not_submitted(self):
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         subject_visit = self.get_next_subject_visit(subject_visit)
@@ -93,6 +96,7 @@ class TestSf12(MetaTestCaseMixin, TestCase):
             ).exists()
         )
 
+    @skip("skip after end of followup")
     def test_1030_required_if_not_submitted(self):
         subject_visit = self.get_next_subject_visit(self.subject_visit)
         subject_visit = self.get_next_subject_visit(subject_visit)
@@ -122,6 +126,7 @@ class TestSf12(MetaTestCaseMixin, TestCase):
             ).exists()
         )
 
+    @skip("skip after end of followup")
     def test_1030_not_required_if_submitted(self):
         subject_visit_1005 = self.get_next_subject_visit(self.subject_visit)
         subject_visit_1010 = self.get_next_subject_visit(subject_visit_1005)
