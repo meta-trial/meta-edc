@@ -1,6 +1,6 @@
 [project]
 name = "meta-edc"
-version = "3.7.0"
+version = "3.7.1"
 description = "META Trial EDC (https://www.isrctn.com/ISRCTN76157257)"
 readme = "README.rst"
 keywords = [
@@ -168,7 +168,7 @@ exclude_lines = [
 
 [dependency-groups]
 lint = [
-    "ruff>=0.12.5",
+    "ruff>=0.16.2",
 ]
 docs = [
     "furo>=2025.7.19",

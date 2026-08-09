@@ -161,7 +161,7 @@ class MetaTestCaseMixin:
             site=subject_consent.site,
         )
 
-    def get_subject_visit(  # noqa: PLR0913
+    def get_subject_visit(  # noqa: PLR0913, PLR0917
         self,
         visit_code: str | None = None,
         visit_code_sequence: int | None = None,

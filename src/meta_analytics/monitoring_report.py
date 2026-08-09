@@ -135,7 +135,7 @@ def _get_row_by_df(
     return row_df.reset_index(drop=True)
 
 
-def _get_table_df(
+def _get_table_df(  # noqa PLR0917
     df_source: pd.DataFrame,
     visit_code: float | None = None,
     month_label: str | None = None,
