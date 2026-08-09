@@ -168,7 +168,7 @@ exclude_lines = [
 
 [dependency-groups]
 lint = [
-    "ruff>=0.12.5",
+    "ruff>=0.16.2",
 ]
 docs = [
     "furo>=2025.7.19",

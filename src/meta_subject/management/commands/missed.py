@@ -130,7 +130,7 @@ def new_appointments_within(months: int):
 class Result:
     """Used with run3."""
 
-    def __init__(  # noqa: PLR0913
+    def __init__(  # noqa: PLR0913, PLR0917
         self,
         subject_identifier: str,
         sid: str,

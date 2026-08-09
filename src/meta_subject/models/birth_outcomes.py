@@ -15,7 +15,7 @@ from .delivery import Delivery
 class Manager(models.Manager):
     use_in_migrations = True
 
-    def get_by_natural_key(  # noqa: PLR0913
+    def get_by_natural_key(  # noqa: PLR0913, PLR0917
         self,
         birth_order,
         subject_identifier,

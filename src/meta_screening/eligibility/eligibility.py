@@ -16,7 +16,7 @@ class SubjectScreeningEligibilityError(Exception):
     pass
 
 
-def get_eligible_as_word(  # noqa: PLR0913
+def get_eligible_as_word(  # noqa: PLR0913, PLR0917
     obj=None,
     eligible_part_one=None,
     eligible_part_two=None,
