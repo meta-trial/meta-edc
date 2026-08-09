@@ -43,7 +43,6 @@ __all__ = [
     "BloodResultsFbcForm",
     "BloodResultsHba1cForm",
     "BloodResultsInsForm",
-    "BloodResultsInsForm",
     "BloodResultsLftForm",
     "BloodResultsLipidsForm",
     "BloodResultsRftForm",
