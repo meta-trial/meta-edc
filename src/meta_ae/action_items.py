@@ -31,8 +31,8 @@ from edc_lab_results.constants import (
     BLOOD_RESULTS_LIPIDS_ACTION,
     BLOOD_RESULTS_RFT_ACTION,
 )
+from edc_ltfu.constants import LTFU_ACTION
 from edc_notification.utils import get_email_contacts
-from edc_visit_schedule.utils import get_offschedule_models
 
 from meta_prn.constants import OFFSTUDY_MEDICATION_ACTION
 from meta_prn.pregnancy_action_item_mixin import PregnancyActionItemMixin
@@ -79,19 +79,11 @@ class AeFollowupAction(ActionWithNotification):
             ),
         )
 
-        # add Study termination to next_actions if LTFU
-        if self.reference_obj.outcome == LTFU:
-            for offschedule_model in get_offschedule_models(
-                subject_identifier=self.subject_identifier,
-                report_datetime=self.reference_obj.report_datetime,
-            ):
-                action_cls = site_action_items.get_by_model(model=offschedule_model)
-                next_actions = self.append_to_next_if_required(
-                    next_actions=next_actions,
-                    action_name=action_cls.name,
-                    required=True,
-                )
-        return next_actions
+        return self.append_to_next_if_required(
+            next_actions=next_actions,
+            action_name=LTFU_ACTION,
+            required=self.reference_obj.outcome == LTFU,
+        )
 
 
 class AeInitialAction(ActionWithNotification):
