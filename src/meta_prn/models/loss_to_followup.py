@@ -1,5 +1,6 @@
 from clinicedc_constants import NULL_STRING, OTHER
 from clinicedc_constants.choices import YES_NO
+from django.core.validators import MinValueValidator
 from django.db import models
 from edc_action_item.models.action_model_mixin import ActionModelMixin
 from edc_identifier.model_mixins import UniqueSubjectIdentifierFieldMixin
@@ -30,8 +31,11 @@ class LossToFollowup(
 
     last_seen_datetime = models.DateField(verbose_name="Date participant last seen")
 
-    number_consecutive_missed_visits = models.DateField(
-        verbose_name="Number of consecutive visits missed", null=True, blank=False
+    number_consecutive_missed_visits = models.IntegerField(
+        verbose_name="Number of consecutive visits missed",
+        null=True,
+        blank=False,
+        validators=[MinValueValidator(0)],
     )
 
     # TODO has the patient been off study medication for more than 6 months. If no, not LTFU!!

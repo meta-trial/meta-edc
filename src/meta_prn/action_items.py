@@ -3,7 +3,7 @@ from django.apps import apps as django_apps
 from django.utils.safestring import mark_safe
 from edc_action_item.action_with_notification import ActionWithNotification
 from edc_action_item.site_action_items import site_action_items
-from edc_adverse_event.constants import DEATH_REPORT_ACTION
+from edc_adverse_event.constants import AE_FOLLOWUP_ACTION, DEATH_REPORT_ACTION
 from edc_lab_results import BLOOD_RESULTS_RFT_ACTION
 from edc_ltfu.constants import LTFU_ACTION
 from edc_offstudy.constants import END_OF_STUDY_ACTION
@@ -127,7 +127,7 @@ class LossToFollowupAction(PregnancyActionItemMixin, ActionWithNotification):
     name = LTFU_ACTION
     display_name = "Submit Loss to Follow Up Report"
     notification_display_name = " Loss to Follow Up Report"
-    parent_action_names = (MISSED_VISIT_ACTION,)
+    parent_action_names = (MISSED_VISIT_ACTION, AE_FOLLOWUP_ACTION)
     reference_model = "meta_prn.losstofollowup"
     show_link_to_changelist = True
     show_link_to_add = True
