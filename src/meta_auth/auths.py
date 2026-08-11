@@ -1,3 +1,4 @@
+from clinicedc_constants import AE, AE_SUPER
 from edc_action_item.auth_objects import ACTION_ITEM, ACTION_ITEM_EXPORT
 from edc_appointment.auth_objects import APPOINTMENT_EXPORT
 from edc_auth.constants import (
@@ -49,8 +50,24 @@ site_auths.update_group(*screening_codenames, name=SCREENING, no_delete=True)
 site_auths.update_group(*screening_codenames, name=SCREENING_SUPER)
 site_auths.update_group(*screening_codenames, name=SCREENING_VIEW, view_only=True)
 
+site_auths.update_group(
+    "meta_ae.view_aefinalclassification",
+    "meta_ae.change_aefinalclassification",
+    # "meta_ae.view_deathfinalcause",
+    # "meta_ae.change_deathfinalcause",
+    name=AE,
+)
+site_auths.update_group(
+    "meta_ae.view_aefinalclassification",
+    "meta_ae.change_aefinalclassification",
+    # "meta_ae.view_deathfinalcause",
+    # "meta_ae.change_deathfinalcause",
+    name=AE_SUPER,
+)
+
 # update edc_auth default roles
 site_auths.update_role(
+    AE,
     UNBLINDING_REQUESTORS,
     MNSI,
     QOL,
@@ -58,6 +75,7 @@ site_auths.update_role(
     name=CLINICIAN_ROLE,
 )
 site_auths.update_role(
+    AE_SUPER,
     MNSI_SUPER,
     QOL_SUPER,
     UNBLINDING_REQUESTORS,
