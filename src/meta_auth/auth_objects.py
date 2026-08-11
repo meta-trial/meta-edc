@@ -10,6 +10,11 @@ clinic_codenames = get_app_codenames(
     "meta_prn", "meta_subject", "meta_consent", list_app="meta_lists"
 )
 
+# add in AeClassification
+clinic_codenames.append("meta_ae.view_aefinalclassification")
+clinic_codenames.append("meta_ae.add_aefinalclassification")
+clinic_codenames.append("meta_ae.change_aefinalclassification")
+
 reports_codenames = get_app_codenames("meta_reports")
 reports_codenames.remove("meta_reports.view_impsubstitutions")
 
