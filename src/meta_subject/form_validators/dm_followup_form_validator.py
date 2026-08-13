@@ -1,7 +1,10 @@
 from clinicedc_constants import NO, OTHER, YES
 from django import forms
 from django.core.exceptions import ObjectDoesNotExist
+from django.urls import reverse
+from django.utils.html import format_html
 from edc_crf.crf_form_validator import CrfFormValidator
+from edc_dashboard.url_names import url_names
 from edc_form_validators import INVALID_ERROR
 from edc_utils import formatted_date
 from edc_utils.date import to_local
@@ -22,7 +25,8 @@ class DmFollowupFormValidator(CrfFormValidator):
                 INVALID_ERROR,
             )
 
-        # try to match referral date to the referal form
+        # try to match referral date to the referal form.
+        # DmReferral is a singleton.
         try:
             dm_referral = DmReferral.objects.get(subject_identifier=self.subject_identifier)
         except ObjectDoesNotExist:
@@ -30,18 +34,28 @@ class DmFollowupFormValidator(CrfFormValidator):
                 {"__all__": "Original Referral form not found."}, INVALID_ERROR
             )
         else:
-            if dm_referral.referral_date != self.cleaned_data.get("referral_date"):
+            if self.cleaned_data.get(
+                "referral_date"
+            ) and dm_referral.referral_date != self.cleaned_data.get("referral_date"):
                 referral_dt = formatted_date(dm_referral.referral_date)
                 report_dt = formatted_date(to_local(dm_referral.report_datetime).date())
-                self.raise_validation_error(
-                    {
-                        "referral_date": (
-                            f"Invalid. Expected `{referral_dt}` "
-                            f"based on the referral form submitted on {report_dt}."
-                        )
-                    },
-                    INVALID_ERROR,
+                submitted_referral_dt = formatted_date(dm_referral.referral_date)
+                url = reverse(
+                    "meta_prn_admin:meta_prn_dmreferral_change", args=(dm_referral.pk,)
                 )
+                url = (
+                    f"{url}?next={url_names.get('subject_dashboard_url')},subject_identifier"
+                    f"&subject_identifier={dm_referral.subject_identifier}"
+                )
+                msg = format_html(
+                    "Invalid. Expected `{}`. Referral form submitted on `{}` "
+                    'says participant was referred on `{}`. See <A href="{}">DM Referral</A>',
+                    referral_dt,
+                    report_dt,
+                    submitted_referral_dt,
+                    url,
+                )
+                self.raise_validation_error({"referral_date": msg}, INVALID_ERROR)
 
         # Diabetes clinic attendance
         self.m2m_required_if(
