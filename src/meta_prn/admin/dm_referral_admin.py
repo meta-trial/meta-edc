@@ -28,8 +28,24 @@ class DmReferralAdmin(
     form = DmReferralForm
 
     fieldsets = (
-        (None, {"fields": ("subject_identifier", "report_datetime")}),
-        ("Referral to Diabetes clinic", {"fields": ("referral_date",)}),
+        (
+            None,
+            {
+                "fields": (
+                    "subject_identifier",
+                    "report_datetime",
+                    "referred",
+                    "not_referred_comment",
+                )
+            },
+        ),
+        (
+            "Referral to Diabetes clinic",
+            {
+                "description": "If referred, complete the following.",
+                "fields": ("referral_date",),
+            },
+        ),
         (
             "Diabetes diagnosis",
             {
@@ -49,6 +65,8 @@ class DmReferralAdmin(
     )
 
     list_filter = ("report_datetime", "referral_date", SitesForDataManagerListFilter)
+
+    radio_fields = {"referred": admin.VERTICAL}  # noqa: RUF012
 
     @admin.display(description="Referral date", ordering="referral_date")
     def referral_date_as_col(self, obj=None):

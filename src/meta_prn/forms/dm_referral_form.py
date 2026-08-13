@@ -1,3 +1,4 @@
+from clinicedc_constants import NO, YES
 from django import forms
 from edc_action_item.forms.action_item_form_mixin import ActionItemFormMixin
 from edc_form_validators.form_validator import FormValidator
@@ -11,7 +12,10 @@ from ..models import DmReferral
 
 
 class DmReferralFormValidator(PrnFormValidatorMixin, FormValidator):
-    pass
+    def clean(self):
+        self.required_if(NO, field="referred", field_required="not_referred_comment")
+        self.required_if(YES, field="referred", field_required="referral_date")
+        # self.required_if(YES, field="referred", field_required="referral_comment")
 
 
 class DmReferralForm(
