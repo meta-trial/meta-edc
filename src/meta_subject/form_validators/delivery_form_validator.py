@@ -1,4 +1,4 @@
-from clinicedc_constants import NO, OTHER
+from clinicedc_constants import NO, YES
 from django import forms
 from django.core.exceptions import ObjectDoesNotExist
 from edc_crf.crf_form_validator import CrfFormValidator
@@ -21,20 +21,50 @@ class DeliveryFormValidator(CrfFormValidator):
             ) from e
 
         self.required_if(
-            NO, field="info_available", field_required="info_not_available_reason"
+            NO, field="report_available", field_required="report_not_available_reason"
         )
-
-        self.validate_informant()
+        self.applicable_if(YES, field="report_available", field_applicable="info_source")
+        self.validate_other_specify(
+            field="info_source", other_specify_field="info_source_other"
+        )
+        self.applicable_if(
+            YES, field="report_available", field_applicable="informant_relation"
+        )
+        self.validate_other_specify(
+            field="informant_relation", other_specify_field="informant_relation_other"
+        )
+        self.required_if(YES, field="report_available", field_required="delivery_datetime")
 
         self.validate_delivery_date_with_upt(pregnancy_notification)
 
-        self.validate_delivery_location()
+        self.applicable_if(
+            YES, field="report_available", field_applicable="delivery_datetime_estimated"
+        )
+        self.applicable_if(YES, field="report_available", field_applicable="delivery_location")
 
-    def validate_informant(self):
-        self.required_if(OTHER, field="info_source", field_required="info_source_other")
-        self.required_if(NO, field="info_source", field_required="informant_relation")
         self.validate_other_specify(
-            field="informant_relation", other_specify_field="informant_relation_other"
+            field="delivery_location", other_specify_field="delivery_location_other"
+        )
+        self.required_if(
+            HOSPITAL_CLINIC,
+            field="delivery_location",
+            field_required="delivery_location_name",
+        )
+        self.required_if(
+            YES,
+            field="report_available",
+            field_required="delivery_ga",
+            field_required_evaluate_as_int=True,
+        )
+
+        self.applicable_if(YES, field="report_available", field_applicable="gm_treated")
+        self.applicable_if(YES, field="report_available", field_applicable="maternal_outcome")
+
+        self.required_if(
+            YES,
+            field="report_available",
+            field_required="fetal_outcome_count",
+            field_required_evaluate_as_int=True,
         )
 
     def validate_delivery_date_with_upt(self, pregnancy_notification):
@@ -71,13 +101,3 @@ class DeliveryFormValidator(CrfFormValidator):
                 },
                 INVALID_ERROR,
             )
-
-    def validate_delivery_location(self):
-        self.required_if(
-            HOSPITAL_CLINIC,
-            field="delivery_location",
-            field_required="delivery_location_name",
-        )
-        self.validate_other_specify(
-            field="delivery_location", other_specify_field="delivery_location_other"
-        )
