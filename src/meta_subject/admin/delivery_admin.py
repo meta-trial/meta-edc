@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.core.exceptions import ValidationError
+from django.forms.models import BaseInlineFormSet
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django_audit_fields.admin import audit_fieldset_tuple
@@ -15,9 +17,39 @@ from ..models import BirthOutcomes, Delivery
 from .modeladmin import CrfModelAdminMixin
 
 
+class BirthOutcomesInlineFormSet(BaseInlineFormSet):
+    def clean(self):
+        super().clean()
+
+        # instance here is the parent Delivery instance
+        delivery = self.instance
+        expected = delivery.fetal_outcome_count
+
+        if expected is None:
+            return  # let field-level validation handle a missing value
+
+        # count forms that are valid, not marked for deletion, and not empty
+        valid_count = 0
+        for form in self.forms:
+            if not hasattr(form, "cleaned_data"):
+                continue
+            if form.cleaned_data.get("DELETE", False):
+                continue
+            if form.cleaned_data.get("id") is None and not form.has_changed():
+                continue  # skip blank extra forms
+            valid_count += 1
+
+        if valid_count != expected:
+            raise ValidationError(
+                f"Delivery indicates {expected} birth outcome(s) expected, "
+                f"but {valid_count} were entered."
+            )
+
+
 class BirthOutcomesInlineAdmin(TabularInlineMixin, admin.TabularInline):
     model = BirthOutcomes
     form = BirthOutcomesForm
+    formset = BirthOutcomesInlineFormSet
     extra = 1
     fields = (
         "birth_order",
@@ -38,22 +70,30 @@ class DeliveryAdmin(
     inlines = (BirthOutcomesInlineAdmin,)
 
     fieldsets = (
-        (None, {"fields": ("subject_visit", "report_datetime")}),
         (
-            "Source of information",
+            None,
             {
                 "fields": (
-                    "info_available",
-                    "info_not_available_reason",
-                    "info_source",
-                    "info_source_other",
-                    "informant_relation",
-                    "informant_relation_other",
+                    "subject_visit",
+                    "report_datetime",
+                    "report_available",
+                    "report_not_available_reason",
                 )
             },
         ),
         (
-            "Delivery",
+            "Source of information",
+            {
+                "fields": (
+                    "info_source",
+                    "info_source_other",
+                    "informant_relation",
+                    "informant_relation_other",
+                ),
+            },
+        ),
+        (
+            "Delivery report",
             {
                 "fields": (
                     "delivery_datetime",
@@ -92,7 +132,7 @@ class DeliveryAdmin(
     )
 
     radio_fields = {  # noqa: RUF012
-        "info_available": admin.VERTICAL,
+        "report_available": admin.VERTICAL,
         "info_source": admin.VERTICAL,
         "informant_relation": admin.VERTICAL,
         "delivery_time_estimated": admin.VERTICAL,

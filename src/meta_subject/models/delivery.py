@@ -1,8 +1,8 @@
 # TODO: urine_bhcg form (probably not necessary)
 # TODO: if pos, take of study drug and estimate
 #  delivery date for the pregnancy outcomes form. See Form 25/26
-from clinicedc_constants import NOT_APPLICABLE, PATIENT, YES
-from clinicedc_constants.choices import YES_NO, YES_NO_NA
+from clinicedc_constants import NOT_APPLICABLE, NULL_STRING, YES
+from clinicedc_constants.choices import YES_NO, YES_NO_NA, YES_NO_UNKNOWN_NA
 from django.apps import apps as django_apps
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
@@ -38,21 +38,21 @@ class Delivery(
 
     action_name = DELIVERY_ACTION
 
-    report_datetime = models.DateTimeField(
-        verbose_name="Report Date and Time", default=get_utcnow
-    )
-
-    info_available = models.CharField(
+    report_available = models.CharField(
         verbose_name="Were you able to obtain a report on the delivery?",
-        max_length=5,
+        max_length=15,
         choices=YES_NO,
         default=YES,
         help_text="If NO, please explain below",
     )
 
-    info_not_available_reason = models.TextField(
+    report_datetime = models.DateTimeField(
+        verbose_name="Report Date and Time", default=get_utcnow
+    )
+
+    report_not_available_reason = models.TextField(
         verbose_name="If the report was not available, please explain?",
-        default="",
+        default=NULL_STRING,
         blank=True,
     )
 
@@ -60,7 +60,7 @@ class Delivery(
         verbose_name="Who / what is the MAIN source of this information?",
         max_length=25,
         choices=DELIVERY_INFO_SOURCE,
-        default=PATIENT,
+        default=NOT_APPLICABLE,
     )
 
     info_source_other = EncryptedTextField(
@@ -68,7 +68,7 @@ class Delivery(
             "If not reported from study participant, please give "
             "the name and contact details of the informant."
         ),
-        null=True,
+        default=NULL_STRING,
         blank=True,
     )
 
@@ -89,10 +89,13 @@ class Delivery(
             datetime_not_before_study_start,
         ],
         null=True,
+        blank=True,
     )
 
     delivery_time_estimated = models.CharField(
-        verbose_name="Is the delivery TIME estimated?", max_length=3, choices=YES_NO_NA
+        verbose_name="Is the date and time of delivery estimated?",
+        max_length=15,
+        choices=YES_NO_NA,
     )
 
     delivery_location = models.CharField(
@@ -110,7 +113,7 @@ class Delivery(
             "please give name of the facility"
         ),
         max_length=150,
-        default="",
+        default=NULL_STRING,
         blank=True,
     )
 
@@ -118,6 +121,7 @@ class Delivery(
         verbose_name="Gestational age at delivery",
         validators=[MinValueValidator(1), MaxValueValidator(45)],
         null=True,
+        blank=True,
     )
 
     maternal_outcome = models.CharField(
@@ -129,8 +133,8 @@ class Delivery(
 
     gm_treated = models.CharField(
         verbose_name="Was the participant treated for gestational diabetes?",
-        max_length=5,
-        choices=YES_NO_NA,
+        max_length=15,
+        choices=YES_NO_UNKNOWN_NA,
         default=NOT_APPLICABLE,
     )
 
@@ -138,6 +142,7 @@ class Delivery(
         verbose_name="Number of births / fetal / neonatal outcomes",
         help_text="Each to be reported individually below",
         null=True,
+        blank=True,
     )
 
     def save(self, *args, **kwargs):

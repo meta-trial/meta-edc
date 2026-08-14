@@ -14,6 +14,7 @@ from clinicedc_constants import (
     PENDING,
     PRESENT,
     PRESENT_WITH_REINFORCEMENT,
+    UNKNOWN,
     YES,
 )
 from django.utils.translation import gettext_lazy as _
@@ -56,6 +57,7 @@ CHILDCARE_CHOICES = (
 
 DELIVERY_INFO_SOURCE = (
     (PATIENT, _("Study participant")),
+    (HOSPITAL_CLINIC, _("Hospital / Clinic")),
     (OTHER, _("Other")),
     (NOT_APPLICABLE, _("Not applicable")),
 )
@@ -63,6 +65,7 @@ DELIVERY_INFO_SOURCE = (
 DELIVERY_LOCATIONS = (
     ("home", _("At home")),
     (HOSPITAL_CLINIC, _("Hospital / Clinic")),
+    (UNKNOWN, _("Unknown")),
     (OTHER, _("Other location, specify")),
     (NOT_APPLICABLE, _("Not applicable")),
 )
@@ -141,7 +144,15 @@ DELIVERY_INFORMANT_RELATIONSHIP.extend(
         (NOT_APPLICABLE, _("Not applicable")),
     ]
 )
-DELIVERY_INFORMANT_RELATIONSHIP = tuple(DELIVERY_INFORMANT_RELATIONSHIP)
+DELIVERY_INFORMANT_RELATIONSHIP = (
+    ("husband_wife", "Husband/wife"),
+    ("Parent", "Parent"),
+    ("child", "Child"),
+    ("not_related", "Not related"),
+    (UNKNOWN, "Unknown"),
+    (OTHER, "Other"),
+)
+
 
 INTERFERENCE_DURATION_CHOICES = (
     (ALL_OF_THE_TIME, _("All of the time")),
