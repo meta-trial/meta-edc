@@ -26,19 +26,18 @@ from edc_transfer.constants import TRANSFERRED
 
 from meta_lists.models import OffstudyReasons
 
-from ..choices import CLINICAL_WITHDRAWAL_REASONS, TOXICITY_WITHDRAWAL_REASONS
+from ..choices import (
+    ADMINISTRATIVE_WITHDRAWAL_REASONS,
+    CLINICAL_WITHDRAWAL_REASONS,
+    TOXICITY_WITHDRAWAL_REASONS,
+)
 from ..constants import (
+    ADMINISTRATIVE_WITHDRAWAL,
     CLINICAL_WITHDRAWAL,
     COMPLETED_FOLLOWUP_48,
     COMPLETED_FOLLOWUP_LT_36,
     COMPLETED_FOLLOWUP_LT_48,
 )
-
-# TODO: confirm all appointments are either new, incomplete or done
-# TODO: take off study meds but coninue followup (WITHDRAWAL)
-# TODO: follow on new schedule, if permanently off drug (Single 36m visit)
-
-# TODO: add label for "End of followup as per protocol FEB2026"
 
 
 class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidModel):
@@ -72,6 +71,7 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
                 TRANSFERRED,
                 WITHDRAWAL,
                 LATE_EXCLUSION,
+                ADMINISTRATIVE_WITHDRAWAL,
                 OTHER,
             ]
         },
@@ -159,6 +159,30 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
         max_length=500,
         blank=True,
         default=NULL_STRING,
+    )
+
+    admin_withdrawal_reason = models.CharField(
+        verbose_name=(
+            "If the patient was withdrawn for ADMINISTRATIVE reasons, please explain"
+        ),
+        max_length=25,
+        choices=ADMINISTRATIVE_WITHDRAWAL_REASONS,
+        default=NOT_APPLICABLE,
+    )
+
+    admin_withdrawal_reason_other = models.TextField(
+        verbose_name="If ADMINISTRATIVE withdrawal for 'other' reason, please specify ...",
+        max_length=500,
+        blank=True,
+        default=NULL_STRING,
+    )
+
+    last_contact_date = models.DateField(
+        verbose_name="Date of last contact, if applicable",
+        validators=[date_not_future],
+        blank=True,
+        null=True,
+        help_text="Also, do not include contact in the clinic",
     )
 
     transfer_date = models.DateField(

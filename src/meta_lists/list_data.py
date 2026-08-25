@@ -27,6 +27,7 @@ from meta_lists.constants import (
     WORKING_SCHOOLING,
 )
 from meta_prn.constants import (
+    ADMINISTRATIVE_WITHDRAWAL,
     CLINICAL_WITHDRAWAL,
     COMPLETED_FOLLOWUP_48,
     COMPLETED_FOLLOWUP_LT_36,
@@ -222,7 +223,7 @@ list_data = {
         (CAREGIVING, "Caring for a child, sibling or relation"),
         (OTHER, "Other reason (specify below)"),
     ],
-    "meta_lists.offstudyreasons": [
+    "meta_lists.offstudyreasons": [  # remember to update model's limit_choices_to
         (COMPLETED_FOLLOWUP_LT_36, "Patient completed followup (less than 36 months)"),
         (COMPLETED_FOLLOWUP, "Patient completed followup (36 months)"),
         (
@@ -254,6 +255,10 @@ list_data = {
             ),
         ),
         (TRANSFERRED, "Patient has been transferred to another health centre"),
+        (
+            ADMINISTRATIVE_WITHDRAWAL,
+            "Patient is withdrawn for administrative / non-clinical reasons ...",
+        ),
         (OTHER, "Other reason (specify below)"),
     ],
     "meta_lists.transferreasons": [

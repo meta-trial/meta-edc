@@ -1,7 +1,7 @@
 from clinicedc_constants import NOT_APPLICABLE, OTHER, PATIENT, PREGNANCY, UNKNOWN
 from edc_offstudy.constants import COMPLETED_FOLLOWUP
 
-from .constants import CLINICIAN, INVESTIGATOR, REFERRAL, SAE
+from .constants import CLINICIAN, IN_CONTACT_NOT_SEEN_6M, INVESTIGATOR, REFERRAL, SAE
 
 # from edc_transfer.constants import TRANSFERRED
 
@@ -21,6 +21,14 @@ CLINICAL_WITHDRAWAL_REASONS = (
     (NOT_APPLICABLE, "Not applicable"),
 )
 
+ADMINISTRATIVE_WITHDRAWAL_REASONS = (
+    (
+        IN_CONTACT_NOT_SEEN_6M,
+        "Clinic in contact with patient but has not attended for 6m or more.",
+    ),
+    (OTHER, "Other reason (specify below)"),
+    (NOT_APPLICABLE, "Not applicable"),
+)
 
 # PHASE_THREE ONLY
 
