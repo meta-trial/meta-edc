@@ -17,11 +17,16 @@ def get_view_definition() -> dict:
                from (select subject_identifier,
                             site_id,
                             appt_datetime,
-                            FIRST_VALUE(visit_code) OVER w as `first_value`, NTH_VALUE(visit_code, 2) OVER w as `second_value`, NTH_VALUE(visit_code, 3) OVER w as `third_value`, FIRST_VALUE(appt_datetime) OVER w as `first_date`, NTH_VALUE(appt_datetime, 3) OVER w as `third_date`
+                            FIRST_VALUE(visit_code) OVER w as `first_value`,
+                            NTH_VALUE(visit_code, 2) OVER w as `second_value`,
+                            NTH_VALUE(visit_code, 3) OVER w as `third_value`,
+                            FIRST_VALUE(appt_datetime) OVER w as `first_date`,
+                            NTH_VALUE(appt_datetime, 3) OVER w as `third_date`
                      from edc_appointment_appointment
                      where visit_code_sequence = 0
-                       and appt_status = "New"
+                       and (appt_status = "New" or appt_status = "missed")
                        and appt_datetime <= now()
+                       and appt_datetime <= "2026-05-31 23:59:00"
                      WINDOW w as (PARTITION BY subject_identifier order by appt_datetime
                              ROWS UNBOUNDED PRECEDING)) as B
                where `second_value` is not null

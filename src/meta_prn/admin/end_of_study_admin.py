@@ -111,6 +111,20 @@ class EndOfStudyAdmin(
             },
         ],
         [
+            "Withdrawn for ADMINISTRATIVE reasons (if applicable)",
+            {
+                "description": (
+                    "This section is applicable if the patient was withdrawn "
+                    "for administrative reasons, as indicated above"
+                ),
+                "fields": (
+                    "admin_withdrawal_reason",
+                    "admin_withdrawal_reason_other",
+                    "last_contact_date",
+                ),
+            },
+        ],
+        [
             "Comment",
             {"fields": ("comment",)},
         ],
@@ -122,6 +136,7 @@ class EndOfStudyAdmin(
         "offstudy_reason": admin.VERTICAL,
         "clinical_withdrawal_reason": admin.VERTICAL,
         "toxicity_withdrawal_reason": admin.VERTICAL,
+        "admin_withdrawal_reason": admin.VERTICAL,
     }
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):

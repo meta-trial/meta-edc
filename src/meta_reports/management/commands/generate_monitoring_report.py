@@ -91,7 +91,7 @@ class Command(BaseCommand):
         end_of_trial_date = _parse_date(options["end_of_trial_date"])
 
         if not end_of_trial_date:
-            end_of_trial_date = settings.END_OF_TRAIL_DATETIME
+            end_of_trial_date = settings.END_OF_TRIAL_DATETIME
 
         output_raw = options["output"]
         if output_raw:

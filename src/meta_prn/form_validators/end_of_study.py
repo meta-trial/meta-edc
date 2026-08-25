@@ -27,10 +27,12 @@ from edc_visit_schedule.site_visit_schedules import site_visit_schedules
 from edc_visit_schedule.utils import off_all_schedules_or_raise
 
 from ..constants import (
+    ADMINISTRATIVE_WITHDRAWAL,
     CLINICAL_WITHDRAWAL,
     COMPLETED_FOLLOWUP_48,
     COMPLETED_FOLLOWUP_LT_36,
     COMPLETED_FOLLOWUP_LT_48,
+    IN_CONTACT_NOT_SEEN_6M,
     INVESTIGATOR_DECISION,
     OFFSTUDY_MEDICATION_ACTION,
 )
@@ -43,7 +45,8 @@ class EndOfStudyFormValidator(
     FormValidator,
 ):
     death_report_model = "meta_ae.deathreport"
-    ltfu_model = None
+    ltfu_model = "meta_prn.losstofollowup"
+    ltfu_date_field = "ltfu_date"
 
     # take all subjects off study after this date regardless of timepoint
     take_all_off_datetime = datetime(2026, 3, 1, 0, 0, 0, tzinfo=ZoneInfo("UTC"))
@@ -103,6 +106,45 @@ class EndOfStudyFormValidator(
             field="offstudy_reason",
             field_required="consent_withdrawal_reason",
         )
+
+        self.applicable_if(
+            ADMINISTRATIVE_WITHDRAWAL,
+            field="offstudy_reason",
+            field_applicable="admin_withdrawal_reason",
+        )
+
+        self.validate_other_specify(
+            field="admin_withdrawal_reason",
+            other_specify_field="admin_withdrawal_reason_other",
+        )
+
+        self.required_if(
+            ADMINISTRATIVE_WITHDRAWAL,
+            field="offstudy_reason",
+            field_required="last_contact_date",
+            inverse=False,
+        )
+
+        self.validate_date_of_last_contact()
+
+    def validate_date_of_last_contact(self):
+        if (
+            self.cleaned_data.get("offstudy_reason")
+            and self.cleaned_data.get("offstudy_reason").name == ADMINISTRATIVE_WITHDRAWAL
+            and self.cleaned_data.get("admin_withdrawal_reason") == IN_CONTACT_NOT_SEEN_6M
+            and self.cleaned_data.get("last_seen_date")
+            and self.cleaned_data.get("last_contact_date")
+            and self.cleaned_data.get("last_contact_date")
+            <= self.cleaned_data.get("last_seen_date")
+        ):
+            self.raise_validation_error(
+                {
+                    "last_contact_date": (
+                        "Invalid. May not be on or before date patient was last seen."
+                    )
+                },
+                INVALID_ERROR,
+            )
 
     def validate_completed_lt_36m(self):
         if (
