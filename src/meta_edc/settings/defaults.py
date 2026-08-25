@@ -559,7 +559,12 @@ EDC_PROTOCOL_STUDY_OPEN_DATETIME = get_datetime_from_env(
 EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
     *env.list("EDC_PROTOCOL_STUDY_CLOSE_DATETIME")
 )
-EDC_PROTOCOL_STUDY_CLOSE_GRACE_PERIOD = (3, "months")
+EDC_PROTOCOL_STUDY_CLOSE_GRACE_PERIOD = (
+    *[
+        int(x) if x.isdigit() else x
+        for x in env.tuple("EDC_PROTOCOL_STUDY_CLOSE_GRACE_PERIOD", default=(0, "months"))
+    ],
+)
 EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
 
 # edc_retinopathy
@@ -570,7 +575,7 @@ EDC_REGISTRATION_REGISTERED_SUBJECT_MODEL = "edc_registration.registeredsubject"
 EDC_RETINOPATHY_SESSION_REACTIVATION_HOURS = 2
 
 # declare before STORAGES
-MEDIA_ROOT = env.str("DJANGO_MEDIA_ROOT", default=Path("~/media/").expanduser())
+MEDIA_ROOT = env.str("DJANGO_MEDIA_ROOT", default=str(Path("~/media/").expanduser()))
 MEDIA_URL = "/media/"
 
 # declare STORAGES, overwrite staticfiles if AWS

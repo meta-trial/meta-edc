@@ -757,7 +757,7 @@ wheels = [
 
 [[package]]
 name = "clinicedc"
-version = "4.5.0"
+version = "4.5.1"
 source = { editable = "../clinicedc" }
 dependencies = [
     { name = "argon2-cffi" },
