@@ -1,4 +1,4 @@
-# ruff: noqa: PD008, PD010, PD015, PLR0913, PLR0915, C901, ARG001, F841, RET504
+# ruff: noqa: PD010, PD015, PLR0913, PLR0915, C901, ARG001, F841, RET504
 """Generate the META3 monitoring report (PDF).
 
 Ported from ``meta_analytics/notebooks/monitoring_report.ipynb``.
@@ -85,6 +85,8 @@ LATE_EXCLUSION_REASON = (
     "(due to abnormal blood values or raised blood pressure at enrolment"
 )
 
+SITE_IDS = ["10", "20", "30", "40", "60"]
+
 COLUMN_HEADERS = {
     "label": "Label",
     "visit_code": "Visit code",
@@ -109,15 +111,32 @@ COLUMN_HEADERS_WITH_STR = {
 # ---------------------------------------------------------------------------
 # helpers (extracted from the notebook's inline defs)
 # ---------------------------------------------------------------------------
+def _reindex_site_columns(
+    df: pd.DataFrame, index_column: str, suffix: str | None = None
+) -> pd.DataFrame:
+    """Return `df` with one column per site, in SITE_IDS order.
+
+    A pivot only returns columns for sites found in the data. Reindexing
+    by name adds the missing sites and keeps the remaining columns in a
+    known order (some callers rename columns by position).
+    """
+    suffix = suffix or ""
+    site_columns = [f"{site}{suffix}" for site in SITE_IDS]
+    df.columns = [index_column if c == index_column else str(c) for c in df.columns]
+    if unexpected := [c for c in df.columns if c != index_column and c not in site_columns]:
+        raise ValueError(
+            f"Unexpected columns in site dataframe. Expected {site_columns}. Got {unexpected}."
+        )
+    return df.reindex(columns=[index_column, *site_columns])
+
+
 def _get_row_df(row_df: pd.DataFrame, label: str | None = None, **kwargs) -> pd.DataFrame:
     row_df = row_df.groupby(by=["site_id"]).site_id.count().to_frame(name="n")
     row_df["label"] = label
     row_df = row_df.reset_index()
     row_df = row_df.pivot(index="label", values="n", columns="site_id").reset_index()
     row_df.columns.name = ""
-    for site in [10, 20, 30, 40, 60]:
-        if site not in row_df.columns:
-            row_df[site] = None
+    row_df = _reindex_site_columns(row_df, "label")
     return row_df.reset_index(drop=True)
 
 
@@ -283,7 +302,7 @@ def _get_schedule_df(
     offschedule_model: str,
     mode: str,
 ) -> pd.DataFrame:
-    columns = {k: f"{k}_{mode}" for k in ["10", "20", "30", "40", "60"]}
+    columns = {k: f"{k}_{mode}" for k in SITE_IDS}
     df_schedule = (
         df_subjecthistory.query(
             f"onschedule_model==@onschedule_model and "
@@ -300,7 +319,8 @@ def _get_schedule_df(
         .copy()
     )
     df_schedule.columns.name = ""
-    return df_schedule
+    df_schedule = _reindex_site_columns(df_schedule, "schedule", suffix=f"_{mode}")
+    return df_schedule.fillna({col: 0.0 for col in df_schedule.columns if col != "schedule"})
 
 
 def _get_df_main(
@@ -385,6 +405,28 @@ def _get_incidence_data(
             *_get_rate_and_ci(events, person_years_total),
         ]
     }
+
+
+def _get_endpoint_pivot_df(df_endpoint_grp: pd.DataFrame) -> pd.DataFrame:
+    """Return endpoint counts pivoted by site with a `Total` row and column.
+
+    `df_endpoint_grp` has columns site_id, label, endpoints. Sites not
+    represented in the data are added as 0.0. An empty `df_endpoint_grp`
+    returns a frame with just the `Total` row.
+    """
+    df = df_endpoint_grp.pivot_table(
+        index="label", columns="site_id", values="endpoints"
+    ).reset_index()
+    df.columns.name = ""
+    # match site columns by name, not by position
+    df.columns = [str(col) for col in df.columns]
+    df = df.reindex(columns=["label", *SITE_IDS])
+    df[SITE_IDS] = df[SITE_IDS].fillna(0.0).astype(float)
+    df["label"] = df["label"].astype(object)
+    # append the totals row, including `label`, so dtypes are not upcast
+    df.loc[len(df)] = {"label": "Total", **df[SITE_IDS].sum().to_dict()}
+    df["total"] = df[SITE_IDS].sum(axis=1)
+    return df
 
 
 # ---------------------------------------------------------------------------
@@ -989,27 +1031,7 @@ def generate_monitoring_report(  # noqa: PLR0912
         df_endpoint.groupby(by=["site_id", "endpoint_label"]).size().to_frame().reset_index()
     )
     df_endpoint_grp.columns = ["site_id", "label", "endpoints"]
-    df_endpoint_pivot = df_endpoint_grp.pivot_table(
-        index="label", columns="site_id", values="endpoints"
-    ).reset_index()
-    df_endpoint_pivot.columns.name = ""
-    df_endpoint_pivot.columns = [
-        "label",
-        *[str(col) for col in df_endpoint_pivot.columns if col != "label"],
-    ]
-    for col in [
-        c
-        for c in ["label", "10", "20", "30", "40", "60"]
-        if str(c) not in df_endpoint_pivot.columns
-    ]:
-        df_endpoint_pivot[str(col)] = np.nan
-    df_endpoint_pivot.columns = ["label", "10", "20", "30", "40", "60"]
-    df_endpoint_pivot.loc[len(df_endpoint_pivot)] = (
-        df_endpoint_pivot[["10", "20", "30", "40", "60"]].sum().to_dict()
-    )
-    df_endpoint_pivot.at[len(df_endpoint_pivot) - 1, "label"] = "Total"
-    df_endpoint_pivot["total"] = df_endpoint_pivot[["10", "20", "30", "40", "60"]].sum(axis=1)
-    df_endpoint_pivot = df_endpoint_pivot.fillna(0.0)
+    df_endpoint_pivot = _get_endpoint_pivot_df(df_endpoint_grp)
     gt = df_as_great_table(df_endpoint_pivot, title="Table 9a: Primary Endpoint met")
     gt = (
         gt.cols_label({k: v for k, v in COLUMN_HEADERS.items() if k != "visit_code"})
@@ -1040,27 +1062,7 @@ def generate_monitoring_report(  # noqa: PLR0912
         .reset_index()
     )
     df_endpoint_grp.columns = ["site_id", "label", "endpoints"]
-    df_endpoint_pivot = df_endpoint_grp.pivot_table(
-        index="label", columns="site_id", values="endpoints"
-    ).reset_index()
-    df_endpoint_pivot.columns.name = ""
-    df_endpoint_pivot.columns = [
-        "label",
-        *[str(col) for col in df_endpoint_pivot.columns if col != "label"],
-    ]
-    for col in [
-        c
-        for c in ["label", "10", "20", "30", "40", "60"]
-        if str(c) not in df_endpoint_pivot.columns
-    ]:
-        df_endpoint_pivot[str(col)] = np.nan
-    df_endpoint_pivot.columns = ["label", "10", "20", "30", "40", "60"]
-    df_endpoint_pivot.loc[len(df_endpoint_pivot)] = (
-        df_endpoint_pivot[["10", "20", "30", "40", "60"]].sum().to_dict()
-    )
-    df_endpoint_pivot.at[len(df_endpoint_pivot) - 1, "label"] = "Total"
-    df_endpoint_pivot["total"] = df_endpoint_pivot[["10", "20", "30", "40", "60"]].sum(axis=1)
-    df_endpoint_pivot = df_endpoint_pivot.fillna(0.0)
+    df_endpoint_pivot = _get_endpoint_pivot_df(df_endpoint_grp)
     unreferred_subjects = df_endpoint_no_off.query(
         "offschedule_datetime.isna()"
     ).subject_identifier.to_list()
@@ -1296,9 +1298,9 @@ def generate_monitoring_report(  # noqa: PLR0912
 
     df_status = pd.merge(df_on, df_off, on=["schedule"], how="outer")
     status_cols = []
-    for ele in [[f"{x}_on", f"{x}_off"] for x in ["10", "20", "30", "40", "60"]]:
+    for ele in [[f"{x}_on", f"{x}_off"] for x in SITE_IDS]:
         status_cols.extend(ele)
-    df_status = df_status[["schedule", *status_cols]]
+    df_status = df_status[["schedule", *status_cols]].fillna({col: 0.0 for col in status_cols})
     df_status["total_on"] = df_status[[c for c in status_cols if "on" in c]].sum(axis=1)
     df_status["total_off"] = df_status[[c for c in status_cols if "off" in c]].sum(axis=1)
     df_status["total"] = df_status[status_cols].sum(axis=1)
