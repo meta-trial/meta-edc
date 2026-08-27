@@ -432,6 +432,9 @@ if DEBUG:
     }
 EDC_LAB_RESULTS_PARSERS = {"MNH": "parse_trial_labs.parsers.parse_mnh"}
 EDC_LAB_RESULTS_UPLOAD_DIR = "~/upload/edc_lab_results"
+EDC_LAB_RESULTS_IMPORT_PRIVATE_PATH = Path(
+    os.getenv("EDC_LAB_RESULTS_IMPORT_PRIVATE_PATH")
+).expanduser()
 
 # edc-label
 EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK = env("EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK")
