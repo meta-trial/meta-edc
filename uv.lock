@@ -905,7 +905,7 @@ wheels = [
 
 [[package]]
 name = "clinicedc-utils"
-version = "1.0.5"
+version = "1.0.6"
 source = { editable = "../clinicedc-utils" }
 dependencies = [
     { name = "clinicedc-constants" },
@@ -1676,7 +1676,7 @@ lint = [{ name = "ruff", specifier = ">=0.12.5" }]
 
 [[package]]
 name = "edc-retinopathy"
-version = "0.8.0"
+version = "1.0.0"
 source = { editable = "../edc-retinopathy" }
 dependencies = [
     { name = "clinicedc" },
@@ -3057,7 +3057,7 @@ wheels = [
 
 [[package]]
 name = "meta-edc"
-version = "3.11.0"
+version = "3.12.0"
 source = { editable = "." }
 dependencies = [
     { name = "celery" },
