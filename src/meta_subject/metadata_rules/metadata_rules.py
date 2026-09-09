@@ -214,8 +214,10 @@ class LastVisitRuleGroup(CrfRuleGroup):
             "eq5d3l",
             "mnsi",
             "sf12",
+            "malariatest",
+            "urinedipsticktest",
         ],
-        run_only_after_datetime=datetime(
+        activate_after_datetime=datetime(
             2026, 3, 1, 0, 0, tzinfo=ZoneInfo(settings.TIME_ZONE)
         ),
         run_only_for_visit_schedules=[f"{VISIT_SCHEDULE}.{SCHEDULE}"],
@@ -292,7 +294,7 @@ class BloodResultsFbcRuleGroup(CrfRuleGroup):
         alternative=NOT_REQUIRED,
         target_models=["bloodresultsfbc"],
         run_only_for_visit_codes=[MONTH30],
-        run_only_after_datetime=datetime(
+        activate_after_datetime=datetime(
             2024, 3, 3, 0, 0, tzinfo=ZoneInfo(settings.TIME_ZONE)
         ),
     )

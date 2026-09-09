@@ -47,6 +47,7 @@ def get_test_setting_opts(app_name: str, base_dir: Path):
         SUBJECT_VISIT_MISSED_MODEL="meta_subject.subjectvisitmissed",
         SUBJECT_CONSENT_MODEL="meta_consent.subjectconsentv1",
         SUBJECT_REQUISITION_MODEL="meta_subject.subjectrequisition",
+        LIST_MODEL_APP_LABEL="meta_lists",
         EDC_BLOOD_RESULTS_MODEL_APP_LABEL="meta_subject",
         DEFENDER_ENABLED=False,
         DJANGO_LAB_DASHBOARD_REQUISITION_MODEL="meta_subject.subjectrequisition",
