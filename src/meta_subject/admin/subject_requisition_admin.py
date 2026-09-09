@@ -8,6 +8,7 @@ from edc_lab.admin import (
     RequisitionAdminMixin,
     requisition_fieldset,
     requisition_identifier_fieldset,
+    requisition_result_expected_fieldset,
     requisition_status_fieldset,
     requisition_vendor_fieldset,
     requisition_verify_fieldset,
@@ -27,6 +28,7 @@ class SubjectRequisitionAdmin(RequisitionAdminMixin, CrfModelAdminMixin, SimpleH
     fieldsets = (
         (None, {"fields": ("subject_visit", "requisition_datetime", "panel")}),
         requisition_fieldset,
+        requisition_result_expected_fieldset,
         requisition_status_fieldset,
         requisition_identifier_fieldset,
         requisition_verify_fieldset,
@@ -39,6 +41,8 @@ class SubjectRequisitionAdmin(RequisitionAdminMixin, CrfModelAdminMixin, SimpleH
         "reason_not_drawn": admin.VERTICAL,
         "item_type": admin.VERTICAL,
         "clinic_verified": admin.VERTICAL,
+        "result_expected": admin.VERTICAL,
+        "result_not_expected_reason": admin.VERTICAL,
     }
 
     def get_search_results(self, request, queryset, search_term):

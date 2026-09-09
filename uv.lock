@@ -754,7 +754,7 @@ wheels = [
 
 [[package]]
 name = "clinicedc"
-version = "4.6.0"
+version = "4.8.0"
 source = { editable = "../clinicedc" }
 dependencies = [
     { name = "argon2-cffi" },
@@ -786,6 +786,7 @@ dependencies = [
     { name = "fontawesomefree" },
     { name = "gunicorn" },
     { name = "inflect" },
+    { name = "keyring" },
     { name = "mempass" },
     { name = "mysqlclient" },
     { name = "openpyxl" },
@@ -807,50 +808,51 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "argon2-cffi", specifier = ">=25.1.0" },
-    { name = "arrow", specifier = ">=1.3.0" },
-    { name = "beautifulsoup4", specifier = ">=4.13.5" },
-    { name = "boto3", specifier = ">=1.39.16" },
-    { name = "celery", specifier = ">=5.5.3" },
+    { name = "arrow", specifier = ">=1.4.0" },
+    { name = "beautifulsoup4", specifier = ">=4.15.0" },
+    { name = "boto3", specifier = ">=1.43.82" },
+    { name = "celery", specifier = ">=5.6.3" },
     { name = "clinicedc-constants", editable = "../clinicedc-constants" },
     { name = "clinicedc-utils", editable = "../clinicedc-utils" },
-    { name = "cryptography", specifier = ">=45.0.7" },
+    { name = "cryptography", specifier = ">=50.0.1" },
     { name = "django", specifier = ">=5.2,<6.1" },
-    { name = "django-admin-rangefilter", specifier = ">=0.13.3" },
+    { name = "django-admin-rangefilter", specifier = ">=0.14.3" },
     { name = "django-audit-fields", specifier = ">=2.0.6" },
     { name = "django-crypto-fields", specifier = ">=1.2.0" },
-    { name = "django-db-views", specifier = ">=0.1.11" },
+    { name = "django-db-views", specifier = ">=0.1.14" },
     { name = "django-defender", specifier = ">=0.9.8" },
-    { name = "django-environ", specifier = ">=0.12.0" },
-    { name = "django-import-export", specifier = ">=4.3.0" },
+    { name = "django-environ", specifier = ">=0.14.0" },
+    { name = "django-import-export", specifier = ">=4.4.1" },
     { name = "django-logentry-admin", specifier = ">=1.1.0" },
     { name = "django-multisite2", specifier = ">=2.1.0" },
     { name = "django-pandas", specifier = ">=0.6.7" },
     { name = "django-pylabels", specifier = ">=1.0.1" },
-    { name = "django-redis", specifier = ">=6.0.0" },
-    { name = "django-revision", specifier = ">=2.1.0" },
+    { name = "django-redis", specifier = ">=7.0.0" },
+    { name = "django-revision", specifier = ">=2.1.1" },
     { name = "django-sequences", specifier = ">=3.0" },
-    { name = "django-simple-history", specifier = ">=3.10.1" },
+    { name = "django-simple-history", specifier = ">=3.13.0" },
     { name = "django-storages", specifier = ">=1.14.6" },
-    { name = "djangorestframework", specifier = ">=3.16.0" },
+    { name = "djangorestframework", specifier = ">=3.18.0" },
     { name = "fontawesomefree", specifier = ">=6.6.0" },
-    { name = "gunicorn", specifier = ">=23.0.0" },
+    { name = "gunicorn", specifier = ">=26.2.0" },
     { name = "inflect", specifier = ">=7.5.0" },
+    { name = "keyring", specifier = ">=25.7.0" },
     { name = "mempass", specifier = ">=0.1.2" },
-    { name = "mysqlclient", specifier = ">=2.2.7" },
+    { name = "mysqlclient", specifier = ">=2.2.8" },
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "parse-trial-labs", specifier = ">=0.6.0" },
-    { name = "psycopg2", specifier = ">=2.9.10" },
-    { name = "pyarrow", specifier = ">=25.0.0" },
+    { name = "psycopg2", specifier = ">=2.9.12" },
+    { name = "pyarrow", specifier = ">=25.0.1" },
     { name = "pycups", specifier = ">=2.0.4" },
-    { name = "pypdf", specifier = ">=5.9.0" },
+    { name = "pypdf", specifier = ">=6.16.2" },
     { name = "python-dateutil", specifier = ">=2.9.0.post0" },
     { name = "python-memcached", specifier = ">=1.62" },
-    { name = "reportlab", specifier = ">=4.4.3" },
-    { name = "sqlalchemy", specifier = ">=2.0.42" },
-    { name = "sqlglot", specifier = ">=27.8.0" },
-    { name = "tabulate", specifier = ">=0.9.0" },
-    { name = "tqdm", specifier = ">=4.67.1" },
-    { name = "twilio", specifier = ">=9.7.0" },
+    { name = "reportlab", specifier = ">=5.0.1" },
+    { name = "sqlalchemy", specifier = ">=2.0.52" },
+    { name = "sqlglot", specifier = ">=30.17.0" },
+    { name = "tabulate", specifier = ">=0.10.0" },
+    { name = "tqdm", specifier = ">=4.70.0" },
+    { name = "twilio", specifier = ">=9.11.0" },
 ]
 
 [package.metadata.requires-dev]
@@ -882,7 +884,7 @@ notebook = [
 
 [[package]]
 name = "clinicedc-constants"
-version = "1.5.0"
+version = "1.6.0"
 source = { editable = "../clinicedc-constants" }
 
 [[package]]
@@ -1233,11 +1235,11 @@ wheels = [
 
 [[package]]
 name = "django-admin-rangefilter"
-version = "0.14.0"
+version = "0.15.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/0a/a7/617940b631f885d6d1f7811d0afbb58b6f1ef04dd15b163dbbaaaa24567f/django_admin_rangefilter-0.14.0.tar.gz", hash = "sha256:1d7a6d86afa8ac92fecb01e7cece5fbc2065b3c2b4f3cc0e3fb719179d479509", size = 24753, upload-time = "2026-08-01T04:16:46.589Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ea/ac/afbf37addf9a882bff1bfc7102778c86bfd2d939cdc8396f86842a4229ef/django_admin_rangefilter-0.15.0.tar.gz", hash = "sha256:61d9f57715fd091d894e91fa9e1124013e006b645294a70cb2e9255a6e6403ae", size = 25791, upload-time = "2026-08-28T14:28:56.012Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/57/36/aa3850b7a36c9ce7989c60ec7fa3f574528d1f20aca039fd32bf3ef40a1d/django_admin_rangefilter-0.14.0-py2.py3-none-any.whl", hash = "sha256:904870d2f0af02322efd328cd9d60f3d01ec8eb6b68dc53e24300635a92e2e65", size = 48597, upload-time = "2026-08-01T04:16:45.629Z" },
+    { url = "https://files.pythonhosted.org/packages/b0/22/5c6518159241082f9482f5313b1ef168adbfb9f3633cf50d3762d7248d3d/django_admin_rangefilter-0.15.0-py2.py3-none-any.whl", hash = "sha256:4e950d01b4d35915c47fc3f2eb23c097825774dd577871632cbd8fcce5f97363", size = 48896, upload-time = "2026-08-28T14:28:55.025Z" },
 ]
 
 [[package]]
@@ -1676,7 +1678,7 @@ lint = [{ name = "ruff", specifier = ">=0.12.5" }]
 
 [[package]]
 name = "edc-retinopathy"
-version = "1.0.0"
+version = "1.2.0"
 source = { editable = "../edc-retinopathy" }
 dependencies = [
     { name = "clinicedc" },
@@ -2274,6 +2276,39 @@ wheels = [
 ]
 
 [[package]]
+name = "jaraco-classes"
+version = "3.4.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "more-itertools" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/06/c0/ed4a27bc5571b99e3cff68f8a9fa5b56ff7df1c2251cc715a652ddd26402/jaraco.classes-3.4.0.tar.gz", hash = "sha256:47a024b51d0239c0dd8c8540c6c7f484be3b8fcf0b2d85c13825780d3b3f3acd", size = 11780, upload-time = "2024-03-31T07:27:36.643Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7f/66/b15ce62552d84bbfcec9a4873ab79d993a1dd4edb922cbfccae192bd5b5f/jaraco.classes-3.4.0-py3-none-any.whl", hash = "sha256:f662826b6bed8cace05e7ff873ce0f9283b5c924470fe664fff1c2f00f581790", size = 6777, upload-time = "2024-03-31T07:27:34.792Z" },
+]
+
+[[package]]
+name = "jaraco-context"
+version = "6.1.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/af/50/4763cd07e722bb6285316d390a164bc7e479db9d90daa769f22578f698b4/jaraco_context-6.1.2.tar.gz", hash = "sha256:f1a6c9d391e661cc5b8d39861ff077a7dc24dc23833ccee564b234b81c82dfe3", size = 16801, upload-time = "2026-03-20T22:13:33.922Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f2/58/bc8954bda5fcda97bd7c19be11b85f91973d67a706ed4a3aec33e7de22db/jaraco_context-6.1.2-py3-none-any.whl", hash = "sha256:bf8150b79a2d5d91ae48629d8b427a8f7ba0e1097dd6202a9059f29a36379535", size = 7871, upload-time = "2026-03-20T22:13:32.808Z" },
+]
+
+[[package]]
+name = "jaraco-functools"
+version = "4.6.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "more-itertools" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/6c/1f/c23395957d41ccf27c4e535c3d334c4051e5395b3752057ba4cbaec35c56/jaraco_functools-4.6.0.tar.gz", hash = "sha256:880c577ec9720b3a052d5bc611fb9f2269b3d87902ef42440df443b88e443280", size = 20837, upload-time = "2026-07-14T01:28:02.544Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/02/36/ecc85bc96c273dc8a11273ed4782272975e6338d4a3e9228621175edf0e3/jaraco_functools-4.6.0-py3-none-any.whl", hash = "sha256:99e3dc0060c5cbe8fcd1cdb36258e2a65ca40f1566b2033b12abb1bb44dd3c30", size = 11677, upload-time = "2026-07-14T01:28:01.59Z" },
+]
+
+[[package]]
 name = "jedi"
 version = "0.19.2"
 source = { registry = "https://pypi.org/simple" }
@@ -2283,6 +2318,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/72/3a/79a912fbd4d8dd6fbb02bf69afd3bb72cf0c729bb3063c6f4498603db17a/jedi-0.19.2.tar.gz", hash = "sha256:4770dc3de41bde3966b02eb84fbcf557fb33cce26ad23da12c742fb50ecb11f0", size = 1231287, upload-time = "2024-11-11T01:41:42.873Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c0/5a/9cac0c82afec3d09ccd97c8b6502d48f165f9124db81b4bcb90b4af974ee/jedi-0.19.2-py2.py3-none-any.whl", hash = "sha256:a8ef22bde8490f57fe5c7681a3c83cb58874daf72b4784de3cce5b6ef6edb5b9", size = 1572278, upload-time = "2024-11-11T01:41:40.175Z" },
+]
+
+[[package]]
+name = "jeepney"
+version = "0.9.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/7b/6f/357efd7602486741aa73ffc0617fb310a29b588ed0fd69c2399acbb85b0c/jeepney-0.9.0.tar.gz", hash = "sha256:cf0e9e845622b81e4a28df94c40345400256ec608d0e55bb8a3feaa9163f5732", size = 106758, upload-time = "2025-02-27T18:51:01.684Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b2/a3/e137168c9c44d18eff0376253da9f1e9234d0239e0ee230d2fee6cea8e55/jeepney-0.9.0-py3-none-any.whl", hash = "sha256:97e5714520c16fc0a45695e5365a2e11b81ea79bba796e26f9f1d178cb182683", size = 49010, upload-time = "2025-02-27T18:51:00.104Z" },
 ]
 
 [[package]]
@@ -2583,6 +2627,23 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/21/8b/e739cf9066ad5037a2d4b0a403f06da374fdccb9748221661c8b492d3dbc/jupyterlab_widgets-3.0.17.tar.gz", hash = "sha256:6e61fe21ca8a66039180a5cc52a433e07279d2fee79c8be963e00d55193f17a8", size = 213919, upload-time = "2026-08-18T08:52:17.511Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/33/ef/6d27fc118f58cb24886da413545a7efb0853d405fddbfd8b2d9ac09fbed4/jupyterlab_widgets-3.0.17-py3-none-any.whl", hash = "sha256:40ac1e9955acf116c4d995d9bfa082d86ad9ec6d91c4f134827cf5e0a5eb75e0", size = 217292, upload-time = "2026-08-18T08:52:15.47Z" },
+]
+
+[[package]]
+name = "keyring"
+version = "25.7.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "jaraco-classes" },
+    { name = "jaraco-context" },
+    { name = "jaraco-functools" },
+    { name = "jeepney", marker = "sys_platform == 'linux'" },
+    { name = "pywin32-ctypes", marker = "sys_platform == 'win32'" },
+    { name = "secretstorage", marker = "sys_platform == 'linux'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/43/4b/674af6ef2f97d56f0ab5153bf0bfa28ccb6c3ed4d1babf4305449668807b/keyring-25.7.0.tar.gz", hash = "sha256:fe01bd85eb3f8fb3dd0405defdeac9a5b4f6f0439edbb3149577f244a2e8245b", size = 63516, upload-time = "2025-11-16T16:26:09.482Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/81/db/e655086b7f3a705df045bf0933bdd9c2f79bb3c97bfef1384598bb79a217/keyring-25.7.0-py3-none-any.whl", hash = "sha256:be4a0b195f149690c166e850609a477c532ddbfbaed96a404d4e43f8d5e2689f", size = 39160, upload-time = "2025-11-16T16:26:08.402Z" },
 ]
 
 [[package]]
@@ -3072,6 +3133,7 @@ dependencies = [
     { name = "edc-qol" },
     { name = "edc-retinopathy" },
     { name = "great-tables" },
+    { name = "keyring" },
     { name = "matplotlib" },
     { name = "numpy" },
     { name = "openpyxl" },
@@ -3119,25 +3181,26 @@ lint = [
 
 [package.metadata]
 requires-dist = [
-    { name = "celery", specifier = ">=5.6.2" },
+    { name = "celery", specifier = ">=5.6.3" },
     { name = "clinicedc", editable = "../clinicedc" },
     { name = "django", specifier = ">=5.2,<6.1" },
     { name = "django-pandas", specifier = ">=0.6.7" },
-    { name = "djangorestframework-stubs", specifier = ">=3.17.0" },
+    { name = "djangorestframework-stubs", specifier = ">=3.18.1" },
     { name = "edc-he", editable = "../edc-he" },
     { name = "edc-microscopy", editable = "../edc-microscopy" },
     { name = "edc-mnsi", editable = "../edc-mnsi" },
     { name = "edc-phq9", editable = "../edc-phq9" },
     { name = "edc-qol", editable = "../edc-qol" },
     { name = "edc-retinopathy", editable = "../edc-retinopathy" },
-    { name = "great-tables", specifier = ">=0.21.0" },
-    { name = "matplotlib", specifier = ">=3.10.8" },
-    { name = "numpy", specifier = ">=2.4.4" },
+    { name = "great-tables", specifier = ">=0.24.0" },
+    { name = "keyring", specifier = ">=25.7.0" },
+    { name = "matplotlib", specifier = ">=3.11.1" },
+    { name = "numpy", specifier = ">=2.4.6" },
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=3.0.2" },
-    { name = "ruff", specifier = ">=0.15.11" },
-    { name = "scipy", specifier = ">=1.17.1" },
-    { name = "weasyprint", specifier = ">=62.0" },
+    { name = "ruff", specifier = ">=0.16.5" },
+    { name = "scipy", specifier = ">=1.18.1" },
+    { name = "weasyprint", specifier = ">=69.0" },
 ]
 
 [package.metadata.requires-dev]
@@ -4342,6 +4405,15 @@ wheels = [
 ]
 
 [[package]]
+name = "pywin32-ctypes"
+version = "0.2.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/85/9f/01a1a99704853cb63f253eea009390c88e7131c67e66a0a02099a8c917cb/pywin32-ctypes-0.2.3.tar.gz", hash = "sha256:d162dc04946d704503b2edc4d55f3dba5c1d539ead017afa00142c38b9885755", size = 29471, upload-time = "2024-08-14T10:15:34.626Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/de/3d/8161f7711c017e01ac9f008dfddd9410dff3674334c233bde66e7ba65bbf/pywin32_ctypes-0.2.3-py3-none-any.whl", hash = "sha256:8a1513379d709975552d202d942d9837758905c8d01eb82b8bcc30918929e7b8", size = 30756, upload-time = "2024-08-14T10:15:33.187Z" },
+]
+
+[[package]]
 name = "pywinpty"
 version = "3.0.5"
 source = { registry = "https://pypi.org/simple" }
@@ -4810,6 +4882,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/86/59/a451d7420a77ab0b98f7affa3a1d78a313d2f7281a57afb1a34bae8ab412/seaborn-0.13.2.tar.gz", hash = "sha256:93e60a40988f4d65e9f4885df477e2fdaff6b73a9ded434c1ab356dd57eefff7", size = 1457696, upload-time = "2024-01-25T13:21:52.551Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/83/11/00d3c3dfc25ad54e731d91449895a79e4bf2384dc3ac01809010ba88f6d5/seaborn-0.13.2-py3-none-any.whl", hash = "sha256:636f8336facf092165e27924f223d3c62ca560b1f2bb5dff7ab7fad265361987", size = 294914, upload-time = "2024-01-25T13:21:49.598Z" },
+]
+
+[[package]]
+name = "secretstorage"
+version = "3.5.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "cryptography" },
+    { name = "jeepney" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/1c/03/e834bcd866f2f8a49a85eaff47340affa3bfa391ee9912a952a1faa68c7b/secretstorage-3.5.0.tar.gz", hash = "sha256:f04b8e4689cbce351744d5537bf6b1329c6fc68f91fa666f60a380edddcd11be", size = 19884, upload-time = "2025-11-23T19:02:53.191Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b7/46/f5af3402b579fd5e11573ce652019a67074317e18c1935cc0b4ba9b35552/secretstorage-3.5.0-py3-none-any.whl", hash = "sha256:0ce65888c0725fcb2c5bc0fdb8e5438eece02c523557ea40ce0703c266248137", size = 15554, upload-time = "2025-11-23T19:02:51.545Z" },
 ]
 
 [[package]]

@@ -56,6 +56,8 @@ else:
     if not (ENV_DIR / ".env").exists():
         raise FileExistsError(f"Environment file does not exist. Got `{(ENV_DIR / '.env')}`")
     env.read_env(ENV_DIR / ".env")
+    print(f"Reading env from {(ENV_DIR / '.env')}")  # noqa
+
 
 # django_revision
 GIT_DIR = Path(env.str("EDC_REVISION_GIT_DIR", default=BASE_DIR))
@@ -420,6 +422,16 @@ EDC_EGFR_DROP_NOTIFICATION_MODEL = "meta_subject.egfrdropnotification"
 
 # edc-export
 EDC_EXPORT_EXPORT_PII_USERS = env.list("EDC_EXPORT_EXPORT_PII_USERS")
+EDC_EXPORT_RENAME_COLUMNS_FOR_STATA = {
+    "consent_extension_definition_name": "consent_ext_definition_name",
+    "calculated_physical_assessment_score": "calc_physical_assessment_score",
+    "accomplished_less_physical_health": "accomplished_less_physicl_health",
+    "investigator_ae_classification_agreed": "investigator_aeclass_agreed",
+    "investigator_ae_classification_id": "investigator_aeclass_id",
+    "investigator_ae_classification_other": "investigator_aeclass_other",
+    "investigator_ae_classification_name": "investigator_aeclass_name",
+    "clinical_withdrawal_investigator_decision": "clinical_withdrawal_by_investgtr",
+}
 
 # edc_facility
 HOLIDAY_FILE = env.str("DJANGO_HOLIDAY_FILE")
@@ -432,9 +444,13 @@ if DEBUG:
     }
 EDC_LAB_RESULTS_PARSERS = {"MNH": "parse_trial_labs.parsers.parse_mnh"}
 EDC_LAB_RESULTS_UPLOAD_DIR = "~/upload/edc_lab_results"
+
 EDC_LAB_RESULTS_IMPORT_PRIVATE_PATH = Path(
-    os.getenv("EDC_LAB_RESULTS_IMPORT_PRIVATE_PATH")
+    env.str("EDC_LAB_RESULTS_IMPORT_PRIVATE_PATH")
 ).expanduser()
+# map imported results from panels not on any requisition
+# to one on a requisition
+EDC_LAB_RESULTS_IMPORT_REQUISITION_PANEL_MAP = {"wbc_diff": "fbc"}
 
 # edc-label
 EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK = env("EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK")
@@ -565,7 +581,7 @@ EDC_PROTOCOL_STUDY_CLOSE_DATETIME = get_datetime_from_env(
 EDC_PROTOCOL_STUDY_CLOSE_GRACE_PERIOD = (
     *[
         int(x) if x.isdigit() else x
-        for x in env.tuple("EDC_PROTOCOL_STUDY_CLOSE_GRACE_PERIOD", default=(0, "months"))
+        for x in env.tuple("EDC_PROTOCOL_STUDY_CLOSE_GRACE_PERIOD", default=("0", "months"))
     ],
 )
 EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")

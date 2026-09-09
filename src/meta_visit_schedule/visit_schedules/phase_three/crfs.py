@@ -298,6 +298,8 @@ crfs_36m = CrfCollection(
     Crf(show_order=465, model="meta_subject.sf12"),
     Crf(show_order=470, model="meta_subject.mnsi"),
     Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
+    Crf(show_order=550, model="meta_subject.malariatest"),
+    Crf(show_order=575, model="meta_subject.urinedipsticktest"),
     Crf(show_order=600, model="meta_subject.nextappointment", required=False),
     name="36m",
 )
@@ -367,6 +369,8 @@ crfs_48m = CrfCollection(
     Crf(show_order=460, model="meta_subject.eq5d3l"),
     Crf(show_order=465, model="meta_subject.sf12"),
     Crf(show_order=470, model="meta_subject.mnsi"),
+    Crf(show_order=550, model="meta_subject.malariatest"),
+    Crf(show_order=575, model="meta_subject.urinedipsticktest"),
     Crf(show_order=500, model="meta_subject.healtheconomicsupdate", required=False),
     Crf(show_order=600, model="meta_subject.nextappointment", required=False),
     name="48m",

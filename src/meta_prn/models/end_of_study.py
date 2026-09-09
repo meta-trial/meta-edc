@@ -177,6 +177,7 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
         default=NULL_STRING,
     )
 
+    # TODO: cannot be future relative to report date!
     last_contact_date = models.DateField(
         verbose_name="Date of last contact, if applicable",
         validators=[date_not_future],
@@ -199,6 +200,13 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
         max_length=15,
         default=NOT_APPLICABLE,
     )
+
+    # withdrawal_date = models.DateField(
+    #     verbose_name="Date patient withdrawn from the META trial",
+    #     validators=[date_not_future],
+    #     blank=False,
+    #     null=True,
+    # )
 
     comment = models.TextField(
         verbose_name="Please provide further details if possible",

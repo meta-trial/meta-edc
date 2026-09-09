@@ -3,6 +3,7 @@ from django import forms
 from edc_crf.crf_form_validator import CrfFormValidator
 from edc_crf.modelform_mixins import CrfModelFormMixin
 from edc_form_validators import INVALID_ERROR
+from edc_utils import to_local
 
 from ..models import SubjectVisitMissed
 
@@ -39,6 +40,16 @@ class SubjectVisitMissedFormValidator(CrfFormValidator):
                 )
 
         self.required_if(YES, field="contact_attempted", field_required="contact_last_date")
+
+        if (
+            self.cleaned_data.get("contact_last_date")
+            and self.report_datetime
+            and self.cleaned_data.get("contact_last_date")
+            > to_local(self.report_datetime).date()
+        ):
+            self.raise_validation_error(
+                {"contact_last_date": "Cannot be after report date"}, INVALID_ERROR
+            )
 
         self.required_if(YES, field="contact_attempted", field_required="contact_made")
 
