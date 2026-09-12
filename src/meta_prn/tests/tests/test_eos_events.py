@@ -6,6 +6,7 @@ from edc_offstudy.constants import END_OF_STUDY_ACTION
 from edc_pharmacy.models import Medication
 from edc_transfer.constants import SUBJECT_TRANSFER_ACTION, TRANSFERRED
 from edc_visit_schedule.constants import OFFSCHEDULE_ACTION
+from multisite import SiteID
 
 from meta_lists.models import OffstudyReasons, TransferReasons
 from meta_pharmacy.constants import METFORMIN
@@ -16,7 +17,7 @@ from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_visit_schedule.constants import MONTH36
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 class TestEosEvents(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()

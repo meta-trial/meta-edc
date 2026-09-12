@@ -14,6 +14,7 @@ from clinicedc_constants import (
 from dateutil.relativedelta import relativedelta
 from django.test import TestCase, override_settings
 from django.utils import timezone
+from multisite import SiteID
 
 from meta_screening.forms import (
     ScreeningPartOneForm,
@@ -77,7 +78,7 @@ class ScreeningTestMixin:
         )
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 class TestForms(ScreeningTestMixin, TestCase):
     def setUp(self):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())

@@ -6,6 +6,7 @@ from django.utils import timezone
 from edc_appointment.models import Appointment
 from edc_visit_schedule.constants import MONTH1
 from model_bakery.baker import make_recipe
+from multisite import SiteID
 
 from meta_prn.models import OffSchedule
 from meta_prn.models.pregnancy_notification import PregnancyNotificationError
@@ -13,7 +14,7 @@ from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_visit_schedule.constants import SCHEDULE, SCHEDULE_PREGNANCY
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 class TestPregnancyNotification(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()

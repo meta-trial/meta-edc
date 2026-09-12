@@ -7,6 +7,7 @@ from edc_appointment.models import Appointment
 from edc_utils import get_utcnow
 from edc_visit_schedule.constants import MONTH1
 from model_bakery.baker import make_recipe
+from multisite import SiteID
 
 from meta_consent.models import SubjectConsent
 from meta_screening.models import SubjectScreening
@@ -15,7 +16,7 @@ from meta_subject.forms import FollowupExaminationForm
 from meta_visit_schedule.constants import DELIVERY, MONTH3, SCHEDULE_PREGNANCY
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 class TestMetadataRules(MetaTestCaseMixin, TestCase):
     def test_ok(self):
         self.subject_visit = self.get_subject_visit(gender=FEMALE)

@@ -106,6 +106,7 @@ def get_test_setting_opts(app_name: str, base_dir: Path):
             "logentry_admin",
             "simple_history",
             "storages",
+            "multisite",
             "edc_pylabels.apps.AppConfig",
             "edc_sites.apps.AppConfig",
             "edc_action_item.apps.AppConfig",

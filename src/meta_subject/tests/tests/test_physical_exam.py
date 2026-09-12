@@ -4,13 +4,14 @@ from clinicedc_constants import COMPLETE, NO, YES
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.test import TestCase, override_settings
+from multisite import SiteID
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_screening.tests.options import now
 from meta_subject.forms import PhysicalExamForm
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 class TestPhysicalExam(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()

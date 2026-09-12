@@ -6,13 +6,14 @@ from edc_pharmacy.exceptions import PrescriptionAlreadyExists, StudyMedicationEr
 from edc_pharmacy.models import DosageGuideline, Formulation, Medication, RxRefill
 from edc_pharmacy.prescribe import create_prescription
 from edc_registration.models import RegisteredSubject
+from multisite import SiteID
 
 from meta_pharmacy.constants import METFORMIN
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_subject.models import StudyMedication
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 class TestStudyMedication(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()

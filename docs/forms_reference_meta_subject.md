@@ -1,4 +1,4 @@
-# META_SUBJECT Forms Reference v3.1.0
+# META_SUBJECT Forms Reference v3.13.0
 ## Table of contents
 
 
@@ -133,11 +133,14 @@
 6. <a href="#user-content-medication-adherence-7">Medication Adherence</a>
 7. <a href="#user-content-glucose-fbgrbg-ogtt-8">Glucose (Fbg/Rbg, Ogtt)</a>
 8. <a href="#user-content-glucose-ogtt-only-8">Glucose (Ogtt Only)</a>
-9. <a href="#user-content-hiv-exit-review-2">Hiv Exit Review</a>
-10. <a href="#user-content-euroqol-eq-5d-3l-instrument-7">Euroqol Eq-5D-3L Instrument</a>
-11. <a href="#user-content-sf-12-health-survey-7">Sf-12 Health Survey</a>
-12. <a href="#user-content-health-economics-baseline-5">Health Economics: Baseline</a>
-13. <a href="#user-content-next-appointment-8">Next Appointment</a>
+9. <a href="#user-content-blood-result-rft-4">Blood Result: Rft</a>
+10. <a href="#user-content-blood-result-lft-4">Blood Result: Lft</a>
+11. <a href="#user-content-blood-result-lipids-2">Blood Result: Lipids</a>
+12. <a href="#user-content-hiv-exit-review-2">Hiv Exit Review</a>
+13. <a href="#user-content-euroqol-eq-5d-3l-instrument-7">Euroqol Eq-5D-3L Instrument</a>
+14. <a href="#user-content-sf-12-health-survey-7">Sf-12 Health Survey</a>
+15. <a href="#user-content-health-economics-baseline-5">Health Economics: Baseline</a>
+16. <a href="#user-content-next-appointment-8">Next Appointment</a>
 
 <a href="#user-content-1210">**1210.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-8">Clinic Follow Up: Vitals</a>
@@ -158,8 +161,8 @@
 2. <a href="#user-content-clinic-follow-up-examination-9">Clinic Follow Up: Examination</a>
 3. <a href="#user-content-glucose-fbgrbg-ogtt-10">Glucose (Fbg/Rbg, Ogtt)</a>
 4. <a href="#user-content-blood-result-hba1c-2">Blood Result: Hba1C</a>
-5. <a href="#user-content-blood-result-rft-4">Blood Result: Rft</a>
-6. <a href="#user-content-blood-result-lft-4">Blood Result: Lft</a>
+5. <a href="#user-content-blood-result-rft-5">Blood Result: Rft</a>
+6. <a href="#user-content-blood-result-lft-5">Blood Result: Lft</a>
 7. <a href="#user-content-blood-result-fbc-4">Blood Result: Fbc</a>
 8. <a href="#user-content-study-medication-10">Study Medication</a>
 9. <a href="#user-content-medication-adherence-9">Medication Adherence</a>
@@ -219,19 +222,21 @@
 2. <a href="#user-content-clinic-follow-up-examination-13">Clinic Follow Up: Examination</a>
 3. <a href="#user-content-glucose-fbgrbg-ogtt-14">Glucose (Fbg/Rbg, Ogtt)</a>
 4. <a href="#user-content-blood-result-hba1c-3">Blood Result: Hba1C</a>
-5. <a href="#user-content-blood-result-rft-5">Blood Result: Rft</a>
-6. <a href="#user-content-blood-result-lft-5">Blood Result: Lft</a>
+5. <a href="#user-content-blood-result-rft-6">Blood Result: Rft</a>
+6. <a href="#user-content-blood-result-lft-6">Blood Result: Lft</a>
 7. <a href="#user-content-blood-result-fbc-5">Blood Result: Fbc</a>
-8. <a href="#user-content-blood-result-lipids-2">Blood Result: Lipids</a>
+8. <a href="#user-content-blood-result-lipids-3">Blood Result: Lipids</a>
 9. <a href="#user-content-study-medication-14">Study Medication</a>
 10. <a href="#user-content-medication-adherence-13">Medication Adherence</a>
 11. <a href="#user-content-euroqol-eq-5d-3l-instrument-13">Euroqol Eq-5D-3L Instrument</a>
 12. <a href="#user-content-sf-12-health-survey-13">Sf-12 Health Survey</a>
 13. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-7">Michigan Neuropathy Screening Instrument (Mnsi)</a>
-14. <a href="#user-content-glucose-ogtt-only-14">Glucose (Ogtt Only)</a>
-15. <a href="#user-content-hiv-exit-review-8">Hiv Exit Review</a>
-16. <a href="#user-content-health-economics-baseline-11">Health Economics: Baseline</a>
-17. <a href="#user-content-next-appointment-14">Next Appointment</a>
+14. <a href="#user-content-malaria-test-1">Malaria Test</a>
+15. <a href="#user-content-urine-dipstick-test-1">Urine Dipstick Test</a>
+16. <a href="#user-content-glucose-ogtt-only-14">Glucose (Ogtt Only)</a>
+17. <a href="#user-content-hiv-exit-review-8">Hiv Exit Review</a>
+18. <a href="#user-content-health-economics-baseline-11">Health Economics: Baseline</a>
+19. <a href="#user-content-next-appointment-14">Next Appointment</a>
 
 <a href="#user-content-1390">**1390.**</a>
 1. <a href="#user-content-clinic-follow-up-vitals-14">Clinic Follow Up: Vitals</a>
@@ -281,19 +286,21 @@
 2. <a href="#user-content-clinic-follow-up-examination-17">Clinic Follow Up: Examination</a>
 3. <a href="#user-content-glucose-fbgrbg-ogtt-18">Glucose (Fbg/Rbg, Ogtt)</a>
 4. <a href="#user-content-blood-result-hba1c-4">Blood Result: Hba1C</a>
-5. <a href="#user-content-blood-result-rft-6">Blood Result: Rft</a>
-6. <a href="#user-content-blood-result-lft-6">Blood Result: Lft</a>
+5. <a href="#user-content-blood-result-rft-7">Blood Result: Rft</a>
+6. <a href="#user-content-blood-result-lft-7">Blood Result: Lft</a>
 7. <a href="#user-content-blood-result-fbc-6">Blood Result: Fbc</a>
-8. <a href="#user-content-blood-result-lipids-3">Blood Result: Lipids</a>
+8. <a href="#user-content-blood-result-lipids-4">Blood Result: Lipids</a>
 9. <a href="#user-content-study-medication-18">Study Medication</a>
 10. <a href="#user-content-medication-adherence-17">Medication Adherence</a>
 11. <a href="#user-content-hiv-exit-review-12">Hiv Exit Review</a>
 12. <a href="#user-content-euroqol-eq-5d-3l-instrument-17">Euroqol Eq-5D-3L Instrument</a>
 13. <a href="#user-content-sf-12-health-survey-17">Sf-12 Health Survey</a>
 14. <a href="#user-content-michigan-neuropathy-screening-instrument-mnsi-11">Michigan Neuropathy Screening Instrument (Mnsi)</a>
-15. <a href="#user-content-glucose-ogtt-only-18">Glucose (Ogtt Only)</a>
-16. <a href="#user-content-health-economics-baseline-15">Health Economics: Baseline</a>
-17. <a href="#user-content-next-appointment-18">Next Appointment</a>
+15. <a href="#user-content-malaria-test-2">Malaria Test</a>
+16. <a href="#user-content-urine-dipstick-test-2">Urine Dipstick Test</a>
+17. <a href="#user-content-glucose-ogtt-only-18">Glucose (Ogtt Only)</a>
+18. <a href="#user-content-health-economics-baseline-15">Health Economics: Baseline</a>
+19. <a href="#user-content-next-appointment-18">Next Appointment</a>
 
 <a href="#user-content-3000">**3000.**</a>
 1. <a href="#user-content-diabetes-endpoint">Diabetes Endpoint</a>
@@ -2366,9 +2373,50 @@
   - `present_at_baseline`: *Present at baseline*
 ---
 
+**Section: RDW**
+
+**37.0.** Red cell distribution width
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_value
+- type: DecimalField
+---
+
+**38.0.** units
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_units
+- type: CharField
+- length: 15
+- responses:
+  - `%`: *%*
+---
+
+**39.0.** abnormal
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**40.0.** reportable
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
 **Section: Conclusion**
 
-**37.0.** Are any of the above results abnormal?
+**41.0.** Are any of the above results abnormal?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Abnormal results present at baseline or continuing from baseline not included.*
 - db_table: meta_subject_bloodresultsfbc
@@ -2380,7 +2428,7 @@
   - `No`: *No*
 ---
 
-**38.0.** If any results are abnormal, are results within grade 3 or above?
+**42.0.** If any results are abnormal, are results within grade 3 or above?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If YES, this value will open Adverse Event Form. Grade 3 and 4 results present at baseline or continuing from baseline not included*
 - db_table: meta_subject_bloodresultsfbc
@@ -2395,19 +2443,19 @@
 
 **Section: Summary**
 
-**39.0.** reportable summary
+**43.0.** reportable summary
 - db_table: meta_subject_bloodresultsfbc
 - column: reportable_summary
 - type: TextField
 ---
 
-**40.0.** abnormal summary
+**44.0.** abnormal summary
 - db_table: meta_subject_bloodresultsfbc
 - column: abnormal_summary
 - type: TextField
 ---
 
-**41.0.** errors
+**45.0.** errors
 - db_table: meta_subject_bloodresultsfbc
 - column: errors
 - type: TextField
@@ -2415,7 +2463,7 @@
 
 **Section: Action**
 
-**42.0.** action identifier
+**46.0.** action identifier
 - db_table: meta_subject_bloodresultsfbc
 - column: action_identifier
 - type: CharField
@@ -2423,19 +2471,19 @@
 - responses: *free text*
 ---
 
-**43.0.** action item
+**47.0.** action item
 - db_table: meta_subject_bloodresultsfbc
 - column: action_item
 - type: ForeignKey
 ---
 
-**44.0.** parent action item
+**48.0.** parent action item
 - db_table: meta_subject_bloodresultsfbc
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**45.0.** related action item
+**49.0.** related action item
 - db_table: meta_subject_bloodresultsfbc
 - column: related_action_item
 - type: ForeignKey
@@ -2443,7 +2491,7 @@
 
 **Section: CRF Status**
 
-**46.0.** CRF status
+**50.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_bloodresultsfbc
@@ -2456,7 +2504,7 @@
   - `COMPLETE`: *Complete*
 ---
 
-**47.0.** Any comments related to status of this CRF
+**51.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_bloodresultsfbc
@@ -12718,9 +12766,50 @@ See also Glucose and GlucoseFbg.
   - `present_at_baseline`: *Present at baseline*
 ---
 
+**Section: RDW**
+
+**37.0.** Red cell distribution width
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_value
+- type: DecimalField
+---
+
+**38.0.** units
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_units
+- type: CharField
+- length: 15
+- responses:
+  - `%`: *%*
+---
+
+**39.0.** abnormal
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**40.0.** reportable
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
 **Section: Conclusion**
 
-**37.0.** Are any of the above results abnormal?
+**41.0.** Are any of the above results abnormal?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Abnormal results present at baseline or continuing from baseline not included.*
 - db_table: meta_subject_bloodresultsfbc
@@ -12732,7 +12821,7 @@ See also Glucose and GlucoseFbg.
   - `No`: *No*
 ---
 
-**38.0.** If any results are abnormal, are results within grade 3 or above?
+**42.0.** If any results are abnormal, are results within grade 3 or above?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If YES, this value will open Adverse Event Form. Grade 3 and 4 results present at baseline or continuing from baseline not included*
 - db_table: meta_subject_bloodresultsfbc
@@ -12747,19 +12836,19 @@ See also Glucose and GlucoseFbg.
 
 **Section: Summary**
 
-**39.0.** reportable summary
+**43.0.** reportable summary
 - db_table: meta_subject_bloodresultsfbc
 - column: reportable_summary
 - type: TextField
 ---
 
-**40.0.** abnormal summary
+**44.0.** abnormal summary
 - db_table: meta_subject_bloodresultsfbc
 - column: abnormal_summary
 - type: TextField
 ---
 
-**41.0.** errors
+**45.0.** errors
 - db_table: meta_subject_bloodresultsfbc
 - column: errors
 - type: TextField
@@ -12767,7 +12856,7 @@ See also Glucose and GlucoseFbg.
 
 **Section: Action**
 
-**42.0.** action identifier
+**46.0.** action identifier
 - db_table: meta_subject_bloodresultsfbc
 - column: action_identifier
 - type: CharField
@@ -12775,19 +12864,19 @@ See also Glucose and GlucoseFbg.
 - responses: *free text*
 ---
 
-**43.0.** action item
+**47.0.** action item
 - db_table: meta_subject_bloodresultsfbc
 - column: action_item
 - type: ForeignKey
 ---
 
-**44.0.** parent action item
+**48.0.** parent action item
 - db_table: meta_subject_bloodresultsfbc
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**45.0.** related action item
+**49.0.** related action item
 - db_table: meta_subject_bloodresultsfbc
 - column: related_action_item
 - type: ForeignKey
@@ -12795,7 +12884,7 @@ See also Glucose and GlucoseFbg.
 
 **Section: CRF Status**
 
-**46.0.** CRF status
+**50.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_bloodresultsfbc
@@ -12808,7 +12897,7 @@ See also Glucose and GlucoseFbg.
   - `COMPLETE`: *Complete*
 ---
 
-**47.0.** Any comments related to status of this CRF
+**51.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_bloodresultsfbc
@@ -18487,9 +18576,50 @@ See also GlucoseFbg.
   - `present_at_baseline`: *Present at baseline*
 ---
 
+**Section: RDW**
+
+**37.0.** Red cell distribution width
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_value
+- type: DecimalField
+---
+
+**38.0.** units
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_units
+- type: CharField
+- length: 15
+- responses:
+  - `%`: *%*
+---
+
+**39.0.** abnormal
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**40.0.** reportable
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
 **Section: Conclusion**
 
-**37.0.** Are any of the above results abnormal?
+**41.0.** Are any of the above results abnormal?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Abnormal results present at baseline or continuing from baseline not included.*
 - db_table: meta_subject_bloodresultsfbc
@@ -18501,7 +18631,7 @@ See also GlucoseFbg.
   - `No`: *No*
 ---
 
-**38.0.** If any results are abnormal, are results within grade 3 or above?
+**42.0.** If any results are abnormal, are results within grade 3 or above?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If YES, this value will open Adverse Event Form. Grade 3 and 4 results present at baseline or continuing from baseline not included*
 - db_table: meta_subject_bloodresultsfbc
@@ -18516,19 +18646,19 @@ See also GlucoseFbg.
 
 **Section: Summary**
 
-**39.0.** reportable summary
+**43.0.** reportable summary
 - db_table: meta_subject_bloodresultsfbc
 - column: reportable_summary
 - type: TextField
 ---
 
-**40.0.** abnormal summary
+**44.0.** abnormal summary
 - db_table: meta_subject_bloodresultsfbc
 - column: abnormal_summary
 - type: TextField
 ---
 
-**41.0.** errors
+**45.0.** errors
 - db_table: meta_subject_bloodresultsfbc
 - column: errors
 - type: TextField
@@ -18536,7 +18666,7 @@ See also GlucoseFbg.
 
 **Section: Action**
 
-**42.0.** action identifier
+**46.0.** action identifier
 - db_table: meta_subject_bloodresultsfbc
 - column: action_identifier
 - type: CharField
@@ -18544,19 +18674,19 @@ See also GlucoseFbg.
 - responses: *free text*
 ---
 
-**43.0.** action item
+**47.0.** action item
 - db_table: meta_subject_bloodresultsfbc
 - column: action_item
 - type: ForeignKey
 ---
 
-**44.0.** parent action item
+**48.0.** parent action item
 - db_table: meta_subject_bloodresultsfbc
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**45.0.** related action item
+**49.0.** related action item
 - db_table: meta_subject_bloodresultsfbc
 - column: related_action_item
 - type: ForeignKey
@@ -18564,7 +18694,7 @@ See also GlucoseFbg.
 
 **Section: CRF Status**
 
-**46.0.** CRF status
+**50.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_bloodresultsfbc
@@ -18577,7 +18707,7 @@ See also GlucoseFbg.
   - `COMPLETE`: *Complete*
 ---
 
-**47.0.** Any comments related to status of this CRF
+**51.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_bloodresultsfbc
@@ -23225,9 +23355,50 @@ Introduced 22 FEB 2024
   - `present_at_baseline`: *Present at baseline*
 ---
 
+**Section: RDW**
+
+**37.0.** Red cell distribution width
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_value
+- type: DecimalField
+---
+
+**38.0.** units
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_units
+- type: CharField
+- length: 15
+- responses:
+  - `%`: *%*
+---
+
+**39.0.** abnormal
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**40.0.** reportable
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
 **Section: Conclusion**
 
-**37.0.** Are any of the above results abnormal?
+**41.0.** Are any of the above results abnormal?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Abnormal results present at baseline or continuing from baseline not included.*
 - db_table: meta_subject_bloodresultsfbc
@@ -23239,7 +23410,7 @@ Introduced 22 FEB 2024
   - `No`: *No*
 ---
 
-**38.0.** If any results are abnormal, are results within grade 3 or above?
+**42.0.** If any results are abnormal, are results within grade 3 or above?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If YES, this value will open Adverse Event Form. Grade 3 and 4 results present at baseline or continuing from baseline not included*
 - db_table: meta_subject_bloodresultsfbc
@@ -23254,19 +23425,19 @@ Introduced 22 FEB 2024
 
 **Section: Summary**
 
-**39.0.** reportable summary
+**43.0.** reportable summary
 - db_table: meta_subject_bloodresultsfbc
 - column: reportable_summary
 - type: TextField
 ---
 
-**40.0.** abnormal summary
+**44.0.** abnormal summary
 - db_table: meta_subject_bloodresultsfbc
 - column: abnormal_summary
 - type: TextField
 ---
 
-**41.0.** errors
+**45.0.** errors
 - db_table: meta_subject_bloodresultsfbc
 - column: errors
 - type: TextField
@@ -23274,7 +23445,7 @@ Introduced 22 FEB 2024
 
 **Section: Action**
 
-**42.0.** action identifier
+**46.0.** action identifier
 - db_table: meta_subject_bloodresultsfbc
 - column: action_identifier
 - type: CharField
@@ -23282,19 +23453,19 @@ Introduced 22 FEB 2024
 - responses: *free text*
 ---
 
-**43.0.** action item
+**47.0.** action item
 - db_table: meta_subject_bloodresultsfbc
 - column: action_item
 - type: ForeignKey
 ---
 
-**44.0.** parent action item
+**48.0.** parent action item
 - db_table: meta_subject_bloodresultsfbc
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**45.0.** related action item
+**49.0.** related action item
 - db_table: meta_subject_bloodresultsfbc
 - column: related_action_item
 - type: ForeignKey
@@ -23302,7 +23473,7 @@ Introduced 22 FEB 2024
 
 **Section: CRF Status**
 
-**46.0.** CRF status
+**50.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_bloodresultsfbc
@@ -23315,7 +23486,7 @@ Introduced 22 FEB 2024
   - `COMPLETE`: *Complete*
 ---
 
-**47.0.** Any comments related to status of this CRF
+**51.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_bloodresultsfbc
@@ -23919,6 +24090,1005 @@ See also Glucose and GlucoseFbg.
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_glucoseogtt
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Blood Result: Rft
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_bloodresultsrft
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_bloodresultsrft
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Requisition and Result Date**
+
+**3.0.** Requisition
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Start typing the requisition identifier or select one from this visit*
+- db_table: meta_subject_bloodresultsrft
+- column: requisition
+- type: ForeignKey
+---
+
+**4.0.** Result assay date and time
+- db_table: meta_subject_bloodresultsrft
+- column: assay_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: UREA**
+
+**5.0.** Urea (BUN)
+- db_table: meta_subject_bloodresultsrft
+- column: urea_value
+- type: DecimalField
+---
+
+**6.0.** units
+- db_table: meta_subject_bloodresultsrft
+- column: urea_units
+- type: CharField
+- length: 15
+- responses:
+  - `mmol/L`: *mmol/L (millimoles/L)*
+---
+
+**7.0.** abnormal
+- db_table: meta_subject_bloodresultsrft
+- column: urea_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**8.0.** reportable
+- db_table: meta_subject_bloodresultsrft
+- column: urea_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
+**Section: CREATININE**
+
+**9.0.** Creatinine
+- db_table: meta_subject_bloodresultsrft
+- column: creatinine_value
+- type: DecimalField
+---
+
+**10.0.** units
+- db_table: meta_subject_bloodresultsrft
+- column: creatinine_units
+- type: CharField
+- length: 15
+- responses:
+  - `mg/dL`: *mg/dL*
+  - `umol/L`: *μmol/L (micromoles/L)*
+---
+
+**11.0.** abnormal
+- db_table: meta_subject_bloodresultsrft
+- column: creatinine_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**12.0.** reportable
+- db_table: meta_subject_bloodresultsrft
+- column: creatinine_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
+**Section: URIC_ACID**
+
+**13.0.** Uric Acid
+- db_table: meta_subject_bloodresultsrft
+- column: uric_acid_value
+- type: DecimalField
+---
+
+**14.0.** units
+- db_table: meta_subject_bloodresultsrft
+- column: uric_acid_units
+- type: CharField
+- length: 15
+- responses:
+  - `mmol/L`: *mmol/L (millimoles/L)*
+  - `mg/dL`: *mg/dL*
+---
+
+**15.0.** abnormal
+- db_table: meta_subject_bloodresultsrft
+- column: uric_acid_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**16.0.** reportable
+- db_table: meta_subject_bloodresultsrft
+- column: uric_acid_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
+**Section: Calculated eGFR**
+
+**17.0.** eGFR
+- db_table: meta_subject_bloodresultsrft
+- column: egfr_value
+- type: DecimalField
+---
+
+**18.0.** units
+- db_table: meta_subject_bloodresultsrft
+- column: egfr_units
+- type: CharField
+- length: 15
+- responses:
+  - `mL/min/1.73m2`: *mL/min/1.73m2*
+---
+
+**19.0.** Grade
+- db_table: meta_subject_bloodresultsrft
+- column: egfr_grade
+- type: IntegerField
+---
+
+**Section: Calculated eGFR Drop**
+
+**20.0.** eGFR Drop
+- db_table: meta_subject_bloodresultsrft
+- column: egfr_drop_value
+- type: DecimalField
+---
+
+**21.0.** units
+- db_table: meta_subject_bloodresultsrft
+- column: egfr_drop_units
+- type: CharField
+- length: 15
+- responses:
+  - `%`: *%*
+---
+
+**22.0.** Grade
+- db_table: meta_subject_bloodresultsrft
+- column: egfr_drop_grade
+- type: IntegerField
+---
+
+**Section: Conclusion**
+
+**23.0.** Are any of the above results abnormal?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Abnormal results present at baseline or continuing from baseline not included.*
+- db_table: meta_subject_bloodresultsrft
+- column: results_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**24.0.** If any results are abnormal, are results within grade 3 or above?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If YES, this value will open Adverse Event Form. Grade 3 and 4 results present at baseline or continuing from baseline not included*
+- db_table: meta_subject_bloodresultsrft
+- column: results_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Summary**
+
+**25.0.** reportable summary
+- db_table: meta_subject_bloodresultsrft
+- column: reportable_summary
+- type: TextField
+---
+
+**26.0.** abnormal summary
+- db_table: meta_subject_bloodresultsrft
+- column: abnormal_summary
+- type: TextField
+---
+
+**27.0.** errors
+- db_table: meta_subject_bloodresultsrft
+- column: errors
+- type: TextField
+---
+
+**Section: Action**
+
+**28.0.** action identifier
+- db_table: meta_subject_bloodresultsrft
+- column: action_identifier
+- type: CharField
+- length: 50
+- responses: *free text*
+---
+
+**29.0.** action item
+- db_table: meta_subject_bloodresultsrft
+- column: action_item
+- type: ForeignKey
+---
+
+**30.0.** parent action item
+- db_table: meta_subject_bloodresultsrft
+- column: parent_action_item
+- type: ForeignKey
+---
+
+**31.0.** related action item
+- db_table: meta_subject_bloodresultsrft
+- column: related_action_item
+- type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**32.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**33.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultsrft
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Blood Result: Lft
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_bloodresultslft
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_bloodresultslft
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Requisition and Result Date**
+
+**3.0.** Requisition
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Start typing the requisition identifier or select one from this visit*
+- db_table: meta_subject_bloodresultslft
+- column: requisition
+- type: ForeignKey
+---
+
+**4.0.** Result assay date and time
+- db_table: meta_subject_bloodresultslft
+- column: assay_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: AST**
+
+**5.0.** AST
+- db_table: meta_subject_bloodresultslft
+- column: ast_value
+- type: DecimalField
+---
+
+**6.0.** units
+- db_table: meta_subject_bloodresultslft
+- column: ast_units
+- type: CharField
+- length: 15
+- responses:
+  - `IU/L`: *IU/L*
+---
+
+**7.0.** abnormal
+- db_table: meta_subject_bloodresultslft
+- column: ast_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**8.0.** reportable
+- db_table: meta_subject_bloodresultslft
+- column: ast_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
+**Section: ALT**
+
+**9.0.** ALT
+- db_table: meta_subject_bloodresultslft
+- column: alt_value
+- type: DecimalField
+---
+
+**10.0.** units
+- db_table: meta_subject_bloodresultslft
+- column: alt_units
+- type: CharField
+- length: 15
+- responses:
+  - `IU/L`: *IU/L*
+---
+
+**11.0.** abnormal
+- db_table: meta_subject_bloodresultslft
+- column: alt_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**12.0.** reportable
+- db_table: meta_subject_bloodresultslft
+- column: alt_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
+**Section: ALP**
+
+**13.0.** ALP
+- db_table: meta_subject_bloodresultslft
+- column: alp_value
+- type: DecimalField
+---
+
+**14.0.** units
+- db_table: meta_subject_bloodresultslft
+- column: alp_units
+- type: CharField
+- length: 15
+- responses:
+  - `IU/L`: *IU/L*
+---
+
+**15.0.** abnormal
+- db_table: meta_subject_bloodresultslft
+- column: alp_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**16.0.** reportable
+- db_table: meta_subject_bloodresultslft
+- column: alp_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
+**Section: AMYLASE**
+
+**17.0.** Serum Amylase
+- db_table: meta_subject_bloodresultslft
+- column: amylase_value
+- type: DecimalField
+---
+
+**18.0.** units
+- db_table: meta_subject_bloodresultslft
+- column: amylase_units
+- type: CharField
+- length: 15
+- responses:
+  - `IU/L`: *IU/L*
+---
+
+**19.0.** abnormal
+- db_table: meta_subject_bloodresultslft
+- column: amylase_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**20.0.** reportable
+- db_table: meta_subject_bloodresultslft
+- column: amylase_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
+**Section: GGT**
+
+**21.0.** GGT
+- db_table: meta_subject_bloodresultslft
+- column: ggt_value
+- type: DecimalField
+---
+
+**22.0.** units
+- db_table: meta_subject_bloodresultslft
+- column: ggt_units
+- type: CharField
+- length: 15
+- responses:
+  - `IU/L`: *IU/L*
+---
+
+**23.0.** abnormal
+- db_table: meta_subject_bloodresultslft
+- column: ggt_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**24.0.** reportable
+- db_table: meta_subject_bloodresultslft
+- column: ggt_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
+**Section: ALBUMIN**
+
+**25.0.** Serum albumin
+- db_table: meta_subject_bloodresultslft
+- column: albumin_value
+- type: DecimalField
+---
+
+**26.0.** units
+- db_table: meta_subject_bloodresultslft
+- column: albumin_units
+- type: CharField
+- length: 15
+- responses:
+  - `g/dL`: *g/dL*
+  - `g/L`: *g/L*
+---
+
+**27.0.** abnormal
+- db_table: meta_subject_bloodresultslft
+- column: albumin_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**28.0.** reportable
+- db_table: meta_subject_bloodresultslft
+- column: albumin_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
+**Section: Conclusion**
+
+**29.0.** Are any of the above results abnormal?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Abnormal results present at baseline or continuing from baseline not included.*
+- db_table: meta_subject_bloodresultslft
+- column: results_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**30.0.** If any results are abnormal, are results within grade 3 or above?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If YES, this value will open Adverse Event Form. Grade 3 and 4 results present at baseline or continuing from baseline not included*
+- db_table: meta_subject_bloodresultslft
+- column: results_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Summary**
+
+**31.0.** reportable summary
+- db_table: meta_subject_bloodresultslft
+- column: reportable_summary
+- type: TextField
+---
+
+**32.0.** abnormal summary
+- db_table: meta_subject_bloodresultslft
+- column: abnormal_summary
+- type: TextField
+---
+
+**33.0.** errors
+- db_table: meta_subject_bloodresultslft
+- column: errors
+- type: TextField
+---
+
+**Section: Action**
+
+**34.0.** action identifier
+- db_table: meta_subject_bloodresultslft
+- column: action_identifier
+- type: CharField
+- length: 50
+- responses: *free text*
+---
+
+**35.0.** action item
+- db_table: meta_subject_bloodresultslft
+- column: action_item
+- type: ForeignKey
+---
+
+**36.0.** parent action item
+- db_table: meta_subject_bloodresultslft
+- column: parent_action_item
+- type: ForeignKey
+---
+
+**37.0.** related action item
+- db_table: meta_subject_bloodresultslft
+- column: related_action_item
+- type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**38.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**39.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultslft
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Blood Result: Lipids
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_bloodresultslipids
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_bloodresultslipids
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: Requisition and Result Date**
+
+**3.0.** Requisition
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Start typing the requisition identifier or select one from this visit*
+- db_table: meta_subject_bloodresultslipids
+- column: requisition
+- type: ForeignKey
+---
+
+**4.0.** Result assay date and time
+- db_table: meta_subject_bloodresultslipids
+- column: assay_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**Section: LDL**
+
+**5.0.** LDL
+- db_table: meta_subject_bloodresultslipids
+- column: ldl_value
+- type: DecimalField
+---
+
+**6.0.** units
+- db_table: meta_subject_bloodresultslipids
+- column: ldl_units
+- type: CharField
+- length: 15
+- responses:
+  - `mmol/L`: *mmol/L*
+---
+
+**7.0.** abnormal
+- db_table: meta_subject_bloodresultslipids
+- column: ldl_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**8.0.** reportable
+- db_table: meta_subject_bloodresultslipids
+- column: ldl_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
+**Section: HDL**
+
+**9.0.** HDL
+- db_table: meta_subject_bloodresultslipids
+- column: hdl_value
+- type: DecimalField
+---
+
+**10.0.** units
+- db_table: meta_subject_bloodresultslipids
+- column: hdl_units
+- type: CharField
+- length: 15
+- responses:
+  - `mmol/L`: *mmol/L*
+---
+
+**11.0.** abnormal
+- db_table: meta_subject_bloodresultslipids
+- column: hdl_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**12.0.** reportable
+- db_table: meta_subject_bloodresultslipids
+- column: hdl_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
+**Section: TRIG**
+
+**13.0.** Triglycerides
+- db_table: meta_subject_bloodresultslipids
+- column: trig_value
+- type: DecimalField
+---
+
+**14.0.** units
+- db_table: meta_subject_bloodresultslipids
+- column: trig_units
+- type: CharField
+- length: 15
+- responses:
+  - `mmol/L`: *mmol/L*
+---
+
+**15.0.** abnormal
+- db_table: meta_subject_bloodresultslipids
+- column: trig_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**16.0.** reportable
+- db_table: meta_subject_bloodresultslipids
+- column: trig_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
+**Section: CHOL**
+
+**17.0.** Total Cholesterol
+- db_table: meta_subject_bloodresultslipids
+- column: chol_value
+- type: DecimalField
+---
+
+**18.0.** units
+- db_table: meta_subject_bloodresultslipids
+- column: chol_units
+- type: CharField
+- length: 15
+- responses:
+  - `mmol/L`: *mmol/L*
+---
+
+**19.0.** abnormal
+- db_table: meta_subject_bloodresultslipids
+- column: chol_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**20.0.** reportable
+- db_table: meta_subject_bloodresultslipids
+- column: chol_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
+**Section: Conclusion**
+
+**21.0.** Are any of the above results abnormal?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *Abnormal results present at baseline or continuing from baseline not included.*
+- db_table: meta_subject_bloodresultslipids
+- column: results_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**22.0.** If any results are abnormal, are results within grade 3 or above?
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If YES, this value will open Adverse Event Form. Grade 3 and 4 results present at baseline or continuing from baseline not included*
+- db_table: meta_subject_bloodresultslipids
+- column: results_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+  - `N/A`: *Not applicable*
+---
+
+**Section: Summary**
+
+**23.0.** reportable summary
+- db_table: meta_subject_bloodresultslipids
+- column: reportable_summary
+- type: TextField
+---
+
+**24.0.** abnormal summary
+- db_table: meta_subject_bloodresultslipids
+- column: abnormal_summary
+- type: TextField
+---
+
+**25.0.** errors
+- db_table: meta_subject_bloodresultslipids
+- column: errors
+- type: TextField
+---
+
+**Section: Action**
+
+**26.0.** action identifier
+- db_table: meta_subject_bloodresultslipids
+- column: action_identifier
+- type: CharField
+- length: 50
+- responses: *free text*
+---
+
+**27.0.** action item
+- db_table: meta_subject_bloodresultslipids
+- column: action_item
+- type: ForeignKey
+---
+
+**28.0.** parent action item
+- db_table: meta_subject_bloodresultslipids
+- column: parent_action_item
+- type: ForeignKey
+---
+
+**29.0.** related action item
+- db_table: meta_subject_bloodresultslipids
+- column: related_action_item
+- type: ForeignKey
+---
+
+**Section: CRF Status**
+
+**30.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_bloodresultslipids
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**31.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_bloodresultslipids
 - column: crf_status_comments
 - type: TextField
 ---
@@ -28803,9 +29973,50 @@ See also GlucoseFbg.
   - `present_at_baseline`: *Present at baseline*
 ---
 
+**Section: RDW**
+
+**37.0.** Red cell distribution width
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_value
+- type: DecimalField
+---
+
+**38.0.** units
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_units
+- type: CharField
+- length: 15
+- responses:
+  - `%`: *%*
+---
+
+**39.0.** abnormal
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**40.0.** reportable
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
 **Section: Conclusion**
 
-**37.0.** Are any of the above results abnormal?
+**41.0.** Are any of the above results abnormal?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Abnormal results present at baseline or continuing from baseline not included.*
 - db_table: meta_subject_bloodresultsfbc
@@ -28817,7 +30028,7 @@ See also GlucoseFbg.
   - `No`: *No*
 ---
 
-**38.0.** If any results are abnormal, are results within grade 3 or above?
+**42.0.** If any results are abnormal, are results within grade 3 or above?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If YES, this value will open Adverse Event Form. Grade 3 and 4 results present at baseline or continuing from baseline not included*
 - db_table: meta_subject_bloodresultsfbc
@@ -28832,19 +30043,19 @@ See also GlucoseFbg.
 
 **Section: Summary**
 
-**39.0.** reportable summary
+**43.0.** reportable summary
 - db_table: meta_subject_bloodresultsfbc
 - column: reportable_summary
 - type: TextField
 ---
 
-**40.0.** abnormal summary
+**44.0.** abnormal summary
 - db_table: meta_subject_bloodresultsfbc
 - column: abnormal_summary
 - type: TextField
 ---
 
-**41.0.** errors
+**45.0.** errors
 - db_table: meta_subject_bloodresultsfbc
 - column: errors
 - type: TextField
@@ -28852,7 +30063,7 @@ See also GlucoseFbg.
 
 **Section: Action**
 
-**42.0.** action identifier
+**46.0.** action identifier
 - db_table: meta_subject_bloodresultsfbc
 - column: action_identifier
 - type: CharField
@@ -28860,19 +30071,19 @@ See also GlucoseFbg.
 - responses: *free text*
 ---
 
-**43.0.** action item
+**47.0.** action item
 - db_table: meta_subject_bloodresultsfbc
 - column: action_item
 - type: ForeignKey
 ---
 
-**44.0.** parent action item
+**48.0.** parent action item
 - db_table: meta_subject_bloodresultsfbc
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**45.0.** related action item
+**49.0.** related action item
 - db_table: meta_subject_bloodresultsfbc
 - column: related_action_item
 - type: ForeignKey
@@ -28880,7 +30091,7 @@ See also GlucoseFbg.
 
 **Section: CRF Status**
 
-**46.0.** CRF status
+**50.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_bloodresultsfbc
@@ -28893,7 +30104,7 @@ See also GlucoseFbg.
   - `COMPLETE`: *Complete*
 ---
 
-**47.0.** Any comments related to status of this CRF
+**51.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_bloodresultsfbc
@@ -39822,9 +41033,50 @@ See also GlucoseFbg.
   - `present_at_baseline`: *Present at baseline*
 ---
 
+**Section: RDW**
+
+**37.0.** Red cell distribution width
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_value
+- type: DecimalField
+---
+
+**38.0.** units
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_units
+- type: CharField
+- length: 15
+- responses:
+  - `%`: *%*
+---
+
+**39.0.** abnormal
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**40.0.** reportable
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
 **Section: Conclusion**
 
-**37.0.** Are any of the above results abnormal?
+**41.0.** Are any of the above results abnormal?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Abnormal results present at baseline or continuing from baseline not included.*
 - db_table: meta_subject_bloodresultsfbc
@@ -39836,7 +41088,7 @@ See also GlucoseFbg.
   - `No`: *No*
 ---
 
-**38.0.** If any results are abnormal, are results within grade 3 or above?
+**42.0.** If any results are abnormal, are results within grade 3 or above?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If YES, this value will open Adverse Event Form. Grade 3 and 4 results present at baseline or continuing from baseline not included*
 - db_table: meta_subject_bloodresultsfbc
@@ -39851,19 +41103,19 @@ See also GlucoseFbg.
 
 **Section: Summary**
 
-**39.0.** reportable summary
+**43.0.** reportable summary
 - db_table: meta_subject_bloodresultsfbc
 - column: reportable_summary
 - type: TextField
 ---
 
-**40.0.** abnormal summary
+**44.0.** abnormal summary
 - db_table: meta_subject_bloodresultsfbc
 - column: abnormal_summary
 - type: TextField
 ---
 
-**41.0.** errors
+**45.0.** errors
 - db_table: meta_subject_bloodresultsfbc
 - column: errors
 - type: TextField
@@ -39871,7 +41123,7 @@ See also GlucoseFbg.
 
 **Section: Action**
 
-**42.0.** action identifier
+**46.0.** action identifier
 - db_table: meta_subject_bloodresultsfbc
 - column: action_identifier
 - type: CharField
@@ -39879,19 +41131,19 @@ See also GlucoseFbg.
 - responses: *free text*
 ---
 
-**43.0.** action item
+**47.0.** action item
 - db_table: meta_subject_bloodresultsfbc
 - column: action_item
 - type: ForeignKey
 ---
 
-**44.0.** parent action item
+**48.0.** parent action item
 - db_table: meta_subject_bloodresultsfbc
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**45.0.** related action item
+**49.0.** related action item
 - db_table: meta_subject_bloodresultsfbc
 - column: related_action_item
 - type: ForeignKey
@@ -39899,7 +41151,7 @@ See also GlucoseFbg.
 
 **Section: CRF Status**
 
-**46.0.** CRF status
+**50.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_bloodresultsfbc
@@ -39912,7 +41164,7 @@ See also GlucoseFbg.
   - `COMPLETE`: *Complete*
 ---
 
-**47.0.** Any comments related to status of this CRF
+**51.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_bloodresultsfbc
@@ -41218,6 +42470,191 @@ See also GlucoseFbg.
 - db_table: meta_subject_mnsi
 - column: calculated_physical_assessment_score
 - type: DecimalField
+---
+
+
+#### Malaria Test
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_malariatest
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_malariatest
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Was the malaria test performed?
+- db_table: meta_subject_malariatest
+- column: performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Diagnostic test used
+- db_table: meta_subject_malariatest
+- column: diagnostic_type
+- type: CharField
+- length: 15
+- responses:
+  - `rapid_test`: *Rapid test*
+  - `microscopy`: *Microscopy*
+  - `N/A`: *Not applicable*
+---
+
+**5.0.** If NO, provide reason
+- db_table: meta_subject_malariatest
+- column: not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**6.0.** Result
+- db_table: meta_subject_malariatest
+- column: result
+- type: CharField
+- length: 25
+- responses:
+  - `present`: *Present*
+  - `absent`: *Absent*
+  - `N/A`: *Not Applicable*
+---
+
+**Section: CRF Status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_malariatest
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_malariatest
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Urine Dipstick Test
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_urinedipsticktest
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_urinedipsticktest
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Was the urine dipstick test performed?
+- db_table: meta_subject_urinedipsticktest
+- column: performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** If NO, provide reason
+- db_table: meta_subject_urinedipsticktest
+- column: not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**5.0.** Ketones?
+- db_table: meta_subject_urinedipsticktest
+- column: ketones
+- type: CharField
+- length: 25
+- responses:
+  - `present`: *Present*
+  - `absent`: *Absent*
+  - `N/A`: *Not Applicable*
+---
+
+**6.0.** Protein?
+- db_table: meta_subject_urinedipsticktest
+- column: protein
+- type: CharField
+- length: 25
+- responses:
+  - `present`: *Present*
+  - `absent`: *Absent*
+  - `N/A`: *Not Applicable*
+---
+
+**7.0.** Glucose?
+- db_table: meta_subject_urinedipsticktest
+- column: glucose
+- type: CharField
+- length: 25
+- responses:
+  - `present`: *Present*
+  - `absent`: *Absent*
+  - `N/A`: *Not Applicable*
+---
+
+**Section: CRF Status**
+
+**8.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_urinedipsticktest
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**9.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_urinedipsticktest
+- column: crf_status_comments
+- type: TextField
 ---
 
 
@@ -51136,9 +52573,50 @@ See also GlucoseFbg.
   - `present_at_baseline`: *Present at baseline*
 ---
 
+**Section: RDW**
+
+**37.0.** Red cell distribution width
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_value
+- type: DecimalField
+---
+
+**38.0.** units
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_units
+- type: CharField
+- length: 15
+- responses:
+  - `%`: *%*
+---
+
+**39.0.** abnormal
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_abnormal
+- type: CharField
+- length: 25
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**40.0.** reportable
+- db_table: meta_subject_bloodresultsfbc
+- column: rdw_reportable
+- type: CharField
+- length: 25
+- responses:
+  - `N/A`: *Not applicable*
+  - `3`: *Yes, grade 3*
+  - `4`: *Yes, grade 4*
+  - `No`: *Not reportable*
+  - `Already reported`: *Already reported*
+  - `present_at_baseline`: *Present at baseline*
+---
+
 **Section: Conclusion**
 
-**37.0.** Are any of the above results abnormal?
+**41.0.** Are any of the above results abnormal?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *Abnormal results present at baseline or continuing from baseline not included.*
 - db_table: meta_subject_bloodresultsfbc
@@ -51150,7 +52628,7 @@ See also GlucoseFbg.
   - `No`: *No*
 ---
 
-**38.0.** If any results are abnormal, are results within grade 3 or above?
+**42.0.** If any results are abnormal, are results within grade 3 or above?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If YES, this value will open Adverse Event Form. Grade 3 and 4 results present at baseline or continuing from baseline not included*
 - db_table: meta_subject_bloodresultsfbc
@@ -51165,19 +52643,19 @@ See also GlucoseFbg.
 
 **Section: Summary**
 
-**39.0.** reportable summary
+**43.0.** reportable summary
 - db_table: meta_subject_bloodresultsfbc
 - column: reportable_summary
 - type: TextField
 ---
 
-**40.0.** abnormal summary
+**44.0.** abnormal summary
 - db_table: meta_subject_bloodresultsfbc
 - column: abnormal_summary
 - type: TextField
 ---
 
-**41.0.** errors
+**45.0.** errors
 - db_table: meta_subject_bloodresultsfbc
 - column: errors
 - type: TextField
@@ -51185,7 +52663,7 @@ See also GlucoseFbg.
 
 **Section: Action**
 
-**42.0.** action identifier
+**46.0.** action identifier
 - db_table: meta_subject_bloodresultsfbc
 - column: action_identifier
 - type: CharField
@@ -51193,19 +52671,19 @@ See also GlucoseFbg.
 - responses: *free text*
 ---
 
-**43.0.** action item
+**47.0.** action item
 - db_table: meta_subject_bloodresultsfbc
 - column: action_item
 - type: ForeignKey
 ---
 
-**44.0.** parent action item
+**48.0.** parent action item
 - db_table: meta_subject_bloodresultsfbc
 - column: parent_action_item
 - type: ForeignKey
 ---
 
-**45.0.** related action item
+**49.0.** related action item
 - db_table: meta_subject_bloodresultsfbc
 - column: related_action_item
 - type: ForeignKey
@@ -51213,7 +52691,7 @@ See also GlucoseFbg.
 
 **Section: CRF Status**
 
-**46.0.** CRF status
+**50.0.** CRF status
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
 - db_table: meta_subject_bloodresultsfbc
@@ -51226,7 +52704,7 @@ See also GlucoseFbg.
   - `COMPLETE`: *Complete*
 ---
 
-**47.0.** Any comments related to status of this CRF
+**51.0.** Any comments related to status of this CRF
 
 &nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
 - db_table: meta_subject_bloodresultsfbc
@@ -52662,6 +54140,191 @@ See also GlucoseFbg.
 ---
 
 
+#### Malaria Test
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_malariatest
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_malariatest
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Was the malaria test performed?
+- db_table: meta_subject_malariatest
+- column: performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** Diagnostic test used
+- db_table: meta_subject_malariatest
+- column: diagnostic_type
+- type: CharField
+- length: 15
+- responses:
+  - `rapid_test`: *Rapid test*
+  - `microscopy`: *Microscopy*
+  - `N/A`: *Not applicable*
+---
+
+**5.0.** If NO, provide reason
+- db_table: meta_subject_malariatest
+- column: not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**6.0.** Result
+- db_table: meta_subject_malariatest
+- column: result
+- type: CharField
+- length: 25
+- responses:
+  - `present`: *Present*
+  - `absent`: *Absent*
+  - `N/A`: *Not Applicable*
+---
+
+**Section: CRF Status**
+
+**7.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_malariatest
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**8.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_malariatest
+- column: crf_status_comments
+- type: TextField
+---
+
+
+#### Urine Dipstick Test
+*[missing model class docstring]*
+
+*Instructions*: Please complete the form below. Required questions are in bold. When all required questions are complete click SAVE or, if available, SAVE NEXT. Based on your responses, additional questions may be required or some answers may need to be corrected.
+
+
+**Section: Main**
+
+**1.0.** subject visit
+- db_table: meta_subject_urinedipsticktest
+- column: subject_visit
+- type: OneToOneField
+---
+
+**2.0.** Report Date
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If reporting today, use today's date/time, otherwise use the date/time this information was reported.*
+- db_table: meta_subject_urinedipsticktest
+- column: report_datetime
+- type: DateTimeField
+- format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
+---
+
+**3.0.** Was the urine dipstick test performed?
+- db_table: meta_subject_urinedipsticktest
+- column: performed
+- type: CharField
+- length: 15
+- responses:
+  - `Yes`: *Yes*
+  - `No`: *No*
+---
+
+**4.0.** If NO, provide reason
+- db_table: meta_subject_urinedipsticktest
+- column: not_performed_reason
+- type: CharField
+- length: 150
+- responses: *free text*
+---
+
+**5.0.** Ketones?
+- db_table: meta_subject_urinedipsticktest
+- column: ketones
+- type: CharField
+- length: 25
+- responses:
+  - `present`: *Present*
+  - `absent`: *Absent*
+  - `N/A`: *Not Applicable*
+---
+
+**6.0.** Protein?
+- db_table: meta_subject_urinedipsticktest
+- column: protein
+- type: CharField
+- length: 25
+- responses:
+  - `present`: *Present*
+  - `absent`: *Absent*
+  - `N/A`: *Not Applicable*
+---
+
+**7.0.** Glucose?
+- db_table: meta_subject_urinedipsticktest
+- column: glucose
+- type: CharField
+- length: 25
+- responses:
+  - `present`: *Present*
+  - `absent`: *Absent*
+  - `N/A`: *Not Applicable*
+---
+
+**Section: CRF Status**
+
+**8.0.** CRF status
+
+&nbsp;&nbsp;&nbsp;&nbsp; *If some data is still pending, flag this CRF as incomplete*
+- db_table: meta_subject_urinedipsticktest
+- column: crf_status
+- type: CharField
+- length: 25
+- responses:
+  - `INCOMPLETE`: *Incomplete (some data pending)*
+  - `crf_issue_detected`: *QA issue detected (see CRF status comment)*
+  - `COMPLETE`: *Complete*
+---
+
+**9.0.** Any comments related to status of this CRF
+
+&nbsp;&nbsp;&nbsp;&nbsp; *for example, why some data is still pending*
+- db_table: meta_subject_urinedipsticktest
+- column: crf_status_comments
+- type: TextField
+---
+
+
 #### Optional forms
 
 #### Glucose (Ogtt Only)
@@ -53534,15 +55197,13 @@ See also in signals `update_pregnancy_notification_on_delivery_post_save`
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**Section: Source of information**
-
 **3.0.** Were you able to obtain a report on the delivery?
 
 &nbsp;&nbsp;&nbsp;&nbsp; *If NO, please explain below*
 - db_table: meta_subject_delivery
-- column: info_available
+- column: report_available
 - type: CharField
-- length: 5
+- length: 15
 - responses:
   - `Yes`: *Yes*
   - `No`: *No*
@@ -53550,9 +55211,11 @@ See also in signals `update_pregnancy_notification_on_delivery_post_save`
 
 **4.0.** If the report was not available, please explain?
 - db_table: meta_subject_delivery
-- column: info_not_available_reason
+- column: report_not_available_reason
 - type: TextField
 ---
+
+**Section: Source of information**
 
 **5.0.** Who / what is the MAIN source of this information?
 - db_table: meta_subject_delivery
@@ -53561,6 +55224,7 @@ See also in signals `update_pregnancy_notification_on_delivery_post_save`
 - length: 25
 - responses:
   - `patient`: *Study participant*
+  - `hospital_clinic`: *Hospital / Clinic*
   - `OTHER`: *Other*
   - `N/A`: *Not applicable*
 ---
@@ -53584,10 +55248,9 @@ See also in signals `update_pregnancy_notification_on_delivery_post_save`
   - `husband_wife`: *Husband/wife*
   - `Parent`: *Parent*
   - `child`: *Child*
+  - `not_related`: *Not related*
   - `unknown`: *Unknown*
   - `OTHER`: *Other*
-  - `hospital_clinic`: *Hospital / Clinic records*
-  - `N/A`: *Not applicable*
 ---
 
 **6.1.** If other, please specify ...
@@ -53599,7 +55262,7 @@ See also in signals `update_pregnancy_notification_on_delivery_post_save`
 - responses: *free text*
 ---
 
-**Section: Delivery**
+**Section: Delivery report**
 
 **7.0.** Date and time of delivery :
 
@@ -53610,11 +55273,11 @@ See also in signals `update_pregnancy_notification_on_delivery_post_save`
 - format: YYYY-MM-DD HH:MM:SS.sss (tz=UTC)
 ---
 
-**8.0.** Is the delivery TIME estimated?
+**8.0.** Is the date and time of delivery estimated?
 - db_table: meta_subject_delivery
 - column: delivery_time_estimated
 - type: CharField
-- length: 3
+- length: 15
 - responses:
   - `Yes`: *Yes*
   - `No`: *No*
@@ -53629,6 +55292,7 @@ See also in signals `update_pregnancy_notification_on_delivery_post_save`
 - responses:
   - `home`: *At home*
   - `hospital_clinic`: *Hospital / Clinic*
+  - `unknown`: *Unknown*
   - `OTHER`: *Other location, specify*
   - `N/A`: *Not applicable*
 ---
@@ -53660,10 +55324,11 @@ See also in signals `update_pregnancy_notification_on_delivery_post_save`
 - db_table: meta_subject_delivery
 - column: gm_treated
 - type: CharField
-- length: 5
+- length: 15
 - responses:
   - `Yes`: *Yes*
   - `No`: *No*
+  - `unknown`: *Unknown*
   - `N/A`: *Not applicable*
 ---
 
@@ -53744,4 +55409,4 @@ See also in signals `update_pregnancy_notification_on_delivery_post_save`
 
 
 
-*Version v3.1.0* *Rendered on 2026-06-03 00:27*
+*Version v3.13.0* *Rendered on 2026-09-12 22:15*

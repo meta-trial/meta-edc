@@ -1,7 +1,6 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-from django.conf import settings
 from edc_lab_panel.panels import hba1c_poc_panel, insulin_panel
 from edc_metadata import NOT_REQUIRED, REQUIRED
 from edc_metadata.metadata_rules import (
@@ -11,6 +10,7 @@ from edc_metadata.metadata_rules import (
     RequisitionRuleGroup,
     register,
 )
+from multisite.utils import get_multisite_timezone
 
 from meta_visit_schedule.constants import MONTH30, SCHEDULE, VISIT_SCHEDULE
 
@@ -218,7 +218,7 @@ class LastVisitRuleGroup(CrfRuleGroup):
             "urinedipsticktest",
         ],
         activate_after_datetime=datetime(
-            2026, 3, 1, 0, 0, tzinfo=ZoneInfo(settings.TIME_ZONE)
+            2026, 3, 1, 0, 0, tzinfo=ZoneInfo(get_multisite_timezone())
         ),
         run_only_for_visit_schedules=[f"{VISIT_SCHEDULE}.{SCHEDULE}"],
     )
@@ -287,7 +287,7 @@ class BloodResultsFbcRuleGroup(CrfRuleGroup):
     ammendment.
     """
 
-    ZoneInfo(settings.TIME_ZONE)
+    ZoneInfo(get_multisite_timezone())
     fbc = CrfRule(
         predicate=pc.bloodresultsfbc_month_30,
         consequence=REQUIRED,
@@ -295,7 +295,7 @@ class BloodResultsFbcRuleGroup(CrfRuleGroup):
         target_models=["bloodresultsfbc"],
         run_only_for_visit_codes=[MONTH30],
         activate_after_datetime=datetime(
-            2024, 3, 3, 0, 0, tzinfo=ZoneInfo(settings.TIME_ZONE)
+            2024, 3, 3, 0, 0, tzinfo=ZoneInfo(get_multisite_timezone())
         ),
     )
 

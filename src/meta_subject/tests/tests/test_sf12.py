@@ -12,13 +12,14 @@ from edc_metadata import KEYED, NOT_REQUIRED, REQUIRED
 from edc_metadata.metadata import CrfMetadataGetter
 from edc_qol.constants import ALL_OF_THE_TIME, NONE_OF_THE_TIME, SOME_OF_THE_TIME
 from edc_visit_schedule.constants import MONTH1, MONTH3, WEEK2
+from multisite import SiteID
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_screening.tests.options import now
 from meta_subject.forms import Sf12Form
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 @time_machine.travel(datetime(2019, 6, 11, 8, 00, tzinfo=ZoneInfo("UTC")))
 class TestSf12(MetaTestCaseMixin, TestCase):
     def setUp(self):

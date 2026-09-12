@@ -33,6 +33,7 @@ from edc_randomization.admin import register_admin
 from edc_randomization.site_randomizers import site_randomizers
 from edc_sites.utils import add_or_update_django_sites
 from model_bakery import baker
+from multisite import SiteID
 from webtest.app import AppError
 
 from meta_rando.randomizers import RandomizerPhaseThree
@@ -57,7 +58,7 @@ screening_listboard_url = f"{app_prefix}_dashboard:screening_listboard_url"
     SIMPLE_HISTORY_PERMISSIONS_ENABLED=True,
     EDC_AUTH_SKIP_SITE_AUTHS=True,
     EDC_AUTH_SKIP_AUTH_UPDATER=False,
-    SITE_ID=10,
+    SITE_ID=SiteID(10),
 )
 class AdminSiteTest(MetaTestCaseMixin, WebTest):
     sid_count = 5
