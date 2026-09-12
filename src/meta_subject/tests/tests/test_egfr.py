@@ -21,6 +21,7 @@ from edc_registration import get_registered_subject_model_cls
 from edc_utils import age, get_utcnow
 from edc_utils.round_up import round_half_away_from_zero
 from edc_visit_schedule.constants import OFFSCHEDULE_ACTION
+from multisite import SiteID
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_screening.tests.options import now
@@ -34,7 +35,7 @@ from meta_subject.models import (
 )
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 @time_machine.travel(datetime(2019, 6, 11, 8, 00, tzinfo=ZoneInfo("UTC")))
 class TestEgfr(MetaTestCaseMixin, TestCase):
     def setUp(self):

@@ -3,6 +3,7 @@ from copy import deepcopy
 from clinicedc_constants import FEMALE, NO, NULL_STRING, TBD, YES
 from django.db.utils import IntegrityError
 from django.test import TestCase, override_settings
+from multisite import SiteID
 
 from meta_edc.meta_version import PHASE_THREE, get_meta_version
 from meta_screening.eligibility import EligibilityPartOne
@@ -11,7 +12,7 @@ from meta_screening.models import ScreeningPartOne
 from ..options import get_part_one_eligible_options
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 class TestSubjectScreeningPartOneModel(TestCase):
     def test_eligibility_cls_eligible_yes(self):
         part_one_eligible_options = deepcopy(get_part_one_eligible_options())

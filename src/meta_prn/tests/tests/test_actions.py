@@ -6,13 +6,14 @@ from edc_appointment.models import Appointment
 from edc_utils import get_utcnow
 from edc_visit_schedule.constants import MONTH1
 from model_bakery.baker import make_recipe
+from multisite import SiteID
 
 from meta_prn.models import OffSchedulePregnancy
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_visit_schedule.constants import DELIVERY
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 class TestMetadataRules(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()

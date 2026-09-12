@@ -754,7 +754,7 @@ wheels = [
 
 [[package]]
 name = "clinicedc"
-version = "4.8.0"
+version = "4.8.1"
 source = { editable = "../clinicedc" }
 dependencies = [
     { name = "argon2-cffi" },
@@ -824,7 +824,7 @@ requires-dist = [
     { name = "django-environ", specifier = ">=0.14.0" },
     { name = "django-import-export", specifier = ">=4.4.1" },
     { name = "django-logentry-admin", specifier = ">=1.1.0" },
-    { name = "django-multisite2", specifier = ">=2.1.0" },
+    { name = "django-multisite2", editable = "../django-multisite2" },
     { name = "django-pandas", specifier = ">=0.6.7" },
     { name = "django-pylabels", specifier = ">=1.0.1" },
     { name = "django-redis", specifier = ">=7.0.0" },
@@ -889,8 +889,8 @@ source = { editable = "../clinicedc-constants" }
 
 [[package]]
 name = "clinicedc-tests"
-version = "1.3.1"
-source = { registry = "https://pypi.org/simple" }
+version = "1.4.0"
+source = { editable = "../clinicedc-tests" }
 dependencies = [
     { name = "coverage" },
     { name = "django-mock-queries" },
@@ -900,10 +900,27 @@ dependencies = [
     { name = "tox" },
     { name = "tox-uv" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/01/a4/338efc9435e724f38e12f6fcf3aa859502ddf3e3aa14d46bd5563d7a50ec/clinicedc_tests-1.3.1.tar.gz", hash = "sha256:dc8d6e1a0f6ce9dcafa6160c9617f03f5b076cc3533eda3138f6cc4197aa44b9", size = 55858, upload-time = "2026-09-08T01:41:25.468Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/4e/51/2dc75eccebb8148dcca3318d12519557343f051c3715f9d0bc2ffe6f7ec2/clinicedc_tests-1.3.1-py3-none-any.whl", hash = "sha256:e5a280d6debb74c3f48b7329ef188c33cafe3e9b20d03e7cc3ac82a68c07eda4", size = 98374, upload-time = "2026-09-08T01:41:24.362Z" },
+
+[package.metadata]
+requires-dist = [
+    { name = "coverage", specifier = ">=7.13.5" },
+    { name = "django-mock-queries", specifier = ">=2.3.0" },
+    { name = "faker", specifier = ">=37.4.2" },
+    { name = "model-bakery", specifier = ">=1.20.5" },
+    { name = "time-machine", specifier = ">=2.16.0" },
+    { name = "tox", specifier = ">=4.32.0" },
+    { name = "tox-uv", specifier = ">=1.26.2" },
 ]
+
+[package.metadata.requires-dev]
+dev = []
+docs = [
+    { name = "furo", specifier = ">=2025.7.19" },
+    { name = "sphinx", specifier = ">=8.2.3" },
+    { name = "sphinx-design", specifier = ">=0.6.1" },
+    { name = "sphinx-inline-tabs", specifier = ">=2023.4.21" },
+]
+lint = [{ name = "ruff", specifier = ">=0.12.5" }]
 
 [[package]]
 name = "clinicedc-utils"
@@ -1369,15 +1386,34 @@ wheels = [
 
 [[package]]
 name = "django-multisite2"
-version = "2.1.0"
-source = { registry = "https://pypi.org/simple" }
+version = "3.1.0"
+source = { editable = "../django-multisite2" }
 dependencies = [
     { name = "tldextract" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c8/c7/b41b822c2c00c585f35070621c0c3527388c9ba85f2c930d82d5917ee28e/django_multisite2-2.1.0.tar.gz", hash = "sha256:aeccb6fba824efb28678c2630b2e8223da2b53fff034c0b3f38e9d304921eb97", size = 89545, upload-time = "2025-07-18T21:16:04.068Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/01/02/32dda08f37a2955279204a01f3efe8cac69ac0ef298da0eb3eb0c2bfec16/django_multisite2-2.1.0-py3-none-any.whl", hash = "sha256:29b63f9ca6aca0f77199f1ef657b1c2a4ccb133ae574aec4f0db5995cc754824", size = 120810, upload-time = "2025-07-18T21:16:03.023Z" },
+
+[package.metadata]
+requires-dist = [{ name = "tldextract" }]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "coverage", specifier = ">=7.10.3" },
+    { name = "django", specifier = ">=5.2" },
+    { name = "edc-test-settings", specifier = ">=1.1.2" },
+    { name = "mock", specifier = ">=5.2.0" },
+    { name = "mysqlclient", specifier = ">=2.2" },
+    { name = "pluggy", specifier = ">=1.6.0" },
+    { name = "psycopg", extras = ["binary"], specifier = ">=3.2" },
+    { name = "tox", specifier = ">=4.30.2" },
+    { name = "tox-uv", specifier = ">=1.28.0" },
 ]
+docs = [
+    { name = "furo", specifier = ">=2025.7.19" },
+    { name = "sphinx", specifier = ">=8.2.3" },
+    { name = "sphinx-design", specifier = ">=0.6.1" },
+    { name = "sphinx-inline-tabs", specifier = ">=2023.4.21" },
+]
+lint = [{ name = "ruff", specifier = ">=0.12.5,<0.16" }]
 
 [[package]]
 name = "django-pandas"
@@ -3208,7 +3244,7 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "clinicedc-tests", specifier = ">=1.2.2" },
+    { name = "clinicedc-tests", editable = "../clinicedc-tests" },
     { name = "dj-notebook", specifier = ">=0.7.0" },
     { name = "django-webtest", specifier = ">=1.9.14" },
     { name = "edc-cdisc", editable = "../edc-cdisc" },

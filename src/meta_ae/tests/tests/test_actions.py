@@ -9,11 +9,12 @@ from edc_adverse_event.constants import (
     DEATH_REPORT_TMG_ACTION,
 )
 from model_bakery import baker
+from multisite import SiteID
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 class TestActions(MetaTestCaseMixin, TestCase):
     def test_ae_initial_creates_action(self):
         subject_screening = self.get_subject_screening()

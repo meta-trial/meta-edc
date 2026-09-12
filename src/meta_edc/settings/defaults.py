@@ -74,8 +74,6 @@ if LOGGING_ENABLED:
 
 META_PHASE = 3
 
-EDC_SITES_DOMAIN_SUFFIX = env.str("EDC_SITES_DOMAIN_SUFFIX")  # "meta4.clinicedc.org"
-
 DEBUG = env("DJANGO_DEBUG")
 
 SECRET_KEY = env.str("DJANGO_SECRET_KEY")
@@ -220,6 +218,7 @@ MIDDLEWARE = [
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "multisite.middleware.DynamicSiteMiddleware",
+    "multisite.middleware.DynamicSiteTimezoneMiddleware",
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -490,12 +489,6 @@ EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER = env(
 )
 EDC_RANDOMIZATION_SKIP_VERIFY_CHECKS = True
 
-# edc-retinopathy
-EDC_RETINOPATHY_VISIT_DATETIME_FILTER = datetime(2026, 3, 1, tzinfo=ZoneInfo(TIME_ZONE))
-
-# edc-sites
-EDC_SITES_MODULE_NAME = env.str("EDC_SITES_MODULE_NAME")
-
 # meta_pharmacy
 META_PHARMACY_RX_SUBSTITUTION_FILE = env.str("META_PHARMACY_RX_SUBSTITUTION_FILE")
 
@@ -504,6 +497,14 @@ CACHE_MULTISITE_KEY_PREFIX = "meta4"
 SILENCED_SYSTEM_CHECKS = ["sites.E101"]
 MULTISITE_SYNC_ALIAS_MANUALLY = True
 MULTISITE_REGISTER_POST_MIGRATE_SYNC_ALIAS = False
+MULTISITE_TIME_ZONES = {  # one country so technically not necessary
+    10: "Africa/Dar_es_Salaam",
+    20: "Africa/Dar_es_Salaam",
+    30: "Africa/Dar_es_Salaam",
+    40: "Africa/Dar_es_Salaam",
+    50: "Africa/Dar_es_Salaam",
+    60: "Africa/Dar_es_Salaam",
+}
 
 # django-defender
 # see if env.str("DJANGO_CACHE") == "redis" above
@@ -592,6 +593,11 @@ EDC_RETINOPATHY_MAX_FILE_SIZE_MB = 3  # default
 EDC_RETINOPATHY_SESSION_EXPIRE_MINUTES = 60  # default
 EDC_REGISTRATION_REGISTERED_SUBJECT_MODEL = "edc_registration.registeredsubject"
 EDC_RETINOPATHY_SESSION_REACTIVATION_HOURS = 2
+EDC_RETINOPATHY_VISIT_DATETIME_FILTER = datetime(2026, 3, 1, tzinfo=ZoneInfo(TIME_ZONE))
+
+# edc-sites
+EDC_SITES_DOMAIN_SUFFIX = env.str("EDC_SITES_DOMAIN_SUFFIX")  # "meta4.clinicedc.org"
+EDC_SITES_MODULE_NAME = env.str("EDC_SITES_MODULE_NAME")
 
 # declare before STORAGES
 MEDIA_ROOT = env.str("DJANGO_MEDIA_ROOT", default=str(Path("~/media/").expanduser()))

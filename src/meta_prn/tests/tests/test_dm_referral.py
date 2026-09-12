@@ -9,6 +9,7 @@ from edc_appointment.models import Appointment
 from edc_pharmacy.constants import IN_PROGRESS_APPT
 from edc_visit_schedule.constants import MONTH1, OFFSCHEDULE_ACTION
 from edc_visit_tracking.constants import SCHEDULED
+from multisite import SiteID
 
 from meta_lists.models import MissedReferralReasons
 from meta_prn.constants import (
@@ -22,7 +23,7 @@ from meta_subject.models import DmEndpoint, DmFollowup, SubjectVisit
 from meta_visit_schedule.constants import DM_BASELINE, DM_FOLLOWUP, SCHEDULE_DM_REFERRAL
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 class TestDmReferral(MetaTestCaseMixin, TestCase):
     def setUp(self):
         super().setUp()

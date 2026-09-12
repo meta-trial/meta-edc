@@ -13,13 +13,14 @@ from edc_metadata.metadata_handler import MetadataHandlerError
 from edc_sites.site import sites as site_sites
 from edc_sites.utils import get_site_model_cls
 from edc_visit_schedule.models import VisitSchedule
+from multisite import SiteID
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_screening.tests.options import now
 from meta_subject.models import NextAppointment
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 @time_machine.travel(datetime(2019, 6, 11, 8, 00, tzinfo=ZoneInfo("UTC")))
 class TestNextAppointment(MetaTestCaseMixin, TestCase):
     def setUp(self):

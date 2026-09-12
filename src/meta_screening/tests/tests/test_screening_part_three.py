@@ -16,6 +16,7 @@ from clinicedc_utils import convert_units
 from dateutil.relativedelta import relativedelta
 from django.test import TestCase, override_settings
 from django.utils import timezone
+from multisite import SiteID
 
 from meta_screening.constants import (
     EGFR_LT_45,
@@ -33,7 +34,7 @@ from ..options import (
 )
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 class TestScreeningPartThree(TestCase):
     def setUp(self):
         """Complete parts one and two first ..."""

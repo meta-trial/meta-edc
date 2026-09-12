@@ -6,7 +6,7 @@ from django.urls import reverse
 from edc_appointment.models import Appointment
 from edc_model_admin.dashboard import ModelAdminDashboardMixin
 from edc_model_admin.mixins import TemplatesModelAdminMixin
-from edc_protocol.research_protocol_config import ResearchProtocolConfig
+from edc_protocol.trial_settings import trial_settings
 from edc_qareports.modeladmin_mixins import QaReportModelAdminMixin
 from edc_sites.admin import SiteModelAdminMixin
 from rangefilter.filters import DateRangeFilterBuilder
@@ -83,7 +83,7 @@ class HivExitReviewReportAdmin(
 
     def get_list_display(self, request):
         MASK = "*****"  # noqa: N806
-        pattern = ResearchProtocolConfig().subject_identifier_pattern
+        pattern = trial_settings.subject_identifier_pattern
         query = request.GET.get("q", "").strip()
         seacrh_active = re.match(pattern, query)
 

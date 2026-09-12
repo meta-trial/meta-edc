@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 from django.test import TestCase, override_settings
 from edc_list_data import PreloadData
+from multisite import SiteID
 
 from meta_lists.list_data import list_data
 from meta_lists.models import (
@@ -64,7 +65,7 @@ class BaseTestPatientHistory(MetaTestCaseMixin, TestCase):
         }
 
 
-@override_settings(SITE_ID=10)
+@override_settings(SITE_ID=SiteID(10))
 class TestPatientHistoryPhaseThree(BaseTestPatientHistory):
     def test_ok_phase_three(self):
         PreloadData(list_data=list_data)

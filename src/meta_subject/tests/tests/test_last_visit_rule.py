@@ -8,6 +8,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, override_settings
 from django.utils import timezone
 from model_bakery import baker
+from multisite import SiteID
 
 from meta_screening.tests.meta_test_case_mixin import MetaTestCaseMixin
 from meta_subject.models import SubjectVisit
@@ -17,7 +18,7 @@ from meta_visit_schedule.constants import MONTH1, MONTH36, MONTH39, MONTH42, MON
 @override_settings(
     EDC_PROTOCOL_STUDY_OPEN_DATETIME=datetime(2019, 1, 1, 0, 0, tzinfo=ZoneInfo("UTC")),
     EDC_PROTOCOL_STUDY_CLOSE_DATETIME=datetime(2028, 12, 31, 0, 0, tzinfo=ZoneInfo("UTC")),
-    SITE_ID=10,
+    SITE_ID=SiteID(10),
 )
 class TestLastVisitRuleGroup2(MetaTestCaseMixin, TestCase):
     """Confirm CRFs are added to the `last` visit.
