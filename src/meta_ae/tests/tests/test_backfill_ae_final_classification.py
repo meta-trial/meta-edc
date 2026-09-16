@@ -12,11 +12,13 @@ until the model and command are reworked. They cover four things:
   `final_ae_classification` whatever the `review_status`, so a reviewer
   may also overrule an `AGREED` row; anything else leaves the row open
   to the command.
-* Whenever the command would have written a different
-  `final_ae_classification` but may not, it reports the row, so every
-  discrepancy it cannot act on is visible to a human. That covers both
-  a frozen row whose sources have moved and a reviewer overruling the
-  sources.
+* Resolving snapshots the source classifications into
+  `resolved_ae_classification` and
+  `resolved_investigator_ae_classification`, so the record says what
+  the reviewer resolved against. The command never writes them.
+* A frozen row is reported once its sources no longer match that
+  snapshot, so a standing override stays quiet and re-resolving drains
+  the row from the report.
 * `Command.get_ae_tmg` suppresses only `DoesNotExist`, so a second
   AeTmg on the same AeInitial (allowed: `AeTmgAction` is not a
   singleton and lists itself as a parent action) aborts the whole run.
@@ -79,10 +81,14 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         obj: AeFinalClassification,
         classification_name: str = LACTIC_ACIDOSIS,
     ) -> AeFinalClassification:
-        """Stand in for a reviewer settling the conflict on the form."""
+        """Stand in for a reviewer settling the record on the form.
+
+        A plain save, so the snapshot has to be taken by the model
+        rather than by the form.
+        """
         obj.final_ae_classification = self.get_ae_classification(classification_name)
         obj.conflict_resolved = YES
-        obj.save(update_fields=["final_ae_classification", "conflict_resolved"])
+        obj.save()
         return obj
 
     @staticmethod
@@ -355,6 +361,71 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         self.assertIn("skipped 1", out)
 
     # ------------------------------------------------------------------
+    # resolving records what the reviewer resolved against
+    # ------------------------------------------------------------------
+    def test_resolving_snapshots_the_source_classifications(self):
+        ae_initial = self.get_ae_initial()
+        self.get_ae_tmg(ae_initial)
+        self.backfill()
+
+        obj = self.resolve(AeFinalClassification.objects.get(), HEPATOMEGALY)
+
+        obj.refresh_from_db()
+        self.assertEqual(
+            obj.resolved_ae_classification, self.get_ae_classification(LACTIC_ACIDOSIS)
+        )
+        self.assertEqual(
+            obj.resolved_investigator_ae_classification,
+            self.get_ae_classification(LACTIC_ACIDOSIS),
+        )
+
+    def test_resolving_before_the_tmg_arrives_snapshots_a_null_tmg_side(self):
+        self.get_ae_initial()
+        self.backfill()
+
+        obj = self.resolve(AeFinalClassification.objects.get(), LACTIC_ACIDOSIS)
+
+        obj.refresh_from_db()
+        self.assertEqual(
+            obj.resolved_ae_classification, self.get_ae_classification(LACTIC_ACIDOSIS)
+        )
+        self.assertIsNone(obj.resolved_investigator_ae_classification)
+
+    def test_unresolving_clears_the_snapshot(self):
+        ae_initial = self.get_ae_initial()
+        self.get_ae_tmg(ae_initial)
+        self.backfill()
+        obj = self.resolve(AeFinalClassification.objects.get(), HEPATOMEGALY)
+
+        obj.conflict_resolved = NO
+        obj.save()
+
+        obj.refresh_from_db()
+        self.assertIsNone(obj.resolved_ae_classification)
+        self.assertIsNone(obj.resolved_investigator_ae_classification)
+
+    def test_command_never_writes_the_resolved_snapshot(self):
+        ae_initial = self.get_ae_initial()
+        ae_tmg = self.get_ae_tmg(ae_initial)
+        self.backfill()
+        self.resolve(AeFinalClassification.objects.get(), LACTIC_ACIDOSIS)
+
+        ae_tmg.investigator_ae_classification = self.get_ae_classification(HEPATOMEGALY)
+        ae_tmg.original_report_agreed = NO
+        ae_tmg.save()
+
+        self.backfill(update_copies=True)
+
+        obj = AeFinalClassification.objects.get()
+        self.assertEqual(
+            obj.resolved_investigator_ae_classification,
+            self.get_ae_classification(LACTIC_ACIDOSIS),
+        )
+        self.assertEqual(
+            obj.investigator_ae_classification, self.get_ae_classification(HEPATOMEGALY)
+        )
+
+    # ------------------------------------------------------------------
     # discrepancies the command may not act on are reported
     # ------------------------------------------------------------------
     @staticmethod
@@ -394,8 +465,12 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         )
         self.assertIn("Left 1 resolved row(s) unchanged.", out)
 
-    def test_update_copies_reports_a_reviewer_override_of_an_agreed_row(self):
-        """No source moved; the reviewer simply disagrees with the sources."""
+    def test_update_copies_reports_nothing_for_an_override_while_the_sources_hold(self):
+        """A standing override is settled, not a discrepancy.
+
+        The reviewer resolved against these very values, so nothing has
+        happened since that they need to see.
+        """
         ae_initial = self.get_ae_initial()
         self.get_ae_tmg(ae_initial)
         self.backfill()
@@ -403,16 +478,68 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
 
         out = self.backfill(update_copies=True)
 
+        self.assertNotIn("resolved, not changed", out)
+        self.assertIn("Left 0 resolved row(s) unchanged.", out)
+
+    def test_update_copies_reports_an_override_once_the_sources_move(self):
+        ae_initial = self.get_ae_initial()
+        ae_tmg = self.get_ae_tmg(ae_initial)
+        self.backfill()
+        self.resolve(AeFinalClassification.objects.get(), HEPATOMEGALY)
+
+        ae_tmg.investigator_ae_classification = self.get_ae_classification(HEPATOMEGALY)
+        ae_tmg.original_report_agreed = NO
+        ae_tmg.save()
+
+        out = self.backfill(update_copies=True)
+
         self.assertIn(
             self.expected_discrepancy_line(
                 ae_initial,
                 final=HEPATOMEGALY,
-                review_status=AGREED,
-                sources=f"{LACTIC_ACIDOSIS}, {LACTIC_ACIDOSIS}",
+                review_status=REQUIRES_REVIEW,
+                sources=f"{LACTIC_ACIDOSIS}, {HEPATOMEGALY}",
             ),
             out,
         )
         self.assertIn("Left 1 resolved row(s) unchanged.", out)
+
+    def test_update_copies_reports_a_row_resolved_before_its_tmg_arrived(self):
+        """The reviewer resolved with no TMG input; now there is some."""
+        ae_initial = self.get_ae_initial()
+        self.backfill()
+        self.resolve(AeFinalClassification.objects.get(), LACTIC_ACIDOSIS)
+        self.get_ae_tmg(ae_initial, HEPATOMEGALY, original_report_agreed=NO)
+
+        out = self.backfill(update_copies=True)
+
+        self.assertIn(
+            self.expected_discrepancy_line(
+                ae_initial,
+                final=LACTIC_ACIDOSIS,
+                review_status=REQUIRES_REVIEW,
+                sources=f"{LACTIC_ACIDOSIS}, {HEPATOMEGALY}",
+            ),
+            out,
+        )
+        self.assertIn("Left 1 resolved row(s) unchanged.", out)
+
+    def test_re_resolving_drains_the_row_from_the_report(self):
+        """Re-snapshotting settles the row again."""
+        ae_initial = self.get_ae_initial()
+        ae_tmg = self.get_ae_tmg(ae_initial)
+        self.backfill()
+        self.resolve(AeFinalClassification.objects.get(), LACTIC_ACIDOSIS)
+        ae_tmg.investigator_ae_classification = self.get_ae_classification(HEPATOMEGALY)
+        ae_tmg.original_report_agreed = NO
+        ae_tmg.save()
+        self.backfill(update_copies=True)
+
+        self.resolve(AeFinalClassification.objects.get(), LACTIC_ACIDOSIS)
+        out = self.backfill(update_copies=True)
+
+        self.assertNotIn("resolved, not changed", out)
+        self.assertIn("Left 0 resolved row(s) unchanged.", out)
 
     def test_dry_run_update_copies_reports_a_resolved_row_it_may_not_change(self):
         """The report is obtainable without writing anything."""
