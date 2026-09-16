@@ -9,10 +9,14 @@ until the model and command are reworked. They cover four things:
   recomputed on every pass.
 * `conflict_resolved` is the reviewer's tick, and the command never
   writes it. `conflict_resolved == YES` freezes
-  `final_ae_classification`; anything else leaves the row open to the
-  command.
-* A frozen row whose sources have since moved is reported, so the
-  discrepancy the command may not act on is visible to a human.
+  `final_ae_classification` whatever the `review_status`, so a reviewer
+  may also overrule an `AGREED` row; anything else leaves the row open
+  to the command.
+* Whenever the command would have written a different
+  `final_ae_classification` but may not, it reports the row, so every
+  discrepancy it cannot act on is visible to a human. That covers both
+  a frozen row whose sources have moved and a reviewer overruling the
+  sources.
 * `Command.get_ae_tmg` suppresses only `DoesNotExist`, so a second
   AeTmg on the same AeInitial (allowed: `AeTmgAction` is not a
   singleton and lists itself as a parent action) aborts the whole run.
@@ -293,6 +297,24 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         self.assertEqual(obj.final_ae_classification, self.get_ae_classification(HEPATOMEGALY))
         self.assertEqual(obj.conflict_resolved, YES)
 
+    def test_update_copies_leaves_a_reviewer_override_of_an_agreed_row(self):
+        """The tick outranks the command's own verdict.
+
+        The sources still agree, so `review_status` stays AGREED, but
+        the answer is the reviewer's.
+        """
+        ae_initial = self.get_ae_initial()
+        self.get_ae_tmg(ae_initial)
+        self.backfill()
+        obj = self.resolve(AeFinalClassification.objects.get(), HEPATOMEGALY)
+
+        self.backfill(update_copies=True)
+
+        obj.refresh_from_db()
+        self.assertEqual(obj.final_ae_classification, self.get_ae_classification(HEPATOMEGALY))
+        self.assertEqual(obj.conflict_resolved, YES)
+        self.assertEqual(obj.review_status, AGREED)
+
     def test_update_copies_sends_a_stale_resolved_row_back_for_review(self):
         """Frozen, but the sources moved, so the reviewer sees it again.
 
@@ -336,21 +358,25 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
     # discrepancies the command may not act on are reported
     # ------------------------------------------------------------------
     @staticmethod
-    def expected_discrepancy_line(ae_initial: AeInitial, changes: str) -> str:
+    def expected_discrepancy_line(
+        ae_initial: AeInitial,
+        final: str,
+        review_status: str,
+        sources: str,
+    ) -> str:
+        """The row, what it holds, and what the sources now say."""
         return (
             f"  ! resolved, not changed: subject {ae_initial.subject_identifier} "
-            f"ae_initial={ae_initial.action_identifier} ({changes})"
+            f"ae_initial={ae_initial.action_identifier} final={final} "
+            f"review_status={review_status} sources=({sources})"
         )
 
-    def test_update_copies_reports_a_resolved_row_it_may_not_change(self):
-        """Both source classifications are reported, sorted, old -> new."""
+    def test_update_copies_reports_a_resolved_row_whose_sources_moved(self):
         ae_initial = self.get_ae_initial()
         ae_tmg = self.get_ae_tmg(ae_initial)
         self.backfill()
         self.resolve(AeFinalClassification.objects.get(), LACTIC_ACIDOSIS)
 
-        ae_initial.ae_classification = self.get_ae_classification(HEPATOMEGALY)
-        ae_initial.save()
         ae_tmg.investigator_ae_classification = self.get_ae_classification(HEPATOMEGALY)
         ae_tmg.original_report_agreed = NO
         ae_tmg.save()
@@ -360,8 +386,29 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         self.assertIn(
             self.expected_discrepancy_line(
                 ae_initial,
-                f"ae_classification: {LACTIC_ACIDOSIS} -> {HEPATOMEGALY}, "
-                f"investigator_ae_classification: {LACTIC_ACIDOSIS} -> {HEPATOMEGALY}",
+                final=LACTIC_ACIDOSIS,
+                review_status=REQUIRES_REVIEW,
+                sources=f"{LACTIC_ACIDOSIS}, {HEPATOMEGALY}",
+            ),
+            out,
+        )
+        self.assertIn("Left 1 resolved row(s) unchanged.", out)
+
+    def test_update_copies_reports_a_reviewer_override_of_an_agreed_row(self):
+        """No source moved; the reviewer simply disagrees with the sources."""
+        ae_initial = self.get_ae_initial()
+        self.get_ae_tmg(ae_initial)
+        self.backfill()
+        self.resolve(AeFinalClassification.objects.get(), HEPATOMEGALY)
+
+        out = self.backfill(update_copies=True)
+
+        self.assertIn(
+            self.expected_discrepancy_line(
+                ae_initial,
+                final=HEPATOMEGALY,
+                review_status=AGREED,
+                sources=f"{LACTIC_ACIDOSIS}, {LACTIC_ACIDOSIS}",
             ),
             out,
         )
@@ -374,6 +421,7 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         self.backfill()
         self.resolve(AeFinalClassification.objects.get(), LACTIC_ACIDOSIS)
         ae_tmg.investigator_ae_classification = self.get_ae_classification(HEPATOMEGALY)
+        ae_tmg.original_report_agreed = NO
         ae_tmg.save()
 
         out = self.backfill(update_copies=True, dry_run=True)
@@ -381,7 +429,9 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         self.assertIn(
             self.expected_discrepancy_line(
                 ae_initial,
-                f"investigator_ae_classification: {LACTIC_ACIDOSIS} -> {HEPATOMEGALY}",
+                final=LACTIC_ACIDOSIS,
+                review_status=REQUIRES_REVIEW,
+                sources=f"{LACTIC_ACIDOSIS}, {HEPATOMEGALY}",
             ),
             out,
         )
@@ -393,6 +443,7 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         )
 
     def test_update_copies_reports_nothing_for_a_resolved_row_still_in_step(self):
+        """Resolved to the same answer the sources give: no discrepancy."""
         ae_initial = self.get_ae_initial()
         self.get_ae_tmg(ae_initial)
         self.backfill()
