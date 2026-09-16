@@ -1,5 +1,5 @@
-from clinicedc_constants import NOT_APPLICABLE, NULL_STRING, OTHER, PENDING, YES
-from clinicedc_constants.choices import YES_NO, YES_NO_NA
+from clinicedc_constants import NO, NOT_APPLICABLE, NULL_STRING, OTHER, PENDING, YES
+from clinicedc_constants.choices import YES_NO_NA
 from django.db import models
 from django.db.models import Q
 from django.utils import timezone
@@ -25,26 +25,73 @@ class ModelManager(models.Manager):
     use_in_migrations = True
 
 
-def get_ae_values_to_copy(ae_initial: "AeInitial", ae_tmg: "AeTmg | None") -> dict:
+def get_latest_ae_tmg(ae_tmgs: "list[AeTmg]") -> "AeTmg | None":
+    """The TMG's current position, or None where there is no report."""
+    return ae_tmgs[-1] if ae_tmgs else None
+
+
+def ae_tmg_agrees(ae_initial: "AeInitial", ae_tmg: "AeTmg") -> bool:
+    """True where this TMG report agrees with the original classification.
+
+    An investigator selects a classification of their own only where
+    they disagree, so `investigator_ae_classification_agreed` of YES is
+    the agreement itself, however the unused selection happens to be
+    left. Where they did not answer, the two classifications have to
+    match on their own.
+    """
+    if ae_tmg.investigator_ae_classification_agreed == YES:
+        return True
+    ae_classification_obj = ae_initial.ae_classification
+    tmg_classification_obj = ae_tmg.investigator_ae_classification
+    unusable = [OTHER, NOT_APPLICABLE]
+    return (
+        ae_classification_obj is not None
+        and tmg_classification_obj is not None
+        and ae_classification_obj.name not in unusable
+        and tmg_classification_obj.name not in unusable
+        and ae_classification_obj == tmg_classification_obj
+    )
+
+
+def get_investigator_ae_classification_agreed(
+    ae_initial: "AeInitial", ae_tmgs: "list[AeTmg]"
+) -> str:
+    """Whether the TMG agrees with the original classification.
+
+    Derived across every TMG report, not copied from one of them: one
+    investigator disagreeing is a disagreement, whatever the others
+    said and whichever came last.
+    """
+    if not ae_tmgs:
+        return NULL_STRING
+    return YES if all(ae_tmg_agrees(ae_initial, obj) for obj in ae_tmgs) else NO
+
+
+def get_ae_values_to_copy(ae_initial: "AeInitial", ae_tmgs: "list[AeTmg]") -> dict:
     """Values that AeFinalClassification copies from the source reports.
 
-    `tmg` is optional: an AeInitial may exist without a corresponding
-    AeTmg. In that case only the AeInitial-side fields are returned,
-    and the ae_tmg-side fields are nulled so a subsequent refresh
-    clears any stale TMG copy.
+    `ae_tmgs` may be empty: an AeInitial may exist without any AeTmg.
+    In that case only the AeInitial-side fields are returned, and the
+    ae_tmg-side fields are nulled so a subsequent refresh clears any
+    stale TMG copy. Where there are several, the TMG columns show the
+    latest, since the record holds one of each. The agreement is the
+    exception and is derived across all of them.
     """
+    ae_tmg = get_latest_ae_tmg(ae_tmgs)
     values = {
         "ae_initial": ae_initial,
         "ae_initial_action_identifier": ae_initial.action_identifier,
         "ae_classification": ae_initial.ae_classification,
         "ae_classification_other": ae_initial.ae_classification_other or "",
+        "investigator_ae_classification_agreed": (
+            get_investigator_ae_classification_agreed(ae_initial, ae_tmgs)
+        ),
     }
     if ae_tmg is None:
         values.update(
             {
                 "ae_tmg": None,
                 "ae_tmg_action_identifier": None,
-                "investigator_ae_classification_agreed": "",
                 "investigator_ae_classification": None,
                 "investigator_ae_classification_other": "",
             }
@@ -54,7 +101,6 @@ def get_ae_values_to_copy(ae_initial: "AeInitial", ae_tmg: "AeTmg | None") -> di
             {
                 "ae_tmg": ae_tmg,
                 "ae_tmg_action_identifier": ae_tmg.action_identifier,
-                "investigator_ae_classification_agreed": (ae_tmg.original_report_agreed),
                 "investigator_ae_classification": ae_tmg.investigator_ae_classification,
                 "investigator_ae_classification_other": (
                     ae_tmg.investigator_ae_classification_other or ""
@@ -64,62 +110,52 @@ def get_ae_values_to_copy(ae_initial: "AeInitial", ae_tmg: "AeTmg | None") -> di
     return values
 
 
+def get_original_ae_classification(
+    ae_initial: "AeInitial",
+) -> tuple[AeClassification | None, str]:
+    """The original AE report's classification and its `other` text.
+
+    Where the original says OTHER, the text is the classification. It
+    resolves to a listed AeClassification where it names one, and is
+    carried across as free text where it does not.
+    """
+    ae_classification_obj = ae_initial.ae_classification
+    if ae_classification_obj is not None and ae_classification_obj.name == OTHER:
+        ae_classification_other = ae_initial.ae_classification_other or NULL_STRING
+        try:
+            ae_classification_obj = AeClassification.objects.get(
+                Q(name=ae_classification_other.lower())
+                | Q(display_name=ae_classification_other)
+            )
+        except AeClassification.DoesNotExist:
+            return ae_initial.ae_classification, ae_classification_other
+        return ae_classification_obj, NULL_STRING
+    return ae_classification_obj, NULL_STRING
+
+
 def get_final_ae_classification(
-    ae_initial: "AeInitial", ae_tmg: "AeTmg | None"
+    ae_initial: "AeInitial", ae_tmgs: "list[AeTmg]"
 ) -> tuple[AeClassification | None, str, str]:
     """Return the final classification, its `other` text and a review status.
 
-    The classification is filled in only where the two sources agree
-    (`AGREED`). Until an AeTmg exists there is nothing to compare
-    (`PENDING`), and where the sources do not agree the answer is a
-    reviewer's to give (`REQUIRES_REVIEW`).
+    Until an AeTmg exists there is nothing to compare (`PENDING`). The
+    classification is filled in only where every TMG report agrees with
+    the original, in which case the original's is the answer.
     """
-    ae_classification_obj: AeClassification | None = None
-    ae_classification_other: str | None = None
-    review_status: str = PENDING
-    if ae_tmg:
-        review_status = REQUIRES_REVIEW
-        ae_classification_obj = ae_initial.ae_classification
-        tmg_classification_obj = ae_tmg.investigator_ae_classification
-        either_is_other = (
-            ae_classification_obj is not None and ae_classification_obj.name == OTHER
-        ) or (tmg_classification_obj is not None and tmg_classification_obj.name == OTHER)
-        if (
-            not either_is_other
-            and ae_classification_obj is not None
-            and tmg_classification_obj is not None
-            and (
-                ae_classification_obj == tmg_classification_obj
-                or (
-                    ae_tmg.original_report_agreed == YES
-                    and tmg_classification_obj.name == NOT_APPLICABLE
-                )
-            )
-        ):
-            review_status = AGREED
-        elif (
-            ae_tmg.original_report_agreed == YES
-            and ae_classification_obj is not None
-            and ae_classification_obj.name == OTHER
-        ):
-            try:
-                ae_classification_obj = AeClassification.objects.get(
-                    Q(name=ae_initial.ae_classification_other.lower())
-                    | Q(display_name=ae_initial.ae_classification_other)
-                )
-            except AeClassification.DoesNotExist:
-                ae_classification_other = ae_initial.ae_classification_other
-            else:
-                review_status = AGREED
-        else:
-            ae_classification_obj = None
-    return ae_classification_obj, ae_classification_other or NULL_STRING, review_status
+    if not ae_tmgs:
+        return None, NULL_STRING, PENDING
+    if get_investigator_ae_classification_agreed(ae_initial, ae_tmgs) == YES:
+        ae_classification_obj, ae_classification_other = get_original_ae_classification(
+            ae_initial
+        )
+        return ae_classification_obj, ae_classification_other, AGREED
+    return None, NULL_STRING, REQUIRES_REVIEW
 
 
 def get_refresh_values(
     afc: "AeFinalClassification",
     ae_initial: "AeInitial",
-    ae_tmg: "AeTmg | None",
+    ae_tmgs: "list[AeTmg]",
 ) -> dict:
     """Values a refresh would write to `afc`.
 
@@ -127,8 +163,8 @@ def get_refresh_values(
     not settled the record. `review_status` always refreshes: it
     describes the sources, not the answer.
     """
-    values = get_ae_values_to_copy(ae_initial, ae_tmg)
-    final_obj, final_other, review_status = get_final_ae_classification(ae_initial, ae_tmg)
+    values = get_ae_values_to_copy(ae_initial, ae_tmgs)
+    final_obj, final_other, review_status = get_final_ae_classification(ae_initial, ae_tmgs)
     values["review_status"] = review_status
     if afc.conflict_resolved != YES:
         values["final_ae_classification"] = final_obj
@@ -139,13 +175,13 @@ def get_refresh_values(
 def refresh_copies_from_sources(
     afc: "AeFinalClassification",
     ae_initial: "AeInitial",
-    ae_tmg: "AeTmg | None",
+    ae_tmgs: "list[AeTmg]",
 ) -> list[str]:
     """Refresh `afc` from its source records.
 
     Returns the list of fields written, empty if nothing changed.
     """
-    values = get_refresh_values(afc, ae_initial, ae_tmg)
+    values = get_refresh_values(afc, ae_initial, ae_tmgs)
     changed = {f: v for f, v in values.items() if getattr(afc, f) != v}
     if not changed:
         return []
@@ -158,7 +194,7 @@ def refresh_copies_from_sources(
 def resolution_is_stale(
     afc: "AeFinalClassification",
     ae_initial: "AeInitial",
-    ae_tmg: "AeTmg | None",
+    ae_tmgs: "list[AeTmg]",
 ) -> bool:
     """True where the sources have moved since the reviewer resolved.
 
@@ -169,6 +205,7 @@ def resolution_is_stale(
     """
     if afc.conflict_resolved != YES:
         return False
+    ae_tmg = get_latest_ae_tmg(ae_tmgs)
     investigator_obj = ae_tmg.investigator_ae_classification if ae_tmg else None
     return (
         afc.resolved_ae_classification != ae_initial.ae_classification
@@ -291,8 +328,9 @@ class AeFinalClassification(
             "TMG investigator agrees with the AE classification from the original AE report?"
         ),
         max_length=15,
-        choices=YES_NO,
+        choices=YES_NO_NA,
         default=NULL_STRING,
+        help_text="Copied from the AE TMG. Blank where there is no AE TMG report.",
     )
 
     # copied from meta_ae.aetmg

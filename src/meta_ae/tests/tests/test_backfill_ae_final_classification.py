@@ -33,9 +33,11 @@ until the model and command are reworked. They cover four things:
 from io import StringIO
 
 from clinicedc_constants import GRADE4, NO, NOT_APPLICABLE, OTHER, PENDING, YES
+from dateutil.relativedelta import relativedelta
 from django.core.management import call_command
 from django.test import TestCase, override_settings
 from edc_adverse_event.models import AeClassification
+from edc_utils import get_utcnow
 from model_bakery import baker
 from multisite import SiteID
 
@@ -394,7 +396,7 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         obj = self.resolve(AeFinalClassification.objects.get(), LACTIC_ACIDOSIS)
 
         ae_tmg.investigator_ae_classification = self.get_ae_classification(HEPATOMEGALY)
-        ae_tmg.original_report_agreed = NO
+        ae_tmg.investigator_ae_classification_agreed = NO
         ae_tmg.save()
 
         self.backfill(update_copies=True)
@@ -748,6 +750,90 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         self.backfill()
 
         self.assertEqual(AeFinalClassification.objects.count(), 1)
+
+    def make_ae_tmg(
+        self,
+        ae_initial: AeInitial,
+        days_ago: int,
+        agreed: str,
+        classification_name: str | None = None,
+    ) -> AeTmg:
+        return baker.make_recipe(
+            "meta_ae.aetmg",
+            ae_initial=ae_initial,
+            subject_identifier=ae_initial.subject_identifier,
+            report_datetime=get_utcnow() - relativedelta(days=days_ago),
+            investigator_ae_classification_agreed=agreed,
+            investigator_ae_classification=(
+                self.get_ae_classification(classification_name)
+                if classification_name
+                else None
+            ),
+        )
+
+    def test_every_ae_tmg_agreeing_agrees(self):
+        ae_initial = self.get_ae_initial(LACTIC_ACIDOSIS)
+        self.make_ae_tmg(ae_initial, days_ago=2, agreed=YES)
+        self.make_ae_tmg(ae_initial, days_ago=1, agreed=YES)
+
+        self.backfill()
+
+        obj = AeFinalClassification.objects.get()
+        self.assertEqual(obj.review_status, AGREED)
+        self.assertEqual(
+            obj.final_ae_classification, self.get_ae_classification(LACTIC_ACIDOSIS)
+        )
+        self.assertEqual(obj.investigator_ae_classification_agreed, YES)
+
+    def test_one_ae_tmg_disagreeing_requires_review(self):
+        """A later agreement does not overturn an earlier disagreement.
+
+        Two investigators who do not say the same thing are a
+        disagreement, whichever of them reported last.
+        """
+        ae_initial = self.get_ae_initial(LACTIC_ACIDOSIS)
+        self.make_ae_tmg(ae_initial, days_ago=2, agreed=NO, classification_name=HEPATOMEGALY)
+        self.make_ae_tmg(ae_initial, days_ago=1, agreed=YES)
+
+        self.backfill()
+
+        obj = AeFinalClassification.objects.get()
+        self.assertEqual(obj.review_status, REQUIRES_REVIEW)
+        self.assertIsNone(obj.final_ae_classification)
+        self.assertEqual(obj.investigator_ae_classification_agreed, NO)
+
+    def test_a_late_ae_tmg_disagreeing_requires_review(self):
+        """The same two reports the other way round."""
+        ae_initial = self.get_ae_initial(LACTIC_ACIDOSIS)
+        self.make_ae_tmg(ae_initial, days_ago=2, agreed=YES)
+        self.make_ae_tmg(ae_initial, days_ago=1, agreed=NO, classification_name=HEPATOMEGALY)
+
+        self.backfill()
+
+        obj = AeFinalClassification.objects.get()
+        self.assertEqual(obj.review_status, REQUIRES_REVIEW)
+        self.assertIsNone(obj.final_ae_classification)
+        self.assertEqual(obj.investigator_ae_classification_agreed, NO)
+
+    def test_the_tmg_columns_show_the_latest_ae_tmg(self):
+        """The record holds one of each, so they show the latest.
+
+        The agreement is the exception: it is weighed across them all.
+        """
+        ae_initial = self.get_ae_initial(LACTIC_ACIDOSIS)
+        self.make_ae_tmg(ae_initial, days_ago=2, agreed=YES)
+        latest = self.make_ae_tmg(
+            ae_initial, days_ago=1, agreed=NO, classification_name=HEPATOMEGALY
+        )
+
+        self.backfill()
+
+        obj = AeFinalClassification.objects.get()
+        self.assertEqual(obj.ae_tmg, latest)
+        self.assertEqual(obj.ae_tmg_action_identifier, latest.action_identifier)
+        self.assertEqual(
+            obj.investigator_ae_classification, self.get_ae_classification(HEPATOMEGALY)
+        )
 
     def test_second_ae_tmg_does_not_abort_a_dry_run(self):
         ae_initial = self.get_ae_initial()

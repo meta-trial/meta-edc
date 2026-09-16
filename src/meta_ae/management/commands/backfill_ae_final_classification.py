@@ -37,6 +37,7 @@ from meta_ae.models import AeFinalClassification, AeInitial, AeTmg
 from meta_ae.models.ae_final_classification import (
     get_ae_values_to_copy,
     get_final_ae_classification,
+    get_latest_ae_tmg,
     get_refresh_values,
     refresh_copies_from_sources,
     resolution_is_stale,
@@ -78,23 +79,23 @@ class Command(BaseCommand):
 
         for ae_initial_obj in qs.iterator():
             ae_final_obj = self.get_ae_final_classification(ae_initial_obj)
-            aetmg_obj = self.get_ae_tmg(ae_initial_obj)
+            aetmg_objs = self.get_ae_tmgs(ae_initial_obj)
 
             if not ae_final_obj:
                 created += 1
-                self.create_ae_final_classification(ae_initial_obj, aetmg_obj, dry_run)
+                self.create_ae_final_classification(ae_initial_obj, aetmg_objs, dry_run)
                 continue
 
             if not update_copies:
                 skipped += 1
                 continue
 
-            if resolution_is_stale(ae_final_obj, ae_initial_obj, aetmg_obj):
+            if resolution_is_stale(ae_final_obj, ae_initial_obj, aetmg_objs):
                 unchanged_resolved += 1
-                self.report_discrepancy(ae_final_obj, ae_initial_obj, aetmg_obj)
+                self.report_discrepancy(ae_final_obj, ae_initial_obj, aetmg_objs)
 
             if dry_run:
-                values = get_refresh_values(ae_final_obj, ae_initial_obj, aetmg_obj)
+                values = get_refresh_values(ae_final_obj, ae_initial_obj, aetmg_objs)
                 diffs = sorted(f for f, v in values.items() if getattr(ae_final_obj, f) != v)
                 if not diffs:
                     skipped += 1
@@ -107,7 +108,7 @@ class Command(BaseCommand):
                 updated += 1
                 continue
 
-            changed = refresh_copies_from_sources(ae_final_obj, ae_initial_obj, aetmg_obj)
+            changed = refresh_copies_from_sources(ae_final_obj, ae_initial_obj, aetmg_objs)
             if not changed:
                 skipped += 1
                 continue
@@ -130,18 +131,18 @@ class Command(BaseCommand):
             )
 
     def create_ae_final_classification(
-        self, ae_initial_obj: AeInitial, aetmg_obj: AeTmg | None, dry_run: bool
+        self, ae_initial_obj: AeInitial, aetmg_objs: list[AeTmg], dry_run: bool
     ) -> None:
-        copy_values = get_ae_values_to_copy(ae_initial_obj, aetmg_obj)
+        copy_values = get_ae_values_to_copy(ae_initial_obj, aetmg_objs)
         (
             copy_values["final_ae_classification"],
             copy_values["final_ae_classification_other"],
             copy_values["review_status"],
-        ) = get_final_ae_classification(ae_initial_obj, aetmg_obj)
+        ) = get_final_ae_classification(ae_initial_obj, aetmg_objs)
         if dry_run:
             tmg_desc = (
-                f"ae_tmg={aetmg_obj.action_identifier}"
-                if aetmg_obj is not None
+                f"ae_tmg={', '.join(o.action_identifier for o in aetmg_objs)}"
+                if aetmg_objs
                 else "no ae_tmg"
             )
             self.stdout.write(
@@ -167,10 +168,11 @@ class Command(BaseCommand):
         self,
         ae_final_obj: AeFinalClassification,
         ae_initial_obj: AeInitial,
-        aetmg_obj: AeTmg | None,
+        aetmg_objs: list[AeTmg],
     ) -> None:
         """Say what the record holds and what the sources now say."""
-        _, _, review_status = get_final_ae_classification(ae_initial_obj, aetmg_obj)
+        _, _, review_status = get_final_ae_classification(ae_initial_obj, aetmg_objs)
+        aetmg_obj = get_latest_ae_tmg(aetmg_objs)
         sources = ", ".join(
             [
                 self.classification_name(ae_initial_obj.ae_classification),
@@ -191,15 +193,20 @@ class Command(BaseCommand):
         return obj.name if obj is not None else "None"
 
     @staticmethod
-    def get_ae_tmg(ae_initial: AeInitial) -> AeTmg | None:
-        """Return the most recent AeTmg child-action of this AeInitial.
+    def get_ae_tmgs(ae_initial: AeInitial) -> list[AeTmg]:
+        """Every AeTmg child-action of this AeInitial, oldest first.
 
         AeTmg is linked to AeInitial via its action_identifier
         (AeInitial is the parent action). More than one is legal:
         AeTmgAction is not a singleton and names itself among its own
-        parent actions, so take the latest rather than raising.
+        parent actions. They are weighed together, so one investigator
+        disagreeing is a disagreement whichever report came last.
+        `created` breaks a tie on report_datetime so the columns that
+        show the latest cannot change between reruns.
         """
-        return AeTmg.objects.filter(ae_initial=ae_initial).order_by("report_datetime").last()
+        return list(
+            AeTmg.objects.filter(ae_initial=ae_initial).order_by("report_datetime", "created")
+        )
 
     @staticmethod
     def get_ae_final_classification(ae_initial: AeInitial) -> AeFinalClassification | None:
