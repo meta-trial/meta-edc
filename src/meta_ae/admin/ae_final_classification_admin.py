@@ -9,11 +9,7 @@ from edc_sites.admin.list_filters import SiteListFilter
 from ..admin_site import meta_ae_admin
 from ..forms import AeFinalClassificationForm
 from ..models import AeFinalClassification
-from .list_filters import (
-    FinalAeClassificationSetListFilter,
-    HasAeTmgListFilter,
-    NeedsReviewListFilter,
-)
+from .list_filters import FinalAeClassificationSetListFilter, HasAeTmgListFilter
 
 
 @admin.register(AeFinalClassification, site=meta_ae_admin)
@@ -96,7 +92,6 @@ class AeFinalClassificationAdmin(
     )
 
     list_filter = (
-        NeedsReviewListFilter,
         "review_status",
         "conflict_resolved",
         FinalAeClassificationSetListFilter,
