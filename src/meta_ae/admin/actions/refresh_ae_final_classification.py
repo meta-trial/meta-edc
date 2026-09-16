@@ -6,7 +6,7 @@ from meta_ae.models import AeInitial
 MAX_SUBJECTS_LISTED = 10
 
 
-@admin.action(permissions=["view"], description="Refresh from the source reports")
+@admin.action(permissions=["change"], description="Refresh from the source reports")
 def refresh_ae_final_classification(modeladmin, request, queryset):  # noqa: ARG001
     """The admin face of `backfill_ae_final_classification --update-copies`.
 
