@@ -9,7 +9,11 @@ from edc_sites.admin.list_filters import SiteListFilter
 from ..admin_site import meta_ae_admin
 from ..forms import AeFinalClassificationForm
 from ..models import AeFinalClassification
-from .list_filters import FinalAeClassificationSetListFilter, HasAeTmgListFilter
+from .list_filters import (
+    FinalAeClassificationSetListFilter,
+    HasAeTmgListFilter,
+    NeedsReviewListFilter,
+)
 
 
 @admin.register(AeFinalClassification, site=meta_ae_admin)
@@ -36,9 +40,10 @@ class AeFinalClassificationAdmin(
             "Final AE Classification",
             {
                 "fields": (
+                    "review_status",
                     "final_ae_classification",
                     "final_ae_classification_other",
-                    "verified",
+                    "conflict_resolved",
                 ),
             },
         ),
@@ -71,6 +76,7 @@ class AeFinalClassificationAdmin(
     )
 
     radio_fields = {  # noqa: RUF012
+        "conflict_resolved": admin.VERTICAL,
         "final_ae_classification": admin.VERTICAL,
         "ae_classification": admin.VERTICAL,
         "investigator_ae_classification": admin.VERTICAL,
@@ -85,11 +91,15 @@ class AeFinalClassificationAdmin(
         "original",
         "tmg",
         "agreed",
+        "review_status",
+        "conflict_resolved",
     )
 
     list_filter = (
+        NeedsReviewListFilter,
+        "review_status",
+        "conflict_resolved",
         FinalAeClassificationSetListFilter,
-        "verified",
         HasAeTmgListFilter,
         "investigator_ae_classification_agreed",
         SiteListFilter,
@@ -104,6 +114,7 @@ class AeFinalClassificationAdmin(
 
     readonly_fields = (
         "subject_identifier",
+        "review_status",
         "ae_initial",
         "ae_initial_action_identifier",
         "ae_classification",
