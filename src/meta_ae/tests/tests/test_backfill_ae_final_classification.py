@@ -10,6 +10,11 @@ implementation; they pin down the caveats before any fix is written:
 * `Command.get_ae_tmg` suppresses only `DoesNotExist`, so a second
   AeTmg on the same AeInitial (allowed: `AeTmgAction` is not a
   singleton and lists itself as a parent action) aborts the whole run.
+* `refresh_copies_from_sources` ignores `verified`: it clears
+  `final_ae_classification` on any source classification change, so a
+  verified row loses its agreed answer. `verified` is meant to protect
+  `final_ae_classification` from further change by the command; the
+  copied columns still refresh.
 """
 
 from io import StringIO
@@ -170,10 +175,15 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         )
 
     def test_update_copies_clears_final_classification_when_new_tmg_disagrees(self):
-        """Clearing on disagreement is the intended behaviour."""
+        """Clearing on disagreement is the intended behaviour.
+
+        The row is not verified, so `final_ae_classification` is still
+        the command's to revise.
+        """
         ae_initial = self.get_ae_initial(LACTIC_ACIDOSIS)
         self.backfill()
         obj = AeFinalClassification.objects.get()
+        self.assertFalse(obj.verified)
         obj.final_ae_classification = self.get_ae_classification(LACTIC_ACIDOSIS)
         obj.save(update_fields=["final_ae_classification"])
         self.get_ae_tmg(ae_initial, HEPATOMEGALY, original_report_agreed=NO)
@@ -183,6 +193,94 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         obj.refresh_from_db()
         self.assertIsNone(obj.final_ae_classification)
         self.assertFalse(obj.verified)
+
+    # ------------------------------------------------------------------
+    # verified rows are protected from further change (expected failure)
+    # ------------------------------------------------------------------
+    def test_update_copies_leaves_verified_final_classification_when_tmg_changes(self):
+        """`verified` freezes `final_ae_classification`.
+
+        The copied columns must still refresh so the row shows what the
+        sources now say, but the agreed answer is not the command's to
+        revise once it is verified.
+        """
+        ae_initial = self.get_ae_initial()
+        ae_tmg = self.get_ae_tmg(ae_initial)
+        self.backfill()
+        obj = AeFinalClassification.objects.get()
+        self.assertTrue(obj.verified)
+        self.assertEqual(
+            obj.final_ae_classification, self.get_ae_classification(LACTIC_ACIDOSIS)
+        )
+
+        ae_tmg.investigator_ae_classification = self.get_ae_classification(HEPATOMEGALY)
+        ae_tmg.original_report_agreed = NO
+        ae_tmg.save()
+
+        self.backfill(update_copies=True)
+
+        obj.refresh_from_db()
+        self.assertEqual(
+            obj.final_ae_classification, self.get_ae_classification(LACTIC_ACIDOSIS)
+        )
+        self.assertTrue(obj.verified)
+        self.assertEqual(
+            obj.investigator_ae_classification, self.get_ae_classification(HEPATOMEGALY)
+        )
+        self.assertEqual(obj.investigator_ae_classification_agreed, NO)
+
+    def test_update_copies_leaves_verified_final_classification_when_ae_initial_changes(
+        self,
+    ):
+        ae_initial = self.get_ae_initial()
+        self.get_ae_tmg(ae_initial)
+        self.backfill()
+        obj = AeFinalClassification.objects.get()
+        self.assertTrue(obj.verified)
+
+        ae_initial.ae_classification = self.get_ae_classification(HEPATOMEGALY)
+        ae_initial.save()
+
+        self.backfill(update_copies=True)
+
+        obj.refresh_from_db()
+        self.assertEqual(
+            obj.final_ae_classification, self.get_ae_classification(LACTIC_ACIDOSIS)
+        )
+        self.assertTrue(obj.verified)
+        self.assertEqual(obj.ae_classification, self.get_ae_classification(HEPATOMEGALY))
+
+    def test_update_copies_leaves_verified_final_classification_when_tmg_added_later(self):
+        """A verified row predating its AeTmg keeps its agreed answer."""
+        ae_initial = self.get_ae_initial()
+        self.backfill()
+        obj = AeFinalClassification.objects.get()
+        obj.final_ae_classification = self.get_ae_classification(HEPATOMEGALY)
+        obj.verified = True
+        obj.save(update_fields=["final_ae_classification", "verified"])
+        self.get_ae_tmg(ae_initial, LACTIC_ACIDOSIS)
+
+        self.backfill(update_copies=True)
+
+        obj.refresh_from_db()
+        self.assertEqual(obj.final_ae_classification, self.get_ae_classification(HEPATOMEGALY))
+        self.assertTrue(obj.verified)
+
+    def test_rerunning_update_copies_on_a_verified_row_is_a_no_op(self):
+        ae_initial = self.get_ae_initial()
+        ae_tmg = self.get_ae_tmg(ae_initial)
+        self.backfill()
+        ae_tmg.investigator_ae_classification = self.get_ae_classification(HEPATOMEGALY)
+        ae_tmg.save()
+        self.backfill(update_copies=True)
+        obj = AeFinalClassification.objects.get()
+        modified = obj.modified
+
+        out = self.backfill(update_copies=True)
+
+        obj.refresh_from_db()
+        self.assertEqual(obj.modified, modified)
+        self.assertIn("skipped 1", out)
 
     # ------------------------------------------------------------------
     # a second AeTmg aborts the run (expected failure)
