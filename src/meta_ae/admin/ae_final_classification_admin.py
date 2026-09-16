@@ -9,6 +9,7 @@ from edc_sites.admin.list_filters import SiteListFilter
 from ..admin_site import meta_ae_admin
 from ..forms import AeFinalClassificationForm
 from ..models import AeFinalClassification
+from .actions import refresh_ae_final_classification
 from .list_filters import FinalAeClassificationSetListFilter, HasAeTmgListFilter
 
 
@@ -20,6 +21,7 @@ class AeFinalClassificationAdmin(
 ):
     form = AeFinalClassificationForm
     show_object_tools = True
+    actions = [refresh_ae_final_classification]  # noqa: RUF012
     change_list_note = "You may only edit documents from the current site."
 
     fieldsets = (
