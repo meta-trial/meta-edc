@@ -22,11 +22,17 @@ until the model and command are reworked. They cover four things:
 * `Command.get_ae_tmg` suppresses only `DoesNotExist`, so a second
   AeTmg on the same AeInitial (allowed: `AeTmgAction` is not a
   singleton and lists itself as a parent action) aborts the whole run.
+* A TMG investigator selects a classification only where they disagree
+  with the one on the original AE report. Where they agree they leave
+  it null or NOT_APPLICABLE, and the answer is the AeInitial's, taken
+  from `ae_classification_other` where that classification is OTHER.
+  Reading the absent selection as a disagreement puts an agreed record
+  in front of a reviewer for nothing.
 """
 
 from io import StringIO
 
-from clinicedc_constants import GRADE4, NO, NOT_APPLICABLE, PENDING, YES
+from clinicedc_constants import GRADE4, NO, NOT_APPLICABLE, OTHER, PENDING, YES
 from django.core.management import call_command
 from django.test import TestCase, override_settings
 from edc_adverse_event.models import AeClassification
@@ -52,7 +58,11 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
     def get_ae_classification(name: str) -> AeClassification:
         return AeClassification.objects.get(name=name)
 
-    def get_ae_initial(self, classification_name: str = LACTIC_ACIDOSIS) -> AeInitial:
+    def get_ae_initial(
+        self,
+        classification_name: str = LACTIC_ACIDOSIS,
+        ae_classification_other: str | None = None,
+    ) -> AeInitial:
         subject_screening = self.get_subject_screening()
         subject_consent = self.get_subject_consent(subject_screening)
         return baker.make_recipe(
@@ -60,6 +70,32 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
             subject_identifier=subject_consent.subject_identifier,
             ae_grade=GRADE4,
             ae_classification=self.get_ae_classification(classification_name),
+            ae_classification_other=ae_classification_other,
+        )
+
+    def get_agreeing_ae_tmg(
+        self,
+        ae_initial: AeInitial,
+        classification_name: str | None = None,
+        original_report_agreed: str = YES,
+    ) -> AeTmg:
+        """An AeTmg whose investigator agrees with the classification.
+
+        There is nothing for them to select, so the classification is
+        left null or set to NOT_APPLICABLE. `original_report_agreed`
+        answers a wider question and is a separate answer.
+        """
+        return baker.make_recipe(
+            "meta_ae.aetmg",
+            ae_initial=ae_initial,
+            subject_identifier=ae_initial.subject_identifier,
+            original_report_agreed=original_report_agreed,
+            investigator_ae_classification_agreed=YES,
+            investigator_ae_classification=(
+                self.get_ae_classification(classification_name)
+                if classification_name
+                else None
+            ),
         )
 
     def get_ae_tmg(
@@ -184,6 +220,111 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         ae_tmg.save()
 
         self.backfill(update_copies=True)
+
+        obj = AeFinalClassification.objects.get()
+        self.assertEqual(obj.review_status, REQUIRES_REVIEW)
+        self.assertIsNone(obj.final_ae_classification)
+
+    # ------------------------------------------------------------------
+    # an agreeing TMG selects no classification of its own
+    # ------------------------------------------------------------------
+    def test_a_tmg_agreeing_with_no_selection_agrees(self):
+        """Nothing selected because there was nothing to correct."""
+        ae_initial = self.get_ae_initial(LACTIC_ACIDOSIS)
+        self.get_agreeing_ae_tmg(ae_initial)
+
+        self.backfill()
+
+        obj = AeFinalClassification.objects.get()
+        self.assertEqual(obj.review_status, AGREED)
+        self.assertEqual(
+            obj.final_ae_classification, self.get_ae_classification(LACTIC_ACIDOSIS)
+        )
+
+    def test_a_tmg_agreeing_with_a_not_applicable_selection_agrees(self):
+        """The same answer, spelled NOT_APPLICABLE rather than left null."""
+        ae_initial = self.get_ae_initial(LACTIC_ACIDOSIS)
+        self.get_agreeing_ae_tmg(ae_initial, NOT_APPLICABLE)
+
+        self.backfill()
+
+        obj = AeFinalClassification.objects.get()
+        self.assertEqual(obj.review_status, AGREED)
+        self.assertEqual(
+            obj.final_ae_classification, self.get_ae_classification(LACTIC_ACIDOSIS)
+        )
+
+    def test_a_tmg_agreeing_on_the_classification_but_not_the_report_agrees(self):
+        """Two separate questions.
+
+        An investigator may take issue with the report and still agree
+        with how the event was classified.
+        """
+        ae_initial = self.get_ae_initial(LACTIC_ACIDOSIS)
+        self.get_agreeing_ae_tmg(ae_initial, NOT_APPLICABLE, original_report_agreed=NO)
+
+        self.backfill()
+
+        obj = AeFinalClassification.objects.get()
+        self.assertEqual(obj.review_status, AGREED)
+        self.assertEqual(
+            obj.final_ae_classification, self.get_ae_classification(LACTIC_ACIDOSIS)
+        )
+
+    def test_an_agreeing_tmg_carries_an_other_classification_across(self):
+        """Where the original says OTHER, the text is the answer."""
+        ae_initial = self.get_ae_initial(OTHER, ae_classification_other="Pancreatitis")
+        self.get_agreeing_ae_tmg(ae_initial)
+
+        self.backfill()
+
+        obj = AeFinalClassification.objects.get()
+        self.assertEqual(obj.review_status, AGREED)
+        self.assertEqual(obj.final_ae_classification, self.get_ae_classification(OTHER))
+        self.assertEqual(obj.final_ae_classification_other, "Pancreatitis")
+
+    def test_an_agreeing_tmg_resolves_an_other_naming_a_known_classification(self):
+        """`other` text naming a classification on the list resolves to it."""
+        ae_initial = self.get_ae_initial(OTHER, ae_classification_other="Lactic acidosis")
+        self.get_agreeing_ae_tmg(ae_initial)
+
+        self.backfill()
+
+        obj = AeFinalClassification.objects.get()
+        self.assertEqual(obj.review_status, AGREED)
+        self.assertEqual(
+            obj.final_ae_classification, self.get_ae_classification(LACTIC_ACIDOSIS)
+        )
+
+    def test_the_copied_agreement_answers_the_classification_question(self):
+        """`investigator_ae_classification_agreed` is a copy, not a rename.
+
+        It is labelled "TMG investigator agrees with the AE
+        classification from the original AE report?", so it has to carry
+        the AeTmg's answer to that question rather than its answer to
+        the wider one about the report.
+        """
+        ae_initial = self.get_ae_initial(LACTIC_ACIDOSIS)
+        self.get_agreeing_ae_tmg(ae_initial, NOT_APPLICABLE, original_report_agreed=NO)
+
+        self.backfill()
+
+        obj = AeFinalClassification.objects.get()
+        self.assertEqual(obj.investigator_ae_classification_agreed, YES)
+
+    def test_a_tmg_disagreeing_on_the_classification_requires_review(self):
+        """The selection is only made where there is a disagreement."""
+        ae_initial = self.get_ae_initial(LACTIC_ACIDOSIS)
+        baker.make_recipe(
+            "meta_ae.aetmg",
+            ae_initial=ae_initial,
+            subject_identifier=ae_initial.subject_identifier,
+            original_report_agreed=NO,
+            investigator_ae_classification_agreed=NO,
+            investigator_ae_classification=self.get_ae_classification(HEPATOMEGALY),
+        )
+
+        self.backfill()
 
         obj = AeFinalClassification.objects.get()
         self.assertEqual(obj.review_status, REQUIRES_REVIEW)
