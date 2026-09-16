@@ -22,12 +22,18 @@ until the model and command are reworked. They cover four things:
 * `Command.get_ae_tmg` suppresses only `DoesNotExist`, so a second
   AeTmg on the same AeInitial (allowed: `AeTmgAction` is not a
   singleton and lists itself as a parent action) aborts the whole run.
-* A TMG investigator selects a classification only where they disagree
-  with the one on the original AE report. Where they agree they leave
-  it null or NOT_APPLICABLE, and the answer is the AeInitial's, taken
+* `original_report_agreed` is where a TMG investigator says whether
+  they agree with the classification on the original AE report: it is
+  the question the AeTmg form asks, while
+  `investigator_ae_classification_agreed` is not on that form and stays
+  at its NOT_APPLICABLE default. Agreeing, they select no
+  classification of their own, and the answer is the AeInitial's, taken
   from `ae_classification_other` where that classification is OTHER.
   Reading the absent selection as a disagreement puts an agreed record
   in front of a reviewer for nothing.
+* Where there is more than one AeTmg they are weighed together: one
+  investigator disagreeing is a disagreement whichever report came
+  last, and the record requires review.
 """
 
 from io import StringIO
@@ -79,20 +85,17 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         self,
         ae_initial: AeInitial,
         classification_name: str | None = None,
-        original_report_agreed: str = YES,
     ) -> AeTmg:
         """An AeTmg whose investigator agrees with the classification.
 
         There is nothing for them to select, so the classification is
-        left null or set to NOT_APPLICABLE. `original_report_agreed`
-        answers a wider question and is a separate answer.
+        left null or sits at the NOT_APPLICABLE the form starts them on.
         """
         return baker.make_recipe(
             "meta_ae.aetmg",
             ae_initial=ae_initial,
             subject_identifier=ae_initial.subject_identifier,
-            original_report_agreed=original_report_agreed,
-            investigator_ae_classification_agreed=YES,
+            original_report_agreed=YES,
             investigator_ae_classification=(
                 self.get_ae_classification(classification_name)
                 if classification_name
@@ -256,22 +259,22 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
             obj.final_ae_classification, self.get_ae_classification(LACTIC_ACIDOSIS)
         )
 
-    def test_a_tmg_agreeing_on_the_classification_but_not_the_report_agrees(self):
-        """Two separate questions.
-
-        An investigator may take issue with the report and still agree
-        with how the event was classified.
-        """
+    def test_a_tmg_not_agreeing_and_selecting_nothing_requires_review(self):
+        """Disagreement without a counter-proposal is still disagreement."""
         ae_initial = self.get_ae_initial(LACTIC_ACIDOSIS)
-        self.get_agreeing_ae_tmg(ae_initial, NOT_APPLICABLE, original_report_agreed=NO)
+        baker.make_recipe(
+            "meta_ae.aetmg",
+            ae_initial=ae_initial,
+            subject_identifier=ae_initial.subject_identifier,
+            original_report_agreed=NO,
+            investigator_ae_classification=self.get_ae_classification(NOT_APPLICABLE),
+        )
 
         self.backfill()
 
         obj = AeFinalClassification.objects.get()
-        self.assertEqual(obj.review_status, AGREED)
-        self.assertEqual(
-            obj.final_ae_classification, self.get_ae_classification(LACTIC_ACIDOSIS)
-        )
+        self.assertEqual(obj.review_status, REQUIRES_REVIEW)
+        self.assertIsNone(obj.final_ae_classification)
 
     def test_an_agreeing_tmg_carries_an_other_classification_across(self):
         """Where the original says OTHER, the text is the answer."""
@@ -298,16 +301,15 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
             obj.final_ae_classification, self.get_ae_classification(LACTIC_ACIDOSIS)
         )
 
-    def test_the_copied_agreement_answers_the_classification_question(self):
-        """`investigator_ae_classification_agreed` is a copy, not a rename.
+    def test_the_copied_agreement_reports_the_agreement(self):
+        """`investigator_ae_classification_agreed` on the record.
 
-        It is labelled "TMG investigator agrees with the AE
-        classification from the original AE report?", so it has to carry
-        the AeTmg's answer to that question rather than its answer to
-        the wider one about the report.
+        Labelled "TMG investigator agrees with the AE classification
+        from the original AE report?", so it says whether they did,
+        across every report.
         """
         ae_initial = self.get_ae_initial(LACTIC_ACIDOSIS)
-        self.get_agreeing_ae_tmg(ae_initial, NOT_APPLICABLE, original_report_agreed=NO)
+        self.get_agreeing_ae_tmg(ae_initial, NOT_APPLICABLE)
 
         self.backfill()
 
@@ -322,7 +324,6 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
             ae_initial=ae_initial,
             subject_identifier=ae_initial.subject_identifier,
             original_report_agreed=NO,
-            investigator_ae_classification_agreed=NO,
             investigator_ae_classification=self.get_ae_classification(HEPATOMEGALY),
         )
 
@@ -396,7 +397,7 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
         obj = self.resolve(AeFinalClassification.objects.get(), LACTIC_ACIDOSIS)
 
         ae_tmg.investigator_ae_classification = self.get_ae_classification(HEPATOMEGALY)
-        ae_tmg.investigator_ae_classification_agreed = NO
+        ae_tmg.original_report_agreed = NO
         ae_tmg.save()
 
         self.backfill(update_copies=True)
@@ -763,7 +764,7 @@ class TestBackfillAeFinalClassification(MetaTestCaseMixin, TestCase):
             ae_initial=ae_initial,
             subject_identifier=ae_initial.subject_identifier,
             report_datetime=get_utcnow() - relativedelta(days=days_ago),
-            investigator_ae_classification_agreed=agreed,
+            original_report_agreed=agreed,
             investigator_ae_classification=(
                 self.get_ae_classification(classification_name)
                 if classification_name

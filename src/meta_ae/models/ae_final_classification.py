@@ -1,5 +1,5 @@
 from clinicedc_constants import NO, NOT_APPLICABLE, NULL_STRING, OTHER, PENDING, YES
-from clinicedc_constants.choices import YES_NO_NA
+from clinicedc_constants.choices import YES_NO, YES_NO_NA
 from django.db import models
 from django.db.models import Q
 from django.utils import timezone
@@ -33,13 +33,15 @@ def get_latest_ae_tmg(ae_tmgs: "list[AeTmg]") -> "AeTmg | None":
 def ae_tmg_agrees(ae_initial: "AeInitial", ae_tmg: "AeTmg") -> bool:
     """True where this TMG report agrees with the original classification.
 
-    An investigator selects a classification of their own only where
-    they disagree, so `investigator_ae_classification_agreed` of YES is
-    the agreement itself, however the unused selection happens to be
-    left. Where they did not answer, the two classifications have to
-    match on their own.
+    `original_report_agreed` is the question the AeTmg form actually
+    asks; `investigator_ae_classification_agreed` is not on the form and
+    stays at its NOT_APPLICABLE default, so it says nothing. An
+    investigator selects a classification of their own only where they
+    disagree, so YES is the agreement itself, however the unused
+    selection happens to be left. Where they did not answer, the two
+    classifications have to match on their own.
     """
-    if ae_tmg.investigator_ae_classification_agreed == YES:
+    if ae_tmg.original_report_agreed == YES:
         return True
     ae_classification_obj = ae_initial.ae_classification
     tmg_classification_obj = ae_tmg.investigator_ae_classification
@@ -60,7 +62,8 @@ def get_investigator_ae_classification_agreed(
 
     Derived across every TMG report, not copied from one of them: one
     investigator disagreeing is a disagreement, whatever the others
-    said and whichever came last.
+    said and whichever came last. The answer on each report is
+    `original_report_agreed`.
     """
     if not ae_tmgs:
         return NULL_STRING
@@ -328,9 +331,8 @@ class AeFinalClassification(
             "TMG investigator agrees with the AE classification from the original AE report?"
         ),
         max_length=15,
-        choices=YES_NO_NA,
+        choices=YES_NO,
         default=NULL_STRING,
-        help_text="Copied from the AE TMG. Blank where there is no AE TMG report.",
     )
 
     # copied from meta_ae.aetmg
