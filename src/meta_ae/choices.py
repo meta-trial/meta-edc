@@ -1,6 +1,6 @@
-from clinicedc_constants import OTHER, UNKNOWN
+from clinicedc_constants import OTHER, PENDING, UNKNOWN
 
-from .constants import HOSPITAL_CLINIC
+from .constants import AGREED, HOSPITAL_CLINIC, REQUIRES_REVIEW
 
 AE_TYPE = (
     ("sae", "Serious Adverse Event / Reaction"),
@@ -31,4 +31,10 @@ INFORMANT_RELATIONSHIP = (
     ("child", "Child"),
     (UNKNOWN, "Unknown"),
     (OTHER, "Other"),
+)
+
+REVIEW_STATUS = (
+    (PENDING, "Pending: awaiting the AE TMG report"),
+    (AGREED, "Agreed: the original and TMG classifications agree"),
+    (REQUIRES_REVIEW, "Requires review: the classifications do not agree"),
 )

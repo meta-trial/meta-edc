@@ -9,6 +9,7 @@ from edc_sites.admin.list_filters import SiteListFilter
 from ..admin_site import meta_ae_admin
 from ..forms import AeFinalClassificationForm
 from ..models import AeFinalClassification
+from .actions import refresh_ae_final_classification
 from .list_filters import FinalAeClassificationSetListFilter, HasAeTmgListFilter
 
 
@@ -20,6 +21,7 @@ class AeFinalClassificationAdmin(
 ):
     form = AeFinalClassificationForm
     show_object_tools = True
+    actions = [refresh_ae_final_classification]  # noqa: RUF012
     change_list_note = "You may only edit documents from the current site."
 
     fieldsets = (
@@ -36,9 +38,11 @@ class AeFinalClassificationAdmin(
             "Final AE Classification",
             {
                 "fields": (
+                    "review_status",
                     "final_ae_classification",
                     "final_ae_classification_other",
-                    "verified",
+                    "final_ae_classification_comment",
+                    "conflict_resolved",
                 ),
             },
         ),
@@ -71,6 +75,7 @@ class AeFinalClassificationAdmin(
     )
 
     radio_fields = {  # noqa: RUF012
+        "conflict_resolved": admin.VERTICAL,
         "final_ae_classification": admin.VERTICAL,
         "ae_classification": admin.VERTICAL,
         "investigator_ae_classification": admin.VERTICAL,
@@ -85,11 +90,14 @@ class AeFinalClassificationAdmin(
         "original",
         "tmg",
         "agreed",
+        "review_status",
+        "conflict_resolved",
     )
 
     list_filter = (
+        "review_status",
+        "conflict_resolved",
         FinalAeClassificationSetListFilter,
-        "verified",
         HasAeTmgListFilter,
         "investigator_ae_classification_agreed",
         SiteListFilter,
@@ -104,6 +112,7 @@ class AeFinalClassificationAdmin(
 
     readonly_fields = (
         "subject_identifier",
+        "review_status",
         "ae_initial",
         "ae_initial_action_identifier",
         "ae_classification",
