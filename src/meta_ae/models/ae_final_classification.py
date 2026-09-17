@@ -247,6 +247,14 @@ class AeFinalClassification(
 
     final_ae_classification_other = OtherCharField(max_length=250)
 
+    final_ae_classification_comment = models.TextField(
+        max_length=250,
+        verbose_name="Classification comment (if any)",
+        help_text="May be left blank",
+        default=NULL_STRING,
+        blank=True,
+    )
+
     verified = models.BooleanField(default=False, help_text="Field retired")
 
     conflict_resolved = models.CharField(

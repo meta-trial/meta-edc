@@ -41,6 +41,7 @@ class AeFinalClassificationAdmin(
                     "review_status",
                     "final_ae_classification",
                     "final_ae_classification_other",
+                    "final_ae_classification_comment",
                     "conflict_resolved",
                 ),
             },
