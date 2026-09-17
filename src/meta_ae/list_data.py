@@ -1,13 +1,26 @@
 from clinicedc_constants import DEAD, NOT_APPLICABLE, OTHER, UNKNOWN
 
-list_data = {
+list_data: dict[str, list[tuple[str, str]]] = {
     "edc_adverse_event.aeclassification": [
-        ("lactic_acidosis", "Lactic acidosis"),
-        ("hepatomegaly_steatosis", "Hepatomegaly with steatosis"),
+        ("anaemia", "Anaemia"),
+        ("death", "Death"),
+        ("dyslipidaemia", "Dyslipidaemia"),
         ("gastrointestinal_metformin", "Gastrointestinal effects of metformin"),
-        # ("anaemia", "Anaemia"),
-        # ("diarrhoea", "Diarrhoea"),
-        # ("renal_impairment", "Renal impairment"),
+        ("hepatomegaly_steatosis", "Hepatomegaly with steatosis"),
+        ("hepatotoxicity", "Hepatotoxicity"),
+        ("hypercholesterolaemia", "Hypercholesterolaemia"),
+        ("hyperlipidaemia", "Hyperlipidaemia"),
+        ("hyperamylasaemia", "Hyperamylasaemia"),
+        ("hyperuricaemia", "Hyperuricaemia"),
+        ("hypertriglyceridaemia", "Hypertriglyceridaemia"),
+        ("hypoalbuminaemia", "Hypoalbuminaemia"),
+        ("hypertension", "Hypertension"),
+        ("lactic_acidosis", "Lactic acidosis"),
+        ("leukopenia", "Leukopenia"),
+        ("liver_insufficiency", "Liver insufficiency"),
+        ("pancytopenia", "Pancytopenia"),
+        ("renal_insufficiency", "Renal insufficiency"),
+        ("thrombocytopenia", "Thrombocytopenia"),
         (OTHER, "Other"),
         (NOT_APPLICABLE, "Not applicable"),
     ],
