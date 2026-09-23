@@ -32,7 +32,7 @@ from edc_lab_results.constants import (
     BLOOD_RESULTS_RFT_ACTION,
 )
 from edc_ltfu.constants import LTFU_ACTION
-from edc_notification.utils import get_email_contacts
+from edc_notification.utils import get_email_contact
 
 from meta_prn.constants import OFFSTUDY_MEDICATION_ACTION
 from meta_prn.pregnancy_action_item_mixin import PregnancyActionItemMixin
@@ -55,8 +55,8 @@ class AeFollowupAction(ActionWithNotification):
             "Upon submission the TMG group will be notified "
             'by email at <a href="mailto:{email1}">{email2}</a>'
         ),
-        email1=get_email_contacts("tmg") or "#",
-        email2=get_email_contacts("tmg") or "unknown",
+        email1=get_email_contact("tmg") or "#",
+        email2=get_email_contact("tmg") or "unknown",
     )
     priority = HIGH_PRIORITY
 
