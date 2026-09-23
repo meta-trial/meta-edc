@@ -77,13 +77,13 @@ def get_test_setting_opts(app_name: str, base_dir: Path):
             ),
         ),
         EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
-        EMAIL_CONTACTS={
+        EDC_MAIL_CONTACTS={
             "ae_reports": "someone@example.com",
             "data_request": "someone@example.com",
             "data_manager": "someone@example.com",
             "tmg": "someone@example.com",
         },
-        EMAIL_ENABLED=True,
+        EDC_MAIL_ENABLED=True,
         LIVE_SYSTEM=False,
         EDC_SITES_MODULE_NAME="meta_sites",
         EDC_AUTH_SKIP_SITE_AUTHS=True,

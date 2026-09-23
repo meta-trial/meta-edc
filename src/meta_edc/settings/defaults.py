@@ -20,7 +20,6 @@ env = environ.Env(
     DJANGO_AUTO_CREATE_KEYS=(bool, False),
     DJANGO_CSRF_COOKIE_SECURE=(bool, True),
     DJANGO_DEBUG=(bool, False),
-    DJANGO_EMAIL_ENABLED=(bool, False),
     DJANGO_EMAIL_USE_TLS=(bool, True),
     DJANGO_LIVE_SYSTEM=(bool, False),
     DJANGO_LOGGING_ENABLED=(bool, True),
@@ -28,6 +27,7 @@ env = environ.Env(
     DJANGO_USE_I18N=(bool, False),
     DJANGO_USE_TZ=(bool, True),
     DEFENDER_ENABLED=(bool, False),
+    EDC_MAIL_ENABLED=(bool, False),
     EDC_RANDOMIZATION_REGISTER_DEFAULT_RANDOMIZER=(bool, True),
     EDC_LABEL_BROWSER_PRINT_PAGE_AUTO_BACK=(bool, True),
     TWILIO_ENABLED=(bool, False),
@@ -444,8 +444,8 @@ if DEBUG:
 EDC_LAB_RESULTS_PARSERS = {"MNH": "parse_trial_labs.parsers.parse_mnh"}
 EDC_LAB_RESULTS_UPLOAD_DIR = "~/upload/edc_lab_results"
 
-EDC_LAB_RESULTS_IMPORT_PRIVATE_PATH = Path(
-    env.str("EDC_LAB_RESULTS_IMPORT_PRIVATE_PATH")
+EDC_LAB_RESULTS_IMPORT_STORAGE_DIR = Path(
+    env.str("EDC_LAB_RESULTS_IMPORT_STORAGE_DIR")
 ).expanduser()
 # map imported results from panels not on any requisition
 # to one on a requisition
@@ -517,14 +517,25 @@ DEFENDER_LOGIN_FAILURE_LIMIT = 5
 # edc_crf
 CRF_STATUS_DEFAULT = COMPLETE
 
-EMAIL_ENABLED = env("DJANGO_EMAIL_ENABLED")
-EMAIL_CONTACTS = env.dict("DJANGO_EMAIL_CONTACTS")
-if EMAIL_ENABLED:
-    EMAIL_HOST = env.str("DJANGO_EMAIL_HOST")
-    EMAIL_PORT = env.int("DJANGO_EMAIL_PORT")
-    EMAIL_HOST_USER = env.str("DJANGO_EMAIL_HOST_USER")
-    EMAIL_HOST_PASSWORD = env.str("DJANGO_EMAIL_HOST_PASSWORD")
-    EMAIL_USE_TLS = env("DJANGO_EMAIL_USE_TLS")
+EDC_MAIL_ENABLED = env("EDC_MAIL_ENABLED")
+EDC_MAIL_CONTACTS = env.dict("EDC_MAIL_CONTACTS")
+if EDC_MAIL_ENABLED:
+    MAILERS = {
+        "default": {
+            "BACKEND": "django.core.mail.backends.smtp.EmailBackend",
+            "OPTIONS": {
+                "host": env.str("DJANGO_EMAIL_HOST"),
+                "username": env.str("DJANGO_EMAIL_HOST_USER"),
+                "password": env.str("DJANGO_EMAIL_HOST_PASSWORD"),
+                "use_tls": env("DJANGO_EMAIL_USE_TLS"),
+            },
+        },
+    }
+    # EMAIL_HOST = env.str("DJANGO_EMAIL_HOST")
+    # EMAIL_PORT = env.int("DJANGO_EMAIL_PORT")
+    # EMAIL_HOST_USER = env.str("DJANGO_EMAIL_HOST_USER")
+    # EMAIL_HOST_PASSWORD = env.str("DJANGO_EMAIL_HOST_PASSWORD")
+    # EMAIL_USE_TLS = env("DJANGO_EMAIL_USE_TLS")
     MAILGUN_API_KEY = env("MAILGUN_API_KEY")
     MAILGUN_API_URL = env("MAILGUN_API_URL")
 
@@ -588,7 +599,8 @@ EDC_PROTOCOL_STUDY_CLOSE_GRACE_PERIOD = (
 EDC_PROTOCOL_TITLE = env.str("EDC_PROTOCOL_TITLE")
 
 # edc_retinopathy
-EDC_RETINOPATHY_STORAGE_DIR = "~/upload/edc_retinopathy"
+# EDC_RETINOPATHY_STORAGE_DIR = "~/upload/edc_retinopathy"
+EDC_RETINOPATHY_STORAGE_DIR = env.str("EDC_RETINOPATHY_STORAGE_DIR")
 EDC_RETINOPATHY_MAX_FILE_SIZE_MB = 3  # default
 EDC_RETINOPATHY_SESSION_EXPIRE_MINUTES = 60  # default
 EDC_REGISTRATION_REGISTERED_SUBJECT_MODEL = "edc_registration.registeredsubject"
