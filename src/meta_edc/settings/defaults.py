@@ -442,8 +442,9 @@ if DEBUG:
         "MNH": Path("~/.clinicedc/meta_edc/mnh_result_mappings.json").expanduser()
     }
 EDC_LAB_RESULTS_PARSERS = {"MNH": "parse_trial_labs.parsers.parse_mnh"}
-EDC_LAB_RESULTS_UPLOAD_DIR = "~/upload/edc_lab_results"
-
+EDC_LAB_RESULTS_IMPORT_UPLOAD_DIR = Path(
+    env.str("EDC_LAB_RESULTS_IMPORT_UPLOAD_DIR")
+).expanduser()
 EDC_LAB_RESULTS_IMPORT_STORAGE_DIR = Path(
     env.str("EDC_LAB_RESULTS_IMPORT_STORAGE_DIR")
 ).expanduser()
