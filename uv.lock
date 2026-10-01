@@ -755,7 +755,7 @@ wheels = [
 
 [[package]]
 name = "clinicedc"
-version = "4.11.0"
+version = "4.12.0"
 source = { editable = "../clinicedc" }
 dependencies = [
     { name = "argon2-cffi" },
@@ -885,7 +885,7 @@ notebook = [
 
 [[package]]
 name = "clinicedc-constants"
-version = "1.6.0"
+version = "1.7.0"
 source = { editable = "../clinicedc-constants" }
 
 [[package]]

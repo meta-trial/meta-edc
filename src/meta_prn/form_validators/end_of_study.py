@@ -2,7 +2,16 @@ from datetime import datetime
 from urllib import parse
 from zoneinfo import ZoneInfo
 
-from clinicedc_constants import DEAD, DELIVERY, LTFU, PREGNANCY, TOXICITY
+from clinicedc_constants import (
+    ADMINISTRATIVE_WITHDRAWAL,
+    CLINICAL_WITHDRAWAL,
+    CONSENT_WITHDRAWAL,
+    DEAD,
+    DELIVERY,
+    LTFU,
+    PREGNANCY,
+    TOXICITY,
+)
 from django import forms
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
@@ -13,7 +22,6 @@ from edc_action_item.models import ActionType
 from edc_adverse_event.form_validator_mixins import (
     RequiresDeathReportFormValidatorMixin,
 )
-from edc_consent.constants import CONSENT_WITHDRAWAL
 from edc_form_validators import INVALID_ERROR, FormValidator
 from edc_ltfu.modelform_mixins import RequiresLtfuFormValidatorMixin
 from edc_offstudy.constants import COMPLETED_FOLLOWUP
@@ -27,12 +35,9 @@ from edc_visit_schedule.site_visit_schedules import site_visit_schedules
 from edc_visit_schedule.utils import off_all_schedules_or_raise
 
 from ..constants import (
-    ADMINISTRATIVE_WITHDRAWAL,
-    CLINICAL_WITHDRAWAL,
     COMPLETED_FOLLOWUP_48,
     COMPLETED_FOLLOWUP_LT_36,
     COMPLETED_FOLLOWUP_LT_48,
-    IN_CONTACT_NOT_SEEN_6M,
     INVESTIGATOR_DECISION,
     OFFSTUDY_MEDICATION_ACTION,
 )
@@ -54,7 +59,8 @@ class EndOfStudyFormValidator(
     def clean(self):
         self.confirm_off_all_schedules()
         self.validate_study_medication_status()
-        self.validate_offstudy_datetime_against_last_seen_date()
+        self.validate_against_offstudy_date("last_seen_date")
+        self.validate_date_of_last_contact()
 
         self.validate_completed_lt_36m()
         self.validate_completed_36m()
@@ -84,6 +90,14 @@ class EndOfStudyFormValidator(
             other_specify_field="toxicity_withdrawal_reason_other",
         )
 
+        # CLINICAL_WITHDRAWAL
+        self.required_if(
+            CLINICAL_WITHDRAWAL,
+            field="offstudy_reason",
+            field_required="clinical_withdrawal_date",
+        )
+        self.validate_against_offstudy_date("clinical_withdrawal_date")
+
         self.applicable_if(
             CLINICAL_WITHDRAWAL,
             field="offstudy_reason",
@@ -101,11 +115,13 @@ class EndOfStudyFormValidator(
             other_specify_field="clinical_withdrawal_reason_other",
         )
 
+        # ADMINISTRATIVE_WITHDRAWAL
         self.required_if(
-            CONSENT_WITHDRAWAL,
+            ADMINISTRATIVE_WITHDRAWAL,
             field="offstudy_reason",
-            field_required="consent_withdrawal_reason",
+            field_required="admin_withdrawal_date",
         )
+        self.validate_against_offstudy_date("admin_withdrawal_date")
 
         self.applicable_if(
             ADMINISTRATIVE_WITHDRAWAL,
@@ -125,21 +141,48 @@ class EndOfStudyFormValidator(
             inverse=False,
         )
 
-        self.validate_date_of_last_contact()
+        # CONSENT_WITHDRAWAL
+        self.required_if(
+            CONSENT_WITHDRAWAL,
+            field="offstudy_reason",
+            field_required="consent_withdrawal_date",
+        )
+
+        self.validate_against_offstudy_date("consent_withdrawal_date")
+
+        self.applicable_if(
+            CONSENT_WITHDRAWAL,
+            field="offstudy_reason",
+            field_applicable="consent_withdrawal_reason",
+        )
+        self.validate_other_specify(
+            field="consent_withdrawal_reason",
+            other_specify_field="consent_withdrawal_reason_other",
+        )
+
+    def validate_against_offstudy_date(self, date_field: str):
+        if (
+            self.cleaned_data.get("offstudy_datetime")
+            and self.cleaned_data.get(date_field)
+            and (
+                self.cleaned_data.get(date_field)
+                > self.cleaned_data.get("offstudy_datetime").date()
+            )
+        ):
+            raise forms.ValidationError(
+                {date_field: "Invalid. May not be after termination date"}
+            )
 
     def validate_date_of_last_contact(self):
         if (
-            self.cleaned_data.get("offstudy_reason")
-            and self.cleaned_data.get("offstudy_reason").name == ADMINISTRATIVE_WITHDRAWAL
-            and self.cleaned_data.get("admin_withdrawal_reason") == IN_CONTACT_NOT_SEEN_6M
-            and self.cleaned_data.get("last_seen_date")
+            self.cleaned_data.get("last_seen_date")
             and self.cleaned_data.get("last_contact_date")
             and self.cleaned_data.get("last_contact_date")
             <= self.cleaned_data.get("last_seen_date")
         ):
             self.raise_validation_error(
                 {
-                    "last_contact_date": (
+                    "last_seen_date": (
                         "Invalid. May not be on or before date patient was last seen."
                     )
                 },
@@ -397,19 +440,6 @@ class EndOfStudyFormValidator(
             )
         except (OffstudyError, OffScheduleError) as e:
             self.raise_validation_error(str(e), INVALID_ERROR)
-
-    def validate_offstudy_datetime_against_last_seen_date(self):
-        if (
-            self.cleaned_data.get("offstudy_datetime")
-            and self.cleaned_data.get("last_seen_date")
-            and (
-                self.cleaned_data.get("last_seen_date")
-                > self.cleaned_data.get("offstudy_datetime").date()
-            )
-        ):
-            raise forms.ValidationError(
-                {"last_seen_date": "Invalid. May not be after termination date"}
-            )
 
     def validate_transfer(self):
         if (

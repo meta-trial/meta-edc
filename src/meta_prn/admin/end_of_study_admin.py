@@ -1,6 +1,10 @@
-from clinicedc_constants import OTHER
+import contextlib
+
+from clinicedc_constants import NOT_APPLICABLE, OTHER
 from dateutil.relativedelta import relativedelta
+from django.apps import apps as django_apps
 from django.contrib import admin
+from django.core.exceptions import ObjectDoesNotExist
 from django.template.loader import render_to_string
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
@@ -8,6 +12,7 @@ from django_audit_fields.admin import audit_fieldset_tuple
 from edc_action_item.fieldsets import action_fieldset_tuple
 from edc_action_item.modeladmin_mixins import ActionItemModelAdminMixin
 from edc_data_manager.auth_objects import DATA_MANAGER_ROLE
+from edc_dx_review.utils import get_list_model_app
 from edc_model_admin.dashboard import ModelAdminSubjectDashboardMixin
 from edc_model_admin.history import SimpleHistoryAdmin
 from edc_sites.admin import SiteModelAdminMixin
@@ -53,6 +58,7 @@ class EndOfStudyAdmin(
                     "subject_identifier",
                     "offstudy_datetime",
                     "last_seen_date",
+                    "last_contact_date",
                 )
             },
         ],
@@ -104,6 +110,7 @@ class EndOfStudyAdmin(
                     "on clinical grounds, as indicated above"
                 ),
                 "fields": (
+                    "clinical_withdrawal_date",
                     "clinical_withdrawal_reason",
                     "clinical_withdrawal_investigator_decision",
                     "clinical_withdrawal_reason_other",
@@ -118,9 +125,23 @@ class EndOfStudyAdmin(
                     "for administrative reasons, as indicated above"
                 ),
                 "fields": (
+                    "admin_withdrawal_date",
                     "admin_withdrawal_reason",
                     "admin_withdrawal_reason_other",
-                    "last_contact_date",
+                ),
+            },
+        ],
+        [
+            "Withdrawal of consent (if applicable)",
+            {
+                "description": (
+                    "This section is applicable if the patient withdrew "
+                    "consent, as indicated above"
+                ),
+                "fields": (
+                    "consent_withdrawal_date",
+                    "consent_withdrawal_reason",
+                    "consent_withdrawal_reason_other",
                 ),
             },
         ],
@@ -133,10 +154,11 @@ class EndOfStudyAdmin(
     )
 
     radio_fields = {  # noqa: RUF012
-        "offstudy_reason": admin.VERTICAL,
-        "clinical_withdrawal_reason": admin.VERTICAL,
-        "toxicity_withdrawal_reason": admin.VERTICAL,
         "admin_withdrawal_reason": admin.VERTICAL,
+        "clinical_withdrawal_reason": admin.VERTICAL,
+        "consent_withdrawal_reason": admin.VERTICAL,
+        "offstudy_reason": admin.VERTICAL,
+        "toxicity_withdrawal_reason": admin.VERTICAL,
     }
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
@@ -196,3 +218,22 @@ class EndOfStudyAdmin(
 
     def user_may_view_other_sites(self, request) -> bool:  # noqa: ARG002
         return True
+
+    def get_changeform_initial_data(self, request):
+        initial = super().get_changeform_initial_data(request)
+        with contextlib.suppress(ObjectDoesNotExist):
+            obj = django_apps.get_model(
+                f"{get_list_model_app()}.adminwithdrawalreasons"
+            ).objects.get(name=NOT_APPLICABLE)
+            initial.setdefault("admin_withdrawal_reason", obj.pk)
+        with contextlib.suppress(ObjectDoesNotExist):
+            obj = django_apps.get_model(
+                f"{get_list_model_app()}.consentwithdrawalreasons"
+            ).objects.get(name=NOT_APPLICABLE)
+            initial.setdefault("consent_withdrawal_reason", obj.pk)
+        with contextlib.suppress(ObjectDoesNotExist):
+            obj = django_apps.get_model(
+                f"{get_list_model_app()}.clinicalwithdrawalreasons"
+            ).objects.get(name=NOT_APPLICABLE)
+            initial.setdefault("clinical_withdrawal_reason", obj.pk)
+        return initial

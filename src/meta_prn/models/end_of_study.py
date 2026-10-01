@@ -1,4 +1,7 @@
 from clinicedc_constants import (
+    ADMINISTRATIVE_WITHDRAWAL,
+    CLINICAL_WITHDRAWAL,
+    CONSENT_WITHDRAWAL,
     DEAD,
     DELIVERY,
     DIABETES,
@@ -18,29 +21,60 @@ from edc_offstudy.constants import (
     COMPLETED_FOLLOWUP,
     END_OF_STUDY_ACTION,
     LATE_EXCLUSION,
-    WITHDRAWAL,
 )
-from edc_offstudy.model_mixins import OffstudyModelMixin
+from edc_offstudy.model_mixins import (
+    AdminWithdrawalModelMixin,
+    ClinicalWithdrawalModelMixin,
+    ConsentWithdrawalModelMixin,
+    OffstudyModelMixin,
+)
 from edc_sites.model_mixins import SiteModelMixin
 from edc_transfer.constants import TRANSFERRED
 
+from meta_lists.constants import IN_CONTACT_NOT_SEEN_6M
 from meta_lists.models import OffstudyReasons
 
-from ..choices import (
-    ADMINISTRATIVE_WITHDRAWAL_REASONS,
-    CLINICAL_WITHDRAWAL_REASONS,
-    TOXICITY_WITHDRAWAL_REASONS,
-)
+from ..choices import TOXICITY_WITHDRAWAL_REASONS
 from ..constants import (
-    ADMINISTRATIVE_WITHDRAWAL,
-    CLINICAL_WITHDRAWAL,
     COMPLETED_FOLLOWUP_48,
     COMPLETED_FOLLOWUP_LT_36,
     COMPLETED_FOLLOWUP_LT_48,
 )
 
+CLINICAL_WITHDRAWAL_REASONS = (
+    ("kidney_disease", "Development of chronic kidney disease"),
+    ("liver_disease", "Development of chronic liver disease"),
+    ("intercurrent_illness", "Intercurrent illness which prevents further treatment"),
+    ("investigator_decision", "Investigator decision (specify below)"),
+    (
+        OTHER,
+        (
+            "Other condition that justifies the discontinuation of "
+            "treatment in the clinician's opinion (specify below)"
+        ),
+    ),
+    (NOT_APPLICABLE, "Not applicable"),
+)
 
-class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidModel):
+ADMINISTRATIVE_WITHDRAWAL_REASONS = (
+    (
+        IN_CONTACT_NOT_SEEN_6M,
+        "Clinic in contact with patient but has not attended for 6m or more.",
+    ),
+    (OTHER, "Other reason (specify below)"),
+    (NOT_APPLICABLE, "Not applicable"),
+)
+
+
+class EndOfStudy(
+    ConsentWithdrawalModelMixin,
+    ClinicalWithdrawalModelMixin,
+    AdminWithdrawalModelMixin,
+    ActionModelMixin,
+    SiteModelMixin,
+    OffstudyModelMixin,
+    BaseUuidModel,
+):
     action_name = END_OF_STUDY_ACTION
 
     last_seen_date = models.DateField(
@@ -48,6 +82,16 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
         validators=[date_not_future],
         blank=False,
         null=True,
+        help_text="Date of last attended clinic visit",
+    )
+
+    # TODO: cannot be future relative to report date!
+    last_contact_date = models.DateField(
+        verbose_name="Date of last contact, if applicable",
+        validators=[date_not_future],
+        blank=True,
+        null=True,
+        help_text="If provided, must be AFTER the date patient was last seen.",
     )
 
     offstudy_reason = models.ForeignKey(
@@ -69,7 +113,7 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
                 LTFU,
                 TOXICITY,
                 TRANSFERRED,
-                WITHDRAWAL,
+                CONSENT_WITHDRAWAL,
                 LATE_EXCLUSION,
                 ADMINISTRATIVE_WITHDRAWAL,
                 OTHER,
@@ -124,29 +168,7 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
         ),
     )
 
-    clinical_withdrawal_reason = models.CharField(
-        verbose_name=(
-            "If the patient was withdrawn on CLINICAL grounds, please specify PRIMARY reason"
-        ),
-        max_length=25,
-        choices=CLINICAL_WITHDRAWAL_REASONS,
-        default=NOT_APPLICABLE,
-    )
-
-    clinical_withdrawal_reason_other = models.TextField(
-        verbose_name="If withdrawn for 'other' condition, please explain",
-        max_length=500,
-        blank=True,
-        default=NULL_STRING,
-    )
-
-    clinical_withdrawal_investigator_decision = models.TextField(
-        verbose_name="If withdrawl was an 'investigator decision', please explain ...",
-        max_length=500,
-        blank=True,
-        default=NULL_STRING,
-    )
-
+    # toxicity_withdrawal
     toxicity_withdrawal_reason = models.CharField(
         verbose_name=" If the patient experienced an unacceptable toxicity', please explain",
         max_length=25,
@@ -159,31 +181,6 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
         max_length=500,
         blank=True,
         default=NULL_STRING,
-    )
-
-    admin_withdrawal_reason = models.CharField(
-        verbose_name=(
-            "If the patient was withdrawn for ADMINISTRATIVE reasons, please explain"
-        ),
-        max_length=25,
-        choices=ADMINISTRATIVE_WITHDRAWAL_REASONS,
-        default=NOT_APPLICABLE,
-    )
-
-    admin_withdrawal_reason_other = models.TextField(
-        verbose_name="If ADMINISTRATIVE withdrawal for 'other' reason, please specify ...",
-        max_length=500,
-        blank=True,
-        default=NULL_STRING,
-    )
-
-    # TODO: cannot be future relative to report date!
-    last_contact_date = models.DateField(
-        verbose_name="Date of last contact, if applicable",
-        validators=[date_not_future],
-        blank=True,
-        null=True,
-        help_text="Also, do not include contact in the clinic",
     )
 
     transfer_date = models.DateField(
@@ -201,17 +198,28 @@ class EndOfStudy(ActionModelMixin, SiteModelMixin, OffstudyModelMixin, BaseUuidM
         default=NOT_APPLICABLE,
     )
 
-    # withdrawal_date = models.DateField(
-    #     verbose_name="Date patient withdrawn from the META trial",
-    #     validators=[date_not_future],
-    #     blank=False,
-    #     null=True,
-    # )
-
     comment = models.TextField(
         verbose_name="Please provide further details if possible",
         max_length=500,
         blank=True,
+        default=NULL_STRING,
+    )
+
+    # RETIRED, see FK
+    clinical_withdrawal_reason_name = models.CharField(
+        verbose_name=(
+            "If the patient was withdrawn on CLINICAL grounds, please specify PRIMARY reason"
+        ),
+        max_length=25,
+        default=NULL_STRING,
+    )
+
+    # RETIRED, see FK
+    admin_withdrawal_reason_name = models.CharField(
+        verbose_name=(
+            "If the patient was withdrawn for ADMINISTRATIVE reasons, please explain"
+        ),
+        max_length=25,
         default=NULL_STRING,
     )
 

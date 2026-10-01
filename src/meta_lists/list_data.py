@@ -1,5 +1,8 @@
 from clinicedc_constants import (
+    ADMINISTRATIVE_WITHDRAWAL,
     CLINIC,
+    CLINICAL_WITHDRAWAL,
+    CONSENT_WITHDRAWAL,
     DEAD,
     DELIVERY,
     DIABETES,
@@ -11,10 +14,17 @@ from clinicedc_constants import (
     TOXICITY,
     UNKNOWN,
 )
-from edc_offstudy.constants import COMPLETED_FOLLOWUP, WITHDRAWAL
+from edc_offstudy.constants import COMPLETED_FOLLOWUP
 from edc_transfer.constants import TRANSFERRED
 
-from meta_lists.constants import (
+from meta_prn.constants import (
+    COMPLETED_FOLLOWUP_48,
+    COMPLETED_FOLLOWUP_LT_36,
+    COMPLETED_FOLLOWUP_LT_48,
+    LATE_EXCLUSION,
+)
+
+from .constants import (
     ACCUCHEK,
     CAREGIVING,
     CHANGED_CLINIC,
@@ -22,17 +32,10 @@ from meta_lists.constants import (
     FAMILY_EMERGENCY,
     HEMACUE,
     IMP_COMPLAINTS,
+    IN_CONTACT_NOT_SEEN_6M,
     LACK_OF_TRANSPORT,
     TRAVELLING,
     WORKING_SCHOOLING,
-)
-from meta_prn.constants import (
-    ADMINISTRATIVE_WITHDRAWAL,
-    CLINICAL_WITHDRAWAL,
-    COMPLETED_FOLLOWUP_48,
-    COMPLETED_FOLLOWUP_LT_36,
-    COMPLETED_FOLLOWUP_LT_48,
-    LATE_EXCLUSION,
 )
 
 list_data = {
@@ -246,7 +249,7 @@ list_data = {
         ),
         (LTFU, "Patient lost to follow-up"),
         (DEAD, "Patient reported/known to have died"),
-        (WITHDRAWAL, "Patient withdrew consent to participate further"),
+        (CONSENT_WITHDRAWAL, "Patient withdrew consent to participate further"),
         (
             LATE_EXCLUSION,
             (
@@ -260,6 +263,34 @@ list_data = {
             "Patient is withdrawn for administrative / non-clinical reasons ...",
         ),
         (OTHER, "Other reason (specify below)"),
+    ],
+    "meta_lists.clinicalwithdrawalreasons": [
+        ("kidney_disease", "Development of chronic kidney disease"),
+        ("liver_disease", "Development of chronic liver disease"),
+        ("intercurrent_illness", "Intercurrent illness which prevents further treatment"),
+        ("investigator_decision", "Investigator decision (specify below)"),
+        (
+            OTHER,
+            (
+                "Other condition that justifies the discontinuation of "
+                "treatment in the clinician's opinion (specify below)"
+            ),
+        ),
+        (NOT_APPLICABLE, "Not applicable"),
+    ],
+    "meta_lists.consentwithdrawalreasons": [
+        ("stopped_imp", "Unwilling to continue IMP"),
+        ("no_reason_given", "No reason given"),
+        (OTHER, "Other reason (specify below)"),
+        (NOT_APPLICABLE, "Not applicable"),
+    ],
+    "meta_lists.adminwithdrawalreasons": [
+        (
+            IN_CONTACT_NOT_SEEN_6M,
+            "Clinic in contact with patient but has not attended for 6m or more.",
+        ),
+        (OTHER, "Other reason (specify below)"),
+        (NOT_APPLICABLE, "Not applicable"),
     ],
     "meta_lists.transferreasons": [
         ("moved", "Moved away from the area"),
