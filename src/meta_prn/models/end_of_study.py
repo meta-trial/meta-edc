@@ -206,7 +206,7 @@ class EndOfStudy(
     )
 
     # RETIRED, see FK
-    clinical_withdrawal_reason_name = models.CharField(
+    clinical_withdrawal_reason_xxx = models.CharField(
         verbose_name=(
             "If the patient was withdrawn on CLINICAL grounds, please specify PRIMARY reason"
         ),
@@ -215,7 +215,7 @@ class EndOfStudy(
     )
 
     # RETIRED, see FK
-    admin_withdrawal_reason_name = models.CharField(
+    admin_withdrawal_reason_xxx = models.CharField(
         verbose_name=(
             "If the patient was withdrawn for ADMINISTRATIVE reasons, please explain"
         ),
