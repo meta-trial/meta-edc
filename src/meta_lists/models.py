@@ -107,3 +107,21 @@ class DiagnosticDevices(ListModelMixin):
     class Meta(ListModelMixin.Meta):
         verbose_name = "Diagnostic device"
         verbose_name_plural = "Diagnostic devices"
+
+
+class AdminWithdrawalReasons(ListModelMixin):
+    class Meta(ListModelMixin.Meta):
+        verbose_name = "Administrative withdrawal reason"
+        verbose_name_plural = "Administrative withdrawal reasons"
+
+
+class ClinicalWithdrawalReasons(ListModelMixin):
+    class Meta(ListModelMixin.Meta):
+        verbose_name = "Clinical withdrawal reason"
+        verbose_name_plural = "CLinical withdrawal reasons"
+
+
+class ConsentWithdrawalReasons(ListModelMixin):
+    class Meta(ListModelMixin.Meta):
+        verbose_name = "Consent withdrawal reason"
+        verbose_name_plural = "Consent withdrawal reasons"
