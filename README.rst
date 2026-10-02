@@ -28,7 +28,7 @@ ____
 
 META PHASE III:
 
-(final deployed version `3.18.1 <https://github.com/meta-trial/meta-edc/tree/3.18.1>`_) 30/09/2026
+(final deployed version `3.18.2 <https://github.com/meta-trial/meta-edc/tree/3.18.2>`_) 02/10/2026
 
 A randomised placebo-controlled double-blind phase III trial to determine the effects of metformin versus placebo on the incidence of diabetes in HIV-infected persons with pre-diabetes in Tanzania.
 
@@ -64,8 +64,8 @@ Assuming you are logged into the account ``myaccount``:
     mkdir ~/edc && \
     cd ~/edc && \
     uv venv && \
-    uv pip install -U meta-edc==3.18.1 && \
-    wget https://raw.githubusercontent.com/meta-trial/meta-edc/3.18.1/manage.py && \
+    uv pip install -U meta-edc==3.18.2 && \
+    wget https://raw.githubusercontent.com/meta-trial/meta-edc/3.18.2/manage.py && \
     uv pip freeze | grep meta-edc
 
 Copy your ``.env`` file to ``~/.etc``.
@@ -115,7 +115,7 @@ From the above example:
 
     cd ~/edc && \
     uv venv --clear && \
-    uv pip install -U meta-edc==3.18.1 && \
+    uv pip install -U meta-edc==3.18.2 && \
     wget -O manage.py https://raw.githubusercontent.com/meta-trial/meta-edc/1.1.10/manage.py && \
     uv pip freeze | grep meta-edc && \
     python manage.py check
