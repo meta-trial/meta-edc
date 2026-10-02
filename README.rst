@@ -10,7 +10,7 @@ Metformin treatment in Africa - META
 * https://www.lstmed.ac.uk/research/departments/international-public-health/respond-africa/meta
 * http://www.isrctn.com/ISRCTN76157257
 
-py 3.12+ / DJ 5.2 using the `Clinic EDC <https://github.com/clinicedc/edc>`_ framework
+py 3.12+ / DJ 5.2-6.0 using the `Clinic EDC <https://github.com/clinicedc/edc>`_ framework
 
 This codebase is used for two randomized clinical trials:
 
@@ -18,7 +18,7 @@ ____
 
 META PHASE II:
 
-(final version `0.1.77 <https://github.com/meta-trial/meta-edc/tree/0.1.77>`_)
+(final deployed version `0.1.77 <https://github.com/meta-trial/meta-edc/tree/0.1.77>`_)
 
 Metformin Treatment for Diabetes Prevention in Africa: META Trial
 TASO, MRC/UVRI/LSHTM, NIMR – TZ and Liverpool School of Tropical Medicine (ISRCTN76157257)
@@ -27,6 +27,8 @@ http://www.isrctn.com/ISRCTN76157257
 ____
 
 META PHASE III:
+
+(final deployed version `3.18.1 <https://github.com/meta-trial/meta-edc/tree/3.18.1>`_) 30/09/2026
 
 A randomised placebo-controlled double-blind phase III trial to determine the effects of metformin versus placebo on the incidence of diabetes in HIV-infected persons with pre-diabetes in Tanzania.
 
@@ -62,8 +64,8 @@ Assuming you are logged into the account ``myaccount``:
     mkdir ~/edc && \
     cd ~/edc && \
     uv venv && \
-    uv pip install -U meta-edc==3.18.0 && \
-    wget https://raw.githubusercontent.com/meta-trial/meta-edc/3.18.0/manage.py && \
+    uv pip install -U meta-edc==3.18.1 && \
+    wget https://raw.githubusercontent.com/meta-trial/meta-edc/3.18.1/manage.py && \
     uv pip freeze | grep meta-edc
 
 Copy your ``.env`` file to ``~/.etc``.
@@ -113,7 +115,7 @@ From the above example:
 
     cd ~/edc && \
     uv venv --clear && \
-    uv pip install -U meta-edc==3.18.0 && \
+    uv pip install -U meta-edc==3.18.1 && \
     wget -O manage.py https://raw.githubusercontent.com/meta-trial/meta-edc/1.1.10/manage.py && \
     uv pip freeze | grep meta-edc && \
     python manage.py check

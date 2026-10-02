@@ -22,6 +22,7 @@ from meta_prn.constants import (
     COMPLETED_FOLLOWUP_LT_36,
     COMPLETED_FOLLOWUP_LT_48,
     LATE_EXCLUSION,
+    SITE_ERROR,
 )
 
 from .constants import (
@@ -262,6 +263,7 @@ list_data = {
             ADMINISTRATIVE_WITHDRAWAL,
             "Patient is withdrawn for administrative / non-clinical reasons ...",
         ),
+        (SITE_ERROR, "Taken off-study in error, see comment"),
         (OTHER, "Other reason (specify below)"),
     ],
     "meta_lists.clinicalwithdrawalreasons": [
