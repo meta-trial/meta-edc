@@ -547,7 +547,7 @@ def generate_monitoring_report(  # noqa: PLR0912
     df_tbl1.columns = ["visit_code", "site_id", "visits"]
     df1 = df_tbl1.pivot(index="visit_code", columns="site_id", values="visits").reset_index()
     df1.columns.name = None
-    df1.columns = ["visit_code", "10", "20", "30", "40", "60"]
+    df1 = _reindex_site_columns(df1, "visit_code")
     df1["total"] = df1[["10", "20", "30", "40", "60"]].sum(axis=1)
     df_attended = df1.fillna(0).reset_index(drop=True).fillna(0.0)
 
@@ -805,7 +805,7 @@ def generate_monitoring_report(  # noqa: PLR0912
         index="visit_code", columns="site_id", values="visits"
     ).reset_index()
     df_tbl_pivot.columns.name = None
-    df_tbl_pivot.columns = ["visit_code", "10", "20", "30", "40", "60"]
+    df_tbl_pivot = _reindex_site_columns(df_tbl_pivot, "visit_code")
     df_tbl_pivot["total"] = df_tbl_pivot[["10", "20", "30", "40", "60"]].sum(axis=1)
     df_missed = df_tbl_pivot.fillna(0).copy().set_index(["visit_code"])
 
@@ -838,7 +838,7 @@ def generate_monitoring_report(  # noqa: PLR0912
     gt = (
         gt.cols_label({k: v for k, v in COLUMN_HEADERS.items() if k != "label"})
         .cols_align(align="center", columns=["10", "20", "30", "40", "60", "total"])
-        .cols_align(align="left", columns=["visit_code", "label"])
+        .cols_align(align="left", columns=["visit_code"])
         .tab_style(
             style=[style.fill(color="snow"), style.text(color="black")],
             locations=loc.body(columns=[0], rows=list(range(0, len(df_table)))),
