@@ -262,6 +262,7 @@ list_data = {
             ADMINISTRATIVE_WITHDRAWAL,
             "Patient is withdrawn for administrative / non-clinical reasons ...",
         ),
+        ("SITE_ERROR", "Taken off-study in error, see comment"),
         (OTHER, "Other reason (specify below)"),
     ],
     "meta_lists.clinicalwithdrawalreasons": [
