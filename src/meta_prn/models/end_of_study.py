@@ -39,6 +39,7 @@ from ..constants import (
     COMPLETED_FOLLOWUP_48,
     COMPLETED_FOLLOWUP_LT_36,
     COMPLETED_FOLLOWUP_LT_48,
+    SITE_ERROR,
 )
 
 CLINICAL_WITHDRAWAL_REASONS = (
@@ -116,6 +117,7 @@ class EndOfStudy(
                 CONSENT_WITHDRAWAL,
                 LATE_EXCLUSION,
                 ADMINISTRATIVE_WITHDRAWAL,
+                SITE_ERROR,
                 OTHER,
             ]
         },
