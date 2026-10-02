@@ -28,7 +28,7 @@ ____
 
 META PHASE III:
 
-(final deployed version `3.18.1 <https://github.com/meta-trial/meta-edc/tree/3.18.1>`_) 30/09/2026
+(final deployed version `3.18.2 <https://github.com/meta-trial/meta-edc/tree/3.18.2>`_) 02/10/2026
 
 A randomised placebo-controlled double-blind phase III trial to determine the effects of metformin versus placebo on the incidence of diabetes in HIV-infected persons with pre-diabetes in Tanzania.
 

@@ -134,12 +134,12 @@ class EndOfStudyFormValidator(
             other_specify_field="admin_withdrawal_reason_other",
         )
 
-        self.required_if(
-            ADMINISTRATIVE_WITHDRAWAL,
-            field="offstudy_reason",
-            field_required="last_contact_date",
-            inverse=False,
-        )
+        # self.required_if(
+        #     ADMINISTRATIVE_WITHDRAWAL,
+        #     field="offstudy_reason",
+        #     field_required="last_contact_date",
+        #     inverse=False,
+        # )
 
         # CONSENT_WITHDRAWAL
         self.required_if(

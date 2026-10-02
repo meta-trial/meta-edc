@@ -25,8 +25,8 @@ Diabetes incorrectly diagnosed / taken off study
 ------------------------------------------------
 Theses patients were mistakenly taken of study and flagged as developed DM
 
-- 105-30-0317-2
-- 105-40-0282-7
-- 105-40-0019-3
-- 105-40-0030-0
-- 105-40-0051-6
+- 105-30-0317-2 changed to SITE_ERROR
+- 105-40-0282-7 changed to SITE_ERROR
+- 105-40-0019-3 changed to SITE_ERROR
+- 105-40-0030-0 changed to Delivered/Pregnancy (may still havee DM referral form)
+- 105-40-0051-6 changed to SITE_ERROR
